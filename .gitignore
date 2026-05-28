@@ -1,0 +1,54 @@
+# === SEKRETY I CREDENTIALS ===
+.env
+*.json
+!requirements.txt
+holistic-dashboard-dev-*.json
+service-account*.json
+auth.json
+tokens/
+
+# === PYTHON ===
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# === STREAMLIT ===
+.streamlit/secrets.toml
+
+# === SYSTEM ===
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+
+# === DUŻE FOLDERY DANYCH ===
+generated_media/
+scratch/
+reports/
+07_archive/
+08-archive/
+09-exports/
+clients/
+influencers/
+brand_identities/
+projects/
+
+# === LOKALNE NARZĘDZIA ===
+.vscode/settings.json
+.roo/
+patch*.py
+
+# === GCP / DOCKER ===
+Dockerfile
+.dockerignore
+.gcloudignore
+deploy/
