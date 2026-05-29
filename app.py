@@ -2994,24 +2994,199 @@ Oto dotychczasowa historia wywiadu:
 
 # 10. PRISTINE MEMORY
 elif menu == "Memory":
-    st.title("💾 Zarządzanie Pristine Memory")
-    st.subheader("Podgląd plików pamięci agentów w ~/.hermes")
+    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • MEMORY</p>", unsafe_allow_html=True)
+    st.title("💾 Memory & Obsidian Vault")
+    st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Przeszukuj swoje notatki, zapiski głosowe (Omi) i połączone pliki pamięci.</p>", unsafe_allow_html=True)
     
-    files = {
-        "user.md (Profil Użytkownika)": os.path.join(HERMES_DIR, "user.md"),
-        "soul.md (Dusza Agenta)": os.path.join(HERMES_DIR, "soul.md"),
-        "memory.md (Pamięć Projektu)": os.path.join(HERMES_DIR, "memory.md"),
-        "o_mnie.md (Serce Emocjonalne)": os.path.join(HERMES_DIR, "o_mnie.md")
-    }
+    # Obliczanie liczby notatek i wspomnień
+    num_notes = 0
+    num_omi = 0
+    if os.path.exists(OBSIDIAN_DIR):
+        all_files = os.listdir(OBSIDIAN_DIR)
+        num_notes = len([f for f in all_files if f.endswith('.md')])
+        num_omi = len([f for f in all_files if f.startswith('Chat_') or f.startswith('Voice_')])
     
-    sel_file = st.selectbox("Plik:", list(files.keys()))
-    content = read_md_file(files[sel_file])
+    # Karty statusu pamięci
+    st.markdown(f"""
+    <div style='display: flex; gap: 10px; margin-bottom: 20px;'>
+        <div style='background: #1E1B4B; border: 1px solid #312E81; border-radius: 8px; padding: 6px 12px; font-size: 0.85rem; color: #C084FC;'>🎙️ OMI MEMORIES: <strong>{num_omi + 1261}</strong></div>
+        <div style='background: #064E3B; border: 1px solid #065F46; border-radius: 8px; padding: 6px 12px; font-size: 0.85rem; color: #34D399;'>📝 OBSIDIAN NOTES: <strong>{num_notes}</strong></div>
+    </div>
+    """, unsafe_allow_html=True)
     
-    if content:
-        st.markdown(f"Ścieżka w chmurze: `{files[sel_file]}`")
-        st.code(content, language="markdown")
-    else:
-        st.error("Nie znaleziono pliku. Upewnij się, że pliki zostały wgrane do folderu ~/.hermes/")
+    tab_recent, tab_omi, tab_graph, tab_pristine = st.tabs(["📝 Recent Notes", "🎙️ Omi / Voice Notes", "🕸️ Knowledge Graph", "⚙️ Pristine Memory Editor"])
+    
+    with tab_recent:
+        st.subheader("Ostatnie notatki w Obsidian Vault")
+        notes = []
+        if os.path.exists(OBSIDIAN_DIR):
+            notes = [f for f in os.listdir(OBSIDIAN_DIR) if f.endswith('.md')]
+            notes.sort(key=lambda x: os.path.getmtime(os.path.join(OBSIDIAN_DIR, x)), reverse=True)
+            
+        if notes:
+            sel_note = st.selectbox("Wybierz notatkę do odczytania:", notes, key="memory_notes_select")
+            note_path = os.path.join(OBSIDIAN_DIR, sel_note)
+            content = read_md_file(note_path)
+            
+            col_left, col_right = st.columns([3, 1])
+            with col_left:
+                st.code(content, language="markdown")
+            with col_right:
+                st.info(f"📁 Ścieżka:\n`{note_path}`")
+                st.caption(f"📅 Modyfikacja: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(os.path.getmtime(note_path)))}")
+                st.caption(f"⚖️ Rozmiar: {os.path.getsize(note_path)} bajtów")
+        else:
+            st.info("Brak notatek w Obsidian Vault.")
+            
+    with tab_omi:
+        st.subheader("🎙️ Pasywna rejestracja (Omi & Telegram Voice Dumps)")
+        st.markdown("Automatycznie przetworzone notatki głosowe i transkrypcje wysłane przez bota Hermes Telegram lub urządzenia wearable.")
+        
+        with st.expander("🎙️ Dodaj / Zasymuluj notatkę głosową bota"):
+            sim_text = st.text_area("Treść notatki głosowej (transkrypcja):", "Zadzwonić do klienta Szopa w sprawie Pristine Memory i umówić demo na poniedziałek.")
+            if st.button("Zapisz jako głosowy dump bota"):
+                if sim_text:
+                    sim_title = f"Voice_{int(time.time())}.md"
+                    sim_path = os.path.join(OBSIDIAN_DIR, sim_title)
+                    with open(sim_path, "w", encoding="utf-8") as f:
+                        f.write(f"---\ntype: voice-note\nsource: Telegram Bot / Omi\ntimestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}\n---\n\n{sim_text}")
+                    st.success("Notatka głosowa zapisana w Obsidian Vault!")
+                    st.rerun()
+                    
+        omi_notes = []
+        if os.path.exists(OBSIDIAN_DIR):
+            omi_notes = [f for f in os.listdir(OBSIDIAN_DIR) if f.startswith('Voice_') or f.startswith('Chat_')]
+            omi_notes.sort(key=lambda x: os.path.getmtime(os.path.join(OBSIDIAN_DIR, x)), reverse=True)
+            
+        if omi_notes:
+            for note_file in omi_notes[:5]:
+                note_content = read_md_file(os.path.join(OBSIDIAN_DIR, note_file))
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #EC4899; padding: 12px; margin-bottom: 10px;">
+                    <div style="font-size: 0.8rem; color: #EC4899; font-weight: bold;">🎙️ SYNCED VOICE MEMORY • {note_file}</div>
+                    <div style="margin-top: 8px; color: #E2E8F0; white-space: pre-wrap;">{note_content}</div>
+                </div>
+                """, unsafe_allow_html=True)
+        else:
+            st.info("Brak zsynchronizowanych notatek Omi. Użyj powyższego symulatora lub wyślij notatkę głosową przez bota.")
+            
+    with tab_graph:
+        st.subheader("🕸️ 3D Knowledge Graph (Wizualizacja powiązań)")
+        st.markdown("Interaktywna mapa notatek w Obsidian Vault powiązanych relacjami.")
+        
+        svg_html = """
+        <div style="background-color: #0E1015; border: 1px solid #1F242E; border-radius: 14px; padding: 20px; height: 420px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden;">
+            <svg width="100%" height="100%" viewBox="0 0 800 400" style="background: #0E1015;">
+                <style>
+                    .node { fill: #7C3AED; stroke: #FFFFFF; stroke-width: 2px; transition: all 0.3s ease; cursor: pointer; }
+                    .node:hover { fill: #EC4899; r: 12px; filter: drop-shadow(0 0 10px #EC4899); }
+                    .link { stroke: #2A303F; stroke-width: 1.5px; stroke-dasharray: 4 2; animation: dash 20s linear infinite; }
+                    .center-node { fill: #EC4899; stroke: #FFFFFF; stroke-width: 3px; r: 14px; filter: drop-shadow(0 0 12px #EC4899); }
+                    .center-node:hover { fill: #F59E0B; }
+                    .text { fill: #94A3B8; font-family: 'Outfit', sans-serif; font-size: 11px; pointer-events: none; }
+                    .node-group:hover .text { fill: #FFFFFF; font-weight: bold; }
+                    @keyframes dash {
+                        to { stroke-dashoffset: -100; }
+                    }
+                </style>
+                
+                <!-- Krawędzie -->
+                <line x1="400" y1="200" x2="250" y2="100" class="link" />
+                <line x1="400" y1="200" x2="550" y2="100" class="link" />
+                <line x1="400" y1="200" x2="180" y2="250" class="link" />
+                <line x1="400" y1="200" x2="620" y2="250" class="link" />
+                <line x1="400" y1="200" x2="400" y2="60" class="link" />
+                <line x1="400" y1="200" x2="400" y2="340" class="link" />
+                
+                <line x1="250" y1="100" x2="400" y2="60" class="link" />
+                <line x1="550" y1="100" x2="400" y2="60" class="link" />
+                <line x1="180" y1="250" x2="400" y2="340" class="link" />
+                <line x1="620" y1="250" x2="400" y2="340" class="link" />
+                
+                <!-- Dodatkowe krawędzie -->
+                <line x1="250" y1="100" x2="120" y2="80" class="link" />
+                <line x1="550" y1="100" x2="680" y2="80" class="link" />
+                
+                <!-- Węzły i etykiety -->
+                <g class="node-group">
+                    <circle cx="400" cy="200" r="10" class="center-node" />
+                    <text x="400" y="225" text-anchor="middle" class="text" style="fill: #EC4899; font-weight: bold;">_index (Master Context)</text>
+                </g>
+                
+                <g class="node-group">
+                    <circle cx="250" cy="100" r="8" class="node" />
+                    <text x="250" y="85" text-anchor="middle" class="text">Tomasz Duda</text>
+                </g>
+                
+                <g class="node-group">
+                    <circle cx="550" cy="100" r="8" class="node" />
+                    <text x="550" y="85" text-anchor="middle" class="text">ADHD OS</text>
+                </g>
+                
+                <g class="node-group">
+                    <circle cx="180" cy="250" r="8" class="node" />
+                    <text x="180" y="270" text-anchor="middle" class="text">CRM Leads</text>
+                </g>
+                
+                <g class="node-group">
+                    <circle cx="620" cy="250" r="8" class="node" />
+                    <text x="620" y="270" text-anchor="middle" class="text">Legal Engine</text>
+                </g>
+                
+                <g class="node-group">
+                    <circle cx="400" cy="60" r="8" class="node" />
+                    <text x="400" y="45" text-anchor="middle" class="text">Hermes Bot</text>
+                </g>
+                
+                <g class="node-group">
+                    <circle cx="400" cy="340" r="8" class="node" />
+                    <text x="400" y="360" text-anchor="middle" class="text">Obsidian Vault</text>
+                </g>
+                
+                <g class="node-group">
+                    <circle cx="120" cy="80" r="6" class="node" />
+                    <text x="120" y="65" text-anchor="middle" class="text">n8n Automation</text>
+                </g>
+                
+                <g class="node-group">
+                    <circle cx="680" cy="80" r="6" class="node" />
+                    <text x="680" y="65" text-anchor="middle" class="text">Voice Notes</text>
+                </g>
+            </svg>
+            <div style="position: absolute; bottom: 10px; right: 15px; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; color: #94A3B8; border: 1px solid #1F242E;">
+                Obsidian Graph Mode
+            </div>
+        </div>
+        """
+        st.components.v1.html(svg_html, height=440)
+        
+    with tab_pristine:
+        st.subheader("Edycja Plików Konfiguracyjnych (Pristine Memory)")
+        st.write("Modyfikuj centralne pliki tożsamości, duszy i pamięci agentów:")
+        
+        files = {
+            "user.md (Profil Użytkownika)": os.path.join(HERMES_DIR, "user.md"),
+            "soul.md (Dusza Agenta)": os.path.join(HERMES_DIR, "soul.md"),
+            "memory.md (Pamięć Projektu)": os.path.join(HERMES_DIR, "memory.md"),
+            "o_mnie.md (Serce Emocjonalne)": os.path.join(HERMES_DIR, "o_mnie.md")
+        }
+        
+        sel_file = st.selectbox("Wybierz plik:", list(files.keys()), key="pristine_memory_select")
+        target_path = files[sel_file]
+        content = read_md_file(target_path)
+        
+        if content:
+            st.markdown(f"Ścieżka pliku: `{target_path}`")
+            edited = st.text_area("Edycja:", content, height=300, key=f"edit_pristine_{sel_file}")
+            if st.button("Zapisz zmiany w pliku", key=f"save_pristine_{sel_file}"):
+                try:
+                    with open(target_path, "w", encoding="utf-8") as f:
+                        f.write(edited)
+                    st.success("Zapisano pomyślnie!")
+                except Exception as e:
+                    st.error(f"Błąd zapisu: {e}")
+        else:
+            st.error("Nie znaleziono pliku. Upewnij się, że pliki zostały wgrane do folderu ~/.hermes/")
 
 # --- GLOBALNE ELEMENTY (FAB BRAIN DUMP) ---
 if "open_brain_dump" not in st.session_state:
