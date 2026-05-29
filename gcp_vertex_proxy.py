@@ -146,7 +146,7 @@ class VertexProxyHandler(http.server.BaseHTTPRequestHandler):
                 logger.info(f"Sending request to Vertex AI: {TARGET_URL}")
                 logger.info(f"Request Headers: {json.dumps({k: v for k, v in headers.items() if k != 'Authorization'})} (Auth Token Length: {len(headers.get('Authorization', ''))})")
                 logger.info(f"Request Payload: {json.dumps(data)}")
-                response = http_post(TARGET_URL, json_data=data, headers=headers, timeout=60.0)
+                response = http_post(TARGET_URL, json_data=data, headers=headers, timeout=180.0)
                 logger.info(f"Vertex AI response status: {response.status_code}")
                 
                 if response.status_code == 200:

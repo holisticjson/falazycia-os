@@ -232,9 +232,9 @@ def call_gemini_api(messages, system_instruction=None):
         payload["messages"].append({"role": "system", "content": system_instruction})
     payload["messages"].extend(messages)
     
-    # 1. Try local proxy
+    # 1. Try local proxy (timeout 90s for long OCR operations)
     try:
-        response = http_post(proxy_url, json_data=payload, timeout=25.0)
+        response = http_post(proxy_url, json_data=payload, timeout=90.0)
         if response.status_code == 200:
             res_data = response.json()
             return res_data["choices"][0]["message"]["content"]
