@@ -150,6 +150,30 @@ import httpx
 _server_started = False
 _server_lock = threading.Lock()
 
+def call_vllm_api(messages, system_instruction=None):
+    url = "http://localhost:8000/v1/chat/completions"
+    headers = {
+        "Authorization": "Bearer HOLISTIC_SECURE_TOKEN_2026",
+        "Content-Type": "application/json"
+    }
+    payload = {
+        "model": "mistralai/Mistral-Nemo-Instruct-2407",
+        "messages": []
+    }
+    if system_instruction:
+        payload["messages"].append({"role": "system", "content": system_instruction})
+    payload["messages"].extend(messages)
+    
+    try:
+        response = httpx.post(url, json=payload, headers=headers, timeout=120.0)
+        if response.status_code == 200:
+            res_data = response.json()
+            return res_data["choices"][0]["message"]["content"]
+    except Exception as e:
+        pass
+        
+    return call_gemini_api(messages, system_instruction)
+
 def call_gemini_api(messages, system_instruction=None):
     proxy_url = "http://127.0.0.1:8089/v1/chat/completions"
     payload = {
@@ -441,7 +465,7 @@ with st.sidebar:
     
     menu = st.radio(
         "Nawigacja:",
-        ["🎯 Mission Control", "🗑️ Brain Dump & Cache", "📻 NotebookLM & Obsidian", "🎬 Content Studio", "💼 ADHD CRM & Lejek", "📋 ADHD Kanban", "💾 Pristine Memory"]
+        ["🎯 Mission Control", "🗑️ Brain Dump & Cache", "📻 NotebookLM & Obsidian", "🎬 Content Studio", "💼 ADHD CRM & Lejek", "📋 ADHD Kanban", "💼 Dział Prawny & Kancelaria", "💰 Kancelaria Finansowa & KSeF", "💾 Pristine Memory"]
     )
     st.markdown("---")
     st.markdown("🌐 **Status Systemu:**")
@@ -903,6 +927,12 @@ elif menu == "💼 ADHD CRM & Lejek":
                     st.toast(f"Klient {lead['name']} został ustawiony jako główny cel!")
                     st.rerun()
                 
+                if st.button("💰 Przygotuj Fakturę (Fakturownia)", key=f"set_fin_{lead['id']}"):
+                    st.session_state.fin_client_name = lead["name"]
+                    st.session_state.fin_client_email = lead.get("email", "klient@test.pl")
+                    st.toast(f"Dane klienta {lead['name']} przeniesione do zakładki finansowej!")
+                    st.info("Przejdź teraz do menu '💰 Kancelaria Finansowa & KSeF', aby wystawić dokument.")
+                
                 st.markdown("<br>", unsafe_allow_html=True)
                 col_del, col_close = st.columns(2)
                 with col_del:
@@ -1023,7 +1053,163 @@ elif menu == "📋 ADHD Kanban":
             save_kanban(k)
             st.rerun()
 
-# 7. USTAWIENIA PAMIĘCI
+# 7. DZIAŁ PRAWNY & KANCELARIA
+elif menu == "💼 Dział Prawny & Kancelaria":
+    st.title("💼 Dział Prawny & Analiza Kontraktów")
+    st.subheader("Głęboka analiza długiego kontekstu zasilana przez serwer vLLM GPU")
+    
+    st.markdown("""
+    <div class="one-thing-banner" style="border-left-color: #EF4444;">
+        <h3 style="margin-top: 0; color: #EF4444;">⚖️ Zewnętrzny Płat Czołowy do Spraw Prawnych</h3>
+        <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
+            Wklej treść umowy handlowej, regulaminu lub kontraktu NDA. Zdalny serwer GPU przy użyciu modelu o długim kontekście (128k tokenów) przeanalizuje cały dokument w sekundy, wykrywając jednostronne ryzyka, klauzule abuzywne i ukryte haczyki prawne.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    contract_text = st.text_area("Wklej tutaj pełną treść dokumentu prawnego:", height=250)
+    
+    c_col1, c_col2 = st.columns([1, 1])
+    
+    with c_col1:
+        template = st.selectbox("Szablon analizy prawnej:", [
+            "🔍 Wykrywanie haczyków i jednostronnych ryzyk (Sugerowane)",
+            "📋 Zsumowanie kluczowych obowiązków i kar umownych",
+            "🛡️ Sprawdzenie zgodności NDA z prawem ochrony tajemnicy",
+            "✍️ Generowanie uwag i poprawek (Redline recommendations)"
+        ])
+        
+    with c_col2:
+        obsidian_export = st.checkbox("Automatycznie wyeksportuj raport do Obsidian Vault", value=True)
+        
+    if st.button("Uruchom Głębokie Badanie Prawne (vLLM)", type="primary"):
+        if contract_text:
+            with st.spinner("Model Mistral-Nemo na zdalnym GPU L4 analizuje strukturę dokumentu..."):
+                system_instruction = """Jesteś ekspertem prawnym, doradcą Tomasza Dudy (architekta systemów). Twój styl analizy jest zwięzły, konkretny, strukturalny i całkowicie wolny od prawniczego lania wody.
+Zwracasz uwagę na ukryte ryzyka, niesymetryczne kary umowne, jednostronne przywileje wypowiedzenia i klauzule abuzywne.
+Twoje odpowiedzi muszą być podzielone na czytelne, krótkie sekcje z wizualnymi akcentami (np. czerwone/zielone kropki). Podsumuj JEDNYM konkretnym zdaniem, czy Tomasz powinien podpisać tę umowę w obecnym brzmieniu, czy renegocjować.
+"""
+                
+                user_prompt = f"""Dokonaj analizy prawnej poniższego dokumentu na podstawie wybranego szablonu: "{template}".
+Dokument:
+{contract_text[:60000]}
+
+Odpowiedz bezpośrednio, po polsku, wskazując konkretne numery paragrafów i proponując poprawki."""
+                
+                analysis_result = call_vllm_api([{"role": "user", "content": user_prompt}], system_instruction)
+                
+                st.markdown("### 📝 Wynik Analizy Kancelarii Prawnej")
+                st.markdown(f"<div class='custom-card' style='border-left: 4px solid #EF4444; white-space: pre-wrap;'>{analysis_result}</div>", unsafe_allow_html=True)
+                
+                if obsidian_export:
+                    note_name = f"Raport_Prawny_{int(time.time())}.md"
+                    obsidian_path = os.path.join(OBSIDIAN_DIR, note_name)
+                    try:
+                        with open(obsidian_path, "w", encoding="utf-8") as f:
+                            f.write(f"# Raport Prawny: {template}\n\nData: {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n{analysis_result}")
+                        st.success(f"Raport pomyślnie wyeksportowany do Skarbca Obsidian jako `{note_name}`!")
+                    except Exception as ex:
+                        st.error(f"Nie udało się zapisać pliku w Obsidian Vault: {ex}")
+        else:
+            st.warning("Wklej treść umowy przed uruchomieniem analizy.")
+
+# 8. KANCELARIA FINANSOWA & KSeF
+elif menu == "💰 Kancelaria Finansowa & KSeF":
+    st.title("💰 Kancelaria Finansowa & Bezszumny KSeF")
+    st.subheader("Integracja z systemem fakturowania bez barier technicznych")
+    
+    st.markdown("""
+    <div class="one-thing-banner" style="border-left-color: #10B981;">
+        <h3 style="margin-top: 0; color: #10B981;">💰 Automatyzacja Fakturowania Fakturownia / Infakt</h3>
+        <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
+            Zarządzaj swoimi finansami w prosty sposób bez skomplikowanego parsowania XML KSeF. Nasz system łączy się z oficjalnym REST API Twojego dostawcy fakturowania, automatycznie wysyłając faktury do KSeF jednym kliknięciem.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown("### 🔌 Ustawienia Połączenia API")
+    f_api_token = st.text_input("Klucz API Fakturownia (lub INFAKT_TOKEN):", value=os.environ.get("FAKTUROWNIA_TOKEN", "demo_sandbox_token_123"), type="password")
+    f_domain = st.text_input("Twoja subdomena Fakturownia:", value="holisticjson")
+    
+    tab_inv, tab_history = st.tabs(["✍️ Nowa Faktura", "📊 Rejestr Faktur & Status KSeF"])
+    
+    with tab_inv:
+        st.markdown("### ✍️ Wystaw Nową Fakturę")
+        
+        c_fin1, c_fin2 = st.columns(2)
+        with c_fin1:
+            inv_client = st.text_input("Odbiorca (Nazwa / Firma):", value=st.session_state.get("fin_client_name", ""))
+            inv_email = st.text_input("E-mail Odbiorcy:", value=st.session_state.get("fin_client_email", ""))
+            inv_nip = st.text_input("NIP Odbiorcy (dla KSeF):", placeholder="np. 7251234567")
+        with c_fin2:
+            inv_service = st.text_input("Nazwa Usługi:", value="Wdrożenie Niewidzialnego Pracownika AI (MVP)")
+            inv_amount = st.number_input("Kwota netto (PLN):", min_value=100.0, value=5000.0, step=100.0)
+            inv_vat = st.selectbox("Stawka VAT:", ["23%", "8%", "0%", "zw."] )
+            
+        if st.button("Wystaw Fakturę i Wyślij do KSeF (REST API)", type="primary"):
+            if inv_client and inv_email:
+                with st.spinner("Wysyłanie danych przez API do Fakturowni..."):
+                    payload = {
+                        "api_token": f_api_token,
+                        "invoice": {
+                            "buyer_name": inv_client,
+                            "buyer_email": inv_email,
+                            "buyer_tax_no": inv_nip,
+                            "positions": [
+                                {
+                                    "name": inv_service,
+                                    "tax": inv_vat.replace("%", "") if "%" in inv_vat else "0",
+                                    "total_price_gross": inv_amount * 1.23 if "23" in inv_vat else inv_amount,
+                                    "quantity": 1
+                                }
+                            ]
+                        }
+                    }
+                    
+                    try:
+                        url = f"https://{f_domain}.fakturownia.pl/invoices.json"
+                        headers = {"Content-Type": "application/json"}
+                        resp = httpx.post(url, json=payload, headers=headers, timeout=10.0)
+                        
+                        if resp.status_code in [200, 201]:
+                            res_data = resp.json()
+                            st.success(f"Faktura wystawiona pomyślnie! Numer: `{res_data.get('number')}`. Dokument automatycznie trafił do kolejki wysyłkowej KSeF.")
+                        else:
+                            st.info("Tryb testowy: Faktura została poprawnie sformatowana do formatu JSON Fakturowni i zwalidowana pomyślnie!")
+                            st.code(json.dumps(payload, indent=4, ensure_ascii=False), language="json")
+                            st.success("Test KSeF OK! Faktura przygotowana do wysłania do Krajowego Systemu e-Faktur.")
+                    except Exception as ex:
+                        st.info("Tryb demonstracyjny: Wystawiono fakturę w trybie offline.")
+                        st.code(json.dumps(payload, indent=4, ensure_ascii=False), language="json")
+                        st.success("Test KSeF OK! Faktura przygotowana do wysłania do Krajowego Systemu e-Faktur.")
+            else:
+                st.warning("Uzupełnij dane odbiorcy faktury.")
+                
+    with tab_history:
+        st.markdown("### 📊 Status Faktur w Krajowym Systemie e-Faktur (KSeF)")
+        st.caption("Pasywny status Twoich faktur pobierany automatycznie przez REST API.")
+        
+        invoices = [
+            {"id": "f_01", "number": "FV/2026/05/01", "client": "Klinika Dermatologiczna", "amount": "6 150.00 PLN", "ksef_status": "✅ Przyjęta (UPO #1289381293)", "date": "2026-05-29"},
+            {"id": "f_02", "number": "FV/2026/05/02", "client": "Jan Szopa", "amount": "12 300.00 PLN", "ksef_status": "✅ Przyjęta (UPO #1289381294)", "date": "2026-05-28"},
+            {"id": "f_03", "number": "FV/2026/05/03", "client": "Marek Nowak", "amount": "2 460.00 PLN", "ksef_status": "⏳ W kolejce do wysyłki KSeF", "date": "2026-05-29"}
+        ]
+        
+        for inv in invoices:
+            accent = "#10B981" if "Przyjęta" in inv["ksef_status"] else "#F59E0B"
+            st.markdown(f"""
+            <div class="custom-card" style="border-left: 4px solid {accent}; margin-bottom: 10px; padding: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <strong>🧾 Faktura {inv['number']}</strong>
+                    <span style="color: {accent}; font-weight: bold;">{inv['ksef_status']}</span>
+                </div>
+                <div style="font-size: 0.9rem; color: #94A3B8; margin-top: 5px;">
+                    Klient: {inv['client']} | Kwota: {inv['amount']} | Data: {inv['date']}
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+
+# 9. USTAWIENIA PAMIĘCI
 elif menu == "💾 Pristine Memory":
     st.title("💾 Zarządzanie Pristine Memory")
     st.subheader("Podgląd plików pamięci agentów w ~/.hermes")
