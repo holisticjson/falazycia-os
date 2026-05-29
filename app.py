@@ -554,7 +554,7 @@ with st.sidebar:
     
     menu = st.radio(
         "Nawigacja:",
-        ["🎯 Mission Control", "🗑️ Brain Dump & Cache", "📻 NotebookLM & Obsidian", "🎬 Content Studio", "💼 ADHD CRM & Lejek", "📋 ADHD Kanban", "💼 Dział Prawny & Kancelaria", "💰 Kancelaria Finansowa & KSeF", "💾 Pristine Memory"]
+        ["🎯 Mission Control", "💬 AntiGravity & Hermes Chat", "🗑️ Brain Dump & Cache", "📻 NotebookLM & Obsidian", "🎬 Content Studio", "💼 ADHD CRM & Lejek", "📋 ADHD Kanban", "💼 Dział Prawny & Kancelaria", "💰 Kancelaria Finansowa & KSeF", "💾 Pristine Memory"]
     )
     st.markdown("---")
     st.markdown("🌐 **Status Systemu:**")
@@ -1680,7 +1680,48 @@ elif menu == "💰 Kancelaria Finansowa & KSeF":
             </div>
             """, unsafe_allow_html=True)
 
-# 9. USTAWIENIA PAMIĘCI
+# 9. ANTIGRAVITY & HERMES CHAT
+elif menu == "💬 AntiGravity & Hermes Chat":
+    st.title("💬 AntiGravity & Hermes Chat")
+    st.subheader("Twój wbudowany Architekt Systemów i Mission Control AI")
+    
+    st.markdown("""
+    <div class="custom-card">
+        <p>🤖 <strong>Zintegrowana inteligencja:</strong> Ten czat jest bezpośrednio połączony z GCP Agent Platform (Gemini Pro/Flash). AntiGravity użyje kontekstu z <code>o_mnie.md</code>, aby odpowiadać precyzyjnie w Twoim stylu operacyjnym.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Initialize chat history
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+        
+    # Display chat messages from history on app rerun
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+            
+    # React to user input
+    if prompt := st.chat_input("Napisz do AntiGravity / Hermesa... (np. /scout zrób research)"):
+        # Display user message in chat message container
+        st.chat_message("user").markdown(prompt)
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": prompt})
+        
+        # O_mnie context
+        o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+        o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak pliku o_mnie.md"
+        
+        sys_prompt = f"Jesteś AntiGravity & Hermes - asystentem Tomasza Dudy (architekta AI dla neuroatypowych, Holistic AIDHD). Pomagasz w strategii i kodzie.\n\nKontekst użytkownika:\n{o_mnie_context}\n\nOdpowiadaj konkretnie, po polsku, w formie krótkich akapitów (ADHD-friendly)."
+        
+        with st.spinner("AntiGravity myśli..."):
+            api_messages = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
+            response = call_gemini_pro_api(api_messages, system_instruction=sys_prompt)
+            
+        with st.chat_message("assistant"):
+            st.markdown(response)
+        st.session_state.messages.append({"role": "assistant", "content": response})
+
+# 10. PRISTINE MEMORY
 elif menu == "💾 Pristine Memory":
     st.title("💾 Zarządzanie Pristine Memory")
     st.subheader("Podgląd plików pamięci agentów w ~/.hermes")
