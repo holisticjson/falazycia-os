@@ -1211,6 +1211,7 @@ elif menu == "💼 Dział Prawny & Kancelaria":
         if contract_text or uploaded_legal_files or user_instruction:
             file_texts = []
             image_data_urls = []
+            extracted_data_json = {}
             
             if uploaded_legal_files:
                 for uploaded_file in uploaded_legal_files:
@@ -1218,54 +1219,125 @@ elif menu == "💼 Dział Prawny & Kancelaria":
                     file_name = uploaded_file.name.lower()
                     
                     if file_name.endswith(".pdf"):
-                        with st.spinner(f"Odczytywanie pliku PDF ({uploaded_file.name})..."):
+                        with st.spinner(f"📄 Wczytuję PDF: {uploaded_file.name}..."):
                             try:
+                                import io, base64 as _b64
                                 try:
                                     import pypdf
                                 except ImportError:
                                     import subprocess, sys
-                                    subprocess.run([sys.executable, "-m", "pip", "install", "pypdf"])
+                                    subprocess.run([sys.executable, "-m", "pip", "install", "pypdf"], capture_output=True)
                                     import pypdf
                                 
-                                import io
                                 reader = pypdf.PdfReader(io.BytesIO(file_bytes))
-                                extracted_pages = []
+                                raw_pages = []
                                 for page in reader.pages:
                                     t = page.extract_text()
-                                    if t:
-                                        extracted_pages.append(t)
-                                file_text = "\n".join(extracted_pages)
-                                file_texts.append(f"--- ZAŁĄCZONY DOKUMENT: {uploaded_file.name} ---\n{file_text}")
-                                st.success(f"Pomyślnie odczytano PDF: {uploaded_file.name} ({len(reader.pages)} stron).")
+                                    if t and len(t.strip()) > 20:
+                                        raw_pages.append(t)
+                                raw_text = "\n".join(raw_pages)
+                                
+                                # Jeśli tekst zbyt krotki — prawdopodobnie skan, użyj Gemini Vision OCR
+                                if len(raw_text.strip()) < 150:
+                                    st.warning(f"⚠️ PDF wygląda na skan (brak warstwy tekstowej). Uruchamiam OCR przez Gemini Vision...")
+                                    try:
+                                        import fitz
+                                    except ImportError:
+                                        import subprocess, sys
+                                        subprocess.run([sys.executable, "-m", "pip", "install", "pymupdf"], capture_output=True)
+                                        import fitz
+                                    
+                                    pdf_doc = fitz.open(stream=file_bytes, filetype="pdf")
+                                    ocr_texts = []
+                                    for pn in range(min(len(pdf_doc), 10)):
+                                        pg = pdf_doc[pn]
+                                        mat = fitz.Matrix(2.0, 2.0)
+                                        pix = pg.get_pixmap(matrix=mat)
+                                        img_bytes_pg = pix.tobytes("png")
+                                        enc_pg = _b64.b64encode(img_bytes_pg).decode("utf-8")
+                                        ocr_sys = "Jesteś systemem OCR dla dokumentów prawnych. Przepisz DOKŁADNIE każdy znak widoczny na stronie. Zachowaj daty, numery, PESELe, sygnatury w oryginalnej formie. Odpowiedz tylko tekstem strony."
+                                        ocr_result = call_gemini_api(
+                                            [{"role": "user", "content": [
+                                                {"type": "text", "text": f"Przepisz dokładnie tekst ze strony {pn+1}/{len(pdf_doc)} tego dokumentu prawnego:"},
+                                                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{enc_pg}"}}
+                                            ]}],
+                                            ocr_sys
+                                        )
+                                        ocr_texts.append(f"[Strona {pn+1}]\n{ocr_result}")
+                                    raw_text = "\n\n".join(ocr_texts)
+                                    st.success(f"✅ OCR przez Gemini Vision: {len(pdf_doc)} stron przepisanych")
+                                else:
+                                    st.success(f"✅ PDF odczytany: {len(reader.pages)} stron, {len(raw_text)} znaków")
+                                
+                                file_texts.append(f"--- DOKUMENT: {uploaded_file.name} ---\n{raw_text}")
                             except Exception as e:
                                 st.error(f"Błąd odczytu PDF {uploaded_file.name}: {e}")
+                    
                     elif file_name.endswith((".png", ".jpg", ".jpeg")):
-                        import base64
+                        import base64 as _b64
                         mime_type = "image/png" if file_name.endswith(".png") else "image/jpeg"
-                        encoded = base64.b64encode(file_bytes).decode("utf-8")
-                        image_data_urls.append({
-                            "name": uploaded_file.name,
-                            "data_url": f"data:{mime_type};base64,{encoded}"
-                        })
-                        st.success(f"Załączono skan: {uploaded_file.name} do analizy wizualnej AI.")
+                        encoded = _b64.b64encode(file_bytes).decode("utf-8")
+                        image_data_urls.append({"name": uploaded_file.name, "data_url": f"data:{mime_type};base64,{encoded}"})
+                        st.success(f"✅ Skan załączony: {uploaded_file.name}")
             
-            with st.spinner("Twój wirtualny radca prawny analizuje dokumenty i wyciąga dane..."):
+            # === ETAP 1: STRUKTURALNA EKSTRAKCJA DANYCH (JSON) ===
+            source_text_for_extraction = "\n\n".join(file_texts) + (f"\n{contract_text}" if contract_text else "")
+            if source_text_for_extraction.strip():
+                with st.spinner("🔎 Etap 1/3 — Wyciągam dane wrażliwe (PESEL, sygnatury, adresy, kwoty)..."):
+                    extract_prompt = f"""Jesteś ekstraktoremm danych prawnych. Z poniższego dokumentu wyciągnij WSZYSTKIE dostępne dane i zwróć jako JSON (bez markdownu, sam JSON):
+
+{{
+  "sygnatura_akt": null,
+  "sad_organ": null,
+  "data_dokumentu": null,
+  "strona_powodowa": {{"imie_nazwisko": null, "pesel": null, "adres": null, "nip": null, "rola": null}},
+  "strona_pozwana": {{"imie_nazwisko": null, "pesel": null, "adres": null, "nip": null, "rola": null}},
+  "inne_osoby": [],
+  "kwoty": [],
+  "daty_kluczowe": [],
+  "numery_referencyjne": [],
+  "przedmiot_sprawy": null,
+  "terminy": []
+}}
+
+DOKUMENT:
+{source_text_for_extraction[:8000]}
+
+Zwróć TYLKO JSON."""
+                    
+                    import json as _json, re as _re
+                    extraction_raw = call_gemini_pro_api([{"role": "user", "content": extract_prompt}])
+                    try:
+                        jm = _re.search(r'\{{[\s\S]*\}}', extraction_raw)
+                        if jm:
+                            extracted_data_json = _json.loads(jm.group())
+                    except Exception:
+                        extracted_data_json = {}
+                    
+                    # Wyświetl podgląd wyciągniętych danych
+                    if extracted_data_json:
+                        cols_ext = st.columns(3)
+                        if extracted_data_json.get("sygnatura_akt"):
+                            cols_ext[0].metric("Sygnatura akt", extracted_data_json["sygnatura_akt"])
+                        sp = extracted_data_json.get("strona_powodowa", {})
+                        if sp and sp.get("imie_nazwisko"):
+                            cols_ext[1].metric(sp.get("rola", "Strona 1"), sp["imie_nazwisko"])
+                        sz = extracted_data_json.get("strona_pozwana", {})
+                        if sz and sz.get("imie_nazwisko"):
+                            cols_ext[2].metric(sz.get("rola", "Strona 2"), sz["imie_nazwisko"])
+                        if extracted_data_json.get("kwoty"):
+                            st.caption(f"💰 Kwoty: {', '.join(str(k) for k in extracted_data_json['kwoty'])}")
+                    else:
+                        st.info("ℹ️ Nie udało się ustrukturyzować danych — model użyje surowego tekstu.")
+            
+            with st.spinner("⚖️ Etap 2/3 — Twój wirtualny radca prawny sporządza pismo..."):
                 system_instruction = """Jesteś elitarnym polskim adwokatem i radcą prawnym z wieloletnim doświadczeniem. Twój styl pisania jest rygorystyczny, precyzyjny, wysoce profesjonalny i całkowicie wolny od lania wody.
 Tomasz Duda (architekt systemów AI dla neuroatypowych, Holistic AIDHD) zlecił Ci zadanie.
 
 ## KLUCZOWA ZASADA — DANE WRAŻLIWE:
-NIGDY nie używaj nawiasów kwadratowych jako placeholderów dla danych, które są dostępne w załączonych dokumentach.
-Przed wygenerowaniem pisma ZAWSZE wyciągnij z dokumentu i wstaw bezpośrednio:
-- Pełne imiona i nazwiska wszystkich uczestników postępowania (powód, pozwany, świadkowie, pełnomocnicy)
-- Numery PESEL, NIP, KRS — jeśli widoczne w dokumentach
-- Sygnaturę akt sprawy (np. "I C 123/24", "III Ca 456/25") — wstaw dokładnie tak jak w dokumencie
-- Adresy zamieszkania i siedziby stron
-- Daty i numery pism, decyzji, nakazów
-- Nazwy sądów, kancelarii, instytucji
-- Kwoty, wartości przedmiotu sporu, odsetki
-- Numery kont bankowych i rachunków (jeśli istotne prawnie)
-
-Nawiasów kwadratowych [tak] używaj WYŁĄCZNIE dla danych, których absolutnie nie ma w żadnym z załączonych dokumentów.
+Masz do dyspozycji GOTOWE, PRE-WYCIĄGNIĘTE dane z dokumentu (w sekcji DANE STRUKTURALNE).
+UŻYJ ICH BEZPOŚREDNIO — nie szukaj ich ponownie, nie zastępuj placeholderami.
+Nawiasów kwadratowych [tak] używaj WYŁĄCZNIE dla danych, których NIE MA w sekcji DANE STRUKTURALNE ani w tekście dokumentu.
 
 ## ZASADY PISANIA:
 1. Pisz wyłącznie w języku polskim.
@@ -1275,12 +1347,24 @@ Nawiasów kwadratowych [tak] używaj WYŁĄCZNIE dla danych, których absolutnie
 5. Znajdź słabe punkty drugiej strony w dokumentach i wykorzystaj je na korzyść klienta.
 """
                 
+                # Wstrzyknij pre-wyciągnięte dane strukturalne do prompta
+                import json as _json2
+                structured_data_block = ""
+                if extracted_data_json:
+                    structured_data_block = f"""
+### ✅ DANE STRUKTURALNE (PRE-WYCIĄGNIĘTE — UŻYJ BEZPOŚREDNIO):
+```json
+{_json2.dumps(extracted_data_json, ensure_ascii=False, indent=2)}
+```
+"""
+                
                 # Budowanie ulepszonego prompta z naciskiem na wyciąganie danych
                 enhanced_prompt = f"""### ZADANIE: Profesjonalne Generowanie Dokumentu Prawnego z Danymi z Akt
 
 Typ dokumentu docelowego: {doc_type}
 Polecenie użytkownika: "{user_instruction if user_instruction else 'Dokonaj analizy i przygotuj pismo zabezpieczające interesy'}"
 
+{structured_data_block}
 ---
 ### KROK 1 — EKSTRAKCJA DANYCH Z DOKUMENTÓW:
 Przed napisaniem pisma WYCIĄGNIJ z poniższych dokumentów:
