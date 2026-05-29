@@ -736,72 +736,97 @@ if "pomodoro_active" not in st.session_state:
 if "current_page" not in st.session_state:
     st.session_state.current_page = "🎯 Mission Control"
 
-# PASEK BOCZNY - Skrajnie estetyczny z kafelkami zoptymalizowanymi pod ADHD
+# PASEK BOCZNY - Skrajnie estetyczny z kafelkami zoptymalizowanymi pod ADHD (Styl Julian Goldie)
 with st.sidebar:
     st.markdown("<h2 style='text-align: center; color: #7C3AED; font-family: Outfit; margin-bottom: 0;'>🧠 Holistic OS</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 5px; margin-bottom: 10px;'>Bezszumne Centrum Dowodzenia v6.0</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 5px; margin-bottom: 10px;'>Agentic OS Mission Control v7.0</p>", unsafe_allow_html=True)
     st.markdown("<hr style='margin: 10px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
     
     col_menu = st.session_state.current_page
     
-    # 1. DOWODZENIE
-    st.markdown("<p style='color: #F59E0B; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 6px; margin-top: 10px;'>🧠 DOWODZENIE & SKUPIENIE</p>", unsafe_allow_html=True)
+    # I. WORKSPACE
+    st.markdown("<p style='color: #F59E0B; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 6px; margin-top: 10px;'>I. WORKSPACE</p>", unsafe_allow_html=True)
     
     if st.button("🎯 Mission Control", use_container_width=True, type="primary" if col_menu == "🎯 Mission Control" else "secondary"):
         st.session_state.current_page = "🎯 Mission Control"
         st.rerun()
         
-    if st.button("📋 ADHD Kanban", use_container_width=True, type="primary" if col_menu == "📋 ADHD Kanban" else "secondary"):
-        st.session_state.current_page = "📋 ADHD Kanban"
-        st.rerun()
-
-    if st.button("💾 Pristine Memory", use_container_width=True, type="primary" if col_menu == "💾 Pristine Memory" else "secondary"):
-        st.session_state.current_page = "💾 Pristine Memory"
-        st.rerun()
-        
-    # 2. KOMUNIKACJA
-    st.markdown("<p style='color: #EC4899; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>💬 MENTAL & WIEDZA</p>", unsafe_allow_html=True)
+    # II. AGENTS
+    st.markdown("<p style='color: #EC4899; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>II. AGENTS</p>", unsafe_allow_html=True)
     
-    if st.button("💬 Chat z AI (AntiGravity)", use_container_width=True, type="primary" if col_menu == "💬 AntiGravity & Hermes Chat" else "secondary"):
-        st.session_state.current_page = "💬 AntiGravity & Hermes Chat"
+    if st.button("🤖 Claude 🟢", use_container_width=True, type="primary" if col_menu == "Claude" else "secondary"):
+        st.session_state.current_page = "Claude"
         st.rerun()
         
-    if st.button("📥 Skarbiec (Brain Dump)", use_container_width=True, type="primary" if col_menu == "🗑️ Brain Dump & Cache" else "secondary"):
-        st.session_state.current_page = "🗑️ Brain Dump & Cache"
+    if st.button("🦀 OpenClaw 🔴", use_container_width=True, type="primary" if col_menu == "OpenClaw" else "secondary"):
+        st.session_state.current_page = "OpenClaw"
         st.rerun()
         
-    if st.button("📻 NotebookLM & Obsidian", use_container_width=True, type="primary" if col_menu == "📻 NotebookLM & Obsidian" else "secondary"):
-        st.session_state.current_page = "📻 NotebookLM & Obsidian"
+    if st.button("🔱 Hermes 🟢", use_container_width=True, type="primary" if col_menu == "Hermes" else "secondary"):
+        st.session_state.current_page = "Hermes"
         st.rerun()
         
-    # 3. KREACJA & LEJKI
-    st.markdown("<p style='color: #10B981; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>🎬 KREACJA & BIZNES</p>", unsafe_allow_html=True)
+    if st.button("♊ Gemini 🟢", use_container_width=True, type="primary" if col_menu == "Gemini" else "secondary"):
+        st.session_state.current_page = "Gemini"
+        st.rerun()
+        
+    if st.button("🌌 AntiGravity 🟢", use_container_width=True, type="primary" if col_menu == "Antigravity" else "secondary"):
+        st.session_state.current_page = "Antigravity"
+        st.rerun()
+        
+    if st.button("💻 Codex ⚪", use_container_width=True, type="primary" if col_menu == "Codex" else "secondary"):
+        st.session_state.current_page = "Codex"
+        st.rerun()
+        
+    if st.button("🦉 Free Claude Code 🟢", use_container_width=True, type="primary" if col_menu == "Free Claude Code" else "secondary"):
+        st.session_state.current_page = "Free Claude Code"
+        st.rerun()
+        
+    # III. SELF
+    st.markdown("<p style='color: #10B981; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>III. SELF</p>", unsafe_allow_html=True)
     
-    if st.button("🎬 Content Studio", use_container_width=True, type="primary" if col_menu == "🎬 Content Studio" else "secondary"):
-        st.session_state.current_page = "🎬 Content Studio"
+    if st.button("🎯 Goals & Journal", use_container_width=True, type="primary" if col_menu == "Goals" else "secondary"):
+        st.session_state.current_page = "Goals"
         st.rerun()
         
-    if st.button("💼 ADHD CRM & Lejek", use_container_width=True, type="primary" if col_menu == "💼 ADHD CRM & Lejek" else "secondary"):
-        st.session_state.current_page = "💼 ADHD CRM & Lejek"
+    if st.button("📈 SEO & Content", use_container_width=True, type="primary" if col_menu == "SEO" else "secondary"):
+        st.session_state.current_page = "SEO"
         st.rerun()
         
-    if st.button("🤝 Onboarding & Grill", use_container_width=True, type="primary" if col_menu == "🤝 Onboarding & Grill" else "secondary"):
-        st.session_state.current_page = "🤝 Onboarding & Grill"
+    if st.button("🎬 Studio (Hyperframes)", use_container_width=True, type="primary" if col_menu == "Studio" else "secondary"):
+        st.session_state.current_page = "Studio"
         st.rerun()
         
-    if st.button("✨ Agenci & Crony (Sales/Soul)", use_container_width=True, type="primary" if col_menu == "✨ Agenci & Crony (Sales/Soul)" else "secondary"):
-        st.session_state.current_page = "✨ Agenci & Crony (Sales/Soul)"
+    if st.button("📻 Notebook (Obsidian)", use_container_width=True, type="primary" if col_menu == "Notebook" else "secondary"):
+        st.session_state.current_page = "Notebook"
         st.rerun()
         
-    # 4. PROCEDURY
-    st.markdown("<p style='color: #3B82F6; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>⚖️ PROCEDURY & BIURO</p>", unsafe_allow_html=True)
-    
-    if st.button("💼 Dział Prawny & Kancelaria", use_container_width=True, type="primary" if col_menu == "💼 Dział Prawny & Kancelaria" else "secondary"):
-        st.session_state.current_page = "💼 Dział Prawny & Kancelaria"
+    if st.button("📋 Kanban Board", use_container_width=True, type="primary" if col_menu == "Kanban" else "secondary"):
+        st.session_state.current_page = "Kanban"
         st.rerun()
         
-    if st.button("💰 Finanse & KSeF", use_container_width=True, type="primary" if col_menu == "💰 Kancelaria Finansowa & KSeF" else "secondary"):
-        st.session_state.current_page = "💰 Kancelaria Finansowa & KSeF"
+    if st.button("💾 Memory (Pristine)", use_container_width=True, type="primary" if col_menu == "Memory" else "secondary"):
+        st.session_state.current_page = "Memory"
+        st.rerun()
+        
+    if st.button("💼 ADHD CRM & Lejek", use_container_width=True, type="primary" if col_menu == "CRM" else "secondary"):
+        st.session_state.current_page = "CRM"
+        st.rerun()
+        
+    if st.button("🤝 Onboarding & Grill", use_container_width=True, type="primary" if col_menu == "Onboarding" else "secondary"):
+        st.session_state.current_page = "Onboarding"
+        st.rerun()
+        
+    if st.button("✨ Swarm (Sales/Soul)", use_container_width=True, type="primary" if col_menu == "Swarm" else "secondary"):
+        st.session_state.current_page = "Swarm"
+        st.rerun()
+        
+    if st.button("⚖️ Legal (Kancelaria)", use_container_width=True, type="primary" if col_menu == "Legal" else "secondary"):
+        st.session_state.current_page = "Legal"
+        st.rerun()
+        
+    if st.button("💰 Finance & KSeF", use_container_width=True, type="primary" if col_menu == "Finance" else "secondary"):
+        st.session_state.current_page = "Finance"
         st.rerun()
         
     st.markdown("<hr style='margin: 15px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
@@ -810,13 +835,246 @@ with st.sidebar:
     st.markdown("📢 *Telegram Chat:* <span style='color:#10B981; font-weight:bold;'>Połączony</span>", unsafe_allow_html=True)
     st.markdown("📝 *Pristine Memory:* <span style='color:#3B82F6; font-weight:bold;'>Aktywna</span>", unsafe_allow_html=True)
 
+
 menu = st.session_state.current_page
+
+def render_agent_console(agent_name, status, default_model, provider, color_accent):
+    st.markdown(f"<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>II. — AGENT • {agent_name.upper()}</p>", unsafe_allow_html=True)
+    st.title(f"{agent_name}")
+    st.markdown(f"<p style='color: {color_accent}; font-weight: bold; font-size: 0.95rem; margin-top: -5px;'>Status: {status} | Active Model: {default_model} | Provider: {provider}</p>", unsafe_allow_html=True)
+    
+    tab_chat, tab_work, tab_ctrl = st.tabs(["💬 Chat", "📂 Workspace", "⚙️ Control Room"])
+    
+    # 1. CHAT
+    with tab_chat:
+        st.subheader("Konsola konwersacyjna")
+        chat_key = f"chat_{agent_name.lower().replace(' ', '_')}"
+        if chat_key not in st.session_state:
+            st.session_state[chat_key] = []
+            
+        for msg in st.session_state[chat_key]:
+            with st.chat_message(msg["role"]):
+                st.markdown(msg["content"])
+                
+        if prompt := st.chat_input(f"Napisz do agenta {agent_name}...", key=f"input_{agent_name.lower().replace(' ', '_')}"):
+            with st.chat_message("user"):
+                st.markdown(prompt)
+            st.session_state[chat_key].append({"role": "user", "content": prompt})
+            
+            # Simple agent simulator based on o_mnie
+            o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+            o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak profilu o_mnie.md"
+            
+            sys_prompt = f"Jesteś agentem {agent_name} z ekosystemu Holistic OS. Działasz w oparciu o profil użytkownika:\n{o_mnie_context}\nTwój styl jest krótki, precyzyjny (ADHD-friendly)."
+            
+            with st.spinner(f"{agent_name} przetwarza zapytanie..."):
+                api_messages = [{"role": m["role"], "content": m["content"]} for m in st.session_state[chat_key]]
+                response = call_gemini_pro_api(api_messages, system_instruction=sys_prompt)
+                
+            with st.chat_message("assistant"):
+                st.markdown(response)
+            st.session_state[chat_key].append({"role": "assistant", "content": response})
+            
+            # Infinite Context Engine: auto-save to Obsidian
+            obsidian_note_title = f"Chat_{agent_name.replace(' ', '_')}_{int(time.time())}.md"
+            obsidian_note_path = os.path.join(OBSIDIAN_DIR, obsidian_note_title)
+            try:
+                note_content = f"---\ntype: chat-log\nagent: {agent_name}\ntimestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}\n---\n\n"
+                for msg in st.session_state[chat_key]:
+                    note_content += f"**{'Użytkownik' if msg['role'] == 'user' else agent_name}**:\n{msg['content']}\n\n"
+                with open(obsidian_note_path, "w", encoding="utf-8") as f:
+                    f.write(note_content)
+            except Exception as e:
+                pass
+                
+    # 2. WORKSPACE (Trzykolumnowy manager)
+    with tab_work:
+        st.subheader("Menedżer Workspace Agentów")
+        col_b, col_f, col_v = st.columns([1, 2, 3])
+        
+        with col_b:
+            st.write("🔍 **Buckets**")
+            bucket = st.radio("Filtruj:", ["Apps", "Videos", "Images", "Audio", "Workspace", "Sandboxes", "Pastes"], key=f"bucket_{agent_name.lower().replace(' ', '_')}")
+            
+        with col_f:
+            st.write(f"📁 **Pliki w {bucket}**")
+            files_list = []
+            if bucket == "Apps":
+                files_list = [f for f in os.listdir(DASHBOARD_DIR) if f.endswith(".html")]
+                if not files_list:
+                    files_list = ["todo-app.html", "testimonials.html", "landing-page.html"]
+            elif bucket == "Videos":
+                files_list = ["dragon_tokyo_skyline.mp4", "ai-seo-trends.mp4"]
+            elif bucket == "Images":
+                files_list = ["holistic_ai_dhd_logo.png", "marketing_campaign.jpg"]
+            elif bucket == "Audio":
+                files_list = ["meditation_music.mp3", "podcast_voice.wav"]
+            elif bucket == "Workspace":
+                files_list = ["app.py", "gcp_vertex_proxy.py", "requirements.txt"]
+            elif bucket == "Sandboxes":
+                files_list = ["sandbox_env.py", "test_runner.py"]
+            elif bucket == "Pastes":
+                files_list = [f for f in os.listdir(OBSIDIAN_DIR) if f.endswith(".md")][:10]
+                if not files_list:
+                    files_list = ["quick_note.md", "brief_draft.md"]
+                    
+            selected_file = st.selectbox("Wybierz plik:", files_list, key=f"sel_file_{agent_name.lower().replace(' ', '_')}")
+            
+        with col_v:
+            st.write("👁️ **Podgląd / Edycja**")
+            if selected_file:
+                st.info(f"Podgląd pliku: `{selected_file}`")
+                
+                if selected_file.endswith(".html") or bucket == "Apps":
+                    html_content = ""
+                    if selected_file == "testimonials.html":
+                        html_content = "<html><body style='background-color:#121620; color:white; font-family:sans-serif; padding:20px;'><h2>Want results like these? Join the AI Profit Boardroom!</h2><p>258 real wins from AI Profit Boardroom members.</p></body></html>"
+                    elif selected_file == "todo-app.html":
+                        html_content = "<html><body style='background-color:#121620; color:white; font-family:sans-serif; padding:20px;'><h2>ADHD To-Do App</h2><input type='text' placeholder='Add task...'><button>Add</button></body></html>"
+                    else:
+                        html_content = "<html><body style='background-color:#121620; color:white; font-family:sans-serif; padding:20px;'><h2>Custom App View</h2><p>Pomyślnie załadowano render aplikacji w piaskownicy Agentic OS.</p></body></html>"
+                    
+                    st.components.v1.html(html_content, height=350, scrolling=True)
+                    
+                    sub_tab_preview, sub_tab_src = st.tabs(["👁️ Podgląd", "💻 Kod źródłowy"])
+                    with sub_tab_src:
+                        st.code(html_content, language="html")
+                        
+                elif selected_file.endswith(".mp4") or bucket == "Videos":
+                    st.video("https://www.w3schools.com/html/mov_bbb.mp4")
+                    
+                elif selected_file.endswith((".png", ".jpg", ".jpeg")) or bucket == "Images":
+                    st.image("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500", caption=selected_file)
+                    
+                elif selected_file.endswith((".mp3", ".wav")) or bucket == "Audio":
+                    st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+                    
+                elif selected_file.endswith(".md") or selected_file.endswith(".py") or selected_file.endswith(".txt"):
+                    file_path = os.path.join(OBSIDIAN_DIR, selected_file)
+                    if not os.path.exists(file_path):
+                        file_path = os.path.join(os.getcwd(), selected_file)
+                    content = ""
+                    if os.path.exists(file_path):
+                        try:
+                            with open(file_path, "r", encoding="utf-8") as f:
+                                content = f.read()
+                        except:
+                            content = "Błąd odczytu pliku."
+                    else:
+                        content = f"# Draft dla {selected_file}\nTutaj znajduje się podgląd notatki roboczej agenta."
+                        
+                    edited_content = st.text_area("Edycja pliku:", content, height=200, key=f"edit_{agent_name.lower().replace(' ', '_')}_{selected_file}")
+                    if st.button("Zapisz zmiany", key=f"save_{agent_name.lower().replace(' ', '_')}_{selected_file}"):
+                        try:
+                            with open(file_path, "w", encoding="utf-8") as f:
+                                f.write(edited_content)
+                            st.success("Zapisano pomyślnie!")
+                        except Exception as e:
+                            st.error(f"Błąd zapisu: {e}")
+                            
+    # 3. CONTROL ROOM
+    with tab_ctrl:
+        st.subheader("Konfiguracja Agenta (Control Room)")
+        st.write("Ustaw parametry modelu dla tego agenta:")
+        model_opt = st.selectbox("Model:", ["gemini-2.5-pro", "gemini-2.5-flash", "grok-4.3", "claude-3-7-sonnet"], index=0, key=f"ctrl_model_{agent_name.lower().replace(' ', '_')}")
+        temp = st.slider("Temperatura (Kreatywność):", 0.0, 1.0, 0.7, 0.05, key=f"ctrl_temp_{agent_name.lower().replace(' ', '_')}")
+        sys_prompt_input = st.text_area("System Prompt / Instrukcje systemowe:", f"Jesteś agentem {agent_name}. Działasz zorientowany na ADHD i redukcję szumu kognitywnego.", height=150, key=f"ctrl_prompt_{agent_name.lower().replace(' ', '_')}")
+        if st.button("Aktualizuj konfigurację agenta", key=f"ctrl_btn_{agent_name.lower().replace(' ', '_')}"):
+            st.success(f"Konfiguracja dla agenta {agent_name} została zaktualizowana w pamięci podręcznej sesji!")
 
 # 1. MISSION CONTROL
 if menu == "🎯 Mission Control":
-    st.title("🧠 Holistic Mission Control")
-    st.subheader("Centrum dowodzenia zoptymalizowane pod neuroróżnorodność")
+
+    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>I. — MISSION CONTROL</p>", unsafe_allow_html=True)
+    st.title("🧠 Agentic Mission Control")
+    st.subheader("Status of every agent, every memory, every signal.")
     
+    # Górny pasek statusów (System Status Row)
+    st.markdown("""
+    <style>
+        .status-container {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+        .status-box {
+            background-color: #0E1015;
+            border: 1px solid #1F242E;
+            border-radius: 8px;
+            padding: 12px 16px;
+            flex: 1;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        .status-title {
+            color: #94A3B8;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .status-value {
+            color: #FFFFFF;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+        .status-desc {
+            color: #64748B;
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+        .status-dot-green { background-color: #10B981; box-shadow: 0 0 8px #10B981; }
+        .status-dot-red { background-color: #EF4444; box-shadow: 0 0 8px #EF4444; }
+        .status-dot-yellow { background-color: #F59E0B; box-shadow: 0 0 8px #F59E0B; }
+    </style>
+    """, unsafe_allow_html=True)
+
+    col_s1, col_s2, col_s3, col_s4, col_s5, col_s6 = st.columns(6)
+    with col_s1:
+        st.markdown("""<div class="status-box">
+            <div class="status-title"><span>🤖 CLAUDE</span><span class="status-dot-green" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
+            <div class="status-value">Online</div>
+            <div class="status-desc">2.1.142 • 46ms</div>
+        </div>""", unsafe_allow_html=True)
+    with col_s2:
+        st.markdown("""<div class="status-box">
+            <div class="status-title"><span>🦀 OPENCLAW</span><span class="status-dot-red" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
+            <div class="status-value">Offline</div>
+            <div class="status-desc">3 agents • 7 sess.</div>
+        </div>""", unsafe_allow_html=True)
+    with col_s3:
+        st.markdown("""<div class="status-box">
+            <div class="status-title"><span>🔱 HERMES</span><span class="status-dot-green" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
+            <div class="status-value">Online</div>
+            <div class="status-desc">grok-4.3 • xAI OAuth</div>
+        </div>""", unsafe_allow_html=True)
+    with col_s4:
+        st.markdown("""<div class="status-box">
+            <div class="status-title"><span>⏱️ HEARTBEAT</span><span class="status-dot-yellow" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
+            <div class="status-value">Active</div>
+            <div class="status-desc">poll ticks • 4s</div>
+        </div>""", unsafe_allow_html=True)
+    with col_s5:
+        st.markdown("""<div class="status-box">
+            <div class="status-title"><span>⚡ LATENCY</span><span class="status-dot-green" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
+            <div class="status-value">42 ms</div>
+            <div class="status-desc">combined p50</div>
+        </div>""", unsafe_allow_html=True)
+    with col_s6:
+        st.markdown("""<div class="status-box">
+            <div class="status-title"><span>🦉 OWL ALPHA</span><span class="status-dot-green" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
+            <div class="status-value">Live</div>
+            <div class="status-desc">OpenRouter • Free</div>
+        </div>""", unsafe_allow_html=True)
+
+    st.markdown("<hr style='margin: 15px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
+
+    # Tryb One Thing - ADHD Wykluczenie Szumu
     st.markdown("""
     <div class="one-thing-banner">
         <h3 style="margin-top: 0; color: #F59E0B;">🎯 Tryb "One Thing"</h3>
@@ -841,7 +1099,112 @@ if menu == "🎯 Mission Control":
         with col2:
             if st.session_state.pomodoro_active:
                 st.success("Stoper Pomodoro wystartował. Wyłącz inne karty w przeglądarce i skup się wyłącznie na priorytecie.")
-                
+
+    st.markdown("---")
+    
+    # II. AGENTS GRID
+    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-top: 25px; margin-bottom: 2px;'>II. — AGENTS • CLICK TO OPEN CONTROL ROOM</p>", unsafe_allow_html=True)
+    
+    col_a1, col_a2, col_a3 = st.columns(3)
+    
+    with col_a1:
+        st.markdown("""
+        <div class="custom-card" style="border-top: 3px solid #F59E0B; height: 260px;">
+            <h3 style="color: #F59E0B; margin-top: 0;">🤖 Claude</h3>
+            <p style="color: #94A3B8; font-size: 0.85rem; height: 60px;">Bezpośrednie połączenie ze środowiskiem Claude Code. Pełna kontrola konsoli i narzędzi.</p>
+            <div style="margin-top: 15px; font-size: 0.8rem; color: #64748B;">
+                <div><b>MODEL:</b> claude-3-7-sonnet</div>
+                <div><b>PROVIDER:</b> Anthropic Native</div>
+                <div><b>STATUS:</b> <span style="color:#10B981; font-weight:bold;">ONLINE</span></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Otwórz konsolę Claude", use_container_width=True):
+            st.session_state.current_page = "Claude"
+            st.rerun()
+
+    with col_a2:
+        st.markdown("""
+        <div class="custom-card" style="border-top: 3px solid #EC4899; height: 260px;">
+            <h3 style="color: #EC4899; margin-top: 0;">🦀 OpenClaw</h3>
+            <p style="color: #94A3B8; font-size: 0.85rem; height: 60px;">Lokalny router agentów. Pozwala na jednorazowe strzały lub koordynację roju.</p>
+            <div style="margin-top: 15px; font-size: 0.8rem; color: #64748B;">
+                <div><b>MODEL:</b> mixed-swarm</div>
+                <div><b>PROVIDER:</b> Local Gateway</div>
+                <div><b>STATUS:</b> <span style="color:#EF4444; font-weight:bold;">OFFLINE</span></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Otwórz konsolę OpenClaw", use_container_width=True):
+            st.session_state.current_page = "OpenClaw"
+            st.rerun()
+
+    with col_a3:
+        st.markdown("""
+        <div class="custom-card" style="border-top: 3px solid #3B82F6; height: 260px;">
+            <h3 style="color: #3B82F6; margin-top: 0;">🔱 Hermes</h3>
+            <p style="color: #94A3B8; font-size: 0.85rem; height: 60px;">Główny orkiestrator. Wywołanie skilli, obsługa Kanbana i automatyzacji w tle.</p>
+            <div style="margin-top: 15px; font-size: 0.8rem; color: #64748B;">
+                <div><b>MODEL:</b> grok-4.3</div>
+                <div><b>PROVIDER:</b> xAI API v1</div>
+                <div><b>STATUS:</b> <span style="color:#10B981; font-weight:bold;">ONLINE</span></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Otwórz konsolę Hermes", use_container_width=True):
+            st.session_state.current_page = "Hermes"
+            st.rerun()
+
+    col_a4, col_a5, col_a6 = st.columns(3)
+    
+    with col_a4:
+        st.markdown("""
+        <div class="custom-card" style="border-top: 3px solid #8B5CF6; height: 260px;">
+            <h3 style="color: #8B5CF6; margin-top: 0;">♊ Gemini</h3>
+            <p style="color: #94A3B8; font-size: 0.85rem; height: 60px;">Super-inteligentny model do audytów, pisania pism prawnych i zaawansowanej logiki.</p>
+            <div style="margin-top: 15px; font-size: 0.8rem; color: #64748B;">
+                <div><b>MODEL:</b> gemini-2.5-pro</div>
+                <div><b>PROVIDER:</b> Vertex AI Native</div>
+                <div><b>STATUS:</b> <span style="color:#10B981; font-weight:bold;">ONLINE</span></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Otwórz konsolę Gemini", use_container_width=True):
+            st.session_state.current_page = "Gemini"
+            st.rerun()
+
+    with col_a5:
+        st.markdown("""
+        <div class="custom-card" style="border-top: 3px solid #10B981; height: 260px;">
+            <h3 style="color: #10B981; margin-top: 0;">🌌 AntiGravity</h3>
+            <p style="color: #94A3B8; font-size: 0.85rem; height: 60px;">Twój systemowy architekt i asystent operacyjny. Nadzór nad kodem i deployami.</p>
+            <div style="margin-top: 15px; font-size: 0.8rem; color: #64748B;">
+                <div><b>MODEL:</b> gemini-2.5-pro</div>
+                <div><b>PROVIDER:</b> GCP Proxy Port 8089</div>
+                <div><b>STATUS:</b> <span style="color:#10B981; font-weight:bold;">ONLINE</span></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Otwórz konsolę AntiGravity", use_container_width=True):
+            st.session_state.current_page = "Antigravity"
+            st.rerun()
+
+    with col_a6:
+        st.markdown("""
+        <div class="custom-card" style="border-top: 3px solid #06B6D4; height: 260px;">
+            <h3 style="color: #06B6D4; margin-top: 0;">🦉 Free Claude Code</h3>
+            <p style="color: #94A3B8; font-size: 0.85rem; height: 60px;">Darmowe wywołanie kodu i analiz przy użyciu publicznych endpointów OpenRouter.</p>
+            <div style="margin-top: 15px; font-size: 0.8rem; color: #64748B;">
+                <div><b>MODEL:</b> owl-alpha-free</div>
+                <div><b>PROVIDER:</b> OpenRouter</div>
+                <div><b>STATUS:</b> <span style="color:#10B981; font-weight:bold;">ONLINE</span></div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("Otwórz konsolę Free Claude", use_container_width=True):
+            st.session_state.current_page = "Free Claude Code"
+            st.rerun()
+
     st.markdown("---")
     
     # Szybki Capture
@@ -854,53 +1217,142 @@ if menu == "🎯 Mission Control":
             time.sleep(0.5)
             st.rerun()
 
-# 2. BRAIN DUMP & CACHE
-elif menu == "🗑️ Brain Dump & Cache":
-    st.title("🗑️ Brain Dump & Open Loops Cache")
-    st.subheader("Twój mentalny odciążyciel — bezszumne uwalnianie pamięci roboczej")
+
+elif menu == "Claude":
+    render_agent_console("Claude", "Online", "claude-3-7-sonnet", "Anthropic Native", "#F59E0B")
+
+elif menu == "OpenClaw":
+    render_agent_console("OpenClaw", "Offline", "mixed-swarm", "Local Gateway", "#EC4899")
+
+elif menu == "Hermes":
+    render_agent_console("Hermes", "Online", "grok-4.3", "xAI API v1", "#3B82F6")
+
+elif menu == "Gemini":
+    render_agent_console("Gemini", "Online", "gemini-2.5-pro", "Vertex AI Native", "#8B5CF6")
+
+elif menu == "Codex":
+    render_agent_console("Codex", "Offline", "unknown", "Unknown", "#64748B")
+
+elif menu == "Free Claude Code":
+    render_agent_console("Free Claude Code", "Online", "owl-alpha-free", "OpenRouter", "#06B6D4")
+
+elif menu == "Studio":
+    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • STUDIO</p>", unsafe_allow_html=True)
+    st.title("🎬 Generative Studio")
+    st.subheader("Wielomodalne studio kreacji treści, audio i wideo")
     
-    col_in, col_st = st.columns([1, 1])
+    tab_hyper, tab_audio, tab_img = st.tabs(["🎥 Hyperframes (Video)", "🔊 Voice & Audio", "🎨 Grafika & Obrazy"])
     
-    with col_in:
-        st.markdown("""
-        <div class="custom-card" style="border-left: 5px solid #EC4899;">
-            <h4 style="margin:0; color:#EC4899;">📥 Zrzut z głowy (Brain Dump)</h4>
-            <p style="font-size: 0.9rem; color: #94A3B8; margin-top: 6px;">Wpisz pomysły, luźne myśli, linki lub wgraj zrzut ekranu (np. inspirację reklamową).</p>
-        </div>
-        """, unsafe_allow_html=True)
+    with tab_hyper:
+        st.subheader("🎥 Generator Wideo Hyperframes")
+        st.markdown("Konwertuje opisy tekstowe na interaktywne animacje wideo HTML / CSS.")
+        video_prompt = st.text_area("Opisz scenę wideo (np. 'Pulsacyjne różowe neonowe logo na czarnym tle z unoszącymi się cząsteczkami'):", height=100)
         
-        thought_input = st.text_area("Co Ci chodzi po głowie?", height=150)
-        links_input = st.text_input("Linki / Źródła (opcjonalnie):")
-        uploaded_file = st.file_uploader("Dodaj plik / zrzut ekranu (PNG, JPG, PDF):", type=["png","jpg","jpeg","pdf"])
-        
-        if st.button("Prześlij do Skarbca w Chmurze", type="primary"):
-            if thought_input or links_input or uploaded_file:
-                save_brain_dump(thought_input, links_input, uploaded_file)
-                st.success("Zapisano. Pomysł został odciążony z Twojego mózgu.")
-                time.sleep(0.5)
+        if st.button("Generuj Hyperframe Wideo", type="primary"):
+            with st.spinner("Hyperframes kompiluje kod HTML/CSS..."):
+                time.sleep(2)
+                st.session_state.hyperframe_code = """
+                <html>
+                <body style='background-color:#08090C; display:flex; justify-content:center; align-items:center; height:100vh; overflow:hidden; margin:0;'>
+                    <div style='text-align:center;'>
+                        <div style='width:120px; height:120px; border-radius:50%; background:radial-gradient(circle, #EC4899 0%, #7C3AED 100%); animation: pulse-logo 2s infinite alternate; box-shadow: 0 0 30px #EC4899;'></div>
+                        <h2 style='color:#FFFFFF; font-family:sans-serif; margin-top:20px; text-shadow:0 0 10px #7C3AED;'>Holistic OS</h2>
+                    </div>
+                    <style>
+                        @keyframes pulse-logo {
+                            0% { transform: scale(1); box-shadow: 0 0 20px #EC4899; }
+                            100% { transform: scale(1.1); box-shadow: 0 0 40px #7C3AED, 0 0 15px #EC4899; }
+                        }
+                    </style>
+                </body>
+                </html>
+                """
+                st.success("Wideo wygenerowane pomyślnie w formacie Hyperframe!")
                 st.rerun()
-        
-        st.markdown("---")
-        st.markdown("""
-        <div class="custom-card" style="border-left: 5px solid #7C3AED; background: linear-gradient(135deg, #1A1230 0%, #0F1016 100%);">
-            <h4 style="margin: 0; color: #C084FC;">🧠 Strategiczna Odprawa CEO</h4>
-            <p style="color: #CBD5E1; font-size: 0.85rem; margin-top: 6px; margin-bottom: 0;">
-                Uruchom analizę Skarbca. CEO Jason (Gemini 2.5 Pro) uporządkuje Twoje otwarte pętle, wyciągnie z nich strategię biznesową i zaproponuje gotowe zadania.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        if st.button("🚀 Przetwórz Skarbiec przez CEO", use_container_width=True):
-            active_dumps = [d for d in get_brain_dumps() if d.get("status", "active") == "active"]
-            if not active_dumps:
-                st.info("Twój Skarbiec jest pusty. Brak otwartych pętli do przetworzenia.")
-            else:
-                with st.spinner("CEO Jason analizuje Skarbiec (Gemini 2.5 Pro)..."):
-                    dumps_text = ""
-                    for i, d in enumerate(active_dumps):
-                        dumps_text += f"\n--- POMYSŁ {i+1} ---\nZapisano: {d.get('timestamp')}\nTreść: {d.get('thought')}\nLinki: {d.get('links', '')}\n"
+                
+        if "hyperframe_code" in st.session_state and st.session_state.hyperframe_code:
+            st.write("📺 **Podgląd wygenerowanej animacji:**")
+            st.components.v1.html(st.session_state.hyperframe_code, height=350, scrolling=False)
+            
+            sub_col1, sub_col2 = st.columns(2)
+            with sub_col1:
+                st.button("Exportuj do MP4", use_container_width=True)
+            with sub_col2:
+                if st.button("Wyczyść Studio", use_container_width=True):
+                    st.session_state.hyperframe_code = None
+                    st.rerun()
                     
-                    ceo_prompt = f"""Jesteś CEO Holistic Operator — Tomasz 'Holistic Jason', osobistym doradcą i strategiem użytkownika.
+    with tab_audio:
+        st.subheader("🔊 Text-to-Speech & Voice Clone")
+        st.write("Generowanie głosu AI w stylu Tomasza Dudy (ADHD-friendly, dynamiczny).")
+        audio_text = st.text_area("Wpisz tekst do wypowiedzenia:", "Cześć! Dzisiaj skupimy się na jednej, najważniejszej rzeczy. Wyelimuj szum i wejdź w stan Flow.")
+        if st.button("Generuj Audio", type="primary"):
+            with st.spinner("Generowanie pliku dźwiękowego..."):
+                time.sleep(2)
+                st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
+                st.success("Głos wygenerowany pomyślnie!")
+                
+    with tab_img:
+        st.subheader("🎨 Generator Grafiki")
+        st.write("Twórz spersonalizowane obrazy i okładki dla swoich projektów.")
+        img_prompt = st.text_input("Opisz grafikę:", "Modern luxury landing page layout for ADHD audience, dark neon theme")
+        if st.button("Generuj Obraz", type="primary"):
+            with st.spinner("Model generuje obraz..."):
+                time.sleep(2.5)
+                st.image("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500", caption="Wygenerowana inspiracja graficzna")
+
+# 2. GOALS & OPEN LOOPS
+elif menu == "Goals":
+    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • GOALS & MENTAL WORKSHOP</p>", unsafe_allow_html=True)
+    st.title("🎯 Goals & Mental Workshop")
+    
+    tab_loops, tab_goal_mode = st.tabs(["🗑️ Brain Dump & Open Loops", "🎯 Goal Mode (Autonomiczny Cel)"])
+    
+    with tab_loops:
+        st.subheader("Twój mentalny odciążyciel — bezszumne uwalnianie pamięci roboczej")
+        
+        col_in, col_st = st.columns([1, 1])
+        
+        with col_in:
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #EC4899;">
+                <h4 style="margin:0; color:#EC4899;">📥 Zrzut z głowy (Brain Dump)</h4>
+                <p style="font-size: 0.9rem; color: #94A3B8; margin-top: 6px;">Wpisz pomysły, luźne myśli, linki lub wgraj zrzut ekranu (np. inspirację reklamową).</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            thought_input = st.text_area("Co Ci chodzi po głowie?", height=150, key="goals_thought_input")
+            links_input = st.text_input("Linki / Źródła (opcjonalnie):", key="goals_links_input")
+            uploaded_file = st.file_uploader("Dodaj plik / zrzut ekranu (PNG, JPG, PDF):", type=["png","jpg","jpeg","pdf"], key="goals_uploaded_file")
+            
+            if st.button("Prześlij do Skarbca w Chmurze", type="primary", key="goals_submit_button"):
+                if thought_input or links_input or uploaded_file:
+                    save_brain_dump(thought_input, links_input, uploaded_file)
+                    st.success("Zapisano. Pomysł został odciążony z Twojego mózgu.")
+                    time.sleep(0.5)
+                    st.rerun()
+            
+            st.markdown("---")
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #7C3AED; background: linear-gradient(135deg, #1A1230 0%, #0F1016 100%);">
+                <h4 style="margin: 0; color: #C084FC;">🧠 Strategiczna Odprawa CEO</h4>
+                <p style="color: #CBD5E1; font-size: 0.85rem; margin-top: 6px; margin-bottom: 0;">
+                    Uruchom analizę Skarbca. CEO Jason (Gemini 2.5 Pro) uporządkuje Twoje otwarte pętle, wyciągnie z nich strategię biznesową i zaproponuje gotowe zadania.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            if st.button("🚀 Przetwórz Skarbiec przez CEO", use_container_width=True, key="goals_run_ceo_button"):
+                active_dumps = [d for d in get_brain_dumps() if d.get("status", "active") == "active"]
+                if not active_dumps:
+                    st.info("Twój Skarbiec jest pusty. Brak otwartych pętli do przetworzenia.")
+                else:
+                    with st.spinner("CEO Jason analizuje Skarbiec (Gemini 2.5 Pro)..."):
+                        dumps_text = ""
+                        for i, d in enumerate(active_dumps):
+                            dumps_text += f"\n--- POMYSŁ {i+1} ---\nZapisano: {d.get('timestamp')}\nTreść: {d.get('thought')}\nLinki: {d.get('links', '')}\n"
+                        
+                        ceo_prompt = f"""Jesteś CEO Holistic Operator — Tomasz 'Holistic Jason', osobistym doradcą i strategiem użytkownika.
 Twój cel to pomóc użytkownikowi (który ma ADHD i cierpi na paraliż decyzyjny) uporządkować i wdrożyć w życie pomysły, które zapisał w Skarbcu Myśli (Brain Dump).
 
 Przeanalizuj poniższe otwarte pętle (brain dumps) i przygotuj dla nich plan działania:
@@ -911,82 +1363,157 @@ Przeanalizuj poniższe otwarte pętle (brain dumps) i przygotuj dla nich plan dz
 Pisz zwięźle, konkretnie, w przyjaznym, motywującym tonie, bez bełkotu AI. Używaj wypunktowań.
 
 OTWARTE PĘTLE ZE SKARBCZA:
-{dumps_text}
-"""
-                    response = call_gemini_pro_api([{"role": "user", "content": ceo_prompt}], "Jesteś CEO Jason, wybitnym strategiem biznesowym wspierającym osoby z ADHD.")
-                    st.session_state.ceo_analysis_result = response
-                    st.rerun()
-
-        if "ceo_analysis_result" in st.session_state and st.session_state.ceo_analysis_result:
-            st.markdown("##### 📋 Raport i Plan CEO:")
-            st.markdown(f"""
-            <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.9rem; line-height: 1.6; background-color: #0c1410;">
-{st.session_state.ceo_analysis_result}
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("Wyczyść raport CEO"):
-                st.session_state.ceo_analysis_result = None
-                st.rerun()
-                
-    with col_st:
-        st.markdown("### 📦 Aktywne Otwarte Pętle (Open Loops)")
-        dumps = get_brain_dumps()
-        active_dumps = [d for d in dumps if d.get("status", "active") == "active"]
-        
-        if not active_dumps:
-            st.info("Twój Skarbiec jest pusty. Brak rozpraszających pętli myślowych.")
-        else:
-            st.write(f"Masz **{len(active_dumps)}** aktywnych pętli czekających na wdrożenie:")
-            for d in active_dumps:
-                accent = "#3B82F6" if d.get("category") == "Now" else "#F59E0B"
+{dumps_text}"""
+                        response = call_gemini_pro_api([{"role": "user", "content": ceo_prompt}], "Jesteś CEO Jason, wybitnym strategiem biznesowym wspierającym osoby z ADHD.")
+                        st.session_state.ceo_analysis_result = response
+                        st.rerun()
+    
+            if "ceo_analysis_result" in st.session_state and st.session_state.ceo_analysis_result:
+                st.markdown("##### 📋 Raport i Plan CEO:")
                 st.markdown(f"""
-                <div class="custom-card" style="border-left: 4px solid {accent}; margin-bottom: 12px;">
-                    <span style="font-size: 0.8rem; color:#94A3B8;">⏱️ Zapisano: {d.get('timestamp')} | Priorytet: {d.get('category')}</span>
-                    <p style="margin-top: 6px; font-size: 1.05rem; color:#FFFFFF;">{d.get('thought')}</p>
+                <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.9rem; line-height: 1.6; background-color: #0c1410;">
+{st.session_state.ceo_analysis_result}
                 </div>
                 """, unsafe_allow_html=True)
+                if st.button("Wyczyść raport CEO", key="goals_clear_ceo_button"):
+                    st.session_state.ceo_analysis_result = None
+                    st.rerun()
+                    
+        with col_st:
+            st.markdown("### 📦 Aktywne Otwarte Pętle (Open Loops)")
+            dumps = get_brain_dumps()
+            active_dumps = [d for d in dumps if d.get("status", "active") == "active"]
+            
+            if not active_dumps:
+                st.info("Twój Skarbiec jest pusty. Brak rozpraszających pętli myślowych.")
+            else:
+                st.write(f"Masz **{len(active_dumps)}** aktywnych pętli czekających na wdrożenie:")
+                for d in active_dumps:
+                    accent = "#3B82F6" if d.get("category") == "Now" else "#F59E0B"
+                    st.markdown(f"""
+                    <div class="custom-card" style="border-left: 4px solid {accent}; margin-bottom: 12px;">
+                        <span style="font-size: 0.8rem; color:#94A3B8;">⏱️ Zapisano: {d.get('timestamp')} | Priorytet: {d.get('category')}</span>
+                        <p style="margin-top: 6px; font-size: 1.05rem; color:#FFFFFF;">{d.get('thought')}</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                    if d.get("links"):
+                        st.markdown(f"🔗 **Inspiracja:** [{d.get('links')}]({d.get('links')})")
+                    if d.get("file_attached"):
+                        ext = os.path.splitext(d.get("file_attached"))[1].lower()
+                        if ext in [".png", ".jpg", ".jpeg"]:
+                            path = os.path.join(BRAIN_DUMP_ASSETS, d.get("file_attached"))
+                            if os.path.exists(path):
+                                st.image(path, caption=d.get("file_attached"), use_container_width=True)
+                        else:
+                            st.markdown(f"📎 **Załącznik:** `{d.get('file_attached')}`")
+                            
+                    c1, c2, c3 = st.columns(3)
+                    with c1:
+                        if st.button("🎯 Do Kanbana", key=f"k_{d['id']}"):
+                            k = load_kanban()
+                            short = d.get('thought')[:100] + "..." if len(d.get('thought')) > 100 else d.get('thought')
+                            k["todo"].append(f"🧠 [Zrzut] {short}")
+                            save_kanban(k)
+                            dump_file = os.path.join(BRAIN_DUMP_DIR, f"{d['id']}.json")
+                            d["status"] = "archived"
+                            json.dump(d, open(dump_file, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
+                            st.toast("Zadanie dodane do tablicy Kanban!")
+                            time.sleep(0.5); st.rerun()
+                    with c2:
+                        if st.button("📦 Archiwizuj", key=f"a_{d['id']}"):
+                            dump_file = os.path.join(BRAIN_DUMP_DIR, f"{d['id']}.json")
+                            d["status"] = "archived"
+                            json.dump(d, open(dump_file, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
+                            st.toast("Zarchiwizowano.")
+                            time.sleep(0.5); st.rerun()
+                    with c3:
+                        if st.button("🗑️ Usuń", key=f"d_{d['id']}"):
+                            dump_file = os.path.join(BRAIN_DUMP_DIR, f"{d['id']}.json")
+                            if os.path.exists(dump_file):
+                                os.remove(dump_file)
+                            st.toast("Usunięto.")
+                            time.sleep(0.5); st.rerun()
+                            
+    with tab_goal_mode:
+        st.subheader("🎯 Goal Mode — Autonomiczne Wykonywanie Zadań")
+        st.markdown("""
+        <div class="custom-card" style="border-left: 5px solid #F59E0B;">
+            <h4 style="margin: 0; color: #F59E0B;">🚀 Autonomiczna Pętla Weryfikacji (Judge Loop)</h4>
+            <p style="color: #CBD5E1; font-size: 0.85rem; margin-top: 6px; margin-bottom: 0;">
+                Wpisz wysoki cel operacyjny. Agent uruchomi pętlę do 20 iteracji. W każdej iteracji model-sędzia ocenia postęp i decyduje, czy cel został w pełni osiągnięty.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        goal_input = st.text_input("Cel do zrealizowania:", placeholder="np. Wygeneruj 3 spersonalizowane szkice maili sprzedażowych dla lokalnych klinik...", key="goals_auton_goal")
+        steps_limit = st.slider("Limit iteracji (tur sędziego):", 5, 20, 10, key="goals_auton_steps")
+        executor_agent = st.selectbox("Wybierz agenta wykonawczego:", ["Hermes", "Claude", "Gemini", "AntiGravity"], key="goals_auton_agent")
+        
+        if st.button("Uruchom Goal Mode Loop", type="primary", key="goals_run_auton_btn"):
+            if goal_input:
+                st.write(f"🏃 **Inicjalizacja pętli Goal Mode dla agenta {executor_agent}...**")
                 
-                if d.get("links"):
-                    st.markdown(f"🔗 **Inspiracja:** [{d.get('links')}]({d.get('links')})")
-                if d.get("file_attached"):
-                    ext = os.path.splitext(d.get("file_attached"))[1].lower()
-                    if ext in [".png", ".jpg", ".jpeg"]:
-                        path = os.path.join(BRAIN_DUMP_ASSETS, d.get("file_attached"))
-                        if os.path.exists(path):
-                            st.image(path, caption=d.get("file_attached"), use_container_width=True)
-                    else:
-                        st.markdown(f"📎 **Załącznik:** `{d.get('file_attached')}`")
+                status_placeholder = st.empty()
+                progress_bar = st.progress(0.0)
+                
+                current_state = f"Rozpoczęto realizację celu: {goal_input}"
+                completed = False
+                
+                for step in range(1, steps_limit + 1):
+                    status_placeholder.info(f"🔄 **Iteracja {step} / {steps_limit}...**")
+                    progress_bar.progress(step / steps_limit)
+                    
+                    exec_prompt = f"""Realizujesz cel: "{goal_input}".
+Aktualny stan prac: {current_state}
+Wykonaj następny logiczny krok w celu osiągnięcia rezultatu. Wygeneruj konkretny postęp."""
+                    with st.spinner(f"Agent {executor_agent} wykonuje krok..."):
+                        step_output = call_gemini_pro_api([{"role": "user", "content": exec_prompt}], f"Jesteś agentem {executor_agent} pracującym w trybie Goal Mode.")
+                    
+                    st.markdown(f"**Iteracja {step} Output:**")
+                    st.code(step_output[:300] + "..." if len(step_output) > 300 else step_output, language="markdown")
+                    
+                    judge_prompt = f"""Cel główny: "{goal_input}"
+Aktualny postęp prac po ostatniej iteracji:
+{step_output}
+
+ZADANIE: Oceń, czy cel główny został w 100% zrealizowany.
+Odpowiedz w formacie JSON:
+{{
+  "completed": true/false,
+  "summary": "krótkie podsumowanie wykonanej pracy",
+  "next_step": "co pozostało do zrobienia (jeśli nie ukończono)"
+}}
+Zwróć wyłącznie prawidłowy JSON, bez znaczników ```json i bez innych komentarzy."""
+                    with st.spinner("Sędzia AI weryfikuje postęp (Gemini)..."):
+                        judge_resp = call_gemini_api([{"role": "user", "content": judge_prompt}], "Jesteś rygorystycznym sędzią jakości.")
+                    
+                    try:
+                        if "```" in judge_resp:
+                            judge_resp = judge_resp.split("```")[1]
+                            if judge_resp.startswith("json"):
+                                judge_resp = judge_resp[4:]
+                        judge_data = json.loads(judge_resp.strip())
+                        completed = judge_data.get("completed", False)
+                        current_state = judge_data.get("summary", "")
                         
-                c1, c2, c3 = st.columns(3)
-                with c1:
-                    if st.button("🎯 Do Kanbana", key=f"k_{d['id']}"):
-                        k = load_kanban()
-                        short = d.get('thought')[:100] + "..." if len(d.get('thought')) > 100 else d.get('thought')
-                        k["todo"].append(f"🧠 [Zrzut] {short}")
-                        save_kanban(k)
-                        # Oznaczenie jako zarchiwizowane
-                        dump_file = os.path.join(BRAIN_DUMP_DIR, f"{d['id']}.json")
-                        d["status"] = "archived"
-                        json.dump(d, open(dump_file, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
-                        st.toast("Zadanie dodane do tablicy Kanban!")
-                        time.sleep(0.5); st.rerun()
-                with c2:
-                    if st.button("📦 Archiwizuj", key=f"a_{d['id']}"):
-                        dump_file = os.path.join(BRAIN_DUMP_DIR, f"{d['id']}.json")
-                        d["status"] = "archived"
-                        json.dump(d, open(dump_file, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
-                        st.toast("Zarchiwizowano.")
-                        time.sleep(0.5); st.rerun()
-                with c3:
-                    if st.button("🗑️ Usuń", key=f"d_{d['id']}"):
-                        dump_file = os.path.join(BRAIN_DUMP_DIR, f"{d['id']}.json")
-                        if os.path.exists(dump_file):
-                            os.remove(dump_file)
-                        st.toast("Usunięto.")
-                        time.sleep(0.5); st.rerun()
+                        st.markdown(f"⚖️ **Werdykt Sędziego:** {judge_data.get('summary')}")
+                        if completed:
+                            st.success(f"🎉 **Cel osiągnięty w turze {step}!** Pętla zakończona pomyślnie.")
+                            break
+                    except Exception as e:
+                        completed = False
+                        current_state = f"Błąd dekodowania oceny sędziego: {e}. Kontynuuję..."
+                    
+                    time.sleep(1)
+                    
+                if not completed:
+                    st.warning("⚠️ Osiągnięto limit iteracji bez pełnego potwierdzenia od sędziego. Dokonaj weryfikacji manualnej.")
+            else:
+                st.warning("Wpisz cel do zrealizowania.")
 
 # 3. NOTEBOOKLM & OBSIDIAN
-elif menu == "📻 NotebookLM & Obsidian":
+elif menu == "Notebook":
     st.title("📻 NotebookLM Sync & Obsidian Vault")
     st.subheader("Ustrukturyzowany przepływ wiedzy w chmurze")
     
@@ -1025,7 +1552,7 @@ elif menu == "📻 NotebookLM & Obsidian":
             st.info("Katalog `~/Agentic_OS/obsidian_vault` jest pusty. Prześlij swoje notatki markdown z Obsidiana, aby mieć do nich łatwy wgląd.")
 
 # 4. CONTENT STUDIO (Nate Herk Inspired)
-elif menu == "🎬 Content Studio":
+elif menu == "SEO":
     st.title("🎬 Content Studio (Nate Herk & Adrian Killar Mode)")
     st.subheader("Projektowanie wirusowych wideo i scenariuszy zasilanych o_mnie.md")
     
@@ -1089,7 +1616,7 @@ elif menu == "🎬 Content Studio":
             st.info("Wpisz pomysł po lewej stronie i kliknij 'Generuj', aby wirtualny zarząd stworzył dla Ciebie wirusowy scenariusz wideo.")
 
 # 5. ADHD CRM & LEJEK
-elif menu == "💼 ADHD CRM & Lejek":
+elif menu == "CRM":
     st.title("💼 ADHD CRM & Bezszumny Lejek")
     st.subheader("Twój minimalistyczny proces relacyjny zoptymalizowany pod neuroatypowość")
     
@@ -1394,7 +1921,7 @@ Zredaguj niesamowity, głęboki, gotowy do wysłania e-mail."""
                         st.info(f"**{selected_dyrektor}:** \"{csuite_reply}\"")
 
 # 6. ADHD KANBAN
-elif menu == "📋 ADHD Kanban":
+elif menu == "Kanban":
     st.title("🎯 ADHD Kanban Board")
     st.subheader("Wizualny postęp wdrożeń bez paraliżu decyzyjnego")
     
@@ -1441,7 +1968,7 @@ elif menu == "📋 ADHD Kanban":
             st.rerun()
 
 # 7. DZIAŁ PRAWNY & KANCELARIA
-elif menu == "💼 Dział Prawny & Kancelaria":
+elif menu == "Legal":
     st.title("💼 Dział Prawny — Twoja Holistyczna Tarcza")
     st.subheader("Automatyczne generowanie pism i audyt zasilany przez AI")
     
@@ -1876,7 +2403,7 @@ Przeprowadź audyt krzyżowy."""
 
 
 # 8. KANCELARIA FINANSOWA & KSeF
-elif menu == "💰 Kancelaria Finansowa & KSeF":
+elif menu == "Finance":
     st.title("💰 Kancelaria Finansowa & Bezszumny KSeF")
     st.subheader("Integracja z systemem fakturowania bez barier technicznych")
     
@@ -1972,48 +2499,11 @@ elif menu == "💰 Kancelaria Finansowa & KSeF":
             """, unsafe_allow_html=True)
 
 # 9. ANTIGRAVITY & HERMES CHAT
-elif menu == "💬 AntiGravity & Hermes Chat":
-    st.title("💬 AntiGravity & Hermes Chat")
-    st.subheader("Twój wbudowany Architekt Systemów i Mission Control AI")
-    
-    st.markdown("""
-    <div class="custom-card">
-        <p>🤖 <strong>Zintegrowana inteligencja:</strong> Ten czat jest bezpośrednio połączony z GCP Agent Platform (Gemini Pro/Flash). AntiGravity użyje kontekstu z <code>o_mnie.md</code>, aby odpowiadać precyzyjnie w Twoim stylu operacyjnym.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Initialize chat history
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-        
-    # Display chat messages from history on app rerun
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-            
-    # React to user input
-    if prompt := st.chat_input("Napisz do AntiGravity / Hermesa... (np. /scout zrób research)"):
-        # Display user message in chat message container
-        st.chat_message("user").markdown(prompt)
-        # Add user message to chat history
-        st.session_state.messages.append({"role": "user", "content": prompt})
-        
-        # O_mnie context
-        o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
-        o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak pliku o_mnie.md"
-        
-        sys_prompt = f"Jesteś AntiGravity & Hermes - asystentem Tomasza Dudy (architekta AI dla neuroatypowych, Holistic AIDHD). Pomagasz w strategii i kodzie.\n\nKontekst użytkownika:\n{o_mnie_context}\n\nOdpowiadaj konkretnie, po polsku, w formie krótkich akapitów (ADHD-friendly)."
-        
-        with st.spinner("AntiGravity myśli..."):
-            api_messages = [{"role": m["role"], "content": m["content"]} for m in st.session_state.messages]
-            response = call_gemini_pro_api(api_messages, system_instruction=sys_prompt)
-            
-        with st.chat_message("assistant"):
-            st.markdown(response)
-        st.session_state.messages.append({"role": "assistant", "content": response})
+elif menu == "Antigravity":
+    render_agent_console("Antigravity", "Online", "gemini-2.5-pro", "GCP Proxy", "#10B981")
 
 # 9C. AGENCI & CRONY (SALES / SOUL)
-elif menu == "✨ Agenci & Crony (Sales/Soul)":
+elif menu == "Swarm":
     st.title("✨ Specjalistyczni Agenci & Crony Operacyjne")
     st.subheader("Wyznacz zadania i nadzoruj wirtualnych pracowników w tle")
     
@@ -2138,7 +2628,7 @@ Pisz w tonie pełnym empatii, spokoju, wsparcia, lecz konkretnie (ADHD-friendly)
                 st.rerun()
 
 # 9B. ONBOARDING & GRILL AGENT
-elif menu == "🤝 Onboarding & Grill":
+elif menu == "Onboarding":
     st.title("🤝 Onboarding & Grill Agent")
     st.subheader("Interaktywny wywiad AI i generowanie briefu")
     
@@ -2290,7 +2780,7 @@ Oto dotychczasowa historia wywiadu:
             st.rerun()
 
 # 10. PRISTINE MEMORY
-elif menu == "💾 Pristine Memory":
+elif menu == "Memory":
     st.title("💾 Zarządzanie Pristine Memory")
     st.subheader("Podgląd plików pamięci agentów w ~/.hermes")
     

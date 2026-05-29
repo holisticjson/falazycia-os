@@ -1,6 +1,6 @@
 [server]
 headless = true
-port = 8080
+port = 8501
 address = "0.0.0.0"
 enableCORS = false
 enableXsrfProtection = false
@@ -9,9 +9,9 @@ enableXsrfProtection = false
 gatherUsageStats = false
 
 [theme]
-base = "light"
-primaryColor = "#4A90E2"
-backgroundColor = "#fafbfd"
-secondaryBackgroundColor = "#f0f4f8"
-textColor = "#1f2937"
+base = "dark"
+primaryColor = "#7C3AED"
+backgroundColor = "#08090C"
+secondaryBackgroundColor = "#121620"
+textColor = "#E2E8F0"
 font = "sans serif"
