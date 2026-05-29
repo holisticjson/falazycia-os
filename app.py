@@ -292,75 +292,44 @@ def call_gemini_api(messages, system_instruction=None):
     return "Błąd: Brak połączenia z lokalnym proxy i brak poprawnego klucza Service Account."
 
 def call_gemini_pro_api(messages, system_instruction=None):
-    """Dedykowana funkcja dla modelu Gemini 2.5 Pro — używana w Dziale Prawnym i Finansowym.
-    Pro jest droższy (~17x) ale znacznie lepszy w analizie dokumentów, wyciąganiu danych
-    i logice prawnej. Używamy go tylko tam gdzie jakość jest krytyczna."""
+    """Dedykowana funkcja dla modelu Gemini 2.5 Pro przez lokalny proxy.
+    Używamy go w Dziale Prawnym dla analizy dokumentów i logiki prawnej.
+    Timeout 120s dla długich dokumentów."""
     proxy_url = "http://127.0.0.1:8089/v1/chat/completions"
-    payload = {
-        "model": "gemini-2.5-pro",
-        "messages": []
-    }
+    
+    # Sprawdź czy wiadomości zawierają multimodalne treści (PDF/obrazy) — użyj Flash
+    # bo proxy może nie obsługiwać dużych payloadów multimodalnych dla Pro
+    has_multimodal = False
+    for msg in messages:
+        content = msg.get("content", "")
+        if isinstance(content, list):
+            for part in content:
+                if isinstance(part, dict) and part.get("type") == "image_url":
+                    has_multimodal = True
+                    break
+    
+    model_name = "gemini-2.5-flash" if has_multimodal else "gemini-2.5-pro"
+    
+    payload = {"model": model_name, "messages": []}
     if system_instruction:
         payload["messages"].append({"role": "system", "content": system_instruction})
     payload["messages"].extend(messages)
 
-    # 1. Przez lokalny proxy
     try:
-        response = http_post(proxy_url, json_data=payload, timeout=60.0)
+        response = http_post(proxy_url, json_data=payload, timeout=120.0)
         if response.status_code == 200:
             res_data = response.json()
             return res_data["choices"][0]["message"]["content"]
+        else:
+            # Próba z Flash jako fallback
+            payload["model"] = "gemini-2.5-flash"
+            response2 = http_post(proxy_url, json_data=payload, timeout=90.0)
+            if response2.status_code == 200:
+                return response2.json()["choices"][0]["message"]["content"]
     except Exception:
         pass
 
-    # 2. Bezpośredni Vertex AI
-    sa_paths = [
-        os.path.expanduser("~/.hermes/gcp-sa-key.json"),
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), "holistic-dashboard-dev-dea2c872139e.json"),
-        "holistic-dashboard-dev-dea2c872139e.json"
-    ]
-    sa_path = None
-    for p in sa_paths:
-        if os.path.exists(p):
-            sa_path = p
-            break
-
-    if sa_path:
-        try:
-            from google.oauth2 import service_account
-            import google.auth.transport.requests
-            creds = service_account.Credentials.from_service_account_file(
-                sa_path,
-                scopes=['https://www.googleapis.com/auth/cloud-platform']
-            )
-            request = google.auth.transport.requests.Request()
-            creds.refresh(request)
-            token = creds.token
-
-            project_id = "holistic-dashboard-dev"
-            region = "us-central1"
-            direct_url = f"https://{region}-aiplatform.googleapis.com/v1/projects/{project_id}/locations/{region}/endpoints/openapi/chat/completions"
-
-            headers = {
-                "Authorization": f"Bearer {token}",
-                "Content-Type": "application/json"
-            }
-            direct_payload = {
-                "model": "google/gemini-2.5-pro",
-                "messages": []
-            }
-            if system_instruction:
-                direct_payload["messages"].append({"role": "system", "content": system_instruction})
-            direct_payload["messages"].extend(messages)
-
-            resp = http_post(direct_url, json_data=direct_payload, headers=headers, timeout=60.0)
-            if resp.status_code == 200:
-                res_data = resp.json()
-                return res_data["choices"][0]["message"]["content"]
-        except Exception as ex:
-            pass
-
-    # 3. Fallback do Flash jeśli Pro niedostępny
+    # Ostateczny fallback
     return call_gemini_api(messages, system_instruction)
 
 class WebhookHandler(BaseHTTPRequestHandler):
@@ -1190,7 +1159,7 @@ elif menu == "💼 Dział Prawny & Kancelaria":
     
     uploaded_legal_files = st.file_uploader("Załącz dokumenty (Pliki PDF, skany, obrazki lub zdjęcia):", type=["pdf", "png", "jpg", "jpeg"], accept_multiple_files=True)
     contract_text = st.text_area("Lub wklej tutaj treść dokumentu / notatek (opcjonalnie):", height=150)
-    user_instruction = st.text_input("Twoje polecenie (krótko, po ludzku - AI rozbuduje je w tle i podbije prompt):", placeholder="np. Napisz odpowiedź na to wezwanie, nie zgadzam się z kwotą kary bo opóźnienie było z ich winy i zrób z tego oficjalne pismo")
+    user_instruction = st.text_input("Twoje polecenie (krótko, po ludzku - AI rozbuduje je w tle i podbije prompt):", placeholder="np. Napisz")
     
     c_col1, c_col2 = st.columns([1, 1])
     
@@ -1207,11 +1176,13 @@ elif menu == "💼 Dział Prawny & Kancelaria":
         obsidian_export = st.checkbox("Automatycznie wyeksportuj wynik do Obsidian Vault", value=True)
         
     if st.button("Uruchom Generator Prawny AI", type="primary"):
-        # Sprawdzamy czy użytkownik dał jakiekolwiek wejście
         if contract_text or uploaded_legal_files or user_instruction:
+            
+            # =====================================================
+            # KROK 0: WCZYTANIE PLIKÓW
+            # =====================================================
             file_texts = []
             image_data_urls = []
-            extracted_data_json = {}
             
             if uploaded_legal_files:
                 for uploaded_file in uploaded_legal_files:
@@ -1237,26 +1208,25 @@ elif menu == "💼 Dział Prawny & Kancelaria":
                                         raw_pages.append(t)
                                 raw_text = "\n".join(raw_pages)
                                 
-                                # Jeśli tekst zbyt krótki — skan. Gemini czyta PDF natywnie (1 wywołanie!)
-                                if len(raw_text.strip()) < 150:
-                                    st.warning(f"⚠️ PDF wygląda na skan. Gemini Native PDF Reader w toku...")
-                                    encoded_pdf = _b64.b64encode(file_bytes).decode("utf-8")
-                                    ocr_sys = """Jesteś systemem OCR dla dokumentów prawnych.
-Przepisz DOKŁADNIE cały tekst z tego PDF — każdą stronę od początku do końca.
-Zachowaj: daty, PESEL, sygnatury akt, adresy, kwoty, nazwy sądów — dokładnie jak w oryginale.
-Nie parafrazuj ani nie skracaj. Odpowiedz samym tekstem dokumentu."""
-                                    raw_text = call_gemini_pro_api(
-                                        [{"role": "user", "content": [
-                                            {"type": "text", "text": f"Przepisz dokładnie cały tekst z tego {len(reader.pages)}-stronicowego dokumentu prawnego ({uploaded_file.name}):"},
+                                # Skan — użyj Gemini Flash przez proxy
+                                if len(raw_text.strip()) < 200:
+                                    st.warning("⚠️ PDF wygląda na skan. Uruchamiam Gemini Flash OCR...")
+                                    try:
+                                        import base64 as _b64c
+                                        encoded_pdf = _b64c.b64encode(file_bytes).decode("utf-8")
+                                        ocr_msgs = [{"role": "user", "content": [
+                                            {"type": "text", "text": f"Przepisz DOKŁADNIE cały tekst z tego {len(reader.pages)}-stronicowego dokumentu. Zachowaj: daty, PESEL, sygnatury, adresy, kwoty DOKŁADNIE jak w oryginale."},
                                             {"type": "image_url", "image_url": {"url": f"data:application/pdf;base64,{encoded_pdf}"}}
-                                        ]}],
-                                        ocr_sys
-                                    )
-                                    st.success(f"✅ Gemini Native PDF OCR: {len(reader.pages)} stron odczytanych w 1 wywołaniu")
+                                        ]}]
+                                        raw_text = call_gemini_api(ocr_msgs)
+                                        st.success(f"✅ OCR Gemini Flash: {len(reader.pages)} stron")
+                                    except Exception as ocr_err:
+                                        st.error(f"Błąd OCR: {ocr_err}")
+                                        raw_text = f"[Błąd OCR: {uploaded_file.name}]"
                                 else:
-                                    st.success(f"✅ PDF odczytany tekstowo: {len(reader.pages)} stron, {len(raw_text)} znaków")
+                                    st.success(f"✅ PDF tekstowy: {len(reader.pages)} stron, {len(raw_text)} znaków")
                                 
-                                file_texts.append(f"--- DOKUMENT: {uploaded_file.name} ---\n{raw_text}")
+                                file_texts.append(f"=== DOKUMENT: {uploaded_file.name} ===\n{raw_text}\n=== KONIEC ===")
                             except Exception as e:
                                 st.error(f"Błąd odczytu PDF {uploaded_file.name}: {e}")
 
@@ -1268,203 +1238,351 @@ Nie parafrazuj ani nie skracaj. Odpowiedz samym tekstem dokumentu."""
                         image_data_urls.append({"name": uploaded_file.name, "data_url": f"data:{mime_type};base64,{encoded}"})
                         st.success(f"✅ Skan załączony: {uploaded_file.name}")
             
-            # === ETAP 1: STRUKTURALNA EKSTRAKCJA DANYCH (JSON) ===
-            source_text_for_extraction = "\n\n".join(file_texts) + (f"\n{contract_text}" if contract_text else "")
-            if source_text_for_extraction.strip():
-                with st.spinner("🔎 Etap 1/3 — Wyciągam dane wrażliwe (PESEL, sygnatury, adresy, kwoty)..."):
-                    extract_prompt = f"""Jesteś ekstraktoremm danych prawnych. Z poniższego dokumentu wyciągnij WSZYSTKIE dostępne dane i zwróć jako JSON (bez markdownu, sam JSON):
+            # =====================================================
+            # KROK 1: STRUKTURALNA EKSTRAKCJA DANYCH (Flash — szybka i niezawodna)
+            # =====================================================
+            extracted_data_json = {}
+            source_text = "\n\n".join(file_texts) + (f"\n{contract_text}" if contract_text else "")
+            
+            if source_text.strip():
+                with st.spinner("🔎 Krok 1/3 — Wyciągam dane wrażliwe z dokumentu..."):
+                    extract_prompt = """Jesteś precyzyjnym ekstraktoremm danych prawnych. Z poniższego dokumentu wyciągnij WSZYSTKIE dostępne dane.
+ZWRÓĆ TYLKO JSON (bez markdown, bez wyjaśnień), wypełniając każde pole które istnieje w dokumencie:
 
-{{
+{
   "sygnatura_akt": null,
   "sad_organ": null,
+  "sad_nazwa": null,
+  "sad_adres": null,
   "data_dokumentu": null,
-  "strona_powodowa": {{"imie_nazwisko": null, "pesel": null, "adres": null, "nip": null, "rola": null}},
-  "strona_pozwana": {{"imie_nazwisko": null, "pesel": null, "adres": null, "nip": null, "rola": null}},
+  "strona_powodowa": {"imie_nazwisko": null, "pesel": null, "adres": null, "nip": null, "rola": "Powód"},
+  "strona_pozwana": {"imie_nazwisko": null, "pesel": null, "adres": null, "nip": null, "rola": "Pozwany"},
   "inne_osoby": [],
   "kwoty": [],
   "daty_kluczowe": [],
   "numery_referencyjne": [],
   "przedmiot_sprawy": null,
-  "terminy": []
-}}
+  "terminy": [],
+  "pelnomocnicy": []
+}
+
+WAŻNE: Jeśli wartość istnieje w dokumencie, WSTAW JĄ. Nie zostawiaj null gdy dane są w tekście.
 
 DOKUMENT:
-{source_text_for_extraction[:8000]}
-
-Zwróć TYLKO JSON."""
+""" + source_text[:10000] + "\n\nZWRÓĆ TYLKO JSON."
                     
                     import json as _json, re as _re
-                    extraction_raw = call_gemini_pro_api([{"role": "user", "content": extract_prompt}])
                     try:
-                        jm = _re.search(r'\{{[\s\S]*\}}', extraction_raw)
+                        extraction_raw = call_gemini_api([{"role": "user", "content": extract_prompt}])
+                        jm = _re.search(r'\{[\s\S]*\}', extraction_raw)
                         if jm:
                             extracted_data_json = _json.loads(jm.group())
-                    except Exception:
+                    except Exception as ex:
+                        st.warning(f"Ekstrakcja danych: {ex}")
                         extracted_data_json = {}
                     
-                    # Wyświetl podgląd wyciągniętych danych
-                    if extracted_data_json:
-                        cols_ext = st.columns(3)
+                    if extracted_data_json and any(v for v in extracted_data_json.values() if v and v != [] and v != {}):
+                        st.success("✅ Dane wyciągnięte z dokumentu:")
+                        preview_cols = st.columns(4)
                         if extracted_data_json.get("sygnatura_akt"):
-                            cols_ext[0].metric("Sygnatura akt", extracted_data_json["sygnatura_akt"])
-                        sp = extracted_data_json.get("strona_powodowa", {})
+                            preview_cols[0].metric("📋 Sygnatura", extracted_data_json["sygnatura_akt"])
+                        sp = extracted_data_json.get("strona_powodowa") or {}
                         if sp and sp.get("imie_nazwisko"):
-                            cols_ext[1].metric(sp.get("rola", "Strona 1"), sp["imie_nazwisko"])
-                        sz = extracted_data_json.get("strona_pozwana", {})
+                            preview_cols[1].metric(f"👤 {sp.get('rola','Powód')}", sp["imie_nazwisko"])
+                        sz = extracted_data_json.get("strona_pozwana") or {}
                         if sz and sz.get("imie_nazwisko"):
-                            cols_ext[2].metric(sz.get("rola", "Strona 2"), sz["imie_nazwisko"])
+                            preview_cols[2].metric(f"👤 {sz.get('rola','Pozwany')}", sz["imie_nazwisko"])
+                        sad_name = extracted_data_json.get("sad_nazwa") or extracted_data_json.get("sad_organ") or ""
+                        if sad_name:
+                            preview_cols[3].metric("🏛️ Sąd", sad_name[:30])
                         if extracted_data_json.get("kwoty"):
-                            st.caption(f"💰 Kwoty: {', '.join(str(k) for k in extracted_data_json['kwoty'])}")
+                            st.caption(f"💰 Kwoty: {', '.join(str(k) for k in extracted_data_json['kwoty'][:5])}")
+                        if extracted_data_json.get("data_dokumentu"):
+                            st.caption(f"📅 Data: {extracted_data_json['data_dokumentu']}")
+                        with st.expander("🔍 Pełne dane strukturalne (JSON)"):
+                            st.code(_json.dumps(extracted_data_json, ensure_ascii=False, indent=2), language="json")
                     else:
-                        st.info("ℹ️ Nie udało się ustrukturyzować danych — model użyje surowego tekstu.")
+                        st.info("ℹ️ Dane strukturalne nie rozpoznane — model użyje surowego tekstu.")
             
-            with st.spinner("⚖️ Etap 2/3 — Twój wirtualny radca prawny sporządza pismo..."):
-                system_instruction = """Jesteś elitarnym polskim adwokatem i radcą prawnym z wieloletnim doświadczeniem. Twój styl pisania jest rygorystyczny, precyzyjny, wysoce profesjonalny i całkowicie wolny od lania wody.
-Tomasz Duda (architekt systemów AI dla neuroatypowych, Holistic AIDHD) zlecił Ci zadanie.
-
-## KLUCZOWA ZASADA — DANE WRAŻLIWE:
-Masz do dyspozycji GOTOWE, PRE-WYCIĄGNIĘTE dane z dokumentu (w sekcji DANE STRUKTURALNE).
-UŻYJ ICH BEZPOŚREDNIO — nie szukaj ich ponownie, nie zastępuj placeholderami.
-Nawiasów kwadratowych [tak] używaj WYŁĄCZNIE dla danych, których NIE MA w sekcji DANE STRUKTURALNE ani w tekście dokumentu.
-
-## ZASADY PISANIA:
-1. Pisz wyłącznie w języku polskim.
-2. Zastosuj oficjalny, uroczysty ton prawniczy.
-3. Pismo musi zawierać: nagłówek z danymi stron, sygnaturę, tytuł, osnowę z przepisami prawa, uzasadnienie faktyczne i prawne, podpis.
-4. Powołuj się na konkretne przepisy KC, KPC, KKS lub innych aktów prawa — z numerami artykułów.
-5. Znajdź słabe punkty drugiej strony w dokumentach i wykorzystaj je na korzyść klienta.
-"""
+            # =====================================================
+            # KROK 2: GENEROWANIE DOKUMENTU PRAWNEGO (Pro przez proxy)
+            # =====================================================
+            analysis_result = ""
+            verification_result = ""
+            
+            with st.spinner("⚖️ Krok 2/3 — Sporządzam pismo prawne (Gemini Pro)..."):
+                import json as _json3
                 
-                # Wstrzyknij pre-wyciągnięte dane strukturalne do prompta
-                import json as _json2
-                structured_data_block = ""
-                if extracted_data_json:
-                    structured_data_block = f"""
-### ✅ DANE STRUKTURALNE (PRE-WYCIĄGNIĘTE — UŻYJ BEZPOŚREDNIO):
+                data_block = ""
+                if extracted_data_json and any(v for v in extracted_data_json.values() if v and v != [] and v != {}):
+                    data_block = f"""
+## DANE WYCIĄGNIĘTE Z DOKUMENTU — UŻYJ BEZPOŚREDNIO:
 ```json
-{_json2.dumps(extracted_data_json, ensure_ascii=False, indent=2)}
+{_json3.dumps(extracted_data_json, ensure_ascii=False, indent=2)}
 ```
+ZAKAZ używania [] placeholderów dla powyższych danych!
 """
                 
-                # Budowanie ulepszonego prompta z naciskiem na wyciąganie danych
-                enhanced_prompt = f"""### ZADANIE: Profesjonalne Generowanie Dokumentu Prawnego z Danymi z Akt
+                legal_system = """Jesteś elitarnym polskim radcą prawnym i adwokatem z wieloletnim doświadczeniem procesowym.
+Piszesz WYŁĄCZNIE w języku polskim. Styl: precyzyjny, profesjonalny, rygorystyczny.
 
-Typ dokumentu docelowego: {doc_type}
-Polecenie użytkownika: "{user_instruction if user_instruction else 'Dokonaj analizy i przygotuj pismo zabezpieczające interesy'}"
-
-{structured_data_block}
----
-### KROK 1 — EKSTRAKCJA DANYCH Z DOKUMENTÓW:
-Przed napisaniem pisma WYCIĄGNIJ z poniższych dokumentów:
-✓ Wszystkie imiona, nazwiska i role procesowe (Powód/Pozwany/Wnioskodawca/Uczestnik)
-✓ Sygnaturę akt (dokładny ciąg znaków, np. "I C 1234/24")
-✓ Numery PESEL, NIP, KRS, REGON
-✓ Adresy i miejscowości
-✓ Daty pism, wyroków, nakazów, terminów
-✓ Kwoty, wartości, odsetki
-✓ Nazwy sądów i organów
-
-### KROK 2 — NAPISZ KOMPLETNE PISMO:
-Użyj WYCIĄGNIĘTYCH danych bezpośrednio w piśmie. NIE używaj placeholderów [Imię], [PESEL] jeśli dane są w dokumentach.
-
----
-### DOKUMENTY ŹRÓDŁOWE:
+BEZWZGLĘDNE ZASADY:
+1. Wstawiaj RZECZYWISTE dane z dokumentów. NIGDY [xxx] placeholdery gdy dane są dostępne.
+2. Jeśli sekcja DANE STRUKTURALNE zawiera sygnaturę/PESEL/nazwisko — wstaw je DOKŁADNIE.
+3. Każde pismo musi mieć PEŁNY NAGŁÓWEK z danymi stron, sygnaturą i nazwą sądu.
+4. Powołuj się na KONKRETNE artykuły prawa (art. 123 § 1 k.c., art. 505 k.p.c. itp.).
+5. Format nagłówka pisma procesowego (standardowy PL):
+   POWÓD/WNIOSKODAWCA (lewa strona) | SĄD/ORGAN (prawa strona)
+   Imię Nazwisko                      | Nazwa Sądu
+   PESEL/NIP                          | Adres Sądu
+   Adres                              | Sygn. akt: XXXX/YY
 """
-                if file_texts:
-                    enhanced_prompt += "\n" + "\n\n".join(file_texts) + "\n"
-                if contract_text:
-                    enhanced_prompt += f"\n[Tekst wklejony ręcznie]:\n{contract_text}\n"
                 
-                enhanced_prompt += """
----
-### WYMAGANIA KOŃCOWE:
-1. Wstaw RZECZYWISTE dane z dokumentów — nie placeholdery.
-2. Napisz pismo od nagłówka do podpisu — kompletne i gotowe do wysłania.
+                full_prompt = f"""ZADANIE: Sporządź profesjonalne pismo prawne.
+
+Typ dokumentu: {doc_type}
+Polecenie użytkownika: {user_instruction if user_instruction else "Dokonaj analizy i przygotuj pismo zabezpieczające interesy klienta."}
+
+{data_block}
+
+DOKUMENTY ŹRÓDŁOWE:
+{chr(10).join(file_texts) if file_texts else "(brak plików)"}
+{contract_text if contract_text else ""}
+
+WYMAGANIA KOŃCOWE:
+1. Wstaw WSZYSTKIE dane z dokumentów bezpośrednio do pisma.
+2. Napisz pismo od nagłówka do podpisu — KOMPLETNE i gotowe do wysłania.
 3. Przywołaj konkretne artykuły prawa.
-4. Sformatuj czytelnie w Markdown.
-"""
+4. Użyj markdownu do formatowania.
+5. NIE używaj [xxx] gdy dane są dostępne wyżej."""
                 
-                messages = []
                 if image_data_urls:
-                    # Multimodal (skany/zdjęcia) — Pro obsługuje obrazy przez Vertex AI
-                    content_list = [{"type": "text", "text": enhanced_prompt}]
+                    content_list = [{"type": "text", "text": full_prompt}]
                     for img in image_data_urls:
-                        content_list.append({
-                            "type": "image_url",
-                            "image_url": {"url": img["data_url"]}
-                        })
-                    messages.append({"role": "user", "content": content_list})
-                    # Pro dla skanów — lepsze OCR i analiza kontekstowa
-                    analysis_result = call_gemini_pro_api(messages, system_instruction)
+                        content_list.append({"type": "image_url", "image_url": {"url": img["data_url"]}})
+                    msgs = [{"role": "user", "content": content_list}]
                 else:
-                    messages.append({"role": "user", "content": enhanced_prompt})
-                    # Pro dla tekstu/PDF — lepsza analiza prawna i ekstrakcja danych
-                    analysis_result = call_gemini_pro_api(messages, system_instruction)
+                    msgs = [{"role": "user", "content": full_prompt}]
                 
-                st.markdown("### 📝 Wygenerowany Projekt Pisma Prawnego")
-                st.markdown(f"<div class='custom-card' style='border-left: 4px solid #EF4444; white-space: pre-wrap;'>{analysis_result}</div>", unsafe_allow_html=True)
+                analysis_result = call_gemini_pro_api(msgs, legal_system)
                 
-                # === WERYFIKATOR DANYCH — DRUGI MODEL ===
-                st.markdown("---")
-                st.markdown("### 🔍 Weryfikacja Danych — Audyt Krzyżowy AI")
-                
-                with st.spinner("Drugi model weryfikuje zgodność danych wrażliwych z dokumentami źródłowymi..."):
-                    verify_system = """Jesteś specjalistycznym audytorem prawnym i weryfikatorem dokumentów.
-Twoim jedynym zadaniem jest porównanie wygenerowanego pisma prawnego z dokumentami źródłowymi i wykrycie WSZYSTKICH niezgodności, brakujących danych lub błędów faktycznych.
-
-Sprawdź dokładnie:
-1. SYGNATURY AKT — czy są identyczne z dokumentem źródłowym?
-2. IMIONA I NAZWISKA — czy wszystkie osoby są wymienione z poprawnymi danymi?
-3. NUMERY PESEL, NIP, KRS — czy są obecne i poprawne?
-4. DATY — czy daty wyroków, pism, terminów zgadzają się z oryginałem?
-5. KWOTY — czy wartości finansowe, odsetki, koszty sądowe są poprawne?
-6. NAZWY INSTYTUCJI — czy sądy, organy, kancelarie są poprawnie nazwane?
-7. PLACEHOLDERY — czy gdzieś zostały nawiasy kwadratowe [xxx] zamiast danych?
-
-Odpowiedz w formacie:
-✅ CO JEST POPRAWNE (lista)
-⚠️ BRAKUJĄCE LUB NIEPEWNE DANE (lista z sugestią uzupełnienia)
-❌ BŁĘDY FAKTYCZNE (lista — jeśli są)
-📋 DANE DO WSTAWIENIA RĘCZNIE (kompletna lista wszystkich danych których nie było w dokumentach)
-"""
+                if not analysis_result or len(analysis_result) < 50:
+                    st.error(f"Generator nie zwrócił wyników: {analysis_result}")
+                else:
+                    st.markdown("### 📝 Wygenerowane Pismo Prawne")
+                    st.markdown(
+                        f"<div class='custom-card' style='border-left: 4px solid #7C3AED;"
+                        f"white-space: pre-wrap; font-family: Georgia, serif; line-height: 1.8;'>"
+                        f"{analysis_result}</div>",
+                        unsafe_allow_html=True
+                    )
+            
+            # =====================================================
+            # KROK 3: WERYFIKACJA KRZYŻOWA (Flash)
+            # =====================================================
+            if analysis_result and len(analysis_result) > 50:
+                with st.spinner("🔍 Krok 3/3 — Weryfikator audytuje dane wrażliwe..."):
+                    verify_sys = """Jesteś audytorem prawnym. Porównaj wygenerowane pismo z dokumentami źródłowymi.
+Sprawdź KAŻDĄ daną: sygnatury, PESEL, nazwiska, daty, kwoty, nazwy sądów.
+Format odpowiedzi:
+✅ CO JEST POPRAWNE
+⚠️ BRAKUJĄCE LUB NIEPEWNE DANE
+❌ BŁĘDY FAKTYCZNE
+📋 DO UZUPEŁNIENIA RĘCZNIE"""
                     
-                    verify_prompt = f"""PORÓWNAJ wygenerowane pismo z dokumentami źródłowymi:
+                    verify_prompt = f"""DOKUMENTY ŹRÓDŁOWE:
+{chr(10).join(file_texts)[:5000] if file_texts else contract_text[:3000] if contract_text else "(brak)"}
 
-=== DOKUMENTY ŹRÓDŁOWE ===
-{chr(10).join(file_texts) if file_texts else contract_text if contract_text else '(brak dokumentów — tylko tekst użytkownika)'}
+WYGENEROWANE PISMO:
+{analysis_result[:4000]}
 
-=== WYGENEROWANE PISMO ===
-{analysis_result}
-
-Przeprowadź szczegółowy audyt krzyżowy i wskaż wszystkie rozbieżności."""
+Przeprowadź audyt krzyżowy."""
                     
-                    verify_messages = [{"role": "user", "content": verify_prompt}]
-                    verification_result = call_gemini_api(verify_messages, verify_system)
+                    verification_result = call_gemini_api([{"role": "user", "content": verify_prompt}], verify_sys)
                     
-                    # Kolorowe karty wyników weryfikacji
                     has_errors = "❌" in verification_result
                     has_warnings = "⚠️" in verification_result
                     card_color = "#EF4444" if has_errors else ("#F59E0B" if has_warnings else "#10B981")
-                    card_icon = "❌ Wykryto błędy" if has_errors else ("⚠️ Wymaga uwagi" if has_warnings else "✅ Wszystko zgodne")
+                    card_label = "❌ Wykryto błędy" if has_errors else ("⚠️ Wymaga uwagi" if has_warnings else "✅ Wszystko zgodne")
                     
                     st.markdown(f"""
                     <div class='custom-card' style='border-left: 4px solid {card_color};'>
-                        <h4 style='margin: 0 0 10px; color: {card_color};'>🔍 Raport Audytu: {card_icon}</h4>
-                        <div style='white-space: pre-wrap; font-size: 0.95rem;'>{verification_result}</div>
+                        <h4 style='margin: 0 0 10px; color: {card_color};'>🔍 Raport Audytu: {card_label}</h4>
+                        <div style='white-space: pre-wrap; font-size: 0.9rem;'>{verification_result}</div>
                     </div>
                     """, unsafe_allow_html=True)
                 
+                # =====================================================
+                # KROK 4: POBIERZ DOCX (prawidłowe formatowanie PL)
+                # =====================================================
+                st.markdown("---")
+                st.markdown("### 📥 Pobierz Dokument")
+                dl_col1, dl_col2 = st.columns(2)
+                
+                try:
+                    try:
+                        from docx import Document as DocxDoc
+                        from docx.shared import Pt, Cm
+                        from docx.enum.text import WD_ALIGN_PARAGRAPH
+                        from docx.oxml.ns import qn
+                    except ImportError:
+                        import subprocess, sys as _sys2
+                        subprocess.run([_sys2.executable, "-m", "pip", "install", "python-docx"], capture_output=True)
+                        from docx import Document as DocxDoc
+                        from docx.shared import Pt, Cm
+                        from docx.enum.text import WD_ALIGN_PARAGRAPH
+                        from docx.oxml.ns import qn
+                    
+                    import io as _io2, re as _re2
+                    
+                    doc = DocxDoc()
+                    sec = doc.sections[0]
+                    sec.page_width = Cm(21.0)
+                    sec.page_height = Cm(29.7)
+                    sec.left_margin = Cm(2.5)
+                    sec.right_margin = Cm(1.5)
+                    sec.top_margin = Cm(2.5)
+                    sec.bottom_margin = Cm(2.0)
+                    
+                    doc.styles['Normal'].font.name = 'Times New Roman'
+                    doc.styles['Normal'].font.size = Pt(12)
+                    
+                    # Tytuł centralny
+                    title_p = doc.add_paragraph()
+                    title_p.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    tr = title_p.add_run(doc_type.split(' ', 1)[-1] if ' ' in doc_type else doc_type)
+                    tr.bold = True; tr.font.size = Pt(14)
+                    doc.add_paragraph()
+                    
+                    # Dane stron — tabela 2-kol
+                    sp_d = extracted_data_json.get("strona_powodowa") or {}
+                    sz_d = extracted_data_json.get("strona_pozwana") or {}
+                    sad_n = extracted_data_json.get("sad_nazwa") or extracted_data_json.get("sad_organ") or ""
+                    sad_a = extracted_data_json.get("sad_adres") or ""
+                    syg   = extracted_data_json.get("sygnatura_akt") or ""
+                    
+                    tbl = doc.add_table(rows=1, cols=2)
+                    tbl.autofit = False
+                    tbl.columns[0].width = Cm(9)
+                    tbl.columns[1].width = Cm(9)
+                    
+                    # Usuń obramowania
+                    for cell in tbl.rows[0].cells:
+                        try:
+                            tcPr = cell._tc.get_or_add_tcPr()
+                            tcB  = tcPr.get_or_add_tcBorders()
+                            import lxml.etree as _lx
+                            for side in ['top','left','bottom','right','insideH','insideV']:
+                                el = _lx.SubElement(tcB, qn(f'w:{side}'))
+                                el.set(qn('w:val'), 'none')
+                        except Exception:
+                            pass
+                    
+                    # Lewa kol — nadawca
+                    lc = tbl.rows[0].cells[0]
+                    lc.paragraphs[0].clear()
+                    if sp_d.get("imie_nazwisko"):
+                        lr = lc.paragraphs[0].add_run(sp_d["imie_nazwisko"])
+                        lr.bold = True
+                        if sp_d.get("adres"):    lc.add_paragraph(sp_d["adres"])
+                        if sp_d.get("pesel"):    lc.add_paragraph(f"PESEL: {sp_d['pesel']}")
+                        if sp_d.get("nip"):      lc.add_paragraph(f"NIP: {sp_d['nip']}")
+                    else:
+                        lc.paragraphs[0].add_run("[Nadawca / Powód]")
+                    
+                    # Prawa kol — sąd + sygnatura
+                    rc = tbl.rows[0].cells[1]
+                    rc.paragraphs[0].clear()
+                    if sad_n:
+                        rr = rc.paragraphs[0].add_run(sad_n); rr.bold = True
+                    else:
+                        rc.paragraphs[0].add_run("[Sąd / Organ]")
+                    if sad_a: rc.add_paragraph(sad_a)
+                    if syg:
+                        sp_p = rc.add_paragraph(f"Sygn. akt: {syg}")
+                        if sp_p.runs: sp_p.runs[0].bold = True
+                    
+                    doc.add_paragraph()
+                    
+                    # Pozwany/strona przeciwna
+                    if sz_d.get("imie_nazwisko"):
+                        opp = doc.add_paragraph()
+                        opp.add_run("Pozwany/Strona przeciwna: ").bold = True
+                        opp.add_run(sz_d["imie_nazwisko"])
+                        if sz_d.get("adres"): doc.add_paragraph(sz_d["adres"])
+                    
+                    doc.add_paragraph()
+                    
+                    # Treść pisma
+                    lines = analysis_result.split("\n")
+                    for line in lines:
+                        line = line.strip()
+                        if not line:
+                            doc.add_paragraph(); continue
+                        if line.startswith("### "):
+                            h = doc.add_paragraph(line[4:])
+                            h.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                            if h.runs: h.runs[0].bold = True; h.runs[0].font.size = Pt(12)
+                        elif line.startswith("## "):
+                            h = doc.add_paragraph(line[3:])
+                            h.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                            if h.runs: h.runs[0].bold = True; h.runs[0].font.size = Pt(13)
+                        elif line.startswith("# "):
+                            h = doc.add_paragraph(line[2:])
+                            h.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                            if h.runs: h.runs[0].bold = True; h.runs[0].font.size = Pt(14)
+                        elif line.startswith("- ") or line.startswith("• "):
+                            bp = doc.add_paragraph(line[2:], style='List Bullet')
+                            bp.paragraph_format.left_indent = Cm(0.5)
+                        else:
+                            clean = _re2.sub(r'\*\*(.*?)\*\*', r'\1', line)
+                            clean = _re2.sub(r'\*(.*?)\*', r'\1', clean)
+                            clean = _re2.sub(r'`(.*?)`', r'\1', clean)
+                            p = doc.add_paragraph(clean)
+                            p.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+                            p.paragraph_format.first_line_indent = Cm(1.0)
+                    
+                    doc.add_paragraph()
+                    fp = doc.add_paragraph(f"Wygenerowano: {time.strftime('%d.%m.%Y')}")
+                    fp.alignment = WD_ALIGN_PARAGRAPH.RIGHT
+                    
+                    buf = _io2.BytesIO()
+                    doc.save(buf); buf.seek(0)
+                    
+                    dl_col1.download_button(
+                        label="📄 Pobierz jako DOCX",
+                        data=buf.getvalue(),
+                        file_name=f"Pismo_Prawne_{int(time.time())}.docx",
+                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                        type="primary"
+                    )
+                except Exception as docx_err:
+                    dl_col1.error(f"Błąd DOCX: {docx_err}")
+                
+                dl_col2.download_button(
+                    label="📋 Pobierz jako TXT",
+                    data=analysis_result.encode("utf-8"),
+                    file_name=f"Pismo_Prawne_{int(time.time())}.txt",
+                    mime="text/plain"
+                )
+                
                 if obsidian_export:
                     note_name = f"Dokument_Prawny_{int(time.time())}.md"
-                    obsidian_path = os.path.join(OBSIDIAN_DIR, note_name)
                     try:
-                        with open(obsidian_path, "w", encoding="utf-8") as f:
-                            f.write(f"# Projekt Prawny: {doc_type}\n\nData: {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n## Wygenerowane Pismo\n\n{analysis_result}\n\n---\n\n## Raport Weryfikacji\n\n{verification_result}")
-                        st.success(f"Dokument + raport weryfikacji wyeksportowane do Obsidian jako `{note_name}`!")
+                        import json as _json4
+                        with open(os.path.join(OBSIDIAN_DIR, note_name), "w", encoding="utf-8") as f:
+                            f.write(f"# {doc_type}\n\nData: {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+                            if extracted_data_json:
+                                f.write(f"## Dane Sprawy\n```json\n{_json4.dumps(extracted_data_json, ensure_ascii=False, indent=2)}\n```\n\n")
+                            f.write(f"## Wygenerowane Pismo\n\n{analysis_result}\n\n---\n\n")
+                            if verification_result:
+                                f.write(f"## Raport Weryfikacji\n\n{verification_result}")
+                        st.success(f"📚 Wyeksportowano do Obsidian: `{note_name}`")
                     except Exception as ex:
-                        st.error(f"Nie udało się zapisać pliku w Obsidian Vault: {ex}")
+                        st.error(f"Eksport Obsidian: {ex}")
         else:
-            st.warning("Uzupełnij polecenie, wklej tekst lub załącz plik, aby uruchomić generator.")
+            st.warning("⚠️ Uzupełnij polecenie, wklej tekst lub załącz plik.")
+
 
 # 8. KANCELARIA FINANSOWA & KSeF
 elif menu == "💰 Kancelaria Finansowa & KSeF":
