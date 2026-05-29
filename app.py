@@ -291,6 +291,78 @@ def call_gemini_api(messages, system_instruction=None):
             
     return "Błąd: Brak połączenia z lokalnym proxy i brak poprawnego klucza Service Account."
 
+def call_gemini_pro_api(messages, system_instruction=None):
+    """Dedykowana funkcja dla modelu Gemini 2.5 Pro — używana w Dziale Prawnym i Finansowym.
+    Pro jest droższy (~17x) ale znacznie lepszy w analizie dokumentów, wyciąganiu danych
+    i logice prawnej. Używamy go tylko tam gdzie jakość jest krytyczna."""
+    proxy_url = "http://127.0.0.1:8089/v1/chat/completions"
+    payload = {
+        "model": "gemini-2.5-pro",
+        "messages": []
+    }
+    if system_instruction:
+        payload["messages"].append({"role": "system", "content": system_instruction})
+    payload["messages"].extend(messages)
+
+    # 1. Przez lokalny proxy
+    try:
+        response = http_post(proxy_url, json_data=payload, timeout=60.0)
+        if response.status_code == 200:
+            res_data = response.json()
+            return res_data["choices"][0]["message"]["content"]
+    except Exception:
+        pass
+
+    # 2. Bezpośredni Vertex AI
+    sa_paths = [
+        os.path.expanduser("~/.hermes/gcp-sa-key.json"),
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "holistic-dashboard-dev-dea2c872139e.json"),
+        "holistic-dashboard-dev-dea2c872139e.json"
+    ]
+    sa_path = None
+    for p in sa_paths:
+        if os.path.exists(p):
+            sa_path = p
+            break
+
+    if sa_path:
+        try:
+            from google.oauth2 import service_account
+            import google.auth.transport.requests
+            creds = service_account.Credentials.from_service_account_file(
+                sa_path,
+                scopes=['https://www.googleapis.com/auth/cloud-platform']
+            )
+            request = google.auth.transport.requests.Request()
+            creds.refresh(request)
+            token = creds.token
+
+            project_id = "holistic-dashboard-dev"
+            region = "us-central1"
+            direct_url = f"https://{region}-aiplatform.googleapis.com/v1/projects/{project_id}/locations/{region}/endpoints/openapi/chat/completions"
+
+            headers = {
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json"
+            }
+            direct_payload = {
+                "model": "google/gemini-2.5-pro",
+                "messages": []
+            }
+            if system_instruction:
+                direct_payload["messages"].append({"role": "system", "content": system_instruction})
+            direct_payload["messages"].extend(messages)
+
+            resp = http_post(direct_url, json_data=direct_payload, headers=headers, timeout=60.0)
+            if resp.status_code == 200:
+                res_data = resp.json()
+                return res_data["choices"][0]["message"]["content"]
+        except Exception as ex:
+            pass
+
+    # 3. Fallback do Flash jeśli Pro niedostępny
+    return call_gemini_api(messages, system_instruction)
+
 class WebhookHandler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass
@@ -1242,6 +1314,7 @@ Użyj WYCIĄGNIĘTYCH danych bezpośrednio w piśmie. NIE używaj placeholderów
                 
                 messages = []
                 if image_data_urls:
+                    # Multimodal (skany/zdjęcia) — Pro obsługuje obrazy przez Vertex AI
                     content_list = [{"type": "text", "text": enhanced_prompt}]
                     for img in image_data_urls:
                         content_list.append({
@@ -1249,10 +1322,12 @@ Użyj WYCIĄGNIĘTYCH danych bezpośrednio w piśmie. NIE używaj placeholderów
                             "image_url": {"url": img["data_url"]}
                         })
                     messages.append({"role": "user", "content": content_list})
-                    analysis_result = call_gemini_api(messages, system_instruction)
+                    # Pro dla skanów — lepsze OCR i analiza kontekstowa
+                    analysis_result = call_gemini_pro_api(messages, system_instruction)
                 else:
                     messages.append({"role": "user", "content": enhanced_prompt})
-                    analysis_result = call_vllm_api(messages, system_instruction)
+                    # Pro dla tekstu/PDF — lepsza analiza prawna i ekstrakcja danych
+                    analysis_result = call_gemini_pro_api(messages, system_instruction)
                 
                 st.markdown("### 📝 Wygenerowany Projekt Pisma Prawnego")
                 st.markdown(f"<div class='custom-card' style='border-left: 4px solid #EF4444; white-space: pre-wrap;'>{analysis_result}</div>", unsafe_allow_html=True)
