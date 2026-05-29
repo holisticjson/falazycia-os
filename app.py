@@ -508,7 +508,7 @@ if "pomodoro_active" not in st.session_state:
 # PASEK BOCZNY - Skrajnie estetyczny z ikonami
 with st.sidebar:
     st.markdown("<h2 style='text-align: center; color: #7C3AED; font-family: Outfit;'>🧠 Holistic OS</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.9rem;'>Zewnętrzny Płat Czołowy v6.0</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.9rem;'>Bezszumne Centrum Dowodzenia v6.0</p>", unsafe_allow_html=True)
     st.markdown("---")
     
     menu = st.radio(
@@ -566,7 +566,7 @@ if menu == "🎯 Mission Control":
 # 2. BRAIN DUMP & CACHE
 elif menu == "🗑️ Brain Dump & Cache":
     st.title("🗑️ Brain Dump & Open Loops Cache")
-    st.subheader("Zewnętrzny płat czołowy — uwalnianie pamięci roboczej")
+    st.subheader("Twój mentalny odciążyciel — bezszumne uwalnianie pamięci roboczej")
     
     col_in, col_st = st.columns([1, 1])
     
@@ -759,7 +759,7 @@ elif menu == "💼 ADHD CRM & Lejek":
         <h3 style="margin-top: 0; color: #7C3AED;">💼 Dlaczego ten CRM jest inny niż GHL?</h3>
         <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
             Tradycyjne CRM-y bombardują Cię powiadomieniami, kolorowymi etykietami i dziesiątkami zawiłych opcji, wywołując u osób neuroatypowych paraliż i chęć ucieczki. 
-            Nasza wersja to <strong>Zewnętrzny Płat Czołowy</strong>: tylko 3 przejrzyste etapy, zero migających czerwonych kropek i wbudowany wirtualny zespół C-Suite gotowy do natychmiastowego doradztwa przy każdym kliencie.
+            Nasza wersja to <strong>Twój osobisty asystent ADHD Flow</strong>: tylko 3 przejrzyste etapy, zero migających czerwonych kropek i wbudowany wirtualny zespół C-Suite gotowy do natychmiastowego doradztwa przy każdym kliencie.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -1093,7 +1093,7 @@ elif menu == "📋 ADHD Kanban":
                 st.rerun()
                 
     with col3:
-        st.markdown("###  Zrobione")
+        st.markdown("### ✅ Zrobione")
         for i, t in enumerate(k["done"]):
             st.markdown(f"<div class='custom-card' style='border-left: 4px solid #10B981; opacity: 0.7;'>{t}</div>", unsafe_allow_html=True)
         if k["done"] and st.button("Wyczyść ukończone"):
@@ -1103,63 +1103,146 @@ elif menu == "📋 ADHD Kanban":
 
 # 7. DZIAŁ PRAWNY & KANCELARIA
 elif menu == "💼 Dział Prawny & Kancelaria":
-    st.title("💼 Dział Prawny & Analiza Kontraktów")
-    st.subheader("Głęboka analiza długiego kontekstu zasilana przez serwer vLLM GPU")
+    st.title("💼 Dział Prawny — Twoja Holistyczna Tarcza")
+    st.subheader("Automatyczne generowanie pism i audyt zasilany przez AI")
     
     st.markdown("""
     <div class="one-thing-banner" style="border-left-color: #EF4444;">
-        <h3 style="margin-top: 0; color: #EF4444;">⚖️ Zewnętrzny Płat Czołowy do Spraw Prawnych</h3>
+        <h3 style="margin-top: 0; color: #EF4444;">⚖️ Holistyczny Obrońca Prawny</h3>
         <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
-            Wklej treść umowy handlowej, regulaminu lub kontraktu NDA. Zdalny serwer GPU przy użyciu modelu o długim kontekście (128k tokenów) przeanalizuje cały dokument w sekundy, wykrywając jednostronne ryzyka, klauzule abuzywne i ukryte haczyki prawne.
+            Masz na głowie trudne pismo, wezwanie do zapłaty albo umowę napisaną prawniczym żargonem? Wrzuć plik (PDF, skan, obrazek) lub wklej tekst i napisz prostym językiem, o co chodzi.
+            Nasz asystent w tle rozbuduje Twoje polecenie, przeanalizuje szczegóły i przygotuje kompletny, profesjonalny projekt gotowego pisma procesowego, umowy lub odpowiedzi. Bez stresu i bez paraliżu ADHD.
         </p>
     </div>
     """, unsafe_allow_html=True)
     
-    contract_text = st.text_area("Wklej tutaj pełną treść dokumentu prawnego:", height=250)
+    uploaded_legal_file = st.file_uploader("Załącz dokument (Plik PDF, skan, obrazek lub zdjęcie):", type=["pdf", "png", "jpg", "jpeg"])
+    contract_text = st.text_area("Lub wklej tutaj treść dokumentu / notatek (opcjonalnie):", height=150)
+    user_instruction = st.text_input("Twoje polecenie (krótko, po ludzku - AI rozbuduje je w tle i podbije prompt):", placeholder="np. Napisz odpowiedź na to wezwanie, nie zgadzam się z kwotą kary bo opóźnienie było z ich winy i zrób z tego oficjalne pismo")
     
     c_col1, c_col2 = st.columns([1, 1])
     
     with c_col1:
-        template = st.selectbox("Szablon analizy prawnej:", [
-            "🔍 Wykrywanie haczyków i jednostronnych ryzyk (Sugerowane)",
-            "📋 Zsumowanie kluczowych obowiązków i kar umownych",
-            "🛡️ Sprawdzenie zgodności NDA z prawem ochrony tajemnicy",
-            "✍️ Generowanie uwag i poprawek (Redline recommendations)"
+        doc_type = st.selectbox("Co chcesz uzyskać (Typ dokumentu docelowego):", [
+            "📩 Oficjalne wezwanie do zapłaty / wykonania umowy",
+            "⚖️ Gotowe pismo procesowe do sądu (pozew, odpowiedź na pozew, sprzeciw od nakazu)",
+            "✍️ Profesjonalny projekt umowy / aneksu / NDA",
+            "🛡️ Gotowa odpowiedź na wezwanie / pismo przeciwnika",
+            "🔍 Głęboka analiza prawna i audyt ryzyk (Wykrywanie haczyków)"
         ])
         
     with c_col2:
-        obsidian_export = st.checkbox("Automatycznie wyeksportuj raport do Obsidian Vault", value=True)
+        obsidian_export = st.checkbox("Automatycznie wyeksportuj wynik do Obsidian Vault", value=True)
         
-    if st.button("Uruchom Głębokie Badanie Prawne (vLLM)", type="primary"):
-        if contract_text:
-            with st.spinner("Model Mistral-Nemo na zdalnym GPU L4 analizuje strukturę dokumentu..."):
-                system_instruction = """Jesteś ekspertem prawnym, doradcą Tomasza Dudy (architekta systemów). Twój styl analizy jest zwięzły, konkretny, strukturalny i całkowicie wolny od prawniczego lania wody.
-Zwracasz uwagę na ukryte ryzyka, niesymetryczne kary umowne, jednostronne przywileje wypowiedzenia i klauzule abuzywne.
-Twoje odpowiedzi muszą być podzielone na czytelne, krótkie sekcje z wizualnymi akcentami (np. czerwone/zielone kropki). Podsumuj JEDNYM konkretnym zdaniem, czy Tomasz powinien podpisać tę umowę w obecnym brzmieniu, czy renegocjować.
+    if st.button("Uruchom Generator Prawny AI", type="primary"):
+        # Sprawdzamy czy użytkownik dał jakiekolwiek wejście
+        if contract_text or uploaded_legal_file is not None or user_instruction:
+            file_text = ""
+            image_data_url = None
+            
+            if uploaded_legal_file is not None:
+                file_bytes = uploaded_legal_file.read()
+                file_name = uploaded_legal_file.name.lower()
+                
+                if file_name.endswith(".pdf"):
+                    with st.spinner("Odczytywanie pliku PDF..."):
+                        try:
+                            try:
+                                import pypdf
+                            except ImportError:
+                                import subprocess, sys
+                                subprocess.run([sys.executable, "-m", "pip", "install", "pypdf"])
+                                import pypdf
+                            
+                            import io
+                            reader = pypdf.PdfReader(io.BytesIO(file_bytes))
+                            extracted_pages = []
+                            for idx, page in enumerate(reader.pages):
+                                t = page.extract_text()
+                                if t:
+                                    extracted_pages.append(t)
+                            file_text = "\n--- STRONA ---\n".join(extracted_pages)
+                            st.success(f"Pomyślnie odczytano PDF ({len(reader.pages)} stron).")
+                        except Exception as e:
+                            st.error(f"Błąd odczytu PDF: {e}")
+                elif file_name.endswith((".png", ".jpg", ".jpeg")):
+                    import base64
+                    mime_type = "image/png" if file_name.endswith(".png") else "image/jpeg"
+                    encoded = base64.b64encode(file_bytes).decode("utf-8")
+                    image_data_url = f"data:{mime_type};base64,{encoded}"
+                    st.success("Obraz został załączony jako skan do analizy wizualnej AI.")
+            
+            with st.spinner("Twój wirtualny radca prawny analizuje sprawę i buduje dokument..."):
+                system_instruction = """Jesteś elitarnym polskim adwokatem i radcą prawnym z wieloletnim doświadczeniem. Twój styl pisania jest rygorystyczny, precyzyjny, wysoce profesjonalny i całkowicie wolny od lania wody.
+Tomasz Duda (architekt systemów AI dla neuroatypowych, Holistic AIDHD) zlecił Ci zadanie. Użytkownik podał krótkie instrukcje, które masz w tle rozbudować, podbić do profesjonalnego poziomu prawnego i przygotować kompletny projekt dokumentu.
+
+Zasady:
+1. Pisz wyłącznie w języku polskim.
+2. Zastosuj oficjalny, uroczysty i kategoryczny ton prawniczy (np. 'W imieniu mojego Mocodawcy...', 'Niniejszym działając w imieniu...', 'Wzywam do...').
+3. Jeśli generujesz pismo procesowe lub wezwanie, dodaj wszystkie standardowe sekcje formalne:
+   - Miejscowość i data (np. '[Miejscowość], dnia [Data]')
+   - Oznaczenie stron (Powód/Pozwany lub Wierzyciel/Dłużnik, Wzywający/Wezwany) jako '[Imię i Nazwisko / Nazwa Firmy], [Adres], [NIP/PESEL]'
+   - Sygnatura akt (jeśli dotyczy, np. 'Sygn. akt [Sygnatura]')
+   - Tytuł pisma (np. 'WEZWANIE DO ZAPŁATY', 'ODPOWIEDŹ NA WEZWANIE', 'SPRZECIW OD NAKAZU ZAPŁATY')
+   - Treść żądania (osnowa) z powołaniem się na odpowiednie przepisy prawa (np. Kodeks Cywilny, Kodeks Postępowania Cywilnego)
+   - Uzasadnienie prawne i faktyczne (dokładne wykazanie racji, analizując stan faktyczny)
+   - Podpis (np. '[Podpis / Tomasz Duda]')
+4. Użyj nawiasów kwadratowych dla danych zmiennych (np. '[Data]', '[Wpisz Kwotę]'), aby użytkownik mógł łatwo skopiować dokument i go uzupełnić.
+5. Jeśli załączono umowę lub pismo, przeanalizuj je wnikliwie. Znajdź w nim słabe punkty drugiej strony, które możesz wykorzystać na korzyść Tomasza.
 """
                 
-                user_prompt = f"""Dokonaj analizy prawnej poniższego dokumentu na podstawie wybranego szablonu: "{template}".
-Dokument:
-{contract_text[:60000]}
+                # Budowanie ulepszonego prompta (Prompt Engineering w tle)
+                enhanced_prompt = f"""### ZADANIE SPECJALNE: Profesjonalne Generowanie Dokumentu Prawnego
+Typ dokumentu docelowego: {doc_type}
+Krótkie polecenie użytkownika (podbij je i rozbuduj w tle): "{user_instruction if user_instruction else 'Dokonaj analizy i przygotuj pismo zabezpieczające interesy'}"
 
-Odpowiedz bezpośrednio, po polsku, wskazując konkretne numery paragrafów i proponując poprawki."""
+---
+### STAN FAKTYCZNY I DANE WEJŚCIOWE:
+"""
+                if file_text:
+                    enhanced_prompt += f"\n[Treść odczytana z pliku PDF]:\n{file_text[:35000]}\n"
+                if contract_text:
+                    enhanced_prompt += f"\n[Tekst wklejony ręcznie]:\n{contract_text}\n"
                 
-                analysis_result = call_vllm_api([{"role": "user", "content": user_prompt}], system_instruction)
+                enhanced_prompt += """
+---
+### WYMAGANIA DOTYCZĄCE IMPLEMENTACJI:
+1. Rozbuduj proste polecenie użytkownika do pełnego, oficjalnego stanowiska prawnego.
+2. Zaimplementuj najsilniejsze możliwe argumenty prawne na podstawie polskiego prawa.
+3. Wygeneruj KOMPLETNY, GOTOWY projekt dokumentu (nie pisz ogólnych porad ani planów - napisz pełne pismo od nagłówka do stopki).
+4. Przedstaw wynik jako gotowy tekst do skopiowania, sformatowany estetycznie w Markdown.
+"""
                 
-                st.markdown("### 📝 Wynik Analizy Kancelarii Prawnej")
+                messages = []
+                if image_data_url:
+                    messages.append({
+                        "role": "user",
+                        "content": [
+                            {"type": "text", "text": enhanced_prompt},
+                            {"type": "image_url", "image_url": {"url": image_data_url}}
+                        ]
+                    })
+                    # Jeśli jest zdjęcie, przekazujemy bezpośrednio do Gemini (bo to model multimodalny)
+                    analysis_result = call_gemini_api(messages, system_instruction)
+                else:
+                    messages.append({"role": "user", "content": enhanced_prompt})
+                    # Jeśli sam tekst, leci do vLLM z fallbackiem do Gemini
+                    analysis_result = call_vllm_api(messages, system_instruction)
+                
+                st.markdown("### 📝 Przygotowany Projekt Dokumentu Prawnego (AI Redaktor)")
                 st.markdown(f"<div class='custom-card' style='border-left: 4px solid #EF4444; white-space: pre-wrap;'>{analysis_result}</div>", unsafe_allow_html=True)
                 
                 if obsidian_export:
-                    note_name = f"Raport_Prawny_{int(time.time())}.md"
+                    note_name = f"Dokument_Prawny_{int(time.time())}.md"
                     obsidian_path = os.path.join(OBSIDIAN_DIR, note_name)
                     try:
                         with open(obsidian_path, "w", encoding="utf-8") as f:
-                            f.write(f"# Raport Prawny: {template}\n\nData: {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n{analysis_result}")
-                        st.success(f"Raport pomyślnie wyeksportowany do Skarbca Obsidian jako `{note_name}`!")
+                            f.write(f"# Projekt Prawny: {doc_type}\n\nData: {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n{analysis_result}")
+                        st.success(f"Dokument pomyślnie wyeksportowany do Skarbca Obsidian jako `{note_name}`!")
                     except Exception as ex:
                         st.error(f"Nie udało się zapisać pliku w Obsidian Vault: {ex}")
         else:
-            st.warning("Wklej treść umowy przed uruchomieniem analizy.")
+            st.warning("Uzupełnij polecenie, wklej tekst lub załącz plik, aby uruchomić generator.")
 
 # 8. KANCELARIA FINANSOWA & KSeF
 elif menu == "💰 Kancelaria Finansowa & KSeF":
