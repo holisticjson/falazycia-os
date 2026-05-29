@@ -1237,41 +1237,29 @@ elif menu == "💼 Dział Prawny & Kancelaria":
                                         raw_pages.append(t)
                                 raw_text = "\n".join(raw_pages)
                                 
-                                # Jeśli tekst zbyt krotki — prawdopodobnie skan, użyj Gemini Vision OCR
+                                # Jeśli tekst zbyt krótki — skan. Gemini czyta PDF natywnie (1 wywołanie!)
                                 if len(raw_text.strip()) < 150:
-                                    st.warning(f"⚠️ PDF wygląda na skan (brak warstwy tekstowej). Uruchamiam OCR przez Gemini Vision...")
-                                    try:
-                                        import fitz
-                                    except ImportError:
-                                        import subprocess, sys
-                                        subprocess.run([sys.executable, "-m", "pip", "install", "pymupdf"], capture_output=True)
-                                        import fitz
-                                    
-                                    pdf_doc = fitz.open(stream=file_bytes, filetype="pdf")
-                                    ocr_texts = []
-                                    for pn in range(min(len(pdf_doc), 10)):
-                                        pg = pdf_doc[pn]
-                                        mat = fitz.Matrix(2.0, 2.0)
-                                        pix = pg.get_pixmap(matrix=mat)
-                                        img_bytes_pg = pix.tobytes("png")
-                                        enc_pg = _b64.b64encode(img_bytes_pg).decode("utf-8")
-                                        ocr_sys = "Jesteś systemem OCR dla dokumentów prawnych. Przepisz DOKŁADNIE każdy znak widoczny na stronie. Zachowaj daty, numery, PESELe, sygnatury w oryginalnej formie. Odpowiedz tylko tekstem strony."
-                                        ocr_result = call_gemini_api(
-                                            [{"role": "user", "content": [
-                                                {"type": "text", "text": f"Przepisz dokładnie tekst ze strony {pn+1}/{len(pdf_doc)} tego dokumentu prawnego:"},
-                                                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{enc_pg}"}}
-                                            ]}],
-                                            ocr_sys
-                                        )
-                                        ocr_texts.append(f"[Strona {pn+1}]\n{ocr_result}")
-                                    raw_text = "\n\n".join(ocr_texts)
-                                    st.success(f"✅ OCR przez Gemini Vision: {len(pdf_doc)} stron przepisanych")
+                                    st.warning(f"⚠️ PDF wygląda na skan. Gemini Native PDF Reader w toku...")
+                                    encoded_pdf = _b64.b64encode(file_bytes).decode("utf-8")
+                                    ocr_sys = """Jesteś systemem OCR dla dokumentów prawnych.
+Przepisz DOKŁADNIE cały tekst z tego PDF — każdą stronę od początku do końca.
+Zachowaj: daty, PESEL, sygnatury akt, adresy, kwoty, nazwy sądów — dokładnie jak w oryginale.
+Nie parafrazuj ani nie skracaj. Odpowiedz samym tekstem dokumentu."""
+                                    raw_text = call_gemini_pro_api(
+                                        [{"role": "user", "content": [
+                                            {"type": "text", "text": f"Przepisz dokładnie cały tekst z tego {len(reader.pages)}-stronicowego dokumentu prawnego ({uploaded_file.name}):"},
+                                            {"type": "image_url", "image_url": {"url": f"data:application/pdf;base64,{encoded_pdf}"}}
+                                        ]}],
+                                        ocr_sys
+                                    )
+                                    st.success(f"✅ Gemini Native PDF OCR: {len(reader.pages)} stron odczytanych w 1 wywołaniu")
                                 else:
-                                    st.success(f"✅ PDF odczytany: {len(reader.pages)} stron, {len(raw_text)} znaków")
+                                    st.success(f"✅ PDF odczytany tekstowo: {len(reader.pages)} stron, {len(raw_text)} znaków")
                                 
                                 file_texts.append(f"--- DOKUMENT: {uploaded_file.name} ---\n{raw_text}")
                             except Exception as e:
                                 st.error(f"Błąd odczytu PDF {uploaded_file.name}: {e}")
+
                     
                     elif file_name.endswith((".png", ".jpg", ".jpeg")):
                         import base64 as _b64
