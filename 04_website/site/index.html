@@ -415,12 +415,111 @@
 
             <!-- Right: Form -->
             <div style="flex: 1; min-width: 340px;">
-              <div class="glass-card" style="padding: 40px; background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); text-align: center;">
-                <h3 style="color: var(--white); margin-bottom: 20px; font-size: 1.3rem;">Bezpłatna Diagnoza Potencjału AI</h3>
-                <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px;">Zanim się zdzwonimy, wypełnij krótką ankietę kwalifikacyjną. To pozwoli mi przygotować się do rozmowy i oszczędzi nasz czas.</p>
-                <a href="https://api.leadconnectorhq.com/widget/survey/DCUnoNZlL4WYar9HHUDt" target="_blank" class="btn-primary" style="display: block; width: 100%; font-size: 1.1rem; padding: 18px 0;">Przejdź do Diagnozy ➔</a>
+              <div class="glass-card" id="contact-container" style="padding: 40px; background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1); text-align: left; border-radius: 12px; box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);">
+                <h3 style="color: var(--white); margin-bottom: 10px; font-size: 1.5rem; font-family: 'Outfit', sans-serif; font-weight: 600; text-align: center;">Diagnoza Potencjału AI</h3>
+                <p style="color: rgba(255,255,255,0.7); margin-bottom: 25px; font-size: 0.95rem; text-align: center; line-height: 1.5;">Opisz krótko swój chaos operacyjny, a wirtualny zarząd złoży dla Ciebie dedykowaną Mapę Drogową automatyzacji.</p>
+                
+                <form id="adhd-crm-form" style="display: flex; flex-direction: column; gap: 15px;">
+                  <div>
+                    <label for="client-name" style="display: block; color: rgba(255,255,255,0.8); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600;">Twoje Imię / Nazwa Firmy</label>
+                    <input type="text" id="client-name" name="name" required placeholder="np. Marek Kowalski (Biuro Meble)" style="width: 100%; padding: 12px 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+                  </div>
+                  
+                  <div>
+                    <label for="client-email" style="display: block; color: rgba(255,255,255,0.8); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600;">Adres E-mail</label>
+                    <input type="email" id="client-email" name="email" required placeholder="np. marek@biuro.pl" style="width: 100%; padding: 12px 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+                  </div>
+                  
+                  <div>
+                    <label for="client-notes" style="display: block; color: rgba(255,255,255,0.8); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600;">Ból operacyjny / Co chcesz zautomatyzować?</label>
+                    <textarea id="client-notes" name="notes" required rows="4" placeholder="np. Klienci ciągle pytają o te same statusy przesyłek, tracę 4 godziny dziennie na odpisywanie..." style="width: 100%; padding: 12px 15px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05); color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s; resize: vertical; line-height: 1.5;"></textarea>
+                  </div>
+                  
+                  <button type="submit" id="submit-btn" class="btn btn-primary" style="display: block; width: 100%; font-size: 1.1rem; padding: 15px 0; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; text-align: center; text-transform: uppercase; letter-spacing: 0.05em; background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%); color: white; box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3); transition: all 0.2s;">
+                    Wyślij Diagnozę AI ➔
+                  </button>
+                </form>
               </div>
             </div>
+            
+            <script>
+              document.getElementById('adhd-crm-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const btn = document.getElementById('submit-btn');
+                const container = document.getElementById('contact-container');
+                
+                const name = document.getElementById('client-name').value;
+                const email = document.getElementById('client-email').value;
+                const notes = document.getElementById('client-notes').value;
+                
+                btn.disabled = true;
+                btn.innerHTML = 'Przesyłanie diagnozy...';
+                
+                // Formulate payload
+                const payload = { name: name, email: email, notes: notes };
+                
+                // Target localhost port 8090, falling back to same-origin if behind a reverse proxy
+                const webhookUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+                  ? 'http://127.0.0.1:8090/webhook' 
+                  : 'http://' + window.location.hostname + ':8090/webhook';
+                
+                fetch(webhookUrl, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify(payload)
+                })
+                .then(response => {
+                  if (response.ok) {
+                    container.innerHTML = `
+                      <div style="text-align: center; padding: 20px 0;">
+                        <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">🧠</span>
+                        <h3 style="color: #4a90e2; margin-bottom: 15px; font-family: 'Outfit', sans-serif; font-size: 1.5rem;">Zgłoszenie Przyjęte!</h3>
+                        <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 10px;">
+                          Twój opis chaosu operacyjnego został pomyślnie zrzucony do <strong>Zewnętrznego Płatu Czołowego</strong> Tomasza.
+                        </p>
+                        <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
+                          Nasz wirtualny CMO już analizuje Twoje zgłoszenie pod kątem automatyzacji. Wkrótce otrzymasz spersonalizowany kontakt bez zbędnego szumu i presji.
+                        </p>
+                      </div>
+                    `;
+                  } else {
+                    throw new Error('Server returned error status');
+                  }
+                })
+                .catch(err => {
+                  console.error('Webhook error, trying relative fallback...', err);
+                  // Quick relative fallback in case ports are blocked or reverse proxied
+                  fetch('/webhook', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                  })
+                  .then(response => {
+                    if (response.ok) {
+                      container.innerHTML = `
+                        <div style="text-align: center; padding: 20px 0;">
+                          <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">🧠</span>
+                          <h3 style="color: #4a90e2; margin-bottom: 15px; font-family: 'Outfit', sans-serif; font-size: 1.5rem;">Zgłoszenie Przyjęte!</h3>
+                          <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 10px;">
+                            Zgłoszenie zrzucone pomyślnie przez tunel relatywny.
+                          </p>
+                        </div>
+                      `;
+                    } else {
+                      btn.disabled = false;
+                      btn.innerHTML = 'Błąd serwera. Spróbuj ponownie';
+                    }
+                  })
+                  .catch(fallbackErr => {
+                    btn.disabled = false;
+                    btn.innerHTML = 'Błąd sieci. Wyślij ponownie ➔';
+                  });
+                });
+              });
+            </script>
 
           </div>
         </div>

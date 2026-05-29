@@ -106,6 +106,293 @@ def load_kanban():
 def save_kanban(data):
     json.dump(data, open(KANBAN_FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
 
+CRM_FILE = os.path.join(DASHBOARD_DIR, "crm.json")
+
+def load_crm():
+    if os.path.exists(CRM_FILE):
+        try:
+            return json.load(open(CRM_FILE, "r", encoding="utf-8"))
+        except:
+            pass
+    return {
+        "leads": [
+            {
+                "id": "lead_01",
+                "name": "Klinika Dermatologiczna (Łódź)",
+                "stage": "conversation",
+                "notes": "Zainteresowani automatyzacją ankiety intake w celu uwolnienia czasu personelu. Duża potrzeba empatii i prostego lejka wdrożeniowego.",
+                "last_contact": "2026-05-29",
+                "next_action": "Opracować plan wdrożenia 3 asystentów AI.",
+                "draft_reply": "Dzień dobry. Przeanalizowałem Państwa wąskie gardła. Wdrożenie Niewidzialnego Pracownika AI do ankiety intake pozwoli zaoszczędzić około 15 godzin tygodniowo bez utraty ciepłego kontaktu z pacjentem..."
+            },
+            {
+                "id": "lead_02",
+                "name": "Jan Szopa (Dystrybutor Kursów)",
+                "stage": "architecture",
+                "notes": "Zainteresowany systemem czystej pamięci (Pristine Memory) dla swoich studentów z ADHD.",
+                "last_contact": "2026-05-28",
+                "next_action": "Przygotować interfejs MVP z pasywnym tablicowaniem.",
+                "draft_reply": "Cześć Jan, w oparciu o nasze rozmowy, zaprojektowałem strukturę bezszumnego CRM bez powiadomień push..."
+            }
+        ]
+    }
+
+def save_crm(data):
+    json.dump(data, open(CRM_FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
+
+# --- POLSKI ADHD GHL INTEGRATIONS ---
+import urllib.parse
+from http.server import BaseHTTPRequestHandler, HTTPServer
+import threading
+import httpx
+
+# Thread-safe global flag to start webhook server once
+_server_started = False
+_server_lock = threading.Lock()
+
+def call_gemini_api(messages, system_instruction=None):
+    proxy_url = "http://127.0.0.1:8089/v1/chat/completions"
+    payload = {
+        "model": "gemini-2.5-flash",
+        "messages": []
+    }
+    if system_instruction:
+        payload["messages"].append({"role": "system", "content": system_instruction})
+    payload["messages"].extend(messages)
+    
+    # 1. Try local proxy
+    try:
+        response = httpx.post(proxy_url, json=payload, timeout=25.0)
+        if response.status_code == 200:
+            res_data = response.json()
+            return res_data["choices"][0]["message"]["content"]
+    except Exception as e:
+        pass
+        
+    # 2. Fallback to direct GCP Vertex AI call
+    sa_paths = [
+        os.path.expanduser("~/.hermes/gcp-sa-key.json"),
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "holistic-dashboard-dev-dea2c872139e.json"),
+        "holistic-dashboard-dev-dea2c872139e.json"
+    ]
+    sa_path = None
+    for p in sa_paths:
+        if os.path.exists(p):
+            sa_path = p
+            break
+            
+    if sa_path:
+        try:
+            from google.oauth2 import service_account
+            import google.auth.transport.requests
+            creds = service_account.Credentials.from_service_account_file(
+                sa_path,
+                scopes=['https://www.googleapis.com/auth/cloud-platform']
+            )
+            request = google.auth.transport.requests.Request()
+            creds.refresh(request)
+            token = creds.token
+            
+            project_id = "holistic-dashboard-dev"
+            region = "us-central1"
+            direct_url = f"https://{region}-aiplatform.googleapis.com/v1/projects/{project_id}/locations/{region}/endpoints/openapi/chat/completions"
+            
+            headers = {
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "application/json"
+            }
+            
+            direct_payload = {
+                "model": "google/gemini-2.5-flash",
+                "messages": []
+            }
+            if system_instruction:
+                direct_payload["messages"].append({"role": "system", "content": system_instruction})
+            direct_payload["messages"].extend(messages)
+            
+            resp = httpx.post(direct_url, json=direct_payload, headers=headers, timeout=25.0)
+            if resp.status_code == 200:
+                res_data = resp.json()
+                return res_data["choices"][0]["message"]["content"]
+        except Exception as ex:
+            return f"Błąd bezpośredniej komunikacji z Vertex AI: {ex}"
+            
+    return "Błąd: Brak połączenia z lokalnym proxy i brak poprawnego klucza Service Account."
+
+class WebhookHandler(BaseHTTPRequestHandler):
+    def log_message(self, format, *args):
+        pass
+        
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
+
+    def do_POST(self):
+        if self.path == "/webhook":
+            content_length = int(self.headers.get('Content-Length', 0))
+            body = self.rfile.read(content_length)
+            
+            try:
+                content_type = self.headers.get('Content-Type', '')
+                data = {}
+                if 'application/json' in content_type:
+                    data = json.loads(body.decode('utf-8'))
+                else:
+                    parsed = urllib.parse.parse_qs(body.decode('utf-8'))
+                    data = {k: v[0] for k, v in parsed.items()}
+                
+                name = data.get("name", "").strip()
+                email = data.get("email", "").strip()
+                notes = data.get("notes", "").strip() or data.get("message", "").strip()
+                
+                if not name or not email:
+                    self.send_response(400)
+                    self.send_header("Access-Control-Allow-Origin", "*")
+                    self.end_headers()
+                    self.wfile.write(b"Name and Email are required.")
+                    return
+                
+                crm_data = load_crm()
+                new_id = f"lead_{int(time.time())}"
+                new_lead = {
+                    "id": new_id,
+                    "name": name,
+                    "email": email,
+                    "stage": "conversation",
+                    "notes": notes,
+                    "last_contact": time.strftime("%Y-%m-%d"),
+                    "next_action": "Skontaktować się po analizie AI",
+                    "draft_reply": "Generowanie odpowiedzi przez CMO AI..."
+                }
+                
+                crm_data["leads"].append(new_lead)
+                save_crm(crm_data)
+                
+                threading.Thread(
+                    target=async_generate_initial_draft,
+                    args=(new_id, name, notes),
+                    daemon=True
+                ).start()
+                
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json")
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "success", "lead_id": new_id}).encode('utf-8'))
+                
+            except Exception as e:
+                self.send_response(500)
+                self.send_header("Access-Control-Allow-Origin", "*")
+                self.end_headers()
+                self.wfile.write(f"Server Error: {e}".encode('utf-8'))
+        else:
+            self.send_response(404)
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()
+
+def async_generate_initial_draft(lead_id, client_name, client_pain):
+    o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+    o_mnie_context = ""
+    if os.path.exists(o_mnie_path):
+        try:
+            o_mnie_context = open(o_mnie_path, "r", encoding="utf-8").read()
+        except:
+            pass
+            
+    system_prompt = f"""Jesteś wirtualnym CMO Tomasza Dudy (architekta systemów AI dla neuroatypowych, Holistic AIDHD).
+Tomasz jest strategiem automatyzacji dla firm i sam ma ADHD. Twoim zadaniem jest stworzenie bardzo empatycznej, osobistej i konkretnej wersji roboczej pierwszej odpowiedzi do nowego leada (klienta).
+Unikaj pustego hype'u AI, pisz zwięźle, ze zrozumieniem chaosu operacyjnego klienta, i z nutą humoru oraz głębokim rezonansem emocjonalnym.
+
+Oto kontekst o Tomaszu (jego serce emocjonalne i historia):
+{o_mnie_context}
+
+Napisz bezpośrednią, gotową do wysłania wiadomość e-mail w języku polskim. Pisz w 1 osobie ("ja" - Tomasz Duda). Podpisz się na końcu.
+"""
+
+    user_prompt = f"""Klient: {client_name}
+Wyzwanie klienta: {client_pain}
+
+Napisz pierwszą, niezwykle empatyczną odpowiedź, która zdejmuje z niego paraliż decyzyjny i proponuje jeden mały, konkretny krok bez presji (krótką rozmowę diagnostyczną)."""
+
+    try:
+        reply = call_gemini_api([{"role": "user", "content": user_prompt}], system_instruction=system_prompt)
+        if reply:
+            crm_data = load_crm()
+            for lead in crm_data["leads"]:
+                if lead["id"] == lead_id:
+                    lead["draft_reply"] = reply
+                    break
+            save_crm(crm_data)
+    except Exception as e:
+        pass
+
+def consult_csuite_live(lead, persona):
+    o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+    o_mnie_context = ""
+    if os.path.exists(o_mnie_path):
+        try:
+            o_mnie_context = open(o_mnie_path, "r", encoding="utf-8").read()
+        except:
+            pass
+
+    system_prompts = {
+        "CEO (Strategia & Rentowność)": f"""Jesteś wirtualnym CEO w zespole Tomasza Dudy. Tomasz to wybitny architekt systemów AI dla neuroatypowych (sam ma ADHD, Holistic AIDHD).
+Pomagasz mu w wycenie wdrożenia pod kątem modelu High-Ticket (np. wyceny 5 000 - 15 000 PLN jednorazowo), etapowaniu prac na proste kroki MVP oraz obronie jego zasobów energetycznych przed wypaleniem i paraliżem ADHD.
+Zawsze podawaj konkretną, odważną rekomendację cenową i zdefiniuj, co jest "One Thing" (kluczowym pierwszym krokiem wdrożenia).
+Oto historia i tożsamość Tomasza:
+{o_mnie_context}
+Odpowiadaj bezpośrednio, po polsku, zwięźle i konkretnie.
+""",
+        "CMO (Empatyczny Storytelling)": f"""Jesteś wirtualnym CMO w zespole Tomasza Dudy (Holistic AIDHD).
+Pomagasz mu przełożyć ból klienta na autentyczny i humorystyczny przekaz dopasowany do wyzwań klienta. Wskaż, jakich metafor użyć w komunikacji z tym klientem i jak napisać ofertę, aby rezonowała głęboko emocjonalnie, opierając się na tożsamości Tomasza.
+Oto historia i tożsamość Tomasza:
+{o_mnie_context}
+Odpowiadaj bezpośrednio, po polsku, zwięźle i kreatywnie.
+""",
+        "CSO (Architektura Sprzedaży)": f"""Jesteś wirtualnym CSO w zespole Tomasza Dudy (Holistic AIDHD).
+Projektujesz dla tego klienta prosty, 3-stopniowy lejek relacyjny (Rozmowa -> Architektura -> Wdrożenie). Wskaż dokładnie, jaki powinien być najbliższy krok sprzedażowy (Next Action) i jak go zrealizować przy minimalnym tarciu poznawczym (low cognitive friction).
+Oto historia i tożsamość Tomasza:
+{o_mnie_context}
+Odpowiadaj bezpośrednio, po polsku, zwięźle i operacyjnie.
+""",
+        "CTO (Technologia & Kod)": f"""Jesteś wirtualnym CTO w zespole Tomasza Dudy (Holistic AIDHD).
+Zaprojektuj uproszczoną, niezawodną architekturę techniczną pod potrzeby tego klienta. Rekomenduj konkretne narzędzia (np. n8n webhooks, Python scripts, SQLite, Google Sheets, Vertex AI, model gemini-2.5-flash). Podaj zwięzły schemat logiczny.
+Oto historia i tożsamość Tomasza:
+{o_mnie_context}
+Odpowiadaj bezpośrednio, po polsku, technicznie lecz bez zbędnego żargonu.
+"""
+    }
+
+    system_instruction = system_prompts.get(persona, "Jesteś doradcą C-Suite.")
+    user_prompt = f"""Karta klienta:
+Nazwa: {lead['name']}
+Opis chaosu operacyjnego: {lead['notes']}
+Najbliższy krok (Next Action): {lead['next_action']}
+
+Przeanalizuj przypadek i daj mi (Tomaszowi) swoją rekomendację z perspektywy roli ({persona}). Pisz bezpośrednio do mnie ("Tomasz, badając przypadek...")."""
+
+    return call_gemini_api([{"role": "user", "content": user_prompt}], system_instruction=system_instruction)
+
+def start_webhook_server():
+    global _server_started
+    with _server_lock:
+        if _server_started:
+            return
+        server_address = ('0.0.0.0', 8090)
+        try:
+            httpd = HTTPServer(server_address, WebhookHandler)
+            t = threading.Thread(target=httpd.serve_forever, daemon=True)
+            t.start()
+            _server_started = True
+        except Exception as e:
+            pass
+
+# Start the background webhook server
+start_webhook_server()
+
 def read_md_file(path):
     return open(path, "r", encoding="utf-8").read() if os.path.exists(path) else ""
 
@@ -154,7 +441,7 @@ with st.sidebar:
     
     menu = st.radio(
         "Nawigacja:",
-        ["🎯 Mission Control", "🗑️ Brain Dump & Cache", "📻 NotebookLM & Obsidian", "🎬 Content Studio", "👥 Wirtualne C-Suite", "📋 ADHD Kanban", "💾 Pristine Memory"]
+        ["🎯 Mission Control", "🗑️ Brain Dump & Cache", "📻 NotebookLM & Obsidian", "🎬 Content Studio", "💼 ADHD CRM & Lejek", "📋 ADHD Kanban", "💾 Pristine Memory"]
     )
     st.markdown("---")
     st.markdown("🌐 **Status Systemu:**")
@@ -390,47 +677,304 @@ elif menu == "🎬 Content Studio":
         else:
             st.info("Wpisz pomysł po lewej stronie i kliknij 'Generuj', aby wirtualny zarząd stworzył dla Ciebie wirusowy scenariusz wideo.")
 
-# 5. WIRTUALNE C-SUITE
-elif menu == "👥 Wirtualne C-Suite":
-    st.title("🤖 Zespół C-Suite Agents")
-    st.subheader("Twój wirtualny komitet sterujący zasilany Pristine Memory")
+# 5. ADHD CRM & LEJEK
+elif menu == "💼 ADHD CRM & Lejek":
+    st.title("💼 ADHD CRM & Bezszumny Lejek")
+    st.subheader("Twój minimalistyczny proces relacyjny zoptymalizowany pod neuroatypowość")
     
     st.markdown("""
-    <p>Dyrektorzy C-Suite czerpią wiedzę bezpośrednio z wgranych plików pamięci w chmurze. CMO w pełni odzwierciedla Twoją osobistą historię ADHD z pliku <code>o_mnie.md</code>.</p>
+    <div class="one-thing-banner" style="border-left-color: #7C3AED;">
+        <h3 style="margin-top: 0; color: #7C3AED;">💼 Dlaczego ten CRM jest inny niż GHL?</h3>
+        <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
+            Tradycyjne CRM-y bombardują Cię powiadomieniami, kolorowymi etykietami i dziesiątkami zawiłych opcji, wywołując u osób neuroatypowych paraliż i chęć ucieczki. 
+            Nasza wersja to <strong>Zewnętrzny Płat Czołowy</strong>: tylko 3 przejrzyste etapy, zero migających czerwonych kropek i wbudowany wirtualny zespół C-Suite gotowy do natychmiastowego doradztwa przy każdym kliencie.
+        </p>
+    </div>
     """, unsafe_allow_html=True)
     
-    agents = {
-        "CEO (Dyrektor Zarządzający)": "Strateg produktu cyfrowego. Pilnuje celów wdrożeniowych MVP, weryfikuje monetyzację oraz zaangażowanie społeczności.",
-        "CMO (Dyrektor Marketingu)": "Storyteller. Przekłada Twoje doświadczenia z zaciągniętym hamulcem ADHD i cyfrową demencją na autentyczny, poruszający marketing.",
-        "Creative Director (Dyrektor Kreatywny)": "Dba o spójność wizualną wideo na TikToku i YouTube zgodnie z precyzyjnymi schematami montażu Adriana Killara.",
-        "CSO (Dyrektor Sprzedaży)": "Wdraża strategie lejkowe (metoda Jan Szopy). Buduje bezwysiłkowe procesy zakupowe produktów cyfrowych.",
-        "CTO (Technologia + Anti-Gravity)": "Twój asystent ds. kodu, automatyzacji w n8n/Make, chmury oraz dopieszczania designu interfejsu (czysty fiolet i ciemny grafit)."
-    }
+    crm = load_crm()
     
-    col1, col2 = st.columns([1, 2])
+    tab_board, tab_add, tab_webhook = st.tabs(["📊 Tablica Lejka", "➕ Dodaj Nowy Kontakt", "🔌 Webhook & Symulacje"])
     
-    with col1:
-        selected_agent = st.selectbox("Wybierz agenta do konsultacji:", list(agents.keys()))
+    with tab_webhook:
+        st.markdown("### 🔌 Wbudowany Webhook Odbiorczy (Polski ADHD GHL)")
+        st.write("Twój dashboard posiada zintegrowany, wbudowany serwer webhooków działający w tle, całkowicie eliminujący potrzebę korzystania z GoHighLevel.")
         st.markdown(f"""
-        <div class="custom-card" style="border-left: 5px solid #7C3AED;">
-            <h4>{selected_agent}</h4>
-            <p><strong>Rola operacyjna:</strong><br>{agents[selected_agent]}</p>
-        </div>
-        """, unsafe_allow_html=True)
+        *   **Lokalny Endpoint:** `http://127.0.0.1:8090/webhook`
+        *   **Serwerowy Endpoint:** `http://TWÓJ_SERVER_IP:8090/webhook`
+        *   **Metoda:** `POST (application/json lub application/x-www-form-urlencoded)`
+        *   **Pola:** `name` (Imię/Firma), `email` (E-mail), `notes` (Chaos operacyjny/Wiadomość)
+        """)
         
-    with col2:
-        st.write(f"### Konsultacja z: {selected_agent}")
-        user_msg = st.text_input("Zadaj pytanie swojemu Dyrektorowi:", placeholder="Np. Jak sformułować pierwszą ofertę wideo?")
-        if st.button("Konsultuj"):
-            if user_msg:
-                with st.spinner("Odpowiadanie..."):
-                    time.sleep(1.2)
-                    if "CMO" in selected_agent:
-                        st.markdown(f"**CMO Agent:** \"Tomasz, opierając się na pliku `o_mnie.md` i Twojej metaforze 'zaciągniętego hamulca ręcznego', proponuję, abyśmy w pierwszej rolce uderzyli w ten właśnie obraz. Ludzie z ADHD natychmiast utożsamią się z uczuciem wciskania gazu do dechy, podczas gdy ich własna biologia zaciąga hamulec. Skupmy się na empatycznym tonie, odrzucając radykalną 'produktywność dla neurotypowych'. Pokażmy, że Holistic OS to zewnętrzny płat czołowy, który ten hamulec powoli zwalnia. Co o tym sądzisz?\"")
-                    elif "CEO" in selected_agent:
-                        st.markdown(f"**CEO Agent:** \"Najważniejsze to realne wdrożenie MVP. Nie traćmy czasu na budowanie skomplikowanych lejków zanim nie będziemy mieli 10 pierwszych aktywnych członków społeczności, którzy dadzą nam feedback. Nasz cel: uruchomić dashboard, udostępnić go i zebrać pierwsze opinie. Skoncentrujmy się na minimalnym zestawie funkcji. Mamy dashboard Streamlit, teraz czas na wrzucenie syntez z NotebookLM.\"")
+        st.markdown("---")
+        st.markdown("### 📡 Symulacja Nowego Kontaktu z Landing Page (Test AI)")
+        st.caption("Kliknij poniższy przycisk, aby w sekundy zasymulować wysłanie formularza z Twojej strony internetowej. Serwer webhooków w tle odbierze leada, zapisze go w bazie i asynchronicznie wygeneruje draft odpowiedzi!")
+        
+        test_case = st.selectbox("Wybierz profil testowego klienta do symulacji:", [
+            "Marek Kowalski (Sklep Meble) - Chce zautomatyzować maile z reklamacjami bo traci na to 3 godziny dziennie.",
+            "Katarzyna Wiśniewska (Biuro Rachunkowe) - Chce asystenta AI do wyjaśniania klientom zmian w podatkach.",
+            "Tomasz Krawczyk (Agencja Reklamowa) - Chce bota kwalifikującego klientów na stronie www przed rozmową."
+        ])
+        
+        if st.button("🚀 Wyślij Symulowane Zgłoszenie", type="primary"):
+            parts = test_case.split(" - ")
+            name = parts[0]
+            notes = parts[1]
+            email = name.lower().replace(" ", ".").replace("ł", "l").replace("ś", "s").replace("ó", "o").replace("ą", "a").replace("ć", "c").replace("ę", "e").replace("ń", "n").replace("ź", "z").replace("ż", "z") + "@test-firma.pl"
+            
+            with st.spinner("Wysyłanie POST do webhooka..."):
+                try:
+                    payload = {"name": name, "email": email, "notes": notes}
+                    resp = httpx.post("http://127.0.0.1:8090/webhook", json=payload, timeout=5.0)
+                    if resp.status_code == 200:
+                        st.success(f"Sukces! Webhook zwrócił kod 200. Nowy lead '{name}' został zarejestrowany na tablicy. Wróć do tablicy lejkowej, otwórz jego kartę i zobacz wygenerowany przez CMO draft odpowiedzi!")
+                        time.sleep(1.0)
+                        st.rerun()
                     else:
-                        st.markdown(f"**{selected_agent}:** \"Zrozumiałem zapytanie: '{user_msg}'. Rekomenduję rozbicie wdrożenia na najprostsze kroki w Kanbanie w celu minimalizacji tarcia poznawczego i dowożenia w trybie 'One Thing'.\"")
+                        st.error(f"Webhook zwrócił błąd {resp.status_code}: {resp.text}")
+                except Exception as ex:
+                    st.error(f"Nie udało się połączyć z lokalnym portem 8090. Dodaję leada bezpośrednio do bazy jako fallback...")
+                    crm_data = load_crm()
+                    new_id = f"lead_{int(time.time())}"
+                    new_lead = {
+                        "id": new_id,
+                        "name": name,
+                        "email": email,
+                        "stage": "conversation",
+                        "notes": notes,
+                        "last_contact": time.strftime("%Y-%m-%d"),
+                        "next_action": "Skontaktować się po analizie AI",
+                        "draft_reply": "Generowanie odpowiedzi przez CMO AI..."
+                    }
+                    crm_data["leads"].append(new_lead)
+                    save_crm(crm_data)
+                    async_generate_initial_draft(new_id, name, notes)
+                    st.success(f"Lead '{name}' został zapisany bezpośrednio w crm.json jako fallback!")
+                    time.sleep(1.0)
+                    st.rerun()
+
+    with tab_add:
+        st.markdown("### ➕ Zarejestruj nowego klienta w chmurze")
+        new_name = st.text_input("Nazwa firmy / Nazwisko klienta:")
+        new_notes = st.text_area("O czym rozmawiamy? (Opisz krótko ból operacyjny klienta):")
+        new_action = st.text_input("Jaki jest najbliższy konkretny krok (Next Action):", placeholder="Np. Umówić wideorozmowę na pokaz wdrożenia...")
+        
+        if st.button("Zapisz w Bezszumnym CRM", type="primary"):
+            if new_name and new_notes:
+                new_id = f"lead_{int(time.time())}"
+                new_lead = {
+                    "id": new_id,
+                    "name": new_name,
+                    "stage": "conversation",
+                    "notes": new_notes,
+                    "last_contact": time.strftime("%Y-%m-%d"),
+                    "next_action": new_action if new_action else "Odezwać się do klienta",
+                    "draft_reply": f"Cześć {new_name.split()[0] if len(new_name.split()) > 0 else new_name}, dziękuję za rozmowę. Zrozumiałem Twój chaos operacyjny związany z {new_notes[:100]}... Zaprojektowałem dla Ciebie uproszczony system..."
+                }
+                crm["leads"].append(new_lead)
+                save_crm(crm)
+                st.success(f"Klient {new_name} został dodany do pierwszego etapu!")
+                time.sleep(0.5)
+                st.rerun()
+            else:
+                st.warning("Podaj nazwę klienta oraz jego opis.")
+                
+    with tab_board:
+        col_conv, col_arch, col_build = st.columns(3)
+        
+        conv_leads = [l for l in crm["leads"] if l.get("stage") == "conversation"]
+        arch_leads = [l for l in crm["leads"] if l.get("stage") == "architecture"]
+        build_leads = [l for l in crm["leads"] if l.get("stage") == "build"]
+        
+        with col_conv:
+            st.markdown("### 📥 1. Rozmowa")
+            st.caption("Początkowy kontakt i ankieta intake")
+            for i, lead in enumerate(conv_leads):
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #3B82F6; margin-bottom: 12px;">
+                    <span style="font-size: 0.8rem; color:#94A3B8;">📞 Kontakt: {lead.get('last_contact')}</span>
+                    <h4 style="margin-top: 4px; margin-bottom: 8px; color: #FFFFFF;">{lead.get('name')}</h4>
+                    <p style="font-size: 0.9rem; color: #CBD5E1; line-height: 1.4;">{lead.get('notes')[:100]}...</p>
+                    <hr style="border-color: #1F242E; margin: 10px 0;">
+                    <span style="font-size: 0.85rem; color: #F59E0B;">➡️ <strong>Krok:</strong> {lead.get('next_action')}</span>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                c_opt1, c_opt2 = st.columns(2)
+                with c_opt1:
+                    if st.button("🔍 Otwórz", key=f"sel_conv_{lead['id']}"):
+                        st.session_state.selected_lead_id = lead['id']
+                with c_opt2:
+                    if st.button("📐 Buduj", key=f"mov_arch_{lead['id']}"):
+                        lead["stage"] = "architecture"
+                        save_crm(crm)
+                        st.rerun()
+                        
+        with col_arch:
+            st.markdown("### 📐 2. Architektura")
+            st.caption("Projektowanie bazy i Niewidzialnego Pracownika")
+            for i, lead in enumerate(arch_leads):
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #F59E0B; margin-bottom: 12px;">
+                    <span style="font-size: 0.8rem; color:#94A3B8;">📅 Planowanie: {lead.get('last_contact')}</span>
+                    <h4 style="margin-top: 4px; margin-bottom: 8px; color: #FFFFFF;">{lead.get('name')}</h4>
+                    <p style="font-size: 0.9rem; color: #CBD5E1; line-height: 1.4;">{lead.get('notes')[:100]}...</p>
+                    <hr style="border-color: #1F242E; margin: 10px 0;">
+                    <span style="font-size: 0.85rem; color: #F59E0B;">➡️ <strong>Krok:</strong> {lead.get('next_action')}</span>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                a_opt1, a_opt2 = st.columns(2)
+                with a_opt1:
+                    if st.button("🔍 Otwórz", key=f"sel_arch_{lead['id']}"):
+                        st.session_state.selected_lead_id = lead['id']
+                with a_opt2:
+                    if st.button("🚀 Wdróż", key=f"mov_build_{lead['id']}"):
+                        lead["stage"] = "build"
+                        save_crm(crm)
+                        st.rerun()
+                        
+        with col_build:
+            st.markdown("### 🚀 3. Wdrożenie")
+            st.caption("Developer mode — procesy live")
+            for i, lead in enumerate(build_leads):
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #10B981; margin-bottom: 12px;">
+                    <span style="font-size: 0.8rem; color:#94A3B8;">⚡ Integracja: {lead.get('last_contact')}</span>
+                    <h4 style="margin-top: 4px; margin-bottom: 8px; color: #FFFFFF;">{lead.get('name')}</h4>
+                    <p style="font-size: 0.9rem; color: #CBD5E1; line-height: 1.4;">{lead.get('notes')[:100]}...</p>
+                    <hr style="border-color: #1F242E; margin: 10px 0;">
+                    <span style="font-size: 0.85rem; color: #F59E0B;">➡️ <strong>Krok:</strong> {lead.get('next_action')}</span>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                b_opt1, b_opt2 = st.columns(2)
+                with b_opt1:
+                    if st.button("🔍 Otwórz", key=f"sel_build_{lead['id']}"):
+                        st.session_state.selected_lead_id = lead['id']
+                with b_opt2:
+                    if st.button("📦 Archiwum", key=f"mov_archv_{lead['id']}"):
+                        lead["stage"] = "archive"
+                        save_crm(crm)
+                        st.rerun()
+
+    # Szczegółowy podgląd wybranego klienta (ADHD Focus Panel)
+    if "selected_lead_id" in st.session_state and st.session_state.selected_lead_id:
+        sel_id = st.session_state.selected_lead_id
+        lead = next((l for l in crm["leads"] if l["id"] == sel_id), None)
+        
+        if lead:
+            st.markdown("---")
+            st.subheader(f"💼 ADHD Focus Panel: {lead['name']}")
+            
+            c_det1, c_det2 = st.columns([1, 1])
+            
+            with c_det1:
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 5px solid #7C3AED;">
+                    <h4>📋 Informacje o kliencie</h4>
+                    <p><strong>Ból operacyjny i notatki:</strong><br>{lead['notes']}</p>
+                    <p><strong>Ostatni kontakt:</strong> {lead['last_contact']}</p>
+                    <p><strong>Następny krok:</strong> <span class="focus-accent">{lead['next_action']}</span></p>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Sterowanie procesem
+                st.write("##### Przesuń etap klienta:")
+                col_stg1, col_stg2, col_stg3 = st.columns(3)
+                with col_stg1:
+                    if st.button("📥 Cofnij do Rozmowy", key="btn_move_conv"):
+                        lead["stage"] = "conversation"
+                        save_crm(crm)
+                        st.rerun()
+                with col_stg2:
+                    if st.button("📐 Do Architektury", key="btn_move_arch"):
+                        lead["stage"] = "architecture"
+                        save_crm(crm)
+                        st.rerun()
+                with col_stg3:
+                    if st.button("🚀 Do Wdrożenia", key="btn_move_build"):
+                        lead["stage"] = "build"
+                        save_crm(crm)
+                        st.rerun()
+                
+                if st.button("🎯 Ustaw jako priorytet 'One Thing'", key=f"set_ot_{lead['id']}"):
+                    st.session_state.one_thing = f"Dla klienta {lead['name']}: {lead['next_action']}"
+                    st.toast(f"Klient {lead['name']} został ustawiony jako główny cel!")
+                    st.rerun()
+                
+                st.markdown("<br>", unsafe_allow_html=True)
+                col_del, col_close = st.columns(2)
+                with col_del:
+                    if st.button("🗑️ Usuń klienta z bazy", key="btn_del_lead"):
+                        crm["leads"] = [l for l in crm["leads"] if l["id"] != sel_id]
+                        save_crm(crm)
+                        st.session_state.selected_lead_id = None
+                        st.rerun()
+                with col_close:
+                    if st.button("❌ Zamknij podgląd", key="btn_close_lead"):
+                        st.session_state.selected_lead_id = None
+                        st.rerun()
+                        
+            with c_det2:
+                # Wersje robocze odpowiedzi
+                st.markdown("""
+                <div class="custom-card" style="border-left: 5px solid #10B981; background-color: #0F1D1A;">
+                    <h4 style="margin: 0; color: #10B981;">✉️ Propozycja bezszumnej odpowiedzi (CMO Draft)</h4>
+                    <p style="font-size: 0.85rem; color: #94A3B8; margin-top: 4px;">Wygenerowana automatycznie w oparciu o o_mnie.md w celu głębokiego rezonowania z klientem.</p>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                modified_reply = st.text_area("Możesz spersonalizować odpowiedź przed wysłaniem:", value=lead.get("draft_reply", ""), height=150)
+                col_cmo1, col_cmo2 = st.columns(2)
+                with col_cmo1:
+                    if st.button("🧠 Regeneruj przez CMO AI", key=f"regen_cmo_{lead['id']}"):
+                        with st.spinner("CMO generuje odpowiedź..."):
+                            o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+                            o_mnie_context = ""
+                            if os.path.exists(o_mnie_path):
+                                try:
+                                    o_mnie_context = open(o_mnie_path, "r", encoding="utf-8").read()
+                                except:
+                                    pass
+                            system_prompt = f"""Jesteś wirtualnym CMO Tomasza Dudy (architekta systemów AI dla neuroatypowych, Holistic AIDHD).
+Stwórz niezwykle empatyczny, autentyczny i humorystyczny e-mail po polsku odpowiadający na zapytanie klienta. Pisz w 1 osobie jako Tomasz.
+Oto historia i tożsamość Tomasza:
+{o_mnie_context}
+"""
+                            user_prompt = f"""Klient: {lead['name']}
+Opis chaosu/potrzeby: {lead['notes']}
+Najbliższy krok: {lead['next_action']}
+Zredaguj niesamowity, głęboki, gotowy do wysłania e-mail."""
+                            reply = call_gemini_api([{"role": "user", "content": user_prompt}], system_instruction=system_prompt)
+                            if reply:
+                                lead["draft_reply"] = reply
+                                save_crm(crm)
+                                st.rerun()
+                with col_cmo2:
+                    if st.button("Zatwierdź i Skopiuj", key=f"copy_cmo_{lead['id']}"):
+                        lead["draft_reply"] = modified_reply
+                        save_crm(crm)
+                        st.toast("Odpowiedź zapisana i skopiowana do schowka!")
+                
+                st.markdown("---")
+                
+                # Zintegrowane C-Suite dla tego klienta!
+                st.write("##### 👥 Wirtualna Konsultacja C-Suite dla tego klienta")
+                agents = {
+                    "CEO (Strategia & Rentowność)": "CEO pomoże Ci wycenić to wdrożenie pod kątem modelu High-Ticket i zaplanować kroki MVP.",
+                    "CMO (Empatyczny Storytelling)": "CMO przełoży ból klienta na autentyczny i humorystyczny przekaz dopasowany do jego problemów.",
+                    "CSO (Architektura Sprzedaży)": "CSO zaprojektuje prosty, trzystopniowy lejek bezszumny dla tego klienta.",
+                    "CTO (Technologia & Kod)": "CTO podpowie, jakich konkretnych asystentów Gemini oraz automatyzacji w n8n użyć do tego wdrożenia."
+                }
+                
+                selected_dyrektor = st.selectbox("Skonsultuj się z:", list(agents.keys()), key=f"csuite_sel_{lead['id']}")
+                st.caption(agents[selected_dyrektor])
+                
+                if st.button("Konsultuj przypadek", type="primary", key=f"csuite_btn_{lead['id']}"):
+                    with st.spinner(f"{selected_dyrektor} analizuje kartę klienta..."):
+                        csuite_reply = consult_csuite_live(lead, selected_dyrektor)
+                        st.info(f"**{selected_dyrektor}:** \"{csuite_reply}\"")
 
 # 6. ADHD KANBAN
 elif menu == "📋 ADHD Kanban":
