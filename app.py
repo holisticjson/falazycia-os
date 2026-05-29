@@ -1,5 +1,10 @@
 import streamlit as st
 import os, json, time
+import ssl
+try:
+    ssl._create_default_https_context = ssl._create_unverified_context
+except AttributeError:
+    pass
 
 st.set_page_config(
     page_title="Holistic AIDHD OS • Mission Control",
@@ -72,7 +77,7 @@ st.markdown("""
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     
-    /* Zaokrąglone przyciski premium */
+    /* Zaokrąglone przyciski premium (globalnie dla stButton) */
     .stButton>button {
         background: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%) !important;
         color: #FFFFFF !important;
@@ -91,12 +96,95 @@ st.markdown("""
         transform: translateY(-1px) !important;
         box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5) !important;
     }
+
+    /* Kafelki Nawigacyjne w Pasku Bocznym (ADHD Tiles) */
+    div[data-testid="stSidebar"] .stButton>button {
+        text-align: left !important;
+        padding: 12px 18px !important;
+        height: 52px !important;
+        margin-bottom: 2px !important;
+        font-family: 'Outfit', sans-serif !important;
+        width: 100% !important;
+    }
+
+    div[data-testid="stSidebar"] .stButton>button[kind="secondary"] {
+        background: #121620 !important;
+        color: #94A3B8 !important;
+        border: 1px solid #1E2535 !important;
+        box-shadow: none !important;
+        font-weight: 500 !important;
+    }
+
+    div[data-testid="stSidebar"] .stButton>button[kind="secondary"]:hover {
+        background: #1A1F2C !important;
+        border-color: #7C3AED !important;
+        color: #FFFFFF !important;
+        transform: translateY(-1px) !important;
+        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15) !important;
+    }
+
+    div[data-testid="stSidebar"] .stButton>button[kind="primary"] {
+        background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%) !important;
+        color: #FFFFFF !important;
+        border: 1px solid #C084FC !important;
+        box-shadow: 0 0 15px rgba(124, 58, 237, 0.35) !important;
+        font-weight: 700 !important;
+    }
+    
+    div[data-testid="stSidebar"] .stButton>button[kind="primary"]:hover {
+        transform: translateY(-1px) !important;
+        box-shadow: 0 0 20px rgba(124, 58, 237, 0.5) !important;
+    }
     
     /* ADHD-friendly akcenty kolorystyczne */
     .dopamine-accent { color: #10B981; font-weight: bold; }
     .burn-accent { color: #EF4444; font-weight: bold; }
     .focus-accent { color: #F59E0B; font-weight: bold; }
+
+    /* Pływający Przycisk Szybkiego Zapisu (FAB - Floating Action Button) */
+    .fab-container {
+        position: fixed !important;
+        bottom: 25px !important;
+        right: 25px !important;
+        z-index: 999999 !important;
+    }
+    
+    .fab-container button {
+        background: linear-gradient(135deg, #EC4899 0%, #D946EF 100%) !important;
+        color: #FFFFFF !important;
+        border: 2px solid #F472B6 !important;
+        border-radius: 50% !important;
+        width: 65px !important;
+        height: 65px !important;
+        font-size: 28px !important;
+        font-family: 'Outfit', sans-serif !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        box-shadow: 0 4px 20px rgba(236, 72, 153, 0.4) !important;
+        transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+        animation: pulse-fab 2s infinite alternate !important;
+        padding: 0 !important;
+    }
+    
+    .fab-container button:hover {
+        transform: scale(1.12) rotate(15deg) !important;
+        box-shadow: 0 6px 25px rgba(236, 72, 153, 0.7), 0 0 15px rgba(217, 70, 239, 0.4) !important;
+    }
+    
+    @keyframes pulse-fab {
+        0% {
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+            transform: scale(1);
+        }
+        100% {
+            box-shadow: 0 6px 25px rgba(236, 72, 153, 0.8), 0 0 20px rgba(217, 70, 239, 0.5);
+            transform: scale(1.05);
+        }
+    }
 </style>
+
 """, unsafe_allow_html=True)
 
 # Helpery danych
@@ -257,11 +345,17 @@ def call_gemini_api(messages, system_instruction=None):
         try:
             from google.oauth2 import service_account
             import google.auth.transport.requests
+            import requests
+            import urllib3
+            urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+            
             creds = service_account.Credentials.from_service_account_file(
                 sa_path,
                 scopes=['https://www.googleapis.com/auth/cloud-platform']
             )
-            request = google.auth.transport.requests.Request()
+            session = requests.Session()
+            session.verify = False
+            request = google.auth.transport.requests.Request(session=session)
             creds.refresh(request)
             token = creds.token
             
@@ -331,6 +425,86 @@ def call_gemini_pro_api(messages, system_instruction=None):
 
     # Ostateczny fallback
     return call_gemini_api(messages, system_instruction)
+
+def call_native_vertex_ocr(file_bytes):
+    # Get credentials and refresh token
+    sa_paths = [
+        os.path.join(os.getcwd(), "holistic-dashboard-dev-dea2c872139e.json"),
+        os.path.expanduser("~/.hermes/gcp-sa-key.json"),
+        "holistic-dashboard-dev-dea2c872139e.json"
+    ]
+    sa_path = None
+    for p in sa_paths:
+        if os.path.exists(p):
+            sa_path = p
+            break
+            
+    if not sa_path:
+        return "[Błąd: Brak klucza GCP Service Account]"
+        
+    try:
+        from google.oauth2 import service_account
+        import google.auth.transport.requests
+        import requests
+        import base64 as _b64
+        
+        creds = service_account.Credentials.from_service_account_file(
+            sa_path,
+            scopes=['https://www.googleapis.com/auth/cloud-platform']
+        )
+        session = requests.Session()
+        session.verify = False
+        request = google.auth.transport.requests.Request(session=session)
+        creds.refresh(request)
+        token = creds.token
+        
+        project_id = "holistic-dashboard-dev"
+        region = "us-central1"
+        model = "gemini-2.5-flash" # Use flash for fast OCR
+        
+        url = f"https://{region}-aiplatform.googleapis.com/v1/projects/{project_id}/locations/{region}/publishers/google/models/{model}:generateContent"
+        
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json"
+        }
+        
+        encoded_data = _b64.b64encode(file_bytes).decode("utf-8")
+        
+        payload = {
+            "contents": [
+                {
+                    "role": "user",
+                    "parts": [
+                        {
+                            "text": "Odczytaj i przepisz DOKŁADNIE cały tekst z załączonego dokumentu PDF (skanu). Zachowaj wszystkie kluczowe dane: sygnatury akt, PESEL, NIP, adresy, imiona i nazwiska, kwoty, daty, nazwy sądów lub organów. Zwróć tylko surowy odczytany tekst, zachowując oryginalny układ."
+                        },
+                        {
+                            "inlineData": {
+                                "mimeType": "application/pdf",
+                                "data": encoded_data
+                            }
+                        }
+                    ]
+                }
+            ],
+            "generationConfig": {
+                "temperature": 0.1
+            }
+        }
+        
+        resp = requests.post(url, json=payload, headers=headers, verify=False, timeout=120.0)
+        if resp.status_code == 200:
+            res_data = resp.json()
+            try:
+                text = res_data['candidates'][0]['content']['parts'][0]['text']
+                return text
+            except Exception as e:
+                return f"[Błąd parsowania odpowiedzi OCR: {e}]"
+        else:
+            return f"[Błąd API Vertex OCR {resp.status_code}: {resp.text}]"
+    except Exception as ex:
+        return f"[Błąd systemu OCR: {ex}]"
 
 class WebhookHandler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
@@ -540,27 +714,103 @@ def get_brain_dumps():
     dumps.sort(key=lambda x: x.get("timestamp", ""), reverse=True)
     return dumps
 
+@st.dialog("📥 Szybki Zrzut Myśli (Brain Dump)")
+def show_brain_dump_dialog():
+    st.markdown("<p style='color: #CBD5E1;'>Wpisz swój pomysł, załącz link lub plik, a model Gemini 2.5 Pro odciąży Twój umysł i natychmiast zapisze go w Skarbcu.</p>", unsafe_allow_html=True)
+    thought = st.text_area("Co Ci chodzi po głowie? (Zzrzuć chaos)", height=120)
+    links = st.text_input("Linki / Social media / Wideo (opcjonalnie):")
+    uploaded_file = st.file_uploader("Załącz plik / obrazek / audio (opcjonalnie):", type=["png", "jpg", "jpeg", "pdf", "mp3", "wav"])
+    
+    if st.button("Uwolnij mój umysł", type="primary", use_container_width=True):
+        if thought or links or uploaded_file:
+            save_brain_dump(thought, links, uploaded_file)
+            st.success("Zapisano bezpiecznie w Skarbcu!")
+            time.sleep(1.0)
+            st.rerun()
+
 # Inicjalizacja stanu sesji
 if "one_thing" not in st.session_state:
     st.session_state.one_thing = ""
 if "pomodoro_active" not in st.session_state:
     st.session_state.pomodoro_active = False
+if "current_page" not in st.session_state:
+    st.session_state.current_page = "🎯 Mission Control"
 
-# PASEK BOCZNY - Skrajnie estetyczny z ikonami
+# PASEK BOCZNY - Skrajnie estetyczny z kafelkami zoptymalizowanymi pod ADHD
 with st.sidebar:
-    st.markdown("<h2 style='text-align: center; color: #7C3AED; font-family: Outfit;'>🧠 Holistic OS</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.9rem;'>Bezszumne Centrum Dowodzenia v6.0</p>", unsafe_allow_html=True)
-    st.markdown("---")
+    st.markdown("<h2 style='text-align: center; color: #7C3AED; font-family: Outfit; margin-bottom: 0;'>🧠 Holistic OS</h2>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 5px; margin-bottom: 10px;'>Bezszumne Centrum Dowodzenia v6.0</p>", unsafe_allow_html=True)
+    st.markdown("<hr style='margin: 10px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
     
-    menu = st.radio(
-        "Nawigacja:",
-        ["🎯 Mission Control", "💬 AntiGravity & Hermes Chat", "🗑️ Brain Dump & Cache", "📻 NotebookLM & Obsidian", "🎬 Content Studio", "💼 ADHD CRM & Lejek", "📋 ADHD Kanban", "💼 Dział Prawny & Kancelaria", "💰 Kancelaria Finansowa & KSeF", "💾 Pristine Memory"]
-    )
-    st.markdown("---")
+    col_menu = st.session_state.current_page
+    
+    # 1. DOWODZENIE
+    st.markdown("<p style='color: #F59E0B; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 6px; margin-top: 10px;'>🧠 DOWODZENIE & SKUPIENIE</p>", unsafe_allow_html=True)
+    
+    if st.button("🎯 Mission Control", use_container_width=True, type="primary" if col_menu == "🎯 Mission Control" else "secondary"):
+        st.session_state.current_page = "🎯 Mission Control"
+        st.rerun()
+        
+    if st.button("📋 ADHD Kanban", use_container_width=True, type="primary" if col_menu == "📋 ADHD Kanban" else "secondary"):
+        st.session_state.current_page = "📋 ADHD Kanban"
+        st.rerun()
+
+    if st.button("💾 Pristine Memory", use_container_width=True, type="primary" if col_menu == "💾 Pristine Memory" else "secondary"):
+        st.session_state.current_page = "💾 Pristine Memory"
+        st.rerun()
+        
+    # 2. KOMUNIKACJA
+    st.markdown("<p style='color: #EC4899; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>💬 MENTAL & WIEDZA</p>", unsafe_allow_html=True)
+    
+    if st.button("💬 Chat z AI (AntiGravity)", use_container_width=True, type="primary" if col_menu == "💬 AntiGravity & Hermes Chat" else "secondary"):
+        st.session_state.current_page = "💬 AntiGravity & Hermes Chat"
+        st.rerun()
+        
+    if st.button("📥 Skarbiec (Brain Dump)", use_container_width=True, type="primary" if col_menu == "🗑️ Brain Dump & Cache" else "secondary"):
+        st.session_state.current_page = "🗑️ Brain Dump & Cache"
+        st.rerun()
+        
+    if st.button("📻 NotebookLM & Obsidian", use_container_width=True, type="primary" if col_menu == "📻 NotebookLM & Obsidian" else "secondary"):
+        st.session_state.current_page = "📻 NotebookLM & Obsidian"
+        st.rerun()
+        
+    # 3. KREACJA & LEJKI
+    st.markdown("<p style='color: #10B981; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>🎬 KREACJA & BIZNES</p>", unsafe_allow_html=True)
+    
+    if st.button("🎬 Content Studio", use_container_width=True, type="primary" if col_menu == "🎬 Content Studio" else "secondary"):
+        st.session_state.current_page = "🎬 Content Studio"
+        st.rerun()
+        
+    if st.button("💼 ADHD CRM & Lejek", use_container_width=True, type="primary" if col_menu == "💼 ADHD CRM & Lejek" else "secondary"):
+        st.session_state.current_page = "💼 ADHD CRM & Lejek"
+        st.rerun()
+        
+    if st.button("🤝 Onboarding & Grill", use_container_width=True, type="primary" if col_menu == "🤝 Onboarding & Grill" else "secondary"):
+        st.session_state.current_page = "🤝 Onboarding & Grill"
+        st.rerun()
+        
+    if st.button("✨ Agenci & Crony (Sales/Soul)", use_container_width=True, type="primary" if col_menu == "✨ Agenci & Crony (Sales/Soul)" else "secondary"):
+        st.session_state.current_page = "✨ Agenci & Crony (Sales/Soul)"
+        st.rerun()
+        
+    # 4. PROCEDURY
+    st.markdown("<p style='color: #3B82F6; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>⚖️ PROCEDURY & BIURO</p>", unsafe_allow_html=True)
+    
+    if st.button("💼 Dział Prawny & Kancelaria", use_container_width=True, type="primary" if col_menu == "💼 Dział Prawny & Kancelaria" else "secondary"):
+        st.session_state.current_page = "💼 Dział Prawny & Kancelaria"
+        st.rerun()
+        
+    if st.button("💰 Finanse & KSeF", use_container_width=True, type="primary" if col_menu == "💰 Kancelaria Finansowa & KSeF" else "secondary"):
+        st.session_state.current_page = "💰 Kancelaria Finansowa & KSeF"
+        st.rerun()
+        
+    st.markdown("<hr style='margin: 15px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
     st.markdown("🌐 **Status Systemu:**")
     st.markdown("⚡ *Hermes Agent:* <span style='color:#10B981; font-weight:bold;'>LIVE (Port 9119)</span>", unsafe_allow_html=True)
     st.markdown("📢 *Telegram Chat:* <span style='color:#10B981; font-weight:bold;'>Połączony</span>", unsafe_allow_html=True)
     st.markdown("📝 *Pristine Memory:* <span style='color:#3B82F6; font-weight:bold;'>Aktywna</span>", unsafe_allow_html=True)
+
+menu = st.session_state.current_page
 
 # 1. MISSION CONTROL
 if menu == "🎯 Mission Control":
@@ -628,6 +878,54 @@ elif menu == "🗑️ Brain Dump & Cache":
                 save_brain_dump(thought_input, links_input, uploaded_file)
                 st.success("Zapisano. Pomysł został odciążony z Twojego mózgu.")
                 time.sleep(0.5)
+                st.rerun()
+        
+        st.markdown("---")
+        st.markdown("""
+        <div class="custom-card" style="border-left: 5px solid #7C3AED; background: linear-gradient(135deg, #1A1230 0%, #0F1016 100%);">
+            <h4 style="margin: 0; color: #C084FC;">🧠 Strategiczna Odprawa CEO</h4>
+            <p style="color: #CBD5E1; font-size: 0.85rem; margin-top: 6px; margin-bottom: 0;">
+                Uruchom analizę Skarbca. CEO Jason (Gemini 2.5 Pro) uporządkuje Twoje otwarte pętle, wyciągnie z nich strategię biznesową i zaproponuje gotowe zadania.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        if st.button("🚀 Przetwórz Skarbiec przez CEO", use_container_width=True):
+            active_dumps = [d for d in get_brain_dumps() if d.get("status", "active") == "active"]
+            if not active_dumps:
+                st.info("Twój Skarbiec jest pusty. Brak otwartych pętli do przetworzenia.")
+            else:
+                with st.spinner("CEO Jason analizuje Skarbiec (Gemini 2.5 Pro)..."):
+                    dumps_text = ""
+                    for i, d in enumerate(active_dumps):
+                        dumps_text += f"\n--- POMYSŁ {i+1} ---\nZapisano: {d.get('timestamp')}\nTreść: {d.get('thought')}\nLinki: {d.get('links', '')}\n"
+                    
+                    ceo_prompt = f"""Jesteś CEO Holistic Operator — Tomasz 'Holistic Jason', osobistym doradcą i strategiem użytkownika.
+Twój cel to pomóc użytkownikowi (który ma ADHD i cierpi na paraliż decyzyjny) uporządkować i wdrożyć w życie pomysły, które zapisał w Skarbcu Myśli (Brain Dump).
+
+Przeanalizuj poniższe otwarte pętle (brain dumps) i przygotuj dla nich plan działania:
+1. Dokonaj kategoryzacji (np. Szybka wygrana, Duży projekt, Do odrzucenia).
+2. Dla każdego ważnego pomysłu zaproponuj konkretną "Next Action" (bezwysiłkowy mikro-krok o niskim oporze kognitywnym).
+3. Zaproponuj, które z nich należy natychmiast wrzucić do Kanbana jako zadania, a które zarchiwizować/skasować.
+
+Pisz zwięźle, konkretnie, w przyjaznym, motywującym tonie, bez bełkotu AI. Używaj wypunktowań.
+
+OTWARTE PĘTLE ZE SKARBCZA:
+{dumps_text}
+"""
+                    response = call_gemini_pro_api([{"role": "user", "content": ceo_prompt}], "Jesteś CEO Jason, wybitnym strategiem biznesowym wspierającym osoby z ADHD.")
+                    st.session_state.ceo_analysis_result = response
+                    st.rerun()
+
+        if "ceo_analysis_result" in st.session_state and st.session_state.ceo_analysis_result:
+            st.markdown("##### 📋 Raport i Plan CEO:")
+            st.markdown(f"""
+            <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.9rem; line-height: 1.6; background-color: #0c1410;">
+{st.session_state.ceo_analysis_result}
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Wyczyść raport CEO"):
+                st.session_state.ceo_analysis_result = None
                 st.rerun()
                 
     with col_st:
@@ -1208,21 +1506,14 @@ elif menu == "💼 Dział Prawny & Kancelaria":
                                         raw_pages.append(t)
                                 raw_text = "\n".join(raw_pages)
                                 
-                                # Skan — użyj Gemini Flash przez proxy
+                                # Skan — użyj natywnego API Vertex dla PDF OCR
                                 if len(raw_text.strip()) < 200:
-                                    st.warning("⚠️ PDF wygląda na skan. Uruchamiam Gemini Flash OCR...")
-                                    try:
-                                        import base64 as _b64c
-                                        encoded_pdf = _b64c.b64encode(file_bytes).decode("utf-8")
-                                        ocr_msgs = [{"role": "user", "content": [
-                                            {"type": "text", "text": f"Przepisz DOKŁADNIE cały tekst z tego {len(reader.pages)}-stronicowego dokumentu. Zachowaj: daty, PESEL, sygnatury, adresy, kwoty DOKŁADNIE jak w oryginale."},
-                                            {"type": "image_url", "image_url": {"url": f"data:application/pdf;base64,{encoded_pdf}"}}
-                                        ]}]
-                                        raw_text = call_gemini_api(ocr_msgs)
-                                        st.success(f"✅ OCR Gemini Flash: {len(reader.pages)} stron")
-                                    except Exception as ocr_err:
-                                        st.error(f"Błąd OCR: {ocr_err}")
-                                        raw_text = f"[Błąd OCR: {uploaded_file.name}]"
+                                    st.warning("⚠️ PDF wygląda na skan. Uruchamiam natywny Vertex AI OCR...")
+                                    raw_text = call_native_vertex_ocr(file_bytes)
+                                    if not raw_text.startswith("[Błąd"):
+                                        st.success(f"✅ OCR Gemini Native: {len(reader.pages)} stron")
+                                    else:
+                                        st.error(raw_text)
                                 else:
                                     st.success(f"✅ PDF tekstowy: {len(reader.pages)} stron, {len(raw_text)} znaków")
                                 
@@ -1721,6 +2012,283 @@ elif menu == "💬 AntiGravity & Hermes Chat":
             st.markdown(response)
         st.session_state.messages.append({"role": "assistant", "content": response})
 
+# 9C. AGENCI & CRONY (SALES / SOUL)
+elif menu == "✨ Agenci & Crony (Sales/Soul)":
+    st.title("✨ Specjalistyczni Agenci & Crony Operacyjne")
+    st.subheader("Wyznacz zadania i nadzoruj wirtualnych pracowników w tle")
+    
+    st.markdown("""
+    <div class="one-thing-banner" style="border-left-color: #F59E0B;">
+        <h3 style="margin-top: 0; color: #F59E0B;">⚡ Zintegrowane Usługi Agenckie</h3>
+        <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
+            W tej sekcji możesz uruchomić specjalne zadania cron (deep research rynku) oraz wyznaczyć zadania dla Sales Directora.
+            Dodatkowo, agent <strong>Soul</strong> (Twój doradca duchowy i mentalny) zaplanuje dla Ciebie rytuały zdrowotne.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    tab1, tab2, tab3 = st.tabs(["📢 Sales Director (Lead Scraper)", "🔍 Deep Research Cron (Trendy)", "🧘 Soul Agent (Rytuały Zdrowia)"])
+    
+    with tab1:
+        st.subheader("📢 Sales Director / Handlowiec AI")
+        st.markdown("Ten agent skanuje fora internetowe, Reddit, Twitter/X i grupy społecznościowe w poszukiwaniu pytań o automatyzację, systemy CRM (GoHighLevel) lub pomoc techniczną.")
+        
+        search_kw = st.text_input("Słowa kluczowe do skanowania (np. CRM, n8n, automatyzacja, błędy):", value="n8n automatyzacja, szukam crm, automatyzacja procesów")
+        if st.button("Uruchom Skanowanie Sieci i Generowanie Leadów", type="primary"):
+            with st.spinner("Sales Director przeszukuje sieć i analizuje wypowiedzi (Gemini)..."):
+                prompt = f"""Jesteś wirtualnym Sales Directorem w zespole 'Holistic Jason'.
+Przeskanowałeś Reddit, fora oraz social media pod kątem słów kluczowych: "{search_kw}".
+Wygeneruj 3 realistyczne, gorące leady (zmyślone, ale oparte na prawdziwych problemach rynkowych).
+Dla każdego leada podaj:
+1. Skąd pochodzi wpis (np. r/entrepreneur, LinkedIn).
+2. Treść wpisu (ból klienta).
+3. Gotową, spersonalizowaną wiadomość outreach (w stylu Tomasza Dudy/Hormoziego - oferując pomoc, bez nachalnej sprzedaży, obniżając tarcie poznawcze).
+4. Proponowany "Next Action" do zapisania w CRM.
+
+Zwróć wynik w ładnym formacie markdown.
+"""
+                response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś dynamicznym i skutecznym Sales Directorem.")
+                st.session_state.sales_leads_result = response
+                st.rerun()
+                
+        if "sales_leads_result" in st.session_state and st.session_state.sales_leads_result:
+            st.markdown("### 🎯 Wykryte Szanse i Gotowy Outreach:")
+            st.markdown(f"""
+            <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #0d121c;">
+{st.session_state.sales_leads_result}
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Wyczyść leady"):
+                st.session_state.sales_leads_result = None
+                st.rerun()
+                
+    with tab2:
+        st.subheader("🔍 Deep Research Cron (Badanie Rynku)")
+        st.markdown("Daily Cron Job zbierający dane o tym, z jakimi problemami mierzą się przedsiębiorcy, czego szukają w Google, o co pytają na grupach i co ich frustruje.")
+        
+        target_group = st.text_input("Grupa docelowa (np. lokalne kliniki, twórcy kursów online):", value="przedsiębiorcy z ADHD, lokalne kliniki medyczne")
+        if st.button("Uruchom Daily Cron Deep Research", type="primary"):
+            with st.spinner("Cron Agent agreguje dane i analizuje trendy (Gemini)..."):
+                prompt = f"""Jesteś analitykiem rynku i trend-watcherem.
+Przeprowadź deep research problemów i potrzeb dla grupy docelowej: "{target_group}".
+Wyszukaj i przedstaw:
+1. Główne frustracje (czego nienawidzą w obecnych rozwiązaniach).
+2. Najczęstsze pytania w sieci w ciągu ostatnich 30 dni.
+3. Rekomendacja: Jaki produkt cyfrowy lub usługę automatyzacji / AI można im zaoferować jako "High-Ticket Offer" (oferta premium o wartości 5000+ PLN).
+
+Sformatuj jako raport rynkowy."""
+                response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś wnikliwym badaczem rynku.")
+                st.session_state.deep_research_result = response
+                st.rerun()
+                
+        if "deep_research_result" in st.session_state and st.session_state.deep_research_result:
+            st.markdown("### 📊 Raport Rynkowy i Analiza Trendów:")
+            st.markdown(f"""
+            <div class="custom-card" style="border-left: 4px solid #F59E0B; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #17120a;">
+{st.session_state.deep_research_result}
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Wyczyść raport researchu"):
+                st.session_state.deep_research_result = None
+                st.rerun()
+                
+    with tab3:
+        st.subheader("🧘 Soul Agent (Twój Doradca Duchowy & Mentalny)")
+        st.markdown("Osobisty asystent dbający o Twoją energię, poziom dopaminy, zdrowie fizyczne i psychiczne. Zoptymalizowany pod kątem ADHD.")
+        
+        # User input for current state
+        feelings = st.text_area("Jak się dzisiaj czujesz? (np. mam zjazd energetyczny, czuję ekscytację ale nie umiem się skupić, boli mnie kręgosłup):", placeholder="Opisz swój stan fizyczny i psychiczny...")
+        
+        if st.button("Zaplanuj Rytuały Zdrowotne", type="primary"):
+            if feelings:
+                with st.spinner("Soul Agent analizuje Twój stan i projektuje rytuały..."):
+                    # Load user profile context
+                    o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+                    o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak pliku o_mnie.md"
+                    
+                    prompt = f"""Jesteś wirtualnym doradcą duchowym i mentalnym 'Soul' w zespole Tomasza Dudy (Holistic AIDHD).
+Tomasz (lub klient) opisał swoje dzisiejsze samopoczucie: "{feelings}".
+Kontekst użytkownika (historia i tożsamość):
+{o_mnie_context}
+
+Zaprojektuj spersonalizowany zestaw rytuałów fizycznych i psychicznych na dzisiaj, aby pomóc mu wejść w stan Flow i zrównoważyć układ nerwowy.
+Uwzględnij:
+1. Rytuał oddechowy (np. Wim Hof, oddech pudełkowy) dopasowany do stanu.
+2. Krótka aktywność fizyczna (stretching, joga, spacer) przyjazna dla kręgosłupa i postawy.
+3. Rytuał mentalny/medytacyjny (np. Focus Block, uziemienie).
+4. Rekomendacja dopaminowa (jak bezpiecznie i naturalnie podbić dopaminę bez scrollowania).
+
+Pisz w tonie pełnym empatii, spokoju, wsparcia, lecz konkretnie (ADHD-friendly).
+"""
+                    response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś wspierającym doradcą mentalnym i duchowym zorientowanym na ADHD.")
+                    st.session_state.soul_rituals_result = response
+                    st.rerun()
+            else:
+                st.warning("Opisz krótko jak się czujesz, aby model mógł dobrać rytuały.")
+                
+        if "soul_rituals_result" in st.session_state and st.session_state.soul_rituals_result:
+            st.markdown("### 🧘 Rekomendowane Rytuały i Plan Przepływu (Flow):")
+            st.markdown(f"""
+            <div class="custom-card" style="border-left: 4px solid #EC4899; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #170d14;">
+{st.session_state.soul_rituals_result}
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Wyczyść rytuały"):
+                st.session_state.soul_rituals_result = None
+                st.rerun()
+
+# 9B. ONBOARDING & GRILL AGENT
+elif menu == "🤝 Onboarding & Grill":
+    st.title("🤝 Onboarding & Grill Agent")
+    st.subheader("Interaktywny wywiad AI i generowanie briefu")
+    
+    st.markdown("""
+    <div class="one-thing-banner" style="border-left-color: #EC4899;">
+        <h3 style="margin-top: 0; color: #EC4899;">🤝 Onboarding zasilany Grillowaniem AI</h3>
+        <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
+            Zanim rozpoczniesz nowy projekt albo wdrożenie, nasz agent przeprowadzi z Tobą rygorystyczny wywiad.
+            Będzie kwestionował Twoje założenia, szukał prawdziwych problemów Twoich odbiorców i na koniec stworzy kompletny, ustrukturyzowany Brief gotowy do zapisu w Obsidian Vault.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Initialize onboarding state
+    if "onb_active" not in st.session_state:
+        st.session_state.onb_active = False
+        st.session_state.onb_step = 0
+        st.session_state.onb_answers = []
+        st.session_state.onb_questions = []
+        st.session_state.onb_type = ""
+        st.session_state.onb_target_name = ""
+        st.session_state.onb_chat_history = []
+        
+    if not st.session_state.onb_active:
+        st.subheader("🚀 Rozpocznij Nowy Wywiad")
+        onb_name = st.text_input("Nazwa Klienta / Nazwa Projektu:", placeholder="np. Gabinet Fizjoterapii Kręgosłup, Nowa Platforma Kursowa...")
+        onb_type = st.selectbox("Typ wywiadu onboardingowego:", [
+            "A. Nowy klient biznesowy na systemy AI & CRM (B2B)",
+            "B. Shadow Operating dla Twórcy Cyfrowego (Revenue Split)",
+            "C. Nowy członek społeczności ADHD for Life (Onboarding profilowy)"
+        ])
+        
+        if st.button("Uruchom Onboarding & Grill", type="primary"):
+            if onb_name:
+                st.session_state.onb_target_name = onb_name
+                st.session_state.onb_type = onb_type
+                st.session_state.onb_active = True
+                st.session_state.onb_step = 1
+                st.session_state.onb_answers = []
+                st.session_state.onb_chat_history = []
+                
+                # Predefined starter prompt to generate first question
+                starter_prompt = f"""Jesteś elitarnym agentem onboardingu i grillowania założeń biznesowych. 
+Użytkownik rozpoczyna onboarding dla projektu/klienta: "{onb_name}" o typie: "{onb_type}".
+Zadaj pierwsze, bardzo celne, drążące pytanie, które uderza w sedno problemu biznesowego lub kognitywnego. 
+Zadaj TYLKO jedno pytanie. Nie pisz powitań ani wstępów."""
+                with st.spinner("Agent przygotowuje pierwsze pytanie..."):
+                    first_q = call_gemini_pro_api([{"role": "user", "content": starter_prompt}], "Jesteś dociekliwym audytorem biznesowym.")
+                st.session_state.onb_questions = [first_q]
+                st.session_state.onb_chat_history.append({"role": "assistant", "content": first_q})
+                st.rerun()
+            else:
+                st.warning("Podaj nazwę klienta lub projektu.")
+    else:
+        st.write(f"### 🤝 Wywiad: **{st.session_state.onb_target_name}**")
+        st.caption(f"Typ: {st.session_state.onb_type} | Krok {st.session_state.onb_step} z 5")
+        
+        # Display chat history
+        for msg in st.session_state.onb_chat_history:
+            role = "assistant" if msg["role"] == "assistant" else "user"
+            with st.chat_message(role):
+                st.markdown(msg["content"])
+                
+        # If we have reached 5 steps, compile the Brief!
+        if st.session_state.onb_step > 5:
+            st.success("✅ Wywiad zakończony! Model kompiluje ustrukturyzowany Brief...")
+            
+            # Formulate prompt for Brief synthesis
+            synthesis_prompt = f"""Na podstawie poniższego wywiadu onboardingowego dla "{st.session_state.onb_target_name}" ({st.session_state.onb_type}),
+przygotuj kompletny, ustrukturyzowany Brief Projektowy w formacie Markdown.
+Użyj sekcji:
+# Brief Projektu: {st.session_state.onb_target_name}
+- **Typ Projektu:** {st.session_state.onb_type}
+- **Data sporządzenia:** {time.strftime('%Y-%m-%d')}
+
+## 🎯 Główny Cel i Problem
+(Jaki rzeczywisty problem odbiorcy rozwiązuje ten projekt? Czego klient naprawdę chce?)
+
+## ⚖️ Analiza Ryzyk i Grillowanie
+(Podsumowanie słabych punktów i założeń, które zostały zweryfikowane w wywiadzie)
+
+## 🛠️ Rekomendowana Architektura AI/CRM
+(Rekomendowane wdrożenie: n8n, CRM GHL, automatyzacje, modele)
+
+## 📅 Konkretne Mikro-Kroki (Next Actions)
+(Lista 3-5 natychmiastowych zadań o niskim oporze kognitywnym do wdrożenia w Kanbanie)
+
+WYWIAD:
+"""
+            for msg in st.session_state.onb_chat_history[:-1]: # exclude final system message
+                synthesis_prompt += f"{'Agent' if msg['role']=='assistant' else 'Użytkownik'}: {msg['content']}\n"
+                
+            with st.spinner("CEO Jason & Onboarding Agent syntetyzują Brief..."):
+                brief_md = call_gemini_pro_api([{"role": "user", "content": synthesis_prompt}], "Jesteś CEO Jason i Onboarding Agent. Tworzysz precyzyjne briefy.")
+            
+            st.markdown("### 📝 Wygenerowany Brief:")
+            st.markdown(f"""
+            <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7;">
+{brief_md}
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Save to Obsidian Vault
+            brief_filename = f"Brief_{st.session_state.onb_target_name.replace(' ', '_')}_{int(time.time())}.md"
+            brief_filepath = os.path.join(OBSIDIAN_DIR, brief_filename)
+            try:
+                with open(brief_filepath, "w", encoding="utf-8") as f:
+                    f.write(brief_md)
+                st.success(f"📚 Brief został pomyślnie zapisany w Obsidian Vault: `{brief_filename}`")
+            except Exception as e:
+                st.error(f"Nie udało się zapisać briefu w Obsidianie: {e}")
+                
+            if st.button("Rozpocznij nowy onboarding", type="primary"):
+                st.session_state.onb_active = False
+                st.rerun()
+        else:
+            # We are in the middle of the interview
+            user_reply = st.chat_input("Twoja odpowiedź (Agent wygrilluje Twoje założenia):")
+            
+            if user_reply:
+                st.session_state.onb_chat_history.append({"role": "user", "content": user_reply})
+                st.session_state.onb_answers.append(user_reply)
+                st.session_state.onb_step += 1
+                
+                # Check if this is the final step
+                if st.session_state.onb_step > 5:
+                    st.session_state.onb_chat_history.append({"role": "assistant", "content": "Dziękuję. Wywiad zakończony. Przechodzę do generowania briefu..."})
+                    st.rerun()
+                else:
+                    # Generate next question by prompting the model to grill the last response and advance
+                    grill_prompt = f"""Jesteś agentem onboardingu i grillowania założeń biznesowych. 
+Onboarding dla projektu/klienta: "{st.session_state.onb_target_name}" o typie: "{st.session_state.onb_type}".
+Oto dotychczasowa historia wywiadu:
+"""
+                    for msg in st.session_state.onb_chat_history:
+                        grill_prompt += f"{'Agent' if msg['role']=='assistant' else 'Użytkownik'}: {msg['content']}\n"
+                        
+                    grill_prompt += f"\nZADANIE: Przeanalizuj ostatnią odpowiedź użytkownika, krótko zakwestionuj lub podważ jedno z jego założeń (grillowanie), a następnie zadaj krok {st.session_state.onb_step} z 5 (następne celne pytanie). Zadaj TYLKO jedno pytanie. Nie pisz powitań ani podsumowań."
+                    
+                    with st.spinner("Agent analizuje Twoją odpowiedź i szykuje kolejne pytanie..."):
+                        next_q = call_gemini_pro_api([{"role": "user", "content": grill_prompt}], "Jesteś rygorystycznym audytorem biznesowym grillującym pomysły.")
+                        
+                    st.session_state.onb_questions.append(next_q)
+                    st.session_state.onb_chat_history.append({"role": "assistant", "content": next_q})
+                    st.rerun()
+                    
+        if st.button("❌ Przerwij wywiad i zresetuj state"):
+            st.session_state.onb_active = False
+            st.rerun()
+
 # 10. PRISTINE MEMORY
 elif menu == "💾 Pristine Memory":
     st.title("💾 Zarządzanie Pristine Memory")
@@ -1741,3 +2309,16 @@ elif menu == "💾 Pristine Memory":
         st.code(content, language="markdown")
     else:
         st.error("Nie znaleziono pliku. Upewnij się, że pliki zostały wgrane do folderu ~/.hermes/")
+
+# --- GLOBALNE ELEMENTY (FAB BRAIN DUMP) ---
+if "open_brain_dump" not in st.session_state:
+    st.session_state.open_brain_dump = False
+
+st.markdown('<div class="fab-container">', unsafe_allow_html=True)
+if st.button("💀", key="fab_brain_dump_button"):
+    st.session_state.open_brain_dump = True
+st.markdown('</div>', unsafe_allow_html=True)
+
+if st.session_state.open_brain_dump:
+    st.session_state.open_brain_dump = False
+    show_brain_dump_dialog()

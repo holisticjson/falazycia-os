@@ -21,7 +21,9 @@ def http_post(url, json_data, headers, timeout=60.0):
     data_bytes = json.dumps(json_data).encode("utf-8")
     req = urllib.request.Request(url, data=data_bytes, headers=headers, method="POST")
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as response:
+        import ssl
+        ctx = ssl._create_unverified_context()
+        with urllib.request.urlopen(req, timeout=timeout, context=ctx) as response:
             status_code = response.getcode()
             response_content = response.read()
             resp_headers = {}
@@ -58,8 +60,31 @@ logging.basicConfig(
 )
 logger = logging.getLogger("gcp_vertex_proxy")
 
+import os
+import ssl
+import urllib3
+import requests
+
+# Monkey patch urllib3 HTTPSConnectionPool to disable SSL checks globally
+orig_new_conn = urllib3.connectionpool.HTTPSConnectionPool._new_conn
+def patch_new_conn(self):
+    conn = orig_new_conn(self)
+    if hasattr(conn, 'ssl_context') and conn.ssl_context:
+        conn.ssl_context.check_hostname = False
+        conn.ssl_context.verify_mode = ssl.CERT_NONE
+    return conn
+urllib3.connectionpool.HTTPSConnectionPool._new_conn = patch_new_conn
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
 PORT = 8089
+
+# Resolve GCP Service Account key with fallbacks
 SA_KEY_PATH = '/home/holisticjson/.hermes/gcp-sa-key.json'
+if not os.path.exists(SA_KEY_PATH):
+    SA_KEY_PATH = os.path.join(os.getcwd(), 'holistic-dashboard-dev-dea2c872139e.json')
+if not os.path.exists(SA_KEY_PATH):
+    SA_KEY_PATH = os.path.expanduser('~/.hermes/gcp-sa-key.json')
+
 PROJECT_ID = "holistic-dashboard-dev"
 LOCATION = "us-central1"
 TARGET_URL = f"https://{LOCATION}-aiplatform.googleapis.com/v1/projects/{PROJECT_ID}/locations/{LOCATION}/endpoints/openapi/chat/completions"
@@ -74,13 +99,17 @@ def get_token():
     with token_lock:
         now = time.time()
         if not active_token or now >= token_expiry - 60:
-            logger.info("GCP OAuth token is missing or near expiry. Refreshing...")
+            logger.info(f"GCP OAuth token is missing or near expiry. Key path: {SA_KEY_PATH}")
             if creds is None:
                 creds = service_account.Credentials.from_service_account_file(
                     SA_KEY_PATH,
                     scopes=['https://www.googleapis.com/auth/cloud-platform']
                 )
-            request = google.auth.transport.requests.Request()
+            
+            # Use non-verifying session for oauth token refresh
+            session = requests.Session()
+            session.verify = False
+            request = google.auth.transport.requests.Request(session=session)
             creds.refresh(request)
             active_token = creds.token
             token_expiry = now + 3500
