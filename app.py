@@ -1116,7 +1116,7 @@ elif menu == "💼 Dział Prawny & Kancelaria":
     </div>
     """, unsafe_allow_html=True)
     
-    uploaded_legal_file = st.file_uploader("Załącz dokument (Plik PDF, skan, obrazek lub zdjęcie):", type=["pdf", "png", "jpg", "jpeg"])
+    uploaded_legal_files = st.file_uploader("Załącz dokumenty (Pliki PDF, skany, obrazki lub zdjęcia):", type=["pdf", "png", "jpg", "jpeg"], accept_multiple_files=True)
     contract_text = st.text_area("Lub wklej tutaj treść dokumentu / notatek (opcjonalnie):", height=150)
     user_instruction = st.text_input("Twoje polecenie (krótko, po ludzku - AI rozbuduje je w tle i podbije prompt):", placeholder="np. Napisz odpowiedź na to wezwanie, nie zgadzam się z kwotą kary bo opóźnienie było z ich winy i zrób z tego oficjalne pismo")
     
@@ -1136,41 +1136,46 @@ elif menu == "💼 Dział Prawny & Kancelaria":
         
     if st.button("Uruchom Generator Prawny AI", type="primary"):
         # Sprawdzamy czy użytkownik dał jakiekolwiek wejście
-        if contract_text or uploaded_legal_file is not None or user_instruction:
-            file_text = ""
-            image_data_url = None
+        if contract_text or uploaded_legal_files or user_instruction:
+            file_texts = []
+            image_data_urls = []
             
-            if uploaded_legal_file is not None:
-                file_bytes = uploaded_legal_file.read()
-                file_name = uploaded_legal_file.name.lower()
-                
-                if file_name.endswith(".pdf"):
-                    with st.spinner("Odczytywanie pliku PDF..."):
-                        try:
+            if uploaded_legal_files:
+                for uploaded_file in uploaded_legal_files:
+                    file_bytes = uploaded_file.read()
+                    file_name = uploaded_file.name.lower()
+                    
+                    if file_name.endswith(".pdf"):
+                        with st.spinner(f"Odczytywanie pliku PDF ({uploaded_file.name})..."):
                             try:
-                                import pypdf
-                            except ImportError:
-                                import subprocess, sys
-                                subprocess.run([sys.executable, "-m", "pip", "install", "pypdf"])
-                                import pypdf
-                            
-                            import io
-                            reader = pypdf.PdfReader(io.BytesIO(file_bytes))
-                            extracted_pages = []
-                            for idx, page in enumerate(reader.pages):
-                                t = page.extract_text()
-                                if t:
-                                    extracted_pages.append(t)
-                            file_text = "\n--- STRONA ---\n".join(extracted_pages)
-                            st.success(f"Pomyślnie odczytano PDF ({len(reader.pages)} stron).")
-                        except Exception as e:
-                            st.error(f"Błąd odczytu PDF: {e}")
-                elif file_name.endswith((".png", ".jpg", ".jpeg")):
-                    import base64
-                    mime_type = "image/png" if file_name.endswith(".png") else "image/jpeg"
-                    encoded = base64.b64encode(file_bytes).decode("utf-8")
-                    image_data_url = f"data:{mime_type};base64,{encoded}"
-                    st.success("Obraz został załączony jako skan do analizy wizualnej AI.")
+                                try:
+                                    import pypdf
+                                except ImportError:
+                                    import subprocess, sys
+                                    subprocess.run([sys.executable, "-m", "pip", "install", "pypdf"])
+                                    import pypdf
+                                
+                                import io
+                                reader = pypdf.PdfReader(io.BytesIO(file_bytes))
+                                extracted_pages = []
+                                for page in reader.pages:
+                                    t = page.extract_text()
+                                    if t:
+                                        extracted_pages.append(t)
+                                file_text = "\n".join(extracted_pages)
+                                file_texts.append(f"--- ZAŁĄCZONY DOKUMENT: {uploaded_file.name} ---\n{file_text}")
+                                st.success(f"Pomyślnie odczytano PDF: {uploaded_file.name} ({len(reader.pages)} stron).")
+                            except Exception as e:
+                                st.error(f"Błąd odczytu PDF {uploaded_file.name}: {e}")
+                    elif file_name.endswith((".png", ".jpg", ".jpeg")):
+                        import base64
+                        mime_type = "image/png" if file_name.endswith(".png") else "image/jpeg"
+                        encoded = base64.b64encode(file_bytes).decode("utf-8")
+                        image_data_urls.append({
+                            "name": uploaded_file.name,
+                            "data_url": f"data:{mime_type};base64,{encoded}"
+                        })
+                        st.success(f"Załączono skan: {uploaded_file.name} do analizy wizualnej AI.")
             
             with st.spinner("Twój wirtualny radca prawny analizuje sprawę i buduje dokument..."):
                 system_instruction = """Jesteś elitarnym polskim adwokatem i radcą prawnym z wieloletnim doświadczeniem. Twój styl pisania jest rygorystyczny, precyzyjny, wysoce profesjonalny i całkowicie wolny od lania wody.
@@ -1199,8 +1204,8 @@ Krótkie polecenie użytkownika (podbij je i rozbuduj w tle): "{user_instruction
 ---
 ### STAN FAKTYCZNY I DANE WEJŚCIOWE:
 """
-                if file_text:
-                    enhanced_prompt += f"\n[Treść odczytana z pliku PDF]:\n{file_text[:35000]}\n"
+                if file_texts:
+                    enhanced_prompt += "\n" + "\n\n".join(file_texts) + "\n"
                 if contract_text:
                     enhanced_prompt += f"\n[Tekst wklejony ręcznie]:\n{contract_text}\n"
                 
@@ -1214,15 +1219,18 @@ Krótkie polecenie użytkownika (podbij je i rozbuduj w tle): "{user_instruction
 """
                 
                 messages = []
-                if image_data_url:
+                if image_data_urls:
+                    content_list = [{"type": "text", "text": enhanced_prompt}]
+                    for img in image_data_urls:
+                        content_list.append({
+                            "type": "image_url",
+                            "image_url": {"url": img["data_url"]}
+                        })
                     messages.append({
                         "role": "user",
-                        "content": [
-                            {"type": "text", "text": enhanced_prompt},
-                            {"type": "image_url", "image_url": {"url": image_data_url}}
-                        ]
+                        "content": content_list
                     })
-                    # Jeśli jest zdjęcie, przekazujemy bezpośrednio do Gemini (bo to model multimodalny)
+                    # Jeśli są zdjęcia, przekazujemy bezpośrednio do Gemini (bo to model multimodalny)
                     analysis_result = call_gemini_api(messages, system_instruction)
                 else:
                     messages.append({"role": "user", "content": enhanced_prompt})
