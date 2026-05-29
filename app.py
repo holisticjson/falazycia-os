@@ -1177,32 +1177,54 @@ elif menu == "💼 Dział Prawny & Kancelaria":
                         })
                         st.success(f"Załączono skan: {uploaded_file.name} do analizy wizualnej AI.")
             
-            with st.spinner("Twój wirtualny radca prawny analizuje sprawę i buduje dokument..."):
+            with st.spinner("Twój wirtualny radca prawny analizuje dokumenty i wyciąga dane..."):
                 system_instruction = """Jesteś elitarnym polskim adwokatem i radcą prawnym z wieloletnim doświadczeniem. Twój styl pisania jest rygorystyczny, precyzyjny, wysoce profesjonalny i całkowicie wolny od lania wody.
-Tomasz Duda (architekt systemów AI dla neuroatypowych, Holistic AIDHD) zlecił Ci zadanie. Użytkownik podał krótkie instrukcje, które masz w tle rozbudować, podbić do profesjonalnego poziomu prawnego i przygotować kompletny projekt dokumentu.
+Tomasz Duda (architekt systemów AI dla neuroatypowych, Holistic AIDHD) zlecił Ci zadanie.
 
-Zasady:
+## KLUCZOWA ZASADA — DANE WRAŻLIWE:
+NIGDY nie używaj nawiasów kwadratowych jako placeholderów dla danych, które są dostępne w załączonych dokumentach.
+Przed wygenerowaniem pisma ZAWSZE wyciągnij z dokumentu i wstaw bezpośrednio:
+- Pełne imiona i nazwiska wszystkich uczestników postępowania (powód, pozwany, świadkowie, pełnomocnicy)
+- Numery PESEL, NIP, KRS — jeśli widoczne w dokumentach
+- Sygnaturę akt sprawy (np. "I C 123/24", "III Ca 456/25") — wstaw dokładnie tak jak w dokumencie
+- Adresy zamieszkania i siedziby stron
+- Daty i numery pism, decyzji, nakazów
+- Nazwy sądów, kancelarii, instytucji
+- Kwoty, wartości przedmiotu sporu, odsetki
+- Numery kont bankowych i rachunków (jeśli istotne prawnie)
+
+Nawiasów kwadratowych [tak] używaj WYŁĄCZNIE dla danych, których absolutnie nie ma w żadnym z załączonych dokumentów.
+
+## ZASADY PISANIA:
 1. Pisz wyłącznie w języku polskim.
-2. Zastosuj oficjalny, uroczysty i kategoryczny ton prawniczy (np. 'W imieniu mojego Mocodawcy...', 'Niniejszym działając w imieniu...', 'Wzywam do...').
-3. Jeśli generujesz pismo procesowe lub wezwanie, dodaj wszystkie standardowe sekcje formalne:
-   - Miejscowość i data (np. '[Miejscowość], dnia [Data]')
-   - Oznaczenie stron (Powód/Pozwany lub Wierzyciel/Dłużnik, Wzywający/Wezwany) jako '[Imię i Nazwisko / Nazwa Firmy], [Adres], [NIP/PESEL]'
-   - Sygnatura akt (jeśli dotyczy, np. 'Sygn. akt [Sygnatura]')
-   - Tytuł pisma (np. 'WEZWANIE DO ZAPŁATY', 'ODPOWIEDŹ NA WEZWANIE', 'SPRZECIW OD NAKAZU ZAPŁATY')
-   - Treść żądania (osnowa) z powołaniem się na odpowiednie przepisy prawa (np. Kodeks Cywilny, Kodeks Postępowania Cywilnego)
-   - Uzasadnienie prawne i faktyczne (dokładne wykazanie racji, analizując stan faktyczny)
-   - Podpis (np. '[Podpis / Tomasz Duda]')
-4. Użyj nawiasów kwadratowych dla danych zmiennych (np. '[Data]', '[Wpisz Kwotę]'), aby użytkownik mógł łatwo skopiować dokument i go uzupełnić.
-5. Jeśli załączono umowę lub pismo, przeanalizuj je wnikliwie. Znajdź w nim słabe punkty drugiej strony, które możesz wykorzystać na korzyść Tomasza.
+2. Zastosuj oficjalny, uroczysty ton prawniczy.
+3. Pismo musi zawierać: nagłówek z danymi stron, sygnaturę, tytuł, osnowę z przepisami prawa, uzasadnienie faktyczne i prawne, podpis.
+4. Powołuj się na konkretne przepisy KC, KPC, KKS lub innych aktów prawa — z numerami artykułów.
+5. Znajdź słabe punkty drugiej strony w dokumentach i wykorzystaj je na korzyść klienta.
 """
                 
-                # Budowanie ulepszonego prompta (Prompt Engineering w tle)
-                enhanced_prompt = f"""### ZADANIE SPECJALNE: Profesjonalne Generowanie Dokumentu Prawnego
+                # Budowanie ulepszonego prompta z naciskiem na wyciąganie danych
+                enhanced_prompt = f"""### ZADANIE: Profesjonalne Generowanie Dokumentu Prawnego z Danymi z Akt
+
 Typ dokumentu docelowego: {doc_type}
-Krótkie polecenie użytkownika (podbij je i rozbuduj w tle): "{user_instruction if user_instruction else 'Dokonaj analizy i przygotuj pismo zabezpieczające interesy'}"
+Polecenie użytkownika: "{user_instruction if user_instruction else 'Dokonaj analizy i przygotuj pismo zabezpieczające interesy'}"
 
 ---
-### STAN FAKTYCZNY I DANE WEJŚCIOWE:
+### KROK 1 — EKSTRAKCJA DANYCH Z DOKUMENTÓW:
+Przed napisaniem pisma WYCIĄGNIJ z poniższych dokumentów:
+✓ Wszystkie imiona, nazwiska i role procesowe (Powód/Pozwany/Wnioskodawca/Uczestnik)
+✓ Sygnaturę akt (dokładny ciąg znaków, np. "I C 1234/24")
+✓ Numery PESEL, NIP, KRS, REGON
+✓ Adresy i miejscowości
+✓ Daty pism, wyroków, nakazów, terminów
+✓ Kwoty, wartości, odsetki
+✓ Nazwy sądów i organów
+
+### KROK 2 — NAPISZ KOMPLETNE PISMO:
+Użyj WYCIĄGNIĘTYCH danych bezpośrednio w piśmie. NIE używaj placeholderów [Imię], [PESEL] jeśli dane są w dokumentach.
+
+---
+### DOKUMENTY ŹRÓDŁOWE:
 """
                 if file_texts:
                     enhanced_prompt += "\n" + "\n\n".join(file_texts) + "\n"
@@ -1211,11 +1233,11 @@ Krótkie polecenie użytkownika (podbij je i rozbuduj w tle): "{user_instruction
                 
                 enhanced_prompt += """
 ---
-### WYMAGANIA DOTYCZĄCE IMPLEMENTACJI:
-1. Rozbuduj proste polecenie użytkownika do pełnego, oficjalnego stanowiska prawnego.
-2. Zaimplementuj najsilniejsze możliwe argumenty prawne na podstawie polskiego prawa.
-3. Wygeneruj KOMPLETNY, GOTOWY projekt dokumentu (nie pisz ogólnych porad ani planów - napisz pełne pismo od nagłówka do stopki).
-4. Przedstaw wynik jako gotowy tekst do skopiowania, sformatowany estetycznie w Markdown.
+### WYMAGANIA KOŃCOWE:
+1. Wstaw RZECZYWISTE dane z dokumentów — nie placeholdery.
+2. Napisz pismo od nagłówka do podpisu — kompletne i gotowe do wysłania.
+3. Przywołaj konkretne artykuły prawa.
+4. Sformatuj czytelnie w Markdown.
 """
                 
                 messages = []
@@ -1226,27 +1248,72 @@ Krótkie polecenie użytkownika (podbij je i rozbuduj w tle): "{user_instruction
                             "type": "image_url",
                             "image_url": {"url": img["data_url"]}
                         })
-                    messages.append({
-                        "role": "user",
-                        "content": content_list
-                    })
-                    # Jeśli są zdjęcia, przekazujemy bezpośrednio do Gemini (bo to model multimodalny)
+                    messages.append({"role": "user", "content": content_list})
                     analysis_result = call_gemini_api(messages, system_instruction)
                 else:
                     messages.append({"role": "user", "content": enhanced_prompt})
-                    # Jeśli sam tekst, leci do vLLM z fallbackiem do Gemini
                     analysis_result = call_vllm_api(messages, system_instruction)
                 
-                st.markdown("### 📝 Przygotowany Projekt Dokumentu Prawnego (AI Redaktor)")
+                st.markdown("### 📝 Wygenerowany Projekt Pisma Prawnego")
                 st.markdown(f"<div class='custom-card' style='border-left: 4px solid #EF4444; white-space: pre-wrap;'>{analysis_result}</div>", unsafe_allow_html=True)
+                
+                # === WERYFIKATOR DANYCH — DRUGI MODEL ===
+                st.markdown("---")
+                st.markdown("### 🔍 Weryfikacja Danych — Audyt Krzyżowy AI")
+                
+                with st.spinner("Drugi model weryfikuje zgodność danych wrażliwych z dokumentami źródłowymi..."):
+                    verify_system = """Jesteś specjalistycznym audytorem prawnym i weryfikatorem dokumentów.
+Twoim jedynym zadaniem jest porównanie wygenerowanego pisma prawnego z dokumentami źródłowymi i wykrycie WSZYSTKICH niezgodności, brakujących danych lub błędów faktycznych.
+
+Sprawdź dokładnie:
+1. SYGNATURY AKT — czy są identyczne z dokumentem źródłowym?
+2. IMIONA I NAZWISKA — czy wszystkie osoby są wymienione z poprawnymi danymi?
+3. NUMERY PESEL, NIP, KRS — czy są obecne i poprawne?
+4. DATY — czy daty wyroków, pism, terminów zgadzają się z oryginałem?
+5. KWOTY — czy wartości finansowe, odsetki, koszty sądowe są poprawne?
+6. NAZWY INSTYTUCJI — czy sądy, organy, kancelarie są poprawnie nazwane?
+7. PLACEHOLDERY — czy gdzieś zostały nawiasy kwadratowe [xxx] zamiast danych?
+
+Odpowiedz w formacie:
+✅ CO JEST POPRAWNE (lista)
+⚠️ BRAKUJĄCE LUB NIEPEWNE DANE (lista z sugestią uzupełnienia)
+❌ BŁĘDY FAKTYCZNE (lista — jeśli są)
+📋 DANE DO WSTAWIENIA RĘCZNIE (kompletna lista wszystkich danych których nie było w dokumentach)
+"""
+                    
+                    verify_prompt = f"""PORÓWNAJ wygenerowane pismo z dokumentami źródłowymi:
+
+=== DOKUMENTY ŹRÓDŁOWE ===
+{chr(10).join(file_texts) if file_texts else contract_text if contract_text else '(brak dokumentów — tylko tekst użytkownika)'}
+
+=== WYGENEROWANE PISMO ===
+{analysis_result}
+
+Przeprowadź szczegółowy audyt krzyżowy i wskaż wszystkie rozbieżności."""
+                    
+                    verify_messages = [{"role": "user", "content": verify_prompt}]
+                    verification_result = call_gemini_api(verify_messages, verify_system)
+                    
+                    # Kolorowe karty wyników weryfikacji
+                    has_errors = "❌" in verification_result
+                    has_warnings = "⚠️" in verification_result
+                    card_color = "#EF4444" if has_errors else ("#F59E0B" if has_warnings else "#10B981")
+                    card_icon = "❌ Wykryto błędy" if has_errors else ("⚠️ Wymaga uwagi" if has_warnings else "✅ Wszystko zgodne")
+                    
+                    st.markdown(f"""
+                    <div class='custom-card' style='border-left: 4px solid {card_color};'>
+                        <h4 style='margin: 0 0 10px; color: {card_color};'>🔍 Raport Audytu: {card_icon}</h4>
+                        <div style='white-space: pre-wrap; font-size: 0.95rem;'>{verification_result}</div>
+                    </div>
+                    """, unsafe_allow_html=True)
                 
                 if obsidian_export:
                     note_name = f"Dokument_Prawny_{int(time.time())}.md"
                     obsidian_path = os.path.join(OBSIDIAN_DIR, note_name)
                     try:
                         with open(obsidian_path, "w", encoding="utf-8") as f:
-                            f.write(f"# Projekt Prawny: {doc_type}\n\nData: {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n{analysis_result}")
-                        st.success(f"Dokument pomyślnie wyeksportowany do Skarbca Obsidian jako `{note_name}`!")
+                            f.write(f"# Projekt Prawny: {doc_type}\n\nData: {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n## Wygenerowane Pismo\n\n{analysis_result}\n\n---\n\n## Raport Weryfikacji\n\n{verification_result}")
+                        st.success(f"Dokument + raport weryfikacji wyeksportowane do Obsidian jako `{note_name}`!")
                     except Exception as ex:
                         st.error(f"Nie udało się zapisać pliku w Obsidian Vault: {ex}")
         else:
