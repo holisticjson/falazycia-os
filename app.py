@@ -1,6 +1,18 @@
 import streamlit as st
 import os, json, time
 import ssl
+
+# Ręczne wczytanie pliku .env na starcie aplikacji
+if os.path.exists(".env"):
+    try:
+        with open(".env", "r", encoding="utf-8") as f:
+            for line in f:
+                if "=" in line and not line.strip().startswith("#"):
+                    k, v = line.split("=", 1)
+                    os.environ[k.strip()] = v.strip()
+    except Exception as e:
+        pass
+
 try:
     ssl._create_default_https_context = ssl._create_unverified_context
 except AttributeError:
@@ -189,7 +201,29 @@ st.markdown("""
 
 # Helpery danych
 def load_kanban():
-    return json.load(open(KANBAN_FILE, "r", encoding="utf-8")) if os.path.exists(KANBAN_FILE) else {"todo":[], "in_progress":[], "done":[]}
+    default_kanban = {
+        "triage": [],
+        "todo": [],
+        "ready": [],
+        "running": [],
+        "blocked": [],
+        "done": []
+    }
+    if os.path.exists(KANBAN_FILE):
+        try:
+            with open(KANBAN_FILE, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            # Migrate old 3-column format if present
+            if "in_progress" in data and "running" not in data:
+                data["running"] = data.pop("in_progress")
+            # Ensure all 6 columns exist
+            for col in default_kanban:
+                if col not in data:
+                    data[col] = []
+            return data
+        except Exception:
+            pass
+    return default_kanban
 
 def save_kanban(data):
     json.dump(data, open(KANBAN_FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
@@ -285,6 +319,58 @@ def http_post(url, json_data=None, headers=None, timeout=30.0):
 # Thread-safe global flag to start webhook server once
 _server_started = False
 _server_lock = threading.Lock()
+
+def call_openrouter_api(messages, model="nousresearch/hermes-3-llama-3.1-405b:free", system_instruction=None):
+    api_key = os.environ.get("OPENROUTER_API_KEY")
+    if not api_key:
+        return "Błąd: Brak klucza OPENROUTER_API_KEY w pliku .env"
+    
+    url = "https://openrouter.ai/api/v1/chat/completions"
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": "http://localhost:8501",
+        "X-Title": "Holistic ADHD OS"
+    }
+    
+    # Map friendly short names to openrouter ids if necessary
+    if model == "owl-alpha-free" or model == "owl-alpha":
+        model = "meta-llama/llama-3.1-8b-instruct:free"
+    
+    payload = {
+        "model": model,
+        "messages": []
+    }
+    if system_instruction:
+        payload["messages"].append({"role": "system", "content": system_instruction})
+    payload["messages"].extend(messages)
+    
+    try:
+        response = http_post(url, json_data=payload, headers=headers, timeout=60.0)
+        if response.status_code == 200:
+            res_data = response.json()
+            return res_data["choices"][0]["message"]["content"]
+        else:
+            return f"Błąd OpenRouter {response.status_code}: {response.text}"
+    except Exception as e:
+        return f"Błąd OpenRouter API: {e}"
+
+def get_recent_workspace_context(limit=3):
+    context_str = ""
+    try:
+        if os.path.exists(OBSIDIAN_DIR):
+            files = [f for f in os.listdir(OBSIDIAN_DIR) if f.endswith('.md')]
+            # Sort by modification time desc
+            files.sort(key=lambda x: os.path.getmtime(os.path.join(OBSIDIAN_DIR, x)), reverse=True)
+            for f in files[:limit]:
+                path = os.path.join(OBSIDIAN_DIR, f)
+                with open(path, "r", encoding="utf-8") as file:
+                    content = file.read()
+                # Keep it concise, extract up to 1000 chars per file
+                context_str += f"\n--- Ostatnia notatka: {f} ---\n{content[:1000]}\n"
+    except Exception as e:
+        context_str = f"Błąd wczytywania pamięci roboczej: {e}"
+    return context_str
 
 def call_vllm_api(messages, system_instruction=None):
     url = "http://localhost:8000/v1/chat/completions"
@@ -789,14 +875,6 @@ with st.sidebar:
         st.session_state.current_page = "Goals"
         st.rerun()
         
-    if st.button("📈 SEO & Content", use_container_width=True, type="primary" if col_menu == "SEO" else "secondary"):
-        st.session_state.current_page = "SEO"
-        st.rerun()
-        
-    if st.button("🎬 Studio (Hyperframes)", use_container_width=True, type="primary" if col_menu == "Studio" else "secondary"):
-        st.session_state.current_page = "Studio"
-        st.rerun()
-        
     if st.button("📻 Notebook (Obsidian)", use_container_width=True, type="primary" if col_menu == "Notebook" else "secondary"):
         st.session_state.current_page = "Notebook"
         st.rerun()
@@ -809,10 +887,6 @@ with st.sidebar:
         st.session_state.current_page = "Memory"
         st.rerun()
         
-    if st.button("💼 ADHD CRM & Lejek", use_container_width=True, type="primary" if col_menu == "CRM" else "secondary"):
-        st.session_state.current_page = "CRM"
-        st.rerun()
-        
     if st.button("🤝 Onboarding & Grill", use_container_width=True, type="primary" if col_menu == "Onboarding" else "secondary"):
         st.session_state.current_page = "Onboarding"
         st.rerun()
@@ -821,7 +895,22 @@ with st.sidebar:
         st.session_state.current_page = "Swarm"
         st.rerun()
         
-    if st.button("⚖️ Legal (Kancelaria)", use_container_width=True, type="primary" if col_menu == "Legal" else "secondary"):
+    # IV. BUSINESS & MARKETING
+    st.markdown("<p style='color: #3B82F6; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>IV. BUSINESS & MARKETING</p>", unsafe_allow_html=True)
+    
+    if st.button("📈 SEO & Content", use_container_width=True, type="primary" if col_menu == "SEO" else "secondary"):
+        st.session_state.current_page = "SEO"
+        st.rerun()
+        
+    if st.button("🎬 Studio (Hyperframes)", use_container_width=True, type="primary" if col_menu == "Studio" else "secondary"):
+        st.session_state.current_page = "Studio"
+        st.rerun()
+        
+    if st.button("💼 CRM Leads", use_container_width=True, type="primary" if col_menu == "CRM" else "secondary"):
+        st.session_state.current_page = "CRM"
+        st.rerun()
+        
+    if st.button("⚖️ Legal Engine", use_container_width=True, type="primary" if col_menu == "Legal" else "secondary"):
         st.session_state.current_page = "Legal"
         st.rerun()
         
@@ -839,16 +928,22 @@ with st.sidebar:
 menu = st.session_state.current_page
 
 def render_agent_console(agent_name, status, default_model, provider, color_accent):
+    agent_key = agent_name.lower().replace(' ', '_')
+    prov_val = st.session_state.get(f"ctrl_provider_{agent_key}", provider)
+    model_val = st.session_state.get(f"ctrl_model_{agent_key}", default_model)
+    if prov_val == "OpenRouter" and model_val == "Inny / Custom":
+        model_val = st.session_state.get(f"ctrl_custom_model_{agent_key}", "custom")
+        
     st.markdown(f"<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>II. — AGENT • {agent_name.upper()}</p>", unsafe_allow_html=True)
     st.title(f"{agent_name}")
-    st.markdown(f"<p style='color: {color_accent}; font-weight: bold; font-size: 0.95rem; margin-top: -5px;'>Status: {status} | Active Model: {default_model} | Provider: {provider}</p>", unsafe_allow_html=True)
+    st.markdown(f"<p style='color: {color_accent}; font-weight: bold; font-size: 0.95rem; margin-top: -5px;'>Status: {status} | Active Model: {model_val} | Provider: {prov_val}</p>", unsafe_allow_html=True)
     
     tab_chat, tab_work, tab_ctrl = st.tabs(["💬 Chat", "📂 Workspace", "⚙️ Control Room"])
     
     # 1. CHAT
     with tab_chat:
         st.subheader("Konsola konwersacyjna")
-        chat_key = f"chat_{agent_name.lower().replace(' ', '_')}"
+        chat_key = f"chat_{agent_key}"
         if chat_key not in st.session_state:
             st.session_state[chat_key] = []
             
@@ -856,20 +951,53 @@ def render_agent_console(agent_name, status, default_model, provider, color_acce
             with st.chat_message(msg["role"]):
                 st.markdown(msg["content"])
                 
-        if prompt := st.chat_input(f"Napisz do agenta {agent_name}...", key=f"input_{agent_name.lower().replace(' ', '_')}"):
+        if prompt := st.chat_input(f"Napisz do agenta {agent_name}...", key=f"input_{agent_key}"):
             with st.chat_message("user"):
                 st.markdown(prompt)
             st.session_state[chat_key].append({"role": "user", "content": prompt})
             
-            # Simple agent simulator based on o_mnie
+            # Wczytanie profilu i instrukcji
             o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
             o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak profilu o_mnie.md"
+            user_inst = st.session_state.get(f"ctrl_prompt_{agent_key}", f"Jesteś agentem {agent_name}. Działasz zorientowany na ADHD i redukcję szumu kognitywnego.")
             
-            sys_prompt = f"Jesteś agentem {agent_name} z ekosystemu Holistic OS. Działasz w oparciu o profil użytkownika:\n{o_mnie_context}\nTwój styl jest krótki, precyzyjny (ADHD-friendly)."
+            # Shared Workspace Memory
+            recent_context = get_recent_workspace_context(limit=3)
             
-            with st.spinner(f"{agent_name} przetwarza zapytanie..."):
+            sys_prompt = f"""{user_inst}
+            
+## PROFIL UŻYTKOWNIKA (O_MNIE):
+{o_mnie_context}
+
+## WSPÓLNA PAMIĘĆ ROBOCZA (WORKSPACE MEMORY):
+Oto ostatnie działania i notatki w ekosystemie:
+{recent_context}
+
+Działasz w oparciu o powyższy wspólny kontekst. Twój styl jest krótki, precyzyjny (ADHD-friendly).
+"""
+            
+            provider_sel = st.session_state.get(f"ctrl_provider_{agent_key}", provider)
+            model_sel = st.session_state.get(f"ctrl_model_{agent_key}", default_model)
+            if provider_sel == "OpenRouter":
+                custom_m = st.session_state.get(f"ctrl_custom_model_{agent_key}", "")
+                if model_sel == "Inny / Custom" and custom_m:
+                    final_model = custom_m
+                else:
+                    final_model = model_sel
+            else:
+                final_model = model_sel
+
+            with st.spinner(f"{agent_name} ({final_model} / {provider_sel}) przetwarza zapytanie..."):
                 api_messages = [{"role": m["role"], "content": m["content"]} for m in st.session_state[chat_key]]
-                response = call_gemini_pro_api(api_messages, system_instruction=sys_prompt)
+                if provider_sel == "OpenRouter":
+                    response = call_openrouter_api(api_messages, model=final_model, system_instruction=sys_prompt)
+                elif provider_sel == "Local vLLM":
+                    response = call_vllm_api(api_messages, system_instruction=sys_prompt)
+                else: # GCP Vertex Proxy
+                    if final_model == "gemini-2.5-pro":
+                        response = call_gemini_pro_api(api_messages, system_instruction=sys_prompt)
+                    else:
+                        response = call_gemini_api(api_messages, system_instruction=sys_prompt)
                 
             with st.chat_message("assistant"):
                 st.markdown(response)
@@ -894,7 +1022,7 @@ def render_agent_console(agent_name, status, default_model, provider, color_acce
         
         with col_b:
             st.write("🔍 **Buckets**")
-            bucket = st.radio("Filtruj:", ["Apps", "Videos", "Images", "Audio", "Workspace", "Sandboxes", "Pastes"], key=f"bucket_{agent_name.lower().replace(' ', '_')}")
+            bucket = st.radio("Filtruj:", ["Apps", "Videos", "Images", "Audio", "Workspace", "Sandboxes", "Pastes"], key=f"bucket_{agent_key}")
             
         with col_f:
             st.write(f"📁 **Pliki w {bucket}**")
@@ -918,7 +1046,7 @@ def render_agent_console(agent_name, status, default_model, provider, color_acce
                 if not files_list:
                     files_list = ["quick_note.md", "brief_draft.md"]
                     
-            selected_file = st.selectbox("Wybierz plik:", files_list, key=f"sel_file_{agent_name.lower().replace(' ', '_')}")
+            selected_file = st.selectbox("Wybierz plik:", files_list, key=f"sel_file_{agent_key}")
             
         with col_v:
             st.write("👁️ **Podgląd / Edycja**")
@@ -963,8 +1091,8 @@ def render_agent_console(agent_name, status, default_model, provider, color_acce
                     else:
                         content = f"# Draft dla {selected_file}\nTutaj znajduje się podgląd notatki roboczej agenta."
                         
-                    edited_content = st.text_area("Edycja pliku:", content, height=200, key=f"edit_{agent_name.lower().replace(' ', '_')}_{selected_file}")
-                    if st.button("Zapisz zmiany", key=f"save_{agent_name.lower().replace(' ', '_')}_{selected_file}"):
+                    edited_content = st.text_area("Edycja pliku:", content, height=200, key=f"edit_{agent_key}_{selected_file}")
+                    if st.button("Zapisz zmiany", key=f"save_{agent_key}_{selected_file}"):
                         try:
                             with open(file_path, "w", encoding="utf-8") as f:
                                 f.write(edited_content)
@@ -975,12 +1103,34 @@ def render_agent_console(agent_name, status, default_model, provider, color_acce
     # 3. CONTROL ROOM
     with tab_ctrl:
         st.subheader("Konfiguracja Agenta (Control Room)")
-        st.write("Ustaw parametry modelu dla tego agenta:")
-        model_opt = st.selectbox("Model:", ["gemini-2.5-pro", "gemini-2.5-flash", "grok-4.3", "claude-3-7-sonnet"], index=0, key=f"ctrl_model_{agent_name.lower().replace(' ', '_')}")
-        temp = st.slider("Temperatura (Kreatywność):", 0.0, 1.0, 0.7, 0.05, key=f"ctrl_temp_{agent_name.lower().replace(' ', '_')}")
-        sys_prompt_input = st.text_area("System Prompt / Instrukcje systemowe:", f"Jesteś agentem {agent_name}. Działasz zorientowany na ADHD i redukcję szumu kognitywnego.", height=150, key=f"ctrl_prompt_{agent_name.lower().replace(' ', '_')}")
-        if st.button("Aktualizuj konfigurację agenta", key=f"ctrl_btn_{agent_name.lower().replace(' ', '_')}"):
+        st.write("Ustaw dostawcę i parametry modelu dla tego agenta:")
+        
+        prov_opt = st.selectbox("Dostawca (Provider):", ["GCP Vertex Proxy", "OpenRouter", "Local vLLM"], 
+                                index=0 if provider in ["Vertex AI Native", "GCP Proxy Port 8089", "GCP Proxy"] or "vertex" in provider.lower() else (1 if "openrouter" in provider.lower() else 2),
+                                key=f"ctrl_provider_{agent_key}")
+        
+        if prov_opt == "GCP Vertex Proxy":
+            models_list = ["gemini-2.5-pro", "gemini-2.5-flash"]
+            default_idx = 0 if default_model == "gemini-2.5-pro" else 1
+            model_opt = st.selectbox("Model:", models_list, index=default_idx, key=f"ctrl_model_{agent_key}")
+        elif prov_opt == "OpenRouter":
+            models_list = ["meta-llama/llama-3.1-8b-instruct:free", "nousresearch/hermes-3-llama-3.1-405b:free", "google/gemini-2.5-pro", "google/gemini-2.5-flash", "Inny / Custom"]
+            default_idx = 1 if "hermes" in default_model.lower() else (0 if "free" in default_model.lower() else 4)
+            model_opt = st.selectbox("Model:", models_list, index=default_idx, key=f"ctrl_model_{agent_key}")
+            if model_opt == "Inny / Custom":
+                st.text_input("Identyfikator modelu OpenRouter (np. deepseek/deepseek-chat):", value="deepseek/deepseek-chat", key=f"ctrl_custom_model_{agent_key}")
+        else: # Local vLLM
+            st.info("Local vLLM korzysta z modelu uruchomionego na porcie 8000.")
+            model_opt = st.text_input("Nazwa modelu vLLM:", value="mistralai/Mistral-Nemo-Instruct-2407", key=f"ctrl_model_{agent_key}")
+            
+        temp = st.slider("Temperatura (Kreatywność):", 0.0, 1.0, 0.7, 0.05, key=f"ctrl_temp_{agent_key}")
+        sys_prompt_input = st.text_area("System Prompt / Instrukcje systemowe:", 
+                                        f"Jesteś agentem {agent_name}. Działasz zorientowany na ADHD i redukcję szumu kognitywnego.", 
+                                        height=150, key=f"ctrl_prompt_{agent_key}")
+                                        
+        if st.button("Aktualizuj konfigurację agenta", key=f"ctrl_btn_{agent_key}"):
             st.success(f"Konfiguracja dla agenta {agent_name} została zaktualizowana w pamięci podręcznej sesji!")
+            st.rerun()
 
 # 1. MISSION CONTROL
 if menu == "🎯 Mission Control":
@@ -1929,43 +2079,106 @@ elif menu == "Kanban":
     
     with st.expander("➕ Dodaj nowe zadanie"):
         task_text = st.text_input("Zadanie (krótko i konkretnie):")
+        col_dest = st.selectbox("Dodaj do kolumny:", ["Selekcja (Triage)", "Do zrobienia (Todo)", "Gotowe (Ready)", "W toku (Running)", "Zablokowane (Blocked)", "Zrobione (Done)"], index=0)
+        col_map = {
+            "Selekcja (Triage)": "triage",
+            "Do zrobienia (Todo)": "todo",
+            "Gotowe (Ready)": "ready",
+            "W toku (Running)": "running",
+            "Zablokowane (Blocked)": "blocked",
+            "Zrobione (Done)": "done"
+        }
         if st.button("Dodaj"):
             if task_text:
-                k["todo"].append(task_text)
+                dest_key = col_map[col_dest]
+                k[dest_key].append(task_text)
                 save_kanban(k)
                 st.rerun()
                 
     st.markdown("---")
-    col1, col2, col3 = st.columns(3)
     
-    with col1:
-        st.markdown("### 📥 Do zrobienia")
-        for i, t in enumerate(k["todo"]):
-            st.markdown(f"<div class='custom-card' style='border-left: 4px solid #3B82F6;'><strong>{t}</strong></div>", unsafe_allow_html=True)
-            if st.button("Rozpocznij", key=f"todo_{i}"):
-                k["todo"].pop(i)
-                k["in_progress"].append(t)
-                save_kanban(k)
-                st.rerun()
+    cols = ["triage", "todo", "ready", "running", "blocked", "done"]
+    col_labels = {
+        "triage": "📥 Selekcja (Triage)",
+        "todo": "📋 Do zrobienia (Todo)",
+        "ready": "👍 Gotowe (Ready)",
+        "running": "⚡ W toku (Running)",
+        "blocked": "🚫 Zablokowane",
+        "done": "🎉 Zrobione (Done)"
+    }
+    col_colors = {
+        "triage": "#64748B",
+        "todo": "#3B82F6",
+        "ready": "#8B5CF6",
+        "running": "#F59E0B",
+        "blocked": "#EF4444",
+        "done": "#10B981"
+    }
+    
+    columns_ui = st.columns(6)
+    
+    for idx, col_name in enumerate(cols):
+        with columns_ui[idx]:
+            st.markdown(f"##### {col_labels[col_name]}")
+            tasks_in_col = k.get(col_name, [])
+            if not tasks_in_col:
+                st.caption("Pusta kolumna")
+            for i, t in enumerate(tasks_in_col):
+                opacity = "0.7" if col_name == "done" else "1.0"
+                # Render Task Card
+                st.markdown(f"""
+                <div class='custom-card' style='border-left: 4px solid {col_colors[col_name]}; padding: 10px; margin-bottom: 5px; opacity: {opacity};'>
+                    <div style='font-size: 0.9rem; color: #FFFFFF;'>{t}</div>
+                </div>
+                """, unsafe_allow_html=True)
                 
-    with col2:
-        st.markdown("### ⚡ W trakcie")
-        for i, t in enumerate(k["in_progress"]):
-            st.markdown(f"<div class='custom-card' style='border-left: 4px solid #F59E0B;'><strong>{t}</strong></div>", unsafe_allow_html=True)
-            if st.button("Zakończ", key=f"prog_{i}"):
-                k["in_progress"].pop(i)
-                k["done"].append(t)
-                save_kanban(k)
-                st.rerun()
+                # Action Buttons inside task
+                c1, c2, c3, c4 = st.columns(4)
                 
-    with col3:
-        st.markdown("### ✅ Zrobione")
-        for i, t in enumerate(k["done"]):
-            st.markdown(f"<div class='custom-card' style='border-left: 4px solid #10B981; opacity: 0.7;'>{t}</div>", unsafe_allow_html=True)
-        if k["done"] and st.button("Wyczyść ukończone"):
-            k["done"] = []
-            save_kanban(k)
-            st.rerun()
+                # Move Left
+                if col_name != "triage":
+                    with c1:
+                        if st.button("◀", key=f"ml_{col_name}_{i}", help="Przesuń w lewo"):
+                            k[col_name].pop(i)
+                            k[cols[idx - 1]].append(t)
+                            save_kanban(k)
+                            st.rerun()
+                # Move Right
+                if col_name != "done":
+                    with c2:
+                        if st.button("▶", key=f"mr_{col_name}_{i}", help="Przesuń w prawo"):
+                            k[col_name].pop(i)
+                            k[cols[idx + 1]].append(t)
+                            save_kanban(k)
+                            st.rerun()
+                # Toggle Blocked
+                if col_name != "blocked" and col_name != "done":
+                    with c3:
+                        if st.button("🚫", key=f"bl_{col_name}_{i}", help="Zablokuj"):
+                            k[col_name].pop(i)
+                            k["blocked"].append(t)
+                            save_kanban(k)
+                            st.rerun()
+                elif col_name == "blocked":
+                    with c3:
+                        if st.button("⚡", key=f"bl_{col_name}_{i}", help="Odblokuj (wróć do W toku)"):
+                            k[col_name].pop(i)
+                            k["running"].append(t)
+                            save_kanban(k)
+                            st.rerun()
+                # Delete task
+                with c4:
+                    if st.button("🗑️", key=f"del_{col_name}_{i}", help="Usuń trwale"):
+                        k[col_name].pop(i)
+                        save_kanban(k)
+                        st.rerun()
+                        
+            if col_name == "done" and tasks_in_col:
+                st.markdown("<br>", unsafe_allow_html=True)
+                if st.button("Wyczyść ukończone", key="clear_done_tasks", use_container_width=True):
+                    k["done"] = []
+                    save_kanban(k)
+                    st.rerun()
 
 # 7. DZIAŁ PRAWNY & KANCELARIA
 elif menu == "Legal":
