@@ -142,9 +142,57 @@ def save_crm(data):
 
 # --- POLSKI ADHD GHL INTEGRATIONS ---
 import urllib.parse
+import urllib.request
+import urllib.error
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
-import httpx
+
+class UrllibResponse:
+    def __init__(self, status_code, text, json_data=None):
+        self.status_code = status_code
+        self.text = text
+        self._json_data = json_data
+    
+    def json(self):
+        if self._json_data is not None:
+            return self._json_data
+        return json.loads(self.text)
+
+def http_post(url, json_data=None, headers=None, timeout=30.0):
+    if headers is None:
+        headers = {}
+    
+    # Ensure Content-Type is set if json_data is present
+    if json_data is not None and "Content-Type" not in headers:
+        headers["Content-Type"] = "application/json"
+        
+    data_bytes = None
+    if json_data is not None:
+        data_bytes = json.dumps(json_data).encode("utf-8")
+        
+    req = urllib.request.Request(url, data=data_bytes, headers=headers, method="POST")
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as response:
+            status_code = response.getcode()
+            response_text = response.read().decode("utf-8")
+            try:
+                res_json = json.loads(response_text)
+            except:
+                res_json = None
+            return UrllibResponse(status_code, response_text, res_json)
+    except urllib.error.HTTPError as e:
+        status_code = e.code
+        try:
+            response_text = e.read().decode("utf-8")
+        except:
+            response_text = str(e)
+        try:
+            res_json = json.loads(response_text)
+        except:
+            res_json = None
+        return UrllibResponse(status_code, response_text, res_json)
+    except Exception as e:
+        return UrllibResponse(500, str(e), None)
 
 # Thread-safe global flag to start webhook server once
 _server_started = False
@@ -165,7 +213,7 @@ def call_vllm_api(messages, system_instruction=None):
     payload["messages"].extend(messages)
     
     try:
-        response = httpx.post(url, json=payload, headers=headers, timeout=120.0)
+        response = http_post(url, json_data=payload, headers=headers, timeout=120.0)
         if response.status_code == 200:
             res_data = response.json()
             return res_data["choices"][0]["message"]["content"]
@@ -186,7 +234,7 @@ def call_gemini_api(messages, system_instruction=None):
     
     # 1. Try local proxy
     try:
-        response = httpx.post(proxy_url, json=payload, timeout=25.0)
+        response = http_post(proxy_url, json_data=payload, timeout=25.0)
         if response.status_code == 200:
             res_data = response.json()
             return res_data["choices"][0]["message"]["content"]
@@ -234,7 +282,7 @@ def call_gemini_api(messages, system_instruction=None):
                 direct_payload["messages"].append({"role": "system", "content": system_instruction})
             direct_payload["messages"].extend(messages)
             
-            resp = httpx.post(direct_url, json=direct_payload, headers=headers, timeout=25.0)
+            resp = http_post(direct_url, json_data=direct_payload, headers=headers, timeout=25.0)
             if resp.status_code == 200:
                 res_data = resp.json()
                 return res_data["choices"][0]["message"]["content"]
@@ -749,7 +797,7 @@ elif menu == "💼 ADHD CRM & Lejek":
             with st.spinner("Wysyłanie POST do webhooka..."):
                 try:
                     payload = {"name": name, "email": email, "notes": notes}
-                    resp = httpx.post("http://127.0.0.1:8090/webhook", json=payload, timeout=5.0)
+                    resp = http_post("http://127.0.0.1:8090/webhook", json_data=payload, timeout=5.0)
                     if resp.status_code == 200:
                         st.success(f"Sukces! Webhook zwrócił kod 200. Nowy lead '{name}' został zarejestrowany na tablicy. Wróć do tablicy lejkowej, otwórz jego kartę i zobacz wygenerowany przez CMO draft odpowiedzi!")
                         time.sleep(1.0)
@@ -1169,7 +1217,7 @@ elif menu == "💰 Kancelaria Finansowa & KSeF":
                     try:
                         url = f"https://{f_domain}.fakturownia.pl/invoices.json"
                         headers = {"Content-Type": "application/json"}
-                        resp = httpx.post(url, json=payload, headers=headers, timeout=10.0)
+                        resp = http_post(url, json_data=payload, headers=headers, timeout=10.0)
                         
                         if resp.status_code in [200, 201]:
                             res_data = resp.json()
