@@ -592,6 +592,119 @@ def call_native_vertex_ocr(file_bytes):
     except Exception as ex:
         return f"[Błąd systemu OCR: {ex}]"
 
+def call_gcp_tts(text, voice_name="pl-PL-Wavenet-B", gender="MALE"):
+    sa_paths = [
+        os.path.join(os.getcwd(), "holistic-dashboard-dev-dea2c872139e.json"),
+        os.path.expanduser("~/.hermes/gcp-sa-key.json"),
+        "holistic-dashboard-dev-dea2c872139e.json"
+    ]
+    sa_path = None
+    for p in sa_paths:
+        if os.path.exists(p):
+            sa_path = p
+            break
+            
+    if not sa_path:
+        return None, "Brak klucza GCP Service Account"
+        
+    try:
+        from google.oauth2 import service_account
+        import google.auth.transport.requests
+        import requests
+        import base64 as _b64
+        
+        creds = service_account.Credentials.from_service_account_file(
+            sa_path,
+            scopes=['https://www.googleapis.com/auth/cloud-platform']
+        )
+        session = requests.Session()
+        session.verify = False
+        request = google.auth.transport.requests.Request(session=session)
+        creds.refresh(request)
+        token = creds.token
+        
+        url = "https://texttospeech.googleapis.com/v1/text:synthesize"
+        headers = {
+            "Authorization": f"Bearer {token}",
+            "Content-Type": "application/json"
+        }
+        
+        payload = {
+            "input": {"text": text},
+            "voice": {
+                "languageCode": "pl-PL",
+                "name": voice_name,
+                "ssmlGender": gender
+            },
+            "audioConfig": {
+                "audioEncoding": "MP3"
+            }
+        }
+        
+        resp = requests.post(url, json=payload, headers=headers, verify=False, timeout=15.0)
+        if resp.status_code == 200:
+            res_data = resp.json()
+            audio_content = res_data.get("audioContent", "")
+            if audio_content:
+                return _b64.b64decode(audio_content), None
+            return None, "Brak zawartości audio w odpowiedzi"
+        else:
+            return None, f"Błąd API TTS {resp.status_code}: {resp.text}"
+    except Exception as ex:
+        return None, f"Błąd połączenia z GCP TTS: {ex}"
+
+def extract_youtube_transcript_raw(url):
+    import re
+    pattern = r'(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})'
+    match = re.search(pattern, url)
+    if not match:
+        return None, "Niepoprawny adres URL wideo YouTube"
+    video_id = match.group(1)
+    
+    # Store original requests Session request to restore it afterwards
+    import requests
+    orig_request = requests.Session.request
+    
+    try:
+        import urllib3
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        
+        # Monkey patch requests for SSL bypass
+        requests.Session.request = lambda self, *a, **kw: orig_request(self, *a, **{**kw, 'verify': False})
+        
+        from youtube_transcript_api import YouTubeTranscriptApi
+        api = YouTubeTranscriptApi()
+        
+        try:
+            data = api.fetch(video_id, languages=['pl', 'en'])
+        except Exception:
+            try:
+                data = api.fetch(video_id)
+            except Exception as e2:
+                # Restore original request
+                requests.Session.request = orig_request
+                return None, f"Błąd pobierania transkrypcji YouTube: {e2}"
+                
+        # Restore original request
+        requests.Session.request = orig_request
+        
+        full_text = []
+        for entry in data:
+            text = entry['text']
+            start = entry['start']
+            minutes = int(start // 60)
+            seconds = int(start % 60)
+            full_text.append(f"[{minutes:02d}:{seconds:02d}] {text}")
+            
+        return "\n".join(full_text), None
+    except Exception as e:
+        # Guarantee restoration
+        try:
+            requests.Session.request = orig_request
+        except Exception:
+            pass
+        return None, f"Błąd systemu transkrypcji: {str(e)}"
+
 class WebhookHandler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         pass
@@ -1114,8 +1227,36 @@ Działasz w oparciu o powyższy wspólny kontekst. Twój styl jest krótki, prec
             default_idx = 0 if default_model == "gemini-2.5-pro" else 1
             model_opt = st.selectbox("Model:", models_list, index=default_idx, key=f"ctrl_model_{agent_key}")
         elif prov_opt == "OpenRouter":
-            models_list = ["meta-llama/llama-3.1-8b-instruct:free", "nousresearch/hermes-3-llama-3.1-405b:free", "google/gemini-2.5-pro", "google/gemini-2.5-flash", "Inny / Custom"]
-            default_idx = 1 if "hermes" in default_model.lower() else (0 if "free" in default_model.lower() else 4)
+            models_list = [
+                "meta-llama/llama-3.1-8b-instruct:free",
+                "nousresearch/hermes-3-llama-3.1-405b:free",
+                "google/gemini-2.5-flash",
+                "google/gemini-2.5-pro",
+                "google/gemini-3.5-flash",
+                "google/gemini-3.1-pro-preview",
+                "anthropic/claude-3.7-sonnet",
+                "anthropic/claude-3.5-sonnet",
+                "Inny / Custom"
+            ]
+            default_idx = 8
+            low_default = default_model.lower()
+            if "claude-3.7" in low_default:
+                default_idx = 6
+            elif "claude-3.5" in low_default:
+                default_idx = 7
+            elif "gemini-3.5" in low_default:
+                default_idx = 4
+            elif "gemini-3.1" in low_default:
+                default_idx = 5
+            elif "hermes" in low_default:
+                default_idx = 1
+            elif "free" in low_default:
+                default_idx = 0
+            elif "gemini-2.5-pro" in low_default:
+                default_idx = 3
+            elif "gemini-2.5-flash" in low_default:
+                default_idx = 2
+                
             model_opt = st.selectbox("Model:", models_list, index=default_idx, key=f"ctrl_model_{agent_key}")
             if model_opt == "Inny / Custom":
                 st.text_input("Identyfikator modelu OpenRouter (np. deepseek/deepseek-chat):", value="deepseek/deepseek-chat", key=f"ctrl_custom_model_{agent_key}")
@@ -1399,26 +1540,29 @@ elif menu == "Studio":
         video_prompt = st.text_area("Opisz scenę wideo (np. 'Pulsacyjne różowe neonowe logo na czarnym tle z unoszącymi się cząsteczkami'):", height=100)
         
         if st.button("Generuj Hyperframe Wideo", type="primary"):
-            with st.spinner("Hyperframes kompiluje kod HTML/CSS..."):
-                time.sleep(2)
-                st.session_state.hyperframe_code = """
-                <html>
-                <body style='background-color:#08090C; display:flex; justify-content:center; align-items:center; height:100vh; overflow:hidden; margin:0;'>
-                    <div style='text-align:center;'>
-                        <div style='width:120px; height:120px; border-radius:50%; background:radial-gradient(circle, #EC4899 0%, #7C3AED 100%); animation: pulse-logo 2s infinite alternate; box-shadow: 0 0 30px #EC4899;'></div>
-                        <h2 style='color:#FFFFFF; font-family:sans-serif; margin-top:20px; text-shadow:0 0 10px #7C3AED;'>Holistic OS</h2>
-                    </div>
-                    <style>
-                        @keyframes pulse-logo {
-                            0% { transform: scale(1); box-shadow: 0 0 20px #EC4899; }
-                            100% { transform: scale(1.1); box-shadow: 0 0 40px #7C3AED, 0 0 15px #EC4899; }
-                        }
-                    </style>
-                </body>
-                </html>
-                """
-                st.success("Wideo wygenerowane pomyślnie w formacie Hyperframe!")
-                st.rerun()
+            if video_prompt:
+                with st.spinner("Hyperframes kompiluje kod HTML/CSS za pomocą Gemini..."):
+                    prompt = f"""Zaprojektuj kompletną podglądową stronę HTML5/CSS3 stanowiącą animację wideo (tzw. Hyperframe) o następującym opisie sceny:
+"{video_prompt}"
+
+Strona musi:
+1. Posiadać ciemne, luksusowe tło (np. #08090C lub czarne).
+2. Posiadać płynne, nowoczesne animacje CSS (@keyframes), świecące efekty neonowe (box-shadow, text-shadow), gradienty itp.
+3. Być w pełni responsywna i wyśrodkowana (flexbox/grid).
+4. ZWRÓĆ TYLKO I WYŁĄCZNIE czysty kod HTML (zawierający <style> i ewentualnie <body> z divami). Nie używaj markdownu, nie dodawaj ```html na początku ani na końcu. Kod musi być gotowy do bezpośredniego wstrzyknięcia do iframe.
+"""
+                    response_code = call_gemini_api([{"role": "user", "content": prompt}], "Jesteś wybitnym front-end deweloperem specjalizującym się w animacjach CSS.")
+                    
+                    import re
+                    clean_code = re.sub(r"^```html\s*", "", response_code, flags=re.IGNORECASE)
+                    clean_code = re.sub(r"^```\s*", "", clean_code)
+                    clean_code = re.sub(r"```\s*$", "", clean_code)
+                    
+                    st.session_state.hyperframe_code = clean_code
+                    st.success("Wideo wygenerowane pomyślnie w formacie Hyperframe!")
+                    st.rerun()
+            else:
+                st.warning("Opisz najpierw scenę wideo.")
                 
         if "hyperframe_code" in st.session_state and st.session_state.hyperframe_code:
             st.write("📺 **Podgląd wygenerowanej animacji:**")
@@ -1435,12 +1579,38 @@ elif menu == "Studio":
     with tab_audio:
         st.subheader("🔊 Text-to-Speech & Voice Clone")
         st.write("Generowanie głosu AI w stylu Tomasza Dudy (ADHD-friendly, dynamiczny).")
-        audio_text = st.text_area("Wpisz tekst do wypowiedzenia:", "Cześć! Dzisiaj skupimy się na jednej, najważniejszej rzeczy. Wyelimuj szum i wejdź w stan Flow.")
-        if st.button("Generuj Audio", type="primary"):
-            with st.spinner("Generowanie pliku dźwiękowego..."):
-                time.sleep(2)
-                st.audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3")
-                st.success("Głos wygenerowany pomyślnie!")
+        audio_text = st.text_area("Wpisz tekst do wypowiedzenia:", "Cześć! Dzisiaj skupimy się na jednej, najważniejszej rzeczy. Wyelimuj szum i wejdź w stan Flow.", key="tts_input_text")
+        
+        c_v1, c_v2 = st.columns(2)
+        with c_v1:
+            voice_opt = st.selectbox("Wybierz głos:", [
+                "Męski Wavenet (pl-PL-Wavenet-B)", 
+                "Męski Standard (pl-PL-Standard-E)",
+                "Żeński Wavenet (pl-PL-Wavenet-A)", 
+                "Żeński Standard (pl-PL-Standard-D)"
+            ], index=0)
+        with c_v2:
+            st.caption("Prawdziwa synteza mowy zasilana przez GCP Text-to-Speech API.")
+            
+        voice_map = {
+            "Męski Wavenet (pl-PL-Wavenet-B)": ("pl-PL-Wavenet-B", "MALE"),
+            "Męski Standard (pl-PL-Standard-E)": ("pl-PL-Standard-E", "MALE"),
+            "Żeński Wavenet (pl-PL-Wavenet-A)": ("pl-PL-Wavenet-A", "FEMALE"),
+            "Żeński Standard (pl-PL-Standard-D)": ("pl-PL-Standard-D", "FEMALE")
+        }
+        
+        if st.button("Generuj Audio", type="primary", key="tts_gen_button"):
+            if audio_text:
+                with st.spinner("Generowanie pliku dźwiękowego przez GCP TTS..."):
+                    v_name, v_gender = voice_map[voice_opt]
+                    audio_bytes, err = call_gcp_tts(audio_text, voice_name=v_name, gender=v_gender)
+                    if err:
+                        st.error(f"Błąd generowania mowy: {err}")
+                    else:
+                        st.audio(audio_bytes, format="audio/mp3")
+                        st.success("Głos wygenerowany pomyślnie!")
+            else:
+                st.warning("Wpisz najpierw tekst do wypowiedzenia.")
                 
     with tab_img:
         st.subheader("🎨 Generator Grafiki")
@@ -1712,21 +1882,24 @@ elif menu == "SEO":
     </div>
     """, unsafe_allow_html=True)
     
-    col_c1, col_c2 = st.columns([1, 1])
+    tab_viral, tab_repurpose = st.tabs(["💡 Generator Wirusowych Wideo", "🔄 YouTube Repurposer"])
     
-    with col_c1:
-        st.subheader("💡 Zaprojektuj wirusowe wideo")
-        video_concept = st.text_input("Główny temat lub pomysł na rolkę:", placeholder="Np. Uczucie jazdy z wciśniętym gazem i zaciągniętym hamulcem...")
-        video_length = st.selectbox("Długość wideo:", ["8-15 sekund (Szybki strzał)", "30-45 sekund (Edukacyjny Shorts)", "60+ sekund (VSL / Pełna historia)"])
+    with tab_viral:
+        col_c1, col_c2 = st.columns([1, 1])
         
-        st.write("##### Inspiracja z Telegrama (Nate Herk Mode)")
-        st.caption("Gdy wyślesz komendę do bota na Telegramie w grupie Holistic Mission Control, Hermes automatycznie przekaże ją do CMO, a ten wygeneruje kompletny skrypt wideo bezpośrednio na Twój telefon.")
-        
-        if st.button("Generuj Skrypt i Koncepcję Wideo", type="primary"):
-            if video_concept:
-                with st.spinner("Wirtualny CMO oraz Dyrektor Kreatywny analizują o_mnie.md..."):
-                    time.sleep(2.0)
-                    st.session_state.content_script = f"""
+        with col_c1:
+            st.subheader("💡 Zaprojektuj wirusowe wideo")
+            video_concept = st.text_input("Główny temat lub pomysł na rolkę:", placeholder="Np. Uczucie jazdy z wciśniętym gazem i zaciągniętym hamulcem...")
+            video_length = st.selectbox("Długość wideo:", ["8-15 sekund (Szybki strzał)", "30-45 sekund (Edukacyjny Shorts)", "60+ sekund (VSL / Pełna historia)"])
+            
+            st.write("##### Inspiracja z Telegrama (Nate Herk Mode)")
+            st.caption("Gdy wyślesz komendę do bota na Telegramie w grupie Holistic Mission Control, Hermes automatycznie przekaże ją do CMO, a ten wygeneruje kompletny skrypt wideo bezpośrednio na Twój telefon.")
+            
+            if st.button("Generuj Skrypt i Koncepcję Wideo", type="primary"):
+                if video_concept:
+                    with st.spinner("Wirtualny CMO oraz Dyrektor Kreatywny analizują o_mnie.md..."):
+                        time.sleep(2.0)
+                        st.session_state.content_script = f"""
 ### 🎬 Gotowy Skrypt Wirusowy: "{video_concept}"
 **Wygenerowany przez: CMO (Tożsamość Tomasz) & Dyrektor Kreatywny (Adrian Killar Style)**
 
@@ -1750,20 +1923,104 @@ elif menu == "SEO":
 #### 📺 SCENA 3: Wezwanie do działania (CTA) — Czas: 0:10 - 0:15
 * **Wizualnie:** Tomasz pokazuje telefon z otwartym botem na Telegramie. Na ekranie wyświetla się adres URL: *ADHD4LIFE*.
 * **Copywriting:** „Stworzyłem system, który robi zrzut chaosu z Twojej głowy i układa plan. Wejdź do ADHD4Life i odbierz darmowy workflow. Zdejmij hamulec ręczny już dzisiaj.”
-                    """
+                        """
+                        st.rerun()
+                else:
+                    st.warning("Wprowadź pomysł na wideo.")
+                    
+        with col_c2:
+            st.subheader("📝 Wynik pracy Content Studio")
+            if "content_script" in st.session_state and st.session_state.content_script:
+                st.markdown(st.session_state.content_script)
+                if st.button("Wyczyść skrypt"):
+                    st.session_state.content_script = None
                     st.rerun()
             else:
-                st.warning("Wprowadź pomysł na wideo.")
+                st.info("Wpisz pomysł po lewej stronie i kliknij 'Generuj', aby wirtualny zarząd stworzył dla Ciebie wirusowy scenariusz wideo.")
+
+    with tab_repurpose:
+        st.subheader("🔄 YouTube Content Repurposer (Nate Herk & Higgsfield Mode)")
+        st.write("Wklej link YouTube lub bezpośrednio transkrypcję wideo, aby automatycznie stworzyć paczkę dystrybucyjną social media (X/Twitter, LinkedIn, TikTok/Reels) dopasowaną do Twojego o_mnie.md.")
+        
+        yt_url = st.text_input("Adres URL filmu na YouTube:", placeholder="https://www.youtube.com/watch?v=...", key="yt_repurpose_url")
+        pasted_transcript = st.text_area("Lub wklej tutaj transkrypcję filmu (z napisów YouTube):", height=150, placeholder="Wklej tekst transkrypcji tutaj...", key="pasted_transcript_text")
+        obsidian_repurpose_export = st.checkbox("Automatycznie eksportuj wynik do Obsidian Vault", value=True, key="yt_repurpose_obsidian_chk")
+        
+        if st.button("Generuj Paczkę Repurposingu", type="primary", key="yt_repurpose_gen_btn"):
+            transcript_content = ""
+            if yt_url:
+                with st.spinner("Pobieram transkrypcję z YouTube..."):
+                    fetched, err = extract_youtube_transcript_raw(yt_url)
+                    if err:
+                        st.warning(f"Nie udało się automatycznie pobrać transkrypcji: {err}. Użyj wklejenia manualnego poniżej.")
+                        transcript_content = pasted_transcript
+                    else:
+                        st.success("Pomyślnie pobrano transkrypcję z wideo YouTube!")
+                        transcript_content = fetched
+            else:
+                transcript_content = pasted_transcript
                 
-    with col_c2:
-        st.subheader("📝 Wynik pracy Content Studio")
-        if "content_script" in st.session_state and st.session_state.content_script:
-            st.markdown(st.session_state.content_script)
-            if st.button("Wyczyść skrypt"):
-                st.session_state.content_script = None
-                st.rerun()
-        else:
-            st.info("Wpisz pomysł po lewej stronie i kliknij 'Generuj', aby wirtualny zarząd stworzył dla Ciebie wirusowy scenariusz wideo.")
+            if not transcript_content.strip():
+                st.error("Błąd: Musisz podać poprawny adres URL wideo lub wkleić treść transkrypcji.")
+            else:
+                with st.spinner("CMO oraz Copywriter (Gemini 2.5 Flash) analizują wideo i dopasowują styl..."):
+                    o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+                    o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak profilu o_mnie.md"
+                    
+                    repurpose_prompt = f"""Przeanalizuj poniższą transkrypcję wideo i stwórz profesjonalny zestaw materiałów marketingowych (Content Repurposing Kit).
+
+Twój cel: Przekształcić ten surowy materiał w 3 wysoce perswazyjne, angażujące i dopasowane do profilu użytkownika formaty.
+
+PROFIL UŻYTKOWNIKA (O_MNIE - Użyj do dopasowania stylu, tonu i perspektywy Tomasz/Holistic Jason):
+{o_mnie_context}
+
+TRANSKRYPCJA WIDEO:
+{transcript_content[:15000]}
+
+GENERUJ NASTĘPUJĄCE TRZY SEKROTY:
+
+### 1. Wątek na X (Twitter Thread)
+Przygotuj 5-częściowy wątek. Każdy tweet musi mieć maksymalnie 280 znaków. Styl: prowokacyjny, skondensowany, konkretny (bez bełkotu AI). Haczyk (Hook) w pierwszym tweecie. Odnieś się bezpośrednio do przemyśleń i tożsamości z o_mnie.md. Dodaj CTA w ostatnim.
+
+### 2. Post na LinkedIn
+Napisz angażujący, biznesowy post. Użyj formatu "Hook -> Story -> Lesson -> Call to action". Styl: autentyczny, bez korporacyjnej gadki, krótki (ADHD-friendly), z mocnym haczykiem i przerwami między zdaniami dla lepszej czytelności.
+
+### 3. Wirusowy Scenariusz TikTok/Shorts (Adrian Killar Style)
+Napisz dynamiczny scenariusz wideo na 30-45 sekund:
+- SCENA 1: Haczyk (Hook, visual + copy, pierwsze 3 sekundy).
+- SCENA 2: Rozwinięcie (Body, dynamiczny montaż, wartościowa treść).
+- SCENA 3: CTA (Call to action).
+Pokaż visual cues (co widać na ekranie) i copy (co Tomasz mówi).
+
+Napisz całość w czystym markdownie, używając wyrazistych sekcji.
+"""
+                    response_kit = call_gemini_api([{"role": "user", "content": repurpose_prompt}], "Jesteś wybitnym CMO i dyrektorem kreatywnym tworzącym spójne kampanie cross-channel.")
+                    st.session_state.repurpose_kit_result = response_kit
+                    
+                    if obsidian_repurpose_export:
+                        note_title = f"Repurposed_SocialKit_{int(time.time())}.md"
+                        note_path = os.path.join(OBSIDIAN_DIR, note_title)
+                        try:
+                            with open(note_path, "w", encoding="utf-8") as f:
+                                f.write(f"---\ntype: social-kit\nsource: {yt_url if yt_url else 'Pasted Transcript'}\ntimestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}\n---\n\n{response_kit}")
+                            st.session_state.repurpose_kit_export_success = note_title
+                        except Exception as ex:
+                            st.error(f"Błąd zapisu do Obsidian Vault: {ex}")
+                    st.rerun()
+
+        if "repurpose_kit_result" in st.session_state and st.session_state.repurpose_kit_result:
+            if "repurpose_kit_export_success" in st.session_state and st.session_state.repurpose_kit_export_success:
+                st.success(f"📚 Zapisano do Obsidian Vault jako: `{st.session_state.repurpose_kit_export_success}`")
+                
+            st.markdown("### 📝 Wygenerowana Paczka Social Media:")
+            st.markdown(st.session_state.repurpose_kit_result)
+            
+            sub_c1, sub_c2 = st.columns(2)
+            with sub_c1:
+                if st.button("Wyczyść Wynik", use_container_width=True, key="yt_repurpose_clear_btn"):
+                    st.session_state.repurpose_kit_result = None
+                    st.session_state.repurpose_kit_export_success = None
+                    st.rerun()
 
 # 5. ADHD CRM & LEJEK
 elif menu == "CRM":
