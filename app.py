@@ -653,6 +653,112 @@ def call_gcp_tts(text, voice_name="pl-PL-Wavenet-B", gender="MALE"):
     except Exception as ex:
         return None, f"Błąd połączenia z GCP TTS: {ex}"
 
+def query_vertex_search(query, data_store_id, project_id="holistic-dashboard-dev", location="global"):
+    sa_paths = [
+        os.path.join(os.getcwd(), "holistic-dashboard-dev-dea2c872139e.json"),
+        os.path.expanduser("~/.hermes/gcp-sa-key.json"),
+        "holistic-dashboard-dev-dea2c872139e.json"
+    ]
+    sa_path = None
+    for p in sa_paths:
+        if os.path.exists(p):
+            sa_path = p
+            break
+            
+    if not sa_path:
+        return {"error": "Brak pliku klucza GCP Service Account (holistic-dashboard-dev-dea2c872139e.json). Upewnij się, że znajduje się w głównym folderze."}
+        
+    try:
+        from google.cloud import discoveryengine_v1beta as discoveryengine
+        from google.oauth2 import service_account
+        
+        creds = service_account.Credentials.from_service_account_file(
+            sa_path,
+            scopes=['https://www.googleapis.com/auth/cloud-platform']
+        )
+        
+        client = discoveryengine.SearchServiceClient(credentials=creds)
+        
+        serving_config = client.serving_config_path(
+            project=project_id,
+            location=location,
+            data_store=data_store_id,
+            serving_config="default_search",
+        )
+        
+        content_search_spec = discoveryengine.SearchRequest.ContentSearchSpec(
+            extractive_content_spec=discoveryengine.SearchRequest.ContentSearchSpec.ExtractiveContentSpec(
+                max_extractive_answer_count=3,
+                max_extractive_segment_count=1,
+                return_extractive_segment_source=True
+            ),
+            snippet_spec=discoveryengine.SearchRequest.ContentSearchSpec.SnippetSpec(
+                max_snippet_count=1,
+                return_snippet=True
+            ),
+            summary_spec=discoveryengine.SearchRequest.ContentSearchSpec.SummarySpec(
+                summary_result_count=5,
+                include_citations=True,
+                model_spec=discoveryengine.SearchRequest.ContentSearchSpec.SummarySpec.ModelSpec(
+                    version="stable"
+                )
+            )
+        )
+        
+        request = discoveryengine.SearchRequest(
+            serving_config=serving_config,
+            query=query,
+            page_size=5,
+            content_search_spec=content_search_spec
+        )
+        
+        response = client.search(request)
+        
+        results = []
+        summary = ""
+        if hasattr(response, "summary") and response.summary:
+            summary = response.summary.summary_text
+            
+        for result in response:
+            doc = result.document
+            struct_data = dict(doc.derived_struct_data) if doc.derived_struct_data else {}
+            
+            title = struct_data.get("title", doc.id)
+            link = struct_data.get("link", "")
+            snippet = struct_data.get("snippet", "")
+            
+            extractive_answers = struct_data.get("extractive_answers", [])
+            extractive_segments = struct_data.get("extractive_segments", [])
+            
+            answers = []
+            if isinstance(extractive_answers, list):
+                for ans in extractive_answers:
+                    if isinstance(ans, dict) and "content" in ans:
+                        answers.append(ans["content"])
+                        
+            segments = []
+            if isinstance(extractive_segments, list):
+                for seg in extractive_segments:
+                    if isinstance(seg, dict) and "content" in seg:
+                        segments.append(seg["content"])
+            
+            results.append({
+                "id": doc.id,
+                "title": title,
+                "link": link,
+                "snippet": snippet,
+                "extractive_answers": answers,
+                "extractive_segments": segments,
+                "struct_data": struct_data
+            })
+            
+        return {
+            "results": results,
+            "summary": summary
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
 def extract_youtube_transcript_raw(url):
     import re
     pattern = r'(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})'
@@ -1843,7 +1949,7 @@ elif menu == "Notebook":
     </div>
     """, unsafe_allow_html=True)
     
-    tab1, tab2 = st.tabs(["📻 Podcasty z NotebookLM", "📝 Notatki z Obsidiana"])
+    tab1, tab2, tab3 = st.tabs(["📻 Podcasty z NotebookLM", "📝 Notatki z Obsidiana", "🔍 Wyszukiwarka Semantyczna (RAG)"])
     
     with tab1:
         files = [f for f in os.listdir(NOTEBOOKS_DIR) if f.endswith(('.mp3','.wav'))] if os.path.exists(NOTEBOOKS_DIR) else []
@@ -1870,6 +1976,75 @@ elif menu == "Notebook":
             st.code(note_content, language="markdown")
         else:
             st.info("Katalog `~/Agentic_OS/obsidian_vault` jest pusty. Prześlij swoje notatki markdown z Obsidiana, aby mieć do nich łatwy wgląd.")
+
+    with tab3:
+        st.markdown("""
+        <div class="custom-card">
+            <h4 style="margin: 0; color: #10B981;">🔍 Wyszukiwarka Semantyczna (RAG) z Vertex AI Search</h4>
+            <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 5px;">
+                Przeszukuj notatki, Obsidian Vault oraz inne wgrane zasoby za pomocą zaawansowanego silnika semantycznego Google Cloud (Discovery Engine / Agent Builder).
+                Zadawaj pytania w języku naturalnym i uzyskuj odpowiedzi bezpośrednio z kontekstu Twoich plików.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        env_ds_id = os.environ.get("GCP_DATA_STORE_ID", "")
+        
+        col_ds1, col_ds2 = st.columns([2, 1])
+        with col_ds1:
+            ds_id = st.text_input("GCP Data Store ID:", value=env_ds_id, help="Identyfikator Data Store z konsoli Google Cloud")
+        with col_ds2:
+            gcp_loc = st.text_input("GCP Location:", value=os.environ.get("GCP_LOCATION", "global"))
+            
+        st.markdown("<hr style='margin: 15px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
+        
+        query = st.text_input("Wpisz pytanie do bazy wiedzy:", placeholder="np. Jakie są główne zasady działania marki?")
+        
+        if st.button("Szukaj semantycznie", type="primary", use_container_width=True):
+            if not ds_id:
+                st.error("⚠️ Musisz podać GCP Data Store ID. Utwórz aplikację Search i Data Store w konsoli GCP, a następnie podaj tutaj ID.")
+            elif not query.strip():
+                st.warning("⚠️ Wpisz treść zapytania.")
+            else:
+                with st.spinner("Przeszukuję bazę wiedzy..."):
+                    proj_id = os.environ.get("GCP_PROJECT_ID", "holistic-dashboard-dev")
+                    search_res = query_vertex_search(query, ds_id, project_id=proj_id, location=gcp_loc)
+                    
+                    if "error" in search_res:
+                        st.error(f"❌ Błąd wyszukiwania: {search_res['error']}")
+                    else:
+                        st.success("Wyszukiwanie zakończone!")
+                        
+                        if search_res.get("summary"):
+                            st.markdown(f"""
+                            <div class="custom-card" style="border-left-color: #10B981; background-color: #0F172A; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
+                                <h4 style="margin: 0 0 10px 0; color: #10B981; font-family: Outfit;">🤖 Wygenerowane podsumowanie (RAG Grounded):</h4>
+                                <p style="color: #F8FAFC; line-height: 1.6; font-size: 0.95rem; margin: 0;">
+                                    {search_res['summary']}
+                                </p>
+                            </div>
+                            """, unsafe_allow_html=True)
+                            
+                        st.subheader("📄 Dopasowane dokumenty i fragmenty:")
+                        results = search_res.get("results", [])
+                        if not results:
+                            st.info("Nie znaleziono dokumentów pasujących do zapytania.")
+                        else:
+                            for idx, res in enumerate(results):
+                                with st.expander(f"Wynik #{idx+1}: {res['title']}"):
+                                    st.markdown(f"**ID Dokumentu:** `{res['id']}`")
+                                    if res['link']:
+                                        st.markdown(f"🔗 **Link:** [{res['link']}]({res['link']})")
+                                    if res['snippet']:
+                                        st.markdown(f"**Wycinek (Snippet):**\n*{res['snippet']}*")
+                                    if res['extractive_answers']:
+                                        st.markdown("**Sugerowane odpowiedzi:**")
+                                        for ans in res['extractive_answers']:
+                                            st.info(ans)
+                                    if res['extractive_segments']:
+                                        st.markdown("**Pasujące fragmenty tekstu:**")
+                                        for seg in res['extractive_segments']:
+                                            st.write(seg)
 
 # 4. CONTENT STUDIO (Nate Herk Inspired)
 elif menu == "SEO":
