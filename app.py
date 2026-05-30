@@ -679,12 +679,10 @@ def query_vertex_search(query, data_store_id, project_id="holistic-dashboard-dev
         
         client = discoveryengine.SearchServiceClient(credentials=creds)
         
-        serving_config = client.serving_config_path(
-            project=project_id,
-            location=location,
-            data_store=data_store_id,
-            serving_config="default_search",
-        )
+        if "connector" in data_store_id or "datastore" in data_store_id.lower() or "data-store" in data_store_id.lower():
+            serving_config = f"projects/{project_id}/locations/{location}/dataStores/{data_store_id}/servingConfigs/default_search"
+        else:
+            serving_config = f"projects/{project_id}/locations/{location}/collections/default_collection/engines/{data_store_id}/servingConfigs/default_search"
         
         content_search_spec = discoveryengine.SearchRequest.ContentSearchSpec(
             extractive_content_spec=discoveryengine.SearchRequest.ContentSearchSpec.ExtractiveContentSpec(
@@ -1945,11 +1943,11 @@ elif menu == "Notebook":
     
     st.markdown("""
     <div class="custom-card">
-        <p>📻 <strong>Syntezy wiedzy w chmurze:</strong> Ten moduł łączy podcasty wygenerowane przez NotebookLM z Twoimi notatkami z Obsidian Vault. Wgraj pliki przez SFTP do chmury, a pojawią się tu natychmiast.</p>
+        <p>📻 <strong>Syntezy wiedzy w chmurze:</strong> Ten moduł łączy podcasty wygenerowane przez NotebookLM z Twoimi notatkami z Obsidian Vault oraz umożliwia bezpośrednią interakcję z NotebookLM przez lokalny serwer MCP.</p>
     </div>
     """, unsafe_allow_html=True)
     
-    tab1, tab2, tab3 = st.tabs(["📻 Podcasty z NotebookLM", "📝 Notatki z Obsidiana", "🔍 Wyszukiwarka Semantyczna (RAG)"])
+    tab1, tab2, tab3, tab4 = st.tabs(["📻 Podcasty z NotebookLM", "📝 Notatki z Obsidiana", "🔍 Wyszukiwarka Semantyczna (RAG)", "💬 Czat z NotebookLM (MCP)"])
     
     with tab1:
         files = [f for f in os.listdir(NOTEBOOKS_DIR) if f.endswith(('.mp3','.wav'))] if os.path.exists(NOTEBOOKS_DIR) else []
@@ -2045,6 +2043,231 @@ elif menu == "Notebook":
                                         st.markdown("**Pasujące fragmenty tekstu:**")
                                         for seg in res['extractive_segments']:
                                             st.write(seg)
+
+    with tab4:
+        st.markdown("""
+        <div class="custom-card" style="border-left: 4px solid #3B82F6;">
+            <h4 style="margin: 0; color: #3B82F6;">💬 Bezpośredni czat z NotebookLM (MCP)</h4>
+            <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 5px;">
+                Rozmawiaj bezpośrednio ze swoimi notatnikami w chmurze NotebookLM za pomocą lokalnego serwera MCP.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        import subprocess
+        import json
+        
+        def call_notebooklm_mcp(tool_name, arguments={}):
+            cmd = [
+                "sudo", "-u", "holisticjson", "sh", "-c",
+                "cd /home/holisticjson && "
+                "NODE_PATH=/home/holisticjson/.npm/_npx/0d29dd9f4e472da9/node_modules "
+                "/home/holisticjson/.hermes/node/bin/node "
+                "/home/holisticjson/.npm/_npx/0d29dd9f4e472da9/node_modules/notebooklm-mcp/dist/index.js"
+            ]
+            try:
+                proc = subprocess.Popen(
+                    cmd,
+                    stdin=subprocess.PIPE,
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    bufsize=1
+                )
+                
+                # Send init
+                proc.stdin.write(json.dumps({
+                    "jsonrpc": "2.0",
+                    "id": 1,
+                    "method": "initialize",
+                    "params": {
+                        "protocolVersion": "2024-11-05",
+                        "capabilities": {},
+                        "clientInfo": {"name": "streamlit", "version": "1.0"}
+                    }
+                }) + "\n")
+                proc.stdin.flush()
+                
+                for _ in range(100):
+                    line = proc.stdout.readline()
+                    if not line:
+                        break
+                    try:
+                        data = json.loads(line.strip())
+                        if data.get("id") == 1:
+                            break
+                    except:
+                        pass
+                
+                # Call tool
+                proc.stdin.write(json.dumps({
+                    "jsonrpc": "2.0",
+                    "id": 2,
+                    "method": "tools/call",
+                    "params": {"name": tool_name, "arguments": arguments}
+                }) + "\n")
+                proc.stdin.flush()
+                
+                tool_res = None
+                for _ in range(100):
+                    line = proc.stdout.readline()
+                    if not line:
+                        break
+                    try:
+                        data = json.loads(line.strip())
+                        if data.get("id") == 2:
+                            tool_res = data
+                            break
+                    except:
+                        pass
+                
+                proc.stdin.close()
+                proc.terminate()
+                if tool_res and "result" in tool_res:
+                    return tool_res["result"]
+                elif tool_res and "error" in tool_res:
+                    return {"error": tool_res["error"].get("message", "Unknown error")}
+                else:
+                    return {"error": "No response"}
+            except Exception as e:
+                return {"error": str(e)}
+
+        # Load notebooks
+        with st.spinner("Pobieram listę notatników..."):
+            res = call_notebooklm_mcp("list_notebooks")
+            notebooks = []
+            if "error" not in res:
+                try:
+                    text = res["content"][0]["text"]
+                    notebooks = json.loads(text).get("data", {}).get("notebooks", [])
+                except Exception as e:
+                    st.error(f"Błąd parsowania biblioteki: {e}")
+            else:
+                st.error(f"Błąd serwera MCP: {res.get('error')}")
+                
+        # Layout
+        col_list, col_chat = st.columns([1, 2])
+        
+        with col_list:
+            st.subheader("📚 Twoje Notatniki")
+            
+            if not notebooks:
+                st.info("Brak zarejestrowanych notatników w bibliotece.")
+            else:
+                for nb in notebooks:
+                    is_active = st.session_state.get("active_mcp_notebook_id") == nb["id"]
+                    card_border = "border-left: 4px solid #10B981;" if is_active else "border-left: 4px solid #1E2535;"
+                    st.markdown(f"""
+                    <div class="custom-card" style="{card_border} padding: 12px; margin-bottom: 8px;">
+                        <b style="color: #FFFFFF;">{nb.get('name', 'Nienazwany')}</b><br>
+                        <span style="font-size: 0.8rem; color:#94A3B8;">{nb.get('description', '')[:80]}...</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    if st.button(f"Wybierz: {nb.get('name')}", key=f"sel_nb_{nb['id']}", use_container_width=True):
+                        st.session_state.active_mcp_notebook_id = nb["id"]
+                        st.session_state.active_mcp_notebook_name = nb["name"]
+                        st.session_state.mcp_chat_history = []
+                        st.session_state.mcp_session_id = None
+                        st.rerun()
+            
+            st.markdown("---")
+            st.subheader("➕ Dodaj nowy notatnik")
+            nb_url = st.text_input("NotebookLM Share URL:", placeholder="https://notebooklm.google.com/notebook/...")
+            nb_name = st.text_input("Nazwa wyświetlana:")
+            nb_desc = st.text_input("Opis zawartości:")
+            nb_topics = st.text_input("Główne tematy (oddziel przecinkami):", "biznes, marketing")
+            
+            if st.button("Zarejestruj Notatnik", type="primary", use_container_width=True):
+                if not nb_url or not nb_name or not nb_desc:
+                    st.error("Uzupełnij wszystkie wymagane pola.")
+                else:
+                    topics_list = [t.strip() for t in nb_topics.split(",") if t.strip()]
+                    with st.spinner("Dodaję notatnik..."):
+                        add_res = call_notebooklm_mcp("add_notebook", {
+                            "url": nb_url,
+                            "name": nb_name,
+                            "description": nb_desc,
+                            "topics": topics_list
+                        })
+                        if "error" in add_res:
+                            st.error(f"Błąd: {add_res['error']}")
+                        else:
+                            st.success(f"Notatnik '{nb_name}' dodany pomyślnie!")
+                            time.sleep(1)
+                            st.rerun()
+                            
+        with col_chat:
+            active_id = st.session_state.get("active_mcp_notebook_id")
+            active_name = st.session_state.get("active_mcp_notebook_name")
+            
+            if not active_id:
+                st.info("👈 Wybierz notatnik z listy po lewej stronie, aby rozpocząć rozmowę.")
+            else:
+                st.subheader(f"💬 Czat: {active_name}")
+                st.caption(f"ID: `{active_id}` | Połączenie: `MCP stdio`")
+                
+                # Session info
+                session_id = st.session_state.get("mcp_session_id")
+                if session_id:
+                    st.markdown(f"**Aktywna sesja:** `{session_id}` (zachowuje kontekst rozmowy)")
+                
+                # Initialize chat history
+                if "mcp_chat_history" not in st.session_state:
+                    st.session_state.mcp_chat_history = []
+                    
+                # Display chat history
+                for chat in st.session_state.mcp_chat_history:
+                    role_color = "#3B82F6" if chat["role"] == "user" else "#10B981"
+                    role_name = "Ty" if chat["role"] == "user" else "NotebookLM"
+                    st.markdown(f"""
+                    <div style="background-color: #121620; padding: 12px; border-radius: 8px; margin-bottom: 8px; border-left: 3px solid {role_color};">
+                        <b style="color: {role_color};">{role_name}:</b><br>
+                        <span style="color: #E2E8F0; white-space: pre-wrap;">{chat['content']}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
+                # Chat input
+                chat_query = st.text_input("Zadaj pytanie do notatnika:", key="mcp_chat_query_input")
+                
+                c_send, c_clear = st.columns([4, 1])
+                with c_send:
+                    if st.button("Wyślij pytanie", type="primary", use_container_width=True):
+                        if chat_query:
+                            st.session_state.mcp_chat_history.append({"role": "user", "content": chat_query})
+                            
+                            args = {
+                                "question": chat_query,
+                                "notebook_id": active_id
+                            }
+                            if session_id:
+                                args["session_id"] = session_id
+                                
+                            with st.spinner("NotebookLM myśli..."):
+                                ask_res = call_notebooklm_mcp("ask_question", args)
+                                
+                            if "error" in ask_res:
+                                st.error(f"Błąd: {ask_res['error']}")
+                            else:
+                                try:
+                                    ans_text = ask_res["content"][0]["text"]
+                                    ans_json = json.loads(ans_text)
+                                    answer = ans_json.get("data", {}).get("answer", "Brak odpowiedzi")
+                                    new_session_id = ans_json.get("data", {}).get("session_id")
+                                    
+                                    if new_session_id:
+                                        st.session_state.mcp_session_id = new_session_id
+                                        
+                                    st.session_state.mcp_chat_history.append({"role": "assistant", "content": answer})
+                                except Exception as e:
+                                    st.error(f"Błąd parsowania odpowiedzi: {e}. Surowa odpowiedź: {ask_res}")
+                            
+                            st.rerun()
+                with c_clear:
+                    if st.button("Wyczyść historię", use_container_width=True):
+                        st.session_state.mcp_chat_history = []
+                        st.session_state.mcp_session_id = None
+                        st.rerun()
+
 
 # 4. CONTENT STUDIO (Nate Herk Inspired)
 elif menu == "SEO":
