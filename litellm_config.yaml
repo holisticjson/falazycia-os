@@ -1,0 +1,29 @@
+model_list:
+  - model_name: free-fast
+    litellm_params:
+      model: gemini/gemini-3.5-flash
+      api_key: os.environ/GOOGLE_API_KEY
+  - model_name: free-fast
+    litellm_params:
+      model: openrouter/deepseek/deepseek-chat:free
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: free-fast
+    litellm_params:
+      model: vertex_ai/gemini-3.5-flash
+  - model_name: smart-logic
+    litellm_params:
+      model: openrouter/deepseek/deepseek-coder
+      api_key: os.environ/OPENROUTER_API_KEY
+  - model_name: secure-vault
+    litellm_params:
+      model: vertex_ai/gemini-3.5-pro
+
+router_settings:
+  routing_strategy: usage-based-routing-v2
+  routing_strategy_args:
+    ttl: 3600
+  fallbacks: [{"free-fast": ["free-fast"]}]
+
+general_settings:
+  disable_database: true
+  master_key: "sk-hermes-local"

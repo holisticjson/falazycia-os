@@ -1,0 +1,32 @@
+# ==========================================================================
+   COOLFON.PL — ROBOTS SEARCH CONFIGURATION
+   ==========================================================================
+
+User-agent: *
+Allow: /
+
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+# Zezwalamy botom AI na indeksowanie (optymalizacja AEO)
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+
+# Blokowanie indeksowania plików systemowych i kopii zapasowych
+Disallow: /wp_old/
+Disallow: /php/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+
+# Wskazanie poprawnej, standardowej lokalizacji sitemapy (naprawa z audytu)
+Sitemap: https://coolfon.pl/sitemap.xml

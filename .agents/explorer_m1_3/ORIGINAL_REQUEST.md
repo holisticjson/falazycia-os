@@ -1,0 +1,5 @@
+## 2026-06-24T07:02:18Z
+
+<USER_REQUEST>
+Investigate how to consolidate the director skills from 'C:\Users\tomas_yq1b9su\.gemini\config\plugins\holistic-virtual-board\skills\' and '.agents/skills/' into 'skills/' in the main workspace root, and how to update 'scratch/sync_to_gcp.py' to deploy these skills and link/copy them on the GCP VM to '/home/holisticjson/.hermes/skills/' and '/home/holisticjson/.hermes/profiles/'. Write your findings and recommendations in '.agents/explorer_m1_3/analysis.md'.
+</USER_REQUEST>

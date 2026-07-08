@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cennik Napraw Telefonów Łódź GSM – Serwis Coolfon</title>
+    <meta name="description" content="Przejrzysty cennik napraw telefonów w Łodzi. Sprawdź koszt wymiany ekranu, baterii oraz gniazda USB dla iPhone, Samsung i Xiaomi. Wybierz model i zobacz wycenę!">
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <style>
+        .filter-container {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .filter-select {
+            flex: 1;
+            min-width: 200px;
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-s);
+            color: #FFF;
+            outline: none;
+            font-size: 0.95rem;
+        }
+        .cennik-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .cennik-table th, .cennik-table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .cennik-table th {
+            background: rgba(255,255,255,0.02);
+            color: #FFF;
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+        .cennik-table tr:hover {
+            background: rgba(255,255,255,0.01);
+        }
+        .cennik-price {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- --- Header / Navigation --- -->
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo" style="display: flex; align-items: center; padding: 4px 0;">
+                <img src="/assets/img/coolfon_logo.png" alt="Coolfon GSM Serwis Telefonów Łódź" style="height: 38px; width: auto; display: block; transition: transform 0.3s ease;">
+            </a>
+            <button class="menu-btn" aria-label="Menu">☰</button>
+            <ul class="nav">
+                <li><a href="/" class="nav-link">Główna</a></li>
+                <li><a href="/serwis/" class="nav-link">Serwis</a></li>
+                <li><a href="/cennik/" class="nav-link nav-active">Cennik</a></li>
+                <li><a href="/sklep/" class="nav-link">Sklep z akcesoriami</a></li>
+                <li><a href="/blog/" class="nav-link">Blog / Poradnik</a></li>
+                <li><a href="/kontakt/" class="nav-link">Kontakt</a></li>
+                <li><a href="/kontakt/" class="btn btn-primary nav-btn">Zadzwoń teraz</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- --- Subpage Header --- -->
+    <section class="section" style="padding-top: 140px; padding-bottom: 40px; background: radial-gradient(circle at 50% 0%, rgba(0, 194, 255, 0.06) 0%, rgba(0,0,0,0) 50%);">
+        <div class="container text-center">
+            <p style="color: var(--color-primary); font-weight:600; text-transform:uppercase; font-size:0.85rem; letter-spacing:2px; margin-bottom:12px;">Cennik Usług</p>
+            <h1 style="font-size: 3rem;">Przejrzyste Ceny Napraw</h1>
+        </div>
+    </section>
+
+    <!-- --- Table & Filter Section --- -->
+    <section class="section" style="padding-top: 20px;">
+        <div class="container">
+            
+            <!-- Filters -->
+            <div class="filter-container">
+                <select id="filter-brand" class="filter-select">
+                    <option value="">Wszystkie marki</option>
+                    <option value="apple">Apple (iPhone)</option>
+                    <option value="samsung">Samsung</option>
+                    <option value="xiaomi">Xiaomi / POCO</option>
+                </select>
+                <input type="text" id="filter-search" placeholder="Szukaj modelu (np. iPhone 14)..." style="flex: 2; min-width: 250px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;">
+            </div>
+
+            <!-- Price Table -->
+            <div class="card" style="padding: 0; overflow-x: auto;">
+                <table class="cennik-table">
+                    <thead>
+                        <tr>
+                            <th>Urządzenie / Model</th>
+                            <th>Wymiana Ekranu (Szybki)</th>
+                            <th>Wymiana Baterii</th>
+                            <th>Port Ładowania / USB</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cennik-tbody">
+                        <!-- Generowane dynamicznie przez JS -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div style="margin-top: 40px; text-align: center; color: var(--color-text-muted); font-size: 0.9rem;">
+                <p>⚠️ Ceny mają charakter orientacyjny i zależą od wahań na rynku podzespołów. Diagnoza usterki w naszym serwisie jest zawsze <strong>całkowicie darmowa</strong>.</p>
+                <p style="margin-top: 8px;">Nie znalazłeś swojego modelu? <a href="/kontakt/" style="text-decoration: underline;">Skontaktuj się z nami</a> po darmową wycenę indywidualną.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- --- Footer --- -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="color:#FFF; margin-bottom:16px;">COOLFON GSM</h3>
+                    <p style="font-size:0.85rem; line-height:1.8;">Profesjonalny serwis pogwarancyjny telefonów i sklep z akcesoriami w Łodzi. Szybka wymiana szybek, baterii i precyzyjna diagnoza!</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Serwis</h4>
+                    <ul class="footer-links">
+                        <li><a href="/serwis/#iphone">Naprawa iPhone</a></li>
+                        <li><a href="/serwis/#samsung">Naprawa Samsung</a></li>
+                        <li><a href="/serwis/#xiaomi">Naprawa Xiaomi</a></li>
+                        <li><a href="/cennik/">Cennik Napraw</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Firma</h4>
+                    <ul class="footer-links">
+                        <li><a href="/blog/">Blog / Poradnik</a></li>
+                        <li><a href="/kontakt/">Kontakt</a></li>
+                        <li><a href="/polityka-prywatnosci/">Polityka Prywatności</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 COOLFON GSM SP. Z O.O. Wszelkie prawa zastrzeżone.</p>
+                <p style="font-size: 0.8rem;">Realizacja: <a href="https://jaison.pl" target="_blank" style="color: var(--color-primary);">Agencja AI Jaison</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Ponieważ main.js definiuje calculatorData, możemy go odpytać bezpośrednio
+            const tbody = document.getElementById("cennik-tbody");
+            const brandFilter = document.getElementById("filter-brand");
+            const searchFilter = document.getElementById("filter-search");
+
+            function renderTable() {
+                if (!tbody || !calculatorData) return;
+                
+                const selectedBrand = brandFilter.value;
+                const searchQuery = searchFilter.value.toLowerCase().trim();
+                
+                tbody.innerHTML = "";
+
+                for (const [brandKey, brand] of Object.entries(calculatorData.brands)) {
+                    // Filtr marki
+                    if (selectedBrand && brandKey !== selectedBrand) continue;
+
+                    for (const [modelKey, model] of Object.entries(brand.models)) {
+                        // Filtr wyszukiwania
+                        if (searchQuery && !model.name.toLowerCase().includes(searchQuery)) continue;
+
+                        const screenPrice = model.prices.screen ? `${model.prices.screen} zł` : "do wyceny";
+                        const batteryPrice = model.prices.battery ? `${model.prices.battery} zł` : "do wyceny";
+                        const usbPrice = model.prices.usb ? `${model.prices.usb} zł` : "do wyceny";
+
+                        const popularBadge = model.popular ? ` <span class="badge-popular" style="background: rgba(0,212,212,0.1); border: 1px solid var(--color-primary); color: var(--color-primary); font-size: 0.75rem; padding: 2px 8px; border-radius: 20px; font-weight: 600; display: inline-flex; align-items: center; gap: 4px; animation: pulseBadge 2s infinite;">⭐ Popularny</span>` : '';
+                        tbody.innerHTML += `
+                            <tr>
+                                <td style="font-weight: 500; color: #FFF; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+                                    ${brand.name} ${model.name} ${popularBadge}
+                                </td>
+                                <td class="cennik-price">ok. ${screenPrice}</td>
+                                <td>ok. ${batteryPrice}</td>
+                                <td>ok. ${usbPrice}</td>
+                            </tr>
+                        `;
+                    }
+                }
+
+                if (tbody.innerHTML === "") {
+                    tbody.innerHTML = `<tr><td colspan="4" style="text-align: center; padding: 30px; color: var(--color-text-muted);">Brak wyników spełniających kryteria wyszukiwania.</td></tr>`;
+                }
+            }
+
+            // Listeners
+            brandFilter.addEventListener("change", renderTable);
+            searchFilter.addEventListener("input", renderTable);
+
+            // Initial load
+            setTimeout(renderTable, 100); // Mały delay na wczytanie bazy z main.js
+        });
+    </script>
+</body>
+</html>

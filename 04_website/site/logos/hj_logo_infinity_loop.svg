@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- Definitions for Gradients -->
+  <defs>
+    <linearGradient id="purpleGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="50%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#050814" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background Glow -->
+  <circle cx="250" cy="250" r="220" fill="url(#glow)" />
+
+  <!-- Outer Ring -->
+  <circle cx="250" cy="250" r="180" fill="none" stroke="rgba(255, 255, 255, 0.04)" stroke-width="1.5" />
+
+  <!-- Infinity Loop { } -->
+  <g transform="translate(0, -10)">
+    <!-- Behind Background Path for depth -->
+    <path d="M250 250 C290 200 370 170 370 250 C370 330 290 300 250 250 C210 200 130 170 130 250 C130 330 210 300 250 250 Z" 
+          fill="none" stroke="rgba(139, 92, 246, 0.1)" stroke-width="24" stroke-linecap="round" />
+
+    <!-- Main Infinity Loop with Curly Bracket shapes embedded -->
+    <!-- Left loop forming a subtle '{' gesture and Right loop forming a subtle '}' gesture -->
+    <path d="M250 250 
+             C285 205 340 180 370 210 
+             C400 240 395 270 360 285 
+             C330 300 280 270 250 250 
+             C220 230 170 200 140 215 
+             C105 230 100 260 130 290 
+             C160 320 215 295 250 250 Z" 
+          fill="none" stroke="url(#purpleGoldGrad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+
+    <!-- Pulse nodes on critical transition points (Automations) -->
+    <!-- Center transition point -->
+    <circle cx="250" cy="250" r="6" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2" />
+    <!-- Left Loop Node (Data structure) -->
+    <circle cx="120" cy="245" r="5" fill="#8B5CF6" />
+    <!-- Right Loop Node (Result/Gold) -->
+    <circle cx="380" cy="255" r="5" fill="#F59E0B" />
+
+    <!-- Orbiting electrons/processes (Representing async cron-jobs) -->
+    <circle cx="330" cy="210" r="3" fill="#FFFFFF" opacity="0.8">
+      <animateMotion dur="4s" repeatCount="indefinite" path="M0 0 C35 -45 90 -70 120 -40 C150 -10 145 20 110 35 C80 50 30 20 0 0" />
+    </circle>
+  </g>
+
+  <!-- Typography -->
+  <text x="250" y="435" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="28" fill="#FFFFFF" letter-spacing="1">
+    HOLISTIC J<tspan fill="#8B5CF6">{</tspan>a<tspan fill="#F59E0B">}</tspan>SON
+  </text>
+  <text x="250" y="465" text-anchor="middle" font-family="'Inter', sans-serif" font-weight="500" font-size="12" fill="#94A3B8" letter-spacing="4" opacity="0.7">
+    ASYNCHRONOUS AUTOMATION LOOP
+  </text>
+</svg>

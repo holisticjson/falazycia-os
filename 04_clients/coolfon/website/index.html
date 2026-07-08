@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szybka Naprawa Telefonów Łódź – Serwis GSM Coolfon</title>
+    <meta name="description" content="Ekspresowy Serwis GSM i sklep z akcesoriami w Łodzi. Szybka wymiana baterii, szybki i wyświetlacza. Darmowa diagnoza i gwarancja. Sprawdź cennik i wyceń naprawę!">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://coolfon.pl/">
+    <meta property="og:title" content="Szybka Naprawa Telefonów Łódź – Serwis GSM Coolfon">
+    <meta property="og:description" content="Szybka wymiana ekranu, baterii i gniazd USB. Darmowa diagnoza, rzemieślnicza precyzja i oryginalne części z gwarancją.">
+    <meta property="og:image" content="https://coolfon.pl/assets/img/coolfon_og_share.png">
+
+    <!-- Styles & Icons -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- Leaflet.js CSS (dla mapy RODO) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+    <!-- Schema.org JSON-LD LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MobilePhoneRepairShop",
+      "name": "Coolfon GSM",
+      "legalName": "COOLFON GSM SP. Z O.O.",
+      "url": "https://coolfon.pl",
+      "telephone": "+48532840877",
+      "priceRange": "$$",
+      "image": "https://coolfon.pl/assets/img/coolfon_logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ul. Księcia Władysława Opolczyka 17 lok. C6",
+        "addressLocality": "Łódź",
+        "postalCode": "92-417",
+        "addressCountry": "PL"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "51.744158",
+        "longitude": "19.577234"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "10:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "15:00"
+        }
+      ],
+      "taxID": "9820393931"
+    }
+    </script>
+</head>
+<body>
+
+    <!-- --- Header / Navigation --- -->
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo" id="header-logo-link" style="display: flex; align-items: center; padding: 4px 0;">
+                <img src="/assets/img/coolfon_logo.png" alt="Coolfon GSM Serwis Telefonów Łódź" style="height: 38px; width: auto; display: block; transition: transform 0.3s ease;">
+            </a>
+            
+            <button class="menu-btn" aria-label="Menu">☰</button>
+            
+            <ul class="nav">
+                <li><a href="/" class="nav-link nav-active">Główna</a></li>
+                <li><a href="/serwis/" class="nav-link">Serwis</a></li>
+                <li><a href="/cennik/" class="nav-link">Cennik</a></li>
+                <li><a href="/sklep/" class="nav-link">Sklep z akcesoriami</a></li>
+                <li><a href="/blog/" class="nav-link">Blog / Poradnik</a></li>
+                <li><a href="/kontakt/" class="nav-link">Kontakt</a></li>
+                <li><a href="/kontakt/" class="btn btn-primary nav-btn">Zadzwoń teraz</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- --- Hero Section --- -->
+    <section class="section flex-center hero-section" style="min-height: 90vh; padding-top: 120px; position: relative; overflow: hidden;">
+        <canvas id="particles-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.65;"></canvas>
+        <div class="container grid-2" style="align-items: center; width: 100%; position: relative; z-index: 1;">
+            <div>
+                <p style="color: var(--color-primary); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 12px;">Ekspresowy Serwis GSM & Sklep w Łodzi</p>
+                <h1 class="hero-title" style="margin-bottom: 24px;">Szybka Naprawa Telefonów <span class="text-gradient">Łódź</span></h1>
+                <p style="color: var(--color-text-muted); font-size: 1.1rem; margin-bottom: 40px; max-width: 500px;">
+                    Rozbity ekran? Zużyta bateria? Oferujemy <strong>bezpłatną diagnozę techniczną 0 zł</strong> i sprawne terminy realizacji. Serwis GSM Coolfon to rzemieślnicza precyzja, przejrzysta wycena i oryginalne części z gwarancją.
+                </p>
+                <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+                    <a href="#kalkulator" class="btn btn-primary">Wyceń naprawę online 🚀</a>
+                    <a href="tel:+48532840877" class="btn btn-secondary">Zadzwoń: +48 532 840 877</a>
+                </div>
+            </div>
+            
+            <!-- Kalkulator Wyceny (Osadzony wewnątrz interaktywnej makiety smartfona 3D) -->
+            <div class="phone-calculator-wrapper" id="kalkulator">
+                <div class="phone-calculator-device tilt-3d glow-container">
+                    <div class="phone-inner" style="padding: 28px 24px;">
+                        <h3 class="tilt-3d-child" style="margin-bottom: 8px; font-size: 1.4rem;">📱 Kalkulator Szybkiej Wyceny</h3>
+                        <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: 24px;">Wybierz model i usterkę, aby sprawdzić szacowany koszt naprawy w naszym serwisie stacjonarnym.</p>
+                        
+                        <form id="coolfon-calc-form">
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Marka urządzenia:</label>
+                                <select id="calc-brand" required style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;"></select>
+                            </div>
+                            
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Model telefonu:</label>
+                                <select id="calc-model" required disabled style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;">
+                                    <option value="">-- Wybierz model --</option>
+                                </select>
+                            </div>
+                            
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Co wymaga naprawy?</label>
+                                <select id="calc-issue" required disabled style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;">
+                                    <option value="">-- Wybierz usterkę --</option>
+                                    <option value="screen">Rozbity ekran / szybka</option>
+                                    <option value="battery">Wymiana baterii (krótko trzyma)</option>
+                                    <option value="usb">Uszkodzone gniazdo ładowania / USB</option>
+                                    <option value="other">Inny problem</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Dynamic Price Display -->
+                            <div style="background: rgba(0, 155, 172, 0.05); border: 1px dashed var(--color-primary); padding: 14px; border-radius: var(--border-radius-s); display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                                <span style="font-weight: 500; font-size: 0.85rem;">Wstępny koszt usługi:</span>
+                                <span id="calc-price-value" style="font-size: 1.15rem; font-weight: 700; color: var(--color-primary);">0</span>
+                            </div>
+
+                            <div style="margin-bottom: 20px;">
+                                <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Twój numer telefonu (dla kontaktu):</label>
+                                <input type="tel" id="calc-phone" placeholder="np. 500 600 700" required style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary tilt-3d-child" style="width: 100%;">Wyślij zapytanie do serwisu 🚀</button>
+                        </form>
+                        
+                        <div id="calc-success-msg" style="display: none; text-align: center; padding: 20px 0;">
+                            <h4 style="color: var(--color-success); margin-bottom: 8px;">Dziękujemy!</h4>
+                            <p style="color: var(--color-text-muted); font-size: 0.9rem;">Zapytanie zostało przesłane do serwisu. Skontaktujemy się z Tobą na podany numer telefonu.</p>
+                        </div>
+                    </div>
+                    <div class="phone-glare"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Animated Statistics / Social Proof Counter Banner --- -->
+    <section class="section" style="padding: 40px 0; border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); background: rgba(0, 155, 172, 0.02); position: relative;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; text-align: center;">
+                <div class="stat-box" style="padding: 10px;">
+                    <span style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 8px; display: block; font-family: var(--font-heading); font-weight: 700;">🔧 <span class="counter" data-target="500">0</span>+</span>
+                    <h4 style="font-size: 1.1rem; color: #FFF; margin-bottom: 6px; font-family: var(--font-heading);">Udało się naprawić</h4>
+                    <p style="color: var(--color-text-muted); font-size: 0.88rem; margin: 0;">smartfonów w 2026 roku</p>
+                </div>
+                <div class="stat-box" style="padding: 10px;">
+                    <span style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 8px; display: block; font-family: var(--font-heading); font-weight: 700;">📱 <span class="counter" data-target="3">0</span> marki</span>
+                    <h4 style="font-size: 1.1rem; color: #FFF; margin-bottom: 6px; font-family: var(--font-heading);">Główne specjalizacje</h4>
+                    <p style="color: var(--color-text-muted); font-size: 0.88rem; margin: 0;">Pełny serwis Apple, Samsung, Xiaomi</p>
+                </div>
+                <div class="stat-box" style="padding: 10px;">
+                    <span style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 8px; display: block; font-family: var(--font-heading); font-weight: 700;">⭐ <span class="counter" data-target="4.6" data-decimals="1">0</span>/5</span>
+                    <h4 style="font-size: 1.1rem; color: #FFF; margin-bottom: 6px; font-family: var(--font-heading);">Ocena w Google</h4>
+                    <p style="color: var(--color-text-muted); font-size: 0.88rem; margin: 0;">Potwierdzona wysoka jakość usług</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Sekcja USP (Dlaczego my?) --- -->
+    <section class="section" style="background: rgba(255,255,255,0.01); border-top: 1px solid var(--color-border);">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 48px; font-size: 2.2rem;">Rzemieślnicza Precyzja, <span class="text-gradient">Ekspresowe Tempo</span></h2>
+            
+            <div class="grid-3">
+                <div class="card tilt-3d glow-container reveal-3d" style="transition-delay: 0.1s;">
+                    <div class="tilt-3d-child" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 16px;">⏱️</div>
+                    <h3 class="tilt-3d-child" style="margin-bottom: 12px;">Szybka Realizacja</h3>
+                    <p class="tilt-3d-child" style="color: var(--color-text-muted); font-size: 0.95rem;">Większość typowych usterek staramy się naprawiać na miejscu. Dokładny czas podamy po darmowej diagnozie.</p>
+                </div>
+                <div class="card tilt-3d glow-container reveal-3d" style="transition-delay: 0.2s;">
+                    <div class="tilt-3d-child" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 16px;">🔍</div>
+                    <h3 class="tilt-3d-child" style="margin-bottom: 12px;">Darmowa Diagnoza</h3>
+                    <p class="tilt-3d-child" style="color: var(--color-text-muted); font-size: 0.95rem;">Nie bierzemy opłat za sprawdzenie sprzętu. Płacisz wyłącznie za faktyczną i skuteczną naprawę.</p>
+                </div>
+                <div class="card tilt-3d glow-container reveal-3d" style="transition-delay: 0.3s;">
+                    <div class="tilt-3d-child" style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 16px;">🛡️</div>
+                    <h3 class="tilt-3d-child" style="margin-bottom: 12px;">Gwarancja i Jakość</h3>
+                    <p class="tilt-3d-child" style="color: var(--color-text-muted); font-size: 0.95rem;">Stosujemy oryginalne części lub najwyższej jakości zamienniki. Na każdą usługę dajemy gwarancję.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Sekcja NOWOŚĆ: Zabezpieczanie Ekranów Ploterem na Wymiar --- -->
+    <section class="section" style="border-top: 1px solid var(--color-border); background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0, 155, 172, 0.02) 100%);">
+        <div class="container">
+            <div class="grid-2" style="align-items: center;">
+                <div>
+                    <span class="badge" style="background: rgba(0, 240, 255, 0.1); color: var(--color-accent-neon); padding: 6px 14px; border-radius: 50px; font-size: 0.8rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; border: 1px solid rgba(0, 240, 255, 0.2);">🔥 Nowość w Ofercie</span>
+                    <h2 style="font-size: 2.2rem; margin-top: 16px; margin-bottom: 20px;">Laserowe Zabezpieczenie Ekranu <span class="text-gradient">Ploterem na Wymiar</span></h2>
+                    <p style="color: var(--color-text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 24px;">
+                        Chronimy Twoje urządzenia przed pęknięciami, zarysowaniami i skutkami upadków. Docinamy na miejscu profesjonalnym ploterem najwyższej klasy <strong>folie hydrożelowe i hybrydowe</strong>, dopasowane z milimetrową precyzją do każdego urządzenia!
+                    </p>
+                    <ul style="color: var(--color-text-muted); font-size: 0.95rem; margin-bottom: 32px; list-style: none; padding: 0;">
+                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">🛡️ <strong>Szeroka kompatybilność:</strong> smartfony, tablety, smartwatche oraz ekrany nawigacji w autach (GPS).</li>
+                        <li style="margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">✂️ <strong>Cięcie na wymiar:</strong> idealne dopasowanie pod zaokrąglone krawędzie i konkretne etui ochronne.</li>
+                        <li style="display: flex; align-items: center; gap: 10px;">⚡ <strong>Montaż od ręki:</strong> usługę wykonujemy na miejscu stacjonarnie w kilka minut.</li>
+                    </ul>
+                    <a href="https://wa.me/48532840877?text=Hej!%20Chcialbym%20zabezpieczyc%20ekran%20folia%20na%20wymiar..." target="_blank" class="btn btn-primary" rel="noopener">Zapytaj o folię dla swojego modelu ➔</a>
+                </div>
+                <div style="position: relative; display: flex; justify-content: center;">
+                    <!-- Wizualizacja Placu / Folii - Glassmorphic Mockup -->
+                    <div class="card tilt-3d glow-container" style="padding: 40px; border-radius: var(--border-radius-m); max-width: 400px; background: rgba(13, 19, 38, 0.6); border-color: rgba(0, 240, 255, 0.2); box-shadow: 0 20px 50px rgba(0, 155, 172, 0.15);">
+                        <div style="font-size: 3rem; margin-bottom: 20px; text-align: center;">✂️📱⌚</div>
+                        <h4 style="color: #FFF; text-align: center; margin-bottom: 16px; font-size: 1.25rem;">Wycinka na Miejscu Dla:</h4>
+                        <div style="display: flex; flex-direction: column; gap: 12px; color: var(--color-text-main); font-weight: 500;">
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                <span>📱 Telefony (wszystkie marki)</span>
+                                <span style="color: var(--color-primary);">od ręki</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                <span>⌚ Zegarki & Smartwatche</span>
+                                <span style="color: var(--color-primary);">od ręki</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                                <span>💻 Tablety (iPad, Samsung itp.)</span>
+                                <span style="color: var(--color-primary);">od ręki</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; padding-bottom: 8px;">
+                                <span>🚗 Ekrany samochodowe (GPS)</span>
+                                <span style="color: var(--color-primary);">od ręki</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Sekcja: Opinie Google (Google Business Profile) --- -->
+    <section class="section" style="border-top: 1px solid var(--color-border); background: rgba(255,255,255,0.005);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <span style="color: var(--color-primary); font-weight: 600; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px;">Opinie z Google Maps</span>
+                <h2 style="font-size: 2.2rem; margin-top: 8px;">Zaufanie, Które <span class="text-gradient">Potwierdzają Klienci</span></h2>
+            </div>
+            
+            <div class="grid-3">
+                <!-- Opinia 1 -->
+                <div class="card tilt-3d glow-container reveal-3d" style="padding: 24px; transition-delay: 0.1s; background: rgba(255,255,255,0.02); height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display: flex; gap: 4px; color: #FFD700; margin-bottom: 12px; font-size: 1.1rem;">★★★★★</div>
+                        <p style="color: var(--color-text-main); font-size: 0.9rem; line-height: 1.6; font-style: italic; margin-bottom: 20px;">
+                            "Szybka i bezproblemowa wymiana baterii. Miła i profesjonalna obsługa. Wycena darmowa, a koszt naprawy zgodny z ustaleniami. Zdecydowanie polecam!"
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
+                        <div style="width: 36px; height: 32px; background: rgba(0, 155, 172, 0.1); color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">M</div>
+                        <div>
+                            <h5 style="color: #FFF; font-size: 0.9rem; margin-bottom: 2px;">Michał K.</h5>
+                            <span style="color: var(--color-text-muted); font-size: 0.75rem; display: flex; align-items: center; gap: 4px;">🎯 Zweryfikowana opinia Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opinia 2 -->
+                <div class="card tilt-3d glow-container reveal-3d" style="padding: 24px; transition-delay: 0.2s; background: rgba(255,255,255,0.02); height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display: flex; gap: 4px; color: #FFD700; margin-bottom: 12px; font-size: 1.1rem;">★★★★★</div>
+                        <p style="color: var(--color-text-main); font-size: 0.9rem; line-height: 1.6; font-style: italic; margin-bottom: 20px;">
+                            "Rewelacja! Docinali mi na wymiar folie hydrożelową na ekran nowego iPada i zegarka. Wszystko idealnie dopasowane, bez pęcherzyków powietrza. Na miejscu w 10 minut!"
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
+                        <div style="width: 36px; height: 32px; background: rgba(0, 155, 172, 0.1); color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">K</div>
+                        <div>
+                            <h5 style="color: #FFF; font-size: 0.9rem; margin-bottom: 2px;">Katarzyna S.</h5>
+                            <span style="color: var(--color-text-muted); font-size: 0.75rem; display: flex; align-items: center; gap: 4px;">🎯 Zweryfikowana opinia Google</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opinia 3 -->
+                <div class="card tilt-3d glow-container reveal-3d" style="padding: 24px; transition-delay: 0.3s; background: rgba(255,255,255,0.02); height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div style="display: flex; gap: 4px; color: #FFD700; margin-bottom: 12px; font-size: 1.1rem;">★★★★★</div>
+                        <p style="color: var(--color-text-main); font-size: 0.9rem; line-height: 1.6; font-style: italic; margin-bottom: 20px;">
+                            "Moja kolejna wizyta w tym serwisie z telefonami. Rzetelne podejście, profesjonalna diagnoza i jasne warunki cenowe. Bardzo polecam, uczciwa firma."
+                        </p>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 12px;">
+                        <div style="width: 36px; height: 32px; background: rgba(0, 155, 172, 0.1); color: var(--color-primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem;">T</div>
+                        <div>
+                            <h5 style="color: #FFF; font-size: 0.9rem; margin-bottom: 2px;">Tomasz W.</h5>
+                            <span style="color: var(--color-text-muted); font-size: 0.75rem; display: flex; align-items: center; gap: 4px;">🎯 Zweryfikowana opinia Google</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 36px;">
+                <a href="https://www.google.com/maps/place/Coolfon+GSM/@51.748398,19.553974,17z/" target="_blank" class="btn btn-secondary" style="font-size: 0.9rem; padding: 12px 28px;" rel="noopener">Zobacz wszystkie opinie w Google ➔</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Sekcja Kontakt i Lokalizacja --- -->
+    <section class="section" style="border-top: 1px solid var(--color-border);">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+            <div>
+                <h2 style="font-size: 2.2rem; margin-bottom: 16px;">Odwiedź nas <span class="text-gradient">Stacjonarnie</span></h2>
+                <p style="color: var(--color-text-muted); margin-bottom: 32px;">Nasz serwis mieści się w Łodzi. Wszystkie naprawy wykonujemy na miejscu. Nie musisz wysyłać urządzenia.</p>
+                
+                <div style="margin-bottom: 24px;">
+                    <h4 style="margin-bottom: 8px; color: #FFF;">Adres:</h4>
+                    <p style="color: var(--color-text-muted);">
+                        COOLFON GSM SP. Z O.O.<br>
+                        ul. Księcia Władysława Opolczyka 17 lok. C6<br>
+                        92-417 Łódź (Olechów)
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 24px;">
+                    <h4 style="margin-bottom: 8px; color: #FFF;">Godziny Otwarcia:</h4>
+                    <p style="color: var(--color-text-muted);">
+                        Poniedziałek – Piątek: 10:00 – 19:00<br>
+                        Sobota: 09:00 – 15:00
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 8px; color: #FFF;">Kontakt bezpośredni:</h4>
+                    <p style="color: var(--color-text-muted);">
+                        Telefon: <a href="tel:+48532840877" style="font-weight: 600;">+48 532 840 877</a><br>
+                        E-mail: <a href="mailto:info@coolfon.pl">info@coolfon.pl</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- RODO Mapa OpenStreetMap (zero Google cookies) -->
+            <div style="border-radius: var(--border-radius-m); overflow: hidden; border: 1px solid var(--color-border); height: 400px; width: 100%; position: relative;" id="map-container">
+                <div id="map" style="height: 100%; width: 100%;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Cookie Banner --- -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-text">
+            <strong>Szanujemy Twoją prywatność.</strong> Nasza strona używa minimalnej ilości plików cookies wyłącznie do poprawnego działania formularzy, wyceny oraz mapy. Zgadzam się na przetwarzanie moich danych w celach statystycznych i analitycznych. Pełne dane RODO znajdziesz w <a href="/polityka-prywatnosci/" style="text-decoration: underline;">Polityce Prywatności</a>.
+        </div>
+        <div class="cookie-btns">
+            <button class="btn btn-secondary" id="cookie-reject" style="padding: 10px 18px;">Odrzuć</button>
+            <button class="btn btn-primary" id="cookie-accept" style="padding: 10px 18px;">Akceptuję wszystkie</button>
+        </div>
+    </div>
+
+    <!-- --- Floating WhatsApp Button --- -->
+    <a href="https://wa.me/48532840877" class="whatsapp-float" target="_blank" aria-label="Napisz do nas na WhatsApp" rel="noopener">
+        <!-- SVG Ikona WhatsApp -->
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.993L2 22l5.13-1.347a9.96 9.96 0 0 0 4.887 1.277h.005c5.505 0 9.989-4.478 9.99-9.985A9.97 9.97 0 0 0 12.012 2zm4.957 14.22c-.271.76-1.562 1.485-2.126 1.543-.538.056-1.077.264-3.488-.708-2.902-1.21-4.757-4.142-4.904-4.337-.147-.195-1.182-1.573-1.182-2.998 0-1.424.747-2.126 1.012-2.42.264-.294.588-.368.784-.368.196 0 .392.004.563.012.18.008.42-.07.656.495.24.576.816 1.996.887 2.14.07.143.118.31.02.502-.097.192-.147.31-.294.48-.147.172-.31.385-.44.516-.147.143-.3.3-.13.593.17.294.755 1.246 1.624 2.019.869.773 1.603 1.012 1.83 1.11.226.1.36.082.496-.074.135-.156.588-.684.747-.916.157-.23.313-.192.527-.113.216.08 1.364.643 1.6.76.236.117.392.176.45.277.058.1.058.58-.213 1.34z"/>
+        </svg>
+    </a>
+
+    <!-- --- Footer --- -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="color:#FFF; margin-bottom:16px;">COOLFON GSM</h3>
+                    <p style="font-size:0.85rem; line-height:1.8;">Profesjonalny serwis pogwarancyjny telefonów i sklep z akcesoriami w Łodzi. Szybka wymiana szybek, baterii i precyzyjna diagnoza!</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Serwis</h4>
+                    <ul class="footer-links">
+                        <li><a href="/serwis/#iphone">Naprawa iPhone</a></li>
+                        <li><a href="/serwis/#samsung">Naprawa Samsung</a></li>
+                        <li><a href="/serwis/#xiaomi">Naprawa Xiaomi</a></li>
+                        <li><a href="/cennik/">Cennik Napraw</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Firma</h4>
+                    <ul class="footer-links">
+                        <li><a href="/blog/">Blog / Poradnik</a></li>
+                        <li><a href="/kontakt/">Kontakt</a></li>
+                        <li><a href="/polityka-prywatnosci/">Polityka Prywatności</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 COOLFON GSM SP. Z O.O. Wszelkie prawa zastrzeżone.</p>
+                <p style="font-size: 0.8rem;">Realizacja: <a href="https://jaison.pl" target="_blank" style="color: var(--color-primary);">Agencja AI Jaison</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    
+    <!-- Leaflet.js dla RODO OpenStreetMap -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Współrzędne geograficzne Coolfon: 51.744158, 19.577234
+            const map = L.map('map').setView([51.744158, 19.577234], 16);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([51.744158, 19.577234]).addTo(map)
+                .bindPopup('<b>COOLFON GSM</b><br>ul. Opolczyka 17 lok. C6<br>Łódź')
+                .openPopup();
+        });
+    </script>
+
+    <!-- Dialogflow CX Messenger widget (Vertex AI Chatbot) -->
+    <!-- Wdrożenie z pustym agent-id do uzupełnienia po uruchomieniu GCP przez użytkownika -->
+    <!-- 
+    <script src="https://www.gstatic.com/dialogflow-cloud/fast/messenger/messenger.js?v=1"></script>
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Asystent Coolfon"
+      agent-id="AGENT_ID_Z_KONSOLI"
+      language-code="pl"
+      location="europe-west1">
+    </df-messenger>
+    -->
+
+</body>
+</html>

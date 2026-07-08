@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ==========================================================================
+     COOLFON.PL — DYNAMIC XML SITEMAP
+     ========================================================================== -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://coolfon.pl/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://coolfon.pl/serwis/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://coolfon.pl/cennik/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coolfon.pl/sklep/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://coolfon.pl/kontakt/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coolfon.pl/blog/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coolfon.pl/blog/ile-kosztuje-wymiana-ekranu-iphone-14-lodz/</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://coolfon.pl/polityka-prywatnosci/</loc>
+    <lastmod>2026-07-06</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

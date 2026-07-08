@@ -31,6 +31,10 @@ Thumbs.db
 *.swp
 
 # === DUŻE FOLDERY DANYCH ===
+02_knowledge_base/raw/
+*.zip
+*.tar.gz
+*.msix
 generated_media/
 scratch/
 reports/

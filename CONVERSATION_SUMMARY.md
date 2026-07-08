@@ -21,7 +21,7 @@
 | 🧠 Centrum Dowodzenia | holistic_ceo.py | ✅ Działa |
 | 🔍 Client Intake Scanner | client_intake.py | ✅ Działa |
 | 👻 Ghost Operator | ghost_operator.py | ✅ Działa |
-| 🔌 GHL Agent | ghl_agent.py | ✅ API Key wklejony (Private Integration, pełne Scopes, API v2) — wymaga aktualizacji endpointów z v1→v2 |
+| 🔌 Systeme.io Agent | systeme_agent.py | ✅ Przygotowanie do wdrożenia darmowego planu |
 
 ### 📂 KLUCZOWE PLIKI DO PRZEJRZENIA:
 
@@ -30,13 +30,13 @@ c:\Aplikacje MVP\Holistic Jason\
 ├── holistic_ceo.py          ← GŁÓWNY PLIK (815 linii, orkiestrator + UI)
 ├── client_intake.py         ← Moduł ankiety kwalifikacyjnej
 ├── ghost_operator.py        ← Moduł monetyzacji influencerów
-├── ghl_agent.py             ← Moduł GHL API (do podpięcia klucza)
+├── systeme_agent.py         ← Moduł Systeme.io API
 ├── Dockerfile               ← Kontener Cloud Run
 ├── requirements.txt          ← Zależności Python
 ├── deploy_cloud_run.ps1      ← Skrypt deploy
 ├── xlsx_to_md.py             ← Konwerter xlsx→md
 ├── CONVERSATION_SUMMARY.md   ← TEN PLIK (stan gry)
-├── COMET_MASTER_PROMPT.md    ← Prompt do GHL asystenta Comet
+├── COMET_MVP_SETUP_PROMPT.md ← Prompt do przygotowania MVP (Hermes GCP, systeme.io)
 ├── .streamlit/config.toml    ← Dark theme
 ├── deploy/                   ← Folder deploy (pliki → Cloud Run)
 │   ├── knowledge/            ← 136 plików MD bazy wiedzy
@@ -49,14 +49,10 @@ c:\Aplikacje MVP\Holistic Jason\
 
 ### 🚀 NASTĘPNE KROKI (po przelogowaniu):
 
-1. **GHL API v2 Migration (PRIORYTET):**
-   - Private Integration UTWORZONA z pełnymi Scopes (wszystkie zaznaczone)
-   - API Key WKLEJONY w Dashboard 🔌 GHL Agent
-   - ⚠️ `ghl_agent.py` używa API v1 endpointów — trzeba zaktualizować na v2:
-     - v1: `rest.gohighlevel.com/v1/` → v2: `services.leadconnectorhq.com/`
-     - v2 wymaga nagłówka `Version: 2021-07-28` + Location ID
-   - Plik do edycji: `ghl_agent.py` (linijki z GHL_BASE)
-   - Docs: https://highlevel.stoplight.io/docs/integrations
+1. **Systeme.io Integration (PRIORYTET):**
+   - Usunięto całkowicie integrację z Go High Level
+   - Przygotowanie do konfiguracji darmowego planu Systeme.io
+   - Należy przygotować plik `systeme_agent.py` z logiką nowej platformy do zarządzania lejkami i CRM
 
 2. **Telegram Bot** — mobilny dostęp do orkiestratora (priorytet po GHL)
 
@@ -69,7 +65,7 @@ c:\Aplikacje MVP\Holistic Jason\
 ```powershell
 # 1. Skopiuj zmienione pliki do deploy/
 Copy-Item "holistic_ceo.py" "deploy\" -Force
-Copy-Item "ghl_agent.py" "deploy\" -Force
+Copy-Item "systeme_agent.py" "deploy\" -Force
 
 # 2. Build
 $gcloud = "C:\Users\tomas_yq1b9su\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin\gcloud.cmd"
@@ -89,7 +85,7 @@ $gcloud = "C:\Users\tomas_yq1b9su\AppData\Local\Google\Cloud SDK\google-cloud-sd
 - **Lokalny Dashboard:** http://localhost:8501
 
 ### ⚠️ WAŻNE UWAGI:
-- GHL API v2 (Private Integration) wymaga Location ID w nagłówkach — trzeba zaktualizować `ghl_agent.py`
-- Comet (asystent przeglądarki GHL) wysiada — zastąpiony przez GHL Agent API
+- Wszystkie procesy opieramy na bezpłatnym planie Systeme.io (zgodnie ze strategią "Low Cost First")
+- Usunięto całkowicie infrastrukturę Go High Level
 - Dashboard działa zarówno lokalnie jak i na Cloud Run (auto-detekcja)
 - Hasło wymagane tylko na Cloud Run, lokalnie bez hasła

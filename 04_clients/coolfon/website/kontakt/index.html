@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakt – Serwis GSM Coolfon Łódź Olechów</title>
+    <meta name="description" content="Kontakt z serwisem GSM Coolfon w Łodzi. Dane adresowe, telefon, godziny otwarcia. Wyślij zapytanie przez formularz lub zadzwoń bezpośrednio!">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+</head>
+<body>
+
+    <!-- --- Header / Navigation --- -->
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo" style="display: flex; align-items: center; padding: 4px 0;">
+                <img src="/assets/img/coolfon_logo.png" alt="Coolfon GSM Serwis Telefonów Łódź" style="height: 38px; width: auto; display: block; transition: transform 0.3s ease;">
+            </a>
+            <button class="menu-btn" aria-label="Menu">☰</button>
+            <ul class="nav">
+                <li><a href="/" class="nav-link">Główna</a></li>
+                <li><a href="/serwis/" class="nav-link">Serwis</a></li>
+                <li><a href="/cennik/" class="nav-link">Cennik</a></li>
+                <li><a href="/sklep/" class="nav-link">Sklep z akcesoriami</a></li>
+                <li><a href="/blog/" class="nav-link">Blog / Poradnik</a></li>
+                <li><a href="/kontakt/" class="nav-link nav-active">Kontakt</a></li>
+                <li><a href="/kontakt/" class="btn btn-primary nav-btn">Zadzwoń teraz</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- --- Hero Subpage Header --- -->
+    <section class="section" style="padding-top: 140px; padding-bottom: 40px; background: radial-gradient(circle at 50% 0%, rgba(0, 194, 255, 0.08) 0%, rgba(0,0,0,0) 50%);">
+        <div class="container text-center">
+            <p style="color: var(--color-primary); font-weight:600; text-transform:uppercase; font-size:0.85rem; letter-spacing:2px; margin-bottom:12px;">Szybki i bezpośredni kontakt</p>
+            <h1 style="font-size: 3rem;">Skontaktuj się z nami</h1>
+        </div>
+    </section>
+
+    <!-- --- Main Contact Grid --- -->
+    <section class="section" style="padding-top: 40px;">
+        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
+            
+            <!-- Contact Details -->
+            <div>
+                <h2 style="margin-bottom: 24px; font-size: 2rem;">Dane <span class="text-gradient">firmowe</span></h2>
+                
+                <div style="margin-bottom: 32px;">
+                    <p style="font-size: 1.1rem; color: #FFF; font-weight: 600; margin-bottom: 8px;">COOLFON GSM SP. Z O.O.</p>
+                    <p style="color: var(--color-text-muted); line-height: 1.8;">
+                        ul. Księcia Władysława Opolczyka 17 lok. C6<br>
+                        92-417 Łódź (Olechów)
+                    </p>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; border-bottom: 1px solid var(--color-border); padding-bottom: 24px;">
+                    <div>
+                        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-text-muted);">NIP:</span>
+                        <p style="color: #FFF; font-weight: 600; margin-top: 4px;">9820393931</p>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-text-muted);">KRS:</span>
+                        <p style="color: #FFF; font-weight: 600; margin-top: 4px;">0001177218</p>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-text-muted);">REGON:</span>
+                        <p style="color: #FFF; font-weight: 600; margin-top: 4px;">541928855</p>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 32px;">
+                    <h3 style="margin-bottom: 16px; font-size:1.3rem;">Godziny pracy:</h3>
+                    <table style="width: 100%; color: var(--color-text-muted); border-collapse: collapse;">
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.03);">
+                            <td style="padding: 10px 0;">Poniedziałek – Piątek</td>
+                            <td style="padding: 10px 0; text-align: right; color: #FFF; font-weight: 500;">10:00 – 19:00</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0;">Sobota</td>
+                            <td style="padding: 10px 0; text-align: right; color: #FFF; font-weight: 500;">09:00 – 15:00</td>
+                        </tr>
+                        <tr style="color: var(--color-warning);">
+                            <td style="padding: 10px 0;">Niedziela</td>
+                            <td style="padding: 10px 0; text-align: right; font-weight: 500;">Zamknięte</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; background: rgba(0, 194, 255, 0.03); border: 1px solid var(--color-border); border-radius: var(--border-radius-m);">
+                    <div>
+                        <span style="font-size: 0.8rem; color: var(--color-text-muted);">Zadzwoń bezpośrednio:</span>
+                        <p style="margin-top: 4px;"><a href="tel:+48532840877" style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">+48 532 840 877</a></p>
+                    </div>
+                    <div>
+                        <span style="font-size: 0.8rem; color: var(--color-text-muted);">Napisz do nas:</span>
+                        <p style="margin-top: 4px;"><a href="mailto:info@coolfon.pl" style="font-size: 1.1rem; color: #FFF; font-weight: 600;">info@coolfon.pl</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formularz Kontaktowy -->
+            <div class="card tilt-3d glow-container reveal-3d" style="transition-delay: 0.1s;">
+                <h3 class="tilt-3d-child" style="margin-bottom: 8px;">📩 Napisz wiadomość</h3>
+                <p class="tilt-3d-child" style="color: var(--color-text-muted); font-size:0.9rem; margin-bottom: 24px;">Zadaj pytanie o cenę naprawy lub dostępność akcesoriów. Odpowiemy najszybciej jak to możliwe.</p>
+                
+                <form id="coolfon-contact-form">
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Twoje Imię i Nazwisko:</label>
+                        <input type="text" id="contact-name" required placeholder="np. Jan Kowalski" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none;">
+                    </div>
+                    
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Numer telefonu:</label>
+                        <input type="tel" id="contact-phone" required placeholder="np. 500 600 700" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none;">
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Adres E-mail (opcjonalnie):</label>
+                        <input type="email" id="contact-email" placeholder="np. jan@poczta.pl" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none;">
+                    </div>
+
+                    <div style="margin-bottom: 16px;">
+                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Model urządzenia:</label>
+                        <input type="text" id="contact-device" placeholder="np. iPhone 14 Pro" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none;">
+                    </div>
+
+                    <div style="margin-bottom: 24px;">
+                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Treść wiadomości / Opis usterki:</label>
+                        <textarea id="contact-message" required placeholder="Napisz, z czym masz problem..." style="width: 100%; height: 120px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; resize: none; font-family: var(--font-sans);"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary tilt-3d-child" style="width: 100%;">Wyślij wiadomość 🚀</button>
+                </form>
+
+                <div id="contact-success" style="display: none; text-align: center; padding: 20px 0;">
+                    <h4 class="tilt-3d-child" style="color: var(--color-success); margin-bottom: 8px;">Wiadomość wysłana!</h4>
+                    <p class="tilt-3d-child" style="color: var(--color-text-muted); font-size: 0.9rem;">Dziękujemy za kontakt. Odpiszemy lub zadzwonimy najszybciej, jak to możliwe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- OpenStreetMap embed --- -->
+    <section class="section" style="border-top: 1px solid var(--color-border); padding-bottom: 0;">
+        <div style="height: 450px; width: 100%; border-bottom: 1px solid var(--color-border);" id="map"></div>
+    </section>
+
+    <!-- --- Footer --- -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="color:#FFF; margin-bottom:16px;">COOLFON GSM</h3>
+                    <p style="font-size:0.85rem; line-height:1.8;">Profesjonalny serwis pogwarancyjny telefonów i sklep z akcesoriami w Łodzi. Szybka wymiana szybek, baterii i precyzyjna diagnoza!</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Serwis</h4>
+                    <ul class="footer-links">
+                        <li><a href="/serwis/#iphone">Naprawa iPhone</a></li>
+                        <li><a href="/serwis/#samsung">Naprawa Samsung</a></li>
+                        <li><a href="/serwis/#xiaomi">Naprawa Xiaomi</a></li>
+                        <li><a href="/cennik/">Cennik Napraw</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Firma</h4>
+                    <ul class="footer-links">
+                        <li><a href="/blog/">Blog / Poradnik</a></li>
+                        <li><a href="/kontakt/">Kontakt</a></li>
+                        <li><a href="/polityka-prywatnosci/">Polityka Prywatności</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 COOLFON GSM SP. Z O.O. Wszelkie prawa zastrzeżone.</p>
+                <p style="font-size: 0.8rem;">Realizacja: <a href="https://jaison.pl" target="_blank" style="color: var(--color-primary);">Agencja AI Jaison</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const map = L.map('map').setView([51.744158, 19.577234], 16);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            L.marker([51.744158, 19.577234]).addTo(map)
+                .bindPopup('<b>COOLFON GSM</b><br>ul. Opolczyka 17 lok. C6<br>Łódź')
+                .openPopup();
+
+            // JS dla obsługi formularza kontaktowego
+            const form = document.getElementById("coolfon-contact-form");
+            const successMsg = document.getElementById("contact-success");
+
+            if (form) {
+                form.addEventListener("submit", (e) => {
+                    e.preventDefault();
+                    
+                    const submitBtn = form.querySelector("button[type='submit']");
+                    if (submitBtn) {
+                        submitBtn.disabled = true;
+                        submitBtn.innerHTML = "Wysyłanie...";
+                    }
+
+                    const payload = {
+                        name: document.getElementById("contact-name").value,
+                        phone: document.getElementById("contact-phone").value,
+                        email: document.getElementById("contact-email").value,
+                        device: document.getElementById("contact-device").value,
+                        message: document.getElementById("contact-message").value
+                    };
+
+                    fetch("/php/send.php", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    })
+                    .then(res => {
+                        form.style.display = "none";
+                        if (successMsg) successMsg.style.display = "block";
+                    })
+                    .catch(err => {
+                        alert("Wystąpił błąd podczas wysyłania. Zadzwoń: +48 532 840 877");
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = "Spróbuj ponownie 🚀";
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

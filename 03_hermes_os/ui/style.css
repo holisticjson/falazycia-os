@@ -1,0 +1,566 @@
+/* ==========================================================================
+   ADHD-OPTIMAL DESIGN SYSTEM
+   ========================================================================== */
+
+:root {
+    /* Color Palette */
+    --bg-deep: #0B0E14;          /* Deepest background, reduces eye strain */
+    --bg-panel: rgba(26, 32, 44, 0.6); /* Glassmorphic panel base */
+    --border-glass: rgba(255, 255, 255, 0.08);
+    
+    /* Accents */
+    --accent-primary: #7C3AED;   /* Deep Purple - calm but distinct */
+    --accent-secondary: #06B6D4; /* Cyan - active states */
+    --accent-success: #10B981;   /* Emerald - dopamine wins */
+    
+    /* Typography */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Atkinson Hyperlegible', sans-serif;
+    
+    /* Text Colors */
+    --text-primary: #F8FAFC;
+    --text-secondary: #94A3B8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    height: 100vh;
+    overflow: hidden;
+    /* Subtle background glow to create depth without distraction */
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.05) 0%, transparent 50%);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   GLASSMORPHISM CORE
+   ========================================================================== */
+
+.glass-container {
+    display: flex;
+    height: 100vh;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.glass-sidebar {
+    width: 280px;
+    background: var(--bg-panel);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.glass-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+}
+
+.glass-panel {
+    background: var(--bg-panel);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glass);
+    border-radius: 24px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================================================================
+   SIDEBAR
+   ========================================================================== */
+
+.logo {
+    margin-bottom: 2.5rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    letter-spacing: -0.5px;
+}
+
+.logo .subtitle {
+    color: var(--accent-secondary);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.nav-links li {
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.nav-links li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+
+.nav-links li.active {
+    background: rgba(124, 58, 237, 0.15);
+    color: var(--accent-secondary);
+    border-left: 3px solid var(--accent-primary);
+}
+
+.agent-status {
+    margin-top: auto;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.status-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.status-indicator.online {
+    background: var(--accent-success);
+    box-shadow: 0 0 10px var(--accent-success);
+}
+
+/* ==========================================================================
+   TOPBAR & DOPAMINE TRACKER
+   ========================================================================== */
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-panel);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-glass);
+    border-radius: 20px;
+    padding: 1rem 1.5rem;
+    height: 70px;
+}
+
+.search-bar {
+    display: flex;
+    gap: 0.5rem;
+    width: 400px;
+}
+
+.search-bar input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-glass);
+    border-radius: 12px;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+.glass-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    padding: 0.5rem 1.25rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.glass-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.glass-btn.primary {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: var(--accent-primary);
+    color: #fff;
+}
+
+.glass-btn.primary:hover {
+    background: rgba(124, 58, 237, 0.4);
+}
+
+.dopamine-tracker {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dopamine-label {
+    font-weight: 700;
+    color: var(--accent-secondary);
+}
+
+.progress-bar-container {
+    width: 200px;
+    height: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+    border-radius: 6px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dopamine-score {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: var(--accent-success);
+}
+
+/* ==========================================================================
+   VIEWS & LAYOUT
+   ========================================================================== */
+
+.view-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow-y: auto;
+    /* Custom Scrollbar for ADHD */
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-primary) transparent;
+}
+
+.view-container::-webkit-scrollbar {
+    width: 6px;
+}
+.view-container::-webkit-scrollbar-thumb {
+    background-color: var(--accent-primary);
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.welcome-card {
+    border-left: 4px solid var(--accent-secondary);
+}
+
+.welcome-card h2 {
+    color: var(--accent-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.metric-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.metric-card h3 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.metric-value {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0.5rem 0;
+}
+
+.metric-trend {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.metric-trend.positive { color: var(--accent-success); }
+.metric-trend.neutral { color: var(--accent-secondary); }
+
+/* ==========================================================================
+   CHAT INTERFACE
+   ========================================================================== */
+
+.chat-interface {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-height: 400px;
+}
+
+.chat-history {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-right: 1rem;
+}
+
+.message {
+    padding: 1rem;
+    border-radius: 16px;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.message.system {
+    background: rgba(255, 255, 255, 0.03);
+    align-self: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+}
+
+.message.user {
+    background: rgba(124, 58, 237, 0.15);
+    border: 1px solid rgba(124, 58, 237, 0.3);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.message.agent {
+    background: rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(6, 182, 212, 0.2);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-glass);
+}
+
+.chat-input-area input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+.chat-input-area input:focus {
+    outline: none;
+}
+
+/* ==========================================================================
+   KANBAN BOARD
+   ========================================================================== */
+.view-title {
+    padding: 0.5rem 1rem;
+    font-size: 1.5rem;
+    color: var(--accent-secondary);
+}
+
+.kanban-board {
+    display: flex;
+    gap: 1rem;
+    height: calc(100% - 60px);
+}
+
+.kanban-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 250px;
+}
+
+.kanban-column h3 {
+    font-size: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-glass);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.kanban-cards {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.kanban-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    padding: 1rem;
+    border-radius: 12px;
+    cursor: grab;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.kanban-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+}
+
+/* ==========================================================================
+   NEW VIEWS (KNOWLEDGE, PROSPECTING, SETTINGS)
+   ========================================================================== */
+
+.knowledge-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.recent-notes {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.recent-notes li {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.75rem 1rem;
+    border-radius: 12px;
+    border: 1px solid var(--border-glass);
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.recent-notes li:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.recent-notes .icon {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.recent-notes .date {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.glass-table th {
+    color: var(--accent-secondary);
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+.glass-table tbody tr {
+    transition: background 0.2s;
+}
+
+.glass-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.setting-item {
+    font-family: var(--font-body);
+}
+
+/* ==========================================================================
+   AGENCY PIPELINE & IDE VIEWS
+   ========================================================================== */
+
+.ide-container {
+    display: flex;
+    gap: 1rem;
+    height: calc(100vh - 150px);
+}
+
+.ide-sidebar {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.ide-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.agency-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-control {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-glass);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-family: var(--font-body);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}

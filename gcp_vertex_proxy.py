@@ -78,15 +78,38 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 PORT = 8089
 
-# Resolve GCP Service Account key with fallbacks
-SA_KEY_PATH = '/home/holisticjson/.hermes/gcp-sa-key.json'
-if not os.path.exists(SA_KEY_PATH):
-    SA_KEY_PATH = os.path.join(os.getcwd(), 'holistic-dashboard-dev-dea2c872139e.json')
-if not os.path.exists(SA_KEY_PATH):
-    SA_KEY_PATH = os.path.expanduser('~/.hermes/gcp-sa-key.json')
+# Resolve GCP Service Account key
+import os
+possible_paths = [
+    os.path.expanduser('~/.hermes/keys/coolfon-project-sa.json'),
+    '/home/holisticjson/.hermes/keys/coolfon-project-sa.json',
+    "coolfon-project-sa.json",
+    os.path.expanduser('~/.hermes/keys/holistic-jaison-sa.json'),
+    '/home/holisticjson/.hermes/keys/holistic-jaison-sa.json',
+    "holistic-jaison-sa.json",
+    os.path.expanduser('~/.hermes/keys/holistic-broker-sa.json'),
+    '/home/holisticjson/.hermes/keys/holistic-broker-sa.json',
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "holistic-broker-sa.json"),
+    "holistic-broker-sa.json",
+    "holistic-dashboard-dev-dea2c872139e.json",
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "holistic-dashboard-dev-dea2c872139e.json")
+]
+SA_KEY_PATH = None
+for p in possible_paths:
+    if os.path.exists(p):
+        SA_KEY_PATH = p
+        break
 
-PROJECT_ID = "holistic-dashboard-dev"
-LOCATION = "us-central1"
+PROJECT_ID = os.getenv("VERTEX_PROJECT", "coolfon-project")
+if SA_KEY_PATH:
+    try:
+        with open(SA_KEY_PATH, "r") as f:
+            sa_data = json.load(f)
+            PROJECT_ID = sa_data.get("project_id", PROJECT_ID)
+    except Exception as e:
+        logger.error(f"Error reading project_id from SA key: {e}")
+
+LOCATION = os.getenv("VERTEX_LOCATION", "us-central1")
 TARGET_URL = f"https://{LOCATION}-aiplatform.googleapis.com/v1/projects/{PROJECT_ID}/locations/{LOCATION}/endpoints/openapi/chat/completions"
 
 token_lock = threading.Lock()
@@ -127,6 +150,52 @@ class VertexProxyHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json")
             self.end_headers()
             self.wfile.write(json.dumps({"status": "healthy", "service": "GCP Vertex Proxy"}).encode())
+        elif self.path in ["/v1/models", "/models"]:
+            self.send_response(200)
+            self.send_header("Content-Type", "application/json")
+            self.end_headers()
+            models_data = {
+                "object": "list",
+                "data": [
+                    {
+                        "id": "google/gemini-2.0-flash",
+                        "object": "model",
+                        "created": int(time.time()),
+                        "owned_by": "google"
+                    },
+                    {
+                        "id": "google/gemini-2.5-flash",
+                        "object": "model",
+                        "created": int(time.time()),
+                        "owned_by": "google"
+                    },
+                    {
+                        "id": "google/gemini-2.5-pro",
+                        "object": "model",
+                        "created": int(time.time()),
+                        "owned_by": "google"
+                    },
+                    {
+                        "id": "google/imagen-3.0-generate-001",
+                        "object": "model",
+                        "created": int(time.time()),
+                        "owned_by": "google"
+                    },
+                    {
+                        "id": "google/gemini-1.5-pro",
+                        "object": "model",
+                        "created": int(time.time()),
+                        "owned_by": "google"
+                    },
+                    {
+                        "id": "google/gemini-1.5-flash",
+                        "object": "model",
+                        "created": int(time.time()),
+                        "owned_by": "google"
+                    }
+                ]
+            }
+            self.wfile.write(json.dumps(models_data).encode())
         else:
             self.send_response(404)
             self.end_headers()
@@ -166,38 +235,50 @@ class VertexProxyHandler(http.server.BaseHTTPRequestHandler):
                 "Content-Type": "application/json"
             }
 
-            # 3. Stream request/response from/to client
-            try:
-                # We do a standard post first if we want to log errors easily, or just read the first chunk of stream if it fails.
-                # Actually, let's just make a standard request, read response, and stream it if successful, or log if error.
-                # Since we don't have extremely large payloads, a standard request (non-stream) is simpler and much easier to debug!
-                # Let's change the proxy to use standard non-streaming POST for reliability and ease of logging, then we can add streaming if needed.
-                logger.info(f"Sending request to Vertex AI: {TARGET_URL}")
-                logger.info(f"Request Headers: {json.dumps({k: v for k, v in headers.items() if k != 'Authorization'})} (Auth Token Length: {len(headers.get('Authorization', ''))})")
+            # 3. Try multiple regions with fallback on HTTP 429 / RESOURCE_EXHAUSTED
+            regions = ["us-central1", "us-east4", "europe-west1", "europe-west9", "us-west1"]
+            response = None
+            
+            for idx, rgn in enumerate(regions):
+                target_url = f"https://{rgn}-aiplatform.googleapis.com/v1/projects/{PROJECT_ID}/locations/{rgn}/endpoints/openapi/chat/completions"
+                logger.info(f"Attempt {idx+1}/{len(regions)}: Sending request to Vertex AI in region: {rgn}")
                 logger.info(f"Request Payload: {json.dumps(data)}")
-                response = http_post(TARGET_URL, json_data=data, headers=headers, timeout=180.0)
-                logger.info(f"Vertex AI response status: {response.status_code}")
-                
-                if response.status_code == 200:
-                    self.send_response(200)
-                    for k, v in response.headers.items():
-                        if k.lower() in ['content-type', 'cache-control']:
-                            self.send_header(k, v)
-                    self.end_headers()
-                    self.wfile.write(response.content)
-                else:
-                    logger.error(f"Vertex AI returned error {response.status_code}: {response.text}")
-                    self.send_response(response.status_code)
-                    self.end_headers()
-                    self.wfile.write(response.content)
-            except Exception as e:
-                logger.error(f"Error during proxying to GCP: {e}")
                 try:
-                    self.send_response(502)
-                    self.end_headers()
-                    self.wfile.write(b"GCP Vertex AI Gateway Error")
-                except Exception:
-                    pass
+                    response = http_post(target_url, json_data=data, headers=headers, timeout=180.0)
+                    logger.info(f"Vertex AI region {rgn} response status: {response.status_code}")
+                    
+                    if response.status_code == 200:
+                        break
+                    elif response.status_code == 429:
+                        logger.warning(f"Rate limit / Resource exhausted in region {rgn} (429). Response: {response.text[:250]}")
+                        if idx < len(regions) - 1:
+                            logger.info(f"Falling back to next region after a brief rate-limiting sleep (2.0s)...")
+                            time.sleep(2.0)
+                            continue
+                        else:
+                            logger.error("All regions exhausted with 429 Rate Limits.")
+                    else:
+                        logger.error(f"Non-retryable error {response.status_code} in region {rgn}: {response.text[:250]}")
+                        break
+                except Exception as e:
+                    logger.error(f"Network / connection error in region {rgn}: {e}")
+                    if idx < len(regions) - 1:
+                        logger.info("Attempting fallback to next region...")
+                        continue
+                    else:
+                        break
+            
+            if response is not None:
+                self.send_response(response.status_code)
+                for k, v in response.headers.items():
+                    if k.lower() in ['content-type', 'cache-control']:
+                        self.send_header(k, v)
+                self.end_headers()
+                self.wfile.write(response.content)
+            else:
+                self.send_response(502)
+                self.end_headers()
+                self.wfile.write(b"GCP Vertex AI Gateway Error")
         else:
             self.send_response(404)
             self.end_headers()

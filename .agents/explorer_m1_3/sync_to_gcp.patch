@@ -1,0 +1,27 @@
+--- scratch/sync_to_gcp.py
++++ scratch/sync_to_gcp.py
+@@ -103,16 +103,24 @@
+     remote_cmds = [
+         # Create directories if not exist
+         f"mkdir -p {WORKSPACE_REMOTE}",
+         "mkdir -p /home/holisticjson/.gemini",
++        "mkdir -p /home/holisticjson/.hermes/skills",
++        "mkdir -p /home/holisticjson/.hermes/profiles",
+         
+         # Unzip workspace (overwrite existing)
+         f"unzip -o /home/holisticjson/{WORKSPACE_ZIP} -d {WORKSPACE_REMOTE} > /dev/null",
+         
+         # Unzip .gemini config
+         f"unzip -o /home/holisticjson/{GEMINI_ZIP} -d /home/holisticjson/.gemini/ > /dev/null",
+         
++        # Symlink all consolidated skills to Hermes skills directory
++        f'for d in {WORKSPACE_REMOTE}/skills/*/; do if [ -d "$d" ]; then name=$(basename "$d"); rm -rf "/home/holisticjson/.hermes/skills/$name"; ln -sf "$d" "/home/holisticjson/.hermes/skills/$name"; fi; done',
++        
++        # Symlink director skills to Hermes profiles directory
++        f'for name in cco ceo cfo cmo coo cso cto generate-video-reel ghost hermes-cloud-architect-sop holistic; do if [ -d "{WORKSPACE_REMOTE}/skills/$name" ]; then rm -rf "/home/holisticjson/.hermes/profiles/$name"; ln -sf "{WORKSPACE_REMOTE}/skills/$name" "/home/holisticjson/.hermes/profiles/$name"; fi; done',
++
+         # Clean up remote ZIP files
+         f"rm -f /home/holisticjson/{WORKSPACE_ZIP}",
+         f"rm -f /home/holisticjson/{GEMINI_ZIP}",
+         
+         # Copy .env to workspace directory on VM for API keys

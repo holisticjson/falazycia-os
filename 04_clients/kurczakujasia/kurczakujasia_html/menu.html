@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu — Kurczak, Kebab, Burgery | Bar Jaś Łódź</title>
+  <meta name="description" content="Sprawdź menu Baru Jaś: zestawy z kurczakiem z rożna od 34 zł, kebab, burgery, frytki, surówki. Zamów przez WhatsApp lub telefon: 663 970 016.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Menu — Kurczak, Kebab, Burgery | Bar Jaś Łódź">
+  <meta property="og:description" content="Sprawdź menu Baru Jaś: zestawy z kurczakiem z rożna od 34 zł, kebab, burgery, frytki, surówki. Zamów przez WhatsApp lub telefon: 663 970 016.">
+  <meta property="og:image" content="https://kurczakujasia.pl/assets/img/logo.png">
+  <meta property="og:url" content="https://kurczakujasia.pl/menu.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <link rel="canonical" href="https://kurczakujasia.pl/menu.html">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+#jasbot-widget { position:fixed; bottom:2rem; right:2rem; z-index:10000; font-family:'Plus Jakarta Sans',sans-serif; }
+.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; }
+.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); }
+.jasbot-badge { position:absolute; top:-5px; right:-5px; background:#FCC036; color:#2D1A1E; font-weight:800; font-size:0.8rem; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
+.jasbot-window { position:fixed; bottom:7.5rem; right:2rem; width:380px; height:520px; background:#FAF6EE; border:3px solid #2D1A1E; border-radius:1.5rem; box-shadow:0px 15px 40px rgba(0,0,0,0.15),6px 6px 0px #2D1A1E; display:flex; flex-direction:column; overflow:hidden; transform:scale(0.8) translateY(50px); opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); z-index:10001; }
+.jasbot-window.open { transform:scale(1) translateY(0); opacity:1; pointer-events:all; }
+.jasbot-header { background:#2D1A1E; padding:1rem 1.2rem; display:flex; align-items:center; justify-content:space-between; }
+.jasbot-header-info { display:flex; align-items:center; gap:0.8rem; }
+.jasbot-header-text h3 { font-family:'Fredoka',sans-serif; color:#FCC036; font-size:1.1rem; margin:0; }
+.jasbot-header-text p { color:#FAF6EE; font-size:0.8rem; margin:0; opacity:0.8; }
+.jasbot-close-btn { background:none; border:none; color:#FAF6EE; font-size:1.5rem; cursor:pointer; opacity:0.7; transition:opacity 0.2s; }
+.jasbot-close-btn:hover { opacity:1; }
+.jasbot-body { flex:1; overflow-y:auto; padding:1rem; display:flex; flex-direction:column; gap:0.8rem; }
+.jasbot-msg { max-width:80%; padding:0.7rem 1rem; border-radius:1rem; font-size:0.9rem; line-height:1.4; }
+.jasbot-msg.bot { background:#FCC036; color:#2D1A1E; border:2px solid #2D1A1E; border-radius:1rem 1rem 1rem 0; align-self:flex-start; }
+.jasbot-msg.user { background:#2D1A1E; color:#FAF6EE; border-radius:1rem 1rem 0 1rem; align-self:flex-end; }
+.jasbot-input-area { display:flex; padding:0.8rem; gap:0.5rem; border-top:2px solid #2D1A1E; background:#fff; }
+.jasbot-input { flex:1; padding:0.6rem 1rem; border:2px solid #2D1A1E; border-radius:0.8rem; font-family:'Plus Jakarta Sans',sans-serif; font-size:0.9rem; background:#FAF6EE; }
+.jasbot-input:focus { outline:none; border-color:#D32F2F; }
+.jasbot-send-btn { background:#D32F2F; color:#fff; border:2px solid #2D1A1E; border-radius:0.8rem; padding:0.5rem 0.8rem; cursor:pointer; transition:background 0.2s; }
+.jasbot-send-btn:hover { background:#A01828; }
+.jasbot-cart-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:#2D1A1E; color:#FAF6EE; padding:0.8rem 1.5rem; z-index:9998; align-items:center; justify-content:space-between; border-top:3px solid #FCC036; }
+.jasbot-cart-bar.visible { display:flex; }
+@media(max-width:768px) {
+  .jasbot-window { left:1rem; right:1rem; width:auto; max-width:none; height:calc(100vh - 7rem); max-height:480px; bottom:5.5rem; border-radius:1.2rem; }
+  #jasbot-widget { bottom:1rem; right:1rem; }
+  .jasbot-toggle { width:55px; height:55px; }
+  .jasbot-toggle img { width:34px !important; height:34px !important; }
+  .jasbot-label { display:none !important; }
+}
+#jasbot-widget:has(.jasbot-window.open) .jasbot-label { display:none !important; }
+</style>
+  
+</head>
+<body>
+<header class="site-header">
+  <a href="index.html" class="site-logo-link" aria-label="Bar Jaś - Strona Główna">
+    <img src="assets/img/logo.png" alt="Bar Jaś - Logo" width="62" height="62">
+  </a>
+  <nav class="main-navigation" id="main-nav" aria-label="Nawigacja główna">
+    <ul>
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="menu.html" class="nav-link">Menu</a></li>
+      <li><a href="onas.html" class="nav-link">O Nas</a></li>
+      <li><a href="kontakt.html" class="nav-link">Kontakt</a></li>
+      <li>
+        <a href="tel:+48663970016" class="jas-btn jas-btn-secondary" style="padding:8px 16px;font-size:0.95rem;border-radius:0.8rem;" aria-label="Zadzwoń i zamów">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          ZAMÓW TERAZ
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Otwórz menu mobilne" aria-expanded="false">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="var(--dark)" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+  </button>
+</header>
+
+
+<!-- BULGUR KING RETRO STYLE MENU FOR BAR JAŚ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --primary-color: #FCC036; /* Papaya Orange */
+    --primary-hover: #E0A51B;
+    --secondary-color: #D32F2F; /* Flame Red */
+    --secondary-hover: #B71C1C;
+    --bg-cream: #FAF6EE; /* Retro Cream Background */
+    --dark-brown: #2D1A1E; /* Retro Dark Brown/Black */
+    --light-cream: #FFF;
+    --font-heading: 'Fredoka', cursive;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+    --shadow-flat: 4px 4px 0px var(--dark-brown);
+    --shadow-flat-hover: 7px 7px 0px var(--dark-brown);
+    --border-thick: 3px solid var(--dark-brown);
+  }
+
+  .jas-menu-container {
+    background-color: var(--bg-cream);
+    font-family: var(--font-body);
+    color: var(--dark-brown);
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 2rem;
+    border: var(--border-thick);
+    box-shadow: var(--shadow-flat);
+  }
+
+  .jas-menu-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .jas-menu-header h1 {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+    text-shadow: 2px 2px 0px var(--primary-color), 4px 4px 0px var(--dark-brown);
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+  }
+
+  .jas-menu-header p {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--dark-brown);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* CATEGORY FILTERS */
+  .jas-menu-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 3rem;
+  }
+
+  .jas-filter-btn {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    background-color: var(--light-cream);
+    color: var(--dark-brown);
+    border: var(--border-thick);
+    border-radius: 1rem;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 2px 2px 0px var(--dark-brown);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .jas-filter-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-flat);
+    background-color: var(--primary-color);
+  }
+
+  .jas-filter-btn.active {
+    background-color: var(--secondary-color) !important;
+    color: #FFF !important;
+    border: 3px solid var(--dark-brown) !important;
+    box-shadow: none !important;
+    transform: translate(2px, 2px) !important;
+  }
+
+  /* 3-KROKOWA INSTRUKCJA */
+  .jas-menu-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+
+  .jas-menu-step {
+    background-color: var(--light-cream);
+    border: var(--border-thick);
+    border-radius: 1.2rem;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 2px 2px 0px var(--dark-brown);
+  }
+
+  .jas-step-num {
+    background-color: var(--secondary-color);
+    color: #FFF;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--dark-brown);
+    box-shadow: 1px 1px 0px var(--dark-brown);
+    flex-shrink: 0;
+  }
+
+  .jas-step-text h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--dark-brown);
+    margin: 0 0 0.2rem 0;
+    text-transform: uppercase;
+  }
+
+  .jas-step-text p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: #666;
+    margin: 0;
+  }
+
+  /* ALERGENY */
+  .jas-allergen-notice {
+    margin-top: 4rem;
+    padding: 1.5rem;
+    background-color: var(--light-cream);
+    border: var(--border-thick);
+    border-radius: 1.5rem;
+    box-shadow: 2px 2px 0px var(--dark-brown);
+  }
+
+  .jas-allergen-notice h4 {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--secondary-color);
+    margin: 0 0 0.5rem 0;
+    text-transform: uppercase;
+  }
+
+  .jas-allergen-notice p {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #666;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .jas-allergen-notice p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 768px) {
+    .jas-menu-steps {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  /* MOBILE-FIRST HORIZONTAL CATEGORY SCROLLBAR */
+  @media (max-width: 768px) {
+    .jas-menu-filters {
+      display: flex !important;
+      flex-wrap: nowrap !important;
+      overflow-x: auto !important;
+      justify-content: flex-start !important;
+      padding: 0.5rem 0.5rem 1rem 0.5rem !important;
+      margin-bottom: 1.5rem !important;
+      gap: 0.6rem !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      box-sizing: border-box !important;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; /* Hide scrollbar Firefox */
+    }
+    
+    .jas-menu-filters::-webkit-scrollbar {
+      display: none; /* Hide scrollbar Chrome/Safari */
+    }
+    
+    .jas-filter-btn {
+      flex: 0 0 auto !important;
+      scroll-snap-align: start;
+      font-size: 0.95rem !important;
+      padding: 0.5rem 1rem !important;
+      white-space: nowrap !important;
+      box-shadow: 2px 2px 0px var(--dark-brown) !important;
+    }
+  }
+
+  /* MENU GRID */
+  .jas-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  /* ITEM CARD */
+  .jas-menu-card {
+    background-color: var(--light-cream);
+    border: var(--border-thick);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-flat);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+  }
+
+  .jas-menu-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: var(--shadow-flat-hover);
+  }
+
+  .jas-card-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: var(--secondary-color);
+    color: #FFF;
+    font-family: var(--font-heading);
+    font-size: 0.9rem;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    border: 2px solid var(--dark-brown);
+    box-shadow: 2px 2px 0px var(--dark-brown);
+    z-index: 2;
+  }
+
+  .jas-card-img-wrap {
+    height: 220px;
+    background-color: var(--primary-color);
+    border-bottom: var(--border-thick);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .jas-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .jas-menu-card:hover .jas-card-img {
+    transform: scale(1.08);
+  }
+
+  .jas-card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .jas-card-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.8rem;
+  }
+
+  .jas-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--dark-brown);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .jas-card-price {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    color: var(--secondary-color);
+    margin: 0;
+    white-space: nowrap;
+    background-color: var(--primary-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: 0.6rem;
+    border: 2px solid var(--dark-brown);
+    box-shadow: 1px 1px 0px var(--dark-brown);
+  }
+
+  .jas-card-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #555;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+  }
+
+  .jas-card-footer {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: auto;
+  }
+
+  .jas-add-to-cart-btn {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    background-color: var(--primary-color);
+    color: var(--dark-brown);
+    border: var(--border-thick);
+    border-radius: 0.8rem;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    box-shadow: 2px 2px 0px var(--dark-brown);
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .jas-add-to-cart-btn:hover {
+    background-color: var(--primary-hover);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--dark-brown);
+  }
+
+  .jas-add-to-cart-btn:active {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px var(--dark-brown);
+  }
+
+  /* PERSISTENT FLOATING BASKET */
+  .jas-cart-bar {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(150px);
+    background-color: var(--dark-brown);
+    border: 3px solid var(--primary-color);
+    border-radius: 1.5rem;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    z-index: 999;
+    box-shadow: 0px 10px 30px rgba(0,0,0,0.3);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    width: 90%;
+    max-width: 600px;
+  }
+
+  .jas-cart-bar.visible {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .jas-cart-info {
+    color: #FFF;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .jas-cart-icon-wrap {
+    background-color: var(--primary-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #FFF;
+    font-size: 1.2rem;
+    position: relative;
+  }
+
+  .jas-cart-count {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: var(--secondary-color);
+    color: #FFF;
+    font-size: 0.75rem;
+    font-weight: 800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid #FFF;
+  }
+
+  .jas-cart-text h4 {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--primary-color);
+  }
+
+  .jas-cart-text p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #DEDFE3;
+  }
+
+  .jas-cart-checkout-btn {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    background-color: var(--secondary-color);
+    color: #FFF;
+    border: 2px solid #FFF;
+    border-radius: 0.8rem;
+    padding: 0.6rem 1.5rem;
+    cursor: pointer;
+    box-shadow: 2px 2px 0px var(--dark-brown);
+    transition: all 0.1s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .jas-cart-checkout-btn:hover {
+    background-color: var(--secondary-hover);
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0px var(--dark-brown);
+  }
+
+  /* RESPONSIVE DESIGN */
+  @media (max-width: 768px) {
+    .jas-menu-header h1 {
+      font-size: 2.6rem;
+    }
+    .jas-menu-container {
+      padding: 1.5rem 0.5rem;
+      border-radius: 1.5rem;
+    }
+    .jas-cart-bar {
+      padding: 0.8rem 1.2rem;
+      gap: 1rem;
+      bottom: 1rem;
+    }
+    .jas-cart-checkout-btn {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<div class="jas-menu-container">
+  <div class="jas-menu-header">
+    <h1>MENU BARU JAŚ</h1>
+    <p>Królewski smak kurczaka z rożna i soczystych kebabów! Wybierz swoje ulubione pozycje i zamów w minutę przez WhatsApp!</p>
+  </div>
+
+  <!-- 3-KROKOWA INSTRUKCJA ZAMÓWIENIA -->
+  <div class="jas-menu-steps">
+    <div class="jas-menu-step">
+      <div class="jas-step-num">1</div>
+      <div class="jas-step-text">
+        <h4>Wybierz Dania</h4>
+        <p>Dodaj ulubione pozycje z menu poniżej do swojego koszyka.</p>
+      </div>
+    </div>
+    <div class="jas-menu-step">
+      <div class="jas-step-num">2</div>
+      <div class="jas-step-text">
+        <h4>Wyślij Koszyk</h4>
+        <p>Kliknij przycisk, aby przejść do WhatsApp z gotowym zamówieniem.</p>
+      </div>
+    </div>
+    <div class="jas-menu-step">
+      <div class="jas-step-num">3</div>
+      <div class="jas-step-text">
+        <h4>Odbierz Gorące</h4>
+        <p>Potwierdś godzinę odbioru, zapłać na miejscu i ciesz się smakiem!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTRY KATEGORII -->
+  <div class="jas-menu-filters">
+    <button class="jas-filter-btn active" data-category="all">Wszystko 🍗</button>
+    <button class="jas-filter-btn" data-category="sets">Obiadowe Zestawy đą</button>
+    <button class="jas-filter-btn" data-category="kebab">Kebaby & Burgery đ</button>
+    <button class="jas-filter-btn" data-category="sides">Dodatki đ</button>
+    <button class="jas-filter-btn" data-category="drinks">Napoje đĽ¤</button>
+  </div>
+
+  <!-- LISTA DAŃ -->
+  <div class="jas-menu-grid" id="jas-menu-grid">
+    <!-- Dania generowane dynamicznie przez JS -->
+  </div>
+
+  <!-- INFORMACJA O ALERGENACH -->
+  <div class="jas-allergen-notice">
+    <h4>â ď¸ Informacja o alergenach i wagach</h4>
+    <p>Informujemy, że nasze potrawy mogą zawierać substancje alergogenne, w tym: zboża zawierające gluten, jaja, mleko (laktozę), seler, gorczycę oraz nasiona sezamu. Szczegółowy wykaz alergenów dla każdego dania dostępny jest u obsługi baru.</p>
+    <p>Podane wagi potraw są wartościami przybliżonymi (waga przed obróbką termiczną / gramatura netto) i mogą się nieznacznie różnić w zależności od partii surowca.</p>
+  </div>
+</div>
+
+<!-- FLOATING RETRO BASKET BAR -->
+<div class="jas-cart-bar" id="jas-cart-bar">
+  <div class="jas-jas-cart-toggle" style="display:flex; align-items:center; width: 100%; justify-content: space-between;">
+    <div class="jas-cart-info">
+      <div class="jas-cart-icon-wrap">
+        🛒
+        <div class="jas-cart-count" id="jas-cart-count">0</div>
+      </div>
+      <div class="jas-cart-text">
+        <h4 id="jas-cart-total-price">0.00 zł</h4>
+        <p id="jas-cart-summary-text">Twój koszyk jest pusty</p>
+      </div>
+    </div>
+    <button class="jas-cart-checkout-btn" id="jas-cart-checkout-btn">
+      Zamów przez WhatsApp đ🔥Ľ
+    </button>
+  </div>
+</div>
+
+<script>
+  // DAŃ BAZA DANYC  const JAS_MENU_ITEMS = [
+  {
+    "id": "set-chicken-whole",
+    "name": "Zestaw Kurczak z Rożna (Cały)",
+    "category": "sets",
+    "price": 52.0,
+    "description": "Cały soczysty kurczak z rożna (~900g) + duża porcja złocistych frytek (300g) lub opiekanych ziemniaczków + duży zestaw 3 świeżych domowych surówek (300g) + sos autorski czosnkowy i pikantny gratis!",
+    "badge": "DLA RODZINY 👨‍👩‍👧‍👦",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "set-chicken-half",
+    "name": "Zestaw Kurczak z Rożna (Połówka)",
+    "category": "sets",
+    "price": 34.0,
+    "description": "Połówka chrupiącego kurczaka (~450g) + złociste frytki (150g) lub opiekane ziemniaczki + zestaw 3 świeżych domowych surówek (150g) + sos autorski czosnkowy lub pikantny gratis!",
+    "badge": "KULTOWE 🔥",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "chicken-whole",
+    "name": "Legendarny Kurczak z Rożna (Cały)",
+    "category": "sets",
+    "price": 38.0,
+    "description": "Cały dorodny kurczak z polskiej hodowli (~900g), ręcznie marynowany w autorskiej kompozycji 12 ziół, pieczony na złocisty kolor (sama sztuka bez dodatków)",
+    "badge": "BESTSELLER 👑",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "chicken-half",
+    "name": "Kurczak z Rożna (Połówka)",
+    "category": "sets",
+    "price": 20.0,
+    "description": "Sama połówka soczystego kurczaka (~450g) o chrupiącej, złotej skórce, świeżo pieczona na tradycyjnym rożnie obrotowym (sama sztuka, bez dodatków)",
+    "badge": null,
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "set-kebab",
+    "name": "Zestaw Kebab z Frytkami i Surówkami",
+    "category": "sets",
+    "price": 32.0,
+    "description": "Sycąca porcja dobrze przypieczonego mięsa kebab (~180g) + frytki (150g) + zestaw 3 świeżych surówek (150g) + sos autorski czosnkowy lub pikantny",
+    "badge": "HIT 👍",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_z_frytkami.png"
+  },
+  {
+    "id": "kebab-bun",
+    "name": "Kebab w Bułce z Surówkami",
+    "category": "kebab",
+    "price": 22.0,
+    "description": "Opiekana rzemieślnicza bułka z dużą ilością mięsa kebab (~150g), świeżą kapustą, pomidorem, ogórkiem, cebulką i domowym sosem (czosnek/ostry/mieszany)",
+    "badge": null,
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_w_bulce.png"
+  },
+  {
+    "id": "burger-chicken",
+    "name": "Hamburger z Filetem z Kurczaka",
+    "category": "kebab",
+    "price": 20.0,
+    "description": "Chrupiący, świeżo smażony panierowany filet z piersi kurczaka (~150g) w bułce sezamowej z pomidorem, ogórkiem, sałatą i wyrazistym sosem burgerowym",
+    "badge": "DLA GŁODNYCH ⚡",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Hamburger-z-filetem-z-kurczaka-2-1.png"
+  },
+  {
+    "id": "set-kids",
+    "name": "Smerf – Zestaw dla Dzieci",
+    "category": "sets",
+    "price": 18.0,
+    "description": "Delikatne domowe kąski z piersi kurczaka (~100g) + frytki (100g) + łagodny ketchup + zimny soczek owocowy w kartoniku (200ml)",
+    "badge": "DLA DZIECI 👦",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/zestaw_dla_dzieci.png"
+  },
+  {
+    "id": "soup-day",
+    "name": "Domowa Zupa Dnia",
+    "category": "sides",
+    "price": 10.0,
+    "description": "Pyszna, gorąca zupa (350ml) gotowana codziennie rano na świeżych warzywach i mięsie (np. pomidorowa, rosół z makaronem rzemieślniczym lub żurek — zapytaj nas o dzisiejszą!)",
+    "badge": "ŚWIEŻA 🍲",
+    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "fries",
+    "name": "Złociste Frytki (Porcja 150g)",
+    "category": "sides",
+    "price": 10.0,
+    "description": "Chrupiące na zewnątrz, miękkie i puszyste w środku złociste frytki, idealnie usmażone i posolone",
+    "badge": null,
+    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "potatoes",
+    "name": "Opiekane Ziemniaczki (Porcja 150g)",
+    "category": "sides",
+    "price": 10.0,
+    "description": "Aromatyczne, złociste połówki ziemniaczków pieczone w ziołach, miękkie w środku i chrupiące z wierzchu",
+    "badge": null,
+    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "salads",
+    "name": "Zestaw Domowych Surówek",
+    "category": "sides",
+    "price": 8.0,
+    "description": "Świeża, witaminowa porcja (150g) trzech domowych surówek (biała kapusta, czerwona kapusta, marchewka) przygotowywana codziennie na miejscu",
+    "badge": "WITAMINY 🥗",
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "drinks",
+    "name": "Zimne Napoje (Pepsi / Mirinda 0.33l)",
+    "category": "drinks",
+    "price": 8.0,
+    "description": "Zimna, orzeźwiająca puszka Pepsi, Pepsi Zero, Mirinda lub 7Up (0.33l) prosto z lodówki",
+    "badge": null,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80"
+  }
+];
+
+  let cart = {};
+
+  // WYRENDERUJ ELEMENTY MENU
+  function renderMenu(categoryFilter = "all") {
+    const grid = document.getElementById("jas-menu-grid");
+    grid.innerHTML = "";
+
+    const filtered = categoryFilter === "all" 
+      ? JAS_MENU_ITEMS 
+      : JAS_MENU_ITEMS.filter(item => item.category === categoryFilter);
+
+    filtered.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "jas-menu-card";
+      card.setAttribute("data-category", item.category);
+
+      let badgeHTML = item.badge ? `<div class="jas-card-badge">${item.badge}</div>` : "";
+      
+      card.innerHTML = `
+        ${badgeHTML}
+        <div class="jas-card-img-wrap">
+          <img src="${item.image}" alt="${item.name}" class="jas-card-img" onerror="this.src='https://kurczakujasia.pl/wp-content/uploads/2026/03/20260321_144907-1024x768.jpg';">
+        </div>
+        <div class="jas-card-content">
+          <div class="jas-card-title-row">
+            <h3 class="jas-card-title">${item.name}</h3>
+            <span class="jas-card-price">${item.price.toFixed(2).replace('.', ',')} zł</span>
+          </div>
+          <p class="jas-card-desc">${item.description}</p>
+          <div class="jas-card-footer">
+            <button class="jas-add-to-cart-btn" onclick="addToCart('${item.id}')">
+              Dodaj do zamówienia ➕
+            </button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // OBSŁUGA KOSZYKA
+  window.addToCart = function(id) {
+    const item = JAS_MENU_ITEMS.find(i => i.id === id);
+    if (!item) return;
+
+    if (cart[id]) {
+      cart[id].qty += 1;
+    } else {
+      cart[id] = {
+        name: item.name,
+        price: item.price,
+        qty: 1
+      };
+    }
+    updateCartUI();
+    
+    // Efekt kliknięcia
+    if (navigator.vibrate) navigator.vibrate(50);
+  };
+
+  function updateCartUI() {
+    const cartBar = document.getElementById("jas-cart-bar");
+    const cartCount = document.getElementById("jas-cart-count");
+    const cartTotalPrice = document.getElementById("jas-cart-total-price");
+    const cartSummaryText = document.getElementById("jas-cart-summary-text");
+
+    let totalQty = 0;
+    let totalPrice = 0;
+    let itemsText = [];
+
+    for (const id in cart) {
+      totalQty += cart[id].qty;
+      totalPrice += cart[id].qty * cart[id].price;
+      itemsText.push(`${cart[id].qty}x ${cart[id].name}`);
+    }
+
+    if (totalQty > 0) {
+      cartCount.textContent = totalQty;
+      cartTotalPrice.textContent = `${totalPrice.toFixed(2).replace('.', ',')} zł`;
+      cartSummaryText.textContent = itemsText.slice(0, 2).join(", ") + (itemsText.length > 2 ? "..." : "");
+      cartBar.classList.add("visible");
+    } else {
+      cartBar.classList.remove("visible");
+    }
+  }
+
+  // FILTROWANIE DAŃ
+  document.querySelectorAll(".jas-filter-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      document.querySelector(".jas-filter-btn.active").classList.remove("active");
+      this.classList.add("active");
+      const cat = this.getAttribute("data-category");
+      renderMenu(cat);
+    });
+  });
+
+  // INTEGRACJA Z JASBOTEM (WHATSAPP REDIRECT)
+  document.getElementById("jas-cart-checkout-btn").addEventListener("click", function() {
+    // Sprawdzamy czy globalny chatbot jest obecny i wyzwalamy w nim flow zamówienia z przekazanym koszykiem
+    if (window.jasBotOpenWithCart) {
+      window.jasBotOpenWithCart(cart);
+    } else {
+      // Fallback - generujemy wiadomość i przekierowujemy bezpośrednio na wa.me
+      let total = 0;
+      let orderLines = "";
+      for (const id in cart) {
+        const item = cart[id];
+        orderLines += `- ${item.qty}x ${item.name} (${(item.qty * item.price).toFixed(2).replace('.', ',')} zł)\\n`;
+        total += item.qty * item.price;
+      }
+
+      const textMessage = `🍗 NOWE ZAMÓWIENIE - BAR JAŚ 🍗\\n---------------------------------\\n🛒 POZYCJE:\\n${orderLines}---------------------------------\\nđ🔥Ľ SUMA: ${total.toFixed(2).replace('.', ',')} zł\\n---------------------------------\\nProszę o przygotowanie zamówienia! Dane do kontaktu i odbioru podam za chwilę.`;
+      const waUrl = `https://wa.me/48663970016?text=${encodeURIComponent(textMessage)}`;
+      window.open(waUrl, "_blank");
+    }
+  });
+
+  // INICJALIZACJA STRONY
+  document.addEventListener("DOMContentLoaded", function() {
+    renderMenu("all");
+    updateCartUI();
+  });
+</script>
+
+
+
+<div id="jasbot-widget">
+  <div class="jasbot-label" id="jasbot-label">🍗 Złóż zamówienie u JaśBota!</div>
+  <div class="jasbot-toggle" id="jasbot-toggle" aria-label="Otwórz chat JaśBot">
+    <img src="assets/img/logo.png" alt="JaśBot" style="width:42px;height:42px;object-fit:contain;border-radius:50%;">
+    <div class="jasbot-badge" id="jasbot-badge" style="display:none;">0</div>
+  </div>
+  <div class="jasbot-window" id="jasbot-window" role="dialog" aria-label="Chat z JaśBotem">
+    <div class="jasbot-header">
+      <div class="jasbot-header-info">
+        <img src="assets/img/logo.png" alt="JaśBot Logo" class="jasbot-avatar-img" style="width:40px;height:40px;object-fit:contain;border-radius:50%;background:var(--cream);">
+        <div class="jasbot-header-text">
+          <h3>JaśBot</h3>
+          <p>Złóż zamówienie online!</p>
+        </div>
+      </div>
+      <button class="jasbot-close-btn" id="jasbot-close-btn" aria-label="Zamknij chat">&times;</button>
+    </div>
+    <div class="jasbot-body" id="jasbot-messages"></div>
+    <div class="jasbot-input-area">
+      <input type="text" class="jasbot-input" id="jasbot-input" placeholder="Wpisz wiadomość..." autocomplete="off">
+      <button class="jasbot-send-btn" id="jasbot-send-btn" aria-label="Wyślij">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-title">
+        <img src="assets/img/logo.png" alt="Bar Jaś Logo">
+        Bar Jaś
+      </div>
+      <p>Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie składniki.</p>
+    </div>
+    <div>
+      <h3 style="color:var(--primary);margin-bottom:12px;">Kontakt</h3>
+      <p>
+        <strong>Adres:</strong><br>
+        ul. Rokicińska 190/214, 92-412 Łódź<br>
+        (obok Selgros, dzielnica Widzew)
+      </p>
+      <p><strong>Telefon:</strong> <a href="tel:+48663970016">+48 663 970 016</a></p>
+      <p><strong>E-mail:</strong> <a href="mailto:kontakt@kurczakujasia.pl">kontakt@kurczakujasia.pl</a></p>
+      <p><strong>NIP:</strong> 7261001953</p>
+    </div>
+    <div>
+      <h3 style="color:var(--primary);margin-bottom:12px;">Godziny Otwarcia</h3>
+      <p><strong>Pon – Sob:</strong> 09:00 – 19:00</p>
+      <p><strong>Niedziela:</strong> Nieczynne</p>
+      <h3 style="color:var(--primary);margin-top:16px;margin-bottom:12px;">Nawigacja</h3>
+      <p><a href="index.html">Strona Główna</a> · <a href="menu.html">Menu</a> · <a href="onas.html">O Nas</a> · <a href="kontakt.html">Kontakt</a></p>
+      <p style="margin-top:8px;"><a href="polityka.html">Polityka Prywatności i RODO</a></p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2026 &bdquo;JAŚ&rdquo; BAR MARIA DYNEL · NIP: 7261001953 · ul. Rokicińska 190/214, 92-412 Łódź
+  </div>
+</footer>
+
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/chatbot.js"></script>
+</body>
+</html>

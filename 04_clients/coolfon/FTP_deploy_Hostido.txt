@@ -1,0 +1,5 @@
+Konto FTP zostało utworzone
+
+Logowanie:	deploy@coolfon.pl
+Hasło:	Coolfon@@2026
+Ścieżka:	/home/host592748/domains/coolfon.pl

@@ -1,0 +1,17 @@
+# Jaison — Złote Zasady (Projektowa Biblia)
+
+Te zasady są nienaruszalne dla każdego agenta pracującego w tym obszarze roboczym. Wynikają one z wcześniejszych błędów i halucynacji. Trzymaj się ich bezwzględnie:
+
+1. **Jaison to priorytet:** Projekt `Holistic Broker` jest odłożony na później. Cały wysiłek architektoniczny idzie na konto `hello@jaison.pl` i agencję AI Jaison (jaison.pl).
+
+2. **Infrastruktura Google:** Używamy Vertex AI (Free Trial $300), Google Cloud Storage, Cloud Build. Agenci (Dyrektorzy AI: CEO, CMO, CFO) mają być docelowo osadzeni w **Vertex AI Agent Builder** i wyposażeni w prawdziwe narzędzia do dowożenia kampanii od A do Z.
+3. **Lejki i Email Marketing = SYSTEME.IO:** BEZWZGLĘDNY ZAKAZ proponowania budowy własnego systemu mailingowego i lejków od zera! Użytkownik wyraźnie nakazał **używać darmowego planu Systeme.io (do 2000 kontaktów)**, ponieważ rozwiązuje to problem dostarczalności (spam, bany domen). Agenci mają z nim współpracować, a nie go zastępować.
+4. **Zero wymyślania koła od nowa:** Tam, gdzie istnieją darmowe narzędzia i MCP (np. Systeme.io do mailingu, gotowe open-source), używamy ich! Własny kod piszemy tylko tam, gdzie to konieczne.
+5. **Polityka 'Low Cost First':** Wdrażamy absolutny zakaz włączania płatnych API (takich jak ElevenLabs) na wczesnym etapie. Należy zawsze szukać i wdrażać darmowe alternatywy open-source (np. Coqui TTS / XTTSv2 do klonowania głosu), testować MVP jak najniższym kosztem, a o płatne usługi pytać Tomasza o ostateczną zgodę.
+6. **Zasada Proaktywnej Weryfikacji (Zero Zagadek):** Agenci mają NAKAZ sprawdzania obecności kluczy, certyfikatów SSL i poprawności autoryzacji (np. GCS Application Default Credentials) przed wywołaniem błędu. Jeśli wystąpi błąd (np. brak uwierzytelnienia), kategorycznie zabrania się wypluwania surowego, enigmatycznego błędu w Pythonie (np. `SSLError`). Agent ma wyświetlić łopatologiczny, maszynowo sprawny komunikat w UI, dokładnie instruujący użytkownika co musi pobrać lub kliknąć, by rozwiązać problem.
+7. **Kompatybilność z Windows PowerShell (Standardy CLI):** Wszystkie komendy konsolowe udostępniane użytkownikowi pracującemu na systemie Windows MUSZĄ być sformatowane jako jedna, ciągła linia (One-Liners), całkowicie wolna od linuxowych znaków kontynuacji linii (ukośniki `\`). Ukośniki `\` powodują krytyczne błędy parsera PowerShell (np. "Missing expression after unary operator").
+8. **Bezwzględna weryfikacja zasobów chmurowych przed ich użyciem:** Przed zaproponowaniem poleceń CLI (GCP `gcloud`, Firebase itp.) modyfikujących lub odczytujących infrastrukturę, agent ma bezwzględny obowiązek zweryfikować stan faktyczny zasobów w chmurze (np. sprawdzić, czy rzeczywista nazwa dysku rozruchowego różni się od namiaru maszyny VM), zamiast polegać na założeniach lub zewnętrznych briefach, co mogłoby prowadzić do awarii lub utraty danych.
+9. **Dystrybucja produktów cyfrowych (Folder 11_digital_product):** Wszelkie e-booki, poradniki oraz lead magnety stworzone przez agentów w tym workspace (lub w powiązanych folderach, np. Android) muszą trafiać do dedykowanego folderu `C:\Aplikacje MVP\Holistic Jason\11_digital_product\` w celu zachowania scentralizowanej biblioteki produktów. **Kategorycznie nakazuje się** tworzenie tych materiałów z zachowaniem visual anchoringu (ADHD-friendly) oraz technik perswazyjnego NLP Copywritingu (sensoryka VAK, metaprogramy i presupozycje Miltona ze skilli nlp/nlp-copywriting).
+
+
+

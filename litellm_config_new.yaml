@@ -1,0 +1,66 @@
+# LiteLLM config.yaml - Holistic Hermes OS
+# Modele: stabilne, sprawdzone (czerwiec 2026)
+# Google AI Studio (klucz API): gemini-2.5-flash - darmowy, szybki
+# Vertex AI: gemini-2.5-pro - stabilny, enterprise, produkcja
+# OpenRouter: deepseek-v4-flash:free - darmowy fallback
+
+litellm_settings:
+  disable_database: true
+  drop_params: true
+
+model_list:
+  # --- free-fast: szybki, darmowy ---
+  - model_name: free-fast
+    litellm_params:
+      model: gemini/gemini-2.5-flash
+      api_key: os.environ/GOOGLE_API_KEY
+
+  - model_name: free-fast
+    litellm_params:
+      model: openrouter/deepseek/deepseek-v4-flash:free
+      api_key: os.environ/OPENROUTER_API_KEY
+
+  # --- smart-logic: myślenie, planowanie ---
+  - model_name: smart-logic
+    litellm_params:
+      model: gemini/gemini-2.5-pro
+      api_key: os.environ/GOOGLE_API_KEY
+
+  # --- nvidia-llama: Nvidia NIM high-throughput Llama 3.1 70B ---
+  - model_name: nvidia-llama
+    litellm_params:
+      model: openai/meta/llama-3.1-70b-instruct
+      api_key: os.environ/NVIDIA_API_KEY
+      api_base: https://integrate.api.nvidia.com/v1
+
+  # --- nvidia-nemotron: Nvidia NIM Nemotron-4 340B ---
+  - model_name: nvidia-nemotron
+    litellm_params:
+      model: openai/nvidia/nemotron-4-340b-instruct
+      api_key: os.environ/NVIDIA_API_KEY
+      api_base: https://integrate.api.nvidia.com/v1
+
+  # --- secure-vault: Vertex AI enterprise, GDPR-safe ---
+  - model_name: secure-vault
+    litellm_params:
+      model: vertex_ai/gemini-2.5-pro
+
+  # --- local-think: darmowy lokalny model Ornith-1.0-35B-MoE ---
+  - model_name: local-think
+    litellm_params:
+      model: ollama/ornith-1.0-35b-moe:q4_k_m
+      api_base: http://localhost:11434
+      tpm: 100000
+      rpm: 1000
+
+router_settings:
+  routing_strategy: usage-based-routing-v2
+  routing_strategy_args:
+    ttl: 3600
+  fallbacks:
+    - free-fast:
+        - smart-logic
+        - nvidia-llama
+    - smart-logic:
+        - nvidia-llama
+        - nvidia-nemotron

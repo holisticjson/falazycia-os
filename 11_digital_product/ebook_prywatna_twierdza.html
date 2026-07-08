@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bezpieczny Telefon: Prywatna Twierdza — Jak zabezpieczyć i odciążyć Androida w 15 minut</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f0ff;
+            --primary-dark: #00c2cc;
+            --bg-dark: #080b11;
+            --card-bg: rgba(13, 20, 30, 0.4);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --error: #ff7675;
+            --border: rgba(0, 240, 255, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 40px 20px;
+        }
+
+        .ebook-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .ebook-container {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Front Cover */
+        .cover {
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 50px;
+            margin-bottom: 50px;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            background: rgba(130, 177, 255, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #ffffff;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .author {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Chapter Styling */
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            color: var(--primary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 15px;
+            color: var(--text-main);
+            text-align: justify;
+        }
+
+        strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-bottom: 24px;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        /* Callouts / Info boxes */
+        .box {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .box-title {
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .box-warning {
+            border-left-color: var(--error);
+            background: rgba(255, 118, 117, 0.03);
+        }
+
+        .box-success {
+            border-left-color: var(--success);
+            background: rgba(0, 184, 148, 0.03);
+        }
+
+        /* Image Containers */
+        .img-container {
+            text-align: center;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-height: 480px;
+        }
+
+        .img-caption {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .flex-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .flex-images img {
+            max-width: 200px;
+        }
+
+        code {
+            font-family: monospace;
+            background: rgba(130, 177, 255, 0.1);
+            color: var(--primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Print Button Styling */
+        .print-button-container {
+            max-width: 800px;
+            margin: 0 auto 24px auto;
+            text-align: right;
+        }
+        .print-btn {
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 240, 255, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .print-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        @media print {
+            .print-button-container {
+                display: none !important;
+            }
+        }
+
+        /* PDF Printing Optimization */
+        @media print {
+            body {
+                background: #ffffff;
+                color: #000000;
+                padding: 0;
+            }
+            .ebook-container {
+                box-shadow: none;
+                border: none;
+                background: #ffffff;
+                padding: 0;
+                color: #000000;
+            }
+            h1, h2, h3, strong, .box-title {
+                color: #000000 !important;
+            }
+            .cover {
+                page-break-after: always;
+            }
+            h2 {
+                page-break-before: always;
+            }
+            .img-container {
+                page-break-inside: avoid;
+                background: none;
+                border: none;
+            }
+            .box {
+                background: #f9f9f9;
+                border-left: 4px solid #000000;
+                color: #000000;
+            }
+            code {
+                background: #eeeeee;
+                color: #000000;
+            }
+            a {
+                color: #000000;
+                text-decoration: underline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-button-container">
+        <button onclick="window.print()" class="print-btn">
+            🖨️ Zapisz jako PDF / Wydrukuj Poradnik
+        </button>
+    </div>
+    <div class="ebook-container">
+        
+        <!-- COVER PAGE -->
+        <div class="cover">
+            <span class="cover-badge">E-book & Poradnik Praktyczny</span>
+            <h1>Bezpieczny Telefon</h1>
+            <p class="subtitle">Prywatna Twierdza: Jak skutecznie zabezpieczyć, odciążyć i dwukrotnie przyspieszyć Androida bez wiedzy technicznej</p>
+            <p class="author">Tomasz | Architekt systemów A(I)DHD friendly</p>
+        </div>
+
+        <!-- INTRO -->
+        <h2>Wstęp: Iluzja bezpieczeństwa w Twojej kieszeni</h2>
+        <p>
+            Wyobraź sobie, że ktoś nieustannie stoi za Twoimi plecami, notuje każde słowo, analizuje, na co patrzysz w sklepie, i zapisuje, gdzie dokładnie spędzasz każdą minutę dnia. Brzmi jak koszmar? Niestety, dokładnie to dzieje się w tej chwili w Twojej kieszeni. 
+        </p>
+        <p>
+            Współczesne smartfony z systemem Android są niesamowicie potężnymi komputerami. Jednak fabryczne oprogramowanie dostarczane przez Google oraz producentów (takich jak Samsung, Xiaomi, Realme czy Motorola) jest domyślnie przeładowane procesami śledzącymi. Dane o Twojej lokalizacji, historii wyszukiwania, a nawet o aplikacjach finansowych są nieustannie wysyłane na serwery telemetryczne w celach profilowania reklamowego.
+        </p>
+        <p>
+            <strong>Ten e-book da Ci pełną kontrolę.</strong> Krok po kroku, bez niszczenia gwarancji i bez skomplikowanego programowania, przekształcisz swój telefon w prywatną i wydajną twierdzę. Odzyskasz prywatność rozmów, zablokujesz reklamy u źródła, zwolnisz pamięć RAM i wydłużysz czas pracy na baterii nawet o 50%.
+        </p>
+
+        <!-- CHAPTER 1 -->
+        <h2>Rozdział 1: Pobieranie bez Google, czyli sklep Aurora Store</h2>
+        <p>
+            Jeśli chcesz chronić swoją tożsamość, pierwszym krokiem jest odcięcie się od śledzenia Twojej historii pobierania przez konto Google Play. Narzędziem, które Ci w tym pomoże, jest **Aurora Store** – otwartoźródłowy (Open Source) klient sklepu Google Play, który umożliwia pobieranie aplikacji całkowicie anonimowo.
+        </p>
+        
+        <h3>Instrukcja konfiguracji Aurora Store (v4.5.1 dla nowszych systemów)</h3>
+        <p>
+            Gdy uruchomisz Aurora Store po raz pierwszy, przejdziesz przez krótki konfigurator. Wykonaj te kroki:
+        </p>
+        <ol>
+            <li><strong>Zasady użytkowania:</strong> Przeczytaj informacje powitalne i kliknij <strong>Następna</strong>.</li>
+            <li><strong>Wybór Instalatora:</strong> Zostaw zaznaczoną zalecaną opcję <strong>Session installer</strong>. Jest to najszybsza i najbardziej stabilna metoda instalacji pakietów dla nowszych wersji systemu Android.</li>
+            <li><strong>Wygląd (Motyw i Akcent):</strong> Wybierz motyw pasujący do Twojego ekranu (np. <em>Dark</em> lub czarny <em>Pitch Black</em> oszczędzający baterię) oraz kolor akcentu i przejdź dalej.</li>
+            <li>
+                <strong>Zezwolenia na uprawnienia:</strong> Kliknij <strong>Udziel zgody</strong> przy wszystkich trzech pozycjach (Uprawnienia instalatora, Dostęp do pamięci oraz Powiadomienia). Potwierdź te wybory w wyskakujących oknach systemowych Androida.
+            </li>
+        </ol>
+
+        <div class="box box-success">
+            <div class="box-title">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                ℹ️ Dlaczego widzisz dwie ikony Aurora Store na ekranie uprawnień?
+            </div>
+            <p>
+                W telefonach z funkcją <strong>Dual SIM</strong> (np. Samsung) system automatycznie izoluje aplikacje za pomocą funkcji Knox lub Dual Messenger (podwójny profil roboczy). Dlatego na liście uprawnień systemowych możesz zobaczyć dwie identyczne aplikacje Aurora Store – jedna z nich ma mały niebieski/pomarańczowy znaczek profilu Dual. Nadaj uprawnienia dla obu wersji, aby zapewnić poprawne działanie.
+            </p>
+            <div class="img-container">
+                <img src="aurora_permissions.png" alt="Uprawnienia systemowe Aurora Store" />
+                <div class="img-caption">Rys. 1. Ekran nadawania uprawnień dla obu profili aplikacji Aurora.</div>
+            </div>
+        </div>
+
+        <h3>Bezpieczne Logowanie (Anonimowe)</h3>
+        <p>
+            Na ostatnim ekranie zostaniesz zapytany o metodę logowania. Zobaczysz trzy opcje: Google, Anonimowe oraz Anonimowe (niezabezpieczone).
+        </p>
+        <div class="box box-warning">
+            <div class="box-title">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                Wybierz Środkową Opcję: Anonimowe
+            </div>
+            <p>
+                Zawsze wybieraj opcję <strong>Anonimowe</strong> (środkowa). Łączy się ona przez bezpieczne połączenie szyfrowane SSL. Opcja trzecia (niezabezpieczona) wyłącza weryfikację certyfikatów bezpieczeństwa sieciowego i naraża Cię na przechwycenie danych – unikaj jej!
+            </p>
+            <div class="img-container">
+                <img src="aurora_login.png" alt="Wybór logowania anonimowego" />
+                <div class="img-caption">Rys. 2. Wybór bezpiecznego logowania anonimowego.</div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">⚙️ Rozwiązywanie problemów: Ograniczona przepustowość konta</div>
+            <p>
+                Ponieważ tysiące użytkowników na świecie współdzieli te same automatycznie generowane konta anonimowe, Google czasami nakłada na nie blokadę limitu pobrań. Zobaczysz wtedy komunikat: <strong>"Ups, to konto ma ograniczoną przepustowość!"</strong>.
+            </p>
+            <p>
+                <strong>Rozwiązanie jest proste:</strong> Wróć do ekranu głównego Aurora Store, rozwiń menu boczne, kliknij na swoje konto na samej górze i wybierz <strong>Wyloguj</strong>. Następnie zaloguj się ponownie wybierając opcję <strong>Anonimowe</strong>. Serwer przydzieli Ci nowe, wolne od limitów konto.
+            </p>
+            <div class="img-container">
+                <img src="aurora_ratelimit.png" alt="Błąd limitu przepustowości konta" style="max-height: 380px;" />
+                <div class="img-caption">Rys. 3. Monit o przeciążonym koncie anonimowym.</div>
+            </div>
+        </div>
+
+        <!-- CHAPTER 2 -->
+        <h2>Rozdział 2: Instalacja z Menedżera Plików i odblokowanie uprawnień</h2>
+        <p>
+            Gdy pobierasz aplikacje spoza oficjalnego sklepu Google Play (takie jak bezpieczny komunikator **J(a)son** w pliku `.apk`), system Android ze względów bezpieczeństwa zablokuje instalację. 
+        </p>
+        <p>
+            Dzieje się tak zazwyczaj wtedy, gdy po pobraniu pliku nie instalujesz go bezpośrednio z przeglądarki, lecz wchodzisz do menedżera plików swojego telefonu (np. fabrycznej aplikacji **Moje pliki** na urządzeniach Samsung, **Menedżer plików** na Xiaomi / Redmi / POCO czy **Pliki / Files** w systemach czystego Androida).
+        </p>
+
+        <div class="box box-warning">
+            <div class="box-title">⚠️ Zabezpieczenie systemowe: Blokada nieznanych źródeł</div>
+            <p>
+                Przy próbie uruchomienia instalacji z poziomu folderu zobaczysz komunikat systemowy: <em>"Ze względów bezpieczeństwa na Twoim telefonie nie można obecnie instalować nieznanych aplikacji z tego źródła. Możesz to zmienić w Ustawieniach."</em>
+            </p>
+            <div class="img-container">
+                <img src="myfiles_block_dialog.png" alt="Zablokowana instalacja z Moje Pliki" style="max-height: 380px;" />
+                <div class="img-caption">Rys. 4. Blokada instalacji z nieznanych źródeł (aplikacja Moje pliki).</div>
+            </div>
+            <p>
+                <strong>Jak to odblokować krok po kroku:</strong>
+            </p>
+            <ol>
+                <li>W oknie komunikatu kliknij przycisk <strong>Ustawienia</strong>.</li>
+                <li>System przeniesie Cię bezpośrednio do zakładki <em>Zainstaluj nieznane aplikacje</em>.</li>
+                <li>Znajdź na liście aplikację, z której instalujesz plik (np. **Moje pliki** lub przeglądarkę Chrome) i kliknij suwak po prawej stronie, aby zmienić go w stan aktywny.</li>
+                <li>Cofnij się i ponownie kliknij w plik APK. Teraz zobaczysz bezpieczny instalator z przyciskiem <strong>Zainstaluj</strong>.</li>
+            </ol>
+            <div class="img-container">
+                <img src="myfiles_settings_toggle.png" alt="Włączenie instalowania z Moje Pliki" />
+                <div class="img-caption">Rys. 5. Aktywacja suwaka zezwalającego na instalację dla menedżera plików.</div>
+            </div>
+        </div>
+
+        <!-- CHAPTER 3 -->
+        <h2>Rozdział 3: Tarcza sieciowa, czyli DNS i Cloudflare WARP</h2>
+        <p>
+            Drugim elementem budowy Twojej twierdzy jest ochrona całego ruchu sieciowego. Nawet jeśli odinstalujesz szpiegujące aplikacje, te, które zostaną, nadal będą odpytywać serwery reklamowe i analityczne. Możesz to zablokować na poziomie sieciowym bez instalowania dodatkowych aplikacji obciążających baterię.
+        </p>
+
+        <h3>Systemowy Prywatny DNS (Mullvad lub AdGuard)</h3>
+        <p>
+            Natywna funkcja systemu Android pozwala przekierować wszystkie zapytania o adresy internetowe (DNS) przez bezpieczny filtr blokujący złośliwe serwery i trackery.
+        </p>
+        <p>
+            <strong>Konfiguracja:</strong> Wejdź w **Ustawienia telefonu ➡️ Połączenia ➡️ Więcej ustawień połączeń ➡️ Prywatny DNS**. Wybierz opcję *Nazwa hosta dostawcy prywatnego DNS* i wpisz:
+            <code>base.dns.mullvad.net</code> (alternatywnie <code>dns.adguard-dns.com</code>).
+        </p>
+        <p>
+            Od tej pory reklamy i skrypty śledzące w grach, na stronach www i w aplikacjach zostaną zablokowane jeszcze przed ich pobraniem!
+        </p>
+
+        <h3>Cloudflare WARP (1.1.1.1) — Szyfrowanie ruchu</h3>
+        <p>
+            Kiedy łączysz się z publicznym Wi-Fi, Twój ruch może być podsłuchiwany. Zamiast ciężkich VPN-ów, które drastycznie zwalniają internet, zainstaluj **Cloudflare WARP** z Aurora Store. Korzysta on z ultralekkiego i bezpiecznego protokołu WireGuard.
+        </p>
+
+        <div class="box">
+            <div class="box-title">⚙️ Uruchomienie i konfiguracja Cloudflare WARP</div>
+            <ol>
+                <li>Po pierwszym uruchomieniu aplikacji WARP, klikaj "Dalej" i zaakceptuj zasady prywatności.</li>
+                <li>Kliknij przycisk <strong>Zainstaluj profil VPN</strong>. Pojawi się systemowy monit Androida o prośbę o połączenie (Connection request). Kliknij <strong>OK</strong>. Jest to niezbędne, aby telefon utworzył bezpieczny tunel.</li>
+                <li>
+                    Na ekranie głównym zobaczysz przełącznik i status <strong>Rozłączono</strong>. Kliknij go, a po połączeniu przełącznik zmieni kolor na pomarańczowy ze statusem <strong>Połączono</strong> oraz informacją: <em>"Twoje połączenia z Internetem są prywatne. Szyfrowanie aktywne"</em>.
+                </li>
+            </ol>
+            <div class="img-container">
+                <div class="flex-images">
+                    <img src="warp_install_profile.png" alt="Monit profilu VPN" />
+                    <img src="warp_disconnected.png" alt="WARP Rozłączono" />
+                    <img src="warp_connected.png" alt="WARP Połączono" />
+                </div>
+                <div class="img-caption">Rys. 6. Ekrany konfiguracji i połączenia w aplikacji Cloudflare WARP.</div>
+            </div>
+        </div>
+
+        <!-- CHAPTER 4 -->
+        <h2>Rozdział 4: Płynność interfejsu i realne odciążenie telefonu (Debloating)</h2>
+        <p>
+            Kiedy Twoja prywatność w sieci jest już zabezpieczona, pora na odciążenie samego telefonu. Producenci instalują mnóstwo aplikacji, których nie da się usunąć z poziomu ekranu głównego (tzw. Bloatware). 
+        </p>
+        <p>
+            Aplikacje takie jak *Facebook App Manager*, *Bixby*, *Samsung Pass* czy fabryczne gry stale działają w tle, zużywając pamięć RAM i akumulator.
+        </p>
+
+        <h3>Bezinwazyjne usuwanie Bloatware (Debloating)</h3>
+        <p>
+            Nie musisz rootować telefonu (co łamie gwarancję i blokuje aplikacje bankowe). Możesz usunąć te pakiety dla domyślnego użytkownika telefonu (User 0) za pomocą komputera i narzędzia **ADB (Android Debug Bridge)**.
+        </p>
+        <p>
+            <strong>Jak to działa?</strong> Uruchamiasz debugowanie USB w telefonie, podłączasz go do komputera i za pomocą prostego skryptu odinstalowujesz niechciane pakiety komendą:
+            <br>
+            <code>adb shell pm uninstall -k --user 0 nazwa.pakietu.aplikacji</code>
+        </p>
+        <p>
+            W ten sposób zwalniasz do **1.5 GB pamięci RAM**, a procesor nie musi stale przetwarzać niechcianego kodu, co bezpośrednio wydłuża życie baterii i sprawia, że telefon działa jak po wyjęciu z pudełka.
+        </p>
+
+        <h3>Przyspieszenie Animacji, czyli płynny UI w 10 sekund</h3>
+        <p>
+            Możesz sprawić, by interfejs Twojego telefonu reagował natychmiastowo, poprzez skrócenie czasu trwania animacji przejść systemowych. Ta prosta sztuczka nie obciąża baterii, a daje wrażenie korzystania z dwukrotnie szybszego urządzenia.
+        </p>
+        <ol>
+            <li>Wejdź w **Ustawienia ➡️ Informacje o telefonie ➡️ Informacje o oprogramowaniu**.</li>
+            <li>Kliknij 7 razy w pozycję **Numer wersji** (Build number). System poprosi Cię o podanie PIN-u, po czym wyświetli komunikat o włączeniu opcji programistycznych.</li>
+            <li>Cofnij się do głównego menu **Ustawień** i wejdź w nowo odblokowaną zakładkę **Opcje programistyczne** (Developer options) na samym dole.</li>
+            <li>Przewiń listę w dół do sekcji **Rysowanie** (Drawing).</li>
+            <li>Znajdź trzy ustawienia: **Skala animacji okna**, **Skala animacji przejścia** oraz **Skala czasu trwania animatora**.</li>
+            <li>Zmień ich wartości z domyślnych 1.0x na **0.5x** (lub całkowicie wyłącz animacje, jeśli zależy Ci na maksymalnej surowości i szybkości interfejsu).</li>
+        </ol>
+
+        <div class="box box-success">
+            <div class="box-title">⚡ Podsumowanie Rezultatów Twojej Twierdzy</div>
+            <ul>
+                <li><strong>Reklamy:</strong> Zablokowane na poziomie DNS (0 reklam w przeglądarkach i aplikacjach).</li>
+                <li><strong>Śledzenie:</strong> Brak historii pobierania w Google, brak śledzenia lokalizacji i telemetrii.</li>
+                <li><strong>Połączenie:</strong> W pełni zaszyfrowane protokołem WireGuard na publicznych sieciach Wi-Fi.</li>
+                <li><strong>Wydajność:</strong> Oczyszczona pamięć RAM z aplikacji śledzących w tle, brak zbędnego zużycia procesora.</li>
+            </ul>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            J(a)son • E-book: Bezpieczny Telefon - Prywatna Twierdza • Wszystkie Prawa Zastrzeżone • 2026
+        </div>
+
+    </div>
+</body>
+</html>

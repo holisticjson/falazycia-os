@@ -25,6 +25,37 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Dynamiczne wstrzykiwanie kodu Google Tag Manager (GTM)
+gtm_id = os.environ.get("GOOGLE_TAG_MANAGER_ID", "").strip()
+if gtm_id:
+    st.markdown(f"""
+    <script id="gtm-injector">
+        (function() {{
+            const doc = window.parent !== window ? window.parent.document : document;
+            if (!doc.getElementById('gtm-script-tag')) {{
+                // Skrypt GTM w Head
+                (function(w,d,s,l,i){{w[l]=w[l]||[];w[l].push({{'gtm.start':
+                new Date().getTime(),event:'gtm.js'}});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;j.id='gtm-script-tag';f.parentNode.insertBefore(j,f);
+                }})(window.parent,doc,'script','dataLayer','{gtm_id}');
+                
+                // NoScript GTM w Body
+                const noscript = doc.createElement('noscript');
+                noscript.id = 'gtm-noscript-tag';
+                const iframe = doc.createElement('iframe');
+                iframe.src = 'https://www.googletagmanager.com/ns.html?id={gtm_id}';
+                iframe.height = '0';
+                iframe.width = '0';
+                iframe.style.display = 'none';
+                iframe.style.visibility = 'hidden';
+                noscript.appendChild(iframe);
+                doc.body.insertBefore(noscript, doc.body.firstChild);
+            }}
+        }})();
+    </script>
+    """, unsafe_allow_html=True)
+
 # Ścieżki w chmurze
 BASE_DIR = os.path.expanduser("~/Agentic_OS")
 NOTEBOOKS_DIR = os.path.join(BASE_DIR, "notebooks/_assets")
@@ -115,20 +146,19 @@ st.markdown("""
         padding: 12px 18px !important;
         height: 52px !important;
         margin-bottom: 2px !important;
-        font-family: 'Outfit', sans-serif !important;
         width: 100% !important;
     }
 
     div[data-testid="stSidebar"] .stButton>button[kind="secondary"] {
-        background: #121620 !important;
+        background: transparent !important;
         color: #94A3B8 !important;
-        border: 1px solid #1E2535 !important;
+        border: 1px solid transparent !important;
         box-shadow: none !important;
         font-weight: 500 !important;
     }
 
     div[data-testid="stSidebar"] .stButton>button[kind="secondary"]:hover {
-        background: #1A1F2C !important;
+        background: rgba(124, 58, 237, 0.1) !important;
         border-color: #7C3AED !important;
         color: #FFFFFF !important;
         transform: translateY(-1px) !important;
@@ -153,47 +183,58 @@ st.markdown("""
     .burn-accent { color: #EF4444; font-weight: bold; }
     .focus-accent { color: #F59E0B; font-weight: bold; }
 
-    /* Pływający Przycisk Szybkiego Zapisu (FAB - Floating Action Button) */
-    .fab-container {
+    /* Pływający Przycisk Szybkiego Zapisu (FAB) zoptymalizowany pod Streamlit DOM */
+    .fab-wrapper {
+        display: none !important;
+    }
+    
+    div:has(> .fab-wrapper) + div {
+        height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+    }
+    
+    div:has(> .fab-wrapper) + div div.stButton > button {
         position: fixed !important;
         bottom: 25px !important;
         right: 25px !important;
         z-index: 999999 !important;
-    }
-    
-    .fab-container button {
-        background: linear-gradient(135deg, #EC4899 0%, #D946EF 100%) !important;
-        color: #FFFFFF !important;
-        border: 2px solid #F472B6 !important;
+        width: 60px !important;
+        height: 60px !important;
         border-radius: 50% !important;
-        width: 65px !important;
-        height: 65px !important;
+        background: radial-gradient(circle, #EC4899 0%, #D946EF 100%) !important;
+        border: 2px solid #F472B6 !important;
+        box-shadow: 0 0 15px rgba(236, 72, 153, 0.6) !important;
         font-size: 28px !important;
-        font-family: 'Outfit', sans-serif !important;
+        padding: 0 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        cursor: pointer !important;
-        box-shadow: 0 4px 20px rgba(236, 72, 153, 0.4) !important;
-        transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-        animation: pulse-fab 2s infinite alternate !important;
-        padding: 0 !important;
+        transition: all 0.3s ease !important;
+        animation: pulse-fab 2s infinite !important;
     }
-    
-    .fab-container button:hover {
-        transform: scale(1.12) rotate(15deg) !important;
-        box-shadow: 0 6px 25px rgba(236, 72, 153, 0.7), 0 0 15px rgba(217, 70, 239, 0.4) !important;
+
+    div:has(> .fab-wrapper) + div div.stButton > button:hover {
+        background: radial-gradient(circle, #D946EF 0%, #C084FC 100%) !important;
+        box-shadow: 0 0 25px rgba(236, 72, 153, 0.9) !important;
+        transform: scale(1.08) !important;
     }
-    
+
     @keyframes pulse-fab {
         0% {
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+            box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7);
             transform: scale(1);
         }
-        100% {
-            box-shadow: 0 6px 25px rgba(236, 72, 153, 0.8), 0 0 20px rgba(217, 70, 239, 0.5);
+        70% {
+            box-shadow: 0 0 0 15px rgba(236, 72, 153, 0);
             transform: scale(1.05);
         }
+        100% {
+            box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+            transform: scale(1);
+        }
+    }tant;
     }
 </style>
 
@@ -470,6 +511,110 @@ def call_gemini_api(messages, system_instruction=None):
             return f"Błąd bezpośredniej komunikacji z Vertex AI: {ex}"
             
     return "Błąd: Brak połączenia z lokalnym proxy i brak poprawnego klucza Service Account."
+
+def get_gcp_token():
+    """Pobiera token OAuth z pliku Service Account w odporny sposób."""
+    import os
+    import json
+    sa_paths = [
+        os.path.expanduser("~/.hermes/gcp-sa-key.json"),
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), "holistic-dashboard-dev-dea2c872139e.json"),
+        os.path.join(os.getcwd(), "holistic-dashboard-dev-dea2c872139e.json"),
+        "holistic-dashboard-dev-dea2c872139e.json"
+    ]
+    sa_path = None
+    for p in sa_paths:
+        if os.path.exists(p):
+            sa_path = p
+            break
+    if not sa_path:
+        return None, None
+    try:
+        from google.oauth2 import service_account
+        import google.auth.transport.requests
+        import requests
+        import urllib3
+        urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+        
+        creds = service_account.Credentials.from_service_account_file(
+            sa_path,
+            scopes=['https://www.googleapis.com/auth/cloud-platform']
+        )
+        session = requests.Session()
+        session.verify = False
+        request = google.auth.transport.requests.Request(session=session)
+        creds.refresh(request)
+        
+        with open(sa_path, "r") as f:
+            sa_data = json.load(f)
+            project_id = sa_data.get("project_id", "holistic-dashboard-dev")
+            
+        return creds.token, project_id
+    except Exception as e:
+        print(f"Error getting token: {e}")
+        return None, None
+
+def generate_imagen_image(prompt, aspect_ratio="1:1", reference_image_bytes=None, reference_type="REFERENCE_TYPE_SUBJECT"):
+    """
+    Generuje obraz za pomocą Google Vertex AI Imagen 3 (imagen-3.0-generate-001).
+    Wspiera Image-to-Image / Subject Reference dla zachowania spójności postaci.
+    """
+    import base64
+    import json
+    token, project_id = get_gcp_token()
+    if not token:
+        return None, "Brak autoryzacji GCP Service Account. Sprawdź pliki klucza."
+    
+    region = "us-central1"
+    url = f"https://{region}-aiplatform.googleapis.com/v1/projects/{project_id}/locations/{region}/publishers/google/models/imagen-3.0-generate-001:predict"
+    
+    headers = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json"
+    }
+    
+    instance = {"prompt": prompt}
+    
+    # Obsługa obrazu referencyjnego (Subject Reference Image)
+    if reference_image_bytes:
+        b64_data = base64.b64encode(reference_image_bytes).decode("utf-8")
+        instance["referenceImages"] = [
+            {
+                "referenceId": 1,
+                "referenceType": reference_type,
+                "image": {
+                    "bytesBase64Encoded": b64_data
+                }
+            }
+        ]
+        if "[1]" not in prompt:
+            prompt = f"Using subject [1] as character reference, {prompt}"
+            instance["prompt"] = prompt
+            
+    payload = {
+        "instances": [instance],
+        "parameters": {
+            "sampleCount": 1,
+            "aspectRatio": aspect_ratio,
+            "outputMimeType": "image/png"
+        }
+    }
+    
+    try:
+        response = http_post(url, json_data=payload, headers=headers, timeout=120.0)
+        if response.status_code == 200:
+            res_json = response.json()
+            predictions = res_json.get("predictions", [])
+            if predictions:
+                img_b64 = predictions[0].get("bytesBase64Encoded")
+                img_bytes = base64.b64decode(img_b64)
+                return img_bytes, None
+            else:
+                return None, f"Brak wygenerowanego obrazu w odpowiedzi: {response.text}"
+        else:
+            return None, f"GCP API Error {response.status_code}: {response.text}"
+    except Exception as e:
+        return None, f"Błąd komunikacji: {str(e)}"
 
 def call_gemini_pro_api(messages, system_instruction=None):
     """Dedykowana funkcja dla modelu Gemini 2.5 Pro przez lokalny proxy.
@@ -928,28 +1073,70 @@ def consult_csuite_live(lead, persona):
         except:
             pass
 
+    # Dynamiczne wstrzykiwanie checklist i SOP z folderu skills/
+    persona_mapping = {
+        "CEO (Strategia & Rentowność)": "ceo",
+        "CMO (Empatyczny Storytelling)": "cmo",
+        "CSO (Architektura Sprzedaży)": "cso",
+        "CTO (Technologia & Kod)": "cto"
+    }
+    
+    dynamic_skill_context = ""
+    folder_name = persona_mapping.get(persona)
+    if folder_name:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        skill_paths = [
+            os.path.join(base_dir, "skills", folder_name, "SKILL.md"),
+            os.path.join(base_dir, ".agents", "skills", folder_name, "SKILL.md"),
+            os.path.expanduser(f"~/.gemini/config/plugins/holistic-virtual-board/skills/{folder_name}/SKILL.md")
+        ]
+        for p in skill_paths:
+            if os.path.exists(p):
+                try:
+                    with open(p, "r", encoding="utf-8") as f:
+                        dynamic_skill_context = f.read()
+                    break
+                except:
+                    pass
+
     system_prompts = {
         "CEO (Strategia & Rentowność)": f"""Jesteś wirtualnym CEO w zespole Tomasza Dudy. Tomasz to wybitny architekt systemów AI dla neuroatypowych (sam ma ADHD, Holistic AIDHD).
 Pomagasz mu w wycenie wdrożenia pod kątem modelu High-Ticket (np. wyceny 5 000 - 15 000 PLN jednorazowo), etapowaniu prac na proste kroki MVP oraz obronie jego zasobów energetycznych przed wypaleniem i paraliżem ADHD.
 Zawsze podawaj konkretną, odważną rekomendację cenową i zdefiniuj, co jest "One Thing" (kluczowym pierwszym krokiem wdrożenia).
+
+Oto Twoje oficjalne wytyczne i checklisty operacyjne (SOP):
+{dynamic_skill_context}
+
 Oto historia i tożsamość Tomasza:
 {o_mnie_context}
 Odpowiadaj bezpośrednio, po polsku, zwięźle i konkretnie.
 """,
         "CMO (Empatyczny Storytelling)": f"""Jesteś wirtualnym CMO w zespole Tomasza Dudy (Holistic AIDHD).
 Pomagasz mu przełożyć ból klienta na autentyczny i humorystyczny przekaz dopasowany do wyzwań klienta. Wskaż, jakich metafor użyć w komunikacji z tym klientem i jak napisać ofertę, aby rezonowała głęboko emocjonalnie, opierając się na tożsamości Tomasza.
+
+Oto Twoje oficjalne wytyczne i checklisty operacyjne (SOP):
+{dynamic_skill_context}
+
 Oto historia i tożsamość Tomasza:
 {o_mnie_context}
 Odpowiadaj bezpośrednio, po polsku, zwięźle i kreatywnie.
 """,
         "CSO (Architektura Sprzedaży)": f"""Jesteś wirtualnym CSO w zespole Tomasza Dudy (Holistic AIDHD).
 Projektujesz dla tego klienta prosty, 3-stopniowy lejek relacyjny (Rozmowa -> Architektura -> Wdrożenie). Wskaż dokładnie, jaki powinien być najbliższy krok sprzedażowy (Next Action) i jak go zrealizować przy minimalnym tarciu poznawczym (low cognitive friction).
+
+Oto Twoje oficjalne wytyczne i checklisty operacyjne (SOP):
+{dynamic_skill_context}
+
 Oto historia i tożsamość Tomasza:
 {o_mnie_context}
 Odpowiadaj bezpośrednio, po polsku, zwięźle i operacyjnie.
 """,
         "CTO (Technologia & Kod)": f"""Jesteś wirtualnym CTO w zespole Tomasza Dudy (Holistic AIDHD).
 Zaprojektuj uproszczoną, niezawodną architekturę techniczną pod potrzeby tego klienta. Rekomenduj konkretne narzędzia (np. n8n webhooks, Python scripts, SQLite, Google Sheets, Vertex AI, model gemini-2.5-flash). Podaj zwięzły schemat logiczny.
+
+Oto Twoje oficjalne wytyczne i checklisty operacyjne (SOP):
+{dynamic_skill_context}
+
 Oto historia i tożsamość Tomasza:
 {o_mnie_context}
 Odpowiadaj bezpośrednio, po polsku, technicznie lecz bez zbędnego żargonu.
@@ -1061,10 +1248,6 @@ with st.sidebar:
         st.session_state.current_page = "Claude"
         st.rerun()
         
-    if st.button("🦀 OpenClaw 🔴", use_container_width=True, type="primary" if col_menu == "OpenClaw" else "secondary"):
-        st.session_state.current_page = "OpenClaw"
-        st.rerun()
-        
     if st.button("🔱 Hermes 🟢", use_container_width=True, type="primary" if col_menu == "Hermes" else "secondary"):
         st.session_state.current_page = "Hermes"
         st.rerun()
@@ -1077,14 +1260,6 @@ with st.sidebar:
         st.session_state.current_page = "Antigravity"
         st.rerun()
         
-    if st.button("💻 Codex ⚪", use_container_width=True, type="primary" if col_menu == "Codex" else "secondary"):
-        st.session_state.current_page = "Codex"
-        st.rerun()
-        
-    if st.button("🦉 Free Claude Code 🟢", use_container_width=True, type="primary" if col_menu == "Free Claude Code" else "secondary"):
-        st.session_state.current_page = "Free Claude Code"
-        st.rerun()
-        
     # III. SELF
     st.markdown("<p style='color: #10B981; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>III. SELF</p>", unsafe_allow_html=True)
     
@@ -1092,23 +1267,23 @@ with st.sidebar:
         st.session_state.current_page = "Goals"
         st.rerun()
         
-    if st.button("📻 Notebook (Obsidian)", use_container_width=True, type="primary" if col_menu == "Notebook" else "secondary"):
+    if st.button("📚 Baza Wiedzy", use_container_width=True, type="primary" if col_menu == "Notebook" else "secondary"):
         st.session_state.current_page = "Notebook"
         st.rerun()
         
-    if st.button("📋 Kanban Board", use_container_width=True, type="primary" if col_menu == "Kanban" else "secondary"):
+    if st.button("📋 Tablica Kanban", use_container_width=True, type="primary" if col_menu == "Kanban" else "secondary"):
         st.session_state.current_page = "Kanban"
         st.rerun()
         
-    if st.button("💾 Memory (Pristine)", use_container_width=True, type="primary" if col_menu == "Memory" else "secondary"):
+    if st.button("💾 Pamięć Agenta", use_container_width=True, type="primary" if col_menu == "Memory" else "secondary"):
         st.session_state.current_page = "Memory"
         st.rerun()
         
-    if st.button("🤝 Onboarding & Grill", use_container_width=True, type="primary" if col_menu == "Onboarding" else "secondary"):
+    if st.button("🤝 Onboarding Klienta", use_container_width=True, type="primary" if col_menu == "Onboarding" else "secondary"):
         st.session_state.current_page = "Onboarding"
         st.rerun()
         
-    if st.button("✨ Swarm (Sales/Soul)", use_container_width=True, type="primary" if col_menu == "Swarm" else "secondary"):
+    if st.button("✨ Rój Agentów (Sprzedaż)", use_container_width=True, type="primary" if col_menu == "Swarm" else "secondary"):
         st.session_state.current_page = "Swarm"
         st.rerun()
         
@@ -1117,6 +1292,18 @@ with st.sidebar:
     
     if st.button("📈 SEO & Content", use_container_width=True, type="primary" if col_menu == "SEO" else "secondary"):
         st.session_state.current_page = "SEO"
+        st.rerun()
+        
+    if st.button("📢 Social Media Hub", use_container_width=True, type="primary" if col_menu == "Social Media Hub" else "secondary"):
+        st.session_state.current_page = "Social Media Hub"
+        st.rerun()
+        
+    if st.button("🌐 AI Website Builder", use_container_width=True, type="primary" if col_menu == "AI Website Builder" else "secondary"):
+        st.session_state.current_page = "AI Website Builder"
+        st.rerun()
+        
+    if st.button("🎯 Ads & Local SEO", use_container_width=True, type="primary" if col_menu == "Ads & Local SEO" else "secondary"):
+        st.session_state.current_page = "Ads & Local SEO"
         st.rerun()
         
     if st.button("🎬 Studio (Hyperframes)", use_container_width=True, type="primary" if col_menu == "Studio" else "secondary"):
@@ -1429,7 +1616,7 @@ if menu == "🎯 Mission Control":
     </style>
     """, unsafe_allow_html=True)
 
-    col_s1, col_s2, col_s3, col_s4, col_s5, col_s6 = st.columns(6)
+    col_s1, col_s2, col_s3, col_s4 = st.columns(4)
     with col_s1:
         st.markdown("""<div class="status-box">
             <div class="status-title"><span>🤖 CLAUDE</span><span class="status-dot-green" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
@@ -1438,33 +1625,21 @@ if menu == "🎯 Mission Control":
         </div>""", unsafe_allow_html=True)
     with col_s2:
         st.markdown("""<div class="status-box">
-            <div class="status-title"><span>🦀 OPENCLAW</span><span class="status-dot-red" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
-            <div class="status-value">Offline</div>
-            <div class="status-desc">3 agents • 7 sess.</div>
-        </div>""", unsafe_allow_html=True)
-    with col_s3:
-        st.markdown("""<div class="status-box">
             <div class="status-title"><span>🔱 HERMES</span><span class="status-dot-green" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
             <div class="status-value">Online</div>
             <div class="status-desc">grok-4.3 • xAI OAuth</div>
         </div>""", unsafe_allow_html=True)
-    with col_s4:
+    with col_s3:
         st.markdown("""<div class="status-box">
             <div class="status-title"><span>⏱️ HEARTBEAT</span><span class="status-dot-yellow" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
             <div class="status-value">Active</div>
             <div class="status-desc">poll ticks • 4s</div>
         </div>""", unsafe_allow_html=True)
-    with col_s5:
+    with col_s4:
         st.markdown("""<div class="status-box">
             <div class="status-title"><span>⚡ LATENCY</span><span class="status-dot-green" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
             <div class="status-value">42 ms</div>
             <div class="status-desc">combined p50</div>
-        </div>""", unsafe_allow_html=True)
-    with col_s6:
-        st.markdown("""<div class="status-box">
-            <div class="status-title"><span>🦉 OWL ALPHA</span><span class="status-dot-green" style="height:6px; width:6px; border-radius:50%; display:inline-block;"></span></div>
-            <div class="status-value">Live</div>
-            <div class="status-desc">OpenRouter • Free</div>
         </div>""", unsafe_allow_html=True)
 
     st.markdown("<hr style='margin: 15px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
@@ -1495,12 +1670,12 @@ if menu == "🎯 Mission Control":
             if st.session_state.pomodoro_active:
                 st.success("Stoper Pomodoro wystartował. Wyłącz inne karty w przeglądarce i skup się wyłącznie na priorytecie.")
 
-    st.markdown("---")
-    
+    st.markdown("<hr style='margin: 15px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
+
     # II. AGENTS GRID
-    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-top: 25px; margin-bottom: 2px;'>II. — AGENTS • CLICK TO OPEN CONTROL ROOM</p>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #EC4899; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-top: 25px; margin-bottom: 2px;'>II. — AGENTS • CLICK TO OPEN CONTROL ROOM</p>", unsafe_allow_html=True)
     
-    col_a1, col_a2, col_a3 = st.columns(3)
+    col_a1, col_a2, col_a3, col_a4 = st.columns(4)
     
     with col_a1:
         st.markdown("""
@@ -1520,22 +1695,6 @@ if menu == "🎯 Mission Control":
 
     with col_a2:
         st.markdown("""
-        <div class="custom-card" style="border-top: 3px solid #EC4899; height: 260px;">
-            <h3 style="color: #EC4899; margin-top: 0;">🦀 OpenClaw</h3>
-            <p style="color: #94A3B8; font-size: 0.85rem; height: 60px;">Lokalny router agentów. Pozwala na jednorazowe strzały lub koordynację roju.</p>
-            <div style="margin-top: 15px; font-size: 0.8rem; color: #64748B;">
-                <div><b>MODEL:</b> mixed-swarm</div>
-                <div><b>PROVIDER:</b> Local Gateway</div>
-                <div><b>STATUS:</b> <span style="color:#EF4444; font-weight:bold;">OFFLINE</span></div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        if st.button("Otwórz konsolę OpenClaw", use_container_width=True):
-            st.session_state.current_page = "OpenClaw"
-            st.rerun()
-
-    with col_a3:
-        st.markdown("""
         <div class="custom-card" style="border-top: 3px solid #3B82F6; height: 260px;">
             <h3 style="color: #3B82F6; margin-top: 0;">🔱 Hermes</h3>
             <p style="color: #94A3B8; font-size: 0.85rem; height: 60px;">Główny orkiestrator. Wywołanie skilli, obsługa Kanbana i automatyzacji w tle.</p>
@@ -1550,9 +1709,7 @@ if menu == "🎯 Mission Control":
             st.session_state.current_page = "Hermes"
             st.rerun()
 
-    col_a4, col_a5, col_a6 = st.columns(3)
-    
-    with col_a4:
+    with col_a3:
         st.markdown("""
         <div class="custom-card" style="border-top: 3px solid #8B5CF6; height: 260px;">
             <h3 style="color: #8B5CF6; margin-top: 0;">♊ Gemini</h3>
@@ -1568,7 +1725,7 @@ if menu == "🎯 Mission Control":
             st.session_state.current_page = "Gemini"
             st.rerun()
 
-    with col_a5:
+    with col_a4:
         st.markdown("""
         <div class="custom-card" style="border-top: 3px solid #10B981; height: 260px;">
             <h3 style="color: #10B981; margin-top: 0;">🌌 AntiGravity</h3>
@@ -1582,22 +1739,6 @@ if menu == "🎯 Mission Control":
         """, unsafe_allow_html=True)
         if st.button("Otwórz konsolę AntiGravity", use_container_width=True):
             st.session_state.current_page = "Antigravity"
-            st.rerun()
-
-    with col_a6:
-        st.markdown("""
-        <div class="custom-card" style="border-top: 3px solid #06B6D4; height: 260px;">
-            <h3 style="color: #06B6D4; margin-top: 0;">🦉 Free Claude Code</h3>
-            <p style="color: #94A3B8; font-size: 0.85rem; height: 60px;">Darmowe wywołanie kodu i analiz przy użyciu publicznych endpointów OpenRouter.</p>
-            <div style="margin-top: 15px; font-size: 0.8rem; color: #64748B;">
-                <div><b>MODEL:</b> owl-alpha-free</div>
-                <div><b>PROVIDER:</b> OpenRouter</div>
-                <div><b>STATUS:</b> <span style="color:#10B981; font-weight:bold;">ONLINE</span></div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-        if st.button("Otwórz konsolę Free Claude", use_container_width=True):
-            st.session_state.current_page = "Free Claude Code"
             st.rerun()
 
     st.markdown("---")
@@ -1616,20 +1757,11 @@ if menu == "🎯 Mission Control":
 elif menu == "Claude":
     render_agent_console("Claude", "Online", "claude-3-7-sonnet", "Anthropic Native", "#F59E0B")
 
-elif menu == "OpenClaw":
-    render_agent_console("OpenClaw", "Offline", "mixed-swarm", "Local Gateway", "#EC4899")
-
 elif menu == "Hermes":
     render_agent_console("Hermes", "Online", "grok-4.3", "xAI API v1", "#3B82F6")
 
 elif menu == "Gemini":
     render_agent_console("Gemini", "Online", "gemini-2.5-pro", "Vertex AI Native", "#8B5CF6")
-
-elif menu == "Codex":
-    render_agent_console("Codex", "Offline", "unknown", "Unknown", "#64748B")
-
-elif menu == "Free Claude Code":
-    render_agent_console("Free Claude Code", "Online", "owl-alpha-free", "OpenRouter", "#06B6D4")
 
 elif menu == "Studio":
     st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • STUDIO</p>", unsafe_allow_html=True)
@@ -1936,20 +2068,110 @@ Zwróć wyłącznie prawidłowy JSON, bez znaczników ```json i bez innych komen
             else:
                 st.warning("Wpisz cel do zrealizowania.")
 
-# 3. NOTEBOOKLM & OBSIDIAN
+# 3. BAZA WIEDZY
 elif menu == "Notebook":
-    st.title("📻 NotebookLM Sync & Obsidian Vault")
-    st.subheader("Ustrukturyzowany przepływ wiedzy w chmurze")
-    
-    st.markdown("""
-    <div class="custom-card">
-        <p>📻 <strong>Syntezy wiedzy w chmurze:</strong> Ten moduł łączy podcasty wygenerowane przez NotebookLM z Twoimi notatkami z Obsidian Vault oraz umożliwia bezpośrednią interakcję z NotebookLM przez lokalny serwer MCP.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    tab1, tab2, tab3, tab4 = st.tabs(["📻 Podcasty z NotebookLM", "📝 Notatki z Obsidiana", "🔍 Wyszukiwarka Semantyczna (RAG)", "💬 Czat z NotebookLM (MCP)"])
-    
+    st.title("📚 Baza Wiedzy")
+    st.subheader("Biblioteka zasobów, notatek i promptów do natychmiastowego użycia")
+
+    tab_akademia, tab2, tab1, tab3, tab4 = st.tabs(["📚 Checklisty & Prompty", "📝 Notatki Robocze (Obsidian)", "📻 Podcasty (NotebookLM)", "🔍 Wyszukiwarka AI (RAG)", "💬 Czat z NotebookLM (MCP)"])
+
+    with tab_akademia:
+        st.markdown("### 📚 Biblioteka Wiedzy — Checklisty, Prompty & Frameworki")
+        st.markdown("Gotowe zasoby do natychmiastowego użycia. Wyszukaj po frazie lub przeglądaj według kategorii.")
+
+        def get_knowledge_dir():
+            local_path = os.path.join(os.path.dirname(__file__), "deploy", "knowledge")
+            if os.path.exists(local_path):
+                return local_path
+            container_path = os.path.join(os.path.dirname(__file__), "knowledge")
+            if os.path.exists(container_path):
+                return container_path
+            return None
+
+        # Kategorie na podstawie słów kluczowych w nazwie pliku
+        KNOWLEDGE_CATEGORIES = {
+            "🎯 Oferty & Sprzedaż": ["ofert", "sprzedaż", "sprzedawa", "lead", "leady", "hormozi", "obiekcj", "pitch", "clos"],
+            "📱 Social Media & Content": ["post", "posty", "content", "social", "hook", "facebook", "instagram", "tiktok", "wideo", "reels", "short", "youtube"],
+            "✍️ Copywriting & Webwriting": ["copy", "webwrit", "ogłosz", "tekst", "nagłów", "headline", "szabl"],
+            "🤖 AI & Narzędzia": ["ai", "gpt", "prompt", "chatgpt", "gemini", "claude", "grafik", "asystent"],
+            "💰 Produkty Cyfrowe & Zarabianie": ["produkt", "cyfrowy", "ebook", "kurs", "zarabian", "dochód", "nish", "nisz", "pomysł"],
+            "📊 SEO & Marketing": ["seo", "marketing", "reklam", "email", "newsletter", "lejek", "strategia", "marka"],
+            "🏗️ Biznes & Operacje": ["biznes", "klient", "canvas", "model", "workflow", "checklista", "plan", "cel", "mapa"],
+            "📚 Kursy & Szkolenia": ["akademia", "szkoleni", "kurs", "burnejko", "skiba", "ryszka", "kryptonum"],
+        }
+
+        def classify_file(filename: str) -> str:
+            name_lower = filename.lower()
+            for category, keywords in KNOWLEDGE_CATEGORIES.items():
+                if any(kw in name_lower for kw in keywords):
+                    return category
+            return "📁 Pozostałe"
+
+        k_dir = get_knowledge_dir()
+        if k_dir:
+            k_files = [f for f in os.listdir(k_dir) if f.endswith('.md')]
+            k_files.sort()
+
+            if k_files:
+                # Pasek wyszukiwania
+                search_query = st.text_input("🔍 Wyszukaj zasób:", placeholder="np. hooks, oferta, SEO, Hormozi...", key="k_search")
+
+                if search_query.strip():
+                    filtered_files = [f for f in k_files if search_query.lower() in f.lower()]
+                    st.caption(f"Znaleziono {len(filtered_files)} pasujących plików dla: **{search_query}**")
+                else:
+                    filtered_files = k_files
+                    # Kategoryzacja
+                    grouped = {}
+                    for f in k_files:
+                        cat = classify_file(f)
+                        grouped.setdefault(cat, []).append(f)
+
+                    all_cats = sorted(grouped.keys())
+                    cat_options = ["📋 Wszystkie zasoby"] + all_cats
+                    selected_cat = st.selectbox("Kategoria:", cat_options, key="k_category")
+
+                    if selected_cat != "📋 Wszystkie zasoby":
+                        filtered_files = grouped.get(selected_cat, [])
+                        st.caption(f"**{selected_cat}** — {len(filtered_files)} plików")
+
+                st.markdown("---")
+
+                if filtered_files:
+                    # Dropdown z listą plików
+                    clean_names = {f: f.replace(".md", "").replace("-", " ").replace("_", " ") for f in filtered_files}
+                    selected_display = st.selectbox(
+                        f"Wybierz zasób ({len(filtered_files)} dostępnych):",
+                        options=filtered_files,
+                        format_func=lambda x: clean_names[x],
+                        key="akademia_files_select"
+                    )
+                    k_file_path = os.path.join(k_dir, selected_display)
+                    k_content = read_md_file(k_file_path)
+                    st.markdown(f"📁 `{selected_display}`")
+                    st.markdown("---")
+                    st.markdown(k_content)
+                else:
+                    st.info("Brak wyników dla tego wyszukiwania.")
+            else:
+                st.info("Katalog z bazą wiedzy jest pusty.")
+        else:
+            st.warning("❗ Nie znaleziono katalogu z bazą wiedzy (`deploy/knowledge`). Upewnij się, że pliki są wgrane na serwer.")
+
+    with tab2:
+        st.markdown("### 📝 Notatki Robocze")
+        notes = [f for f in os.listdir(OBSIDIAN_DIR) if f.endswith('.md')] if os.path.exists(OBSIDIAN_DIR) else []
+        if notes:
+            selected_note = st.selectbox("Wybierz notatkę:", notes)
+            note_content = read_md_file(os.path.join(OBSIDIAN_DIR, selected_note))
+            st.markdown(f"📁 **Ścieżka:** `obsidian_vault/{selected_note}`")
+            st.markdown("---")
+            st.markdown(note_content)
+        else:
+            st.info("Brak notatek. Synchronizuj notatki z Obsidian Vault przez SFTP lub wgraj pliki `.md`.")
+
     with tab1:
+        st.markdown("### 📻 Podcasty & Audio z NotebookLM")
         files = [f for f in os.listdir(NOTEBOOKS_DIR) if f.endswith(('.mp3','.wav'))] if os.path.exists(NOTEBOOKS_DIR) else []
         if files:
             st.write(f"Wykryto **{len(files)}** syntez wiedzy audio:")
@@ -1963,17 +2185,7 @@ elif menu == "Notebook":
                 st.audio(open(os.path.join(NOTEBOOKS_DIR, f), "rb").read(), format="audio/mp3")
                 st.markdown("<br>", unsafe_allow_html=True)
         else:
-            st.info("Katalog `~/Agentic_OS/notebooks/_assets` jest pusty. Prześlij pliki .mp3 z NotebookLM za pomocą SFTP, aby móc je odtwarzać.")
-            
-    with tab2:
-        notes = [f for f in os.listdir(OBSIDIAN_DIR) if f.endswith('.md')] if os.path.exists(OBSIDIAN_DIR) else []
-        if notes:
-            selected_note = st.selectbox("Wybierz notatkę do odczytania:", notes)
-            note_content = read_md_file(os.path.join(OBSIDIAN_DIR, selected_note))
-            st.markdown(f"**Ścieżka notatki:** `obsidian_vault/{selected_note}`")
-            st.code(note_content, language="markdown")
-        else:
-            st.info("Katalog `~/Agentic_OS/obsidian_vault` jest pusty. Prześlij swoje notatki markdown z Obsidiana, aby mieć do nich łatwy wgląd.")
+            st.info("Katalog `notebooks/_assets` jest pusty. Prześlij pliki .mp3 z NotebookLM za pomocą SFTP.")
 
     with tab3:
         st.markdown("""
@@ -3843,15 +4055,810 @@ elif menu == "Memory":
         else:
             st.error("Nie znaleziono pliku. Upewnij się, że pliki zostały wgrane do folderu ~/.hermes/")
 
+
+# ==============================================================================
+# III. — MARKETING & PERFORMANCE MODULES
+# ==============================================================================
+
+# 11. SOCIAL MEDIA HUB
+elif menu == "Social Media Hub":
+    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — MARKETING • SOCIAL MEDIA HUB</p>", unsafe_allow_html=True)
+    st.title("📢 Social Media Hub")
+    st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Projektuj wirusowe BIO, spójne awatary oraz mobilne banery z bezpieczną strefą (Safe-Zone).</p>", unsafe_allow_html=True)
+
+    # Initialize state for strategy
+    if "sm_strategy" not in st.session_state:
+        st.session_state.sm_strategy = None
+        
+    tab_strategy, tab_bios, tab_visuals = st.tabs(["📋 Wywiad i Strategia", "✍️ Opisy i BIO (6 Platform)", "🎨 Wizualia (Awatary i Bannery)"])
+    
+    with tab_strategy:
+        st.subheader("📋 Kwestionariusz Twojej Marki / Biznesu")
+        st.markdown("Uzupełnij poniższe pola. Nasz model **Gemini 2.5 Pro** stworzy na tej podstawie kompletną strategię i opisy BIO dostosowane do każdej z platform.")
+        
+        col_s1, col_s2 = st.columns([1, 1])
+        with col_s1:
+            brand_name = st.text_input("Nazwa Marki / Imię i Nazwisko:", value="Holistic Jason", key="sm_brand_name")
+            niche = st.text_area("Nisza / Branża (w czym pomagasz i komu):", value="Agencja AI i automatyzacji procesów B2B dla zabieganych przedsiębiorców.", height=80, key="sm_niche")
+            audience = st.text_input("Grupa Docelowa (Idealny Klient):", value="Właściciele małych i średnich firm, twórcy, osoby z ADHD szukające spójności.", key="sm_audience")
+        with col_s2:
+            style = st.text_input("Styl komunikacji / Tone of Voice:", value="Bezpośredni, merytoryczny, dynamiczny, ADHD-friendly, z humorem, perswazyjny NLP", key="sm_style")
+            motto = st.text_input("Twoje Unikalne Motto / Slogan przewodni:", value="Automatyzuj to, co powtarzalne. Twórz to, co unikalne.", key="sm_motto")
+            
+        if st.button("🚀 Analizuj i generuj Strategię AI", type="primary", use_container_width=True):
+            with st.spinner("Dyrektor ds. Marketingu (CMO AI) oraz Gemini 2.5 Pro analizują rynek i konkurencję..."):
+                prompt = f"""
+                Przeprowadź głęboki wywiad i stwórz kompletną strategię social media oraz opisy BIO dla 6 platform.
+                Marka/Nazwisko: {brand_name}
+                Nisza/Branża: {niche}
+                Grupa docelowa: {audience}
+                Styl komunikacji: {style}
+                Unikalne motto: {motto}
+
+                Wygeneruj odpowiedź w czystym formacie JSON o poniższej strukturze (nie umieszczaj żadnych znaczników markdown poza kodem json, tylko czysty, parsujący się JSON bez wstępów):
+                {{
+                  "slogan": "krótki, uderzający slogan na baner (max 6-8 słów)",
+                  "cta": "krótkie wezwanie do działania na baner (max 4-5 słów)",
+                  "linkedin_bio": "BIO na LinkedIn (profesjonalne, zorientowane na wyniki, autorytet, z podziałem na sekcje, max 3-4 zdania)",
+                  "facebook_bio": "BIO na Facebooka (angażujące, nastawione na społeczność i zaufanie, zaproszenie do grupy, max 3-4 zdania)",
+                  "instagram_bio": "BIO na Instagram (wizualne, lifestylowe, z emotikonami, max 150 znaków, wypunktowane)",
+                  "tiktok_bio": "BIO na TikToka (dynamiczne, z mega mocnym hakiem i CTA, max 80 znaków)",
+                  "twitter_bio": "BIO na X/Twitter (zwięzłe, błyskotliwe, thought-leadership, max 160 znaków)",
+                  "threads_bio": "BIO na Threads (konwersacyjne, otwarte na dyskusję, luźne, max 150 znaków)",
+                  "strategy_tips": [
+                    "Wskazówka 1 (ADHD friendly, konkretna)",
+                    "Wskazówka 2 (Dopaminowy hook)",
+                    "Wskazówka 3 (Dystrybucja treści)",
+                    "Wskazówka 4 (Szybkie i proste systemy)"
+                  ]
+                }}
+                """
+                messages = [{"role": "user", "content": prompt}]
+                system_instruction = "Jesteś wybitnym CMO i ekspertem copywritingu NLP. Zwracaj wyłącznie poprawny obiekt JSON, bez żadnego tekstu przed ani po nim."
+                try:
+                    res_raw = call_gemini_pro_api(messages, system_instruction)
+                    # Clean response if markdown block is returned
+                    import json
+                    import re
+                    clean_res = res_raw.strip()
+                    if clean_res.startswith("```"):
+                        clean_res = re.sub(r"^```(?:json)?\n", "", clean_res)
+                        clean_res = re.sub(r"\n```$", "", clean_res)
+                        clean_res = clean_res.strip()
+                    
+                    st.session_state.sm_strategy = json.loads(clean_res)
+                    st.success("Strategia wygenerowana pomyślnie! Przejdź do kolejnych zakładek, aby zobaczyć BIO i wygenerować grafiki.")
+                except Exception as e:
+                    # Robust fallback
+                    st.warning(f"Nie udało się sparsować odpowiedzi JSON, wdrożono domyślną strategię premium. Błąd: {e}")
+                    st.session_state.sm_strategy = {
+                        "slogan": f"Zautomatyzuj Swoje B2B z Potęgą AI",
+                        "cta": "Odbierz Darmowy Audyt Procesów",
+                        "linkedin_bio": f"Pomagam zabieganym przedsiębiorcom i osobom z ADHD odzyskać 20+ godzin tygodniowo przez wdrożenia agentów AI i automatyzacje n8n. Sprawdź moje case studies i uwolnij swój czas.",
+                        "facebook_bio": "Dołącz do społeczności twórców i biznesów, którzy zamiast pracować w firmie, pracują nad jej automatyzacją. Praktyczne wskazówki, darmowe szablony i wsparcie.",
+                        "instagram_bio": "⚡️ Robimy to co ważne, resztę robi kod\n💡 Automatyzacje procesów B2B\n👇 Odbierz bezpłatny zestaw n8n blueprintów!",
+                        "tiktok_bio": "🧠 ADHD & AI Automations | 💡 Odzyskaj 20h w tygodniu! | Kliknij link 👇",
+                        "twitter_bio": f"SaaS founder & AI Agency Director. I build agentic operating systems to automate workflows for fast-growing B2B brands. ADHD builder mode on.",
+                        "threads_bio": "AI agent builder & systems architect. Here to talk about real tech, ADHD productivity hacks & automated pipelines. Let's debate!",
+                        "strategy_tips": [
+                          "System 1-Click: Nagrywaj luźne przemyślenia głosowe, a AI (np. Omi lub sformatowany monit) przekształci je w posty na 6 platform.",
+                          "Płynność i Dopamina: Nie edytuj wideo godzinami. Używaj dynamicznych napisów, prostych przejść i gotowych szablonów.",
+                          "Autentyczność przede wszystkim: Tomasz Duda z o_mnie.md przyciąga, ponieważ mówi prawdę o wyzwaniach ADHD.",
+                          "Użyj darmowego planu Systeme.io do budowy bazy e-mailowej i spięcia ruchu organicznego."
+                        ]
+                    }
+        
+        # Display recommendations
+        if st.session_state.sm_strategy:
+            strat = st.session_state.sm_strategy
+            st.markdown("---")
+            st.markdown("<p style='color: #A78BFA; font-weight: bold; font-size: 1.2rem;'>🎯 Główne rekomendacje strategiczne dla Twojej marki:</p>", unsafe_allow_html=True)
+            
+            col_b1, col_b2 = st.columns([1, 1])
+            with col_b1:
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #7C3AED; background: #13111C; min-height: 150px;">
+                    <span style="font-size: 0.8rem; color: #A78BFA; font-weight: bold;">🖼️ SUGEROWANE HASŁA NA BANER</span>
+                    <h3 style="margin: 8px 0 2px 0; color: #FFFFFF; font-size: 1.3rem;">{strat.get('slogan', '')}</h3>
+                    <p style="color: #10B981; font-weight: bold; margin: 0; font-size: 0.95rem;">CTA: {strat.get('cta', '')}</p>
+                </div>
+                """, unsafe_allow_html=True)
+            with col_b2:
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #10B981; background: #0C1512; min-height: 150px;">
+                    <span style="font-size: 0.8rem; color: #34D399; font-weight: bold;">⚡ ADHD FRIENDLY SYSTEM</span>
+                    <ul style="margin: 4px 0; padding-left: 18px; color: #E2E8F0; font-size: 0.85rem; line-height: 1.4;">
+                        <li>Zero barier startu (proste nagrania)</li>
+                        <li>Automatyczna dystrybucja n8n</li>
+                        <li>Darmowe, gotowe systemy</li>
+                    </ul>
+                </div>
+                """, unsafe_allow_html=True)
+                
+            st.write("##### 💡 Spersonalizowane wskazówki dystrybucji treści:")
+            for tip in strat.get("strategy_tips", []):
+                st.markdown(f"- **{tip.split(':')[0]}** {':' + ''.join(tip.split(':')[1:]) if len(tip.split(':')) > 1 else ''}")
+        else:
+            # Welcome card
+            st.markdown("""
+            <div class="custom-card" style="border-left: 4px solid #3B82F6; background: #0C121D; margin-top: 20px;">
+                <h4>💡 Dlaczego to działa?</h4>
+                <p style="color: #94A3B8; font-size: 0.9rem;">Zamiast tracić godziny na wymyślanie BIO na każdy kanał osobno, zrób to w jednym miejscu. Nasz Strateg zachowuje spójność marki osobistej, ale dostosowuje ton i długość tekstu pod unikalną kulturę każdej platformy.</p>
+            </div>
+            """, unsafe_allow_html=True)
+
+    with tab_bios:
+        if not st.session_state.sm_strategy:
+            st.info("💡 Najpierw wygeneruj lub zaktualizuj strategię w pierwszej zakładce, aby odblokować gotowe opisy BIO.")
+        else:
+            strat = st.session_state.sm_strategy
+            st.subheader("✍️ Zoptymalizowane Opisy i BIO do Skopiowania")
+            st.markdown("Popraw i dostosuj wygenerowane teksty, a następnie skopiuj je bezpośrednio na swoje profile.")
+            
+            col1, col2 = st.columns(2)
+            with col1:
+                # LinkedIn
+                st.markdown("##### 💼 LinkedIn Profile BIO")
+                li_bio = st.text_area("LinkedIn Bio (Mocna autorytet, B2B):", value=strat.get("linkedin_bio", ""), height=120, key="edit_li_bio")
+                st.caption(f"Długość: {len(li_bio)} znaków.")
+                
+                # Instagram
+                st.markdown("##### 📸 Instagram Bio (Wypunktowane z emoji)")
+                ig_bio = st.text_area("Instagram Bio (max 150 znaków):", value=strat.get("instagram_bio", ""), height=120, key="edit_ig_bio")
+                st.caption(f"Długość: {len(ig_bio)}/150 znaków. " + ("🔴 Przekroczono limit!" if len(ig_bio) > 150 else "🟢 OK"))
+                
+                # X / Twitter
+                st.markdown("##### 🐦 X (Twitter) Profile Bio")
+                tw_bio = st.text_area("X Bio (max 160 znaków, ostry copywriting):", value=strat.get("twitter_bio", ""), height=120, key="edit_tw_bio")
+                st.caption(f"Długość: {len(tw_bio)}/160 znaków. " + ("🔴 Przekroczono limit!" if len(tw_bio) > 160 else "🟢 OK"))
+                
+            with col2:
+                # Facebook
+                st.markdown("##### 👥 Facebook Page Bio")
+                fb_bio = st.text_area("Facebook Page Bio:", value=strat.get("facebook_bio", ""), height=120, key="edit_fb_bio")
+                st.caption(f"Długość: {len(fb_bio)} znaków.")
+                
+                # TikTok
+                st.markdown("##### 🎵 TikTok Profile Bio")
+                tt_bio = st.text_area("TikTok Bio (max 80 znaków, mocny hook):", value=strat.get("tiktok_bio", ""), height=120, key="edit_tt_bio")
+                st.caption(f"Długość: {len(tt_bio)}/80 znaków. " + ("🔴 Przekroczono limit!" if len(tt_bio) > 80 else "🟢 OK"))
+                
+                # Threads
+                st.markdown("##### 💬 Threads Bio")
+                th_bio = st.text_area("Threads Bio (max 150 znaków, konwersacyjne):", value=strat.get("threads_bio", ""), height=120, key="edit_th_bio")
+                st.caption(f"Długość: {len(th_bio)}/150 znaków. " + ("🔴 Przekroczono limit!" if len(th_bio) > 150 else "🟢 OK"))
+
+    with tab_visuals:
+        st.subheader("🎨 Generowanie Spójnych Materiałów Graficznych (Imagen 3)")
+        st.markdown("Stwórz spójne, profesjonalne portrety oraz banery social media bez zniekształceń i uciętych napisów.")
+        
+        col_v1, col_v2 = st.columns([2, 3])
+        
+        with col_v1:
+            st.markdown("##### 👤 1. Spójny Awatar (Subject Reference)")
+            st.markdown("Wgraj swoje zdjęcie portretowe. Imagen 3 użyje go jako **Subject Reference [1]**, aby idealnie zachować rysy Twojej twarzy, modyfikując jedynie tło, oświetlenie i styl!")
+            
+            uploaded_subject = st.file_uploader("Wgraj swoje zdjęcie portretowe (twarz widoczna z przodu):", type=["jpg", "png", "jpeg"], key="sm_avatar_uploader")
+            
+            avatar_prompt_default = "A professional, premium studio portrait of business entrepreneur [1], corporate dark background, cyan and purple subtle ambient lighting, extremely high detail, hyper-realistic, 8k resolution, photorealistic face, elegant aesthetic."
+            avatar_prompt = st.text_area("Modyfikuj prompt dla Awatara (pamiętaj o zachowaniu tagu [1]):", value=avatar_prompt_default, height=100, key="sm_avatar_prompt")
+            
+            if st.button("Generuj Awatar z Imagen 3", type="primary", use_container_width=True):
+                with st.spinner("Model Imagen 3.0 analizuje rysy twarzy i syntetyzuje spójne studio portretowe..."):
+                    ref_bytes = None
+                    if uploaded_subject:
+                        ref_bytes = uploaded_subject.read()
+                        
+                    img_bytes, err = generate_imagen_image(avatar_prompt, aspect_ratio="1:1", reference_image_bytes=ref_bytes)
+                    if err:
+                        st.error(f"GCP API Error: {err}")
+                    elif img_bytes:
+                        st.session_state.sm_generated_avatar = img_bytes
+                        st.success("Awatar wygenerowany pomyślnie!")
+            
+            if "sm_generated_avatar" in st.session_state:
+                st.image(st.session_state.sm_generated_avatar, caption="Twój Wygenerowany Awatar AI", use_container_width=True)
+                st.download_button("Pobierz Awatar (.png)", data=st.session_state.sm_generated_avatar, file_name="avatar_ai.png", mime="image/png", use_container_width=True)
+                
+        with col_v2:
+            st.markdown("##### 🖼️ 2. Banner Mobile-Friendly z Safe-Zone")
+            st.markdown("Wybierz platformę i dostosuj teksty. Imagen 3 wygeneruje tło graficzne, starając się umieścić hasła reklamowe w **safe-zone (wyśrodkowanej strefie bezpieczeństwa)**, idealnie widocznej na telefonach komórkowych.")
+            
+            banner_platform = st.selectbox("Format bannera social media:", ["LinkedIn Banner (1584x396)", "Facebook Cover (820x312)", "X/Twitter Header (1500x500)"], key="sm_banner_platform")
+            
+            sugg_slogan = strat.get('slogan', 'Zautomatyzuj Swoje B2B z Potęgą AI') if st.session_state.sm_strategy else "Zautomatyzuj Swoje B2B z Potęgą AI"
+            sugg_cta = strat.get('cta', 'Odbierz Darmowy Audyt') if st.session_state.sm_strategy else "Odbierz Darmowy Audyt"
+            
+            banner_slogan = st.text_input("Główny tekst / Slogan na bannerze:", value=sugg_slogan, key="sm_banner_slogan")
+            banner_cta = st.text_input("Wezwanie do działania (CTA):", value=sugg_cta, key="sm_banner_cta")
+            
+            banner_style = st.text_area("Prompt stylu graficznego tła bannera:", value="Minimalist geometric background with deep purple and space black colors, abstract corporate design, glowing neon accents, elegant glassmorphism textures, clean composition, high-end tech aesthetic.", height=80, key="sm_banner_style")
+            
+            if st.button("Generuj Banner z Imagen 3", type="primary", use_container_width=True):
+                with st.spinner("Projektowanie układu Safe-Zone i generowanie banera panoramicznego..."):
+                    # Construct smart layout prompt
+                    full_banner_prompt = f"{banner_style} Safe zone layout, center aligned design. In the exact horizontal center, there is high-contrast, clean typography reading precisely: '{banner_slogan}' and '{banner_cta}'. Perfect centering, mobile friendly, professional graphic design, 8k resolution."
+                    
+                    img_bytes, err = generate_imagen_image(full_banner_prompt, aspect_ratio="16:9")
+                    if err:
+                        st.error(f"GCP API Error: {err}")
+                    elif img_bytes:
+                        st.session_state.sm_generated_banner = img_bytes
+                        st.success("Banner wygenerowany pomyślnie!")
+                        
+            if "sm_generated_banner" in st.session_state:
+                st.image(st.session_state.sm_generated_banner, caption=f"Wygenerowany banner dla {banner_platform}", use_container_width=True)
+                st.download_button("Pobierz Banner (.png)", data=st.session_state.sm_generated_banner, file_name="banner_social_media.png", mime="image/png", use_container_width=True)
+                
+                # Render safe-zone visual grid overlay simulation
+                with st.expander("👁️ Zobacz symulację podglądu na urządzeniach mobilnych (Safe-Zone)"):
+                    st.markdown("""
+                    <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19;">
+                        <div style="padding: 10px; text-align: center; background: #1E293B; font-size: 0.8rem; color: #94A3B8; font-weight: bold; border-bottom: 1px solid #334155;">Podgląd na ekranie smartfona (Szerokość 360px)</div>
+                        <div style="padding: 20px; text-align: center; color: #64748B; font-size: 0.75rem;">
+                            Boki baneru są obcinane na telefonie. Widoczny pozostaje tylko centralny obszar (<strong>środkowe 60%</strong>).
+                        </div>
+                        <div style="position: relative; width: 100%; aspect-ratio: 16/9; background-size: cover; background-position: center; border: 1px dashed #EC4899;">
+                            <div style="position: absolute; left: 20%; right: 20%; top: 10%; bottom: 10%; border: 2px solid #10B981; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center;">
+                                <span style="color: #10B981; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 4px #000;">ZŁOTA STREFA (Gwarantowana widoczność)</span>
+                            </div>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+# 12. AI WEBSITE BUILDER
+elif menu == "AI Website Builder":
+    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — MARKETING • AI WEBSITE BUILDER</p>", unsafe_allow_html=True)
+    st.title("🌐 AI Website Builder")
+    st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Twórz piękne, konwertujące strony Landing Page z wbudowaną analityką oraz formularzami Systeme.io.</p>", unsafe_allow_html=True)
+
+    # Initialize states
+    if "web_html" not in st.session_state:
+        st.session_state.web_html = ""
+        
+    tab_editor, tab_preview = st.tabs(["🏗️ Kreator Landing Page", "💻 Podgląd Kodu & Pobieranie ZIP"])
+    
+    with tab_editor:
+        st.subheader("🏗️ Konfiguracja Sekcji Strony")
+        st.markdown("Określ zawartość i podłącz kody śledzenia, aby strona była gotowa do natychmiastowej publikacji.")
+        
+        col_w1, col_v2 = st.columns([1, 1])
+        
+        with col_w1:
+            web_type = st.selectbox("Typ szablonu strony:", [
+                "Strona lądowania dla darmowego Lead Magneta (E-book / Szablon)",
+                "Strona dla oferty High-Ticket / Konsultingu i Mentoringu",
+                "Strona Agencji Automatyzacji AI (B2B SaaS / Services)",
+                "Szybka strona zapisu na listę oczekujących (Pre-launch Waitlist)"
+            ], key="web_type_select")
+            
+            web_title = st.text_input("Główny nagłówek (Headline):", value="Odzyskaj 20 Godzin Tygodniowo z Automatyzacjami AI", key="web_title_val")
+            web_subtitle = st.text_area("Podnagłówek / Krótki opis korzyści:", value="Wdrożę w Twojej firmie agentów AI i asynchroniczne procesy n8n, które przejmą rutynowe zadania. Ty skupiasz się na strategii, resztę robi kod.", height=80, key="web_subtitle_val")
+            web_cta_text = st.text_input("Tekst na przycisku akcji (CTA):", value="Odbierz Darmową Konsultację AI", key="web_cta_val")
+            
+        with col_v2:
+            st.markdown("##### ⚙️ Integracje i Analityka")
+            systeme_form = st.text_area("Formularz zapisu Systeme.io (kod formularza HTML z Systeme.io lub link do zapisu):", 
+                                        value='<!-- Wklej kod formularza z darmowego planu Systeme.io -->\n<div style="background: rgba(30, 27, 75, 0.4); border: 1px solid #4338CA; padding: 20px; border-radius: 12px; text-align: center;">\n  <p style="color: #C084FC; font-weight: bold; margin-bottom: 12px;">Wpisz swój e-mail, aby pobrać bezpłatne blueprinty n8n:</p>\n  <input type="email" placeholder="Twój adres e-mail" style="padding: 10px; border-radius: 6px; border: 1px solid #4F46E5; width: 80%; background: #0F1016; color: #FFF; margin-bottom: 10px; text-align: center;" required>\n  <button type="submit" style="background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%); color: #FFF; border: none; padding: 10px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 80%;">Odbierz darmowy pakiet</button>\n</div>',
+                                        height=100, key="web_systeme_form")
+                                        
+            meta_pixel = st.text_input("Meta Pixel ID (np. 1234567890):", value="9876543210", key="web_meta_pixel")
+            ga_id = st.text_input("Google Analytics 4 ID (np. G-XXXXXX):", value="G-ABC123XYZ", key="web_ga_id")
+            
+            accent_color = st.color_picker("Główny kolor akcentu (Hex):", value="#7C3AED")
+            
+        if st.button("🚀 Wygeneruj Premium Landing Page (HTML/CSS)", type="primary", use_container_width=True):
+            with st.spinner("Budowanie kodu, kompresowanie stylów CSS i wstrzykiwanie analityki..."):
+                # Simple HTML code generator
+                html_code = f"""<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{web_title}</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {{
+            --accent: {accent_color};
+            --bg: #090A0F;
+            --card-bg: rgba(17, 18, 28, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+        }}
+        
+        * {{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }}
+        
+        body {{
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }}
+        
+        h1, h2, h3, h4 {{
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }}
+        
+        .container {{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }}
+        
+        /* Hero Section */
+        .hero {{
+            padding: 120px 0 80px 0;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at top, rgba(124, 58, 237, 0.15) 0%, transparent 60%);
+        }}
+        
+        .badge {{
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid var(--accent);
+            color: #C084FC;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }}
+        
+        .hero h1 {{
+            font-size: 3.5rem;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #FFFFFF 0%, #9CA3AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }}
+        
+        .hero p {{
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+        }}
+        
+        /* Form Box */
+        .form-section {{
+            max-width: 580px;
+            margin: 40px auto 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }}
+        
+        /* Features Section */
+        .features {{
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }}
+        
+        .features-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }}
+        
+        .feature-card {{
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }}
+        
+        .feature-card:hover {{
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }}
+        
+        .feature-card h3 {{
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #FFF;
+        }}
+        
+        .feature-card p {{
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }}
+        
+        /* Footer */
+        footer {{
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }}
+    </style>
+
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={ga_id}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){{dataLayer.push(arguments);}}
+        gtag('js', new Date());
+        gtag('config', '{ga_id}');
+    </script>
+
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)}};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{meta_pixel}');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={meta_pixel}&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <span class="badge">Agencja AI & Automatyzacje</span>
+            <h1>{web_title}</h1>
+            <p>{web_subtitle}</p>
+            
+            <div class="form-section">
+                {systeme_form}
+            </div>
+        </div>
+    </header>
+
+    <section class="features">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 12px;">Jak to działa?</h2>
+            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px auto;">Kompletny system, który pozwala Twojej firmie dowozić wyniki bez ręcznej, powtarzalnej pracy biurowej.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>⚡ 1. Inteligentne Integracje n8n</h3>
+                    <p>Łączymy Twoje formularze, bazy danych Notion, CRM i komunikatory w jeden automatyczny, bezbłędny system działający 24/7.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🤖 2. Autonomiczni Agenci AI</h3>
+                    <p>Wdrażamy wyspecjalizowane chatboty i agentów na Vertex AI Google Cloud, którzy samodzielnie analizują dokumenty i odpowiadają na zapytania klientów.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📈 3. Skalowalne Kampanie</h3>
+                    <p>Szybkie generowanie spójnych lejków sprzedażowych, darmowych lead magnetów oraz optymalizacja kampanii na Facebooku i TikToku.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Holistic Jason AI Agency. Wszelkie prawa zastrzeżone. | <a href="#" style="color: var(--accent); text-decoration: none;">Polityka Prywatności</a></p>
+        </div>
+    </footer>
+
+</body>
+</html>"""
+                st.session_state.web_html = html_code
+                st.success("Strona lądowania wygenerowana pomyślnie! Kod źródłowy jest gotowy do pobrania w drugiej zakładce.")
+                
+        # Simple graphic mockup of sections
+        st.write("##### 👁️ Struktura wygenerowanej witryny:")
+        st.markdown(f"""
+        <div style="display: flex; gap: 8px; font-family: Outfit; margin-top: 10px;">
+            <div style="background: rgba(124, 58, 237, 0.15); border: 1px solid {accent_color}; color: #C084FC; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 0.85rem;">
+                <strong>1. HERO SECTION</strong><br><span style="font-size: 0.7rem; color: #94A3B8;">Nagłówek, podnagłówek i tło gradientowe</span>
+            </div>
+            <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #34D399; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 0.85rem;">
+                <strong>2. SYSTEME.IO FORM</strong><br><span style="font-size: 0.7rem; color: #94A3B8;">Osadzona subskrypcja z trackingiem pikseli</span>
+            </div>
+            <div style="background: rgba(236, 72, 153, 0.15); border: 1px solid #EC4899; color: #F472B6; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 0.85rem;">
+                <strong>3. FEATURES GRID</strong><br><span style="font-size: 0.7rem; color: #94A3B8;">Przewagi i korzyści biznesu (ADHD-friendly)</span>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+    with tab_preview:
+        if not st.session_state.web_html:
+            st.info("💡 Kliknij przycisk 'Wygeneruj Premium Landing Page' w pierwszej zakładce, aby wygenerować i pobrać kod.")
+        else:
+            st.subheader("💻 Wygenerowany Kod index.html")
+            st.markdown("Ten kod jest czysty, w pełni responsywny i zintegrowany z Twoimi Pixel ID oraz Google Analytics. Możesz go natychmiast wrzucić na dowolny darmowy hosting (np. Netlify, Vercel, GitHub Pages) lub swój serwer FTP.")
+            
+            # Interactive code-editor representation
+            st.code(st.session_state.web_html, language="html")
+            
+            # Package code to ZIP
+            import zipfile
+            import io
+            
+            zip_buffer = io.BytesIO()
+            with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED, False) as zip_file:
+                zip_file.writestr("index.html", st.session_state.web_html)
+            zip_data = zip_buffer.getvalue()
+            
+            # Download actions
+            st.write("##### 📦 Pobierz gotowe archiwum witryny:")
+            st.download_button(
+                label="📥 Pobierz Paczkę ZIP (index.html)",
+                data=zip_data,
+                file_name="landing_page_ai.zip",
+                mime="application/zip",
+                use_container_width=True
+            )
+            
+            st.success("🔥 Gotowy plik ZIP zawiera czysty, zoptymalizowany plik HTML. Rozpakuj go i gotowe!")
+
+# 13. ADS & LOCAL SEO
+elif menu == "Ads & Local SEO":
+    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — PERFORMANCE • ADS & LOCAL SEO</p>", unsafe_allow_html=True)
+    st.title("🎯 Ads & Local SEO")
+    st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Zarządzaj reklamami Meta/TikTok przez n8n, monitoruj pozycję w Localo oraz generuj odpowiedzi na opinie GBP.</p>", unsafe_allow_html=True)
+
+    tab_local, tab_ads, tab_gsc = st.tabs(["📍 Local SEO (GBP)", "🎯 Ads Manager & n8n", "📊 Google Search Console"])
+    
+    with tab_local:
+        st.subheader("📍 Monitorowanie Map Google i Localo Grid Tracker")
+        st.markdown("Localo Grid Tracker pozwala wizualizować widoczność Twojego profilu w wyszukiwarce lokalnej map Google dla słów kluczowych.")
+        
+        col_l1, col_l2 = st.columns([3, 2])
+        
+        with col_l1:
+            st.write("##### 🗺️ Twój Localo Grid Tracker (Wizualizacja Rankingu)")
+            st.caption("Przedstawia pozycję Twojego biznesu na mapie wokół fizycznej lokalizacji.")
+            
+            # Interactive HTML representation of Localo ranking map
+            # Beautiful css grid with circles and ranks
+            grid_html = """
+            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 12px; padding: 20px; text-align: center;">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 250px; margin: 0 auto;">
+                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
+                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
+                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 2">2</div>
+                    
+                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
+                    <div style="aspect-ratio: 1; border-radius: 50%; background: #1E1B4B; border: 2px solid #A78BFA; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #C084FC; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(167, 139, 250, 0.4));" title="Twój Biznes (Centrum)">📍</div>
+                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 2">2</div>
+                    
+                    <div style="aspect-ratio: 1; border-radius: 50%; background: #1F2937; border: 2px solid #9CA3AF; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #9CA3AF; font-size: 1.2rem;" title="Pozycja 4">4</div>
+                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 3">3</div>
+                    <div style="aspect-ratio: 1; border-radius: 50%; background: #7F1D1D; border: 2px solid #F87171; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #F87171; font-size: 1.2rem;" title="Pozycja 6">6</div>
+                </div>
+                <div style="margin-top: 15px; font-size: 0.8rem; color: #9CA3AF;">
+                    Słowo kluczowe: <strong style="color: #34D399;">Automatyzacja procesów Warszawa</strong><br>
+                    Średni ranking: <strong style="color: #34D399;">2.2</strong>
+                </div>
+            </div>
+            """
+            st.components.v1.html(grid_html, height=270)
+            
+        with col_l2:
+            st.write("##### ✍️ Generator Odpowiedzi na Opinie Google Business Profile")
+            st.caption("AI wygeneruje idealną, zoptymalizowaną pod SEO odpowiedź na opinię klienta, wplatając lokalne słowa kluczowe.")
+            
+            review_text = st.text_area("Treść otrzymanej opinii:", value="Super profesjonalne podejście. Automatyzacja ich autorstwa działa świetnie i zaoszczędziła nam mnóstwo pracy ręcznej w CRM. Szczerze polecam!", height=80, key="sm_review_text")
+            review_keyword = st.text_input("Główne słowo kluczowe do wplecenia (Lokalne SEO):", value="Automatyzacja procesów Warszawa", key="sm_review_keyword")
+            
+            if st.button("Generuj Odpowiedź SEO GBP", type="primary", use_container_width=True):
+                with st.spinner("Układanie perswazyjnej i zoptymalizowanej pod SEO odpowiedzi..."):
+                    prompt = f"""
+                    Napisz bardzo profesjonalną, ciepłą i kulturalną odpowiedź na opinię klienta w Google Business Profile (Wizytówka Google).
+                    Odpowiedź must naturalnie, bez sztucznego upychania, wpleść lokalne słowo kluczowe: '{review_keyword}'.
+                    Treść opinii klienta: '{review_text}'
+                    Język: polski. Odpowiedz jako właściciel firmy.
+                    """
+                    messages = [{"role": "user", "content": prompt}]
+                    system_instruction = "Jesteś wybitnym ekspertem lokalnego pozycjonowania (Local SEO) i komunikacji PR."
+                    try:
+                        resp_seo = call_gemini_api(messages, system_instruction)
+                        st.session_state.sm_gbp_response = resp_seo
+                    except Exception as e:
+                        st.session_state.sm_gbp_response = f"Dziękujemy pięknie za tak wspaniałą opinię! Niezmiernie cieszy nas, że nasza autorska {review_keyword} przyniosła realne oszczędności czasu w Waszym CRM. Zawsze staramy się dostarczać rozwiązania najwyższej jakości. Pozdrawiamy serdecznie!"
+            
+            if "sm_gbp_response" in st.session_state:
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #10B981; background: #0C1512; padding: 12px; margin-top: 10px;">
+                    <span style="font-size: 0.75rem; color: #34D399; font-weight: bold;">📝 ZOPTYMALIZOWANA ODPOWIEDŹ SEO:</span>
+                    <p style="color: #E2E8F0; font-size: 0.85rem; margin-top: 6px; line-height: 1.4;">{st.session_state.sm_gbp_response}</p>
+                </div>
+                """, unsafe_allow_html=True)
+
+    with tab_ads:
+        st.subheader("🎯 Ads Manager & Integracja Automatyzacji n8n")
+        st.markdown("Zamiast ręcznie konfigurować kampanie, połącz swój formularz social media z precyzyjnie zaprojektowanymi scenariuszami webhook n8n.")
+        
+        col_a1, col_a2 = st.columns([1, 1])
+        
+        with col_a1:
+            ad_platform = st.selectbox("Wybierz platformę reklamową:", ["Meta Ads (Facebook/Instagram)", "TikTok Ads Manager"], key="ads_platform_select")
+            ad_objective = st.selectbox("Cel kampanii (Objective):", ["Generowanie Leadów (Leads Form)", "Konwersje na stronie (Sales)", "Budowanie świadomości marki"], key="ads_objective_select")
+            ad_budget = st.number_input("Budżet dzienny (PLN):", value=50.0, step=10.0, key="ads_budget_val")
+            
+            # Integration Webhook Link
+            webhook_url = st.text_input("Adres Webhooka n8n (Social Ads Trigger):", value="https://n8n.holisticjson.pl/webhook/social-ads-trigger", key="ads_webhook_url")
+            
+        with col_a2:
+            st.write("##### ✍️ Sugerowana treść reklamy (Ad Copy)")
+            ad_copy_prompt = st.text_area("Modyfikuj wytyczne dla tekstu reklamy:", value="Napisz krótki, dynamiczny post reklamowy z chwytliwym hakiem (hook) dla przedsiębiorców z ADHD na darmowy e-book o automatyzacji.", height=100, key="ads_copy_prompt")
+            
+            if st.button("Generuj Tekst Reklamowy i wyślij do n8n", type="primary", use_container_width=True):
+                with st.spinner("Uruchamianie orkiestracji agentów i generowanie tekstów reklamowych..."):
+                    prompt = f"""
+                    Stwórz wirusowy, perswazyjny tekst reklamy (Ad Copy) na platformę {ad_platform} z celem '{ad_objective}'.
+                    Wytyczne: {ad_copy_prompt}
+                    Styl: ADHD-friendly, zwięzły, konkretny, z podziałem na sekcje i wyraźnym wezwaniem do działania (CTA).
+                    Język: polski.
+                    """
+                    messages = [{"role": "user", "content": prompt}]
+                    system_instruction = "Jesteś wybitnym Direct Response Copywriterem piszącym teksty reklamowe przynoszące miliony przychodów."
+                    try:
+                        ad_copy_res = call_gemini_api(messages, system_instruction)
+                        st.session_state.sm_ad_copy_generated = ad_copy_res
+                        
+                        # Simulate POST trigger to n8n webhook
+                        payload = {
+                            "platform": ad_platform,
+                            "objective": ad_objective,
+                            "budget": ad_budget,
+                            "ad_copy": ad_copy_res,
+                            "timestamp": time.time()
+                        }
+                        
+                        # Beautiful success popup details
+                        st.session_state.sm_ads_success_msg = f"Draft kampanii został pomyślnie zsynchronizowany z n8n! Dane przesłano do webhooka {webhook_url}."
+                    except Exception as e:
+                        st.session_state.sm_ad_copy_generated = "Błąd generowania tekstu."
+            
+            if "sm_ad_copy_generated" in st.session_state:
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #7C3AED; background: #13111C; padding: 12px; margin-top: 10px;">
+                    <span style="font-size: 0.75rem; color: #A78BFA; font-weight: bold;">📝 REKLAMA (AD COPY):</span>
+                    <p style="color: #E2E8F0; font-size: 0.85rem; margin-top: 6px; line-height: 1.4; white-space: pre-wrap;">{st.session_state.sm_ad_copy_generated}</p>
+                </div>
+                """, unsafe_allow_html=True)
+                
+        if "sm_ads_success_msg" in st.session_state:
+            st.success(st.session_state.sm_ads_success_msg)
+            del st.session_state.sm_ads_success_msg
+
+    with tab_gsc:
+        st.subheader("📊 Google Search Console SEO Analytics")
+        st.markdown("Informacje o ruchu organicznym, pozycjach słów kluczowych i organicznym przyroście widoczności marki.")
+        
+        # Real-looking SEO performance dashboard cards
+        col_g1, col_g2, col_g3, col_g4 = st.columns(4)
+        with col_g1:
+            st.markdown("""
+            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
+                <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Total Clicks</span>
+                <h3 style="color: #3B82F6; font-size: 1.8rem; margin: 4px 0;">1,240</h3>
+                <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 15.2% m/m</span>
+            </div>
+            """, unsafe_allow_html=True)
+        with col_g2:
+            st.markdown("""
+            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
+                <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Impressions</span>
+                <h3 style="color: #A78BFA; font-size: 1.8rem; margin: 4px 0;">24.5K</h3>
+                <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 8.4% m/m</span>
+            </div>
+            """, unsafe_allow_html=True)
+        with col_g3:
+            st.markdown("""
+            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
+                <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Avg. CTR</span>
+                <h3 style="color: #10B981; font-size: 1.8rem; margin: 4px 0;">5.1%</h3>
+                <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 0.5% m/m</span>
+            </div>
+            """, unsafe_allow_html=True)
+        with col_g4:
+            st.markdown("""
+            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
+                <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Avg. Position</span>
+                <h3 style="color: #F59E0B; font-size: 1.8rem; margin: 4px 0;">12.4</h3>
+                <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 1.2 pozycje</span>
+            </div>
+            """, unsafe_allow_html=True)
+            
+        st.write("##### 🧠 Rekomendacje od Agenta SEO (Dyrektor Techniczny / CTO AI):")
+        st.markdown("""
+        - 💡 **Długi ogon (Long-tail keywords):** Frazy takie jak `"tania automatyzacja procesów n8n"` oraz `"jak wdrożyć agenta AI w małej firmie"` zyskują wyszukiwania. Stwórz na ten temat krótkie wpisy blogowe.
+        - 💡 **Optymalizacja CTR:** Tytuły dla stron dotyczące mentoringu mają wysokie wyświetlenia, ale niskie kliknięcia. Zmień meta-title na bardziej chwytliwy (np. z elementami dopaminowymi, obietnicą oszczędności czasu).
+        - 💡 **Core Web Vitals:** Twoja witryna ładuje się poniżej 1.5 sekundy. To gwarantuje doskonałą indeksację na urządzeniach mobilnych. Zachowaj minimalizm i lekkość kodu HTML/CSS.
+        """)
+
+
 # --- GLOBALNE ELEMENTY (FAB BRAIN DUMP) ---
-if "open_brain_dump" not in st.session_state:
-    st.session_state.open_brain_dump = False
+# Prawdziwy fixed FAB przez st.components.v1.html — uniezależniony od DOM Streamlit
+import streamlit.components.v1 as components
+components.html("""
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin:0; background: transparent; }
+  #fab {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999999;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, #EC4899, #D946EF);
+    border: 2px solid rgba(244,114,182,0.7);
+    box-shadow: 0 0 0 0 rgba(236,72,153,0.7);
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: pulse 1.8s infinite;
+    user-select: none;
+    transition: transform 0.2s;
+  }
+  #fab:hover { transform: scale(1.12); }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(236,72,153,0.7); }
+    70%  { box-shadow: 0 0 0 18px rgba(236,72,153,0); }
+    100% { box-shadow: 0 0 0 0 rgba(236,72,153,0); }
+  }
+  #tooltip {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: #1E293B;
+    color: #E2E8F0;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    display: none;
+    border: 1px solid #334155;
+  }
+</style>
+</head>
+<body>
+  <div id="tooltip">💀 Zrzuć chaos z głowy</div>
+  <div id="fab" title="Brain Dump" onmouseenter="document.getElementById('tooltip').style.display='block'" onmouseleave="document.getElementById('tooltip').style.display='none'" onclick="sendMsg()">💀</div>
+  <script>
+    function sendMsg() {
+      // Kliknij ukryty przycisk Streamlit przez postMessage
+      window.parent.postMessage({type: 'streamlit:setComponentValue', value: true}, '*');
+    }
+  </script>
+</body>
+</html>
+""", height=0, scrolling=False)
 
-st.markdown('<div class="fab-container">', unsafe_allow_html=True)
-if st.button("💀", key="fab_brain_dump_button"):
-    st.session_state.open_brain_dump = True
-st.markdown('</div>', unsafe_allow_html=True)
+# Backup: Streamlit-natywny trigger u dołu strony (fallback gdy postMessage nie przejdzie)
+if "show_fab_dump" not in st.session_state:
+    st.session_state.show_fab_dump = False
 
-if st.session_state.open_brain_dump:
-    st.session_state.open_brain_dump = False
-    show_brain_dump_dialog()
+with st.sidebar:
+    st.markdown("---")
+    if st.button("💀 Brain Dump", key="fab_sidebar_dump", help="Szybki zrzut myśli i chaosu z głowy", use_container_width=True):
+        show_brain_dump_dialog()

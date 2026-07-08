@@ -1,0 +1,64 @@
+# AntiGravity Ignore List
+# Prevents binary files, caches, and massive directories from crashing or slowing down the agent.
+
+# Virtual environments and dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+.git/
+.idea/
+.vscode/
+
+# Build and archive formats
+dist/
+build/
+*.zip
+*.tar.gz
+*.msix
+*.exe
+*.dll
+*.bin
+
+# Database files
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Documents and office files (prevents UTF-8 decoding crashes)
+*.pdf
+*.docx
+*.doc
+*.xlsx
+*.xls
+*.pptx
+*.ppt
+*.csv
+
+# Media and assets
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.webp
+*.svg
+*.ico
+*.mp3
+*.wav
+*.mp4
+*.mov
+*.avi
+
+# Temp and backup files
+*.tmp
+*.bak
+*.log
+.DS_Store
+Thumbs.db
+
+# Heavy data folders in project subdirectories
+02_knowledge_base/raw/
+Baza_Wiedzy/raw/
+raw/

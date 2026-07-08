@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona nie znaleziona (404) – Serwis GSM Coolfon Łódź</title>
+    <meta name="description" content="Ups! Ta podstrona pękła jak szybka w telefonie... Ale bez obaw – serwis Coolfon GSM w Łodzi pomoże Ci szybko wrócić do sprawności. Wyceń naprawę i zadzwoń!">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        @keyframes floatIcon {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .float-animation {
+            display: inline-block;
+            animation: floatIcon 4s ease-in-out infinite;
+        }
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 212, 212, 0.12) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        /* Custom spacing to center elements on 404 section */
+        .card-404 {
+            padding: 48px; 
+            border-radius: var(--border-radius-m); 
+            background: rgba(10, 22, 40, 0.6); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid var(--color-border); 
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+            text-align: center;
+        }
+        @media (max-width: 576px) {
+            .card-404 {
+                padding: 32px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- --- Header / Navigation --- -->
+    <header class="header">
+        <div class="container">
+            <a href="/" class="logo" id="header-logo-link" style="display: flex; align-items: center; padding: 4px 0;">
+                <img src="/assets/img/coolfon_logo.png" alt="Coolfon GSM Serwis Telefonów Łódź" style="height: 38px; width: auto; display: block; transition: transform 0.3s ease;">
+            </a>
+            
+            <button class="menu-btn" aria-label="Menu">☰</button>
+            
+            <ul class="nav">
+                <li><a href="/" class="nav-link">Główna</a></li>
+                <li><a href="/serwis/" class="nav-link">Serwis</a></li>
+                <li><a href="/cennik/" class="nav-link">Cennik</a></li>
+                <li><a href="/sklep/" class="nav-link">Sklep z akcesoriami</a></li>
+                <li><a href="/blog/" class="nav-link">Blog / Poradnik</a></li>
+                <li><a href="/kontakt/" class="nav-link">Kontakt</a></li>
+                <li><a href="/kontakt/" class="btn btn-primary nav-btn">Zadzwoń teraz</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- --- Hero Section for 404 --- -->
+    <section class="section flex-center hero-section" style="min-height: 85vh; padding-top: 130px; padding-bottom: 60px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+        <canvas id="particles-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.65;"></canvas>
+        <div class="container" style="position: relative; z-index: 1; max-width: 650px; width: 100%;">
+            <div class="card card-404 tilt-3d glow-container">
+                <div class="tilt-3d-child">
+                    <div class="float-animation" style="font-size: 5rem; margin-bottom: 16px;">🔧</div>
+                    <h1 style="font-size: 2.2rem; margin-bottom: 16px; color: #FFF; font-weight: 700;">Strona wymaga drobnej naprawy!</h1>
+                    <p style="color: var(--color-text-muted); font-size: 1.05rem; margin-bottom: 32px; line-height: 1.7; max-width: 520px; margin-left: auto; margin-right: auto;">
+                        Ups! Ta podstrona pękła jak szybka w telefonie... 📱 Ale bez obaw – w Coolfon GSM radzimy sobie z trudniejszymi przypadkami. Szybko zdiagnozujemy ten problem i pomożemy Ci wrócić na właściwe tory.
+                    </p>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;">
+                        <a href="/" class="btn btn-primary" style="padding: 12px 24px; font-size: 0.95rem;">Wróć na główną 🏠</a>
+                        <a href="/cennik/" class="btn btn-secondary" style="padding: 12px 24px; font-size: 0.95rem;">Sprawdź cennik 💰</a>
+                        <a href="tel:+48532840877" class="btn btn-primary" style="background: #25D366; border-color: #25D366; color: #FFF; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); padding: 12px 24px; font-size: 0.95rem; font-weight: 600;">Zadzwoń do nas 📞</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- --- Cookie Banner --- -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="cookie-text">
+            <strong>Szanujemy Twoją prywatność.</strong> Nasza strona używa minimalnej ilości plików cookies wyłącznie do poprawnego działania formularzy, wyceny oraz mapy. Zgadzam się na przetwarzanie moich danych w celach statystycznych i analitycznych. Pełne dane RODO znajdziesz w <a href="/polityka-prywatnosci/" style="text-decoration: underline;">Polityce Prywatności</a>.
+        </div>
+        <div class="cookie-btns">
+            <button class="btn btn-secondary" id="cookie-reject" style="padding: 10px 18px;">Odrzuć</button>
+            <button class="btn btn-primary" id="cookie-accept" style="padding: 10px 18px;">Akceptuję wszystkie</button>
+        </div>
+    </div>
+
+    <!-- --- Floating WhatsApp Button --- -->
+    <a href="https://wa.me/48532840877" class="whatsapp-float" target="_blank" aria-label="Napisz do nas na WhatsApp" rel="noopener">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+            <path d="M12.012 2c-5.506 0-9.989 4.478-9.99 9.984a9.96 9.96 0 0 0 1.333 4.993L2 22l5.13-1.347a9.96 9.96 0 0 0 4.887 1.277h.005c5.505 0 9.989-4.478 9.99-9.985A9.97 9.97 0 0 0 12.012 2zm4.957 14.22c-.271.76-1.562 1.485-2.126 1.543-.538.056-1.077.264-3.488-.708-2.902-1.21-4.757-4.142-4.904-4.337-.147-.195-1.182-1.573-1.182-2.998 0-1.424.747-2.126 1.012-2.42.264-.294.588-.368.784-.368.196 0 .392.004.563.012.18.008.42-.07.656.495.24.576.816 1.996.887 2.14.07.143.118.31.02.502-.097.192-.147.31-.294.48-.147.172-.31.385-.44.516-.147.143-.3.3-.13.593.17.294.755 1.246 1.624 2.019.869.773 1.603 1.012 1.83 1.11.226.1.36.082.496-.074.135-.156.588-.684.747-.916.157-.23.313-.192.527-.113.216.08 1.364.643 1.6.76.236.117.392.176.45.277.058.1.058.58-.213 1.34z"/>
+        </svg>
+    </a>
+
+    <!-- --- Footer --- -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <h3 style="color:#FFF; margin-bottom:16px;">COOLFON GSM</h3>
+                    <p style="font-size:0.85rem; line-height:1.8;">Profesjonalny serwis pogwarancyjny telefonów i sklep z akcesoriami w Łodzi. Szybka wymiana szybek, baterii i precyzyjna diagnoza!</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Serwis</h4>
+                    <ul class="footer-links">
+                        <li><a href="/serwis/#iphone">Naprawa iPhone</a></li>
+                        <li><a href="/serwis/#samsung">Naprawa Samsung</a></li>
+                        <li><a href="/serwis/#xiaomi">Naprawa Xiaomi</a></li>
+                        <li><a href="/cennik/">Cennik Napraw</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Firma</h4>
+                    <ul class="footer-links">
+                        <li><a href="/blog/">Blog / Poradnik</a></li>
+                        <li><a href="/kontakt/">Kontakt</a></li>
+                        <li><a href="/polityka-prywatnosci/">Polityka Prywatności</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 COOLFON GSM SP. Z O.O. Wszelkie prawa zastrzeżone.</p>
+                <p style="font-size: 0.8rem;">Realizacja: <a href="https://jaison.pl" target="_blank" style="color: var(--color-primary);">Agencja AI Jaison</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <!-- Definitions for Gradients -->
+  <defs>
+    <linearGradient id="blueCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+    <linearGradient id="purplePinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6" />
+      <stop offset="100%" stop-color="#EC4899" />
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#050814" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Background Glow -->
+  <circle cx="250" cy="250" r="220" fill="url(#glow)" />
+
+  <!-- Outer Ring (Holistic boundary) -->
+  <circle cx="250" cy="250" r="180" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="2" />
+  <circle cx="250" cy="250" r="180" fill="none" stroke="url(#blueCyanGrad)" stroke-width="1" stroke-dasharray="10 15" stroke-opacity="0.4" />
+
+  <!-- Brain Synapse Constellation / Neural Net Group -->
+  <g transform="translate(0, -10)">
+    <!-- Connections (Lines) -->
+    <path d="M190 200 L250 150 L310 200" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
+    <path d="M190 200 L180 270 L250 330" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
+    <path d="M310 200 L320 270 L250 330" stroke="rgba(255, 255, 255, 0.15)" stroke-width="1.5" />
+    <path d="M250 150 L250 330" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="4 4" />
+    <path d="M180 270 L320 270" stroke="rgba(255, 255, 255, 0.1)" stroke-width="1" stroke-dasharray="4 4" />
+
+    <!-- Left Bracket Brain Side { (Structured JSON) -->
+    <path d="M220 170 C170 175 160 210 170 230 C180 250 155 260 155 265 C155 270 180 280 170 300 C160 320 170 355 220 360" 
+          fill="none" stroke="url(#blueCyanGrad)" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Right Bracket Brain Side } -->
+    <path d="M280 170 C330 175 340 210 330 230 C320 250 345 260 345 265 C345 270 320 280 330 300 C340 320 330 355 280 360" 
+          fill="none" stroke="url(#blueCyanGrad)" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Central AI Neural Core -->
+    <circle cx="250" cy="265" r="28" fill="#0A0F1D" stroke="url(#blueCyanGrad)" stroke-width="3" />
+    
+    <!-- Pulse Core -->
+    <circle cx="250" cy="265" r="14" fill="url(#blueCyanGrad)" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0.3;0.8" dur="3s" repeatCount="indefinite" />
+      <animate attributeName="r" values="14;18;14" dur="3s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="250" cy="265" r="6" fill="#FFFFFF" />
+
+    <!-- Node Dots (The AIDHD friendliness / Ideas spark) -->
+    <!-- Top Node -->
+    <circle cx="250" cy="150" r="8" fill="#FFFFFF" stroke="#3B82F6" stroke-width="2" />
+    <!-- Left Top Node -->
+    <circle cx="190" cy="200" r="6" fill="#06B6D4" />
+    <!-- Right Top Node -->
+    <circle cx="310" cy="200" r="6" fill="#06B6D4" />
+    <!-- Left Bottom Node -->
+    <circle cx="180" cy="270" r="6" fill="#3B82F6" />
+    <!-- Right Bottom Node -->
+    <circle cx="320" cy="270" r="6" fill="#3B82F6" />
+    <!-- Bottom Node -->
+    <circle cx="250" cy="330" r="8" fill="#FFFFFF" stroke="#06B6D4" stroke-width="2" />
+  </g>
+
+  <!-- Typography -->
+  <text x="250" y="435" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="28" fill="#FFFFFF" letter-spacing="1">
+    HOLISTIC J<tspan fill="#3B82F6">{</tspan>a<tspan fill="#3B82F6">}</tspan>SON
+  </text>
+  <text x="250" y="465" text-anchor="middle" font-family="'Inter', sans-serif" font-weight="500" font-size="12" fill="#94A3B8" letter-spacing="4" opacity="0.7">
+    STRUCTURED AI DHD SYSTEM
+  </text>
+</svg>
