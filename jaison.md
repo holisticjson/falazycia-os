@@ -23,42 +23,43 @@ git add -A; git commit -m "Uporzadkowanie repozytorium do standardu 10 folderow"
 
 ### Pobranie zmian na drugim komputerze (laptopie):
 ```powershell
+# WAŻNE: Najpierw musisz wejść do folderu sklonowanego projektu: cd holistic-jason
 git pull
 ```
 
 ---
 
 ## 🔑 3. Autoryzacja Google Cloud (GCP / Vertex AI)
-Uruchom te komendy, jeśli system zgłosi brak uprawnień do Vertex AI lub GCP na nowym urządzeniu:
+Uruchom te komendy na nowym urządzeniu (laptopie), aby zalogować się na konto z pełnymi środkami i dostępem do Vertex AI:
 
 ```powershell
-# 1. Logowanie do Twojego głównego konta Google:
-gcloud auth login tomaszc4y@gmail.com
+# 1. Logowanie na Twoje główne konto agencyjne (holisticjson@gmail.com):
+gcloud auth login holisticjson@gmail.com
 
 # 2. Uwierzytelnienie bibliotek deweloperskich (Application Default Credentials):
 gcloud auth application-default login
 
-# 3. Ustawienie aktywnego projektu deweloperskiego:
-gcloud config set project coolfon-project
+# 3. Ustawienie aktywnego projektu dla agencji i aplikacji Streamlit:
+gcloud config set project holistic-dashboard-dev
 ```
 
 ---
 
 ## 🚀 4. Skrypty Wdrożeniowe (Deploy)
 
-### Wdrożenie strony agencyjnej na FTP Hostido (jaison.pl / holisticjson.pl):
+### A. DYNAMICZNY DASHBOARD (Streamlit - Hermes OS):
+Działa na subdomenie **`app.jason.pl`** oraz **`app.holisticjson.pl`**.
+Jest uruchamiany i kompilowany jako kontener na **Google Cloud Run** w projekcie **`holistic-dashboard-dev`** za pomocą skryptu PowerShell:
+```powershell
+# Uruchom ten skrypt z poziomu PowerShell:
+.\02-os-jaison\src\tools\deploy_cloud_run.ps1
+```
+
+### B. STATYCZNA STRONA AGENCJI (Vite Landing Page):
+Szybki front-end pod domenami **`jaison.pl`** oraz **`holisticjson.pl`**.
+Wdrażana na serwer **FTP Hostido** za pomocą skryptu Python:
 ```powershell
 python deploy_jason.py
-```
-
-### Wdrożenie strony agencyjnej na Google Cloud Run (holisticjson.pl):
-```powershell
-python deploy_cloud_run.py
-```
-
-### Kompilacja i wdrożenie Bar Jaś (kurczakujasia.pl) przez FTP:
-```powershell
-python build_and_deploy_v2.py
 ```
 
 ---
@@ -68,3 +69,4 @@ Jeśli chcesz zrobić szybki backup całego repozytorium na pendrive (dysk `D:`)
 ```powershell
 Compress-Archive -Path "C:\Aplikacje MVP\Holistic Jason\*" -DestinationPath "D:\jaison_laptop_backup.zip" -Force
 ```
+
