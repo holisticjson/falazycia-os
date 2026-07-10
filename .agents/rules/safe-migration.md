@@ -12,3 +12,8 @@ Podczas przenoszenia plików, zmiany struktury katalogów oraz aktualizowania ko
    - W przypadku nadpisywania istniejących plików konfiguracyjnych, system musi automatycznie wygenerować kopię zapasową o nazwie `<nazwa_pliku>_backup.<rozszerzenie>`.
    - Wszelkie destrukcyjne operacje (usuwanie nienależących do nas danych lub usuwanie dużych folderów) wymagają jednoznacznej, tekstowej zgody użytkownika.
 5. **Autoryzacja (Zero-Guessing):** Przed uruchomieniem jakichkolwiek skryptów chmurowych (GCP, Firebase), skrypt lub agent musi sprawdzić istnienie i poprawność kluczy autoryzacyjnych w `.env` lub domyślnych poświadczeń GCP Application Default Credentials, zamiast rzucać surowymi wyjątkami w runtime.
+
+## Proaktywne Sprzątanie (Proactive Cleanup Requirement)
+- **Usuwanie Duplikatów i Staroci:** Przy każdej migracji lub przenoszeniu plików, agent ma bezwzględny obowiązek natychmiastowego usunięcia starych plików i folderów z ich pierwotnych lokalizacji po pomyślnym przeniesieniu danych. Kategorycznie zabrania się pozostawiania starych kopii lub osieroconych plików w poprzednich lokalizacjach, by nie wprowadzać chaosu.
+- **Bezpieczna eliminacja:** Jeśli pliki są krytycznymi skryptami lub kodem źródłowym, a użytkownik nie nakazał ich trwałego usunięcia, należy je przenieść do `09-archive/` pod odpowiednią nazwą, by nie wprowadzały szumu kognitywnego i błędów w aktywnej strukturze repozytorium.
+
