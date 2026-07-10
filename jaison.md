@@ -2,6 +2,8 @@
 
 Ten podręczny plik zawiera wszystkie najczęściej używane polecenia konsolowe do zarządzania **Hermes OS (Streamlit)**, Gitem, chmurą Google Cloud oraz wdrożeniami (deploy).
 
+**Ścieżka projektu na obu komputerach:** `C:\Aplikacje MVP\Holistic Jason`
+
 Skopiuj wybraną komendę i uruchom ją bezpośrednio w PowerShell w tym katalogu.
 
 ---
@@ -23,7 +25,7 @@ git add -A; git commit -m "Uporzadkowanie repozytorium do standardu 10 folderow"
 
 ### Pobranie zmian na drugim komputerze (laptopie):
 ```powershell
-# WAŻNE: Najpierw musisz wejść do folderu sklonowanego projektu: cd holistic-jason
+# WAŻNE: Najpierw przejdź do katalogu projektu: cd "C:\Aplikacje MVP\Holistic Jason"
 git pull
 ```
 
@@ -48,7 +50,7 @@ gcloud config set project holistic-dashboard-dev
 ## 🚀 4. Skrypty Wdrożeniowe (Deploy)
 
 ### A. DYNAMICZNY DASHBOARD (Streamlit - Hermes OS):
-Działa na subdomenie **`app.jason.pl`** oraz **`app.holisticjson.pl`**.
+Działa pod głównym adresem **`app.jason.pl`**.
 Jest uruchamiany i kompilowany jako kontener na **Google Cloud Run** w projekcie **`holistic-dashboard-dev`** za pomocą skryptu PowerShell:
 ```powershell
 # Uruchom ten skrypt z poziomu PowerShell:
@@ -56,7 +58,7 @@ Jest uruchamiany i kompilowany jako kontener na **Google Cloud Run** w projekcie
 ```
 
 ### B. STATYCZNA STRONA AGENCJI (Vite Landing Page):
-Szybki front-end pod domenami **`jaison.pl`** oraz **`holisticjson.pl`**.
+Szybki front-end pod głównym adresem **`jaison.pl`**.
 Wdrażana na serwer **FTP Hostido** za pomocą skryptu Python:
 ```powershell
 python deploy_jason.py
@@ -69,4 +71,5 @@ Jeśli chcesz zrobić szybki backup całego repozytorium na pendrive (dysk `D:`)
 ```powershell
 Compress-Archive -Path "C:\Aplikacje MVP\Holistic Jason\*" -DestinationPath "D:\jaison_laptop_backup.zip" -Force
 ```
+
 
