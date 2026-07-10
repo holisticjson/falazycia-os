@@ -55,11 +55,39 @@ python deploy_jaison.py
 
 ---
 
-## 💾 5. Szybki Backup na Pendrive (D:)
+## 📱 5. Narzędzia Multimedialne i Generowanie Treści
+
+Dyrektorzy AI dysponują bezpłatnymi, lokalnymi silnikami do dowożenia grafik i materiałów wideo bez płatnych subskrypcji:
+
+### A. Generator Karuzel (Montserrat / SegoeUI + PIL)
+Generuje piękny, spójny brandingowo zestaw slajdów PNG (1080x1080) pod LinkedIn / Instagram:
+```powershell
+# Uruchomienie skryptu generującego slajdy karuzeli:
+python 02-os-jaison/integrations/generate_carousel.py
+```
+*   **Jak działa:** Skrypt dzieli tekst wejściowy oznaczony separatorami `---`, automatycznie zawija wiersze, dobiera kolory marki Jaison (ciemny granat, błękit Sky, biel) i zapisuje slajdy w katalogu `output_carousel/`.
+
+### B. Autonomiczny Generator Wideo (Faceless Reel Generator)
+Generuje kompletny pionowy film wideo 9:16 (TikTok, Reels, Shorts) łączący lektora Neural, przebitki HD i napisy:
+```powershell
+# Zawsze najpierw ustaw klucz Pexels w konsoli (potrzebny do darmowych przebitek HD):
+$env:PEXELS_API_KEY="Twój_Klucz_Pexels"
+
+# Uruchomienie generatora wideo:
+python 02-os-jaison/src/faceless_generator.py
+```
+*   **Jak działa:** Pobiera skrypt (GHOST v2) ➜ Generuje darmowego, bardzo realistycznego lektora polskiego przez **Edge-TTS** (głos `pl-PL-MarekNeural`) ➜ Pobiera pionowy klip B-Roll z API **Pexels** ➜ Montuje i przycina wideo za pomocą **MoviePy** ➜ Generuje i nakłada napisy dynamiczne.
+
+### C. Instalacja zależności na nowym komputerze (laptopie)
+Przed pierwszym uruchomieniem narzędzi na laptopie, zainstaluj wszystkie wymagane biblioteki (Pillow, edge-tts, MoviePy, Streamlit):
+```powershell
+pip install -r requirements.txt
+```
+
+---
+
+## 💾 6. Szybki Backup na Pendrive (D:)
 Jeśli chcesz zrobić szybki backup całego repozytorium na pendrive (dysk `D:`):
 ```powershell
 Compress-Archive -Path "C:\Aplikacje MVP\Holistic Jason\*" -DestinationPath "D:\jaison_laptop_backup.zip" -Force
 ```
-
-
-
