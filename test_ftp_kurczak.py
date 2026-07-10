@@ -1,7 +1,7 @@
 import os
 import ftplib
 
-FTP_HOST = "kurczakujasia.pl"
+FTP_HOST = "lysitheab.hostido.net.pl"
 FTP_USER = "deploy@kurczakujasia.pl"
 FTP_PASS = "Kosmos!!@@1234"
 

@@ -13,11 +13,11 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <link rel="canonical" href="https://kurczakujasia.pl/menu.html">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=2.2.2">
   <style>
 #jasbot-widget { position:fixed; bottom:2rem; right:2rem; z-index:10000; font-family:'Plus Jakarta Sans',sans-serif; }
-.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; }
-.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); }
+.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; animation: chickenPulse 3s infinite ease-in-out; }
+.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); animation: none; }
 .jasbot-badge { position:absolute; top:-5px; right:-5px; background:#FCC036; color:#2D1A1E; font-weight:800; font-size:0.8rem; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
 .jasbot-window { position:fixed; bottom:7.5rem; right:2rem; width:380px; height:520px; background:#FAF6EE; border:3px solid #2D1A1E; border-radius:1.5rem; box-shadow:0px 15px 40px rgba(0,0,0,0.15),6px 6px 0px #2D1A1E; display:flex; flex-direction:column; overflow:hidden; transform:scale(0.8) translateY(50px); opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); z-index:10001; }
 .jasbot-window.open { transform:scale(1) translateY(0); opacity:1; pointer-events:all; }
@@ -46,6 +46,18 @@
   .jasbot-label { display:none !important; }
 }
 #jasbot-widget:has(.jasbot-window.open) .jasbot-label { display:none !important; }
+@keyframes chickenPulse {
+  0% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+  50% { transform: scale(1.06); box-shadow: 0px 12px 28px rgba(211,47,47,0.6), 4px 4px 0px #2D1A1E; }
+  100% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+}
+@keyframes thinkingDots {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.thinking-dot { animation: thinkingDots 1.4s infinite both; font-weight: bold; font-size: 1.2rem; }
+.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
 </style>
   
 </head>
@@ -306,11 +318,25 @@
     box-shadow: var(--shadow-flat);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
+    /* Animated staggered entry */
+    animation: cardAppear 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) both;
   }
 
   .jas-menu-card:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: var(--shadow-flat-hover);
+    transform: translate(-6px, -6px);
+    box-shadow: 10px 10px 0px var(--primary-color), 13px 13px 0px var(--dark-brown);
+    border-color: var(--secondary-color);
+  }
+
+  @keyframes cardAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .jas-card-badge {
@@ -581,10 +607,10 @@
   <!-- FILTRY KATEGORII -->
   <div class="jas-menu-filters">
     <button class="jas-filter-btn active" data-category="all">Wszystko 🍗</button>
-    <button class="jas-filter-btn" data-category="sets">Obiadowe Zestawy đą</button>
-    <button class="jas-filter-btn" data-category="kebab">Kebaby & Burgery đ</button>
-    <button class="jas-filter-btn" data-category="sides">Dodatki đ</button>
-    <button class="jas-filter-btn" data-category="drinks">Napoje đĽ¤</button>
+    <button class="jas-filter-btn" data-category="sets">Obiadowe Zestawy 🍽</button>
+    <button class="jas-filter-btn" data-category="kebab">Kebaby & Burgery 🌯</button>
+    <button class="jas-filter-btn" data-category="sides">Dodatki 🍟</button>
+    <button class="jas-filter-btn" data-category="drinks">Napoje 🥤</button>
   </div>
 
   <!-- LISTA DAŃ -->
@@ -594,7 +620,7 @@
 
   <!-- INFORMACJA O ALERGENACH -->
   <div class="jas-allergen-notice">
-    <h4>â ď¸ Informacja o alergenach i wagach</h4>
+    <h4>⚠️ Informacja o alergenach i wagach</h4>
     <p>Informujemy, że nasze potrawy mogą zawierać substancje alergogenne, w tym: zboża zawierające gluten, jaja, mleko (laktozę), seler, gorczycę oraz nasiona sezamu. Szczegółowy wykaz alergenów dla każdego dania dostępny jest u obsługi baru.</p>
     <p>Podane wagi potraw są wartościami przybliżonymi (waga przed obróbką termiczną / gramatura netto) i mogą się nieznacznie różnić w zależności od partii surowca.</p>
   </div>
@@ -614,129 +640,210 @@
       </div>
     </div>
     <button class="jas-cart-checkout-btn" id="jas-cart-checkout-btn">
-      Zamów przez WhatsApp đ🔥Ľ
+      Zamów przez WhatsApp 🔥
     </button>
   </div>
 </div>
 
 <script>
-  // DAŃ BAZA DANYC  const JAS_MENU_ITEMS = [
-  {
-    "id": "set-chicken-whole",
-    "name": "Zestaw Kurczak z Rożna (Cały)",
-    "category": "sets",
-    "price": 52.0,
-    "description": "Cały soczysty kurczak z rożna (~900g) + duża porcja złocistych frytek (300g) lub opiekanych ziemniaczków + duży zestaw 3 świeżych domowych surówek (300g) + sos autorski czosnkowy i pikantny gratis!",
-    "badge": "DLA RODZINY 👨‍👩‍👧‍👦",
-    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
-  },
-  {
-    "id": "set-chicken-half",
-    "name": "Zestaw Kurczak z Rożna (Połówka)",
-    "category": "sets",
-    "price": 34.0,
-    "description": "Połówka chrupiącego kurczaka (~450g) + złociste frytki (150g) lub opiekane ziemniaczki + zestaw 3 świeżych domowych surówek (150g) + sos autorski czosnkowy lub pikantny gratis!",
-    "badge": "KULTOWE 🔥",
-    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
-  },
+  const JAS_MENU_ITEMS = [
   {
     "id": "chicken-whole",
-    "name": "Legendarny Kurczak z Rożna (Cały)",
+    "name": "Kurczak z rożna (1 sztuka)",
     "category": "sets",
-    "price": 38.0,
-    "description": "Cały dorodny kurczak z polskiej hodowli (~900g), ręcznie marynowany w autorskiej kompozycji 12 ziół, pieczony na złocisty kolor (sama sztuka bez dodatków)",
+    "price": 40.0,
+    "description": "Legendarny, cały chrupiący kurczak z rożna obrotowego, ręcznie marynowany w kompozycji 12 ziół i powoli pieczony na złocisty kolor (sama sztuka).",
     "badge": "BESTSELLER 👑",
     "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
   },
   {
     "id": "chicken-half",
-    "name": "Kurczak z Rożna (Połówka)",
+    "name": "Kurczak z rożna (1/2 sztuki)",
     "category": "sets",
     "price": 20.0,
-    "description": "Sama połówka soczystego kurczaka (~450g) o chrupiącej, złotej skórce, świeżo pieczona na tradycyjnym rożnie obrotowym (sama sztuka, bez dodatków)",
-    "badge": null,
+    "description": "Soczysta połówka chrupiącego kurczaka, pieczona na tradycyjnym rożnie obrotowym (sama połówka).",
+    "badge": "KULTOWE 🔥",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "set-half-chicken-fries-salad",
+    "name": "Zestaw z połówką kurczaka (z frytkami i surówką)",
+    "category": "sets",
+    "price": 36.0,
+    "description": "Sycący zestaw obiadowy: połówka soczystego kurczaka z rożna (20 zł) podawana ze złocistymi frytkami (150g — 9 zł) oraz świeżą, domową surówką (250g — 7 zł).",
+    "badge": "POLECAMY ⭐",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "set-whole-chicken-fries-salad",
+    "name": "Zestaw z całym kurczakiem (z frytkami i surówką)",
+    "category": "sets",
+    "price": 56.0,
+    "description": "Olbrzymi zestaw dla naprawdę głodnych lub dla dwojga: cały, legendarny kurczak z rożna (40 zł) podawany ze złocistymi frytkami (150g — 9 zł) oraz świeżą, domową surówką (250g — 7 zł).",
+    "badge": "GIGANT 👑",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "set-chicken-salad",
+    "name": "Kurczak z rożna zestaw (ze świeżymi surówkami)",
+    "category": "sets",
+    "price": 40.0,
+    "description": "Cały chrupiący kurczak z rożna (1 sztuka) serwowany w zestawie z naszym codziennie przygotowywanym, świeżym bukietem domowych surówek (250g).",
+    "badge": "Z SURÓWKAMI 🥗",
     "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
   },
   {
     "id": "set-kebab",
-    "name": "Zestaw Kebab z Frytkami i Surówkami",
+    "name": "Kebab zestaw (z frytkami lub ryżem)",
     "category": "sets",
-    "price": 32.0,
-    "description": "Sycąca porcja dobrze przypieczonego mięsa kebab (~180g) + frytki (150g) + zestaw 3 świeżych surówek (150g) + sos autorski czosnkowy lub pikantny",
-    "badge": "HIT 👍",
+    "price": 35.0,
+    "description": "Sycąca porcja dobrze doprawionego, soczystego mięsa kebab podawana ze złocistymi frytkami lub sypkim ryżem oraz bukietem surówek i sosem.",
+    "badge": "SYCĄCY 🔥",
     "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_z_frytkami.png"
   },
   {
     "id": "kebab-bun",
-    "name": "Kebab w Bułce z Surówkami",
+    "name": "Kebab w bułce (z surówkami)",
     "category": "kebab",
-    "price": 22.0,
-    "description": "Opiekana rzemieślnicza bułka z dużą ilością mięsa kebab (~150g), świeżą kapustą, pomidorem, ogórkiem, cebulką i domowym sosem (czosnek/ostry/mieszany)",
-    "badge": null,
-    "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_w_bulce.png"
+    "price": 25.0,
+    "description": "Opiekana, chrupiąca rzemieślnicza bułka wypełniona soczystym mięsem kebab, świeżymi warzywami oraz autorskim sosem (czosnkowym lub pikantnym).",
+    "badge": "HIT 👍",
+    "image": "assets/img/kebab_w_bulce.jpg"
+  },
+  {
+    "id": "kebab-tortilla",
+    "name": "Kebab w tortilli",
+    "category": "kebab",
+    "price": 24.0,
+    "description": "Ciepła tortilla ściśle zawinięta z dużą ilością przypieczonego mięsa kebab, chrupiącymi surówkami i wyrazistymi sosami.",
+    "badge": "KLASYK 🌯",
+    "image": "assets/img/kebab_w_tortilli.jpg"
   },
   {
     "id": "burger-chicken",
-    "name": "Hamburger z Filetem z Kurczaka",
+    "name": "Hamburger z filetem z kurczaka",
     "category": "kebab",
     "price": 20.0,
-    "description": "Chrupiący, świeżo smażony panierowany filet z piersi kurczaka (~150g) w bułce sezamowej z pomidorem, ogórkiem, sałatą i wyrazistym sosem burgerowym",
-    "badge": "DLA GŁODNYCH ⚡",
+    "description": "Chrupiący panierowany filet z piersi kurczaka w puszystej bułce sezamowej z pomidorem, ogórkiem, sałatą i wyrazistym sosem burgerowym.",
+    "badge": "CHRUPIĄCY 🍗",
     "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Hamburger-z-filetem-z-kurczaka-2-1.png"
   },
   {
-    "id": "set-kids",
-    "name": "Smerf – Zestaw dla Dzieci",
-    "category": "sets",
-    "price": 18.0,
-    "description": "Delikatne domowe kąski z piersi kurczaka (~100g) + frytki (100g) + łagodny ketchup + zimny soczek owocowy w kartoniku (200ml)",
-    "badge": "DLA DZIECI 👦",
-    "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/zestaw_dla_dzieci.png"
+    "id": "burger-classic",
+    "name": "Hamburger",
+    "category": "kebab",
+    "price": 16.0,
+    "description": "Klasyczny, soczysty kotlet wołowy w bułce z sezamem, podawany z chrupiącym ogórkiem kiszonym, cebulką, ketchupem i musztardą.",
+    "badge": "KLASYK 🍔",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
   },
   {
-    "id": "soup-day",
-    "name": "Domowa Zupa Dnia",
-    "category": "sides",
+    "id": "hot-dog",
+    "name": "Hot-Dog",
+    "category": "kebab",
+    "price": 14.0,
+    "description": "Gorąca parówka w chrupiącej, podgrzanej bułce z ulubionymi sosami (ketchup, musztarda, duński) i prażoną cebulką.",
+    "badge": "SZYBKA PRZEKĄSKA 🌭",
+    "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "sausage-grilled",
+    "name": "Kiełbasa z grilla (porcja 100g)",
+    "category": "sets",
     "price": 10.0,
-    "description": "Pyszna, gorąca zupa (350ml) gotowana codziennie rano na świeżych warzywach i mięsie (np. pomidorowa, rosół z makaronem rzemieślniczym lub żurek — zapytaj nas o dzisiejszą!)",
-    "badge": "ŚWIEŻA 🍲",
-    "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80"
+    "description": "Aromatyczna, doskonale przypieczona na grillu tradycyjna polska kiełbasa, podawana na gorąco z musztardą lub ketchupem (cena za porcję 100g).",
+    "badge": "Z GRILLA 🪵",
+    "image": "assets/img/kielbasa_z_grilla.png"
   },
   {
     "id": "fries",
-    "name": "Złociste Frytki (Porcja 150g)",
+    "name": "Frytki (porcja 150g)",
     "category": "sides",
-    "price": 10.0,
-    "description": "Chrupiące na zewnątrz, miękkie i puszyste w środku złociste frytki, idealnie usmażone i posolone",
-    "badge": null,
+    "price": 9.0,
+    "description": "Złociste, chrupiące frytki, idealnie usmażone i delikatnie posolone - doskonały dodatek do każdego zamówienia.",
+    "badge": "KULTOWE 🍟",
     "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
   },
   {
-    "id": "potatoes",
-    "name": "Opiekane Ziemniaczki (Porcja 150g)",
+    "id": "salad-portion",
+    "name": "Surówka (porcja 250g)",
     "category": "sides",
-    "price": 10.0,
-    "description": "Aromatyczne, złociste połówki ziemniaczków pieczone w ziołach, miękkie w środku i chrupiące z wierzchu",
-    "badge": null,
-    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
-  },
-  {
-    "id": "salads",
-    "name": "Zestaw Domowych Surówek",
-    "category": "sides",
-    "price": 8.0,
-    "description": "Świeża, witaminowa porcja (150g) trzech domowych surówek (biała kapusta, czerwona kapusta, marchewka) przygotowywana codziennie na miejscu",
-    "badge": "WITAMINY 🥗",
+    "price": 7.0,
+    "description": "Świeżo siekane, pełne witamin domowe surówki przygotowywane codziennie rano ze świeżych warzyw.",
+    "badge": "ZDROWY WYBÓR 🥗",
     "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"
   },
   {
-    "id": "drinks",
-    "name": "Zimne Napoje (Pepsi / Mirinda 0.33l)",
+    "id": "bun-poznanska",
+    "name": "Bułka Poznańska",
+    "category": "sides",
+    "price": 2.5,
+    "description": "Świeża, chrupiąca rzemieślnicza Bułka Poznańska (przedzielana), doskonała jako tradycyjny dodatek do kurczaka z rożna.",
+    "badge": "ŚWIEŻA 🥖",
+    "image": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "bun-kajzerka",
+    "name": "Bułka Kajzerka",
+    "category": "sides",
+    "price": 1.0,
+    "description": "Klasyczna, świeża bułka kajzerka z chrupiącą złocistą skórką, idealny tradycyjny dodatek.",
+    "badge": null,
+    "image": "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "drink-coffee",
+    "name": "Kawa",
+    "category": "drinks",
+    "price": 10.0,
+    "description": "Aromatyczna, gorąca kawa parzona, idealna na każdą porę dnia.",
+    "badge": "GORĄCA ☕",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "drink-tea",
+    "name": "Herbata",
+    "category": "drinks",
+    "price": 6.0,
+    "description": "Gorąca, rozgrzewająca herbata podawana z cytryną.",
+    "badge": null,
+    "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "drink-pepsi",
+    "name": "Pepsi",
     "category": "drinks",
     "price": 8.0,
-    "description": "Zimna, orzeźwiająca puszka Pepsi, Pepsi Zero, Mirinda lub 7Up (0.33l) prosto z lodówki",
+    "description": "Mocno schłodzona, orzeźwiająca puszka Pepsi (lub inny zimny napój z oferty) prosto z lodówki.",
+    "badge": "PROMO 🥤",
+    "image": "assets/img/pepsi_bottle.png"
+  },
+  {
+    "id": "fee-packaging",
+    "name": "Opakowanie",
+    "category": "sides",
+    "price": 1.0,
+    "description": "Opakowanie na wynos zapewniające bezpieczny i higieniczny transport posiłku oraz utrzymanie temperatury.",
+    "badge": "OPŁATA 📦",
+    "image": "assets/img/opakowanie.png"
+  },
+  {
+    "id": "fee-cutlery",
+    "name": "Sztućce",
+    "category": "sides",
+    "price": 0.5,
+    "description": "Komplet jednorazowych, ekologicznych sztućców drewnianych (widelec, nóż, serwetka) dla Twojej wygody.",
     "badge": null,
-    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80"
+    "image": "assets/img/sztucce.png"
+  },
+  {
+    "id": "fee-bottle-deposit",
+    "name": "Kubek / Kaucja za butelkę",
+    "category": "sides",
+    "price": 0.5,
+    "description": "Kaucja zwrotna za butelkę szklaną lub jednorazowy kubek do napojów na wynos.",
+    "badge": null,
+    "image": "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=600&q=80"
   }
 ];
 
@@ -751,9 +858,10 @@
       ? JAS_MENU_ITEMS 
       : JAS_MENU_ITEMS.filter(item => item.category === categoryFilter);
 
-    filtered.forEach(item => {
+    filtered.forEach((item, index) => {
       const card = document.createElement("div");
       card.className = "jas-menu-card";
+      card.style.animationDelay = `${index * 0.05}s`;
       card.setAttribute("data-category", item.category);
 
       let badgeHTML = item.badge ? `<div class="jas-card-badge">${item.badge}</div>` : "";
@@ -851,7 +959,7 @@
         total += item.qty * item.price;
       }
 
-      const textMessage = `🍗 NOWE ZAMÓWIENIE - BAR JAŚ 🍗\\n---------------------------------\\n🛒 POZYCJE:\\n${orderLines}---------------------------------\\nđ🔥Ľ SUMA: ${total.toFixed(2).replace('.', ',')} zł\\n---------------------------------\\nProszę o przygotowanie zamówienia! Dane do kontaktu i odbioru podam za chwilę.`;
+      const textMessage = `🍗 NOWE ZAMÓWIENIE - BAR JAŚ 🍗\\n---------------------------------\\n🛒 POZYCJE:\\n${orderLines}---------------------------------\\n🔥 SUMA: ${total.toFixed(2).replace('.', ',')} zł\\n---------------------------------\\nProszę o przygotowanie zamówienia! Dane do kontaktu i odbioru podam za chwilę.`;
       const waUrl = `https://wa.me/48663970016?text=${encodeURIComponent(textMessage)}`;
       window.open(waUrl, "_blank");
     }
@@ -908,7 +1016,7 @@
       <p>
         <strong>Adres:</strong><br>
         ul. Rokicińska 190/214, 92-412 Łódź<br>
-        (obok Selgros, dzielnica Widzew)
+        (na parkingu, przy samym wejściu do Selgrosa)
       </p>
       <p><strong>Telefon:</strong> <a href="tel:+48663970016">+48 663 970 016</a></p>
       <p><strong>E-mail:</strong> <a href="mailto:kontakt@kurczakujasia.pl">kontakt@kurczakujasia.pl</a></p>
@@ -929,7 +1037,7 @@
 </footer>
 
 
-<script src="assets/js/main.js"></script>
-<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/main.js?v=2.2.2"></script>
+<script src="assets/js/chatbot.js?v=2.2.2"></script>
 </body>
 </html>

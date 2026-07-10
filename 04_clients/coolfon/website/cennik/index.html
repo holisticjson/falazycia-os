@@ -7,6 +7,13 @@
     <meta name="description" content="Przejrzysty cennik napraw telefonów w Łodzi. Sprawdź koszt wymiany ekranu, baterii oraz gniazda USB dla iPhone, Samsung i Xiaomi. Wybierz model i zobacz wycenę!">
     <link rel="stylesheet" href="/css/style.css">
     
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://coolfon.pl/cennik/">
+    <meta property="og:title" content="Cennik Napraw Telefonów Łódź GSM – Serwis Coolfon">
+    <meta property="og:description" content="Przejrzysty cennik napraw telefonów w Łodzi. Sprawdź koszt wymiany wyświetlacza, szybki, baterii oraz gniazda USB dla iPhone, Samsung i Xiaomi. Darmowa diagnoza stacjonarna!">
+    <meta property="og:image" content="https://coolfon.pl/assets/img/coolfon_og_share.png">
+    
     <style>
         .filter-container {
             display: flex;
@@ -85,13 +92,13 @@
             
             <!-- Filters -->
             <div class="filter-container">
-                <select id="filter-brand" class="filter-select">
+                <select id="filter-brand" class="filter-select" aria-label="Filtruj cennik według marki telefonu">
                     <option value="">Wszystkie marki</option>
                     <option value="apple">Apple (iPhone)</option>
                     <option value="samsung">Samsung</option>
                     <option value="xiaomi">Xiaomi / POCO</option>
                 </select>
-                <input type="text" id="filter-search" placeholder="Szukaj modelu (np. iPhone 14)..." style="flex: 2; min-width: 250px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;">
+                <input type="text" id="filter-search" placeholder="Szukaj modelu (np. iPhone 14)..." aria-label="Wyszukaj model telefonu w cenniku" style="flex: 2; min-width: 250px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;">
             </div>
 
             <!-- Price Table -->

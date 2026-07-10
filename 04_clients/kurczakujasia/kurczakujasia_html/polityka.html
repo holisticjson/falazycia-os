@@ -4,20 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Polityka Prywatności i RODO | Bar Jaś</title>
-  <meta name="description" content="Polityka prywatności i informacje o ochronie danych osobowych (RODO) dla strony internetowej Baru Jaś, ul. Rokicińska 190, Łódź.">
+  <meta name="description" content="Polityka prywatności i informacje o ochronie danych osobowych (RODO) dla strony internetowej Baru Jaś, ul. Rokicińska 190/214, Łódź.">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="Polityka Prywatności i RODO | Bar Jaś">
-  <meta property="og:description" content="Polityka prywatności i informacje o ochronie danych osobowych (RODO) dla strony internetowej Baru Jaś, ul. Rokicińska 190, Łódź.">
+  <meta property="og:description" content="Polityka prywatności i informacje o ochronie danych osobowych (RODO) dla strony internetowej Baru Jaś, ul. Rokicińska 190/214, Łódź.">
   <meta property="og:image" content="https://kurczakujasia.pl/assets/img/logo.png">
   <meta property="og:url" content="https://kurczakujasia.pl/polityka.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <link rel="canonical" href="https://kurczakujasia.pl/polityka.html">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=2.2.2">
   <style>
 #jasbot-widget { position:fixed; bottom:2rem; right:2rem; z-index:10000; font-family:'Plus Jakarta Sans',sans-serif; }
-.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; }
-.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); }
+.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; animation: chickenPulse 3s infinite ease-in-out; }
+.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); animation: none; }
 .jasbot-badge { position:absolute; top:-5px; right:-5px; background:#FCC036; color:#2D1A1E; font-weight:800; font-size:0.8rem; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
 .jasbot-window { position:fixed; bottom:7.5rem; right:2rem; width:380px; height:520px; background:#FAF6EE; border:3px solid #2D1A1E; border-radius:1.5rem; box-shadow:0px 15px 40px rgba(0,0,0,0.15),6px 6px 0px #2D1A1E; display:flex; flex-direction:column; overflow:hidden; transform:scale(0.8) translateY(50px); opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); z-index:10001; }
 .jasbot-window.open { transform:scale(1) translateY(0); opacity:1; pointer-events:all; }
@@ -46,6 +46,18 @@
   .jasbot-label { display:none !important; }
 }
 #jasbot-widget:has(.jasbot-window.open) .jasbot-label { display:none !important; }
+@keyframes chickenPulse {
+  0% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+  50% { transform: scale(1.06); box-shadow: 0px 12px 28px rgba(211,47,47,0.6), 4px 4px 0px #2D1A1E; }
+  100% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+}
+@keyframes thinkingDots {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.thinking-dot { animation: thinkingDots 1.4s infinite both; font-weight: bold; font-size: 1.2rem; }
+.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
 </style>
   
 </head>
@@ -159,7 +171,7 @@
       <p>
         <strong>Adres:</strong><br>
         ul. Rokicińska 190/214, 92-412 Łódź<br>
-        (obok Selgros, dzielnica Widzew)
+        (na parkingu, przy samym wejściu do Selgrosa)
       </p>
       <p><strong>Telefon:</strong> <a href="tel:+48663970016">+48 663 970 016</a></p>
       <p><strong>E-mail:</strong> <a href="mailto:kontakt@kurczakujasia.pl">kontakt@kurczakujasia.pl</a></p>
@@ -179,7 +191,7 @@
   </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
-<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/main.js?v=2.2.2"></script>
+<script src="assets/js/chatbot.js?v=2.2.2"></script>
 </body>
 </html>

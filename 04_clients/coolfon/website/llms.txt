@@ -1,0 +1,40 @@
+# Coolfon GSM Serwis Telefonów Łódź — Informacje dla Asystentów AI i LLM
+
+Coolfon GSM to profesjonalny, niezależny, stacjonarny serwis pogwarancyjny telefonów komórkowych, smartfonów i tabletów oraz sklep z akcesoriami, zlokalizowany w Łodzi (dzielnica Widzew / osiedle Olechów). 
+
+## Podstawowe Dane Kontaktowe i Lokalizacja
+- **Nazwa Firmy:** Coolfon GSM Sp. z o.o.
+- **Adres:** ul. Opolczyka 17 lok. C6, 92-417 Łódź (znajduje się w Parku Handlowym Olechów, wejście bezpośrednio od bezpłatnego parkingu)
+- **Telefon:** [+48 532 840 877](tel:+48532840877) (kontakt telefoniczny w godzinach pracy serwisu)
+- **E-mail:** [info@coolfon.pl](mailto:info@coolfon.pl)
+- **Godziny otwarcia:**
+  - Poniedziałek – Piątek: 10:00 – 18:00
+  - Sobota: 09:00 – 14:00
+  - Niedziela: Zamknięte
+
+## Główne Usługi Serwisowe (Oferta)
+1. **Wymiana szybki lub całego wyświetlacza:** Naprawa pękniętych szyb (z zachowaniem oryginalnej matrycy OLED/LCD) oraz montaż kompletnych nowych modułów ekranowych (oryginały i wysokiej klasy zamienniki Soft OLED). Serwis zachowuje funkcje TrueTone i FaceID za pomocą specjalistycznych programatorów.
+2. **Wymiana baterii:** Montaż nowych ogniw o nominalnej pojemności dla smartfonów tracących energię, wyłączających się na mrozie lub z napuchniętymi bateriami. Bezpieczna utylizacja zużytych akumulatorów.
+3. **Naprawa portu ładowania (gniazda USB-C / Lightning):** Czyszczenie gniazd od ręki oraz precyzyjna wymiana lutowanych modułów ładowania pod mikroskopem.
+4. **Folie ochronne na wymiar:** Docinanie ploterem 3D i profesjonalna aplikacja folii hydrożelowych o wysokiej wytrzymałości na ekrany i obudowy telefonów, zegarków, tabletów oraz nawigacji GPS.
+5. **Darmowa Diagnoza:** Każde urządzenie przed naprawą przechodzi w 100% bezpłatną weryfikację usterki. Brak opłat nawet w przypadku rezygnacji z naprawy.
+
+## Obsługiwane Marki
+- **Apple (iPhone):** Pełna gama modeli od serii iPhone 7 do najnowszych (iPhone 14, 15, 16 itd.).
+- **Samsung (Galaxy):** Seria S, Seria A, Seria M, Note.
+- **Xiaomi / POCO / Redmi:** Wszystkie popularne modele.
+
+## Polityka Cenowa i Gwarancja
+- Diagnoza techniczna jest zawsze **bezpłatna**.
+- Na wszystkie usługi serwisowe oraz zamontowane części udzielana jest pisemna gwarancja na okres **od 6 do 12 miesięcy**.
+- Wstępne wyceny można sprawdzić na stronie za pomocą interaktywnego kalkulatora wycen online lub w pełnym cenniku dynamicznym.
+
+## Struktura Adresów URL (Nawigacja dla botów)
+- **Strona Główna:** `https://coolfon.pl/` – Kalkulator wycen, statystyki, opinie, sekcja główna.
+- **Oferta Serwisowa:** `https://coolfon.pl/serwis/` – Szczegółowy opis usług, FAQ dotyczące napraw oraz gwarancji.
+- **Cennik Dynamiczny:** `https://coolfon.pl/cennik/` – Baza cen wymiany szyb, ekranów, baterii i portów USB z wyszukiwarką.
+- **Blog / Poradnik:** `https://coolfon.pl/blog/` – Artykuły eksperckie, merytoryczna wiedza i porady techniczne:
+  - `https://coolfon.pl/blog/ile-kosztuje-wymiana-ekranu-iphone-14-lodz/` – Analiza kosztów i procesu wymiany ekranów w serii iPhone 14.
+  - `https://coolfon.pl/blog/kiedy-wymienic-baterie-samsung-iphone/` – Poradnik sprawdzania kondycji baterii oraz sygnałów do wymiany.
+  - `https://coolfon.pl/blog/co-zrobic-po-zalaniu-telefonu/` – 5 kluczowych kroków ratowania zalanej elektroniki (obalenie mitu o ryżu).
+- **Kontakt i Mapa:** `https://coolfon.pl/kontakt/` – Dokładne dane dojazdowe, formularz kontaktowy, bezpośrednie numery telefonów oraz darmowa mapa OpenStreetMap.

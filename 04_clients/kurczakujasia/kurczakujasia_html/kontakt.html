@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakt — Bar Jaś | Rokicińska 190, Łódź | Tel: 663 970 016</title>
-  <meta name="description" content="Skontaktuj się z Barem Jaś: ul. Rokicińska 190, 92-412 Łódź (obok Selgros). Tel: +48 663 970 016. Pn–Sob 09:00–19:00. Niedziela: nieczynne.">
+  <title>Kontakt — Bar Jaś | Rokicińska 190/214, Łódź | Tel: 663 970 016</title>
+  <meta name="description" content="Skontaktuj się z Barem Jaś: ul. Rokicińska 190/214, 92-412 Łódź (na parkingu przy wejściu do Selgrosa). Tel: +48 663 970 016. Pn–Sob 09:00–19:00. Niedziela: nieczynne.">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Kontakt — Bar Jaś | Rokicińska 190, Łódź | Tel: 663 970 016">
-  <meta property="og:description" content="Skontaktuj się z Barem Jaś: ul. Rokicińska 190, 92-412 Łódź (obok Selgros). Tel: +48 663 970 016. Pn–Sob 09:00–19:00. Niedziela: nieczynne.">
+  <meta property="og:title" content="Kontakt — Bar Jaś | Rokicińska 190/214, Łódź | Tel: 663 970 016">
+  <meta property="og:description" content="Skontaktuj się z Barem Jaś: ul. Rokicińska 190/214, 92-412 Łódź (na parkingu przy wejściu do Selgrosa). Tel: +48 663 970 016. Pn–Sob 09:00–19:00. Niedziela: nieczynne.">
   <meta property="og:image" content="https://kurczakujasia.pl/assets/img/logo.png">
   <meta property="og:url" content="https://kurczakujasia.pl/kontakt.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <link rel="canonical" href="https://kurczakujasia.pl/kontakt.html">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=2.2.2">
   <style>
 #jasbot-widget { position:fixed; bottom:2rem; right:2rem; z-index:10000; font-family:'Plus Jakarta Sans',sans-serif; }
-.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; }
-.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); }
+.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; animation: chickenPulse 3s infinite ease-in-out; }
+.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); animation: none; }
 .jasbot-badge { position:absolute; top:-5px; right:-5px; background:#FCC036; color:#2D1A1E; font-weight:800; font-size:0.8rem; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
 .jasbot-window { position:fixed; bottom:7.5rem; right:2rem; width:380px; height:520px; background:#FAF6EE; border:3px solid #2D1A1E; border-radius:1.5rem; box-shadow:0px 15px 40px rgba(0,0,0,0.15),6px 6px 0px #2D1A1E; display:flex; flex-direction:column; overflow:hidden; transform:scale(0.8) translateY(50px); opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); z-index:10001; }
 .jasbot-window.open { transform:scale(1) translateY(0); opacity:1; pointer-events:all; }
@@ -46,6 +46,18 @@
   .jasbot-label { display:none !important; }
 }
 #jasbot-widget:has(.jasbot-window.open) .jasbot-label { display:none !important; }
+@keyframes chickenPulse {
+  0% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+  50% { transform: scale(1.06); box-shadow: 0px 12px 28px rgba(211,47,47,0.6), 4px 4px 0px #2D1A1E; }
+  100% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+}
+@keyframes thinkingDots {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.thinking-dot { animation: thinkingDots 1.4s infinite both; font-weight: bold; font-size: 1.2rem; }
+.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
 </style>
   
 </head>
@@ -464,7 +476,7 @@
           </div>
           <div class="jas-info-text">
             <h3>Nasz Adres</h3>
-            <p>ul. Rokicińska 190<br>(obok Selgros)<br>92-412 Łódź</p>
+            <p>ul. Rokicińska 190/214<br>(obok Selgros, dzielnica Widzew)<br>92-412 Łódź</p>
           </div>
         </div>
 
@@ -520,33 +532,38 @@
     <!-- FORM SIDE -->
     <div class="jas-contact-form-wrap">
       <h2>Napisz do nas</h2>
-      <form id="jas-contact-form">
+      <form id="jas-contact-form" action="https://formspree.io/f/xoqgypjo" method="POST">
         
         <div class="jas-form-group">
           <label for="form-name">Imię i nazwisko</label>
-          <input type="text" id="form-name" class="jas-form-input" placeholder="Wpisz swoje imię" required>
+          <input type="text" id="form-name" name="name" class="jas-form-input" placeholder="Wpisz swoje imię" required>
         </div>
 
         <div class="jas-form-group">
           <label for="form-email">Twój Email</label>
-          <input type="email" id="form-email" class="jas-form-input" placeholder="Wpisz swój email" required>
+          <input type="email" id="form-email" name="email" class="jas-form-input" placeholder="Wpisz swój email" required>
         </div>
 
         <div class="jas-form-group">
           <label for="form-phone">Numer telefonu</label>
-          <input type="tel" id="form-phone" class="jas-form-input" placeholder="Wpisz swój numer telefonu" required>
+          <input type="tel" id="form-phone" name="phone" class="jas-form-input" placeholder="Wpisz swój numer telefonu" required>
         </div>
 
         <div class="jas-form-group">
           <label for="form-msg">Treść wiadomości</label>
-          <textarea id="form-msg" class="jas-form-textarea" placeholder="Napisz swoją wiadomość..." required></textarea>
+          <textarea id="form-msg" name="message" class="jas-form-textarea" placeholder="Napisz swoją wiadomość..." required></textarea>
         </div>
 
-        <button type="submit" class="jas-submit-btn">
-          WYŚLIJ PRZEZ WHATSAPP
+        <button type="submit" class="jas-submit-btn" id="form-submit-btn">
+          WYŚLIJ WIADOMOŚĆ
         </button>
-        <p class="jas-form-note">Kliknięcie otworzy aplikację WhatsApp z gotową wiadomością. Odpiszemy najszybciej jak to możliwe!</p>
+        <p class="jas-form-note">Formularz zostanie wysłany bezpiecznie. W razie problemów nastąpi przekierowanie do WhatsApp!</p>
       </form>
+      <div id="form-success-box" style="display:none; text-align:center; padding: 2rem 1rem;">
+        <span style="font-size: 3rem;">🍗</span>
+        <h3 style="font-family: var(--font-heading); color: var(--secondary-color); font-size: 1.8rem; margin: 1rem 0;">Wiadomość wysłana!</h3>
+        <p style="font-weight: 700; color: var(--dark-brown);">Dziękujemy za kontakt. Odpowiemy najszybciej jak to możliwe!</p>
+      </div>
     </div>
 
   </div>
@@ -560,15 +577,19 @@
 </div>
 
 <script>
-  document.getElementById('jas-contact-form').addEventListener('submit', function(e) {
+  const form = document.getElementById('jas-contact-form');
+  const submitBtn = document.getElementById('form-submit-btn');
+  const successBox = document.getElementById('form-success-box');
+
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
     
     const name = document.getElementById('form-name').value.trim();
     const email = document.getElementById('form-email').value.trim();
     const phone = document.getElementById('form-phone').value.trim();
     const msg = document.getElementById('form-msg').value.trim();
-    
-    // Construct message for WhatsApp
+
+    // Construct message for WhatsApp fallback
     const waText = `🍗 NOWA WIADOMOŚĆ - BAR JAŚ 🍗\n` +
                  `👤 Nadawca: ${name}\n` +
                  `📞 Tel: ${phone}\n` +
@@ -579,12 +600,40 @@
                  `🔥 Wygenerowano automatycznie z kurczakujasia.pl`;
                  
     const waUrl = `https://wa.me/48663970016?text=${encodeURIComponent(waText)}`;
-    
-    // Open WhatsApp
-    window.open(waUrl, '_blank');
-    
-    // Fallback: Also try to submit to the default mail in the background if possible, 
-    // or just direct the user to WhatsApp for instant response!
+
+    // Set loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Wysyłanie...';
+
+    // Submit via AJAX
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.ok) {
+        // Success: hide form and show success message
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+        successBox.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // Error response: fallback to WhatsApp
+        console.warn('Formspree returned an error status, redirecting to WhatsApp...');
+        window.open(waUrl, '_blank');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'WYŚLIJ WIADOMOŚĆ';
+      }
+    })
+    .catch(err => {
+      // Network error: fallback to WhatsApp
+      console.warn('Network error during Formspree submission, redirecting to WhatsApp...', err);
+      window.open(waUrl, '_blank');
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'WYŚLIJ WIADOMOŚĆ';
+    });
   });
 </script>
 
@@ -646,7 +695,7 @@
       <p>
         <strong>Adres:</strong><br>
         ul. Rokicińska 190/214, 92-412 Łódź<br>
-        (obok Selgros, dzielnica Widzew)
+        (na parkingu, przy samym wejściu do Selgrosa)
       </p>
       <p><strong>Telefon:</strong> <a href="tel:+48663970016">+48 663 970 016</a></p>
       <p><strong>E-mail:</strong> <a href="mailto:kontakt@kurczakujasia.pl">kontakt@kurczakujasia.pl</a></p>
@@ -667,7 +716,7 @@
 </footer>
 
 
-<script src="assets/js/main.js"></script>
-<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/main.js?v=2.2.2"></script>
+<script src="assets/js/chatbot.js?v=2.2.2"></script>
 </body>
 </html>

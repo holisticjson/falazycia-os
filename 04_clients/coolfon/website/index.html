@@ -107,19 +107,19 @@
                         
                         <form id="coolfon-calc-form">
                             <div style="margin-bottom: 16px;">
-                                <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Marka urządzenia:</label>
+                                <label for="calc-brand" style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Marka urządzenia:</label>
                                 <select id="calc-brand" required style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;"></select>
                             </div>
                             
                             <div style="margin-bottom: 16px;">
-                                <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Model telefonu:</label>
+                                <label for="calc-model" style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Model telefonu:</label>
                                 <select id="calc-model" required disabled style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;">
                                     <option value="">-- Wybierz model --</option>
                                 </select>
                             </div>
                             
                             <div style="margin-bottom: 20px;">
-                                <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Co wymaga naprawy?</label>
+                                <label for="calc-issue" style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Co wymaga naprawy?</label>
                                 <select id="calc-issue" required disabled style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;">
                                     <option value="">-- Wybierz usterkę --</option>
                                     <option value="screen">Rozbity ekran / szybka</option>
@@ -136,7 +136,7 @@
                             </div>
 
                             <div style="margin-bottom: 20px;">
-                                <label style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Twój numer telefonu (dla kontaktu):</label>
+                                <label for="calc-phone" style="display: block; margin-bottom: 6px; font-size: 0.85rem; font-weight: 500;">Twój numer telefonu (dla kontaktu):</label>
                                 <input type="tel" id="calc-phone" placeholder="np. 500 600 700" required style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; font-size: 0.95rem;">
                             </div>
 
@@ -159,17 +159,17 @@
         <div class="container">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 30px; text-align: center;">
                 <div class="stat-box" style="padding: 10px;">
-                    <span style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 8px; display: block; font-family: var(--font-heading); font-weight: 700;">🔧 <span class="counter" data-target="500">0</span>+</span>
+                    <span style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 8px; display: block; font-family: var(--font-heading); font-weight: 700;">🔧 <span class="counter" data-target="500">500</span>+</span>
                     <h4 style="font-size: 1.1rem; color: #FFF; margin-bottom: 6px; font-family: var(--font-heading);">Udało się naprawić</h4>
                     <p style="color: var(--color-text-muted); font-size: 0.88rem; margin: 0;">smartfonów w 2026 roku</p>
                 </div>
                 <div class="stat-box" style="padding: 10px;">
-                    <span style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 8px; display: block; font-family: var(--font-heading); font-weight: 700;">📱 <span class="counter" data-target="3">0</span> marki</span>
+                    <span style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 8px; display: block; font-family: var(--font-heading); font-weight: 700;">📱 <span class="counter" data-target="3">3</span> marki</span>
                     <h4 style="font-size: 1.1rem; color: #FFF; margin-bottom: 6px; font-family: var(--font-heading);">Główne specjalizacje</h4>
                     <p style="color: var(--color-text-muted); font-size: 0.88rem; margin: 0;">Pełny serwis Apple, Samsung, Xiaomi</p>
                 </div>
                 <div class="stat-box" style="padding: 10px;">
-                    <span style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 8px; display: block; font-family: var(--font-heading); font-weight: 700;">⭐ <span class="counter" data-target="4.6" data-decimals="1">0</span>/5</span>
+                    <span style="font-size: 2.5rem; color: var(--color-primary); margin-bottom: 8px; display: block; font-family: var(--font-heading); font-weight: 700;">⭐ <span class="counter" data-target="4.6" data-decimals="1">4.6</span>/5</span>
                     <h4 style="font-size: 1.1rem; color: #FFF; margin-bottom: 6px; font-family: var(--font-heading);">Ocena w Google</h4>
                     <p style="color: var(--color-text-muted); font-size: 0.88rem; margin: 0;">Potwierdzona wysoka jakość usług</p>
                 </div>

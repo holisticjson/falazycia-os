@@ -54,7 +54,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .site-logo-link { text-decoration: none; display: flex; align-items: center; }
-.site-logo-link img { height: 62px; width: auto; }
+.site-logo-link img { height: 64px; width: auto; }
 
 .main-navigation ul {
   list-style: none;

@@ -4,7 +4,9 @@
 MASTER BUILD SCRIPT v2.0 — kurczakujasia.pl
 Naprawia WSZYSTKIE błędy z audytu i wdraża przez FTP.
 """
-import os, re, shutil, ftplib
+import os, re, shutil, ftplib, sys, json
+sys.stdout.reconfigure(encoding='utf-8')
+CACHE_VERSION = "2.2.2"
 
 # === CONFIG ===
 SRC_DIR   = "04_clients/kurczakujasia/kurczakujasia_html"
@@ -12,7 +14,7 @@ BUILD_DIR = "04_clients/kurczakujasia/kurczakujasia_html"
 LOGO_SRC  = "04_clients/kurczakujasia/logo/Logo Bar Jaś.png"
 LOGO_DEST = f"{BUILD_DIR}/assets/img/logo.png"
 
-FTP_HOST  = "kurczakujasia.pl"
+FTP_HOST  = "lysitheab.hostido.net.pl"
 FTP_USER  = "deploy@kurczakujasia.pl"
 FTP_PASS  = "Kosmos!!@@1234"
 FTP_ROOT  = "public_html"
@@ -86,7 +88,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .site-logo-link { text-decoration: none; display: flex; align-items: center; }
-.site-logo-link img { height: 62px; width: auto; }
+.site-logo-link img { height: 64px; width: auto; }
 
 .main-navigation ul {
   list-style: none;
@@ -389,138 +391,226 @@ print("✅ style.css zapisany")
 # -------------------------------------------------------
 # MASTER_MENU — CENTRALNA BAZA DAŃ (13 pozycji)
 # -------------------------------------------------------
-import json
-
 MASTER_MENU = [
     {
         "id": 1,
-        "id_str": "set-chicken-whole",
-        "name": "Zestaw Kurczak z Rożna (Cały)",
+        "id_str": "chicken-whole",
+        "name": "Kurczak z rożna (1 sztuka)",
         "category": "sets",
-        "price": 52,
-        "desc": "Cały soczysty kurczak z rożna (~900g) + duża porcja złocistych frytek (300g) lub opiekanych ziemniaczków + duży zestaw 3 świeżych domowych surówek (300g) + sos autorski czosnkowy i pikantny gratis!",
-        "badge": "DLA RODZINY 👨‍👩‍👧‍👦",
+        "price": 40.0,
+        "desc": "Legendarny, cały chrupiący kurczak z rożna obrotowego, ręcznie marynowany w kompozycji 12 ziół i powoli pieczony na złocisty kolor (sama sztuka).",
+        "badge": "BESTSELLER 👑",
         "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
     },
     {
         "id": 2,
-        "id_str": "set-chicken-half",
-        "name": "Zestaw Kurczak z Rożna (Połówka)",
+        "id_str": "chicken-half",
+        "name": "Kurczak z rożna (1/2 sztuki)",
         "category": "sets",
-        "price": 34,
-        "desc": "Połówka chrupiącego kurczaka (~450g) + złociste frytki (150g) lub opiekane ziemniaczki + zestaw 3 świeżych domowych surówek (150g) + sos autorski czosnkowy lub pikantny gratis!",
+        "price": 20.0,
+        "desc": "Soczysta połówka chrupiącego kurczaka, pieczona na tradycyjnym rożnie obrotowym (sama połówka).",
         "badge": "KULTOWE 🔥",
         "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
     },
     {
         "id": 3,
-        "id_str": "chicken-whole",
-        "name": "Legendarny Kurczak z Rożna (Cały)",
+        "id_str": "set-half-chicken-fries-salad",
+        "name": "Zestaw z połówką kurczaka (z frytkami i surówką)",
         "category": "sets",
-        "price": 38,
-        "desc": "Cały dorodny kurczak z polskiej hodowli (~900g), ręcznie marynowany w autorskiej kompozycji 12 ziół, pieczony na złocisty kolor (sama sztuka bez dodatków)",
-        "badge": "BESTSELLER 👑",
+        "price": 36.0,
+        "desc": "Sycący zestaw obiadowy: połówka soczystego kurczaka z rożna (20 zł) podawana ze złocistymi frytkami (150g — 9 zł) oraz świeżą, domową surówką (250g — 7 zł).",
+        "badge": "POLECAMY ⭐",
         "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
     },
     {
         "id": 4,
-        "id_str": "chicken-half",
-        "name": "Kurczak z Rożna (Połówka)",
+        "id_str": "set-whole-chicken-fries-salad",
+        "name": "Zestaw z całym kurczakiem (z frytkami i surówką)",
         "category": "sets",
-        "price": 20,
-        "desc": "Sama połówka soczystego kurczaka (~450g) o chrupiącej, złotej skórce, świeżo pieczona na tradycyjnym rożnie obrotowym (sama sztuka, bez dodatków)",
-        "badge": None,
+        "price": 56.0,
+        "desc": "Olbrzymi zestaw dla naprawdę głodnych lub dla dwojga: cały, legendarny kurczak z rożna (40 zł) podawany ze złocistymi frytkami (150g — 9 zł) oraz świeżą, domową surówką (250g — 7 zł).",
+        "badge": "GIGANT 👑",
         "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
     },
     {
         "id": 5,
-        "id_str": "set-kebab",
-        "name": "Zestaw Kebab z Frytkami i Surówkami",
+        "id_str": "set-chicken-salad",
+        "name": "Kurczak z rożna zestaw (ze świeżymi surówkami)",
         "category": "sets",
-        "price": 32,
-        "desc": "Sycąca porcja dobrze przypieczonego mięsa kebab (~180g) + frytki (150g) + zestaw 3 świeżych surówek (150g) + sos autorski czosnkowy lub pikantny",
-        "badge": "HIT 👍",
-        "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_z_frytkami.png"
+        "price": 40.0,
+        "desc": "Cały chrupiący kurczak z rożna (1 sztuka) serwowany w zestawie z naszym codziennie przygotowywanym, świeżym bukietem domowych surówek (250g).",
+        "badge": "Z SURÓWKAMI 🥗",
+        "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
     },
     {
         "id": 6,
-        "id_str": "kebab-bun",
-        "name": "Kebab w Bułce z Surówkami",
-        "category": "kebab",
-        "price": 22,
-        "desc": "Opiekana rzemieślnicza bułka z dużą ilością mięsa kebab (~150g), świeżą kapustą, pomidorem, ogórkiem, cebulką i domowym sosem (czosnek/ostry/mieszany)",
-        "badge": None,
-        "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_w_bulce.png"
+        "id_str": "set-kebab",
+        "name": "Kebab zestaw (z frytkami lub ryżem)",
+        "category": "sets",
+        "price": 35.0,
+        "desc": "Sycąca porcja dobrze doprawionego, soczystego mięsa kebab podawana ze złocistymi frytkami lub sypkim ryżem oraz bukietem surówek i sosem.",
+        "badge": "SYCĄCY 🔥",
+        "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_z_frytkami.png"
     },
     {
         "id": 7,
-        "id_str": "burger-chicken",
-        "name": "Hamburger z Filetem z Kurczaka",
+        "id_str": "kebab-bun",
+        "name": "Kebab w bułce (z surówkami)",
         "category": "kebab",
-        "price": 20,
-        "desc": "Chrupiący, świeżo smażony panierowany filet z piersi kurczaka (~150g) w bułce sezamowej z pomidorem, ogórkiem, sałatą i wyrazistym sosem burgerowym",
-        "badge": "DLA GŁODNYCH ⚡",
-        "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Hamburger-z-filetem-z-kurczaka-2-1.png"
+        "price": 25.0,
+        "desc": "Opiekana, chrupiąca rzemieślnicza bułka wypełniona soczystym mięsem kebab, świeżymi warzywami oraz autorskim sosem (czosnkowym lub pikantnym).",
+        "badge": "HIT 👍",
+        "image": "assets/img/kebab_w_bulce.jpg"
     },
     {
         "id": 8,
-        "id_str": "set-kids",
-        "name": "Smerf – Zestaw dla Dzieci",
-        "category": "sets",
-        "price": 18,
-        "desc": "Delikatne domowe kąski z piersi kurczaka (~100g) + frytki (100g) + łagodny ketchup + zimny soczek owocowy w kartoniku (200ml)",
-        "badge": "DLA DZIECI 👦",
-        "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/zestaw_dla_dzieci.png"
+        "id_str": "kebab-tortilla",
+        "name": "Kebab w tortilli",
+        "category": "kebab",
+        "price": 24.0,
+        "desc": "Ciepła tortilla ściśle zawinięta z dużą ilością przypieczonego mięsa kebab, chrupiącymi surówkami i wyrazistymi sosami.",
+        "badge": "KLASYK 🌯",
+        "image": "assets/img/kebab_w_tortilli.jpg"
     },
     {
         "id": 9,
-        "id_str": "soup-day",
-        "name": "Domowa Zupa Dnia",
-        "category": "sides",
-        "price": 10,
-        "desc": "Pyszna, gorąca zupa (350ml) gotowana codziennie rano na świeżych warzywach i mięsie (np. pomidorowa, rosół z makaronem rzemieślniczym lub żurek — zapytaj nas o dzisiejszą!)",
-        "badge": "ŚWIEŻA 🍲",
-        "image": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80"
+        "id_str": "burger-chicken",
+        "name": "Hamburger z filetem z kurczaka",
+        "category": "kebab",
+        "price": 20.0,
+        "desc": "Chrupiący panierowany filet z piersi kurczaka w puszystej bułce sezamowej z pomidorem, ogórkiem, sałatą i wyrazistym sosem burgerowym.",
+        "badge": "CHRUPIĄCY 🍗",
+        "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Hamburger-z-filetem-z-kurczaka-2-1.png"
     },
     {
         "id": 10,
-        "id_str": "fries",
-        "name": "Złociste Frytki (Porcja 150g)",
-        "category": "sides",
-        "price": 10,
-        "desc": "Chrupiące na zewnątrz, miękkie i puszyste w środku złociste frytki, idealnie usmażone i posolone",
-        "badge": None,
-        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
+        "id_str": "burger-classic",
+        "name": "Hamburger",
+        "category": "kebab",
+        "price": 16.0,
+        "desc": "Klasyczny, soczysty kotlet wołowy w bułce z sezamem, podawany z chrupiącym ogórkiem kiszonym, cebulką, ketchupem i musztardą.",
+        "badge": "KLASYK 🍔",
+        "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
     },
     {
         "id": 11,
-        "id_str": "potatoes",
-        "name": "Opiekane Ziemniaczki (Porcja 150g)",
-        "category": "sides",
-        "price": 10,
-        "desc": "Aromatyczne, złociste połówki ziemniaczków pieczone w ziołach, miękkie w środku i chrupiące z wierzchu",
-        "badge": None,
-        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
+        "id_str": "hot-dog",
+        "name": "Hot-Dog",
+        "category": "kebab",
+        "price": 14.0,
+        "desc": "Gorąca parówka w chrupiącej, podgrzanej bułce z ulubionymi sosami (ketchup, musztarda, duński) i prażoną cebulką.",
+        "badge": "SZYBKA PRZEKĄSKA 🌭",
+        "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80"
     },
     {
         "id": 12,
-        "id_str": "salads",
-        "name": "Zestaw Domowych Surówek",
-        "category": "sides",
-        "price": 8,
-        "desc": "Świeża, witaminowa porcja (150g) trzech domowych surówek (biała kapusta, czerwona kapusta, marchewka) przygotowywana codziennie na miejscu",
-        "badge": "WITAMINY 🥗",
-        "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"
+        "id_str": "sausage-grilled",
+        "name": "Kiełbasa z grilla (porcja 100g)",
+        "category": "sets",
+        "price": 10.0,
+        "desc": "Aromatyczna, doskonale przypieczona na grillu tradycyjna polska kiełbasa, podawana na gorąco z musztardą lub ketchupem (cena za porcję 100g).",
+        "badge": "Z GRILLA 🪵",
+        "image": "assets/img/kielbasa_z_grilla.png"
     },
     {
         "id": 13,
-        "id_str": "drinks",
-        "name": "Zimne Napoje (Pepsi / Mirinda 0.33l)",
-        "category": "drinks",
-        "price": 8,
-        "desc": "Zimna, orzeźwiająca puszka Pepsi, Pepsi Zero, Mirinda lub 7Up (0.33l) prosto z lodówki",
+        "id_str": "fries",
+        "name": "Frytki (porcja 150g)",
+        "category": "sides",
+        "price": 9.0,
+        "desc": "Złociste, chrupiące frytki, idealnie usmażone i delikatnie posolone - doskonały dodatek do każdego zamówienia.",
+        "badge": "KULTOWE 🍟",
+        "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        "id": 14,
+        "id_str": "salad-portion",
+        "name": "Surówka (porcja 250g)",
+        "category": "sides",
+        "price": 7.0,
+        "desc": "Świeżo siekane, pełne witamin domowe surówki przygotowywane codziennie rano ze świeżych warzyw.",
+        "badge": "ZDROWY WYBÓR 🥗",
+        "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        "id": 15,
+        "id_str": "bun-poznanska",
+        "name": "Bułka Poznańska",
+        "category": "sides",
+        "price": 2.5,
+        "desc": "Świeża, chrupiąca rzemieślnicza Bułka Poznańska (przedzielana), doskonała jako tradycyjny dodatek do kurczaka z rożna.",
+        "badge": "ŚWIEŻA 🥖",
+        "image": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        "id": 16,
+        "id_str": "bun-kajzerka",
+        "name": "Bułka Kajzerka",
+        "category": "sides",
+        "price": 1.0,
+        "desc": "Klasyczna, świeża bułka kajzerka z chrupiącą złocistą skórką, idealny tradycyjny dodatek.",
         "badge": None,
-        "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80"
+        "image": "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        "id": 17,
+        "id_str": "drink-coffee",
+        "name": "Kawa",
+        "category": "drinks",
+        "price": 10.0,
+        "desc": "Aromatyczna, gorąca kawa parzona, idealna na każdą porę dnia.",
+        "badge": "GORĄCA ☕",
+        "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        "id": 18,
+        "id_str": "drink-tea",
+        "name": "Herbata",
+        "category": "drinks",
+        "price": 6.0,
+        "desc": "Gorąca, rozgrzewająca herbata podawana z cytryną.",
+        "badge": None,
+        "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80"
+    },
+    {
+        "id": 19,
+        "id_str": "drink-pepsi",
+        "name": "Pepsi",
+        "category": "drinks",
+        "price": 8.0,
+        "desc": "Mocno schłodzona, orzeźwiająca puszka Pepsi (lub inny zimny napój z oferty) prosto z lodówki.",
+        "badge": "PROMO 🥤",
+        "image": "assets/img/pepsi_bottle.png"
+    },
+    {
+        "id": 20,
+        "id_str": "fee-packaging",
+        "name": "Opakowanie",
+        "category": "sides",
+        "price": 1.0,
+        "desc": "Opakowanie na wynos zapewniające bezpieczny i higieniczny transport posiłku oraz utrzymanie temperatury.",
+        "badge": "OPŁATA 📦",
+        "image": "assets/img/opakowanie.png"
+    },
+    {
+        "id": 21,
+        "id_str": "fee-cutlery",
+        "name": "Sztućce",
+        "category": "sides",
+        "price": 0.5,
+        "desc": "Komplet jednorazowych, ekologicznych sztućców drewnianych (widelec, nóż, serwetka) dla Twojej wygody.",
+        "badge": None,
+        "image": "assets/img/sztucce.png"
+    },
+    {
+        "id": 22,
+        "id_str": "fee-bottle-deposit",
+        "name": "Kubek / Kaucja za butelkę",
+        "category": "sides",
+        "price": 0.5,
+        "desc": "Kaucja zwrotna za butelkę szklaną lub jednorazowy kubek do napojów na wynos.",
+        "badge": None,
+        "image": "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=600&q=80"
     }
 ]
 
@@ -581,8 +671,8 @@ CHATBOT_HTML = """
 
 CHATBOT_CSS = """
 #jasbot-widget { position:fixed; bottom:2rem; right:2rem; z-index:10000; font-family:'Plus Jakarta Sans',sans-serif; }
-.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; }
-.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); }
+.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; animation: chickenPulse 3s infinite ease-in-out; }
+.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); animation: none; }
 .jasbot-badge { position:absolute; top:-5px; right:-5px; background:#FCC036; color:#2D1A1E; font-weight:800; font-size:0.8rem; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
 .jasbot-window { position:fixed; bottom:7.5rem; right:2rem; width:380px; height:520px; background:#FAF6EE; border:3px solid #2D1A1E; border-radius:1.5rem; box-shadow:0px 15px 40px rgba(0,0,0,0.15),6px 6px 0px #2D1A1E; display:flex; flex-direction:column; overflow:hidden; transform:scale(0.8) translateY(50px); opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); z-index:10001; }
 .jasbot-window.open { transform:scale(1) translateY(0); opacity:1; pointer-events:all; }
@@ -611,6 +701,18 @@ CHATBOT_CSS = """
   .jasbot-label { display:none !important; }
 }
 #jasbot-widget:has(.jasbot-window.open) .jasbot-label { display:none !important; }
+@keyframes chickenPulse {
+  0% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+  50% { transform: scale(1.06); box-shadow: 0px 12px 28px rgba(211,47,47,0.6), 4px 4px 0px #2D1A1E; }
+  100% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+}
+@keyframes thinkingDots {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.thinking-dot { animation: thinkingDots 1.4s infinite both; font-weight: bold; font-size: 1.2rem; }
+.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
 """
 
 CHATBOT_JS = """
@@ -629,6 +731,9 @@ CHATBOT_JS = """
   let step = 'idle';
   let pendingOrderText = '';
   let pendingTotal = 0;
+  let pendingPhone = '';
+  let pendingName = '';
+  let pendingOrderId = '';
 
   const MENU_ITEMS = <MENU_ITEMS_PLACEHOLDER>;
 
@@ -673,12 +778,78 @@ CHATBOT_JS = """
     for (var i = 0; i < cart.length; i++) { if (cart[i].id === id) { existing = cart[i]; break; } }
     if (existing) { existing.qty++; } else { cart.push({id:item.id, name:item.name, price:item.price, qty:1}); }
     updateBadge();
-    var count = cart.reduce(function(s,i){ return s+i.qty; }, 0);
-    addMsg('Dodano: <strong>' + item.name + '</strong>. Koszyk: <strong>' + count + '</strong> pozycji.<br>'
+    
+    var cartListHtml = '<div style="margin:8px 0;padding:10px;background:#fff;border:2px solid #2D1A1E;border-radius:8px;box-shadow:2px 2px 0px #2D1A1E;font-size:0.85rem;color:#2D1A1E;">';
+    cartListHtml += '<strong>Twój koszyk:</strong><br>';
+    for (var i = 0; i < cart.length; i++) {
+      var ci = cart[i];
+      cartListHtml += '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-weight:500;">'
+                   + '<span>' + ci.name + ' x' + ci.qty + ' (' + (ci.price * ci.qty) + ' zł)</span>'
+                   + '<button onclick="window.jasBotRemove(' + ci.id + ')" '
+                   + 'style="background:#D32F2F;color:#fff;border:1px solid #2D1A1E;border-radius:4px;padding:2px 6px;font-size:0.75rem;cursor:pointer;font-weight:bold;margin-left:8px;">'
+                   + 'Usuń</button>'
+                   + '</div>';
+    }
+    cartListHtml += '</div>';
+
+    addMsg('Dodano: <strong>' + item.name + '</strong>.<br>'
+         + cartListHtml
+         + '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">'
          + '<button onclick="window.jasBotCheckout()" '
-         + 'style="margin-top:8px;background:#D32F2F;color:#fff;border:2px solid #2D1A1E;'
-         + 'border-radius:6px;padding:6px 14px;cursor:pointer;font-weight:700;">'
-         + 'ZŁÓŻ ZAMÓWIENIE</button>&nbsp;lub dodaj kolejne danie.');
+         + 'style="background:#D32F2F;color:#fff;border:2px solid #2D1A1E;border-radius:6px;padding:6px 14px;cursor:pointer;font-weight:700;">'
+         + 'ZŁÓŻ ZAMÓWIENIE ➔</button>'
+         + '<button onclick="window.jasBotClearCart()" '
+         + 'style="background:#fff;color:#555;border:2px solid #2D1A1E;border-radius:6px;padding:6px 14px;cursor:pointer;font-weight:700;">'
+         + 'Wyczyść koszyk</button>'
+         + '</div>'
+         + '<small style="display:block;margin-top:6px;color:#555;">lub wybierz kolejne danie z MENU powyżej.</small>');
+  };
+
+  window.jasBotRemove = function(id) {
+    for (var i = 0; i < cart.length; i++) {
+      if (cart[i].id === id) {
+        cart[i].qty--;
+        if (cart[i].qty <= 0) {
+          cart.splice(i, 1);
+        }
+        break;
+      }
+    }
+    updateBadge();
+    if (cart.length === 0) {
+      addMsg('Twój koszyk jest teraz pusty. Wybierz potrawy z MENU powyżej!');
+    } else {
+      var cartListHtml = '<div style="margin:8px 0;padding:10px;background:#fff;border:2px solid #2D1A1E;border-radius:8px;box-shadow:2px 2px 0px #2D1A1E;font-size:0.85rem;color:#2D1A1E;">';
+      cartListHtml += '<strong>Twój koszyk:</strong><br>';
+      for (var i = 0; i < cart.length; i++) {
+        var ci = cart[i];
+        cartListHtml += '<div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;font-weight:500;">'
+                     + '<span>' + ci.name + ' x' + ci.qty + ' (' + (ci.price * ci.qty) + ' zł)</span>'
+                     + '<button onclick="window.jasBotRemove(' + ci.id + ')" '
+                     + 'style="background:#D32F2F;color:#fff;border:1px solid #2D1A1E;border-radius:4px;padding:2px 6px;font-size:0.75rem;cursor:pointer;font-weight:bold;margin-left:8px;">'
+                     + 'Usuń</button>'
+                     + '</div>';
+      }
+      cartListHtml += '</div>';
+
+      addMsg('Usunięto pozycję z koszyka.<br>'
+           + cartListHtml
+           + '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;">'
+           + '<button onclick="window.jasBotCheckout()" '
+           + 'style="background:#D32F2F;color:#fff;border:2px solid #2D1A1E;border-radius:6px;padding:6px 14px;cursor:pointer;font-weight:700;">'
+           + 'ZŁÓŻ ZAMÓWIENIE ➔</button>'
+           + '<button onclick="window.jasBotClearCart()" '
+           + 'style="background:#fff;color:#555;border:2px solid #2D1A1E;border-radius:6px;padding:6px 14px;cursor:pointer;font-weight:700;">'
+           + 'Wyczyść koszyk</button>'
+           + '</div>'
+           + '<small style="display:block;margin-top:6px;color:#555;">lub wybierz kolejne danie z MENU powyżej.</small>');
+    }
+  };
+
+  window.jasBotClearCart = function() {
+    cart = [];
+    updateBadge();
+    addMsg('Koszyk został wyczyszczony. Możesz wybrać potrawy na nowo z MENU powyżej! 🍗');
   };
 
   window.jasBotCheckout = function() {
@@ -694,19 +865,80 @@ CHATBOT_JS = """
     pendingTotal = total;
     cart = [];
     updateBadge();
-    step = 'awaiting_blik_ref';
+    pendingOrderId = 'JAS-' + Date.now().toString().slice(-6);
+    step = 'awaiting_name';
     addMsg('<strong>Podsumowanie zamówienia:</strong><br><br>'
          + pendingOrderText.replace(/\\n/g,'<br>')
          + '<br><strong>RAZEM: ' + pendingTotal + ' zł</strong>'
          + '<hr style="border:1px dashed #2D1A1E;margin:12px 0;">'
-         + '<strong>Zapłać teraz przez BLIK na telefon:</strong><br><br>'
-         + '1. Otwórz aplikację bankową<br>'
-         + '2. Wybierz <strong>Przelew na telefon BLIK</strong><br>'
-         + '3. Numer: <strong style="color:#D32F2F;font-size:1.1rem;">' + BLIK_PHONE + '</strong><br>'
-         + '4. Kwota: <strong>' + pendingTotal + ' zł</strong><br>'
-         + '5. Tytuł przelewu: np. <em>Zamówienie JaśBot</em><br><br>'
-         + '<strong>Gdy wyślesz przelew — wpisz poniżej jego tytuł (lub imię i nazwisko), abyśmy mogli szybko potwierdzić wpłatę.</strong>');
+         + '<strong>Aby rozpocząć, proszę podać swoje Imię i Nazwisko:</strong>');
   };
+
+  function handleName(text) {
+    var rawName = text.trim();
+    if (rawName.length < 2) {
+      addMsg('Proszę podać prawidłowe imię i nazwisko (min. 2 znaki):');
+      return;
+    }
+    pendingName = rawName;
+    step = 'awaiting_phone';
+    addMsg('Dziękujemy <strong>' + pendingName + '</strong>!<br><br>'
+         + '<strong>Teraz proszę podać swój numer telefonu komórkowego:</strong><br><br>'
+         + '<small>Użyjemy go do kontaktu w sprawie odbioru oraz automatycznej prośby o opinię.</small>');
+  }
+
+  function handlePhone(text) {
+    var rawPhone = text.trim();
+    if (!/^\+?[0-9\s-]{9,15}$/.test(rawPhone)) {
+      addMsg('Wprowadzono niepoprawny numer telefonu. Podaj prawidłowy numer (np. 663970016):');
+      return;
+    }
+    pendingPhone = rawPhone;
+    step = 'awaiting_blik_ref';
+
+    window.jasBotConfirmBlik = function() {
+      handleBlikRef(pendingOrderId);
+    };
+
+    addMsg(`Dziękujemy! Twój numer telefonu to: <strong>` + pendingPhone + `</strong>.<br><br>
+🎉 <strong>Twoje zamówienie zostało zarejestrowane pod unikalnym numerem: <span style="font-size:1.15rem;color:#D32F2F;font-weight:800;">` + pendingOrderId + `</span></strong><br><br>
+Wpisz ten numer jako <strong>Tytuł przelewu BLIK</strong>, abyśmy mogli błyskawicznie połączyć wpłatę z Twoim zamówieniem!<br><br>
+<strong>Teraz zapłać przez BLIK na telefon Marysi:</strong><br>
+<div style="background:#FFF;border:3px solid #2D1A1E;border-radius:1rem;padding:15px;margin:12px 0;box-shadow:3px 3px 0px #2D1A1E;color:#2D1A1E;font-size:0.95rem;text-align:left;">
+  <div style="margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+    <span>1. Numer telefonu BLIK:</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <strong style="color:#D32F2F;font-size:1.1rem;letter-spacing:0.5px;">` + BLIK_PHONE + `</strong>
+      <button onclick="var b = this; navigator.clipboard.writeText('663970016').then(function() { b.innerText = 'Skopiowano!'; setTimeout(function() { b.innerText = 'Skopiuj'; }, 2000); })"
+              style="background:#FCC036;border:2px solid #2D1A1E;border-radius:6px;padding:3px 8px;font-size:0.75rem;font-weight:bold;cursor:pointer;font-family:inherit;box-shadow:1px 1px 0 #2D1A1E;">
+        Skopiuj
+      </button>
+    </div>
+  </div>
+  <div style="margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+    <span>2. Kwota przelewu:</span>
+    <strong style="font-size:1.1rem;color:#2D1A1E;">` + pendingTotal + ` zł</strong>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+    <span>3. Tytuł przelewu:</span>
+    <div style="display:flex;align-items:center;gap:6px;">
+      <strong style="color:#D32F2F;font-size:1.1rem;letter-spacing:0.5px;">` + pendingOrderId + `</strong>
+      <button onclick="var b = this; navigator.clipboard.writeText('` + pendingOrderId + `').then(function() { b.innerText = 'Skopiowano!'; setTimeout(function() { b.innerText = 'Skopiuj'; }, 2000); })"
+              style="background:#FCC036;border:2px solid #2D1A1E;border-radius:6px;padding:3px 8px;font-size:0.75rem;font-weight:bold;cursor:pointer;font-family:inherit;box-shadow:1px 1px 0 #2D1A1E;">
+        Skopiuj
+      </button>
+    </div>
+  </div>
+</div>
+<strong>Po wysłaniu przelewu w aplikacji bankowej kliknij przycisk poniżej, aby sfinalizować zamówienie:</strong>
+<button onclick="window.jasBotConfirmBlik()"
+        style="display:block;width:100%;margin-top:12px;background:#25D366;color:#fff;border:3px solid #2D1A1E;
+        border-radius:10px;padding:12px;font-weight:800;font-size:1rem;font-family:inherit;cursor:pointer;
+        box-shadow:3px 3px 0 #2D1A1E;transition:all 0.1s ease;text-transform:uppercase;">
+  Potwierdzam wysłanie przelewu BLIK ➔
+</button>
+<div style="text-align:center;margin-top:8px;font-size:0.8rem;color:#666;">lub wpisz w czacie &quot;wysłane&quot;</div>`);
+  }
 
   window.jasBotOpenWithCart = function(pageCart) {
     cart = [];
@@ -733,17 +965,39 @@ CHATBOT_JS = """
   function handleBlikRef(text) {
     step = 'idle';
     var blikRef = text.trim();
+    if (blikRef.toLowerCase() === 'wysłane' || blikRef.toLowerCase() === 'wyslane' || blikRef === '') {
+      blikRef = pendingOrderId;
+    }
+    var orderId = pendingOrderId;
+
+    // Trigger n8n Webhook
+    var webhookUrl = 'https://n8n.jaison.pl/webhook/bar-jas-zamowienie';
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        order_id: orderId,
+        timestamp: new Date().toISOString(),
+        client_name: pendingName,
+        phone: pendingPhone,
+        order_details: pendingOrderText,
+        total_amount: pendingTotal
+      })
+    })
+    .catch(function(e) { console.warn('[n8n Webhook Error]', e); });
+
     var waMsg = encodeURIComponent(
-      'NOWE ZAMÓWIENIE - Bar Jaś JaśBot\\n'
+      'NOWE ZAMÓWIENIE (' + orderId + ') - Bar Jaś JaśBot\\n'
       + '----------------------------\\n'
       + pendingOrderText
       + '\\nRAZEM: ' + pendingTotal + ' zł\\n'
       + '----------------------------\\n'
-      + 'BLIK WYŚLANY\\n'
-      + 'Tytuł przelewu: ' + blikRef + '\\n'
+      + 'Blik Wysłany !\\n'
+      + 'Tytuł przelewu: ' + orderId + ' (Imię: ' + pendingName + ')\\n'
+      + 'Telefon klienta: ' + pendingPhone + '\\n'
       + '(Proszę sprawdzić w aplikacji bankowej)\\n'
       + '----------------------------\\n'
-      + 'Odbiór: ul. Rokicińska 190/214, Łódź\\n'
+      + 'Odbiór: ul. Rokicińska 190/214, Łódź (przy wejściu do Selgrosa)\\n'
       + 'Czas realizacji: ok. 20 min'
     );
     addMsg('Zamówienie z potwierdzeniem BLIK gotowe!<br><br>'
@@ -755,6 +1009,27 @@ CHATBOT_JS = """
          + '<small>Czas realizacji ~20 min. Bar potwierdzi zamówienie przez WhatsApp.</small>');
     pendingOrderText = '';
     pendingTotal = 0;
+    pendingPhone = '';
+    pendingName = '';
+    pendingOrderId = '';
+  }
+
+  let chatHistory = [];
+  try {
+    var stored = localStorage.getItem('jasbot_history');
+    if (stored) {
+      chatHistory = JSON.parse(stored);
+    }
+  } catch (e) {
+    console.warn('[JaśBot] LocalStorage load failed', e);
+  }
+
+  function saveHistory() {
+    try {
+      localStorage.setItem('jasbot_history', JSON.stringify(chatHistory));
+    } catch (e) {
+      console.warn('[JaśBot] LocalStorage save failed', e);
+    }
   }
 
   function sendMsg() {
@@ -762,27 +1037,93 @@ CHATBOT_JS = """
     if (!text) return;
     addMsg(text, 'user');
     input.value = '';
+    if (step === 'awaiting_name') { handleName(text); return; }
+    if (step === 'awaiting_phone') { handlePhone(text); return; }
     if (step === 'awaiting_blik_ref') { handleBlikRef(text); return; }
-    setTimeout(function() {
-      var lower = text.toLowerCase();
-      if (lower.indexOf('menu') >= 0 || lower.indexOf('dania') >= 0 || lower.indexOf('cena') >= 0 || lower.indexOf('cennik') >= 0) {
-        showMenu();
-      } else if (lower.indexOf('godzin') >= 0 || lower.indexOf('kiedy') >= 0 || lower.indexOf('otwart') >= 0) {
-        addMsg('Jesteśmy otwarci:<br><strong>Pon-Sob: 09:00-19:00</strong><br>Niedziela: nieczynne');
-      } else if (lower.indexOf('adres') >= 0 || lower.indexOf('gdzie') >= 0 || lower.indexOf('dojazd') >= 0 || lower.indexOf('lokalizacj') >= 0) {
-        addMsg('Znajdziesz nas pod adresem:<br><strong>ul. Rokicińska 190/214, Łódź</strong><br>(tuż obok Selgros, dzielnica Widzew)');
-      } else if (lower.indexOf('blik') >= 0 || lower.indexOf('płat') >= 0 || lower.indexOf('platn') >= 0) {
-        addMsg('Przyjmujemy płatność przez <strong>BLIK na numer telefonu</strong>: <strong>' + BLIK_PHONE + '</strong><br>Wybierz dania z menu, a JaśBot przeprowadzi Cie przez płatność krok po kroku!');
-      } else if (lower.indexOf('zamów') >= 0 || lower.indexOf('zamow') >= 0 || lower.indexOf('koszyk') >= 0 || lower.indexOf('chcę') >= 0 || lower.indexOf('chce') >= 0) {
-        showMenu();
-      } else {
-        addMsg('Jesteś w Barze Jaś! Wpisz:<br>'
-             + '<strong>menu</strong> - cennik i dania<br>'
-             + '<strong>godziny</strong> - kiedy jesteśmy otwarci<br>'
-             + '<strong>adres</strong> - jak do nas trafić<br>'
-             + '<strong>zamów</strong> - złóż szybkie zamówienie online');
+    
+    // Quick local rule matching to remain responsive and save API quota
+    var lower = text.toLowerCase();
+    if (lower === 'menu' || lower === 'dania' || lower === 'cennik') {
+      showMenu();
+      chatHistory.push({role: 'user', text: text});
+      chatHistory.push({role: 'model', text: '[Wyświetlono interaktywne menu]'});
+      saveHistory();
+      return;
+    } else if (lower === 'godziny' || lower === 'otwarte' || lower === 'kiedy') {
+      addMsg('Jesteśmy otwarci:<br><strong>Pon-Sob: 09:00-19:00</strong><br>Niedziela: nieczynne');
+      chatHistory.push({role: 'user', text: text});
+      chatHistory.push({role: 'model', text: 'Jesteśmy otwarci: Pon-Sob: 09:00-19:00, Niedziela: nieczynne'});
+      saveHistory();
+      return;
+    } else if (lower === 'adres' || lower === 'dojazd' || lower === 'lokalizacja') {
+      addMsg('Znajdziesz nas pod adresem:<br><strong>ul. Rokicińska 190/214, Łódź</strong><br>(na parkingu, tuż przy wejściu do Selgrosa)');
+      chatHistory.push({role: 'user', text: text});
+      chatHistory.push({role: 'model', text: 'Znajdziesz nas pod adresem: ul. Rokicińska 190/214, Łódź (na parkingu, tuż przy wejściu do Selgrosa)'});
+      saveHistory();
+      return;
+    } else if (lower === 'blik' || lower === 'płatność') {
+      addMsg('Przyjmujemy płatność przez <strong>BLIK na numer telefonu</strong>: <strong>' + BLIK_PHONE + '</strong><br>Wybierz dania z menu, a JaśBot przeprowadzi Cie przez płatność krok po kroku!');
+      chatHistory.push({role: 'user', text: text});
+      chatHistory.push({role: 'model', text: 'Przyjmujemy płatność przez BLIK na numer telefonu: ' + BLIK_PHONE});
+      saveHistory();
+      return;
+    }
+
+    // Call server PHP proxy for general conversation
+    // 1. Create a thinking indicator div
+    var thinkingDiv = document.createElement('div');
+    thinkingDiv.className = 'jasbot-msg bot';
+    thinkingDiv.innerHTML = '<span class="thinking-dot">.</span><span class="thinking-dot">.</span><span class="thinking-dot">.</span> 🍗';
+    thinkingDiv.style.fontStyle = 'italic';
+    thinkingDiv.style.color = '#777';
+    messages.appendChild(thinkingDiv);
+    messages.scrollTop = messages.scrollHeight;
+
+    // 2. Prepare history (last 10 messages)
+    if (chatHistory.length > 10) {
+      chatHistory = chatHistory.slice(-10);
+    }
+
+    // 3. Make fetch request
+    fetch('/gemini_proxy.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: text,
+        history: chatHistory
+      })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      // remove thinking indicator
+      if (thinkingDiv && thinkingDiv.parentNode) {
+        thinkingDiv.parentNode.removeChild(thinkingDiv);
       }
-    }, 350);
+      
+      var reply = data.response || 'Przepraszam, coś mnie rozproszyło. Możesz powtórzyć? 🍗';
+      addMsg(reply);
+      
+      // Save to chat history
+      chatHistory.push({role: 'user', text: text});
+      // strip html for clean context history
+      var cleanReply = reply.replace(/<[^>]*>/g, '');
+      chatHistory.push({role: 'model', text: cleanReply});
+      saveHistory();
+      
+      // Log hidden debug errors in console ONLY (for Tomasz / developers)
+      if (data.debug_error) {
+        console.warn('[JaśBot Debug]', data.debug_error);
+      }
+    })
+    .catch(function(err) {
+      if (thinkingDiv && thinkingDiv.parentNode) {
+        thinkingDiv.parentNode.removeChild(thinkingDiv);
+      }
+      console.error('[JaśBot Connection Error]', err);
+      addMsg('Przepraszam, chwilowo mam trudności z połączeniem. Wpisz <strong>menu</strong>, aby zobaczyć nasze dania!');
+    });
   }
 
   toggleBtn.addEventListener('click', function() {
@@ -791,10 +1132,22 @@ CHATBOT_JS = """
     if (windowEl.classList.contains('open')) {
       if (labelEl) labelEl.style.display = 'none';
       if (messages.children.length === 0) {
-        addMsg('Cześć! Jestem <strong>JaśBot</strong> - wirtualny asystent Baru Jaś! 🍗<br><br>'
-             + 'Oto nasze pełne, pyszne menu. Kliknij wybrane pozycje, aby dodać je do koszyka i szybko złożyć zamówienie:<br>'
-             + 'Płatność wygodnie przez <strong>BLIK na telefon</strong>.');
-        showMenu();
+        if (chatHistory.length > 0) {
+          addMsg('<em>Witamy ponownie! Poniżej znajduje się historia Twojej rozmowy z JaśBotem:</em> 🍗');
+          for (var idx = 0; idx < chatHistory.length; idx++) {
+            var msg = chatHistory[idx];
+            if (msg.text !== '[Wyświetlono interaktywne menu]') {
+              addMsg(msg.text, msg.role === 'user' ? 'user' : 'bot');
+            } else {
+              showMenu();
+            }
+          }
+        } else {
+          addMsg('Cześć! Jestem <strong>JaśBot</strong> - wirtualny asystent Baru Jaś! 🍗<br><br>'
+               + 'Oto nasze pełne, pyszne menu. Kliknij wybrane pozycje, aby dodać je do koszyka i szybko złożyć zamówienie:<br>'
+               + 'Płatność wygodnie przez <strong>BLIK na telefon</strong>.');
+          showMenu();
+        }
       }
     } else {
       if (labelEl && window.innerWidth > 768) {
@@ -824,8 +1177,8 @@ print("✅ chatbot.js zapisany")
 # -------------------------------------------------------
 META = {
     "index.html": {
-        "title": "Bar Jaś Łódź | Kurczak z Rożna od 2001 | Rokicińska 190",
-        "description": "Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso. Zamów: 663 970 016. ul. Rokicińska 190 (obok Selgros), Widzew."
+        "title": "Bar Jaś Łódź | Kurczak z Rożna od 2001 | Rokicińska 190/214",
+        "description": "Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso. Zamów: 663 970 016. ul. Rokicińska 190/214 (na parkingu przy wejściu do Selgrosa)."
     },
     "menu.html": {
         "title": "Menu — Kurczak, Kebab, Burgery | Bar Jaś Łódź",
@@ -836,12 +1189,12 @@ META = {
         "description": "Poznaj historię rodzinnego Baru Jaś. Od 2001 roku serwujemy najlepszego kurczaka z rożna w Łodzi, Widzew. Sekretna receptura, świeże polskie składniki."
     },
     "kontakt.html": {
-        "title": "Kontakt — Bar Jaś | Rokicińska 190, Łódź | Tel: 663 970 016",
-        "description": "Skontaktuj się z Barem Jaś: ul. Rokicińska 190, 92-412 Łódź (obok Selgros). Tel: +48 663 970 016. Pn–Sob 09:00–19:00. Niedziela: nieczynne."
+        "title": "Kontakt — Bar Jaś | Rokicińska 190/214, Łódź | Tel: 663 970 016",
+        "description": "Skontaktuj się z Barem Jaś: ul. Rokicińska 190/214, 92-412 Łódź (na parkingu przy wejściu do Selgrosa). Tel: +48 663 970 016. Pn–Sob 09:00–19:00. Niedziela: nieczynne."
     },
     "polityka.html": {
         "title": "Polityka Prywatności i RODO | Bar Jaś",
-        "description": "Polityka prywatności i informacje o ochronie danych osobowych (RODO) dla strony internetowej Baru Jaś, ul. Rokicińska 190, Łódź."
+        "description": "Polityka prywatności i informacje o ochronie danych osobowych (RODO) dla strony internetowej Baru Jaś, ul. Rokicińska 190/214, Łódź."
     }
 }
 
@@ -880,7 +1233,7 @@ SCHEMA_LD = """<script type="application/ld+json">
   "priceRange": "$$",
   "menu": "https://kurczakujasia.pl/menu.html",
   "hasMap": "https://maps.app.goo.gl/kurczakujasia",
-  "description": "Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso, ul. Rokicińska 190 obok Selgros."
+  "description": "Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso, ul. Rokicińska 190/214 (na parkingu, tuż przy wejściu do Selgrosa)."
 }
 </script>
 <script type="application/ld+json">
@@ -890,9 +1243,9 @@ SCHEMA_LD = """<script type="application/ld+json">
   "mainEntity": [
     {"@type":"Question","name":"Do której godziny jest otwarty Bar Jaś?","acceptedAnswer":{"@type":"Answer","text":"Bar Jaś jest otwarty od poniedziałku do soboty w godzinach 9:00–19:00. W niedziele jesteśmy nieczynni."}},
     {"@type":"Question","name":"Ile kosztuje zestaw z kurczakiem z rożna?","acceptedAnswer":{"@type":"Answer","text":"Zestaw z połówką kurczaka z rożna (z frytkami i surówkami) kosztuje 34 zł. Cały kurczak to 38 zł."}},
-    {"@type":"Question","name":"Gdzie znajduje się Bar Jaś w Łodzi?","acceptedAnswer":{"@type":"Answer","text":"Bar Jaś mieści się przy ul. Rokicińskiej 190, 92-412 Łódź, w dzielnicy Widzew, tuż obok Selgros."}},
+    {"@type":"Question","name":"Gdzie znajduje się Bar Jaś w Łodzi?","acceptedAnswer":{"@type":"Answer","text":"Bar Jaś mieści się przy ul. Rokicińskiej 190/214, 92-412 Łódź (na parkingu, tuż przy wejściu do Selgrosa)."}},
     {"@type":"Question","name":"Czy Bar Jaś przyjmuje zamówienia online?","acceptedAnswer":{"@type":"Answer","text":"Tak! Zamówienia możesz złożyć przez naszego chatbota JaśBota na stronie, przez WhatsApp lub telefonicznie pod numerem +48 663 970 016."}},
-    {"@type":"Question","name":"Czy Bar Jaś ma opcję dostawy do domu?","acceptedAnswer":{"@type":"Answer","text":"Obecnie oferujemy odbiór osobisty przy ul. Rokicińskiej 190. Zamówienie zgłoś przez JaśBota, WhatsApp lub telefon — będzie gotowe na Twoje przybycie!"}}
+    {"@type":"Question","name":"Czy Bar Jaś ma opcję dostawy do domu?","acceptedAnswer":{"@type":"Answer","text":"Obecnie oferujemy odbiór osobisty przy ul. Rokicińskiej 190/214. Zamówienie zgłoś przez JaśBota, WhatsApp lub telefon — będzie gotowe na Twoje przybycie!"}}
   ]
 }
 </script>"""
@@ -910,15 +1263,15 @@ FAQ_HTML = """
   </details>
   <details class="jas-faq-item">
     <summary>Gdzie znajduje się Bar Jaś? <span>+</span></summary>
-    <p>Znajdziesz nas przy <strong>ul. Rokicińskiej 190, 92-412 Łódź</strong>, w dzielnicy Widzew, tuż obok Selgros. Łatwy dojazd i parking.</p>
+    <p>Znajdziesz nas przy <strong>ul. Rokicińskiej 190/214, 92-412 Łódź</strong>, w dzielnicy Widzew, tuż na terenie Selgrosa (na parkingu, przy samym wejściu do Selgrosa). Łatwy dojazd i darmowy parking.</p>
   </details>
   <details class="jas-faq-item">
     <summary>Czy można zamówić online lub przez WhatsApp? <span>+</span></summary>
-    <p>Tak! Skorzystaj z naszego <strong>JaśBota</strong> w prawym dolnym rogu — wybierz dania i wyślij zamówienie przez WhatsApp bezpośrednio do nas. Możesz też zadzwonić: <strong>663 970 016</strong>.</p>
+    <p>Tak! Skorzystaj z naszego <strong>JaśBota</strong> w prawym dolnym rogu — wybierz dania i wyślij zamówienie przez WhatsApp bezpośrednio do nas. Możecz też zadzwonić: <strong>663 970 016</strong>.</p>
   </details>
   <details class="jas-faq-item">
     <summary>Czy Bar Jaś ma opcję dostawy do domu? <span>+</span></summary>
-    <p>Obecnie oferujemy <strong>odbiór osobisty</strong> przy ul. Rokicińskiej 190. Zamówienie zgłoś przez JaśBota, WhatsApp lub telefon — będzie gotowe na Twoje przybycie!</p>
+    <p>Obecnie oferujemy <strong>odbiór osobisty</strong> przy ul. Rokicińskiej 190/214. Zamówienie zgłoś przez JaśBota, WhatsApp lub telefon — będzie gotowe na Twoje przybycie!</p>
   </details>
 </section>
 """
@@ -944,7 +1297,7 @@ REVIEWS_HTML = """
     </div>
   </div>
   <div style="text-align:center;margin-top:1.5rem;">
-    <a href="https://g.page/r/barjas/review" target="_blank" rel="noopener noreferrer" class="jas-btn jas-btn-outline">
+    <a href="https://g.page/r/CWKq0_yDruxCEBM/review" target="_blank" rel="noopener noreferrer" class="jas-btn jas-btn-outline">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
       Wystaw Opinię na Google
     </a>
@@ -993,7 +1346,7 @@ FOOTER_HTML = """
       <p>
         <strong>Adres:</strong><br>
         ul. Rokicińska 190/214, 92-412 Łódź<br>
-        (obok Selgros, dzielnica Widzew)
+        (na parkingu, przy samym wejściu do Selgrosa)
       </p>
       <p><strong>Telefon:</strong> <a href="tel:+48663970016">+48 663 970 016</a></p>
       <p><strong>E-mail:</strong> <a href="mailto:kontakt@kurczakujasia.pl">kontakt@kurczakujasia.pl</a></p>
@@ -1033,7 +1386,7 @@ def make_header(page_name, title, description, extra_head=""):
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <link rel="canonical" href="https://kurczakujasia.pl/{page_name}">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v={CACHE_VERSION}">
   <style>{CHATBOT_CSS}</style>
   {extra_head}
 </head>
@@ -1062,9 +1415,9 @@ def make_header(page_name, title, description, extra_head=""):
 </header>
 """
 
-SCRIPTS_CLOSE = """
-<script src="assets/js/main.js"></script>
-<script src="assets/js/chatbot.js"></script>
+SCRIPTS_CLOSE = f"""
+<script src="assets/js/main.js?v={CACHE_VERSION}"></script>
+<script src="assets/js/chatbot.js?v={CACHE_VERSION}"></script>
 </body>
 </html>"""
 
@@ -1294,6 +1647,28 @@ POLITYKA = make_header("polityka.html", META["polityka.html"]["title"], META["po
 with open(f"{BUILD_DIR}/polityka.html", "w", encoding="utf-8") as f:
     f.write(clean_encoding(POLITYKA))
 print("✅ polityka.html (RODO) zapisana")
+
+# -------------------------------------------------------
+# GEMINI PROXY (PHP) WITH INJECTED MENU
+# -------------------------------------------------------
+menu_text_lines = []
+for item in MASTER_MENU:
+    badge_str = f" ({item['badge']})" if item.get('badge') else ""
+    menu_text_lines.append(f"- {item['name']}{badge_str} — {item['price']} zł: {item['desc']}")
+menu_readable_text = "\\n".join(menu_text_lines)
+
+# Read the local template gemini_proxy.php
+with open("04_clients/kurczakujasia/kurczakujasia_html/gemini_proxy.php", "r", encoding="utf-8") as f:
+    proxy_content = f.read()
+
+# Replace <MENU_PLACEHOLDER> with compiled menu
+compiled_proxy = proxy_content.replace("<MENU_PLACEHOLDER>", menu_readable_text)
+
+# Write it to the build dir (ready for deployment)
+with open(f"{BUILD_DIR}/gemini_proxy.php", "w", encoding="utf-8") as f:
+    f.write(clean_encoding(compiled_proxy))
+print("✅ gemini_proxy.php (z wstrzykniętym menu) zapisany")
+
 
 # -------------------------------------------------------
 # ROBOTS.TXT
