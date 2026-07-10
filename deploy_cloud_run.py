@@ -21,7 +21,7 @@ def deploy():
     print("🚀 Starting deployment of holisticjson.pl to Google Cloud Run...")
     
     # Step 1: Build the Vite project
-    vite_dir = os.path.join(os.getcwd(), "04_website", "site")
+    vite_dir = os.path.join(os.getcwd(), "01-jaison-core", "website", "site")
     print(f"📦 Step 1: Building Vite production package in {vite_dir}...")
     if not run_command("npm run build", cwd=vite_dir):
         print("❌ Failed to build Vite project.")

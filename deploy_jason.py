@@ -7,7 +7,7 @@ FTP_HOST = "mail.holisticjson.pl"
 FTP_USER = "deploy@holisticjson.pl"
 FTP_PASS = "Qwerty!!@@1234"
 REMOTE_DIR = "/public_html"
-LOCAL_DIR = r"C:\Aplikacje MVP\Holistic Jason\04_website\site\dist"
+LOCAL_DIR = r"C:\Aplikacje MVP\Holistic Jason\01-jaison-core\website\site\dist"
 
 def upload_directory(ftp, local_path, remote_path):
     print(f"Zdalny katalog: {remote_path}")

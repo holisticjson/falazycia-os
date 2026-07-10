@@ -1,0 +1,2377 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-THXDSFLL');</script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="./logo.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>J(AI)SON — Agentowe Systemy AI & Automatyzacje dla Biznesu</title>
+    <meta name="description" content="Projektuję agentowe systemy AI sterowane bezpośrednio z WhatsAppa, Telegrama i Slacka. Usuń chaos i odzyskaj czas w firmie. Odbierz darmowy audyt.">
+    <meta name="keywords" content="AEO, AI Search Optimization, Answer Engine Optimization, GEO, Generative Engine Optimization, Automatyzacja procesów AI, J(AI)SON, Composio, n8n">
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jaison.pl/">
+    <meta property="og:title" content="J(AI)SON — Agentowe Systemy AI dla Biznesu">
+    <meta property="og:description" content="Steruj firmą z poziomu komunikatora i odzyskaj 10 godzin w tygodniu. Zobacz automatyzacje AI bez klikania.">
+    <meta property="og:image" content="./og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="J(AI)SON — Agentowe Systemy AI dla Biznesu">
+    <meta property="twitter:description" content="Projektuję systemy operacyjne AI, które eliminują chaos i automatyzują rutynowe zadania.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./src/style.css">
+    <link rel="canonical" href="https://jaison.pl/" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://jaison.pl/#organization",
+          "name": "J(AI)SON",
+          "url": "https://jaison.pl/",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://jaison.pl/logo.png",
+            "caption": "J(AI)SON Logo"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "hello@jaison.pl",
+            "contactType": "customer service"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://jaison.pl/#person",
+          "name": "Tomasz Duda",
+          "jobTitle": "AI Systems Architect",
+          "url": "https://jaison.pl/",
+          "knowsAbout": ["Artificial Intelligence", "Automation", "Workflow Automation", "n8n", "Vertex AI", "Python", "Large Language Models"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://jaison.pl/#website",
+          "url": "https://jaison.pl/",
+          "name": "J(AI)SON",
+          "description": "Agentowe Systemy AI & Automatyzacje dla Biznesu",
+          "publisher": {
+            "@id": "https://jaison.pl/#organization"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://jaison.pl/#webpage",
+          "url": "https://jaison.pl/",
+          "name": "J(AI)SON — Agentowe Systemy AI & Automatyzacje",
+          "isPartOf": {
+            "@id": "https://jaison.pl/#website"
+          },
+          "about": {
+            "@id": "https://jaison.pl/#person"
+          },
+          "description": "Projektuję agentowe systemy AI sterowane bezpośrednio z WhatsAppa, Telegrama i Slacka. Usuń chaos i odzyskaj czas w firmie. Odbierz darmowy audyt."
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://jaison.pl/#faq",
+          "isPartOf": {
+            "@id": "https://jaison.pl/#webpage"
+          },
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Ile kosztuje utrzymanie agentowego systemu AI w firmie?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Koszt utrzymania systemu opartego na chmurze GCP (Google Cloud) i darmowych progach API waha się od 5 do 50 PLN miesięcznie przy średnim obciążeniu. Unikamy drogich abonamentów, wykorzystując własną infrastrukturę i darmowe limity NVIDIA NIM oraz Vertex AI."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Czy systemy AI są bezpieczne dla danych moich klientów?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tak. Wszystkie wdrożenia opieramy o komercyjne instancje Google Vertex AI oraz płatne klucze API. Zgodnie z umową enterprise, żadne Twoje dane nie są logowane ani używane do trenowania modeli publicznych."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Jakie komunikatory obsługują Twoje systemy?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Nasze agentowe systemy AI integrujemy z WhatsApp Business, Telegramem, Slackiem, Signalem oraz naszym autorskim, bezpiecznym komunikatorem Jason AI."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Co się stanie, jeśli system zacznie działać niepoprawnie? Czy posiadam wyłącznik bezpieczeństwa (Kill-Switch)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Każdy wdrożony przez nas system posiada wbudowany, fizyczny przycisk awaryjny (Kill-Switch) oraz dedykowaną komendę na czacie, która natychmiast wyłącza procesy agentowe. W ułamku sekundy możesz przejąć pełną, ręczną kontrolę nad rozmowami z klientami lub zatrzymać automatyzację bez ryzyka uszkodzenia bazy danych."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Czy wdrożenie AI nie popsuje mojej sprzedaży? Jak zabezpieczona jest ciągłość procesów (SLA)?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Bezpieczeństwo Twojej sprzedaży jest dla nas absolutnym priorytetem. Wszystkie wdrożenia realizujemy w oparciu o redundancję na chmurze Google Cloud, co gwarantuje ciągłość działania na poziomie 99.9% (SLA). Dodatkowo, w przypadku jakichkolwiek problemów z zewnętrznymi API (np. awarii WhatsAppa), system automatycznie i bezpiecznie przełącza się w tryb uśpienia i natychmiast wysyła do Ciebie alert SMS."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Jak wygląda kwestia prywatności w Vertex AI? Czy moje dane biznesowe są bezpieczne?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Korzystamy wyłącznie z profesjonalnych rozwiązań biznesowych Google Vertex AI w modelu 'Enterprise Privacy'. Oznacza to, że żadne informacje o Twoich klientach, transakcjach czy wewnętrznych procedurach firmowych nie są udostępniane na zewnątrz ani używane do trenowania modeli publicznych. Twoja baza wiedzy RAG jest w 100% suwerenna i chroniona kluczami szyfrującymi należącymi wyłącznie do Twojej organizacji."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THXDSFLL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <header class="site-header">
+      <nav class="container site-nav">
+        <a href="/" class="logo" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+          <img src="./logo.png" alt="JASON Logo" class="header-logo">
+        </a>
+        <div class="nav-links">
+          <a href="#services" style="margin-left: 25px; text-decoration: none; color: var(--charcoal); font-weight: 500;">Systemy</a>
+          <a href="#virtual-board-teaser" style="margin-left: 25px; text-decoration: none; color: var(--charcoal); font-weight: 500;">Aplikacja Jason</a>
+          <a href="#aeo-visibility" style="margin-left: 25px; text-decoration: none; color: var(--charcoal); font-weight: 500;">Widoczność w AI</a>
+          <a href="#about" style="margin-left: 25px; text-decoration: none; color: var(--charcoal); font-weight: 500;">O mnie</a>
+          <a href="#contact" class="btn-primary" style="margin-left: 25px; padding: 10px 20px;">Kontakt</a>
+        </div>
+        
+        <!-- Hamburger Button for Mobile -->
+        <button id="hamburger-btn" class="hamburger-btn" aria-label="Menu" aria-expanded="false">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <!-- Mobile Menu Overlay -->
+        <div id="mobile-menu" class="mobile-menu">
+          <div class="mobile-menu-links">
+            <a href="#services">Systemy</a>
+            <a href="#virtual-board-teaser">Aplikacja Jason</a>
+            <a href="#aeo-visibility">Widoczność w AI</a>
+            <a href="#about">O mnie</a>
+            <a href="#contact" class="btn-primary">Kontakt</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="container">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 50px; flex-wrap: wrap; text-align: left; position: relative; z-index: 1;">
+            
+            <!-- Left Side: Copy -->
+            <div style="flex: 1.2; min-width: 320px;">
+              <h1 style="font-size: 3.8rem; margin-bottom: 25px; line-height: 1.15; font-weight: 800; color: #FFF;">
+                "Steruj firmą z poziomu <span style="color: var(--sky-blue); text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);">komunikatora</span> i odzyskaj <span style="color: var(--muted-gold); text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);">10 godzin</span> w tygodniu"
+              </h1>
+              <p style="font-size: 1.25rem; color: var(--slate-gray); margin-bottom: 45px; line-height: 1.6;">
+                Słuchaj, zamiast tracić czas na naukę kolejnego CRM-u i przeklikiwanie paneli, zarządzaj sprzedażą, bazą wiedzy i zadaniami za pomocą prostych wiadomości tekstowych. Uruchamiamy agentowe systemy AI bez konieczności rewolucji technologicznej w zespole.
+              </p>
+              <div class="hero-btns" style="justify-content: flex-start; gap: 20px;">
+                <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="btn-primary" style="border: none; cursor: pointer; padding: 16px 32px; font-size: 1.1rem; border-radius: 12px; box-shadow: 0 0 30px rgba(99, 102, 241, 0.45); background: linear-gradient(135deg, var(--trust-blue) 0%, var(--muted-gold) 100%);">
+                  Zarezerwuj krótką rozmowę ➔
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Side: Tomasz Brand Photo (Breaking personal brand barrier) -->
+            <div style="flex: 0.8; min-width: 300px; display: flex; justify-content: center; position: relative;">
+              <div class="glass-card" style="padding: 10px; background: rgba(10, 15, 29, 0.4); border-color: rgba(59, 130, 246, 0.25); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(59, 130, 246, 0.15); width: 100%; max-width: 360px;">
+                <img src="./tomasz_hero.png" alt="Tomasz - Architekt Systemów AI dla Neuroatypowych i Przebodźcowanych" style="width: 100%; height: auto; border-radius: 15px; display: block; filter: brightness(1.05) contrast(1.05);">
+                <div style="position: absolute; bottom: 25px; left: 25px; right: 25px; background: rgba(5, 8, 20, 0.75); backdrop-filter: blur(8px); padding: 12px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                  <span style="color: #FFF; font-weight: bold; font-size: 0.9rem; display: block;">Tomasz</span>
+                  <span style="color: #3B82F6; font-size: 0.75rem; text-transform: uppercase; font-weight: bold; letter-spacing: 0.05em;">Architekt Systemów AI &amp; Neuro-produktywności</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Trust Marquee Section -->
+      <section id="trust" style="padding: 40px 0; background: #070b16; border-bottom: 1px solid rgba(255, 255, 255, 0.05); border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container" style="text-align: center;">
+          <p style="font-size: 0.75rem; color: rgba(255, 255, 255, 0.4); text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 25px;">Integracje i Narzędzia Klasy Enterprise</p>
+          <div class="logo-marquee-container">
+            <div class="logo-marquee-track">
+              <!-- Zestaw 1 -->
+              <div class="tech-logo" title="Make.com"><img src="./logos/make.svg" alt="Make.com"></div>
+              <div class="tech-logo" title="OpenAI"><img src="./logos/openai.svg" alt="OpenAI"></div>
+              <div class="tech-logo" title="Claude / Anthropic"><img src="./logos/claude.svg" alt="Claude"></div>
+              <div class="tech-logo" title="Google Gemini"><img src="./logos/gemini.svg" alt="Google Gemini"></div>
+              <div class="tech-logo" title="Google Cloud"><img src="./logos/google-cloud.svg" alt="Google Cloud"></div>
+              <div class="tech-logo" title="Vertex AI"><img src="./logos/vertexai.svg" alt="Vertex AI"></div>
+              <div class="tech-logo" title="AI Studio"><img src="./logos/aistudio.svg" alt="AI Studio"></div>
+              <div class="tech-logo" title="Perplexity"><img src="./logos/perplexity.svg" alt="Perplexity"></div>
+              <div class="tech-logo" title="Grok"><img src="./logos/grok.svg" alt="Grok"></div>
+              <div class="tech-logo" title="Cursor"><img src="./logos/cursor.svg" alt="Cursor"></div>
+              <div class="tech-logo" title="Anti-Gravity"><img src="./logos/antigravity.svg" alt="Anti-Gravity"></div>
+              
+              <!-- Zestaw 2 -->
+              <div class="tech-logo" title="Make.com"><img src="./logos/make.svg" alt="Make.com"></div>
+              <div class="tech-logo" title="OpenAI"><img src="./logos/openai.svg" alt="OpenAI"></div>
+              <div class="tech-logo" title="Claude / Anthropic"><img src="./logos/claude.svg" alt="Claude"></div>
+              <div class="tech-logo" title="Google Gemini"><img src="./logos/gemini.svg" alt="Google Gemini"></div>
+              <div class="tech-logo" title="Google Cloud"><img src="./logos/google-cloud.svg" alt="Google Cloud"></div>
+              <div class="tech-logo" title="Vertex AI"><img src="./logos/vertexai.svg" alt="Vertex AI"></div>
+              <div class="tech-logo" title="AI Studio"><img src="./logos/aistudio.svg" alt="AI Studio"></div>
+              <div class="tech-logo" title="Perplexity"><img src="./logos/perplexity.svg" alt="Perplexity"></div>
+              <div class="tech-logo" title="Grok"><img src="./logos/grok.svg" alt="Grok"></div>
+              <div class="tech-logo" title="Cursor"><img src="./logos/cursor.svg" alt="Cursor"></div>
+              <div class="tech-logo" title="Anti-Gravity"><img src="./logos/antigravity.svg" alt="Anti-Gravity"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Niewidzialni Pracownicy AI (#invisible-workers) -->
+      <section id="invisible-workers" style="padding: 100px 0; background: #070b16; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative;">
+        <!-- Tło świetlne -->
+        <div style="position: absolute; top: 15%; left: -5%; width: 350px; height: 350px; background: radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        
+        <div class="container">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
+            
+            <!-- Lewa strona: Treść NLP -->
+            <div style="flex: 1.2; min-width: 320px;">
+              <span style="color: #3B82F6; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Asynchroniczna Wolność (Low-Friction)</span>
+              <h2 style="font-size: 2.8rem; color: #FFF; margin-top: 10px; margin-bottom: 25px; font-weight: 700; line-height: 1.2;">
+                Wprowadź <span style="color: #3B82F6; text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);">Niewidzialnych Pracowników AI</span> i zapomnij o chaosie.
+              </h2>
+              <p style="color: var(--slate-gray); font-size: 1.15rem; line-height: 1.7; margin-bottom: 25px;">
+                Nie potrzebujesz kolejnych rąk do pracy, spotkań na Zoomie ani zarządzania ludźmi. Potrzebujesz precyzyjnie zaprojektowanych agentów, którzy działają w tle (<strong>asynchroniczne Cron Jobs</strong>) i dowożą rezultaty, gdy Ty odpoczywasz.
+              </p>
+              <p style="color: var(--slate-gray); font-size: 1.05rem; line-height: 1.7; margin-bottom: 30px;">
+                Dla liderów <strong>neuroatypowych oraz osób przebodźcowanych cyfrowym szumem</strong>, stałe przełączanie kontekstu i natłok drobnych obowiązków to najprostsza droga do paraliżu kognitywnego i spadku energii. Nasze systemy automatycznie zarządzają rutynowymi procesami w tle, eliminując opór decyzyjny i chroniąc Twoje zasoby uwagi (<strong>Low-Friction System</strong>).
+              </p>
+              
+              <!-- Cechy / Zalety -->
+              <div style="display: grid; gap: 15px; margin-bottom: 35px;">
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                  <span style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;">✓</span>
+                  <div>
+                    <strong style="color: #FFF; display: block; font-size: 1.05rem; margin-bottom: 4px;">Niewidzialne zadania w tle (Cron Jobs)</strong>
+                    <span style="color: var(--slate-gray); font-size: 0.9rem;">Automatyczne raporty, monitoring konkurencji, aktualizacja baz wiedzy w nocy bez Twojego udziału.</span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                  <span style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;">✓</span>
+                  <div>
+                    <strong style="color: #FFF; display: block; font-size: 1.05rem; margin-bottom: 4px;">Zarządzanie nawykami i dopaminą</strong>
+                    <span style="color: var(--slate-gray); font-size: 0.9rem;">Dedykowane przypomnienia i interfejs dostosowany do pracy głębokiej. Agent filtruje szum i podaje tylko to, co ważne.</span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                  <span style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;">✓</span>
+                  <div>
+                    <strong style="color: #FFF; display: block; font-size: 1.05rem; margin-bottom: 4px;">Zero procedur na start (Low-Friction)</strong>
+                    <span style="color: var(--slate-gray); font-size: 0.9rem;">Nie musisz niczego spisywać. Całą wiedzę o Twojej firmie pobieramy w luźnym wywiadzie audio. To my wykonujemy całą czarną robotę.</span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                  <span style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;">✓</span>
+                  <div>
+                    <strong style="color: #FFF; display: block; font-size: 1.05rem; margin-bottom: 4px;">Wsparcie, nie opór zespołu</strong>
+                    <span style="color: var(--slate-gray); font-size: 0.9rem;">Pracownicy nie muszą uczyć się nowych systemów ani bać się zwolnień. Agenci działają w tle ulubionego komunikatora (np. WhatsApp), odciążając ich od nudnej, powtarzalnej pracy i eliminując błędy.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Prawa strona: Grafika z placeholderem w premium ramce -->
+            <div style="flex: 0.8; min-width: 300px; display: flex; justify-content: center; position: relative;">
+              <div class="glass-card" style="padding: 10px; background: rgba(10, 15, 29, 0.4); border-color: rgba(59, 130, 246, 0.25); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(59, 130, 246, 0.15); width: 100%; max-width: 380px;">
+                <img src="./asynchronous_freedom.png" alt="Asynchroniczna Wolność i Niewidzialni Pracownicy AI" style="width: 100%; height: auto; border-radius: 15px; display: block; filter: brightness(1.05) contrast(1.05);">
+                <div style="position: absolute; bottom: 25px; left: 25px; right: 25px; background: rgba(5, 8, 20, 0.8); backdrop-filter: blur(8px); padding: 12px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                  <span style="color: #FFF; font-weight: bold; font-size: 0.9rem; display: block;">Asynchroniczna Wolność</span>
+                  <span style="color: #3B82F6; font-size: 0.75rem; text-transform: uppercase; font-weight: bold; letter-spacing: 0.05em;">Automatyczne systemy bez Twojej uwagi</span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Pain Points Section -->
+      <section id="problems" style="padding: 100px 0; background: #050814;">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 60px;">
+            <span style="color: #EF4444; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Straty i Wąskie Gardła</span>
+            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700;">Każdego dnia tracisz pieniądze. Nie widzisz tego.</h2>
+            <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Zidentyfikuj krytyczne punkty zapalne w operacjach, przez które uciekają zyski i czas Twojego zespołu.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+            <!-- Problem 1 -->
+            <div class="glass-card" style="padding: 35px; border-top: 3px solid #EF4444; background: rgba(10, 15, 29, 0.45);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em;">Zabójcze dla zysku</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <h4 style="font-size: 1.3rem; margin-bottom: 15px; color: #FFF;">Wyciek leadów w 2 minuty</h4>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6;">
+                Odpisujesz po godzinie? Badania pokazują jasno: <strong style="color: #EF4444;">brak kontaktu w 2 minuty obniża szansę na konwersję o 391%</strong>. Gorący lead stygnie błyskawicznie, a klient bez słowa przechodzi do konkurencji, która odpowiedziała natychmiast na czacie.
+              </p>
+            </div>
+
+            <!-- Problem 2 -->
+            <div class="glass-card" style="padding: 35px; border-top: 3px solid var(--muted-gold); background: rgba(10, 15, 29, 0.45);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span style="background: rgba(168, 85, 247, 0.15); color: var(--muted-gold); border: 1px solid rgba(168, 85, 247, 0.3); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em;">Utrata Skupienia</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--muted-gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>
+              </div>
+              <h4 style="font-size: 1.3rem; margin-bottom: 15px; color: #FFF;">Paraliż decyzyjny i chaos kognitywny</h4>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6;">
+                Ręczne przepisywanie danych między pocztą, CRM-em i arkuszami spowalnia pracę o 60%. Ciągłe przełączanie się między setkami otwartych kart i zakładek tworzy sztuczny szum i paraliżuje działanie liderów biznesowych.
+              </p>
+            </div>
+
+            <!-- Problem 3 -->
+            <div class="glass-card" style="padding: 35px; border-top: 3px solid #EF4444; background: rgba(10, 15, 29, 0.45);">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <span style="background: rgba(239, 68, 68, 0.15); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.3); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em;">AI Ślepa Plama</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              </div>
+              <h4 style="font-size: 1.3rem; margin-bottom: 15px; color: #FFF;">Niewidoczność w AI Search (AEO)</h4>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6;">
+                Nowoczesne wyszukiwarki i asystenci AI zastępują Google. Ponad 87% marek jest kompletnie ignorowanych przez ChatGPT i Claude, ponieważ ich strony nie posiadają semantycznego kodu i ustrukturyzowanej wiedzy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Problem-Solution Grid (Zderzenie Rzeczywistości) -->
+      <section id="reality-check" style="padding: 100px 0; background: #0a0f1d; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative;">
+        <!-- Element dekoracyjny w tle -->
+        <div style="position: absolute; top: 10%; left: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 60px;">
+            <span style="color: #06B6D4; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Proste Zderzenie Rzeczywistości</span>
+            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF;">Tradycyjny Chaos vs. Architektura Rezultatów</h2>
+            <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Zamiast skomplikowanych definicji i żargonu – zobacz czarno na białym, jak zmienia się codzienna praca Twojej firmy.</p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 40px;">
+
+            <!-- Porównanie 1: Wyciek klientów i czas odpowiedzi -->
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: stretch;">
+              <!-- Problem -->
+              <div style="flex: 1; min-width: 290px; background: rgba(239, 68, 68, 0.02); border: 1px solid rgba(239, 68, 68, 0.15); padding: 35px; border-radius: 16px; position: relative;">
+                <div style="position: absolute; top: -12px; left: 25px; background: #EF4444; color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;">Stara Rzeczywistość</div>
+                <h3 style="color: #FFF; font-size: 1.35rem; margin-bottom: 15px; margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                  <span style="color: #EF4444; font-size: 1.6rem;">✕</span> Stygnące kontakty i utracone szanse
+                </h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.65;">
+                  Klient wysyła zapytanie wieczorem lub w weekend. Odpowiedź otrzymuje dopiero następnego dnia roboczego. W tym czasie zdążył już skontaktować się z trzema innymi firmami. Tracisz potencjalne zlecenia tylko dlatego, że Twój zespół nie jest w stanie dyżurować przed ekranem przez 24 godziny na dobę.
+                </p>
+              </div>
+              <!-- Rozwiązanie -->
+              <div style="flex: 1; min-width: 290px; background: rgba(6, 182, 212, 0.02); border: 1px solid rgba(6, 182, 212, 0.25); padding: 35px; border-radius: 16px; position: relative; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.05);">
+                <div style="position: absolute; top: -12px; left: 25px; background: #06B6D4; color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;">Nowy Rezultat</div>
+                <h3 style="color: #FFF; font-size: 1.35rem; margin-bottom: 15px; margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                  <span style="color: #06B6D4; font-size: 1.6rem;">✓</span> Natychmiastowa reakcja w 3 sekundy
+                </h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.65;">
+                  Wirtualny asystent błyskawicznie wita każdego klienta na czacie, odpowiada na kluczowe pytania i dokonuje wstępnej wyceny o dowolnej porze dnia i nocy. Klient czuje się zaopiekowany od pierwszej sekundy, a Ty otrzymujesz uporządkowane dane i gotowego, zdecydowanego leada do sfinalizowania rozmowy.
+                </p>
+              </div>
+            </div>
+
+            <!-- Porównanie 2: Obawy i bunt zespołu -->
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: stretch;">
+              <!-- Problem -->
+              <div style="flex: 1; min-width: 290px; background: rgba(239, 68, 68, 0.02); border: 1px solid rgba(239, 68, 68, 0.15); padding: 35px; border-radius: 16px; position: relative;">
+                <div style="position: absolute; top: -12px; left: 25px; background: #EF4444; color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;">Stara Rzeczywistość</div>
+                <h3 style="color: #FFF; font-size: 1.35rem; margin-bottom: 15px; margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                  <span style="color: #EF4444; font-size: 1.6rem;">✕</span> Chaos, frustracja i opór pracowników
+                </h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.65;">
+                  Pracownicy toną w powtarzalnych, mechanicznych zadaniach: kopiują dane między aplikacjami, uzupełniają arkusze, wysyłają te same e-maile. Narastające zmęczenie prowadzi do pomyłek, które irytują klientów i niszczą renomę firmy. Ludzie boją się wdrożenia AI, bo kojarzą je ze skomplikowanymi szkoleniami i zwolnieniami.
+                </p>
+              </div>
+              <!-- Rozwiązanie -->
+              <div style="flex: 1; min-width: 290px; background: rgba(6, 182, 212, 0.02); border: 1px solid rgba(6, 182, 212, 0.25); padding: 35px; border-radius: 16px; position: relative; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.05);">
+                <div style="position: absolute; top: -12px; left: 25px; background: #06B6D4; color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;">Nowy Rezultat</div>
+                <h3 style="color: #FFF; font-size: 1.35rem; margin-bottom: 15px; margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                  <span style="color: #06B6D4; font-size: 1.6rem;">✓</span> Lekkość pracy i uwolniony potencjał
+                </h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.65;">
+                  Agenci AI przejmują całą nudną, rutynową pracę administracyjną. Twoi ludzie zyskują przestrzeń na kreatywność, budowanie relacji z klientami i rozwój. Sterowanie systemami odbywa się bezpośrednio z poziomu ulubionego komunikatora, bez potrzeby pisania procedur i drogich szkoleń – wystarczy zwykła rozmowa z agentem.
+                </p>
+              </div>
+            </div>
+
+            <!-- Porównanie 3: Koszty i brak kontroli -->
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: stretch;">
+              <!-- Problem -->
+              <div style="flex: 1; min-width: 290px; background: rgba(239, 68, 68, 0.02); border: 1px solid rgba(239, 68, 68, 0.15); padding: 35px; border-radius: 16px; position: relative;">
+                <div style="position: absolute; top: -12px; left: 25px; background: #EF4444; color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;">Stara Rzeczywistość</div>
+                <h3 style="color: #FFF; font-size: 1.35rem; margin-bottom: 15px; margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                  <span style="color: #EF4444; font-size: 1.6rem;">✕</span> Obawa przed "skarbonką bez dna"
+                </h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.65;">
+                  Właściciele firm obawiają się, że wdrożenie nowoczesnych technologii to droga pułapka abonamentowa, trudne umowy licencyjne i niekontrolowane koszty API. Boją się, że zapłacą dziesiątki tysięcy złotych za system, który po miesiącu okaże się bezużyteczny lub zbyt skomplikowany w utrzymaniu.
+                </p>
+              </div>
+              <!-- Rozwiązanie -->
+              <div style="flex: 1; min-width: 290px; background: rgba(6, 182, 212, 0.02); border: 1px solid rgba(6, 182, 212, 0.25); padding: 35px; border-radius: 16px; position: relative; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.05);">
+                <div style="position: absolute; top: -12px; left: 25px; background: #06B6D4; color: #FFF; font-size: 0.7rem; font-weight: 800; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.05em;">Nowy Rezultat</div>
+                <h3 style="color: #FFF; font-size: 1.35rem; margin-bottom: 15px; margin-top: 10px; display: flex; align-items: center; gap: 10px;">
+                  <span style="color: #06B6D4; font-size: 1.6rem;">✓</span> Pełna suwerenność i minimalne koszty
+                </h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.65;">
+                  Wdrażamy rozwiązania w stabilnym modelu chmurowym Serverless (GCP). Płacisz tylko za to, co faktycznie zużyjesz – gdy nikt nie korzysta z agenta, koszt jego utrzymania wynosi równe <strong>0 PLN</strong>. Na start otrzymujesz darmowy budżet $300 od Google, który w pełni pokrywa pierwsze miesiące intensywnego działania.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Systems Section -->
+      <section id="services" style="padding: 100px 0; background: #0a0f1d;">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 60px;">
+            <span style="color: #3B82F6; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Architektura Rezultatów</span>
+            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF;">Czyste wdrożenia. Zero zbędnego kodu.</h2>
+            <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Odzyskaj od 10 do 30 godzin w tygodniu. Projektujemy dedykowane systemy agentowe AI sterowane bezpośrednio z komunikatorów, eliminując tarcie i setki otwartych zakładek.</p>
+          </div>
+
+          <div class="systems-grid">
+            <!-- System 1 -->
+            <div class="glass-card system-item" style="background: rgba(5, 8, 20, 0.5); border: 1px solid rgba(59, 130, 246, 0.15);">
+              <div class="system-icon-wrapper" style="color: #3B82F6;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+              </div>
+              <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 15px;">Lejki i Kwalifikacja (Agent Wiktor)</h3>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                Twój wirtualny asystent Wiktor przejmuje weryfikację i kwalifikację leadów w kanałach komunikacji. Prowadzi klienta wzdłuż lejków afiliacyjnych oraz ofertowych, a Ty otrzymujesz gotowy, gorący kontakt.
+              </p>
+              <ul style="list-style: none; padding: 0; color: var(--charcoal); font-size: 0.9rem; display: grid; gap: 8px;">
+                <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #3B82F6;">✓</span> Automatyczne prowadzenie rozmowy</li>
+                <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #3B82F6;">✓</span> Segmentacja i asynchroniczny routing</li>
+                <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #3B82F6;">✓</span> Powiadomienia na WhatsApp/Signal</li>
+              </ul>
+            </div>
+
+            <!-- System 2 -->
+            <div class="glass-card system-item" style="background: rgba(5, 8, 20, 0.5); border: 1px solid rgba(6, 182, 212, 0.15);">
+              <div class="system-icon-wrapper" style="color: #06B6D4;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+              </div>
+              <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 15px;">Dział Operacyjny AI (Agent Hermes)</h3>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                Wirtualny COO Hermes dba o bazy wiedzy RAG (Obsidian/GCS), synchronizację Google Calendar i automatyzacje. Odpowiada na zapytania w 3 sekundy i zarządza Twoimi cron-jobami nawyków.
+              </p>
+              <ul style="list-style: none; padding: 0; color: var(--charcoal); font-size: 0.9rem; display: grid; gap: 8px;">
+                <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #06B6D4;">✓</span> Lokalne bazy RAG (Obsidian/GCS)</li>
+                <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #06B6D4;">✓</span> Cron-Joby dbające o osobiste nawyki</li>
+                <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #06B6D4;">✓</span> Bezpieczne integracje przez API i SSH</li>
+              </ul>
+            </div>
+
+            <!-- System 3 -->
+            <div class="glass-card system-item" style="background: rgba(5, 8, 20, 0.5); border: 1px solid rgba(59, 130, 246, 0.15);">
+              <div class="system-icon-wrapper" style="color: #3B82F6;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+              </div>
+              <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 15px;">Integracja CRM & Systeme.io</h3>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                Wykorzystujemy darmowy plan Systeme.io do bezpiecznej wysyłki kampanii e-mailowych i budowy lejków, zapobiegając banom domen. Pełna synchronizacja kontaktów i tagów w tle przez n8n.
+              </p>
+              <ul style="list-style: none; padding: 0; color: var(--charcoal); font-size: 0.9rem; display: grid; gap: 8px;">
+                <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #3B82F6;">✓</span> Strategia „Jednego Taga” dla obniżenia kosztów</li>
+                <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #3B82F6;">✓</span> Integracja z formularzami i kampaniami</li>
+                <li style="display: flex; align-items: center; gap: 8px;"><span style="color: #3B82F6;">✓</span> Bezpieczny e-mail marketing (brak spamu)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Metoda Holistic Operator (#process) -->
+      <section id="process" style="padding: 100px 0; background: #0a0f1d; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative;">
+        <!-- Element dekoracyjny -->
+        <div style="position: absolute; bottom: -50px; right: 5%; width: 250px; height: 250px; background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 70px;">
+            <span style="color: #06B6D4; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Jak działamy</span>
+            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF;">Metoda Holistic Operator</h2>
+            <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Płynna ścieżka od diagnozy chaosu po pełne wdrożenie asynchronicznych pracowników i spokój w firmie.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+            
+            <!-- Krok 1 -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border: 1px solid rgba(59, 130, 246, 0.15); border-radius: 16px; position: relative;">
+              <div style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);">1</div>
+              <h3 style="color: #FFF; font-size: 1.25rem; margin-bottom: 12px; font-weight: 600;">Diagnoza</h3>
+              <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6;">
+                Analizujemy Twoje obecne wąskie gardła i wycieki danych. Sprawdzamy, które powtarzalne czynności najbardziej obciążają Twój zespół i kradną dopaminę.
+              </p>
+            </div>
+
+            <!-- Krok 2 -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border: 1px solid rgba(6, 182, 212, 0.15); border-radius: 16px; position: relative;">
+              <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);">2</div>
+              <h3 style="color: #FFF; font-size: 1.25rem; margin-bottom: 12px; font-weight: 600;">Mapa</h3>
+              <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6;">
+                Projektuję przejrzystą architekturę przepływu informacji. Układamy ścieżkę klienta oraz operacji od pierwszego kliknięcia po automatyczną wysyłkę.
+              </p>
+            </div>
+
+            <!-- Krok 3 -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border: 1px solid rgba(59, 130, 246, 0.15); border-radius: 16px; position: relative;">
+              <div style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);">3</div>
+              <h3 style="color: #FFF; font-size: 1.25rem; margin-bottom: 12px; font-weight: 600;">Architektura</h3>
+              <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6;">
+                Buduję fundamenty techniczne: landing page AI-ready, bazy wiedzy RAG w chmurze, systemy webhooków CRM oraz automatyzacje scalające Twoje programy.
+              </p>
+            </div>
+
+            <!-- Krok 4 -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border: 1px solid rgba(6, 182, 212, 0.15); border-radius: 16px; position: relative;">
+              <div style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; box-shadow: 0 0 15px rgba(6, 182, 212, 0.4);">4</div>
+              <h3 style="color: #FFF; font-size: 1.25rem; margin-bottom: 12px; font-weight: 600;">Wdrożenie</h3>
+              <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6;">
+                Uruchamiamy asynchroniczne pętle (Cron Jobs) oraz agentów AI (Viktor i Hermes). Testujemy stabilność, zabezpieczenia SSL i autoryzację procesów.
+              </p>
+            </div>
+
+            <!-- Krok 5 -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border: 1px solid rgba(59, 130, 246, 0.15); border-radius: 16px; position: relative;">
+              <div style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; margin-bottom: 20px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);">5</div>
+              <h3 style="color: #FFF; font-size: 1.25rem; margin-bottom: 12px; font-weight: 600;">Onboarding</h3>
+              <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6;">
+                Uruchamiamy systemy bezpośrednio w Twoich ulubionych komunikatorach. Bez nudnych szkoleń – Twój zespół po prostu rozmawia z agentami jak ze zwykłymi, ultra-efektywnymi pracownikami.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Virtual Board Teaser (Aplikacja Jason / Boardroom AI) -->
+      <section id="virtual-board-teaser" style="padding: 100px 0; background: #050814; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+          <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+            <div style="flex: 1.2; min-width: 320px;">
+              <span style="color: var(--muted-gold); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Protokół Wirtualnego Zarządu (Autonomia)</span>
+              <h2 style="font-size: 2.8rem; color: #FFF; margin-top: 10px; margin-bottom: 25px; font-weight: 700; line-height: 1.2;">
+                A co byś powiedział, gdybyś mógł mieć w kieszeni<br>
+                <span style="color: var(--muted-gold);">cały swój zarząd AI?</span>
+              </h2>
+              <p style="color: var(--slate-gray); font-size: 1.15rem; line-height: 1.7; margin-bottom: 20px;">
+                Wyobraź sobie system, który nie tylko odpowiada na pytania, ale działa w tle. Dyrektor Marketingu (CMO), który sam planuje Twoje kampanie. Dyrektor Operacyjny (COO), który pilnuje deadlinów i automatyzuje powtarzalne procesy w Twojej firmie. Doradca Finansowy (CFO), który trzyma pieczę nad rentownością.
+              </p>
+              <p style="color: var(--slate-gray); font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px;">
+                Wszystko spięte w jednym, w pełni bezpiecznym i szyfrowanym komunikatorze mobilnym o minimalistycznym wyglądzie. Nowoczesny interfejs <strong>Jason AI</strong> umożliwia błyskawiczny dostęp do Twoich danych i wirtualnych agentów bez zbędnego szumu informacyjnego. Zero skomplikowanych pulpitów nawigacyjnych, zero rozpraszaczy i zero telemetrii — Twoje wrażliwe dane biznesowe są w 100% chronione (<strong>Zero Data Leakage</strong>) w zabezpieczonym, niskokosztowym środowisku chmurowym (Vertex AI / open-source).
+              </p>
+              
+              <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <a href="https://app.jaison.pl/" target="_blank" class="btn-primary" style="background: linear-gradient(135deg, var(--trust-blue) 0%, var(--muted-gold) 100%); box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4); text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: inline-block;">
+                  Odkryj Aplikację Jason ➔
+                </a>
+                <a href="#contact" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: white; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-weight: 600; display: inline-block; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'">
+                  Wdróż Zarząd w Swojej Firmie
+                </a>
+              </div>
+            </div>
+            
+            <div style="flex: 0.8; min-width: 280px; display: flex; justify-content: center;">
+              <div class="glass-card" style="padding: 40px; background: rgba(10, 15, 29, 0.45); border-radius: 20px; text-align: center; border: 1px solid rgba(168, 85, 247, 0.25); width: 100%; max-width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                <div style="display: flex; justify-content: center; margin-bottom: 25px;">
+                  <img src="logos/app_icon.png" onerror="this.onerror=null; this.src='./logos/app_icon.png';" alt="Logo Komunikatora Jason" style="width: 100px; height: 100px; border-radius: 24px; filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.45)); object-fit: contain;">
+                </div>
+                <h3 style="color: #FFF; margin-bottom: 12px; font-size: 1.5rem; font-weight: 700;">Jason Boardroom</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">
+                  Dedykowana brama mobilna do Twoich systemów agentowych. Zarządzaj firmą, analizuj raporty i deleguj zadania bezpośrednio z poziomu szyfrowanego czatu.
+                </p>
+                <span style="display: inline-block; padding: 6px 12px; background: rgba(168, 85, 247, 0.12); color: var(--muted-gold); font-size: 0.8rem; font-weight: bold; border-radius: 20px; border: 1px solid rgba(168, 85, 247, 0.25);">
+                  Dostępna wersja Pro & Pro Plus
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: ROI Calculator -->
+      <section id="roi-calculator" style="padding: 100px 0; background: #0a0f1d; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden;">
+        <!-- Glowing background blob -->
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, rgba(5, 8, 20, 0) 70%); z-index: 0; pointer-events: none;"></div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
+          <div style="text-align: center; max-width: 800px; margin: 0 auto 60px;">
+            <span style="color: var(--sky-blue); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Zmierz Zwrot z Inwestycji</span>
+            <h2 style="font-size: 2.8rem; color: #FFF; margin-top: 10px; margin-bottom: 20px; font-weight: 700; line-height: 1.2;">
+              Kalkulator Oszczędności Czasu & ROI z AI
+            </h2>
+            <p style="color: var(--slate-gray); font-size: 1.15rem; line-height: 1.6;">
+              Użyj poniższych suwaków, aby sprawdzić, ile czasu i budżetu przecieka Ci przez palce na powtarzalne procesy, oraz jak szybko inwestycja w asystenta **Jason AI** zwróci się w Twojej firmie.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 40px; flex-wrap: wrap; align-items: stretch;">
+            <!-- Left Panel: Sliders -->
+            <div class="glass-card" style="flex: 1.2; min-width: 320px; padding: 40px; display: flex; flex-direction: column; gap: 35px; border: 1px solid rgba(255, 255, 255, 0.06); background: rgba(5, 8, 20, 0.5);">
+              
+              <!-- Slider 1 -->
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                  <label for="roi-hours" style="color: #FFF; font-weight: 600; font-size: 1.05rem; display: flex; align-items: center; gap: 8px;">
+                    <span>⏳ Stracone godziny / tydzień:</span>
+                  </label>
+                  <span id="roi-hours-val" style="color: var(--sky-blue); font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800;">10h</span>
+                </div>
+                <input type="range" id="roi-hours" min="1" max="40" value="10" style="width: 100%; accent-color: var(--sky-blue); cursor: pointer; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); outline: none;">
+                <div style="display: flex; justify-content: space-between; color: rgba(255,255,255,0.3); font-size: 0.75rem; margin-top: 8px;">
+                  <span>1 godzina</span>
+                  <span>Maksymalny etat (40h)</span>
+                </div>
+                <p style="color: var(--slate-gray); font-size: 0.85rem; margin-top: 8px; line-height: 1.4;">
+                  Ręczna biurokracja, CRM, przepisywanie danych, przygotowywanie newsletterów, raporty.
+                </p>
+              </div>
+
+              <!-- Slider 2 -->
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                  <label for="roi-rate" style="color: #FFF; font-weight: 600; font-size: 1.05rem;">
+                    💸 Twoja stawka godzinowa:
+                  </label>
+                  <span id="roi-rate-val" style="color: var(--sky-blue); font-family: var(--font-heading); font-size: 1.5rem; font-weight: 800;">150 PLN</span>
+                </div>
+                <input type="range" id="roi-rate" min="50" max="500" step="10" value="150" style="width: 100%; accent-color: var(--sky-blue); cursor: pointer; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.1); outline: none;">
+                <div style="display: flex; justify-content: space-between; color: rgba(255,255,255,0.3); font-size: 0.75rem; margin-top: 8px;">
+                  <span>50 PLN / h</span>
+                  <span>500 PLN / h</span>
+                </div>
+                <p style="color: var(--slate-gray); font-size: 0.85rem; margin-top: 8px; line-height: 1.4;">
+                  Rzeczywisty koszt Twojej godziny pracy lub roboczogodziny oddelegowanego pracownika.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Right Panel: Dynamic Results -->
+            <div class="glass-card" style="flex: 0.8; min-width: 280px; padding: 40px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid rgba(168, 85, 247, 0.25); background: linear-gradient(180deg, rgba(10, 15, 29, 0.7) 0%, rgba(168, 85, 247, 0.03) 100%); text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.4);">
+              <div>
+                <span style="display: inline-block; padding: 4px 10px; background: rgba(239, 68, 68, 0.12); color: #EF4444; border: 1px solid rgba(239, 68, 68, 0.25); border-radius: 6px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 20px;">
+                  Aktualne straty (Koszt chaosu)
+                </span>
+                <div style="margin-bottom: 30px;">
+                  <div style="font-size: 0.9rem; color: var(--slate-gray); text-transform: uppercase; letter-spacing: 0.05em;">Miesięcznie marnujesz:</div>
+                  <div id="roi-loss-hours" style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 800; color: #FFF; margin: 5px 0;">43 godziny</div>
+                  <div id="roi-loss-money" style="font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; color: #EF4444; text-shadow: 0 0 15px rgba(239, 68, 68, 0.2);">6 450 PLN</div>
+                </div>
+
+                <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 25px; margin-bottom: 25px;">
+                  <span style="display: inline-block; padding: 4px 10px; background: rgba(6, 182, 212, 0.12); color: var(--sky-blue); border: 1px solid rgba(6, 182, 212, 0.25); border-radius: 6px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 15px;">
+                    Roczny zysk z Jason AI
+                  </span>
+                  <div style="font-size: 0.85rem; color: var(--slate-gray); line-height: 1.5; margin-bottom: 10px;">
+                    Zakładając automatyzację zaledwie 80% zadań powtarzalnych:
+                  </div>
+                  <div id="roi-saved-hours" style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 700; color: #FFF;">+412,8 godz. zaoszczędzone</div>
+                  <div id="roi-saved-money" style="font-family: var(--font-heading); font-size: 2.4rem; font-weight: 800; color: #10B981; text-shadow: 0 0 15px rgba(16, 185, 129, 0.2); margin-top: 5px;">61 920 PLN zostaje w kieszeni</div>
+                </div>
+
+                <!-- ADHD Reward sentence -->
+                <div id="roi-adhd-reward" style="background: rgba(99, 102, 241, 0.08); border: 1px solid rgba(99, 102, 241, 0.2); padding: 15px; border-radius: 12px; font-size: 0.9rem; color: #FFF; font-weight: 500; line-height: 1.4; margin-bottom: 25px;">
+                  🔥 To oznacza zyskanie <strong>17 dni</strong> czystego, wolnego urlopu w roku!
+                </div>
+              </div>
+
+              <a href="#contact" class="btn-primary" style="padding: 14px; border-radius: 10px; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.05em; width: 100%; display: block; text-decoration: none;">
+                Odzyskaj swój czas ➔
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Calculator Script -->
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const hoursInput = document.getElementById('roi-hours');
+          const rateInput = document.getElementById('roi-rate');
+          
+          const hoursVal = document.getElementById('roi-hours-val');
+          const rateVal = document.getElementById('roi-rate-val');
+          
+          const lossHoursEl = document.getElementById('roi-loss-hours');
+          const lossMoneyEl = document.getElementById('roi-loss-money');
+          
+          const savedHoursEl = document.getElementById('roi-saved-hours');
+          const savedMoneyEl = document.getElementById('roi-saved-money');
+          const adhdRewardEl = document.getElementById('roi-adhd-reward');
+
+          function updateROI() {
+            const hours = parseInt(hoursInput.value);
+            const rate = parseInt(rateInput.value);
+
+            // Update range labels
+            hoursVal.textContent = hours + 'h';
+            rateVal.textContent = rate + ' PLN';
+
+            // Calculations
+            const monthlyLossHours = Math.round(hours * 4.3);
+            const monthlyLossMoney = monthlyLossHours * rate;
+
+            const annualSavedHours = parseFloat((hours * 4.3 * 12 * 0.8).toFixed(1));
+            const annualSavedMoney = Math.round(annualSavedHours * rate);
+
+            // Days of vacation (assuming 24h of active life / holiday)
+            const daysSaved = Math.round(annualSavedHours / 24);
+
+            // Update DOM
+            lossHoursEl.textContent = monthlyLossHours + ' godzin';
+            lossMoneyEl.textContent = monthlyLossMoney.toLocaleString('pl-PL') + ' PLN';
+
+            savedHoursEl.textContent = '+' + annualSavedHours.toLocaleString('pl-PL') + ' godz. zaoszczędzone';
+            savedMoneyEl.textContent = annualSavedMoney.toLocaleString('pl-PL') + ' PLN zostaje w kieszeni';
+
+            // Dynamic ADHD feedback
+            let rewardText = '';
+            if (daysSaved <= 2) {
+              rewardText = `🔥 To oznacza zyskanie <strong>${daysSaved} pełnych dni</strong> wolnego urlopu w roku!`;
+            } else if (daysSaved <= 7) {
+              rewardText = `🏝️ To oznacza zyskanie ponad <strong>${daysSaved} dni</strong> urlopu! Możesz wyjechać na zasłużone, długie wakacje bez laptopa.`;
+            } else if (daysSaved <= 15) {
+              rewardText = `🚀 Zyskujesz aż <strong>${daysSaved} pełnych dni</strong> wolnego! W tym czasie możesz napisać bestsellerową książkę lub wdrożyć 2 nowe produkty.`;
+            } else {
+              rewardText = `🌟 Zyskujesz aż <strong>${daysSaved} dni</strong> absolutnej wolności rocznie! Otrzymujesz prawie <strong>miesiąc czystego urlopu</strong> w roku.`;
+            }
+            adhdRewardEl.innerHTML = rewardText;
+          }
+
+          hoursInput.addEventListener('input', updateROI);
+          rateInput.addEventListener('input', updateROI);
+          updateROI(); // Initial run
+        });
+      </script>
+
+      <!-- Enterprise AI Assistant Section (E-book #2) -->
+      <section id="enterprise-ai-asystent" style="padding: 100px 0; background: #050814; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+          <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+            
+            <div style="flex: 0.8; min-width: 280px; display: flex; justify-content: center; order: 2;">
+              <div class="glass-card" id="ebook2-container" style="padding: 40px; background: rgba(10, 15, 29, 0.45); border-radius: 20px; text-align: left; border: 1px solid rgba(6, 182, 212, 0.2); width: 100%;">
+                <h3 style="color: #FFF; margin-bottom: 8px; font-size: 1.5rem; text-align: center; font-weight: 700; font-family: var(--font-heading);">Odbierz E-book Krok po Kroku</h3>
+                <p style="color: var(--slate-gray); margin-bottom: 25px; font-size: 0.85rem; text-align: center; line-height: 1.5;">Dane zostaną bezpiecznie wysłane, a e-book trafi bezpośrednio na Twój e-mail.</p>
+                
+                <form id="ebook2-form" style="display: flex; flex-direction: column; gap: 15px;">
+                  <div>
+                    <label for="ebook2-name" style="display: block; color: rgba(255,255,255,0.7); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600;">Twoje Imię</label>
+                    <input type="text" id="ebook2-name" name="name" required placeholder="np. Tomasz" style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(5, 8, 20, 0.4); color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+                  </div>
+                  
+                  <div>
+                    <label for="ebook2-email" style="display: block; color: rgba(255,255,255,0.7); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; font-weight: 600;">Twój Adres E-mail</label>
+                    <input type="email" id="ebook2-email" name="email" required placeholder="np. tomasz@firma.pl" style="width: 100%; padding: 12px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(5, 8, 20, 0.4); color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+                  </div>
+
+                  <div style="display: flex; gap: 10px; align-items: flex-start; margin-top: 5px;">
+                    <input type="checkbox" id="ebook2-consent" required style="margin-top: 4px; cursor: pointer;">
+                    <label for="ebook2-consent" style="color: var(--slate-gray); font-size: 0.75rem; line-height: 1.4; cursor: pointer;">
+                      Zgadzam się na przetwarzanie moich danych osobowych (Imię, E-mail) przez Holistic Jason w celu wysyłki bezpłatnego e-booka oraz newslettera zgodnie z <a href="polityka-prywatnosci.html" target="_blank" style="color: #06B6D4; text-decoration: underline;">Polityką Prywatności</a>. Wiem, że mogę się wypisać w każdej chwili jednym kliknięciem.
+                    </label>
+                  </div>
+                  
+                  <button type="submit" id="ebook2-submit-btn" class="btn-primary" style="display: block; width: 100%; font-size: 1.05rem; padding: 14px 0; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: 0.05em; background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.35); transition: all 0.2s;">
+                    Odbierz Darmowy E-book ➔
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <div style="flex: 1.2; min-width: 320px; order: 1;">
+              <span style="color: #06B6D4; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">BEZPŁATNY E-BOOK (NOWOŚĆ)</span>
+              <h2 style="font-size: 2.8rem; color: #FFF; margin-top: 10px; margin-bottom: 25px; font-weight: 700; line-height: 1.25;">Darmowy i Prywatny Asystent AI klasy Enterprise.</h2>
+              <p style="color: var(--slate-gray); font-size: 1.15rem; line-height: 1.7; margin-bottom: 20px;">
+                Zbuduj własnego, potężnego asystenta sztucznej inteligencji bezpośrednio na chmurze <strong>Google Cloud Platform (GCP)</strong> z darmowym budżetem startowym $300 i pełną ochroną danych biznesowych (RAG).
+              </p>
+              <p style="color: var(--slate-gray); font-size: 1.05rem; line-height: 1.7; margin-bottom: 25px;">
+                W tym e-booku omawiam krok po kroku, dlaczego darmowy plan Google AI Studio nie gwarantuje prywatności oraz jak w prosty sposób skonfigurować autorskie systemy Gemini 2.5, generatory Imagen 3 i Veo na Vertex AI bez ponoszenia kosztów.
+              </p>
+              <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 10px;">
+                <div style="background: rgba(255, 255, 255, 0.02); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                  <strong style="color: #06B6D4; display: block; font-size: 1.1rem; margin-bottom: 5px;">$300 od Google</strong>
+                  <span style="color: var(--slate-gray); font-size: 0.85rem;">Instrukcja krok po kroku, jak aktywować darmowy limit i tworzyć multimedia.</span>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.02); padding: 15px; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                  <strong style="color: #06B6D4; display: block; font-size: 1.1rem; margin-bottom: 5px;">100% Prywatności</strong>
+                  <span style="color: var(--slate-gray); font-size: 0.85rem;">Konfiguracja Vertex AI i Paid Tier w AI Studio chroniąca dane firmy.</span>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Script for E-book 2 Submit -->
+      <script>
+        document.getElementById('ebook2-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const btn = document.getElementById('ebook2-submit-btn');
+          const container = document.getElementById('ebook2-container');
+          
+          const name = document.getElementById('ebook2-name').value;
+          const email = document.getElementById('ebook2-email').value;
+          
+          btn.disabled = true;
+          btn.innerHTML = 'Przesyłanie...';
+          
+          const payload = {
+            project: "jason",
+            name: name,
+            contact: email,
+            source: "Ebook 2",
+            problem: "Pobranie ebooka: Darmowy i Prywatny Asystent AI klasy Enterprise"
+          };
+          
+          const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://127.0.0.1:8000/api/lead' 
+            : 'https://os.jaison.pl/api/lead';
+          
+          fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+          .then(response => {
+            if (response.ok) {
+              container.innerHTML = `
+                <div style="text-align: center; padding: 30px 0;">
+                  <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">📨</span>
+                  <h3 style="color: #06B6D4; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">E-book wysłany!</h3>
+                  <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
+                    Dziękujemy za zapis. Twój e-book <strong>"Darmowy i Prywatny Asystent AI klasy Enterprise"</strong> został przekazany do wysyłki w systemie.
+                  </p>
+                  <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
+                    Sprawdź swoją skrzynkę odbiorczą (oraz folder Oferty/Spam) pod adresem: <strong>${email}</strong>.
+                  </p>
+                </div>
+              `;
+            } else {
+              throw new Error('Server error');
+            }
+          })
+          .catch(err => {
+            console.error('API error, trying relative fallback...', err);
+            fetch('/api/lead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            })
+            .then(res => {
+              if (res.ok) {
+                container.innerHTML = `
+                  <div style="text-align: center; padding: 30px 0;">
+                    <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">📨</span>
+                    <h3 style="color: #06B6D4; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">E-book wysłany!</h3>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
+                      Dziękujemy za zapis. Twój e-book został przekazany do wysyłki w systemie.
+                    </p>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
+                      Sprawdź swoją skrzynkę odbiorczą pod adresem: <strong>${email}</strong>.
+                    </p>
+                  </div>
+                `;
+              } else {
+                throw new Error('Fallback error');
+              }
+            })
+            .catch(fallbackErr => {
+              btn.disabled = false;
+              btn.innerHTML = 'Spróbuj ponownie';
+              alert('Wystąpił błąd podczas wysyłania zapisu. Spróbuj ponownie lub napisz do nas bezpośrednio.');
+            });
+          });
+        });
+      </script>
+
+      <!-- Script for Mercury E-book Submit -->
+      <script>
+        document.getElementById('mercury-ebook-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const btn = document.getElementById('mercury-submit-btn');
+          const container = document.getElementById('mercury-ebook-container');
+          
+          const name = document.getElementById('mercury-name').value;
+          const email = document.getElementById('mercury-email').value;
+          
+          btn.disabled = true;
+          btn.innerHTML = 'Przesyłanie...';
+          
+          const payload = {
+            project: "jason",
+            name: name,
+            contact: email,
+            source: "Prywatna Twierdza",
+            problem: "Pobranie ebooka: Prywatna Twierdza - Instrukcja instalacji"
+          };
+          
+          const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://127.0.0.1:8000/api/lead' 
+            : 'https://os.jaison.pl/api/lead';
+          
+          fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+          .then(response => {
+            if (response.ok) {
+              container.innerHTML = `
+                <div style="text-align: center; padding: 30px 0;">
+                  <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">📨</span>
+                  <h3 style="color: #F59E0B; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">E-book wysłany!</h3>
+                  <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
+                    Dziękujemy za zapis. Twój e-book <strong>"Prywatna Twierdza"</strong> został przekazany do wysyłki w systemie.
+                  </p>
+                  <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
+                    Sprawdź swoją skrzynkę odbiorczą (oraz folder Oferty/Spam) pod adresem: <strong>${email}</strong>.
+                  </p>
+                </div>
+              `;
+            } else {
+              throw new Error('Server error');
+            }
+          })
+          .catch(err => {
+            console.error('API error, trying relative fallback...', err);
+            fetch('/api/lead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            })
+            .then(res => {
+              if (res.ok) {
+                container.innerHTML = `
+                  <div style="text-align: center; padding: 30px 0;">
+                    <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">📨</span>
+                    <h3 style="color: #F59E0B; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">E-book wysłany!</h3>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
+                      Dziękujemy za zapis. Twój e-book został przekazany do wysyłki w systemie.
+                    </p>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
+                      Sprawdź swoją skrzynkę odbiorczą pod adresem: <strong>${email}</strong>.
+                    </p>
+                  </div>
+                `;
+              } else {
+                throw new Error('Fallback error');
+              }
+            })
+            .catch(fallbackErr => {
+              btn.disabled = false;
+              btn.innerHTML = 'Spróbuj ponownie';
+              alert('Wystąpił błąd podczas wysyłania zapisu. Spróbuj ponownie lub napisz do nas.');
+            });
+          });
+        });
+      </script>
+
+      <!-- Bio / Logika Section -->
+      <section id="about" style="padding: 100px 0; background: #0a0f1d;">
+        <div class="container">
+          <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+            
+            <!-- Bio Visual (Personal Brand Portrait + Cybernetic AI Constellation) -->
+            <div style="flex: 1; min-width: 300px; display: flex; justify-content: center;">
+              <div class="glass-card" style="padding: 20px; background: rgba(10, 15, 29, 0.55); border: 1px solid rgba(59, 130, 246, 0.25); width: 100%; max-width: 380px; position: relative; overflow: hidden; border-radius: 20px; box-shadow: 0 15px 35px rgba(59, 130, 246, 0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 45px rgba(59, 130, 246, 0.25)'" onmouseout="this.style.transform='none'; this.style.boxShadow='0 15px 35px rgba(59, 130, 246, 0.15)'">
+                
+                <!-- Premium Glass Tab Switcher -->
+                <div class="tabs-control-wrapper" style="display: flex; gap: 8px; justify-content: center; margin-bottom: 15px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); padding: 4px; border-radius: 99px; position: relative; z-index: 10;">
+                  <button id="tab-graph-btn" class="tab-control-btn active" style="flex: 1; padding: 8px 12px; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; border-radius: 99px;" onclick="switchAboutTab('graph')">
+                    🧠 Mózg AI
+                  </button>
+                  <button id="tab-bio-btn" class="tab-control-btn" style="flex: 1; padding: 8px 12px; font-family: var(--font-heading); font-size: 0.85rem; font-weight: 600; border-radius: 99px;" onclick="switchAboutTab('bio')">
+                    👤 Profil
+                  </button>
+                </div>
+
+                <!-- Tab 1: Interactive Obsidian Knowledge Graph -->
+                <div id="tab-graph-content" class="about-tab-content active" style="position: relative; width: 100%; height: 380px; border-radius: 12px; overflow: hidden; background: #050814; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column;">
+                  <svg id="obsidian-graph-svg" style="flex: 1; width: 100%; height: 100%; background: radial-gradient(circle at center, #0a0f1d 0%, #050814 100%); cursor: grab;"></svg>
+                  
+                  <!-- Floating Neon Tooltip Detail Card -->
+                  <div id="graph-tooltip-panel" style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(10, 15, 29, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid rgba(255,255,255,0.08); padding: 12px 16px; min-height: 85px; display: flex; flex-direction: column; justify-content: center; transition: all 0.3s ease;">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                      <span class="tooltip-dot" style="width: 8px; height: 8px; border-radius: 50%; background: #3B82F6; display: inline-block; transition: background 0.3s ease, box-shadow 0.3s ease;"></span>
+                      <h4 id="tooltip-title" style="margin: 0; font-size: 0.95rem; color: #FFF; font-family: var(--font-heading); font-weight: 700; text-align: left;">Drugi Mózg JASON AI</h4>
+                    </div>
+                    <p id="tooltip-desc" style="margin: 0; font-size: 0.78rem; color: var(--slate-gray); line-height: 1.4; text-align: left;">
+                      Najedź myszą lub dotknij dowolnego węzła bazy wiedzy, aby odkryć moduły i połączenia agentowe w moim drugim mózgu Obsidian.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Tab 2: Tomasz Bio Portrait with Cybernetic Overlay -->
+                <div id="tab-bio-content" class="about-tab-content" style="position: relative; width: 100%; height: auto; border-radius: 12px; overflow: hidden; background: #070b16;">
+                  <img id="bio-portrait" src="./tomasz_bio.png" onerror="this.onerror=null; this.src='./tomasz_hero.png'; this.style.opacity='0.85';" style="width: 100%; height: auto; display: block; filter: brightness(1.0) contrast(1.05); transition: opacity 0.5s;" alt="Tomasz - Holistic Jason">
+                  
+                  <!-- Cybernetic Neon Overlay -->
+                  <div style="position: absolute; inset: 0; background: linear-gradient(to top, #0a0f1d 5%, rgba(10, 15, 29, 0.3) 50%, rgba(10, 15, 29, 0.15) 100%); pointer-events: none;"></div>
+                  
+                  <!-- Embedded Glowing Constellation SVG overlayed over portrait -->
+                  <svg viewBox="0 0 400 400" style="position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; mix-blend-mode: screen;">
+                    <style>
+                      .node-bio { fill: #3B82F6; filter: drop-shadow(0 0 5px #3B82F6); animation: nodeBioPulse 3s infinite ease-in-out; }
+                      .node-bio-cyan { fill: #06B6D4; filter: drop-shadow(0 0 5px #06B6D4); animation: nodeBioPulse 4s infinite ease-in-out; }
+                      .link-bio-pulse { stroke: rgba(59, 130, 246, 0.25); stroke-dasharray: 4, 4; animation: bioDash 25s linear infinite; }
+                      .link-bio-fixed { stroke: rgba(255, 255, 255, 0.08); }
+                      @keyframes nodeBioPulse {
+                        0%, 100% { transform: scale(1); opacity: 0.5; }
+                        50% { transform: scale(1.25); opacity: 0.95; }
+                      }
+                      @keyframes bioDash {
+                        to { stroke-dashoffset: -40; }
+                      }
+                    </style>
+                    <!-- Constellation Nodes & Links -->
+                    <line x1="160" y1="110" x2="210" y2="90" class="link-bio-fixed" stroke-width="1" />
+                    <line x1="210" y1="90" x2="250" y2="120" class="link-bio-fixed" stroke-width="1" />
+                    <line x1="250" y1="120" x2="270" y2="170" class="link-bio-pulse" stroke-width="1.5" />
+                    <line x1="270" y1="170" x2="230" y2="210" class="link-bio-fixed" stroke-width="1" />
+                    <line x1="230" y1="210" x2="180" y2="240" class="link-bio-fixed" stroke-width="1" />
+                    <line x1="180" y1="240" x2="140" y2="190" class="link-bio-pulse" stroke-width="1.5" />
+                    <line x1="140" y1="190" x2="160" y2="110" class="link-bio-fixed" stroke-width="1" />
+                    
+                    <line x1="210" y1="90" x2="230" y2="210" class="link-bio-pulse" stroke-width="1.5" />
+                    <line x1="160" y1="110" x2="230" y2="210" class="link-bio-fixed" stroke-width="1" />
+                    <line x1="180" y1="240" x2="210" y2="310" class="link-bio-fixed" stroke-width="1" />
+                    <line x1="230" y1="210" x2="210" y2="310" class="link-bio-pulse" stroke-width="1.5" />
+                    <line x1="270" y1="170" x2="285" y2="225" class="link-bio-fixed" stroke-width="1" />
+                    <line x1="285" y1="225" x2="265" y2="280" class="link-bio-fixed" stroke-width="1" />
+                    <line x1="265" y1="280" x2="210" y2="310" class="link-bio-fixed" stroke-width="1" />
+
+                    <!-- Glowing Dots -->
+                    <circle cx="160" cy="110" r="5" class="node-bio" style="animation-delay: 0.2s; transform-origin: 160px 110px;" />
+                    <circle cx="210" cy="90" r="6" class="node-bio-cyan" style="animation-delay: 0.5s; transform-origin: 210px 90px;" />
+                    <circle cx="250" cy="120" r="5" class="node-bio" style="animation-delay: 0.8s; transform-origin: 250px 120px;" />
+                    <circle cx="270" cy="170" r="6" class="node-bio-cyan" style="animation-delay: 1.1s; transform-origin: 270px 170px;" />
+                    <circle cx="230" cy="210" r="7" class="node-bio" style="animation-delay: 1.4s; transform-origin: 230px 210px;" />
+                    <circle cx="180" cy="240" r="5" class="node-bio" style="animation-delay: 1.7s; transform-origin: 180px 240px;" />
+                    <circle cx="140" cy="190" r="6" class="node-bio-cyan" style="animation-delay: 2.0s; transform-origin: 140px 190px;" />
+                    <circle cx="210" cy="310" r="6" class="node-bio" style="animation-delay: 2.3s; transform-origin: 210px 310px;" />
+                    <circle cx="285" cy="225" r="4" class="node-bio" style="animation-delay: 2.6s; transform-origin: 285px 225px;" />
+                    <circle cx="265" cy="280" r="5" class="node-bio-cyan" style="animation-delay: 2.9s; transform-origin: 265px 280px;" />
+                  </svg>
+                </div>
+                
+                <!-- Decorative blue blur -->
+                <div style="position: absolute; bottom: -20px; right: -20px; width: 120px; height: 120px; background: rgba(59, 130, 246, 0.2); border-radius: 50%; filter: blur(40px); pointer-events: none;"></div>
+              </div>
+            </div>
+
+            <!-- Bio Text Content -->
+            <div style="flex: 1.5; min-width: 350px;">
+              <span style="color: #3B82F6; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Moja Historia & Misja</span>
+              <h2 style="font-size: 2.8rem; color: #FFF; margin-top: 10px; margin-bottom: 25px; font-weight: 700;">Zabijam chaos operacyjny. Projektuję systemy AI i hakuję dopaminę.</h2>
+              
+              <p style="color: var(--charcoal); font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px;">
+                Słuchaj, cała idea upraszczania i wdrażania systemów agentowych AI nie powstała z chęci zarobienia szybkich milionów na fali "hype'u na sztuczną inteligencję". <strong>Powstała z mojej osobistej bezsilności.</strong>
+              </p>
+              
+              <p style="color: var(--charcoal); font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px;">
+                Zdiagnozowano u mnie <strong>ADHD</strong>, a mój wiecznie <strong>przebodźcowany cyfrowo, neuroatypowy mózg</strong> przez lata był moim największym wrogiem w biznesie. Rano otwierałem komputer i widziałem: 40 otwartych kart w przeglądarce, czerwone alerty w CRM i pękającą w szwach skrzynkę. Efekt? <strong>Totalny paraliż kognitywny.</strong> Mój umysł dostawał tak potężnego szumu informacyjnego, że wchodził w pętlę prokrastynacji i odmawiał współpracy.
+              </p>
+
+              <p style="color: var(--charcoal); font-size: 1.1rem; line-height: 1.7; margin-bottom: 35px;">
+                Wtedy zrozumiałem kluczową zasadę: <em>Śmieci na wejściu, śmieci na wyjściu.</em> Jeśli system tworzy szum, to nie jest system. To śmietnik. Postanowiłem zhakować swój biznes i swoje życie. Wywaliłem zbędne panele i CRM-y. Zbudowałem wirtualnych agentów AI, którymi steruję z poziomu <strong>jednego komunikatora na telefonie (WhatsApp, Telegram, Signal)</strong>.
+                Dodatkowo zacząłem <strong>biohakować swoje zdrowie i poziom energii</strong>. Mój wirtualny asystent Hermes rano pilnuje moich zdrowych rytuałów porannych, snu i nawyków, stając się osobistym doradcą, który chroni mnie przed wypaleniem i dba o mój budżet dopaminowy.
+              </p>
+              
+              <!-- Stats Row -->
+              <div style="display: flex; gap: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 30px;">
+                <div>
+                  <span style="display: block; font-size: 2.5rem; font-family: var(--font-heading); color: #FFF; font-weight: 800; line-height: 1;">12+</span>
+                  <span style="font-size: 0.8rem; color: var(--slate-gray); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; margin-top: 5px; display: block;">Wdrożonych Systemów</span>
+                </div>
+                <div style="border-left: 1px solid rgba(255, 255, 255, 0.08); padding-left: 40px;">
+                  <span style="display: block; font-size: 2.5rem; font-family: var(--font-heading); color: #06B6D4; font-weight: 800; line-height: 1;">&lt; 60s</span>
+                  <span style="font-size: 0.8rem; color: var(--slate-gray); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; margin-top: 5px; display: block;">Reakcja na Lead</span>
+                </div>
+                <div style="border-left: 1px solid rgba(255, 255, 255, 0.08); padding-left: 40px;">
+                  <span style="display: block; font-size: 2.5rem; font-family: var(--font-heading); color: #FFF; font-weight: 800; line-height: 1;">0%</span>
+                  <span style="font-size: 0.8rem; color: var(--slate-gray); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; margin-top: 5px; display: block;">Pustego Hype'u</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Certificates & ADHD Bio Section -->
+      <section id="certyfikaty" style="padding: 100px 0; background: #050814; border-top: 1px solid rgba(255, 255, 255, 0.05); border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden;">
+        <!-- Decorative golden-blue background gradients -->
+        <div style="position: absolute; top: -10%; left: -5%; width: 300px; height: 300px; background: rgba(59, 130, 246, 0.15); border-radius: 50%; filter: blur(80px); pointer-events: none;"></div>
+        <div style="position: absolute; bottom: -10%; right: -5%; width: 300px; height: 300px; background: rgba(224, 165, 27, 0.1); border-radius: 50%; filter: blur(80px); pointer-events: none;"></div>
+        
+        <div class="container">
+          <div style="display: flex; align-items: center; gap: 60px; flex-wrap: wrap;">
+            
+            <!-- History / Story (Left side) -->
+            <div style="flex: 1.2; min-width: 350px;">
+              <span style="color: var(--muted-gold); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em; display: inline-flex; align-items: center; gap: 8px;">
+                🎓 Oficjalny Certyfikat Google & SGH
+              </span>
+              <h2 style="font-size: 2.8rem; color: #FFF; margin-top: 10px; margin-bottom: 25px; font-weight: 700; font-family: var(--font-heading);">
+                Mój Mózg Działa na Dopaminie z Automatyzacji i Vibe Codingu.
+              </h2>
+              
+              <p style="color: var(--charcoal); font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px;">
+                Dla mnie połączenie <strong>vibe codingu</strong>, marketingu oraz nowoczesnych technologii AI to nie jest kolejny trend technologiczny do odznaczenia. To mój własny, autorski <strong>hak kognitywny</strong> i życiowa pasja.
+              </p>
+              
+              <p style="color: var(--charcoal); font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px;">
+                Życie z <strong>ADHD</strong> oznacza nieustanną walkę o skupienie i chroniczny głód <strong>dopaminy</strong>. Zamiast z tym walczyć, zaprzęgnąłem to do pracy. Tworzenie działających, autonomicznych agentów AI, którzy rozwiązują rzeczywiste problemy w ułamku sekundy, to dla mnie najczystsza dopamina. Automatyzacje pozwalają mi <strong>poukładać skomplikowane procesy w spójną całość</strong>, uwalniając mnie (i moich klientów) od chaosu operacyjnego. 
+              </p>
+
+              <p style="color: var(--charcoal); font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px;">
+                Aby przenieść tę intuicyjną pasję na najwyższy poziom biznesowy, pomyślnie ukończyłem prestiżowe szkolenie **Google Umiejętności Jutra (edycja Sztuczna Inteligencja)**, certyfikowane bezpośrednio przez **Google** oraz **SGH (Szkołę Główną Handlową w Warszawie)**. Za moim dynamicznym podejściem stoi formalnie zweryfikowana wiedza akademicka oraz techniczna giganta technologicznego.
+              </p>
+              
+              <!-- Bullet points visual anchors -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 30px;">
+                <div style="display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; border-radius: 12px;">
+                  <span style="font-size: 1.5rem;">🔥</span>
+                  <span style="color: #FFF; font-size: 0.95rem; font-weight: 600;">Neuro-Dopaminowy Napęd</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.02); border: 1px solid rgba(255, 255, 255, 0.05); padding: 12px 16px; border-radius: 12px;">
+                  <span style="font-size: 1.5rem;">⚡</span>
+                  <span style="color: #FFF; font-size: 0.95rem; font-weight: 600;">Ekspresowe Prototypowanie</span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Credentials / Images (Right side) -->
+            <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 20px;">
+              <!-- Card 1: Certificate -->
+              <div class="glass-card" style="padding: 12px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(224, 165, 27, 0.25); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.03) rotate(1deg)'; this.style.boxShadow='0 15px 35px rgba(224, 165, 27, 0.25)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';">
+                <img src="./certyfikat_google.jpg" alt="Oficjalny Certyfikat Google Umiejętności Jutra AI" style="width: 100%; height: auto; border-radius: 10px; display: block;">
+                <div style="padding: 10px 5px 2px 5px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: #FFF; font-size: 0.85rem; font-weight: bold; font-family: var(--font-heading);">Certyfikat Ukończenia SGH & Google</span>
+                  <span style="color: var(--muted-gold); font-size: 0.8rem; font-weight: bold;">Google AI</span>
+                </div>
+              </div>
+              
+              <!-- Card 2: Test Result -->
+              <div class="glass-card" style="padding: 12px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='scale(1.03) rotate(-1deg)'; this.style.boxShadow='0 15px 35px rgba(59, 130, 246, 0.25)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';">
+                <img src="./test_zaliczony.png" alt="Zaliczony egzamin Google Umiejętności Jutra" style="width: 100%; height: auto; border-radius: 10px; display: block;">
+                <div style="padding: 10px 5px 2px 5px; display: flex; justify-content: space-between; align-items: center;">
+                  <span style="color: #FFF; font-size: 0.85rem; font-weight: bold; font-family: var(--font-heading);">Egzamin końcowy: Status ZALICZONY</span>
+                  <span style="color: #3B82F6; font-size: 0.8rem; font-weight: bold;">100% Correct</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Case Studies Section -->
+      <section id="wdrozenia" style="padding: 100px 0; background: #070b16; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 60px;">
+            <span style="color: #3B82F6; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Case Studies</span>
+            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF;">Wdrożenia AI & Systemy w Praktyce</h2>
+            <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Prawdziwe wdrożenia, twarde liczby i zoptymalizowana obecność w sieci. Bez marketingowego szumu.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <!-- Klient 1: Coolfon GSM -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border-radius: 16px; border: 1px solid rgba(59, 130, 246, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                  <h3 style="font-size: 1.4rem; color: #FFF; margin: 0; font-weight: 700;">coolfon.pl</h3>
+                  <span style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; font-size: 0.7rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Lokalne SEO & SMS</span>
+                </div>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>Wyzwanie:</strong> Niska widoczność w wyszukiwarkach lokalnych oraz ręczne powiadamianie klientów o statusie napraw w serwisie GSM.
+                </p>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>System AI:</strong> Automatyzacja n8n zintegrowana z SMSAPI (powiadomienia o odbiorze), optymalizacja profilu Google Maps przez Localo, opisy produktów generowane przez AI.
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
+                <a href="./clients/coolfon/brandbook/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(59, 130, 246, 0.1); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Brand Book</a>
+                <a href="./clients/coolfon/website/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(6, 182, 212, 0.1); color: #06B6D4; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Strona WWW</a>
+                <a href="./clients/coolfon/logo/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(255, 255, 255, 0.05); color: #FFF; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Logotypy</a>
+              </div>
+            </div>
+
+            <!-- Klient 2: VIP Transporter -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border-radius: 16px; border: 1px solid rgba(6, 182, 212, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                  <h3 style="font-size: 1.4rem; color: #FFF; margin: 0; font-weight: 700;">viptransporter.pl</h3>
+                  <span style="background: rgba(6, 182, 212, 0.15); color: #06B6D4; font-size: 0.7rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Automatyczna Rezerwacja</span>
+                </div>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>Wyzwanie:</strong> Utrata zapytań o wynajem aut premium poza godzinami pracy, brak automatycznej weryfikacji i kwalifikacji leadów.
+                </p>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>System AI:</strong> Całodobowy asystent rezerwacji AI (n8n + webhooki), automatyczna wysyłka umów i formularzy, integracja z Systeme.io w celu segmentacji klientów B2B.
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
+                <a href="./clients/viptransporter/brandbook/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(59, 130, 246, 0.1); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Brand Book</a>
+                <a href="./clients/viptransporter/website/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(6, 182, 212, 0.1); color: #06B6D4; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Strona WWW</a>
+                <a href="./clients/viptransporter/logo/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(255, 255, 255, 0.05); color: #FFF; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Logotypy</a>
+              </div>
+            </div>
+
+            <!-- Klient 3: Smartrade -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border-radius: 16px; border: 1px solid rgba(59, 130, 246, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                  <h3 style="font-size: 1.4rem; color: #FFF; margin: 0; font-weight: 700;">smartrade.pl</h3>
+                  <span style="background: rgba(59, 130, 246, 0.15); color: #3B82F6; font-size: 0.7rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Integracja ERP & CRM</span>
+                </div>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>Wyzwanie:</strong> Ręczne przepisywanie zamówień importowych, brak integracji ERP z CRM oraz wysokie straty czasu na kalkulacje wielowalutowe.
+                </p>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>System AI:</strong> Przepływy n8n synchronizujące dane zamówień w czasie rzeczywistym, automatyczny wylicznik marży zintegrowany z API bankowym, automatyczne raportowanie.
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
+                <a href="./clients/smartrade/brandbook/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(59, 130, 246, 0.1); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Brand Book</a>
+                <a href="./clients/smartrade/website/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(6, 182, 212, 0.1); color: #06B6D4; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Strona WWW</a>
+                <a href="./clients/smartrade/logo/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(255, 255, 255, 0.05); color: #FFF; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Logotypy</a>
+              </div>
+            </div>
+
+            <!-- Klient 4: Kurczak u Jasia (Gastronomia) -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border-radius: 16px; border: 1px solid rgba(245, 158, 11, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                  <h3 style="font-size: 1.4rem; color: #FFF; margin: 0; font-weight: 700;">kurczakujasia.pl</h3>
+                  <span style="background: rgba(245, 158, 11, 0.15); color: #F59E0B; font-size: 0.7rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Lokalne SEO & WordPress</span>
+                </div>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>Wyzwanie:</strong> Niska widoczność lokalnej gastronomii przy Selgrosie w wynikach wyszukiwania Google i brak zautomatyzowanej komunikacji z powracającymi klientami.
+                </p>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>System AI:</strong> Optymalizacja treści i struktury WordPress pod kątem AI Search (GEO), zautomatyzowane pozyskiwanie opinii w Google Maps oraz lejki marketingowe spięte z mediami społecznościowymi.
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
+                <a href="./clients/kurczakujasia/brandbook/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(59, 130, 246, 0.1); color: #3B82F6; border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Brand Book</a>
+                <a href="./clients/kurczakujasia/website/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(6, 182, 212, 0.1); color: #06B6D4; border: 1px solid rgba(6, 182, 212, 0.3); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Strona WWW</a>
+                <a href="./clients/kurczakujasia/logo/" target="_blank" style="font-size: 0.8rem; padding: 6px 12px; background: rgba(255, 255, 255, 0.05); color: #FFF; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; text-decoration: none; font-weight: bold; transition: all 0.2s;">Logotypy</a>
+              </div>
+            </div>
+
+            <!-- Klient 5: Holistyczny Broker (Nieruchomości AI) -->
+            <div class="glass-card" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border-radius: 16px; border: 1px solid rgba(16, 185, 129, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+                  <h3 style="font-size: 1.4rem; color: #FFF; margin: 0; font-weight: 700;">holistycznybroker.pl</h3>
+                  <span style="background: rgba(16, 185, 129, 0.15); color: #10B981; font-size: 0.7rem; font-weight: bold; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.05em;">Agentic OS & Vertex AI Search</span>
+                </div>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>Wyzwanie:</strong> Czasochłonne przeczesywanie setek ofert off-market, dopasowywanie ich do kryteriów inwestorów HNWI oraz tworzenie memorandów inwestycyjnych.
+                </p>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 15px;">
+                  <strong>System AI:</strong> Skaner rejestru RWDZ i ULDK Geoportalu podpięty pod bazy RAG w Vertex AI Search (organizacja <em>brokerholistic@gmail.com</em>), automatyczny silnik matchingu ofert opartego na wektorach oraz generator memorandów PDF zintegrowany z Telegramem.
+                </p>
+              </div>
+              <div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
+                <span style="font-size: 0.8rem; padding: 6px 12px; background: rgba(16, 185, 129, 0.1); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 6px; font-weight: bold; letter-spacing: 0.05em; text-transform: uppercase;">Google Developer Grant Project</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Przycisk do pełnych analiz -->
+          <div style="text-align: center; margin-top: 50px;">
+            <a href="case-studies.html" style="display: inline-block; font-family: var(--font-heading); font-weight: 700; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.05em; padding: 16px 35px; background: linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%); color: white; border-radius: 8px; text-decoration: none; box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3); transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 25px rgba(6, 182, 212, 0.45)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 20px rgba(6, 182, 212, 0.3)';">
+              Odkryj Pełne Case Studies z Architekturą i Wykazem Narzędzi ➔
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section: Jaison Trust Engine (Opinie w Czasie Rzeczywistym) -->
+      <section id="opinie" style="padding: 100px 0; background: #050814; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden;">
+        <!-- Element świetlny -->
+        <div style="position: absolute; top: -10%; left: 50%; transform: translateX(-50%); width: 600px; height: 300px; background: radial-gradient(circle, rgba(6, 182, 212, 0.05) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 60px;">
+            <span style="color: #06B6D4; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Jaison Trust Engine</span>
+            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF; font-family: var(--font-heading);">Opinie Naszych Partnerów w ułamku sekundy</h2>
+            <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Poniższe opinie pochodzą bezpośrednio z naszej bazy danych. Nasi klienci mogą samodzielnie dodać opinię, która pojawia się na stronie natychmiast po zatwierdzeniu.</p>
+          </div>
+
+          <!-- Kontener na dynamicznie ładowane opinie -->
+          <div id="testimonials-dynamic-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px;">
+            <!-- Loader wyświetlany przed pobraniem danych -->
+            <div id="testimonials-loader" style="grid-column: 1 / -1; text-align: center; padding: 50px 0;">
+              <div style="display: inline-block; width: 40px; height: 40px; border: 3px solid rgba(255,255,255,0.05); border-radius: 50%; border-top-color: #06B6D4; animation: spin 1s ease infinite; margin-bottom: 15px;"></div>
+              <p style="color: var(--slate-gray); font-size: 0.95rem;">Trwa bezpieczne łączenie z Jaison Trust Engine...</p>
+            </div>
+          </div>
+
+          <!-- Przycisk zachęcający do dodania opinii -->
+          <div style="text-align: center;">
+            <p style="color: var(--slate-gray); font-size: 0.95rem; margin-bottom: 20px;">Współpracowałeś ze mną? Podziel się swoimi wrażeniami!</p>
+            <a href="opinia.html" style="display: inline-block; font-family: var(--font-heading); font-weight: 600; font-size: 0.9rem; letter-spacing: 0.05em; padding: 12px 25px; background: rgba(255,255,255,0.02); color: #FFF; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 8px; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(6, 182, 212, 0.1)'; this.style.borderColor='#06B6D4'; this.style.color='#06B6D4';" onmouseout="this.style.background='rgba(255,255,255,0.02)'; this.style.borderColor='rgba(255,255,255,0.1)'; this.style.color='#FFF';">
+              ★ Dodaj Moją Opinię
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Keyframes animacji loader'a -->
+      <style>
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      </style>
+
+      <!-- Skrypt pobierający opinie -->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const container = document.getElementById("testimonials-dynamic-container");
+          
+          // Fallbacki (anti-fragile) - te opinie zostaną pokazane, gdyby serwer API był offline
+          const fallbackReviews = [
+            {
+              name: "Tomasz",
+              company: "coolfon.pl",
+              rating: 5,
+              comment: "Automatyzacja powiadomień SMS o statusach napraw w serwisie oszczędza nam co najmniej godzinę dziennie. Klienci są zachwyceni, że dostają informacje natychmiast, a my nie musimy wisieć na telefonie. Zdecydowanie polecam!",
+              avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop"
+            },
+            {
+              name: "Jacek",
+              company: "kurczakujasia.pl",
+              rating: 5,
+              comment: "Optymalizacja naszego lokalu pod kątem wyszukiwarek AI (AEO/GEO) przyniosła nam mnóstwo nowych klientów przy Selgrosie. Przepiękny i przejrzysty kod strony głównej, świetny copywriting i pełen profesjonalizm.",
+              avatar: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&h=100&fit=crop"
+            },
+            {
+              name: "Krzysztof",
+              company: "viptransporter.pl",
+              rating: 5,
+              comment: "Dzięki 24/7 asystentowi rezerwacji spiętemu z Systeme.io i n8n nie tracimy już żadnych zapytań w weekendy. Klienci dostają natychmiastową asynchroniczną kwalifikację, a my rano mamy gotowe, posegmentowane leady w CRM.",
+              avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+            }
+          ];
+
+          function renderReviews(reviews) {
+            // Czyścimy loader
+            container.innerHTML = "";
+            
+            if (reviews.length === 0) {
+              reviews = fallbackReviews; // Jeśli pusta tablica, dajemy fallback
+            }
+
+            reviews.forEach(review => {
+              // Generowanie gwiazdek
+              let starsHtml = "";
+              for (let i = 1; i <= 5; i++) {
+                if (i <= review.rating) {
+                  starsHtml += `<span style="color: #F59E0B; font-size: 1.25rem;">★</span>`;
+                } else {
+                  starsHtml += `<span style="color: rgba(255,255,255,0.1); font-size: 1.25rem;">★</span>`;
+                }
+              }
+
+              const card = document.createElement("div");
+              card.className = "glass-card";
+              card.style.cssText = `
+                padding: 30px;
+                background: rgba(5, 8, 20, 0.45);
+                border-radius: 16px;
+                border: 1px solid rgba(255,255,255,0.06);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                backdrop-filter: blur(10px);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+              `;
+              
+              // Dodanie hoveru przez JS
+              card.onmouseover = () => {
+                card.style.transform = "translateY(-4px)";
+                card.style.boxShadow = "0 10px 25px rgba(6, 182, 212, 0.1)";
+                card.style.borderColor = "rgba(6, 182, 212, 0.25)";
+              };
+              card.onmouseout = () => {
+                card.style.transform = "none";
+                card.style.boxShadow = "none";
+                card.style.borderColor = "rgba(255,255,255,0.06)";
+              };
+
+              card.innerHTML = `
+                <div>
+                  <div style="display: flex; gap: 4px; margin-bottom: 15px;">
+                    ${starsHtml}
+                  </div>
+                  <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px; font-style: italic;">
+                    "${review.comment}"
+                  </p>
+                </div>
+                <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 15px;">
+                  <img src="${review.avatar || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&h=100&fit=crop'}" alt="${review.name}" style="width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(6, 182, 212, 0.4);">
+                  <div>
+                    <strong style="color: #FFF; display: block; font-size: 0.95rem; font-family: var(--font-heading);">${review.name}</strong>
+                    <span style="color: #06B6D4; font-size: 0.8rem; font-weight: 500;">${review.company}</span>
+                  </div>
+                </div>
+              `;
+              container.appendChild(card);
+            });
+          }
+
+          // Fetch reviews z API FastAPI
+          let apiUrl = "http://localhost:8000/opinie";
+          if (window.location.hostname !== "localhost" && window.location.hostname !== "127.0.0.1") {
+            apiUrl = "https://api.jaison.pl/opinie"; // Produkcyjny adres API na VPS
+          }
+
+          fetch(apiUrl)
+            .then(res => {
+              if (!res.ok) throw new Error("API response error");
+              return res.json();
+            })
+            .then(data => {
+              // Filtrujemy tylko zaakceptowane opinie
+              const approvedReviews = data.filter(r => r.approved === true);
+              renderReviews(approvedReviews);
+            })
+            .catch(err => {
+              console.warn("Nie udało się połączyć z API Jaison Trust Engine. Ładowanie zaufanych opinii z pamięci podręcznej offline...", err);
+              renderReviews(fallbackReviews);
+            });
+        });
+      </script>
+
+      <!-- Section: Lead Magnet Checklista (#lead-magnet) -->
+      <section id="lead-magnet" style="padding: 100px 0; background: linear-gradient(135deg, #070b16 0%, #0d1527 100%); color: white; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative;">
+        <!-- Element świetlny -->
+        <div style="position: absolute; top: -50px; left: 50%; transform: translateX(-50%); width: 400px; height: 150px; background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 80%); border-radius: 50%; pointer-events: none;"></div>
+        
+        <div class="container">
+          <div id="checklist-container" style="max-width: 800px; margin: 0 auto; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(59, 130, 246, 0.2); padding: 50px; border-radius: 24px; backdrop-filter: blur(15px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);">
+            <span style="display: inline-block; padding: 5px 15px; background: rgba(59, 130, 246, 0.15); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 20px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: #60a5fa; margin-bottom: 20px; font-weight: 600;">Darmowy Poradnik PDF</span>
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px; color: #FFF; font-weight: 700; font-family: var(--font-heading);">Checklista AI-Ready</h2>
+            <p style="font-size: 1.15rem; color: var(--slate-gray); line-height: 1.7; margin-bottom: 40px; max-width: 650px; margin-left: auto; margin-right: auto;">
+              Poznaj 10 krytycznych kroków do uporządkowania firmy i swoich codziennych nawyków, zanim zainwestujesz w automatyzacje. Pobierz interaktywną mapę drogową i przestań przepalać budżet na losowe wtyczki.
+            </p>
+            
+            <form id="checklist-form" style="display: flex; flex-direction: column; gap: 20px; max-width: 550px; margin: 0 auto; text-align: left;">
+              <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 200px;">
+                  <input type="text" id="checklist-name" required placeholder="Twoje Imię" style="width: 100%; padding: 15px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(5, 8, 20, 0.4); color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+                </div>
+                <div style="flex: 1.5; min-width: 250px;">
+                  <input type="email" id="checklist-email" required placeholder="Twój Adres E-mail" style="width: 100%; padding: 15px 20px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); background: rgba(5, 8, 20, 0.4); color: white; font-size: 0.95rem; outline: none; transition: border-color 0.2s;">
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <input type="checkbox" id="checklist-consent" required style="margin-top: 4px; cursor: pointer;">
+                <label for="checklist-consent" style="color: var(--slate-gray); font-size: 0.75rem; line-height: 1.4; cursor: pointer;">
+                  Zgadzam się na przetwarzanie moich danych osobowych w celu wysyłki bezpłatnej checklisty AI-Ready oraz marketingowych newsletterów przez Holistic Jason zgodnie z <a href="polityka-prywatnosci.html" target="_blank" style="color: #3b82f6; text-decoration: underline;">Polityką Prywatności</a>. Wiem, że mogę cofnąć zgodę w każdej chwili.
+                </label>
+              </div>
+
+              <button type="submit" id="checklist-submit-btn" class="btn-primary" style="display: block; width: 100%; font-size: 1.1rem; padding: 16px 0; border: none; border-radius: 8px; cursor: pointer; font-weight: 700; text-align: center; text-transform: uppercase; letter-spacing: 0.05em; background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); color: white; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.35); transition: all 0.2s;">
+                Odbierz checklistę AI-Ready (PDF) ➔
+              </button>
+            </form>
+            <p style="font-size: 0.8rem; color: rgba(255,255,255,0.3); margin-top: 20px;">Zero spamu. Bezpieczna chmura GCP. Wypisujesz się, kiedy chcesz.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Script for Checklist Form -->
+      <script>
+        document.getElementById('checklist-form').addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          const btn = document.getElementById('checklist-submit-btn');
+          const container = document.getElementById('checklist-container');
+          
+          const name = document.getElementById('checklist-name').value;
+          const email = document.getElementById('checklist-email').value;
+          
+          btn.disabled = true;
+          btn.innerHTML = 'Generowanie dostępu...';
+          
+          const payload = {
+            project: "jason",
+            name: name,
+            contact: email,
+            source: "Checklista AI-Ready",
+            problem: "Pobranie checklisty: 10 kroków do uporządkowania firmy i życia przed automatyzacją"
+          };
+          
+          const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://127.0.0.1:8000/api/lead' 
+            : 'https://os.jaison.pl/api/lead';
+          
+          fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          })
+          .then(response => {
+            if (response.ok) {
+              container.innerHTML = `
+                <div style="text-align: center; padding: 40px 0;">
+                  <span style="font-size: 4rem; display: block; margin-bottom: 25px;">📥</span>
+                  <h3 style="color: #3b82f6; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700;">Dostęp przyznany!</h3>
+                  <p style="color: rgba(255,255,255,0.9); font-size: 1.15rem; line-height: 1.6; margin-bottom: 20px;">
+                    Dziękujemy za zaufanie! Link do pobrania pliku <strong>"Checklista AI-Ready"</strong> został wygenerowany i przesłany do Ciebie automatycznie.
+                  </p>
+                  <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.5;">
+                    Sprawdź swoją pocztę (oraz zakładki Oferty/Spam): <strong>${email}</strong>.
+                  </p>
+                </div>
+              `;
+            } else {
+              throw new Error('Server error');
+            }
+          })
+          .catch(err => {
+            console.error('API error, trying relative fallback...', err);
+            fetch('/api/lead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            })
+            .then(res => {
+              if (res.ok) {
+                container.innerHTML = `
+                  <div style="text-align: center; padding: 40px 0;">
+                    <span style="font-size: 4rem; display: block; margin-bottom: 25px;">📥</span>
+                    <h3 style="color: #3b82f6; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700;">Dostęp przyznany!</h3>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.15rem; line-height: 1.6; margin-bottom: 20px;">
+                      Dziękujemy za zaufanie! Twoja checklista jest w drodze na Twoją skrzynkę.
+                    </p>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.5;">
+                      Sprawdź swoją pocztę pod adresem: <strong>${email}</strong>.
+                    </p>
+                  </div>
+                `;
+              } else {
+                throw new Error('Fallback error');
+              }
+            })
+            .catch(fallbackErr => {
+              btn.disabled = false;
+              btn.innerHTML = 'Odbierz checklistę ponownie';
+              alert('Nie udało się zapisać danych. Spróbuj ponownie lub skontaktuj się z nami directly.');
+            });
+          });
+        });
+      </script>
+
+      <!-- Section: Transparentne Koszty (Cennik / Land & Expand) -->
+      <section id="pricing" style="padding: 100px 0; background: #050814; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative;">
+        <!-- Elementy dekoracyjne w tle -->
+        <div style="position: absolute; top: 20%; right: -50px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 70px;">
+            <span style="color: #06B6D4; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Model "Land & Expand" (Zaczynamy Mało, Skalujemy z Zysków)</span>
+            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF;">Przejrzysta Siatka Wdrożeniowa</h2>
+            <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Bez ukrytych kosztów, bez drogich abonamentów. Wybierz moduł na start, zobacz błyskawiczny zwrot z inwestycji (ROI) i rozwijaj system w miarę potrzeb.</p>
+          </div>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: stretch; margin-bottom: 60px;">
+            
+            <!-- Pakiet 1: Starter (Quick Win) -->
+            <div class="glass-card" style="flex: 1; min-width: 290px; max-width: 380px; padding: 40px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+              <div>
+                <span style="color: #94A3B8; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px;">Starter (Quick Win)</span>
+                <h3 style="color: #FFF; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">Pojedynczy Agent</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Idealne rozwiązanie na start, by sprawdzić możliwości systemu w 1 kluczowym obszarze (np. automatyczna kwalifikacja klientów na czacie).</p>
+                <div style="margin-bottom: 30px;">
+                  <span style="color: #FFF; font-size: 2.5rem; font-weight: 800;">3 900 PLN</span>
+                  <span style="color: var(--slate-gray); font-size: 0.9rem; display: block; margin-top: 5px;">jednorazowa opłata wdrożeniowa</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; color: var(--slate-gray); font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> 1 dedykowany moduł agentowy</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Integracja z wybranym komunikatorem</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Uruchomienie na Twoim koncie GCP</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Wsparcie techniczne przez 14 dni</li>
+                </ul>
+              </div>
+              <a href="#contact" class="btn-primary" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #FFF; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 600; display: block; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'">Wybierz Starter ➔</a>
+            </div>
+
+            <!-- Pakiet 2: Professional (Najpopularniejszy) -->
+            <div class="glass-card" style="flex: 1; min-width: 290px; max-width: 380px; padding: 40px; background: rgba(5, 8, 20, 0.6); border: 2px solid #06B6D4; border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);">
+              <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; font-size: 0.75rem; font-weight: bold; padding: 6px 18px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; box-shadow: 0 4px 10px rgba(6, 182, 212, 0.4);">Rekomendowany</div>
+              <div>
+                <span style="color: #06B6D4; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px; margin-top: 10px;">Professional (Pełna Automatyzacja)</span>
+                <h3 style="color: #FFF; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">Dwu-Agentowy OS</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Kompleksowy system asynchroniczny: Agent Wiktor (pozyskiwanie i kwalifikacja leadów) oraz Agent Hermes (operacje, bazy wiedzy, kalendarz).</p>
+                <div style="margin-bottom: 30px;">
+                  <span style="color: #FFF; font-size: 2.5rem; font-weight: 800;">7 900 PLN</span>
+                  <span style="color: var(--slate-gray); font-size: 0.9rem; display: block; margin-top: 5px;">jednorazowa opłata wdrożeniowa</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; color: var(--slate-gray); font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Pełne wdrożenie Agenta Wiktora i Hermesa</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Integracja z CRM oraz systemem e-mail (Systeme.io)</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Bazy wiedzy RAG (Obsidian / Google Storage)</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Wsparcie techniczne i optymalizacja przez 30 dni</li>
+                </ul>
+              </div>
+              <a href="#contact" class="btn-primary" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: #FFF; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 700; display: block; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3); border: none; transition: all 0.2s;">Wybierz Professional ➔</a>
+            </div>
+
+            <!-- Pakiet 3: Enterprise (High-Ticket) -->
+            <div class="glass-card" style="flex: 1; min-width: 290px; max-width: 380px; padding: 40px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+              <div>
+                <span style="color: #F59E0B; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px;">Enterprise (Dedykowana Architektura)</span>
+                <h3 style="color: #FFF; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">Wirtualny Zarząd</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Szyty na miarę, zaawansowany ekosystem AI dla Twojej firmy. Wielu agentów współpracujących w tle (CEO, CMO, CFO, COO) sterowanych z poziomu dedykowanego komunikatora mobilnego.</p>
+                <div style="margin-bottom: 30px;">
+                  <span style="color: #FFF; font-size: 2.2rem; font-weight: 800;">Indywidualna</span>
+                  <span style="color: var(--slate-gray); font-size: 0.9rem; display: block; margin-top: 5px;">wycena po audycie procesów</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; color: var(--slate-gray); font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Własny Wirtualny Zarząd AI w kieszeni</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Integracja z wewnętrznymi systemami i bazami SQL</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Serwer mobilny postawiony na dedykowanej maszynie wirtualnej GCP</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Umowa SLA (gwarancja działania) i dedykowany opiekun</li>
+                </ul>
+              </div>
+              <a href="#contact" class="btn-primary" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #FFF; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 600; display: block; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'">Skonsultuj Projekt ➔</a>
+            </div>
+
+          </div>
+
+          <!-- Gwarancja Suwerenności Cenowej -->
+          <div style="background: rgba(6, 182, 212, 0.02); border: 1px solid rgba(6, 182, 212, 0.15); padding: 40px; border-radius: 20px; max-width: 900px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <h3 style="color: #FFF; font-size: 1.4rem; margin-bottom: 15px; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px;">
+              🛡️ Gwarancja Suwerenności i Kontroli Kosztów
+            </h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-top: 25px;">
+              <div>
+                <strong style="color: #06B6D4; font-size: 1.1rem; display: block; margin-bottom: 8px;">Utrzymanie Serwerów: 5 - 50 PLN / msc</strong>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+                  Nasi agenci działają w nowoczesnej architekturze <strong>Serverless na chmurze Google Cloud Platform (GCP)</strong>. W tym modelu nie płacisz stałego abonamentu za serwer. Gdy nikt nie rozmawia z agentem, system "śpi" i nie generuje żadnych kosztów. Zapłacisz zaledwie ułamki grosza wyłącznie wtedy, gdy agent wykonuje pracę.
+                </p>
+              </div>
+              <div>
+                <strong style="color: #06B6D4; font-size: 1.1rem; display: block; margin-bottom: 8px;">Koszty Modeli LLM: Pay-As-You-Go</strong>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin: 0;">
+                  Używanie inteligencji (tokenów) do generowania odpowiedzi jest niezwykle tanie. Na start od Google otrzymujesz darmowy budżet testowy o wartości <strong>$300 (ok. 1200 PLN)</strong>, co wystarcza na tysiące operacji. Gdy go wyczerpiesz, koszty Vertex AI są naliczane wyłącznie w modelu pay-per-use, co oznacza ułamki grosza za pojedyncze zapytanie.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Bezpieczna Adaptacja AI Section -->
+      <section id="faq" style="padding: 100px 0; background: #050814; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 60px;">
+            <span style="color: #3b82f6; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Adaptacja i Bezpieczeństwo (FAQ)</span>
+            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF;">Bezpieczna integracja. Zero paraliżu.</h2>
+            <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Rozbijamy obiekcje i bariery technologiczne. Dowiedz się, jak bezpiecznie i bez obaw o wyciek danych wdrożyć systemy AI w swojej firmie.</p>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 20px; max-width: 800px; margin: 0 auto;">
+            <!-- FAQ Item 1 -->
+            <details class="glass-card" style="padding: 20px 30px; border: 1px solid rgba(59, 130, 246, 0.15);" open>
+              <summary style="font-weight: 600; color: #FFF; cursor: pointer; font-size: 1.15rem; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>Ile kosztuje utrzymanie agentowego systemu AI w firmie?</span>
+                <span style="color: #3B82F6;">➔</span>
+              </summary>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-top: 15px;">
+                <strong>Odpowiedź krótka:</strong> Koszt utrzymania systemu opartego na chmurze GCP (Google Cloud) i darmowych progach API waha się od 5 do 50 PLN miesięcznie przy średnim obciążeniu. Unikamy drogich abonamentów, wykorzystując własną infrastrukturę i darmowe limity NVIDIA NIM oraz Vertex AI.
+              </p>
+            </details>
+
+            <!-- FAQ Item 2 -->
+            <details class="glass-card" style="padding: 20px 30px; border: 1px solid rgba(59, 130, 246, 0.15);">
+              <summary style="font-weight: 600; color: #FFF; cursor: pointer; font-size: 1.15rem; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>Czy systemy AI są bezpieczne dla danych moich klientów?</span>
+                <span style="color: #3B82F6;">➔</span>
+              </summary>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-top: 15px;">
+                <strong>Odpowiedź krótka:</strong> Tak. Wszystkie wdrożenia opieramy o komercyjne instancje Google Vertex AI oraz płatne klucze API. Zgodnie z umową enterprise, żadne Twoje dane nie są logowane ani używane do trenowania modeli publicznych.
+              </p>
+            </details>
+
+            <!-- FAQ Item 3 -->
+            <details class="glass-card" style="padding: 20px 30px; border: 1px solid rgba(59, 130, 246, 0.15);">
+              <summary style="font-weight: 600; color: #FFF; cursor: pointer; font-size: 1.15rem; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>Jakie komunikatory obsługują Twoje systemy?</span>
+                <span style="color: #3B82F6;">➔</span>
+              </summary>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-top: 15px;">
+                <strong>Odpowiedź krótka:</strong> Nasze agentowe systemy AI integrujemy z WhatsApp Business, Telegramem, Slackiem, <strong>Signalem</strong> oraz naszym autorskim, bezpiecznym komunikatorem <strong>Jason AI</strong> (app.jaison.pl).
+              </p>
+            </details>
+
+            <!-- FAQ Item 4 -->
+            <details class="glass-card" style="padding: 20px 30px; border: 1px solid rgba(59, 130, 246, 0.15);">
+              <summary style="font-weight: 600; color: #FFF; cursor: pointer; font-size: 1.15rem; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>Co się stanie, jeśli system zacznie działać niepoprawnie? Czy posiadam wyłącznik bezpieczeństwa (Kill-Switch)?</span>
+                <span style="color: #3B82F6;">➔</span>
+              </summary>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-top: 15px;">
+                <strong>Odpowiedź krótka:</strong> Każdy wdrożony przez nas system posiada wbudowany, fizyczny przycisk awaryjny (Kill-Switch) oraz dedykowaną komendę na czacie, która natychmiast wyłącza procesy agentowe. W ułamku sekundy możesz przejąć pełną, ręczną kontrolę nad rozmowami z klientami lub zatrzymać automatyzację bez ryzyka uszkodzenia bazy danych.
+              </p>
+            </details>
+
+            <!-- FAQ Item 5 -->
+            <details class="glass-card" style="padding: 20px 30px; border: 1px solid rgba(59, 130, 246, 0.15);">
+              <summary style="font-weight: 600; color: #FFF; cursor: pointer; font-size: 1.15rem; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>Czy wdrożenie AI nie popsuje mojej sprzedaży? Jak zabezpieczona jest ciągłość procesów (SLA)?</span>
+                <span style="color: #3B82F6;">➔</span>
+              </summary>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-top: 15px;">
+                <strong>Odpowiedź krótka:</strong> Bezpieczeństwo Twojej sprzedaży jest dla nas absolutnym priorytetem. Wszystkie wdrożenia realizujemy w oparciu o redundancję na chmurze Google Cloud, co gwarantuje ciągłość działania na poziomie 99.9% (SLA). Dodatkowo, w przypadku jakichkolwiek problemów z zewnętrznymi API (np. awarii WhatsAppa), system automatycznie i bezpiecznie przełącza się w tryb uśpienia i natychmiast wysyła do Ciebie alert SMS.
+              </p>
+            </details>
+
+            <!-- FAQ Item 6 -->
+            <details class="glass-card" style="padding: 20px 30px; border: 1px solid rgba(59, 130, 246, 0.15);">
+              <summary style="font-weight: 600; color: #FFF; cursor: pointer; font-size: 1.15rem; outline: none; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                <span>Jak wygląda kwestia prywatności w Vertex AI? Czy moje dane biznesowe są bezpieczne?</span>
+                <span style="color: #3B82F6;">➔</span>
+              </summary>
+              <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-top: 15px;">
+                <strong>Odpowiedź krótka:</strong> Korzystamy wyłącznie z profesjonalnych rozwiązań biznesowych Google Vertex AI w modelu "Enterprise Privacy". Oznacza to, że żadne informacje o Twoich klientach, transakcjach czy wewnętrznych procedurach firmowych nie są udostępniane na zewnątrz ani używane do trenowania modeli publicznych. Twoja baza wiedzy RAG jest w 100% suwerenna i chroniona kluczami szyfrującymi należącymi wyłącznie do Twojej organizacji.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Section: Widoczność w AI (#aeo-visibility) -->
+      <section id="aeo-visibility" style="padding: 100px 0; background: #050814; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden;">
+        <!-- Element świetlny -->
+        <div style="position: absolute; bottom: 10%; right: -5%; width: 350px; height: 350px; background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        
+        <div class="container">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 60px; flex-wrap: wrap;">
+            
+            <!-- Lewa strona: Grafika z placeholderem -->
+            <div style="flex: 0.8; min-width: 300px; display: flex; justify-content: center; position: relative;">
+              <div class="glass-card" style="padding: 10px; background: rgba(10, 15, 29, 0.4); border-color: rgba(6, 182, 212, 0.25); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(6, 182, 212, 0.15); width: 100%; max-width: 380px;">
+                <img src="./ai_systems_architect_blind.png" onerror="this.onerror=null; this.src='./ai_systems_architect.png';" alt="Architekt Systemów AI i Widoczność w AI Search" style="width: 100%; height: auto; border-radius: 15px; display: block; filter: brightness(1.05) contrast(1.05);">
+                <div style="position: absolute; bottom: 25px; left: 25px; right: 25px; background: rgba(5, 8, 20, 0.8); backdrop-filter: blur(8px); padding: 12px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
+                  <span style="color: #FFF; font-weight: bold; font-size: 0.9rem; display: block;">Architektura AEO</span>
+                  <span style="color: #06B6D4; font-size: 0.75rem; text-transform: uppercase; font-weight: bold; letter-spacing: 0.05em;">Indeksowanie i optymalizacja pod LLM</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Prawa strona: Copywriting NLP -->
+            <div style="flex: 1.2; min-width: 320px;">
+              <span style="color: #06B6D4; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Nowy Paradygmat: SEO umiera</span>
+              <h2 style="font-size: 2.8rem; color: #FFF; margin-top: 10px; margin-bottom: 25px; font-weight: 700; line-height: 1.2;">
+                Ponad <span style="color: #EF4444; text-shadow: 0 0 20px rgba(239, 68, 68, 0.35);">87% firm</span> nie istnieje dla wyszukiwarek AI.
+              </h2>
+              <p style="color: var(--slate-gray); font-size: 1.15rem; line-height: 1.7; margin-bottom: 25px;">
+                Klienci coraz rzadziej szukają w Google – wolą zapytać ChatGPT, Perplexity, Claude czy Gemini. Jeśli Twoja strona nie posiada ustrukturyzowanej wiedzy i semantycznego kodu, <strong>dla silników AI po prostu nie istniejesz</strong>.
+              </p>
+              <p style="color: var(--slate-gray); font-size: 1.05rem; line-height: 1.7; margin-bottom: 30px;">
+                Wprowadzamy technologię <strong>Answer Engine Optimization (AEO)</strong>. Projektujemy struktury danych JSON-LD, schematy RAG-ready oraz bazy wiedzy w taki sposób, aby Twoja marka była rekomendowana jako pierwsze i najbardziej wiarygodne źródło odpowiedzi.
+              </p>
+              
+              <!-- Punkty korzyści -->
+              <div style="display: grid; gap: 15px; margin-bottom: 35px;">
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                  <span style="background: rgba(6, 182, 212, 0.15); color: #06B6D4; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;">✓</span>
+                  <div>
+                    <strong style="color: #FFF; display: block; font-size: 1.05rem; margin-bottom: 4px;">Semantyczne ustrukturyzowanie (JSON-LD)</strong>
+                    <span style="color: var(--slate-gray); font-size: 0.9rem;">Wdrażamy schematy mikrodanych, które boty LLM odczytują w ułamku sekundy, pobierając precyzyjne fakty o Twojej ofercie.</span>
+                  </div>
+                </div>
+                <div style="display: flex; align-items: flex-start; gap: 12px;">
+                  <span style="background: rgba(6, 182, 212, 0.15); color: #06B6D4; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.85rem; flex-shrink: 0; margin-top: 2px;">✓</span>
+                  <div>
+                    <strong style="color: #FFF; display: block; font-size: 1.05rem; margin-bottom: 4px;">Zgodność z RAG & Vector Search</strong>
+                    <span style="color: var(--slate-gray); font-size: 0.9rem;">Twoja strona staje się optymalnym źródłem wiedzy dla wyszukiwania wektorowego, zdobywając unikalną przewagę konkurencyjną.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- Blog Q&A Section (AEO) -->
+      <section id="blog" style="padding: 100px 0; background: #0a0f1d; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+        <div class="container">
+          <div style="text-align: center; margin-bottom: 60px;">
+            <span style="color: #06B6D4; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Wiedza & Edukacja</span>
+            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF;">Wiedza AEO (Answer Engine Optimization)</h2>
+            <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Pigułka konkretnej wiedzy, sformatowana pod natychmiastowe odpowiedzi dla asystentów AI.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
+            <!-- Blog Article 1: SEO vs AEO/GEO -->
+            <div class="glass-card" style="padding: 35px; background: rgba(5, 8, 20, 0.45); border: 1px solid rgba(6, 182, 212, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h3 style="font-size: 1.35rem; color: #FFF; margin-bottom: 15px;">Czym różni się tradycyjne SEO od optymalizacji pod AI (AEO / GEO)?</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                  <strong>Odpowiedź krótka:</strong> Tradycyjne SEO skupia się na pozycjonowaniu w wyszukiwarkach (Google) dla użytkowników klikających w linki. AEO (Answer Engine Optimization) i GEO (Generative Engine Optimization) optymalizują treść bezpośrednio pod LLM (ChatGPT, Claude, Perplexity), aby marka była wymieniana jako jedyna rekomendowana odpowiedź bezpośrednia (Zero-Click).
+                </p>
+              </div>
+              <a href="blog-seo.html" style="color: #06B6D4; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-block; margin-top: 15px; transition: color 0.2s;" onmouseover="this.style.color='#3B82F6'" onmouseout="this.style.color='#06B6D4'">
+                Przeczytaj pełne opracowanie ➔
+              </a>
+            </div>
+
+            <!-- Blog Article 2: Schema JSON-LD for LLMs -->
+            <div class="glass-card" style="padding: 35px; background: rgba(5, 8, 20, 0.45); border: 1px solid rgba(6, 182, 212, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h3 style="font-size: 1.35rem; color: #FFF; margin-bottom: 15px;">Jak dostosować dane strukturalne Schema (JSON-LD) pod roboty LLM?</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                  <strong>Odpowiedź krótka:</strong> Boty AI przeszukujące sieć (User-Agents takie jak GPTBot, ClaudeBot czy PerplexityBot) traktują Schema.org jako najwyższej jakości ustrukturyzowane źródło prawdy. Poprawne wdrożenie Schema dla produktów, FAQ i organizacji pozwala robotom bezbłędnie zmapować encje Twojej marki w bazie wiedzy LLM.
+                </p>
+              </div>
+              <a href="blog-seo.html" style="color: #06B6D4; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-block; margin-top: 15px; transition: color 0.2s;" onmouseover="this.style.color='#3B82F6'" onmouseout="this.style.color='#06B6D4'">
+                Zobacz wzorcowe szablony JSON-LD ➔
+              </a>
+            </div>
+
+            <!-- Blog Article 3: Zero-Click Search -->
+            <div class="glass-card" style="padding: 35px; background: rgba(5, 8, 20, 0.45); border: 1px solid rgba(6, 182, 212, 0.15); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <h3 style="font-size: 1.35rem; color: #FFF; margin-bottom: 15px;">Dlaczego ponad 60% zapytań w Google kończy się bez kliknięcia (Zero-Click)?</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">
+                  <strong>Odpowiedź krótka:</strong> AI Overviews (SGE) w Google serwuje gotowe odpowiedzi bezpośrednio na stronie wyników wyszukiwania. Użytkownicy nie muszą klikać w linki zewnętrzne, by pozyskać wiedzę. Jedynym ratunkiem jest bycie źródłem cytowanym bezpośrednio wewnątrz podsumowań generatywnych Google.
+                </p>
+              </div>
+              <a href="blog-seo.html" style="color: #06B6D4; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-block; margin-top: 15px; transition: color 0.2s;" onmouseover="this.style.color='#3B82F6'" onmouseout="this.style.color='#06B6D4'">
+                Dowiedz się, jak walczyć z Zero-Click ➔
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Lead Capture (Google Calendar / Agent Integration) -->
+      <section id="contact" style="padding: 100px 0; background: #050814; border-top: 1px solid rgba(255, 255, 255, 0.05); position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        <div style="position: absolute; bottom: -80px; left: -80px; width: 250px; height: 250px; background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%); border-radius: 50%; pointer-events: none;"></div>
+        
+        <div class="container" style="position: relative; z-index: 1;">
+          <div style="display: flex; gap: 80px; flex-wrap: wrap; align-items: center;">
+            
+            <!-- Left Side: Persuasion -->
+            <div style="flex: 1; min-width: 300px;">
+              <span style="color: #3B82F6; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Krótka Konsultacja</span>
+              <h2 style="font-size: 2.8rem; color: #FFF; margin-top: 10px; margin-bottom: 25px; line-height: 1.15; font-weight: 700;">Zarezerwuj 15-minutowe spotkanie.</h2>
+              <p style="color: var(--slate-gray); font-size: 1.1rem; line-height: 1.6; margin-bottom: 30px;">
+                Wybierz dogodny termin. Nasz system zintegrowany z <strong>Google Calendar</strong> automatycznie zarezerwuje i zaplanuje termin konsultacji w tle. Całością procesu zarządzają nasi wirtualni agenci (Hermes i Victor), którzy od razu po rezerwacji prześlą Ci powiadomienie.
+              </p>
+              
+              <div class="contact-stats">
+                <div class="contact-stat-item">
+                  <span class="stat-num">0 zł</span>
+                  <span class="stat-label">Koszt rozmowy</span>
+                </div>
+                <div class="contact-stat-item">
+                  <span class="stat-num">Google Calendar</span>
+                  <span class="stat-label">Natywne połączenie</span>
+                </div>
+                <div class="contact-stat-item">
+                  <span class="stat-num">E-mail / SMS</span>
+                  <span class="stat-label">Powiadomienie o spotkaniu</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Side: Sleek Cal.com Booking Widget -->
+            <div style="flex: 1.2; min-width: 340px;">
+              <div class="glass-card" id="contact-container" style="padding: 25px; background: rgba(10, 15, 29, 0.65); border-color: rgba(59, 130, 246, 0.2); text-align: center; border-radius: 16px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);">
+                <h3 style="color: #FFF; margin-bottom: 8px; font-size: 1.6rem; font-family: var(--font-heading); font-weight: 700; text-align: center;">Wybierz wolny termin</h3>
+                <p style="color: var(--slate-gray); margin-bottom: 20px; font-size: 0.9rem; text-align: center; line-height: 1.5;">Wybierz dzień i godzinę. System automatycznie wyśle Ci zaproszenie oraz link wideo do spotkania.</p>
+                
+                <!-- Cal.com Direct Iframe Embed -->
+                <div style="width: 100%; height: 560px; border-radius: 10px; overflow: hidden; background: rgba(5, 8, 20, 0.3); border: 1px solid rgba(255, 255, 255, 0.05);">
+                  <iframe src="https://cal.com/holisticjson/15min?theme=dark" style="width: 100%; height: 100%; border: 0;" allow="calendar" loading="lazy"></iframe>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer style="padding: 40px 0; background: #060f1a; color: rgba(255,255,255,0.4); text-align: center;">
+      <div class="container">
+        <!-- Social & Contact Links (B2B Focused) -->
+        <div style="display: flex; justify-content: center; gap: 25px; margin-bottom: 20px; font-size: 1rem;">
+          <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#0A66C2'" onmouseout="this.style.color='rgba(255,255,255,0.4)'" title="LinkedIn">💼 LinkedIn</a>
+          <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#FF0000'" onmouseout="this.style.color='rgba(255,255,255,0.4)'" title="YouTube">📺 YouTube</a>
+          <a href="mailto:hello@jaison.pl" style="color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='#06B6D4'" onmouseout="this.style.color='rgba(255,255,255,0.4)'" title="Email">✉️ hello@jaison.pl</a>
+        </div>
+        <img src="./logo.png" alt="J(AI)SON Operator" style="height: 38px; mix-blend-mode: normal; filter: drop-shadow(0 0 12px rgba(99, 102, 241, 0.35)) drop-shadow(0 0 6px rgba(16, 185, 129, 0.25)); margin-bottom: 15px; opacity: 0.85;">
+        <p style="font-size: 0.85rem; margin-bottom: 6px;">&copy; 2026 J(AI)SON &middot; AI Systems Architect &middot; <a href="/" style="color: rgba(255,255,255,0.6); text-decoration: none;">jaison.pl</a></p>
+        <p style="font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-bottom: 12px; line-height: 1.5;">
+          Administratorem danych jest <strong>Holistic Jason (Tomasz Duda)</strong>, Pruszków, Polska &middot; NIP: [Uzupełnij NIP w polityce prywatności]
+        </p>
+        <p style="font-size: 0.8rem;"><a href="polityka-prywatnosci.html" style="color: rgba(255,255,255,0.4); text-decoration: underline; transition: color 0.2s;" onmouseover="this.style.color='rgba(255,255,255,0.8)'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">Polityka Prywatności</a></p>
+      </div>
+    </footer>
+
+    <!-- Hamburger Mobile Menu Controller & About Tab Switcher & Obsidian Graph -->
+    <script>
+      // 1. Tab switching functionality (Global Scope)
+      function switchAboutTab(tabName) {
+        const graphBtn = document.getElementById('tab-graph-btn');
+        const bioBtn = document.getElementById('tab-bio-btn');
+        const graphContent = document.getElementById('tab-graph-content');
+        const bioContent = document.getElementById('tab-bio-content');
+        
+        if (!graphBtn || !bioBtn || !graphContent || !bioContent) return;
+
+        if (tabName === 'graph') {
+          graphBtn.classList.add('active');
+          bioBtn.classList.remove('active');
+          graphContent.classList.add('active');
+          bioContent.classList.remove('active');
+        } else {
+          bioBtn.classList.add('active');
+          graphBtn.classList.remove('active');
+          bioContent.classList.add('active');
+          graphContent.classList.remove('active');
+        }
+      }
+      window.switchAboutTab = switchAboutTab;
+
+      document.addEventListener('DOMContentLoaded', function() {
+        // 2. Hamburger Mobile Menu Controller
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-menu-links a');
+
+        if (hamburgerBtn && mobileMenu) {
+          function toggleMenu() {
+            const isOpen = hamburgerBtn.classList.toggle('is-active');
+            mobileMenu.classList.toggle('is-active');
+            hamburgerBtn.setAttribute('aria-expanded', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
+          }
+
+          hamburgerBtn.addEventListener('click', toggleMenu);
+
+          mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+              hamburgerBtn.classList.remove('is-active');
+              mobileMenu.classList.remove('is-active');
+              hamburgerBtn.setAttribute('aria-expanded', 'false');
+              document.body.style.overflow = '';
+            });
+          });
+        }
+
+        // 3. Obsidian Knowledge Graph Simulation
+        const svg = document.getElementById('obsidian-graph-svg');
+        if (svg) {
+          const nodes = [
+            { id: 1, label: 'Holistic Jason', title: 'Holistic Jason (Tomasz)', desc: 'Marka osobista, architekt systemów AI dla osób neuroatypowych i przebodźcowanych. Łączę inżynierię agentową z ochroną energii kognitywnej.', color: '#3B82F6', r: 10, x: 170, y: 140, vx: 0, vy: 0 },
+            { id: 2, label: 'Hermes OS', title: 'Hermes Agentic OS', desc: 'Mój autorski szkielet operacyjny. Orkiestruje pracę autonomicznych agentów w chmurze Google Cloud Platform.', color: '#06B6D4', r: 8, x: 110, y: 100, vx: 0, vy: 0 },
+            { id: 3, label: 'Wirtualna Rada', title: 'Dyrektorzy AI (CEO/CMO/CFO)', desc: 'Autonomiczne role decyzyjne zintegrowane w Vertex AI Agent Builder. Dowożą kampanie i pilnują finansów chmurowych.', color: '#A855F7', r: 7, x: 80, y: 60, vx: 0, vy: 0 },
+            { id: 4, label: 'WhatsApp / Signal', title: 'Sterowanie z Telefonu', desc: 'Brak ciężkich paneli CRM. Całym biznesem steruję z poziomu jednego okna czatu na telefonie za pomocą komend głosowych i NLP.', color: '#10B981', r: 6, x: 50, y: 130, vx: 0, vy: 0 },
+            { id: 5, label: 'Systeme.io', title: 'Systeme.io (Email & Lejki)', desc: 'Bezpieczne, darmowe i niezawodne dostarczanie wiadomości email oraz obsługa lejków bez pisania kodu od zera.', color: '#EF4444', r: 6, x: 150, y: 50, vx: 0, vy: 0 },
+            { id: 6, label: 'Biohacking & Dopamina', title: 'Biohacking i Dopamina', desc: 'Spersonalizowany system nawyków, kontroli snu i dopaminy. Skuteczna tarcza przed przebodźcowaniem i paraliżem kognitywnym.', color: '#F59E0B', r: 7, x: 230, y: 120, vx: 0, vy: 0 },
+            { id: 7, label: 'Drugi Mózg', title: 'Zettelkasten & Baza Wiedzy', desc: 'Moja zewnętrzna pamięć w Obsidian. Ponad tysiąc połączonych notatek z zakresu psychologii behawioralnej, NLP i programowania.', color: '#6366F1', r: 7, x: 220, y: 200, vx: 0, vy: 0 }
+          ];
+
+          const links = [
+            { source: 1, target: 2 },
+            { source: 2, target: 3 },
+            { source: 2, target: 4 },
+            { source: 2, target: 5 },
+            { source: 1, target: 6 },
+            { source: 1, target: 7 },
+            { source: 7, target: 3 }
+          ];
+
+          // Map sources and targets to object references
+          links.forEach(link => {
+            link.sourceRef = nodes.find(n => n.id === link.source);
+            link.targetRef = nodes.find(n => n.id === link.target);
+          });
+
+          // Clear SVG contents first
+          svg.innerHTML = '';
+
+          // Add programmatically defined keyframe pulse styles to SVG
+          const style = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+          style.textContent = `
+            @keyframes nodePulse {
+              0%, 100% { transform: scale(1); opacity: 0.25; }
+              50% { transform: scale(1.35); opacity: 0.6; }
+            }
+            .pulse-circle {
+              animation: nodePulse 3s infinite ease-in-out;
+            }
+          `;
+          svg.appendChild(style);
+
+          // Create a group for links and a group for nodes
+          const linksGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          linksGroup.setAttribute('class', 'links-group');
+          svg.appendChild(linksGroup);
+
+          const nodesGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+          nodesGroup.setAttribute('class', 'nodes-group');
+          svg.appendChild(nodesGroup);
+
+          // Create DOM elements for links
+          const linkElements = links.map(link => {
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('stroke', 'rgba(255, 255, 255, 0.08)');
+            line.setAttribute('stroke-width', '1.5');
+            line.style.transition = 'stroke 0.3s ease, stroke-width 0.3s ease, opacity 0.3s ease';
+            linksGroup.appendChild(line);
+            return { line, link };
+          });
+
+          // Create DOM elements for nodes
+          const nodeElements = nodes.map(node => {
+            const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            group.setAttribute('class', 'node-container');
+            group.style.cursor = 'grab';
+            group.style.transition = 'opacity 0.3s ease';
+
+            // Pulse ring helper
+            const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            pulse.setAttribute('r', node.r + 5);
+            pulse.setAttribute('fill', 'none');
+            pulse.setAttribute('stroke', node.color);
+            pulse.setAttribute('stroke-width', '1');
+            pulse.setAttribute('opacity', '0.25');
+            pulse.setAttribute('class', 'pulse-circle');
+            pulse.style.transformOrigin = 'center';
+            group.appendChild(pulse);
+
+            // Core circle node
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('r', node.r);
+            circle.setAttribute('fill', node.color);
+            circle.style.filter = `drop-shadow(0 0 6px ${node.color})`;
+            circle.style.transition = 'r 0.3s ease, filter 0.3s ease';
+            group.appendChild(circle);
+
+            // Label text underneath node
+            const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            text.textContent = node.label;
+            text.setAttribute('fill', 'rgba(255, 255, 255, 0.65)');
+            text.setAttribute('font-size', '9px');
+            text.setAttribute('font-family', 'var(--font-heading)');
+            text.setAttribute('font-weight', '500');
+            text.setAttribute('text-anchor', 'middle');
+            text.setAttribute('dy', node.r + 13);
+            text.style.pointerEvents = 'none';
+            text.style.transition = 'fill 0.3s ease, font-size 0.3s ease, font-weight 0.3s ease';
+            group.appendChild(text);
+
+            nodesGroup.appendChild(group);
+            return { group, pulse, circle, text, node };
+          });
+
+          // Hover listeners for rich interactive effects
+          nodeElements.forEach(({ group, circle, text, node }) => {
+            group.addEventListener('mouseenter', () => {
+              // 1. Expand node & intensify glow
+              circle.setAttribute('r', node.r * 1.35);
+              circle.style.filter = `drop-shadow(0 0 12px ${node.color})`;
+              text.setAttribute('fill', '#FFF');
+              text.setAttribute('font-weight', '700');
+
+              // 2. Identify neighbors & glow links
+              const connectedNodeIds = new Set();
+              connectedNodeIds.add(node.id);
+
+              linkElements.forEach(({ line, link }) => {
+                const isConnected = link.source === node.id || link.target === node.id;
+                if (isConnected) {
+                  line.setAttribute('stroke', node.color);
+                  line.setAttribute('stroke-width', '2.5');
+                  line.style.opacity = '1';
+                  connectedNodeIds.add(link.source);
+                  connectedNodeIds.add(link.target);
+                } else {
+                  line.style.opacity = '0.05';
+                }
+              });
+
+              // 3. Dim unrelated node groups
+              nodeElements.forEach(ne => {
+                if (!connectedNodeIds.has(ne.node.id)) {
+                  ne.group.style.opacity = '0.2';
+                } else {
+                  ne.group.style.opacity = '1';
+                  if (ne.node.id !== node.id) {
+                    ne.text.setAttribute('fill', 'rgba(255, 255, 255, 0.9)');
+                  }
+                }
+              });
+
+              // 4. Update floating detail panel info
+              const tooltipPanel = document.getElementById('graph-tooltip-panel');
+              const tooltipDot = tooltipPanel.querySelector('.tooltip-dot');
+              const tooltipTitle = document.getElementById('tooltip-title');
+              const tooltipDesc = document.getElementById('tooltip-desc');
+
+              if (tooltipPanel && tooltipDot && tooltipTitle && tooltipDesc) {
+                tooltipDot.style.background = node.color;
+                tooltipDot.style.boxShadow = `0 0 12px ${node.color}`;
+                tooltipTitle.textContent = node.title;
+                tooltipDesc.textContent = node.desc;
+                
+                tooltipPanel.style.transform = 'translateY(-2px)';
+                tooltipPanel.style.background = 'rgba(10, 15, 29, 0.95)';
+                tooltipPanel.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+              }
+            });
+
+            group.addEventListener('mouseleave', () => {
+              // Reset nodes to default states
+              circle.setAttribute('r', node.r);
+              circle.style.filter = `drop-shadow(0 0 6px ${node.color})`;
+              text.setAttribute('fill', 'rgba(255, 255, 255, 0.65)');
+              text.setAttribute('font-weight', '500');
+
+              linkElements.forEach(({ line }) => {
+                line.setAttribute('stroke', 'rgba(255, 255, 255, 0.08)');
+                line.setAttribute('stroke-width', '1.5');
+                line.style.opacity = '1';
+              });
+
+              nodeElements.forEach(ne => {
+                ne.group.style.opacity = '1';
+                ne.text.setAttribute('fill', 'rgba(255, 255, 255, 0.65)');
+              });
+
+              const tooltipPanel = document.getElementById('graph-tooltip-panel');
+              if (tooltipPanel) {
+                tooltipPanel.style.transform = 'none';
+                tooltipPanel.style.background = 'rgba(10, 15, 29, 0.88)';
+                tooltipPanel.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+              }
+            });
+          });
+
+          // Physics Simulation Loop
+          let time = 0;
+          let activeNode = null;
+          let isDragging = false;
+
+          function tick() {
+            time += 0.025;
+            const centerX = svg.clientWidth / 2 || 170;
+            const centerY = svg.clientHeight / 2 || 190;
+
+            // Repulsion forces
+            for (let i = 0; i < nodes.length; i++) {
+              const n1 = nodes[i];
+              for (let j = i + 1; j < nodes.length; j++) {
+                const n2 = nodes[j];
+                const dx = n2.x - n1.x;
+                const dy = n2.y - n1.y;
+                const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+                const minDist = 100;
+                if (dist < minDist) {
+                  const repel = (minDist - dist) * 0.035;
+                  const fx = (dx / dist) * repel;
+                  const fy = (dy / dist) * repel;
+
+                  if (n1 !== activeNode) {
+                    n1.vx -= fx;
+                    n1.vy -= fy;
+                  }
+                  if (n2 !== activeNode) {
+                    n2.vx += fx;
+                    n2.vy += fy;
+                  }
+                }
+              }
+            }
+
+            // Attraction forces (links)
+            links.forEach(link => {
+              const n1 = link.sourceRef;
+              const n2 = link.targetRef;
+              const dx = n2.x - n1.x;
+              const dy = n2.y - n1.y;
+              const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+              const restLength = 80;
+              const spring = (dist - restLength) * 0.015;
+              const fx = (dx / dist) * spring;
+              const fy = (dy / dist) * spring;
+
+              if (n1 !== activeNode) {
+                n1.vx += fx;
+                n1.vy += fy;
+              }
+              if (n2 !== activeNode) {
+                n2.vx -= fx;
+                n2.vy -= fy;
+              }
+            });
+
+            // Center gravity, limits, velocities
+            nodes.forEach((node, i) => {
+              if (node === activeNode) return;
+
+              // Gentle center gravity pull
+              node.vx += (centerX - node.x) * 0.012;
+              node.vy += (centerY - node.y) * 0.012;
+
+              // Periodic wave breathing drift (constant subtle motion)
+              node.vx += Math.sin(time + i) * 0.035;
+              node.vy += Math.cos(time * 0.8 + i) * 0.035;
+
+              node.x += node.vx;
+              node.y += node.vy;
+
+              // Friction/Damping
+              node.vx *= 0.82;
+              node.vy *= 0.82;
+
+              // Boundary enforcement
+              const margin = node.r + 20;
+              if (node.x < margin) { node.x = margin; node.vx = 0; }
+              if (node.x > svg.clientWidth - margin) { node.x = svg.clientWidth - margin; node.vx = 0; }
+              if (node.y < margin) { node.y = margin; node.vy = 0; }
+              if (node.y > svg.clientHeight - 85 - margin) { node.y = svg.clientHeight - 85 - margin; node.vy = 0; }
+            });
+
+            // Render links
+            linkElements.forEach(({ line, link }) => {
+              line.setAttribute('x1', link.sourceRef.x);
+              line.setAttribute('y1', link.sourceRef.y);
+              line.setAttribute('x2', link.targetRef.x);
+              line.setAttribute('y2', link.targetRef.y);
+            });
+
+            // Render nodes
+            nodeElements.forEach(({ group, node }) => {
+              group.setAttribute('transform', `translate(${node.x}, ${node.y})`);
+            });
+
+            requestAnimationFrame(tick);
+          }
+          requestAnimationFrame(tick);
+
+          // Pointer/Touch Drag Handlers
+          function getMousePos(evt) {
+            const rect = svg.getBoundingClientRect();
+            const clientX = evt.touches ? evt.touches[0].clientX : evt.clientX;
+            const clientY = evt.touches ? evt.touches[0].clientY : evt.clientY;
+            return {
+              x: clientX - rect.left,
+              y: clientY - rect.top
+            };
+          }
+
+          function dragStart(evt) {
+            const pos = getMousePos(evt);
+            const tolerance = 20; // Expanded clickable touch area
+            const foundNode = nodes.find(n => {
+              const dx = n.x - pos.x;
+              const dy = n.y - pos.y;
+              return Math.sqrt(dx * dx + dy * dy) < (n.r + tolerance);
+            });
+
+            if (foundNode) {
+              if (evt.cancelable) evt.preventDefault();
+              isDragging = true;
+              activeNode = foundNode;
+              svg.style.cursor = 'grabbing';
+            }
+          }
+
+          function dragMove(evt) {
+            if (!isDragging || !activeNode) return;
+            if (evt.cancelable) evt.preventDefault();
+            const pos = getMousePos(evt);
+            const margin = activeNode.r + 15;
+            activeNode.x = Math.max(margin, Math.min(svg.clientWidth - margin, pos.x));
+            activeNode.y = Math.max(margin, Math.min(svg.clientHeight - 85 - margin, pos.y));
+            activeNode.vx = 0;
+            activeNode.vy = 0;
+          }
+
+          function dragEnd() {
+            if (isDragging) {
+              isDragging = false;
+              activeNode = null;
+              svg.style.cursor = 'grab';
+            }
+          }
+
+          svg.addEventListener('mousedown', dragStart);
+          svg.addEventListener('mousemove', dragMove);
+          window.addEventListener('mouseup', dragEnd);
+
+          svg.addEventListener('touchstart', dragStart, { passive: false });
+          svg.addEventListener('touchmove', dragMove, { passive: false });
+          window.addEventListener('touchend', dragEnd);
+        }
+      });
+    </script>
+  </body>
+</html>
