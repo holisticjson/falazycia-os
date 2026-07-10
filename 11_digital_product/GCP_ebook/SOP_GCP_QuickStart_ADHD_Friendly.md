@@ -209,7 +209,9 @@ W oknie logowania Twojego IDE lub aplikacji agentowej:
 
 2.  Spowoduje to automatyczne otwarcie bezpiecznego okna logowania w Twojej przeglądarce.
 3.  Zaloguj się na konto Google, na którym utworzyłeś projekt GCP.
-4.  Po udanej autoryzacji wklej do aplikacji swój **Project ID** (znajdziesz go na głównym pulpicie konsoli Google Cloud).
+4.  **KROK 6.1 (Dane projektu):** Po udanej autoryzacji wklej do aplikacji swój **Project ID** (znajdziesz go na głównym pulpicie konsoli Google Cloud) oraz wybierz strefę/lokalizację zasobów:
+    *   **Lokalizacja (Location):** Standardowo wybierz **`global (default)`**. Daje to najniższe opóźnienia w routingu zapytań do modeli Vertex AI oraz maksymalną kompatybilność z modelami językowymi (niektóre nowości są wdrażane regionalnie z dużym opóźnieniem).
+    *   **Kiedy zmienić na regionalną (np. europejską)?** Zmień lokalizację na regionalną (np. regiony EU) wyłącznie ze względów prawnych i wymogu przechowywania danych użytkowników w Unii Europejskiej (suwerenność danych / RODO).
 
 ![Uwierzytelnianie lokalne w edytorze przy użyciu Project ID Google Cloud](screenshots/annotated/ETAP_06_KROK_01_login_antigravity.png)
 
@@ -312,12 +314,7 @@ Ostatni etap dotyczy akceptacji ryzyka związanego z kodem generowanym przez AI 
 
 ---
 
-### KROK 7.5: Wybór lokalizacji w ustawieniach projektu (GCP Project Settings)
-W formularzu logowania projektu podajesz Project ID oraz strefę/lokalizację zasobów:
-*   **Lokalizacja (Location):** Standardowo wybierz **`global (default)`**. Daje to najniższe opóźnienia w routingu zapytań do modeli Vertex AI oraz maksymalną kompatybilność z modelami językowymi (niektóre nowości są wdrażane regionalnie z dużym opóźnieniem).
-*   **Kiedy zmienić na regionalną (np. europejską)?** Zmień lokalizację na regionalną (np. regiony EU) wyłącznie ze względów prawnych i wymogu przechowywania danych użytkowników w Unii Europejskiej (suwerenność danych / RODO).
 
----
 
 ## 🛡️ ETAP 8: Limity zapytań (Quotas) — Inspekcja i podnoszenie limitów
 
@@ -540,5 +537,29 @@ Budując nowoczesną infrastrukturę AI, zrezygnuj ze starszych wersji modeli. K
 2.  **Gemini 3.1 Pro:** Król zaawansowanej logiki, wieloetapowego planowania, kodowania i pisania skomplikowanych tekstów perswazyjnych (NLP). Rozumie głęboki kontekst biznesowy.
 3.  **Imagen 3:** Najwyższa jakość generowania fotorealistycznych obrazów, logotypów i grafik marketingowych, cechująca się doskonałym renderowaniem napisów i detali.
 4.  **Veo:** Przełomowy model do generowania wideo i dynamicznych animacji o wysokiej rozdzielczości z opisów tekstowych.
+
+## 🤖 ETAP 12: Wdrażanie Semantycznej Bazy Wiedzy (Vertex AI Search / RAG)
+
+Mając aktywne darmowe środki GenAI ($1000 USD), możesz w 5 minut wyposażyć swojego agenta AI w bezbłędną pamięć i wiedzę o Twoich dokumentach bez pisania ani jednej linijki kodu RAG (Retrieval-Augmented Generation).
+
+### KROK 12.1: Przygotowanie zasobnika (Cloud Storage)
+1. Przejdź do **Cloud Storage** -> **Buckets** i utwórz nowy zasobnik (np. `baza-wiedzy-jaison-project`).
+2. Prześlij tam swoje pliki PDF, dokumentacje techniczne, cenniki czy oferty.
+
+### KROK 12.2: Konfiguracja Vertex AI Search
+1. Wyszukaj w konsoli GCP **„Agent Builder”** (lub **„GenAI App Builder”**).
+2. Kliknij **„Create App”** i wybierz typ aplikacji **„Search”** (Wyszukiwarka).
+3. Wybierz opcję **„Generic Content”** oraz typ danych **„Cloud Storage”**.
+4. Wskaż swój wcześniej utworzony bucket z plikami PDF i wybierz opcję indeksowania dokumentów.
+
+### KROK 12.3: Spięcie z Antigravity Agentic OS
+1. Po zakończeniu indeksowania, przejdź do zakładki **Data Stores** w Agent Builderze.
+2. Zlokalizuj i skopiuj unikalny **Data Store ID**.
+3. Wklej ten identyfikator w ustawieniach bazy wiedzy (RAG) swojego agenta w edytorze. Twój agent będzie teraz automatycznie przeszukiwał chmurę przy każdym pytaniu użytkownika, całkowicie eliminując halucynacje!
+
+> [!TIP]
+> **Low-Cost Best Practice:** Trzymanie dokumentacji w Cloud Storage kosztuje zaledwie ułamki centów miesięcznie, a darmowy pakiet $1000 USD GenAI w pełni pokryje tysiące semantycznych zapytań RAG Twoich agentów w ciągu roku.
+
+---
 
 > **Twój sukces jest blisko:** Masz teraz przed sobą kompletną mapę chmury Google Cloud. Połączenie darmowych środków, nowoczesnych modeli AI oraz stabilnej automatyzacji da Ci niesamowitą dźwignię biznesową i operacyjną. Czas zacząć budować!
