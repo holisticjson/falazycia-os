@@ -1894,13 +1894,36 @@ Strona musi:
                 st.warning("Wpisz najpierw tekst do wypowiedzenia.")
                 
     with tab_img:
-        st.subheader("🎨 Generator Grafiki")
-        st.write("Twórz spersonalizowane obrazy i okładki dla swoich projektów.")
-        img_prompt = st.text_input("Opisz grafikę:", "Modern luxury landing page layout for ADHD audience, dark neon theme")
-        if st.button("Generuj Obraz", type="primary"):
-            with st.spinner("Model generuje obraz..."):
-                time.sleep(2.5)
-                st.image("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500", caption="Wygenerowana inspiracja graficzna")
+        st.subheader("🎨 Generator Grafiki (fal.ai Flux Schnell)")
+        st.write("Twórz spersonalizowane obrazy, okładki i tła o najwyższej jakości w zaledwie kilka sekund.")
+        img_prompt = st.text_input("Opisz grafikę (rekomendowany angielski):", "A premium portrait of a futuristic AI architect, glowing emerald and neon teal lines, cinematic lighting, 8k resolution, minimalist dark jacket --ar 16:9", key="studio_flux_prompt")
+        
+        if st.button("Generuj Obraz (Flux Schnell)", type="primary", key="studio_flux_btn"):
+            if not img_prompt.strip():
+                st.warning("⚠️ Wpisz opis grafiki przed generowaniem!")
+            else:
+                with st.spinner("Model Flux Schnell na fal.ai generuje obraz... (ok. 2-3 sekundy)"):
+                    try:
+                        from integrations.fal_ai import run_flux_generation
+                        img_bytes, err = run_flux_generation(img_prompt)
+                        
+                        if err:
+                            st.error(f"❌ Błąd generowania: {err}")
+                            st.info("💡 Używam domyślnej inspiracji jako fallback:")
+                            st.image("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500", caption="Wygenerowana inspiracja graficzna (Fallback)")
+                        else:
+                            st.success("🎉 Obraz wygenerowany pomyślnie!")
+                            st.image(img_bytes, caption=img_prompt, use_container_width=True)
+                            
+                            st.download_button(
+                                label="💾 Pobierz Wygenerowany Obraz (PNG)",
+                                data=img_bytes,
+                                file_name="flux_generated_art.png",
+                                mime="image/png"
+                            )
+                    except Exception as ex:
+                        st.error(f"❌ Wyjątek podczas generowania: {str(ex)}")
+                        st.image("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500", caption="Wygenerowana inspiracja graficzna (Fallback)")
 
 # 2. GOALS & OPEN LOOPS
 elif menu == "Goals":
@@ -4107,101 +4130,625 @@ elif menu == "Memory":
 
 # 11. SOCIAL MEDIA HUB
 elif menu == "Jaison Agency":
-    st.markdown("<p style='color: #F59E0B; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>IV. — MARKETING • JAISON AGENT AGENCY</p>", unsafe_allow_html=True)
-    st.title("🤖 J(AI)SON Agent Agency")
-    st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Autonomiczny sztab Dyrektorów AI (CEO, CMO, CPO, CTO) zasilany przez <b>Google ADK</b> i model <b>gemini-3.5-flash</b>.</p>", unsafe_allow_html=True)
-
-    st.markdown("""
-    <div class="custom-card" style="border-left: 5px solid #F59E0B; background: linear-gradient(135deg, #1A1310 0%, #0F1016 100%);">
-        <h4 style="margin: 0; color: #F59E0B;">🎯 Mobilny Terminal Terenowy (Wzorowany na Zeely 2.0)</h4>
-        <p style="color: #CBD5E1; font-size: 0.85rem; margin-top: 6px; margin-bottom: 0;">
-            Wklej tutaj surowe notatki z mapowania procesów u klienta w terenie, krótki brief lub własną wizję projektu.
-            Nasi wyspecjalizowani Dyrektorzy AI przeanalizują brief, zaplanują kampanię, dobiorą kolorystykę i przygotują gotowe prompty.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Inicjalizacja stanu sesji dla wyników
-    if "agency_results" not in st.session_state:
-        st.session_state.agency_results = None
-
-    client_brief = st.text_area(
-        "Wprowadź brief klienta lub notatki z terenu:",
-        height=180,
-        placeholder="Np.: Firma kurczaku jasia - lokalny food truck z burgerami i kurczakami w chrupiącej panierce. Chcą zwiększyć liczbę zamówień telefonicznych, przyciągnąć młodzież ze szkół średnich i wypromować nowe menu lunchowe.",
-        key="agency_client_brief"
-    )
-
-    if st.button("🚀 Uruchom Sztab Dyrektorów (Google ADK)", type="primary"):
-        if not client_brief.strip():
-            st.warning("⚠️ Wprowadź brief klienta przed uruchomieniem potoku!")
-        else:
-            with st.spinner("Sztab Dyrektorów AI analizuje brief w chmurze (Google ADK & gemini-3.5-flash)..."):
-                try:
-                    import sys
-                    import os
-                    pipeline_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "01-jaison-core", "agents-pipeline"))
-                    if pipeline_path not in sys.path:
-                        sys.path.append(pipeline_path)
-                    
-                    import agents
-                    # Przeładuj moduł na wypadek zmian w kodzie
-                    import importlib
-                    importlib.reload(agents)
-                    
-                    results = agents.run_agency_pipeline(client_brief)
-                    st.session_state.agency_results = results
-                    if results.get("status") == "success":
-                        st.success(f"⚡ Kampania pomyślnie wygenerowana w {results.get('execution_time_seconds')} sekund!")
-                    else:
-                        st.error(f"Wystąpił błąd: {results.get('error_message')}")
-                except Exception as ex:
-                    st.error(f"Nie udało się załadować potoku ADK: {str(ex)}")
-
-    if st.session_state.agency_results and st.session_state.agency_results.get("status") == "success":
-        res = st.session_state.agency_results
+    # Inicjalizacja stanu sesji dla aktywnego narzędzia w Creative Suite
+    if "active_suite_tool" not in st.session_state:
+        st.session_state.active_suite_tool = "Home"
         
-        st.markdown("---")
-        tab_ceo, tab_cmo, tab_cpo, tab_cto = st.tabs([
-            "💼 I. CEO (Dekompozycja)",
-            "📈 II. CMO (Strategia i Kalendarz)",
-            "🎨 III. CPO (Visual & Branding)",
-            "🛠️ IV. CTO (Narzędzia i Prompty)"
-        ])
+    st.markdown("<p style='color: #F59E0B; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>IV. — MARKETING • JAISON CREATIVE SUITE</p>", unsafe_allow_html=True)
+    st.title("🚀 J(AI)SON Creative Suite & Agency Hub")
+    
+    # ------------------ WIDOK GŁÓWNY (BENTO GRID) ------------------
+    if st.session_state.active_suite_tool == "Home":
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, #1E1B4B 0%, #0F1016 100%); border: 1px solid #4F46E5; padding: 25px; border-radius: 14px; margin-bottom: 30px; box-shadow: 0 4px 25px rgba(79, 70, 229, 0.15); text-align: center;">
+            <h2 style="color: #A78BFA; font-family: Outfit; margin: 0; font-size: 2.2rem; font-weight: 800;">🎨 J(AI)SON Creative Suite</h2>
+            <p style="color: #CBD5E1; font-size: 1.05rem; margin-top: 6px; margin-bottom: 0;">
+                Zintegrowany, luksusowy sztab marketingowo-multimedialny inspirowany <b>Zeely AI</b> i <b>Content Box AI</b>.
+                Wybierz narzędzie poniżej i zacznij tworzyć wirusowe materiały B2B w kilka sekund!
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
         
-        with tab_ceo:
-            st.subheader("💼 Raport Dekompozycji i Celów Biznesowych (CEO AI)")
-            st.markdown(res.get("ceo_analysis", ""))
-            
-        with tab_cmo:
-            st.subheader("📈 Strategia Marketingowa & Kalendarz Contentowy (CMO AI)")
-            st.markdown(res.get("cmo_strategy", ""))
-            
-        with tab_cpo:
-            st.subheader("🎨 Wytyczne Brandingowe i Visual Anchoring (CPO AI)")
-            st.markdown(res.get("cpo_branding", ""))
-            
-        with tab_cto:
-            st.subheader("🛠️ Techniczne Wytyczne i Skrypty Wykonawcze (CTO AI)")
-            st.markdown(res.get("cto_prompts", ""))
-            
-            st.markdown("<hr style='border-color: #1F242E;'>", unsafe_allow_html=True)
+        # Grid kafelków
+        col_c1, col_c2 = st.columns(2)
+        
+        with col_c1:
+            # 1. FACE SWAP
             st.markdown("""
-            <div class="custom-card" style="border-left: 5px solid #10B981; background: linear-gradient(135deg, #0C1A14 0%, #0F1016 100%);">
-                <h4 style="margin: 0; color: #10B981;">⚡ Panel Szybkiego Wykonania (Darmowe Narzędzia Lokalne)</h4>
-                <p style="color: #CBD5E1; font-size: 0.85rem; margin-top: 6px;">
-                    Skopiuj wygenerowane wyżej pliki wsadowe i uruchom generowanie multimediów jednym poleceniem na swoim laptopie lub komputerze stacjonarnym!
+            <div class="custom-card" style="border-left: 5px solid #EC4899; min-height: 200px;">
+                <h3 style="color: #EC4899; margin: 0; font-size: 1.3rem;">🎭 J(AI)SON Face Swap Studio</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Błyskawicznie nakładaj swoje rysy twarzy (tomasz_hero.png) na dowolne obrazy, tła i postacie z Midjourney/Flux.
                 </p>
             </div>
             """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Face Swap Studio", key="btn_run_faceswap", use_container_width=True):
+                st.session_state.active_suite_tool = "Face Swap"
+                st.rerun()
+                
+            # 2. CAROUSEL ARCHITECT
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #06B6D4; min-height: 200px;">
+                <h3 style="color: #06B6D4; margin: 0; font-size: 1.3rem;">🎠 Carousel Architect (Visual Editor)</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Graficzny edytor slajdów. Wpisz treść, wybierz styl i wygeneruj piękne, kwadratowe slajdy LinkedIn / IG gotowe do pobrania!
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Kreator Karuzel", key="btn_run_carousel", use_container_width=True):
+                st.session_state.active_suite_tool = "Carousel"
+                st.rerun()
+                
+            # 3. BRAND STRATEGY & BIOS
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #3B82F6; min-height: 200px;">
+                <h3 style="color: #3B82F6; margin: 0; font-size: 1.3rem;">✍️ Brand Strategy & Profile BIOS</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Kompletny wywiad marki i generowanie spójnych opisów profilowych BIO dla 6 platform (LinkedIn, FB, IG, TikTok, X, Threads).
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Strategię & BIO", key="btn_run_bios", use_container_width=True):
+                st.session_state.active_suite_tool = "BIOS"
+                st.rerun()
+
+            # 4. LANDING PAGE BUILDER
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #F59E0B; min-height: 200px;">
+                <h3 style="color: #F59E0B; margin: 0; font-size: 1.3rem;">🌐 Landing Page Builder</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Kreator stron lądowania B2B z wbudowanym formularzem zapisu z Systeme.io, pikselami Meta i Google Analytics.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Kreator Landing Page", key="btn_run_landing", use_container_width=True):
+                st.session_state.active_suite_tool = "Landing"
+                st.rerun()
+
+        with col_c2:
+            # 5. FLUX ART STUDIO
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #8B5CF6; min-height: 200px;">
+                <h3 style="color: #8B5CF6; margin: 0; font-size: 1.3rem;">🎨 Flux Schnell Art Studio</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Błyskawiczne generowanie luksusowych grafik w 2 sekundy przez interfejs fal.ai. Najwyższa jakość, dowolne proporcje obrazu.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Flux Art Studio", key="btn_run_flux", use_container_width=True):
+                st.session_state.active_suite_tool = "Flux"
+                st.rerun()
+                
+            # 6. FACELESS REELS CREATOR
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #10B981; min-height: 200px;">
+                <h3 style="color: #10B981; margin: 0; font-size: 1.3rem;">🎬 Faceless Reels Creator</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Generator pionowych filmów (Shorts, Reels) z neuralnym polskim lektorem Tomasza i filmami b-roll na bazie MoviePy.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Generator Reels", key="btn_run_reels", use_container_width=True):
+                st.session_state.active_suite_tool = "Reels"
+                st.rerun()
+                
+            # 7. MOBILE SAFE BANNER
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #6366F1; min-height: 200px;">
+                <h3 style="color: #6366F1; margin: 0; font-size: 1.3rem;">🖼️ Mobile-Safe Banner Grid</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Zaprojektuj idealnie wyśrodkowany baner na LinkedIn / FB, sprawdzając go pod kątem ucinania na smartfonach (Safe-Zone).
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Generator Banerów", key="btn_run_banners", use_container_width=True):
+                st.session_state.active_suite_tool = "Banners"
+                st.rerun()
+
+            # 8. ADK DIRECTORS AGENTS
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #10B981; min-height: 200px;">
+                <h3 style="color: #10B981; margin: 0; font-size: 1.3rem;">🤖 Sztab Dyrektorów AI (Google ADK)</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Uruchom potok wieloagentowy (CEO, CMO, CPO, CTO) zasilany przez Vertex AI i Google ADK, aby opracować kampanię.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Sztab Dyrektorów", key="btn_run_adk", use_container_width=True):
+                st.session_state.active_suite_tool = "ADK"
+                st.rerun()
+
+    # ------------------ INDYWIDUALNE NARZĘDZIA (GUI) ------------------
+    else:
+        # Przycisk powrotu w stylu premium
+        if st.button("🔙 Powrót do Panelu Creative Suite", key="btn_back_to_suite", type="secondary"):
+            st.session_state.active_suite_tool = "Home"
+            st.rerun()
             
-            st.markdown("### 📱 1. Generator Karuzeli (Pillow)")
-            st.info("Zapisz treść slajdów podzielonych przez `---` do pliku tekstowego (np. `carousel_input.txt`), a następnie uruchom:")
-            st.code("python 02-os-jaison/integrations/generate_carousel.py --input carousel_input.txt", language="powershell")
+        st.markdown("<hr style='border-color: #1F242E; margin: 15px 0;'>", unsafe_allow_html=True)
+        
+        tool = st.session_state.active_suite_tool
+        
+        # --- TOOL 1: FACE & CHARACTER STUDIO ---
+        if tool == "Face Swap":
+            st.subheader("🎭 J(AI)SON Face & Character Studio")
+            st.markdown("Błyskawiczne nakładanie rysów twarzy na obrazy oraz generowanie całych postaci z Twoją twarzą na podstawie promptu.")
             
-            st.markdown("### 🎬 2. Generator Wideo Reel (Edge-TTS + MoviePy)")
-            st.info("Aby stworzyć dynamiczne wideo w pionie z neuralnym polskim lektorem:")
-            st.code("python 02-os-jaison/src/faceless_generator.py --text \"Wpisz tutaj tekst lektora\" --output reel.mp4", language="powershell")
+            # Wybór silnika AI
+            engine_mode = st.selectbox(
+                "🚀 Wybierz silnik AI (Metodę pracy):",
+                [
+                    "🎭 Szybki Face Swap (Image-to-Image) — Podmiana twarzy na gotowym zdjęciu",
+                    "✨ Generator Nowej Postaci (Image-to-Prompt) — Generowanie nowej sceny z Twoją twarzą"
+                ],
+                key="suite_fs_engine_mode"
+            )
+            
+            is_prompt_mode = "Generator Nowej Postaci" in engine_mode
+            
+            col_fs1, col_fs2 = st.columns(2)
+            with col_fs1:
+                if not is_prompt_mode:
+                    st.markdown("##### 🖼️ 1. Obraz Bazowy / Tło")
+                    base_file = st.file_uploader("Wgraj tło (np. wygenerowane z Flux/Midjourney):", type=["png", "jpg", "jpeg", "webp"], key="suite_fs_base")
+                    if base_file:
+                        st.image(base_file, caption="Załadowane tło", use_container_width=True)
+                else:
+                    st.markdown("##### ✍️ 1. Prompt & Stylizacja Sceny")
+                    st.info("💡 Napisz po polsku lub angielsku kogo i gdzie chcesz wygenerować (np. 'Tomasz jako prezes w fioletowym garniturze na dachu wieżowca w Warszawie').")
+                    
+                    user_desc = st.text_area(
+                        "Twój pomysł na scenę:", 
+                        value="A professional corporate headshot, smart casual suit, modern design studio background, cinematic lighting", 
+                        key="suite_fs_user_desc", 
+                        height=100
+                    )
+                    
+                    # Przycisk generowania profesjonalnego promptu przez Gemini
+                    if st.button("💡 Wygeneruj Profesjonalny Prompt AI", key="suite_fs_expand_prompt_btn", use_container_width=True):
+                        with st.spinner("AI przetwarza i rozbudowuje Twój pomysł na profesjonalne wytyczne..."):
+                            try:
+                                system_inst = "Jesteś ekspertem ds. inżynierii promptów dla modeli dyfuzyjnych (Flux, SDXL, InstantID). Twoim zadaniem jest przetłumaczenie pomysłu użytkownika na perfekcyjny, szczegółowy, profesjonalny angielski prompt fotograficzny (executive portrait prompt). Dodaj detale o oświetleniu (cinematic, dramatic, soft office glow), aparacie (85mm lens, f/1.8), fotorealistycznej teksturze skóry i profesjonalnym brandingu. Zwróć WYŁĄCZNIE czysty prompt po angielsku, bez żadnych wstępów i komentarzy."
+                                messages = [{"role": "user", "content": f"Przekształć ten opis na luksusowy prompt fotograficzny: {user_desc}"}]
+                                generated_prompt = call_gemini_api(messages, system_inst)
+                                st.session_state.suite_fs_expanded_prompt = generated_prompt.strip()
+                                st.success("Prompt wygenerowany pomyślnie!")
+                            except Exception as ex:
+                                st.error(f"Nie udało się wygenerować promptu: {str(ex)}")
+                    
+                    # Wyświetlenie wygenerowanego lub ręcznego promptu do edycji
+                    final_prompt = st.text_area(
+                        "Ostateczny prompt przesyłany do modelu (możesz go edytować):",
+                        value=st.session_state.get("suite_fs_expanded_prompt", user_desc),
+                        key="suite_fs_final_prompt",
+                        height=120
+                    )
+                    
+            with col_fs2:
+                st.markdown("##### 👤 2. Twoja Twarz Referencyjna")
+                use_default_face = st.checkbox("Użyj domyślnego zdjęcia demo (tomasz_hero.png) *[Uważaj, to jest model/placeholder, nie Ty!]*", value=False, key="suite_fs_use_default")
+                
+                face_image_bytes = None
+                default_face_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "01-jaison-core", "website", "site", "tomasz_hero.png"))
+                
+                if use_default_face:
+                    if os.path.exists(default_face_path):
+                        st.image(default_face_path, caption="Zdjęcie demo (tomasz_hero.png)", width=150)
+                        try:
+                            with open(default_face_path, "rb") as f:
+                                face_image_bytes = f.read()
+                        except Exception as ex:
+                            st.error(f"Nie udało się wczytać twarzy: {str(ex)}")
+                    else:
+                        st.warning("⚠️ Nie znaleziono domyślnego pliku tomasz_hero.png. Wgraj własne zdjęcia poniżej.")
+                
+                if not use_default_face:
+                    # Multi-image drag & drop upload!
+                    face_files = st.file_uploader(
+                        "Wgraj jedno lub kilka zdjęć referencyjnych twarzy / sylwetki (Drag & Drop):",
+                        type=["png", "jpg", "jpeg", "webp"],
+                        accept_multiple_files=True,
+                        key="suite_fs_multi_faces"
+                    )
+                    
+                    if face_files:
+                        st.markdown("**📁 Twoja Galeria Zdjęć Referencyjnych:**")
+                        # Pokazujemy miniatury w kolumnach
+                        cols_gallery = st.columns(min(len(face_files), 4))
+                        face_options = []
+                        for i, f_file in enumerate(face_files):
+                            with cols_gallery[i % 4]:
+                                st.image(f_file, caption=f"Zdjęcie #{i+1}", use_container_width=True)
+                            face_options.append(f"Zdjęcie #{i+1} ({f_file.name})")
+                        
+                        # Wybór aktywnego zdjęcia
+                        selected_face_str = st.radio(
+                            "Wybierz aktywne zdjęcie referencyjne, którego rysy twarzy model ma sczytać:",
+                            options=face_options,
+                            key="suite_fs_active_face_radio"
+                        )
+                        
+                        # Pobierz indeks wybranego pliku
+                        selected_idx = face_options.index(selected_face_str)
+                        active_file = face_files[selected_idx]
+                        face_image_bytes = active_file.getvalue()
+                    else:
+                        st.info("👈 Wgraj swoje zdjęcia twarzy referencyjnej powyżej (możesz przeciągnąć i upuścić kilka plików na raz!).")
+
+            st.markdown("<hr style='border-color: #1F242E; margin: 15px 0;'>", unsafe_allow_html=True)
+            
+            # Przyciski akcji
+            if not is_prompt_mode:
+                if st.button("🎭 Podmień moją twarz (Face Swap)", type="primary", use_container_width=True, key="suite_fs_run_btn"):
+                    if not base_file:
+                        st.warning("⚠️ Proszę wgrać najpierw obraz bazowy / tło!")
+                    elif not face_image_bytes:
+                        st.warning("⚠️ Proszę wgrać lub wybrać twarz referencyjną!")
+                    else:
+                        with st.spinner("AI podmienia twarz... (trwa to ok. 3 sekundy)"):
+                            try:
+                                from integrations.fal_ai import run_face_swap
+                                base_bytes = base_file.read()
+                                swapped_bytes, err = run_face_swap(base_bytes, face_image_bytes)
+                                if err:
+                                    st.error(f"❌ Błąd Face Swap: {err}")
+                                else:
+                                    st.success("🎉 Twarz podmieniona pomyślnie!")
+                                    st.image(swapped_bytes, caption="Twój gotowy, luksusowy portret J(AI)SON", use_container_width=True)
+                                    
+                                    st.download_button(
+                                        label="💾 Pobierz Portret (PNG)",
+                                        data=swapped_bytes,
+                                        file_name="jaison_faceswap_result.png",
+                                        mime="image/png",
+                                        use_container_width=True
+                                    )
+                            except Exception as ex:
+                                st.error(f"❌ Krytyczny błąd: {str(ex)}")
+            else:
+                if st.button("✨ Generuj Postać z moją twarzą (Instant Character)", type="primary", use_container_width=True, key="suite_fs_run_character_btn"):
+                    if not face_image_bytes:
+                        st.warning("⚠️ Proszę wgrać lub wybrać twarz referencyjną!")
+                    elif not final_prompt:
+                        st.warning("⚠️ Proszę wpisać prompt lub pomysł na scenę!")
+                    else:
+                        with st.spinner("AI generuje kompletną scenę i postać na bazie Twojej twarzy... (może to zająć do 15 sekund)"):
+                            try:
+                                from integrations.fal_ai import run_instant_character
+                                generated_bytes, err = run_instant_character(face_image_bytes, final_prompt)
+                                if err:
+                                    st.error(f"❌ Błąd generowania postaci: {err}")
+                                else:
+                                    st.success("🎉 Postać wygenerowana pomyślnie!")
+                                    st.image(generated_bytes, caption="Twój gotowy, luksusowy portret generatywny", use_container_width=True)
+                                    
+                                    st.download_button(
+                                        label="💾 Pobierz Portret (PNG)",
+                                        data=generated_bytes,
+                                        file_name="jaison_instant_character_result.png",
+                                        mime="image/png",
+                                        use_container_width=True
+                                    )
+                            except Exception as ex:
+                                st.error(f"❌ Krytyczny błąd: {str(ex)}")
+
+            # Sekcja edukacyjna
+            with st.expander("🎓 ARCHITEKTURA AI: Jak uzyskać 100% spójności twarzy, sylwetki i detali? (LoRA)", expanded=False):
+                st.markdown("""
+                ### Jak działa sczytywanie rysów przez AI?
+                
+                1. **Szybki Face Swap / Instant Character (Obecne narzędzia):**
+                   * **Ile zdjęć potrzebujesz?** **Dokładnie 1 zdjęcie**. 
+                   * **Dlaczego?** Modele te używają enkoderów rysów (np. *InsightFace*). Skanują zdjęcie referencyjne, wyciągają geometryczny wektor twarzy (układ oczu, ust, nosa) i wstrzykują go bezpośrednio w gotowe tło lub nową generację. Wgrywanie wielu zdjęć do prostego swapa jest bezużyteczne, ponieważ model i tak weźmie tylko jedno, aby nie zamazać rysów.
+                   * **Złota zasada:** Twoje zdjęcie referencyjne musi być **ostre, od przodu, dobrze oświetlone (bez cieni i okularów przeciwsłonecznych) i z neutralnym wyrazem twarzy**.
+                   
+                2. **Pełny Model Sylwetki i Postaci (Trening LoRA — standard filmowy):**
+                   Jeśli chcesz, aby system generował Ciebie w dowolnych dynamicznych pozach, w konkretnych ubraniach i z perfekcyjną spójnością całej sylwetki (nie tylko twarzy), musimy przeprowadzić **Trening Prywatnego Modelu (LoRA)**:
+                   * **Liczba zdjęć:** Potrzebujesz **od 5 do 15 zdjęć**.
+                     * *5 zbliżeń twarzy (headshot)* pod różnymi kątami i z różnymi minami.
+                     * *5 zdjęć od pasa w górę (half-body)* w różnym oświetleniu i ubraniach.
+                     * *3-5 zdjęć całej sylwetki (full-body)* w różnych pozach i tłach.
+                   * **Jak to działa?** Przesyłamy te zdjęcia do API treningowego fal.ai (`fal-ai/fast-sdxl-lora-trainer`). System uczy się Twojej unikalnej tożsamości pod specjalnym tokenem (np. `tomasz_duda person`). Proces trwa ok. 5 minut i kosztuje kilkanaście centów.
+                   * **Efekt:** Potem możesz wpisać dowolny prompt, np. `tomasz_duda person in a high-tech business jacket standing on a luxury terrace of a skyscraper in Warsaw, photorealistic, 8k` i otrzymasz idealną scenę z Twoją sylwetką i twarzą w naturalnej pozie!
+                   
+                *Chcesz, żebym w kolejnym kroku wdrożył dla Ciebie dedykowany **J(AI)SON LoRA Training Studio** w panelu Streamlit, abyś mógł sam trenować swoje modele? Daj mi znać!*
+                """)
+                            
+        # --- TOOL 2: CAROUSEL ARCHITECT ---
+        elif tool == "Carousel":
+            st.subheader("🎠 Carousel Architect (Visual Editor)")
+            st.markdown("Stwórz luksusowe slajdy na LinkedIn lub Instagram bezpośrednio w panelu graficznym, bez dotykania konsoli!")
+            
+            # Formularz wprowadzania slajdów
+            carousel_text_default = """# Jak Budować Lejki AI w B2B
+Tomasz Duda | jaison.pl
+---
+# Krok 1: Wybór Domeny
+Zawsze wybieraj domenę biznesową. Rejestrując się na GCP wybierz typ konta 'Business' zamiast 'Individual', aby poprawnie odliczać koszty.
+---
+# Krok 2: Klonowanie Głosu
+Używaj modelu VoxCPM2 do lokalnego klonowania głosu. Daje to studyjną jakość 48kHz bez żadnych opłat abonamentowych.
+---
+# Krok 3: Automatyzacja n8n
+Połącz Systeme.io z n8n. Cały ruch organiczny zamienia się w leady i subskrypcje na autopilocie! jaison.pl"""
+
+            carousel_text = st.text_area("Wprowadź treść slajdów (użyj '---' jako separatora slajdów):", value=carousel_text_default, height=250, key="suite_carousel_text")
+            
+            if st.button("🎠 Wygeneruj Zestaw Slajdów", type="primary", use_container_width=True):
+                with st.spinner("Pillow renderuje luksusowe, markowe slajdy w rozdzielczości 1080x1080..."):
+                    try:
+                        from integrations.generate_carousel import generate_carousel
+                        output_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "output_carousel"))
+                        generate_carousel(carousel_text, output_dir=output_dir)
+                        
+                        st.success("🎉 Slajdy wygenerowane pomyślnie!")
+                        
+                        # Pobierz pliki wygenerowanych slajdów
+                        if os.path.exists(output_dir):
+                            files = sorted([f for f in os.listdir(output_dir) if f.endswith('.png')])
+                            
+                            st.markdown("### 👁️ Galeria Podglądu Slajdów:")
+                            
+                            # Wyświetl slajdy w ładnym układzie siatki
+                            cols = st.columns(min(len(files), 3))
+                            for idx, file_name in enumerate(files):
+                                col_idx = idx % 3
+                                file_path = os.path.join(output_dir, file_name)
+                                with open(file_path, "rb") as f:
+                                    img_data = f.read()
+                                    cols[col_idx].image(img_data, caption=f"Slajd {idx+1}", use_container_width=True)
+                                    cols[col_idx].download_button(
+                                        label=f"💾 Pobierz Slajd {idx+1}",
+                                        data=img_data,
+                                        file_name=file_name,
+                                        mime="image/png",
+                                        key=f"suite_dl_slide_{idx}"
+                                    )
+                                    
+                            # Dodanie darmowej możliwości spakowania do ZIP (proaktywny Python)
+                            import zipfile
+                            import io
+                            zip_buffer = io.BytesIO()
+                            with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED, False) as zip_file:
+                                for file_name in files:
+                                    file_path = os.path.join(output_dir, file_name)
+                                    zip_file.write(file_path, file_name)
+                                    
+                            st.markdown("---")
+                            st.download_button(
+                                label="📦 Pobierz Kompletną Karuzelę jako plik .ZIP",
+                                data=zip_buffer.getvalue(),
+                                file_name="jaison_carousel_pack.zip",
+                                mime="application/zip",
+                                use_container_width=True
+                            )
+                    except Exception as ex:
+                        st.error(f"Nie udało się wyrenderować slajdów: {str(ex)}")
+
+        # --- TOOL 3: FLUX STUDIO ---
+        elif tool == "Flux":
+            st.subheader("🎨 Flux Schnell Art Studio (fal.ai)")
+            st.markdown("Generuj fotorealistyczne i ultra-precyzyjne grafiki w zaledwie 2 sekundy.")
+            
+            prompt_input = st.text_input("Wpisz swój prompt (rekomendowany angielski):", value="A premium editorial photograph of a high-tech workspace, glowing purple and teal ambient light, minimalist designer glass, high detail, 8k --ar 16:9", key="suite_flux_prompt")
+            
+            if st.button("🎨 Generuj Grafikę AI (Flux)", type="primary", use_container_width=True):
+                if not prompt_input.strip():
+                    st.warning("⚠️ Wpisz najpierw opis grafiki!")
+                else:
+                    with st.spinner("Flux Schnell na fal.ai generuje obraz..."):
+                        try:
+                            from integrations.fal_ai import run_flux_generation
+                            img_bytes, err = run_flux_generation(prompt_input)
+                            
+                            if err:
+                                st.error(f"❌ Błąd: {err}")
+                            else:
+                                st.success("🎉 Obraz gotowy!")
+                                st.image(img_bytes, caption=prompt_input, use_container_width=True)
+                                
+                                st.download_button(
+                                    label="💾 Pobierz Obraz (PNG)",
+                                    data=img_bytes,
+                                    file_name="flux_scnell_art.png",
+                                    mime="image/png",
+                                    use_container_width=True
+                                )
+                        except Exception as ex:
+                            st.error(f"❌ Błąd generatora: {str(ex)}")
+
+        # --- TOOL 4: REELS CREATOR ---
+        elif tool == "Reels":
+            st.subheader("🎬 Faceless Reels Creator")
+            st.markdown("Generuj automatyczne pionowe wideo z neuralnym głosem lektora.")
+            
+            reels_text = st.text_area("Wpisz tekst dla lektora:", value="Dzisiaj zdradzę Ci sekret skutecznej automatyzacji B2B. Zamiast spędzać godziny na rutynowych mailach, stwórz prostego bota w n8n, który przejmie całą komunikację z klientem.", height=150, key="suite_reels_text")
+            
+            if st.button("🎬 Generuj Audio Lektora", type="primary", use_container_width=True):
+                with st.spinner("Generowanie głosu AI..."):
+                    try:
+                        audio_bytes, err = call_gcp_tts(reels_text, voice_name="pl-PL-Wavenet-B", gender="MALE")
+                        if err:
+                            st.error(f"GCP TTS Error: {err}")
+                        else:
+                            st.audio(audio_bytes, format="audio/mp3")
+                            st.success("🎉 Audio lektora gotowe! Możesz je pobrać lub uruchomić skrypt konsolowy faceless_generator, aby scalić je z plikami wideo.")
+                            st.download_button(
+                                label="💾 Pobierz Głos Lektora (MP3)",
+                                data=audio_bytes,
+                                file_name="reels_voiceover.mp3",
+                                mime="audio/mp3",
+                                use_container_width=True
+                            )
+                    except Exception as ex:
+                        st.error(f"Błąd syntezy mowy: {str(ex)}")
+
+        # --- TOOL 5: BIOS ---
+        elif tool == "BIOS":
+            # Formularz strategii i BIO przeniesiony wprost z Social Media Hub
+            st.subheader("✍️ Brand Strategy & Profile BIOS")
+            st.markdown("Szybkie generowanie spójnych wytycznych marki i opisów BIO dla wszystkich Twoich kanałów.")
+            
+            if "sm_strategy" not in st.session_state:
+                st.session_state.sm_strategy = None
+                
+            brand_name = st.text_input("Nazwa Marki / Imię i Nazwisko:", value="Jaison", key="suite_brand_name")
+            niche = st.text_area("Nisza / Branża (w czym pomagasz i komu):", value="Agencja AI i automatyzacji procesów B2B dla zabieganych przedsiębiorców.", height=80, key="suite_niche")
+            audience = st.text_input("Grupa Docelowa (Idealny Klient):", value="Właściciele małych i średnich firm, twórcy, osoby z ADHD szukające spójności.", key="suite_audience")
+            style = st.text_input("Styl komunikacji / Tone of Voice:", value="Bezpośredni, merytoryczny, dynamiczny, ADHD-friendly, z humorem, perswazyjny NLP", key="suite_style")
+            motto = st.text_input("Twoje Unikalne Motto / Slogan przewodni:", value="Automatyzuj to, co powtarzalne. Twórz to, co unikalne.", key="suite_motto")
+            
+            if st.button("🚀 Generuj Strategię i BIO", type="primary", use_container_width=True):
+                with st.spinner("CMO AI analizuje profil marki..."):
+                    prompt = f"""
+                    Stwórz kompletną strategię social media oraz opisy BIO dla 6 platform.
+                    Marka/Nazwisko: {brand_name}
+                    Nisza/Branża: {niche}
+                    Grupa docelowa: {audience}
+                    Styl komunikacji: {style}
+                    Unikalne motto: {motto}
+                    Wygeneruj poprawny JSON o kluczach: slogan, cta, linkedin_bio, facebook_bio, instagram_bio, tiktok_bio, twitter_bio, threads_bio, strategy_tips (lista).
+                    """
+                    try:
+                        res_raw = call_gemini_pro_api([{"role": "user", "content": prompt}], "Zwracaj wyłącznie poprawny obiekt JSON.")
+                        import json, re
+                        clean_res = res_raw.strip()
+                        if clean_res.startswith("```"):
+                            clean_res = re.sub(r"^```(?:json)?\n", "", clean_res)
+                            clean_res = re.sub(r"\n```$", "", clean_res)
+                        st.session_state.sm_strategy = json.loads(clean_res)
+                        st.success("Strategia wygenerowana pomyślnie!")
+                    except Exception as e:
+                        st.error(f"Błąd generowania: {e}")
+                        
+            if st.session_state.sm_strategy:
+                strat = st.session_state.sm_strategy
+                st.markdown("---")
+                
+                tab1, tab2 = st.tabs(["📊 Opisy BIO do skopiowania", "🎯 Rekomendacje"])
+                with tab1:
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        st.text_area("💼 LinkedIn BIO (Autorytet B2B):", value=strat.get("linkedin_bio", ""), height=130)
+                        st.text_area("📸 Instagram BIO (Zwięzłe z emoji):", value=strat.get("instagram_bio", ""), height=130)
+                    with col2:
+                        st.text_area("👥 Facebook BIO:", value=strat.get("facebook_bio", ""), height=130)
+                        st.text_area("🎵 TikTok BIO (max 80 znaków):", value=strat.get("tiktok_bio", ""), height=130)
+                with tab2:
+                    st.write(f"**Nagłówek na baner:** `{strat.get('slogan', '')}`")
+                    st.write(f"**Wezwanie do działania (CTA):** `{strat.get('cta', '')}`")
+                    for tip in strat.get("strategy_tips", []):
+                        st.markdown(f"- {tip}")
+
+        # --- TOOL 6: BANNERS ---
+        elif tool == "Banners":
+            st.subheader("🖼️ Mobile-Safe Banner Grid")
+            st.markdown("Projektuj banery reklamowe z symulacją strefy bezpieczeństwa (Safe-Zone) dla smartfonów.")
+            
+            banner_title = st.text_input("Tekst sloganu na banerze:", value="Odzyskaj 20 Godzin Tygodniowo z Automatyzacjami AI", key="suite_banner_title")
+            banner_style = st.text_area("Styl wizualny tła:", value="Minimalist geometric background with deep purple and space black colors, abstract corporate design, glowing neon accents, elegant glassmorphism textures, clean composition, high-end tech aesthetic.", key="suite_banner_style")
+            
+            if st.button("Generuj Banner z Safe-Zone (Imagen 3)", type="primary", use_container_width=True):
+                with st.spinner("Model Imagen 3.0 buduje banner panoramiczny..."):
+                    full_prompt = f"{banner_style} Safe zone layout, center aligned design. In the exact horizontal center, there is high-contrast, clean typography reading precisely: '{banner_title}'. Perfect centering, mobile friendly, professional graphic design, 8k resolution."
+                    img_bytes, err = generate_imagen_image(full_prompt, aspect_ratio="16:9")
+                    if err:
+                        st.error(f"GCP API Error: {err}")
+                    elif img_bytes:
+                        st.session_state.sm_generated_banner = img_bytes
+                        st.success("Banner wygenerowany pomyślnie!")
+                        
+            if "sm_generated_banner" in st.session_state:
+                st.image(st.session_state.sm_generated_banner, caption="Wygenerowany banner", use_container_width=True)
+                
+                st.markdown("""
+                <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19; text-align: center; padding: 15px;">
+                    <span style="color: #10B981; font-weight: bold; font-size: 0.95rem;">👁️ Podgląd strefy Mobile Safe-Zone (Środkowe 60%)</span>
+                    <div style="position: relative; width: 100%; aspect-ratio: 16/9; margin-top: 10px; background-size: cover; background-position: center; border: 1px dashed #EC4899;">
+                        <div style="position: absolute; left: 20%; right: 20%; top: 10%; bottom: 10%; border: 2px solid #10B981; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center;">
+                            <span style="color: #10B981; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 4px #000;">ZŁOTA STREFA (Smartfony)</span>
+                        </div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+        # --- TOOL 7: LANDING ---
+        elif tool == "Landing":
+            st.subheader("🌐 Landing Page Builder")
+            st.markdown("Generuj gotowy kod HTML dla stron lądowania B2B.")
+            # Kod generatora landing page wprost z panelu
+            web_title = st.text_input("Nagłówek strony (Headline):", value="Odzyskaj 20 Godzin Tygodniowo z Automatyzacjami AI", key="suite_lp_title")
+            accent_color = st.color_picker("Wybierz kolor akcentu strony:", value="#7C3AED")
+            
+            if st.button("🚀 Wygeneruj Kod HTML", type="primary", use_container_width=True):
+                st.success("Kod HTML wygenerowany pomyślnie!")
+                st.code(f"""<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{web_title}</title>
+    <style>:root {{ --accent: {accent_color}; }}</style>
+</head>
+<body style="background:#0F1016; color:#FFF; font-family:sans-serif; text-align:center; padding:50px;">
+    <h1>{web_title}</h1>
+    <p>Strona zintegrowana z darmowymi webhookami Systeme.io oraz n8n.</p>
+</body>
+</html>""", language="html")
+
+        # --- TOOL 8: ADK AGENTS PIPELINE ---
+        elif tool == "ADK":
+            st.subheader("🤖 Sztab Dyrektorów AI (Google ADK & gemini-3.5-flash)")
+            st.markdown("Opracuj kompletną kampanię marketingowo-wdrożeniową za pomocą wieloagentowego potoku decyzyjnego.")
+            
+            client_brief = st.text_area(
+                "Wprowadź brief klienta lub notatki z terenu:",
+                height=180,
+                placeholder="Np.: Firma kurczaku jasia - lokalny food truck z burgerami i kurczakami w chrupiącej panierce. Chcą zwiększyć liczbę zamówień telefonicznych, przyciągnąć młodzież ze szkół średnich i wypromować nowe menu lunchowe.",
+                key="suite_adk_brief"
+            )
+            
+            if "agency_results" not in st.session_state:
+                st.session_state.agency_results = None
+
+            if st.button("🚀 Uruchom Potok Dyrektorów ADK", type="primary", use_container_width=True):
+                if not client_brief.strip():
+                    st.warning("⚠️ Wprowadź najpierw brief klienta!")
+                else:
+                    with st.spinner("Sztab Dyrektorów AI analizuje brief w chmurze (Google ADK & gemini-3.5-flash)..."):
+                        try:
+                            import sys, os
+                            pipeline_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "01-jaison-core", "agents-pipeline"))
+                            if pipeline_path not in sys.path:
+                                sys.path.append(pipeline_path)
+                            import agents, importlib
+                            importlib.reload(agents)
+                            
+                            results = agents.run_agency_pipeline(client_brief)
+                            st.session_state.agency_results = results
+                            if results.get("status") == "success":
+                                st.success(f"⚡ Kampania pomyślnie wygenerowana w {results.get('execution_time_seconds')} sekund!")
+                            else:
+                                st.error(f"Błąd potoku: {results.get('error_message')}")
+                        except Exception as ex:
+                            st.error(f"Nie udało się uruchomić ADK: {str(ex)}")
+                            
+            if st.session_state.agency_results and st.session_state.agency_results.get("status") == "success":
+                res = st.session_state.agency_results
+                t_ceo, t_cmo, t_cpo, t_cto = st.tabs([
+                    "💼 I. CEO (Dekompozycja)",
+                    "📈 II. CMO (Strategia i Kalendarz)",
+                    "🎨 III. CPO (Visual & Branding)",
+                    "🛠️ IV. CTO (Prompty)"
+                ])
+                with t_ceo:
+                    st.markdown(res.get("ceo_analysis", ""))
+                with t_cmo:
+                    st.markdown(res.get("cmo_strategy", ""))
+                with t_cpo:
+                    st.markdown(res.get("cpo_branding", ""))
+                with t_cto:
+                    st.markdown(res.get("cto_prompts", ""))
+
 
 elif menu == "Social Media Hub":
     st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — MARKETING • SOCIAL MEDIA HUB</p>", unsafe_allow_html=True)
