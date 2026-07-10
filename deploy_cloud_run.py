@@ -1,76 +1,101 @@
+# -*- coding: utf-8 -*-
+"""
+🚀 deploy_cloud_run.py — Oficjalny Skrypt Wdrożeniowy Strony Jaison (jaison.pl)
+Kompiluje projekt Vite oraz wdraża obraz kontenera Nginx na Google Cloud Run (europe-west1).
+"""
+
 import os
 import subprocess
 import sys
 
-def run_command(cmd, cwd=None):
+PROJECT_ID = "holistic-dashboard-dev"
+REGION = "europe-west1"
+SERVICE_NAME = "holisticjson-website"
+IMAGE_TAG = f"gcr.io/{PROJECT_ID}/holisticjson-site:latest"
+
+def run_command(cmd, desc=None, cwd=None):
+    if desc:
+        print(f"\n📌 {desc}...")
     print(f"Executing: {cmd}")
-    result = subprocess.run(cmd, shell=True, cwd=cwd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-    if result.returncode != 0:
-        print(f"❌ Error: {result.stderr}")
+    
+    # Run command and pipe output in real-time
+    process = subprocess.Popen(
+        cmd, 
+        shell=True, 
+        stdout=subprocess.PIPE, 
+        stderr=subprocess.STDOUT, 
+        text=True, 
+        cwd=cwd, 
+        encoding="utf-8", 
+        errors="replace"
+    )
+    
+    while True:
+        output = process.stdout.readline()
+        if output == '' and process.poll() is not None:
+            break
+        if output:
+            print(output.strip())
+            
+    rc = process.poll()
+    if rc != 0:
+        print(f"❌ Error executing command. Exit code: {rc}")
         return False
-    print(result.stdout)
     return True
 
-def deploy():
-    # Set console encoding to UTF-8 on Windows to prevent UnicodeEncodeError
+def main():
+    # Force UTF-8 encoding on Windows to prevent UnicodeEncodeError
     if sys.platform.startswith('win'):
         import io
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
         sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
-        
-    print("🚀 Starting deployment of holisticjson.pl to Google Cloud Run...")
-    
-    # Step 1: Build the Vite project
-    vite_dir = os.path.join(os.getcwd(), "04_website", "site")
-    print(f"📦 Step 1: Building Vite production package in {vite_dir}...")
-    if not run_command("npm run build", cwd=vite_dir):
-        print("❌ Failed to build Vite project.")
+
+    print("🧠 ===============================================")
+    print("🚀 DEPLOY STRONY JAISON.PL — GOOGLE CLOUD RUN (Vite + Nginx)")
+    print("🧠 ===============================================")
+
+    # Ścieżka do projektu Vite
+    vite_dir = os.path.join(os.getcwd(), "01-jaison-core", "website", "site")
+    if not os.path.exists(vite_dir):
+        print(f"❌ Błąd: Nie znaleziono katalogu Vite: {vite_dir}")
         sys.exit(1)
-        
-    # Step 2: Check if gcloud CLI is available
-    print("🔍 Step 2: Checking Google Cloud SDK (gcloud CLI)...")
-    if not run_command("gcloud --version"):
-        print("❌ gcloud CLI not found. Please install Google Cloud SDK first.")
+
+    # Krok 1: Budowanie projektu Vite
+    if not run_command("npm run build", "Krok 1: Kompilacja statycznej strony (Vite build)", cwd=vite_dir):
+        print("❌ Błąd podczas budowania projektu Vite.")
         sys.exit(1)
-        
-    # Step 3: Trigger Cloud Build (builds image in Artifact Registry on GCP)
-    print("☁️ Step 3: Triggering Cloud Build (submitting code to GCP)...")
-    project_id = "holistic-broker" # Default GCP project from .env
-    
-    if os.path.exists(".env"):
-        with open(".env", "r", encoding="utf-8") as f:
-            for line in f:
-                if line.strip().startswith("GCP_PROJECT_BROKER="):
-                    project_id = line.strip().split("GCP_PROJECT_BROKER=", 1)[1].strip('"').strip("'")
-                    break
-    
-    print(f"Targeting GCP Project: {project_id}")
-    run_command(f"gcloud config set project {project_id}")
-    
-    # We will submit the build
-    image_name = f"gcr.io/{project_id}/holisticjson-site:latest"
-    build_cmd = f"gcloud builds submit --tag {image_name} ."
-    if not run_command(build_cmd, cwd=vite_dir):
-        print("❌ Failed to build image on Google Cloud Build.")
+
+    # Krok 2: Ustawienie projektu GCP
+    if not run_command(f"gcloud config set project {PROJECT_ID}", "Krok 2: Ustawienie aktywnego projektu GCP"):
+        print("❌ Nie udało się ustawić projektu GCP.")
         sys.exit(1)
-        
-    # Step 4: Deploy the built image to Google Cloud Run
-    print("🚀 Step 4: Deploying container to Google Cloud Run...")
+
+    # Krok 3: Kompilacja i wysłanie obrazu Docker do Artifact Registry przez Cloud Build
+    build_cmd = f"gcloud builds submit --tag {IMAGE_TAG} ."
+    if not run_command(build_cmd, "Krok 3: Budowanie obrazu kontenera na Google Cloud Build", cwd=vite_dir):
+        print("❌ Błąd podczas budowania obrazu w chmurze.")
+        sys.exit(1)
+
+    # Krok 4: Wdrożenie na Google Cloud Run
     deploy_cmd = (
-        f"gcloud run deploy holisticjson-website "
-        f"--image {image_name} "
+        f"gcloud run deploy {SERVICE_NAME} "
+        f"--image {IMAGE_TAG} "
         f"--platform managed "
-        f"--region europe-west1 "
+        f"--region {REGION} "
         f"--port 80 "
         f"--allow-unauthenticated"
     )
-    if not run_command(deploy_cmd, cwd=vite_dir):
-        print("❌ Failed to deploy to Cloud Run.")
+    if not run_command(deploy_cmd, "Krok 4: Wdrażanie kontenera na Google Cloud Run"):
+        print("❌ Wdrożenie na Cloud Run zakończyło się błędem.")
         sys.exit(1)
-        
-    print("\n🎉 Deployment completed successfully!")
-    print("👉 Strona jest teraz dostępna na Cloud Run.")
-    print("💡 Aby podpiąć domenę, wejdź w Google Cloud Console -> Cloud Run -> Manage Custom Domains.")
+
+    # Krok 5: Wyświetlenie wyników
+    print("\n" + "=" * 50)
+    print("🎉 WDROŻENIE STRONY ZAKOŃCZONE SUKCESEM!")
+    print("=" * 50)
+    print(f"🔗 Strona główna agencji: https://jaison.pl")
+    print(f"🔗 URL tymczasowy Cloud Run: https://holisticjson-website-771359551342.europe-west1.run.app")
+    print("=" * 50 + "\n")
 
 if __name__ == "__main__":
-    deploy()
+    main()

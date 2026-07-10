@@ -1,0 +1,19 @@
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: *
+Disallow: /wp-admin/
+Disallow: /wp-content/
+Disallow: /wp-includes/
+Allow: /
+
+Sitemap: https://jaison.pl/sitemap.xml

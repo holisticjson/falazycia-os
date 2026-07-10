@@ -9,9 +9,9 @@ sys.stdout.reconfigure(encoding='utf-8')
 CACHE_VERSION = "2.2.2"
 
 # === CONFIG ===
-SRC_DIR   = "04_clients/kurczakujasia/kurczakujasia_html"
-BUILD_DIR = "04_clients/kurczakujasia/kurczakujasia_html"
-LOGO_SRC  = "04_clients/kurczakujasia/logo/Logo Bar Jaś.png"
+SRC_DIR   = "04-clients/kurczakujasia/02-website/dev/kurczakujasia_html"
+BUILD_DIR = "04-clients/kurczakujasia/02-website/dev/kurczakujasia_html"
+LOGO_SRC  = "04-clients/kurczakujasia/04-assets/logo/Logo Bar Jaś.png"
 LOGO_DEST = f"{BUILD_DIR}/assets/img/logo.png"
 
 FTP_HOST  = "lysitheab.hostido.net.pl"

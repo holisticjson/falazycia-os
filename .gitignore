@@ -56,3 +56,9 @@ Dockerfile
 .dockerignore
 .gcloudignore
 deploy/
+ 
+# === NODE / JS ===
+node_modules/
+.pnpm-store/
+.pnpm/
+
