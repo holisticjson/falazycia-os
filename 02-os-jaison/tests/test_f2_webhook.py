@@ -180,7 +180,7 @@ def test_tc19_webhook_success_flow(mock_sheets_service):
     assert response.json()["status"] == "success"
     assert response.json()["updatedCells"] == 7
 
-# TC-20: Webhook handles Google Sheets API errors gracefully by returning a 500 error
+# TC-20: Webhook handles Google Sheets API errors gracefully by using non-blocking fallback and returning 200 Success
 def test_tc20_sheets_api_failure_graceful(mock_sheets_service):
     # Make append execute call raise an Exception
     append_mock = mock_sheets_service.spreadsheets.return_value.values.return_value.append
@@ -192,5 +192,7 @@ def test_tc20_sheets_api_failure_graceful(mock_sheets_service):
         "contact": "kryspin@o2.pl"
     }
     response = client.post("/api/lead", json=payload)
-    assert response.status_code == 500
-    assert "Google API is down" in response.json()["detail"]
+    assert response.status_code == 200
+    assert response.json()["status"] == "success"
+    assert response.json()["sheets_synced"] is False
+    assert response.json()["updatedCells"] == 0

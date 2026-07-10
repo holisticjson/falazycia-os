@@ -33,8 +33,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Dynamiczne wykrywanie ścieżek bezwzględnych dla kompatybilności z Linux VPS
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+WORKSPACE_DIR = os.path.dirname(BASE_DIR)
+
 GOOGLE_SHEET_ID = os.getenv("GOOGLE_SHEET_ID_CRM")
-TOKEN_PATH = "token_brokerholistic.pickle"
+
+TOKEN_PATH = os.path.join(BASE_DIR, "tokens", "token_brokerholistic.pickle")
+if not os.path.exists(TOKEN_PATH):
+    TOKEN_PATH = os.path.join(BASE_DIR, "token_brokerholistic.pickle")
 
 # Definiujemy strukturę danych, której spodziewamy się od Agenta frontendowego
 class LeadPayload(BaseModel):
@@ -113,7 +120,7 @@ def forward_to_systeme_io(payload: LeadPayload):
             
     # 3. Fallback Mechanism (RODO / Guardrails)
     if not success:
-        fallback_path = r"c:\Aplikacje MVP\Holistic Jason\clients\leads_fallback.json"
+        fallback_path = os.path.join(WORKSPACE_DIR, "04-clients", "leads_fallback.json")
         print(f"⚠️ Zapisywanie leadu do pliku fallback: {fallback_path}")
         lead_data = {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
@@ -139,7 +146,7 @@ def forward_to_systeme_io(payload: LeadPayload):
 
 def add_to_streamlit_crm(payload: LeadPayload):
     import json
-    crm_file = r"c:\Aplikacje MVP\Holistic Jason\dashboard\crm.json"
+    crm_file = os.path.join(BASE_DIR, "dashboard", "crm.json")
     
     # Upewniamy się, że katalog dashboard istnieje (uniknięcie FileNotFoundError)
     os.makedirs(os.path.dirname(crm_file), exist_ok=True)
@@ -314,7 +321,7 @@ Tomasz Duda — Holistic Jason
 
     # Check if SMTP_PASSWORD is set.
     if not smtp_password:
-        fallback_path = r"c:\Aplikacje MVP\Holistic Jason\clients\emails_outbox_offline.json"
+        fallback_path = os.path.join(WORKSPACE_DIR, "04-clients", "emails_outbox_offline.json")
         print("\n" + "="*80)
         print("⚠️  ZASADA PROAKTYWNEJ WERYFIKACJI: BRAK HASŁA SMTP_PASSWORD W PLIKU .ENV!")
         print("="*80)
@@ -385,7 +392,7 @@ Tomasz Duda — Holistic Jason
         print(f"❌ Błąd wysyłki SMTP do {email_to}: {smtp_err}")
         
         # Save to offline queue as fallback
-        fallback_path = r"c:\Aplikacje MVP\Holistic Jason\clients\emails_outbox_offline.json"
+        fallback_path = os.path.join(WORKSPACE_DIR, "04-clients", "emails_outbox_offline.json")
         queue_item = {
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             "email_to": email_to,
@@ -415,11 +422,13 @@ Tomasz Duda — Holistic Jason
 
 @app.post("/api/lead")
 async def receive_lead(payload: LeadPayload):
+    current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    sheets_success = False
+    updated_cells = 0
+    
+    # 1. Try Google Sheets (Non-blocking)
     try:
         service = get_sheets_service()
-        current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        
-        # Logika wyboru odpowiedniej zakładki w Arkuszu na podstawie payloadu
         if payload.project.lower() == "broker":
             range_name = "Leady_Broker!A:G"
             values = [[
@@ -445,7 +454,6 @@ async def receive_lead(payload: LeadPayload):
             
         body = {'values': values}
         
-        # Fizyczny zapis do Google Sheets
         result = service.spreadsheets().values().append(
             spreadsheetId=GOOGLE_SHEET_ID,
             range=range_name,
@@ -454,24 +462,71 @@ async def receive_lead(payload: LeadPayload):
             body=body
         ).execute()
         
-        print(f"✅ Zapisano nowy lead: {payload.name} do projektu {payload.project}")
-        
-        # Synchronizacja z CRM w Streamlicie (crm.json)
+        updated_cells = result.get("updates", {}).get("updatedCells", 0)
+        print(f"✅ Zapisano nowy lead: {payload.name} do projektu {payload.project} (Google Sheets)")
+        sheets_success = True
+    except Exception as sheets_err:
+        print(f"⚠️ Google Sheets API error (non-blocking fallback activated): {sheets_err}")
+        # We do not crash the request, so the lead collection remains robust!
+
+    # 2. Sync with Streamlit CRM (crm.json)
+    try:
         add_to_streamlit_crm(payload)
-        
-        # Forward to Systeme.io or handle custom transactional email for Mercury Ebook
+    except Exception as crm_err:
+        print(f"⚠️ Error saving to Streamlit CRM: {crm_err}")
+
+    # 3. Forward to Systeme.io or handle custom transactional email for Mercury Ebook
+    try:
         if payload.source == "Mercury Ebook":
             # For Mercury E-book, we use our own custom, free SMTP transactional mailer
             send_custom_ebook_email(payload)
         else:
             # For other lead sources (like Ebook #2), forward to Systeme.io
             forward_to_systeme_io(payload)
-        
-        return {"status": "success", "message": "Lead zapisany poprawnie", "updatedCells": result.get("updates", {}).get("updatedCells")}
-        
-    except Exception as e:
-        print(f"❌ Błąd zapisu: {e}")
-        raise HTTPException(status_code=500, detail=str(e))
+    except Exception as forward_err:
+        print(f"⚠️ Error forwarding or sending email: {forward_err}")
+
+    # 4. If Google Sheets failed, write to local fallback leads file as a safeguard
+    if not sheets_success:
+        try:
+            import json
+            fallback_dir = os.path.join(WORKSPACE_DIR, "04-clients")
+            fallback_path = os.path.join(fallback_dir, "leads_fallback.json")
+            os.makedirs(fallback_dir, exist_ok=True)
+            
+            lead_data = {
+                "timestamp": current_time,
+                "name": payload.name,
+                "contact": payload.contact,
+                "project": payload.project,
+                "budget": payload.budget if payload.project.lower() == "broker" else "",
+                "investment_type": payload.investment_type if payload.project.lower() == "broker" else "",
+                "industry": payload.industry if payload.project.lower() != "broker" else "",
+                "problem": payload.problem if payload.project.lower() != "broker" else "",
+                "source": payload.source,
+                "status": "sheets_api_fallback"
+            }
+            
+            existing = []
+            if os.path.exists(fallback_path):
+                with open(fallback_path, "r", encoding="utf-8") as f:
+                    try:
+                        existing = json.load(f)
+                    except:
+                        existing = []
+            existing.append(lead_data)
+            with open(fallback_path, "w", encoding="utf-8") as f:
+                json.dump(existing, f, indent=4, ensure_ascii=False)
+            print(f"✅ Lead {payload.name} został pomyślnie zabezpieczony lokalnie w {fallback_path}")
+        except Exception as fallback_err:
+            print(f"⚠️ Krytyczny błąd zapisu pliku fallback: {fallback_err}")
+
+    return {
+        "status": "success",
+        "message": "Lead przetworzony poprawnie",
+        "sheets_synced": sheets_success,
+        "updatedCells": updated_cells
+    }
 
 import sqlite3
 import uuid

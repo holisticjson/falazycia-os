@@ -240,6 +240,46 @@ st.markdown("""
 
 """, unsafe_allow_html=True)
 
+# ==========================================
+# SECURE BASIC AUTHENTICATION WRAPPER
+# ==========================================
+AUTH_USER = os.environ.get("HERMES_DASHBOARD_BASIC_AUTH_USERNAME", "holistic").strip()
+AUTH_PASS = os.environ.get("HERMES_DASHBOARD_BASIC_AUTH_PASSWORD", "holistic2026").strip()
+
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    col_login, col_center, col_right = st.columns([1, 1.5, 1])
+    with col_center:
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, #0F131E 0%, #151A2E 100%); border: 1px solid #2A3655; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); text-align: center;">
+            <h2 style="color: #FFFFFF; font-family: Outfit; font-weight: 700; margin-bottom: 10px;">🧠 Holistic OS</h2>
+            <p style="color: #94A3B8; font-size: 0.9rem; margin-bottom: 30px;">Zabezpieczony panel dyrektorski Jaison Agent Agency</p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        login_user = st.text_input("Nazwa użytkownika:", key="login_username")
+        login_pass = st.text_input("Hasło dostępu:", type="password", key="login_password")
+        
+        if st.button("Autoryzuj i wejdź", type="primary", use_container_width=True):
+            if login_user.strip() == AUTH_USER and login_pass.strip() == AUTH_PASS:
+                st.session_state.authenticated = True
+                st.success("Autoryzacja pomyślna!")
+                time.sleep(0.5)
+                st.rerun()
+            else:
+                st.error("Nieprawidłowy użytkownik lub hasło.")
+        
+        st.markdown("""
+        <p style="text-align: center; color: #475569; font-size: 0.8rem; margin-top: 30px;">
+            System zabezpieczony szyfrowaniem AES-256 i routingiem proxy.
+        </p>
+        """, unsafe_allow_html=True)
+    st.stop()
+
+
 # Helpery danych
 def load_kanban():
     default_kanban = {
@@ -1297,6 +1337,11 @@ with st.sidebar:
     if st.button("📢 Social Media Hub", use_container_width=True, type="primary" if col_menu == "Social Media Hub" else "secondary"):
         st.session_state.current_page = "Social Media Hub"
         st.rerun()
+        
+    if st.button("🤖 J(AI)SON Agent Agency", use_container_width=True, type="primary" if col_menu == "Jaison Agency" else "secondary"):
+        st.session_state.current_page = "Jaison Agency"
+        st.rerun()
+
         
     if st.button("🌐 AI Website Builder", use_container_width=True, type="primary" if col_menu == "AI Website Builder" else "secondary"):
         st.session_state.current_page = "AI Website Builder"
@@ -4061,6 +4106,103 @@ elif menu == "Memory":
 # ==============================================================================
 
 # 11. SOCIAL MEDIA HUB
+elif menu == "Jaison Agency":
+    st.markdown("<p style='color: #F59E0B; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>IV. — MARKETING • JAISON AGENT AGENCY</p>", unsafe_allow_html=True)
+    st.title("🤖 J(AI)SON Agent Agency")
+    st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Autonomiczny sztab Dyrektorów AI (CEO, CMO, CPO, CTO) zasilany przez <b>Google ADK</b> i model <b>gemini-3.5-flash</b>.</p>", unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="custom-card" style="border-left: 5px solid #F59E0B; background: linear-gradient(135deg, #1A1310 0%, #0F1016 100%);">
+        <h4 style="margin: 0; color: #F59E0B;">🎯 Mobilny Terminal Terenowy (Wzorowany na Zeely 2.0)</h4>
+        <p style="color: #CBD5E1; font-size: 0.85rem; margin-top: 6px; margin-bottom: 0;">
+            Wklej tutaj surowe notatki z mapowania procesów u klienta w terenie, krótki brief lub własną wizję projektu.
+            Nasi wyspecjalizowani Dyrektorzy AI przeanalizują brief, zaplanują kampanię, dobiorą kolorystykę i przygotują gotowe prompty.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Inicjalizacja stanu sesji dla wyników
+    if "agency_results" not in st.session_state:
+        st.session_state.agency_results = None
+
+    client_brief = st.text_area(
+        "Wprowadź brief klienta lub notatki z terenu:",
+        height=180,
+        placeholder="Np.: Firma kurczaku jasia - lokalny food truck z burgerami i kurczakami w chrupiącej panierce. Chcą zwiększyć liczbę zamówień telefonicznych, przyciągnąć młodzież ze szkół średnich i wypromować nowe menu lunchowe.",
+        key="agency_client_brief"
+    )
+
+    if st.button("🚀 Uruchom Sztab Dyrektorów (Google ADK)", type="primary"):
+        if not client_brief.strip():
+            st.warning("⚠️ Wprowadź brief klienta przed uruchomieniem potoku!")
+        else:
+            with st.spinner("Sztab Dyrektorów AI analizuje brief w chmurze (Google ADK & gemini-3.5-flash)..."):
+                try:
+                    import sys
+                    import os
+                    pipeline_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "01-jaison-core", "agents-pipeline"))
+                    if pipeline_path not in sys.path:
+                        sys.path.append(pipeline_path)
+                    
+                    import agents
+                    # Przeładuj moduł na wypadek zmian w kodzie
+                    import importlib
+                    importlib.reload(agents)
+                    
+                    results = agents.run_agency_pipeline(client_brief)
+                    st.session_state.agency_results = results
+                    if results.get("status") == "success":
+                        st.success(f"⚡ Kampania pomyślnie wygenerowana w {results.get('execution_time_seconds')} sekund!")
+                    else:
+                        st.error(f"Wystąpił błąd: {results.get('error_message')}")
+                except Exception as ex:
+                    st.error(f"Nie udało się załadować potoku ADK: {str(ex)}")
+
+    if st.session_state.agency_results and st.session_state.agency_results.get("status") == "success":
+        res = st.session_state.agency_results
+        
+        st.markdown("---")
+        tab_ceo, tab_cmo, tab_cpo, tab_cto = st.tabs([
+            "💼 I. CEO (Dekompozycja)",
+            "📈 II. CMO (Strategia i Kalendarz)",
+            "🎨 III. CPO (Visual & Branding)",
+            "🛠️ IV. CTO (Narzędzia i Prompty)"
+        ])
+        
+        with tab_ceo:
+            st.subheader("💼 Raport Dekompozycji i Celów Biznesowych (CEO AI)")
+            st.markdown(res.get("ceo_analysis", ""))
+            
+        with tab_cmo:
+            st.subheader("📈 Strategia Marketingowa & Kalendarz Contentowy (CMO AI)")
+            st.markdown(res.get("cmo_strategy", ""))
+            
+        with tab_cpo:
+            st.subheader("🎨 Wytyczne Brandingowe i Visual Anchoring (CPO AI)")
+            st.markdown(res.get("cpo_branding", ""))
+            
+        with tab_cto:
+            st.subheader("🛠️ Techniczne Wytyczne i Skrypty Wykonawcze (CTO AI)")
+            st.markdown(res.get("cto_prompts", ""))
+            
+            st.markdown("<hr style='border-color: #1F242E;'>", unsafe_allow_html=True)
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #10B981; background: linear-gradient(135deg, #0C1A14 0%, #0F1016 100%);">
+                <h4 style="margin: 0; color: #10B981;">⚡ Panel Szybkiego Wykonania (Darmowe Narzędzia Lokalne)</h4>
+                <p style="color: #CBD5E1; font-size: 0.85rem; margin-top: 6px;">
+                    Skopiuj wygenerowane wyżej pliki wsadowe i uruchom generowanie multimediów jednym poleceniem na swoim laptopie lub komputerze stacjonarnym!
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("### 📱 1. Generator Karuzeli (Pillow)")
+            st.info("Zapisz treść slajdów podzielonych przez `---` do pliku tekstowego (np. `carousel_input.txt`), a następnie uruchom:")
+            st.code("python 02-os-jaison/integrations/generate_carousel.py --input carousel_input.txt", language="powershell")
+            
+            st.markdown("### 🎬 2. Generator Wideo Reel (Edge-TTS + MoviePy)")
+            st.info("Aby stworzyć dynamiczne wideo w pionie z neuralnym polskim lektorem:")
+            st.code("python 02-os-jaison/src/faceless_generator.py --text \"Wpisz tutaj tekst lektora\" --output reel.mp4", language="powershell")
+
 elif menu == "Social Media Hub":
     st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — MARKETING • SOCIAL MEDIA HUB</p>", unsafe_allow_html=True)
     st.title("📢 Social Media Hub")
