@@ -47,13 +47,10 @@ gcloud config set project holistic-dashboard-dev
 
 ---
 
-## 🚀 4. Skrypty Wdrożeniowe (Deploy)
-
-### JEDNOLITY DEPLOY AGENCJI (Streamlit - Hermes OS):
-Aplikacja agencji (obsługująca domeny **`jaison.pl`** oraz **`app.jaison.pl`**) jest uruchamiana i kompilowana jako kontener na **Google Cloud Run** w projekcie **`holistic-dashboard-dev`** za pomocą skryptu PowerShell:
+## 🚀 JEDNOLITY DEPLOY AGENCJI (Streamlit - Hermes OS):
+Aplikacja agencji (obsługująca domeny **`jaison.pl`** oraz **`app.jaison.pl`**) jest uruchamiana i kompilowana jako kontener na **Google Cloud Run** w projekcie **`holistic-dashboard-dev`** za pomocą skryptu Python:
 ```powershell
-# Uruchom ten skrypt z poziomu PowerShell:
-.\02-os-jaison\src\tools\deploy_cloud_run.ps1
+python deploy_jaison.py
 ```
 
 ---
