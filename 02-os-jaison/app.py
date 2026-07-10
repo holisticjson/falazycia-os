@@ -4278,13 +4278,15 @@ elif menu == "Jaison Agency":
             engine_mode = st.selectbox(
                 "🚀 Wybierz silnik AI (Metodę pracy):",
                 [
-                    "🎭 Szybki Face Swap (Image-to-Image) — Podmiana twarzy na gotowym zdjęciu",
-                    "✨ Generator Nowej Postaci (Image-to-Prompt) — Generowanie nowej sceny z Twoją twarzą"
+                    "🎭 Szybki Face Swap (Image-to-Image) — Podmiana twarzy na gotowym zdjęciu [fal.ai]",
+                    "✨ Generator Nowej Postaci (Image-to-Prompt) — Generowanie nowej sceny z Twoją twarzą [fal.ai]",
+                    "☁️ Google Cloud Vertex AI Imagen 3 (Image-to-Prompt) — Generowanie postaci [100% BEZPŁATNE / GCP]"
                 ],
                 key="suite_fs_engine_mode"
             )
             
-            is_prompt_mode = "Generator Nowej Postaci" in engine_mode
+            is_prompt_mode = "Image-to-Prompt" in engine_mode or "Google Cloud" in engine_mode
+            is_gcp_mode = "Google Cloud" in engine_mode
             
             col_fs1, col_fs2 = st.columns(2)
             with col_fs1:
@@ -4406,31 +4408,62 @@ elif menu == "Jaison Agency":
                             except Exception as ex:
                                 st.error(f"❌ Krytyczny błąd: {str(ex)}")
             else:
-                if st.button("✨ Generuj Postać z moją twarzą (Instant Character)", type="primary", use_container_width=True, key="suite_fs_run_character_btn"):
-                    if not face_image_bytes:
-                        st.warning("⚠️ Proszę wgrać lub wybrać twarz referencyjną!")
-                    elif not final_prompt:
-                        st.warning("⚠️ Proszę wpisać prompt lub pomysł na scenę!")
-                    else:
-                        with st.spinner("AI generuje kompletną scenę i postać na bazie Twojej twarzy... (może to zająć do 15 sekund)"):
-                            try:
-                                from integrations.fal_ai import run_instant_character
-                                generated_bytes, err = run_instant_character(face_image_bytes, final_prompt)
-                                if err:
-                                    st.error(f"❌ Błąd generowania postaci: {err}")
-                                else:
-                                    st.success("🎉 Postać wygenerowana pomyślnie!")
-                                    st.image(generated_bytes, caption="Twój gotowy, luksusowy portret generatywny", use_container_width=True)
-                                    
-                                    st.download_button(
-                                        label="💾 Pobierz Portret (PNG)",
-                                        data=generated_bytes,
-                                        file_name="jaison_instant_character_result.png",
-                                        mime="image/png",
-                                        use_container_width=True
+                if is_gcp_mode:
+                    if st.button("☁️ Generuj przez Google Imagen 3 (100% BEZPŁATNE)", type="primary", use_container_width=True, key="suite_fs_run_imagen3_btn"):
+                        if not face_image_bytes:
+                            st.warning("⚠️ Proszę wgrać lub wybrać twarz referencyjną!")
+                        elif not final_prompt:
+                            st.warning("⚠️ Proszę wpisać prompt lub pomysł na scenę!")
+                        else:
+                            with st.spinner("Google Cloud Vertex AI generuje obraz przez Imagen 3 z referencją twarzy... (trwa to ok. 8-12 sekund)"):
+                                try:
+                                    generated_bytes, err = generate_imagen_image(
+                                        final_prompt, 
+                                        aspect_ratio="1:1", 
+                                        reference_image_bytes=face_image_bytes, 
+                                        reference_type="REFERENCE_TYPE_SUBJECT"
                                     )
-                            except Exception as ex:
-                                st.error(f"❌ Krytyczny błąd: {str(ex)}")
+                                    if err:
+                                        st.error(f"❌ Błąd Google Cloud Imagen 3: {err}")
+                                    else:
+                                        st.success("🎉 Obraz wygenerowany pomyślnie przez Google Cloud!")
+                                        st.image(generated_bytes, caption="Twój darmowy portret wygenerowany na GCP (Imagen 3)", use_container_width=True)
+                                        
+                                        st.download_button(
+                                            label="💾 Pobierz Portret (PNG)",
+                                            data=generated_bytes,
+                                            file_name="jaison_gcp_imagen_result.png",
+                                            mime="image/png",
+                                            use_container_width=True
+                                        )
+                                except Exception as ex:
+                                    st.error(f"❌ Krytyczny błąd GCP: {str(ex)}")
+                else:
+                    if st.button("✨ Generuj Postać z moją twarzą (Instant Character)", type="primary", use_container_width=True, key="suite_fs_run_character_btn"):
+                        if not face_image_bytes:
+                            st.warning("⚠️ Proszę wgrać lub wybrać twarz referencyjną!")
+                        elif not final_prompt:
+                            st.warning("⚠️ Proszę wpisać prompt lub pomysł na scenę!")
+                        else:
+                            with st.spinner("AI generuje kompletną scenę i postać na bazie Twojej twarzy... (może to zająć do 15 sekund)"):
+                                try:
+                                    from integrations.fal_ai import run_instant_character
+                                    generated_bytes, err = run_instant_character(face_image_bytes, final_prompt)
+                                    if err:
+                                        st.error(f"❌ Błąd generowania postaci: {err}")
+                                    else:
+                                        st.success("🎉 Postać wygenerowana pomyślnie!")
+                                        st.image(generated_bytes, caption="Twój gotowy, luksusowy portret generatywny", use_container_width=True)
+                                        
+                                        st.download_button(
+                                            label="💾 Pobierz Portret (PNG)",
+                                            data=generated_bytes,
+                                            file_name="jaison_instant_character_result.png",
+                                            mime="image/png",
+                                            use_container_width=True
+                                        )
+                                except Exception as ex:
+                                    st.error(f"❌ Krytyczny błąd: {str(ex)}")
 
             # Sekcja edukacyjna
             with st.expander("🎓 ARCHITEKTURA AI: Jak uzyskać 100% spójności twarzy, sylwetki i detali? (LoRA)", expanded=False):
