@@ -49,19 +49,11 @@ gcloud config set project holistic-dashboard-dev
 
 ## 🚀 4. Skrypty Wdrożeniowe (Deploy)
 
-### A. DYNAMICZNY DASHBOARD (Streamlit - Hermes OS):
-Działa pod głównym adresem **`app.jason.pl`**.
-Jest uruchamiany i kompilowany jako kontener na **Google Cloud Run** w projekcie **`holistic-dashboard-dev`** za pomocą skryptu PowerShell:
+### JEDNOLITY DEPLOY AGENCJI (Streamlit - Hermes OS):
+Aplikacja agencji (obsługująca domeny **`jaison.pl`** oraz **`app.jaison.pl`**) jest uruchamiana i kompilowana jako kontener na **Google Cloud Run** w projekcie **`holistic-dashboard-dev`** za pomocą skryptu PowerShell:
 ```powershell
 # Uruchom ten skrypt z poziomu PowerShell:
 .\02-os-jaison\src\tools\deploy_cloud_run.ps1
-```
-
-### B. STATYCZNA STRONA AGENCJI (Vite Landing Page):
-Szybki front-end pod głównym adresem **`jaison.pl`**.
-Wdrażana na serwer **FTP Hostido** za pomocą skryptu Python:
-```powershell
-python deploy_jason.py
 ```
 
 ---
@@ -71,5 +63,6 @@ Jeśli chcesz zrobić szybki backup całego repozytorium na pendrive (dysk `D:`)
 ```powershell
 Compress-Archive -Path "C:\Aplikacje MVP\Holistic Jason\*" -DestinationPath "D:\jaison_laptop_backup.zip" -Force
 ```
+
 
 
