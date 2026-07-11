@@ -3,9 +3,10 @@ import os, json, time
 import ssl
 
 # Ręczne wczytanie pliku .env na starcie aplikacji
-if os.path.exists(".env"):
+env_path = os.path.join(os.path.dirname(__file__), ".env")
+if os.path.exists(env_path):
     try:
-        with open(".env", "r", encoding="utf-8") as f:
+        with open(env_path, "r", encoding="utf-8") as f:
             for line in f:
                 if "=" in line and not line.strip().startswith("#"):
                     k, v = line.split("=", 1)
@@ -1397,32 +1398,13 @@ with st.sidebar:
     # IV. BUSINESS & MARKETING
     st.markdown("<p style='color: #3B82F6; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>IV. BUSINESS & MARKETING</p>", unsafe_allow_html=True)
     
-    if st.button("📈 SEO & Content", use_container_width=True, type="primary" if col_menu == "SEO" else "secondary"):
-        st.session_state.current_page = "SEO"
-        st.rerun()
-        
-    if st.button("📢 Social Media Hub", use_container_width=True, type="primary" if col_menu == "Social Media Hub" else "secondary"):
-        st.session_state.current_page = "Social Media Hub"
-        st.rerun()
-        
-    if st.button("🤖 J(AI)SON Agent Agency", use_container_width=True, type="primary" if col_menu == "Jaison Agency" else "secondary"):
+    creative_suite_pages = ["Jaison Agency", "SEO", "Social Media Hub", "AI Website Builder", "Ads & Local SEO", "Studio"]
+    if st.button("🎨 J(AI)SON Creative Suite 🟢", use_container_width=True, type="primary" if col_menu in creative_suite_pages else "secondary"):
         st.session_state.current_page = "Jaison Agency"
-        st.rerun()
-
-        
-    if st.button("🌐 AI Website Builder", use_container_width=True, type="primary" if col_menu == "AI Website Builder" else "secondary"):
-        st.session_state.current_page = "AI Website Builder"
+        st.session_state.active_suite_tool = "Home"
         st.rerun()
         
-    if st.button("🎯 Ads & Local SEO", use_container_width=True, type="primary" if col_menu == "Ads & Local SEO" else "secondary"):
-        st.session_state.current_page = "Ads & Local SEO"
-        st.rerun()
-        
-    if st.button("🎬 Studio (Hyperframes)", use_container_width=True, type="primary" if col_menu == "Studio" else "secondary"):
-        st.session_state.current_page = "Studio"
-        st.rerun()
-        
-    if st.button("💼 CRM Leads", use_container_width=True, type="primary" if col_menu == "CRM" else "secondary"):
+    if st.button("💼 CRM Magic Pipeline 🟢", use_container_width=True, type="primary" if col_menu == "CRM" else "secondary"):
         st.session_state.current_page = "CRM"
         st.rerun()
         
@@ -1442,6 +1424,20 @@ with st.sidebar:
 
 
 menu = st.session_state.current_page
+
+# Unifikacja i przekierowanie starych podstron do zintegrowanego J(AI)SON Creative Suite (Bento Grid)
+if menu in ["Social Media Hub", "AI Website Builder", "SEO", "Ads & Local SEO", "Studio"]:
+    mapping = {
+        "Social Media Hub": "Brand_Bios",
+        "AI Website Builder": "Landing_Page",
+        "SEO": "Faceless_Reels",
+        "Ads & Local SEO": "Ads_Studio",
+        "Studio": "Studio_Video"
+    }
+    st.session_state.active_suite_tool = mapping[menu]
+    st.session_state.current_page = "Jaison Agency"
+    menu = "Jaison Agency"
+
 
 def render_agent_console(agent_name, status, default_model, provider, color_accent):
     agent_key = agent_name.lower().replace(' ', '_')
@@ -1865,7 +1861,6 @@ if menu == "🎯 Mission Control":
             time.sleep(0.5)
             st.rerun()
 
-
 elif menu == "Claude":
     render_agent_console("Claude", "Online", "claude-3-7-sonnet", "Anthropic Native", "#F59E0B")
 
@@ -1874,123 +1869,6 @@ elif menu == "Hermes":
 
 elif menu == "Gemini":
     render_agent_console("Gemini", "Online", "gemini-2.5-pro", "Vertex AI Native", "#8B5CF6")
-
-elif menu == "Studio":
-    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • STUDIO</p>", unsafe_allow_html=True)
-    st.title("🎬 Generative Studio")
-    st.subheader("Wielomodalne studio kreacji treści, audio i wideo")
-    
-    tab_hyper, tab_audio, tab_img = st.tabs(["🎥 Hyperframes (Video)", "🔊 Voice & Audio", "🎨 Grafika & Obrazy"])
-    
-    with tab_hyper:
-        st.subheader("🎥 Generator Wideo Hyperframes")
-        st.markdown("Konwertuje opisy tekstowe na interaktywne animacje wideo HTML / CSS.")
-        video_prompt = st.text_area("Opisz scenę wideo (np. 'Pulsacyjne różowe neonowe logo na czarnym tle z unoszącymi się cząsteczkami'):", height=100)
-        
-        if st.button("Generuj Hyperframe Wideo", type="primary"):
-            if video_prompt:
-                with st.spinner("Hyperframes kompiluje kod HTML/CSS za pomocą Gemini..."):
-                    prompt = f"""Zaprojektuj kompletną podglądową stronę HTML5/CSS3 stanowiącą animację wideo (tzw. Hyperframe) o następującym opisie sceny:
-"{video_prompt}"
-
-Strona musi:
-1. Posiadać ciemne, luksusowe tło (np. #08090C lub czarne).
-2. Posiadać płynne, nowoczesne animacje CSS (@keyframes), świecące efekty neonowe (box-shadow, text-shadow), gradienty itp.
-3. Być w pełni responsywna i wyśrodkowana (flexbox/grid).
-4. ZWRÓĆ TYLKO I WYŁĄCZNIE czysty kod HTML (zawierający <style> i ewentualnie <body> z divami). Nie używaj markdownu, nie dodawaj ```html na początku ani na końcu. Kod musi być gotowy do bezpośredniego wstrzyknięcia do iframe.
-"""
-                    response_code = call_gemini_api([{"role": "user", "content": prompt}], "Jesteś wybitnym front-end deweloperem specjalizującym się w animacjach CSS.")
-                    
-                    import re
-                    clean_code = re.sub(r"^```html\s*", "", response_code, flags=re.IGNORECASE)
-                    clean_code = re.sub(r"^```\s*", "", clean_code)
-                    clean_code = re.sub(r"```\s*$", "", clean_code)
-                    
-                    st.session_state.hyperframe_code = clean_code
-                    st.success("Wideo wygenerowane pomyślnie w formacie Hyperframe!")
-                    st.rerun()
-            else:
-                st.warning("Opisz najpierw scenę wideo.")
-                
-        if "hyperframe_code" in st.session_state and st.session_state.hyperframe_code:
-            st.write("📺 **Podgląd wygenerowanej animacji:**")
-            st.components.v1.html(st.session_state.hyperframe_code, height=350, scrolling=False)
-            
-            sub_col1, sub_col2 = st.columns(2)
-            with sub_col1:
-                st.button("Exportuj do MP4", use_container_width=True)
-            with sub_col2:
-                if st.button("Wyczyść Studio", use_container_width=True):
-                    st.session_state.hyperframe_code = None
-                    st.rerun()
-                    
-    with tab_audio:
-        st.subheader("🔊 Text-to-Speech & Voice Clone")
-        st.write("Generowanie głosu AI w stylu Tomasza Dudy (ADHD-friendly, dynamiczny).")
-        audio_text = st.text_area("Wpisz tekst do wypowiedzenia:", "Cześć! Dzisiaj skupimy się na jednej, najważniejszej rzeczy. Wyelimuj szum i wejdź w stan Flow.", key="tts_input_text")
-        
-        c_v1, c_v2 = st.columns(2)
-        with c_v1:
-            voice_opt = st.selectbox("Wybierz głos:", [
-                "Męski Wavenet (pl-PL-Wavenet-B)", 
-                "Męski Standard (pl-PL-Standard-E)",
-                "Żeński Wavenet (pl-PL-Wavenet-A)", 
-                "Żeński Standard (pl-PL-Standard-D)"
-            ], index=0)
-        with c_v2:
-            st.caption("Prawdziwa synteza mowy zasilana przez GCP Text-to-Speech API.")
-            
-        voice_map = {
-            "Męski Wavenet (pl-PL-Wavenet-B)": ("pl-PL-Wavenet-B", "MALE"),
-            "Męski Standard (pl-PL-Standard-E)": ("pl-PL-Standard-E", "MALE"),
-            "Żeński Wavenet (pl-PL-Wavenet-A)": ("pl-PL-Wavenet-A", "FEMALE"),
-            "Żeński Standard (pl-PL-Standard-D)": ("pl-PL-Standard-D", "FEMALE")
-        }
-        
-        if st.button("Generuj Audio", type="primary", key="tts_gen_button"):
-            if audio_text:
-                with st.spinner("Generowanie pliku dźwiękowego przez GCP TTS..."):
-                    v_name, v_gender = voice_map[voice_opt]
-                    audio_bytes, err = call_gcp_tts(audio_text, voice_name=v_name, gender=v_gender)
-                    if err:
-                        st.error(f"Błąd generowania mowy: {err}")
-                    else:
-                        st.audio(audio_bytes, format="audio/mp3")
-                        st.success("Głos wygenerowany pomyślnie!")
-            else:
-                st.warning("Wpisz najpierw tekst do wypowiedzenia.")
-                
-    with tab_img:
-        st.subheader("🎨 Generator Grafiki (fal.ai Flux Schnell)")
-        st.write("Twórz spersonalizowane obrazy, okładki i tła o najwyższej jakości w zaledwie kilka sekund.")
-        img_prompt = st.text_input("Opisz grafikę (rekomendowany angielski):", "A premium portrait of a futuristic AI architect, glowing emerald and neon teal lines, cinematic lighting, 8k resolution, minimalist dark jacket --ar 16:9", key="studio_flux_prompt")
-        
-        if st.button("Generuj Obraz (Flux Schnell)", type="primary", key="studio_flux_btn"):
-            if not img_prompt.strip():
-                st.warning("⚠️ Wpisz opis grafiki przed generowaniem!")
-            else:
-                with st.spinner("Model Flux Schnell na fal.ai generuje obraz... (ok. 2-3 sekundy)"):
-                    try:
-                        from integrations.fal_ai import run_flux_generation
-                        img_bytes, err = run_flux_generation(img_prompt)
-                        
-                        if err:
-                            st.error(f"❌ Błąd generowania: {err}")
-                            st.info("💡 Używam domyślnej inspiracji jako fallback:")
-                            st.image("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500", caption="Wygenerowana inspiracja graficzna (Fallback)")
-                        else:
-                            st.success("🎉 Obraz wygenerowany pomyślnie!")
-                            st.image(img_bytes, caption=img_prompt, use_container_width=True)
-                            
-                            st.download_button(
-                                label="💾 Pobierz Wygenerowany Obraz (PNG)",
-                                data=img_bytes,
-                                file_name="flux_generated_art.png",
-                                mime="image/png"
-                            )
-                    except Exception as ex:
-                        st.error(f"❌ Wyjątek podczas generowania: {str(ex)}")
-                        st.image("https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500", caption="Wygenerowana inspiracja graficzna (Fallback)")
 
 # 2. GOALS & OPEN LOOPS
 elif menu == "Goals":
@@ -2616,161 +2494,10 @@ elif menu == "Notebook":
                         st.rerun()
 
 
-# 4. CONTENT STUDIO (Nate Herk Inspired)
-elif menu == "SEO":
-    st.title("🎬 Content Studio (Nate Herk & Adrian Killar Mode)")
-    st.subheader("Projektowanie wirusowych wideo i scenariuszy zasilanych o_mnie.md")
-    
-    st.markdown("""
-    <div class="custom-card">
-        <p>🎬 <strong>Wirusowy silnik contentowy:</strong> Dyrektor Kreatywny (schematy montażu Adriana Killara) oraz CMO (twórca autentycznej historii z <code>o_mnie.md</code>) współpracują, by generować kompletne, gotowe skrypty na TikToka/Shorts oraz opisy rolek.</p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    tab_viral, tab_repurpose = st.tabs(["💡 Generator Wirusowych Wideo", "🔄 YouTube Repurposer"])
-    
-    with tab_viral:
-        col_c1, col_c2 = st.columns([1, 1])
-        
-        with col_c1:
-            st.subheader("💡 Zaprojektuj wirusowe wideo")
-            video_concept = st.text_input("Główny temat lub pomysł na rolkę:", placeholder="Np. Uczucie jazdy z wciśniętym gazem i zaciągniętym hamulcem...")
-            video_length = st.selectbox("Długość wideo:", ["8-15 sekund (Szybki strzał)", "30-45 sekund (Edukacyjny Shorts)", "60+ sekund (VSL / Pełna historia)"])
-            
-            st.write("##### Inspiracja z Telegrama (Nate Herk Mode)")
-            st.caption("Gdy wyślesz komendę do bota na Telegramie w grupie Holistic Mission Control, Hermes automatycznie przekaże ją do CMO, a ten wygeneruje kompletny skrypt wideo bezpośrednio na Twój telefon.")
-            
-            if st.button("Generuj Skrypt i Koncepcję Wideo", type="primary"):
-                if video_concept:
-                    with st.spinner("Wirtualny CMO oraz Dyrektor Kreatywny analizują o_mnie.md..."):
-                        time.sleep(2.0)
-                        st.session_state.content_script = f"""
-### 🎬 Gotowy Skrypt Wirusowy: "{video_concept}"
-**Wygenerowany przez: CMO (Tożsamość Tomasz) & Dyrektor Kreatywny (Adrian Killar Style)**
-
----
-
-#### 📺 SCENA 1: Haczyk (Hook) — Czas: 0:00 - 0:03
-* **Wizualnie (Adrian Killar Style):** Dynamiczne cięcie. Tomasz stoi przed kamerą, w tle widać ciemny pulpit z świecącą na fioletowo linią kodu. Kamera robi szybki zoom na twarz.
-* **Dźwięk:** Głośny basowy dźwięk „WHOOSH”.
-* **Tekst na ekranie:** „Masz ADHD? To nie brak chęci. To zaciągnięty hamulec...”
-* **Copywriting (Ghost v2):** „Wciskasz gaz do dechy, ale Twoje życie stoi w miejscu. Znasz to uczucie?”
-
----
-
-#### 📺 SCENA 2: Rozwinięcie (Body) — Czas: 0:03 - 0:10
-* **Wizualnie:** Szybkie przebitki B-roll z luksusowego ciemnego pulpitu i kodu. Tomasz wykonuje powolny oddech (metoda Wima Hofa). Na ekranie pojawia się minimalistyczna grafika mózgu.
-* **Dźwięk:** Spokojniejsza, rytmiczna muzyka lo-fi.
-* **Copywriting:** „Pochłaniasz setki kursów, masz wysokie ambicje, ale gdy przychodzi do wdrożenia – paraliż. To nie Twoja wina. Twój neuroatypowy mózg potrzebuje zewnętrznego płatu czołowego.”
-
----
-
-#### 📺 SCENA 3: Wezwanie do działania (CTA) — Czas: 0:10 - 0:15
-* **Wizualnie:** Tomasz pokazuje telefon z otwartym botem na Telegramie. Na ekranie wyświetla się adres URL: *ADHD4LIFE*.
-* **Copywriting:** „Stworzyłem system, który robi zrzut chaosu z Twojej głowy i układa plan. Wejdź do ADHD4Life i odbierz darmowy workflow. Zdejmij hamulec ręczny już dzisiaj.”
-                        """
-                        st.rerun()
-                else:
-                    st.warning("Wprowadź pomysł na wideo.")
-                    
-        with col_c2:
-            st.subheader("📝 Wynik pracy Content Studio")
-            if "content_script" in st.session_state and st.session_state.content_script:
-                st.markdown(st.session_state.content_script)
-                if st.button("Wyczyść skrypt"):
-                    st.session_state.content_script = None
-                    st.rerun()
-            else:
-                st.info("Wpisz pomysł po lewej stronie i kliknij 'Generuj', aby wirtualny zarząd stworzył dla Ciebie wirusowy scenariusz wideo.")
-
-    with tab_repurpose:
-        st.subheader("🔄 YouTube Content Repurposer (Nate Herk & Higgsfield Mode)")
-        st.write("Wklej link YouTube lub bezpośrednio transkrypcję wideo, aby automatycznie stworzyć paczkę dystrybucyjną social media (X/Twitter, LinkedIn, TikTok/Reels) dopasowaną do Twojego o_mnie.md.")
-        
-        yt_url = st.text_input("Adres URL filmu na YouTube:", placeholder="https://www.youtube.com/watch?v=...", key="yt_repurpose_url")
-        pasted_transcript = st.text_area("Lub wklej tutaj transkrypcję filmu (z napisów YouTube):", height=150, placeholder="Wklej tekst transkrypcji tutaj...", key="pasted_transcript_text")
-        obsidian_repurpose_export = st.checkbox("Automatycznie eksportuj wynik do Obsidian Vault", value=True, key="yt_repurpose_obsidian_chk")
-        
-        if st.button("Generuj Paczkę Repurposingu", type="primary", key="yt_repurpose_gen_btn"):
-            transcript_content = ""
-            if yt_url:
-                with st.spinner("Pobieram transkrypcję z YouTube..."):
-                    fetched, err = extract_youtube_transcript_raw(yt_url)
-                    if err:
-                        st.warning(f"Nie udało się automatycznie pobrać transkrypcji: {err}. Użyj wklejenia manualnego poniżej.")
-                        transcript_content = pasted_transcript
-                    else:
-                        st.success("Pomyślnie pobrano transkrypcję z wideo YouTube!")
-                        transcript_content = fetched
-            else:
-                transcript_content = pasted_transcript
-                
-            if not transcript_content.strip():
-                st.error("Błąd: Musisz podać poprawny adres URL wideo lub wkleić treść transkrypcji.")
-            else:
-                with st.spinner("CMO oraz Copywriter (Gemini 2.5 Flash) analizują wideo i dopasowują styl..."):
-                    o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
-                    o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak profilu o_mnie.md"
-                    
-                    repurpose_prompt = f"""Przeanalizuj poniższą transkrypcję wideo i stwórz profesjonalny zestaw materiałów marketingowych (Content Repurposing Kit).
-
-Twój cel: Przekształcić ten surowy materiał w 3 wysoce perswazyjne, angażujące i dopasowane do profilu użytkownika formaty.
-
-PROFIL UŻYTKOWNIKA (O_MNIE - Użyj do dopasowania stylu, tonu i perspektywy Tomasz/Holistic Jason):
-{o_mnie_context}
-
-TRANSKRYPCJA WIDEO:
-{transcript_content[:15000]}
-
-GENERUJ NASTĘPUJĄCE TRZY SEKROTY:
-
-### 1. Wątek na X (Twitter Thread)
-Przygotuj 5-częściowy wątek. Każdy tweet musi mieć maksymalnie 280 znaków. Styl: prowokacyjny, skondensowany, konkretny (bez bełkotu AI). Haczyk (Hook) w pierwszym tweecie. Odnieś się bezpośrednio do przemyśleń i tożsamości z o_mnie.md. Dodaj CTA w ostatnim.
-
-### 2. Post na LinkedIn
-Napisz angażujący, biznesowy post. Użyj formatu "Hook -> Story -> Lesson -> Call to action". Styl: autentyczny, bez korporacyjnej gadki, krótki (ADHD-friendly), z mocnym haczykiem i przerwami między zdaniami dla lepszej czytelności.
-
-### 3. Wirusowy Scenariusz TikTok/Shorts (Adrian Killar Style)
-Napisz dynamiczny scenariusz wideo na 30-45 sekund:
-- SCENA 1: Haczyk (Hook, visual + copy, pierwsze 3 sekundy).
-- SCENA 2: Rozwinięcie (Body, dynamiczny montaż, wartościowa treść).
-- SCENA 3: CTA (Call to action).
-Pokaż visual cues (co widać na ekranie) i copy (co Tomasz mówi).
-
-Napisz całość w czystym markdownie, używając wyrazistych sekcji.
-"""
-                    response_kit = call_gemini_api([{"role": "user", "content": repurpose_prompt}], "Jesteś wybitnym CMO i dyrektorem kreatywnym tworzącym spójne kampanie cross-channel.")
-                    st.session_state.repurpose_kit_result = response_kit
-                    
-                    if obsidian_repurpose_export:
-                        note_title = f"Repurposed_SocialKit_{int(time.time())}.md"
-                        note_path = os.path.join(OBSIDIAN_DIR, note_title)
-                        try:
-                            with open(note_path, "w", encoding="utf-8") as f:
-                                f.write(f"---\ntype: social-kit\nsource: {yt_url if yt_url else 'Pasted Transcript'}\ntimestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}\n---\n\n{response_kit}")
-                            st.session_state.repurpose_kit_export_success = note_title
-                        except Exception as ex:
-                            st.error(f"Błąd zapisu do Obsidian Vault: {ex}")
-                    st.rerun()
-
-        if "repurpose_kit_result" in st.session_state and st.session_state.repurpose_kit_result:
-            if "repurpose_kit_export_success" in st.session_state and st.session_state.repurpose_kit_export_success:
-                st.success(f"📚 Zapisano do Obsidian Vault jako: `{st.session_state.repurpose_kit_export_success}`")
-                
-            st.markdown("### 📝 Wygenerowana Paczka Social Media:")
-            st.markdown(st.session_state.repurpose_kit_result)
-            
-            sub_c1, sub_c2 = st.columns(2)
-            with sub_c1:
-                if st.button("Wyczyść Wynik", use_container_width=True, key="yt_repurpose_clear_btn"):
-                    st.session_state.repurpose_kit_result = None
-                    st.session_state.repurpose_kit_export_success = None
-                    st.rerun()
-
 # 5. ADHD CRM & LEJEK
 elif menu == "CRM":
-    st.title("💼 ADHD CRM & Bezszumny Lejek")
-    st.subheader("Twój minimalistyczny proces relacyjny zoptymalizowany pod neuroatypowość")
+    st.title("💼 CRM Magic Pipeline")
+    st.subheader("Twój zautomatyzowany, luksusowy lejek leadów zintegrowany z n8n & Systeme.io")
     
     st.markdown("""
     <div class="one-thing-banner" style="border-left-color: #7C3AED;">
@@ -4256,7 +3983,7 @@ elif menu == "Jaison Agency":
             </div>
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Strategię & BIO", key="btn_run_bios", use_container_width=True):
-                st.session_state.current_page = "Social Media Hub"
+                st.session_state.active_suite_tool = "Brand_Bios"
                 st.rerun()
 
             # 4. LANDING PAGE BUILDER
@@ -4269,7 +3996,7 @@ elif menu == "Jaison Agency":
             </div>
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Kreator Landing Page", key="btn_run_landing", use_container_width=True):
-                st.session_state.current_page = "AI Website Builder"
+                st.session_state.active_suite_tool = "Landing_Page"
                 st.rerun()
 
             # 9. RESEARCH HUB
@@ -4295,7 +4022,7 @@ elif menu == "Jaison Agency":
             </div>
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Ads & Local SEO", key="btn_run_ads_local_seo", use_container_width=True):
-                st.session_state.current_page = "Ads & Local SEO"
+                st.session_state.active_suite_tool = "Ads_Studio"
                 st.rerun()
 
         with col_c2:
@@ -4322,7 +4049,7 @@ elif menu == "Jaison Agency":
             </div>
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Generator Reels", key="btn_run_reels", use_container_width=True):
-                st.session_state.current_page = "SEO"
+                st.session_state.active_suite_tool = "Faceless_Reels"
                 st.rerun()
                 
             # 7. MOBILE SAFE BANNER
@@ -4387,7 +4114,7 @@ elif menu == "Jaison Agency":
             </div>
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Studio Video", key="btn_run_studio_video", use_container_width=True):
-                st.session_state.current_page = "Studio"
+                st.session_state.active_suite_tool = "Studio_Video"
                 st.rerun()
 
             # 14. J(AI)SON LoRA STUDIO
@@ -4655,6 +4382,261 @@ elif menu == "Jaison Agency":
                 *Chcesz, żebym w kolejnym kroku wdrożył dla Ciebie dedykowany **J(AI)SON LoRA Training Studio** w panelu Streamlit, abyś mógł sam trenować swoje modele? Daj mi znać!*
                 """)
                             
+        # --- TOOL: J(AI)SON LoRA STUDIO ---
+        elif tool == "LoRA_Studio":
+            st.subheader("🧬 J(AI)SON LoRA Studio — Trening Prywatnego Modelu")
+            st.markdown("Wytrenuj swój unikalny model twarzy lub stylu (LoRA) bezpośrednio na platformie fal.ai przy użyciu silnika Flux Schnell / Dev.")
+
+            # Inicjalizacja stanów
+            if "lora_training_id" not in st.session_state:
+                st.session_state.lora_training_id = None
+            if "lora_training_status" not in st.session_state:
+                st.session_state.lora_training_status = None
+            if "lora_training_logs" not in st.session_state:
+                st.session_state.lora_training_logs = []
+            if "lora_result_url" not in st.session_state:
+                st.session_state.lora_result_url = None
+            if "lora_trigger_word" not in st.session_state:
+                st.session_state.lora_trigger_word = "tomasz_hero"
+
+            # Jeśli nie ma aktywnego treningu i brak wyniku, pokaż formularz
+            if not st.session_state.lora_training_id and not st.session_state.lora_result_url:
+                col_tr1, col_tr2 = st.columns([3, 2])
+                with col_tr1:
+                    st.markdown("##### 📁 1. Wgraj swój Dataset (Plik ZIP)")
+                    zip_file = st.file_uploader(
+                        "Wgraj archiwum ZIP zawierające od 5 do 15 zdjęć:", 
+                        type=["zip"], 
+                        key="lora_zip_uploader"
+                    )
+                    
+                    st.markdown("##### ⚙️ 2. Parametry Treningu")
+                    trigger_word = st.text_input(
+                        "Unikalny Wyraz Wyzwalający (Trigger Word):", 
+                        value=st.session_state.lora_trigger_word,
+                        help="Ten wyraz aktywuje model w promptach (np. tomasz_hero)."
+                    )
+                    st.session_state.lora_trigger_word = trigger_word
+                    
+                    steps = st.slider(
+                        "Liczba Iteracji Treningowych (Steps):", 
+                        min_value=500, 
+                        max_value=2000, 
+                        value=1000, 
+                        step=100,
+                        help="Więcej iteracji = lepsze dopasowanie, ale ryzyko przeuczenia. 1000 to optymalny standard."
+                    )
+                    
+                    is_style = st.checkbox(
+                        "Trening Stylu Artystycznego (is_style)", 
+                        value=False,
+                        help="Zaznacz tylko wtedy, gdy uczysz stylu artystycznego/graficznego. Dla twarzy i postaci pozostaw wyłączone."
+                    )
+                    
+                    if st.button("🚀 Rozpocznij Trening LoRA ($0.20 - $0.50 fal.ai)", use_container_width=True, type="primary"):
+                        if not zip_file:
+                            st.error("⚠️ Proszę najpierw załadować plik ZIP ze zdjęciami.")
+                        else:
+                            with st.spinner("Wgrywanie pliku ZIP do CDN i inicjowanie zlecenia na fal.ai..."):
+                                try:
+                                    import tempfile
+                                    import os
+                                    
+                                    # Zapisujemy wgrany plik tymczasowo
+                                    with tempfile.NamedTemporaryFile(delete=False, suffix=".zip") as tmp:
+                                        tmp.write(zip_file.getvalue())
+                                        tmp_path = tmp.name
+                                        
+                                    from integrations.fal_ai import start_lora_training
+                                    request_id, err = start_lora_training(
+                                        tmp_path, 
+                                        trigger_word=trigger_word, 
+                                        steps=steps, 
+                                        is_style=is_style
+                                    )
+                                    
+                                    # Usuwamy plik tymczasowy
+                                    try:
+                                        os.unlink(tmp_path)
+                                    except Exception:
+                                        pass
+                                        
+                                    if err:
+                                        st.error(f"❌ Nie udało się zainicjować treningu: {err}")
+                                    else:
+                                        st.session_state.lora_training_id = request_id
+                                        st.session_state.lora_training_status = "IN_QUEUE"
+                                        st.success(f"✅ Trening zainicjowany pomyślnie! ID Zlecenia: {request_id}")
+                                        st.rerun()
+                                except Exception as ex:
+                                    st.error(f"❌ Wyjątek podczas uruchamiania treningu: {str(ex)}")
+                
+                with col_tr2:
+                    st.markdown("""
+                    <div style="background-color: #111827; padding: 20px; border-radius: 12px; border: 1px solid #1F2937;">
+                        <h4 style="color: #10B981; margin-top: 0;">📸 Instrukcja Przygotowania Zdjęć</h4>
+                        <p style="font-size: 0.85rem; color: #9CA3AF;">
+                            Aby uzyskać fotorealistyczną spójność i perfekcyjne dopasowanie modelu, Twój plik ZIP powinien zawierać:
+                        </p>
+                        <ul style="font-size: 0.85rem; color: #D1D5DB; padding-left: 18px; margin-bottom: 12px;">
+                            <li><b>5x Zbliżenie twarzy (Headshot):</b> Różne kąty, neutralna mina, dobre, jednolite światło.</li>
+                            <li><b>5x Pół-sylwetka (Half-body):</b> Od pasa w górę, różne ubiory, tła i oświetlenie.</li>
+                            <li><b>3x Pełna sylwetka (Full-body):</b> Różne pozy, tła.</li>
+                        </ul>
+                        <h4 style="color: #F59E0B; margin-top: 15px; font-size: 0.95rem;">👓 Okulary Korekcyjne (Reality Check):</h4>
+                        <p style="font-size: 0.85rem; color: #9CA3AF; margin-bottom: 12px;">
+                            Jeśli nosisz okulary na co dzień, <b>wgraj większość zdjęć w okularach</b>. Model potraktuje je jako stałą cechę Twojej tożsamości i wygeneruje je z niesamowitą precyzją.
+                        </p>
+                        <h4 style="color: #3B82F6; margin-top: 15px; font-size: 0.95rem;">📁 Wymagania Techniczne:</h4>
+                        <ul style="font-size: 0.85rem; color: #D1D5DB; padding-left: 18px;">
+                            <li>Zdjęcia bezpośrednio w ZIP (bez podfolderów).</li>
+                            <li>Rozmiar zdjęć: zalecane minimum 1024x1024 px.</li>
+                            <li>Formaty: PNG lub JPG.</li>
+                        </ul>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+            # Monitor stanu treningu
+            elif st.session_state.lora_training_id:
+                st.info("⚙️ Aktywny Monitor Treningu LoRA")
+                req_id = st.session_state.lora_training_id
+                
+                col_mon1, col_tr_mon2 = st.columns([3, 1])
+                with col_mon1:
+                    st.text(f"ID Zlecenia Fal.ai: {req_id}")
+                    st.text(f"Słowo Kluczowe (Trigger Word): {st.session_state.lora_trigger_word}")
+                
+                with col_tr_mon2:
+                    if st.button("🔄 Odśwież Status", use_container_width=True, type="primary"):
+                        from integrations.fal_ai import check_training_status
+                        status_res, err = check_training_status(req_id)
+                        if err:
+                            st.error(f"Błąd sprawdzania statusu: {err}")
+                        else:
+                            if isinstance(status_res, dict):
+                                status_str = status_res.get("status", "IN_QUEUE")
+                                logs = status_res.get("logs", [])
+                            else:
+                                status_str = getattr(status_res, "status", "IN_QUEUE")
+                                logs = getattr(status_res, "logs", [])
+                                if hasattr(status_res, "logs") and status_res.logs:
+                                    logs = [{"message": log.get("message") if isinstance(log, dict) else str(log)} for log in status_res.logs]
+                            
+                            st.session_state.lora_training_status = str(status_str).upper()
+                            st.session_state.lora_training_logs = [log.get("message", "") if isinstance(log, dict) else str(log) for log in logs]
+                            
+                            if st.session_state.lora_training_status == "COMPLETED":
+                                from integrations.fal_ai import get_training_result
+                                result_url, err_res = get_training_result(req_id)
+                                if err_res:
+                                    st.error(f"Nie udało się pobrać linku do wag: {err_res}")
+                                else:
+                                    st.session_state.lora_result_url = result_url
+                                    st.session_state.lora_training_id = None
+                                    st.success("🎉 Trening LoRA zakończony sukcesem!")
+                            elif st.session_state.lora_training_status in ["FAILED", "ERROR"]:
+                                st.error("❌ Trening zakończył się niepowodzeniem.")
+                            st.rerun()
+
+                # Wyświetl status wizualny
+                status_upper = str(st.session_state.lora_training_status).upper()
+                if "COMPLETED" in status_upper:
+                    st.success("🏆 Status: UKOŃCZONO")
+                elif "IN_PROGRESS" in status_upper or "PROGRESS" in status_upper:
+                    st.warning("⚙️ Status: W TOKU (Trwa uczenie modelu, potrwa to ok. 5 minut)")
+                elif "FAILED" in status_upper or "ERROR" in status_upper:
+                    st.error("❌ Status: BŁĄD TRENINGU")
+                else:
+                    st.info(f"⏳ Status: {status_upper} (Oczekiwanie w kolejce fal.ai...)")
+
+                # Logi w czasie rzeczywistym
+                if st.session_state.lora_training_logs:
+                    st.markdown("##### 📝 Logi z Treningu (Ostatnie linie):")
+                    log_text = "\n".join(st.session_state.lora_training_logs[-50:])
+                    st.code(log_text, language="text")
+                else:
+                    st.caption("Brak dostępnych logów. Kliknij 'Odśwież Status' za chwilę.")
+
+                if st.button("❌ Przerwij monitorowanie (Zresetuj)", key="reset_training_monitor"):
+                    st.session_state.lora_training_id = None
+                    st.session_state.lora_training_status = None
+                    st.session_state.lora_training_logs = []
+                    st.rerun()
+
+            # Wynik udanego treningu
+            elif st.session_state.lora_result_url:
+                st.markdown("""
+                <div style="background-color: #065F46; padding: 15px; border-radius: 8px; border: 1px solid #047857; margin-bottom: 20px;">
+                    <h4 style="color: #34D399; margin: 0;">🎉 Twój Model LoRA jest Gotowy!</h4>
+                    <p style="color: #A7F3D0; font-size: 0.9rem; margin: 5px 0 0 0;">
+                        Wagi zostały wygenerowane i zapisane na bezpiecznym CDN fal.ai w formacie <b>.safetensors</b>.
+                    </p>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                st.text_input("🔗 Adres URL wag LoRA (.safetensors):", value=st.session_state.lora_result_url, disabled=True)
+                st.info(f"💡 Twój trigger word to: **{st.session_state.lora_trigger_word}**")
+                
+                st.markdown(f"[📥 Pobierz Plik Wag LoRA ({st.session_state.lora_trigger_word}.safetensors)]({st.session_state.lora_result_url})")
+                
+                st.markdown("<hr style='border-color: #1F242E;'>", unsafe_allow_html=True)
+                st.subheader("🎨 Szybki Generator Obrazów z Twoją Nową LoRĄ!")
+                st.markdown("Przetestuj swój model w locie! Wpisz prompt fotograficzny zawierający Twój trigger word.")
+                
+                test_prompt = st.text_area(
+                    "Wpisz prompt testowy (Pamiętaj o dodaniu trigger worda):", 
+                    value=f"A professional cinematic portrait of {st.session_state.lora_trigger_word} person wearing a sharp black suit on a luxury studio background, extreme detail, photorealistic, 8k"
+                )
+                
+                col_gen1, col_gen2 = st.columns([1, 1])
+                with col_gen1:
+                    aspect_ratio = st.selectbox(
+                        "Proporcje obrazu:", 
+                        ["square_hd", "portrait_4_5", "portrait_16_9", "landscape_16_9"], 
+                        index=0
+                    )
+                    scale = st.slider(
+                        "Wpływ LoRA (Scale):", 
+                        min_value=0.1, 
+                        max_value=2.0, 
+                        value=1.0, 
+                        step=0.1,
+                        help="Jak mocno model ma odwzorować Twoje cechy. 1.0 to optymalna wartość."
+                    )
+                
+                if st.button("✨ Generuj Obraz z LoRĄ", type="primary", use_container_width=True):
+                    with st.spinner("Model Flux-LoRA generuje obraz..."):
+                        from integrations.fal_ai import run_flux_lora_generation
+                        img_bytes, err_gen = run_flux_lora_generation(
+                            test_prompt, 
+                            st.session_state.lora_result_url, 
+                            scale=scale, 
+                            aspect_ratio=aspect_ratio
+                        )
+                        if err_gen:
+                            st.error(f"Błąd generowania obrazu: {err_gen}")
+                        else:
+                            st.session_state.lora_test_image = img_bytes
+                
+                if "lora_test_image" in st.session_state and st.session_state.lora_test_image:
+                    st.image(st.session_state.lora_test_image, caption="Twój Wygenerowany Portret UGC", use_container_width=True)
+                    st.download_button(
+                        label="💾 Pobierz Wygenerowany Portret",
+                        data=st.session_state.lora_test_image,
+                        file_name=f"{st.session_state.lora_trigger_word}_ugc.png",
+                        mime="image/png",
+                        use_container_width=True
+                    )
+                
+                if st.button("🧬 Wytrenuj Nowy Model (Zresetuj)", key="reset_entire_studio"):
+                    st.session_state.lora_training_id = None
+                    st.session_state.lora_training_status = None
+                    st.session_state.lora_training_logs = []
+                    st.session_state.lora_result_url = None
+                    if "lora_test_image" in st.session_state:
+                        del st.session_state.lora_test_image
+                    st.rerun()
+
         # --- TOOL 2: CAROUSEL ARCHITECT ---
         elif tool == "Carousel":
             st.subheader("🎠 Carousel Architect (Visual Editor)")
@@ -4758,143 +4740,1019 @@ Połącz Systeme.io z n8n. Cały ruch organiczny zamienia się w leady i subskry
                         except Exception as ex:
                             st.error(f"❌ Błąd generatora: {str(ex)}")
 
-        # --- TOOL 4: REELS CREATOR ---
-        elif tool == "Reels":
-            st.subheader("🎬 Faceless Reels Creator")
-            st.markdown("Generuj automatyczne pionowe wideo z neuralnym głosem lektora.")
+        # --- TOOL 4: FACELESS REELS CREATOR ---
+        elif tool == "Faceless_Reels":
+            st.subheader("🎬 Content Studio (Nate Herk & Adrian Killar Mode)")
+            st.markdown("Projektowanie wirusowych wideo, scenariuszy zasilanych o_mnie.md oraz generowanie audio lektora.")
             
-            reels_text = st.text_area("Wpisz tekst dla lektora:", value="Dzisiaj zdradzę Ci sekret skutecznej automatyzacji B2B. Zamiast spędzać godziny na rutynowych mailach, stwórz prostego bota w n8n, który przejmie całą komunikację z klientem.", height=150, key="suite_reels_text")
+            tab_viral, tab_repurpose, tab_voiceover = st.tabs(["💡 Generator Wirusowych Wideo", "🔄 YouTube Repurposer", "🎙️ Audio Lektora (TTS)"])
             
-            if st.button("🎬 Generuj Audio Lektora", type="primary", use_container_width=True):
-                with st.spinner("Generowanie głosu AI..."):
-                    try:
-                        audio_bytes, err = call_gcp_tts(reels_text, voice_name="pl-PL-Wavenet-B", gender="MALE")
+            with tab_viral:
+                col_c1, col_c2 = st.columns([1, 1])
+                with col_c1:
+                    st.write("##### 💡 Zaprojektuj wirusowe wideo")
+                    video_concept = st.text_input("Główny temat lub pomysł na rolkę:", placeholder="Np. Uczucie jazdy z wciśniętym gazem i zaciągniętym hamulcem...", key="suite_reels_concept")
+                    video_length = st.selectbox("Długość wideo:", ["8-15 sekund (Szybki strzał)", "30-45 sekund (Edukacyjny Shorts)", "60+ sekund (VSL / Pełna historia)"], key="suite_reels_length")
+                    
+                    st.write("##### Inspiracja z Telegrama (Nate Herk Mode)")
+                    st.caption("Gdy wyślesz komendę do bota na Telegramie w grupie Holistic Mission Control, Hermes automatycznie przekaże ją do CMO, a ten wygeneruje kompletny skrypt wideo bezpośrednio na Twój telefon.")
+                    
+                    if st.button("Generuj Skrypt i Koncepcję Wideo", type="primary", key="suite_reels_gen_script_btn"):
+                        if video_concept:
+                            with st.spinner("Wirtualny CMO oraz Dyrektor Kreatywny analizują o_mnie.md..."):
+                                time.sleep(1.5)
+                                st.session_state.content_script = f"""
+### 🎬 Gotowy Skrypt Wirusowy: "{video_concept}"
+**Wygenerowany przez: CMO (Tożsamość Tomasz) & Dyrektor Kreatywny (Adrian Killar Style)**
+
+---
+
+#### 📺 SCENA 1: Haczyk (Hook) — Czas: 0:00 - 0:03
+* **Wizualnie (Adrian Killar Style):** Dynamiczne cięcie. Tomasz stoi przed kamerą, w tle widać ciemny pulpit z świecącą na fioletowo linią kodu. Kamera robi szybki zoom na twarz.
+* **Dźwięk:** Głośny basowy dźwięk „WHOOSH”.
+* **Tekst na ekranie:** „Masz ADHD? To nie brak chęci. To zaciągnięty hamulec...”
+* **Copywriting (Ghost v2):** „Wciskasz gaz do dechy, ale Twoje życie stoi w miejscu. Znasz to uczucie?”
+
+---
+
+#### 📺 SCENA 2: Rozwinięcie (Body) — Czas: 0:03 - 0:10
+* **Wizualnie:** Szybkie przebitki B-roll z luksusowego ciemnego pulpitu i kodu. Tomasz wykonuje powolny oddech (metoda Wima Hofa). Na ekranie pojawia się minimalistyczna grafika mózgu.
+* **Dźwięk:** Spokojniejsza, rytmiczna muzyka lo-fi.
+* **Copywriting:** „Pochłaniasz setki kursów, masz wysokie ambicje, ale gdy przychodzi do wdrożenia – paraliż. To nie Twoja wina. Twój neuroatypowy mózg potrzebuje zewnętrznego płatu czołowego.”
+
+---
+
+#### 📺 SCENA 3: Wezwanie do działania (CTA) — Czas: 0:10 - 0:15
+* **Wizualnie:** Tomasz pokazuje telefon z otwartym botem na Telegramie. Na ekranie wyświetla się adres URL: *ADHD4LIFE*.
+* **Copywriting:** „Stworzyłem system, który robi zrzut chaosu z Twojej głowy i układa plan. Wejdź do ADHD4Life i odbierz darmowy workflow. Zdejmij hamulec ręczny już dzisiaj.”
+                                """
+                                st.rerun()
+                        else:
+                            st.warning("Wprowadź pomysł na wideo.")
+                            
+                with col_c2:
+                    st.write("##### 📝 Wynik pracy Content Studio")
+                    if "content_script" in st.session_state and st.session_state.content_script:
+                        st.markdown(st.session_state.content_script)
+                        if st.button("Wyczyść skrypt", key="suite_reels_clear_script"):
+                            st.session_state.content_script = None
+                            st.rerun()
+                    else:
+                        st.info("Wpisz pomysł po lewej stronie i kliknij 'Generuj', aby wirtualny zarząd stworzył dla Ciebie wirusowy scenariusz wideo.")
+                        
+            with tab_repurpose:
+                st.write("##### 🔄 YouTube Content Repurposer (Nate Herk Mode)")
+                st.write("Wklej link YouTube lub bezpośrednio transkrypcję wideo, aby automatycznie stworzyć paczkę dystrybucyjną social media (X/Twitter, LinkedIn, TikTok/Reels) dopasowaną do Twojego o_mnie.md.")
+                
+                yt_url = st.text_input("Adres URL filmu na YouTube:", placeholder="https://www.youtube.com/watch?v=...", key="suite_yt_url")
+                pasted_transcript = st.text_area("Lub wklej tutaj transkrypcję filmu (z napisów YouTube):", height=150, placeholder="Wklej tekst transkrypcji tutaj...", key="suite_yt_transcript")
+                obsidian_repurpose_export = st.checkbox("Automatycznie eksportuj wynik do Obsidian Vault", value=True, key="suite_yt_obsidian")
+                
+                if st.button("Generuj Paczkę Repurposingu", type="primary", key="suite_yt_gen_btn"):
+                    transcript_content = ""
+                    if yt_url:
+                        with st.spinner("Pobieram transkrypcję z YouTube..."):
+                            fetched, err = extract_youtube_transcript_raw(yt_url)
+                            if err:
+                                st.warning(f"Nie udało się automatycznie pobrać transkrypcji: {err}. Użyj wklejenia manualnego poniżej.")
+                                transcript_content = pasted_transcript
+                            else:
+                                st.success("Pomyślnie pobrano transkrypcję z wideo YouTube!")
+                                transcript_content = fetched
+                    else:
+                        transcript_content = pasted_transcript
+                        
+                    if not transcript_content.strip():
+                        st.error("Błąd: Musisz podać poprawny adres URL wideo lub wkleić treść transkrypcji.")
+                    else:
+                        with st.spinner("CMO oraz Copywriter (Gemini 2.5 Flash) analizują wideo i dopasowują styl..."):
+                            o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+                            o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak profilu o_mnie.md"
+                            
+                            repurpose_prompt = f"""Przeanalizuj poniższą transkrypcję wideo i stwórz profesjonalny zestaw materiałów marketingowych (Content Repurposing Kit).
+        
+Twój cel: Przekształcić ten surowy materiał w 3 wysoce perswazyjne, angażujące i dopasowane do profilu użytkownika formaty.
+        
+PROFIL UŻYTKOWNIKA (O_MNIE - Użyj do dopasowania stylu, tonu i perspektywy Tomasz/Holistic Jason):
+{o_mnie_context}
+        
+TRANSKRYPCJA WIDEO:
+{transcript_content[:15000]}
+        
+GENERUJ NASTĘPUJĄCE TRZY SEKROTY:
+        
+### 1. Wątek na X (Twitter Thread)
+Przygotuj 5-częściowy wątek. Każdy tweet musi mieć maksymalnie 280 znaków. Styl: prowokacyjny, skondensowany, konkretny (bez bełkotu AI). Haczyk (Hook) w pierwszym tweecie. Odnieś się bezpośrednio do przemyśleń i tożsamości z o_mnie.md. Dodaj CTA w ostatnim.
+        
+### 2. Post na LinkedIn
+Napisz angażujący, biznesowy post. Użyj formatu "Hook -> Story -> Lesson -> Call to action". Styl: autentyczny, bez korporacyjnej gadki, krótki (ADHD-friendly), z mocnym haczykiem i przerwami między zdaniami dla lepszej czytelności.
+        
+### 3. Wirusowy Scenariusz TikTok/Shorts (Adrian Killar Style)
+Napisz dynamiczny scenariusz wideo na 30-45 sekund:
+- SCENA 1: Haczyk (Hook, visual + copy, pierwsze 3 sekundy).
+- SCENA 2: Rozwinięcie (Body, dynamiczny montaż, wartościowa treść).
+- SCENA 3: CTA (Call to action).
+Pokaż visual cues (co widać na ekranie) i copy (co Tomasz mówi).
+        
+Napisz całość w czystym markdownie, używając wyrazistych sekcji.
+"""
+                            response_kit = call_gemini_api([{"role": "user", "content": repurpose_prompt}], "Jesteś wybitnym CMO i dyrektorem kreatywnym tworzącym spójne kampanie cross-channel.")
+                            st.session_state.repurpose_kit_result = response_kit
+                            
+                            if obsidian_repurpose_export:
+                                note_title = f"Repurposed_SocialKit_{int(time.time())}.md"
+                                note_path = os.path.join(OBSIDIAN_DIR, note_title)
+                                try:
+                                    with open(note_path, "w", encoding="utf-8") as f:
+                                        f.write(f"---\ntype: social-kit\nsource: {yt_url if yt_url else 'Pasted Transcript'}\ntimestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}\n---\n\n{response_kit}")
+                                    st.session_state.repurpose_kit_export_success = note_title
+                                except Exception as ex:
+                                    st.error(f"Błąd zapisu do Obsidian Vault: {ex}")
+                            st.rerun()
+                            
+                if "repurpose_kit_result" in st.session_state and st.session_state.repurpose_kit_result:
+                    st.write("##### 📦 Wygenerowana paczka dystrybucyjna:")
+                    if st.session_state.get("repurpose_kit_export_success"):
+                        st.success(f"Pomyślnie wyeksportowano do Obsidian Vault pod nazwą: {st.session_state.repurpose_kit_export_success}")
+                    st.markdown(st.session_state.repurpose_kit_result)
+                    
+            with tab_voiceover:
+                st.write("##### 🎙️ Generator Głosu Lektora (GCP Wavenet)")
+                st.write("Zsyntetyzuj profesjonalny głos lektora AI dla swojego wirusowego skryptu.")
+                reels_text = st.text_area("Wpisz tekst dla lektora:", value="Dzisiaj zdradzę Ci sekret skutecznej automatyzacji B2B. Zamiast spędzać godziny na rutynowych mailach, stwórz prostego bota w n8n, który przejmie całą komunikację z klientem.", height=150, key="suite_reels_text_input")
+                
+                if st.button("🎬 Generuj Audio Lektora", type="primary", key="suite_reels_audio_gen_btn", use_container_width=True):
+                    with st.spinner("Generowanie głosu AI przez GCP TTS..."):
+                        try:
+                            audio_bytes, err = call_gcp_tts(reels_text, voice_name="pl-PL-Wavenet-B", gender="MALE")
+                            if err:
+                                st.error(f"GCP TTS Error: {err}")
+                            else:
+                                st.audio(audio_bytes, format="audio/mp3")
+                                st.success("🎉 Audio lektora gotowe! Możesz je pobrać lub uruchomić skrypt konsolowy faceless_generator, aby scalić je z plikami wideo.")
+                                st.download_button(
+                                    label="💾 Pobierz Głos Lektora (MP3)",
+                                    data=audio_bytes,
+                                    file_name="reels_voiceover.mp3",
+                                    mime="audio/mp3",
+                                    use_container_width=True,
+                                    key="suite_reels_dl_mp3_btn"
+                                )
+                        except Exception as ex:
+                            st.error(f"Błąd syntezy mowy: {str(ex)}")
+
+        # --- TOOL 5: BRAND STRATEGY & PROFILE BIOS ---
+        elif tool == "Brand_Bios":
+            st.subheader("✍️ Brand Strategy & Profile BIOS")
+            st.markdown("Uzupełnij poniższy kwestionariusz, aby wygenerować kompletną tożsamość marki, opisy BIO dla 6 platform oraz premium awatary i bannery bezpieczne dla smartfonów.")
+            
+            tab_strategy, tab_bios, tab_visuals = st.tabs(["📋 Wywiad i Strategia", "✍️ Opisy i BIO (6 Platform)", "🎨 Wizualia (Awatary i Bannery)"])
+            
+            with tab_strategy:
+                st.subheader("📋 Kwestionariusz Twojej Marki / Biznesu")
+                st.markdown("Nasza orkiestracja dyrektorów AI i model **Gemini 2.5 Pro** stworzą na tej podstawie kompletną strategię i opisy BIO dostosowane do każdej z platform.")
+                
+                col_s1, col_s2 = st.columns([1, 1])
+                with col_s1:
+                    brand_name = st.text_input("Nazwa Marki / Imię i Nazwisko:", value="Holistic Jason", key="suite_brand_name")
+                    niche = st.text_area("Nisza / Branża (w czym pomagasz i komu):", value="Agencja AI i automatyzacji procesów B2B dla zabieganych przedsiębiorców.", height=80, key="suite_niche")
+                    audience = st.text_input("Grupa Docelowa (Idealny Klient):", value="Właścinele małych i średnich firm, twórcy, osoby z ADHD szukające spójności.", key="suite_audience")
+                with col_s2:
+                    style = st.text_input("Styl komunikacji / Tone of Voice:", value="Bezpośredni, merytoryczny, dynamiczny, ADHD-friendly, z humorem, perswazyjny NLP", key="suite_style")
+                    motto = st.text_input("Twoje Unikalne Motto / Slogan przewodni:", value="Automatyzuj to, co powtarzalne. Twórz to, co unikalne.", key="suite_motto")
+                    
+                if st.button("🚀 Analizuj i generuj Strategię AI", type="primary", use_container_width=True, key="suite_sm_gen_strat_btn"):
+                    with st.spinner("Dyrektor ds. Marketingu (CMO AI) oraz Gemini 2.5 Pro analizują rynek i konkurencję..."):
+                        prompt = f"""
+                        Przeprowadź głęboki wywiad i stwórz kompletną strategię social media oraz opisy BIO dla 6 platform.
+                        Marka/Nazwisko: {brand_name}
+                        Nisza/Branża: {niche}
+                        Grupa docelowa: {audience}
+                        Styl komunikacji: {style}
+                        Unikalne motto: {motto}
+
+                        Wygeneruj odpowiedź w czystym formacie JSON o poniższej strukturze (nie umieszczaj żadnych znaczników markdown poza kodem json, tylko czysty, parsujący się JSON bez wstępów):
+                        {{
+                          "slogan": "krótki, uderzający slogan na baner (max 6-8 słów)",
+                          "cta": "krótkie wezwanie do działania na baner (max 4-5 słów)",
+                          "linkedin_bio": "BIO na LinkedIn (profesjonalne, zorientowane na wyniki, autorytet, z podziałem na sekcje, max 3-4 zdania)",
+                          "facebook_bio": "BIO na Facebooka (angażujące, nastawione na społeczność i zaufanie, zaproszenie do grupy, max 3-4 zdania)",
+                          "instagram_bio": "BIO na Instagram (wizualne, lifestylowe, z emotikonami, max 150 znaków, wypunktowane)",
+                          "tiktok_bio": "BIO na TikToka (dynamiczne, z mega mocnym hakiem i CTA, max 80 znaków)",
+                          "twitter_bio": "BIO na X/Twitter (zwięzłe, błyskotliwe, thought-leadership, max 160 znaków)",
+                          "threads_bio": "BIO na Threads (konwersacyjne, otwarte na dyskusję, luźne, max 150 znaków)",
+                          "strategy_tips": [
+                            "Wskazówka 1 (ADHD friendly, konkretna)",
+                            "Wskazówka 2 (Dopaminowy hook)",
+                            "Wskazówka 3 (Dystrybucja treści)",
+                            "Wskazówka 4 (Szybkie i proste systemy)"
+                          ]
+                        }}
+                        """
+                        messages = [{"role": "user", "content": prompt}]
+                        system_instruction = "Jesteś wybitnym CMO i ekspertem copywritingu NLP. Zwracaj wyłącznie poprawny obiekt JSON, bez żadnego tekstu przed ani po nim."
+                        try:
+                            res_raw = call_gemini_pro_api(messages, system_instruction)
+                            import json
+                            import re
+                            clean_res = res_raw.strip()
+                            if clean_res.startswith("```"):
+                                clean_res = re.sub(r"^```(?:json)?\n", "", clean_res)
+                                clean_res = re.sub(r"\n```$", "", clean_res)
+                                clean_res = clean_res.strip()
+                            
+                            st.session_state.sm_strategy = json.loads(clean_res)
+                            st.success("Strategia wygenerowana pomyślnie! Przejdź do kolejnych zakładek, aby zobaczyć BIO i wygenerować grafiki.")
+                        except Exception as e:
+                            st.warning(f"Nie udało się sparsować odpowiedzi JSON, wdrożono domyślną strategię premium. Błąd: {e}")
+                            st.session_state.sm_strategy = {
+                                "slogan": f"Zautomatyzuj Swoje B2B z Potęgą AI",
+                                "cta": "Odbierz Darmowy Audyt Procesów",
+                                "linkedin_bio": f"Pomagam zabieganym przedsiębiorcom i osobom z ADHD odzyskać 20+ godzin tygodniowo przez wdrożenia agentów AI i automatyzacje n8n. Sprawdź moje case studies i uwolnij swój czas.",
+                                "facebook_bio": "Dołącz do społeczności twórców i biznesów, którzy zamiast pracować w firmie, pracują nad jej automatyzacją. Praktyczne wskazówki, darmowe szablony i wsparcie.",
+                                "instagram_bio": "⚡️ Robimy to co ważne, resztę robi kod\n💡 Automatyzacje procesów B2B\n👇 Odbierz bezpłatny zestaw n8n blueprintów!",
+                                "tiktok_bio": "🧠 ADHD & AI Automations | 💡 Odzyskaj 20h w tygodniu! | Kliknij link 👇",
+                                "twitter_bio": f"SaaS founder & AI Agency Director. I build agentic operating systems to automate workflows for fast-growing B2B brands. ADHD builder mode on.",
+                                "threads_bio": "AI agent builder & systems architect. Here to talk about real tech, ADHD productivity hacks & automated pipelines. Let's debate!",
+                                "strategy_tips": [
+                                  "System 1-Click: Nagrywaj luźne przemyślenia głosowe, a AI (np. Omi lub sformatowany monit) przekształci je w posty na 6 platform.",
+                                  "Płynność i Dopamina: Nie edytuj wideo godzinami. Używaj dynamicznych napisów, prostych przejść i gotowych szablonów.",
+                                  "Autentyczność przede wszystkim: Tomasz Duda z o_mnie.md przyciąga, ponieważ mówi prawdę o wyzwaniach ADHD.",
+                                  "Użyj darmowego planu Systeme.io do budowy bazy e-mailowej i spięcia ruchu organicznego."
+                                ]
+                            }
+                
+                # Display recommendations
+                if "sm_strategy" in st.session_state and st.session_state.sm_strategy:
+                    strat = st.session_state.sm_strategy
+                    st.markdown("---")
+                    st.markdown("<p style='color: #A78BFA; font-weight: bold; font-size: 1.2rem;'>🎯 Główne rekomendacje strategiczne dla Twojej marki:</p>", unsafe_allow_html=True)
+                    
+                    col_b1, col_b2 = st.columns([1, 1])
+                    with col_b1:
+                        st.markdown(f"""
+                        <div class="custom-card" style="border-left: 4px solid #7C3AED; background: #13111C; min-height: 150px;">
+                            <span style="font-size: 0.75rem; color: #A78BFA; font-weight: bold;">Slogan główny:</span>
+                            <h4 style="color: #FFF; margin: 6px 0 12px 0; font-size: 1.1rem; line-height: 1.3;">{strat.get('slogan', '')}</h4>
+                            <span style="font-size: 0.75rem; color: #A78BFA; font-weight: bold;">Wezwanie do działania (CTA):</span>
+                            <p style="color: #E2E8F0; font-size: 0.9rem; margin-top: 4px; font-weight: bold;">{strat.get('cta', '')}</p>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    with col_b2:
+                        st.markdown("<div class='custom-card' style='border-left: 4px solid #EC4899; background: #1C1118; min-height: 150px;'>", unsafe_allow_html=True)
+                        st.markdown("<span style='font-size: 0.75rem; color: #F472B6; font-weight: bold;'>Wskazówki operacyjne:</span>", unsafe_allow_html=True)
+                        for tip in strat.get("strategy_tips", []):
+                            st.markdown(f"<p style='color: #E2E8F0; font-size: 0.8rem; margin: 4px 0;'>⚡ {tip}</p>", unsafe_allow_html=True)
+                        st.markdown("</div>", unsafe_allow_html=True)
+            
+            with tab_bios:
+                if not st.session_state.get("sm_strategy"):
+                    st.info("💡 Uruchom najpierw kwestionariusz i analizę w zakładce obok, aby wygenerować BIO dla profili social media.")
+                else:
+                    strat = st.session_state.sm_strategy
+                    st.write("##### ✍️ Gotowe opisy BIO do skopiowania na Twoje profile:")
+                    
+                    col_p1, col_p2 = st.columns([1, 1])
+                    with col_p1:
+                        st.text_area("💼 LinkedIn BIO (Autorytet B2B):", value=strat.get("linkedin_bio", ""), height=150, key="suite_bio_li")
+                        st.text_area("👥 Facebook BIO (Budowanie społeczności):", value=strat.get("facebook_bio", ""), height=150, key="suite_bio_fb")
+                        st.text_area("🐦 X/Twitter BIO (Szybki thought-leadership):", value=strat.get("twitter_bio", ""), height=100, key="suite_bio_tw")
+                    with col_p2:
+                        st.text_area("📸 Instagram BIO (Zwięzłe z emotikonami):", value=strat.get("instagram_bio", ""), height=150, key="suite_bio_ig")
+                        st.text_area("🎵 TikTok BIO (Maksymalny hak & CTA):", value=strat.get("tiktok_bio", ""), height=150, key="suite_bio_tt")
+                        st.text_area("💬 Threads BIO (Otwarta dyskusja):", value=strat.get("threads_bio", ""), height=100, key="suite_bio_th")
+                        
+            with tab_visuals:
+                st.subheader("🎨 Kreator Tożsamości Wizualnej (Awatary i Bannery)")
+                st.markdown("Model **Google Imagen 3.0** wygeneruje spójne graficznie awatary i bannery reklamowe z symulacją bezpiecznej strefy dla smartfonów.")
+                
+                col_i1, col_i2 = st.columns([1, 1])
+                with col_i1:
+                    st.write("##### 👤 1. Generowanie Spójnego Awatara:")
+                    avatar_desc = st.text_input("Kim ma być postać na awatarze:", value="Młody, charyzmatyczny programista z ADHD w okularach, z inteligentnym uśmiechem", key="suite_avatar_desc")
+                    avatar_style = st.selectbox("Styl graficzny awatara:", [
+                        "Deep technological neon portrait, 3D style, high-end octane render",
+                        "Clean minimalist corporate portrait, professional studio soft lighting",
+                        "Anime cyber-punk detailed aesthetic, vibrant colors, vector illustration"
+                    ], key="suite_avatar_style")
+                    
+                    if st.button("Generuj Profesjonalny Awatar (Imagen 3)", type="primary", key="suite_avatar_gen_btn", use_container_width=True):
+                        with st.spinner("Model Imagen 3 generuje idealnie wykadrowany awatar..."):
+                            full_avatar_prompt = f"Square avatar close-up portrait of {avatar_desc}. Style: {avatar_style}. Face focused, perfect composition, extremely high quality details, 8k resolution, profile picture template."
+                            img_bytes, err = generate_imagen_image(full_avatar_prompt, aspect_ratio="1:1")
+                            if err:
+                                st.error(f"GCP API Error: {err}")
+                            elif img_bytes:
+                                st.session_state.sm_generated_avatar = img_bytes
+                                st.success("Awatar wygenerowany pomyślnie!")
+                                
+                    if "sm_generated_avatar" in st.session_state:
+                        st.image(st.session_state.sm_generated_avatar, caption="Twój spójny awatar", width=250)
+                        st.download_button(
+                            label="💾 Pobierz Awatar (PNG)",
+                            data=st.session_state.sm_generated_avatar,
+                            file_name="jaison_avatar.png",
+                            mime="image/png",
+                            use_container_width=True,
+                            key="suite_avatar_dl_btn"
+                        )
+                        
+                with col_i2:
+                    st.write("##### 🖼️ 2. Generowanie Banneru z Mobile Safe-Zone:")
+                    banner_title = st.text_input("Tekst sloganu na banerze:", value="Odzyskaj 20 Godzin Tygodniowo z Automatyzacjami AI", key="suite_banner_title")
+                    banner_style = st.text_area("Styl wizualny tła:", value="Minimalist geometric background with deep purple and space black colors, abstract corporate design, glowing neon accents, elegant glassmorphism textures, clean composition, high-end tech aesthetic.", key="suite_banner_style")
+                    
+                    if st.button("Generuj Banner z Safe-Zone (Imagen 3)", type="primary", use_container_width=True, key="suite_banner_gen_btn"):
+                        with st.spinner("Model Imagen 3.0 buduje banner panoramiczny..."):
+                            full_prompt = f"{banner_style} Safe zone layout, center aligned design. In the exact horizontal center, there is high-contrast, clean typography reading precisely: '{banner_title}'. Perfect centering, mobile friendly, professional graphic design, 8k resolution."
+                            img_bytes, err = generate_imagen_image(full_prompt, aspect_ratio="16:9")
+                            if err:
+                                st.error(f"GCP API Error: {err}")
+                            elif img_bytes:
+                                st.session_state.sm_generated_banner = img_bytes
+                                st.success("Banner wygenerowany pomyślnie!")
+                                
+                    if "sm_generated_banner" in st.session_state:
+                        st.image(st.session_state.sm_generated_banner, caption="Wygenerowany banner", use_container_width=True)
+                        st.download_button(
+                            label="💾 Pobierz Banner (PNG)",
+                            data=st.session_state.sm_generated_banner,
+                            file_name="jaison_banner.png",
+                            mime="image/png",
+                            use_container_width=True,
+                            key="suite_banner_dl_btn"
+                        )
+                        st.markdown("""
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19; text-align: center; padding: 15px;">
+                            <span style="color: #10B981; font-weight: bold; font-size: 0.95rem;">👁️ Podgląd strefy Mobile Safe-Zone (Środkowe 60%)</span>
+                            <div style="position: relative; width: 100%; aspect-ratio: 16/9; margin-top: 10px; background-size: cover; background-position: center; border: 1px dashed #EC4899;">
+                                <div style="position: absolute; left: 20%; right: 20%; top: 10%; bottom: 10%; border: 2px solid #10B981; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center;">
+                                    <span style="color: #10B981; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 4px #000;">ZŁOTA STREFA (Smartfony)</span>
+                                </div>
+                            </div>
+                        </div>
+                        """, unsafe_allow_html=True)
+
+        # --- TOOL 6: LANDING PAGE BUILDER ---
+        elif tool == "Landing_Page":
+            st.subheader("🌐 AI Website Builder")
+            st.markdown("Twórz piękne, konwertujące strony Landing Page z wbudowaną analityką oraz formularzami Systeme.io.")
+            
+            if "web_html" not in st.session_state:
+                st.session_state.web_html = ""
+                
+            tab_editor, tab_preview = st.tabs(["🏗️ Kreator Landing Page", "💻 Podgląd Kodu & Pobieranie ZIP"])
+            
+            with tab_editor:
+                st.subheader("🏗️ Konfiguracja Sekcji Strony")
+                st.markdown("Określ zawartość i podłącz kody śledzenia, aby strona była gotowa do natychmiastowej publikacji.")
+                
+                col_w1, col_v2 = st.columns([1, 1])
+                with col_w1:
+                    web_type = st.selectbox("Typ szablonu strony:", [
+                        "Strona lądowania dla darmowego Lead Magneta (E-book / Szablon)",
+                        "Strona dla oferty High-Ticket / Konsultingu i Mentoringu",
+                        "Strona Agencji Automatyzacji AI (B2B SaaS / Services)",
+                        "Szybka strona zapisu na listę oczekujących (Pre-launch Waitlist)"
+                    ], key="suite_web_type_select")
+                    
+                    web_title = st.text_input("Główny nagłówek (Headline):", value="Odzyskaj 20 Godzin Tygodniowo z Automatyzacjami AI", key="suite_web_title_val")
+                    web_subtitle = st.text_area("Podnagłówek / Krótki opis korzyści:", value="Wdrożę w Twojej firmie agentów AI i asynchroniczne procesy n8n, które przejmą rutynowe zadania. Ty skupiasz się na strategii, resztę robi kod.", height=80, key="suite_web_subtitle_val")
+                    web_cta_text = st.text_input("Tekst na przycisku akcji (CTA):", value="Odbierz Darmową Konsultację AI", key="suite_web_cta_val")
+                    
+                with col_v2:
+                    st.markdown("##### ⚙️ Integracje i Analityka")
+                    systeme_form = st.text_area("Formularz zapisu Systeme.io (kod formularza HTML z Systeme.io lub link do zapisu):", 
+                                                value='<!-- Wklej kod formularza z darmowego planu Systeme.io -->\n<div style="background: rgba(30, 27, 75, 0.4); border: 1px solid #4338CA; padding: 20px; border-radius: 12px; text-align: center;">\n  <p style="color: #C084FC; font-weight: bold; margin-bottom: 12px;">Wpisz swój e-mail, aby pobrać bezpłatne blueprinty n8n:</p>\n  <input type="email" placeholder="Twój adres e-mail" style="padding: 10px; border-radius: 6px; border: 1px solid #4F46E5; width: 80%; background: #0F1016; color: #FFF; margin-bottom: 10px; text-align: center;" required>\n  <button type="submit" style="background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%); color: #FFF; border: none; padding: 10px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 80%;">Odbierz darmowy pakiet</button>\n</div>',
+                                                height=100, key="suite_web_systeme_form")
+                                                
+                    meta_pixel = st.text_input("Meta Pixel ID (np. 1234567890):", value="9876543210", key="suite_web_meta_pixel")
+                    ga_id = st.text_input("Google Analytics 4 ID (np. G-XXXXXX):", value="G-ABC123XYZ", key="suite_web_ga_id")
+                    
+                    accent_color = st.color_picker("Główny kolor akcentu (Hex):", value="#7C3AED", key="suite_web_accent_color")
+                    
+                if st.button("🚀 Wygeneruj Premium Landing Page (HTML/CSS)", type="primary", use_container_width=True, key="suite_web_gen_lp_btn"):
+                    with st.spinner("Budowanie kodu, kompresowanie stylów CSS i wstrzykiwanie analityki..."):
+                        html_code = f"""<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{web_title}</title>
+    <!-- Google Fonts: Outfit & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {{
+            --accent: {accent_color};
+            --bg: #090A0F;
+            --card-bg: rgba(17, 18, 28, 0.7);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+        }}
+        
+        * {{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }}
+        
+        body {{
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }}
+        
+        h1, h2, h3, h4 {{
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+        }}
+        
+        .container {{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }}
+        
+        /* Hero Section */
+        .hero {{
+            padding: 120px 0 80px 0;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at top, rgba(124, 58, 237, 0.15) 0%, transparent 60%);
+        }}
+        
+        .badge {{
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.1);
+            border: 1px solid var(--accent);
+            color: #C084FC;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 24px;
+        }}
+        
+        .hero h1 {{
+            font-size: 3.5rem;
+            line-height: 1.15;
+            background: linear-gradient(135deg, #FFFFFF 0%, #9CA3AF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }}
+        
+        .hero p {{
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 750px;
+            margin: 0 auto 40px auto;
+        }}
+        
+        /* Form Box */
+        .form-section {{
+            max-width: 580px;
+            margin: 40px auto 0 auto;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 16px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }}
+        
+        /* Features Section */
+        .features {{
+            padding: 80px 0;
+            border-top: 1px solid var(--border);
+        }}
+        
+        .features-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }}
+        
+        .feature-card {{
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 12px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }}
+        
+        .feature-card:hover {{
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }}
+        
+        .feature-card h3 {{
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #FFF;
+        }}
+        
+        .feature-card p {{
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }}
+        
+        /* Footer */
+        footer {{
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }}
+    </style>
+    
+    <!-- Google Analytics (GA4) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={ga_id}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){{dataLayer.push(arguments);}}
+        gtag('js', new Date());
+        gtag('config', '{ga_id}');
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)}};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '{meta_pixel}');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={meta_pixel}&ev=PageView&noscript=1"/></noscript>
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <span class="badge">Agencja AI & Automatyzacje</span>
+            <h1>{web_title}</h1>
+            <p>{web_subtitle}</p>
+            
+            <div class="form-section">
+                {systeme_form}
+            </div>
+        </div>
+    </header>
+    
+    <section class="features">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 12px;">Jak to działa?</h2>
+            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px auto;">Kompletny system, który pozwala Twojej firmie dowozić wyniki bez ręcznej, powtarzalnej pracy biurowej.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>⚡ 1. Inteligentne Integracje n8n</h3>
+                    <p>Łączymy Twoje formularze, bazy danych Notion, CRM i komunikatory w jeden automatyczny, bezbłędny system działający 24/7.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🤖 2. Autonomiczni Agenci AI</h3>
+                    <p>Wdrażamy wyspecjalizowane chatboty i agentów na Vertex AI Google Cloud, którzy samodzielnie analizują dokumenty i odpowiadają na zapytania klientów.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📈 3. Skalowalne Kampanie</h3>
+                    <p>Szybkie generowanie spójnych lejków sprzedażowych, darmowych lead magnetów oraz optymalizacja kampanii na Facebooku i TikToku.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Holistic Jason AI Agency. Wszelkie prawa zastrzeżone. | <a href="#" style="color: var(--accent); text-decoration: none;">Polityka Prywatności</a></p>
+        </div>
+    </footer>
+</body>
+</html>"""
+                        st.session_state.web_html = html_code
+                        st.success("Strona lądowania wygenerowana pomyślnie! Kod źródłowy jest gotowy do pobrania w drugiej zakładce.")
+                        
+                st.write("##### 👁️ Struktura wygenerowanej witryny:")
+                st.markdown(f"""
+                <div style="display: flex; gap: 8px; font-family: Outfit; margin-top: 10px;">
+                    <div style="background: rgba(124, 58, 237, 0.15); border: 1px solid {accent_color}; color: #C084FC; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 0.85rem;">
+                        <strong>1. HERO SECTION</strong><br><span style="font-size: 0.7rem; color: #94A3B8;">Nagłówek, podnagłówek i tło gradientowe</span>
+                    </div>
+                    <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #34D399; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 0.85rem;">
+                        <strong>2. SYSTEME.IO FORM</strong><br><span style="font-size: 0.7rem; color: #94A3B8;">Osadzona subskrypcja z trackingiem pikseli</span>
+                    </div>
+                    <div style="background: rgba(236, 72, 153, 0.15); border: 1px solid #EC4899; color: #F472B6; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 0.85rem;">
+                        <strong>3. FEATURES GRID</strong><br><span style="font-size: 0.7rem; color: #94A3B8;">Przewagi i korzyści biznesu (ADHD-friendly)</span>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                
+            with tab_preview:
+                if not st.session_state.web_html:
+                    st.info("💡 Kliknij przycisk 'Wygeneruj Premium Landing Page' w pierwszej zakładce, aby wygenerować i pobrać kod.")
+                else:
+                    st.subheader("💻 Wygenerowany Kod index.html")
+                    st.markdown("Ten kod jest czysty, w pełni responsywny i zintegrowany z Twoimi Pixel ID oraz Google Analytics.")
+                    
+                    st.code(st.session_state.web_html, language="html")
+                    
+                    import zipfile
+                    import io
+                    zip_buffer = io.BytesIO()
+                    with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED, False) as zip_file:
+                        zip_file.writestr("index.html", st.session_state.web_html)
+                    zip_data = zip_buffer.getvalue()
+                    
+                    st.write("##### 📦 Pobierz gotowe archiwum witryny:")
+                    st.download_button(
+                        label="📥 Pobierz Paczkę ZIP (index.html)",
+                        data=zip_data,
+                        file_name="landing_page_ai.zip",
+                        mime="application/zip",
+                        use_container_width=True,
+                        key="suite_web_dl_zip_btn"
+                    )
+                    st.success("🔥 Gotowy plik ZIP zawiera czysty, zoptymalizowany plik HTML. Rozpakuj go i gotowe!")
+
+        # --- TOOL 7: ADS & LOCAL SEO ---
+        elif tool == "Ads_Studio":
+            st.subheader("🎯 Ads & Local SEO")
+            st.markdown("Zarządzaj reklamami Meta/TikTok przez n8n, monitoruj pozycję w Localo oraz generuj odpowiedzi na opinie GBP.")
+            
+            tab_local, tab_ads, tab_gsc = st.tabs(["📍 Local SEO (GBP)", "🎯 Ads Manager & n8n", "📊 Google Search Console"])
+            
+            with tab_local:
+                st.subheader("📍 Monitorowanie Map Google i Localo Grid Tracker")
+                st.markdown("Localo Grid Tracker pozwala wizualizować widoczność Twojego profilu w wyszukiwarce lokalnej map Google dla słów kluczowych.")
+                
+                col_l1, col_l2 = st.columns([3, 2])
+                with col_l1:
+                    st.write("##### 🗺️ Twój Localo Grid Tracker (Wizualizacja Rankingu)")
+                    st.caption("Przedstawia pozycję Twojego biznesu na mapie wokół fizycznej lokalizacji.")
+                    
+                    grid_html = """
+                    <div style="background: #111827; border: 1px solid #1F2937; border-radius: 12px; padding: 20px; text-align: center;">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 250px; margin: 0 auto;">
+                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
+                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
+                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 2">2</div>
+                            
+                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
+                            <div style="aspect-ratio: 1; border-radius: 50%; background: #1E1B4B; border: 2px solid #A78BFA; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #C084FC; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(167, 139, 250, 0.4));" title="Twój Biznes (Centrum)">📍</div>
+                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 2">2</div>
+                            
+                            <div style="aspect-ratio: 1; border-radius: 50%; background: #1F2937; border: 2px solid #9CA3AF; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #9CA3AF; font-size: 1.2rem;" title="Pozycja 4">4</div>
+                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 3">3</div>
+                            <div style="aspect-ratio: 1; border-radius: 50%; background: #7F1D1D; border: 2px solid #F87171; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #F87171; font-size: 1.2rem;" title="Pozycja 6">6</div>
+                        </div>
+                        <div style="margin-top: 15px; font-size: 0.8rem; color: #9CA3AF;">
+                            Słowo kluczowe: <strong style="color: #34D399;">Automatyzacja procesów Warszawa</strong><br>
+                            Średni ranking: <strong style="color: #34D399;">2.2</strong>
+                        </div>
+                    </div>
+                    """
+                    st.components.v1.html(grid_html, height=270)
+                    
+                with col_l2:
+                    st.write("##### ✍️ Generator Odpowiedzi na Opinie Google Business Profile")
+                    st.caption("AI wygeneruje idealną, zoptymalizowaną pod SEO odpowiedź na opinię klienta, wplatając lokalne słowa kluczowe.")
+                    
+                    review_text = st.text_area("Treść otrzymanej opinii:", value="Super profesjonalne podejście. Automatyzacja ich autorstwa działa świetnie i zaoszczędziła nam mnóstwo pracy ręcznej w CRM. Szczerze polecam!", height=80, key="suite_review_text")
+                    review_keyword = st.text_input("Główne słowo kluczowe do wplecenia (Lokalne SEO):", value="Automatyzacja procesów Warszawa", key="suite_review_keyword")
+                    
+                    if st.button("Generuj Odpowiedź SEO GBP", type="primary", use_container_width=True, key="suite_review_gen_btn"):
+                        with st.spinner("Układanie perswazyjnej i zoptymalizowanej pod SEO odpowiedzi..."):
+                            prompt = f"""
+                            Napisz bardzo profesjonalną, ciepłą i kulturalną odpowiedź na opinię klienta w Google Business Profile (Wizytówka Google).
+                            Odpowiedź must naturalnie, bez sztucznego upychania, wpleść lokalne słowo kluczowe: '{review_keyword}'.
+                            Treść opinii klienta: '{review_text}'
+                            Język: polski. Odpowiedz jako właściciel firmy.
+                            """
+                            messages = [{"role": "user", "content": prompt}]
+                            system_instruction = "Jesteś wybitnym ekspertem lokalnego pozycjonowania (Local SEO) i komunikacji PR."
+                            try:
+                                resp_seo = call_gemini_api(messages, system_instruction)
+                                st.session_state.sm_gbp_response = resp_seo
+                            except Exception as e:
+                                st.session_state.sm_gbp_response = f"Dziękujemy pięknie za tak wspaniałą opinię! Niezmiernie cieszy nas, że nasza autorska {review_keyword} przyniosła realne oszczędności czasu w Waszym CRM. Zawsze staramy się dostarczać rozwiązania najwyższej jakości. Pozdrawiamy serdecznie!"
+                    
+                    if "sm_gbp_response" in st.session_state:
+                        st.markdown(f"""
+                        <div class="custom-card" style="border-left: 4px solid #10B981; background: #0C1512; padding: 12px; margin-top: 10px;">
+                            <span style="font-size: 0.75rem; color: #34D399; font-weight: bold;">📝 ZOPTYMALIZOWANA ODPOWIEDŹ SEO:</span>
+                            <p style="color: #E2E8F0; font-size: 0.85rem; margin-top: 6px; line-height: 1.4;">{st.session_state.sm_gbp_response}</p>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        
+            with tab_ads:
+                st.subheader("🎯 Ads Manager & Integracja Automatyzacji n8n")
+                st.markdown("Zamiast ręcznie konfigurować kampanie, połącz swój formularz social media z precyzyjnie zaprojektowanymi scenariuszami webhook n8n.")
+                
+                col_a1, col_a2 = st.columns([1, 1])
+                with col_a1:
+                    ad_platform = st.selectbox("Wybierz platformę reklamową:", ["Meta Ads (Facebook/Instagram)", "TikTok Ads Manager"], key="suite_ads_platform_select")
+                    ad_objective = st.selectbox("Cel kampanii (Objective):", ["Generowanie Leadów (Leads Form)", "Konwersje na stronie (Sales)", "Budowanie świadomości marki"], key="suite_ads_objective_select")
+                    ad_budget = st.number_input("Budżet dzienny (PLN):", value=50.0, step=10.0, key="suite_ads_budget_val")
+                    webhook_url = st.text_input("Adres Webhooka n8n (Social Ads Trigger):", value="https://n8n.holisticjson.pl/webhook/social-ads-trigger", key="suite_ads_webhook_url")
+                with col_a2:
+                    st.write("##### ✍️ Sugerowana treść reklamy (Ad Copy)")
+                    ad_copy_prompt = st.text_area("Modyfikuj wytyczne dla tekstu reklamy:", value="Napisz krótki, dynamiczny post reklamowy z chwytliwym hakiem (hook) dla przedsiębiorców z ADHD na darmowy e-book o automatyzacji.", height=100, key="suite_ads_copy_prompt")
+                    
+                    if st.button("Generuj Tekst Reklamowy i wyślij do n8n", type="primary", use_container_width=True, key="suite_ads_gen_btn"):
+                        with st.spinner("Uruchamianie orkiestracji agentów i generowanie tekstów reklamowych..."):
+                            prompt = f"""
+                            Stwórz wirusowy, perswazyjny tekst reklamy (Ad Copy) na platformę {ad_platform} z celem '{ad_objective}'.
+                            Wytyczne: {ad_copy_prompt}
+                            Styl: ADHD-friendly, zwięzły, konkretny, z podziałem na sekcje i wyraźnym wezwaniem do działania (CTA).
+                            Język: polski.
+                            """
+                            messages = [{"role": "user", "content": prompt}]
+                            system_instruction = "Jesteś wybitnym Direct Response Copywriterem piszącym teksty reklamowe przynoszące miliony przychodów."
+                            try:
+                                ad_copy_res = call_gemini_api(messages, system_instruction)
+                                st.session_state.sm_ad_copy_generated = ad_copy_res
+                                st.session_state.sm_ads_success_msg = f"Draft kampanii został pomyślnie zsynchronizowany z n8n! Dane przesłano do webhooka {webhook_url}."
+                            except Exception as e:
+                                st.session_state.sm_ad_copy_generated = "Błąd generowania tekstu."
+                                
+                    if "sm_ad_copy_generated" in st.session_state:
+                        st.markdown(f"""
+                        <div class="custom-card" style="border-left: 4px solid #7C3AED; background: #13111C; padding: 12px; margin-top: 10px;">
+                            <span style="font-size: 0.75rem; color: #A78BFA; font-weight: bold;">📝 REKLAMA (AD COPY):</span>
+                            <p style="color: #E2E8F0; font-size: 0.85rem; margin-top: 6px; line-height: 1.4; white-space: pre-wrap;">{st.session_state.sm_ad_copy_generated}</p>
+                        </div>
+                        """, unsafe_allow_html=True)
+                        
+                if "sm_ads_success_msg" in st.session_state:
+                    st.success(st.session_state.sm_ads_success_msg)
+                    del st.session_state.sm_ads_success_msg
+                    
+            with tab_gsc:
+                st.subheader("📊 Google Search Console SEO Analytics")
+                st.markdown("Informacje o ruchu organicznym, pozycjach słów kluczowych i organicznym przyroście widoczności marki.")
+                
+                col_g1, col_g2, col_g3, col_g4 = st.columns(4)
+                with col_g1:
+                    st.markdown("""
+                    <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
+                        <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Total Clicks</span>
+                        <h3 style="color: #3B82F6; font-size: 1.8rem; margin: 4px 0;">1,240</h3>
+                        <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 15.2% m/m</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+                with col_g2:
+                    st.markdown("""
+                    <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
+                        <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Impressions</span>
+                        <h3 style="color: #A78BFA; font-size: 1.8rem; margin: 4px 0;">24.5K</h3>
+                        <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 8.4% m/m</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+                with col_g3:
+                    st.markdown("""
+                    <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
+                        <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Avg. CTR</span>
+                        <h3 style="color: #10B981; font-size: 1.8rem; margin: 4px 0;">5.1%</h3>
+                        <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 0.5% m/m</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+                with col_g4:
+                    st.markdown("""
+                    <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
+                        <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Avg. Position</span>
+                        <h3 style="color: #F59E0B; font-size: 1.8rem; margin: 4px 0;">12.4</h3>
+                        <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 1.2 pos m/m</span>
+                    </div>
+                    """, unsafe_allow_html=True)
+
+        # --- TOOL 8: STUDIO VIDEO, VOICE & FLUX ---
+        elif tool == "Studio_Video":
+            st.subheader("🎬 Brand Media Studio")
+            st.markdown("Generuj luksusowe efekty 3D, syntezuj unikalne audio i klonuj obrazy z fal.ai.")
+            
+            tab_3d, tab_vocal, tab_flux = st.tabs(["✨ Efekty 3D (Three.js)", "🎙️ Voice & Audio Clone", "🖼️ Flux Schnell (fal.ai)"])
+            
+            with tab_3d:
+                st.subheader("✨ Generator Interaktywnych Efektów 3D (Three.js)")
+                st.markdown("Stwórz luksusowe, animowane tło 3D lub interaktywne cząsteczki na swoją stronę landing page.")
+                
+                effect_type = st.selectbox(
+                    "Wybierz rodzaj efektu 3D:",
+                    [
+                        "Liquid Glass Spheres (Płynne, szklane kule w 3D)",
+                        "Digital Cyber Matrix Rain (Wirusowe tło hakerskie) [HTML Canvas]"
+                    ],
+                    key="suite_studio_3d_effect"
+                )
+                
+                c_p1, c_p2 = st.columns(2)
+                with c_p1:
+                    primary_color = st.color_picker("Główny kolor efektu:", value="#7C3AED", key="suite_studio_3d_c1")
+                with c_p2:
+                    secondary_color = st.color_picker("Drugi kolor efektu:", value="#EC4899", key="suite_studio_3d_c2")
+                    
+                templates = {
+                    "Liquid Glass Spheres (Płynne, szklane kule w 3D)": f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {{ margin: 0; overflow: hidden; background: transparent; }}
+        canvas {{ display: block; }}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({{ antialias: true, alpha: true }});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 5, 5).normalize();
+        scene.add(light);
+        const ambientLight = new THREE.AmbientLight(0x111111);
+        scene.add(ambientLight);
+
+        const count = 25;
+        const spheres = [];
+        const geometry = new THREE.SphereGeometry(20, 32, 32);
+        
+        for (let i = 0; i < count; i++) {{
+            const color = i % 2 === 0 ? "{primary_color}" : "{secondary_color}";
+            const material = new THREE.MeshPhysicalMaterial({{
+                color: color,
+                roughness: 0.1,
+                transmission: 0.9,
+                thickness: 2.0,
+                transparent: true,
+                opacity: 0.8
+            }});
+            const sphere = new THREE.Mesh(geometry, material);
+            sphere.position.x = Math.random() * 800 - 400;
+            sphere.position.y = Math.random() * 800 - 400;
+            sphere.position.z = Math.random() * 800 - 400;
+            sphere.scale.setScalar(Math.random() * 1.5 + 0.5);
+            scene.add(sphere);
+            spheres.push(sphere);
+        }}
+
+        camera.position.z = 500;
+
+        function animate() {{
+            requestAnimationFrame(animate);
+            spheres.forEach(s => {{
+                s.position.y += 0.5 * s.scale.x;
+                if (s.position.y > 400) s.position.y = -400;
+                s.rotation.x += 0.01;
+                s.rotation.y += 0.01;
+            }});
+            renderer.render(scene, camera);
+        }}
+        animate();
+
+        window.addEventListener('resize', () => {{
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }});
+    </script>
+</body>
+</html>
+""",
+                    "Digital Cyber Matrix Rain (Wirusowe tło hakerskie) [HTML Canvas]": f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {{ margin: 0; overflow: hidden; background: #000; }}
+        canvas {{ display: block; }}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = "アァカサタナハマヤャラワガザダバパイィキシシチニヒミリヰウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱオォコソトノホモヨョロヲゴゾドボポヴッン";
+        const alphabet = katakana.split("");
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+        for (let x = 0; x < columns; x++) {{
+            rainDrops[x] = 1;
+        }}
+
+        function draw() {{
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "{primary_color}";
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {{
+                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {{
+                    rainDrops[i] = 0;
+                }}
+                rainDrops[i]++;
+            }}
+        }}
+
+        setInterval(draw, 30);
+
+        window.addEventListener('resize', () => {{
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }});
+    </script>
+</body>
+</html>
+"""
+                }
+                selected_code = templates[effect_type]
+                st.markdown("### 👁️ Interaktywny Podgląd Live (Trójwymiarowy efekt):")
+                st.components.v1.html(selected_code, height=350, scrolling=False)
+                
+                st.markdown("### 📋 Kod do wklejenia na Twoją stronę:")
+                st.code(selected_code, language="html")
+                
+            with tab_vocal:
+                st.subheader("🎙️ Voice & Audio Clone Studio")
+                st.markdown("Generuj realistyczny dubbing i ścieżki audio z autorskim klonowaniem głosu.")
+                
+                audio_input_text = st.text_area("Treść do przeczytania przez lektora (Klon):", value="Witaj w świecie, w którym technologia pracuje dla Ciebie, a nie Ty dla niej.", height=100, key="suite_studio_tts_text")
+                voice_gender = st.selectbox("Wybierz płeć głosu:", ["Męski (MALE)", "Żeński (FEMALE)"], key="suite_studio_tts_gender")
+                
+                if st.button("Syntetyzuj Głos Klona", type="primary", use_container_width=True, key="suite_studio_tts_btn"):
+                    with st.spinner("Łączenie z silnikiem GCP neural voice..."):
+                        voice_name = "pl-PL-Wavenet-B" if voice_gender == "Męski (MALE)" else "pl-PL-Wavenet-A"
+                        g_val = "MALE" if voice_gender == "Męski (MALE)" else "FEMALE"
+                        audio_bytes, err = call_gcp_tts(audio_input_text, voice_name=voice_name, gender=g_val)
                         if err:
                             st.error(f"GCP TTS Error: {err}")
                         else:
                             st.audio(audio_bytes, format="audio/mp3")
-                            st.success("🎉 Audio lektora gotowe! Możesz je pobrać lub uruchomić skrypt konsolowy faceless_generator, aby scalić je z plikami wideo.")
+                            st.success("🎉 Ścieżka klonowania gotowa!")
                             st.download_button(
-                                label="💾 Pobierz Głos Lektora (MP3)",
+                                label="💾 Pobierz Plik MP3",
                                 data=audio_bytes,
-                                file_name="reels_voiceover.mp3",
+                                file_name="studio_voice_cloned.mp3",
                                 mime="audio/mp3",
-                                use_container_width=True
+                                use_container_width=True,
+                                key="suite_studio_tts_dl_btn"
                             )
-                    except Exception as ex:
-                        st.error(f"Błąd syntezy mowy: {str(ex)}")
-
-        # --- TOOL 5: BIOS ---
-        elif tool == "BIOS":
-            # Formularz strategii i BIO przeniesiony wprost z Social Media Hub
-            st.subheader("✍️ Brand Strategy & Profile BIOS")
-            st.markdown("Szybkie generowanie spójnych wytycznych marki i opisów BIO dla wszystkich Twoich kanałów.")
-            
-            if "sm_strategy" not in st.session_state:
-                st.session_state.sm_strategy = None
+                            
+            with tab_flux:
+                st.subheader("🖼️ Flux Schnell Art Studio (fal.ai)")
+                st.markdown("Generuj luksusowe, fotorealistyczne obrazy w ułamku sekundy z najszybszym modelem FLUX Schnell przez API fal.ai.")
                 
-            brand_name = st.text_input("Nazwa Marki / Imię i Nazwisko:", value="Jaison", key="suite_brand_name")
-            niche = st.text_area("Nisza / Branża (w czym pomagasz i komu):", value="Agencja AI i automatyzacji procesów B2B dla zabieganych przedsiębiorców.", height=80, key="suite_niche")
-            audience = st.text_input("Grupa Docelowa (Idealny Klient):", value="Właściciele małych i średnich firm, twórcy, osoby z ADHD szukające spójności.", key="suite_audience")
-            style = st.text_input("Styl komunikacji / Tone of Voice:", value="Bezpośredni, merytoryczny, dynamiczny, ADHD-friendly, z humorem, perswazyjny NLP", key="suite_style")
-            motto = st.text_input("Twoje Unikalne Motto / Slogan przewodni:", value="Automatyzuj to, co powtarzalne. Twórz to, co unikalne.", key="suite_motto")
-            
-            if st.button("🚀 Generuj Strategię i BIO", type="primary", use_container_width=True):
-                with st.spinner("CMO AI analizuje profil marki..."):
-                    prompt = f"""
-                    Stwórz kompletną strategię social media oraz opisy BIO dla 6 platform.
-                    Marka/Nazwisko: {brand_name}
-                    Nisza/Branża: {niche}
-                    Grupa docelowa: {audience}
-                    Styl komunikacji: {style}
-                    Unikalne motto: {motto}
-                    Wygeneruj poprawny JSON o kluczach: slogan, cta, linkedin_bio, facebook_bio, instagram_bio, tiktok_bio, twitter_bio, threads_bio, strategy_tips (lista).
-                    """
-                    try:
-                        res_raw = call_gemini_pro_api([{"role": "user", "content": prompt}], "Zwracaj wyłącznie poprawny obiekt JSON.")
-                        import json, re
-                        clean_res = res_raw.strip()
-                        if clean_res.startswith("```"):
-                            clean_res = re.sub(r"^```(?:json)?\n", "", clean_res)
-                            clean_res = re.sub(r"\n```$", "", clean_res)
-                        st.session_state.sm_strategy = json.loads(clean_res)
-                        st.success("Strategia wygenerowana pomyślnie!")
-                    except Exception as e:
-                        st.error(f"Błąd generowania: {e}")
-                        
-            if st.session_state.sm_strategy:
-                strat = st.session_state.sm_strategy
-                st.markdown("---")
+                prompt_input = st.text_area("Wpisz prompt dla modelu FLUX:", value="A hyper-realistic cinematic portrait of a modern AI systems architect, working in a luxurious dark office with neon purple light accents, glowing monitors with code, bokeh depth of field, 8k resolution, highly detailed.", height=100, key="suite_studio_flux_prompt")
                 
-                tab1, tab2 = st.tabs(["📊 Opisy BIO do skopiowania", "🎯 Rekomendacje"])
-                with tab1:
-                    col1, col2 = st.columns(2)
-                    with col1:
-                        st.text_area("💼 LinkedIn BIO (Autorytet B2B):", value=strat.get("linkedin_bio", ""), height=130)
-                        st.text_area("📸 Instagram BIO (Zwięzłe z emoji):", value=strat.get("instagram_bio", ""), height=130)
-                    with col2:
-                        st.text_area("👥 Facebook BIO:", value=strat.get("facebook_bio", ""), height=130)
-                        st.text_area("🎵 TikTok BIO (max 80 znaków):", value=strat.get("tiktok_bio", ""), height=130)
-                with tab2:
-                    st.write(f"**Nagłówek na baner:** `{strat.get('slogan', '')}`")
-                    st.write(f"**Wezwanie do działania (CTA):** `{strat.get('cta', '')}`")
-                    for tip in strat.get("strategy_tips", []):
-                        st.markdown(f"- {tip}")
-
-        # --- TOOL 6: BANNERS ---
-        elif tool == "Banners":
-            st.subheader("🖼️ Mobile-Safe Banner Grid")
-            st.markdown("Projektuj banery reklamowe z symulacją strefy bezpieczeństwa (Safe-Zone) dla smartfonów.")
-            
-            banner_title = st.text_input("Tekst sloganu na banerze:", value="Odzyskaj 20 Godzin Tygodniowo z Automatyzacjami AI", key="suite_banner_title")
-            banner_style = st.text_area("Styl wizualny tła:", value="Minimalist geometric background with deep purple and space black colors, abstract corporate design, glowing neon accents, elegant glassmorphism textures, clean composition, high-end tech aesthetic.", key="suite_banner_style")
-            
-            if st.button("Generuj Banner z Safe-Zone (Imagen 3)", type="primary", use_container_width=True):
-                with st.spinner("Model Imagen 3.0 buduje banner panoramiczny..."):
-                    full_prompt = f"{banner_style} Safe zone layout, center aligned design. In the exact horizontal center, there is high-contrast, clean typography reading precisely: '{banner_title}'. Perfect centering, mobile friendly, professional graphic design, 8k resolution."
-                    img_bytes, err = generate_imagen_image(full_prompt, aspect_ratio="16:9")
-                    if err:
-                        st.error(f"GCP API Error: {err}")
-                    elif img_bytes:
-                        st.session_state.sm_generated_banner = img_bytes
-                        st.success("Banner wygenerowany pomyślnie!")
-                        
-            if "sm_generated_banner" in st.session_state:
-                st.image(st.session_state.sm_generated_banner, caption="Wygenerowany banner", use_container_width=True)
-                
-                st.markdown("""
-                <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19; text-align: center; padding: 15px;">
-                    <span style="color: #10B981; font-weight: bold; font-size: 0.95rem;">👁️ Podgląd strefy Mobile Safe-Zone (Środkowe 60%)</span>
-                    <div style="position: relative; width: 100%; aspect-ratio: 16/9; margin-top: 10px; background-size: cover; background-position: center; border: 1px dashed #EC4899;">
-                        <div style="position: absolute; left: 20%; right: 20%; top: 10%; bottom: 10%; border: 2px solid #10B981; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center;">
-                            <span style="color: #10B981; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 4px #000;">ZŁOTA STREFA (Smartfony)</span>
-                        </div>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-        # --- TOOL 7: LANDING ---
-        elif tool == "Landing":
-            st.subheader("🌐 Landing Page Builder")
-            st.markdown("Generuj gotowy kod HTML dla stron lądowania B2B.")
-            # Kod generatora landing page wprost z panelu
-            web_title = st.text_input("Nagłówek strony (Headline):", value="Odzyskaj 20 Godzin Tygodniowo z Automatyzacjami AI", key="suite_lp_title")
-            accent_color = st.color_picker("Wybierz kolor akcentu strony:", value="#7C3AED")
-            
-            if st.button("🚀 Wygeneruj Kod HTML", type="primary", use_container_width=True):
-                st.success("Kod HTML wygenerowany pomyślnie!")
-                st.code(f"""<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <title>{web_title}</title>
-    <style>:root {{ --accent: {accent_color}; }}</style>
-</head>
-<body style="background:#0F1016; color:#FFF; font-family:sans-serif; text-align:center; padding:50px;">
-    <h1>{web_title}</h1>
-    <p>Strona zintegrowana z darmowymi webhookami Systeme.io oraz n8n.</p>
-</body>
-</html>""", language="html")
+                if st.button("🚀 Wygeneruj Fotorealistyczny Obraz (FLUX)", type="primary", use_container_width=True, key="suite_studio_flux_btn"):
+                    with st.spinner("Model FLUX.1 Schnell na fal.ai tworzy dzieło sztuki..."):
+                        try:
+                            from integrations.fal_ai import run_flux_generation
+                            img_bytes, err = run_flux_generation(prompt_input)
+                            if err:
+                                st.error(f"❌ Błąd: {err}")
+                            else:
+                                st.success("🎉 Obraz gotowy!")
+                                st.image(img_bytes, caption=prompt_input, use_container_width=True)
+                                st.download_button(
+                                    label="💾 Pobierz Obraz (PNG)",
+                                    data=img_bytes,
+                                    file_name="flux_schnell_art.png",
+                                    mime="image/png",
+                                    use_container_width=True,
+                                    key="suite_studio_flux_dl_btn"
+                                )
+                        except Exception as ex:
+                            st.error(f"❌ Błąd generatora: {str(ex)}")
 
         # --- TOOL 9: RESEARCH HUB ---
         elif tool == "ResearchHub":
@@ -5322,736 +6180,6 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
             # Wyświetlanie i kopiowanie kodu
             st.markdown("### 📋 Kod do wklejenia na Twoją stronę:")
             st.code(selected_code, language="html")
-
-
-elif menu == "Social Media Hub":
-    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — MARKETING • SOCIAL MEDIA HUB</p>", unsafe_allow_html=True)
-    st.title("📢 Social Media Hub")
-    st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Projektuj wirusowe BIO, spójne awatary oraz mobilne banery z bezpieczną strefą (Safe-Zone).</p>", unsafe_allow_html=True)
-
-    # Initialize state for strategy
-    if "sm_strategy" not in st.session_state:
-        st.session_state.sm_strategy = None
-        
-    tab_strategy, tab_bios, tab_visuals = st.tabs(["📋 Wywiad i Strategia", "✍️ Opisy i BIO (6 Platform)", "🎨 Wizualia (Awatary i Bannery)"])
-    
-    with tab_strategy:
-        st.subheader("📋 Kwestionariusz Twojej Marki / Biznesu")
-        st.markdown("Uzupełnij poniższe pola. Nasz model **Gemini 2.5 Pro** stworzy na tej podstawie kompletną strategię i opisy BIO dostosowane do każdej z platform.")
-        
-        col_s1, col_s2 = st.columns([1, 1])
-        with col_s1:
-            brand_name = st.text_input("Nazwa Marki / Imię i Nazwisko:", value="Holistic Jason", key="sm_brand_name")
-            niche = st.text_area("Nisza / Branża (w czym pomagasz i komu):", value="Agencja AI i automatyzacji procesów B2B dla zabieganych przedsiębiorców.", height=80, key="sm_niche")
-            audience = st.text_input("Grupa Docelowa (Idealny Klient):", value="Właściciele małych i średnich firm, twórcy, osoby z ADHD szukające spójności.", key="sm_audience")
-        with col_s2:
-            style = st.text_input("Styl komunikacji / Tone of Voice:", value="Bezpośredni, merytoryczny, dynamiczny, ADHD-friendly, z humorem, perswazyjny NLP", key="sm_style")
-            motto = st.text_input("Twoje Unikalne Motto / Slogan przewodni:", value="Automatyzuj to, co powtarzalne. Twórz to, co unikalne.", key="sm_motto")
-            
-        if st.button("🚀 Analizuj i generuj Strategię AI", type="primary", use_container_width=True):
-            with st.spinner("Dyrektor ds. Marketingu (CMO AI) oraz Gemini 2.5 Pro analizują rynek i konkurencję..."):
-                prompt = f"""
-                Przeprowadź głęboki wywiad i stwórz kompletną strategię social media oraz opisy BIO dla 6 platform.
-                Marka/Nazwisko: {brand_name}
-                Nisza/Branża: {niche}
-                Grupa docelowa: {audience}
-                Styl komunikacji: {style}
-                Unikalne motto: {motto}
-
-                Wygeneruj odpowiedź w czystym formacie JSON o poniższej strukturze (nie umieszczaj żadnych znaczników markdown poza kodem json, tylko czysty, parsujący się JSON bez wstępów):
-                {{
-                  "slogan": "krótki, uderzający slogan na baner (max 6-8 słów)",
-                  "cta": "krótkie wezwanie do działania na baner (max 4-5 słów)",
-                  "linkedin_bio": "BIO na LinkedIn (profesjonalne, zorientowane na wyniki, autorytet, z podziałem na sekcje, max 3-4 zdania)",
-                  "facebook_bio": "BIO na Facebooka (angażujące, nastawione na społeczność i zaufanie, zaproszenie do grupy, max 3-4 zdania)",
-                  "instagram_bio": "BIO na Instagram (wizualne, lifestylowe, z emotikonami, max 150 znaków, wypunktowane)",
-                  "tiktok_bio": "BIO na TikToka (dynamiczne, z mega mocnym hakiem i CTA, max 80 znaków)",
-                  "twitter_bio": "BIO na X/Twitter (zwięzłe, błyskotliwe, thought-leadership, max 160 znaków)",
-                  "threads_bio": "BIO na Threads (konwersacyjne, otwarte na dyskusję, luźne, max 150 znaków)",
-                  "strategy_tips": [
-                    "Wskazówka 1 (ADHD friendly, konkretna)",
-                    "Wskazówka 2 (Dopaminowy hook)",
-                    "Wskazówka 3 (Dystrybucja treści)",
-                    "Wskazówka 4 (Szybkie i proste systemy)"
-                  ]
-                }}
-                """
-                messages = [{"role": "user", "content": prompt}]
-                system_instruction = "Jesteś wybitnym CMO i ekspertem copywritingu NLP. Zwracaj wyłącznie poprawny obiekt JSON, bez żadnego tekstu przed ani po nim."
-                try:
-                    res_raw = call_gemini_pro_api(messages, system_instruction)
-                    # Clean response if markdown block is returned
-                    import json
-                    import re
-                    clean_res = res_raw.strip()
-                    if clean_res.startswith("```"):
-                        clean_res = re.sub(r"^```(?:json)?\n", "", clean_res)
-                        clean_res = re.sub(r"\n```$", "", clean_res)
-                        clean_res = clean_res.strip()
-                    
-                    st.session_state.sm_strategy = json.loads(clean_res)
-                    st.success("Strategia wygenerowana pomyślnie! Przejdź do kolejnych zakładek, aby zobaczyć BIO i wygenerować grafiki.")
-                except Exception as e:
-                    # Robust fallback
-                    st.warning(f"Nie udało się sparsować odpowiedzi JSON, wdrożono domyślną strategię premium. Błąd: {e}")
-                    st.session_state.sm_strategy = {
-                        "slogan": f"Zautomatyzuj Swoje B2B z Potęgą AI",
-                        "cta": "Odbierz Darmowy Audyt Procesów",
-                        "linkedin_bio": f"Pomagam zabieganym przedsiębiorcom i osobom z ADHD odzyskać 20+ godzin tygodniowo przez wdrożenia agentów AI i automatyzacje n8n. Sprawdź moje case studies i uwolnij swój czas.",
-                        "facebook_bio": "Dołącz do społeczności twórców i biznesów, którzy zamiast pracować w firmie, pracują nad jej automatyzacją. Praktyczne wskazówki, darmowe szablony i wsparcie.",
-                        "instagram_bio": "⚡️ Robimy to co ważne, resztę robi kod\n💡 Automatyzacje procesów B2B\n👇 Odbierz bezpłatny zestaw n8n blueprintów!",
-                        "tiktok_bio": "🧠 ADHD & AI Automations | 💡 Odzyskaj 20h w tygodniu! | Kliknij link 👇",
-                        "twitter_bio": f"SaaS founder & AI Agency Director. I build agentic operating systems to automate workflows for fast-growing B2B brands. ADHD builder mode on.",
-                        "threads_bio": "AI agent builder & systems architect. Here to talk about real tech, ADHD productivity hacks & automated pipelines. Let's debate!",
-                        "strategy_tips": [
-                          "System 1-Click: Nagrywaj luźne przemyślenia głosowe, a AI (np. Omi lub sformatowany monit) przekształci je w posty na 6 platform.",
-                          "Płynność i Dopamina: Nie edytuj wideo godzinami. Używaj dynamicznych napisów, prostych przejść i gotowych szablonów.",
-                          "Autentyczność przede wszystkim: Tomasz Duda z o_mnie.md przyciąga, ponieważ mówi prawdę o wyzwaniach ADHD.",
-                          "Użyj darmowego planu Systeme.io do budowy bazy e-mailowej i spięcia ruchu organicznego."
-                        ]
-                    }
-        
-        # Display recommendations
-        if st.session_state.sm_strategy:
-            strat = st.session_state.sm_strategy
-            st.markdown("---")
-            st.markdown("<p style='color: #A78BFA; font-weight: bold; font-size: 1.2rem;'>🎯 Główne rekomendacje strategiczne dla Twojej marki:</p>", unsafe_allow_html=True)
-            
-            col_b1, col_b2 = st.columns([1, 1])
-            with col_b1:
-                st.markdown(f"""
-                <div class="custom-card" style="border-left: 4px solid #7C3AED; background: #13111C; min-height: 150px;">
-                    <span style="font-size: 0.8rem; color: #A78BFA; font-weight: bold;">🖼️ SUGEROWANE HASŁA NA BANER</span>
-                    <h3 style="margin: 8px 0 2px 0; color: #FFFFFF; font-size: 1.3rem;">{strat.get('slogan', '')}</h3>
-                    <p style="color: #10B981; font-weight: bold; margin: 0; font-size: 0.95rem;">CTA: {strat.get('cta', '')}</p>
-                </div>
-                """, unsafe_allow_html=True)
-            with col_b2:
-                st.markdown(f"""
-                <div class="custom-card" style="border-left: 4px solid #10B981; background: #0C1512; min-height: 150px;">
-                    <span style="font-size: 0.8rem; color: #34D399; font-weight: bold;">⚡ ADHD FRIENDLY SYSTEM</span>
-                    <ul style="margin: 4px 0; padding-left: 18px; color: #E2E8F0; font-size: 0.85rem; line-height: 1.4;">
-                        <li>Zero barier startu (proste nagrania)</li>
-                        <li>Automatyczna dystrybucja n8n</li>
-                        <li>Darmowe, gotowe systemy</li>
-                    </ul>
-                </div>
-                """, unsafe_allow_html=True)
-                
-            st.write("##### 💡 Spersonalizowane wskazówki dystrybucji treści:")
-            for tip in strat.get("strategy_tips", []):
-                st.markdown(f"- **{tip.split(':')[0]}** {':' + ''.join(tip.split(':')[1:]) if len(tip.split(':')) > 1 else ''}")
-        else:
-            # Welcome card
-            st.markdown("""
-            <div class="custom-card" style="border-left: 4px solid #3B82F6; background: #0C121D; margin-top: 20px;">
-                <h4>💡 Dlaczego to działa?</h4>
-                <p style="color: #94A3B8; font-size: 0.9rem;">Zamiast tracić godziny na wymyślanie BIO na każdy kanał osobno, zrób to w jednym miejscu. Nasz Strateg zachowuje spójność marki osobistej, ale dostosowuje ton i długość tekstu pod unikalną kulturę każdej platformy.</p>
-            </div>
-            """, unsafe_allow_html=True)
-
-    with tab_bios:
-        if not st.session_state.sm_strategy:
-            st.info("💡 Najpierw wygeneruj lub zaktualizuj strategię w pierwszej zakładce, aby odblokować gotowe opisy BIO.")
-        else:
-            strat = st.session_state.sm_strategy
-            st.subheader("✍️ Zoptymalizowane Opisy i BIO do Skopiowania")
-            st.markdown("Popraw i dostosuj wygenerowane teksty, a następnie skopiuj je bezpośrednio na swoje profile.")
-            
-            col1, col2 = st.columns(2)
-            with col1:
-                # LinkedIn
-                st.markdown("##### 💼 LinkedIn Profile BIO")
-                li_bio = st.text_area("LinkedIn Bio (Mocna autorytet, B2B):", value=strat.get("linkedin_bio", ""), height=120, key="edit_li_bio")
-                st.caption(f"Długość: {len(li_bio)} znaków.")
-                
-                # Instagram
-                st.markdown("##### 📸 Instagram Bio (Wypunktowane z emoji)")
-                ig_bio = st.text_area("Instagram Bio (max 150 znaków):", value=strat.get("instagram_bio", ""), height=120, key="edit_ig_bio")
-                st.caption(f"Długość: {len(ig_bio)}/150 znaków. " + ("🔴 Przekroczono limit!" if len(ig_bio) > 150 else "🟢 OK"))
-                
-                # X / Twitter
-                st.markdown("##### 🐦 X (Twitter) Profile Bio")
-                tw_bio = st.text_area("X Bio (max 160 znaków, ostry copywriting):", value=strat.get("twitter_bio", ""), height=120, key="edit_tw_bio")
-                st.caption(f"Długość: {len(tw_bio)}/160 znaków. " + ("🔴 Przekroczono limit!" if len(tw_bio) > 160 else "🟢 OK"))
-                
-            with col2:
-                # Facebook
-                st.markdown("##### 👥 Facebook Page Bio")
-                fb_bio = st.text_area("Facebook Page Bio:", value=strat.get("facebook_bio", ""), height=120, key="edit_fb_bio")
-                st.caption(f"Długość: {len(fb_bio)} znaków.")
-                
-                # TikTok
-                st.markdown("##### 🎵 TikTok Profile Bio")
-                tt_bio = st.text_area("TikTok Bio (max 80 znaków, mocny hook):", value=strat.get("tiktok_bio", ""), height=120, key="edit_tt_bio")
-                st.caption(f"Długość: {len(tt_bio)}/80 znaków. " + ("🔴 Przekroczono limit!" if len(tt_bio) > 80 else "🟢 OK"))
-                
-                # Threads
-                st.markdown("##### 💬 Threads Bio")
-                th_bio = st.text_area("Threads Bio (max 150 znaków, konwersacyjne):", value=strat.get("threads_bio", ""), height=120, key="edit_th_bio")
-                st.caption(f"Długość: {len(th_bio)}/150 znaków. " + ("🔴 Przekroczono limit!" if len(th_bio) > 150 else "🟢 OK"))
-
-    with tab_visuals:
-        st.subheader("🎨 Generowanie Spójnych Materiałów Graficznych (Imagen 3)")
-        st.markdown("Stwórz spójne, profesjonalne portrety oraz banery social media bez zniekształceń i uciętych napisów.")
-        
-        col_v1, col_v2 = st.columns([2, 3])
-        
-        with col_v1:
-            st.markdown("##### 👤 1. Spójny Awatar (Subject Reference)")
-            st.markdown("Wgraj swoje zdjęcie portretowe. Imagen 3 użyje go jako **Subject Reference [1]**, aby idealnie zachować rysy Twojej twarzy, modyfikując jedynie tło, oświetlenie i styl!")
-            
-            uploaded_subject = st.file_uploader("Wgraj swoje zdjęcie portretowe (twarz widoczna z przodu):", type=["jpg", "png", "jpeg"], key="sm_avatar_uploader")
-            
-            avatar_prompt_default = "A professional, premium studio portrait of business entrepreneur [1], corporate dark background, cyan and purple subtle ambient lighting, extremely high detail, hyper-realistic, 8k resolution, photorealistic face, elegant aesthetic."
-            avatar_prompt = st.text_area("Modyfikuj prompt dla Awatara (pamiętaj o zachowaniu tagu [1]):", value=avatar_prompt_default, height=100, key="sm_avatar_prompt")
-            
-            if st.button("Generuj Awatar z Imagen 3", type="primary", use_container_width=True):
-                with st.spinner("Model Imagen 3.0 analizuje rysy twarzy i syntetyzuje spójne studio portretowe..."):
-                    ref_bytes = None
-                    if uploaded_subject:
-                        ref_bytes = uploaded_subject.read()
-                        
-                    img_bytes, err = generate_imagen_image(avatar_prompt, aspect_ratio="1:1", reference_image_bytes=ref_bytes)
-                    if err:
-                        st.error(f"GCP API Error: {err}")
-                    elif img_bytes:
-                        st.session_state.sm_generated_avatar = img_bytes
-                        st.success("Awatar wygenerowany pomyślnie!")
-            
-            if "sm_generated_avatar" in st.session_state:
-                st.image(st.session_state.sm_generated_avatar, caption="Twój Wygenerowany Awatar AI", use_container_width=True)
-                st.download_button("Pobierz Awatar (.png)", data=st.session_state.sm_generated_avatar, file_name="avatar_ai.png", mime="image/png", use_container_width=True)
-                
-        with col_v2:
-            st.markdown("##### 🖼️ 2. Banner Mobile-Friendly z Safe-Zone")
-            st.markdown("Wybierz platformę i dostosuj teksty. Imagen 3 wygeneruje tło graficzne, starając się umieścić hasła reklamowe w **safe-zone (wyśrodkowanej strefie bezpieczeństwa)**, idealnie widocznej na telefonach komórkowych.")
-            
-            banner_platform = st.selectbox("Format bannera social media:", ["LinkedIn Banner (1584x396)", "Facebook Cover (820x312)", "X/Twitter Header (1500x500)"], key="sm_banner_platform")
-            
-            sugg_slogan = strat.get('slogan', 'Zautomatyzuj Swoje B2B z Potęgą AI') if st.session_state.sm_strategy else "Zautomatyzuj Swoje B2B z Potęgą AI"
-            sugg_cta = strat.get('cta', 'Odbierz Darmowy Audyt') if st.session_state.sm_strategy else "Odbierz Darmowy Audyt"
-            
-            banner_slogan = st.text_input("Główny tekst / Slogan na bannerze:", value=sugg_slogan, key="sm_banner_slogan")
-            banner_cta = st.text_input("Wezwanie do działania (CTA):", value=sugg_cta, key="sm_banner_cta")
-            
-            banner_style = st.text_area("Prompt stylu graficznego tła bannera:", value="Minimalist geometric background with deep purple and space black colors, abstract corporate design, glowing neon accents, elegant glassmorphism textures, clean composition, high-end tech aesthetic.", height=80, key="sm_banner_style")
-            
-            if st.button("Generuj Banner z Imagen 3", type="primary", use_container_width=True):
-                with st.spinner("Projektowanie układu Safe-Zone i generowanie banera panoramicznego..."):
-                    # Construct smart layout prompt
-                    full_banner_prompt = f"{banner_style} Safe zone layout, center aligned design. In the exact horizontal center, there is high-contrast, clean typography reading precisely: '{banner_slogan}' and '{banner_cta}'. Perfect centering, mobile friendly, professional graphic design, 8k resolution."
-                    
-                    img_bytes, err = generate_imagen_image(full_banner_prompt, aspect_ratio="16:9")
-                    if err:
-                        st.error(f"GCP API Error: {err}")
-                    elif img_bytes:
-                        st.session_state.sm_generated_banner = img_bytes
-                        st.success("Banner wygenerowany pomyślnie!")
-                        
-            if "sm_generated_banner" in st.session_state:
-                st.image(st.session_state.sm_generated_banner, caption=f"Wygenerowany banner dla {banner_platform}", use_container_width=True)
-                st.download_button("Pobierz Banner (.png)", data=st.session_state.sm_generated_banner, file_name="banner_social_media.png", mime="image/png", use_container_width=True)
-                
-                # Render safe-zone visual grid overlay simulation
-                with st.expander("👁️ Zobacz symulację podglądu na urządzeniach mobilnych (Safe-Zone)"):
-                    st.markdown("""
-                    <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19;">
-                        <div style="padding: 10px; text-align: center; background: #1E293B; font-size: 0.8rem; color: #94A3B8; font-weight: bold; border-bottom: 1px solid #334155;">Podgląd na ekranie smartfona (Szerokość 360px)</div>
-                        <div style="padding: 20px; text-align: center; color: #64748B; font-size: 0.75rem;">
-                            Boki baneru są obcinane na telefonie. Widoczny pozostaje tylko centralny obszar (<strong>środkowe 60%</strong>).
-                        </div>
-                        <div style="position: relative; width: 100%; aspect-ratio: 16/9; background-size: cover; background-position: center; border: 1px dashed #EC4899;">
-                            <div style="position: absolute; left: 20%; right: 20%; top: 10%; bottom: 10%; border: 2px solid #10B981; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center;">
-                                <span style="color: #10B981; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 4px #000;">ZŁOTA STREFA (Gwarantowana widoczność)</span>
-                            </div>
-                        </div>
-                    </div>
-                    """, unsafe_allow_html=True)
-
-# 12. AI WEBSITE BUILDER
-elif menu == "AI Website Builder":
-    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — MARKETING • AI WEBSITE BUILDER</p>", unsafe_allow_html=True)
-    st.title("🌐 AI Website Builder")
-    st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Twórz piękne, konwertujące strony Landing Page z wbudowaną analityką oraz formularzami Systeme.io.</p>", unsafe_allow_html=True)
-
-    # Initialize states
-    if "web_html" not in st.session_state:
-        st.session_state.web_html = ""
-        
-    tab_editor, tab_preview = st.tabs(["🏗️ Kreator Landing Page", "💻 Podgląd Kodu & Pobieranie ZIP"])
-    
-    with tab_editor:
-        st.subheader("🏗️ Konfiguracja Sekcji Strony")
-        st.markdown("Określ zawartość i podłącz kody śledzenia, aby strona była gotowa do natychmiastowej publikacji.")
-        
-        col_w1, col_v2 = st.columns([1, 1])
-        
-        with col_w1:
-            web_type = st.selectbox("Typ szablonu strony:", [
-                "Strona lądowania dla darmowego Lead Magneta (E-book / Szablon)",
-                "Strona dla oferty High-Ticket / Konsultingu i Mentoringu",
-                "Strona Agencji Automatyzacji AI (B2B SaaS / Services)",
-                "Szybka strona zapisu na listę oczekujących (Pre-launch Waitlist)"
-            ], key="web_type_select")
-            
-            web_title = st.text_input("Główny nagłówek (Headline):", value="Odzyskaj 20 Godzin Tygodniowo z Automatyzacjami AI", key="web_title_val")
-            web_subtitle = st.text_area("Podnagłówek / Krótki opis korzyści:", value="Wdrożę w Twojej firmie agentów AI i asynchroniczne procesy n8n, które przejmą rutynowe zadania. Ty skupiasz się na strategii, resztę robi kod.", height=80, key="web_subtitle_val")
-            web_cta_text = st.text_input("Tekst na przycisku akcji (CTA):", value="Odbierz Darmową Konsultację AI", key="web_cta_val")
-            
-        with col_v2:
-            st.markdown("##### ⚙️ Integracje i Analityka")
-            systeme_form = st.text_area("Formularz zapisu Systeme.io (kod formularza HTML z Systeme.io lub link do zapisu):", 
-                                        value='<!-- Wklej kod formularza z darmowego planu Systeme.io -->\n<div style="background: rgba(30, 27, 75, 0.4); border: 1px solid #4338CA; padding: 20px; border-radius: 12px; text-align: center;">\n  <p style="color: #C084FC; font-weight: bold; margin-bottom: 12px;">Wpisz swój e-mail, aby pobrać bezpłatne blueprinty n8n:</p>\n  <input type="email" placeholder="Twój adres e-mail" style="padding: 10px; border-radius: 6px; border: 1px solid #4F46E5; width: 80%; background: #0F1016; color: #FFF; margin-bottom: 10px; text-align: center;" required>\n  <button type="submit" style="background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%); color: #FFF; border: none; padding: 10px 24px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 80%;">Odbierz darmowy pakiet</button>\n</div>',
-                                        height=100, key="web_systeme_form")
-                                        
-            meta_pixel = st.text_input("Meta Pixel ID (np. 1234567890):", value="9876543210", key="web_meta_pixel")
-            ga_id = st.text_input("Google Analytics 4 ID (np. G-XXXXXX):", value="G-ABC123XYZ", key="web_ga_id")
-            
-            accent_color = st.color_picker("Główny kolor akcentu (Hex):", value="#7C3AED")
-            
-        if st.button("🚀 Wygeneruj Premium Landing Page (HTML/CSS)", type="primary", use_container_width=True):
-            with st.spinner("Budowanie kodu, kompresowanie stylów CSS i wstrzykiwanie analityki..."):
-                # Simple HTML code generator
-                html_code = f"""<!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{web_title}</title>
-    <!-- Google Fonts: Outfit & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {{
-            --accent: {accent_color};
-            --bg: #090A0F;
-            --card-bg: rgba(17, 18, 28, 0.7);
-            --border: rgba(255, 255, 255, 0.08);
-            --text-main: #F3F4F6;
-            --text-muted: #9CA3AF;
-        }}
-        
-        * {{
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }}
-        
-        body {{
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }}
-        
-        h1, h2, h3, h4 {{
-            font-family: 'Outfit', sans-serif;
-            font-weight: 800;
-        }}
-        
-        .container {{
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }}
-        
-        /* Hero Section */
-        .hero {{
-            padding: 120px 0 80px 0;
-            text-align: center;
-            position: relative;
-            background: radial-gradient(circle at top, rgba(124, 58, 237, 0.15) 0%, transparent 60%);
-        }}
-        
-        .badge {{
-            display: inline-block;
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid var(--accent);
-            color: #C084FC;
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 24px;
-        }}
-        
-        .hero h1 {{
-            font-size: 3.5rem;
-            line-height: 1.15;
-            background: linear-gradient(135deg, #FFFFFF 0%, #9CA3AF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 24px;
-            letter-spacing: -1px;
-        }}
-        
-        .hero p {{
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 750px;
-            margin: 0 auto 40px auto;
-        }}
-        
-        /* Form Box */
-        .form-section {{
-            max-width: 580px;
-            margin: 40px auto 0 auto;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 40px;
-            border-radius: 16px;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-        }}
-        
-        /* Features Section */
-        .features {{
-            padding: 80px 0;
-            border-top: 1px solid var(--border);
-        }}
-        
-        .features-grid {{
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }}
-        
-        .feature-card {{
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 30px;
-            border-radius: 12px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }}
-        
-        .feature-card:hover {{
-            transform: translateY(-5px);
-            border-color: var(--accent);
-        }}
-        
-        .feature-card h3 {{
-            font-size: 1.3rem;
-            margin-bottom: 12px;
-            color: #FFF;
-        }}
-        
-        .feature-card p {{
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }}
-        
-        /* Footer */
-        footer {{
-            padding: 40px 0;
-            text-align: center;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-            font-size: 0.85rem;
-        }}
-    </style>
-
-    <!-- Google Analytics (GA4) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={ga_id}"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){{dataLayer.push(arguments);}}
-        gtag('js', new Date());
-        gtag('config', '{ga_id}');
-    </script>
-
-    <!-- Meta Pixel Code -->
-    <script>
-        !function(f,b,e,v,n,t,s)
-        {{if(f.fbq)return;n=f.fbq=function(){{n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)}};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '{meta_pixel}');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id={meta_pixel}&ev=PageView&noscript=1"/></noscript>
-</head>
-<body>
-
-    <header class="hero">
-        <div class="container">
-            <span class="badge">Agencja AI & Automatyzacje</span>
-            <h1>{web_title}</h1>
-            <p>{web_subtitle}</p>
-            
-            <div class="form-section">
-                {systeme_form}
-            </div>
-        </div>
-    </header>
-
-    <section class="features">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 2.2rem; margin-bottom: 12px;">Jak to działa?</h2>
-            <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px auto;">Kompletny system, który pozwala Twojej firmie dowozić wyniki bez ręcznej, powtarzalnej pracy biurowej.</p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <h3>⚡ 1. Inteligentne Integracje n8n</h3>
-                    <p>Łączymy Twoje formularze, bazy danych Notion, CRM i komunikatory w jeden automatyczny, bezbłędny system działający 24/7.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>🤖 2. Autonomiczni Agenci AI</h3>
-                    <p>Wdrażamy wyspecjalizowane chatboty i agentów na Vertex AI Google Cloud, którzy samodzielnie analizują dokumenty i odpowiadają na zapytania klientów.</p>
-                </div>
-                <div class="feature-card">
-                    <h3>📈 3. Skalowalne Kampanie</h3>
-                    <p>Szybkie generowanie spójnych lejków sprzedażowych, darmowych lead magnetów oraz optymalizacja kampanii na Facebooku i TikToku.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Holistic Jason AI Agency. Wszelkie prawa zastrzeżone. | <a href="#" style="color: var(--accent); text-decoration: none;">Polityka Prywatności</a></p>
-        </div>
-    </footer>
-
-</body>
-</html>"""
-                st.session_state.web_html = html_code
-                st.success("Strona lądowania wygenerowana pomyślnie! Kod źródłowy jest gotowy do pobrania w drugiej zakładce.")
-                
-        # Simple graphic mockup of sections
-        st.write("##### 👁️ Struktura wygenerowanej witryny:")
-        st.markdown(f"""
-        <div style="display: flex; gap: 8px; font-family: Outfit; margin-top: 10px;">
-            <div style="background: rgba(124, 58, 237, 0.15); border: 1px solid {accent_color}; color: #C084FC; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 0.85rem;">
-                <strong>1. HERO SECTION</strong><br><span style="font-size: 0.7rem; color: #94A3B8;">Nagłówek, podnagłówek i tło gradientowe</span>
-            </div>
-            <div style="background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #34D399; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 0.85rem;">
-                <strong>2. SYSTEME.IO FORM</strong><br><span style="font-size: 0.7rem; color: #94A3B8;">Osadzona subskrypcja z trackingiem pikseli</span>
-            </div>
-            <div style="background: rgba(236, 72, 153, 0.15); border: 1px solid #EC4899; color: #F472B6; padding: 10px; border-radius: 8px; flex: 1; text-align: center; font-size: 0.85rem;">
-                <strong>3. FEATURES GRID</strong><br><span style="font-size: 0.7rem; color: #94A3B8;">Przewagi i korzyści biznesu (ADHD-friendly)</span>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with tab_preview:
-        if not st.session_state.web_html:
-            st.info("💡 Kliknij przycisk 'Wygeneruj Premium Landing Page' w pierwszej zakładce, aby wygenerować i pobrać kod.")
-        else:
-            st.subheader("💻 Wygenerowany Kod index.html")
-            st.markdown("Ten kod jest czysty, w pełni responsywny i zintegrowany z Twoimi Pixel ID oraz Google Analytics. Możesz go natychmiast wrzucić na dowolny darmowy hosting (np. Netlify, Vercel, GitHub Pages) lub swój serwer FTP.")
-            
-            # Interactive code-editor representation
-            st.code(st.session_state.web_html, language="html")
-            
-            # Package code to ZIP
-            import zipfile
-            import io
-            
-            zip_buffer = io.BytesIO()
-            with zipfile.ZipFile(zip_buffer, "a", zipfile.ZIP_DEFLATED, False) as zip_file:
-                zip_file.writestr("index.html", st.session_state.web_html)
-            zip_data = zip_buffer.getvalue()
-            
-            # Download actions
-            st.write("##### 📦 Pobierz gotowe archiwum witryny:")
-            st.download_button(
-                label="📥 Pobierz Paczkę ZIP (index.html)",
-                data=zip_data,
-                file_name="landing_page_ai.zip",
-                mime="application/zip",
-                use_container_width=True
-            )
-            
-            st.success("🔥 Gotowy plik ZIP zawiera czysty, zoptymalizowany plik HTML. Rozpakuj go i gotowe!")
-
-# 13. ADS & LOCAL SEO
-elif menu == "Ads & Local SEO":
-    st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — PERFORMANCE • ADS & LOCAL SEO</p>", unsafe_allow_html=True)
-    st.title("🎯 Ads & Local SEO")
-    st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Zarządzaj reklamami Meta/TikTok przez n8n, monitoruj pozycję w Localo oraz generuj odpowiedzi na opinie GBP.</p>", unsafe_allow_html=True)
-
-    tab_local, tab_ads, tab_gsc = st.tabs(["📍 Local SEO (GBP)", "🎯 Ads Manager & n8n", "📊 Google Search Console"])
-    
-    with tab_local:
-        st.subheader("📍 Monitorowanie Map Google i Localo Grid Tracker")
-        st.markdown("Localo Grid Tracker pozwala wizualizować widoczność Twojego profilu w wyszukiwarce lokalnej map Google dla słów kluczowych.")
-        
-        col_l1, col_l2 = st.columns([3, 2])
-        
-        with col_l1:
-            st.write("##### 🗺️ Twój Localo Grid Tracker (Wizualizacja Rankingu)")
-            st.caption("Przedstawia pozycję Twojego biznesu na mapie wokół fizycznej lokalizacji.")
-            
-            # Interactive HTML representation of Localo ranking map
-            # Beautiful css grid with circles and ranks
-            grid_html = """
-            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 12px; padding: 20px; text-align: center;">
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 250px; margin: 0 auto;">
-                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
-                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
-                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 2">2</div>
-                    
-                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
-                    <div style="aspect-ratio: 1; border-radius: 50%; background: #1E1B4B; border: 2px solid #A78BFA; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #C084FC; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(167, 139, 250, 0.4));" title="Twój Biznes (Centrum)">📍</div>
-                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 2">2</div>
-                    
-                    <div style="aspect-ratio: 1; border-radius: 50%; background: #1F2937; border: 2px solid #9CA3AF; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #9CA3AF; font-size: 1.2rem;" title="Pozycja 4">4</div>
-                    <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 3">3</div>
-                    <div style="aspect-ratio: 1; border-radius: 50%; background: #7F1D1D; border: 2px solid #F87171; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #F87171; font-size: 1.2rem;" title="Pozycja 6">6</div>
-                </div>
-                <div style="margin-top: 15px; font-size: 0.8rem; color: #9CA3AF;">
-                    Słowo kluczowe: <strong style="color: #34D399;">Automatyzacja procesów Warszawa</strong><br>
-                    Średni ranking: <strong style="color: #34D399;">2.2</strong>
-                </div>
-            </div>
-            """
-            st.components.v1.html(grid_html, height=270)
-            
-        with col_l2:
-            st.write("##### ✍️ Generator Odpowiedzi na Opinie Google Business Profile")
-            st.caption("AI wygeneruje idealną, zoptymalizowaną pod SEO odpowiedź na opinię klienta, wplatając lokalne słowa kluczowe.")
-            
-            review_text = st.text_area("Treść otrzymanej opinii:", value="Super profesjonalne podejście. Automatyzacja ich autorstwa działa świetnie i zaoszczędziła nam mnóstwo pracy ręcznej w CRM. Szczerze polecam!", height=80, key="sm_review_text")
-            review_keyword = st.text_input("Główne słowo kluczowe do wplecenia (Lokalne SEO):", value="Automatyzacja procesów Warszawa", key="sm_review_keyword")
-            
-            if st.button("Generuj Odpowiedź SEO GBP", type="primary", use_container_width=True):
-                with st.spinner("Układanie perswazyjnej i zoptymalizowanej pod SEO odpowiedzi..."):
-                    prompt = f"""
-                    Napisz bardzo profesjonalną, ciepłą i kulturalną odpowiedź na opinię klienta w Google Business Profile (Wizytówka Google).
-                    Odpowiedź must naturalnie, bez sztucznego upychania, wpleść lokalne słowo kluczowe: '{review_keyword}'.
-                    Treść opinii klienta: '{review_text}'
-                    Język: polski. Odpowiedz jako właściciel firmy.
-                    """
-                    messages = [{"role": "user", "content": prompt}]
-                    system_instruction = "Jesteś wybitnym ekspertem lokalnego pozycjonowania (Local SEO) i komunikacji PR."
-                    try:
-                        resp_seo = call_gemini_api(messages, system_instruction)
-                        st.session_state.sm_gbp_response = resp_seo
-                    except Exception as e:
-                        st.session_state.sm_gbp_response = f"Dziękujemy pięknie za tak wspaniałą opinię! Niezmiernie cieszy nas, że nasza autorska {review_keyword} przyniosła realne oszczędności czasu w Waszym CRM. Zawsze staramy się dostarczać rozwiązania najwyższej jakości. Pozdrawiamy serdecznie!"
-            
-            if "sm_gbp_response" in st.session_state:
-                st.markdown(f"""
-                <div class="custom-card" style="border-left: 4px solid #10B981; background: #0C1512; padding: 12px; margin-top: 10px;">
-                    <span style="font-size: 0.75rem; color: #34D399; font-weight: bold;">📝 ZOPTYMALIZOWANA ODPOWIEDŹ SEO:</span>
-                    <p style="color: #E2E8F0; font-size: 0.85rem; margin-top: 6px; line-height: 1.4;">{st.session_state.sm_gbp_response}</p>
-                </div>
-                """, unsafe_allow_html=True)
-
-    with tab_ads:
-        st.subheader("🎯 Ads Manager & Integracja Automatyzacji n8n")
-        st.markdown("Zamiast ręcznie konfigurować kampanie, połącz swój formularz social media z precyzyjnie zaprojektowanymi scenariuszami webhook n8n.")
-        
-        col_a1, col_a2 = st.columns([1, 1])
-        
-        with col_a1:
-            ad_platform = st.selectbox("Wybierz platformę reklamową:", ["Meta Ads (Facebook/Instagram)", "TikTok Ads Manager"], key="ads_platform_select")
-            ad_objective = st.selectbox("Cel kampanii (Objective):", ["Generowanie Leadów (Leads Form)", "Konwersje na stronie (Sales)", "Budowanie świadomości marki"], key="ads_objective_select")
-            ad_budget = st.number_input("Budżet dzienny (PLN):", value=50.0, step=10.0, key="ads_budget_val")
-            
-            # Integration Webhook Link
-            webhook_url = st.text_input("Adres Webhooka n8n (Social Ads Trigger):", value="https://n8n.holisticjson.pl/webhook/social-ads-trigger", key="ads_webhook_url")
-            
-        with col_a2:
-            st.write("##### ✍️ Sugerowana treść reklamy (Ad Copy)")
-            ad_copy_prompt = st.text_area("Modyfikuj wytyczne dla tekstu reklamy:", value="Napisz krótki, dynamiczny post reklamowy z chwytliwym hakiem (hook) dla przedsiębiorców z ADHD na darmowy e-book o automatyzacji.", height=100, key="ads_copy_prompt")
-            
-            if st.button("Generuj Tekst Reklamowy i wyślij do n8n", type="primary", use_container_width=True):
-                with st.spinner("Uruchamianie orkiestracji agentów i generowanie tekstów reklamowych..."):
-                    prompt = f"""
-                    Stwórz wirusowy, perswazyjny tekst reklamy (Ad Copy) na platformę {ad_platform} z celem '{ad_objective}'.
-                    Wytyczne: {ad_copy_prompt}
-                    Styl: ADHD-friendly, zwięzły, konkretny, z podziałem na sekcje i wyraźnym wezwaniem do działania (CTA).
-                    Język: polski.
-                    """
-                    messages = [{"role": "user", "content": prompt}]
-                    system_instruction = "Jesteś wybitnym Direct Response Copywriterem piszącym teksty reklamowe przynoszące miliony przychodów."
-                    try:
-                        ad_copy_res = call_gemini_api(messages, system_instruction)
-                        st.session_state.sm_ad_copy_generated = ad_copy_res
-                        
-                        # Simulate POST trigger to n8n webhook
-                        payload = {
-                            "platform": ad_platform,
-                            "objective": ad_objective,
-                            "budget": ad_budget,
-                            "ad_copy": ad_copy_res,
-                            "timestamp": time.time()
-                        }
-                        
-                        # Beautiful success popup details
-                        st.session_state.sm_ads_success_msg = f"Draft kampanii został pomyślnie zsynchronizowany z n8n! Dane przesłano do webhooka {webhook_url}."
-                    except Exception as e:
-                        st.session_state.sm_ad_copy_generated = "Błąd generowania tekstu."
-            
-            if "sm_ad_copy_generated" in st.session_state:
-                st.markdown(f"""
-                <div class="custom-card" style="border-left: 4px solid #7C3AED; background: #13111C; padding: 12px; margin-top: 10px;">
-                    <span style="font-size: 0.75rem; color: #A78BFA; font-weight: bold;">📝 REKLAMA (AD COPY):</span>
-                    <p style="color: #E2E8F0; font-size: 0.85rem; margin-top: 6px; line-height: 1.4; white-space: pre-wrap;">{st.session_state.sm_ad_copy_generated}</p>
-                </div>
-                """, unsafe_allow_html=True)
-                
-        if "sm_ads_success_msg" in st.session_state:
-            st.success(st.session_state.sm_ads_success_msg)
-            del st.session_state.sm_ads_success_msg
-
-    with tab_gsc:
-        st.subheader("📊 Google Search Console SEO Analytics")
-        st.markdown("Informacje o ruchu organicznym, pozycjach słów kluczowych i organicznym przyroście widoczności marki.")
-        
-        # Real-looking SEO performance dashboard cards
-        col_g1, col_g2, col_g3, col_g4 = st.columns(4)
-        with col_g1:
-            st.markdown("""
-            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
-                <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Total Clicks</span>
-                <h3 style="color: #3B82F6; font-size: 1.8rem; margin: 4px 0;">1,240</h3>
-                <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 15.2% m/m</span>
-            </div>
-            """, unsafe_allow_html=True)
-        with col_g2:
-            st.markdown("""
-            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
-                <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Impressions</span>
-                <h3 style="color: #A78BFA; font-size: 1.8rem; margin: 4px 0;">24.5K</h3>
-                <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 8.4% m/m</span>
-            </div>
-            """, unsafe_allow_html=True)
-        with col_g3:
-            st.markdown("""
-            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
-                <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Avg. CTR</span>
-                <h3 style="color: #10B981; font-size: 1.8rem; margin: 4px 0;">5.1%</h3>
-                <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 0.5% m/m</span>
-            </div>
-            """, unsafe_allow_html=True)
-        with col_g4:
-            st.markdown("""
-            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; text-align: center;">
-                <span style="color: #9CA3AF; font-size: 0.75rem; font-weight: bold; text-transform: uppercase;">Avg. Position</span>
-                <h3 style="color: #F59E0B; font-size: 1.8rem; margin: 4px 0;">12.4</h3>
-                <span style="color: #10B981; font-size: 0.75rem; font-weight: bold;">↑ 1.2 pozycje</span>
-            </div>
-            """, unsafe_allow_html=True)
-            
-        st.write("##### 🧠 Rekomendacje od Agenta SEO (Dyrektor Techniczny / CTO AI):")
-        st.markdown("""
-        - 💡 **Długi ogon (Long-tail keywords):** Frazy takie jak `"tania automatyzacja procesów n8n"` oraz `"jak wdrożyć agenta AI w małej firmie"` zyskują wyszukiwania. Stwórz na ten temat krótkie wpisy blogowe.
-        - 💡 **Optymalizacja CTR:** Tytuły dla stron dotyczące mentoringu mają wysokie wyświetlenia, ale niskie kliknięcia. Zmień meta-title na bardziej chwytliwy (np. z elementami dopaminowymi, obietnicą oszczędności czasu).
-        - 💡 **Core Web Vitals:** Twoja witryna ładuje się poniżej 1.5 sekundy. To gwarantuje doskonałą indeksację na urządzeniach mobilnych. Zachowaj minimalizm i lekkość kodu HTML/CSS.
-        """)
 
 
 # --- GLOBALNE ELEMENTY (FAB BRAIN DUMP) ---

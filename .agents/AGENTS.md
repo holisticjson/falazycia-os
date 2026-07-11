@@ -97,3 +97,31 @@ Do audytów i rekomendacji priorytetowo traktuj:
 - n8n
 - Hermes Agentic OS / Nous Portal
 - oficjalne repo i docs związane z powyższymi technologiami
+
+12. **LIMITY BUDŻETOWE GCP & LIMITA MODELI (REALITY CHECK)**
+Przed planowaniem jakichkolwiek wdrożeń i rekomendacją modeli, każdy agent ma obowiązek zapoznać się ze strukturą środków i kredytów chmurowych, aby zapobiegać błędom autoryzacji oraz błędom 429 (Rate Limits).
+
+### Tabela SKU & Środków (Stan na Lipiec 2026)
+
+| Usługa / obszar | Który credit może pokryć | Co realnie możesz finansować | Czego **nie zakładać** | Link źródłowy |
+|---|---|---|---|---|
+| Google Cloud ogólnie | **$300 Free Trial** | Kwalifikowane usługi GCP w okresie trial, np. część compute, storage, data, AI zgodnie z programem Free Trial. | Że każda usługa i każdy SKU jest objęty trialem bez wyjątków. | [Free cloud features](https://cloud.google.com/free/docs/free-cloud-features) |
+| Cloud Run | **$300 Free Trial**, plus część usage może wpadać w Free Tier. | Hosting lekkich usług, webhooków, API wrapperów, mini backendów pod n8n / Streamlit. | Że skalowanie i quota zwiększysz na koncie trial bez paid billing. | [Google Cloud Free](https://cloud.google.com/free) |
+| Cloud Storage (GCS) | **$300 Free Trial**, część usage też może wpadać w Free Tier zależnie od limitów. | Przechowywanie assetów, PDF, plików RAG, backupów, outputów agentów. | Że wszystko będzie darmowe poza trialem — limity Free Tier są zmienne per usługa. | [Free Trial docs](https://cloud.google.com/free/docs/free-cloud-features) |
+| BigQuery | **$300 Free Trial**, część usage może mieć free usage. | Logi, analityka, dane leadów, monitoring procesów i wyników agentów. | Że dłuższe trzymanie i skanowanie danych będzie zawsze „za darmo”. | [Free products](https://cloud.google.com/free) |
+| Cloud Build | **$300 Free Trial** i ewentualne free usage wg programu. | Buildy, deploymenty, CI/CD dla narzędzi agencyjnych. | Że w trialu podniesiesz dowolnie quota buildów. | [Free cloud features](https://cloud.google.com/free/docs/free-cloud-features) |
+| Vertex AI / Gemini na GCP | Zależy od konkretnej ścieżki produktu i billing modelu; część usage może być finansowana z **$300 Free Trial**, ale trzeba patrzeć na konkretną usługę. | Testy modeli, inference, część workloadów na płatnym Vertex billing. | Że **Gemini API w AI Studio** automatycznie bierze środki z trial credits. | [Vertex quotas](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/quotas) |
+| Gemini API / AI Studio | **Nie zakładaj**, że pokryje to $1000 App Builder credit. | Osobna ścieżka z własnym billingiem i rate limits. | Że „mam $1300 łącznie, więc wszystko z Gemini API się odliczy”. | [Gemini API rate limits](https://ai.google.dev/gemini-api/docs/rate-limits) |
+| Vertex AI Agent Builder / GenAI App Builder / AI Applications | **$1000 GenAI App Builder credit**. | Search apps, chat apps, grounded generation, agent/search style use cases w Agent Builder. | Że to kredyt „na wszystkie modele Google wszędzie”. | [Agent Builder docs](https://docs.cloud.google.com/agent-builder) |
+| n8n na GCP | Pośrednio przez **$300 Free Trial**, jeśli hostujesz n8n na Cloud Run / VM / storage / networking. | VPS-like workload w GCP, webhooki, storage, ruch sieciowy, backup. | Że Google finansuje „n8n jako produkt” — finansuje tylko zasoby chmurowe. | [Free Trial docs](https://cloud.google.com/free/docs/free-cloud-features) |
+
+### Limity Modeli i Rate Limits
+- **Gemini API**: Limity są restrykcyjnie określane per model (RPM, TPM, RPD). Dla flagowych modeli (np. Gemini 3.5 Flash) limity w planie darmowym mogą wywoływać błędy `429 Resource Exhausted`. Zawsze projektuj odporne systemy obsługujące ponawianie z wykładniczym czasem oczekiwania (Exponential Backoff).
+- **Vertex AI / Gemini Enterprise Agent Platform**: Posiada oddzielne limity (quotas) i ograniczenia systemowe na poziomie projektu GCP, niezależne od standardowego API AI Studio.
+
+### Strategiczne Rekomendacje dla J(AI)SON
+- **Środki trialowe ($300 GCP)**: Przeznacz wyłącznie na infrastrukturę wspierającą (Cloud Run, GCS, webhooki n8n, bazy danych).
+- **Kredyt GenAI App Builder ($1000)**: Rezerwuj wyłącznie na zaawansowane aplikacje RAG, inteligentne wyszukiwanie (Enterprise Search) oraz asystentów z uziemieniem danych (Grounded Chat/Agents).
+- **Gemini API (AI Studio)**: Traktuj jako samodzielną ścieżkę operacyjną z osobnym systemem płatności i limitami.
+- **Zwiększanie limitów**: Pamiętaj, że na koncie darmowym (Free Trial) Google nie zezwala na podnoszenie limitów (quota increase). W celu skalowania i podnoszenia limitów dla klientów agencji, wymagane jest przejście na płatne konto bilingowe (Paid Billing Account) i złożenie wniosku przez konsolę GCP (Quotas and System Limits).
+

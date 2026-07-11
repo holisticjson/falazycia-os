@@ -238,4 +238,76 @@ def run_flux_lora_generation(prompt, lora_url, scale=1.0, aspect_ratio="square_h
         return None, f"Wyjątek podczas generowania obrazu LoRA: {str(ex)}"
 
 
+def start_lora_training(zip_file_path, trigger_word="tomasz_hero", steps=1000, is_style=False):
+    """
+    Rozpoczyna trening LoRA na fal.ai za pomocą biblioteki fal_client.
+    Wgrywa lokalny plik ZIP na CDN fal.ai i wysyła asynchroniczne zlecenie treningu.
+    Zwraca request_id lub None i błąd.
+    """
+    import fal_client
+    try:
+        # Upewniamy się, że klucz jest ustawiony w środowisku dla fal_client
+        key = os.getenv("FAL_KEY") or FAL_KEY
+        if key:
+            os.environ["FAL_KEY"] = key
+        else:
+            return None, "Brak klucza FAL_KEY w środowisku lub .env!"
 
+        # 1. Wgranie pliku ZIP do fal.ai storage (CDN)
+        images_url = fal_client.upload_file(zip_file_path)
+        if not images_url:
+            return None, "Nie udało się wgrać pliku ZIP do storage fal.ai."
+        
+        # 2. Wysłanie zlecenia treningowego w tle (asynchronicznie)
+        handler = fal_client.submit(
+            "fal-ai/flux-lora-fast-training",
+            arguments={
+                "images_data_url": images_url,
+                "trigger_word": trigger_word,
+                "steps": steps,
+                "is_style": is_style,
+                "create_masks": True
+            }
+        )
+        
+        if hasattr(handler, "request_id"):
+            return handler.request_id, None
+        return None, "Nie udało się uzyskać request_id z handlera fal_client."
+    except Exception as ex:
+        return None, f"Błąd podczas rozpoczynania treningu LoRA: {str(ex)}"
+
+
+def check_training_status(request_id):
+    """
+    Sprawdza stan asynchronicznego treningu LoRA na fal.ai.
+    Zwraca status i logi lub None i błąd.
+    """
+    import fal_client
+    try:
+        key = os.getenv("FAL_KEY") or FAL_KEY
+        if key:
+            os.environ["FAL_KEY"] = key
+
+        status = fal_client.status("fal-ai/flux-lora-fast-training", request_id, with_logs=True)
+        return status, None
+    except Exception as ex:
+        return None, f"Błąd podczas sprawdzania statusu treningu: {str(ex)}"
+
+
+def get_training_result(request_id):
+    """
+    Pobiera wynik zakończonego treningu LoRA na fal.ai.
+    Zwraca URL do pliku wag (.safetensors) lub None i błąd.
+    """
+    import fal_client
+    try:
+        key = os.getenv("FAL_KEY") or FAL_KEY
+        if key:
+            os.environ["FAL_KEY"] = key
+
+        result = fal_client.result("fal-ai/flux-lora-fast-training", request_id)
+        if result and "diffusers_lora_file" in result:
+            return result["diffusers_lora_file"]["url"], None
+        return None, f"Brak klucza diffusers_lora_file w wyniku treningu. Otrzymano: {result}"
+    except Exception as ex:
+        return None, f"Błąd podczas pobierania wyniku treningu: {str(ex)}"
