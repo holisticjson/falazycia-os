@@ -196,3 +196,46 @@ def run_background_removal(image_bytes):
         return None, f"Wyjątek podczas usuwania tła: {str(ex)}"
 
 
+def run_flux_lora_generation(prompt, lora_url, scale=1.0, aspect_ratio="square_hd"):
+    """
+    Generuje obraz przy użyciu modelu fal-ai/flux-lora oraz przesłanego pliku wag LoRA (.safetensors).
+    """
+    headers = get_fal_headers()
+    if not headers:
+        return None, "Brak klucza FAL_KEY w pliku .env!"
+
+    try:
+        payload = {
+            "prompt": prompt,
+            "loras": [
+                {
+                    "path": lora_url,
+                    "scale": scale
+                }
+            ],
+            "image_size": aspect_ratio,
+            "num_inference_steps": 28,
+            "enable_safety_checker": True
+        }
+
+        url = "https://fal.run/fal-ai/flux-lora"
+        response = requests.post(url, json=payload, headers=headers, timeout=120)
+        
+        if response.status_code == 200:
+            res_json = response.json()
+            images = res_json.get("images", [])
+            if images:
+                image_url = images[0].get("url")
+                img_res = requests.get(image_url, timeout=60)
+                if img_res.status_code == 200:
+                    return img_res.content, None
+                return None, f"Nie udało się pobrać wygenerowanego obrazu: {img_res.status_code}"
+            return None, "API nie zwróciło żadnego obrazu."
+        else:
+            return None, f"Błąd fal.ai API ({response.status_code}): {response.text}"
+            
+    except Exception as ex:
+        return None, f"Wyjątek podczas generowania obrazu LoRA: {str(ex)}"
+
+
+

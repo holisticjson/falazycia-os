@@ -4256,7 +4256,7 @@ elif menu == "Jaison Agency":
             </div>
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Strategię & BIO", key="btn_run_bios", use_container_width=True):
-                st.session_state.active_suite_tool = "BIOS"
+                st.session_state.current_page = "Social Media Hub"
                 st.rerun()
 
             # 4. LANDING PAGE BUILDER
@@ -4269,7 +4269,7 @@ elif menu == "Jaison Agency":
             </div>
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Kreator Landing Page", key="btn_run_landing", use_container_width=True):
-                st.session_state.active_suite_tool = "Landing"
+                st.session_state.current_page = "AI Website Builder"
                 st.rerun()
 
             # 9. RESEARCH HUB
@@ -4283,6 +4283,19 @@ elif menu == "Jaison Agency":
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Research Hub", key="btn_run_labclub", use_container_width=True):
                 st.session_state.active_suite_tool = "ResearchHub"
+                st.rerun()
+
+            # 12. ADS & GOOGLE MAPS STUDIO
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #EF4444; min-height: 200px;">
+                <h3 style="color: #EF4444; margin: 0; font-size: 1.3rem;">🎯 Ads & Local SEO Studio</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Optymalizacja Google Maps, pozycjonowanie lokalne oraz generowanie wirusowych kampanii reklamowych Meta/Google Ads.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Ads & Local SEO", key="btn_run_ads_local_seo", use_container_width=True):
+                st.session_state.current_page = "Ads & Local SEO"
                 st.rerun()
 
         with col_c2:
@@ -4309,7 +4322,7 @@ elif menu == "Jaison Agency":
             </div>
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Generator Reels", key="btn_run_reels", use_container_width=True):
-                st.session_state.active_suite_tool = "Reels"
+                st.session_state.current_page = "SEO"
                 st.rerun()
                 
             # 7. MOBILE SAFE BANNER
@@ -4335,7 +4348,7 @@ elif menu == "Jaison Agency":
             </div>
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Sztab Dyrektorów", key="btn_run_adk", use_container_width=True):
-                st.session_state.active_suite_tool = "ADK"
+                st.session_state.current_page = "Swarm"
                 st.rerun()
 
             # 10. E-COMMERCE BACKGROUND REMOVAL STUDIO
@@ -4362,6 +4375,32 @@ elif menu == "Jaison Agency":
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Kreator 3D Web FX", key="btn_run_3dfx", use_container_width=True):
                 st.session_state.active_suite_tool = "3D FX"
+                st.rerun()
+
+            # 13. STUDIO (HYPERFRAMES)
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #8B5CF6; min-height: 200px;">
+                <h3 style="color: #8B5CF6; margin: 0; font-size: 1.3rem;">🎬 Studio (Hyperframes)</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Generator zaawansowanych klatek animacji, wideo oraz generowanie wideo-reels z wykorzystaniem modeli wideo fal.ai.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Studio Video", key="btn_run_studio_video", use_container_width=True):
+                st.session_state.current_page = "Studio"
+                st.rerun()
+
+            # 14. J(AI)SON LoRA STUDIO
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #10B981; min-height: 200px;">
+                <h3 style="color: #10B981; margin: 0; font-size: 1.3rem;">🧬 J(AI)SON LoRA Studio</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Wytrenuj swój własny model twarzy lub stylu (LoRA) na fal.ai w kilka minut. Wrzuć plik ZIP ze swoimi zdjęciami i uzyskaj natychmiastową integrację z Flux!
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("🧬 Uruchom LoRA Studio", key="btn_run_lora_studio", use_container_width=True):
+                st.session_state.active_suite_tool = "LoRA_Studio"
                 st.rerun()
 
     # ------------------ INDYWIDUALNE NARZĘDZIA (GUI) ------------------

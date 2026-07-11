@@ -13,3 +13,87 @@ Te zasady są nienaruszalne dla każdego agenta pracującego w tym obszarze robo
 8. **Bezwzględna weryfikacja zasobów chmurowych przed ich użyciem:** Przed zaproponowaniem poleceń CLI (GCP `gcloud`, Firebase itp.) modyfikujących lub odczytujących infrastrukturę, agent ma bezwzględny obowiązek zweryfikować stan faktyczny zasobów w chmurze (np. sprawdzić, czy rzeczywista nazwa dysku rozruchowego różni się od namiaru maszyny VM), zamiast polegać na założeniach lub zewnętrznych briefach, co mogłoby prowadzić do awarii lub utraty danych.
 9. **Dystrybucja produktów cyfrowych (Folder 11_digital_product):** Wszelkie e-booki, poradniki oraz lead magnety stworzone przez agentów w tym workspace (lub w powiązanych folderach, np. Android) muszą trafiać do dedykowanego folderu `C:\Aplikacje MVP\Holistic Jason\11_digital_product\` w celu zachowania scentralizowanej biblioteki produktów. **Kategorycznie nakazuje się** tworzenie tych materiałów z zachowaniem visual anchoringu (ADHD-friendly) oraz technik perswazyjnego NLP Copywritingu (sensoryka VAK, metaprogramy i presupozycje Miltona ze skilli nlp/nlp-copywriting).
 10. **Bezwzględne sprzątanie i zakaz duplikacji:** Agenci mają absolutny zakaz duplikowania plików, folderów lub skryptów w obszarze roboczym. Przy każdej reorganizacji lub aktualizacji, stare, niepotrzebne, nieaktualne wersje plików i skryptów (np. stare skrypty wdrożeniowe, kopie zapasowe, pliki tymczasowe) MUSZĄ być natychmiast bezpiecznie usuwane lub przenoszone do `09-archive/`, aby zapobiegać narastaniu chaosu i błędom deweloperskim.
+
+11. **ŹRÓDŁA KANONICZNE — REALITY CHECK FIRST**
+Te wytyczne są absolutnie nienaruszalne dla wszystkich dyrektorów technicznych i specjalistów od Gemini i Google Platform. Wbij je sobie na stałe do głowy i nigdy nie używaj niezweryfikowanych wersji modeli, cen ani parametrów technicznych:
+
+### ŹRÓDŁA KANONICZNE — REALITY CHECK FIRST
+Przy audytach technicznych, doborze modeli, limitów, kosztów, integracji i roadmapy zawsze używaj tej hierarchii:
+1. **Oficjalna dokumentacja producenta** — jedyne źródło prawdy.
+2. **Oficjalne repo GitHub producenta** — źródło implementacyjne.
+3. **Community repo / blog / forum** — tylko pomocniczo, po weryfikacji.
+
+Nie mieszaj marketingu, postów blogowych ani odpowiedzi innych chatbotów z dokumentacją.
+
+### Google / Gemini / Vertex AI
+- https://ai.google.dev/gemini-api/docs
+- https://ai.google.dev/gemini-api/docs/models
+- https://ai.google.dev/gemini-api/docs/imagen
+- https://ai.google.dev/gemini-api/docs/pricing
+- https://ai.google.dev/gemini-api/docs/rate-limits
+- https://ai.google.dev/gemini-api/docs/file-search
+- https://ai.google.dev/gemini-api/docs/caching
+- https://cloud.google.com/vertex-ai/docs
+- https://cloud.google.com/vertex-ai/generative-ai/docs/image/overview
+- https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/image-generation
+- https://docs.cloud.google.com/vertex-ai/generative-ai/docs/learn/model-versions
+
+### fal.ai
+- https://fal.ai/docs/documentation
+- https://docs.fal.ai/index
+- https://fal.ai/docs/documentation/quickstart
+- https://fal.ai/models/fal-ai/flux-lora-fast-training
+- https://fal.ai/models/fal-ai/flux-lora-portrait-trainer
+
+### Streamlit
+- https://docs.streamlit.io/
+- https://github.com/streamlit/docs
+
+### n8n
+- https://docs.n8n.io/
+- https://n8n.io/workflows/
+- https://github.com/n8n-io/n8n
+- https://github.com/n8n-io/n8n-docs
+
+### Hermes Agentic OS / Nous Research
+- https://hermes-agent.nousresearch.com/docs/
+- https://hermes-agent.nousresearch.com/docs/getting-started/quickstart
+- https://hermes-agent.nousresearch.com/docs/integrations/nous-portal
+- https://hermes-agent.nousresearch.com/docs/integrations/providers
+- https://portal.nousresearch.com/
+- https://github.com/NousResearch/hermes-agent
+- https://github.com/NousResearch/hermes-agent/releases
+
+### GITHUB WHITELIST — STAŁE KONTROLOWANE ORGANY
+Monitoruj głównie oficjalne orgi i repo twórców:
+- GoogleCloudPlatform
+- googleapis
+- google-gemini
+- NousResearch
+- n8n-io
+- streamlit
+- fal-ai
+
+### ZASADA WYBORU REPO
+Repo wybieraj według kolejności:
+1. oficjalne repo producenta,
+2. repo z aktywnymi release’ami,
+3. repo z dobrą dokumentacją,
+4. repo zgodne ze stackiem J(AI)SON,
+5. dopiero potem liczba gwiazdek.
+Liczba gwiazdek nie oznacza zgodności technicznej ani aktualności.
+
+### ZASADA AUDYTU TECHNICZNEGO
+Jeśli pojawia się claim o modelu, wersji, limicie, koszcie, referencjach, multimodalności lub integracji:
+- sprawdź oficjalne docs,
+- sprawdź oficjalne repo,
+- jeśli brak potwierdzenia, oznacz to jako **niezweryfikowane** albo **potencjalna halucynacja**.
+
+### MAPA STACKU J(AI)SON
+Do audytów i rekomendacji priorytetowo traktuj:
+- Google Cloud / Vertex AI / Gemini / Imagen
+- fal.ai
+- Streamlit
+- n8n
+- Hermes Agentic OS / Nous Portal
+- oficjalne repo i docs związane z powyższymi technologiami
