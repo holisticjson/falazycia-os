@@ -115,8 +115,8 @@ img {
 }
 
 select option {
-    background-color: #02050f; /* --color-bg-main */
-    color: #F0F4FF; /* --color-text-main */
+    background-color: #121622 !important;
+    color: #FFFFFF !important;
 }
 
 
