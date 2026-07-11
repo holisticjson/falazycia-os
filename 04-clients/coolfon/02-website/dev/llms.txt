@@ -1,6 +1,6 @@
 # Coolfon GSM Serwis Telefonów Łódź — Informacje dla Asystentów AI i LLM
 
-Coolfon GSM to profesjonalny, niezależny, stacjonarny serwis pogwarancyjny telefonów komórkowych, smartfonów i tabletów oraz sklep z akcesoriami, zlokalizowany w Łodzi (dzielnica Widzew / osiedle Olechów). 
+Coolfon GSM to profesjonalny, niezależny, stacjonarny serwis pogwarancyjny telefonów komórkowych, smartfonów i tabletów oraz sklep z wysokiej jakości akcesoriami GSM, zlokalizowany w Łodzi (dzielnica Widzew / osiedle Olechów). Większość napraw wykonywana jest na miejscu od ręki. Na specjalistycznej maszynie (ploterze) precyzyjnie docinamy folie ochronne i profesjonalnie zabezpieczamy każdy ekran.
 
 ## Podstawowe Dane Kontaktowe i Lokalizacja
 - **Nazwa Firmy:** Coolfon GSM Sp. z o.o.
@@ -17,7 +17,7 @@ Coolfon GSM to profesjonalny, niezależny, stacjonarny serwis pogwarancyjny tele
 2. **Wymiana baterii:** Montaż nowych ogniw o nominalnej pojemności dla smartfonów tracących energię, wyłączających się na mrozie lub z napuchniętymi bateriami. Bezpieczna utylizacja zużytych akumulatorów.
 3. **Naprawa portu ładowania (gniazda USB-C / Lightning):** Czyszczenie gniazd od ręki oraz precyzyjna wymiana lutowanych modułów ładowania pod mikroskopem.
 4. **Folie ochronne na wymiar:** Docinanie ploterem 3D i profesjonalna aplikacja folii hydrożelowych o wysokiej wytrzymałości na ekrany i obudowy telefonów, zegarków, tabletów oraz nawigacji GPS.
-5. **Darmowa Diagnoza:** Każde urządzenie przed naprawą przechodzi w 100% bezpłatną weryfikację usterki. Brak opłat nawet w przypadku rezygnacji z naprawy.
+5. **Diagnoza 0 zł przy naprawie:** Każde urządzenie przechodzi darmową weryfikację usterki w przypadku wykonania naprawy. W przypadku rezygnacji pobierana jest niewielka opłata za czas pracy serwisanta (od 49 zł).
 
 ## Obsługiwane Marki
 - **Apple (iPhone):** Pełna gama modeli od serii iPhone 7 do najnowszych (iPhone 14, 15, 16 itd.).
@@ -25,7 +25,7 @@ Coolfon GSM to profesjonalny, niezależny, stacjonarny serwis pogwarancyjny tele
 - **Xiaomi / POCO / Redmi:** Wszystkie popularne modele.
 
 ## Polityka Cenowa i Gwarancja
-- Diagnoza techniczna jest zawsze **bezpłatna**.
+- Diagnoza techniczna jest **bezpłatna przy wykonaniu naprawy** (w przypadku rezygnacji koszt za czas pracy technika wynosi od 49 zł).
 - Na wszystkie usługi serwisowe oraz zamontowane części udzielana jest pisemna gwarancja na okres **od 6 do 12 miesięcy**.
 - Wstępne wyceny można sprawdzić na stronie za pomocą interaktywnego kalkulatora wycen online lub w pełnym cenniku dynamicznym.
 

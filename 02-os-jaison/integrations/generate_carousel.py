@@ -58,7 +58,7 @@ def wrap_text(text, font, max_width, draw):
         
     return lines
 
-def generate_carousel(text_content, output_dir="output_carousel"):
+def generate_carousel(text_content, output_dir="output_carousel", branding="jaison.pl"):
     """
     Generuje zestaw slajdów PNG (1080x1080) na podstawie tekstu podzielonego za pomocą '---'.
     """
@@ -123,7 +123,7 @@ def generate_carousel(text_content, output_dir="output_carousel"):
                 
         # Rysowanie brandingowego nagłówka i stopki (ADHD-friendly Visual Anchors)
         # Stopka: Jaison.pl (lewy dół)
-        draw.text((margin, height - 90), "jaison.pl", font=meta_font, fill=accent_color)
+        draw.text((margin, height - 90), branding, font=meta_font, fill=accent_color)
         
         # Stopka: Numeracja slajdów (prawy dół)
         slide_num_str = f"{i + 1} / {total_slides}"
@@ -138,14 +138,31 @@ def generate_carousel(text_content, output_dir="output_carousel"):
     print(f"=== SUCCESSFULLY GENERATED {total_slides} SLIDES IN {output_dir} ===")
 
 if __name__ == "__main__":
-    test_text = """
-    # Jak zbudować lejek w Systeme.io
-    Dowiedz się, jak założyć darmowe konto, podpiąć webhooki n8n oraz zachować pełne bezpieczeństwo danych.
-    ---
-    # Krok 1: Wybór Domeny
-    Zawsze wybieraj domenę biznesową. Rejestrując się na GCP wybierz typ konta 'Business' zamiast 'Individual', aby poprawnie odliczać koszty.
-    ---
-    # Krok 2: Klonowanie Głosu
-    Używaj modelu VoxCPM2 do lokalnego klonowania głosu. Daje to studyjną jakość 48kHz bez żadnych opłat abonamentowych.
-    """
-    generate_carousel(test_text)
+    if len(sys.argv) > 1:
+        input_file = sys.argv[1]
+        out_dir = sys.argv[2] if len(sys.argv) > 2 else "output_carousel"
+        brand_text = sys.argv[3] if len(sys.argv) > 3 else "jaison.pl"
+        
+        if os.path.exists(input_file):
+            try:
+                with open(input_file, 'r', encoding='utf-8') as f:
+                    content = f.read()
+                generate_carousel(content, out_dir, brand_text)
+            except Exception as e:
+                print(f"Error reading or generating carousel: {e}")
+                sys.exit(1)
+        else:
+            print(f"Error: File not found: {input_file}")
+            sys.exit(1)
+    else:
+        test_text = """
+        # Jak zbudować lejek w Systeme.io
+        Dowiedz się, jak założyć darmowe konto, podpiąć webhooki n8n oraz zachować pełne bezpieczeństwo danych.
+        ---
+        # Krok 1: Wybór Domeny
+        Zawsze wybieraj domenę biznesową. Rejestrując się na GCP wybierz typ konta 'Business' zamiast 'Individual', aby poprawnie odliczać koszty.
+        ---
+        # Krok 2: Klonowanie Głosu
+        Używaj modelu VoxCPM2 do lokalnego klonowania głosu. Daje to studyjną jakość 48kHz bez żadnych opłat abonamentowych.
+        """
+        generate_carousel(test_text)

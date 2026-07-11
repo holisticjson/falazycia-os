@@ -119,8 +119,8 @@
             </div>
 
             <div style="margin-top: 40px; text-align: center; color: var(--color-text-muted); font-size: 0.9rem;">
-                <p>⚠️ Ceny mają charakter orientacyjny i zależą od wahań na rynku podzespołów. Diagnoza usterki w naszym serwisie jest zawsze <strong>całkowicie darmowa</strong>.</p>
-                <p style="margin-top: 8px;">Nie znalazłeś swojego modelu? <a href="/kontakt/" style="text-decoration: underline;">Skontaktuj się z nami</a> po darmową wycenę indywidualną.</p>
+                <p>⚠️ Ceny mają charakter orientacyjny i zależą od wahań na rynku podzespołów. Diagnoza usterki jest <strong>darmowa (0 zł) przy wykonaniu naprawy</strong>. W przypadku rezygnacji pobieramy jedynie opłatę za czas pracy technika od 49 zł.</p>
+                <p style="margin-top: 8px;">Nie znalazłeś swojego modelu? <a href="/kontakt/" style="text-decoration: underline;">Skontaktuj się z nami</a> po darmową wycenę i analizę usterki.</p>
             </div>
 
         </div>
@@ -160,7 +160,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js?v=2"></script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             // Ponieważ main.js definiuje calculatorData, możemy go odpytać bezpośrednio
@@ -212,7 +212,11 @@
             searchFilter.addEventListener("input", renderTable);
 
             // Initial load
-            setTimeout(renderTable, 100); // Mały delay na wczytanie bazy z main.js
+            if (window.calculatorDataLoaded) {
+                window.calculatorDataLoaded.then(renderTable);
+            } else {
+                setTimeout(renderTable, 100);
+            }
         });
     </script>
 </body>

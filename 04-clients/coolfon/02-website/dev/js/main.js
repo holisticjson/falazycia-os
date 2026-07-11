@@ -107,44 +107,44 @@ const calculatorData = {
             models: {
                 "iphone-15-pro-max": {
                     name: "iPhone 15 Pro Max",
-                    prices: { screen: 990, battery: 320, usb: 290 }
+                    prices: { screen: 1900, battery: 380, usb: 310 }
                 },
                 "iphone-15-pro": {
                     name: "iPhone 15 Pro",
-                    prices: { screen: 890, battery: 290, usb: 280 }
+                    prices: { screen: 1630, battery: 360, usb: 290 }
                 },
                 "iphone-15": {
                     name: "iPhone 15",
-                    prices: { screen: 720, battery: 290, usb: 280 }
+                    prices: { screen: 1340, battery: 370, usb: 280 }
                 },
                 "iphone-14-pro-max": {
                     name: "iPhone 14 Pro Max",
-                    prices: { screen: 990, battery: 240, usb: 240 }
+                    prices: { screen: 1630, battery: 360, usb: 260 }
                 },
                 "iphone-14-pro": {
                     name: "iPhone 14 Pro",
-                    prices: { screen: 890, battery: 240, usb: 240 }
+                    prices: { screen: 1480, battery: 340, usb: 260 }
                 },
                 "iphone-14": {
                     name: "iPhone 14",
-                    prices: { screen: 590, battery: 240, usb: 240 },
+                    prices: { screen: 690, battery: 320, usb: 240 },
                     popular: true
                 },
                 "iphone-13-pro-max": {
                     name: "iPhone 13 Pro Max",
-                    prices: { screen: 850, battery: 210, usb: 190 }
+                    prices: { screen: 1380, battery: 310, usb: 230 }
                 },
                 "iphone-13": {
                     name: "iPhone 13",
-                    prices: { screen: 480, battery: 210, usb: 190 }
+                    prices: { screen: 640, battery: 290, usb: 230 }
                 },
                 "iphone-12": {
                     name: "iPhone 12",
-                    prices: { screen: 390, battery: 180, usb: 170 }
+                    prices: { screen: 520, battery: 270, usb: 210 }
                 },
                 "iphone-11": {
                     name: "iPhone 11",
-                    prices: { screen: 290, battery: 160, usb: 150 }
+                    prices: { screen: 350, battery: 260, usb: 190 }
                 }
             }
         },
@@ -153,40 +153,40 @@ const calculatorData = {
             models: {
                 "galaxy-s24-ultra": {
                     name: "Galaxy S24 Ultra",
-                    prices: { screen: 990, battery: 240, usb: 220 }
+                    prices: { screen: 1640, battery: 270, usb: 230 }
                 },
                 "galaxy-s24": {
                     name: "Galaxy S24",
-                    prices: { screen: 790, battery: 220, usb: 200 }
+                    prices: { screen: 1190, battery: 260, usb: 210 }
                 },
                 "galaxy-s23-ultra": {
                     name: "Galaxy S23 Ultra",
-                    prices: { screen: 890, battery: 210, usb: 190 }
+                    prices: { screen: 1490, battery: 240, usb: 210 }
                 },
                 "galaxy-s23": {
                     name: "Galaxy S23",
-                    prices: { screen: 590, battery: 190, usb: 180 },
+                    prices: { screen: 980, battery: 220, usb: 190 },
                     popular: true
                 },
                 "galaxy-s22-ultra": {
                     name: "Galaxy S22 Ultra",
-                    prices: { screen: 790, battery: 190, usb: 180 }
+                    prices: { screen: 1330, battery: 220, usb: 190 }
                 },
                 "galaxy-s22": {
                     name: "Galaxy S22",
-                    prices: { screen: 490, battery: 180, usb: 170 }
+                    prices: { screen: 840, battery: 210, usb: 190 }
                 },
                 "galaxy-s21": {
                     name: "Galaxy S21",
-                    prices: { screen: 440, battery: 170, usb: 160 }
+                    prices: { screen: 700, battery: 200, usb: 180 }
                 },
                 "galaxy-a54": {
                     name: "Galaxy A54",
-                    prices: { screen: 320, battery: 150, usb: 130 }
+                    prices: { screen: 480, battery: 190, usb: 180 }
                 },
                 "galaxy-a35": {
                     name: "Galaxy A35",
-                    prices: { screen: 290, battery: 140, usb: 120 }
+                    prices: { screen: 400, battery: 180, usb: 170 }
                 }
             }
         },
@@ -195,24 +195,24 @@ const calculatorData = {
             models: {
                 "xiaomi-13": {
                     name: "Xiaomi 13",
-                    prices: { screen: 380, battery: 170, usb: 140 }
+                    prices: { screen: 670, battery: 210, usb: 190 }
                 },
                 "redmi-note-13": {
                     name: "Redmi Note 13",
-                    prices: { screen: 260, battery: 130, usb: 110 }
+                    prices: { screen: 400, battery: 180, usb: 170 }
                 },
                 "redmi-note-12": {
                     name: "Redmi Note 12",
-                    prices: { screen: 240, battery: 120, usb: 100 },
+                    prices: { screen: 370, battery: 170, usb: 160 },
                     popular: true
                 },
                 "poco-x6": {
                     name: "POCO X6",
-                    prices: { screen: 290, battery: 140, usb: 110 }
+                    prices: { screen: 440, battery: 190, usb: 180 }
                 },
                 "poco-x5": {
                     name: "POCO X5",
-                    prices: { screen: 250, battery: 130, usb: 100 }
+                    prices: { screen: 390, battery: 170, usb: 170 }
                 }
             }
         }
@@ -225,6 +225,27 @@ const calculatorData = {
     }
 };
 
+// Globalna obietnica asynchronicznego pobierania aktualnego cache cennika Magboss
+window.calculatorDataLoaded = fetch('/data/cennik_cache.json')
+    .then(res => {
+        if (!res.ok) throw new Error(`HTTP status ${res.status}`);
+        return res.json();
+    })
+    .then(data => {
+        if (data && data.brands) {
+            console.log("[Coolfon Dynamic Pricing] Pomyślnie wczytano cennik Magboss z pamięci podręcznej.");
+            // Nadpisujemy marki i modele dynamicznymi danymi z cache
+            calculatorData.brands = data.brands;
+            calculatorData.last_updated = data.last_updated;
+        }
+        return calculatorData;
+    })
+    .catch(err => {
+        console.warn("[Coolfon Dynamic Pricing] Brak dostępu do pliku cache lub błąd sieci. Użyto precyzyjnego cennika offline.", err);
+        return calculatorData;
+    });
+
+
 function initRepairCalculator() {
     const brandSelect = document.getElementById("calc-brand");
     const modelSelect = document.getElementById("calc-model");
@@ -235,42 +256,44 @@ function initRepairCalculator() {
 
     if (!brandSelect || !modelSelect || !issueSelect) return;
 
-    // 1. Wypełnij marki
-    brandSelect.innerHTML = '<option value="">-- Wybierz markę --</option>';
-    for (const [key, brand] of Object.entries(calculatorData.brands)) {
-        brandSelect.innerHTML += `<option value="${key}">${brand.name}</option>`;
-    }
-
-    // 2. Obsługa wyboru marki -> załaduj modele
-    brandSelect.addEventListener("change", (e) => {
-        const brandKey = e.target.value;
-        modelSelect.innerHTML = '<option value="">-- Wybierz model --</option>';
-        modelSelect.disabled = !brandKey;
-        issueSelect.disabled = true;
-        
-        if (brandKey && calculatorData.brands[brandKey]) {
-            const models = calculatorData.brands[brandKey].models;
-            for (const [mKey, model] of Object.entries(models)) {
-                modelSelect.innerHTML += `<option value="${mKey}">${model.name}</option>`;
-            }
-            modelSelect.disabled = false;
+    window.calculatorDataLoaded.then(() => {
+        // 1. Wypełnij marki
+        brandSelect.innerHTML = '<option value="">-- Wybierz markę --</option>';
+        for (const [key, brand] of Object.entries(calculatorData.brands)) {
+            brandSelect.innerHTML += `<option value="${key}">${brand.name}</option>`;
         }
-        updatePrice();
+
+        // 2. Obsługa wyboru marki -> załaduj modele
+        brandSelect.addEventListener("change", (e) => {
+            const brandKey = e.target.value;
+            modelSelect.innerHTML = '<option value="">-- Wybierz model --</option>';
+            modelSelect.disabled = !brandKey;
+            issueSelect.disabled = true;
+            
+            if (brandKey && calculatorData.brands[brandKey]) {
+                const models = calculatorData.brands[brandKey].models;
+                for (const [mKey, model] of Object.entries(models)) {
+                    modelSelect.innerHTML += `<option value="${mKey}">${model.name}</option>`;
+                }
+                modelSelect.disabled = false;
+            }
+            updatePrice();
+        });
+
+        // 3. Obsługa wyboru modelu -> włącz usterki
+        modelSelect.addEventListener("change", (e) => {
+            const modelKey = e.target.value;
+            issueSelect.disabled = !modelKey;
+            updatePrice();
+        });
+
+        // 4. Obsługa wyboru usterki
+        issueSelect.addEventListener("change", () => {
+            updatePrice();
+        });
     });
 
-    // 3. Obsługa wyboru modelu -> włącz usterki
-    modelSelect.addEventListener("change", (e) => {
-        const modelKey = e.target.value;
-        issueSelect.disabled = !modelKey;
-        updatePrice();
-    });
-
-    // 4. Obsługa wyboru usterki
-    issueSelect.addEventListener("change", () => {
-        updatePrice();
-    });
-
-    // Funkcja obliczająca i aktualizująca cenę
+    // Funkcja obliczająca i aktualizująca cenę (może być wywoływana po interakcjach)
     function updatePrice() {
         const brandKey = brandSelect.value;
         const modelKey = modelSelect.value;
@@ -282,7 +305,7 @@ function initRepairCalculator() {
         }
 
         if (issueKey === "other") {
-            priceDisplay.innerHTML = "Wycena indywidualna (diagnoza 0 zł)";
+            priceDisplay.innerHTML = "Wycena indywidualna (diagnoza 0 zł*)";
             return;
         }
 
@@ -293,6 +316,7 @@ function initRepairCalculator() {
             priceDisplay.innerHTML = "Błąd kalkulacji";
         }
     }
+
 
     // 5. Submit formularza -> wysyłka wyceny
     if (calcForm) {
@@ -776,7 +800,7 @@ function initChatbot() {
         
         switch(intent) {
             case "prices":
-                reply = "Ceny naszych usług zależą od marki, modelu oraz stopnia uszkodzenia urządzenia. **Oferujemy w 100% darmową diagnozę techniczną 0 zł**, na podstawie której przygotujemy dla Ciebie indywidualną wycenę przed naprawą (jeśli zrezygnujesz, nie płacisz nic!).<br><br>Orientacyjne ceny najpopularniejszych modeli możesz sprawdzić w naszym [Kalkulatorze Wyceny](#kalkulator) na stronie głównej lub w dziale [Cennik](/cennik/). Czy chcesz omówić swój problem bezpośrednio z serwisantem?";
+                reply = "Ceny naszych usług zależą od marki, modelu oraz stopnia uszkodzenia urządzenia. **Diagnoza usterki jest w 100% darmowa (0 zł) przy wykonaniu naprawy** w naszym punkcie stacjonarnym. W przypadku rezygnacji z naprawy po przedstawieniu kosztorysu, pobierana jest niewielka opłata za czas pracy technika (od 49 zł za standardowy demontaż i ponowny montaż).<br><br>Szczegółowy cennik i kalkulator wyceny online znajdziesz na naszej stronie głównej lub w zakładce [Cennik](/cennik/). Czy chcesz omówić swój problem bezpośrednio z serwisantem?";
                 chips = [
                     { text: "💬 Czat na WhatsApp", handler: () => triggerIntent("contact") },
                     { text: "📍 Adres i godziny", handler: () => triggerIntent("location") },
