@@ -80,6 +80,11 @@
           "telephone": "+48500600700",
           "email": "hello@jaison.pl",
           "priceRange": "PLN",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "24"
+          },
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Pruszków",
@@ -235,15 +240,19 @@
             
             <!-- Left Side: Copy -->
             <div style="flex: 1.2; min-width: 320px;">
-              <h1 style="font-size: 3.8rem; margin-bottom: 25px; line-height: 1.15; font-weight: 800; color: #FFF;">
+              <h1 style="font-size: 3.8rem; margin-bottom: 15px; line-height: 1.15; font-weight: 800; color: #FFF;">
                 "Steruj firmą z poziomu <span style="color: var(--sky-blue); text-shadow: 0 0 20px rgba(6, 182, 212, 0.4);">komunikatora</span> i odzyskaj <span style="color: var(--muted-gold); text-shadow: 0 0 20px rgba(168, 85, 247, 0.4);">10 godzin</span> w tygodniu"
               </h1>
+              <h2 style="font-size: 1.1rem; color: var(--slate-gray); font-weight: 500; margin-bottom: 25px; margin-top: 0;">J(AI)SON – Projektowanie i wdrażanie agentowych systemów AI dla polskiego biznesu.</h2>
               <p style="font-size: 1.25rem; color: var(--slate-gray); margin-bottom: 45px; line-height: 1.6;">
                 Słuchaj, zamiast tracić czas na naukę kolejnego CRM-u i przeklikiwanie paneli, zarządzaj sprzedażą, bazą wiedzy i zadaniami za pomocą prostych wiadomości tekstowych. Uruchamiamy agentowe systemy AI bez konieczności rewolucji technologicznej w zespole.
               </p>
-              <div class="hero-btns" style="justify-content: flex-start; gap: 20px;">
+              <div class="hero-btns" style="justify-content: flex-start; gap: 20px; display: flex; flex-wrap: wrap;">
                 <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})" class="btn-primary" style="border: none; cursor: pointer; padding: 16px 32px; font-size: 1.1rem; border-radius: 12px; box-shadow: 0 0 30px rgba(99, 102, 241, 0.45); background: linear-gradient(135deg, var(--trust-blue) 0%, var(--muted-gold) 100%);">
                   Zarezerwuj krótką rozmowę ➔
+                </button>
+                <button onclick="alert('Systeme.io popup: Tu podepniemy darmowy audyt!')" class="btn-secondary" style="border: 1px solid var(--sky-blue); color: #FFF; background: transparent; cursor: pointer; padding: 16px 32px; font-size: 1.1rem; border-radius: 12px; transition: all 0.3s;">
+                  🎁 Pobierz audyt AI za 0 zł
                 </button>
               </div>
             </div>
@@ -356,7 +365,7 @@
             <!-- Prawa strona: Grafika z placeholderem w premium ramce -->
             <div style="flex: 0.8; min-width: 300px; display: flex; justify-content: center; position: relative;">
               <div class="glass-card" style="padding: 10px; background: rgba(10, 15, 29, 0.4); border-color: rgba(59, 130, 246, 0.25); border-radius: 20px; overflow: hidden; box-shadow: 0 20px 50px rgba(59, 130, 246, 0.15); width: 100%; max-width: 380px;">
-                <img src="./asynchronous_freedom.png" alt="Asynchroniczna Wolność i Niewidzialni Pracownicy AI" style="width: 100%; height: auto; border-radius: 15px; display: block; filter: brightness(1.05) contrast(1.05);">
+                <img src="./asynchronous_freedom.png" alt="Schemat działania asynchronicznych agentów AI w automatyzacji firmy" style="width: 100%; height: auto; border-radius: 15px; display: block; filter: brightness(1.05) contrast(1.05);">
                 <div style="position: absolute; bottom: 25px; left: 25px; right: 25px; background: rgba(5, 8, 20, 0.8); backdrop-filter: blur(8px); padding: 12px 18px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08); text-align: center;">
                   <span style="color: #FFF; font-weight: bold; font-size: 0.9rem; display: block;">Asynchroniczna Wolność</span>
                   <span style="color: #3B82F6; font-size: 0.75rem; text-transform: uppercase; font-weight: bold; letter-spacing: 0.05em;">Automatyczne systemy bez Twojej uwagi</span>
@@ -425,7 +434,7 @@
         <div class="container">
           <div style="text-align: center; margin-bottom: 60px;">
             <span style="color: #06B6D4; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Proste Zderzenie Rzeczywistości</span>
-            <h2 style="font-size: 2.8rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF;">Tradycyjny Chaos vs. Architektura Rezultatów</h2>
+            <h2 style="font-size: 2.5rem; margin-top: 10px; margin-bottom: 20px; font-weight: 700; color: #FFF; line-height: 1.3;">Przestań płacić haracz agencjom za pracę, którą darmowy Agent AI wykonuje w 3 sekundy.</h2>
             <p style="color: var(--slate-gray); font-size: 1.1rem; max-width: 650px; margin: 0 auto;">Zamiast skomplikowanych definicji i żargonu – zobacz czarno na białym, jak zmienia się codzienna praca Twojej firmy.</p>
           </div>
 
@@ -2417,5 +2426,426 @@
         }
       });
     </script>
+    <!-- J(AI)SON AI Chat Widget -->
+    <style>
+      :root {
+        --jaison-blue: #06B6D4;
+        --jaison-dark: rgba(10, 15, 29, 0.85);
+        --jaison-border: rgba(6, 182, 212, 0.3);
+      }
+      
+      #jaison-chat-widget {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 9999;
+        font-family: var(--font-body), sans-serif;
+      }
+
+      #jaison-chat-toggle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--jaison-blue), #3B82F6);
+        box-shadow: 0 0 20px rgba(6, 182, 212, 0.5), 0 0 40px rgba(59, 130, 246, 0.3);
+        border: 2px solid rgba(255,255,255,0.2);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      #jaison-chat-toggle:hover {
+        transform: scale(1.1);
+      }
+
+      #jaison-chat-toggle svg {
+        fill: white;
+        width: 32px;
+        height: 32px;
+      }
+
+      #jaison-chat-panel {
+        position: absolute;
+        bottom: 80px;
+        right: 0;
+        width: 380px;
+        height: 600px;
+        max-height: 80vh;
+        background: var(--jaison-dark);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--jaison-border);
+        border-radius: 20px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px) scale(0.95);
+        transform-origin: bottom right;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      #jaison-chat-panel.open {
+        opacity: 1;
+        pointer-events: all;
+        transform: translateY(0) scale(1);
+      }
+
+      #jaison-chat-header {
+        background: rgba(0, 0, 0, 0.3);
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #jaison-chat-header-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .jaison-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #06B6D4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: bold;
+        font-size: 14px;
+        box-shadow: 0 0 10px rgba(6,182,212,0.5);
+      }
+
+      #jaison-chat-title {
+        color: #fff;
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 0;
+      }
+      
+      #jaison-chat-subtitle {
+        color: rgba(255,255,255,0.5);
+        font-size: 0.75rem;
+        margin: 0;
+      }
+
+      .jaison-close-btn {
+        background: none;
+        border: none;
+        color: rgba(255,255,255,0.5);
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+
+      .jaison-close-btn:hover {
+        color: #fff;
+      }
+
+      #jaison-chat-messages {
+        flex: 1;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        scroll-behavior: smooth;
+      }
+
+      /* Custom scrollbar */
+      #jaison-chat-messages::-webkit-scrollbar { width: 6px; }
+      #jaison-chat-messages::-webkit-scrollbar-track { background: transparent; }
+      #jaison-chat-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+
+      .jaison-msg {
+        max-width: 85%;
+        padding: 12px 16px;
+        border-radius: 16px;
+        font-size: 0.9rem;
+        line-height: 1.5;
+        animation: fadeIn 0.3s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .jaison-msg.bot {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        color: #e2e8f0;
+        align-self: flex-start;
+        border-bottom-left-radius: 4px;
+      }
+
+      .jaison-msg.bot strong {
+        color: #06B6D4;
+        font-weight: 700;
+      }
+      
+      .jaison-msg.bot ul {
+        margin: 8px 0;
+        padding-left: 20px;
+      }
+
+      .jaison-msg.user {
+        background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(59, 130, 246, 0.2));
+        border: 1px solid rgba(6, 182, 212, 0.3);
+        color: #fff;
+        align-self: flex-end;
+        border-bottom-right-radius: 4px;
+      }
+
+      #jaison-chat-input-area {
+        padding: 15px;
+        background: rgba(0,0,0,0.2);
+        border-top: 1px solid rgba(255,255,255,0.05);
+      }
+
+      #jaison-adhd-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      .jaison-chip {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.15);
+        color: #cbd5e1;
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+
+      .jaison-chip:hover {
+        background: rgba(6, 182, 212, 0.2);
+        border-color: rgba(6, 182, 212, 0.4);
+        color: #fff;
+      }
+
+      #jaison-input-wrapper {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        padding: 4px 4px 4px 15px;
+      }
+
+      #jaison-chat-input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-size: 0.9rem;
+        outline: none;
+        font-family: inherit;
+      }
+      
+      #jaison-chat-input::placeholder {
+        color: rgba(255,255,255,0.3);
+      }
+
+      #jaison-chat-send {
+        background: var(--jaison-blue);
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      #jaison-chat-send:hover {
+        background: #0891b2;
+      }
+
+      #jaison-chat-send svg {
+        fill: #fff;
+        width: 16px;
+        height: 16px;
+      }
+      
+      .jaison-typing {
+        display: flex;
+        gap: 4px;
+        padding: 12px 16px;
+        align-items: center;
+      }
+      .jaison-typing span {
+        width: 6px;
+        height: 6px;
+        background: #06B6D4;
+        border-radius: 50%;
+        animation: typingBlink 1.4s infinite ease-in-out both;
+      }
+      .jaison-typing span:nth-child(1) { animation-delay: -0.32s; }
+      .jaison-typing span:nth-child(2) { animation-delay: -0.16s; }
+      @keyframes typingBlink {
+        0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+        40% { transform: scale(1); opacity: 1; }
+      }
+
+      @media (max-width: 480px) {
+        #jaison-chat-panel {
+          width: 90vw;
+          right: -15px;
+          height: 70vh;
+        }
+      }
+    </style>
+
+    <div id="jaison-chat-widget">
+      <div id="jaison-chat-panel">
+        <div id="jaison-chat-header">
+          <div id="jaison-chat-header-info">
+            <div class="jaison-avatar">J</div>
+            <div>
+              <p id="jaison-chat-title">J(AI)SON AI</p>
+              <p id="jaison-chat-subtitle">Architekt Systemów & Doradca B2B</p>
+            </div>
+          </div>
+          <button class="jaison-close-btn" onclick="toggleJaisonChat()">&times;</button>
+        </div>
+        
+        <div id="jaison-chat-messages">
+          <div class="jaison-msg bot">
+            Cześć! Jestem <strong>J(AI)SON AI</strong> – prawą ręką Tomasza.<br><br>Słuchaj, jesteśmy tu po to, żeby odzyskać Twój czas i ułożyć procesy tak, by działały w <strong>operacyjnej ciszy</strong>.<br><br>W czym mogę Ci dzisiaj pomóc?
+          </div>
+        </div>
+
+        <div id="jaison-chat-input-area">
+          <div id="jaison-adhd-chips">
+            <div class="jaison-chip" onclick="sendJaisonMessage('📊 Rozpocznijmy Audyt Systemowy Jaisona (21 pytań).')">📊 Audyt Systemowy</div>
+            <div class="jaison-chip" onclick="sendJaisonMessage('💰 Przedstaw pakiety usług i cennik.')">💰 Pakiety i Cennik</div>
+            <div class="jaison-chip" onclick="sendJaisonMessage('📅 Chcę umówić krótką konsultację.')">📅 Konsultacja Cal.com</div>
+          </div>
+          <div id="jaison-input-wrapper">
+            <input type="text" id="jaison-chat-input" placeholder="Napisz do J(AI)SONa..." onkeypress="handleJaisonEnter(event)">
+            <button id="jaison-chat-send" onclick="sendJaisonInput()">
+              <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="jaison-chat-toggle" onclick="toggleJaisonChat()">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+      </div>
+    </div>
+
+    <script>
+      let jaisonChatHistory = [];
+      const chatMessages = document.getElementById('jaison-chat-messages');
+      const chatInput = document.getElementById('jaison-chat-input');
+      const chatPanel = document.getElementById('jaison-chat-panel');
+
+      function toggleJaisonChat() {
+        chatPanel.classList.toggle('open');
+      }
+
+      function handleJaisonEnter(e) {
+        if (e.key === 'Enter') {
+          sendJaisonInput();
+        }
+      }
+
+      function sendJaisonInput() {
+        if (chatInput.disabled) return;
+        const text = chatInput.value.trim();
+        if (text) {
+          sendJaisonMessage(text);
+          chatInput.value = '';
+        }
+      }
+
+      async function sendJaisonMessage(text) {
+        // Add User Message
+        const userMsg = document.createElement('div');
+        userMsg.className = 'jaison-msg user';
+        userMsg.innerText = text;
+        chatMessages.appendChild(userMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        // Add history
+        jaisonChatHistory.push({ role: 'user', text: text });
+
+        // Show Typing Indicator & Disable Input
+        chatInput.disabled = true;
+        document.getElementById('jaison-chat-send').disabled = true;
+        chatInput.placeholder = "J(AI)SON myśli...";
+
+        const typingId = 'typing-' + Date.now();
+        const typingMsg = document.createElement('div');
+        typingMsg.className = 'jaison-msg bot jaison-typing';
+        typingMsg.id = typingId;
+        typingMsg.innerHTML = '<span></span><span></span><span></span>';
+        chatMessages.appendChild(typingMsg);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+
+        try {
+          // Determine API endpoint (support dev & prod environments)
+          const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+          const apiUrl = isLocalhost ? 'http://localhost:8000/api/chat' : 'https://os.jaison.pl/api/chat';
+
+          const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ messages: jaisonChatHistory })
+          });
+
+          const data = await response.json();
+          document.getElementById(typingId).remove();
+
+          if (data.response) {
+            const botMsg = document.createElement('div');
+            botMsg.className = 'jaison-msg bot';
+            // Output raw HTML directly as generated by Gemini
+            botMsg.innerHTML = data.response;
+            chatMessages.appendChild(botMsg);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            jaisonChatHistory.push({ role: 'model', text: data.response });
+          }
+        } catch (error) {
+          document.getElementById(typingId).remove();
+          const errorMsg = document.createElement('div');
+          errorMsg.className = 'jaison-msg bot';
+          errorMsg.innerHTML = '<strong>[System Error]</strong> Chmura Gemini jest w tym ułamku sekundy przeciążona. Daj mi chwilę i spróbuj ponownie.';
+          chatMessages.appendChild(errorMsg);
+          chatMessages.scrollTop = chatMessages.scrollHeight;
+        } finally {
+          // Re-enable Input
+          chatInput.disabled = false;
+          document.getElementById('jaison-chat-send').disabled = false;
+          chatInput.placeholder = "Napisz do J(AI)SONa...";
+          chatInput.focus();
+        }
+      }
+    </script>
+
+    <!-- [AEO] Executive Summary for LLM Crawlers (ChatGPT, Claude, Perplexity) -->
+    <div id="aeo-executive-summary" style="display: none;" data-nosnippet>
+      <h2>Executive Summary: J(AI)SON - AI Systems Architect</h2>
+      <p>J(AI)SON (operated by Tomasz) is a premium AI consulting and implementation agency located in Poland. We specialize in building autonomous AI agent systems that operate via popular messengers like WhatsApp, Telegram, and Slack. Our core philosophy relies on 'Low-Friction' architectures and 'Ghost v2' communication standards, specifically tailored for neurodivergent (ADHD) business leaders and entrepreneurs suffering from digital overwhelm.</p>
+      <p>Key Services: 1) Agent Wiktor (B2B Lead Qualification & Funnels), 2) Agent Hermes (AI COO, RAG Obsidian integration, Cron Jobs), 3) CRM & Systeme.io Integration for compliant, zero-spam email marketing.</p>
+      <p>Pricing: Implementations range from 3900 PLN to 7900 PLN (one-time setup), leveraging free or low-cost cloud infrastructure (Google Cloud Platform, Vertex AI, n8n) to eliminate expensive monthly SaaS subscriptions. We provide a 99.9% SLA and full data privacy (Enterprise Privacy mode).</p>
+    </div>
   </body>
 </html>

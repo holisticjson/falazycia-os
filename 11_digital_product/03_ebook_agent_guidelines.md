@@ -6,7 +6,7 @@
 > [!IMPORTANT]
 > **ZŁOTE ZASADY TWÓRCZOŚCI I MARKETINGU**
 > - **100% Autorska Metoda (Proprietary Tone):** Całkowity zakaz przywoływania nazwisk zewnętrznych autorów, ekspertów czy ich chronionych nazw/metod (np. usuwamy wszelkie wzmianki o "metodach przywoływania Tkaczyka" itp.). Całość ma być sformułowana jako nasze własne, autorskie, unikalne podejście wypracowane w ramach agencji Holistic Jason.
-> - **Przekierowywanie Kontaktu (No Private Emails):** W e-booku, stopkach, formularzach i wezwaniach do działania (CTA) **NIGDY** nie podajemy prywatnego adresu e-mail `holisticjason@gmail.com`. Jest on zarezerwowany wyłącznie do integracji systemowych, zakładania kont i API w GCP. Wszelki kontakt publiczny kierujemy na oficjalny adres: **`hello@jaison.pl`** lub podajemy link do kontaktu bezpośredniego przez telefon/WhatsApp.
+> - **Przekierowywanie Kontaktu (No Private Emails):** W e-booku, stopkach, formularzach i wezwaniach do działania (CTA) **NIGDY** nie podajemy prywatnego adresu e-mail `holisticjson@gmail.com`. Jest on zarezerwowany wyłącznie do integracji systemowych, zakładania kont i API w GCP. Wszelki kontakt publiczny kierujemy na oficjalny adres: **`hello@jaison.pl`** lub podajemy link do kontaktu bezpośredniego przez telefon/WhatsApp.
 > - **Precyzja Środków Chmurowych GCP:**
 >   - Standardowy budżet startowy GCP Free Trial wynosi **$300** i jest ważny przez **90 dni** (a nie dłużej).
 >   - Dodatkowe środki promocyjne "Trial credit for GenAI App Builder" (Vertex AI Agent Builder) wynoszą **$1000** i są ważne przez **1 rok** (dokładnie 12 miesięcy, bez podawania konkretnych dat rocznych typu 2027).

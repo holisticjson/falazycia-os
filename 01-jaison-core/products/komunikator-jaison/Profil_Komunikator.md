@@ -9,9 +9,11 @@ Karta kontrolna, ścieżki i dokumentacja dla własnej aplikacji mobilnej **Komu
 *   **Katalog Projektu (Stacjonarny & Laptop):**
     `C:\Aplikacje MVP\Android`
 *   **Dedykowany Adres Dystrybucji:**
-    Darmowy lead magnet dystrybuowany za pośrednictwem platformy **`app.jaison.pl`** (oraz dedykowanej subdomeny `android.jaison.pl`).
-*   **Baza Danych (SQLite):**
-    `C:\Aplikacje MVP\Android\hermes.db`
+    Darmowy lead magnet dystrybuowany za pośrednictwem platformy **`app.jaison.pl`** .
+*   **Baza Danych (SQLite - Lokalnie):**
+    `C:\Aplikacje MVP\Android\server\hermes.db`
+*   **Baza Danych (SQLite - VPS Produkcja):**
+    `/home/tomas_yq1b9su/hermes-server/hermes.db`
 
 ---
 
@@ -21,7 +23,7 @@ Karta kontrolna, ścieżki i dokumentacja dla własnej aplikacji mobilnej **Komu
 
 ### 💎 Strategia Produktowa (Free vs PRO):
 1.  **Wersja Darmowa (Lead Magnet):** 
-    *   Udostępniana bezpłatnie na **`app.jaison.pl`** w celu pobrania w zamian za zapis na listę mailingową w Systeme.io.
+    *   Udostępniana bezpłatnie na **`app.jaison.pl`** w celu pobrania w zamian za zapis na listę mailingową obsługiwaną przez darmowe, samohostowane n8n na serwerze VPS (automatyczny zapis do Google Sheets i natychmiastowa wysyłka e-booka "Prywatna Twierdza").
     *   Oferuje bezpieczną, szyfrowaną lokalnie wymianę wiadomości i asynchroniczne przesyłanie notatek głosowych/tekstowych do uproszczonego bazy wiedzy.
 2.  **Wersje Płatne i Warianty PRO (SaaS / Premium):**
     *   W przyszłości na platformie **`app.jaison.pl`** pojawią się płatne subskrypcje i wersje premium (PRO) Komunikatora.
@@ -35,7 +37,7 @@ Wdrożenie kodu mobilnego i serwerowego z poziomu folderu `C:\Aplikacje MVP\Andr
 
 ### A. Kompilacja i Deploy APK:
 ```powershell
-# Uruchomienie oficjalnego skryptu kompilacji i wysłania na serwer android.jaison.pl:
+# Uruchomienie oficjalnego skryptu kompilacji i wysłania na serwer app.jaison.pl (serwer produkcyjny VPS):
 .\deploy.ps1
 ```
 

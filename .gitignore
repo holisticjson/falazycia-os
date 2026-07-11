@@ -29,6 +29,8 @@ Thumbs.db
 *.log
 *.tmp
 *.swp
+*.db
+
 
 # === DUŻE FOLDERY DANYCH ===
 02_knowledge_base/raw/
