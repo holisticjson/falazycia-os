@@ -4272,17 +4272,17 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "Landing"
                 st.rerun()
 
-            # 9. LABCLUB INTELLIGENCE HUB
+            # 9. RESEARCH HUB
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #06B6D4; min-height: 200px;">
-                <h3 style="color: #06B6D4; margin: 0; font-size: 1.3rem;">🧠 LabClub Intelligence Hub</h3>
+                <h3 style="color: #06B6D4; margin: 0; font-size: 1.3rem;">🧠 Research Hub</h3>
                 <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
-                    Centrum głębokiej analizy i planowania strategicznego (a'la labclub.ai). Modele rozumowania Gemini przeprowadzają research rynkowy i generują gotowe raporty.
+                    Centrum głębokiej analizy i planowania strategicznego. Zaawansowane modele rozumowania Gemini przeprowadzają szczegółowy research rynkowy i generują gotowe raporty biznesowe.
                 </p>
             </div>
             """, unsafe_allow_html=True)
-            if st.button("👉 Uruchom LabClub Hub", key="btn_run_labclub", use_container_width=True):
-                st.session_state.active_suite_tool = "LabClub"
+            if st.button("👉 Uruchom Research Hub", key="btn_run_labclub", use_container_width=True):
+                st.session_state.active_suite_tool = "ResearchHub"
                 st.rerun()
 
         with col_c2:
@@ -4857,63 +4857,9 @@ Połącz Systeme.io z n8n. Cały ruch organiczny zamienia się w leady i subskry
 </body>
 </html>""", language="html")
 
-        # --- TOOL 8: ADK AGENTS PIPELINE ---
-        elif tool == "ADK":
-            st.subheader("🤖 Sztab Dyrektorów AI (Google ADK & gemini-3.5-flash)")
-            st.markdown("Opracuj kompletną kampanię marketingowo-wdrożeniową za pomocą wieloagentowego potoku decyzyjnego.")
-            
-            client_brief = st.text_area(
-                "Wprowadź brief klienta lub notatki z terenu:",
-                height=180,
-                placeholder="Np.: Firma kurczaku jasia - lokalny food truck z burgerami i kurczakami w chrupiącej panierce. Chcą zwiększyć liczbę zamówień telefonicznych, przyciągnąć młodzież ze szkół średnich i wypromować nowe menu lunchowe.",
-                key="suite_adk_brief"
-            )
-            
-            if "agency_results" not in st.session_state:
-                st.session_state.agency_results = None
-
-            if st.button("🚀 Uruchom Potok Dyrektorów ADK", type="primary", use_container_width=True):
-                if not client_brief.strip():
-                    st.warning("⚠️ Wprowadź najpierw brief klienta!")
-                else:
-                    with st.spinner("Sztab Dyrektorów AI analizuje brief w chmurze (Google ADK & gemini-3.5-flash)..."):
-                        try:
-                            import sys, os
-                            pipeline_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "01-jaison-core", "agents-pipeline"))
-                            if pipeline_path not in sys.path:
-                                sys.path.append(pipeline_path)
-                            import agents, importlib
-                            importlib.reload(agents)
-                            
-                            results = agents.run_agency_pipeline(client_brief)
-                            st.session_state.agency_results = results
-                            if results.get("status") == "success":
-                                st.success(f"⚡ Kampania pomyślnie wygenerowana w {results.get('execution_time_seconds')} sekund!")
-                            else:
-                                st.error(f"Błąd potoku: {results.get('error_message')}")
-                        except Exception as ex:
-                            st.error(f"Nie udało się uruchomić ADK: {str(ex)}")
-                            
-            if st.session_state.agency_results and st.session_state.agency_results.get("status") == "success":
-                res = st.session_state.agency_results
-                t_ceo, t_cmo, t_cpo, t_cto = st.tabs([
-                    "💼 I. CEO (Dekompozycja)",
-                    "📈 II. CMO (Strategia i Kalendarz)",
-                    "🎨 III. CPO (Visual & Branding)",
-                    "🛠️ IV. CTO (Prompty)"
-                ])
-                with t_ceo:
-                    st.markdown(res.get("ceo_analysis", ""))
-                with t_cmo:
-                    st.markdown(res.get("cmo_strategy", ""))
-                with t_cpo:
-                    st.markdown(res.get("cpo_branding", ""))
-                with t_cto:
-                    st.markdown(res.get("cto_prompts", ""))
-
-        # --- TOOL 9: LABCLUB INTELLIGENCE HUB ---
-        elif tool == "LabClub":
-            st.subheader("🧠 LabClub Intelligence Hub — Głęboki Research & Analiza")
+        # --- TOOL 9: RESEARCH HUB ---
+        elif tool == "ResearchHub":
+            st.subheader("🧠 Research Hub — Głęboki Research & Analiza")
             st.markdown("Zaawansowane narzędzie do eksploracji nisz rynkowych, analizy trendów rynkowych i projektowania lejków High-Ticket. Oparte na modelach rozumowania Gemini.")
             
             research_topic = st.text_input("Wpisz temat researchu (np. 'SaaS AI dla branży nieruchomości w Polsce' lub 'Faceless kanały o finansach osobistych'):", 
@@ -4944,6 +4890,7 @@ Zawsze formatuj wyjście w sposób przejrzysty dla osób z ADHD (pogrubienia, wy
 
                         prompt_user = f"""Temat researchu: {research_topic}
 Poziom szczegółowości: {depth_level}
+Custom branding: Research Hub (brak jakichkolwiek nawiązań do innych zewnętrznych platform).
 
 Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan taktyczny podzielony na sekcje:
 1. 💡 DIAGNOZA NISZY: Zidentyfikuj 3 największe bóle (pain points) klientów w tym segmencie.
@@ -4960,7 +4907,7 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
                         st.error(f"Błąd analizy: {str(ex)}")
                         
             if st.session_state.lc_brief_result:
-                st.markdown("### 📋 Wynik Analizy Strategicznej (LabClub Hub)")
+                st.markdown("### 📋 Wynik Analizy Strategicznej (Research Hub)")
                 st.markdown(st.session_state.lc_brief_result)
                 
                 # Opcja pobrania i zapisu
@@ -4969,7 +4916,7 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
                     st.download_button(
                         "📥 Pobierz jako plik tekstowy",
                         data=st.session_state.lc_brief_result,
-                        file_name=f"labclub_research_{research_topic.lower().replace(' ', '_')}.txt",
+                        file_name=f"research_hub_{research_topic.lower().replace(' ', '_')}.txt",
                         mime="text/plain",
                         use_container_width=True
                     )
@@ -4977,11 +4924,11 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
                     if st.button("💾 Zapisz do Bazy Wiedzy (Vault)", use_container_width=True):
                         try:
                             # Tworzenie dokumentu i zapisu
-                            vault_path = os.path.join(BRAIN_DUMP_DIR, f"labclub_brief_{int(time.time())}.json")
+                            vault_path = os.path.join(BRAIN_DUMP_DIR, f"research_hub_brief_{int(time.time())}.json")
                             dump_data = {
-                                "id": f"labclub_{int(time.time())}",
+                                "id": f"research_hub_{int(time.time())}",
                                 "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                                "thought": f"Analiza LabClub dla: {research_topic}\n\n{st.session_state.lc_brief_result}",
+                                "thought": f"Analiza Research Hub dla: {research_topic}\n\n{st.session_state.lc_brief_result}",
                                 "links": "",
                                 "file_attached": None,
                                 "category": "Now",
