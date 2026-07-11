@@ -601,6 +601,7 @@ def generate_imagen_image(prompt, aspect_ratio="1:1", reference_image_bytes=None
     """
     import base64
     import json
+    import requests
     token, project_id = get_gcp_token()
     if not token:
         return None, "Brak autoryzacji GCP Service Account. Sprawdź pliki klucza."
@@ -615,18 +616,69 @@ def generate_imagen_image(prompt, aspect_ratio="1:1", reference_image_bytes=None
     
     instance = {"prompt": prompt}
     
-    # Obsługa obrazu referencyjnego (Subject Reference Image)
+    # Obsługa obrazu referencyjnego (Subject/Style Reference Image)
     if reference_image_bytes:
-        b64_data = base64.b64encode(reference_image_bytes).decode("utf-8")
-        instance["referenceImages"] = [
-            {
-                "referenceId": 1,
-                "referenceType": reference_type,
-                "image": {
-                    "bytesBase64Encoded": b64_data
-                }
+        # Resize do max 256x256 za pomocą PIL, aby spełnić twarde ograniczenia rozmiaru Vertex AI REST API
+        try:
+            from PIL import Image
+            import io
+            img = Image.open(io.BytesIO(reference_image_bytes))
+            img.thumbnail((256, 256))
+            buf = io.BytesIO()
+            img.save(buf, format="PNG")
+            resized_bytes = buf.getvalue()
+            b64_data = base64.b64encode(resized_bytes).decode("utf-8")
+        except Exception as p_ex:
+            resized_bytes = reference_image_bytes
+            b64_data = base64.b64encode(reference_image_bytes).decode("utf-8")
+            
+        if reference_type == "REFERENCE_TYPE_SUBJECT":
+            # Dla SUBJECT Vertex AI bezwzględnie wymaga ścieżki GCS (gs://...)
+            bucket_name = "holistic-brand-assets"
+            object_name = "temp_ref_subject.png"
+            gcs_url = f"https://storage.googleapis.com/upload/storage/v1/b/{bucket_name}/o?uploadType=media&name={object_name}"
+            gcs_headers = {
+                "Authorization": f"Bearer {token}",
+                "Content-Type": "image/png"
             }
-        ]
+            try:
+                gcs_res = requests.post(gcs_url, headers=gcs_headers, data=resized_bytes, timeout=30, verify=False)
+                if gcs_res.status_code in [200, 201]:
+                    gcs_uri = f"gs://{bucket_name}/{object_name}"
+                else:
+                    return None, f"Błąd wgrywania obrazu referencyjnego na GCS: {gcs_res.status_code} - {gcs_res.text}"
+            except Exception as upload_ex:
+                return None, f"Wyjątek podczas wgrywania na GCS: {str(upload_ex)}"
+                
+            ref_image_obj = {
+                "gcsUri": gcs_uri,
+                "mimeType": "image/png"
+            }
+        else:
+            # STYLE lub RAW mogą korzystać z bezpośrednich bajtów
+            ref_image_obj = {
+                "imageBytes": b64_data,
+                "mimeType": "image/png"
+            }
+        
+        ref_item = {
+            "referenceId": 1,
+            "referenceType": reference_type,
+            "referenceImage": ref_image_obj
+        }
+        
+        if reference_type == "REFERENCE_TYPE_SUBJECT":
+            ref_item["subjectImageConfig"] = {
+                "subjectDescription": "a professional creative male in his 30s",
+                "subjectType": "SUBJECT_TYPE_PERSON"
+            }
+        elif reference_type == "REFERENCE_TYPE_STYLE":
+            ref_item["styleImageConfig"] = {
+                "styleDescription": "glowing professional style"
+            }
+            
+        instance["referenceImages"] = [ref_item]
+        
         if "[1]" not in prompt:
             prompt = f"Using subject [1] as character reference, {prompt}"
             instance["prompt"] = prompt
@@ -651,6 +703,21 @@ def generate_imagen_image(prompt, aspect_ratio="1:1", reference_image_bytes=None
                 return img_bytes, None
             else:
                 return None, f"Brak wygenerowanego obrazu w odpowiedzi: {response.text}"
+        elif response.status_code == 429:
+            err_msg = (
+                "⚠️ **PRZEKROCZONO LIMIT / BRAK UPRAWNIEŃ QUOTA NA GCP**\n\n"
+                "Twój projekt Google Cloud (`holistic-dashboard-dev`) posiada domyślny limit **0** (lub wyczerpany) "
+                "dla zaawansowanych funkcji modelu **Imagen 3.0 (customizacja postaci / stylów przez reference images)**.\n\n"
+                "**Jak to naprawić w 2 minuty?**\n"
+                "1. Zaloguj się do **Google Cloud Console** na swoim koncie.\n"
+                "2. Przejdź do zakładki **Quotas & System Limits** (Limity i przydziały):\n"
+                "   👉 [https://console.cloud.google.com/iam-admin/quotas](https://console.cloud.google.com/iam-admin/quotas)\n"
+                "3. Wyszukaj limit o nazwie: `aiplatform.googleapis.com/online_prediction_requests_per_base_model`.\n"
+                "4. Znajdź pozycję dla modelu `imagen-3.0-generate`.\n"
+                "5. Kliknij **EDIT QUOTAS** (Edytuj limity), wpisz nową wartość (np. **100** lub więcej) i wyślij zgłoszenie.\n"
+                "6. Akceptacja przez Google następuje automatycznie w ciągu kilku minut!"
+            )
+            return None, err_msg
         else:
             return None, f"GCP API Error {response.status_code}: {response.text}"
     except Exception as e:
@@ -4205,6 +4272,19 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "Landing"
                 st.rerun()
 
+            # 9. LABCLUB INTELLIGENCE HUB
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #06B6D4; min-height: 200px;">
+                <h3 style="color: #06B6D4; margin: 0; font-size: 1.3rem;">🧠 LabClub Intelligence Hub</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Centrum głębokiej analizy i planowania strategicznego (a'la labclub.ai). Modele rozumowania Gemini przeprowadzają research rynkowy i generują gotowe raporty.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom LabClub Hub", key="btn_run_labclub", use_container_width=True):
+                st.session_state.active_suite_tool = "LabClub"
+                st.rerun()
+
         with col_c2:
             # 5. FLUX ART STUDIO
             st.markdown("""
@@ -4247,8 +4327,8 @@ elif menu == "Jaison Agency":
 
             # 8. ADK DIRECTORS AGENTS
             st.markdown("""
-            <div class="custom-card" style="border-left: 5px solid #10B981; min-height: 200px;">
-                <h3 style="color: #10B981; margin: 0; font-size: 1.3rem;">🤖 Sztab Dyrektorów AI (Google ADK)</h3>
+            <div class="custom-card" style="border-left: 5px solid #3B82F6; min-height: 200px;">
+                <h3 style="color: #3B82F6; margin: 0; font-size: 1.3rem;">🤖 Sztab Dyrektorów AI (Google ADK)</h3>
                 <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
                     Uruchom potok wieloagentowy (CEO, CMO, CPO, CTO) zasilany przez Vertex AI i Google ADK, aby opracować kampanię.
                 </p>
@@ -4256,6 +4336,32 @@ elif menu == "Jaison Agency":
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Sztab Dyrektorów", key="btn_run_adk", use_container_width=True):
                 st.session_state.active_suite_tool = "ADK"
+                st.rerun()
+
+            # 10. E-COMMERCE BACKGROUND REMOVAL STUDIO
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #EC4899; min-height: 200px;">
+                <h3 style="color: #EC4899; margin: 0; font-size: 1.3rem;">⚡ E-Commerce Background Studio</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Błyskawiczne i precyzyjne wycinanie tła z produktów przy użyciu modelu fal-ai/birefnet. Perfekcyjne dopasowanie pod sklepy internetowe i reklamy UGC.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Ecom Studio", key="btn_run_ecom", use_container_width=True):
+                st.session_state.active_suite_tool = "Ecom"
+                st.rerun()
+
+            # 11. 3D WEB GENERATOR & CREATIVE FX
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #F59E0B; min-height: 200px;">
+                <h3 style="color: #F59E0B; margin: 0; font-size: 1.3rem;">🌌 3D Web & Interactive FX Builder</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Generuj niesamowite interaktywne efekty 3D, karty, cząsteczki i tła w Three.js / CSS/JS dające natychmiastowy efekt WOW na Twojej stronie.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Kreator 3D Web FX", key="btn_run_3dfx", use_container_width=True):
+                st.session_state.active_suite_tool = "3D FX"
                 st.rerun()
 
     # ------------------ INDYWIDUALNE NARZĘDZIA (GUI) ------------------
@@ -4295,6 +4401,29 @@ elif menu == "Jaison Agency":
                     base_file = st.file_uploader("Wgraj tło (np. wygenerowane z Flux/Midjourney):", type=["png", "jpg", "jpeg", "webp"], key="suite_fs_base")
                     if base_file:
                         st.image(base_file, caption="Załadowane tło", use_container_width=True)
+                        if st.button("🔍 Odtwórz prompt z tego tła (Reverse Prompting)", key="suite_fs_reverse_prompt_btn", use_container_width=True):
+                            with st.spinner("Gemini analizuje tło i odtwarza szczegółowy prompt fotograficzny..."):
+                                try:
+                                    import base64
+                                    b64_img = base64.b64encode(base_file.getvalue()).decode("utf-8")
+                                    prompt_text = (
+                                        "Analyze this background/scene and describe it in a detailed, professional photography prompt format. "
+                                        "Focus on style, background details, perspective, color palette, lighting setup (studio, cinematic, neon, etc.), "
+                                        "and overall design studio aesthetic. Respond ONLY with the prompt in English."
+                                    )
+                                    messages = [{
+                                        "role": "user",
+                                        "content": [
+                                            {"type": "text", "text": prompt_text},
+                                            {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{b64_img}"}}
+                                        ]
+                                    }]
+                                    system_inst = "You are a professional prompt engineer for AI image generators. Output ONLY the photographic prompt description."
+                                    rev_prompt = call_gemini_api(messages, system_inst)
+                                    st.session_state.suite_fs_expanded_prompt = rev_prompt.strip()
+                                    st.success("🎉 Prompt odtworzony pomyślnie! Przełącz się na tryb 'Generator nowej postaci na bazie promptu', aby go użyć!")
+                                except Exception as ex:
+                                    st.error(f"❌ Nie udało się odczytać promptu ze zdjęcia: {str(ex)}")
                 else:
                     st.markdown("##### ✍️ 1. Prompt & Stylizacja Sceny")
                     st.info("💡 Napisz po polsku lub angielsku kogo i gdzie chcesz wygenerować (np. 'Tomasz jako prezes w fioletowym garniturze na dachu wieżowca w Warszawie').")
@@ -4781,6 +4910,432 @@ Połącz Systeme.io z n8n. Cały ruch organiczny zamienia się w leady i subskry
                     st.markdown(res.get("cpo_branding", ""))
                 with t_cto:
                     st.markdown(res.get("cto_prompts", ""))
+
+        # --- TOOL 9: LABCLUB INTELLIGENCE HUB ---
+        elif tool == "LabClub":
+            st.subheader("🧠 LabClub Intelligence Hub — Głęboki Research & Analiza")
+            st.markdown("Zaawansowane narzędzie do eksploracji nisz rynkowych, analizy trendów rynkowych i projektowania lejków High-Ticket. Oparte na modelach rozumowania Gemini.")
+            
+            research_topic = st.text_input("Wpisz temat researchu (np. 'SaaS AI dla branży nieruchomości w Polsce' lub 'Faceless kanały o finansach osobistych'):", 
+                                          value="Automatyzacje AI dla małych agencji marketingowych w Polsce", key="lc_topic")
+            
+            analyst_persona = st.selectbox(
+                "Wybierz wiodącą rolę stratega:",
+                ["Business & Product Architect (CEO)", "Growth Hacker & Traffic Magnet (CMO)", "NLP Copywriting & Psychology Expert (CSO)"],
+                key="lc_persona"
+            )
+            
+            depth_level = st.select_slider("Głębokość analizy:", options=["Szybki Brief", "Średnia (Standard)", "Ekstremalna (Maksymalna precyzja)"], value="Średnia (Standard)")
+            
+            if "lc_brief_result" not in st.session_state:
+                st.session_state.lc_brief_result = None
+
+            if st.button("🔍 Rozpocznij Głębokie Rozumowanie", type="primary", use_container_width=True):
+                with st.spinner("Gemini przeczesuje bazę wiedzy, modeluje strukturę i przeprowadza analizę..."):
+                    try:
+                        persona_prompts = {
+                            "Business & Product Architect (CEO)": "Jesteś wybitnym CEO AI i architektem biznesowym, specjalistą od modeli subskrypcyjnych, retencji i eliminacji chaosu.",
+                            "Growth Hacker & Traffic Magnet (CMO)": "Jesteś legendarnym CMO, ekspertem od lejków UGC, wirusowych zasięgów organicznych i optymalizacji konwersji (CRO).",
+                            "NLP Copywriting & Psychology Expert (CSO)": "Jesteś mistrzem psychologii sprzedaży i copywritingu NLP (metaprogramy, sensoryka VAK, presupozycje Miltona)."
+                        }
+                        
+                        system_inst = f"""{persona_prompts[analyst_persona]} 
+Zawsze formatuj wyjście w sposób przejrzysty dla osób z ADHD (pogrubienia, wypunktowania, ikony, brak długich bloków tekstu). Stosuj strukturę strategicznego raportu."""
+
+                        prompt_user = f"""Temat researchu: {research_topic}
+Poziom szczegółowości: {depth_level}
+
+Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan taktyczny podzielony na sekcje:
+1. 💡 DIAGNOZA NISZY: Zidentyfikuj 3 największe bóle (pain points) klientów w tym segmencie.
+2. ⚡ ROZWIĄZANIE & PRODUKT: Zaproponuj strukturę produktu High-Ticket lub SaaS, który rozwiązuje te problemy.
+3. 🎯 STRATEGIA MARKETINGOWA & LEJEK: Zaprojektuj 3-etapowy lejek UGC dla kanałów Faceless (TikTok/YT/IG) wraz z propozycją wirusowego formatu wideo.
+4. 💰 MONETYZACJA: Zaproponuj model wyceny i szacunkowy zwrot z inwestycji (ROI) dla klienta.
+5. 📋 PLAN DZIAŁANIA (ACTION PLAN): Lista kontrolna TODO do wdrożenia na już."""
+
+                        messages = [{"role": "user", "content": prompt_user}]
+                        analysis_output = call_gemini_api(messages, system_inst)
+                        st.session_state.lc_brief_result = analysis_output
+                        st.success("🎉 Analiza zakończona sukcesem!")
+                    except Exception as ex:
+                        st.error(f"Błąd analizy: {str(ex)}")
+                        
+            if st.session_state.lc_brief_result:
+                st.markdown("### 📋 Wynik Analizy Strategicznej (LabClub Hub)")
+                st.markdown(st.session_state.lc_brief_result)
+                
+                # Opcja pobrania i zapisu
+                col_b1, col_b2 = st.columns(2)
+                with col_b1:
+                    st.download_button(
+                        "📥 Pobierz jako plik tekstowy",
+                        data=st.session_state.lc_brief_result,
+                        file_name=f"labclub_research_{research_topic.lower().replace(' ', '_')}.txt",
+                        mime="text/plain",
+                        use_container_width=True
+                    )
+                with col_b2:
+                    if st.button("💾 Zapisz do Bazy Wiedzy (Vault)", use_container_width=True):
+                        try:
+                            # Tworzenie dokumentu i zapisu
+                            vault_path = os.path.join(BRAIN_DUMP_DIR, f"labclub_brief_{int(time.time())}.json")
+                            dump_data = {
+                                "id": f"labclub_{int(time.time())}",
+                                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                                "thought": f"Analiza LabClub dla: {research_topic}\n\n{st.session_state.lc_brief_result}",
+                                "links": "",
+                                "file_attached": None,
+                                "category": "Now",
+                                "status": "active"
+                            }
+                            json.dump(dump_data, open(vault_path, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
+                            st.success("💾 Pomyślnie zapisano w Skarbcu Wiedzy!")
+                        except Exception as e_s:
+                            st.error(f"Nie udało się zapisać: {str(e_s)}")
+
+        # --- TOOL 10: E-COMMERCE BACKGROUND STUDIO ---
+        elif tool == "Ecom":
+            st.subheader("⚡ E-Commerce Background Studio — Wycinanie Tła")
+            st.markdown("Wgraj produkt, a zaawansowany model fal-ai/birefnet błyskawicznie usunie tło i wygeneruje przezroczysty plik PNG w najwyższej rozdzielczości.")
+            
+            uploaded_prod = st.file_uploader("Wgraj zdjęcie produktu (PNG/JPG):", type=["png", "jpg", "jpeg", "webp"], key="ecom_uploader")
+            
+            if uploaded_prod:
+                st.image(uploaded_prod, caption="Oryginalne zdjęcie", width=250)
+                
+                if st.button("✂️ Usuń tło (BiRefNet)", type="primary", use_container_width=True):
+                    with st.spinner("Trwa precyzyjne wycinanie tła za pomocą fal.ai..."):
+                        from integrations.fal_ai import run_background_removal
+                        img_bytes, err = run_background_removal(uploaded_prod.getvalue())
+                        if err:
+                            st.error(f"Błąd: {err}")
+                        else:
+                            st.session_state.ecom_cutout = img_bytes
+                            st.success("🎉 Tło usunięte pomyślnie!")
+                            
+            if "ecom_cutout" in st.session_state:
+                st.markdown("### ✨ Wynik (Przezroczysty plik PNG):")
+                st.image(st.session_state.ecom_cutout, caption="Wycięty produkt (PNG)", width=350)
+                
+                # Pobieranie
+                st.download_button(
+                    "📥 Pobierz plik PNG bez tła",
+                    data=st.session_state.ecom_cutout,
+                    file_name="wyciety_produkt.png",
+                    mime="image/png",
+                    use_container_width=True
+                )
+
+        # --- TOOL 11: 3D WEB GENERATOR & CREATIVE FX ---
+        elif tool == "3D FX":
+            st.subheader("🌌 3D Web & Interactive FX Builder")
+            st.markdown("Generuj spektakularne, interaktywne efekty 3D gotowe do wdrożenia bezpośrednio na Twoją stronę agencji `jaison.pl`!")
+            
+            effect_type = st.selectbox(
+                "Wybierz pożądany efekt 3D:",
+                [
+                    "Particle Vortex (Interaktywne cząsteczki reagujące na myszkę) [Three.js]",
+                    "Holographic Tilt Card (Trójwymiarowa lśniąca karta produktu) [Pure CSS/JS]",
+                    "Floating 3D Glass Orbs (Szklane kule w przestrzeni) [Three.js]",
+                    "Digital Cyber Matrix Rain (Wirusowe tło hakerskie) [HTML Canvas]"
+                ]
+            )
+            
+            primary_color = st.color_picker("Wybierz główny kolor efektu:", value="#7C3AED")
+            secondary_color = st.color_picker("Wybierz kolor uzupełniający:", value="#EC4899")
+            
+            # Słownik szablonów kodów HTML/JS
+            templates = {
+                "Particle Vortex (Interaktywne cząsteczki reagujące na myszkę) [Three.js]": f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {{ margin: 0; overflow: hidden; background: #000; }}
+        canvas {{ display: block; }}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({{ antialias: true }});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        for (let i = 0; i < 5000; i++) {{
+            vertices.push(THREE.MathUtils.randFloatSpread(2000));
+            vertices.push(THREE.MathUtils.randFloatSpread(2000));
+            vertices.push(THREE.MathUtils.randFloatSpread(2000));
+        }}
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
+        const material = new THREE.PointsMaterial({{ color: "{primary_color}", size: 3, transparent: true, opacity: 0.8 }});
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        camera.position.z = 500;
+
+        let mouseX = 0, mouseY = 0;
+        document.addEventListener('mousemove', (e) => {{
+            mouseX = (e.clientX - window.innerWidth / 2) * 0.5;
+            mouseY = (e.clientY - window.innerHeight / 2) * 0.5;
+        }});
+
+        function animate() {{
+            requestAnimationFrame(animate);
+            particles.rotation.x += 0.001;
+            particles.rotation.y += 0.002;
+            camera.position.x += (mouseX - camera.position.x) * 0.05;
+            camera.position.y += (-mouseY - camera.position.y) * 0.05;
+            camera.lookAt(scene.position);
+            renderer.render(scene, camera);
+        }}
+        animate();
+
+        window.addEventListener('resize', () => {{
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }});
+    </script>
+</body>
+</html>
+""",
+                "Holographic Tilt Card (Trójwymiarowa lśniąca karta produktu) [Pure CSS/JS]": f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #0d0e15;
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            perspective: 1000px;
+        }}
+        .card {{
+            width: 320px;
+            height: 460px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.1s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 30px;
+            box-sizing: border-box;
+            color: #fff;
+            overflow: hidden;
+        }}
+        .card::before {{
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateY(-100%);
+            transition: 0.5s;
+            pointer-events: none;
+        }}
+        .card:hover::before {{
+            transform: translateY(100%);
+        }}
+        .title {{
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, {primary_color}, {secondary_color});
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0;
+        }}
+        .desc {{
+            color: #a0aec0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }}
+        .btn {{
+            background: linear-gradient(90deg, {primary_color}, {secondary_color});
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+        }}
+    </style>
+</head>
+<body>
+    <div class="card" id="card">
+        <h2 class="title">J(AI)SON PRO</h2>
+        <p class="desc">Doświadcz niesamowitej głębi i interaktywności 3D. Ten komponent reaguje na każdy ruch Twojej myszki, odbijając cyfrowe światło.</p>
+        <button class="btn">Aktywuj Pakiet</button>
+    </div>
+
+    <script>
+        const card = document.getElementById('card');
+        document.addEventListener('mousemove', (e) => {{
+            let xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+            let yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+            card.style.transform = `rotateY(${{xAxis}}deg) rotateX(${{-yAxis}}deg)`;
+        }});
+        document.addEventListener('mouseleave', () => {{
+            card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+        }});
+    </script>
+</body>
+</html>
+""",
+                "Floating 3D Glass Orbs (Szklane kule w przestrzeni) [Three.js]": f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {{ margin: 0; overflow: hidden; background: #07080f; }}
+        canvas {{ display: block; }}
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({{ antialias: true, alpha: true }});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Lights
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 5, 5).normalize();
+        scene.add(light);
+        const ambientLight = new THREE.AmbientLight(0x111111);
+        scene.add(ambientLight);
+
+        // Spheres
+        const count = 25;
+        const spheres = [];
+        const geometry = new THREE.SphereGeometry(20, 32, 32);
+        
+        for (let i = 0; i < count; i++) {{
+            const color = i % 2 === 0 ? "{primary_color}" : "{secondary_color}";
+            const material = new THREE.MeshPhysicalMaterial({{
+                color: color,
+                roughness: 0.1,
+                transmission: 0.9,
+                thickness: 2.0,
+                transparent: true,
+                opacity: 0.8
+            }});
+            const sphere = new THREE.Mesh(geometry, material);
+            sphere.position.x = Math.random() * 800 - 400;
+            sphere.position.y = Math.random() * 800 - 400;
+            sphere.position.z = Math.random() * 800 - 400;
+            sphere.scale.setScalar(Math.random() * 1.5 + 0.5);
+            scene.add(sphere);
+            spheres.push(sphere);
+        }}
+
+        camera.position.z = 500;
+
+        function animate() {{
+            requestAnimationFrame(animate);
+            spheres.forEach(s => {{
+                s.position.y += 0.5 * s.scale.x;
+                if (s.position.y > 400) s.position.y = -400;
+                s.rotation.x += 0.01;
+                s.rotation.y += 0.01;
+            }});
+            renderer.render(scene, camera);
+        }}
+        animate();
+
+        window.addEventListener('resize', () => {{
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }});
+    </script>
+</body>
+</html>
+""",
+                "Digital Cyber Matrix Rain (Wirusowe tło hakerskie) [HTML Canvas]": f"""
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {{ margin: 0; overflow: hidden; background: #000; }}
+        canvas {{ display: block; }}
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const katakana = "アァカサタナハマヤャラワガザダバパイィキシシチニヒミリヰウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱオォコソトノホモヨョロヲゴゾドボポヴッン";
+        const alphabet = katakana.split("");
+
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+
+        const rainDrops = [];
+        for (let x = 0; x < columns; x++) {{
+            rainDrops[x] = 1;
+        }}
+
+        function draw() {{
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "{primary_color}";
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < rainDrops.length; i++) {{
+                const text = alphabet[Math.floor(Math.random() * alphabet.length)];
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {{
+                    rainDrops[i] = 0;
+                }}
+                rainDrops[i]++;
+            }}
+        }}
+
+        setInterval(draw, 30);
+
+        window.addEventListener('resize', () => {{
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }});
+    </script>
+</body>
+</html>
+"""
+            }
+            
+            selected_code = templates[effect_type]
+            
+            # INTERAKTYWNY PODGLĄD LIVE W STREAMLIT! (WOW efekt)
+            st.markdown("### 👁️ Interaktywny Podgląd Live (Trójwymiarowy efekt):")
+            st.components.v1.html(selected_code, height=350, scrolling=False)
+            
+            # Wyświetlanie i kopiowanie kodu
+            st.markdown("### 📋 Kod do wklejenia na Twoją stronę:")
+            st.code(selected_code, language="html")
 
 
 elif menu == "Social Media Hub":
