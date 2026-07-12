@@ -275,7 +275,14 @@ if not st.session_state.authenticated:
         login_pass = st.text_input("Hasło dostępu:", type="password", key="login_password")
         
         if st.button("Autoryzuj i wejdź", type="primary", use_container_width=True):
-            if login_user.strip() == AUTH_USER and login_pass.strip() == AUTH_PASS:
+            # Usunięcie pustych znaków z obu stron
+            u_input = login_user.strip() if login_user else ""
+            p_input = login_pass.strip() if login_pass else ""
+            
+            # Zapisz do logu diagnostycznego serwera
+            print(f"DEBUG LOGIN - Input User: {repr(u_input)} (len={len(u_input)}), Input Pass: {repr(p_input)} (len={len(p_input)}) | Expected User: {repr(AUTH_USER)} (len={len(AUTH_USER)}), Expected Pass: {repr(AUTH_PASS)} (len={len(AUTH_PASS)})")
+            
+            if u_input == AUTH_USER and p_input == AUTH_PASS:
                 st.session_state.authenticated = True
                 st.success("Autoryzacja pomyślna!")
                 time.sleep(0.5)
