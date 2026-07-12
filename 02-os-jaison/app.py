@@ -5632,9 +5632,9 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
         # --- TOOL 8: STUDIO VIDEO, VOICE & FLUX ---
         elif tool == "Studio_Video":
             st.subheader("🎬 Brand Media Studio")
-            st.markdown("Generuj luksusowe efekty 3D, syntezuj unikalne audio i klonuj obrazy z fal.ai.")
+            st.markdown("Generuj luksusowe efekty 3D, syntezuj unikalne audio, projektuj obrazy i twórz kinowe wideo B-Roll z fal.ai.")
             
-            tab_3d, tab_vocal, tab_flux = st.tabs(["✨ Efekty 3D (Three.js)", "🎙️ Voice & Audio Clone", "🖼️ Flux Schnell (fal.ai)"])
+            tab_3d, tab_vocal, tab_flux, tab_video = st.tabs(["✨ Efekty 3D (Three.js)", "🎙️ Voice & Audio Clone", "🖼️ Flux Art Studio (fal.ai)", "🎬 Image-to-Video Studio (fal.ai)"])
             
             with tab_3d:
                 st.subheader("✨ Generator Interaktywnych Efektów 3D (Three.js)")
@@ -5818,31 +5818,297 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                             )
                             
             with tab_flux:
-                st.subheader("🖼️ Flux Schnell Art Studio (fal.ai)")
-                st.markdown("Generuj luksusowe, fotorealistyczne obrazy w ułamku sekundy z najszybszym modelem FLUX Schnell przez API fal.ai.")
+                st.subheader("🖼️ Flux Art Studio (fal.ai)")
+                st.markdown("Generuj luksusowe, fotorealistyczne obrazy przy użyciu najpotężniejszego modelu FLUX Schnell (standard) lub FLUX LoRA (Twój prywatny cyfrowy awatar).")
                 
-                prompt_input = st.text_area("Wpisz prompt dla modelu FLUX:", value="A hyper-realistic cinematic portrait of a modern AI systems architect, working in a luxurious dark office with neon purple light accents, glowing monitors with code, bokeh depth of field, 8k resolution, highly detailed.", height=100, key="suite_studio_flux_prompt")
+                # Checkbox do używania LoRA
+                use_lora = st.checkbox("🧬 Użyj mojego wytrenowanego modelu LoRA (Cyfrowy Awatar)", value=False, key="suite_flux_use_lora")
+                
+                lora_url = ""
+                lora_trigger = "tomasz_hero"
+                lora_scale = 1.0
+                aspect_ratio = "square_hd"
+                
+                if use_lora:
+                    st.markdown("<div style='background: #1E293B; border-radius: 8px; padding: 12px; border: 1px solid #334155; margin-bottom: 12px;'>", unsafe_allow_html=True)
+                    # Sprawdzenie czy LoRA istnieje w sesji
+                    active_url = st.session_state.get("lora_result_url")
+                    active_trigger = st.session_state.get("lora_trigger_word", "tomasz_hero")
+                    
+                    if active_url:
+                        st.info(f"🔌 **Wykryto aktywny model z LoRA Studio!**\n* **Trigger Word:** `{active_trigger}`\n* **Wagi:** `{active_url[:50]}...`")
+                        lora_url = active_url
+                        lora_trigger = active_trigger
+                    else:
+                        st.warning("⚠️ **Nie wykryto aktywnego treningu w sesji.** Podaj wagi ręcznie poniżej lub przejdź do zakładki LoRA Studio.")
+                        
+                    # Pola do ręcznego podpięcia wag lub modyfikacji
+                    with st.expander("⚙️ Zaawansowane Parametry LoRA / Ręczne Podpięcie", expanded=not bool(active_url)):
+                        lora_url = st.text_input("🔗 Bezpośredni URL do pliku wag (.safetensors):", value=lora_url, placeholder="https://v3b.fal.media/files/...", key="suite_flux_lora_url")
+                        lora_trigger = st.text_input("🔑 Słowo aktywujące (Trigger Word):", value=lora_trigger, key="suite_flux_lora_trigger")
+                    
+                    # Parametry generowania obrazu z LoRA
+                    col_p1, col_p2 = st.columns(2)
+                    with col_p1:
+                        aspect_ratio = st.selectbox(
+                            "Proporcje obrazu:", 
+                            ["square_hd", "portrait_4_5", "portrait_16_9", "landscape_16_9"], 
+                            index=0,
+                            key="suite_flux_lora_aspect"
+                        )
+                    with col_p2:
+                        lora_scale = st.slider(
+                            "Wpływ LoRA (Scale):", 
+                            min_value=0.1, 
+                            max_value=2.0, 
+                            value=1.0, 
+                            step=0.1,
+                            key="suite_flux_lora_scale",
+                            help="Wyższe wartości mocniej narzucają Twoje cechy, ale mogą deformować tło. 1.0 to optymalny standard."
+                        )
+                    st.markdown("</div>", unsafe_allow_html=True)
+                    
+                    default_prompt = f"A professional cinematic portrait of {lora_trigger} person wearing a sharp black suit, luxurious office with neon purple lighting, glowing screens, depth of field, photorealistic, 8k"
+                else:
+                    default_prompt = "A hyper-realistic cinematic portrait of a modern AI systems architect, working in a luxurious dark office with neon purple light accents, glowing monitors with code, bokeh depth of field, 8k resolution, highly detailed."
+                
+                prompt_input = st.text_area(
+                    "Wpisz prompt dla modelu FLUX:", 
+                    value=default_prompt, 
+                    height=100, 
+                    key="suite_studio_flux_prompt"
+                )
+                
+                if use_lora:
+                    st.caption(f"💡 **Złota zasada**: Aby aktywować model twarzy, Twój prompt MUSI zawierać słowo-klucz: `{lora_trigger}`")
                 
                 if st.button("🚀 Wygeneruj Fotorealistyczny Obraz (FLUX)", type="primary", use_container_width=True, key="suite_studio_flux_btn"):
-                    with st.spinner("Model FLUX.1 Schnell na fal.ai tworzy dzieło sztuki..."):
+                    with st.spinner("Model FLUX na fal.ai tworzy dzieło sztuki..."):
                         try:
-                            from integrations.fal_ai import run_flux_generation
-                            img_bytes, err = run_flux_generation(prompt_input)
-                            if err:
-                                st.error(f"❌ Błąd: {err}")
+                            if use_lora:
+                                if not lora_url.strip():
+                                    st.error("⚠️ Podaj poprawny adres URL wag LoRA (.safetensors)!")
+                                else:
+                                    from integrations.fal_ai import run_flux_lora_generation
+                                    img_bytes, err = run_flux_lora_generation(prompt_input, lora_url, scale=lora_scale, aspect_ratio=aspect_ratio)
+                                    if err:
+                                        st.error(f"❌ Błąd Flux LoRA: {err}")
+                                    else:
+                                        st.session_state.suite_flux_last_image = img_bytes
+                                        st.success("🎉 Obraz z Twoją twarzą gotowy!")
+                                        st.image(img_bytes, caption=prompt_input, use_container_width=True)
                             else:
-                                st.success("🎉 Obraz gotowy!")
-                                st.image(img_bytes, caption=prompt_input, use_container_width=True)
-                                st.download_button(
-                                    label="💾 Pobierz Obraz (PNG)",
-                                    data=img_bytes,
-                                    file_name="flux_schnell_art.png",
-                                    mime="image/png",
-                                    use_container_width=True,
-                                    key="suite_studio_flux_dl_btn"
-                                )
+                                from integrations.fal_ai import run_flux_generation
+                                img_bytes, err = run_flux_generation(prompt_input)
+                                if err:
+                                    st.error(f"❌ Błąd: {err}")
+                                else:
+                                    st.session_state.suite_flux_last_image = img_bytes
+                                    st.success("🎉 Obraz gotowy!")
+                                    st.image(img_bytes, caption=prompt_input, use_container_width=True)
                         except Exception as ex:
                             st.error(f"❌ Błąd generatora: {str(ex)}")
+                
+                # Renderowanie pobierania poza przyciskiem, aby nie znikało przy interakcji z innymi polami
+                if "suite_flux_last_image" in st.session_state and st.session_state.suite_flux_last_image:
+                    st.download_button(
+                        label="💾 Pobierz Wygenerowany Obraz (PNG)",
+                        data=st.session_state.suite_flux_last_image,
+                        file_name="flux_generated_art.png",
+                        mime="image/png",
+                        use_container_width=True,
+                        key="suite_studio_flux_dl_btn"
+                    )
+
+            with tab_video:
+                st.subheader("🎬 Image-to-Video Studio (fal.ai)")
+                st.markdown("Zamieniaj swoje obrazy w luksusowe, kinowe wideo B-Roll przy użyciu topowych modeli wideo na fal.ai: **MiniMax**, **Kling v1.6** oraz **Luma Ray-2**.")
+                
+                # Inicjalizacja stanu sesji dla klatki startowej
+                if "suite_video_start_frame" not in st.session_state:
+                    st.session_state.suite_video_start_frame = None
+                if "suite_video_last_mp4" not in st.session_state:
+                    st.session_state.suite_video_last_mp4 = None
+                
+                col_step1, col_step2 = st.columns(2)
+                
+                with col_step1:
+                    st.markdown("<div style='background: #111827; border-radius: 12px; padding: 16px; border: 1px solid #374151;'>", unsafe_allow_html=True)
+                    st.markdown("### 📸 Krok 1: Przygotuj klatkę startową")
+                    
+                    start_frame_source = st.selectbox(
+                        "Wybierz metodę załadowania obrazu:", 
+                        [
+                            "📁 Prześlij gotowe zdjęcie ze swojego komputera", 
+                            "🧬 Wygeneruj nową klatkę ze swoją LoRĄ w locie", 
+                            "🎭 Wykonaj szybki Face Swap jako bazę"
+                        ],
+                        key="suite_video_start_source"
+                    )
+                    
+                    if start_frame_source == "📁 Prześlij gotowe zdjęcie ze swojego komputera":
+                        uploaded_start_img = st.file_uploader(
+                            "Prześlij plik obrazu (PNG/JPG):", 
+                            type=["png", "jpg", "jpeg"], 
+                            key="suite_video_start_upload"
+                        )
+                        if uploaded_start_img:
+                            st.session_state.suite_video_start_frame = uploaded_start_img.read()
+                            st.toast("✅ Klatka startowa załadowana z pliku!")
+                            
+                    elif start_frame_source == "🧬 Wygeneruj nową klatkę ze swoją LoRĄ w locie":
+                        v_lora_url = st.session_state.get("lora_result_url", "")
+                        v_lora_trigger = st.session_state.get("lora_trigger_word", "tomasz_hero")
+                        
+                        if v_lora_url:
+                            st.success(f"🔌 Załadowano Twój model LoRA! Trigger: `{v_lora_trigger}`")
+                        else:
+                            st.warning("⚠️ Brak aktywnej LoRA w sesji.")
+                            
+                        v_custom_url = st.text_input("URL wag LoRA (.safetensors):", value=v_lora_url, key="suite_video_lora_url_in")
+                        v_custom_trigger = st.text_input("Trigger Word:", value=v_lora_trigger, key="suite_video_lora_trigger_in")
+                        
+                        v_col_ar, v_col_sc = st.columns(2)
+                        with v_col_ar:
+                            v_aspect = st.selectbox("Proporcje klatki:", ["square_hd", "portrait_4_5", "portrait_16_9", "landscape_16_9"], key="suite_video_lora_aspect")
+                        with v_col_sc:
+                            v_scale = st.slider("Wpływ LoRA (Scale):", min_value=0.1, max_value=2.0, value=1.0, step=0.1, key="suite_video_lora_scale")
+                            
+                        v_prompt = st.text_area("Prompt do wygenerowania klatki:", value=f"A professional high-end cinematic photo of {v_custom_trigger} wearing dark cybertech coat, futuristic glowing background, hyper-realistic, 8k", key="suite_video_lora_prompt")
+                        
+                        if st.button("🔮 Wygeneruj i zapisz jako klatkę startową", type="secondary", use_container_width=True):
+                            if not v_custom_url.strip():
+                                st.error("⚠️ Podaj poprawny URL wag LoRA!")
+                            else:
+                                with st.spinner("Generowanie klatki startowej na fal.ai..."):
+                                    from integrations.fal_ai import run_flux_lora_generation
+                                    img_bytes, err = run_flux_lora_generation(v_prompt, v_custom_url, scale=v_scale, aspect_ratio=v_aspect)
+                                    if err:
+                                        st.error(f"❌ Błąd: {err}")
+                                    else:
+                                        st.session_state.suite_video_start_frame = img_bytes
+                                        st.success("🎉 Pomyślnie wygenerowano i załadowano klatkę startową!")
+                                        
+                    elif start_frame_source == "🎭 Wykonaj szybki Face Swap jako bazę":
+                        st.markdown("<small>Nałóż swoją twarz na dowolne zdjęcie tła, aby uzyskać idealną postać.</small>", unsafe_allow_html=True)
+                        fs_base = st.file_uploader("1. Zdjęcie tła / bazy (gdzie nałożyć twarz):", type=["png", "jpg", "jpeg"], key="suite_video_fs_base")
+                        fs_face = st.file_uploader("2. Zdjęcie Twojej twarzy (referencyjne):", type=["png", "jpg", "jpeg"], key="suite_video_fs_face")
+                        
+                        if st.button("🎭 Uruchom Face Swap i zapisz", type="secondary", use_container_width=True):
+                            if not fs_base or not fs_face:
+                                st.error("⚠️ Musisz przesłać oba pliki!")
+                            else:
+                                with st.spinner("Przetwarzanie Face Swapa na fal.ai..."):
+                                    from integrations.fal_ai import run_face_swap
+                                    swapped_bytes, err = run_face_swap(fs_base.read(), fs_face.read())
+                                    if err:
+                                        st.error(f"❌ Błąd: {err}")
+                                    else:
+                                        st.session_state.suite_video_start_frame = swapped_bytes
+                                        st.success("🎉 Face Swap zakończony sukcesem!")
+                    
+                    # Wyświetlenie aktywnej klatki startowej
+                    if st.session_state.suite_video_start_frame:
+                        st.markdown("---")
+                        st.image(st.session_state.suite_video_start_frame, caption="Załadowana Klatka Startowa", use_container_width=True)
+                        if st.button("🗑️ Usuń klatkę", type="secondary", use_container_width=True, key="suite_video_clear_start"):
+                            st.session_state.suite_video_start_frame = None
+                            st.rerun()
+                    else:
+                        st.info("💡 **Brak załadowanej klatki startowej.** Wgraj plik lub wygeneruj obraz powyżej, aby odblokować animowanie wideo.")
+                    
+                    st.markdown("</div>", unsafe_allow_html=True)
+                    
+                with col_step2:
+                    st.markdown("<div style='background: #111827; border-radius: 12px; padding: 16px; border: 1px solid #374151;'>", unsafe_allow_html=True)
+                    st.markdown("### 🎬 Krok 2: Zamień obraz w kinowe wideo")
+                    
+                    # Kilar Motion Presets
+                    motion_preset = st.selectbox(
+                        "🎬 Wybierz kinowy ruch kamery (Inspiracje Adrianem Kilarem):", 
+                        ["Własny opis (brak presetu)", "🚀 Superman Launch", "🌃 Cyberpunk Street Walk", "🛸 Orbiting 360° Camera", "💥 Slow-Motion Action"],
+                        key="suite_video_motion_preset"
+                    )
+                    
+                    preset_prompts = {
+                        "Własny opis (brak presetu)": "",
+                        "🚀 Superman Launch": "A dynamic slow-motion cinematic video of the person flying upwards like Superman, launching off the ground with a massive force, shockwave dust particles, dramatic warm lighting, extremely detailed, photorealistic, 8k",
+                        "🌃 Cyberpunk Street Walk": "Cinematic camera tracking shot of the person walking through a cyberpunk city street at night under heavy rain, vibrant neon signs reflecting on wet asphalt, deep depth of field, photorealistic, cinematic atmosphere, 8k",
+                        "🛸 Orbiting 360° Camera": "Smooth 360-degree rotating camera shot orbiting around the person sitting at a luxurious dark office desk with glowing computer monitors, code visible, cinematic lighting, shallow depth of field, 8k",
+                        "💥 Slow-Motion Action": "Action scene shot in extreme slow-motion (speed ramp) of the person standing confidently, while golden particle dust floats around them in the air, volumetric glowing dust beams, photorealistic, 8k"
+                    }
+                    
+                    if "suite_video_motion_prompt" not in st.session_state:
+                        st.session_state.suite_video_motion_prompt = ""
+                    if "prev_preset" not in st.session_state:
+                        st.session_state.prev_preset = "Własny opis (brak presetu)"
+                    
+                    if motion_preset != st.session_state.prev_preset:
+                        st.session_state.suite_video_motion_prompt = preset_prompts[motion_preset]
+                        st.session_state["suite_video_motion_prompt_ta"] = preset_prompts[motion_preset]
+                        st.session_state.prev_preset = motion_preset
+                        
+                    current_prompt_value = st.session_state.get("suite_video_motion_prompt_ta", st.session_state.suite_video_motion_prompt)
+                    
+                    motion_prompt = st.text_area(
+                        "Opis animacji (Prompt ruchu):", 
+                        value=current_prompt_value, 
+                        height=100, 
+                        key="suite_video_motion_prompt_ta",
+                        help="Opisz co ma się stać na wideo. Silnik wideo weźmie klatkę startową i ożywi ją zgodnie z tym opisem."
+                    )
+                    
+                    col_eng, col_ar = st.columns(2)
+                    with col_eng:
+                        video_model = st.selectbox(
+                            "🎬 Silnik Wideo (Model AI):", 
+                            ["minimax", "kling", "luma"], 
+                            format_func=lambda x: {
+                                "minimax": "🔥 MiniMax (Video-01-Live) - Ekstra ruch (5s)", 
+                                "kling": "🚀 Kling v1.6 - Wysoki detal (5s/10s)", 
+                                "luma": "🎬 Luma Ray-2 - Kinowy look"
+                            }[x], 
+                            key="suite_video_engine"
+                        )
+                    with col_ar:
+                        video_aspect = st.selectbox("Proporcje wideo:", ["16:9", "9:16"], key="suite_video_aspect_ar")
+                        
+                    video_duration = st.selectbox("Czas trwania (sekundy):", ["5", "10"], key="suite_video_duration_sec")
+                    
+                    has_start_frame = st.session_state.suite_video_start_frame is not None
+                    
+                    if st.button("🎬 GENERUJ KINOWE WIDEO B-ROLL", type="primary", use_container_width=True, disabled=not has_start_frame, key="suite_video_generate_btn"):
+                        with st.spinner("Trwa generowanie wideo na fal.ai... Oczekiwanie na zwolnienie kolejki w chmurze (to potrwa ok. 30-90 sekund)..."):
+                            try:
+                                from integrations.fal_ai import run_image_to_video
+                                p_prompt = motion_prompt if motion_prompt.strip() else "Cinematic dynamic motion, beautiful lighting, camera moving smoothly"
+                                video_bytes, err = run_image_to_video(
+                                    image_bytes=st.session_state.suite_video_start_frame,
+                                    prompt=p_prompt,
+                                    model_name=video_model,
+                                    aspect_ratio=video_aspect,
+                                    duration=video_duration
+                                )
+                                if err:
+                                    st.error(f"❌ Błąd fal.ai: {err}")
+                                else:
+                                    st.session_state.suite_video_last_mp4 = video_bytes
+                                    st.success("🎉 Kinowy klip wideo gotowy!")
+                            except Exception as ex:
+                                st.error(f"❌ Wyjątek podczas generowania wideo: {str(ex)}")
+                                
+                    if st.session_state.suite_video_last_mp4:
+                        st.markdown("---")
+                        st.video(st.session_state.suite_video_last_mp4)
+                        st.download_button(
+                            label="💾 Pobierz Wideo (MP4)",
+                            data=st.session_state.suite_video_last_mp4,
+                            file_name="kinowy_broll_jaison.mp4",
+                            mime="video/mp4",
+                            use_container_width=True,
+                            key="suite_video_download_btn"
+                        )
+                    st.markdown("</div>", unsafe_allow_html=True)
 
         # --- TOOL 9: RESEARCH HUB ---
         elif tool == "ResearchHub":
