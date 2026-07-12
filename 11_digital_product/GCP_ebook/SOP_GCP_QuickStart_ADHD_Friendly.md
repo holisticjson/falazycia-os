@@ -62,6 +62,30 @@ Nie zostawiaj swoich finansów przypadkowi. Google Cloud pozwala na zdefiniowani
 
 ---
 
+### 💳 KROK 2.6: Bezpieczna aktywacja pełnej wersji konta (Upgrade)
+
+Domyślnie Twoje nowe konto ma status „Bezpłatna wersja próbna”. Posiada ono twarde ograniczenia techniczne i uniemożliwia podnoszenie limitów zapytań (Quotas) dla modeli językowych AI, co zablokuje działanie Twoich agentów przy większym obciążeniu. Aby to naprawić, musisz ręcznie aktywować pełną wersję konta.
+
+*   [ ] **KROK 2.6a:** W górnej części konsoli GCP zlokalizuj szary baner informacyjny o bezpłatnej wersji próbnej i kliknij niebieski przycisk **„Aktywuj” (Activate)** po prawej stronie:
+
+![Baner informacyjny z przyciskiem Aktywuj do przejścia na pełną wersję konta](screenshots/annotated/ETAP_02_KROK_01b_activate_billing.png)
+
+[Komentarz dla składu: Zrzut ekranu z konsoli Google Cloud przedstawiający baner informacyjny o bezpłatnej wersji próbnej z niebieskim przyciskiem Aktywuj po prawej stronie.]
+
+*   [ ] **KROK 2.6b:** Po kliknięciu chmura zaktualizuje Twój profil rozliczeniowy i wyświetli okienko potwierdzające sukces:
+
+![Okno potwierdzenia aktywacji pełnej wersji konta w chmurze Google Cloud](screenshots/annotated/ETAP_02_KROK_01c_billing_activated.png)
+
+[Komentarz dla składu: Zrzut ekranu przedstawiający okienko dialogowe z informacją „Pełne konto zostało aktywowane” i przyciskiem Dalej.]
+
+> [!IMPORTANT]
+> **Fakty o aktywacji konta (Upgrade) — Poczuj spokój:**
+> - **Środki 300 USD NIE znikają:** Po włączeniu pełnego konta, Google w pierwszej kolejności nadal pobiera koszty z darmowego pakietu promocyjnego ($300 USD) przez całe pozostałe 90 dni. Nic nie tracisz!
+> - **Kiedy zaczniesz płacić?** Dopiero w momencie, gdy w pełni wyczerpiesz darmowe $300 USD lub gdy minie okres 90 dni od rejestracji. Chmura zacznie wtedy naliczać standardowe opłaty zgodnie z Twoim realnym zużyciem.
+> - **Dlaczego to jest krytyczne?** Bez aktywacji pełnego konta (Upgrade) Google automatycznie odrzuci każdy Twój wniosek o zwiększenie limitów RPM/TPM dla modeli Gemini w Vertex AI.
+
+---
+
 ## 🚀 ETAP 3: Program Google Cloud Startups (Zdobądź do $100 000 USD)
 
 Nie musisz finansować rozwoju swojej technologii z własnej kieszeni. Jako młoda firma, start-up lub agencja wdrażająca nowoczesne rozwiązania, możesz ubiegać się o gigantyczne granty chmurowe. Google bardzo chętnie wspiera projekty technologiczne, o ile spełniają one rygorystyczne warunki wejściowe.
@@ -118,7 +142,8 @@ Aby Twoje lokalne systemy, skrypty i agenty mogły komunikować się z chmurą G
 *   [ ] **Vertex AI API:** Główny silnik modeli językowych z rodziny Gemini, generowania obrazów Imagen oraz wideo.
 *   [ ] **Vertex AI Search and Conversation API:** Serce wyszukiwarki semantycznej (RAG) i bazy wiedzy dla agentów.
 *   [ ] **Cloud Resource Manager API:** Umożliwia aplikacjom zewnętrznym odpytywanie o strukturę Twoich projektów.
-*   [ ] **Cloud Run API / Compute Engine API:** Potrzebne do wdrażania dynamicznych aplikacji internetowych (SaaS, komunikatory, dashboardy) oraz maszyn wirtualnych.
+*   [ ] **Cloud Run API:** Potrzebne do bezserwerowego wdrażania dynamicznych aplikacji internetowych i webhooków (SaaS, komunikatory, dashboardy) bezpośrednio z kontenerów Docker.
+*   [ ] **Compute Engine API:** Silnik maszyn wirtualnych i dysków chmurowych, wymagany do orkiestracji cięższych obciążeń lub baz danych w chmurze.
 
 ![Aktywacja interfejsów API w bibliotece Google Cloud Platform API Library](screenshots/annotated/ETAP_04_KROK_07_agent_platform_api.png)
 
@@ -126,7 +151,43 @@ Aby Twoje lokalne systemy, skrypty i agenty mogły komunikować się z chmurą G
 
 ---
 
-### ⚡ Szybka Alternatywa w PowerShell (Dla Zaawansowanych)
+#### 🛠️ KROK 4.8: Aktywacja Compute Engine API
+Aby zarządzać instancjami maszyn i dyskami (Persistent Disks), włącz Compute Engine API:
+
+![Aktywacja Compute Engine API w bibliotece Google Cloud](screenshots/annotated/ETAP_04_KROK_08_compute_engine_api.png)
+
+[Komentarz dla składu: Zrzut ekranu przedstawiający stronę Compute Engine API z czerwoną strzałką wskazującą na niebieski przycisk Włącz.]
+
+---
+
+### Metoda B: Uruchomienie API jednym kliknięciem przez Agent Platform (Najszybsza) ⚡
+
+Jeśli chcesz zaoszczędzić czas, możesz włączyć wszystkie usługi powiązane z agentami i Vertex AI automatycznie w panelu Agent Platform:
+
+1. Wpisz w wyszukiwarce na samej górze konsoli GCP **„Agent Platform”** i przejdź do tej sekcji.
+2. Chmura automatycznie wykryje brakujące włączone interfejsy API i wyświetli na górze żółty baner ostrzegawczy:
+
+![Żółty baner ostrzegawczy z propozycją aktywacji wymaganych interfejsów API](screenshots/annotated/ETAP_04_KROK_06a_agent_platform_api_banner.png)
+
+[Komentarz dla składu: Zrzut ekranu przedstawiający żółty baner informacyjny o brakujących API z niebieskim przyciskiem Włącz interfejsy API.]
+
+3. Kliknij niebieski przycisk **„Włącz interfejsy API”** na żółtym banerze lub przycisk **„Enable APIs”** w sekcji Pierwsze kroki na środku ekranu:
+
+![Ekran powitalny Agent Platform z przyciskiem Enable APIs](screenshots/annotated/ETAP_04_KROK_06b_agent_platform_welcome.png)
+
+[Komentarz dla składu: Zrzut ekranu powitalnego Gemini Enterprise Agent Platform z przyciskiem Enable APIs i czerwoną strzałką.]
+
+4. Pojawi się okienko modalne z listą wszystkich wymaganych usług (Agent Registry API, Cloud Trace API itp.). Kliknij **„Włącz” (Enable)** w prawym dolnym rogu okienka:
+
+![Dialog włączania wymaganych interfejsów API w Agent Platform](screenshots/annotated/ETAP_04_KROK_06c_agent_platform_enable_popup.png)
+
+[Komentarz dla składu: Okienko dialogowe z listą API i czerwoną strzałką skierowaną na przycisk Włącz.]
+
+Google automatycznie uruchomi i wdroży wszystkie API w tle w ciągu kilkudziesięciu sekund!
+
+---
+
+### Metoda C: Szybka Alternatywa w PowerShell (Dla Zaawansowanych)
 
 Zamiast wyszukiwać i włączać każde API ręcznie w przeglądarce, możesz włączyć wszystkie wymagane usługi jedną komendą w terminalu PowerShell (One-Liner):
 
@@ -426,6 +487,11 @@ Poniższa tabela przedstawia statusy złożonych preferencji dla projektu `proje
 > 
 > **Rozwiązanie (Formularz ręczny w 1 minutę):**
 > 1. Wejdź bezpośrednio do sekcji limitów w przeglądarce: [Konsola GCP Quotas](https://console.cloud.google.com/iam-admin/quotas?project=project-d4dcda6d-71f8-44d8-922)
+> 
+> ![Widok limitów i ograniczeń systemowych w konsoli Google Cloud](screenshots/annotated/ETAP_08_KROK_01_quotas_page.png)
+> 
+> [Komentarz dla składu: Zrzut ekranu przedstawiający stronę Limity i ograniczenia systemowe w konsoli GCP.]
+> 
 > 2. Przefiltruj listę wpisując w polu filtracji: `generate_content_requests_per_minute_per_project_per_base_model`
 > 3. Zaznacz pola wyboru (checkboxy) przy modelach w interesujących Cię regionach (np. `gemini-2.5-flash` i `gemini-2.5-pro` w `us-central1`).
 > 4. Kliknij **„Edytuj limity” (Edit Quotas)** na górze tabeli.
@@ -468,36 +534,30 @@ Aby Twoje darmowe środki starczyły na jak najdłużej, musisz regularnie czyś
 ### 1. Wirtualne Maszyny i Dyski (Compute Engine -> Disks)
 Nawet jeśli wyłączysz maszynę wirtualną, Google nadal nalicza opłaty za zarezerwowaną przestrzeń jej dysku twardego!
 *   Regularnie sprawdzaj zakładkę **Disks (Dyski)** w menu Compute Engine.
+*   Zidentyfikuj i usuń tzw. **dyski osierocone (unattached disks)** — czyli te, które w kolumnie *"Używany przez"* (lub "Używane przez") nie mają przypisanej żadnej aktywnej maszyny wirtualnej.
 
-#### 🔧 Etap X: Włączenie usług Discovery Engine i Dialogflow (Agent Platform)
+![Widok listy dysków w Compute Engine](screenshots/annotated/ETAP_09_KROK_01_disks_list.png)
 
-Aby w pełni wykorzystać **Vertex AI Agent Platform** (Agent Builder, Hermes, itp.), włącz następujące API w projekcie **gtrm‑project**:
+[Komentarz dla składu: Zrzut ekranu przedstawiający konsolę GCP -> Compute Engine -> Dyski, pokazujący listę dysków oraz kolumnę "Używane przez" (Używany przez).]
 
-```powershell
-# Włącz usługi w projekcie gtrm‑project
-gcloud services enable discoveryengine.googleapis.com dialogflow.googleapis.com --project=project-d4dcda6d-71f8-44d8-922
-```
-
-> **Dlaczego to ważne?**
-> - **Discovery Engine** – zapewnia RAG i indeksowanie treści potrzebne do kontekstowych botów.
-> - **Dialogflow** – obsługa konwersacji, webhooki i integracje z kanałami.
-
-**Wewnętrzna notatka:** po włączeniu API w konsoli przejdź do **IAM & Admin → Quotas**, filtruj `Generate content requests per minute per project per base model` i zweryfikuj, że pozycje Gemini 2.5‑Flash, Gemini 2.5‑Pro oraz Imagen 3.0‑generate mają status **Enabled**. W razie potrzeby przygotuj zrzuty ekranu do wewnętrznej dokumentacji, zasłaniając wrażliwe dane (e‑mail, ID projektu, kwoty kredytów).
-
-⚠️ **Uwaga** – w organizacji może obowiązywać polityka wyłączająca klucze API. To nie blokuje działania usług, ale uniemożliwia tworzenie prostych kluczy. Używaj **ADC** (Application Default Credentials) lub konta serwisowego z odpowiednimi rolami (`roles/aiplatform.admin`, `roles/dialogflow.admin`).
-
-Po włączeniu usług możesz od razu korzystać z **Agent Builder** i **GenAI App Builder** w projekcie `project-d4dcda6d-71f8-44d8-922`.
-*   Zidentyfikuj i usuń tzw. **dyski osierocone (unattached disks)** — czyli te, które w kolumnie *"Używany przez"* nie mają przypisanej żadnej aktywnej maszyny wirtualnej.
+#### 💡 Po co i kiedy deweloper tworzy dyski w chmurze?
+1. **Dysk systemowy (Rozruchowy):** Tworzony jest automatycznie przy uruchamianiu maszyny wirtualnej. Służy do przechowywania systemu operacyjnego i podstawowych plików projektu.
+2. **Dodatkowy dysk danych (Persistent Disk):** Możesz utworzyć go ręcznie, klikając przycisk **„Utwórz dysk” (Create Disk)**. Przydaje się do przechowywania ciężkich baz danych wektorowych (np. Chroma / PGVector) lub repozytoriów kodu. Jeśli Twoja maszyna ulegnie awarii, taki dysk możesz łatwo odpiąć i podpiąć pod nową instancję bez utraty danych!
+3. **⚠️ Ostrzeżenie o kosztach (ADHD Warning):** Dysk o rozmiarze np. 50-100 GB generuje ciągłe koszty rozliczeniowe za zarezerwowaną przestrzeń, nawet jeśli powiązana z nim maszyna wirtualna jest całkowicie wyłączona. Zawsze usuwaj dyski osierocone, których już nie potrzebujesz.
 
 #### Komenda PowerShell do bezpiecznego usunięcia nieużywanego dysku:
 ```powershell
 gcloud compute disks delete NAZWA_DYSKU --zone=NAZWA_STREFY_ZONE --quiet
 ```
 
-[Komentarz dla składu: Zrzut ekranu przedstawiający konsolę GCP -> Compute Engine -> Disks, pokazujący kolumnę "In-use by" z pustymi polami oznaczającymi dyski osierocone (unattached).]
+---
 
 ### 2. Zasobniki danych (Cloud Storage -> Buckets)
 *   Usuwaj zasobniki utworzone automatycznie podczas dawnych testów, migracji baz danych czy jednorazowych importów plików CSV/FAQ.
+
+![Widok listy zasobników w Cloud Storage](screenshots/annotated/ETAP_09_KROK_02_buckets_list.png)
+
+[Komentarz dla składu: Zrzut ekranu przedstawiający konsolę GCP -> Cloud Storage -> Zasobniki, pokazujący listę zasobników.]
 *   Pamiętaj, że przechowywanie danych w regionach typu *"Multi-region"* (np. całe terytorium USA lub Europy) jest droższe niż w pojedynczych regionach lokalnych (np. `europe-west1` w Belgii).
 
 #### Komenda PowerShell do usuwania zbędnego zasobnika wraz z zawartością:
@@ -541,6 +601,23 @@ Budując nowoczesną infrastrukturę AI, zrezygnuj ze starszych wersji modeli. K
 ## 🤖 ETAP 12: Wdrażanie Semantycznej Bazy Wiedzy (Vertex AI Search / RAG)
 
 Mając aktywne darmowe środki GenAI ($1000 USD), możesz w 5 minut wyposażyć swojego agenta AI w bezbłędną pamięć i wiedzę o Twoich dokumentach bez pisania ani jednej linijki kodu RAG (Retrieval-Augmented Generation).
+
+### KROK 12.0: Aktywacja Vertex AI Search and Conversation API
+Przed przystąpieniem do budowy bazy wiedzy, upewnij się, że usługa jest włączona w chmurze:
+1. Wpisz w górnym pasku wyszukiwania Google Cloud: **`vertex ai search and conversation`**.
+2. Z rozwijanej listy najlepszych wyników wybierz pozycję **`AI Applications`** (oznaczoną jako *Platforma aplikacji do wyszukiwania, rekomendacji i rozmów*):
+
+![Wybór AI Applications w wyszukiwarce Google Cloud Console](screenshots/annotated/ETAP_12_KROK_00a_search_ai_applications.png)
+
+[Komentarz dla składu: Zrzut ekranu przedstawiający pasek wyszukiwania w konsoli GCP z wpisaną frazą oraz rozwijaną listą podpowiedzi z czerwoną strzałką na pozycję AI Applications.]
+
+3. Trafisz na stronę aktywacji usługi. Zaznacz pole zgody na próbkowanie danych (opcjonalnie) i kliknij niebieski przycisk **„Continue and activate the API”**:
+
+![Aktywacja interfejsu API Vertex AI Search and Conversation](screenshots/annotated/ETAP_12_KROK_00b_activate_vertex_search.png)
+
+[Komentarz dla składu: Zrzut ekranu przedstawiający stronę aktywacji usługi AI Applications w GCP Console z czerwoną strzałką na przycisk Continue and activate the API.]
+
+---
 
 ### KROK 12.1: Przygotowanie zasobnika (Cloud Storage)
 1. Przejdź do **Cloud Storage** -> **Buckets** i utwórz nowy zasobnik (np. `baza-wiedzy-jaison-project`).
