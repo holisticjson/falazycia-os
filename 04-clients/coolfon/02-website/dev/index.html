@@ -14,6 +14,10 @@
     <meta property="og:image" content="https://coolfon.pl/assets/img/coolfon_og_share.png">
 
     <!-- Styles & Icons -->
+        <!-- Google Fonts Preconnect & Direct Import (FCP & LCP Optimization) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <!-- Leaflet.js CSS (dla mapy RODO) -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'">
@@ -262,7 +266,7 @@
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
                     <div style="position: relative; border-radius: var(--border-radius-m); overflow: hidden; border: 2px solid var(--color-primary); box-shadow: 0 10px 40px rgba(0, 155, 172, 0.3); max-width: 100%;">
-                        <img src="/assets/img/fastskin_realphoto.jpg" alt="Montaż folii ochronnej SBS Fast Skin na urządzeniu klienta" style="display: block; width: 100%; max-width: 480px; height: auto; object-fit: cover;">
+                        <img src="/assets/img/fastskin_realphoto.jpg" alt="Montaż folii ochronnej SBS Fast Skin na urządzeniu klienta" loading="lazy" decoding="async" style="display: block; width: 100%; max-width: 480px; height: auto; object-fit: cover;">
                         <div style="position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(13,19,38,0.95) 100%); padding: 16px; text-align: center;">
                             <span style="color: #FFF; font-size: 0.85rem; font-weight: 500; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Precyzyjny montaż z pozycjonerem FAST SKIN MATE w naszym serwisie</span>
                         </div>
