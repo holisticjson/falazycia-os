@@ -311,3 +311,81 @@ def get_training_result(request_id):
         return None, f"Brak klucza diffusers_lora_file w wyniku treningu. Otrzymano: {result}"
     except Exception as ex:
         return None, f"Błąd podczas pobierania wyniku treningu: {str(ex)}"
+
+
+def run_image_to_video(image_bytes, prompt, model_name="minimax", aspect_ratio="16:9", duration="5"):
+    """
+    Wywołuje generację wideo na fal.ai z przesłanego obrazu.
+    Używa fal_client do wgrania obrazu i wykonania zlecenia.
+    Zwraca surowe bajty wygenerowanego wideo (MP4) lub None i błąd.
+    """
+    import fal_client
+    import tempfile
+    import os
+    import requests
+    
+    key = os.getenv("FAL_KEY") or FAL_KEY
+    if key:
+        os.environ["FAL_KEY"] = key
+    else:
+        return None, "Brak klucza FAL_KEY w środowisku lub .env!"
+        
+    try:
+        # Zapisz bajty do tymczasowego pliku
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as tmp:
+            tmp.write(image_bytes)
+            tmp_path = tmp.name
+            
+        try:
+            # Wgraj plik do fal.ai CDN
+            image_url = fal_client.upload_file(tmp_path)
+        finally:
+            if os.path.exists(tmp_path):
+                os.remove(tmp_path)
+                
+        if not image_url:
+            return None, "Nie udało się wgrać obrazu do CDN fal.ai."
+            
+        # Wybierz odpowiedni model i parametry
+        if model_name == "minimax":
+            endpoint = "fal-ai/minimax/video-01-live/image-to-video"
+            arguments = {
+                "image_url": image_url,
+                "prompt": prompt,
+                "prompt_optimizer": True
+            }
+        elif model_name == "kling":
+            endpoint = "fal-ai/kling-video/v1.6/standard/image-to-video"
+            arguments = {
+                "image_url": image_url,
+                "prompt": prompt,
+                "aspect_ratio": aspect_ratio,
+                "duration": duration
+            }
+        elif model_name == "luma":
+            endpoint = "fal-ai/luma-dream-machine/ray-2"
+            arguments = {
+                "image_url": image_url,
+                "prompt": prompt,
+                "aspect_ratio": aspect_ratio,
+                "duration": duration + "s" if not duration.endswith("s") else duration
+            }
+        else:
+            return None, f"Nieznany model wideo: {model_name}"
+            
+        # Wywołujemy i czekamy na zakończenie kolejki
+        result = fal_client.subscribe(endpoint, arguments=arguments, with_logs=True)
+        
+        # Parsujemy wynik
+        if "video" in result and "url" in result["video"]:
+            video_url = result["video"]["url"]
+            # Pobieramy wideo na dysk
+            res_vid = requests.get(video_url, timeout=120)
+            if res_vid.status_code == 200:
+                return res_vid.content, None
+            return None, f"Nie udało się pobrać wygenerowanego wideo z CDN (kod {res_vid.status_code})"
+            
+        return None, f"API fal.ai nie zwróciło poprawnej ścieżki wideo. Wynik: {result}"
+            
+    except Exception as ex:
+        return None, f"Wyjątek podczas generowania wideo fal.ai: {str(ex)}"
