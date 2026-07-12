@@ -125,3 +125,10 @@ Przed planowaniem jakichkolwiek wdrożeń i rekomendacją modeli, każdy agent m
 - **Gemini API (AI Studio)**: Traktuj jako samodzielną ścieżkę operacyjną z osobnym systemem płatności i limitami.
 - **Zwiększanie limitów**: Pamiętaj, że na koncie darmowym (Free Trial) Google nie zezwala na podnoszenie limitów (quota increase). W celu skalowania i podnoszenia limitów dla klientów agencji, wymagane jest przejście na płatne konto bilingowe (Paid Billing Account) i złożenie wniosku przez konsolę GCP (Quotas and System Limits).
 
+13. **BEZWZGLĘDNA HUMANIZACJA TEKSTU I ZAKAZ WYCIEKU MARKDOWNU (BEZ GWIAZDEK W HTML)**
+Te wytyczne mają na celu eliminację wszelkich śladów ("footprints") generowania treści przez sztuczną inteligencję w serwisach i aplikacjach klienckich:
+- **Kategoryczny zakaz używania składni Markdown w plikach HTML**: Żaden agent nie ma prawa wstawiać literalnych gwiazdek podwójnych (`**tekst**`) lub pojedynczych (`*tekst*`), krzyżyków nagłówków (`###`) ani innych znaczników markdown do plików z rozszerzeniem `.html`. Wszystkie wyróżnienia mają być pisane za pomocą standardowych i poprawnych semantycznie tagów HTML, np. `<strong>tekst</strong>`, `<em>tekst</em>`, `<h4>tekst</h4>`.
+- **Procedura automatycznego czyszczenia**: Przed zatwierdzeniem zmian w jakimkolwiek pliku HTML, agent ma bezwzględny obowiązek przeskanować plik pod kątem występowania znaków `**` i niezwłocznie zastąpić je znacznikami `<strong>` i `</strong>`.
+- **Humanizacja i naturalność języka (NLP)**: Teksty pisane na strony internetowe nie mogą brzmieć szablonowo (AI-ish). Unikamy powtarzalnych zwrotów (np. "W dzisiejszym dynamicznym świecie", "Warto pamiętać", "Kluczowym aspektem"). Stosujemy naturalne, ludzkie przejścia tonalne, zróżnicowaną długość zdań oraz perswazyjne NLP (sensoryka VAK, presupozycje, visual anchoring dla ułatwienia skanowania wzrokiem).
+
+
