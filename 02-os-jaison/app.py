@@ -2,17 +2,27 @@ import streamlit as st
 import os, json, time
 import ssl
 
-# Ręczne wczytanie pliku .env na starcie aplikacji
-env_path = os.path.join(os.path.dirname(__file__), ".env")
-if os.path.exists(env_path):
-    try:
-        with open(env_path, "r", encoding="utf-8") as f:
-            for line in f:
-                if "=" in line and not line.strip().startswith("#"):
-                    k, v = line.split("=", 1)
-                    os.environ[k.strip()] = v.strip()
-    except Exception as e:
-        pass
+# Ręczne wczytanie pliku .env na starcie aplikacji (sprawdzenie bieżącego i nadrzędnego katalogu)
+env_paths = [
+    os.path.join(os.path.dirname(__file__), ".env"),
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
+]
+
+for env_path in env_paths:
+    if os.path.exists(env_path):
+        try:
+            with open(env_path, "r", encoding="utf-8") as f:
+                for line in f:
+                    if "=" in line and not line.strip().startswith("#"):
+                        k, v = line.split("=", 1)
+                        # Usuń ewentualne cudzysłowy wokół wartości
+                        val = v.strip()
+                        if (val.startswith('"') and val.endswith('"')) or (val.startswith("'") and val.endswith("'")):
+                            val = val[1:-1]
+                        os.environ[k.strip()] = val
+        except Exception as e:
+            pass
+        break
 
 try:
     ssl._create_default_https_context = ssl._create_unverified_context
