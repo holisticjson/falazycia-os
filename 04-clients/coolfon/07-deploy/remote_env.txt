@@ -1,0 +1,8 @@
+# ==========================================================================
+# COOLFON.PL — SECURE ENVIRONMENT CONFIGURATION
+# ==========================================================================
+
+# Google AI Studio API Key (Pobrany z https://ai.google.dev/)
+# UWAGA: Klucz w AI Studio zazwyczaj zaczyna się od "AIzaSy..."
+# Poniżej znajduje się Twój klucz przekazany w konfiguracji.
+GEMINI_API_KEY=AQ.Ab8RN6Ijt7gdI1XjOaaFnjFIUatCT1lvyllaK82Hw-NsAXKmYQ

@@ -656,6 +656,11 @@ function initChatbot() {
             <div class="chat-suggestions" id="chat-suggestions"></div>
             <div class="chatbot-input-area">
                 <input type="text" class="chatbot-input" id="chat-input" placeholder="Zadaj pytanie..." autocomplete="off">
+                <!-- Honeypot fields to block auto-spam bots (invisible to real users) -->
+                <div style="display:none !important; visibility:hidden !important; width:0; height:0; overflow:hidden;">
+                    <input type="text" id="chat-email-confirm" name="email_confirm" tabindex="-1" autocomplete="off">
+                    <input type="text" id="chat-phone-check" name="phone_check" tabindex="-1" autocomplete="off">
+                </div>
                 <button class="chatbot-send" id="chat-send" aria-label="Wyślij wiadomość">
                     <svg viewBox="0 0 24 24">
                         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -763,15 +768,25 @@ function initChatbot() {
         const text = chatInput.value.trim();
         if (!text) return;
         
+        // Read honeypot fields
+        const emailConfirmInput = document.getElementById("chat-email-confirm");
+        const phoneCheckInput = document.getElementById("chat-phone-check");
+        const emailConfirm = emailConfirmInput ? emailConfirmInput.value : "";
+        const phoneCheck = phoneCheckInput ? phoneCheckInput.value : "";
+        
         appendUserMessage(text);
         chatInput.value = "";
+        
+        // Reset honeypot inputs just in case
+        if (emailConfirmInput) emailConfirmInput.value = "";
+        if (phoneCheckInput) phoneCheckInput.value = "";
         
         // Zapisz do pamięci kontekstowej historię użytkownika
         chatHistory.push({ role: "user", text: text });
         
         showTypingIndicator();
         
-        // Wyślij zapytanie do naszego bezpiecznego proxy PHP (Gemini API)
+        // Wyślij zapytanie do naszego bezpiecznego proxy PHP (Vertex AI API + Honeypot)
         fetch("/php/chat.php", {
             method: "POST",
             headers: {
@@ -779,7 +794,9 @@ function initChatbot() {
             },
             body: JSON.stringify({
                 message: text,
-                history: chatHistory.slice(-6) // Wysyłamy maksymalnie 6 ostatnich tur, aby oszczędzić tokeny i zmieścić się w limitach
+                history: chatHistory.slice(-6), // Wysyłamy maksymalnie 6 ostatnich tur, aby oszczędzić tokeny i zmieścić się w limitach
+                email_confirm: emailConfirm,
+                phone_check: phoneCheck
             })
         })
         .then(response => response.json())
