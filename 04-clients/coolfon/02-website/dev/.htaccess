@@ -74,3 +74,9 @@ ErrorDocument 404 /404.html
     Deny from all
 </FilesMatch>
 
+# 8. Force UTF-8 encoding for text/html and text/plain
+AddDefaultCharset UTF-8
+<FilesMatch "\.txt$">
+    AddCharset UTF-8 .txt
+</FilesMatch>
+

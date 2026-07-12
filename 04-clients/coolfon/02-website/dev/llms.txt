@@ -8,8 +8,8 @@ Coolfon GSM to profesjonalny, niezależny, stacjonarny serwis pogwarancyjny tele
 - **Telefon:** [+48 532 840 877](tel:+48532840877) (kontakt telefoniczny w godzinach pracy serwisu)
 - **E-mail:** [info@coolfon.pl](mailto:info@coolfon.pl)
 - **Godziny otwarcia:**
-  - Poniedziałek – Piątek: 10:00 – 18:00
-  - Sobota: 09:00 – 14:00
+  - Poniedziałek – Piątek: 10:00 – 19:00
+  - Sobota: 09:00 – 15:00
   - Niedziela: Zamknięte
 
 ## Główne Usługi Serwisowe (Oferta)
@@ -23,6 +23,9 @@ Coolfon GSM to profesjonalny, niezależny, stacjonarny serwis pogwarancyjny tele
 - **Apple (iPhone):** Pełna gama modeli od serii iPhone 7 do najnowszych (iPhone 14, 15, 16 itd.).
 - **Samsung (Galaxy):** Seria S, Seria A, Seria M, Note.
 - **Xiaomi / POCO / Redmi:** Wszystkie popularne modele.
+- **Huawei:** Seria P (np. P30 Pro, P40 Pro), Mate, Nova, Y.
+- **Motorola:** Seria Edge, Moto G, Moto E.
+- **Realme:** Seria GT, Seria C, Seria Pro (np. 11 Pro, 12 Pro).
 
 ## Polityka Cenowa i Gwarancja
 - Diagnoza techniczna jest **bezpłatna przy wykonaniu naprawy** (w przypadku rezygnacji koszt za czas pracy technika wynosi od 49 zł).

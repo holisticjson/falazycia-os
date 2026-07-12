@@ -16,13 +16,14 @@
     <!-- Styles & Icons -->
     <link rel="stylesheet" href="/css/style.css">
     <!-- Leaflet.js CSS (dla mapy RODO) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'">
 
     <!-- Schema.org JSON-LD LocalBusiness -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "MobilePhoneRepairShop",
+      "@type": "LocalBusiness",
+      "additionalType": "https://schema.org/ElectronicsStore",
       "name": "Coolfon GSM",
       "legalName": "COOLFON GSM SP. Z O.O.",
       "url": "https://coolfon.pl",
@@ -71,7 +72,7 @@
     <!-- --- Header / Navigation --- -->
     <header class="header">
         <div class="container">
-            <a href="/" class="logo" id="header-logo-link" style="display: flex; align-items: center; padding: 4px 0;">
+            <a href="/" class="logo" id="header-logo-link" aria-label="Strona główna Coolfon GSM" style="display: flex; align-items: center; padding: 4px 0;">
                 <img src="/assets/img/coolfon_logo.png" alt="Coolfon GSM Serwis Telefonów Łódź" style="height: 38px; width: auto; display: block; transition: transform 0.3s ease;">
             </a>
             
@@ -84,7 +85,7 @@
                 <li><a href="/sklep/" class="nav-link">Sklep z akcesoriami</a></li>
                 <li><a href="/blog/" class="nav-link">Blog / Poradnik</a></li>
                 <li><a href="/kontakt/" class="nav-link">Kontakt</a></li>
-                <li><a href="/kontakt/" class="btn btn-primary nav-btn">Zadzwoń teraz</a></li>
+                <li><a href="/kontakt/" class="btn btn-primary nav-btn" aria-label="Skontaktuj się lub zadzwoń do serwisu">Zadzwoń teraz</a></li>
             </ul>
         </div>
     </header>
@@ -100,16 +101,16 @@
                     Rozbity ekran? Zużyta bateria? Oferujemy <strong>diagnozę 0 zł przy naprawie</strong> i sprawne terminy realizacji. Serwis GSM Coolfon to rzemieślnicza precyzja, przejrzysta wycena i oryginalne części z gwarancją.
                 </p>
                 <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-                    <a href="#kalkulator" class="btn btn-primary">Wyceń naprawę online 🚀</a>
-                    <a href="tel:+48532840877" class="btn btn-secondary">Zadzwoń: +48 532 840 877</a>
+                    <a href="#kalkulator" class="btn btn-primary" aria-label="Przejdź do kalkulatora wyceny naprawy online">Wyceń naprawę online 🚀</a>
+                    <a href="tel:+48532840877" class="btn btn-secondary" aria-label="Zadzwoń do serwisu pod numer +48 532 840 877">Zadzwoń: +48 532 840 877</a>
                 </div>
             </div>
             
             <!-- Kalkulator Wyceny (Osadzony wewnątrz interaktywnej makiety smartfona 3D) -->
-            <div class="phone-calculator-wrapper" id="kalkulator">
+            <div class="phone-calculator-wrapper" id="kalkulator" role="region" aria-labelledby="calc-title">
                 <div class="phone-calculator-device tilt-3d glow-container">
                     <div class="phone-inner" style="padding: 28px 24px;">
-                        <h3 class="tilt-3d-child" style="margin-bottom: 8px; font-size: 1.4rem;">📱 Kalkulator Szybkiej Wyceny</h3>
+                        <h3 class="tilt-3d-child" id="calc-title" style="margin-bottom: 8px; font-size: 1.4rem;">📱 Kalkulator Szybkiej Wyceny</h3>
                         <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: 24px;">Wybierz model i usterkę, aby sprawdzić szacowany koszt naprawy w naszym serwisie stacjonarnym.</p>
                         
                         <form id="coolfon-calc-form">
@@ -317,7 +318,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 36px;">
-                <a href="https://www.google.com/maps/place/Coolfon+GSM/@51.748398,19.553974,17z/" target="_blank" class="btn btn-secondary" style="font-size: 0.9rem; padding: 12px 28px;" rel="noopener">Zobacz wszystkie opinie w Google ➔</a>
+                <a href="https://www.google.com/maps/place/Coolfon+GSM/@51.748398,19.553974,17z/" target="_blank" class="btn btn-secondary" style="font-size: 0.9rem; padding: 12px 28px;" rel="noopener" aria-label="Zobacz wszystkie opinie o Coolfon GSM w Google Maps">Zobacz wszystkie opinie w Google ➔</a>
             </div>
         </div>
     </section>
@@ -349,8 +350,8 @@
                 <div>
                     <h4 style="margin-bottom: 8px; color: #FFF;">Kontakt bezpośredni:</h4>
                     <p style="color: var(--color-text-muted);">
-                        Telefon: <a href="tel:+48532840877" style="font-weight: 600;">+48 532 840 877</a><br>
-                        E-mail: <a href="mailto:info@coolfon.pl">info@coolfon.pl</a>
+                        Telefon: <a href="tel:+48532840877" style="font-weight: 600;" aria-label="Zadzwoń pod numer +48 532 840 877">+48 532 840 877</a><br>
+                        E-mail: <a href="mailto:info@coolfon.pl" aria-label="Wyślij e-mail do serwisu na adres info@coolfon.pl">info@coolfon.pl</a>
                     </p>
                 </div>
             </div>
@@ -416,7 +417,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/js/main.js?v=2"></script>
+    <script src="/js/main.js?v=20260712_3"></script>
     
     <!-- Leaflet.js dla RODO OpenStreetMap -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>

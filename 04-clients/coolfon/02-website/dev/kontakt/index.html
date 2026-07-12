@@ -6,14 +6,14 @@
     <title>Kontakt – Serwis GSM Coolfon Łódź Olechów</title>
     <meta name="description" content="Kontakt z serwisem GSM Coolfon w Łodzi. Dane adresowe, telefon, godziny otwarcia. Wyślij zapytanie przez formularz lub zadzwoń bezpośrednio!">
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'">
 </head>
 <body>
 
     <!-- --- Header / Navigation --- -->
     <header class="header">
         <div class="container">
-            <a href="/" class="logo" style="display: flex; align-items: center; padding: 4px 0;">
+            <a href="/" class="logo" id="header-logo-link" aria-label="Strona główna Coolfon GSM" style="display: flex; align-items: center; padding: 4px 0;">
                 <img src="/assets/img/coolfon_logo.png" alt="Coolfon GSM Serwis Telefonów Łódź" style="height: 38px; width: auto; display: block; transition: transform 0.3s ease;">
             </a>
             <button class="menu-btn" aria-label="Menu">☰</button>
@@ -24,7 +24,7 @@
                 <li><a href="/sklep/" class="nav-link">Sklep z akcesoriami</a></li>
                 <li><a href="/blog/" class="nav-link">Blog / Poradnik</a></li>
                 <li><a href="/kontakt/" class="nav-link nav-active">Kontakt</a></li>
-                <li><a href="/kontakt/" class="btn btn-primary nav-btn">Zadzwoń teraz</a></li>
+                <li><a href="/kontakt/" class="btn btn-primary nav-btn" aria-label="Skontaktuj się lub zadzwoń do serwisu">Zadzwoń teraz</a></li>
             </ul>
         </div>
     </header>
@@ -89,11 +89,12 @@
                 <div style="display: flex; flex-direction: column; gap: 16px; padding: 24px; background: rgba(0, 194, 255, 0.03); border: 1px solid var(--color-border); border-radius: var(--border-radius-m);">
                     <div>
                         <span style="font-size: 0.8rem; color: var(--color-text-muted);">Zadzwoń bezpośrednio:</span>
-                        <p style="margin-top: 4px;"><a href="tel:+48532840877" style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);">+48 532 840 877</a></p>
+                        <p style="margin-top: 4px;"><a href="tel:+48532840877" style="font-size: 1.5rem; font-weight: 700; color: var(--color-primary);" aria-label="Zadzwoń do serwisu pod numer +48 532 840 877">+48 532 840 877</a></p>
                     </div>
-                    <div>
-                        <span style="font-size: 0.8rem; color: var(--color-text-muted);">Napisz do nas:</span>
-                        <p style="margin-top: 4px;"><a href="mailto:info@coolfon.pl" style="font-size: 1.1rem; color: #FFF; font-weight: 600;">info@coolfon.pl</a></p>
+                    
+                    <div style="margin-bottom: 24px;">
+                        <h4 style="margin-bottom: 4px; color: #FFF;">Napisz do nas:</h4>
+                        <p style="margin-top: 4px;"><a href="mailto:info@coolfon.pl" style="font-size: 1.1rem; color: #FFF; font-weight: 600;" aria-label="Wyślij e-mail do serwisu na adres info@coolfon.pl">info@coolfon.pl</a></p>
                     </div>
                 </div>
             </div>
@@ -105,27 +106,27 @@
                 
                 <form id="coolfon-contact-form">
                     <div style="margin-bottom: 16px;">
-                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Twoje Imię i Nazwisko:</label>
+                        <label for="contact-name" style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Twoje Imię i Nazwisko:</label>
                         <input type="text" id="contact-name" required placeholder="np. Jan Kowalski" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none;">
                     </div>
                     
                     <div style="margin-bottom: 16px;">
-                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Numer telefonu:</label>
+                        <label for="contact-phone" style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Numer telefonu:</label>
                         <input type="tel" id="contact-phone" required placeholder="np. 500 600 700" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none;">
                     </div>
 
                     <div style="margin-bottom: 16px;">
-                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Adres E-mail (opcjonalnie):</label>
+                        <label for="contact-email" style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Adres E-mail (opcjonalnie):</label>
                         <input type="email" id="contact-email" placeholder="np. jan@poczta.pl" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none;">
                     </div>
 
                     <div style="margin-bottom: 16px;">
-                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Model urządzenia:</label>
+                        <label for="contact-device" style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Model urządzenia:</label>
                         <input type="text" id="contact-device" placeholder="np. iPhone 14 Pro" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none;">
                     </div>
 
                     <div style="margin-bottom: 24px;">
-                        <label style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Treść wiadomości / Opis usterki:</label>
+                        <label for="contact-message" style="display: block; margin-bottom: 6px; font-size: 0.85rem;">Treść wiadomości / Opis usterki:</label>
                         <textarea id="contact-message" required placeholder="Napisz, z czym masz problem..." style="width: 100%; height: 120px; padding: 12px; background: rgba(255,255,255,0.05); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); color: #FFF; outline: none; resize: none; font-family: var(--font-sans);"></textarea>
                     </div>
 
@@ -179,7 +180,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js?v=20260712_3"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
     <script>

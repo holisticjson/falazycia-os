@@ -47,13 +47,67 @@
       ]
     }
     </script>
+
+    <!-- Schema.org Service JSON-LD (dla rich snippets) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "Smart Phone Repair Service",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "Coolfon GSM",
+        "legalName": "COOLFON GSM SP. Z O.O.",
+        "url": "https://coolfon.pl",
+        "telephone": "+48532840877",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "ul. Księcia Władysława Opolczyka 17 lok. C6",
+          "addressLocality": "Łódź",
+          "postalCode": "92-417",
+          "addressCountry": "PL"
+        }
+      },
+      "areaServed": {
+        "@type": "AdministrativeArea",
+        "name": "Łódź"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Smartphone Repairs",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wymiana ekranu / wyświetlacza"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wymiana baterii"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Wymiana gniazda USB / ładowania"
+            }
+          }
+        ]
+      }
+    }
+    </script>
 </head>
 <body>
 
     <!-- --- Header / Navigation --- -->
     <header class="header">
         <div class="container">
-            <a href="/" class="logo" style="display: flex; align-items: center; padding: 4px 0;">
+            <a href="/" class="logo" id="header-logo-link" aria-label="Strona główna Coolfon GSM" style="display: flex; align-items: center; padding: 4px 0;">
                 <img src="/assets/img/coolfon_logo.png" alt="Coolfon GSM Serwis Telefonów Łódź" style="height: 38px; width: auto; display: block; transition: transform 0.3s ease;">
             </a>
             <button class="menu-btn" aria-label="Menu">☰</button>
@@ -64,7 +118,7 @@
                 <li><a href="/sklep/" class="nav-link">Sklep z akcesoriami</a></li>
                 <li><a href="/blog/" class="nav-link">Blog / Poradnik</a></li>
                 <li><a href="/kontakt/" class="nav-link">Kontakt</a></li>
-                <li><a href="/kontakt/" class="btn btn-primary nav-btn">Zadzwoń teraz</a></li>
+                <li><a href="/kontakt/" class="btn btn-primary nav-btn" aria-label="Skontaktuj się lub zadzwoń do serwisu">Zadzwoń teraz</a></li>
             </ul>
         </div>
     </header>
@@ -95,7 +149,7 @@
                         <li style="margin-bottom: 8px;">✔️ Oryginały oraz markowe zamienniki</li>
                         <li>✔️ Kalibracja dotyku i funkcja TrueTone</li>
                     </ul>
-                    <a href="/cennik/" class="btn btn-secondary tilt-3d-child" style="width: 100%;">Sprawdź ceny ekranów ➔</a>
+                    <a href="/cennik/" class="btn btn-secondary tilt-3d-child" style="width: 100%;" aria-label="Sprawdź cennik naprawy ekranów">Sprawdź ceny ekranów ➔</a>
                 </div>
 
                 <!-- Service Card 2 -->
@@ -110,7 +164,7 @@
                         <li style="margin-bottom: 8px;">✔️ Nowe ogniwa o pełnej pojemności nominalnej</li>
                         <li>✔️ Bezpieczna utylizacja starej baterii</li>
                     </ul>
-                    <a href="/cennik/" class="btn btn-secondary tilt-3d-child" style="width: 100%;">Sprawdź ceny baterii ➔</a>
+                    <a href="/cennik/" class="btn btn-secondary tilt-3d-child" style="width: 100%;" aria-label="Sprawdź cennik wymiany baterii">Sprawdź ceny baterii ➔</a>
                 </div>
 
                 <!-- Service Card 3 -->
@@ -125,7 +179,7 @@
                         <li style="margin-bottom: 8px;">✔️ Czyszczenie gniazda od ręki</li>
                         <li>✔️ Precyzyjne lutowanie mikroskopowe</li>
                     </ul>
-                    <a href="/cennik/" class="btn btn-secondary tilt-3d-child" style="width: 100%;">Sprawdź ceny portów ➔</a>
+                    <a href="/cennik/" class="btn btn-secondary tilt-3d-child" style="width: 100%;" aria-label="Sprawdź cennik naprawy portów ładowania">Sprawdź ceny portów ➔</a>
                 </div>
 
                 <!-- Service Card 4 -->
@@ -140,7 +194,7 @@
                         <li style="margin-bottom: 8px;">✔️ Pełna ochrona przed zarysowaniami i uderzeniami</li>
                         <li>✔️ Profesjonalna aplikacja bez bąbelków</li>
                     </ul>
-                    <a href="/cennik/" class="btn btn-secondary tilt-3d-child" style="width: 100%;">Sprawdź ofertę folii ➔</a>
+                    <a href="/cennik/" class="btn btn-secondary tilt-3d-child" style="width: 100%;" aria-label="Sprawdź ofertę folii ochronnych na wymiar">Sprawdź ofertę folii ➔</a>
                 </div>
 
             </div>
@@ -149,10 +203,13 @@
             <div style="background: var(--color-bg-card); border: 1px solid var(--color-border); border-radius: var(--border-radius-m); padding: 40px; text-align: center;">
                 <h2 style="margin-bottom: 16px;">Naprawiamy urządzenia marek:</h2>
                 <p style="color: var(--color-text-muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Posiadamy na miejscu części zamienne oraz narzędzia diagnostyczne dedykowane dla najpopularniejszych producentów smartfonów.</p>
-                <div style="display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; align-items: center; font-size: 1.5rem; font-weight: 700; color: #FFF;">
+                <div style="display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; align-items: center; font-size: 1.25rem; font-weight: 700; color: #FFF;">
                     <span style="border: 1px solid var(--color-border); padding: 12px 24px; border-radius: var(--border-radius-s);">🍏 Apple iPhone</span>
                     <span style="border: 1px solid var(--color-border); padding: 12px 24px; border-radius: var(--border-radius-s);">📱 Samsung Galaxy</span>
                     <span style="border: 1px solid var(--color-border); padding: 12px 24px; border-radius: var(--border-radius-s);">⚡ Xiaomi / POCO</span>
+                    <span style="border: 1px solid var(--color-border); padding: 12px 24px; border-radius: var(--border-radius-s);">🔴 Huawei</span>
+                    <span style="border: 1px solid var(--color-border); padding: 12px 24px; border-radius: var(--border-radius-s);">Ⓜ️ Motorola</span>
+                    <span style="border: 1px solid var(--color-border); padding: 12px 24px; border-radius: var(--border-radius-s);">🟡 Realme</span>
                 </div>
             </div>
         </div>
@@ -214,6 +271,6 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js?v=20260712_3"></script>
 </body>
 </html>

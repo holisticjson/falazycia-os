@@ -215,6 +215,67 @@ const calculatorData = {
                     prices: { screen: 390, battery: 170, usb: 170 }
                 }
             }
+        },
+        huawei: {
+            name: "Huawei",
+            models: {
+                "huawei-p30-pro": {
+                    name: "P30 Pro",
+                    prices: { screen: 1040, battery: 210, usb: 180 },
+                    popular: true
+                },
+                "huawei-p30-lite": {
+                    name: "P30 Lite",
+                    prices: { screen: 370, battery: 170, usb: 170 }
+                },
+                "huawei-p40-pro": {
+                    name: "P40 Pro",
+                    prices: { screen: 1340, battery: 220, usb: 190 }
+                },
+                "huawei-p-smart-2021": {
+                    name: "P Smart 2021",
+                    prices: { screen: 350, battery: 170, usb: 170 }
+                }
+            }
+        },
+        motorola: {
+            name: "Motorola",
+            models: {
+                "motorola-edge-40": {
+                    name: "Edge 40",
+                    prices: { screen: 850, battery: 210, usb: 180 }
+                },
+                "motorola-g54": {
+                    name: "Moto G54 5G",
+                    prices: { screen: 390, battery: 180, usb: 170 },
+                    popular: true
+                },
+                "motorola-g84": {
+                    name: "Moto G84 5G",
+                    prices: { screen: 540, battery: 190, usb: 170 }
+                },
+                "motorola-edge-30-neo": {
+                    name: "Edge 30 Neo",
+                    prices: { screen: 600, battery: 200, usb: 180 }
+                }
+            }
+        },
+        realme: {
+            name: "Realme",
+            models: {
+                "realme-c55": {
+                    name: "Realme C55",
+                    prices: { screen: 350, battery: 170, usb: 160 }
+                },
+                "realme-11-pro": {
+                    name: "Realme 11 Pro",
+                    prices: { screen: 730, battery: 200, usb: 180 }
+                },
+                "realme-gt-neo-3": {
+                    name: "GT Neo 3",
+                    prices: { screen: 840, battery: 210, usb: 180 }
+                }
+            }
         }
     },
     issues: {
@@ -226,7 +287,7 @@ const calculatorData = {
 };
 
 // Globalna obietnica asynchronicznego pobierania aktualnego cache cennika Magboss
-window.calculatorDataLoaded = fetch('/data/cennik_cache.json')
+window.calculatorDataLoaded = fetch('/data/cennik_cache.json?v=20260712_3')
     .then(res => {
         if (!res.ok) throw new Error(`HTTP status ${res.status}`);
         return res.json();

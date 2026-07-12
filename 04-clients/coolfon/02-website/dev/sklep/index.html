@@ -7,14 +7,54 @@
     <meta name="description" content="Szeroki asortyment akcesoriów ochronnych do telefonów stacjonarnie w Łodzi. Etui, szkła hartowane, ładowarki i kable dostępne od ręki w punkcie Coolfon. Sprawdź!">
     <link rel="stylesheet" href="/css/style.css">
     <!-- Leaflet.js CSS (dla mapy RODO) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" media="print" onload="this.media='all'">
+
+    <!-- Schema.org Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ElectronicsStore",
+      "name": "Coolfon GSM - Sklep z Akcesoriami",
+      "image": "https://coolfon.pl/assets/img/coolfon_logo.png",
+      "description": "Szeroki asortyment akcesoriów ochronnych do telefonów stacjonarnie w Łodzi. Etui, szkła hartowane, ładowarki i kable dostępne od ręki.",
+      "telephone": "+48532840877",
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ul. Księcia Władysława Opolczyka 17 lok. C6",
+        "addressLocality": "Łódź",
+        "postalCode": "92-417",
+        "addressCountry": "PL"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "19:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "15:00"
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
     <!-- --- Header / Navigation --- -->
     <header class="header">
         <div class="container">
-            <a href="/" class="logo" style="display: flex; align-items: center; padding: 4px 0;">
+            <a href="/" class="logo" id="header-logo-link" aria-label="Strona główna Coolfon GSM" style="display: flex; align-items: center; padding: 4px 0;">
                 <img src="/assets/img/coolfon_logo.png" alt="Coolfon GSM Serwis Telefonów Łódź" style="height: 38px; width: auto; display: block; transition: transform 0.3s ease;">
             </a>
             <button class="menu-btn" aria-label="Menu">☰</button>
@@ -25,7 +65,7 @@
                 <li><a href="/sklep/" class="nav-link nav-active">Sklep z akcesoriami</a></li>
                 <li><a href="/blog/" class="nav-link">Blog / Poradnik</a></li>
                 <li><a href="/kontakt/" class="nav-link">Kontakt</a></li>
-                <li><a href="/kontakt/" class="btn btn-primary nav-btn">Zadzwoń teraz</a></li>
+                <li><a href="/kontakt/" class="btn btn-primary nav-btn" aria-label="Skontaktuj się lub zadzwoń do serwisu">Zadzwoń teraz</a></li>
             </ul>
         </div>
     </header>
@@ -83,8 +123,8 @@
                 <h2 style="margin-bottom: 16px;">Szukasz akcesorium do konkretnego modelu?</h2>
                 <p style="color: var(--color-text-muted); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Zadzwoń do nas i spytaj o dostępność etui lub szkła do Twojego telefonu przed przyjazdem do punktu.</p>
                 <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
-                    <a href="tel:+48532840877" class="btn btn-primary">Zadzwoń: +48 532 840 877</a>
-                    <a href="/kontakt/" class="btn btn-secondary">Jak dojechać?</a>
+                    <a href="tel:+48532840877" class="btn btn-primary" aria-label="Zadzwoń do serwisu pod numer +48 532 840 877">Zadzwoń: +48 532 840 877</a>
+                    <a href="/kontakt/" class="btn btn-secondary" aria-label="Sprawdź mapę dojazdu i dane adresowe">Jak dojechać?</a>
                 </div>
             </div>
 
@@ -156,7 +196,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js?v=20260712_3"></script>
     
     <!-- Leaflet.js dla RODO OpenStreetMap -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
