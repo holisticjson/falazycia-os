@@ -4578,7 +4578,16 @@ elif menu == "Jaison Agency":
                                 status_str = status_res.get("status", "IN_QUEUE")
                                 logs = status_res.get("logs", [])
                             else:
-                                status_str = getattr(status_res, "status", "IN_QUEUE")
+                                class_name = status_res.__class__.__name__
+                                if class_name == "Completed":
+                                    status_str = "COMPLETED"
+                                elif class_name == "InProgress":
+                                    status_str = "IN_PROGRESS"
+                                elif class_name == "Queued":
+                                    status_str = "IN_QUEUE"
+                                else:
+                                    status_str = getattr(status_res, "status", "IN_QUEUE")
+                                    
                                 logs = getattr(status_res, "logs", [])
                                 if hasattr(status_res, "logs") and status_res.logs:
                                     logs = [{"message": log.get("message") if isinstance(log, dict) else str(log)} for log in status_res.logs]
