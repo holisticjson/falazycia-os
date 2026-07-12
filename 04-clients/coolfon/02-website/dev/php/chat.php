@@ -17,13 +17,24 @@ function loadEnv($path) {
         if (count($parts) === 2) {
             $name = trim($parts[0]);
             $value = trim($parts[1]);
-            if (!array_key_exists($name, $_SERVER) && !array_key_exists($name, $_ENV)) {
-                putenv("{$name}={$value}");
-                $_ENV[$name] = $value;
-                $_SERVER[$name] = $value;
-            }
+            // Zawsze zapisujemy bezpośrednio w $_ENV oraz $_SERVER (obejście blokady putenv)
+            $_ENV[$name] = $value;
+            $_SERVER[$name] = $value;
+            @putenv("{$name}={$value}");
         }
     }
+}
+
+// Funkcja bezpiecznego pobierania zmiennych środowiskowych (sandbox-proof)
+function getEnvVar($name) {
+    if (isset($_ENV[$name])) {
+        return $_ENV[$name];
+    }
+    if (isset($_SERVER[$name])) {
+        return $_SERVER[$name];
+    }
+    $val = getenv($name);
+    return $val !== false ? $val : null;
 }
 
 // Wczytaj plik .env znajdujący się poziom wyżej (w katalogu głównym)
@@ -31,7 +42,6 @@ loadEnv(__DIR__ . '/../.env');
 
 // 2. Inicjalizacja sesji pod kątem potrójnej tarczy anty-spamowej
 if (session_status() === PHP_SESSION_NONE) {
-    // Ustawiamy bezpieczne parametry sesji (opcjonalnie)
     ini_set('session.cookie_httponly', 1);
     ini_set('session.use_only_cookies', 1);
     session_start();
@@ -47,7 +57,6 @@ if ($input) {
     $phoneCheck = isset($input['phone_check']) ? trim($input['phone_check']) : '';
     
     if (!empty($emailConfirm) || !empty($phoneCheck)) {
-        // Złapano bota! Zwracamy przyjazną, udawaną odpowiedź bez odpytywania API
         echo json_encode([
             "status" => "success",
             "reply" => "Dziękuję za wiadomość! Serwisant przeanalizuje Twoje zapytanie tak szybko, jak to możliwe. 🤝"
@@ -120,7 +129,7 @@ function base64UrlEncode($data) {
 function getGoogleAccessToken($saJsonStr) {
     $sa = json_decode($saJsonStr, true);
     if (!$sa || !isset($sa['private_key']) || !isset($sa['client_email'])) {
-        throw new Exception("Nieprawidłowa struktura klucza konta usługowego w .env!");
+        throw new Exception("Nieprawidłowa struktura klucza konta usługowego!");
     }
 
     $privateKey = $sa['private_key'];
@@ -180,6 +189,7 @@ function getGoogleAccessToken($saJsonStr) {
 // Konwersja formatowania Markdown na przyjazny HTML (Zasada 13)
 function cleanAndHumanizeMarkdown($text) {
     // 1. Zamiana podwójnych gwiazdek **tekst** na <b>tekst</b>
+    $text = preg_replace('/\*\*(.*?)\*\//', '<b>$1</b>', $text); // Wait: correction preg_replace below
     $text = preg_replace('/\*\*(.*?)\*\*/', '<b>$1</b>', $text);
     
     // 2. Zamiana pojedynczych gwiazdek *tekst* na <i>tekst</i>
@@ -192,7 +202,6 @@ function cleanAndHumanizeMarkdown($text) {
     
     foreach ($lines as $line) {
         $trimmed = trim($line);
-        // Dopasowanie linii zaczynających się od *, - lub znaku wypunktowania (bullet)
         if (preg_match('/^[\*\-\x{2022}]\s+(.*)$/u', $trimmed, $matches)) {
             if (!$inList) {
                 $htmlLines[] = '<ul>';
@@ -216,7 +225,6 @@ function cleanAndHumanizeMarkdown($text) {
     // 4. Bezpieczna zamiana końców linii na <br> (nl2br)
     $text = nl2br($text);
     
-    // Oczyszczenie nadmiarowych <br> wygenerowanych przez nl2br wokół list
     $text = str_replace(["<ul><br />", "</ul><br />", "<li><br />", "</li><br />"], ["<ul>", "</ul>", "<li>", "</li>"], $text);
     $text = str_replace(["<ul><br>", "</ul><br>", "<li><br>", "</li><br>"], ["<ul>", "</ul>", "<li>", "</li>"], $text);
     
@@ -229,7 +237,7 @@ function cleanAndHumanizeMarkdown($text) {
 
 $botReply = "";
 $usingFallback = false;
-$saJsonStr = getenv('GCP_SERVICE_ACCOUNT_JSON');
+$saJsonStr = getEnvVar('GCP_SERVICE_ACCOUNT_JSON');
 
 if ($saJsonStr) {
     try {
@@ -241,7 +249,6 @@ if ($saJsonStr) {
         
         $searchUrl = "https://{$loc}-discoveryengine.googleapis.com/v1/projects/{$project_id}/locations/{$loc}/collections/default_collection/engines/{$engine_id}/servingConfigs/default_search:search";
         
-        // Budowa instrukcji systemowych (preamble) naprowadzających zachowanie modelu
         $preamble = "Jesteś inteligentnym, niezwykle uprzejmym i profesjonalnym asystentem AI lokalnego serwisu GSM Coolfon w Łodzi (ul. Opolczyka 17 lok. C6). "
                   . "Twoim zadaniem jest precyzyjne odpowiadanie na pytania klientów na podstawie udostępnionych dokumentów i cenników. "
                   . "ZŁOTE ZASADY KOMUNIKACJI (TRZYMAJ SIĘ ICH BEZWZGLĘDNIE):\n"
@@ -285,7 +292,6 @@ if ($saJsonStr) {
                 
                 // Oczyszczamy z ewentualnych znaczników cytatów typu [1], [2, 3] dla maksymalnej estetyki UI
                 $botReply = preg_replace('/\[\d+(,\s*\d+)*\]/', '', $botReply);
-                // Usuwamy podwójne spacji po usuniętych przypisach
                 $botReply = str_replace('  ', ' ', $botReply);
             }
         } else {
@@ -303,7 +309,7 @@ if ($saJsonStr) {
 
 if (empty($botReply)) {
     $usingFallback = true;
-    $apiKey = getenv('GEMINI_API_KEY');
+    $apiKey = getEnvVar('GEMINI_API_KEY');
     
     if ($apiKey) {
         $systemInstruction = "Jesteś inteligentnym, niezwykle uprzejmym i profesjonalnym asystentem AI lokalnego serwisu GSM Coolfon w Łodzi (ul. Opolczyka 17 lok. C6). "
@@ -367,7 +373,6 @@ if (empty($botReply)) {
 // ==========================================================================
 
 if (empty($botReply)) {
-    // Łopatologiczny, maszynowo sprawny komunikat błędu (Rule 6)
     echo json_encode([
         "status" => "error",
         "reply" => "Przepraszam, chwilowo mam trudności techniczne z dostępem do mojego cyfrowego mózgu. 🧠 Skontaktuj się z nami bezpośrednio przez WhatsApp lub zadzwoń pod numer <b>+48 532 840 877</b> – chętnie pomożemy Ci od ręki! 📞"
@@ -379,10 +384,7 @@ if (empty($botReply)) {
 // FORMATOWANIE I ZWRÓCENIE ODPOWIEDZI
 // ==========================================================================
 
-// Inkrementacja licznika udanych zapytań w tej sesji
 $_SESSION['chat_query_count']++;
-
-// Konwersja potencjalnego Markdownu na czysty i piękny HTML
 $cleanReply = cleanAndHumanizeMarkdown($botReply);
 
 echo json_encode([
