@@ -4420,100 +4420,142 @@ elif menu == "Jaison Agency":
 
             # Jeśli nie ma aktywnego treningu i brak wyniku, pokaż formularz
             if not st.session_state.lora_training_id and not st.session_state.lora_result_url:
-                col_tr1, col_tr2 = st.columns([3, 2])
-                with col_tr1:
-                    st.markdown("##### 📁 1. Wgraj swój Dataset (Plik ZIP)")
-                    zip_file = st.file_uploader(
-                        "Wgraj archiwum ZIP zawierające od 5 do 15 zdjęć:", 
-                        type=["zip"], 
-                        key="lora_zip_uploader"
-                    )
-                    
-                    st.markdown("##### ⚙️ 2. Parametry Treningu")
-                    trigger_word = st.text_input(
-                        "Unikalny Wyraz Wyzwalający (Trigger Word):", 
-                        value=st.session_state.lora_trigger_word,
-                        help="Ten wyraz aktywuje model w promptach (np. tomasz_hero)."
-                    )
-                    st.session_state.lora_trigger_word = trigger_word
-                    
-                    steps = st.slider(
-                        "Liczba Iteracji Treningowych (Steps):", 
-                        min_value=500, 
-                        max_value=2000, 
-                        value=1000, 
-                        step=100,
-                        help="Więcej iteracji = lepsze dopasowanie, ale ryzyko przeuczenia. 1000 to optymalny standard."
-                    )
-                    
-                    is_style = st.checkbox(
-                        "Trening Stylu Artystycznego (is_style)", 
-                        value=False,
-                        help="Zaznacz tylko wtedy, gdy uczysz stylu artystycznego/graficznego. Dla twarzy i postaci pozostaw wyłączone."
-                    )
-                    
-                    if st.button("🚀 Rozpocznij Trening LoRA ($0.20 - $0.50 fal.ai)", use_container_width=True, type="primary"):
-                        if not zip_file:
-                            st.error("⚠️ Proszę najpierw załadować plik ZIP ze zdjęciami.")
-                        else:
-                            with st.spinner("Wgrywanie pliku ZIP do CDN i inicjowanie zlecenia na fal.ai..."):
-                                try:
-                                    import tempfile
-                                    import os
-                                    
-                                    # Zapisujemy wgrany plik tymczasowo
-                                    with tempfile.NamedTemporaryFile(delete=False, suffix=".zip") as tmp:
-                                        tmp.write(zip_file.getvalue())
-                                        tmp_path = tmp.name
-                                        
-                                    from integrations.fal_ai import start_lora_training
-                                    request_id, err = start_lora_training(
-                                        tmp_path, 
-                                        trigger_word=trigger_word, 
-                                        steps=steps, 
-                                        is_style=is_style
-                                    )
-                                    
-                                    # Usuwamy plik tymczasowy
-                                    try:
-                                        os.unlink(tmp_path)
-                                    except Exception:
-                                        pass
-                                        
-                                    if err:
-                                        st.error(f"❌ Nie udało się zainicjować treningu: {err}")
-                                    else:
-                                        st.session_state.lora_training_id = request_id
-                                        st.session_state.lora_training_status = "IN_QUEUE"
-                                        st.success(f"✅ Trening zainicjowany pomyślnie! ID Zlecenia: {request_id}")
-                                        st.rerun()
-                                except Exception as ex:
-                                    st.error(f"❌ Wyjątek podczas uruchamiania treningu: {str(ex)}")
+                lora_mode = st.radio(
+                    "🔧 Wybierz tryb pracy:",
+                    ["🚀 Wytrenuj nowy model LoRA (Upload ZIP)", "🔗 Użyj wcześniej wytrenowanego modelu LoRA (Wklej URL)"],
+                    key="lora_mode_selector",
+                    horizontal=True
+                )
                 
-                with col_tr2:
-                    st.markdown("""
-                    <div style="background-color: #111827; padding: 20px; border-radius: 12px; border: 1px solid #1F2937;">
-                        <h4 style="color: #10B981; margin-top: 0;">📸 Instrukcja Przygotowania Zdjęć</h4>
-                        <p style="font-size: 0.85rem; color: #9CA3AF;">
-                            Aby uzyskać fotorealistyczną spójność i perfekcyjne dopasowanie modelu, Twój plik ZIP powinien zawierać:
-                        </p>
-                        <ul style="font-size: 0.85rem; color: #D1D5DB; padding-left: 18px; margin-bottom: 12px;">
-                            <li><b>5x Zbliżenie twarzy (Headshot):</b> Różne kąty, neutralna mina, dobre, jednolite światło.</li>
-                            <li><b>5x Pół-sylwetka (Half-body):</b> Od pasa w górę, różne ubiory, tła i oświetlenie.</li>
-                            <li><b>3x Pełna sylwetka (Full-body):</b> Różne pozy, tła.</li>
-                        </ul>
-                        <h4 style="color: #F59E0B; margin-top: 15px; font-size: 0.95rem;">👓 Okulary Korekcyjne (Reality Check):</h4>
-                        <p style="font-size: 0.85rem; color: #9CA3AF; margin-bottom: 12px;">
-                            Jeśli nosisz okulary na co dzień, <b>wgraj większość zdjęć w okularach</b>. Model potraktuje je jako stałą cechę Twojej tożsamości i wygeneruje je z niesamowitą precyzją.
-                        </p>
-                        <h4 style="color: #3B82F6; margin-top: 15px; font-size: 0.95rem;">📁 Wymagania Techniczne:</h4>
-                        <ul style="font-size: 0.85rem; color: #D1D5DB; padding-left: 18px;">
-                            <li>Zdjęcia bezpośrednio w ZIP (bez podfolderów).</li>
-                            <li>Rozmiar zdjęć: zalecane minimum 1024x1024 px.</li>
-                            <li>Formaty: PNG lub JPG.</li>
-                        </ul>
-                    </div>
-                    """, unsafe_allow_html=True)
+                if lora_mode == "🚀 Wytrenuj nowy model LoRA (Upload ZIP)":
+                    col_tr1, col_tr2 = st.columns([3, 2])
+                    with col_tr1:
+                        st.markdown("##### 📁 1. Wgraj swój Dataset (Plik ZIP)")
+                        zip_file = st.file_uploader(
+                            "Wgraj archiwum ZIP zawierające od 5 do 15 zdjęć:", 
+                            type=["zip"], 
+                            key="lora_zip_uploader"
+                        )
+                        
+                        st.markdown("##### ⚙️ 2. Parametry Treningu")
+                        trigger_word = st.text_input(
+                            "Unikalny Wyraz Wyzwalający (Trigger Word):", 
+                            value=st.session_state.lora_trigger_word,
+                            help="Ten wyraz aktywuje model w promptach (np. tomasz_hero)."
+                        )
+                        st.session_state.lora_trigger_word = trigger_word
+                        
+                        steps = st.slider(
+                            "Liczba Iteracji Treningowych (Steps):", 
+                            min_value=500, 
+                            max_value=2000, 
+                            value=1000, 
+                            step=100,
+                            help="Więcej iteracji = lepsze dopasowanie, ale ryzyko przeuczenia. 1000 to optymalny standard."
+                        )
+                        
+                        is_style = st.checkbox(
+                            "Trening Stylu Artystycznego (is_style)", 
+                            value=False,
+                            help="Zaznacz tylko wtedy, gdy uczysz stylu artystycznego/graficznego. Dla twarzy i postaci pozostaw wyłączone."
+                        )
+                        
+                        if st.button("🚀 Rozpocznij Trening LoRA ($0.20 - $0.50 fal.ai)", use_container_width=True, type="primary"):
+                            if not zip_file:
+                                st.error("⚠️ Proszę najpierw załadować plik ZIP ze zdjęciami.")
+                            else:
+                                with st.spinner("Wgrywanie pliku ZIP do CDN i inicjowanie zlecenia na fal.ai..."):
+                                    try:
+                                        import tempfile
+                                        import os
+                                        
+                                        # Zapisujemy wgrany plik tymczasowo
+                                        with tempfile.NamedTemporaryFile(delete=False, suffix=".zip") as tmp:
+                                            tmp.write(zip_file.getvalue())
+                                            tmp_path = tmp.name
+                                            
+                                        from integrations.fal_ai import start_lora_training
+                                        request_id, err = start_lora_training(
+                                            tmp_path, 
+                                            trigger_word=trigger_word, 
+                                            steps=steps, 
+                                            is_style=is_style
+                                        )
+                                        
+                                        # Usuwamy plik tymczasowy
+                                        try:
+                                            os.unlink(tmp_path)
+                                        except Exception:
+                                            pass
+                                            
+                                        if err:
+                                            st.error(f"❌ Nie udało się zainicjować treningu: {err}")
+                                        else:
+                                            st.session_state.lora_training_id = request_id
+                                            st.session_state.lora_training_status = "IN_QUEUE"
+                                            st.success(f"✅ Trening zainicjowany pomyślnie! ID Zlecenia: {request_id}")
+                                            st.rerun()
+                                    except Exception as ex:
+                                        st.error(f"❌ Wyjątek podczas uruchamiania treningu: {str(ex)}")
+                    
+                    with col_tr2:
+                        st.markdown("""
+                        <div style="background-color: #111827; padding: 20px; border-radius: 12px; border: 1px solid #1F2937;">
+                            <h4 style="color: #10B981; margin-top: 0;">📸 Instrukcja Przygotowania Zdjęć</h4>
+                            <p style="font-size: 0.85rem; color: #9CA3AF;">
+                                Aby uzyskać fotorealistyczną spójność i perfekcyjne dopasowanie modelu, Twój plik ZIP powinien zawierać:
+                            </p>
+                            <ul style="font-size: 0.85rem; color: #D1D5DB; padding-left: 18px; margin-bottom: 12px;">
+                                <li><b>5x Zbliżenie twarzy (Headshot):</b> Różne kąty, neutralna mina, dobre, jednolite światło.</li>
+                                <li><b>5x Pół-sylwetka (Half-body):</b> Od pasa w górę, różne ubiory, tła i oświetlenie.</li>
+                                <li><b>3x Pełna sylwetka (Full-body):</b> Różne pozy, tła.</li>
+                            </ul>
+                            <h4 style="color: #F59E0B; margin-top: 15px; font-size: 0.95rem;">👓 Okulary Korekcyjne (Reality Check):</h4>
+                            <p style="font-size: 0.85rem; color: #9CA3AF; margin-bottom: 12px;">
+                                Jeśli nosisz okulary na co dzień, <b>wgraj większość zdjęć w okularach</b>. Model potraktuje je jako stałą cechę Twojej tożsamości i wygeneruje je z niesamowitą precyzją.
+                            </p>
+                            <h4 style="color: #3B82F6; margin-top: 15px; font-size: 0.95rem;">📁 Wymagania Techniczne:</h4>
+                            <ul style="font-size: 0.85rem; color: #D1D5DB; padding-left: 18px;">
+                                <li>Zdjęcia bezpośrednio w ZIP (bez podfolderów).</li>
+                                <li>Rozmiar zdjęć: zalecane minimum 1024x1024 px.</li>
+                                <li>Formaty: PNG lub JPG.</li>
+                            </ul>
+                        </div>
+                        """, unsafe_allow_html=True)
+                else:
+                    col_tr1, col_tr2 = st.columns([3, 2])
+                    with col_tr1:
+                        st.markdown("##### 🔗 Podepnij gotowe wagi LoRA")
+                        pasted_url = st.text_input(
+                            "🔗 Bezpośredni URL do pliku wag (.safetensors):",
+                            placeholder="Wklej adres URL (np. https://v3b.fal.media/files/..._pytorch_lora_weights.safetensors)",
+                            key="pasted_lora_url_input"
+                        )
+                        pasted_trigger = st.text_input(
+                            "🔑 Trigger Word (słowo aktywujące):",
+                            value=st.session_state.lora_trigger_word,
+                            key="pasted_lora_trigger_input"
+                        )
+                        if st.button("🔌 Załaduj model LoRA", use_container_width=True, type="primary"):
+                            if not pasted_url.strip():
+                                st.error("⚠️ Podaj poprawny adres URL wag!")
+                            else:
+                                st.session_state.lora_result_url = pasted_url.strip()
+                                st.session_state.lora_trigger_word = pasted_trigger.strip()
+                                st.success("🎉 Pomyślnie podpięto model! Możesz teraz przejść do generowania obrazów.")
+                                st.rerun()
+                    with col_tr2:
+                        st.markdown("""
+                        <div style="background-color: #111827; padding: 20px; border-radius: 12px; border: 1px solid #1F2937;">
+                            <h4 style="color: #10B981; margin-top: 0;">💡 Oszczędność czasu i kosztów</h4>
+                            <p style="font-size: 0.85rem; color: #9CA3AF;">
+                                Jeśli masz już wcześniej ukończony trening na fal.ai, nie musisz uczyć modelu od nowa ani płacić za kolejną sesję!
+                            </p>
+                            <p style="font-size: 0.85rem; color: #D1D5DB;">
+                                Wklej bezpośredni link do pliku <b>.safetensors</b> z logów poprzedniego treningu oraz podaj słowo wyzwalające, a panel natychmiast udostępni generator obrazów.
+                            </p>
+                        </div>
+                        """, unsafe_allow_html=True)
 
             # Monitor stanu treningu
             elif st.session_state.lora_training_id:
@@ -4734,14 +4776,43 @@ Połącz Systeme.io z n8n. Cały ruch organiczny zamienia się w leady i subskry
             
             prompt_input = st.text_input("Wpisz swój prompt (rekomendowany angielski):", value="A premium editorial photograph of a high-tech workspace, glowing purple and teal ambient light, minimalist designer glass, high detail, 8k --ar 16:9", key="suite_flux_prompt")
             
+            # Detekcja aktywnej LoRy
+            use_lora = False
+            lora_url = st.session_state.get("lora_result_url")
+            trigger_word = st.session_state.get("lora_trigger_word", "tomasz_hero")
+            
+            if lora_url:
+                st.markdown(f"""
+                <div style="background-color: #0F172A; padding: 10px 15px; border-radius: 8px; border: 1px solid #334155; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                        <span style="color: #38BDF8; font-weight: bold; font-size: 0.9rem;">🧬 Wykryto Aktywną LoRĘ!</span><br>
+                        <span style="color: #94A3B8; font-size: 0.8rem;">Słowo kluczowe: <b>{trigger_word}</b></span>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+                use_lora = st.checkbox("🔌 Użyj aktywnego modelu LoRA (Flux-LoRA Dev/Schnell)", value=True, key="flux_studio_use_lora")
+                
+                if use_lora:
+                    lora_scale = st.slider("Skala wpływu LoRA (Scale):", min_value=0.1, max_value=2.0, value=1.0, step=0.1, key="flux_studio_lora_scale")
+                    aspect_ratio = st.selectbox("Proporcje obrazu:", ["square_hd", "portrait_4_5", "portrait_16_9", "landscape_16_9"], index=3, key="flux_studio_aspect_ratio")
+            
             if st.button("🎨 Generuj Grafikę AI (Flux)", type="primary", use_container_width=True):
                 if not prompt_input.strip():
                     st.warning("⚠️ Wpisz najpierw opis grafiki!")
                 else:
-                    with st.spinner("Flux Schnell na fal.ai generuje obraz..."):
+                    with st.spinner("Flux generuje obraz..."):
                         try:
-                            from integrations.fal_ai import run_flux_generation
-                            img_bytes, err = run_flux_generation(prompt_input)
+                            if lora_url and use_lora:
+                                from integrations.fal_ai import run_flux_lora_generation
+                                img_bytes, err = run_flux_lora_generation(
+                                    prompt_input, 
+                                    lora_url, 
+                                    scale=lora_scale, 
+                                    aspect_ratio=aspect_ratio
+                                )
+                            else:
+                                from integrations.fal_ai import run_flux_generation
+                                img_bytes, err = run_flux_generation(prompt_input)
                             
                             if err:
                                 st.error(f"❌ Błąd: {err}")
@@ -4752,7 +4823,7 @@ Połącz Systeme.io z n8n. Cały ruch organiczny zamienia się w leady i subskry
                                 st.download_button(
                                     label="💾 Pobierz Obraz (PNG)",
                                     data=img_bytes,
-                                    file_name="flux_scnell_art.png",
+                                    file_name="flux_art.png",
                                     mime="image/png",
                                     use_container_width=True
                                 )
