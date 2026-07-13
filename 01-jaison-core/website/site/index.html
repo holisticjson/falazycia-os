@@ -2863,11 +2863,11 @@
 <div id="jaison-chat-window">
     <div class="jaison-chat-header">
         <div style="display: flex; align-items: center; gap: 12px;">
-            <div class="jaison-chat-avatar">🤖</div>
+            <img src="/tomasz_avatar.jpg" class="jaison-chat-avatar" alt="Asystent Jaison.ai">
             <div>
-                <h4 style="margin: 0; color: #FFF; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.3px;">Asystent Jaison AI</h4>
+                <h4 style="margin: 0; color: #FFF; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.3px;">Asystent Jaison.ai</h4>
                 <p style="margin: 2px 0 0 0; color: #10B981; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 5px;">
-                    <span class="jaison-status-dot"></span> Online (RAG)
+                    <span class="jaison-status-dot"></span> Online
                 </p>
             </div>
         </div>
@@ -2885,7 +2885,7 @@
         <input type="text" id="jaison-email-confirm" style="display: none !important;" tabindex="-1" autocomplete="off">
         <input type="text" id="jaison-phone-check" style="display: none !important;" tabindex="-1" autocomplete="off">
         
-        <input type="text" id="jaison-chat-input" placeholder="Wpisz pytanie..." onkeypress="handleJaisonKeyPress(event)" autocomplete="off">
+        <input type="text" id="jaison-chat-input" placeholder="Wpisz pytanie..." onkeydown="handleJaisonKeyPress(event)" autocomplete="off">
         <button onclick="sendJaisonMessage()" id="jaison-send-btn">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
@@ -3022,6 +3022,7 @@
     justify-content: center;
     font-size: 1.2rem;
     border: 1px solid rgba(0, 155, 172, 0.25);
+    object-fit: cover;
 }
 .jaison-status-dot {
     width: 7px;
@@ -3205,7 +3206,10 @@ function toggleJaisonChat() {
 }
 
 function handleJaisonKeyPress(e) {
-    if (e.key === 'Enter') sendJaisonMessage();
+    if (e.key === 'Enter' || e.keyCode === 13) {
+        e.preventDefault();
+        sendJaisonMessage();
+    }
 }
 
 function sendJaisonMessage() {
