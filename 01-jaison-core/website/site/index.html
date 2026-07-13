@@ -2847,88 +2847,113 @@
       <p>Key Services: 1) Agent Wiktor (B2B Lead Qualification & Funnels), 2) Agent Hermes (AI COO, RAG Obsidian integration, Cron Jobs), 3) CRM & Systeme.io Integration for compliant, zero-spam email marketing.</p>
       <p>Pricing: Implementations range from 3900 PLN to 7900 PLN (one-time setup), leveraging free or low-cost cloud infrastructure (Google Cloud Platform, Vertex AI, n8n) to eliminate expensive monthly SaaS subscriptions. We provide a 99.9% SLA and full data privacy (Enterprise Privacy mode).</p>
     </div><!-- ========================================== -->
-<!-- 🤖 PREMIUM VERTEX AI CHATBOT BY JAISON.PL  -->
-<!-- ========================================== -->
+<!-- 🤖 CUSTOM PREMIUM VERTEX AI CHATBOT BY JAISON.PL (STANDARD 10K+) -->
+<!-- =============================================================== -->
 
-<!-- 1. Stylizacja Premium dla Pływającego Przycisku i Chmurki (Vanilla CSS) -->
+<!-- Przycisk Wyzwalający (Launcher) -->
+<div id="jaison-chat-launcher" onclick="toggleJaisonChat()" title="Porozmawiaj z Jaison AI">
+    <div id="jaison-chat-tooltip">Zacznij audyt! ⚡</div>
+    <div class="jaison-chat-pulse"></div>
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+</div>
+
+<!-- Główne Okno Czatu (Premium Glassmorphism) -->
+<div id="jaison-chat-window">
+    <div class="jaison-chat-header">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div class="jaison-chat-avatar">🤖</div>
+            <div>
+                <h4 style="margin: 0; color: #FFF; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.3px;">Asystent Jaison AI</h4>
+                <p style="margin: 2px 0 0 0; color: #10B981; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                    <span class="jaison-status-dot"></span> Online (RAG)
+                </p>
+            </div>
+        </div>
+        <button onclick="toggleJaisonChat()" class="jaison-chat-close-btn">&times;</button>
+    </div>
+    
+    <div class="jaison-chat-messages" id="jaison-chat-msg-container">
+        <div class="jaison-message jaison-bot">
+            Witaj! Jestem asystentem AI agencji Jaison. W czym mogę Ci dzisiaj pomóc? Jeśli szukasz automatyzacji, które uwolnią Twój czas i zwiększą zyski – napisz mi o tym. Możemy też przeprowadzić bezpłatny audyt Twojego biznesu! 🚀
+        </div>
+    </div>
+    
+    <div class="jaison-chat-input-area">
+        <!-- Niewidoczne pola Tarczy Anty-Spamowej (Honeypot) -->
+        <input type="text" id="jaison-email-confirm" style="display: none !important;" tabindex="-1" autocomplete="off">
+        <input type="text" id="jaison-phone-check" style="display: none !important;" tabindex="-1" autocomplete="off">
+        
+        <input type="text" id="jaison-chat-input" placeholder="Wpisz pytanie..." onkeypress="handleJaisonKeyPress(event)" autocomplete="off">
+        <button onclick="sendJaisonMessage()" id="jaison-send-btn">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+        </button>
+    </div>
+</div>
+
+<!-- Luksusowa Stylistyka (Vanilla CSS) -->
 <style>
-  /* Pływający Przycisk Czatu (Launcher) */
-  #coolfon-chat-launcher {
+#jaison-chat-launcher {
     position: fixed;
     bottom: 30px;
     right: 30px;
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #10b981 0%, #064e3b 100%); /* Dopasowano do szmaragdowej kolorystyki Jaison */
-    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, #009bac 0%, #001e4e 100%);
+    box-shadow: 0 10px 30px rgba(0, 155, 172, 0.4);
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 999999;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 99999;
+    color: #FFF;
     border: 2px solid rgba(255, 255, 255, 0.1);
-  }
-
-  /* Efekt Hover na przycisku */
-  #coolfon-chat-launcher:hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+#jaison-chat-launcher:hover {
     transform: scale(1.1) translateY(-3px);
-    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6);
-    background: linear-gradient(135deg, #34d399 0%, #064e3b 100%);
-  }
-
-  /* Animacja pulsującego okręgu wokół przycisku */
-  #coolfon-chat-launcher::before {
-    content: '';
+    box-shadow: 0 15px 35px rgba(0, 155, 172, 0.6);
+}
+.jaison-chat-pulse {
     position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background: rgba(16, 185, 129, 0.4);
-    animation: coolfon-chat-pulse 2s infinite;
+    background: rgba(0, 155, 172, 0.3);
     z-index: -1;
-  }
+    animation: jaisonPulse 2s infinite;
+}
+@keyframes jaisonPulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
 
-  /* Ikona czatu (SVG) */
-  #coolfon-chat-launcher svg {
-    width: 28px;
-    height: 28px;
-    fill: none;
-    stroke: #ffffff;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transition: transform 0.3s ease;
-  }
-
-  #coolfon-chat-launcher:hover svg {
-    transform: rotate(5deg);
-  }
-
-  /* Chmurka podpowiedzi (Tooltip) */
-  #coolfon-chat-tooltip {
+/* Chmurka podpowiedzi (Tooltip) */
+#jaison-chat-tooltip {
     position: absolute;
-    right: 80px; /* Po lewej stronie przycisku */
+    right: 80px;
     white-space: nowrap;
-    background: #0f172a; /* Ciemny granat pasujący do marki */
+    background: #0a0f1e;
     color: #ffffff;
     padding: 10px 18px;
-    border-radius: 20px 20px 0 20px; /* Zaokrąglony dymek w stylu dymku czatu */
+    border-radius: 20px 20px 0 20px;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     font-size: 13px;
     font-weight: 600;
     letter-spacing: 0.3px;
-    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.25);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     opacity: 0;
     transform: translateX(15px);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    pointer-events: none; /* Zapobiega blokowaniu kliknięć pod dymkiem */
-    border: 1px solid rgba(255, 255, 255, 0.15);
-  }
-
-  /* Mały trójkąt (dzióbek) chmurki */
-  #coolfon-chat-tooltip::after {
+    pointer-events: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+#jaison-chat-tooltip::after {
     content: '';
     position: absolute;
     right: -6px;
@@ -2937,237 +2962,315 @@
     height: 0;
     border-style: solid;
     border-width: 6px 0 6px 8px;
-    border-color: transparent transparent transparent #0f172a;
-  }
-
-  /* Aktywna widoczna chmurka */
-  #coolfon-chat-tooltip.visible {
+    border-color: transparent transparent transparent #0a0f1e;
+}
+#jaison-chat-tooltip.visible {
     opacity: 1;
     transform: translateX(0);
-  }
-
-  /* Klasyczny hover na przycisk również wywołuje dymek */
-  #coolfon-chat-launcher:hover #coolfon-chat-tooltip {
+}
+#jaison-chat-launcher:hover #jaison-chat-tooltip {
     opacity: 1;
     transform: translateX(0);
-  }
+}
 
-  @keyframes coolfon-chat-pulse {
-    0% {
-      transform: scale(1);
-      opacity: 0.8;
-    }
-    100% {
-      transform: scale(1.4);
-      opacity: 0;
-    }
-  }
-
-  /* 
-   * AGRESYWNE UKRYWANIE WYNIKÓW WYSZUKIWANIA (PLIKÓW ŹRÓDŁOWYCH) W WIDGECIE VERTEX AI
-   */
-  gen-search-widget::part(search-results),
-  gen-search-widget::part(search-result-list),
-  gen-search-widget::part(tab-list) {
-    display: none !important;
-  }
-
-  /* =========================================
-     JAISON BOT - FLOATING GLASSMORPHIC WINDOW
-     ========================================= */
-  #jaison-bot-window {
+/* Główne Okno Czatu - Premium Glassmorphism */
+#jaison-chat-window {
     position: fixed;
-    bottom: 90px;
+    bottom: 105px;
     right: 30px;
-    width: 380px;
-    height: 600px;
-    max-height: calc(100vh - 120px);
+    width: 385px;
+    height: 560px;
+    max-height: calc(100vh - 140px);
     max-width: calc(100vw - 40px);
-    background: rgba(15, 23, 42, 0.85); /* Szklany, ciemny granat jaison */
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    background: rgba(10, 15, 30, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    z-index: 9999;
+    z-index: 99999;
     transform: translateY(20px) scale(0.95);
     opacity: 0;
     pointer-events: none;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     transform-origin: bottom right;
-  }
-
-  #jaison-bot-window.active {
+}
+#jaison-chat-window.active {
     transform: translateY(0) scale(1);
     opacity: 1;
     pointer-events: auto;
-  }
+}
 
-  #jaison-bot-header {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+.jaison-chat-header {
     padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  #jaison-bot-title {
-    color: #ffffff;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 15px;
+}
+.jaison-chat-avatar {
+    width: 36px;
+    height: 36px;
+    background: rgba(0, 155, 172, 0.15);
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 8px;
-    letter-spacing: 0.3px;
-  }
-
-  /* Aktywna kropka (Status) */
-  #jaison-bot-title::before {
-    content: '';
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    background: #10b981; 
+    justify-content: center;
+    font-size: 1.2rem;
+    border: 1px solid rgba(0, 155, 172, 0.25);
+}
+.jaison-status-dot {
+    width: 7px;
+    height: 7px;
+    background: #10B981;
     border-radius: 50%;
-    box-shadow: 0 0 10px #10b981;
-    animation: pulse-dot 2s infinite;
-  }
-
-  @keyframes pulse-dot {
+    display: inline-block;
+    box-shadow: 0 0 8px #10B981;
+    animation: jaisonStatusPulse 2s infinite;
+}
+@keyframes jaisonStatusPulse {
     0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
     70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
     100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-  }
+}
 
-  #jaison-bot-close {
+.jaison-chat-close-btn {
     background: transparent;
     border: none;
-    color: #94a3b8;
-    font-size: 28px;
+    color: #8E9BAE;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s, transform 0.2s;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+}
+.jaison-chat-close-btn:hover {
+    color: #FFF;
+    transform: rotate(90deg);
+}
+
+.jaison-chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: rgba(0, 0, 0, 0.15);
+    scroll-behavior: smooth;
+}
+/* Stylowanie scrollbara */
+.jaison-chat-messages::-webkit-scrollbar {
+    width: 6px;
+}
+.jaison-chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+.jaison-chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.jaison-message {
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 82%;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: #FFF;
+    letter-spacing: 0.1px;
+    word-break: break-word;
+}
+.jaison-message a {
+    color: #00f0ff;
+    text-decoration: underline;
+    font-weight: 600;
+}
+.jaison-message a:hover {
+    color: #34d399;
+}
+.jaison-bot {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+.jaison-user {
+    background: linear-gradient(135deg, #009bac 0%, #005f73 100%);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 15px rgba(0, 155, 172, 0.25);
+}
+
+.jaison-chat-input-area {
+    padding: 14px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+#jaison-chat-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 11px 16px;
+    color: #FFF;
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    transition: border-color 0.2s, background 0.2s;
+}
+#jaison-chat-input:focus {
+    border-color: rgba(0, 155, 172, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+}
+#jaison-send-btn {
+    background: #009bac;
+    border: none;
+    border-radius: 14px;
+    width: 44px;
+    height: 44px;
+    color: #FFF;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1;
-    transition: all 0.2s;
-    padding: 0;
-  }
+    transition: background 0.2s, transform 0.1s;
+}
+#jaison-send-btn:hover {
+    background: #00b4c4;
+}
+#jaison-send-btn:active {
+    transform: scale(0.95);
+}
 
-  #jaison-bot-close:hover {
-    color: #fff;
-    transform: rotate(90deg);
-  }
+/* Animacja trzech kropek (typing indicator) */
+.jaison-typing-dots {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    height: 20px;
+}
+.jaison-typing-dots span {
+    width: 6px;
+    height: 6px;
+    background: #8E9BAE;
+    border-radius: 50%;
+    animation: jaisonTyping 1.4s infinite ease-in-out both;
+}
+.jaison-typing-dots span:nth-child(1) { animation-delay: -0.32s; }
+.jaison-typing-dots span:nth-child(2) { animation-delay: -0.16s; }
 
-  #jaison-bot-body {
-    flex: 1;
-    position: relative;
-    background: #fff; /* Tło pod wyszukiwarką */
-    overflow: hidden;
-  }
+@keyframes jaisonTyping {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1.0); }
+}
 
-  /* 
-   * DOPASOWANIE WIDGETU DO OKNA INLINE
-   */
-  gen-search-widget {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-  }
-
-  /* Ukrycie standardowego headera Google i ikonki close z ich widgetu */
-  gen-search-widget::part(header),
-  gen-search-widget::part(close-button) {
-    display: none !important;
-  }
-  
-  gen-search-widget::part(modal) {
-    position: relative !important;
-    max-width: 100% !important;
-    max-height: 100% !important;
-    border-radius: 0 !important;
-  }
-
-  /* Na mobile poprawki dla launchera i okna */
-  @media (max-width: 480px) {
-    #jaison-bot-window {
-      width: 100%;
-      height: 100%;
-      max-height: 100%;
-      max-width: 100%;
-      bottom: 0;
-      right: 0;
-      border-radius: 0;
-      border: none;
+@media (max-width: 480px) {
+    #jaison-chat-window {
+        width: 100%;
+        height: 100%;
+        max-height: 100%;
+        max-width: 100%;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+        border: none;
     }
-  }
+}
 </style>
 
-<!-- 2. Autorski Launcher, Chmurka i Elementy Kontrolne bota -->
-<div id="coolfon-chat-launcher" title="Porozmawiaj z J(AI)SON AI">
-  <!-- Pływająca chmurka zachęcająca (Tooltip) -->
-  <div id="coolfon-chat-tooltip">Zacznij audyt! ⚡</div>
-  
-  <!-- Elegancka ikona czatu w formacie SVG -->
-  <svg viewBox="0 0 24 24">
-    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-  </svg>
-</div>
-
-<!-- 2b. Nowe, szklane, pływające okno Chatbota Jaison -->
-<div id="jaison-bot-window">
-  <div id="jaison-bot-header">
-    <div id="jaison-bot-title">Jaison AI</div>
-    <button id="jaison-bot-close">&times;</button>
-  </div>
-  <div id="jaison-bot-body">
-    <!-- Skrypty Google Vertex AI Search -->
-    <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=pl"></script>
-    <gen-search-widget
-      configId="88369b03-1241-4ffc-b335-0fc7e686f149" 
-      location="eu"
-      alwaysOpened="true">
-    </gen-search-widget>
-  </div>
-</div>
-
-<!-- 3. Skrypt łączący ładny przycisk z oknem czatu -->
+<!-- Logika Operacyjna Frontendu (Vanilla JS) -->
 <script>
-  const launcher = document.getElementById('coolfon-chat-launcher');
-  const chatWindow = document.getElementById('jaison-bot-window');
-  const closeBtn = document.getElementById('jaison-bot-close');
-  const tooltip = document.getElementById('coolfon-chat-tooltip');
-
-  // Otwieranie z Launchera
-  launcher.addEventListener('click', function(e) {
-    e.preventDefault();
-    chatWindow.classList.toggle('active');
-    if(chatWindow.classList.contains('active')) {
-      tooltip.classList.remove('visible'); // ukryj tooltip gdy otwarte
+function toggleJaisonChat() {
+    const win = document.getElementById("jaison-chat-window");
+    const tooltip = document.getElementById("jaison-chat-tooltip");
+    
+    win.classList.toggle("active");
+    
+    if (win.classList.contains("active")) {
+        tooltip.classList.remove("visible");
     }
-  });
+}
 
-  // Zamykanie krzyżykiem w oknie
-  closeBtn.addEventListener('click', function(e) {
-    e.preventDefault();
-    chatWindow.classList.remove('active');
-  });
+function handleJaisonKeyPress(e) {
+    if (e.key === 'Enter') sendJaisonMessage();
+}
 
-  // Inteligentny UX: Automatyczne wysunięcie chmurki po 1.5 sekundy
-  setTimeout(function() {
-    if (!chatWindow.classList.contains('active')) {
-      tooltip.classList.add('visible');
+function sendJaisonMessage() {
+    const input = document.getElementById("jaison-chat-input");
+    const msg = input.value.trim();
+    if (!msg) return;
+
+    // Pobierz pola Spam Shield (Honeypot)
+    const honeypotEmail = document.getElementById("jaison-email-confirm").value;
+    const honeypotPhone = document.getElementById("jaison-phone-check").value;
+
+    // Renderuj wiadomość użytkownika
+    const container = document.getElementById("jaison-chat-msg-container");
+    container.innerHTML += `<div class="jaison-message jaison-user">${msg}</div>`;
+    input.value = "";
+    container.scrollTop = container.scrollHeight;
+
+    // Animacja pisania bota (3 kropki)
+    const typingId = "jaison-typing-" + Date.now();
+    container.innerHTML += `
+        <div class="jaison-message jaison-bot" id="${typingId}">
+            <div class="jaison-typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    `;
+    container.scrollTop = container.scrollHeight;
+
+    // Wywołanie bezpiecznego proxy PHP
+    fetch('/php/chat.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            message: msg,
+            email_confirm: honeypotEmail,
+            phone_check: honeypotPhone
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        const typingIndicator = document.getElementById(typingId);
+        if (typingIndicator) typingIndicator.remove();
+        
+        container.innerHTML += `<div class="jaison-message jaison-bot">${data.reply}</div>`;
+        container.scrollTop = container.scrollHeight;
+    })
+    .catch(() => {
+        const typingIndicator = document.getElementById(typingId);
+        if (typingIndicator) typingIndicator.remove();
+        
+        container.innerHTML += `<div class="jaison-message jaison-bot">Przepraszam, straciłem połączenie z moją bazą wiedzy. Skontaktuj się ze mną bezpośrednio przez e-mail: <a href="mailto:hello@jaison.pl">hello@jaison.pl</a>! 📞</div>`;
+        container.scrollTop = container.scrollHeight;
+    });
+}
+
+// Inteligentny UX: Automatyczne wysunięcie chmurki po 3 sekundach
+setTimeout(function() {
+    const win = document.getElementById("jaison-chat-window");
+    const tooltip = document.getElementById("jaison-chat-tooltip");
+    if (win && !win.classList.contains("active")) {
+        tooltip.classList.add("visible");
     }
-  }, 1500);
-
-  // Ukrycie chmurki po najechaniu myszką
-  launcher.addEventListener('mouseenter', function() {
-    tooltip.classList.remove('visible');
-  });
+}, 3000);
 </script>
-  </body>
 </html>
+
