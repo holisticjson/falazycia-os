@@ -4341,6 +4341,19 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "LoRA_Studio"
                 st.rerun()
 
+            # 15. SOCIAL MEDIA PUBLISHER
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #0EA5E9; min-height: 200px;">
+                <h3 style="color: #0EA5E9; margin: 0; font-size: 1.3rem;">🚀 Social Media Publisher (n8n)</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Zarządzaj publikacjami bezpośrednio z dashboardu. Wyślij post na LinkedIn, Facebook, Instagram, X, TikTok oraz Google Business Profile automatycznie przez n8n.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("🚀 Uruchom Social Publisher", key="btn_run_social_publisher", use_container_width=True):
+                st.session_state.active_suite_tool = "Social_Publisher"
+                st.rerun()
+
     # ------------------ INDYWIDUALNE NARZĘDZIA (GUI) ------------------
     else:
         # Przycisk powrotu w stylu premium
@@ -6753,7 +6766,7 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
             st.markdown("""
             Zarządzaj swoimi treściami na wiele platform z jednego miejsca. 
             Wpisz tekst posta, wybierz docelowe platformy społecznościowe i zsynchronizuj to z webhookiem **n8n**, 
-            który zadba o publikację (np. Facebook, LinkedIn, Google Business Profile).
+            który zadba o publikację.
             """)
             
             # Formularz publikacji
@@ -6765,10 +6778,13 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
                 c1, c2, c3 = st.columns(3)
                 with c1:
                     pub_linkedin = st.checkbox("LinkedIn", value=True)
+                    pub_instagram = st.checkbox("Instagram")
                 with c2:
                     pub_facebook = st.checkbox("Facebook Page", value=True)
+                    pub_x = st.checkbox("X (Twitter)")
                 with c3:
                     pub_gbp = st.checkbox("Google Business Profile")
+                    pub_tiktok = st.checkbox("TikTok")
                     
                 pub_schedule = st.date_input("Data publikacji (opcjonalnie):")
                 pub_time = st.time_input("Godzina publikacji (opcjonalnie):")
@@ -6787,13 +6803,15 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
                             "platforms": {
                                 "linkedin": pub_linkedin,
                                 "facebook": pub_facebook,
-                                "google_business": pub_gbp
+                                "google_business": pub_gbp,
+                                "instagram": pub_instagram,
+                                "x_twitter": pub_x,
+                                "tiktok": pub_tiktok
                             },
                             "schedule": f"{pub_schedule} {pub_time}"
                         }
                         
                         try:
-                            # Próba wysłania bez blokowania interfejsu przy braku rzeczywistego n8n lokalnie
                             import requests
                             resp = requests.post(n8n_webhook_url, json=payload, timeout=5)
                             if resp.status_code == 200:
