@@ -43,6 +43,17 @@ W celu zasilenia bota poufnymi informacjami (instrukcje techniczne, wewnętrzne 
     *   📁 `02_lead-magnets/` (artykuły, PDF-y z perswazyjnym copywritingiem NLP)
     *   📁 `03_service-sop/` (wewnętrzne instrukcje techniczne)
     *   📁 `04_sales-playbooks/` (skrypty rozmów handlowych)
+4.  **[KRYTYCZNE] Nadanie ról IAM dla GCS:** Gdy aktywowano UBLA (Uniform Bucket-Level Access), uprawnienia domyślne dla twórcy bucketu i systemowego konta Vertex AI zostają zablokowane. Agent musi automatycznie odpalić następujące komendy by wymusić twarde przypisanie ról IAM. Zastąp najpierw `NUMER_PROJEKTU_KLIENTA` poprawnym identyfikatorem liczbowym, a `MAIL_KLIENTA` głównym administratorem.
+    ```powershell
+    # Pobierz numer projektu (Project Number), skopiuj go:
+    gcloud projects describe "ID_PROJEKTU_KLIENTA" --format="value(projectNumber)"
+    
+    # Nadaj uprawnienia administracyjne dla klienta:
+    gcloud storage buckets add-iam-policy-binding gs://nazwa-klienta-knowledge --member="user:MAIL_KLIENTA" --role="roles/storage.admin"
+    
+    # Nadaj niezbędne uprawnienia do podglądu (Object Viewer) dla systemowego konta Discovery Engine w Vertex AI:
+    gcloud storage buckets add-iam-policy-binding gs://nazwa-klienta-knowledge --member="serviceAccount:service-NUMER_PROJEKTU_KLIENTA@gcp-sa-discoveryengine.iam.gserviceaccount.com" --role="roles/storage.objectViewer"
+    ```
 
 ### Krok 3: Konfiguracja Magazynu Danych GCS (Data Store)
 1.  W konsoli GCP przejdź do **Vertex AI Agent Builder** -> **Data Stores**.
@@ -72,11 +83,27 @@ W celu zasilenia bota poufnymi informacjami (instrukcje techniczne, wewnętrzne 
 
 ### Krok 6: Dostrajanie i System Prompt (Konfiguracja Premium)
 Przejdź do sekcji **Konfiguracja** (Configuration) -> zakładka **UI / Dostrajanie**:
-1.  **Wybór Modelu**: Zmień model językowy na najnowszy stabilny z rodziny Flash (np. **`Gemini 2.5 Flash`** lub **`Gemini 2.0 Flash 1`**). Są najszybsze i najtańsze.
-2.  **System Prompt (Instrukcje)**: Wklej spersonalizowany prompt nadający tożsamość asystentowi. Upewnij się, że zawiera:
-    *   Zakaz używania formatowania Markdown (gwiazdek) w odpowiedziach na stronie.
-    *   Instrukcję uziemienia (nie wymyślamy faktów poza bazą wiedzy).
-    *   Perswazyjne wezwania do akcji (CTA) kierujące na kontakt telefoniczny.
+1.  **Wybór Modelu**: Zmień model językowy na **`Gemini 2.5 Flash`** (aktualnie optymalny model pod kątem relacji jakość/koszt w zastosowaniach hybrydowych RAG). Nie wybieraj przestarzałych wersji (gemini-pro).
+2.  **System Prompt (Instrukcje)**: Zastąp domyślny komunikat tym spersonalizowanym szablonem "Ghost v2":
+    
+    ```text
+    Jesteś wirtualnym doradcą i asystentem AI reprezentującym markę Jaison (jaison.pl), agencję wdrażającą infrastrukturę opartą o sztuczną inteligencję. Twoim celem jest merytoryczna pomoc i kwalifikacja leadów biznesowych.
+    Kierujesz się zasadami Ghost v2 oraz architekturą 'Low-Friction'. Pisz zwięźle, bez korpo-żargonu, jak specjalista B2B.
+    Masz BEZWZGLĘDNY ZAKAZ używania formatowania Markdown (żadnych pogrubień **, kursyw *, nagłówków ###). Pisz czystym tekstem.
+    
+    TWOJE ZADANIE - AUDYT (21 PYTAŃ):
+    Gdy rozpoznasz, że klient jest zainteresowany współpracą lub szuka rozwiązania, zaproponuj bezpłatny audyt potrzeb (składający się łącznie z 21 pytań ewaluacyjnych z Twojej bazy wiedzy, opartych m.in. o Umiejętności Jutra).
+    Zadawaj pytania naturalnie, maksymalnie 1-2 na raz, wchodząc w dialog. Kategoryzuj odpowiedzi.
+    Jeśli klient nie zna odpowiedzi na jakieś pytanie, nie dotyczy go ono, lub jawnie wyrazi chęć bezpośredniej rozmowy z człowiekiem, NATYCHMIAST przerwij audyt i zaproponuj bezpośredni kontakt.
+    
+    ŚCIEŻKI KONTAKTU (Zawsze podawaj te konkretne linki, aby system wygenerował klikalne adresy URL):
+    Gdy klient chce się skontaktować lub umówić, przedstaw mu 3 opcje wyboru podając te dokładne linki w swoim tekście:
+    1. Umówienie spotkania wideo: https://cal.com/jaison
+    2. Szybka wiadomość na WhatsApp (bezpośrednio do Tomasza): https://wa.me/48791636644
+    3. Wiadomość e-mail (wywołuje program pocztowy): mailto:hello@jaison.pl
+    
+    Zawsze odpowiadaj z dużą empatią, dopasowując się do problemu rozmówcy. Jeśli czegoś nie wiesz, nie zmyślaj - od razu kieruj do człowieka używając powyższych ścieżek kontaktu.
+    ```
 3.  **Filtr Halucynacji**: Włącz suwak **`Ignoruj podsumowanie przy braku odpowiedzi na zapytanie`** (zmień na True), aby bot milczał i kierował do kontaktu w przypadku pytań niezwiązanych z ofertą.
 4.  **Generowanie obrazów**: Pozostaw suwak *Obraz w odpowiedziach* w pozycji **`Brak źródła`** (oszczędność budżetu!).
 5.  Kliknij **Zapisz i opublikuj (Save and publish)**.
@@ -90,9 +117,11 @@ Gdy konfiguracja jest gotowa, przejdź do zakładki **Integracja (Integration)**
 ### Krok 1: Wybór Autoryzacji Publicznej i Whitelisting
 1.  **Bezwzględnie zaznacz opcję: `Dostęp publiczny` (Public access)**. 
     *   *Uwaga:* Domyślnie zaznaczony jest "JWT lub OAuth", co wymagałoby pisania serwerowej aplikacji generującej tokeny. Dla statycznej strony HTML wybór `Dostęp publiczny` pozwala na bezpośrednie uruchomienie bota!
-2.  W polu **Dodaj dozwolone domeny dla widżetu** wpisz domenę klienta bez protokołu (np. `coolfon.pl`) i kliknij niebieski przycisk **Dodaj (Add)**.
+2.  W polu **Dodaj dozwolone domeny dla widżetu** wpisz domenę klienta bez protokołu (np. `jaison.pl`) i kliknij niebieski przycisk **Dodaj (Add)**. Zrób to dla wariantu z www i bez www (`jaison.pl` oraz `www.jaison.pl`).
 3.  Zjedź niżej i kliknij przycisk **Zapisz (Save)**.
-4.  Gdy to zrobisz, kod w polu niżej automatycznie się zaktualizuje i otrzyma parametr `apiKey="..."` lub uproszczony identyfikator, który pozwoli na natychmiastowe osadzenie bota!
+4.  Gdy to zrobisz, kod w polu niżej automatycznie się zaktualizuje i otrzyma skompilowany parametr `configId="Twój-Unikalny-Hash-Kodu"`.
+5.  **Podanie ID do Agenta:** Klient / operator NIE wkleja kodu do HTML ręcznie! Jego zadaniem jest jedynie skopiowanie z panelu wygenerowanego ciągu znaków (hasha z atrybutu `configId`) i wklejenie go z powrotem na czat agentowi AntiGravity.
+6.  **Agent zastępuje kod:** Agent AI w tle podmienia wartość `configId="..."` w pliku HTML za pomocą narzędzi zastępowania tekstu (np. sed / multi_replace_file_content) i puszcza nowy `deploy`.
 
 ---
 

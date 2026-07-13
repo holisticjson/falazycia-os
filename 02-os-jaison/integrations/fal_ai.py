@@ -196,9 +196,10 @@ def run_background_removal(image_bytes):
         return None, f"Wyjątek podczas usuwania tła: {str(ex)}"
 
 
-def run_flux_lora_generation(prompt, lora_url, scale=1.0, aspect_ratio="square_hd"):
+def run_flux_lora_generation(prompt, lora_url, scale=1.0, aspect_ratio="square_hd", reference_image_bytes=None, strength=0.8):
     """
     Generuje obraz przy użyciu modelu fal-ai/flux-lora oraz przesłanego pliku wag LoRA (.safetensors).
+    Obsługuje również transformację Image-to-Image.
     """
     headers = get_fal_headers()
     if not headers:
@@ -217,6 +218,13 @@ def run_flux_lora_generation(prompt, lora_url, scale=1.0, aspect_ratio="square_h
             "num_inference_steps": 28,
             "enable_safety_checker": True
         }
+        
+        if reference_image_bytes:
+            import base64
+            img_b64 = base64.b64encode(reference_image_bytes).decode("utf-8")
+            payload["image_url"] = f"data:image/jpeg;base64,{img_b64}"
+            payload["strength"] = strength
+
 
         url = "https://fal.run/fal-ai/flux-lora"
         response = requests.post(url, json=payload, headers=headers, timeout=120)
@@ -389,3 +397,37 @@ def run_image_to_video(image_bytes, prompt, model_name="minimax", aspect_ratio="
             
     except Exception as ex:
         return None, f"Wyjątek podczas generowania wideo fal.ai: {str(ex)}"
+
+
+def generate_audio_fal(prompt, reference_audio_url=None):
+    """
+    Generuje muzykę/audio za pomocą modelu fal-ai/minimax-music
+    """
+    headers = get_fal_headers()
+    if not headers:
+        return None, "Brak klucza FAL_KEY w pliku .env!"
+
+    try:
+        payload = {
+            "prompt": prompt
+        }
+        if reference_audio_url:
+            payload["reference_audio_url"] = reference_audio_url
+
+        url = "https://fal.run/fal-ai/minimax-music"
+        response = requests.post(url, json=payload, headers=headers, timeout=180)
+        
+        if response.status_code == 200:
+            res_json = response.json()
+            audio_url = res_json.get("audio", {}).get("url") or res_json.get("audio_url")
+            if audio_url:
+                audio_res = requests.get(audio_url, timeout=60)
+                if audio_res.status_code == 200:
+                    return audio_res.content, None
+                return None, f"Nie udało się pobrać wygenerowanego audio: {audio_res.status_code}"
+            return None, "API nie zwróciło adresu URL dla audio."
+        else:
+            return None, f"Błąd fal.ai API ({response.status_code}): {response.text}"
+            
+    except Exception as ex:
+        return None, f"Wyjątek podczas generowania audio: {str(ex)}"

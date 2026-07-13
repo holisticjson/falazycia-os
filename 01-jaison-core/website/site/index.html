@@ -2846,6 +2846,170 @@
       <p>J(AI)SON (operated by Tomasz) is a premium AI consulting and implementation agency located in Poland. We specialize in building autonomous AI agent systems that operate via popular messengers like WhatsApp, Telegram, and Slack. Our core philosophy relies on 'Low-Friction' architectures and 'Ghost v2' communication standards, specifically tailored for neurodivergent (ADHD) business leaders and entrepreneurs suffering from digital overwhelm.</p>
       <p>Key Services: 1) Agent Wiktor (B2B Lead Qualification & Funnels), 2) Agent Hermes (AI COO, RAG Obsidian integration, Cron Jobs), 3) CRM & Systeme.io Integration for compliant, zero-spam email marketing.</p>
       <p>Pricing: Implementations range from 3900 PLN to 7900 PLN (one-time setup), leveraging free or low-cost cloud infrastructure (Google Cloud Platform, Vertex AI, n8n) to eliminate expensive monthly SaaS subscriptions. We provide a 99.9% SLA and full data privacy (Enterprise Privacy mode).</p>
-    </div>
+    </div><!-- ========================================== -->
+<!-- 🤖 PREMIUM VERTEX AI CHATBOT BY JAISON.PL  -->
+<!-- ========================================== -->
+
+<!-- 1. Stylizacja Premium dla Pływającego Przycisku i Chmurki (Vanilla CSS) -->
+<style>
+  /* Pływający Przycisk Czatu (Launcher) */
+  #coolfon-chat-launcher {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #10b981 0%, #064e3b 100%); /* Dopasowano do szmaragdowej kolorystyki Jaison */
+    box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999999;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Efekt Hover na przycisku */
+  #coolfon-chat-launcher:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 12px 35px rgba(16, 185, 129, 0.6);
+    background: linear-gradient(135deg, #34d399 0%, #064e3b 100%);
+  }
+
+  /* Animacja pulsującego okręgu wokół przycisku */
+  #coolfon-chat-launcher::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: rgba(16, 185, 129, 0.4);
+    animation: coolfon-chat-pulse 2s infinite;
+    z-index: -1;
+  }
+
+  /* Ikona czatu (SVG) */
+  #coolfon-chat-launcher svg {
+    width: 28px;
+    height: 28px;
+    fill: none;
+    stroke: #ffffff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s ease;
+  }
+
+  #coolfon-chat-launcher:hover svg {
+    transform: rotate(5deg);
+  }
+
+  /* Chmurka podpowiedzi (Tooltip) */
+  #coolfon-chat-tooltip {
+    position: absolute;
+    right: 80px; /* Po lewej stronie przycisku */
+    white-space: nowrap;
+    background: #0f172a; /* Ciemny granat pasujący do marki */
+    color: #ffffff;
+    padding: 10px 18px;
+    border-radius: 20px 20px 0 20px; /* Zaokrąglony dymek w stylu dymku czatu */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.25);
+    opacity: 0;
+    transform: translateX(15px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none; /* Zapobiega blokowaniu kliknięć pod dymkiem */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  /* Mały trójkąt (dzióbek) chmurki */
+  #coolfon-chat-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    bottom: -1px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 6px 0 6px 8px;
+    border-color: transparent transparent transparent #0f172a;
+  }
+
+  /* Aktywna widoczna chmurka */
+  #coolfon-chat-tooltip.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* Klasyczny hover na przycisk również wywołuje dymek */
+  #coolfon-chat-launcher:hover #coolfon-chat-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @keyframes coolfon-chat-pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
+</style>
+
+<!-- 2. Autorski Launcher, Chmurka i Elementy Kontrolne bota -->
+<div id="coolfon-chat-launcher" title="Porozmawiaj z J(AI)SON AI">
+  <!-- Pływająca chmurka zachęcająca (Tooltip) -->
+  <div id="coolfon-chat-tooltip">Sprawdź mnie! ⚡</div>
+  
+  <!-- Elegancka ikona czatu w formacie SVG -->
+  <svg viewBox="0 0 24 24">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+  </svg>
+</div>
+
+<!-- Ukryty element wyzwalający wymagany przez Google -->
+<input type="text" id="searchwidgetTrigger" style="display: none !important;" />
+
+<!-- 3. Skrypty Google Vertex AI Search -->
+<script src="https://cloud.google.com/ai/gen-app-builder/client?hl=pl"></script>
+
+<!-- UWAGA TOMASZ: Tutaj musisz podmienić 'configId' na ID, które Google wygeneruje dla Twojej wyszukiwarki! -->
+<gen-search-widget
+  configId="f0e7372e-fee0-4943-9c8d-aad4282ed181" 
+  location="eu"
+  triggerId="searchwidgetTrigger">
+</gen-search-widget>
+
+<!-- 4. Skrypt łączący nasz ładny przycisk z ukrytym wyzwalaczem Google -->
+<script>
+  // Wywołanie kliknięcia w widget
+  document.getElementById('coolfon-chat-launcher').addEventListener('click', function() {
+    document.getElementById('searchwidgetTrigger').click();
+  });
+
+  // Inteligentny UX: Automatyczne wysunięcie chmurki po 1.5 sekundy (walka ze ślepotą banerową)
+  setTimeout(function() {
+    var tooltip = document.getElementById('coolfon-chat-tooltip');
+    if (tooltip) {
+      tooltip.classList.add('visible');
+    }
+  }, 1500);
+
+  // Ukrycie chmurki po najechaniu myszką, by nie przeszkadzała w czytaniu strony
+  document.getElementById('coolfon-chat-launcher').addEventListener('mouseenter', function() {
+    var tooltip = document.getElementById('coolfon-chat-tooltip');
+    if (tooltip) {
+      tooltip.classList.remove('visible');
+    }
+  });
+</script>
   </body>
 </html>

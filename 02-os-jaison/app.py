@@ -1,5 +1,25 @@
 import streamlit as st
+
 import os, json, time
+
+LORA_STATE_FILE = "lora_state.json"
+
+def load_lora_state():
+    if os.path.exists(LORA_STATE_FILE):
+        try:
+            with open(LORA_STATE_FILE, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except:
+            pass
+    return {}
+
+def save_lora_state(url, trigger):
+    try:
+        with open(LORA_STATE_FILE, "w", encoding="utf-8") as f:
+            json.dump({"url": url, "trigger": trigger}, f)
+    except:
+        pass
+
 import ssl
 
 # Ręczne wczytanie pliku .env na starcie aplikacji (sprawdzenie bieżącego i nadrzędnego katalogu)
@@ -35,6 +55,12 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
+
+if "lora_state_loaded" not in st.session_state:
+    saved_state = load_lora_state()
+    st.session_state.lora_result_url = saved_state.get("url", None)
+    st.session_state.lora_trigger_word = saved_state.get("trigger", "tomasz_hero")
+    st.session_state.lora_state_loaded = True
 
 # Dynamiczne wstrzykiwanie kodu Google Tag Manager (GTM)
 gtm_id = os.environ.get("GOOGLE_TAG_MANAGER_ID", "").strip()
@@ -1359,6 +1385,44 @@ with st.sidebar:
     st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 5px; margin-bottom: 10px;'>Agentic OS Mission Control v7.0</p>", unsafe_allow_html=True)
     st.markdown("<hr style='margin: 10px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
     
+    # 0. KONTEKST
+    st.markdown("<p style='color: #10B981; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 6px; margin-top: 5px;'>0. KONTEKST KLIENTA</p>", unsafe_allow_html=True)
+    
+    # Wczytaj dostepne konteksty
+    clients_dir = os.path.join(BASE_DIR, "04_clients")
+    available_contexts = []
+    if os.path.exists(clients_dir):
+        for item in os.listdir(clients_dir):
+            if os.path.isdir(os.path.join(clients_dir, item)):
+                config_path = os.path.join(clients_dir, item, "context_config.json")
+                if os.path.exists(config_path):
+                    try:
+                        with open(config_path, "r", encoding="utf-8") as f:
+                            cfg = json.load(f)
+                            available_contexts.append(cfg.get("name", item))
+                    except:
+                        available_contexts.append(item)
+    
+    if not available_contexts:
+        available_contexts = ["J(AI)SON Agency", "Holistic Jason"]
+        
+    if "selected_context" not in st.session_state:
+        st.session_state.selected_context = "J(AI)SON Agency"
+        
+    new_context = st.selectbox(
+        "Wybierz obszar roboczy:",
+        available_contexts,
+        index=available_contexts.index(st.session_state.selected_context) if st.session_state.selected_context in available_contexts else 0,
+        label_visibility="collapsed"
+    )
+    
+    if new_context != st.session_state.selected_context:
+        st.session_state.selected_context = new_context
+        st.toast(f"Zmieniono kontekst na: {new_context}")
+        st.rerun()
+        
+    st.markdown("<hr style='margin: 10px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
+
     col_menu = st.session_state.current_page
     
     # I. WORKSPACE
@@ -4407,6 +4471,14 @@ elif menu == "Jaison Agency":
             st.markdown("Wytrenuj swój unikalny model twarzy lub stylu (LoRA) bezpośrednio na platformie fal.ai przy użyciu silnika Flux Schnell / Dev.")
 
             # Inicjalizacja stanów
+            if "lora_state_loaded" not in st.session_state:
+                saved_state = load_lora_state()
+                if "lora_result_url" not in st.session_state:
+                    st.session_state.lora_result_url = saved_state.get("url", None)
+                if "lora_trigger_word" not in st.session_state:
+                    st.session_state.lora_trigger_word = saved_state.get("trigger", "tomasz_hero")
+                st.session_state.lora_state_loaded = True
+                
             if "lora_training_id" not in st.session_state:
                 st.session_state.lora_training_id = None
             if "lora_training_status" not in st.session_state:
@@ -4542,6 +4614,7 @@ elif menu == "Jaison Agency":
                             else:
                                 st.session_state.lora_result_url = pasted_url.strip()
                                 st.session_state.lora_trigger_word = pasted_trigger.strip()
+                                save_lora_state(pasted_url.strip(), pasted_trigger.strip())
                                 st.success("🎉 Pomyślnie podpięto model! Możesz teraz przejść do generowania obrazów.")
                                 st.rerun()
                     with col_tr2:
@@ -4602,6 +4675,7 @@ elif menu == "Jaison Agency":
                                     st.error(f"Nie udało się pobrać linku do wag: {err_res}")
                                 else:
                                     st.session_state.lora_result_url = result_url
+                                    save_lora_state(result_url, st.session_state.lora_trigger_word)
                                     st.session_state.lora_training_id = None
                                     st.success("🎉 Trening LoRA zakończony sukcesem!")
                             elif st.session_state.lora_training_status in ["FAILED", "ERROR"]:
