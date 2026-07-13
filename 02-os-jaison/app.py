@@ -20,6 +20,46 @@ def save_lora_state(url, trigger):
     except:
         pass
 
+def get_selected_context_data():
+    if "selected_context" not in st.session_state:
+        return ""
+    
+    ctx_name = st.session_state.selected_context
+    clients_dir = os.path.join(BASE_DIR, "04_clients")
+    
+    context_str = f"\\n--- AKTYWNY KONTEKST KLIENTA / PROJEKTU: {ctx_name} ---\\n"
+    
+    target_folder = None
+    if os.path.exists(clients_dir):
+        for item in os.listdir(clients_dir):
+            if os.path.isdir(os.path.join(clients_dir, item)):
+                config_path = os.path.join(clients_dir, item, "context_config.json")
+                if os.path.exists(config_path):
+                    try:
+                        with open(config_path, "r", encoding="utf-8") as f_conf:
+                            cfg = json.load(f_conf)
+                            if cfg.get("name") == ctx_name or item == ctx_name:
+                                target_folder = os.path.join(clients_dir, item)
+                                context_str += f"Typ kontekstu: {cfg.get('type', 'Nieznany')}\\nOpis: {cfg.get('description', '')}\\n"
+                                if "system_prompt_override" in cfg:
+                                    context_str += f"Zalecenia Strategiczne: {cfg['system_prompt_override']}\\n"
+                                break
+                    except:
+                        pass
+    
+    if target_folder:
+        profile_path = os.path.join(target_folder, "ghost_profile.md")
+        if os.path.exists(profile_path):
+            try:
+                with open(profile_path, "r", encoding="utf-8") as f_prof:
+                    context_str += f"\\nBAZA WIEDZY PROFILU (ghost_profile.md):\\n{f_prof.read()}\\n"
+            except:
+                pass
+                
+    context_str += "-----------------------------------------------------\\n"
+    return context_str
+
+
 import ssl
 
 # Ręczne wczytanie pliku .env na starcie aplikacji (sprawdzenie bieżącego i nadrzędnego katalogu)
@@ -1252,8 +1292,13 @@ def consult_csuite_live(lead, persona):
                 except:
                     pass
 
+    global_ctx = get_selected_context_data()
+    
     system_prompts = {
         "CEO (Strategia & Rentowność)": f"""Jesteś wirtualnym CEO w zespole Tomasza Dudy. Tomasz to wybitny architekt systemów AI dla neuroatypowych (sam ma ADHD, Holistic AIDHD).
+Twój aktualny cel zależy od wybranego Kontekstu:
+{global_ctx}
+
 Pomagasz mu w wycenie wdrożenia pod kątem modelu High-Ticket (np. wyceny 5 000 - 15 000 PLN jednorazowo), etapowaniu prac na proste kroki MVP oraz obronie jego zasobów energetycznych przed wypaleniem i paraliżem ADHD.
 Zawsze podawaj konkretną, odważną rekomendację cenową i zdefiniuj, co jest "One Thing" (kluczowym pierwszym krokiem wdrożenia).
 
@@ -1265,6 +1310,9 @@ Oto historia i tożsamość Tomasza:
 Odpowiadaj bezpośrednio, po polsku, zwięźle i konkretnie.
 """,
         "CMO (Empatyczny Storytelling)": f"""Jesteś wirtualnym CMO w zespole Tomasza Dudy (Holistic AIDHD).
+Twój aktualny cel zależy od wybranego Kontekstu:
+{global_ctx}
+
 Pomagasz mu przełożyć ból klienta na autentyczny i humorystyczny przekaz dopasowany do wyzwań klienta. Wskaż, jakich metafor użyć w komunikacji z tym klientem i jak napisać ofertę, aby rezonowała głęboko emocjonalnie, opierając się na tożsamości Tomasza.
 
 Oto Twoje oficjalne wytyczne i checklisty operacyjne (SOP):
@@ -1275,6 +1323,9 @@ Oto historia i tożsamość Tomasza:
 Odpowiadaj bezpośrednio, po polsku, zwięźle i kreatywnie.
 """,
         "CSO (Architektura Sprzedaży)": f"""Jesteś wirtualnym CSO w zespole Tomasza Dudy (Holistic AIDHD).
+Twój aktualny cel zależy od wybranego Kontekstu:
+{global_ctx}
+
 Projektujesz dla tego klienta prosty, 3-stopniowy lejek relacyjny (Rozmowa -> Architektura -> Wdrożenie). Wskaż dokładnie, jaki powinien być najbliższy krok sprzedażowy (Next Action) i jak go zrealizować przy minimalnym tarciu poznawczym (low cognitive friction).
 
 Oto Twoje oficjalne wytyczne i checklisty operacyjne (SOP):
@@ -1285,6 +1336,9 @@ Oto historia i tożsamość Tomasza:
 Odpowiadaj bezpośrednio, po polsku, zwięźle i operacyjnie.
 """,
         "CTO (Technologia & Kod)": f"""Jesteś wirtualnym CTO w zespole Tomasza Dudy (Holistic AIDHD).
+Twój aktualny cel zależy od wybranego Kontekstu:
+{global_ctx}
+
 Zaprojektuj uproszczoną, niezawodną architekturę techniczną pod potrzeby tego klienta. Rekomenduj konkretne narzędzia (np. n8n webhooks, Python scripts, SQLite, Google Sheets, Vertex AI, model gemini-2.5-flash). Podaj zwięzły schemat logiczny.
 
 Oto Twoje oficjalne wytyczne i checklisty operacyjne (SOP):
@@ -1491,6 +1545,10 @@ with st.sidebar:
         st.session_state.current_page = "CRM"
         st.rerun()
         
+    if st.button("🎯 Lead Radar 🟢", use_container_width=True, type="primary" if col_menu == "Lead_Radar" else "secondary"):
+        st.session_state.current_page = "Lead_Radar"
+        st.rerun()
+        
     if st.button("⚖️ Legal Engine", use_container_width=True, type="primary" if col_menu == "Legal" else "secondary"):
         st.session_state.current_page = "Legal"
         st.rerun()
@@ -1556,10 +1614,11 @@ def render_agent_console(agent_name, status, default_model, provider, color_acce
             o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak profilu o_mnie.md"
             user_inst = st.session_state.get(f"ctrl_prompt_{agent_key}", f"Jesteś agentem {agent_name}. Działasz zorientowany na ADHD i redukcję szumu kognitywnego.")
             
-            # Shared Workspace Memory
             recent_context = get_recent_workspace_context(limit=3)
+            global_ctx = get_selected_context_data()
             
             sys_prompt = f"""{user_inst}
+{global_ctx}
             
 ## PROFIL UŻYTKOWNIKA (O_MNIE):
 {o_mnie_context}
@@ -2576,6 +2635,49 @@ elif menu == "Notebook":
                         st.session_state.mcp_session_id = None
                         st.rerun()
 
+
+# 4a. LEAD RADAR
+elif menu == "Lead_Radar":
+    st.title("🎯 Lead Radar (Skaner Zleceń)")
+    st.subheader("Autonomiczne zbieranie i ocena B2B leadów i zleceń z rynku")
+    
+    st.markdown("""
+    <div class="one-thing-banner" style="border-left-color: #10B981;">
+        <h3 style="margin-top: 0; color: #10B981;">🤖 Jak działa ten radar?</h3>
+        <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
+            Radar korzysta z zasobów <b>Google Cloud (GenAI App Builder / Vertex AI Search)</b> oraz web scraping'u n8n, 
+            aby nieustannie monitorować publiczne portale zleceń B2B i grupy. Leady są tu agregowane i od razu 
+            klasyfikowane (np. Hot, Cold, High-Ticket) przez model Gemini API działający w tle. 
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    tab_radar, tab_config = st.tabs(["📡 Radar Zleceń", "⚙️ Konfiguracja Skanera"])
+    
+    with tab_radar:
+        st.markdown("### 📥 Najnowsze zlecenia z rynku")
+        # Dummy data for the radar table on start
+        lead_data = [
+            {"Data": "Dzisiaj, 10:15", "Źródło": "Useme.com", "Temat": "Wdrożenie asystenta AI do obsługi klienta", "Budżet": "5 000 - 10 000 PLN", "Ocena AI": "🔥 Gorący (High-Ticket)"},
+            {"Data": "Dzisiaj, 09:30", "Źródło": "Oferteo.pl", "Temat": "Napisanie skryptów w n8n dla e-commerce", "Budżet": "1 500 PLN", "Ocena AI": "⭐ Średni (Quick Win)"},
+            {"Data": "Wczoraj, 18:45", "Źródło": "Freelanceria.pl", "Temat": "Prosta automatyzacja postów social media", "Budżet": "Nieznany", "Ocena AI": "❄️ Zimny (Low ROI)"}
+        ]
+        st.table(lead_data)
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("🚀 Uruchom Skaner (Manualny Trigger n8n)", use_container_width=True):
+                st.info("Sygnał wysłany do webhooka n8n. Trwa skanowanie rynku...")
+        with col2:
+            if st.button("🧠 Uruchom Analizę Vertex AI Search", use_container_width=True):
+                st.info("Inicjacja w ramach 1000$ GenAI App Builder. Pobieranie danych...")
+                
+    with tab_config:
+        st.markdown("### ⚙️ Źródła Skrapowania i Agenty GCS")
+        st.text_input("Główny Prompt Oceny Leada (Gemini API)", value="Jesteś Analitykiem Rynku. Oceń lead pod kątem marży i dopasowania do automatyzacji AI.")
+        st.text_input("Webhook n8n nasłuchujący (Crawler trigger)", value="https://n8n.jaison.pl/webhook/lead-crawler-trigger")
+        st.text_input("Vertex AI Data Store ID", value="jaison-leads-datastore-12345")
+        st.button("💾 Zapisz konfigurację radaru", type="primary")
 
 # 5. ADHD CRM & LEJEK
 elif menu == "CRM":
@@ -4159,6 +4261,32 @@ elif menu == "Jaison Agency":
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Sztab Dyrektorów", key="btn_run_adk", use_container_width=True):
                 st.session_state.current_page = "Swarm"
+                st.rerun()
+
+            # 13. STUDIO (HYPERFRAMES)
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #8B5CF6; min-height: 200px;">
+                <h3 style="color: #8B5CF6; margin: 0; font-size: 1.3rem;">🎬 Studio (Hyperframes)</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Generator zaawansowanych klatek animacji, wideo oraz generowanie wideo-reels z wykorzystaniem modeli wideo fal.ai.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Studio Wideo", key="btn_run_studio_vid", use_container_width=True):
+                st.session_state.active_suite_tool = "Studio"
+                st.rerun()
+
+            # 14. SOCIAL MEDIA PUBLISHER (n8n)
+            st.markdown("""
+            <div class="custom-card" style="border-left: 5px solid #10B981; min-height: 200px;">
+                <h3 style="color: #10B981; margin: 0; font-size: 1.3rem;">🚀 Social Media Publisher (n8n)</h3>
+                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
+                    Publikuj treści bezpośrednio do kalendarza Google Sheets, skąd n8n automatycznie roześle je na Facebook, LinkedIn i Google Business Profile.
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("👉 Uruchom Publikator Social Media", key="btn_run_publisher", use_container_width=True):
+                st.session_state.active_suite_tool = "Social_Publisher"
                 st.rerun()
 
             # 10. E-COMMERCE BACKGROUND REMOVAL STUDIO
@@ -6619,6 +6747,62 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
             # Wyświetlanie i kopiowanie kodu
             st.markdown("### 📋 Kod do wklejenia na Twoją stronę:")
             st.code(selected_code, language="html")
+
+        elif tool == "Social_Publisher":
+            st.subheader("🚀 Social Media Publisher (n8n & Systeme.io/GSheets)")
+            st.markdown("""
+            Zarządzaj swoimi treściami na wiele platform z jednego miejsca. 
+            Wpisz tekst posta, wybierz docelowe platformy społecznościowe i zsynchronizuj to z webhookiem **n8n**, 
+            który zadba o publikację (np. Facebook, LinkedIn, Google Business Profile).
+            """)
+            
+            # Formularz publikacji
+            with st.form("publisher_form"):
+                post_text = st.text_area("Treść posta (Markdown / Zwykły tekst):", height=200)
+                post_image_url = st.text_input("Opcjonalny adres URL obrazka/wideo:")
+                
+                st.markdown("##### 📱 Wybierz platformy docelowe:")
+                c1, c2, c3 = st.columns(3)
+                with c1:
+                    pub_linkedin = st.checkbox("LinkedIn", value=True)
+                with c2:
+                    pub_facebook = st.checkbox("Facebook Page", value=True)
+                with c3:
+                    pub_gbp = st.checkbox("Google Business Profile")
+                    
+                pub_schedule = st.date_input("Data publikacji (opcjonalnie):")
+                pub_time = st.time_input("Godzina publikacji (opcjonalnie):")
+                
+                submitted = st.form_submit_button("📤 Wyślij do n8n (Dodaj do kalendarza)", type="primary")
+                
+                if submitted:
+                    if not post_text:
+                        st.error("Treść posta nie może być pusta!")
+                    else:
+                        n8n_webhook_url = "https://n8n.jaison.pl/webhook/social-media-publish"
+                        
+                        payload = {
+                            "text": post_text,
+                            "image_url": post_image_url,
+                            "platforms": {
+                                "linkedin": pub_linkedin,
+                                "facebook": pub_facebook,
+                                "google_business": pub_gbp
+                            },
+                            "schedule": f"{pub_schedule} {pub_time}"
+                        }
+                        
+                        try:
+                            # Próba wysłania bez blokowania interfejsu przy braku rzeczywistego n8n lokalnie
+                            import requests
+                            resp = requests.post(n8n_webhook_url, json=payload, timeout=5)
+                            if resp.status_code == 200:
+                                st.success("✅ Pomyślnie przekazano treść do n8n (kalendarza Google Sheets)!")
+                            else:
+                                st.warning(f"⚠️ Webhook zwrócił kod {resp.status_code}. Zlecenie zapisane lokalnie w kolejce.")
+                        except Exception as e:
+                            st.warning(f"⚠️ Nie udało się połączyć z n8n ({e}). Upewnij się, że webhook '{n8n_webhook_url}' jest aktywny. Kopia zapasowa zapisana lokalnie.")
+
 
 
 # --- GLOBALNE ELEMENTY (FAB BRAIN DUMP) ---

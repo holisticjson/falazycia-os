@@ -2962,6 +2962,23 @@
       opacity: 0;
     }
   }
+
+  /* 
+   * AGRESYWNE UKRYWANIE WYNIKÓW WYSZUKIWANIA (PLIKÓW ŹRÓDŁOWYCH) W WIDGECIE VERTEX AI
+   * Wstrzykujemy reguły nadrzędne dla całego dokumentu, wymuszające ukrycie sekcji listującej dokumenty 
+   */
+  gen-search-widget::part(search-results) {
+    display: none !important;
+  }
+  
+  gen-search-widget::part(search-result-list) {
+    display: none !important;
+  }
+  
+  /* Ukrycie dodatkowych zakładek 'Podsumowanie' i 'Wyniki' w widgecie jeśli występują */
+  gen-search-widget::part(tab-list) {
+    display: none !important;
+  }
 </style>
 
 <!-- 2. Autorski Launcher, Chmurka i Elementy Kontrolne bota -->
@@ -2983,7 +3000,7 @@
 
 <!-- UWAGA TOMASZ: Tutaj musisz podmienić 'configId' na ID, które Google wygeneruje dla Twojej wyszukiwarki! -->
 <gen-search-widget
-  configId="f0e7372e-fee0-4943-9c8d-aad4282ed181" 
+  configId="88369b03-1241-4ffc-b335-0fc7e686f149" 
   location="eu"
   triggerId="searchwidgetTrigger">
 </gen-search-widget>
