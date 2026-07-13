@@ -903,169 +903,91 @@
 
       <!-- Script for E-book 2 Submit -->
       <script>
-        document.getElementById('ebook2-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const btn = document.getElementById('ebook2-submit-btn');
-          const container = document.getElementById('ebook2-container');
-          
-          const name = document.getElementById('ebook2-name').value;
-          const email = document.getElementById('ebook2-email').value;
-          
-          btn.disabled = true;
-          btn.innerHTML = 'Przesyłanie...';
-          
-          const payload = {
-            project: "jason",
-            name: name,
-            contact: email,
-            source: "Ebook 2",
-            problem: "Pobranie ebooka: Darmowy i Prywatny Asystent AI klasy Enterprise"
-          };
-          
-          const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-            ? 'http://127.0.0.1:8000/api/lead' 
-            : 'https://os.jaison.pl/api/lead';
-          
-          fetch(apiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          })
-          .then(response => {
-            if (response.ok) {
-              container.innerHTML = `
-                <div style="text-align: center; padding: 30px 0;">
-                  <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">📨</span>
-                  <h3 style="color: #06B6D4; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">E-book wysłany!</h3>
-                  <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
-                    Dziękujemy za zapis. Twój e-book <strong>"Darmowy i Prywatny Asystent AI klasy Enterprise"</strong> został przekazany do wysyłki w systemie.
-                  </p>
-                  <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
-                    Sprawdź swoją skrzynkę odbiorczą (oraz folder Oferty/Spam) pod adresem: <strong>${email}</strong>.
-                  </p>
-                </div>
-              `;
-            } else {
-              throw new Error('Server error');
-            }
-          })
-          .catch(err => {
-            console.error('API error, trying relative fallback...', err);
-            fetch('/api/lead', {
+        const ebook2Form = document.getElementById('ebook2-form');
+        if (ebook2Form) {
+          ebook2Form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('ebook2-submit-btn');
+            const container = document.getElementById('ebook2-container');
+            
+            const name = document.getElementById('ebook2-name').value;
+            const email = document.getElementById('ebook2-email').value;
+            
+            btn.disabled = true;
+            btn.innerHTML = 'Przesyłanie...';
+            
+            const payload = {
+              project: "jason",
+              name: name,
+              contact: email,
+              source: "Ebook 2",
+              problem: "Pobranie ebooka: Darmowy i Prywatny Asystent AI klasy Enterprise"
+            };
+            
+            const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+              ? 'http://127.0.0.1:8000/api/lead' 
+              : 'https://os.jaison.pl/api/lead';
+            
+            fetch(apiUrl, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload)
             })
-            .then(res => {
-              if (res.ok) {
+            .then(response => {
+              if (response.ok) {
                 container.innerHTML = `
                   <div style="text-align: center; padding: 30px 0;">
                     <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">📨</span>
                     <h3 style="color: #06B6D4; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">E-book wysłany!</h3>
                     <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
-                      Dziękujemy za zapis. Twój e-book został przekazany do wysyłki w systemie.
+                      Dziękujemy za zapis. Twój e-book <strong>"Darmowy i Prywatny Asystent AI klasy Enterprise"</strong> został przekazany do wysyłki w systemie.
                     </p>
                     <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
-                      Sprawdź swoją skrzynkę odbiorczą pod adresem: <strong>${email}</strong>.
+                      Sprawdź swoją skrzynkę odbiorczą (oraz folder Oferty/Spam) pod adresem: <strong>${email}</strong>.
                     </p>
                   </div>
                 `;
               } else {
-                throw new Error('Fallback error');
+                throw new Error('Server error');
               }
             })
-            .catch(fallbackErr => {
-              btn.disabled = false;
-              btn.innerHTML = 'Spróbuj ponownie';
-              alert('Wystąpił błąd podczas wysyłania zapisu. Spróbuj ponownie lub napisz do nas bezpośrednio.');
+            .catch(err => {
+              console.error('API error, trying relative fallback...', err);
+              fetch('/api/lead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              })
+              .then(res => {
+                if (res.ok) {
+                  container.innerHTML = `
+                    <div style="text-align: center; padding: 30px 0;">
+                      <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">📨</span>
+                      <h3 style="color: #06B6D4; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">E-book wysłany!</h3>
+                      <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
+                        Dziękujemy za zapis. Twój e-book został przekazany do wysyłki w systemie.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
+                        Sprawdź swoją skrzynkę odbiorczą pod adresem: <strong>${email}</strong>.
+                      </p>
+                    </div>
+                  `;
+                } else {
+                  throw new Error('Fallback error');
+                }
+              })
+              .catch(fallbackErr => {
+                btn.disabled = false;
+                btn.innerHTML = 'Spróbuj ponownie';
+                alert('Wystąpił błąd podczas wysyłania zapisu. Spróbuj ponownie lub napisz do nas bezpośrednio.');
+              });
             });
           });
-        });
+        }
       </script>
 
-      <!-- Script for Mercury E-book Submit -->
-      <script>
-        document.getElementById('mercury-ebook-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const btn = document.getElementById('mercury-submit-btn');
-          const container = document.getElementById('mercury-ebook-container');
-          
-          const name = document.getElementById('mercury-name').value;
-          const email = document.getElementById('mercury-email').value;
-          
-          btn.disabled = true;
-          btn.innerHTML = 'Przesyłanie...';
-          
-          const payload = {
-            project: "jason",
-            name: name,
-            contact: email,
-            source: "Prywatna Twierdza",
-            problem: "Pobranie ebooka: Prywatna Twierdza - Instrukcja instalacji"
-          };
-          
-          const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-            ? 'http://127.0.0.1:8000/api/lead' 
-            : 'https://os.jaison.pl/api/lead';
-          
-          fetch(apiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          })
-          .then(response => {
-            if (response.ok) {
-              container.innerHTML = `
-                <div style="text-align: center; padding: 30px 0;">
-                  <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">📨</span>
-                  <h3 style="color: #F59E0B; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">E-book wysłany!</h3>
-                  <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
-                    Dziękujemy za zapis. Twój e-book <strong>"Prywatna Twierdza"</strong> został przekazany do wysyłki w systemie.
-                  </p>
-                  <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
-                    Sprawdź swoją skrzynkę odbiorczą (oraz folder Oferty/Spam) pod adresem: <strong>${email}</strong>.
-                  </p>
-                </div>
-              `;
-            } else {
-              throw new Error('Server error');
-            }
-          })
-          .catch(err => {
-            console.error('API error, trying relative fallback...', err);
-            fetch('/api/lead', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(payload)
-            })
-            .then(res => {
-              if (res.ok) {
-                container.innerHTML = `
-                  <div style="text-align: center; padding: 30px 0;">
-                    <span style="font-size: 3.5rem; display: block; margin-bottom: 20px;">📨</span>
-                    <h3 style="color: #F59E0B; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;">E-book wysłany!</h3>
-                    <p style="color: rgba(255,255,255,0.9); font-size: 1.05rem; line-height: 1.6; margin-bottom: 15px;">
-                      Dziękujemy za zapis. Twój e-book został przekazany do wysyłki w systemie.
-                    </p>
-                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem; line-height: 1.5;">
-                      Sprawdź swoją skrzynkę odbiorczą pod adresem: <strong>${email}</strong>.
-                    </p>
-                  </div>
-                `;
-              } else {
-                throw new Error('Fallback error');
-              }
-            })
-            .catch(fallbackErr => {
-              btn.disabled = false;
-              btn.innerHTML = 'Spróbuj ponownie';
-              alert('Wystąpił błąd podczas wysyłania zapisu. Spróbuj ponownie lub napisz do nas.');
-            });
-          });
-        });
-      </script>
+
 
       <!-- Bio / Logika Section -->
       <section id="about" style="padding: 100px 0; background: #0a0f1d;">

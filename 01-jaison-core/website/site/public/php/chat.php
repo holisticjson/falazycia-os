@@ -148,10 +148,11 @@ try {
     
     // Pobranie konfiguracji ze zmiennych środowiskowych
     $project_id = getEnvVar('GCP_PROJECT_AGENCY') ?? "holistic-dashboard-dev";
-    $loc = "eu";
+    $loc = "global";
+    $host = ($loc === "global") ? "discoveryengine.googleapis.com" : "{$loc}-discoveryengine.googleapis.com";
     $engine_id = getEnvVar('VERTEX_ENGINE_AGENCY') ?? "holistic-search-app_1780143991783";
     
-    $searchUrl = "https://{$loc}-discoveryengine.googleapis.com/v1/projects/{$project_id}/locations/{$loc}/collections/default_collection/engines/{$engine_id}/servingConfigs/default_search:search";
+    $searchUrl = "https://{$host}/v1/projects/{$project_id}/locations/{$loc}/collections/default_collection/engines/{$engine_id}/servingConfigs/default_search:search";
     
     $payload = json_encode([
         "query" => $userMessage,
@@ -160,8 +161,7 @@ try {
             "summarySpec" => [
                 "summaryResultCount" => 1,
                 "useSemanticChunks" => true,
-                "ignoreAdversarialQuery" => true,
-                "ignoreNonSummaryKeepingQueries" => true
+                "ignoreAdversarialQuery" => true
             ]
         ]
     ]);
