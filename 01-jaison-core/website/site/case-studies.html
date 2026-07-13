@@ -255,7 +255,13 @@
         grid-template-columns: 1fr;
       }
       h1 {
-        font-size: 2.5rem;
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+        word-wrap: break-word;
+        word-break: keep-all;
+      }
+      h1 span {
+        display: inline-block;
+        word-break: break-word;
       }
       .case-title {
         font-size: 2rem;
@@ -386,7 +392,9 @@
   <!-- Header -->
   <header>
     <div class="container nav-flex">
-      <a href="./" class="logo">JAISON</a>
+      <a href="./" class="logo" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
+        <img src="./logo.webp" alt="JASON Logo" style="height: 38px; width: auto; mix-blend-mode: normal;" width="162" height="38" fetchpriority="high">
+      </a>
       <a href="./" class="btn-back">← Powrót do Startu</a>
     </div>
   </header>
@@ -445,21 +453,31 @@
 
       <!-- Liczby -->
       <div class="metrics-grid">
-        <div class="metric-card" style="border-color: rgba(59, 130, 246, 0.25);">
-          <div class="metric-value" style="color: var(--neon-blue);">0.4s</div>
-          <div class="metric-label">Czas Ładowania (PageSpeed 99)</div>
+        <div class="metric-card" style="border-color: rgba(16, 185, 129, 0.35); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; background: rgba(16, 185, 129, 0.02);">
+          <div style="position: relative; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
+            <svg style="transform: rotate(-90deg); width: 100px; height: 100px;">
+              <circle cx="50" cy="50" r="42" fill="transparent" stroke="rgba(255, 255, 255, 0.03)" stroke-width="6"></circle>
+              <circle cx="50" cy="50" r="42" fill="transparent" stroke="var(--neon-green)" stroke-width="6" stroke-dasharray="263.89" stroke-dashoffset="263.89" class="progress-ring" data-value="99" style="transition: stroke-dashoffset 1.5s cubic-bezier(0.1, 1, 0.1, 1); filter: drop-shadow(0 0 6px var(--neon-green));"></circle>
+            </svg>
+            <div class="metric-value" style="position: absolute; color: var(--text-white); font-size: 1.6rem; font-weight: 900;" data-animate="99" data-suffix="/100">0</div>
+          </div>
+          <div class="metric-label" style="font-size: 0.75rem; letter-spacing: 0.08em; color: var(--text-gray);">PageSpeed Score</div>
         </div>
-        <div class="metric-card" style="border-color: rgba(6, 182, 212, 0.25);">
-          <div class="metric-value" style="color: var(--neon-cyan);">0 zł</div>
-          <div class="metric-label">Kosztów stałych za API czatbota</div>
+        <div class="metric-card" style="border-color: rgba(59, 130, 246, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+          <div class="metric-value" style="color: var(--neon-blue); font-size: 2.8rem; font-weight: 900;" data-animate="0.4" data-decimals="1" data-suffix="s">0.0s</div>
+          <div class="metric-label">Czas Ładowania</div>
         </div>
-        <div class="metric-card" style="border-color: rgba(16, 185, 129, 0.25);">
-          <div class="metric-value" style="color: var(--neon-green);">+38%</div>
-          <div class="metric-label">Wzrost pozyskiwania opinii lokalnych</div>
+        <div class="metric-card" style="border-color: rgba(6, 182, 212, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+          <div class="metric-value" style="color: var(--neon-cyan); font-size: 2.8rem; font-weight: 900;" data-animate="0" data-suffix=" zł">0 zł</div>
+          <div class="metric-label">Kosztów stałych za API</div>
         </div>
-        <div class="metric-card" style="border-color: rgba(245, 158, 11, 0.25);">
-          <div class="metric-value" style="color: var(--neon-orange);">$3,600</div>
-          <div class="metric-label">Zabezpieczonych kredytów GCP</div>
+        <div class="metric-card" style="border-color: rgba(16, 185, 129, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+          <div class="metric-value" style="color: var(--neon-green); font-size: 2.8rem; font-weight: 900;" data-animate="38" data-prefix="+" data-suffix="%">+0%</div>
+          <div class="metric-label">Opinii w Google Maps</div>
+        </div>
+        <div class="metric-card" style="border-color: rgba(245, 158, 11, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+          <div class="metric-value" style="color: var(--neon-orange); font-size: 2.8rem; font-weight: 900;" data-animate="3600" data-prefix="$" data-thousand-separator="true">$0</div>
+          <div class="metric-label">Kredytów GCP</div>
         </div>
       </div>
 
@@ -571,21 +589,27 @@
 
       <!-- Liczby -->
       <div class="metrics-grid">
-        <div class="metric-card" style="border-color: rgba(245, 158, 11, 0.25);">
-          <div class="metric-value" style="color: var(--neon-orange);">100/100</div>
-          <div class="metric-label">PageSpeed Mobile</div>
+        <div class="metric-card" style="border-color: rgba(245, 158, 11, 0.35); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; background: rgba(245, 158, 11, 0.02);">
+          <div style="position: relative; width: 100px; height: 100px; display: flex; align-items: center; justify-content: center;">
+            <svg style="transform: rotate(-90deg); width: 100px; height: 100px;">
+              <circle cx="50" cy="50" r="42" fill="transparent" stroke="rgba(255, 255, 255, 0.03)" stroke-width="6"></circle>
+              <circle cx="50" cy="50" r="42" fill="transparent" stroke="var(--neon-orange)" stroke-width="6" stroke-dasharray="263.89" stroke-dashoffset="263.89" class="progress-ring" data-value="100" style="transition: stroke-dashoffset 1.5s cubic-bezier(0.1, 1, 0.1, 1); filter: drop-shadow(0 0 6px var(--neon-orange));"></circle>
+            </svg>
+            <div class="metric-value" style="position: absolute; color: var(--text-white); font-size: 1.6rem; font-weight: 900;" data-animate="100" data-suffix="/100">0</div>
+          </div>
+          <div class="metric-label" style="font-size: 0.75rem; letter-spacing: 0.08em; color: var(--text-gray);">PageSpeed Score</div>
         </div>
-        <div class="metric-card" style="border-color: rgba(16, 185, 129, 0.25);">
-          <div class="metric-value" style="color: var(--neon-green);">+35%</div>
-          <div class="metric-label">Wzrost konwersji zamówień</div>
+        <div class="metric-card" style="border-color: rgba(16, 185, 129, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+          <div class="metric-value" style="color: var(--neon-green); font-size: 2.8rem; font-weight: 900;" data-animate="35" data-prefix="+" data-suffix="%">+0%</div>
+          <div class="metric-label">Wzrost Konwersji Zamówień</div>
         </div>
-        <div class="metric-card" style="border-color: rgba(59, 130, 246, 0.25);">
-          <div class="metric-value" style="color: var(--neon-blue);">40h</div>
-          <div class="metric-label">Zaoszczędzonego czasu miesięcznie</div>
+        <div class="metric-card" style="border-color: rgba(59, 130, 246, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+          <div class="metric-value" style="color: var(--neon-blue); font-size: 2.8rem; font-weight: 900;" data-animate="40" data-suffix="h">0h</div>
+          <div class="metric-label">Zaoszczędzonego Czasu</div>
         </div>
-        <div class="metric-card" style="border-color: rgba(6, 182, 212, 0.25);">
-          <div class="metric-value" style="color: var(--neon-cyan);">0%</div>
-          <div class="metric-label">Prowizji od zamówień online</div>
+        <div class="metric-card" style="border-color: rgba(6, 182, 212, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+          <div class="metric-value" style="color: var(--neon-cyan); font-size: 2.8rem; font-weight: 900;" data-animate="0" data-suffix="%">0%</div>
+          <div class="metric-label">Prowizji od zamówień</div>
         </div>
       </div>
 
