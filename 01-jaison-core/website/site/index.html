@@ -1334,6 +1334,211 @@
             </div>
           </div>
 
+          <!-- Separator sekcji zaufania -->
+          <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.25) 50%, transparent); margin: 70px 0;"></div>
+
+          <!-- Oficjalne Listy Referencyjne (Dowód Analogowy) -->
+          <div style="text-align: center; margin-bottom: 50px;">
+            <span style="color: #06B6D4; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.15em;">Tradycja &amp; Wiarygodność B2B</span>
+            <h3 style="font-size: 2.2rem; margin-top: 10px; margin-bottom: 15px; font-weight: 700; color: #FFF; font-family: var(--font-heading);">Oficjalne Listy Referencyjne</h3>
+            <p style="color: var(--slate-gray); font-size: 1rem; max-width: 650px; margin: 0 auto;">Prawdziwy, namacalny dowód jakości. Klasyczne, pisemne rekomendacje na papierze firmowym z odręcznym podpisem i pieczęcią.</p>
+          </div>
+
+          <!-- Grid Listów Referencyjnych -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 60px;">
+            
+            <!-- List 1: coolfon.pl -->
+            <div class="glass-card" onclick="openRefModal('coolfon')" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(10px); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(6, 182, 212, 0.15)'; this.style.borderColor='rgba(6, 182, 212, 0.3)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none'; this.style.borderColor='rgba(255,255,255,0.06)';">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                  <span style="font-size: 0.75rem; font-weight: bold; color: #06B6D4; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(6, 182, 212, 0.1); padding: 4px 10px; border-radius: 12px;">Serwis GSM</span>
+                  <span style="color: var(--text-gray); font-size: 0.8rem;">Łódź</span>
+                </div>
+                <h4 style="font-size: 1.25rem; color: #FFF; font-family: var(--font-heading); margin-bottom: 8px;">coolfon.pl</h4>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                  "Z pełną odpowiedzialnością polecamy agencję Jaison i pana Tomasza Duda jako rzetelnych, profesjonalnych i wysoce kompetentnych ekspertów w dziedzinie automatyzacji procesów..."
+                </p>
+              </div>
+              
+              <!-- Wizualna reprezentacja dokumentu na papierze -->
+              <div style="position: relative; width: 100%; height: 140px; background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <div style="width: 80px; height: 105px; background: #FFF; border-radius: 3px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); padding: 8px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div style="height: 4px; width: 25px; background: #E2E8F0; margin-bottom: 5px;"></div>
+                  <div>
+                    <div style="height: 2px; width: 100%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                    <div style="height: 2px; width: 90%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                    <div style="height: 2px; width: 95%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                    <div style="height: 2px; width: 75%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                    <svg style="width: 25px; height: 12px; overflow: visible;">
+                      <path d="M1 8 Q 5 1, 8 8 T 15 3 T 22 5" fill="none" stroke="#2563EB" stroke-width="0.8" stroke-linecap="round"></path>
+                    </svg>
+                    <div style="width: 10px; height: 10px; border-radius: 50%; border: 0.6px dashed #EF4444; display: flex; align-items: center; justify-content: center;">
+                      <div style="width: 6px; height: 6px; border-radius: 50%; background: rgba(239, 68, 68, 0.25);"></div>
+                    </div>
+                  </div>
+                </div>
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(6, 182, 212, 0.08); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s;" onmouseover="this.style.opacity='1';" onmouseout="this.style.opacity='0';">
+                  <span style="color: #FFF; font-size: 0.8rem; font-family: var(--font-heading); font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                    🔍 Zobacz Dokument
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- List 2: kurczakujasia.pl -->
+            <div class="glass-card" onclick="openRefModal('kurczak')" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(10px); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(6, 182, 212, 0.15)'; this.style.borderColor='rgba(6, 182, 212, 0.3)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none'; this.style.borderColor='rgba(255,255,255,0.06)';">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                  <span style="font-size: 0.75rem; font-weight: bold; color: #06B6D4; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(6, 182, 212, 0.1); padding: 4px 10px; border-radius: 12px;">Gastronomia</span>
+                  <span style="color: var(--text-gray); font-size: 0.8rem;">Łódź (Widzew)</span>
+                </div>
+                <h4 style="font-size: 1.25rem; color: #FFF; font-family: var(--font-heading); margin-bottom: 8px;">kurczakujasia.pl</h4>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                  "Rekomendujemy agencję Jaison i pana Tomasza jako innowacyjnych doradców technologicznych dla sektora HoReCa. Przeprowadzona optymalizacja i bezprowizyjna platforma WhatsApp..."
+                </p>
+              </div>
+              
+              <!-- Wizualna reprezentacja dokumentu na papierze -->
+              <div style="position: relative; width: 100%; height: 140px; background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <div style="width: 80px; height: 105px; background: #FFF; border-radius: 3px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); padding: 8px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div style="height: 4px; width: 25px; background: #E2E8F0; margin-bottom: 5px;"></div>
+                  <div>
+                    <div style="height: 2px; width: 100%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                    <div style="height: 2px; width: 90%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                    <div style="height: 2px; width: 95%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                    <div style="height: 2px; width: 75%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                    <svg style="width: 25px; height: 12px; overflow: visible;">
+                      <path d="M1 8 Q 5 1, 8 8 T 15 3 T 22 5" fill="none" stroke="#2563EB" stroke-width="0.8" stroke-linecap="round"></path>
+                    </svg>
+                    <div style="width: 10px; height: 10px; border-radius: 50%; border: 0.6px dashed #EF4444; display: flex; align-items: center; justify-content: center;">
+                      <div style="width: 6px; height: 6px; border-radius: 50%; background: rgba(239, 68, 68, 0.25);"></div>
+                    </div>
+                  </div>
+                </div>
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(6, 182, 212, 0.08); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s;" onmouseover="this.style.opacity='1';" onmouseout="this.style.opacity='0';">
+                  <span style="color: #FFF; font-size: 0.8rem; font-family: var(--font-heading); font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                    🔍 Zobacz Dokument
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- List 3: viptransporter.pl -->
+            <div class="glass-card" onclick="openRefModal('vip')" style="padding: 30px; background: rgba(5, 8, 20, 0.45); border-radius: 16px; border: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; justify-content: space-between; backdrop-filter: blur(10px); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 30px rgba(6, 182, 212, 0.15)'; this.style.borderColor='rgba(6, 182, 212, 0.3)';" onmouseout="this.style.transform='none'; this.style.boxShadow='none'; this.style.borderColor='rgba(255,255,255,0.06)';">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px;">
+                  <span style="font-size: 0.75rem; font-weight: bold; color: #06B6D4; text-transform: uppercase; letter-spacing: 0.05em; background: rgba(6, 182, 212, 0.1); padding: 4px 10px; border-radius: 12px;">Przewóz Osób Sp. z o.o.</span>
+                  <span style="color: var(--text-gray); font-size: 0.8rem;">Warszawa</span>
+                </div>
+                <h4 style="font-size: 1.25rem; color: #FFF; font-family: var(--font-heading); margin-bottom: 8px;">viptransporter.pl</h4>
+                <p style="color: var(--slate-gray); font-size: 0.9rem; line-height: 1.6; margin-bottom: 25px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                  "Z przyjemnością udzielamy rekomendacji agencji Jaison za profesjonalne zaprojektowanie i wdrożenie asynchronicznych lejków marketingowych oraz integrację systemu CRM..."
+                </p>
+              </div>
+              
+              <!-- Wizualna reprezentacja dokumentu na papierze -->
+              <div style="position: relative; width: 100%; height: 140px; background: rgba(255, 255, 255, 0.02); border: 1px dashed rgba(255, 255, 255, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                <div style="width: 80px; height: 105px; background: #FFF; border-radius: 3px; box-shadow: 0 5px 15px rgba(0,0,0,0.4); padding: 8px; display: flex; flex-direction: column; justify-content: space-between;">
+                  <div style="height: 4px; width: 25px; background: #E2E8F0; margin-bottom: 5px;"></div>
+                  <div>
+                    <div style="height: 2px; width: 100%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                    <div style="height: 2px; width: 90%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                    <div style="height: 2px; width: 95%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                    <div style="height: 2px; width: 75%; background: #F1F5F9; margin-bottom: 3px;"></div>
+                  </div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                    <svg style="width: 25px; height: 12px; overflow: visible;">
+                      <path d="M1 8 Q 5 1, 8 8 T 15 3 T 22 5" fill="none" stroke="#2563EB" stroke-width="0.8" stroke-linecap="round"></path>
+                    </svg>
+                    <div style="width: 10px; height: 10px; border-radius: 50%; border: 0.6px dashed #EF4444; display: flex; align-items: center; justify-content: center;">
+                      <div style="width: 6px; height: 6px; border-radius: 50%; background: rgba(239, 68, 68, 0.25);"></div>
+                    </div>
+                  </div>
+                </div>
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(6, 182, 212, 0.08); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.2s;" onmouseover="this.style.opacity='1';" onmouseout="this.style.opacity='0';">
+                  <span style="color: #FFF; font-size: 0.8rem; font-family: var(--font-heading); font-weight: 600; display: flex; align-items: center; gap: 5px;">
+                    🔍 Zobacz Dokument
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Niezależny, natywny modal systemowy dla Listów Referencyjnych (0% narzutu na PageSpeed) -->
+          <div id="ref-modal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(5, 8, 20, 0.85); backdrop-filter: blur(10px); display: none; align-items: center; justify-content: center; z-index: 10000; padding: 20px;" onclick="if(event.target === this) closeRefModal();">
+            <div style="background: #0d1527; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; max-width: 600px; width: 100%; padding: 40px; position: relative; box-shadow: 0 30px 60px rgba(0,0,0,0.6); animation: modalFadeIn 0.3s ease;">
+              <button onclick="closeRefModal()" style="position: absolute; top: 20px; right: 20px; background: transparent; border: none; color: #94A3B8; font-size: 1.8rem; cursor: pointer; transition: color 0.2s; line-height: 1;" onmouseover="this.style.color='#FFF'" onmouseout="this.style.color='#94A3B8';">×</button>
+              
+              <!-- Wydruk Listu Referencyjnego -->
+              <div style="background: #FFF; color: #1E293B; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); font-family: 'Inter', sans-serif; line-height: 1.6; text-align: left; position: relative; border: 1px solid #E2E8F0;">
+                
+                <!-- Główka listu -->
+                <div style="display: flex; justify-content: space-between; border-bottom: 2px solid #E2E8F0; padding-bottom: 15px; margin-bottom: 25px;">
+                  <div>
+                    <strong id="modal-company" style="font-size: 1.1rem; color: #0F172A; text-transform: uppercase; letter-spacing: 0.05em; display: block;">Nazwa Firmy</strong>
+                    <span id="modal-address" style="font-size: 0.75rem; color: #64748B; display: block; margin-top: 2px;">Adres firmy</span>
+                  </div>
+                  <div style="text-align: right;">
+                    <div style="font-size: 0.75rem; color: #64748B;">Data: 12.07.2026 r.</div>
+                    <div style="font-size: 0.75rem; color: #64748B;">Miejscowość: Łódź</div>
+                  </div>
+                </div>
+
+                <!-- Tytuł dokumentu -->
+                <div style="text-align: center; margin-bottom: 25px;">
+                  <strong style="font-size: 1.1rem; color: #0F172A; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #0F172A; padding-bottom: 2px;">LIST REFERENCYJNY</strong>
+                </div>
+
+                <!-- Treść listu -->
+                <p id="modal-body" style="font-size: 0.9rem; color: #334155; text-align: justify; margin-bottom: 35px; text-indent: 20px; font-style: italic;">
+                  Treść rekomendacji...
+                </p>
+
+                <!-- Pieczęć i Podpis -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; padding-top: 15px; min-height: 75px;">
+                  <div>
+                    <!-- Wet Stamp Effect -->
+                    <div style="border: 2px dashed #EF4444; border-radius: 8px; padding: 6px 12px; text-align: center; color: #EF4444; font-size: 0.7rem; font-weight: bold; width: 120px; transform: rotate(-4deg); opacity: 0.85; background: rgba(239, 68, 68, 0.02); pointer-events: none; user-select: none;">
+                      <div style="text-transform: uppercase; border-bottom: 1px dashed #EF4444; padding-bottom: 2px; margin-bottom: 2px; font-size: 0.65rem;">ZATWIERDZONO</div>
+                      WIARYGODNE B2B
+                    </div>
+                  </div>
+                  <div style="text-align: center; min-width: 140px; position: relative;">
+                    <!-- Signature Scribble SVG -->
+                    <svg style="width: 110px; height: 45px; position: absolute; top: -25px; left: 50%; transform: translateX(-50%) rotate(-4deg); pointer-events: none; opacity: 0.85; user-select: none;">
+                      <path d="M10 25 Q 30 2, 45 28 T 80 12 T 100 20" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round"></path>
+                    </svg>
+                    <div style="border-top: 1px solid #CBD5E1; padding-top: 8px; font-size: 0.8rem; color: #475569;">
+                      <strong id="modal-signer" style="display: block; color: #0F172A;">Imię Nazwisko</strong>
+                      <span id="modal-title" style="font-size: 0.7rem; color: #64748B;">Stanowisko</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Przycisk pobrania oryginalnego PDF -->
+              <div style="text-align: center; margin-top: 25px;">
+                <a id="modal-download" href="#" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-heading); font-weight: 600; font-size: 0.85rem; letter-spacing: 0.05em; padding: 12px 25px; background: rgba(6, 182, 212, 0.1); color: #06B6D4; border: 1px solid #06B6D4; border-radius: 8px; text-decoration: none; transition: all 0.3s ease;" onmouseover="this.style.background='#06B6D4'; this.style.color='#FFF';" onmouseout="this.style.background='rgba(6, 182, 212, 0.1)'; this.style.color='#06B6D4';">
+                  📥 Pobierz jako Plik PDF (Wydruk)
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Animacja modal'a -->
+          <style>
+            @keyframes modalFadeIn {
+              from { opacity: 0; transform: scale(0.95); }
+              to { opacity: 1; transform: scale(1); }
+            }
+          </style>
+
           <!-- Przycisk zachęcający do dodania opinii -->
           <div style="text-align: center;">
             <p style="color: var(--slate-gray); font-size: 0.95rem; margin-bottom: 20px;">Współpracowałeś ze mną? Podziel się swoimi wrażeniami!</p>
@@ -1468,6 +1673,56 @@
               renderReviews(fallbackReviews);
             });
         });
+
+        // Dane Listów Referencyjnych dla Modali (0% narzutu na PageSpeed)
+        const refLetters = {
+          coolfon: {
+            company: "Coolfon Serwis GSM",
+            address: "ul. Gdańska 54, 90-612 Łódź",
+            signer: "Tomasz Jasiński",
+            title: "Właściciel Coolfon",
+            body: "Z pełną odpowiedzialnością polecamy agencję Jaison i pana Tomasza Duda jako rzetelnych, profesjonalnych i wysoce kompetentnych ekspertów w dziedzinie automatyzacji procesów biznesowych i integracji. Wdrożony przez agencję autorski system asynchronicznych powiadomień oraz asystentów API wyeliminował z naszych codziennych operacji powtarzalne czynności i zredukował czas obsługi zleceń o 30 godzin w skali miesiąca. Cały system został postawiony z optymalnym wykorzystaniem darmowych zasobów chmury Google, co pozwoliło uniknąć kosztów stałych. Polecamy Jaison każdemu przedsiębiorcy szukającemu realnych oszczędności.",
+            pdf: "./oferty/referencje_coolfon.pdf"
+          },
+          kurczak: {
+            company: "Kurczak u Jasia",
+            address: "ul. Rokicińska 142, 92-302 Łódź",
+            signer: "Jacek Wiśniewski",
+            title: "Właściciel Restauracji",
+            body: "Rekomendujemy agencję Jaison i pana Tomasza jako innowacyjnych doradców technologicznych dla sektora HoReCa. Przeprowadzony przez nich audyt oraz kompleksowa optymalizacja naszego menu i wdrożenie bezprowizyjnej platformy zamówień opartej o aplikację WhatsApp (JaśBot 2.0) zaowocowało wzrostem konwersji i zamówień online o 35%. Co najistotniejsze, wyeliminowaliśmy prowizje płacone zewnętrznym agregatorom dostaw, a cały system działa automatycznie bez potrzeby zatrudniania dyspozytora. Współpraca z panem Tomaszem to inwestycja, która zwraca się błyskawicznie.",
+            pdf: "./oferty/referencje_kurczakujasia.pdf"
+          },
+          vip: {
+            company: "VIP Transporter Sp. z o.o.",
+            address: "Al. Jerozolimskie 120, 02-011 Warszawa",
+            signer: "Krzysztof Kowalski",
+            title: "Dyrektor Operacyjny",
+            body: "Z przyjemnością udzielamy rekomendacji agencji Jaison za profesjonalne zaprojektowanie i wdrożenie asynchronicznych lejków marketingowych oraz integrację systemu CRM z darmową platformą marketingową Systeme.io. Przygotowane rozwiązanie działa niezawodnie, zbierając i automatycznie segmentując zapytania ofertowe o przewóz osób 24 godziny na dobę. Dzięki temu żaden lead nie zostaje pominięty, a nasi konsultanci pracują wyłącznie z wykwalifikowanymi zapytaniami. Poziom wiedzy architektonicznej, doradztwa i sprawności wdrożeniowej jest bezkonkurencyjny.",
+            pdf: "./oferty/referencje_viptransporter.pdf"
+          }
+        };
+
+        // Funkcje obsługi modali
+        window.openRefModal = function(key) {
+          const data = refLetters[key];
+          if (!data) return;
+          document.getElementById("modal-company").textContent = data.company;
+          document.getElementById("modal-address").textContent = data.address;
+          document.getElementById("modal-body").textContent = data.body;
+          document.getElementById("modal-signer").textContent = data.signer;
+          document.getElementById("modal-title").textContent = data.title;
+          document.getElementById("modal-download").href = data.pdf;
+          
+          const modal = document.getElementById("ref-modal");
+          modal.style.display = "flex";
+          document.body.style.overflow = "hidden"; // Blokuj scroll w tle
+        };
+
+        window.closeRefModal = function() {
+          const modal = document.getElementById("ref-modal");
+          modal.style.display = "none";
+          document.body.style.overflow = "auto"; // Przywróć scroll
+        };
       </script>
 
       <!-- Section: Lead Magnet Checklista (#lead-magnet) -->
