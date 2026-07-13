@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Dedykowana Oferta Wdrożenia — Kantor-Lombard Oranżada | Jaison</title>
+  
+  <!-- Google Fonts for premium typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* -------------------------------------------------------------
+       1. VARIABLES & DESIGN SYSTEM (jaison.pl Theme)
+       ------------------------------------------------------------- */
+    :root {
+      --bg-dark: #070913;
+      --bg-slate: #0b0f19;
+      --bg-card: rgba(30, 41, 59, 0.45);
+      --color-primary: #3B82F6; /* Neon Blue */
+      --color-cyan: #06B6D4;    /* Vibrant Cyan */
+      --color-gold: #D4AF37;    /* Elegant Gold */
+      --color-orange: #FF6B35;  /* Oranżada Orange Accent */
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --text-dark: #0F172A;
+      --border-glow: rgba(59, 130, 246, 0.12);
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-heading: 'Space Grotesk', var(--font-sans);
+      --shadow-premium: 0 20px 50px -15px rgba(0, 0, 0, 0.7);
+      --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Reset & Base styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.08) 0, transparent 40%),
+        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.05) 0, transparent 40%),
+        radial-gradient(at 50% 50%, rgba(255, 107, 53, 0.03) 0, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Scrollbar styling */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-cyan);
+    }
+
+    /* -------------------------------------------------------------
+       2. REVEAL GATEKEEPER (PASSWORD PROTECTION)
+       ------------------------------------------------------------- */
+    #gatekeeper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, #0b0f19 0%, #04060c 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s;
+      backdrop-filter: blur(20px);
+    }
+
+    #gatekeeper.unlocked {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .gatekeeper-card {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 24px;
+      padding: 50px 40px;
+      width: 90%;
+      max-width: 480px;
+      text-align: center;
+      box-shadow: var(--shadow-premium);
+      transform: translateY(0);
+      transition: var(--transition-smooth);
+    }
+
+    .gatekeeper-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+    }
+
+    .gatekeeper-logo img {
+      height: 48px;
+      width: auto;
+    }
+
+    .gatekeeper-card h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .gatekeeper-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .input-group {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .password-input {
+      width: 100%;
+      background: rgba(7, 9, 19, 0.8);
+      border: 1.5px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 16px 20px;
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-size: 1.05rem;
+      text-align: center;
+      outline: none;
+      letter-spacing: 3px;
+      transition: var(--transition-smooth);
+    }
+
+    .password-input:focus {
+      border-color: var(--color-cyan);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
+    }
+
+    .gatekeeper-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-cyan) 100%);
+      color: white;
+      border: none;
+      border-radius: 14px;
+      padding: 16px 24px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+      transition: var(--transition-smooth);
+    }
+
+    .gatekeeper-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.45);
+    }
+
+    .gatekeeper-btn:active {
+      transform: translateY(0);
+    }
+
+    .error-msg {
+      color: #EF4444;
+      font-size: 0.85rem;
+      margin-top: 12px;
+      opacity: 0;
+      transition: var(--transition-smooth);
+    }
+
+    .shake {
+      animation: shake-animation 0.5s;
+    }
+
+    @keyframes shake-animation {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+
+    /* -------------------------------------------------------------
+       3. MAIN CONTENT STYLING (The Reveal)
+       ------------------------------------------------------------- */
+    #offer-container {
+      opacity: 0;
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1);
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 50px 24px;
+    }
+
+    #offer-container.visible {
+      opacity: 1;
+    }
+
+    /* Floating Top Actions */
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      height: 40px;
+      width: auto;
+    }
+
+    .print-btn {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: var(--transition-smooth);
+    }
+
+    .print-btn:hover {
+      background: var(--text-main);
+      color: var(--bg-dark);
+      border-color: var(--text-main);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Banner Card */
+    .hero-banner {
+      position: relative;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.3) 0%, rgba(11, 15, 25, 0.6) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 28px;
+      padding: 60px 50px;
+      margin-bottom: 50px;
+      box-shadow: var(--shadow-premium);
+      overflow: hidden;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+
+    /* Decorative background glowing objects */
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -15%;
+      left: -5%;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge-agency {
+      display: inline-flex;
+      background: rgba(6, 182, 212, 0.08);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      color: var(--color-cyan);
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 6px 16px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+    }
+
+    .hero-banner h1 {
+      font-family: var(--font-heading);
+      font-size: 3rem;
+      line-height: 1.25;
+      font-weight: 700;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--text-main) 30%, var(--color-orange) 80%, var(--color-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+      margin-top: 15px;
+    }
+
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-meta strong {
+      color: var(--text-main);
+    }
+
+    /* Sections general styles */
+    section {
+      margin-bottom: 70px;
+    }
+
+    .section-title-wrap {
+      margin-bottom: 35px;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: 2rem;
+      font-weight: 700;
+      position: relative;
+      display: inline-block;
+      padding-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-cyan));
+      border-radius: 10px;
+    }
+
+    /* Paragraphs and lists inside sections */
+    p.intro-text {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      max-width: 900px;
+      line-height: 1.7;
+    }
+
+    /* Grid Layouts (Bento-inspired) */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
+    }
+
+    .grid-cell-12 { grid-column: span 12; }
+    .grid-cell-6 { grid-column: span 6; }
+    .grid-cell-4 { grid-column: span 4; }
+    .grid-cell-8 { grid-column: span 8; }
+
+    /* Cards generic */
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+      padding: 35px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: var(--transition-smooth);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(6, 182, 212, 0.25);
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45), 0 0 30px rgba(6, 182, 212, 0.08);
+    }
+
+    /* Scope of work icons & card specific */
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(6, 182, 212, 0.08);
+      border: 1.5px solid rgba(6, 182, 212, 0.25);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 24px;
+      color: var(--color-cyan);
+    }
+
+    .card-icon-gold {
+      background: rgba(212, 175, 55, 0.08);
+      border-color: rgba(212, 175, 55, 0.25);
+      color: var(--color-gold);
+    }
+
+    .card-icon-orange {
+      background: rgba(255, 107, 53, 0.08);
+      border-color: rgba(255, 107, 53, 0.25);
+      color: var(--color-orange);
+    }
+
+    .glass-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      letter-spacing: -0.3px;
+    }
+
+    .glass-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .glass-card ul {
+      list-style: none;
+    }
+
+    .glass-card ul li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .glass-card ul li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-cyan);
+      font-weight: bold;
+    }
+
+    /* -------------------------------------------------------------
+       4. COMMUNICATOR SECTION (JAISON SAFE COMMUNICATOR)
+       ------------------------------------------------------------- */
+    .comm-wrapper {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.15) 0%, rgba(11, 15, 25, 0.4) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      padding: 45px;
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      box-shadow: var(--shadow-premium);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+
+    .comm-illustration {
+      flex: 1;
+      max-width: 340px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .comm-box {
+      width: 100%;
+      background: #090d16;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .comm-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 14px;
+      margin-bottom: 18px;
+    }
+
+    .comm-header-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #10B981; /* green */
+      box-shadow: 0 0 12px #10B981;
+    }
+
+    .comm-header-title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+    }
+
+    .comm-chat {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .comm-bubble {
+      max-width: 85%;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .comm-bubble-in {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      align-self: flex-start;
+      color: var(--text-muted);
+    }
+
+    .comm-bubble-out {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(59, 130, 246, 0.12) 100%);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      align-self: flex-end;
+      color: var(--text-main);
+    }
+
+    .comm-info {
+      flex: 2;
+    }
+
+    .comm-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, var(--text-main), var(--color-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .comm-info p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    .safety-tag-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .safety-tag {
+      background: rgba(6, 182, 212, 0.06);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      color: var(--color-cyan);
+      border-radius: 10px;
+      padding: 10px 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* -------------------------------------------------------------
+       5. CASE STUDIES (W/ DYNAMIC PERFORMANCE CIRCLES)
+       ------------------------------------------------------------- */
+    .case-container {
+      display: flex;
+      flex-direction: column;
+      gap: 35px;
+    }
+
+    .case-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 24px;
+      padding: 45px;
+      display: flex;
+      gap: 50px;
+      align-items: center;
+      box-shadow: var(--shadow-premium);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      transition: var(--transition-smooth);
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(6, 182, 212, 0.25);
+    }
+
+    .case-visual {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      min-width: 260px;
+    }
+
+    .case-desc {
+      flex: 2;
+    }
+
+    .case-desc h3 {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .case-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--color-cyan);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      transition: var(--transition-smooth);
+    }
+
+    .case-link:hover {
+      color: var(--color-primary);
+    }
+
+    .case-desc p {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+
+    .case-stats {
+      display: flex;
+      gap: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 24px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-num {
+      font-family: var(--font-heading);
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .stat-num-green {
+      color: #10B981;
+    }
+
+    .stat-lbl {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 600;
+    }
+
+    /* PageSpeed Score Circle */
+    .pagespeed-box {
+      background: rgba(7, 9, 19, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      border-radius: 20px;
+      padding: 28px;
+      width: 100%;
+      text-align: center;
+      box-shadow: inset 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .pagespeed-header {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .pagespeed-circle-wrap {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .pagespeed-circle-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .circle-container {
+      position: relative;
+      width: 95px;
+      height: 95px;
+    }
+
+    .circle-svg {
+      width: 100%;
+      height: 100%;
+      transform: rotate(-90deg);
+    }
+
+    .circle-bg {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.04);
+      stroke-width: 6;
+    }
+
+    .circle-progress {
+      fill: none;
+      stroke: #10B981; /* Green */
+      stroke-width: 6;
+      stroke-linecap: round;
+      stroke-dasharray: 251.2;
+      stroke-dashoffset: 251.2;
+      transition: stroke-dashoffset 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .circle-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #10B981;
+    }
+
+    .circle-lbl {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* -------------------------------------------------------------
+       6. TIMELINE (STAGES OF WORK)
+       ------------------------------------------------------------- */
+    .timeline {
+      position: relative;
+      max-width: 850px;
+      margin: 45px 0;
+      padding-left: 35px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10px;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--color-primary), var(--color-cyan), rgba(6, 182, 212, 0.05));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 50px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -31px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--bg-dark);
+      border: 3px solid var(--color-cyan);
+      box-shadow: 0 0 12px var(--color-cyan);
+      z-index: 1;
+    }
+
+    .timeline-item-gold::before {
+      border-color: var(--color-gold);
+      box-shadow: 0 0 12px var(--color-gold);
+    }
+
+    .timeline-date {
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      color: var(--color-cyan);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-date-gold {
+      color: var(--color-gold);
+    }
+
+    .timeline-content h3 {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .timeline-content p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+      line-height: 1.6;
+    }
+
+    /* Highlight box inside timeline content */
+    .timeline-highlight {
+      background: rgba(212, 175, 55, 0.05);
+      border-left: 3px solid var(--color-gold);
+      padding: 14px 20px;
+      border-radius: 0 10px 10px 0;
+      margin-top: 14px;
+      font-size: 0.925rem;
+      color: var(--text-main);
+    }
+
+    /* -------------------------------------------------------------
+       7. PRICING SECTION (WARUNKI WSPÓŁPRACY)
+       ------------------------------------------------------------- */
+    .pricing-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.35) 0%, rgba(11, 15, 25, 0.7) 100%);
+      border: 2px solid rgba(212, 175, 55, 0.25);
+      border-radius: 28px;
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      margin-bottom: 50px;
+      overflow: hidden;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pricing-badge {
+      display: inline-flex;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1px solid var(--color-gold);
+      color: var(--color-gold);
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 6px 18px;
+      border-radius: 50px;
+      margin-bottom: 30px;
+    }
+
+    .price-value {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, var(--text-main) 30%, var(--color-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .price-sub {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 45px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+      max-width: 850px;
+      margin: 0 auto;
+      text-align: left;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 45px;
+    }
+
+    .pricing-col h4 {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pricing-col p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* -------------------------------------------------------------
+       8. CONTACT & FOOTER (CTA)
+       ------------------------------------------------------------- */
+    .cta-card {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.12) 0%, rgba(59, 130, 246, 0.04) 100%);
+      border: 1px solid rgba(6, 182, 212, 0.25);
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: var(--shadow-premium);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+    }
+
+    .cta-card h2 {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: -0.5px;
+    }
+
+    .cta-card p {
+      color: var(--text-muted);
+      font-size: 1.08rem;
+      max-width: 650px;
+      margin: 0 auto 35px auto;
+      line-height: 1.6;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 14px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition-smooth);
+    }
+
+    .cta-btn-primary {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-cyan) 100%);
+      color: white;
+      box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+    }
+
+    .cta-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(6, 182, 212, 0.5);
+    }
+
+    .cta-btn-secondary {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--text-main);
+    }
+
+    .cta-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.18);
+      transform: translateY(-2px);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 70px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 35px;
+    }
+
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    footer a:hover {
+      color: var(--color-cyan);
+    }
+
+    /* -------------------------------------------------------------
+       9. RESPONSIVE MEDIA QUERIES
+       ------------------------------------------------------------- */
+    @media (max-width: 900px) {
+      .bento-grid {
+        gap: 18px;
+      }
+      .grid-cell-6, .grid-cell-4, .grid-cell-8 {
+        grid-column: span 12;
+      }
+      .comm-wrapper, .case-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 35px;
+      }
+      .comm-illustration, .case-visual {
+        max-width: 100%;
+        min-width: unset;
+      }
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-banner {
+        padding: 45px 25px;
+      }
+      .hero-banner h1 {
+        font-size: 2.2rem;
+      }
+      .pricing-card {
+        padding: 45px 25px;
+      }
+      .price-value {
+        font-size: 3.2rem;
+      }
+      .cta-actions {
+        flex-direction: column;
+      }
+      .cta-btn {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* -------------------------------------------------------------
+       10. PRINT / PDF STYLESHEET
+       ------------------------------------------------------------- */
+    @media print {
+      body {
+        background: #FFF !important;
+        color: #000 !important;
+        font-size: 11pt !important;
+        line-height: 1.4 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      #gatekeeper, 
+      .top-actions, 
+      .print-btn, 
+      .cta-card, 
+      .comm-illustration,
+      footer {
+        display: none !important;
+      }
+
+      #offer-container {
+        opacity: 1 !important;
+        display: block !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .hero-banner {
+        background: none !important;
+        border: none !important;
+        border-bottom: 2px solid #000 !important;
+        border-radius: 0 !important;
+        padding: 20px 0 !important;
+        margin-bottom: 30px !important;
+        box-shadow: none !important;
+      }
+
+      .hero-banner h1 {
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+        background: none !important;
+        font-size: 24pt !important;
+      }
+
+      .badge-agency {
+        border: 1px solid #000 !important;
+        color: #000 !important;
+        background: none !important;
+        padding: 4px 10px !important;
+      }
+
+      .hero-meta {
+        border-top: 1px solid #CCC !important;
+        color: #000 !important;
+      }
+
+      .hero-meta strong {
+        color: #000 !important;
+      }
+
+      .section-title {
+        color: #000 !important;
+        font-size: 16pt !important;
+        border-bottom: 2px solid #000 !important;
+        width: 100% !important;
+        padding-bottom: 5px !important;
+        margin-bottom: 15px !important;
+      }
+
+      .section-title::after {
+        display: none !important;
+      }
+
+      .bento-grid {
+        display: block !important;
+      }
+
+      .glass-card, .comm-wrapper, .case-card, .pricing-card {
+        background: none !important;
+        border: 1px solid #CCC !important;
+        border-radius: 4px !important;
+        box-shadow: none !important;
+        margin-bottom: 20px !important;
+        padding: 15px !important;
+        page-break-inside: avoid !important;
+      }
+
+      svg, .card-icon, .comm-box {
+        display: none !important;
+      }
+
+      h2, h3, h4 {
+        color: #000 !important;
+        page-break-after: avoid !important;
+      }
+
+      p, li {
+        color: #000 !important;
+      }
+
+      .glass-card ul li::before {
+        color: #000 !important;
+      }
+
+      .pricing-card {
+        border: 2px solid #000 !important;
+      }
+
+      .pricing-badge {
+        border: 1px solid #000 !important;
+        color: #000 !important;
+        background: none !important;
+      }
+
+      .price-value {
+        color: #000 !important;
+        -webkit-text-fill-color: #000 !important;
+        background: none !important;
+        font-size: 32pt !important;
+      }
+
+      .pricing-grid {
+        border-top: 1px solid #CCC !important;
+        display: block !important;
+        padding-top: 20px !important;
+      }
+
+      .pricing-col {
+        margin-bottom: 15px !important;
+        page-break-inside: avoid !important;
+      }
+
+      .timeline {
+        padding-left: 15px !important;
+        border-left: 1px solid #000 !important;
+      }
+
+      .timeline::before {
+        display: none !important;
+      }
+
+      .timeline-item::before {
+        left: -21px !important;
+        border: 1px solid #000 !important;
+        background: #FFF !important;
+        width: 10px !important;
+        height: 10px !important;
+      }
+
+      .timeline-highlight {
+        border-left: 2px solid #000 !important;
+        background: #F9F9F9 !important;
+      }
+
+      section {
+        page-break-inside: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- -------------------------------------------------------------
+       1. THE GATEKEEPER SCREEN (PASSWORD PROTECTION Overlay)
+       ------------------------------------------------------------- -->
+  <div id="gatekeeper">
+    <div class="gatekeeper-card" id="gatekeeper-card">
+      <div class="gatekeeper-logo">
+        <img src="/logo.webp" alt="Jaison Logo">
+      </div>
+      <h2>Dokument Zabezpieczony Hasłem</h2>
+      <p>Wpisz dedykowane hasło dostępu, aby odblokować spersonalizowaną ofertę dla Kantoru-Lombardu Oranżada.</p>
+      
+      <div class="input-group">
+        <input type="password" id="access-password" class="password-input" placeholder="Wpisz hasło..." autofocus autocomplete="off">
+        <div class="error-msg" id="error-message">Niepoprawne hasło. Spróbuj ponownie.</div>
+      </div>
+      
+      <button class="gatekeeper-btn" id="unlock-button">Odblokuj dokument</button>
+    </div>
+  </div>
+
+  <!-- -------------------------------------------------------------
+       2. REVEALED OFFER DOCUMENT (The full container)
+       ------------------------------------------------------------- -->
+  <div id="offer-container">
+    
+    <!-- Top Bar with Print/Save action -->
+    <div class="top-actions">
+      <div class="logo-container">
+        <img src="/logo.webp" alt="Jaison Logo">
+      </div>
+      <button class="print-btn" onclick="window.print()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Pobierz / Drukuj ofertę do PDF
+      </button>
+    </div>
+
+    <!-- Hero Banner Card -->
+    <div class="hero-banner">
+      <span class="badge-agency">Agencja AI Jaison</span>
+      <h1>Dedykowana Oferta Wdrożenia Systemu Online</h1>
+      <div class="hero-meta">
+        <span>Klient: <strong>Kantor-Lombard Oranżada (Widzew)</strong></span>
+        <span>Kanał: <strong>Szyfrowany & Bezpieczny</strong></span>
+        <span>Data: <strong>13 lipca 2026 r.</strong></span>
+      </div>
+    </div>
+
+    <!-- Section 1: Introduction -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">O co chodzi w tej ofercie</h2>
+      </div>
+      <p class="intro-text">
+        Prowadzisz prężny i cieszący się dużym zaufaniem lokalny biznes na Widzewie w Pasażu Oranżada. Masz stały ruch, markowe towary i bezpośredni kontakt z ludźmi. Jednak w dzisiejszym cyfrowym świecie brakuje Ci lekkiego i bezobsługowego systemu online, który przyciągnie nowych klientów bezpośrednio z wyszukiwarek, zautomatyzuje rezerwacje oraz zdejmie z Twoich barków konieczność prowadzenia notesów i ręcznego przepisywania zgłoszeń.
+      </p>
+      <p class="intro-text">
+        W agencji Jaison wyznajemy dwie żelazne zasady: <strong>Bezpieczeństwo danych</strong> oraz podejście <strong>Low Cost First</strong> (czyli darmowa infrastruktura na start). Proponujemy Ci układ partnerski: <strong>wdrożenie i utrzymanie za zero złotych w gotówce</strong>. Całość rozliczymy bezgotówkowo w kruszcu (złocie), a system będzie funkcjonować bez generowania jakichkolwiek stałych kosztów abonamentowych.
+      </p>
+    </section>
+
+    <!-- Section 2: Scope of Work -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Co dokładnie dla Ciebie robimy</h2>
+      </div>
+      <div class="bento-grid">
+        
+        <!-- Cell 1: Local SEO -->
+        <div class="glass-card grid-cell-4">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="10" r="3"></circle>
+              <path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 7 8 11.7z"></path>
+            </svg>
+          </div>
+          <h3>Lokalna Dominacja w Google</h3>
+          <p>Przejmujemy i optymalizujemy Twoją wizytówkę Google Business Profile na Widzewie, budując spójną sieć linków w lokalnych spisach.</p>
+          <ul>
+            <li>NAP Consistency — idealnie zgodne dane w całej sieci,</li>
+            <li>Wzrost pozycji w Mapach Google pod frazy typu "kantor Widzew",</li>
+            <li>Przejrzysty i czytelny wygląd gablot ze złotem i lokalizacji w Pasażu.</li>
+          </ul>
+        </div>
+
+        <!-- Cell 2: Ultra-light Website -->
+        <div class="glass-card grid-cell-4">
+          <div class="card-icon card-icon-orange">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+              <line x1="8" y1="21" x2="16" y2="21"></line>
+              <line x1="12" y1="17" x2="12" y2="21"></line>
+            </svg>
+          </div>
+          <h3>Szybka Strona WWW</h3>
+          <p>Tworzymy nowoczesną, lekką stronę www z tabelą kursów walut. Całość zaprojektowana bez ciężkich baz danych, co daje nam pancerne bezpieczeństwo.</p>
+          <ul>
+            <li>Błyskawiczne ładowanie na smartfonach na słabym zasięgu,</li>
+            <li>Tabela kursów — automatyczna (API NBP) lub półautomatyczna (panel w 5 sekund),</li>
+            <li>Zaprojektowana pod wyszukiwanie nowej ery — AEO i GEO.</li>
+          </ul>
+        </div>
+
+        <!-- Cell 3: Lead Magnets & Products -->
+        <div class="glass-card grid-cell-4">
+          <div class="card-icon card-icon-gold">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="21" r="1"></circle>
+              <circle cx="20" cy="21" r="1"></circle>
+              <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+            </svg>
+          </div>
+          <h3>Okazje Tygodnia (Katalog)</h3>
+          <p>Zamiast ciężkiego sklepu, wdrażamy lekki katalog unikalnych przedmiotów (biżuteria, laptopy, sprzęt) skupiony na rezerwacji telefonicznej.</p>
+          <ul>
+            <li>Prezentacja produktów o największej marży,</li>
+            <li>Przycisk "Zarezerwuj" — wysyłający natychmiastowe zgłoszenie,</li>
+            <li>Finalizacja transakcji offline twarzą w twarz w lokalu.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 3: Safe Communicator -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Bezpieczeństwo: Szyfrowany Komunikator JAISON</h2>
+      </div>
+      <div class="comm-wrapper">
+        <div class="comm-illustration">
+          <div class="comm-box">
+            <div class="comm-header">
+              <div class="comm-header-dot"></div>
+              <div class="comm-header-title">Bezpieczny Kanał Jaison</div>
+            </div>
+            <div class="comm-chat">
+              <div class="comm-bubble comm-bubble-in">
+                Nowe zgłoszenie: Rezerwacja biżuterii złotej (nr ref: 481). Klient: Jan Kowalski, tel. 501-xxx-xxx.
+              </div>
+              <div class="comm-bubble comm-bubble-out">
+                System zabezpieczony. Dane zapisane lokalnie. System AI: Wygenerowano gotowy szablon odpowiedzi WhatsApp.
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comm-info">
+          <h3>Komunikator JAISON z lokalnym, prywatnym AI</h3>
+          <p>
+            Wszystkie leady, rezerwacje i zapytania o kursy walut lub wycenę sprzętu trafiają bezpośrednio na Twój telefon poprzez dedykowany i pancerne zabezpieczony kanał. 
+          </p>
+          <p>
+            Komunikator jest wyposażony we wbudowanego asystenta sztucznej inteligencji, który działa w zamkniętym, surowym środowisku. Żadne Twoje dane biznesowe, kwoty transakcji ani poufne informacje o klientach <strong>nigdy nie są przekazywane do trenowania zewnętrznych, publicznych modeli językowych</strong>. Pełna prywatność biznesowa to nasz priorytet.
+          </p>
+          <div class="safety-tag-wrapper">
+            <div class="safety-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Szyfrowanie End-to-End
+            </div>
+            <div class="safety-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              Izolowane AI (No-Train)
+            </div>
+            <div class="safety-tag">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 11.08 12 19 5.05 13 7.55 11 12 15 20.1 7.3"></polyline></svg>
+              Zgodność z RODO
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 4: Case Studies with PageSpeed Circles -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Nasze Realizacje (Case Studies)</h2>
+      </div>
+      <p class="intro-text">
+        Zamiast obietnic, pokazujemy twarde liczby i         <!-- Case Study 1: Coolfon -->
+        <div class="case-card">
+          <div class="case-desc">
+            <h3>coolfon.pl</h3>
+            <a href="https://coolfon.pl" target="_blank" class="case-link">
+              Odwiedź stronę coolfon.pl 
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            <p>
+              Przekształciliśmy powolną witrynę WordPress serwisu GSM w ultraszybki statyczny system. Wdrożyliśmy interaktywny kalkulator cen napraw połączony bezpośrednio z wysyłką ustrukturyzowanych wycen na telefon technika oraz inteligentnego asystenta konwersacyjnego Dialogflow CX. Sprawdź audyt w <a href="https://pagespeed.web.dev/analysis/https-coolfon-pl/cmx7vxmqwd?form_factor=desktop" target="_blank" style="color: var(--color-cyan); text-decoration: underline;">Google PageSpeed Insights</a>.
+            </p>
+            <div class="case-stats">
+              <div class="stat-item">
+                <span class="stat-num stat-num-green">97/100</span>
+                <span class="stat-lbl">PageSpeed Mobile</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">0.6s</span>
+                <span class="stat-lbl">Czas Ładowania (LCP)</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num stat-num-green">0,00 zł</span>
+                <span class="stat-lbl">Koszty Stałe AI</span>
+              </div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="pagespeed-box">
+              <div class="pagespeed-header">PageSpeed Insights</div>
+              <div class="pagespeed-circle-wrap">
+                <!-- Mobile Circle -->
+                <div class="pagespeed-circle-item">
+                  <div class="circle-container">
+                    <svg class="circle-svg">
+                      <circle class="circle-bg" cx="45" cy="45" r="40"/>
+                      <circle class="circle-progress" id="circle-coolfon-mobile" cx="45" cy="45" r="40"/>
+                    </svg>
+                    <div class="circle-text">97</div>
+                  </div>
+                  <span class="circle-lbl">Mobile</span>
+                </div>
+                <!-- Desktop Circle -->
+                <div class="pagespeed-circle-item">
+                  <div class="circle-container">
+                    <svg class="circle-svg">
+                      <circle class="circle-bg" cx="45" cy="45" r="40"/>
+                      <circle class="circle-progress" id="circle-coolfon-desktop" cx="45" cy="45" r="40"/>
+                    </svg>
+                    <div class="circle-text">98</div>
+                  </div>
+                  <span class="circle-lbl">Desktop</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Case Study 2: Bar Jaś -->
+        <div class="case-card">
+          <div class="case-desc">
+            <h3>kurczakujasia.pl</h3>
+            <a href="https://kurczakujasia.pl" target="_blank" class="case-link">
+              Odwiedź stronę kurczakujasia.pl
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+            </a>
+            <p>
+              Stworzyliśmy od zera kompletny, bezobsługowy ekosystem gastronomiczny dla kultowego łódzkiego Baru Jaś. System zawiera interaktywny koszyk zamówień z płatnością BLIK przesyłający zlecenia na WhatsApp, asystenta Gemini oraz zautomatyzowaną pętlę pozyskiwania opinii Google 5-gwiazdek spiętą z n8n. Sprawdź audyt w <a href="https://pagespeed.web.dev/analysis/https-kurczakujasia-pl/q0oyn0fs1r?form_factor=desktop" target="_blank" style="color: var(--color-cyan); text-decoration: underline;">Google PageSpeed Insights</a>.
+            </p>
+            <div class="case-stats">
+              <div class="stat-item">
+                <span class="stat-num stat-num-green">100/100</span>
+                <span class="stat-lbl">PageSpeed Mobile</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">0.2s</span>
+                <span class="stat-lbl">Czas Ładowania (LCP)</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num stat-num-green">+35%</span>
+                <span class="stat-lbl">Wzrost Konwersji</span>
+              </div>
+            </div>
+          </div>
+          <div class="case-visual">
+            <div class="pagespeed-box">
+              <div class="pagespeed-header">PageSpeed Insights</div>
+              <div class="pagespeed-circle-wrap">
+                <!-- Mobile Circle -->
+                <div class="pagespeed-circle-item">
+                  <div class="circle-container">
+                    <svg class="circle-svg">
+                      <circle class="circle-bg" cx="45" cy="45" r="40"/>
+                      <circle class="circle-progress" id="circle-jas-mobile" cx="45" cy="45" r="40"/>
+                    </svg>
+                    <div class="circle-text">100</div>
+                  </div>
+                  <span class="circle-lbl">Mobile</span>
+                </div>
+                <!-- Desktop Circle -->
+                <div class="pagespeed-circle-item">
+                  <div class="circle-container">
+                    <svg class="circle-svg">
+                      <circle class="circle-bg" cx="45" cy="45" r="40"/>
+                      <circle class="circle-progress" id="circle-jas-desktop" cx="45" cy="45" r="40"/>
+                    </svg>
+                    <div class="circle-text">100</div>
+                  </div>
+                  <span class="circle-lbl">Desktop</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 5: Stages of Work (Timeline) -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Etapy współpracy i wdrożenia</h2>
+      </div>
+      <p class="intro-text">
+        Praca z nami przebiega według precyzyjnie opracowanego schematu, który daje Ci 100% pewności, kontroli oraz chroni Twój czas:
+      </p>
+      
+      <div class="timeline">
+        
+        <div class="timeline-item timeline-item-gold">
+          <div class="timeline-date timeline-date-gold">Krok 1 — W tym tygodniu</div>
+          <div class="timeline-content">
+            <h3>Osobiste Mapowanie Procesów na Widzewie</h3>
+            <p>
+              Przyjeżdżam bezpośrednio do Twojego lokalu w Pasażu Oranżada. Przy wspólnie wypitej kawie szczegółowo analizuję to, jak pracujesz na co dzień. Sprawdzam Twoje cenniki, to jak przyjmujesz towary, jak wyceniasz sprzęt, oraz jak prowadzisz zeszyty i rozliczenia. Znajduję wszystkie wąskie gardła i projektuję system, który przejmie najgorszą papierkową robotę.
+            </p>
+            <div class="timeline-highlight">
+              Spotkanie jest całkowicie bezpłatne i do niczego Cię nie zobowiązuje.
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Krok 2 — Do 7 dni</div>
+          <div class="timeline-content">
+            <h3>Architektura i Projekt Graficzny</h3>
+            <p>
+              Przygotowujemy dla Ciebie makiety nowej strony internetowej oraz schemat automatyzacji procesów. Uzgadniamy układ zakładek, kategorie produktów oraz sposób aktualizacji tabeli kursów walut. Całość dopasowujemy idealnie do tożsamości wizualnej Pasażu Oranżada.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-date">Krok 3 — Do 14 dni</div>
+          <div class="timeline-content">
+            <h3>Szybkie Kodowanie i Integracja Systemu</h3>
+            <p>
+              Przechodzimy do realizacji. Piszemy czysty, błyskawiczny kod strony internetowej zoptymalizowany pod kątem telefonów komórkowych. Podłączamy bezpieczny panel administracyjny do gablot online i konfigurujemy Tarcze Anty-Spamowe oraz Komunikator JAISON do bezpiecznego przesyłania rezerwacji.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item timeline-item-gold">
+          <div class="timeline-date timeline-date-gold">Krok 4 — Start i Wsparcie</div>
+          <div class="timeline-content">
+            <h3>Uruchomienie i Utrzymanie (Zero Kosztów Stałych)</h3>
+            <p>
+              Wdrażamy system na stabilną infrastrukturę Google Cloud, która w naszym standardzie Low Cost gwarantuje darmowe działanie serwisu (do kilku tysięcy odsłon miesięcznie). Od tego momentu Twój biznes zaczyna pracować automatycznie, a my dbamy o jego bezpieczeństwo i aktualizacje.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Section 6: Pricing -->
+    <section>
+      <div class="section-title-wrap">
+        <h2 class="section-title">Warunki i Rozliczenie Bezgotówkowe</h2>
+      </div>
+      
+      <div class="pricing-card">
+        <span class="pricing-badge">Układ Partnerski</span>
+        <div class="price-value">0,00 zł</div>
+        <div class="price-sub">W gotówce za wdrożenie i utrzymanie systemu</div>
+        
+        <div class="pricing-grid">
+          <div class="pricing-col">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              Zasada low-cost
+            </h4>
+            <p>
+              Nie ponosisz żadnych kosztów licencji ani drogich serwerów. Całość opieramy o darmowe pakiety Google Cloud Platform i bezpieczne, lekkie technologie, które nie generują stałych kosztów.
+            </p>
+          </div>
+          <div class="pricing-col">
+            <h4>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              Rozliczenie w kruszcu
+            </h4>
+            <p>
+              Całość prac wdrożeniowych rozliczamy w 100% bezgotówkowo. Jako formę płatności akceptujemy złoto, srebro lub inne wartościowe aktywa, które wspólnie wycenimy podczas spotkania.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section 7: Call to Action -->
+    <section class="cta-card">
+      <h2>Zróbmy pierwszy krok</h2>
+      <p>
+        Zadzwoń do mnie bezpośrednio lub wybierz dogodny termin na krótką rozmowę, abyśmy mogli ustalić szczegóły i zaplanować spotkanie przy kawie w Twoim lokalu na Widzewie.
+      </p>
+      <div class="cta-actions">
+        <a href="tel:+48791636644" class="cta-btn cta-btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.79 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Zadzwoń: +48 791 636 644
+        </a>
+        <a href="https://wa.me/48791636644" target="_blank" class="cta-btn cta-btn-secondary">
+          Skontaktuj się przez WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Agencja AI Jaison (jaison.pl). Wszystkie prawa zastrzeżone. Dedykowany, poufny dokument dla Kantoru-Lombardu Oranżada.</p>
+    </footer>
+
+  </div>
+
+  <!-- -------------------------------------------------------------
+       3. LOGIC OPERATIONAL SCRIPT
+       ------------------------------------------------------------- -->
+  <script>
+    const accessPassword = "oranzada2026";
+
+    function unlockOffer() {
+      document.getElementById("gatekeeper").classList.add("unlocked");
+      document.getElementById("offer-container").classList.add("visible");
+      
+      // Animate progress circles
+      setTimeout(() => {
+        animateCircle("circle-coolfon-mobile", 97);
+        animateCircle("circle-coolfon-desktop", 99);
+        animateCircle("circle-jas-mobile", 100);
+        animateCircle("circle-jas-desktop", 100);
+      }, 400);
+    }
+
+    function checkPassword() {
+      const pwd = document.getElementById("access-password").value;
+      if (pwd === accessPassword) {
+        unlockOffer();
+      } else {
+        const card = document.getElementById("gatekeeper-card");
+        card.classList.add("shake");
+        document.getElementById("error-message").style.opacity = "1";
+        setTimeout(() => {
+          card.classList.remove("shake");
+        }, 500);
+      }
+    }
+
+    function animateCircle(id, value) {
+      const circle = document.getElementById(id);
+      if (!circle) return;
+      const radius = circle.r.baseVal.value;
+      const circumference = 2 * Math.PI * radius;
+      const offset = circumference - (value / 100) * circumference;
+      circle.style.strokeDasharray = circumference;
+      circle.style.strokeDashoffset = offset;
+    }
+
+    // Event Listeners
+    document.getElementById("unlock-button").addEventListener("click", checkPassword);
+    document.getElementById("access-password").addEventListener("keydown", function(e) {
+      if (e.key === "Enter" || e.keyCode === 13) {
+        checkPassword();
+      }
+    });
+
+    // Auto-unlock via URL query parameter (low friction entry)
+    window.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const pwd = urlParams.get('haslo') || urlParams.get('password');
+      if (pwd === accessPassword) {
+        unlockOffer();
+      }
+    });
+  </script>
+</body>
+</html>

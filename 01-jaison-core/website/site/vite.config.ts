@@ -13,6 +13,7 @@ export default defineConfig({
         politykaPrywatnosci: resolve(__dirname, 'polityka-prywatnosci.html'),
         caseStudies: resolve(__dirname, 'case-studies.html'),
         opinia: resolve(__dirname, 'opinia.html'),
+        oranzada: resolve(__dirname, 'oferty/oranzada/index.html'),
       }
     }
   }

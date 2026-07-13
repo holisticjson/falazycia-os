@@ -3212,17 +3212,25 @@ function handleJaisonKeyPress(e) {
     }
 }
 
+// Bindowanie funkcji do obiektu window, aby były dostępne globalnie po kompilacji Vite (Module Scope -> Global Scope)
+window.toggleJaisonChat = toggleJaisonChat;
+window.handleJaisonKeyPress = handleJaisonKeyPress;
+
 function sendJaisonMessage() {
     const input = document.getElementById("jaison-chat-input");
+    if (!input) return;
     const msg = input.value.trim();
     if (!msg) return;
 
-    // Pobierz pola Spam Shield (Honeypot)
-    const honeypotEmail = document.getElementById("jaison-email-confirm").value;
-    const honeypotPhone = document.getElementById("jaison-phone-check").value;
+    // Pobierz pola Spam Shield (Honeypot) w sposób bezpieczny
+    const honeypotEmailEl = document.getElementById("jaison-email-confirm");
+    const honeypotPhoneEl = document.getElementById("jaison-phone-check");
+    const honeypotEmail = honeypotEmailEl ? honeypotEmailEl.value : "";
+    const honeypotPhone = honeypotPhoneEl ? honeypotPhoneEl.value : "";
 
     // Renderuj wiadomość użytkownika
     const container = document.getElementById("jaison-chat-msg-container");
+    if (!container) return;
     container.innerHTML += `<div class="jaison-message jaison-user">${msg}</div>`;
     input.value = "";
     container.scrollTop = container.scrollHeight;
@@ -3263,9 +3271,9 @@ function sendJaisonMessage() {
         if (typingIndicator) typingIndicator.remove();
         
         container.innerHTML += `<div class="jaison-message jaison-bot">Przepraszam, straciłem połączenie z moją bazą wiedzy. Skontaktuj się ze mną bezpośrednio przez e-mail: <a href="mailto:hello@jaison.pl">hello@jaison.pl</a>! 📞</div>`;
-        container.scrollTop = container.scrollHeight;
     });
 }
+window.sendJaisonMessage = sendJaisonMessage;
 
 // Inteligentny UX: Automatyczne wysunięcie chmurki po 3 sekundach
 setTimeout(function() {
