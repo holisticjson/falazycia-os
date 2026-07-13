@@ -2652,7 +2652,7 @@ elif menu == "Lead_Radar":
     </div>
     """, unsafe_allow_html=True)
     
-    tab_radar, tab_config = st.tabs(["📡 Radar Zleceń", "⚙️ Konfiguracja Skanera"])
+    tab_radar, tab_audit, tab_config = st.tabs(["📡 Radar Zleceń", "📋 Audyty 21 Pytań (jaison.pl)", "⚙️ Konfiguracja Skanera"])
     
     with tab_radar:
         st.markdown("### 📥 Najnowsze zlecenia z rynku")
@@ -2672,6 +2672,164 @@ elif menu == "Lead_Radar":
             if st.button("🧠 Uruchom Analizę Vertex AI Search", use_container_width=True):
                 st.info("Inicjacja w ramach 1000$ GenAI App Builder. Pobieranie danych...")
                 
+    with tab_audit:
+        st.markdown("### 📋 Kwalifikacja Inbound - Audyt Systemowy 21 Pytań")
+        st.caption("Przeglądaj odpowiedzi z ankiety kwalifikacyjnej bota na jaison.pl i generuj architektury wdrożeń.")
+        
+        col_list, col_details = st.columns([1, 2])
+        
+        # Dane audytów
+        audits = {
+            "Tomasz Kowalski (Holistic Agency)": {
+                "date": "Dzisiaj, 11:20",
+                "score": 14,
+                "tier": "STREFA ŚREDNIAKÓW (Chaos narzędziowy)",
+                "color": "#F59E0B",
+                "phone": "+48 501 234 567",
+                "email": "tomasz@holisticagency.pl",
+                "answers": {
+                    "S1_1": "10 godzin w tygodniu marnujemy na ręczne przepisywanie danych z CRM do GSheets.",
+                    "S1_2": "Nie, wszystko jest w rozproszonych plikach i głowach zespołu.",
+                    "S1_3": "Około tygodnia, brak jasnych SOP-ów.",
+                    "S1_4": "Tak, często zapominamy o follow-upach z Messengera.",
+                    "S1_5": "Codziennie podejmuję 5-10 prostych decyzji za ludzi.",
+                    "S2_6": "Odpisujemy średnio po 2-3 godzinach, czasami na drugi dzień.",
+                    "S2_7": "Nie, nie mamy żadnego automatycznego follow-up.",
+                    "S2_8": "Działamy głównie na wyczucie, brak analityki konwersji.",
+                    "S2_9": "Tracimy około 3-5 dużych kontraktów miesięcznie.",
+                    "S2_10": "Ręcznie ustalamy terminy na czacie lub mailowo.",
+                    "S3_11": "Nie, skrypty są nieuporządkowane.",
+                    "S3_12": "Wszystko by się załamało - głównie mój wolny czas.",
+                    "S3_13": "Słabo, robimy 90% ręcznie.",
+                    "S3_14": "Ręcznie odpisuję na 15 pytań dziennie.",
+                    "S3_15": "Nie zbieramy opinii automatycznie.",
+                    "S4_16": "Jestem zmęczonym operacyjnie niewolnikiem własnej firmy.",
+                    "S4_17": "Pracuję w prawie każdy weekend.",
+                    "S4_18": "Firma przestałaby działać po 5 dniach bez mojego udziału.",
+                    "S4_19": "Marnuję 80% energii na gaszenie pożarów technicznych.",
+                    "S4_20": "Tracę ogromne pieniądze i mnóstwo wolności.",
+                    "S4_21": "Tak, jestem gotowy na wdrożenie Niewidzialnego Pracownika AI!"
+                },
+                "recommendation": """### 🤖 Rekomendacja Systemowa Jaisona (Ewaluacja AI)
+**Klient:** Tomasz Kowalski • **Wynik:** 14/21 pkt (Chaos Narzędziowy)
+**Rekomendowane wdrożenie automatyzacji w darmowym staku:**
+
+1. **Wdrożenie n8n do eliminacji "Rękodzieła" (Odzysk 10h/tydz):**
+   - Połączenie formularzy na Facebook/Messenger z Twoim CRM za pomocą webhooka n8n.
+   - Automatyczny dwustronny sync danych, eliminujący ręczne przepisywanie do arkuszy.
+2. **Automatyzacja Kalendarza & Umawiania Spotkań:**
+   - Wdrożenie darmowego konta **Cal.com** zintegrowanego przez webhook n8n z Twoim Google Calendar. 
+   - Automatyczna wysyłka linku na WhatsApp/E-mail natychmiast po zgłoszeniu.
+3. **Lejki i Retencja (Systeme.io):**
+   - Spięcie n8n z **Systeme.io** w celu automatycznej wysyłki sekwencji edukacyjnej (lead nurturing) dla osób, które nie kupiły od razu (odzyskanie 3-5 transakcji/miesięcznie).
+4. **Baza Wiedzy SOP dla Zespołu:**
+   - Uporządkowanie know-how w Notion/Markdown i podłączenie asystenta opartego na **Vertex AI Search** ($1000 credit), który wdraża nowego pracownika w 3 sekundy."""
+            },
+            "Anna Nowak (E-commerce Brand)": {
+                "date": "Wczoraj, 15:45",
+                "score": 6,
+                "tier": "RĘKODZIEŁO (Zagrożenie wypaleniem)",
+                "color": "#EF4444",
+                "phone": "+48 602 987 654",
+                "email": "kontakt@annafashion.pl",
+                "answers": {
+                    "S1_1": "Ponad 15 godzin spędzamy na kopiowaniu zamówień i adresów wysyłek.",
+                    "S1_2": "Absolutnie nie, ciągły chaos operacyjny.",
+                    "S1_3": "Ponad 2 tygodnie, ciągłe tłumaczenie od zera.",
+                    "S1_4": "Nagminnie uciekają nam zapytania klientów.",
+                    "S1_5": "Każdą decyzję muszę podejmować osobiście.",
+                    "S2_6": "Często dopiero po 24 godzinach.",
+                    "S2_7": "Nie posiadamy takiego systemu.",
+                    "S2_8": "Na wyczucie.",
+                    "S2_9": "Bardzo dużo, nie nadążamy z odpisywaniem.",
+                    "S2_10": "Ręcznie, marnując mnóstwo czasu na maile.",
+                    "S3_11": "Nie.",
+                    "S3_12": "Wydolność zespołu ległaby w gruzach natychmiast.",
+                    "S3_13": "Brak automatyzacji.",
+                    "S3_14": "Dziesiątki powtarzalnych pytań dziennie obsługuję sama.",
+                    "S3_15": "Ręcznie piszę prośby o opinie.",
+                    "S4_16": "Jestem całkowicie niewolnikiem operacyjnym.",
+                    "S4_17": "Pracuję po 12h dziennie, w weekendy również.",
+                    "S4_18": "Wszystko by upadło w 2 dni.",
+                    "S4_19": "95% na gaszenie pożarów.",
+                    "S4_20": "Tracę całe życie prywatne.",
+                    "S4_21": "Błagam o ratunek i wdrożenie AI!"
+                },
+                "recommendation": """### 🤖 Rekomendacja Systemowa Jaisona (Ewaluacja AI)
+**Klient:** Anna Nowak • **Wynik:** 6/21 pkt (Rękodzieło)
+**Krytyczny Plan Ratunkowy (Low-Cost MVP):**
+
+1. **Automatyzacja Obsługi Zamówień (Odzysk 15h/tydz):**
+   - Połączenie Twojego sklepu (np. Shopify/WooCommerce) z systemem kurierskim (Furgonetka/Apaczka) za pomocą **n8n**. Automatyczne generowanie etykiet bez ręcznego przepisywania!
+2. **Asystent AI Klienta (24/7):**
+   - Konfiguracja prostego bota AI na Messengerze/Instagramie zintegrowanego z Twoim asortymentem i odpowiedziami na 30 najczęstszych pytań (FAQ).
+3. **Automatyczne Opinie po zakupie:**
+   - Webhook n8n wyzwalający wysyłkę e-maila z Systeme.io po 5 dniach od dostarczenia przesyłki z prośbą o opinię na Google/Trustpilot."""
+            }
+        }
+        
+        with col_list:
+            selected_lead = st.radio("Wybierz zgłoszenie do analizy:", list(audits.keys()))
+            st.markdown("---")
+            st.info("💡 Dane są gotowe do zasilenia z prawdziwego webhooka n8n zbierającego audyty z Twojej strony jaison.pl.")
+            
+        with col_details:
+            lead_info = audits[selected_lead]
+            st.markdown(f"#### 👤 Profil: {selected_lead}")
+            st.markdown(f"📅 **Data:** {lead_info['date']} | 📞 **Tel:** {lead_info['phone']} | 📧 **Email:** {lead_info['email']}")
+            
+            # Badge wyniku
+            st.markdown(f"""
+            <div style="background: #111827; border: 1px solid {lead_info['color']}; border-radius: 8px; padding: 12px; margin-bottom: 20px;">
+                <span style="font-weight: bold; color: {lead_info['color']}; font-size: 1.1rem;">Wynik: {lead_info['score']} / 21 pkt</span> — <b>{lead_info['tier']}</b>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            # Wyświetlanie odpowiedzi
+            with st.expander("🔍 Zobacz szczegółowe odpowiedzi na 21 pytań"):
+                st.markdown("##### SEKCJA 1: Chaos Operacyjny i Wycieki Czasu")
+                st.write(f"1. Ręczne przepisywanie: *{lead_info['answers']['S1_1']}*")
+                st.write(f"2. Centralne źródło wiedzy: *{lead_info['answers']['S1_2']}*")
+                st.write(f"3. Wdrożenie nowej osoby: *{lead_info['answers']['S1_3']}*")
+                st.write(f"4. Uciekające zadania: *{lead_info['answers']['S1_4']}*")
+                st.write(f"5. Podejmowanie decyzji osobiście: *{lead_info['answers']['S1_5']}*")
+                
+                st.markdown("##### SEKCJA 2: Konwersja i Wycieki Pieniędzy")
+                st.write(f"6. Czas odpowiedzi na lead: *{lead_info['answers']['S2_6']}*")
+                st.write(f"7. System dogrzewania (follow-up): *{lead_info['answers']['S2_7']}*")
+                st.write(f"8. Analityka marketingu: *{lead_info['answers']['S2_8']}*")
+                st.write(f"9. Straty transakcji przez brak follow-up: *{lead_info['answers']['S2_9']}*")
+                st.write(f"10. Automatyzacja spotkań: *{lead_info['answers']['S2_10']}*")
+                
+                st.markdown("##### SEKCJA 3: Skalowalność i Gotowość na AI")
+                st.write(f"11. Ustrukturyzowane know-how pod AI: *{lead_info['answers']['S3_11']}*")
+                st.write(f"12. Skutki 10x wzrostu bazy: *{lead_info['answers']['S3_12']}*")
+                st.write(f"13. Korzystanie z automatyzacji: *{lead_info['answers']['S3_13']}*")
+                st.write(f"14. Powtarzalne pytania od klientów: *{lead_info['answers']['S3_14']}*")
+                st.write(f"15. Automatyczne opinie (Social Proof): *{lead_info['answers']['S3_15']}*")
+                
+                st.markdown("##### SEKCJA 4: Wolność Biznesowa")
+                st.write(f"16. Strateg vs. niewolnik operacyjny: *{lead_info['answers']['S1_1']}*")
+                st.write(f"17. Praca po godzinach/weekendy: *{lead_info['answers']['S1_2']}*")
+                st.write(f"18. Biznes bez Ciebie przez 30 dni: *{lead_info['answers']['S1_3']}*")
+                st.write(f"19. Marnowanie energii na gaszenie pożarów: *{lead_info['answers']['S1_4']}*")
+                st.write(f"20. Straty wolności i zysków: *{lead_info['answers']['S1_5']}*")
+                st.write(f"21. Gotowość na Niewidzialnego Pracownika AI: **{lead_info['answers']['S4_21']}**")
+            
+            # Rekomendacja AI
+            st.markdown("""<div style="background: #13111C; border: 1px solid #7C3AED; border-radius: 8px; padding: 18px; margin-top: 15px;">""", unsafe_allow_html=True)
+            st.markdown(lead_info["recommendation"])
+            st.markdown("</div>", unsafe_allow_html=True)
+            
+            # Akcja
+            col_act1, col_act2 = st.columns(2)
+            with col_act1:
+                if st.button("📨 Wyślij architekturę na E-mail / WhatsApp", key=f"send_{selected_lead}", use_container_width=True):
+                    st.success(f"Architektura wysłana do {lead_info['email']}!")
+            with col_act2:
+                if st.button("🚀 Zaimportuj do CRM & Utwórz Projekt", key=f"import_{selected_lead}", use_container_width=True, type="primary"):
+                    st.success("Lead pomyślnie zaimportowany do CRM Magic Pipeline jako klient do wdrożenia!")
+
     with tab_config:
         st.markdown("### ⚙️ Źródła Skrapowania i Agenty GCS")
         st.text_input("Główny Prompt Oceny Leada (Gemini API)", value="Jesteś Analitykiem Rynku. Oceń lead pod kątem marży i dopasowania do automatyzacji AI.")
@@ -6823,37 +6981,159 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
                     st.success("Draft zapisany!")
 
             with tab_calendar:
-                st.write("#### 📅 Kalendarz Publikacji")
-                st.caption("Przeglądaj zaplanowane posty i karuzele wraz z dołączonymi mediami z Creative Suite.")
-                st.markdown("""
-                <div style="background: #111827; border: 1px dashed #374151; border-radius: 8px; padding: 40px; text-align: center;">
-                    <span style="color: #9CA3AF;">Brak zaplanowanych publikacji na ten tydzień.<br>Przejdź do zakładki <b>Kreator</b>, aby dodać nowy post z wariantami dla różnych platform.</span>
-                </div>
-                """, unsafe_allow_html=True)
+                st.write("#### 📅 Kalendarz Publikacji (Tygodniowy)")
+                st.caption("Harmonogram treści na wybrane dni z uwzględnieniem kanałów, formatów i załączonych mediów.")
+                
+                col_m1, col_m2 = st.columns(2)
+                with col_m1:
+                    sel_month = st.selectbox("Wybierz miesiąc:", ["Lipiec 2026", "Sierpień 2026"], index=0)
+                with col_m2:
+                    sel_week = st.selectbox("Wybierz tydzień:", ["Tydzień 29 (13.07 - 19.07)", "Tydzień 30 (20.07 - 26.07)"], index=0)
+                
+                # Mockowy kalendarz postów w wybranym tygodniu
+                if sel_week == "Tydzień 29 (13.07 - 19.07)":
+                    days_data = [
+                        {
+                            "day": "Poniedziałek (13.07)",
+                            "has_post": True,
+                            "time": "09:00",
+                            "title": "💡 3 krytyczne błędy w automatyzacjach n8n",
+                            "channels": ["💼 LinkedIn", "🐦 X (Twitter)"],
+                            "format": "Pojedynczy Post",
+                            "status": "🟢 Opublikowano",
+                            "media": "Brak załączników (Sam tekst)",
+                            "content": "Czy wiesz, że ponad 90% początkujących popełnia błąd braku retry logic przy webhookach n8n? Oto jak temu zaradzić w 3 prostych krokach..."
+                        },
+                        {
+                            "day": "Wtorek (14.07)",
+                            "has_post": False
+                        },
+                        {
+                            "day": "Środa (15.07)",
+                            "has_post": True,
+                            "time": "15:30",
+                            "title": "🎨 Karuzela: Jak odzyskać 10 godzin wolnego czasu z AI",
+                            "channels": ["📸 Instagram", "💼 LinkedIn"],
+                            "format": "Karuzela (LinkedIn/IG)",
+                            "status": "⏳ Zaplanowano",
+                            "media": "🖼️ 5 Slajdów (J(AI)SON Creative Suite) | 🎵 Audio Link: ig.me/trending-12948",
+                            "content": "Slajd 1: Tracisz 10h tygodniowo na rutynę?\nSlajd 2: Krok 1: Automatyczny kalendarz spotkań.\nSlajd 3: Krok 2: Synchroniczne CRM.\nSlajd 4: Krok 3: Generowanie ofert AI.\nSlajd 5: Kliknij link w bio i pobierz darmowego e-booka!"
+                        },
+                        {
+                            "day": "Czwartek (16.07)",
+                            "has_post": False
+                        },
+                        {
+                            "day": "Piątek (17.07)",
+                            "has_post": True,
+                            "time": "18:00",
+                            "title": "🎬 Rolka: Przebodźcowany menedżer ADHD vs Niewidzialny Asystent",
+                            "channels": ["📸 Instagram", "🩳 TikTok"],
+                            "format": "Rolka/Shorts (Skrypt)",
+                            "status": "⏳ Zaplanowano",
+                            "media": "🎥 B-Roll Video (Pexels) | 🎤 Lektor: GCP Polish Male TTS",
+                            "content": "[WIDEO] Szybkie przebitki ze zmęczonym menedżerem gaszącym pożary techniczne. Lektor: 'ADHD to nie brak skupienia, to nadmiar pomysłów. Pozwól, by Jaison ułożył Twoją operację...'"
+                        },
+                        {
+                            "day": "Sobota (18.07)",
+                            "has_post": False
+                        },
+                        {
+                            "day": "Niedziela (19.07)",
+                            "has_post": False
+                        }
+                    ]
+                else:
+                    days_data = [{"day": d, "has_post": False} for d in ["Poniedziałek", "Wtorek", "Środa", "Czwartek", "Piątek", "Sobota", "Niedziela"]]
+                
+                st.markdown("---")
+                
+                for day in days_data:
+                    if day["has_post"]:
+                        # Zbuduj ładną kartę dla dnia z postem
+                        st.markdown(f"##### 📅 {day['day']} — 🕰️ Zaplanowana godzina: **{day['time']}**")
+                        
+                        # Badges kanałów
+                        ch_badges = " ".join([f"<span style='background: #1E293B; border: 1px solid #334155; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-right: 5px; color: #E2E8F0;'>{ch}</span>" for ch in day['channels']])
+                        st.markdown(f"""
+                        <div style="background: #111827; border: 1px solid #1F2937; border-left: 4px solid #7C3AED; border-radius: 8px; padding: 15px; margin-bottom: 20px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                <span style="font-weight: bold; font-size: 1.05rem; color: #F3F4F6;">{day['title']}</span>
+                                <span style="font-size: 0.8rem; font-weight: bold; color: {'#10B981' if '🟢' in day['status'] else '#F59E0B'};">{day['status']}</span>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                {ch_badges}
+                                <span style="background: #13111C; border: 1px solid #7C3AED; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; color: #A78BFA;">{day['format']}</span>
+                            </div>
+                            <p style="color: #9CA3AF; font-size: 0.9rem; line-height: 1.5; white-space: pre-wrap; background: #0B0F19; padding: 10px; border-radius: 6px;">{day['content']}</p>
+                            <div style="font-size: 0.85rem; color: #A78BFA; font-weight: 500;">📎 Załączniki z Creative Suite: <span style="color: #E2E8F0;">{day['media']}</span></div>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    else:
+                        st.markdown(f"##### 📅 {day['day']}")
+                        st.markdown("""
+                        <div style="background: #0B0F19; border: 1px dashed #1F2937; border-radius: 8px; padding: 12px; text-align: center; margin-bottom: 20px;">
+                            <span style="color: #4B5563; font-size: 0.85rem;">Wolny slot publikacyjny • Kliknij <b>Kreator</b>, aby zaplanować post.</span>
+                        </div>
+                        """, unsafe_allow_html=True)
 
             with tab_integrations:
-                st.write("#### 🔗 Połączone Konta (OAuth przez n8n)")
-                st.caption("Autoryzacja platform docelowych jest bezpiecznie zarządzana przez system n8n.")
+                st.write("#### 🔗 Aktywne Połączenia i Integracje n8n")
+                st.caption("Autoryzuj kanały i zarządzaj bezpośrednimi webhookami n8n z poziomu panelu Jaisona.")
                 
-                def draw_integration(name, status, color):
-                    status_text = "Połączono" if status else "Wymaga logowania w n8n"
-                    status_color = "#10B981" if status else "#F59E0B"
-                    st.markdown(f"""
-                    <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
-                        <span style="font-weight: bold; color: {color};">{name}</span>
-                        <span style="font-size: 0.8rem; color: {status_color}; border: 1px solid {status_color}; padding: 2px 8px; border-radius: 12px;">{status_text}</span>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
+                # Zapisujemy stany połączeń do session_state
+                if "conn_fb" not in st.session_state:
+                    st.session_state.conn_fb = True
+                if "conn_ig" not in st.session_state:
+                    st.session_state.conn_ig = False
+                if "conn_li" not in st.session_state:
+                    st.session_state.conn_li = True
+                if "conn_x" not in st.session_state:
+                    st.session_state.conn_x = False
+                
                 col_i1, col_i2 = st.columns(2)
+                
                 with col_i1:
-                    draw_integration("📘 Facebook Page", True, "#3B82F6")
-                    draw_integration("📸 Instagram", False, "#EC4899")
-                    draw_integration("💼 LinkedIn", True, "#0EA5E9")
+                    # Facebook
+                    st.markdown("##### 📘 Facebook Page")
+                    st.session_state.conn_fb = st.toggle("Połączony (FB API)", value=st.session_state.conn_fb, key="fb_toggle")
+                    if st.session_state.conn_fb:
+                        with st.expander("⚙️ Konfiguracja Facebook n8n"):
+                            st.text_input("Facebook Page ID:", value="10293847562910")
+                            st.text_input("Webhook Publikacji n8n:", value="https://n8n.jaison.pl/webhook/fb-publish")
+                            st.button("💾 Zapisz Facebook", key="save_fb")
+                    st.markdown("---")
+                    
+                    # LinkedIn
+                    st.markdown("##### 💼 LinkedIn Profile")
+                    st.session_state.conn_li = st.toggle("Połączony (OAuth2)", value=st.session_state.conn_li, key="li_toggle")
+                    if st.session_state.conn_li:
+                        with st.expander("⚙️ Konfiguracja LinkedIn n8n"):
+                            st.text_input("LinkedIn Organization ID (lub person URN):", value="urn:li:person:AbCd1234Xy")
+                            st.text_input("Webhook Publikacji n8n:", value="https://n8n.jaison.pl/webhook/linkedin-publish")
+                            st.button("💾 Zapisz LinkedIn", key="save_li")
+                    st.markdown("---")
+
                 with col_i2:
-                    draw_integration("🩳 TikTok", False, "#14B8A6")
-                    draw_integration("🐦 X (Twitter)", True, "#E2E8F0")
-                    draw_integration("📍 Google Business Profile", True, "#34D399")
+                    # Instagram
+                    st.markdown("##### 📸 Instagram Business")
+                    st.session_state.conn_ig = st.toggle("Połączony (Graph API)", value=st.session_state.conn_ig, key="ig_toggle")
+                    if st.session_state.conn_ig:
+                        with st.expander("⚙️ Konfiguracja Instagram n8n"):
+                            st.text_input("Instagram Account ID:", value="928374829102")
+                            st.text_input("Webhook n8n (Karuzela/Reel):", value="https://n8n.jaison.pl/webhook/instagram-publish")
+                            st.button("💾 Zapisz Instagram", key="save_ig")
+                    st.markdown("---")
+                    
+                    # X / Twitter
+                    st.markdown("##### 🐦 X (Twitter)")
+                    st.session_state.conn_x = st.toggle("Połączony (X API v2)", value=st.session_state.conn_x, key="x_toggle")
+                    if st.session_state.conn_x:
+                        with st.expander("⚙️ Konfiguracja X n8n"):
+                            st.text_input("X Client ID (Bearer Token):", value="AAAAAAAAAAAAAAAAAAAAAKD91u39asjkda...")
+                            st.text_input("Webhook n8n:", value="https://n8n.jaison.pl/webhook/x-publish")
+                            st.button("💾 Zapisz X", key="save_x")
+                    st.markdown("---")
 
             with tab_settings:
                 st.write("#### ⚙️ Ustawienia i Baza Wiedzy Firmy")

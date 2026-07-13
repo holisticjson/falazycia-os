@@ -74,7 +74,7 @@ function getGoogleAccessToken($saJsonStr) {
     if (!$sa || !isset($sa['private_key']) || !isset($sa['client_email'])) {
         throw new Exception("Błędny format klucza Service Account JSON.");
     }
-    $privateKey = $sa['private_key'];
+    $privateKey = str_replace('\n', "\n", $sa['private_key']);
     $clientEmail = $sa['client_email'];
 
     $header = json_encode(['alg' => 'RS256', 'typ' => 'JWT']);
