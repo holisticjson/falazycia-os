@@ -670,7 +670,7 @@
             <div style="flex: 0.8; min-width: 280px; display: flex; justify-content: center;">
               <div class="glass-card" style="padding: 40px; background: rgba(10, 15, 29, 0.45); border-radius: 20px; text-align: center; border: 1px solid rgba(168, 85, 247, 0.25); width: 100%; max-width: 380px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
                 <div style="display: flex; justify-content: center; margin-bottom: 25px;">
-                  <img src="logos/app_icon.png" onerror="this.onerror=null; this.src='./logos/app_icon.png';" alt="Logo Komunikatora Jason" style="width: 100px; height: 100px; border-radius: 24px; filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.45)); object-fit: contain;">
+                  <img src="./logos/app_icon.webp" onerror="this.onerror=null; this.src='./logos/app_icon.png';" alt="Logo Komunikatora Jason" width="100" height="100" style="width: 100px; height: 100px; border-radius: 24px; filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.45)); object-fit: contain;">
                 </div>
                 <h3 style="color: #FFF; margin-bottom: 12px; font-size: 1.5rem; font-weight: 700;">Jason Boardroom</h3>
                 <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 15px;">
@@ -1511,85 +1511,88 @@
 
       <!-- Script for Checklist Form -->
       <script>
-        document.getElementById('checklist-form').addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          const btn = document.getElementById('checklist-submit-btn');
-          const container = document.getElementById('checklist-container');
-          
-          const name = document.getElementById('checklist-name').value;
-          const email = document.getElementById('checklist-email').value;
-          
-          btn.disabled = true;
-          btn.innerHTML = 'Generowanie dostępu...';
-          
-          const payload = {
-            project: "jason",
-            name: name,
-            contact: email,
-            source: "Checklista AI-Ready",
-            problem: "Pobranie checklisty: 10 kroków do uporządkowania firmy i życia przed automatyzacją"
-          };
-          
-          const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
-            ? 'http://127.0.0.1:8000/api/lead' 
-            : 'https://os.jaison.pl/api/lead';
-          
-          fetch(apiUrl, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          })
-          .then(response => {
-            if (response.ok) {
-              container.innerHTML = `
-                <div style="text-align: center; padding: 40px 0;">
-                  <span style="font-size: 4rem; display: block; margin-bottom: 25px;">📥</span>
-                  <h3 style="color: #3b82f6; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700;">Dostęp przyznany!</h3>
-                  <p style="color: rgba(255,255,255,0.9); font-size: 1.15rem; line-height: 1.6; margin-bottom: 20px;">
-                    Dziękujemy za zaufanie! Link do pobrania pliku <strong>"Checklista AI-Ready"</strong> został wygenerowany i przesłany do Ciebie automatycznie.
-                  </p>
-                  <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.5;">
-                    Sprawdź swoją pocztę (oraz zakładki Oferty/Spam): <strong>${email}</strong>.
-                  </p>
-                </div>
-              `;
-            } else {
-              throw new Error('Server error');
-            }
-          })
-          .catch(err => {
-            console.error('API error, trying relative fallback...', err);
-            fetch('/api/lead', {
+        const checklistForm = document.getElementById('checklist-form');
+        if (checklistForm) {
+          checklistForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('checklist-submit-btn');
+            const container = document.getElementById('checklist-container');
+            
+            const name = document.getElementById('checklist-name').value;
+            const email = document.getElementById('checklist-email').value;
+            
+            btn.disabled = true;
+            btn.innerHTML = 'Generowanie dostępu...';
+            
+            const payload = {
+              project: "jason",
+              name: name,
+              contact: email,
+              source: "Checklista AI-Ready",
+              problem: "Pobranie checklisty: 10 kroków do uporządkowania firmy i życia przed automatyzacją"
+            };
+            
+            const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+              ? 'http://127.0.0.1:8000/api/lead' 
+              : 'https://os.jaison.pl/api/lead';
+            
+            fetch(apiUrl, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(payload)
             })
-            .then(res => {
-              if (res.ok) {
+            .then(response => {
+              if (response.ok) {
                 container.innerHTML = `
                   <div style="text-align: center; padding: 40px 0;">
                     <span style="font-size: 4rem; display: block; margin-bottom: 25px;">📥</span>
                     <h3 style="color: #3b82f6; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700;">Dostęp przyznany!</h3>
                     <p style="color: rgba(255,255,255,0.9); font-size: 1.15rem; line-height: 1.6; margin-bottom: 20px;">
-                      Dziękujemy za zaufanie! Twoja checklista jest w drodze na Twoją skrzynkę.
+                      Dziękujemy za zaufanie! Link do pobrania pliku <strong>"Checklista AI-Ready"</strong> został wygenerowany i przesłany do Ciebie automatycznie.
                     </p>
                     <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.5;">
-                      Sprawdź swoją pocztę pod adresem: <strong>${email}</strong>.
+                      Sprawdź swoją pocztę (oraz zakładki Oferty/Spam): <strong>${email}</strong>.
                     </p>
                   </div>
                 `;
               } else {
-                throw new Error('Fallback error');
+                throw new Error('Server error');
               }
             })
-            .catch(fallbackErr => {
-              btn.disabled = false;
-              btn.innerHTML = 'Odbierz checklistę ponownie';
-              alert('Nie udało się zapisać danych. Spróbuj ponownie lub skontaktuj się z nami directly.');
+            .catch(err => {
+              console.error('API error, trying relative fallback...', err);
+              fetch('/api/lead', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+              })
+              .then(res => {
+                if (res.ok) {
+                  container.innerHTML = `
+                    <div style="text-align: center; padding: 40px 0;">
+                      <span style="font-size: 4rem; display: block; margin-bottom: 25px;">📥</span>
+                      <h3 style="color: #3b82f6; margin-bottom: 15px; font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700;">Dostęp przyznany!</h3>
+                      <p style="color: rgba(255,255,255,0.9); font-size: 1.15rem; line-height: 1.6; margin-bottom: 20px;">
+                        Dziękujemy za zaufanie! Twoja checklista jest w drodze na Twoją skrzynkę.
+                      </p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.95rem; line-height: 1.5;">
+                        Sprawdź swoją pocztę pod adresem: <strong>${email}</strong>.
+                      </p>
+                    </div>
+                  `;
+                } else {
+                  throw new Error('Fallback error');
+                }
+              })
+              .catch(fallbackErr => {
+                btn.disabled = false;
+                btn.innerHTML = 'Odbierz checklistę ponownie';
+                alert('Nie udało się zapisać danych. Spróbuj ponownie lub skontaktuj się z nami directly.');
+              });
             });
           });
-        });
+        }
       </script>
 
       <!-- Section: Transparentne Koszty (Cennik / Land & Expand) -->
@@ -1606,63 +1609,86 @@
 
           <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; align-items: stretch; margin-bottom: 60px;">
             
-            <!-- Pakiet 1: Starter (Quick Win) -->
-            <div class="glass-card" style="flex: 1; min-width: 290px; max-width: 380px; padding: 40px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+            <!-- Pakiet 1: AI Quick Win -->
+            <div class="glass-card" style="flex: 1; min-width: 270px; max-width: 360px; padding: 40px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
               <div>
-                <span style="color: #94A3B8; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px;">Starter (Quick Win)</span>
-                <h3 style="color: #FFF; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">Pojedynczy Agent</h3>
-                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Idealne rozwiązanie na start, by sprawdzić możliwości systemu w 1 kluczowym obszarze (np. automatyczna kwalifikacja klientów na czacie).</p>
+                <span style="color: #94A3B8; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px;">AI Quick Win (Szybki Start)</span>
+                <h3 style="color: #FFF; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">Dedykowany Agent</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Idealne rozwiązanie na start, by zautomatyzować 1 kluczowy proces (np. automatyczna kwalifikacja leadów) bez rewolucji w systemach.</p>
                 <div style="margin-bottom: 30px;">
-                  <span style="color: #FFF; font-size: 2.5rem; font-weight: 800;">3 900 PLN <span style="font-size: 1.1rem; color: var(--slate-gray); font-weight: 500;">netto</span></span>
+                  <span style="color: #FFF; font-size: 2.3rem; font-weight: 800;">4 900 PLN <span style="font-size: 1.1rem; color: var(--slate-gray); font-weight: 500;">netto</span></span>
                   <span style="color: var(--slate-gray); font-size: 0.9rem; display: block; margin-top: 5px;">jednorazowa opłata wdrożeniowa (+ 23% VAT)</span>
                 </div>
                 <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; color: var(--slate-gray); font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
                   <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> 1 dedykowany moduł agentowy</li>
-                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Integracja z wybranym komunikatorem</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Integracja z wybranym komunikatem/API</li>
                   <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Uruchomienie na Twoim koncie GCP</li>
-                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Czas realizacji: do 7 dni roboczych</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Czas realizacji: 7 dni roboczych</li>
                   <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Wsparcie techniczne przez 14 dni</li>
                 </ul>
               </div>
-              <a href="#contact" class="btn-primary" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #FFF; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 600; display: block; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'">Wybierz Starter ➔</a>
+              <a href="#contact" class="btn-primary" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #FFF; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 600; display: block; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'">Wybierz Quick Win ➔</a>
             </div>
 
-            <!-- Pakiet 2: Professional (Najpopularniejszy) -->
-            <div class="glass-card" style="flex: 1; min-width: 290px; max-width: 380px; padding: 40px; background: rgba(5, 8, 20, 0.6); border: 2px solid #06B6D4; border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);">
+            <!-- Pakiet 2: AI Operator OS -->
+            <div class="glass-card" style="flex: 1; min-width: 270px; max-width: 360px; padding: 40px; background: rgba(5, 8, 20, 0.6); border: 2px solid #06B6D4; border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15);">
               <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: white; font-size: 0.75rem; font-weight: bold; padding: 6px 18px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; box-shadow: 0 4px 10px rgba(6, 182, 212, 0.4);">Rekomendowany</div>
               <div>
-                <span style="color: #06B6D4; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px; margin-top: 10px;">Professional (Pełna Automatyzacja)</span>
+                <span style="color: #06B6D4; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px; margin-top: 10px;">AI Operator OS (Pełny Ekosystem)</span>
                 <h3 style="color: #FFF; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">Dwu-Agentowy OS</h3>
-                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Kompleksowy system asynchroniczny: Agent Wiktor (pozyskiwanie i kwalifikacja leadów) oraz Agent Hermes (operacje, bazy wiedzy, kalendarz).</p>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Kompleksowy system asynchroniczny: Agent Wiktor (kwalifikacja leadów) oraz Agent Hermes (bazy wiedzy, n8n i CRM).</p>
                 <div style="margin-bottom: 30px;">
-                  <span style="color: #FFF; font-size: 2.5rem; font-weight: 800;">7 900 PLN <span style="font-size: 1.1rem; color: var(--slate-gray); font-weight: 500;">netto</span></span>
+                  <span style="color: #FFF; font-size: 2.3rem; font-weight: 800;">8 900 PLN <span style="font-size: 1.1rem; color: var(--slate-gray); font-weight: 500;">netto</span></span>
                   <span style="color: var(--slate-gray); font-size: 0.9rem; display: block; margin-top: 5px;">jednorazowa opłata wdrożeniowa (+ 23% VAT)</span>
                 </div>
                 <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; color: var(--slate-gray); font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
                   <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Pełne wdrożenie Agenta Wiktora i Hermesa</li>
-                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Integracja z CRM oraz systemem e-mail (Systeme.io)</li>
-                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Bazy wiedzy RAG (Obsidian / Google Storage)</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Integracja z CRM oraz systemem Systeme.io</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Suwerenna baza wiedzy RAG na Google Cloud Storage</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Bezpieczne API i ochrona prywatności danych</li>
                   <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #06B6D4; font-weight: bold;">✓</span> Wsparcie techniczne i optymalizacja przez 30 dni</li>
                 </ul>
               </div>
-              <a href="#contact" class="btn-primary" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: #FFF; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 700; display: block; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3); border: none; transition: all 0.2s;">Wybierz Professional ➔</a>
+              <a href="#contact" class="btn-primary" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%); color: #FFF; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 700; display: block; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3); border: none; transition: all 0.2s;">Wybierz Operator OS ➔</a>
             </div>
 
-            <!-- Pakiet 3: Enterprise (High-Ticket) -->
-            <div class="glass-card" style="flex: 1; min-width: 290px; max-width: 380px; padding: 40px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(245, 158, 11, 0.2); border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+            <!-- Pakiet 3: AI Grant & Architecture Sprint -->
+            <div class="glass-card" style="flex: 1; min-width: 270px; max-width: 360px; padding: 40px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
               <div>
-                <span style="color: #F59E0B; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px;">Enterprise (Dedykowana Architektura)</span>
-                <h3 style="color: #FFF; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">Wirtualny Zarząd</h3>
-                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Szyty na miarę, zaawansowany ekosystem AI dla Twojej firmy. Wielu agentów współpracujących w tle (CEO, CMO, CFO, COO) sterowanych z poziomu dedykowanego komunikatora mobilnego.</p>
+                <span style="color: #3b82f6; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px;">AI Grant (Strategia i Dotacje)</span>
+                <h3 style="color: #FFF; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">Architecture Sprint</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Profesjonalny audyt gotowości technologicznej i specyfikacja architektury pod chmurę GCP pod dotacje KPO/unijne.</p>
                 <div style="margin-bottom: 30px;">
-                  <span style="color: #FFF; font-size: 2.2rem; font-weight: 800;">Indywidualna</span>
-                  <span style="color: var(--slate-gray); font-size: 0.9rem; display: block; margin-top: 5px;">wycena po audycie procesów</span>
+                  <span style="color: #FFF; font-size: 2.3rem; font-weight: 800;">6 900 PLN <span style="font-size: 1.1rem; color: var(--slate-gray); font-weight: 500;">netto</span></span>
+                  <span style="color: var(--slate-gray); font-size: 0.9rem; display: block; margin-top: 5px;">jednorazowa opłata za specyfikację (+ 23% VAT)</span>
                 </div>
                 <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; color: var(--slate-gray); font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
-                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Własny Wirtualny Zarząd AI w kieszeni</li>
-                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Integracja z wewnętrznymi systemami i bazami SQL</li>
-                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Serwer mobilny postawiony na dedykowanej maszynie wirtualnej GCP</li>
-                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Umowa SLA (gwarancja działania) i dedykowany opiekun</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #3b82f6; font-weight: bold;">✓</span> Kompletny audyt procesów i gotowości AI</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #3b82f6; font-weight: bold;">✓</span> Profesjonalny schemat architektury pod Google Cloud</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #3b82f6; font-weight: bold;">✓</span> Opracowanie dokumentacji technicznej pod wnioski KPO</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #3b82f6; font-weight: bold;">✓</span> Dobór modeli i estymacja kosztów (GCP Quotas)</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #3b82f6; font-weight: bold;">✓</span> Czas realizacji: do 10 dni roboczych</li>
+                </ul>
+              </div>
+              <a href="#contact" class="btn-primary" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #FFF; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 600; display: block; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'">Wybierz Sprint ➔</a>
+            </div>
+
+            <!-- Pakiet 4: AI Boardroom / Enterprise -->
+            <div class="glass-card" style="flex: 1; min-width: 270px; max-width: 360px; padding: 40px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(245, 158, 11, 0.25); border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+              <div>
+                <span style="color: #F59E0B; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 10px;">AI Boardroom (Zarząd AI)</span>
+                <h3 style="color: #FFF; font-size: 1.8rem; font-weight: 700; margin-bottom: 15px;">Wirtualny Zarząd</h3>
+                <p style="color: var(--slate-gray); font-size: 0.95rem; line-height: 1.6; margin-bottom: 25px;">Zaawansowany Wirtualny Zarząd AI (CEO, CMO, CFO, COO) na dedykowanej maszynie GCP z własną bazą SQL i pełnym SLA.</p>
+                <div style="margin-bottom: 30px;">
+                  <span style="color: #FFF; font-size: 2.0rem; font-weight: 800;">od 15 000 PLN <span style="font-size: 1.0rem; color: var(--slate-gray); font-weight: 500;">netto</span></span>
+                  <span style="color: var(--slate-gray); font-size: 0.9rem; display: block; margin-top: 5px;">indywidualna wycena architektury (+ 23% VAT)</span>
+                </div>
+                <ul style="list-style: none; padding: 0; margin: 0 0 30px 0; color: var(--slate-gray); font-size: 0.9rem; display: flex; flex-direction: column; gap: 12px;">
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Pełny Wirtualny Zarząd AI (4 dyrektorów)</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Dedykowana instancja i integracja z bazą SQL</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Fizyczny wyłącznik bezpieczeństwa (Kill-Switch)</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Umowa SLA (gwarancja działania) i support premium</li>
+                  <li style="display: flex; align-items: center; gap: 10px;"><span style="color: #F59E0B; font-weight: bold;">✓</span> Pełna integracja z wewnętrznym ERP/CRM firmy</li>
                 </ul>
               </div>
               <a href="#contact" class="btn-primary" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); color: #FFF; text-align: center; text-decoration: none; padding: 14px; border-radius: 8px; font-weight: 600; display: block; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='rgba(255,255,255,0.03)'">Skonsultuj Projekt ➔</a>
@@ -2373,7 +2399,7 @@
 <div id="jaison-chat-window">
     <div class="jaison-chat-header">
         <div style="display: flex; align-items: center; gap: 12px;">
-            <img src="/tomasz_avatar.jpg" class="jaison-chat-avatar" alt="Asystent Jaison.ai">
+            <img src="./tomasz_avatar.webp" class="jaison-chat-avatar" alt="Tomasz" width="40" height="40">
             <div>
                 <h4 style="margin: 0; color: #FFF; font-family: 'Inter', sans-serif; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.3px;">Asystent Jaison.ai</h4>
                 <p style="margin: 2px 0 0 0; color: #10B981; font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; display: flex; align-items: center; gap: 5px;">
@@ -2396,7 +2422,7 @@
         <input type="text" id="jaison-phone-check" style="display: none !important;" tabindex="-1" autocomplete="off">
         
         <input type="text" id="jaison-chat-input" placeholder="Wpisz pytanie..." onkeydown="handleJaisonKeyPress(event)" autocomplete="off">
-        <button onclick="sendJaisonMessage()" id="jaison-send-btn">
+        <button onclick="sendJaisonMessage()" id="jaison-send-btn" aria-label="Wyślij wiadomość">
             <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="22" y1="2" x2="11" y2="13"></line>
                 <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
