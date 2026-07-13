@@ -600,7 +600,11 @@ Budując nowoczesną infrastrukturę AI, zrezygnuj ze starszych wersji modeli. K
 
 ## 🤖 ETAP 12: Wdrażanie Semantycznej Bazy Wiedzy (Vertex AI Search / RAG)
 
-Mając aktywne darmowe środki GenAI ($1000 USD), możesz w 5 minut wyposażyć swojego agenta AI w bezbłędną pamięć i wiedzę o Twoich dokumentach bez pisania ani jednej linijki kodu RAG (Retrieval-Augmented Generation).
+Mając aktywne darmowe środki GenAI ($1000 USD), możesz w 5 minut wyposażyć swojego agenta AI w bezbłędną pamięć i wiedzę o Twoich dokumentach bez pisania ani jednej linijki kodu RAG (Retrieval-Augmented Generation). 
+
+Ten rozdział stanowi oficjalny standard wdrożeniowy agencji **Jaison** (`jaison.pl`) i pozwala na uruchomienie hybrydowego bota B2B działającego **całkowicie bezpłatnie przez okres do 12 miesięcy**.
+
+---
 
 ### KROK 12.0: Aktywacja Vertex AI Search and Conversation API
 Przed przystąpieniem do budowy bazy wiedzy, upewnij się, że usługa jest włączona w chmurze:
@@ -619,23 +623,90 @@ Przed przystąpieniem do budowy bazy wiedzy, upewnij się, że usługa jest wł�
 
 ---
 
-### KROK 12.1: Przygotowanie zasobnika (Cloud Storage)
-1. Przejdź do **Cloud Storage** -> **Buckets** i utwórz nowy zasobnik (np. `baza-wiedzy-jaison-project`).
-2. Prześlij tam swoje pliki PDF, dokumentacje techniczne, cenniki czy oferty.
+### KROK 12.1: Przygotowanie Magazynu Plików Wiedzy (Cloud Storage)
+Aby Twój agent AI posiadał wiedzę o Twoich wewnętrznych procedurach, cennikach hurtowych, ofertach handlowych czy specyfikacjach technicznych, musisz utworzyć dedykowany i zabezpieczony kontener w Cloud Storage:
 
-### KROK 12.2: Konfiguracja Vertex AI Search
-1. Wyszukaj w konsoli GCP **„Agent Builder”** (lub **„GenAI App Builder”**).
-2. Kliknij **„Create App”** i wybierz typ aplikacji **„Search”** (Wyszukiwarka).
-3. Wybierz opcję **„Generic Content”** oraz typ danych **„Cloud Storage”**.
-4. Wskaż swój wcześniej utworzony bucket z plikami PDF i wybierz opcję indeksowania dokumentów.
+1. Utwórz zasobnik (bucket) o nazwie np. `nazwa-klienta-knowledge` (jako region wybierz Warszawę `europe-central2` ze względu na RODO oraz minimalne opóźnienia):
+   ```powershell
+   gcloud storage buckets create gs://nazwa-klienta-knowledge --location=europe-central2 --project="ID_TWOJEGO_PROJEKTU_GCP"
+   ```
+2. **[KRYTYCZNE DLA BEZPIECZEŃSTWA]:** Włącz jednolity dostęp na poziomie bucketu (Uniform Bucket-Level Access), aby zablokować możliwość przypadkowego publicznego udostępnienia dokumentów do sieci:
+   ```powershell
+   gcloud storage buckets update gs://nazwa-klienta-knowledge --uniform-bucket-level-access --project="ID_TWOJEGO_PROJEKTU_GCP"
+   ```
+3. Wgraj do zasobnika swoje pliki PDF lub utwórz logiczną strukturę folderów (np. `01_public-site/`, `02_lead-magnets/`, `03_service-sop/`).
+4. **[KRYTYCZNE DLA UPRAWNIEŃ]:** Musisz zezwolić systemowemu kontu Vertex AI na odczyt plików z Twojego zasobnika. Wpisz poniższe komendy w PowerShell (pamiętaj o pobraniu swojego numeru projektu):
+   ```powershell
+   # 1. Sprawdź i skopiuj numer swojego projektu (Project Number):
+   gcloud projects describe "ID_TWOJEGO_PROJEKTU_GCP" --format="value(projectNumber)"
+   
+   # 2. Nadaj uprawnienia do podglądu plików dla systemowego konta Vertex AI Search:
+   gcloud storage buckets add-iam-policy-binding gs://nazwa-klienta-knowledge --member="serviceAccount:service-NUMER_PROJEKTU_KLIENTA@gcp-sa-discoveryengine.iam.gserviceaccount.com" --role="roles/storage.objectViewer"
+   ```
 
-### KROK 12.3: Spięcie z Antigravity Agentic OS
-1. Po zakończeniu indeksowania, przejdź do zakładki **Data Stores** w Agent Builderze.
-2. Zlokalizuj i skopiuj unikalny **Data Store ID**.
-3. Wklej ten identyfikator w ustawieniach bazy wiedzy (RAG) swojego agenta w edytorze. Twój agent będzie teraz automatycznie przeszukiwał chmurę przy każdym pytaniu użytkownika, całkowicie eliminując halucynacje!
+---
+
+### KROK 12.2: Konfiguracja Magazynów Danych (Data Stores)
+Wyszukiwarka semantyczna w chmurze (RAG Engine) może jednocześnie przeszukiwać pliki w chmurze oraz całą publiczną witrynę internetową. Stworzymy dla nich dwa niezależne magazyny danych:
+
+#### A. Konfiguracja Magazynu Plików (Unstructured GCS Store)
+1. W konsoli GCP przejdź do **Vertex AI Agent Builder** -> **Data Stores**.
+2. Kliknij **Create Data Store** -> wybierz **Cloud Storage**.
+3. Wklej ścieżkę do swojego zasobnika: `gs://nazwa-klienta-knowledge/`.
+4. Zaznacz opcję **Dane nieuporządkowane (Unstructured documents)**.
+5. Ustaw częstotliwość indeksowania na **Codziennie (Daily)**, aby bot sam uczył się z nowych plików wgrywanych przez Ciebie na dysk chmurowy.
+6. Nazwij magazyn np. `gcs-knowledge-store`.
+
+#### B. Konfiguracja Magazynu Witryny (Website Store)
+1. Kliknij ponownie **Create Data Store** -> wybierz **Website**.
+2. Zaznacz **Zaawansowane indeksowanie witryn (Advanced Website Indexing)** (wymagane, by bot radził sobie z dynamicznymi stronami JS/React).
+3. Wpisz domenę do uwzględnienia: `twojadomena.pl/*`.
+4. Jeśli Twoja strona działa na WordPressie, w polu witryn do wykluczenia wpisz: `twojadomena.pl/wp-admin/*`, `twojadomena.pl/koszyk/*`.
+5. Nazwij magazyn np. `website-knowledge-store`.
+
+---
+
+### KROK 12.3: Spięcie z Aplikacją (Blended Search) i Dostrajanie
+1. W lewym menu przejdź do **Apps** -> **Create App**.
+2. Wybierz typ **Search** (Wyszukiwarka) -> karta **Generic** (Ogólna).
+3. Zaznacz opcje **Funkcje wersji Enterprise** oraz **Odpowiedzi generatywne** (to włączy inteligentne podsumowania Gemini).
+4. Nazwij aplikację (np. `Jaison Serwis Bot`) i wskaż lokalizację **`eu (Unia Europejska)`**.
+5. W kroku wyboru danych **zaznacz oba utworzone magazyny**: `gcs-knowledge-store` oraz `website-knowledge-store`.
+6. Po utworzeniu aplikacji przejdź do zakładki **Configuration** (Konfiguracja) -> **UI / Dostrajanie**:
+   * **Wybór Modelu:** Zmień model językowy na najnowszy **`Gemini 2.5 Flash`** (zapewnia doskonałą szybkość i najniższe koszty).
+   * **Filtr Halucynacji:** Włącz suwak **`Ignoruj podsumowanie przy braku odpowiedzi na zapytanie`** (status True). Dzięki temu bot milczy i kieruje do kontaktu w przypadku pytań niezwiązanych z ofertą, zamiast zmyślać odpowiedzi.
+   * **Imagen w odpowiedziach:** Upewnij się, że opcja ta jest ustawiona na **`Brak źródła`** (oszczędność budżetu startowego!).
+   * **System Prompt (Instrukcje):** Wklej spersonalizowane instrukcje, które wymuszą na modelu trzymanie się zasad i kierowanie kontaktu do WhatsApp/Cal.com/Email.
+
+---
+
+### KROK 12.4: Integracja z Twoją stroną (Opcje Wdrożenia)
+
+#### 🛡️ Opcja A (Podstawowa): Darmowy Widżet Google
+*Najprostsza metoda bez kodowania backendu, dobra na szybki test MVP.*
+1. W Vertex AI Agent Builder przejdź do zakładki **Integracja (Integration)**.
+2. Zaznacz opcję **Dostęp publiczny (Public access)**.
+3. Wpisz swoją domenę w polu dozwolonych domen (np. `twojadomena.pl` oraz `www.twojadomena.pl`) i kliknij Zapisz.
+4. Skopiuj wygenerowany kod `configId="..."` i wklej na dole swojej strony HTML w specjalnym widżecie generycznym:
+   ```html
+   <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=pl"></script>
+   <gen-search-widget configId="TWOJ_CONFIG_ID" location="eu" triggerId="searchwidgetTrigger"></gen-search-widget>
+   ```
+
+#### 💎 Opcja B (Premium / Zalecana): Bezpieczne Proxy PHP (Custom UI)
+*To jest profesjonalna metoda wdrożeniowa agencji Jaison (zastosowana m.in. na coolfon.pl). Całkowicie ukrywa ID zasobów GCP przed użytkownikami, zabezpiecza przed kradzieżą danych i chroni Twoje darmowe środki przed spamem.*
+
+##### Dlaczego ta metoda deklasuje gotowe rozwiązania:
+1. **Wygląd Premium:** Tworzymy od zera przepiękny, w pełni dostosowany arkusz CSS (Glassmorphism, neonowe poświaty, spersonalizowane avatary bota).
+2. **Potrójna Tarcza Anty-Spamowa (Security Shield):**
+   * *Tarcza 1 (Honeypot):* Ukryte pole formularza, które boty automatycznie wypełniają i są natychmiast odrzucane.
+   * *Tarcza 2 (IP Rate Limiter):* Wymusza min. 3 sekundy odstępu między wiadomościami.
+   * *Tarcza 3 (Dobowy limit):* Ogranicza użytkownika do maksymalnie 30 zapytań na dobę, po czym wyświetla zachętę do bezpośredniej rozmowy na WhatsApp.
+3. **Zasada 13 (No Markdown):** Serwer automatycznie oczyszcza surowy tekst z chmury, konwertując Markdown na ładny, czysty kod HTML (zamienia gwiazdki na tagi `<strong>` itp.).
+4. **Bezpieczna Autoryzacja:** Zapytania są podpisywane kluczem konta usługowego (Service Account JSON) na serwerze PHP. Żadne klucze ani tokeny nie wyciekają do przeglądarki użytkownika!
 
 > [!TIP]
-> **Low-Cost Best Practice:** Trzymanie dokumentacji w Cloud Storage kosztuje zaledwie ułamki centów miesięcznie, a darmowy pakiet $1000 USD GenAI w pełni pokryje tysiące semantycznych zapytań RAG Twoich agentów w ciągu roku.
+> **Low-Cost Best Practice:** Pełny kod skryptu backendu PHP (`chat.php`) oraz autorski szablon czatu w Vanilla HTML/CSS/JS znajdziesz w repozytorium agencji Jaison w folderze `07-ops/ RAG-blueprints/`. Pozwoli Ci to na błyskawiczne wdrożenie usługi u dowolnego klienta biznesowego w ułamku sekundy.
 
 ---
 

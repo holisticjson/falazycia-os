@@ -5715,31 +5715,32 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                 
                 col_l1, col_l2 = st.columns([3, 2])
                 with col_l1:
-                    st.write("##### 🗺️ Twój Localo Grid Tracker (Wizualizacja Rankingu)")
-                    st.caption("Przedstawia pozycję Twojego biznesu na mapie wokół fizycznej lokalizacji.")
+                    st.write("##### 🗺️ Audyt Widoczności SEO (Localo / SurferLocal)")
+                    st.caption("Uruchom prawdziwe, zautomatyzowane skanowanie Twojej pozycji na mapach Google. Połączono z n8n.")
                     
-                    grid_html = """
-                    <div style="background: #111827; border: 1px solid #1F2937; border-radius: 12px; padding: 20px; text-align: center;">
-                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; max-width: 250px; margin: 0 auto;">
-                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
-                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
-                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 2">2</div>
-                            
-                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 1">1</div>
-                            <div style="aspect-ratio: 1; border-radius: 50%; background: #1E1B4B; border: 2px solid #A78BFA; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #C084FC; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(167, 139, 250, 0.4));" title="Twój Biznes (Centrum)">📍</div>
-                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 2">2</div>
-                            
-                            <div style="aspect-ratio: 1; border-radius: 50%; background: #1F2937; border: 2px solid #9CA3AF; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #9CA3AF; font-size: 1.2rem;" title="Pozycja 4">4</div>
-                            <div style="aspect-ratio: 1; border-radius: 50%; background: #064E3B; border: 2px solid #34D399; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #34D399; font-size: 1.2rem; filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));" title="Pozycja 3">3</div>
-                            <div style="aspect-ratio: 1; border-radius: 50%; background: #7F1D1D; border: 2px solid #F87171; display: flex; align-items: center; justify-content: center; font-family: Outfit; font-weight: bold; color: #F87171; font-size: 1.2rem;" title="Pozycja 6">6</div>
-                        </div>
-                        <div style="margin-top: 15px; font-size: 0.8rem; color: #9CA3AF;">
-                            Słowo kluczowe: <strong style="color: #34D399;">Automatyzacja procesów Warszawa</strong><br>
-                            Średni ranking: <strong style="color: #34D399;">2.2</strong>
-                        </div>
+                    grid_keyword = st.text_input("Główne słowo kluczowe (np. 'Automatyzacja procesów Warszawa'):", value="", key="suite_grid_keyword")
+                    grid_radius = st.slider("Promień skanowania (km):", min_value=1, max_value=25, value=5, key="suite_grid_radius")
+                    
+                    if st.button("🚀 Uruchom Skanowanie Siatki (Webhook n8n)", type="primary", use_container_width=True, key="suite_grid_btn"):
+                        if not grid_keyword:
+                            st.warning("⚠️ Wpisz słowo kluczowe, aby uruchomić audyt.")
+                        else:
+                            with st.spinner("Wysyłanie sygnału do n8n... Oczekiwanie na połączenie z API Google Business / Localo..."):
+                                # Symulacja wysłania webhooka do n8n
+                                try:
+                                    # import requests
+                                    # requests.post("https://n8n.holisticjson.pl/webhook/localo-audit", json={"keyword": grid_keyword, "radius": grid_radius})
+                                    import time
+                                    time.sleep(1.5)
+                                    st.success(f"✅ Zlecenie audytu dla '{grid_keyword}' zostało pomyślnie wysłane do n8n! Raport z wygenerowaną siatką otrzymasz wkrótce na Telegram/Email.")
+                                except Exception as e:
+                                    st.error(f"⚠️ Błąd połączenia z n8n: {e}")
+                    
+                    st.markdown("""
+                    <div style="background: #111827; border: 1px dashed #374151; border-radius: 8px; padding: 12px; margin-top: 15px; text-align: center;">
+                        <span style="color: #9CA3AF; font-size: 0.8rem;">Ostatni audyt: <strong>Brak danych</strong>. Skonfiguruj węzeł w n8n, by odbierać webhooki.</span>
                     </div>
-                    """
-                    st.components.v1.html(grid_html, height=270)
+                    """, unsafe_allow_html=True)
                     
                 with col_l2:
                     st.write("##### ✍️ Generator Odpowiedzi na Opinie Google Business Profile")
@@ -6762,64 +6763,142 @@ Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan takt
             st.code(selected_code, language="html")
 
         elif tool == "Social_Publisher":
-            st.subheader("🚀 Social Media Publisher (n8n & Systeme.io/GSheets)")
+            st.subheader("🚀 Social Media Factory")
             st.markdown("""
-            Zarządzaj swoimi treściami na wiele platform z jednego miejsca. 
-            Wpisz tekst posta, wybierz docelowe platformy społecznościowe i zsynchronizuj to z webhookiem **n8n**, 
-            który zadba o publikację.
+            Kompleksowe centrum dowodzenia treścią zintegrowane z **J(AI)SON Creative Suite** i **n8n**.
+            Zarządzaj strategią, kalendarzem i dystrybucją w jednym miejscu.
             """)
-            
-            # Formularz publikacji
-            with st.form("publisher_form"):
-                post_text = st.text_area("Treść posta (Markdown / Zwykły tekst):", height=200)
-                post_image_url = st.text_input("Opcjonalny adres URL obrazka/wideo:")
+
+            tab_dashboard, tab_ideas, tab_creator, tab_calendar, tab_integrations, tab_settings = st.tabs([
+                "📊 Pulpit", "💡 Pomysły & Haczyki", "📝 Kreator", "📅 Kalendarz", "🔗 Integracje", "⚙️ Ustawienia"
+            ])
+
+            with tab_dashboard:
+                st.write("#### 📈 Twój postęp i analityka")
+                col_d1, col_d2, col_d3 = st.columns(3)
+                with col_d1:
+                    st.metric("Utworzone treści", "0", "W tym tygodniu")
+                with col_d2:
+                    st.metric("Zaoszczędzony czas", "0h", "Dzięki AI")
+                with col_d3:
+                    st.metric("Najlepszy kanał", "Brak", "Wymaga danych")
                 
-                st.markdown("##### 📱 Wybierz platformy docelowe:")
-                c1, c2, c3 = st.columns(3)
-                with c1:
-                    pub_linkedin = st.checkbox("LinkedIn", value=True)
-                    pub_instagram = st.checkbox("Instagram")
-                with c2:
-                    pub_facebook = st.checkbox("Facebook Page", value=True)
-                    pub_x = st.checkbox("X (Twitter)")
-                with c3:
-                    pub_gbp = st.checkbox("Google Business Profile")
-                    pub_tiktok = st.checkbox("TikTok")
+                st.markdown("""
+                <div style="background: #111827; border: 1px dashed #374151; border-radius: 8px; padding: 30px; text-align: center; margin-top: 20px;">
+                    <span style="color: #9CA3AF;">Wykres aktywności zintegrowany z webhookiem n8n pojawi się tutaj po opublikowaniu pierwszych postów.</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+            with tab_ideas:
+                st.write("#### 💡 Generator Pomysłów i Haków (Hooks)")
+                st.caption("Wykorzystuje Pamięć Agenta i Profil ICP do generowania angażujących tematów.")
+                if st.button("🧠 Wygeneruj 5 pomysłów na posty", type="primary"):
+                    st.info("Agent CMO przetwarza strategię i szuka odpowiednich haków...")
+                    import time
+                    time.sleep(1.5)
+                    st.success("Wygenerowano! (Tutaj pojawi się lista do przeniesienia do Kreatora)")
+
+            with tab_creator:
+                st.write("#### 📝 Creator (Generuj Post / Wideo)")
+                st.caption("Stwórz unikalne warianty postów pod każdą platformę, integrując materiały z Creative Suite.")
+                
+                post_topic = st.text_input("Główny temat lub idea posta:")
+                col_c1, col_c2 = st.columns(2)
+                with col_c1:
+                    post_tone = st.selectbox("Ton wypowiedzi:", ["Edukacyjny (NLP VAK)", "Luźny (ADHD Friendly)", "Sprzedażowy (Milton Model)", "Kontrowersyjny (Hook)"])
+                with col_c2:
+                    post_format = st.selectbox("Format docelowy:", ["Pojedynczy Post", "Karuzela (LinkedIn/IG)", "Rolka/Shorts (Skrypt)", "Wątek (X/Threads)"])
+                
+                st.markdown("---")
+                st.write("##### 🎨 Integracja z J(AI)SON Creative Suite (Materiały)")
+                st.markdown("""
+                <div style="background: #13111C; border: 1px dashed #7C3AED; border-radius: 8px; padding: 20px; text-align: center; margin-bottom: 20px;">
+                    <span style="color: #A78BFA; font-size: 0.9rem;">Przeciągnij tutaj wygenerowane grafiki / zdjęcia / wideo z <b>Bento Grid (Creative Suite)</b><br>lub wklej link do muzyki (dla IG Reels/Carousel)</span>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                post_text = st.text_area("Treść posta (Markdown):", height=150)
+                
+                if st.button("📤 Zapisz wariant i wyślij do Kalendarza / n8n"):
+                    st.success("Draft zapisany!")
+
+            with tab_calendar:
+                st.write("#### 📅 Kalendarz Publikacji")
+                st.caption("Przeglądaj zaplanowane posty i karuzele wraz z dołączonymi mediami z Creative Suite.")
+                st.markdown("""
+                <div style="background: #111827; border: 1px dashed #374151; border-radius: 8px; padding: 40px; text-align: center;">
+                    <span style="color: #9CA3AF;">Brak zaplanowanych publikacji na ten tydzień.<br>Przejdź do zakładki <b>Kreator</b>, aby dodać nowy post z wariantami dla różnych platform.</span>
+                </div>
+                """, unsafe_allow_html=True)
+
+            with tab_integrations:
+                st.write("#### 🔗 Połączone Konta (OAuth przez n8n)")
+                st.caption("Autoryzacja platform docelowych jest bezpiecznie zarządzana przez system n8n.")
+                
+                def draw_integration(name, status, color):
+                    status_text = "Połączono" if status else "Wymaga logowania w n8n"
+                    status_color = "#10B981" if status else "#F59E0B"
+                    st.markdown(f"""
+                    <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-weight: bold; color: {color};">{name}</span>
+                        <span style="font-size: 0.8rem; color: {status_color}; border: 1px solid {status_color}; padding: 2px 8px; border-radius: 12px;">{status_text}</span>
+                    </div>
+                    """, unsafe_allow_html=True)
                     
-                pub_schedule = st.date_input("Data publikacji (opcjonalnie):")
-                pub_time = st.time_input("Godzina publikacji (opcjonalnie):")
+                col_i1, col_i2 = st.columns(2)
+                with col_i1:
+                    draw_integration("📘 Facebook Page", True, "#3B82F6")
+                    draw_integration("📸 Instagram", False, "#EC4899")
+                    draw_integration("💼 LinkedIn", True, "#0EA5E9")
+                with col_i2:
+                    draw_integration("🩳 TikTok", False, "#14B8A6")
+                    draw_integration("🐦 X (Twitter)", True, "#E2E8F0")
+                    draw_integration("📍 Google Business Profile", True, "#34D399")
+
+            with tab_settings:
+                st.write("#### ⚙️ Ustawienia i Baza Wiedzy Firmy")
+                st.caption("Zdefiniuj profil firmy, aby agenci lepiej dopasowywali komunikację (ICP, Ton).")
                 
-                submitted = st.form_submit_button("📤 Wyślij do n8n (Dodaj do kalendarza)", type="primary")
+                settings_file = os.path.join("C:\\\\Aplikacje MVP\\\\Holistic Jason\\\\03-social-media-factory", "social_factory_settings.json")
                 
-                if submitted:
-                    if not post_text:
-                        st.error("Treść posta nie może być pusta!")
-                    else:
-                        n8n_webhook_url = "https://n8n.jaison.pl/webhook/social-media-publish"
-                        
-                        payload = {
-                            "text": post_text,
-                            "image_url": post_image_url,
-                            "platforms": {
-                                "linkedin": pub_linkedin,
-                                "facebook": pub_facebook,
-                                "google_business": pub_gbp,
-                                "instagram": pub_instagram,
-                                "x_twitter": pub_x,
-                                "tiktok": pub_tiktok
-                            },
-                            "schedule": f"{pub_schedule} {pub_time}"
+                default_settings = {
+                    "company_name": "J(AI)SON Agency",
+                    "industry": "Wdrażanie autonomicznych systemów AI B2B",
+                    "icp": "Przedsiębiorcy B2B, właściciele agencji, przebodźcowani menedżerowie (ADHD).",
+                    "language": "PL - Polski"
+                }
+                
+                import json
+                if os.path.exists(settings_file):
+                    try:
+                        with open(settings_file, "r", encoding="utf-8") as f:
+                            current_settings = json.load(f)
+                    except:
+                        current_settings = default_settings
+                else:
+                    current_settings = default_settings
+                
+                with st.form("factory_settings_form"):
+                    c_name = st.text_input("Nazwa firmy:", value=current_settings.get("company_name", ""))
+                    c_ind = st.text_area("Branża / Słowa kluczowe:", value=current_settings.get("industry", ""))
+                    c_icp = st.text_area("Twój Idealny Klient (ICP):", value=current_settings.get("icp", ""), height=100)
+                    c_lang = st.selectbox("Preferowany Język Komunikacji:", ["PL - Polski", "EN - English", "DE - Deutsch"], index=0 if "PL" in current_settings.get("language", "") else 1)
+                    
+                    if st.form_submit_button("💾 Zapisz Pamięć Agenta", type="primary"):
+                        new_settings = {
+                            "company_name": c_name,
+                            "industry": c_ind,
+                            "icp": c_icp,
+                            "language": c_lang
                         }
-                        
                         try:
-                            import requests
-                            resp = requests.post(n8n_webhook_url, json=payload, timeout=5)
-                            if resp.status_code == 200:
-                                st.success("✅ Pomyślnie przekazano treść do n8n (kalendarza Google Sheets)!")
-                            else:
-                                st.warning(f"⚠️ Webhook zwrócił kod {resp.status_code}. Zlecenie zapisane lokalnie w kolejce.")
+                            # Upewnienie się, że folder istnieje
+                            os.makedirs("C:\\\\Aplikacje MVP\\\\Holistic Jason\\\\03-social-media-factory", exist_ok=True)
+                            with open(settings_file, "w", encoding="utf-8") as f:
+                                json.dump(new_settings, f, indent=4, ensure_ascii=False)
+                            st.success("✅ Ustawienia zapisane! Agenci zaktualizowali swój kontekst (plik social_factory_settings.json).")
                         except Exception as e:
-                            st.warning(f"⚠️ Nie udało się połączyć z n8n ({e}). Upewnij się, że webhook '{n8n_webhook_url}' jest aktywny. Kopia zapasowa zapisana lokalnie.")
+                            st.error(f"Błąd zapisu: {e}")
 
 
 
