@@ -2965,26 +2965,152 @@
 
   /* 
    * AGRESYWNE UKRYWANIE WYNIKÓW WYSZUKIWANIA (PLIKÓW ŹRÓDŁOWYCH) W WIDGECIE VERTEX AI
-   * Wstrzykujemy reguły nadrzędne dla całego dokumentu, wymuszające ukrycie sekcji listującej dokumenty 
    */
-  gen-search-widget::part(search-results) {
-    display: none !important;
-  }
-  
-  gen-search-widget::part(search-result-list) {
-    display: none !important;
-  }
-  
-  /* Ukrycie dodatkowych zakładek 'Podsumowanie' i 'Wyniki' w widgecie jeśli występują */
+  gen-search-widget::part(search-results),
+  gen-search-widget::part(search-result-list),
   gen-search-widget::part(tab-list) {
     display: none !important;
+  }
+
+  /* =========================================
+     JAISON BOT - FLOATING GLASSMORPHIC WINDOW
+     ========================================= */
+  #jaison-bot-window {
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    width: 380px;
+    height: 600px;
+    max-height: calc(100vh - 120px);
+    max-width: calc(100vw - 40px);
+    background: rgba(15, 23, 42, 0.85); /* Szklany, ciemny granat jaison */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 9999;
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: bottom right;
+  }
+
+  #jaison-bot-window.active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  #jaison-bot-header {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  #jaison-bot-title {
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Aktywna kropka (Status) */
+  #jaison-bot-title::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #10b981; 
+    border-radius: 50%;
+    box-shadow: 0 0 10px #10b981;
+    animation: pulse-dot 2s infinite;
+  }
+
+  @keyframes pulse-dot {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+  }
+
+  #jaison-bot-close {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 28px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    transition: all 0.2s;
+    padding: 0;
+  }
+
+  #jaison-bot-close:hover {
+    color: #fff;
+    transform: rotate(90deg);
+  }
+
+  #jaison-bot-body {
+    flex: 1;
+    position: relative;
+    background: #fff; /* Tło pod wyszukiwarką */
+    overflow: hidden;
+  }
+
+  /* 
+   * DOPASOWANIE WIDGETU DO OKNA INLINE
+   */
+  gen-search-widget {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  /* Ukrycie standardowego headera Google i ikonki close z ich widgetu */
+  gen-search-widget::part(header),
+  gen-search-widget::part(close-button) {
+    display: none !important;
+  }
+  
+  gen-search-widget::part(modal) {
+    position: relative !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  /* Na mobile poprawki dla launchera i okna */
+  @media (max-width: 480px) {
+    #jaison-bot-window {
+      width: 100%;
+      height: 100%;
+      max-height: 100%;
+      max-width: 100%;
+      bottom: 0;
+      right: 0;
+      border-radius: 0;
+      border: none;
+    }
   }
 </style>
 
 <!-- 2. Autorski Launcher, Chmurka i Elementy Kontrolne bota -->
 <div id="coolfon-chat-launcher" title="Porozmawiaj z J(AI)SON AI">
   <!-- Pływająca chmurka zachęcająca (Tooltip) -->
-  <div id="coolfon-chat-tooltip">Sprawdź mnie! ⚡</div>
+  <div id="coolfon-chat-tooltip">Zacznij audyt! ⚡</div>
   
   <!-- Elegancka ikona czatu w formacie SVG -->
   <svg viewBox="0 0 24 24">
@@ -2992,40 +3118,55 @@
   </svg>
 </div>
 
-<!-- Ukryty element wyzwalający wymagany przez Google -->
-<input type="text" id="searchwidgetTrigger" style="display: none !important;" />
+<!-- 2b. Nowe, szklane, pływające okno Chatbota Jaison -->
+<div id="jaison-bot-window">
+  <div id="jaison-bot-header">
+    <div id="jaison-bot-title">Jaison AI</div>
+    <button id="jaison-bot-close">&times;</button>
+  </div>
+  <div id="jaison-bot-body">
+    <!-- Skrypty Google Vertex AI Search -->
+    <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=pl"></script>
+    <gen-search-widget
+      configId="88369b03-1241-4ffc-b335-0fc7e686f149" 
+      location="eu"
+      alwaysOpened="true">
+    </gen-search-widget>
+  </div>
+</div>
 
-<!-- 3. Skrypty Google Vertex AI Search -->
-<script src="https://cloud.google.com/ai/gen-app-builder/client?hl=pl"></script>
-
-<!-- UWAGA TOMASZ: Tutaj musisz podmienić 'configId' na ID, które Google wygeneruje dla Twojej wyszukiwarki! -->
-<gen-search-widget
-  configId="88369b03-1241-4ffc-b335-0fc7e686f149" 
-  location="eu"
-  triggerId="searchwidgetTrigger">
-</gen-search-widget>
-
-<!-- 4. Skrypt łączący nasz ładny przycisk z ukrytym wyzwalaczem Google -->
+<!-- 3. Skrypt łączący ładny przycisk z oknem czatu -->
 <script>
-  // Wywołanie kliknięcia w widget
-  document.getElementById('coolfon-chat-launcher').addEventListener('click', function() {
-    document.getElementById('searchwidgetTrigger').click();
+  const launcher = document.getElementById('coolfon-chat-launcher');
+  const chatWindow = document.getElementById('jaison-bot-window');
+  const closeBtn = document.getElementById('jaison-bot-close');
+  const tooltip = document.getElementById('coolfon-chat-tooltip');
+
+  // Otwieranie z Launchera
+  launcher.addEventListener('click', function(e) {
+    e.preventDefault();
+    chatWindow.classList.toggle('active');
+    if(chatWindow.classList.contains('active')) {
+      tooltip.classList.remove('visible'); // ukryj tooltip gdy otwarte
+    }
   });
 
-  // Inteligentny UX: Automatyczne wysunięcie chmurki po 1.5 sekundy (walka ze ślepotą banerową)
+  // Zamykanie krzyżykiem w oknie
+  closeBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    chatWindow.classList.remove('active');
+  });
+
+  // Inteligentny UX: Automatyczne wysunięcie chmurki po 1.5 sekundy
   setTimeout(function() {
-    var tooltip = document.getElementById('coolfon-chat-tooltip');
-    if (tooltip) {
+    if (!chatWindow.classList.contains('active')) {
       tooltip.classList.add('visible');
     }
   }, 1500);
 
-  // Ukrycie chmurki po najechaniu myszką, by nie przeszkadzała w czytaniu strony
-  document.getElementById('coolfon-chat-launcher').addEventListener('mouseenter', function() {
-    var tooltip = document.getElementById('coolfon-chat-tooltip');
-    if (tooltip) {
-      tooltip.classList.remove('visible');
-    }
+  // Ukrycie chmurki po najechaniu myszką
+  launcher.addEventListener('mouseenter', function() {
+    tooltip.classList.remove('visible');
   });
 </script>
   </body>
