@@ -160,7 +160,8 @@ function cleanAndHumanizeMarkdown($text) {
 
 // Klasyfikator zapytań: czy to powitanie lub odpowiedź sterująca audytem?
 function isCasualOrAudit($message) {
-    $clean = mb_strtolower(trim($message));
+    // Usuń interpunkcję, by uniknąć problemów z 'Cześć!' itp.
+    $clean = mb_strtolower(trim(preg_replace('/[^\p{L}\p{N}\s]/u', '', $message)));
     
     $greetings = [
         'cześć', 'czesc', 'hej', 'hejo', 'witaj', 'witajcie', 'dzień dobry', 'dzien dobry', 
@@ -179,8 +180,8 @@ function isCasualOrAudit($message) {
         return true;
     }
     
-    // Jeśli to bardzo krótki zwrot i nie jest pytaniem, uznajemy za konwersacyjny
-    if (mb_strlen($clean) <= 12 && strpos($clean, '?') === false) {
+    // Jeśli to bardzo krótki zwrot i nie ma w nim znaku zapytania
+    if (mb_strlen($clean) <= 15 && strpos($message, '?') === false) {
         return true;
     }
     
@@ -277,7 +278,19 @@ Odpowiadaj krótko, inteligentnie, z lekkim pazurem. Nie wymyślaj cen ani usłu
 
     $dynamicSystemInstruction = $baseSystemInstruction;
     if (!empty($retrievedSummary)) {
-        $dynamicSystemInstruction .= "\n\n[DODATKOWY KONTEKST Z BAZY WIEDZY AGENCJI JAISON (użyj go do sformułowania merytorycznej odpowiedzi w swoim tonie, ale NIGDY nie kopiuj go słowo w słowo i nie cytuj go surowo):\n" . $retrievedSummary . "\n]";
+        $dynamicSystemInstruction .= "
+
+<ZASADY_KORZYSTANIA_Z_BAZY_WIEDZY>
+Otrzymujesz poniżej dodatkowy kontekst z bazy wiedzy Jaison (np. transkrypcje wideo lub artykuły).
+KATEGORYCZNE RESTRYKCJE:
+1. NIE WOLNO Ci wchodzić w rolę prowadzącego webinar (np. nie używaj zwrotów 'Witajcie serdecznie', 'Dzisiaj będzie materiał').
+2. NIE KOPIUJ tekstu z bazy słowo w słowo. Traktuj to wyłącznie jako encyklopedyczne suche fakty do rozwiązania problemu użytkownika.
+3. Zachowaj 100% spójności ze swoim stylem (krótkie zdania, bezpośredni zwrot na 'Ty', HTML bez markdownu).
+</ZASADY_KORZYSTANIA_Z_BAZY_WIEDZY>
+
+<BAZA_WIEDZY>
+" . $retrievedSummary . "
+</BAZA_WIEDZY>";
     }
 
     // KROK 3: Wywołanie Vertex AI Gemini 2.5 Flash przez REST API
