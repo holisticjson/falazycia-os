@@ -78,36 +78,52 @@
     }
 
     .logo {
-      font-family: var(--font-heading);
-      font-weight: 900;
-      font-size: 1.8rem;
-      background: linear-gradient(135deg, var(--neon-blue), var(--neon-cyan));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
       text-decoration: none;
-      letter-spacing: -0.02em;
+      transition: opacity 0.2s ease;
+    }
+
+    .logo:hover {
+      opacity: 0.9;
     }
 
     .btn-back {
       font-family: var(--font-heading);
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-white);
       text-decoration: none;
-      padding: 10px 20px;
-      border: 1px solid var(--glass-border);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.02);
-      transition: all 0.3s ease;
-      letter-spacing: 0.05em;
+      padding: 10px 24px;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 30px;
+      background: rgba(59, 130, 246, 0.05);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
 
     .btn-back:hover {
-      background: rgba(255, 255, 255, 0.08);
-      border-color: var(--neon-blue);
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
-      transform: translateY(-2px);
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(6, 182, 212, 0.45);
+      transform: translateY(-2px) scale(1.02);
+      color: #FFF;
+    }
+
+    .btn-back span {
+      transition: transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .btn-back:hover span {
+      transform: translateX(-4px);
     }
 
     /* Hero Section */
@@ -392,10 +408,10 @@
   <!-- Header -->
   <header>
     <div class="container nav-flex">
-      <a href="./" class="logo" style="text-decoration: none; display: flex; align-items: center; gap: 12px;">
-        <img src="./logo.webp" alt="JASON Logo" style="height: 38px; width: auto; mix-blend-mode: normal;" width="162" height="38" fetchpriority="high">
+      <a href="./" class="logo">
+        <img src="./logo.webp" alt="JASON Logo" style="height: 38px; width: auto;" width="162" height="38" fetchpriority="high">
       </a>
-      <a href="./" class="btn-back">← Powrót do Startu</a>
+      <a href="./" class="btn-back"><span>←</span> Powrót do Startu</a>
     </div>
   </header>
 

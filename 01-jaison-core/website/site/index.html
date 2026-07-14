@@ -697,7 +697,7 @@
               Kalkulator Oszczędności Czasu & ROI z AI
             </h2>
             <p style="color: var(--slate-gray); font-size: 1.15rem; line-height: 1.6;">
-              Użyj poniższych suwaków, aby sprawdzić, ile czasu i budżetu przecieka Ci przez palce na powtarzalne procesy, oraz jak szybko inwestycja w asystenta **Jason AI** zwróci się w Twojej firmie.
+              Użyj poniższych suwaków, aby sprawdzić, ile czasu i budżetu przecieka Ci przez palce na powtarzalne procesy, oraz jak szybko inwestycja w asystenta <strong>Jason AI</strong> zwróci się w Twojej firmie.
             </p>
           </div>
 
@@ -1103,15 +1103,15 @@
               <!-- Stats Row -->
               <div style="display: flex; gap: 40px; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 30px;">
                 <div>
-                  <span style="display: block; font-size: 2.5rem; font-family: var(--font-heading); color: #FFF; font-weight: 800; line-height: 1;">12+</span>
+                  <span class="home-stat-counter" style="display: block; font-size: 2.5rem; font-family: var(--font-heading); color: #FFF; font-weight: 800; line-height: 1;" data-animate="12" data-suffix="+">0+</span>
                   <span style="font-size: 0.8rem; color: var(--slate-gray); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; margin-top: 5px; display: block;">Wdrożonych Systemów</span>
                 </div>
                 <div style="border-left: 1px solid rgba(255, 255, 255, 0.08); padding-left: 40px;">
-                  <span style="display: block; font-size: 2.5rem; font-family: var(--font-heading); color: #06B6D4; font-weight: 800; line-height: 1;">&lt; 60s</span>
+                  <span class="home-stat-counter" style="display: block; font-size: 2.5rem; font-family: var(--font-heading); color: #06B6D4; font-weight: 800; line-height: 1;" data-animate="60" data-prefix="&lt; " data-suffix="s">&lt; 0s</span>
                   <span style="font-size: 0.8rem; color: var(--slate-gray); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; margin-top: 5px; display: block;">Reakcja na Lead</span>
                 </div>
                 <div style="border-left: 1px solid rgba(255, 255, 255, 0.08); padding-left: 40px;">
-                  <span style="display: block; font-size: 2.5rem; font-family: var(--font-heading); color: #FFF; font-weight: 800; line-height: 1;">0%</span>
+                  <span class="home-stat-counter" style="display: block; font-size: 2.5rem; font-family: var(--font-heading); color: #FFF; font-weight: 800; line-height: 1;" data-animate="0" data-suffix="%">0%</span>
                   <span style="font-size: 0.8rem; color: var(--slate-gray); text-transform: uppercase; font-weight: 600; letter-spacing: 0.05em; margin-top: 5px; display: block;">Pustego Hype'u</span>
                 </div>
               </div>
@@ -1148,7 +1148,7 @@
               </p>
 
               <p style="color: var(--charcoal); font-size: 1.1rem; line-height: 1.7; margin-bottom: 25px;">
-                Aby przenieść tę intuicyjną pasję na najwyższy poziom biznesowy, pomyślnie ukończyłem prestiżowe szkolenie **Google Umiejętności Jutra (edycja Sztuczna Inteligencja)**, certyfikowane bezpośrednio przez **Google** oraz **SGH (Szkołę Główną Handlową w Warszawie)**. Za moim dynamicznym podejściem stoi formalnie zweryfikowana wiedza akademicka oraz techniczna giganta technologicznego.
+                Aby przenieść tę intuicyjną pasję na najwyższy poziom biznesowy, pomyślnie ukończyłem prestiżowe szkolenie <strong>Google Umiejętności Jutra (edycja Sztuczna Inteligencja)</strong>, certyfikowane bezpośrednio przez <strong>Google</strong> oraz <strong>SGH (Szkołę Główną Handlową w Warszawie)</strong>. Za moim dynamicznym podejściem stoi formalnie zweryfikowana wiedza akademicka oraz techniczna giganta technologicznego.
               </p>
               
               <!-- Bullet points visual anchors -->
@@ -1181,6 +1181,21 @@
                 <div style="padding: 10px 5px 2px 5px; display: flex; justify-content: space-between; align-items: center;">
                   <span style="color: #FFF; font-size: 0.85rem; font-weight: bold; font-family: var(--font-heading);">Egzamin końcowy: Status ZALICZONY</span>
                   <span style="color: #3B82F6; font-size: 0.8rem; font-weight: bold;">100% Correct</span>
+                </div>
+              </div>
+
+              <!-- Card 3: PageSpeed Insights Score -->
+              <div class="glass-card" style="padding: 15px 20px; background: rgba(10, 15, 29, 0.45); border: 1px solid rgba(16, 185, 129, 0.25); border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; display: flex; align-items: center; gap: 20px;" onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 15px 35px rgba(16, 185, 129, 0.25)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 10px 30px rgba(0,0,0,0.3)';">
+                <div style="position: relative; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                  <svg style="transform: rotate(-90deg); width: 70px; height: 70px;">
+                    <circle cx="35" cy="35" r="28" fill="transparent" stroke="rgba(255, 255, 255, 0.03)" stroke-width="5"></circle>
+                    <circle cx="35" cy="35" r="28" fill="transparent" stroke="#10B981" stroke-width="5" stroke-dasharray="175.93" stroke-dashoffset="175.93" class="progress-ring-home" data-value="100" style="transition: stroke-dashoffset 1.5s cubic-bezier(0.1, 1, 0.1, 1); filter: drop-shadow(0 0 5px #10B981);"></circle>
+                  </svg>
+                  <div class="home-stat-counter" style="position: absolute; color: #FFF; font-size: 1.15rem; font-weight: 900; font-family: var(--font-heading);" data-animate="100" data-suffix="">0</div>
+                </div>
+                <div>
+                  <h4 style="color: #FFF; font-size: 0.95rem; font-weight: 700; font-family: var(--font-heading); margin: 0; margin-bottom: 4px;">PageSpeed Insights: 100/100</h4>
+                  <p style="color: var(--slate-gray); font-size: 0.8rem; margin: 0; line-height: 1.3;">Natywny kod, 0% narzutu kognitywnego, ultra-szybki render mobile.</p>
                 </div>
               </div>
             </div>
@@ -3074,6 +3089,73 @@ setTimeout(function() {
         tooltip.classList.add("visible");
     }
 }, 3000);
+
+// Dynamiczna Animacja Liczników i Okręgów Postępu na Stronie Głównej (index.html)
+document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.15
+    };
+
+    const animateHomeCounter = (el) => {
+        const target = parseFloat(el.getAttribute('data-animate'));
+        const prefix = el.getAttribute('data-prefix') || '';
+        const suffix = el.getAttribute('data-suffix') || '';
+        const decimals = parseInt(el.getAttribute('data-decimals') || '0');
+        const duration = 1500; // ms
+        const startTime = performance.now();
+
+        const updateNumber = (now) => {
+            const progress = Math.min((now - startTime) / duration, 1);
+            const ease = progress * (2 - progress); // Ease out quad
+            const value = ease * target;
+            el.textContent = prefix + value.toFixed(decimals) + suffix;
+
+            if (progress < 1) {
+                requestAnimationFrame(updateNumber);
+            } else {
+                el.textContent = prefix + target.toFixed(decimals) + suffix;
+            }
+        };
+        requestAnimationFrame(updateNumber);
+    };
+
+    const homeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const parent = entry.target;
+                if (!parent.classList.contains('animated-stat')) {
+                    parent.classList.add('animated-stat');
+                    
+                    // 1. Animacja tekstowego licznika wewnątrz tego elementu lub samego siebie
+                    const counter = parent.querySelector('.home-stat-counter') || (parent.classList.contains('home-stat-counter') ? parent : null);
+                    if (counter) {
+                        animateHomeCounter(counter);
+                    }
+
+                    // 2. Animacja okręgu postępu SVG
+                    const ring = parent.querySelector('.progress-ring-home');
+                    if (ring) {
+                        const val = parseFloat(ring.getAttribute('data-value'));
+                        const r = ring.r.baseVal.value;
+                        const circumference = 2 * Math.PI * r;
+                        const offset = circumference - (val / 100) * circumference;
+                        
+                        setTimeout(() => {
+                            ring.style.strokeDashoffset = offset;
+                        }, 100);
+                    }
+                }
+            }
+        });
+    }, observerOptions);
+
+    // Obserwuj kontenery liczników
+    document.querySelectorAll('.glass-card, .home-stat-counter').forEach(el => {
+        homeObserver.observe(el);
+    });
+});
 </script>
 </html>
 

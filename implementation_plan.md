@@ -1,57 +1,89 @@
-# Implementation Plan — Jaison Case Studies Integration (CMO & CPO Strategy)
+# Plan Implementacji: Naprawa Chatbota J(AI)SON AI i Integracji RAG (Wersja 2.1)
 
-This plan details the integration of two high-performing, real-world Case Studies (`Coolfon.pl` and `kurczakujasia.pl`) into the agency's ecosystem on `jaison.pl`. 
+Wersja: **2.1 (Senior Architect Edition)**  
+Status: **Oczekuje na akceptację Tomasza**  
+Tryb pracy: **`/goal` (Maksymalna staranność, zero kompromisów)**
 
-We will create a stunning, dedicated `case-studies.html` page and update the main landing page (`index.html`) with highly persuasive, sensory-rich (VAK) teasers that guide future clients to see how AI Systems Architecture eliminates operational friction for 0 PLN in fixed AI costs.
-
----
-
-## User Review Required
-
-> [!IMPORTANT]
-> **Key Marketing & Architectural Decisions (CMO & CPO Consensus):**
-> 1. **Dedicating a Luxury Page:** Rather than leaving basic placeholders or writing multiple nested folders, we will create one central, ultra-premium `case-studies.html` page. This will act as our central "Social Proof Hub", showing deep-dive implementations, before/after contrasts, and Google Cloud funding mechanics.
-> 2. **Sensory VAK Copywriting:** We implemented NLP patterns to target different cognitive profiles:
->    * 👁️ **Visual:** Focuses on premium dark aesthetics, pulse effects, and 3D tilts.
->    * 👂 **Auditory:** Highlights operational silence and quiet notifications replacing constant phone rings.
->    * 🖐️ **Kinesthetic:** Embodies feelings of peace, relief from database crashes, and having time to enjoy coffee.
->    * 📊 **Auditory Digital (Analytical):** Grounded in PageSpeed metrics, no-database security, and concrete ROI numbers.
-> 3. **The GCP Funding Leverage:** Highlighting that Jaison AI Agency sets up **GCP Free Trial ($300)** and **Startup Credits ($1,000 to $2,000)** so the client's infrastructure cost remains **0 PLN** for years. This completely crushes the "AI is too expensive" objection.
+Zidentyfikowaliśmy i poddaliśmy krytycznej ocenie usterkę silnika chatbota **J(AI)SON AI** na stronie głównej `jaison.pl`. Poniżej znajduje się szczegółowa analiza techniczna (Reality Check), przyczyna błędu oraz plan chirurgicznej i stabilnej naprawy architektonicznej.
 
 ---
 
-## Proposed Changes
+## 🕵️ Analiza Techniczna i Główna Przyczyna (Dlaczego chatbot pisał o grow hackingu na słowo "Cześć"?)
 
-### Web Design & Components
+Podczas analizy kodu backendowego strony zidentyfikowaliśmy **krytyczny błąd integracji RAG (Retrieval-Augmented Generation)**:
 
-We will use Vanilla CSS with sleek glassmorphism, glowing custom borders (`--neon-blue`, `--neon-cyan`, `--neon-orange`), Montserrat-bold typography from Google Fonts, and micro-animations for the premium WOW-effect Tomas enjoys.
-
----
-
-### [Component: Case Studies Hub]
-
-#### [NEW] [case-studies.html](file:///C:/Aplikacje%20MVP/Holistic%20Jason/04_website/site/case-studies.html)
-We will create this brand-new page with two detailed sections:
-1. **Coolfon.pl Case Study:**
-   - **Core Metrics:** PageSpeed 99/100, 0 PLN AI costs, 38% estimated conversion boost.
-   - **Implemented Modules:** No-database static code, dynamic repair calculator on hero, safe client-facing Gemini API Proxy, intelligent regex fallback, and automated n8n WhatsApp content pipeline.
-   - **Interactive Screenshots Placeholders:** Mobilny widok Czatbota, wynik PageSpeed, dynamiczny kalkulator 3D, blokada `.env` (403 Forbidden).
-2. **Bar Jaś Case Study (kurczakujasia.pl):**
-   - **Core Metrics:** Wzrost konwersji o 35%, 40 godzin pracy zaoszczędzone miesięcznie, PageSpeed 100/100.
-   - **Implemented Modules:** JaśBot 2.0 (Gemini API with custom character), localStorage chat memory, Zero-Friction WhatsApp checkout with BLIK, autonomous feedback CRM (n8n + Google Sheets).
-   - **Interactive Screenshots Placeholders:** Wynik PageSpeed, JaśBot in action, wizualny koszyk & BLIK, panel CRM (GSheets + n8n).
-
-#### [MODIFY] [index.html](file:///C:/Aplikacje%20MVP/Holistic%20Jason/04_website/site/index.html)
-We will modify the `<!-- Case Studies Section -->` (lines 1036-1150) in the main landing page to:
-- Upgrade cards for `coolfon.pl` and `kurczakujasia.pl` into heavy-hitting B2B teasers highlighting core financial and speed metrics.
-- Replace generic placeholder links with a highly visible, pulsing CTA button: **"Zobacz Pełne Case Study ➔"** pointing to `case-studies.html#coolfon` and `case-studies.html#kurczak`.
-- Keep cards for `viptransporter.pl`, `smartrade.pl`, and `holistycznybroker.pl` as teaser cards representing planned services.
+1. **Brak Warstwy Konwersacyjnej (LLM Brain)**: 
+   Frontendowy widget czatu w `index.html` wysyła zapytania do skryptu `/php/chat.php`. Skrypt ten pobiera klucz konta usługi (Service Account) i uderza **bezpośrednio do REST API wyszukiwarki Vertex AI Search** (`default_search:search`):
+   ```php
+   $searchUrl = "https://{$host}/v1/projects/{$project_id}/locations/{$loc}/collections/default_collection/engines/{$engine_id}/servingConfigs/default_search:search";
+   ```
+2. **Ignorowanie Intencji Użytkownika (Klasyczny Błąd RAG)**:
+   Vertex AI Search to silnik wyszukiwania dokumentów (RAG), a nie konwersacyjny model czatu. Gdy użytkownik wpisuje zwykłe powitanie (np. *"Cześć !"*), wyszukiwarka traktuje to jako frazę kluczową. Z powodu braku progu odcięcia (retrieval threshold), silnik dopasowuje najbliższy semantycznie fragment z wgranych materiałów (w tym przypadku nagranie szkoleniowe Tomasza zaczynające się od *"Witajcie serdecznie! Dzisiaj będzie materiał dotyczący problemów z wejściem w grow hacking..."*) i generuje surowe streszczenie tego dokumentu.
+3. **Brak Stanu i Historii (Stateless)**:
+   Skrypt `chat.php` nie utrzymuje historii rozmowy (history/session), co uniemożliwia realizację zapowiedzianego **Interaktywnego Audytu Systemowego (21 pytań diagnostycznych)**. Każde zapytanie jest traktowane jako zupełnie niezależne wyszukiwanie.
+4. **Wyciek Gwiazdek Markdown (Zasada 13)**:
+   Silnik Vertex AI Search zwraca surowy Markdown zawierający podwójne gwiazdki (`**`), co narusza nienaruszalną zasadę eliminacji śladów generowania treści przez AI w serwisach agencji.
 
 ---
 
-## Verification Plan
+## 💡 Rozwiązanie Architektoniczne (Hybrid Conversational RAG)
 
-### Manual Verification
-1. Open the updated `index.html` and click on the new **"Zobacz Pełne Case Study"** buttons to verify they correctly scroll/anchor to the respective sections in `case-studies.html`.
-2. Inspect `case-studies.html` in the browser to ensure the CSS styling, bento-grid layout, glass cards, and fonts render beautifully on both mobile and desktop (ADHD-friendly visual anchoring).
-3. Validate that the PageSpeed, security, and GCP funding sections are prominently featured.
+Wdrożymy **dwupoziomową architekturę hybrydową (Hybrid Conversational RAG)**, która łączy zalety bezpiecznego, sesyjnego backendu PHP ze stanowym modelem **Gemini 2.5 Flash** (używanym jako główny "Mózg" chatbota):
+
+```mermaid
+graph TD
+    User["User (index.html)"] -->|AJAX POST| PHP["Proxy Gateway (chat.php)"]
+    PHP -->|1. Klasyfikacja Zapytania| Classify{"Czy to powitanie/odpowiedź na audyt?"}
+    
+    Classify -->|TAK| GeminiOnly["Wywołaj bezpośrednio Gemini 2.5 Flash (bez wyszukiwania)"]
+    Classify -->|NIE (Pytanie merytoryczne)| RAG["Odpytaj Vertex AI Search (Retrieval)"]
+    
+    RAG -->|Zwróć Snippet bazy wiedzy| Context["Wstrzyknij Snippet do System Promptu Gemini"]
+    Context --> GeminiRAG["Wywołaj Gemini 2.5 Flash z Groundingiem"]
+    
+    GeminiOnly -->|Odpowiedź w HTML| Clean["Oczyszczenie z Markdown (Zasada 13)"]
+    GeminiRAG -->|Odpowiedź w HTML| Clean
+    
+    Clean -->|Zapisz w $_SESSION| Session["Zapisz Turn w historii sesji"]
+    Session -->|Zwróć czysty HTML| User
+```
+
+### Kluczowe Elementy Nowej Architektury:
+1. **Lekki Klasyfikator Zapytań (0ms narzutu)**: 
+   W `chat.php` wdrożymy filtr słów kluczowych (Greetings & Audit Answers). Jeśli użytkownik wyśle powitanie (np. *"Cześć"*, *"Dzień dobry"*) lub odpowiedź do audytu (np. *"tak"*, *"nie"*, *"audyt"*, *"zacznijmy"*, liczby itp.), **całkowicie pomijamy wyszukiwanie w Vertex AI Search**. Zapytanie trafia od razu do Gemini.
+2. **Sesyjna Historia Rozmowy (`$_SESSION`)**:
+   Uruchomimy serwerowe sesje PHP w celu bezkonkurencyjnego i bezpiecznego przechowywania historii ostatnich 15 wypowiedzi. Dzięki temu chatbot zyskuje **pamięć podręczną** i może prowadzić użytkownika za rękę krok po kroku przez **Interaktywny Audyt (21 pytań)**, naliczając punkty w locie!
+3. **Gemini 2.5 Flash jako Orchestrator**:
+   Zamiast zwracać surowy wynik wyszukiwania, uderzymy bezpośrednio do API **Vertex AI Gemini 2.5 Flash** przez REST (używając istniejącego tokenu z Service Account). Gemini otrzyma pełny system prompt, historię konwersacji oraz ewentualny kontekst wyszukiwania, po czym zsyntetyzuje naturalną, ludzką odpowiedź w tonie Ghost v2 / NLP VAK.
+4. **Bezwzględne Czyszczenie i Formatowanie HTML**:
+   Zaimplementujemy funkcję filtrującą, która całkowicie wyeliminuje gwiazdki markdown, zastępując je tagami `<strong>` i dbając o ADHD-friendly visual anchoring.
+
+---
+
+## 🛠️ Proponowane Zmiany (Proposed Changes)
+
+### Komponent: Backend PHP i Integracja (`website/site/public/php`)
+
+#### [MODIFY] [chat.php](file:///C:/Aplikacje%20MVP/Holistic%20Jason/01-jaison-core/website/site/public/php/chat.php)
+- Wdrożenie klasyfikatora zapytań `isCasualOrAudit($message)`.
+- Wdrożenie stanowej sesji `$_SESSION['chat_history']` z limitem do 15 ostatnich wypowiedzi.
+- Integracja z Vertex AI Gemini 2.5 Flash REST API (`generateContent`) przy użyciu tokenu autoryzacji GCP.
+- Wstrzykiwanie wyników wyszukiwania Vertex AI Search jako dynamicznego kontekstu (grounding) do system promptu Gemini tylko przy pytaniach merytorycznych.
+- Precyzyjne formatowanie wyjściowe (oczyszczanie z markdownu, konwersja list na tagi HTML).
+
+---
+
+## 🧪 Plan Weryfikacji (Verification Plan)
+
+### Połączenie i Testy Składniowe PHP
+1. Zweryfikujemy poprawność składniową PHP za pomocą polecenia lintera:
+   ```powershell
+   php -l "C:\Aplikacje MVP\Holistic Jason\01-jaison-core\website\site\public\php\chat.php"
+   ```
+
+### Testy Funkcjonalne Chatbota (Czarna Skrzynka)
+Przetestujemy zachowanie chatbota pod kątem zidentyfikowanych problemów:
+1. **Scenariusz Powitania**: Wyślemy zapytanie *"Cześć !"* i upewnimy się, że chatbot odpowiada naturalnym powitaniem J(AI)SON AI i zaprasza do audytu, zamiast wypluwać surowy artykuł o grow hackingu.
+2. **Scenariusz Pytania Merytorycznego**: Wyślemy zapytanie *"Jakie macie pakiety?"* lub *"Opowiedz o wdrożeniu Coolfon"* i zweryfikujemy, czy silnik poprawnie odpytuje Vertex AI Search, po czym Gemini generuje zgrabną odpowiedź opartą na tych danych.
+3. **Scenariusz Audytu**: Napiszemy *"audyt"* i sprawdzimy, czy bot rozpoczyna zadawanie pytań diagnostycznych jedno po drugim (zachowując stan i zliczając punkty w sesji).
+4. **Weryfikacja Formatowania (Zasada 13)**: Upewnimy się, że w odpowiedziach nie ma ani jednej gwiazdki markdown (`**`), a tekst jest sformatowany wyłącznie tagami `<strong>` i `<p>`.
