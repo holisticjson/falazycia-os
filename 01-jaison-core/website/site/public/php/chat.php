@@ -205,7 +205,10 @@ try {
     
     $retrievedSummary = "";
     
-    // KROK 1: Jeśli zapytanie to NIE jest powitanie ani odpowiedź audytu -> odpytujemy Vertex AI Search (RAG)
+    // KROK 1: Odpytywanie Vertex AI Search (RAG) zostało TYMCZASOWO ODPIĘTE na życzenie użytkownika.
+    // Zostawiamy czystego Agenta opartego o System Prompt (Ghost v2 + Audyt), aby uniknąć 
+    // zbyt obszernych odpowiedzi bazujących na materiałach edukacyjnych.
+    /*
     if (!isCasualOrAudit($userMessage)) {
         $searchUrl = "https://{$host}/v1/projects/{$project_id}/locations/{$loc}/collections/default_collection/engines/{$engine_id}/servingConfigs/default_search:search";
         
@@ -238,6 +241,7 @@ try {
             $retrievedSummary = $searchData['summary']['summaryText'] ?? "";
         }
     }
+    */
 
     // KROK 2: Przygotowanie instrukcji systemowej dla Gemini
     $baseSystemInstruction = "Jesteś J(AI)SON AI — wirtualnym architektem systemów i prawą ręką Tomasza Dudy (założyciela agencji jaison.pl).
