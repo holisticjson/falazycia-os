@@ -317,6 +317,38 @@ KATEGORYCZNE RESTRYKCJE:
                 ["text" => $dynamicSystemInstruction]
             ]
         ],
+        "tools" => [
+            [
+                "functionDeclarations" => [
+                    [
+                        "name" => "submit_audit_lead",
+                        "description" => "Wywołaj to narzędzie, GDY UŻYTKOWNIK UKOŃCZY AUDYT (odpowie na pytania) LUB sam zadeklaruje gotowość do wdrożenia / pozostawienia kontaktu. Narzędzie przesyła wynik audytu i zapisuje lead do systemu (Google Sheets / CRM).",
+                        "parameters" => [
+                            "type" => "OBJECT",
+                            "properties" => [
+                                "audit_score" => [
+                                    "type" => "INTEGER",
+                                    "description" => "Obliczony wynik audytu z 21 pytań (np. 15)"
+                                ],
+                                "identified_problems" => [
+                                    "type" => "STRING",
+                                    "description" => "Krótkie streszczenie największych bólów zidentyfikowanych w firmie klienta na podstawie jego odpowiedzi."
+                                ],
+                                "name" => [
+                                    "type" => "STRING",
+                                    "description" => "Imię i nazwisko klienta (wyciągnięte z historii rozmowy, jeśli podał, w przeciwnym razie wpisz 'Klient Jaisona')"
+                                ],
+                                "contact" => [
+                                    "type" => "STRING",
+                                    "description" => "Numer telefonu lub adres e-mail klienta (wyciągnięty z historii, jeśli podał, w przeciwnym razie wpisz 'Nie podano')"
+                                ]
+                            ],
+                            "required" => ["audit_score", "identified_problems", "name", "contact"]
+                        ]
+                    ]
+                ]
+            ]
+        ],
         "generationConfig" => [
             "temperature" => 0.7,
             "maxOutputTokens" => 800
@@ -336,15 +368,117 @@ KATEGORYCZNE RESTRYKCJE:
     curl_close($ch);
 
     $replyText = "";
+    $functionCallTriggered = false;
+
     if ($geminiHttpCode === 200) {
         $geminiData = json_decode($geminiResponse, true);
-        $replyText = $geminiData['candidates'][0]['content']['parts'][0]['text'] ?? "";
+        $firstPart = $geminiData['candidates'][0]['content']['parts'][0] ?? null;
+        
+        if ($firstPart && isset($firstPart['functionCall'])) {
+            $functionCallTriggered = true;
+            $functionCall = $firstPart['functionCall'];
+            $funcName = $functionCall['name'];
+            $args = $functionCall['args'] ?? [];
+            
+            if ($funcName === 'submit_audit_lead') {
+                $score = isset($args['audit_score']) ? intval($args['audit_score']) : 0;
+                $problems = isset($args['identified_problems']) ? trim($args['identified_problems']) : '';
+                $name = isset($args['name']) ? trim($args['name']) : 'Klient Jaisona';
+                $contact = isset($args['contact']) ? trim($args['contact']) : 'Nie podano';
+                
+                // 1. Wywołanie zewnętrznego webhooka FastAPI CRM (na os.jaison.pl/api/lead)
+                $leadUrl = "https://os.jaison.pl/api/lead";
+                $leadPayload = json_encode([
+                    "project" => "jason",
+                    "name" => $name,
+                    "contact" => $contact,
+                    "industry" => "",
+                    "problem" => "Wynik Audytu: " . $score . "/21. Zidentyfikowane błędy: " . $problems,
+                    "source" => "Chatbot Audytor"
+                ]);
+                
+                $chLead = curl_init($leadUrl);
+                curl_setopt($chLead, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($chLead, CURLOPT_POST, true);
+                curl_setopt($chLead, CURLOPT_POSTFIELDS, $leadPayload);
+                curl_setopt($chLead, CURLOPT_HTTPHEADER, [
+                    "Content-Type: application/json"
+                ]);
+                curl_setopt($chLead, CURLOPT_TIMEOUT, 5); // Niski timeout, aby nie blokować bota
+                $leadRes = curl_exec($chLead);
+                $leadCode = curl_getinfo($chLead, CURLINFO_HTTP_CODE);
+                curl_close($chLead);
+                
+                // 2. Przekazanie odpowiedzi z narzędzia z powrotem do Gemini, aby zachować spójność Ghost v2
+                $functionResult = [
+                    "status" => "success",
+                    "message" => "Dane audytu i lead zostały pomyślnie przesłane do CRM i Arkusza. Wynik: " . $score . "/21. Imię: " . $name . ", Kontakt: " . $contact
+                ];
+                
+                // Aktualizujemy session history pod kątem wywołania funkcji
+                $_SESSION['chat_history'][] = [
+                    "role" => "bot",
+                    "text" => "System zapisał Twoje dane i przekazał audyt do dyrektorów."
+                ];
+                
+                // Przygotowujemy payload dla drugiej rundy Gemini (tool response turn)
+                $contentsPayload[] = [
+                    "role" => "model",
+                    "parts" => [
+                        ["functionCall" => $functionCall]
+                    ]
+                ];
+                $contentsPayload[] = [
+                    "role" => "user",
+                    "parts" => [
+                        [
+                            "functionResponse" => [
+                                "name" => $funcName,
+                                "response" => $functionResult
+                            ]
+                        ]
+                    ]
+                ];
+                
+                $geminiPayload2 = json_encode([
+                    "contents" => $contentsPayload,
+                    "systemInstruction" => [
+                        "parts" => [
+                            ["text" => $dynamicSystemInstruction]
+                        ]
+                    ],
+                    "generationConfig" => [
+                        "temperature" => 0.7,
+                        "maxOutputTokens" => 800
+                    ]
+                ]);
+                
+                $ch2 = curl_init($geminiUrl);
+                curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch2, CURLOPT_POST, true);
+                curl_setopt($ch2, CURLOPT_POSTFIELDS, $geminiPayload2);
+                curl_setopt($ch2, CURLOPT_HTTPHEADER, [
+                    "Authorization: Bearer " . $accessToken,
+                    "Content-Type: application/json"
+                ]);
+                $geminiResponse2 = curl_exec($ch2);
+                $geminiHttpCode2 = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
+                curl_close($ch2);
+                
+                if ($geminiHttpCode2 === 200) {
+                    $geminiData2 = json_decode($geminiResponse2, true);
+                    $replyText = $geminiData2['candidates'][0]['content']['parts'][0]['text'] ?? "";
+                } else {
+                    $replyText = "<h3><strong>Świetna robota! Twój audyt został zakończony pomyślnie.</strong></h3>\n\nTwój wynik to <strong>" . $score . "/21</strong>. Przekazałem już Twoje odpowiedzi i zidentyfikowane problemy bezpośrednio do Tomasza i naszego zespołu dyrektorów AI. Przygotujemy dla Ciebie darmową, spersonalizowaną strategię eliminacji tych wąskich gardeł.\n\n<strong>Co robimy teraz?</strong>\n1. Jeśli podany kontakt to <strong>" . $contact . "</strong>, wyślemy analizę na ten adres.\n2. Jeśli chcesz od razu wejść na wyższy poziom i omówić to na żywo, <strong>kliknij w kalendarz obok i zarezerwuj bezpłatną konsultację</strong> w dogodnym terminie!";
+                }
+            }
+        } else {
+            $replyText = $firstPart['text'] ?? "";
+        }
     } else {
-        // Fallback: jeśli Gemini zwróci błąd, zaloguj go i użyj bezpośredniej odpowiedzi z wyszukiwarki lub standardowej wiadomości
         error_log("Błąd Vertex AI Gemini: Kod HTTP " . $geminiHttpCode . ", Odpowiedź: " . $geminiResponse);
     }
 
-    // Dodatkowy fallback bezpieczeństwa
     if (empty($replyText)) {
         $replyText = !empty($retrievedSummary) ? $retrievedSummary : "Nie potrafię odpowiedzieć w tym momencie. Możesz skontaktować się bezpośrednio ze mną pisząc na <strong>hello@jaison.pl</strong>!";
     }
@@ -352,8 +486,13 @@ KATEGORYCZNE RESTRYKCJE:
     // Oczyszczenie odpowiedzi z markdown i transformacja na HTML
     $cleanReply = cleanAndHumanizeMarkdown($replyText);
 
-    // Aktualizacja historii czatu w sesji o odpowiedź bota
-    $_SESSION['chat_history'][] = ["role" => "bot", "text" => $cleanReply];
+    // Jeśli to nie było wywołanie funkcji (które już dodało wpis do historii), dodajemy odpowiedź do sesji
+    if (!$functionCallTriggered) {
+        $_SESSION['chat_history'][] = ["role" => "bot", "text" => $cleanReply];
+    } else {
+        // Podmieniamy ostatni wpis na wygenerowaną ostatecznie przez model wypowiedź
+        $_SESSION['chat_history'][count($_SESSION['chat_history']) - 1] = ["role" => "bot", "text" => $cleanReply];
+    }
 
     echo json_encode([
         "status" => "success",

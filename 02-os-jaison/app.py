@@ -1524,13 +1524,6 @@ with st.sidebar:
         st.session_state.current_page = "Memory"
         st.rerun()
         
-    if st.button("🤝 Onboarding Klienta", use_container_width=True, type="primary" if col_menu == "Onboarding" else "secondary"):
-        st.session_state.current_page = "Onboarding"
-        st.rerun()
-        
-    if st.button("✨ Rój Agentów (Sprzedaż)", use_container_width=True, type="primary" if col_menu == "Swarm" else "secondary"):
-        st.session_state.current_page = "Swarm"
-        st.rerun()
         
     # IV. BUSINESS & MARKETING
     st.markdown("<p style='color: #3B82F6; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>IV. BUSINESS & MARKETING</p>", unsafe_allow_html=True)
@@ -2854,7 +2847,7 @@ elif menu == "CRM":
     
     crm = load_crm()
     
-    tab_board, tab_add, tab_webhook = st.tabs(["📊 Tablica Lejka", "➕ Dodaj Nowy Kontakt", "🔌 Webhook & Symulacje"])
+    tab_board, tab_add, tab_onboarding, tab_webhook = st.tabs(["📊 Tablica Lejka", "➕ Dodaj Nowy Kontakt", "🤝 Onboarding & Grill AI", "🔌 Webhook & Symulacje"])
     
     with tab_webhook:
         st.markdown("### 🔌 Wbudowany Webhook Odbiorczy (Polski ADHD GHL)")
@@ -2939,6 +2932,155 @@ elif menu == "CRM":
             else:
                 st.warning("Podaj nazwę klienta oraz jego opis.")
                 
+    with tab_onboarding:
+        st.subheader("🤝 Onboarding & Grill Agent")
+        st.markdown("""
+        <div class="one-thing-banner" style="border-left-color: #EC4899;">
+            <h3 style="margin-top: 0; color: #EC4899;">🤝 Onboarding zasilany Grillowaniem AI</h3>
+            <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
+                Zanim rozpoczniesz nowy projekt albo wdrożenie, nasz agent przeprowadzi z Tobą rygorystyczny wywiad.
+                Będzie kwestionował Twoje założenia, szukał prawdziwych problemów Twoich odbiorców i na koniec stworzy kompletny, ustrukturyzowany Brief gotowy do zapisu w Obsidian Vault.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Initialize onboarding state
+        if "onb_active" not in st.session_state:
+            st.session_state.onb_active = False
+            st.session_state.onb_step = 0
+            st.session_state.onb_answers = []
+            st.session_state.onb_questions = []
+            st.session_state.onb_type = ""
+            st.session_state.onb_target_name = ""
+            st.session_state.onb_chat_history = []
+            
+        if not st.session_state.onb_active:
+            st.subheader("🚀 Rozpocznij Nowy Wywiad")
+            onb_name = st.text_input("Nazwa Klienta / Nazwa Projektu:", placeholder="np. Gabinet Fizjoterapii Kręgosłup, Nowa Platforma Kursowa...", key="crm_onb_name")
+            onb_type = st.selectbox("Typ wywiadu onboardingowego:", [
+                "A. Nowy klient biznesowy na systemy AI & CRM (B2B)",
+                "B. Shadow Operating dla Twórcy Cyfrowego (Revenue Split)",
+                "C. Nowy członek społeczności ADHD for Life (Onboarding profilowy)"
+            ], key="crm_onb_type")
+            
+            if st.button("Uruchom Onboarding & Grill", type="primary", key="crm_onb_start_btn"):
+                if onb_name:
+                    st.session_state.onb_target_name = onb_name
+                    st.session_state.onb_type = onb_type
+                    st.session_state.onb_active = True
+                    st.session_state.onb_step = 1
+                    st.session_state.onb_answers = []
+                    st.session_state.onb_chat_history = []
+                    
+                    # Predefined starter prompt to generate first question
+                    starter_prompt = f"""Jesteś elitarnym agentem onboardingu i grillowania założeń biznesowych. 
+Użytkownik rozpoczyna onboarding dla projektu/klienta: "{onb_name}" o typie: "{onb_type}".
+Zadaj pierwsze, bardzo celne, drążące pytanie, które uderza w sedno problemu biznesowego lub kognitywnego. 
+Zadaj TYLKO jedno pytanie. Nie pisz powitań ani wstępów."""
+                    with st.spinner("Agent przygotowuje pierwsze pytanie..."):
+                        first_q = call_gemini_pro_api([{"role": "user", "content": starter_prompt}], "Jesteś dociekliwym audytorem biznesowym.")
+                    st.session_state.onb_questions = [first_q]
+                    st.session_state.onb_chat_history.append({"role": "assistant", "content": first_q})
+                    st.rerun()
+                else:
+                    st.warning("Podaj nazwę klienta lub projektu.")
+        else:
+            st.write(f"### 🤝 Wywiad: **{st.session_state.onb_target_name}**")
+            st.caption(f"Typ: {st.session_state.onb_type} | Krok {st.session_state.onb_step} z 5")
+            
+            # Display chat history
+            for msg in st.session_state.onb_chat_history:
+                role = "assistant" if msg["role"] == "assistant" else "user"
+                with st.chat_message(role):
+                    st.markdown(msg["content"])
+                    
+            # If we have reached 5 steps, compile the Brief!
+            if st.session_state.onb_step > 5:
+                st.success("✅ Wywiad zakończony! Model kompiluje ustrukturyzowany Brief...")
+                
+                # Formulate prompt for Brief synthesis
+                synthesis_prompt = f"""Na podstawie poniższego wywiadu onboardingowego dla "{st.session_state.onb_target_name}" ({st.session_state.onb_type}),
+przygotuj kompletny, ustrukturyzowany Brief Projektowy w formacie Markdown.
+Użyj sekcji:
+# Brief Projektu: {st.session_state.onb_target_name}
+- **Typ Projektu:** {st.session_state.onb_type}
+- **Data sporządzenia:** {time.strftime('%Y-%m-%d')}
+
+## 🎯 Główny Cel i Problem
+(Jaki rzeczywisty problem odbiorcy rozwiązuje ten projekt? Czego klient naprawdę chce?)
+
+## ⚖️ Analiza Ryzyk i Grillowanie
+(Podsumowanie słabych punktów i założeń, które zostały zweryfikowane w wywiadzie)
+
+## 🛠️ Rekomendowana Architektura AI/CRM
+(Rekomendowane wdrożenie: n8n, CRM GHL, automatyzacje, modele)
+
+## 📅 Konkretne Mikro-Kroki (Next Actions)
+(Lista 3-5 natychmiastowych zadań o niskim oporze kognitywnym do wdrożenia w Kanbanie)
+
+WYWIAD:
+"""
+                for msg in st.session_state.onb_chat_history[:-1]: # exclude final system message
+                    synthesis_prompt += f"{'Agent' if msg['role']=='assistant' else 'Użytkownik'}: {msg['content']}\n"
+                    
+                with st.spinner("CEO Jason & Onboarding Agent syntetyzują Brief..."):
+                    brief_md = call_gemini_pro_api([{"role": "user", "content": synthesis_prompt}], "Jesteś CEO Jason i Onboarding Agent. Tworzysz precyzyjne briefy.")
+                
+                st.markdown("### 📝 Wygenerowany Brief:")
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7;">
+{brief_md}
+                </div>
+                """, unsafe_allow_html=True)
+                
+                # Save to Obsidian Vault
+                brief_filename = f"Brief_{st.session_state.onb_target_name.replace(' ', '_')}_{int(time.time())}.md"
+                brief_filepath = os.path.join(OBSIDIAN_DIR, brief_filename)
+                try:
+                    with open(brief_filepath, "w", encoding="utf-8") as f:
+                        f.write(brief_md)
+                    st.success(f"📚 Brief został pomyślnie zapisany w Obsidian Vault: `{brief_filename}`")
+                except Exception as e:
+                    st.error(f"Nie udało się zapisać briefu w Obsidianie: {e}")
+                    
+                if st.button("Rozpocznij nowy onboarding", type="primary", key="crm_onb_restart_btn"):
+                    st.session_state.onb_active = False
+                    st.rerun()
+            else:
+                # We are in the middle of the interview
+                user_reply = st.chat_input("Twoja odpowiedź (Agent wygrilluje Twoje założenia):", key="crm_onb_chat_input")
+                
+                if user_reply:
+                    st.session_state.onb_chat_history.append({"role": "user", "content": user_reply})
+                    st.session_state.onb_answers.append(user_reply)
+                    st.session_state.onb_step += 1
+                    
+                    # Check if this is the final step
+                    if st.session_state.onb_step > 5:
+                        st.session_state.onb_chat_history.append({"role": "assistant", "content": "Dziękuję. Wywiad zakończony. Przechodzę do generowania briefu..."})
+                        st.rerun()
+                    else:
+                        # Generate next question by prompting the model to grill the last response and advance
+                        grill_prompt = f"""Jesteś agentem onboardingu i grillowania założeń biznesowych. 
+Onboarding dla projektu/klienta: "{st.session_state.onb_target_name}" o typie: "{st.session_state.onb_type}".
+Oto dotychczasowa historia wywiadu:
+"""
+                        for msg in st.session_state.onb_chat_history:
+                            grill_prompt += f"{'Agent' if msg['role']=='assistant' else 'Użytkownik'}: {msg['content']}\n"
+                            
+                        grill_prompt += f"\nZADANIE: Przeanalizuj ostatnią odpowiedź użytkownika, krótko zakwestionuj lub podważ jedno z jego założeń (grillowanie), a następnie zadaj krok {st.session_state.onb_step} z 5 (następne celne pytanie). Zadaj TYLKO jedno pytanie. Nie pisz powitań ani podsumowań."
+                        
+                        with st.spinner("Agent analizuje Twoją odpowiedź i szykuje kolejne pytanie..."):
+                            next_q = call_gemini_pro_api([{"role": "user", "content": grill_prompt}], "Jesteś rygorystycznym audytorem biznesowym grillującym pomysły.")
+                            
+                        st.session_state.onb_questions.append(next_q)
+                        st.session_state.onb_chat_history.append({"role": "assistant", "content": next_q})
+                        st.rerun()
+                        
+        if st.button("❌ Przerwij wywiad i zresetuj state", key="crm_onb_cancel_btn"):
+            st.session_state.onb_active = False
+            st.rerun()
+
     with tab_board:
         col_conv, col_arch, col_build = st.columns(3)
         
@@ -3912,160 +4054,7 @@ Pisz w tonie pełnym empatii, spokoju, wsparcia, lecz konkretnie (ADHD-friendly)
                 st.session_state.soul_rituals_result = None
                 st.rerun()
 
-# 9B. ONBOARDING & GRILL AGENT
-elif menu == "Onboarding":
-    st.title("🤝 Onboarding & Grill Agent")
-    st.subheader("Interaktywny wywiad AI i generowanie briefu")
-    
-    st.markdown("""
-    <div class="one-thing-banner" style="border-left-color: #EC4899;">
-        <h3 style="margin-top: 0; color: #EC4899;">🤝 Onboarding zasilany Grillowaniem AI</h3>
-        <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
-            Zanim rozpoczniesz nowy projekt albo wdrożenie, nasz agent przeprowadzi z Tobą rygorystyczny wywiad.
-            Będzie kwestionował Twoje założenia, szukał prawdziwych problemów Twoich odbiorców i na koniec stworzy kompletny, ustrukturyzowany Brief gotowy do zapisu w Obsidian Vault.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # Initialize onboarding state
-    if "onb_active" not in st.session_state:
-        st.session_state.onb_active = False
-        st.session_state.onb_step = 0
-        st.session_state.onb_answers = []
-        st.session_state.onb_questions = []
-        st.session_state.onb_type = ""
-        st.session_state.onb_target_name = ""
-        st.session_state.onb_chat_history = []
-        
-    if not st.session_state.onb_active:
-        st.subheader("🚀 Rozpocznij Nowy Wywiad")
-        onb_name = st.text_input("Nazwa Klienta / Nazwa Projektu:", placeholder="np. Gabinet Fizjoterapii Kręgosłup, Nowa Platforma Kursowa...")
-        onb_type = st.selectbox("Typ wywiadu onboardingowego:", [
-            "A. Nowy klient biznesowy na systemy AI & CRM (B2B)",
-            "B. Shadow Operating dla Twórcy Cyfrowego (Revenue Split)",
-            "C. Nowy członek społeczności ADHD for Life (Onboarding profilowy)"
-        ])
-        
-        if st.button("Uruchom Onboarding & Grill", type="primary"):
-            if onb_name:
-                st.session_state.onb_target_name = onb_name
-                st.session_state.onb_type = onb_type
-                st.session_state.onb_active = True
-                st.session_state.onb_step = 1
-                st.session_state.onb_answers = []
-                st.session_state.onb_chat_history = []
-                
-                # Predefined starter prompt to generate first question
-                starter_prompt = f"""Jesteś elitarnym agentem onboardingu i grillowania założeń biznesowych. 
-Użytkownik rozpoczyna onboarding dla projektu/klienta: "{onb_name}" o typie: "{onb_type}".
-Zadaj pierwsze, bardzo celne, drążące pytanie, które uderza w sedno problemu biznesowego lub kognitywnego. 
-Zadaj TYLKO jedno pytanie. Nie pisz powitań ani wstępów."""
-                with st.spinner("Agent przygotowuje pierwsze pytanie..."):
-                    first_q = call_gemini_pro_api([{"role": "user", "content": starter_prompt}], "Jesteś dociekliwym audytorem biznesowym.")
-                st.session_state.onb_questions = [first_q]
-                st.session_state.onb_chat_history.append({"role": "assistant", "content": first_q})
-                st.rerun()
-            else:
-                st.warning("Podaj nazwę klienta lub projektu.")
-    else:
-        st.write(f"### 🤝 Wywiad: **{st.session_state.onb_target_name}**")
-        st.caption(f"Typ: {st.session_state.onb_type} | Krok {st.session_state.onb_step} z 5")
-        
-        # Display chat history
-        for msg in st.session_state.onb_chat_history:
-            role = "assistant" if msg["role"] == "assistant" else "user"
-            with st.chat_message(role):
-                st.markdown(msg["content"])
-                
-        # If we have reached 5 steps, compile the Brief!
-        if st.session_state.onb_step > 5:
-            st.success("✅ Wywiad zakończony! Model kompiluje ustrukturyzowany Brief...")
-            
-            # Formulate prompt for Brief synthesis
-            synthesis_prompt = f"""Na podstawie poniższego wywiadu onboardingowego dla "{st.session_state.onb_target_name}" ({st.session_state.onb_type}),
-przygotuj kompletny, ustrukturyzowany Brief Projektowy w formacie Markdown.
-Użyj sekcji:
-# Brief Projektu: {st.session_state.onb_target_name}
-- **Typ Projektu:** {st.session_state.onb_type}
-- **Data sporządzenia:** {time.strftime('%Y-%m-%d')}
-
-## 🎯 Główny Cel i Problem
-(Jaki rzeczywisty problem odbiorcy rozwiązuje ten projekt? Czego klient naprawdę chce?)
-
-## ⚖️ Analiza Ryzyk i Grillowanie
-(Podsumowanie słabych punktów i założeń, które zostały zweryfikowane w wywiadzie)
-
-## 🛠️ Rekomendowana Architektura AI/CRM
-(Rekomendowane wdrożenie: n8n, CRM GHL, automatyzacje, modele)
-
-## 📅 Konkretne Mikro-Kroki (Next Actions)
-(Lista 3-5 natychmiastowych zadań o niskim oporze kognitywnym do wdrożenia w Kanbanie)
-
-WYWIAD:
-"""
-            for msg in st.session_state.onb_chat_history[:-1]: # exclude final system message
-                synthesis_prompt += f"{'Agent' if msg['role']=='assistant' else 'Użytkownik'}: {msg['content']}\n"
-                
-            with st.spinner("CEO Jason & Onboarding Agent syntetyzują Brief..."):
-                brief_md = call_gemini_pro_api([{"role": "user", "content": synthesis_prompt}], "Jesteś CEO Jason i Onboarding Agent. Tworzysz precyzyjne briefy.")
-            
-            st.markdown("### 📝 Wygenerowany Brief:")
-            st.markdown(f"""
-            <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7;">
-{brief_md}
-            </div>
-            """, unsafe_allow_html=True)
-            
-            # Save to Obsidian Vault
-            brief_filename = f"Brief_{st.session_state.onb_target_name.replace(' ', '_')}_{int(time.time())}.md"
-            brief_filepath = os.path.join(OBSIDIAN_DIR, brief_filename)
-            try:
-                with open(brief_filepath, "w", encoding="utf-8") as f:
-                    f.write(brief_md)
-                st.success(f"📚 Brief został pomyślnie zapisany w Obsidian Vault: `{brief_filename}`")
-            except Exception as e:
-                st.error(f"Nie udało się zapisać briefu w Obsidianie: {e}")
-                
-            if st.button("Rozpocznij nowy onboarding", type="primary"):
-                st.session_state.onb_active = False
-                st.rerun()
-        else:
-            # We are in the middle of the interview
-            user_reply = st.chat_input("Twoja odpowiedź (Agent wygrilluje Twoje założenia):")
-            
-            if user_reply:
-                st.session_state.onb_chat_history.append({"role": "user", "content": user_reply})
-                st.session_state.onb_answers.append(user_reply)
-                st.session_state.onb_step += 1
-                
-                # Check if this is the final step
-                if st.session_state.onb_step > 5:
-                    st.session_state.onb_chat_history.append({"role": "assistant", "content": "Dziękuję. Wywiad zakończony. Przechodzę do generowania briefu..."})
-                    st.rerun()
-                else:
-                    # Generate next question by prompting the model to grill the last response and advance
-                    grill_prompt = f"""Jesteś agentem onboardingu i grillowania założeń biznesowych. 
-Onboarding dla projektu/klienta: "{st.session_state.onb_target_name}" o typie: "{st.session_state.onb_type}".
-Oto dotychczasowa historia wywiadu:
-"""
-                    for msg in st.session_state.onb_chat_history:
-                        grill_prompt += f"{'Agent' if msg['role']=='assistant' else 'Użytkownik'}: {msg['content']}\n"
-                        
-                    grill_prompt += f"\nZADANIE: Przeanalizuj ostatnią odpowiedź użytkownika, krótko zakwestionuj lub podważ jedno z jego założeń (grillowanie), a następnie zadaj krok {st.session_state.onb_step} z 5 (następne celne pytanie). Zadaj TYLKO jedno pytanie. Nie pisz powitań ani podsumowań."
-                    
-                    with st.spinner("Agent analizuje Twoją odpowiedź i szykuje kolejne pytanie..."):
-                        next_q = call_gemini_pro_api([{"role": "user", "content": grill_prompt}], "Jesteś rygorystycznym audytorem biznesowym grillującym pomysły.")
-                        
-                    st.session_state.onb_questions.append(next_q)
-                    st.session_state.onb_chat_history.append({"role": "assistant", "content": next_q})
-                    st.rerun()
-                    
-        if st.button("❌ Przerwij wywiad i zresetuj state"):
-            st.session_state.onb_active = False
-            st.rerun()
-
 # 10. PRISTINE MEMORY
-elif menu == "Memory":
     st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • MEMORY</p>", unsafe_allow_html=True)
     st.title("💾 Memory & Obsidian Vault")
     st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Przeszukuj swoje notatki, zapiski głosowe (Omi) i połączone pliki pamięci.</p>", unsafe_allow_html=True)
