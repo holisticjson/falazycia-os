@@ -2010,7 +2010,7 @@ elif menu == "Goals":
     st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • GOALS & MENTAL WORKSHOP</p>", unsafe_allow_html=True)
     st.title("🎯 Goals & Mental Workshop")
     
-    tab_loops, tab_goal_mode = st.tabs(["🗑️ Brain Dump & Open Loops", "🎯 Goal Mode (Autonomiczny Cel)"])
+    tab_loops, tab_goal_mode, tab_soul_agent = st.tabs(["🗑️ Brain Dump & Open Loops", "🎯 Goal Mode (Autonomiczny Cel)", "🧘 Soul Agent (Rytuały Zdrowia)"])
     
     with tab_loops:
         st.subheader("Twój mentalny odciążyciel — bezszumne uwalnianie pamięci roboczej")
@@ -2215,6 +2215,51 @@ Zwróć wyłącznie prawidłowy JSON, bez znaczników ```json i bez innych komen
                     st.warning("⚠️ Osiągnięto limit iteracji bez pełnego potwierdzenia od sędziego. Dokonaj weryfikacji manualnej.")
             else:
                 st.warning("Wpisz cel do zrealizowania.")
+                
+    with tab_soul_agent:
+        st.subheader("🧘 Soul Agent (Twój Doradca Duchowy & Mentalny)")
+        st.markdown("Osobisty asystent dbający o Twoją energię, poziom dopaminy, zdrowie fizyczne i psychiczne. Zoptymalizowany pod kątem ADHD.")
+        
+        # User input for current state
+        feelings = st.text_area("Jak się dzisiaj czujesz? (np. mam zjazd energetyczny, czuję ekscytację ale nie umiem się skupić, boli mnie kręgosłup):", placeholder="Opisz swój stan fizyczny i psychiczny...", key="goals_soul_feelings")
+        
+        if st.button("Zaplanuj Rytuały Zdrowotne", type="primary", key="goals_soul_run_btn"):
+            if feelings:
+                with st.spinner("Soul Agent analizuje Twój stan i projektuje rytuały..."):
+                    # Load user profile context
+                    o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+                    o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak pliku o_mnie.md"
+                    
+                    prompt = f"""Jesteś wirtualnym doradcą duchowym i mentalnym 'Soul' w zespole Tomasza Dudy (Holistic AIDHD).
+Tomasz (lub klient) opisał swoje dzisiejsze samopoczucie: "{feelings}".
+Kontekst użytkownika (historia i tożsamość):
+{o_mnie_context}
+ 
+Zaprojektuj spersonalizowany zestaw rytuałów fizycznych i psychicznych na dzisiaj, aby pomóc mu wejść w stan Flow i zrównoważyć układ nerwowy.
+Uwzględnij:
+1. Rytuał oddechowy (np. Wim Hof, oddech pudełkowy) dopasowany do stanu.
+2. Krótka aktywność fizyczna (stretching, joga, spacer) przyjazna dla kręgosłupa i postawy.
+3. Rytuał mentalny/medytacyjny (np. Focus Block, uziemienie).
+4. Rekomendacja dopaminowa (jak bezpiecznie i naturalnie podbić dopaminę bez scrollowania).
+ 
+Pisz w tonie pełnym empatii, spokoju, wsparcia, lecz konkretnie (ADHD-friendly).
+"""
+                    response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś wspierającym doradcą mentalnym i duchowym zorientowanym na ADHD.")
+                    st.session_state.soul_rituals_result = response
+                    st.rerun()
+            else:
+                st.warning("Opisz krótko jak się czujesz, aby model mógł dobrać rytuały.")
+                
+        if "soul_rituals_result" in st.session_state and st.session_state.soul_rituals_result:
+            st.markdown("### 🧘 Rekomendowane Rytuały i Plan Przepływu (Flow):")
+            st.markdown(f"""
+            <div class="custom-card" style="border-left: 4px solid #EC4899; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #170d14;">
+{st.session_state.soul_rituals_result}
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Wyczyść rytuały", key="goals_soul_clear_btn"):
+                st.session_state.soul_rituals_result = None
+                st.rerun()
 
 # 3. BAZA WIEDZY
 elif menu == "Notebook":
@@ -2645,7 +2690,7 @@ elif menu == "Lead_Radar":
     </div>
     """, unsafe_allow_html=True)
     
-    tab_radar, tab_audit, tab_config = st.tabs(["📡 Radar Zleceń", "📋 Audyty 21 Pytań (jaison.pl)", "⚙️ Konfiguracja Skanera"])
+    tab_radar, tab_sales_director, tab_audit, tab_config = st.tabs(["📡 Radar Zleceń", "📢 Sales Director (Outbound)", "📋 Audyty 21 Pytań (jaison.pl)", "⚙️ Konfiguracja Skanera"])
     
     with tab_radar:
         st.markdown("### 📥 Najnowsze zlecenia z rynku")
@@ -2665,6 +2710,39 @@ elif menu == "Lead_Radar":
             if st.button("🧠 Uruchom Analizę Vertex AI Search", use_container_width=True):
                 st.info("Inicjacja w ramach 1000$ GenAI App Builder. Pobieranie danych...")
                 
+    with tab_sales_director:
+        st.subheader("📢 Sales Director / Handlowiec AI")
+        st.markdown("Ten agent skanuje fora internetowe, Reddit, Twitter/X i grupy społecznościowe w poszukiwaniu pytań o automatyzację, systemy CRM (GoHighLevel) lub pomoc techniczną.")
+        
+        lr_search_kw = st.text_input("Słowa kluczowe do skanowania (np. CRM, n8n, automatyzacja, błędy):", value="n8n automatyzacja, szukam crm, automatyzacja procesów", key="lr_sales_search_kw")
+        if st.button("Uruchom Skanowanie Sieci i Generowanie Leadów", type="primary", key="lr_sales_scan_btn"):
+            with st.spinner("Sales Director przeszukuje sieć i analizuje wypowiedzi (Gemini)..."):
+                prompt = f"""Jesteś wirtualnym Sales Directorem w zespole 'Holistic Jason'.
+Przeskanowałeś Reddit, fora oraz social media pod kątem słów kluczowych: "{lr_search_kw}".
+Wygeneruj 3 realistyczne, gorące leady (zmyślone, ale oparte na prawdziwych problemach rynkowych).
+Dla każdego leada podaj:
+1. Skąd pochodzi wpis (np. r/entrepreneur, LinkedIn).
+2. Treść wpisu (ból klienta).
+3. Gotową, spersonalizowaną wiadomość outreach (w stylu Tomasza Dudy/Hormoziego - oferując pomoc, bez nachalnej sprzedaży, obniżając tarcie poznawcze).
+4. Proponowany "Next Action" do zapisania w CRM.
+
+Zwróć wynik w ładnym formacie markdown.
+"""
+                response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś dynamicznym i skutecznym Sales Directorem.")
+                st.session_state.sales_leads_result = response
+                st.rerun()
+                
+        if "sales_leads_result" in st.session_state and st.session_state.sales_leads_result:
+            st.markdown("### 🎯 Wykryte Szanse i Gotowy Outreach:")
+            st.markdown(f"""
+            <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #0d121c;">
+{st.session_state.sales_leads_result}
+            </div>
+            """, unsafe_allow_html=True)
+            if st.button("Wyczyść leady", key="lr_sales_clear_btn"):
+                st.session_state.sales_leads_result = None
+                st.rerun()
+
     with tab_audit:
         st.markdown("### 📋 Kwalifikacja Inbound - Audyt Systemowy 21 Pytań")
         st.caption("Przeglądaj odpowiedzi z ankiety kwalifikacyjnej bota na jaison.pl i generuj architektury wdrożeń.")
@@ -3892,129 +3970,9 @@ elif menu == "Finance":
                             st.success(f"Faktura wystawiona pomyślnie! Numer: `{res_data.get('number')}`. Dokument automatycznie trafił do kolejki wysyłkowej KSeF.")
                         else:
                             st.info("Tryb testowy: Faktura została poprawnie sformatowana do formatu JSON Fakturowni i zwalidowana pomyślnie!")
-                            st.code(json.dumps(payload, indent=4, ensure_ascii=False), language="json")
-                            st.success("Test KSeF OK! Faktura przygotowana do wysłania do Krajowego Systemu e-Faktur.")
-                    except Exception as ex:
-                        st.info("Tryb demonstracyjny: Wystawiono fakturę w trybie offline.")
-                        st.code(json.dumps(payload, indent=4, ensure_ascii=False), language="json")
-                        st.success("Test KSeF OK! Faktura przygotowana do wysłania do Krajowego Systemu e-Faktur.")
-            else:
-                st.warning("Uzupełnij dane odbiorcy faktury.")
-                
-    with tab_history:
-        st.markdown("### 📊 Status Faktur w Krajowym Systemie e-Faktur (KSeF)")
-        st.caption("Pasywny status Twoich faktur pobierany automatycznie przez REST API.")
-        
-        invoices = [
-            {"id": "f_01", "number": "FV/2026/05/01", "client": "Klinika Dermatologiczna", "amount": "6 150.00 PLN", "ksef_status": "✅ Przyjęta (UPO #1289381293)", "date": "2026-05-29"},
-            {"id": "f_02", "number": "FV/2026/05/02", "client": "Jan Szopa", "amount": "12 300.00 PLN", "ksef_status": "✅ Przyjęta (UPO #1289381294)", "date": "2026-05-28"},
-            {"id": "f_03", "number": "FV/2026/05/03", "client": "Marek Nowak", "amount": "2 460.00 PLN", "ksef_status": "⏳ W kolejce do wysyłki KSeF", "date": "2026-05-29"}
-        ]
-        
-        for inv in invoices:
-            accent = "#10B981" if "Przyjęta" in inv["ksef_status"] else "#F59E0B"
-            st.markdown(f"""
-            <div class="custom-card" style="border-left: 4px solid {accent}; margin-bottom: 10px; padding: 15px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <strong>🧾 Faktura {inv['number']}</strong>
-                    <span style="color: {accent}; font-weight: bold;">{inv['ksef_status']}</span>
-                </div>
-                <div style="font-size: 0.9rem; color: #94A3B8; margin-top: 5px;">
-                    Klient: {inv['client']} | Kwota: {inv['amount']} | Data: {inv['date']}
-                </div>
-            </div>
-            """, unsafe_allow_html=True)
+                   render_agent_console("Antigravity", "Online", "gemini-2.5-pro", "GCP Proxy", "#10B981")
 
-# 9. ANTIGRAVITY & HERMES CHAT
-elif menu == "Antigravity":
-    render_agent_console("Antigravity", "Online", "gemini-2.5-pro", "GCP Proxy", "#10B981")
-
-# 9C. AGENCI & CRONY (SALES / SOUL)
-elif menu == "Swarm":
-    st.title("✨ Specjalistyczni Agenci & Crony Operacyjne")
-    st.subheader("Wyznacz zadania i nadzoruj wirtualnych pracowników w tle")
-    
-    st.markdown("""
-    <div class="one-thing-banner" style="border-left-color: #F59E0B;">
-        <h3 style="margin-top: 0; color: #F59E0B;">⚡ Zintegrowane Usługi Agenckie</h3>
-        <p style="color: #CBD5E1; line-height: 1.6; margin-bottom: 0;">
-            W tej sekcji możesz uruchomić specjalne zadania cron (deep research rynku) oraz wyznaczyć zadania dla Sales Directora.
-            Dodatkowo, agent <strong>Soul</strong> (Twój doradca duchowy i mentalny) zaplanuje dla Ciebie rytuały zdrowotne.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    tab1, tab2, tab3 = st.tabs(["📢 Sales Director (Lead Scraper)", "🔍 Deep Research Cron (Trendy)", "🧘 Soul Agent (Rytuały Zdrowia)"])
-    
-    with tab1:
-        st.subheader("📢 Sales Director / Handlowiec AI")
-        st.markdown("Ten agent skanuje fora internetowe, Reddit, Twitter/X i grupy społecznościowe w poszukiwaniu pytań o automatyzację, systemy CRM (GoHighLevel) lub pomoc techniczną.")
-        
-        search_kw = st.text_input("Słowa kluczowe do skanowania (np. CRM, n8n, automatyzacja, błędy):", value="n8n automatyzacja, szukam crm, automatyzacja procesów")
-        if st.button("Uruchom Skanowanie Sieci i Generowanie Leadów", type="primary"):
-            with st.spinner("Sales Director przeszukuje sieć i analizuje wypowiedzi (Gemini)..."):
-                prompt = f"""Jesteś wirtualnym Sales Directorem w zespole 'Holistic Jason'.
-Przeskanowałeś Reddit, fora oraz social media pod kątem słów kluczowych: "{search_kw}".
-Wygeneruj 3 realistyczne, gorące leady (zmyślone, ale oparte na prawdziwych problemach rynkowych).
-Dla każdego leada podaj:
-1. Skąd pochodzi wpis (np. r/entrepreneur, LinkedIn).
-2. Treść wpisu (ból klienta).
-3. Gotową, spersonalizowaną wiadomość outreach (w stylu Tomasza Dudy/Hormoziego - oferując pomoc, bez nachalnej sprzedaży, obniżając tarcie poznawcze).
-4. Proponowany "Next Action" do zapisania w CRM.
-
-Zwróć wynik w ładnym formacie markdown.
-"""
-                response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś dynamicznym i skutecznym Sales Directorem.")
-                st.session_state.sales_leads_result = response
-                st.rerun()
-                
-        if "sales_leads_result" in st.session_state and st.session_state.sales_leads_result:
-            st.markdown("### 🎯 Wykryte Szanse i Gotowy Outreach:")
-            st.markdown(f"""
-            <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #0d121c;">
-{st.session_state.sales_leads_result}
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("Wyczyść leady"):
-                st.session_state.sales_leads_result = None
-                st.rerun()
-                
-    with tab2:
-        st.subheader("🔍 Deep Research Cron (Badanie Rynku)")
-        st.markdown("Daily Cron Job zbierający dane o tym, z jakimi problemami mierzą się przedsiębiorcy, czego szukają w Google, o co pytają na grupach i co ich frustruje.")
-        
-        target_group = st.text_input("Grupa docelowa (np. lokalne kliniki, twórcy kursów online):", value="przedsiębiorcy z ADHD, lokalne kliniki medyczne")
-        if st.button("Uruchom Daily Cron Deep Research", type="primary"):
-            with st.spinner("Cron Agent agreguje dane i analizuje trendy (Gemini)..."):
-                prompt = f"""Jesteś analitykiem rynku i trend-watcherem.
-Przeprowadź deep research problemów i potrzeb dla grupy docelowej: "{target_group}".
-Wyszukaj i przedstaw:
-1. Główne frustracje (czego nienawidzą w obecnych rozwiązaniach).
-2. Najczęstsze pytania w sieci w ciągu ostatnich 30 dni.
-3. Rekomendacja: Jaki produkt cyfrowy lub usługę automatyzacji / AI można im zaoferować jako "High-Ticket Offer" (oferta premium o wartości 5000+ PLN).
-
-Sformatuj jako raport rynkowy."""
-                response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś wnikliwym badaczem rynku.")
-                st.session_state.deep_research_result = response
-                st.rerun()
-                
-        if "deep_research_result" in st.session_state and st.session_state.deep_research_result:
-            st.markdown("### 📊 Raport Rynkowy i Analiza Trendów:")
-            st.markdown(f"""
-            <div class="custom-card" style="border-left: 4px solid #F59E0B; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #17120a;">
-{st.session_state.deep_research_result}
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("Wyczyść raport researchu"):
-                st.session_state.deep_research_result = None
-                st.rerun()
-                
-    with tab3:
-        st.subheader("🧘 Soul Agent (Twój Doradca Duchowy & Mentalny)")
-        st.markdown("Osobisty asystent dbający o Twoją energię, poziom dopaminy, zdrowie fizyczne i psychiczne. Zoptymalizowany pod kątem ADHD.")
-        
-        # User input for current state
-        feelings = st.text_area("Jak się dzisiaj czujesz? (np. mam zjazd energetyczny, czuję ekscytację ale nie umiem się skupić, boli mnie kręgosłup):", placeholder="Opisz swój stan fizyczny i psychiczny...")
+# 10. PRISTINE MEMORYup):", placeholder="Opisz swój stan fizyczny i psychiczny...")
         
         if st.button("Zaplanuj Rytuały Zdrowotne", type="primary"):
             if feelings:
@@ -6487,82 +6445,115 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
             st.subheader("🧠 Research Hub — Głęboki Research & Analiza")
             st.markdown("Zaawansowane narzędzie do eksploracji nisz rynkowych, analizy trendów rynkowych i projektowania lejków High-Ticket. Oparte na modelach rozumowania Gemini.")
             
-            research_topic = st.text_input("Wpisz temat researchu (np. 'SaaS AI dla branży nieruchomości w Polsce' lub 'Faceless kanały o finansach osobistych'):", 
-                                          value="Automatyzacje AI dla małych agencji marketingowych w Polsce", key="lc_topic")
+            tab_manual_res, tab_cron_res = st.tabs(["🔍 Głęboki Research (Manual)", "⏱️ Deep Research Cron (Auto/Trend-Watching)"])
             
-            analyst_persona = st.selectbox(
-                "Wybierz wiodącą rolę stratega:",
-                ["Business & Product Architect (CEO)", "Growth Hacker & Traffic Magnet (CMO)", "NLP Copywriting & Psychology Expert (CSO)"],
-                key="lc_persona"
-            )
-            
-            depth_level = st.select_slider("Głębokość analizy:", options=["Szybki Brief", "Średnia (Standard)", "Ekstremalna (Maksymalna precyzja)"], value="Średnia (Standard)")
-            
-            if "lc_brief_result" not in st.session_state:
-                st.session_state.lc_brief_result = None
-
-            if st.button("🔍 Rozpocznij Głębokie Rozumowanie", type="primary", use_container_width=True):
-                with st.spinner("Gemini przeczesuje bazę wiedzy, modeluje strukturę i przeprowadza analizę..."):
-                    try:
-                        persona_prompts = {
-                            "Business & Product Architect (CEO)": "Jesteś wybitnym CEO AI i architektem biznesowym, specjalistą od modeli subskrypcyjnych, retencji i eliminacji chaosu.",
-                            "Growth Hacker & Traffic Magnet (CMO)": "Jesteś legendarnym CMO, ekspertem od lejków UGC, wirusowych zasięgów organicznych i optymalizacji konwersji (CRO).",
-                            "NLP Copywriting & Psychology Expert (CSO)": "Jesteś mistrzem psychologii sprzedaży i copywritingu NLP (metaprogramy, sensoryka VAK, presupozycje Miltona)."
-                        }
-                        
-                        system_inst = f"""{persona_prompts[analyst_persona]} 
-Zawsze formatuj wyjście w sposób przejrzysty dla osób z ADHD (pogrubienia, wypunktowania, ikony, brak długich bloków tekstu). Stosuj strukturę strategicznego raportu."""
-
-                        prompt_user = f"""Temat researchu: {research_topic}
-Poziom szczegółowości: {depth_level}
-Custom branding: Research Hub (brak jakichkolwiek nawiązań do innych zewnętrznych platform).
-
-Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan taktyczny podzielony na sekcje:
-1. 💡 DIAGNOZA NISZY: Zidentyfikuj 3 największe bóle (pain points) klientów w tym segmencie.
-2. ⚡ ROZWIĄZANIE & PRODUKT: Zaproponuj strukturę produktu High-Ticket lub SaaS, który rozwiązuje te problemy.
-3. 🎯 STRATEGIA MARKETINGOWA & LEJEK: Zaprojektuj 3-etapowy lejek UGC dla kanałów Faceless (TikTok/YT/IG) wraz z propozycją wirusowego formatu wideo.
-4. 💰 MONETYZACJA: Zaproponuj model wyceny i szacunkowy zwrot z inwestycji (ROI) dla klienta.
-5. 📋 PLAN DZIAŁANIA (ACTION PLAN): Lista kontrolna TODO do wdrożenia na już."""
-
-                        messages = [{"role": "user", "content": prompt_user}]
-                        analysis_output = call_gemini_api(messages, system_inst)
-                        st.session_state.lc_brief_result = analysis_output
-                        st.success("🎉 Analiza zakończona sukcesem!")
-                    except Exception as ex:
-                        st.error(f"Błąd analizy: {str(ex)}")
-                        
-            if st.session_state.lc_brief_result:
-                st.markdown("### 📋 Wynik Analizy Strategicznej (Research Hub)")
-                st.markdown(st.session_state.lc_brief_result)
+            with tab_manual_res:
+                research_topic = st.text_input("Wpisz temat researchu (np. 'SaaS AI dla branży nieruchomości w Polsce' lub 'Faceless kanały o finansach osobistych'):", 
+                                              value="Automatyzacje AI dla małych agencji marketingowych w Polsce", key="lc_topic")
                 
-                # Opcja pobrania i zapisu
-                col_b1, col_b2 = st.columns(2)
-                with col_b1:
-                    st.download_button(
-                        "📥 Pobierz jako plik tekstowy",
-                        data=st.session_state.lc_brief_result,
-                        file_name=f"research_hub_{research_topic.lower().replace(' ', '_')}.txt",
-                        mime="text/plain",
-                        use_container_width=True
-                    )
-                with col_b2:
-                    if st.button("💾 Zapisz do Bazy Wiedzy (Vault)", use_container_width=True):
+                analyst_persona = st.selectbox(
+                    "Wybierz wiodącą rolę stratega:",
+                    ["Business & Product Architect (CEO)", "Growth Hacker & Traffic Magnet (CMO)", "NLP Copywriting & Psychology Expert (CSO)"],
+                    key="lc_persona"
+                )
+                
+                depth_level = st.select_slider("Głębokość analizy:", options=["Szybki Brief", "Średnia (Standard)", "Ekstremalna (Maksymalna precyzja)"], value="Średnia (Standard)")
+                
+                if "lc_brief_result" not in st.session_state:
+                    st.session_state.lc_brief_result = None
+    
+                if st.button("🔍 Rozpocznij Głębokie Rozumowanie", type="primary", use_container_width=True):
+                    with st.spinner("Gemini przeczesuje bazę wiedzy, modeluje strukturę i przeprowadza analizę..."):
                         try:
-                            # Tworzenie dokumentu i zapisu
-                            vault_path = os.path.join(BRAIN_DUMP_DIR, f"research_hub_brief_{int(time.time())}.json")
-                            dump_data = {
-                                "id": f"research_hub_{int(time.time())}",
-                                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-                                "thought": f"Analiza Research Hub dla: {research_topic}\n\n{st.session_state.lc_brief_result}",
-                                "links": "",
-                                "file_attached": None,
-                                "category": "Now",
-                                "status": "active"
+                            persona_prompts = {
+                                "Business & Product Architect (CEO)": "Jesteś wybitnym CEO AI i architektem biznesowym, specjalistą od modeli subskrypcyjnych, retencji i eliminacji chaosu.",
+                                "Growth Hacker & Traffic Magnet (CMO)": "Jesteś legendarnym CMO, ekspertem od lejków UGC, wirusowych zasięgów organicznych i optymalizacji konwersji (CRO).",
+                                "NLP Copywriting & Psychology Expert (CSO)": "Jesteś mistrzem psychologii sprzedaży i copywritingu NLP (metaprogramy, sensoryka VAK, presupozycje Miltona)."
                             }
-                            json.dump(dump_data, open(vault_path, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
-                            st.success("💾 Pomyślnie zapisano w Skarbcu Wiedzy!")
-                        except Exception as e_s:
-                            st.error(f"Nie udało się zapisać: {str(e_s)}")
+                            
+                            system_inst = f"""{persona_prompts[analyst_persona]} 
+    Zawsze formatuj wyjście w sposób przejrzysty dla osób z ADHD (pogrubienia, wypunktowania, ikony, brak długich bloków tekstu). Stosuj strukturę strategicznego raportu."""
+    
+                            prompt_user = f"""Temat researchu: {research_topic}
+    Poziom szczegółowości: {depth_level}
+    Custom branding: Research Hub (brak jakichkolwiek nawiązań do innych zewnętrznych platform).
+    
+    Przeprowadź kompleksowe badanie tego tematu i wygeneruj profesjonalny plan taktyczny podzielony na sekcje:
+    1. 💡 DIAGNOZA NISZY: Zidentyfikuj 3 największe bóle (pain points) klientów w tym segmencie.
+    2. ⚡ ROZWIĄZANIE & PRODUKT: Zaproponuj strukturę produktu High-Ticket lub SaaS, który rozwiązuje te problemy.
+    3. 🎯 STRATEGIA MARKETINGOWA & LEJEK: Zaprojektuj 3-etapowy lejek UGC dla kanałów Faceless (TikTok/YT/IG) wraz z propozycją wirusowego formatu wideo.
+    4. 💰 MONETYZACJA: Zaproponuj model wyceny i szacunkowy zwrot z inwestycji (ROI) dla klienta.
+    5. 📋 PLAN DZIAŁANIA (ACTION PLAN): Lista kontrolna TODO do wdrożenia na już."""
+    
+                            messages = [{"role": "user", "content": prompt_user}]
+                            analysis_output = call_gemini_api(messages, system_inst)
+                            st.session_state.lc_brief_result = analysis_output
+                            st.success("🎉 Analiza zakończona sukcesem!")
+                        except Exception as ex:
+                            st.error(f"Błąd analizy: {str(ex)}")
+                            
+                if st.session_state.lc_brief_result:
+                    st.markdown("### 📋 Wynik Analizy Strategicznej (Research Hub)")
+                    st.markdown(st.session_state.lc_brief_result)
+                    
+                    # Opcja pobrania i zapisu
+                    col_b1, col_b2 = st.columns(2)
+                    with col_b1:
+                        st.download_button(
+                            "📥 Pobierz jako plik tekstowy",
+                            data=st.session_state.lc_brief_result,
+                            file_name=f"research_hub_{research_topic.lower().replace(' ', '_')}.txt",
+                            mime="text/plain",
+                            use_container_width=True
+                        )
+                    with col_b2:
+                        if st.button("💾 Zapisz do Bazy Wiedzy (Vault)", use_container_width=True):
+                            try:
+                                # Tworzenie dokumentu i zapisu
+                                vault_path = os.path.join(BRAIN_DUMP_DIR, f"research_hub_brief_{int(time.time())}.json")
+                                dump_data = {
+                                    "id": f"research_hub_{int(time.time())}",
+                                    "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
+                                    "thought": f"Analiza Research Hub dla: {research_topic}\n\n{st.session_state.lc_brief_result}",
+                                    "links": "",
+                                    "file_attached": None,
+                                    "category": "Now",
+                                    "status": "active"
+                                }
+                                json.dump(dump_data, open(vault_path, "w", encoding="utf-8"), ensure_ascii=False, indent=4)
+                                st.success("💾 Pomyślnie zapisano w Skarbcu Wiedzy!")
+                            except Exception as e_s:
+                                st.error(f"Nie udało się zapisać: {str(e_s)}")
+                                
+            with tab_cron_res:
+                st.subheader("🔍 Deep Research Cron (Badanie Rynku)")
+                st.markdown("Daily Cron Job zbierający dane o tym, z jakimi problemami mierzą się przedsiębiorcy, czego szukają w Google, o co pytają na grupach i co ich frustruje.")
+                
+                target_group = st.text_input("Grupa docelowa (np. lokalne kliniki, twórcy kursów online):", value="przedsiębiorcy z ADHD, lokalne kliniki medyczne", key="rh_cron_target_group")
+                if st.button("Uruchom Daily Cron Deep Research", type="primary", key="rh_cron_run_btn"):
+                    with st.spinner("Cron Agent agreguje dane i analizuje trendy (Gemini)..."):
+                        prompt = f"""Jesteś analitykiem rynku i trend-watcherem.
+        Przeprowadź deep research problemów i potrzeb dla grupy docelowej: "{target_group}".
+        Wyszukaj i przedstaw:
+        1. Główne frustracje (czego nienawidzą w obecnych rozwiązaniach).
+        2. Najczęstsze pytania w sieci w ciągu ostatnich 30 dni.
+        3. Rekomendacja: Jaki produkt cyfrowy lub usługę automatyzacji / AI można im zaoferować jako "High-Ticket Offer" (oferta premium o wartości 5000+ PLN).
+        
+        Sformatuj jako raport rynkowy."""
+                        response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś wnikliwym badaczem rynku.")
+                        st.session_state.deep_research_result = response
+                        st.rerun()
+                        
+                if "deep_research_result" in st.session_state and st.session_state.deep_research_result:
+                    st.markdown("### 📊 Raport Rynkowy i Analiza Trendów:")
+                    st.markdown(f"""
+                    <div class="custom-card" style="border-left: 4px solid #F59E0B; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #17120a;">
+        {st.session_state.deep_research_result}
+                    </div>
+                    """, unsafe_allow_html=True)
+                    if st.button("Wyczyść raport researchu", key="rh_cron_clear_btn"):
+                        st.session_state.deep_research_result = None
+                        st.rerun()
 
         # --- TOOL 10: E-COMMERCE BACKGROUND STUDIO ---
         elif tool == "Ecom":
