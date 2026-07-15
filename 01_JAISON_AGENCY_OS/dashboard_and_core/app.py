@@ -3970,47 +3970,41 @@ elif menu == "Finance":
                             st.success(f"Faktura wystawiona pomyślnie! Numer: `{res_data.get('number')}`. Dokument automatycznie trafił do kolejki wysyłkowej KSeF.")
                         else:
                             st.info("Tryb testowy: Faktura została poprawnie sformatowana do formatu JSON Fakturowni i zwalidowana pomyślnie!")
-                   render_agent_console("Antigravity", "Online", "gemini-2.5-pro", "GCP Proxy", "#10B981")
-
-# 10. PRISTINE MEMORYup):", placeholder="Opisz swój stan fizyczny i psychiczny...")
-        
-        if st.button("Zaplanuj Rytuały Zdrowotne", type="primary"):
-            if feelings:
-                with st.spinner("Soul Agent analizuje Twój stan i projektuje rytuały..."):
-                    # Load user profile context
-                    o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
-                    o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak pliku o_mnie.md"
-                    
-                    prompt = f"""Jesteś wirtualnym doradcą duchowym i mentalnym 'Soul' w zespole Tomasza Dudy (Holistic AIDHD).
-Tomasz (lub klient) opisał swoje dzisiejsze samopoczucie: "{feelings}".
-Kontekst użytkownika (historia i tożsamość):
-{o_mnie_context}
-
-Zaprojektuj spersonalizowany zestaw rytuałów fizycznych i psychicznych na dzisiaj, aby pomóc mu wejść w stan Flow i zrównoważyć układ nerwowy.
-Uwzględnij:
-1. Rytuał oddechowy (np. Wim Hof, oddech pudełkowy) dopasowany do stanu.
-2. Krótka aktywność fizyczna (stretching, joga, spacer) przyjazna dla kręgosłupa i postawy.
-3. Rytuał mentalny/medytacyjny (np. Focus Block, uziemienie).
-4. Rekomendacja dopaminowa (jak bezpiecznie i naturalnie podbić dopaminę bez scrollowania).
-
-Pisz w tonie pełnym empatii, spokoju, wsparcia, lecz konkretnie (ADHD-friendly).
-"""
-                    response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś wspierającym doradcą mentalnym i duchowym zorientowanym na ADHD.")
-                    st.session_state.soul_rituals_result = response
-                    st.rerun()
+                            st.code(json.dumps(payload, indent=4, ensure_ascii=False), language="json")
+                    except Exception as ex:
+                        st.info("Tryb demonstracyjny: Wystawiono fakturę w trybie offline.")
+                        st.code(json.dumps(payload, indent=4, ensure_ascii=False), language="json")
+                        st.success("Test KSeF OK! Faktura przygotowana do wysłania do Krajowego Systemu e-Faktur.")
             else:
-                st.warning("Opisz krótko jak się czujesz, aby model mógł dobrać rytuały.")
+                st.warning("Uzupełnij dane odbiorcy faktury.")
                 
-        if "soul_rituals_result" in st.session_state and st.session_state.soul_rituals_result:
-            st.markdown("### 🧘 Rekomendowane Rytuały i Plan Przepływu (Flow):")
+    with tab_history:
+        st.markdown("### 📊 Status Faktur w Krajowym Systemie e-Faktur (KSeF)")
+        st.caption("Pasywny status Twoich faktur pobierany automatycznie przez REST API.")
+        
+        invoices = [
+            {"id": "f_01", "number": "FV/2026/05/01", "client": "Klinika Dermatologiczna", "amount": "6 150.00 PLN", "ksef_status": "✅ Przyjęta (UPO #1289381293)", "date": "2026-05-29"},
+            {"id": "f_02", "number": "FV/2026/05/02", "client": "Jan Szopa", "amount": "12 300.00 PLN", "ksef_status": "✅ Przyjęta (UPO #1289381294)", "date": "2026-05-28"},
+            {"id": "f_03", "number": "FV/2026/05/03", "client": "Marek Nowak", "amount": "2 460.00 PLN", "ksef_status": "⏳ W kolejce do wysyłki KSeF", "date": "2026-05-29"}
+        ]
+        
+        for inv in invoices:
+            accent = "#10B981" if "Przyjęta" in inv["ksef_status"] else "#F59E0B"
             st.markdown(f"""
-            <div class="custom-card" style="border-left: 4px solid #EC4899; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #170d14;">
-{st.session_state.soul_rituals_result}
+            <div class="custom-card" style="border-left: 4px solid {accent}; margin-bottom: 10px; padding: 15px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <strong>🧾 Faktura {inv['number']}</strong>
+                    <span style="color: {accent}; font-weight: bold;">{inv['ksef_status']}</span>
+                </div>
+                <div style="font-size: 0.9rem; color: #94A3B8; margin-top: 5px;">
+                    Klient: {inv['client']} | Kwota: {inv['amount']} | Data: {inv['date']}
+                </div>
             </div>
             """, unsafe_allow_html=True)
-            if st.button("Wyczyść rytuały"):
-                st.session_state.soul_rituals_result = None
-                st.rerun()
+
+# 9. ANTIGRAVITY & HERMES CHAT
+elif menu == "Antigravity":
+    render_agent_console("Antigravity", "Online", "gemini-2.5-pro", "GCP Proxy", "#10B981")
 
 # 10. PRISTINE MEMORY
     st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • MEMORY</p>", unsafe_allow_html=True)
