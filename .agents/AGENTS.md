@@ -143,4 +143,14 @@ Wszyscy agenci pracujący w systemie mają obowiązek trzymać się tych stałyc
   - Wszystkie taktyki, SOP-y i checklisty dla kampanii reklamowych Meta Ads, Google Ads i TikTok Ads mają być centralizowane wyłącznie w jednym skillu: **`.agents/skills/media-buyer-ads`**. Agenci mają unikać tworzenia zduplikowanych, rozproszonych plików o reklamach.
 
 
+15. **INTEGRACJA COMPOSIO.DEV ORAZ STANDARD MODEL CONTEXT PROTOCOL (MCP)**
+Wszyscy agenci (w tym Hermes, Antigravity i inni) pracujący nad integracjami społecznościowymi, kalendarzami, pocztą i zewnętrznymi narzędziami SaaS, mają bezwzględny obowiązek stosowania poniższych standardów architektonicznych:
+- **Centralny Hub Integracyjny - Composio.dev:** Wszelkie połączenia z platformami społecznościowymi (LinkedIn, Twitter/X, Meta, Instagram), narzędziami komunikacji (Gmail, Google Calendar, Slack) oraz CRM, mają być realizowane wyłącznie za pośrednictwem platformy **Composio.dev** (Composio) jako zaufanego i bezpiecznego mostu OAuth. Zabrania się pisania niestandardowych, rozproszonych integracji API bezpośrednio w kodzie, aby chronić konta przed blokadami (bany anty-spamowe) i centralizować zarządzanie sesjami autoryzacyjnymi.
+- **Dostęp przez Model Context Protocol (MCP):** Docelowym standardem dostępu agentów do narzędzi Composio jest protokół **MCP**. Agenty serwerowe (np. Hermes OS działający na GCP VM) mają ładować i dynamicznie odpytywać narzędzia jako natywne serwery MCP, co upraszcza wywoływanie akcji bezpośrednio z pętli LLM i pozwala na pełne, autonomiczne działanie bez niepotrzebnych systemów pośredniczących (middleware).
+- **Złoty Podział (n8n vs Hermes MCP):**
+  - **n8n** obsługuje eventy zewnętrzne, webhooki i powtarzalne, liniowe potoki automatyzacji (np. automatyczny onboarding po formularzu).
+  - **Hermes (via Composio MCP)** obsługuje dynamiczne, decyzyjne pętle aktywne, moderację treści i autonomiczne publikacje social media na żądanie użytkownika.
+
+
+
 
