@@ -131,4 +131,16 @@ Te wytyczne mają na celu eliminację wszelkich śladów ("footprints") generowa
 - **Procedura automatycznego czyszczenia**: Przed zatwierdzeniem zmian w jakimkolwiek pliku HTML, agent ma bezwzględny obowiązek przeskanować plik pod kątem występowania znaków `**` i niezwłocznie zastąpić je znacznikami `<strong>` i `</strong>`.
 - **Humanizacja i naturalność języka (NLP)**: Teksty pisane na strony internetowe nie mogą brzmieć szablonowo (AI-ish). Unikamy powtarzalnych zwrotów (np. "W dzisiejszym dynamicznym świecie", "Warto pamiętać", "Kluczowym aspektem"). Stosujemy naturalne, ludzkie przejścia tonalne, zróżnicowaną długość zdań oraz perswazyjne NLP (sensoryka VAK, presupozycje, visual anchoring dla ułatwienia skanowania wzrokiem).
 
+14. **STAŁE KONFIGURACJE E-MAILI I STRATEGIA DOMENOWA JAISON OS**
+Wszyscy agenci pracujący w systemie mają obowiązek trzymać się tych stałych namiarów:
+- **E-maile systemowe:**
+  - **Administracja, RODO, Newslettery:** `info@jaison.pl`
+  - **Komunikacja bezpośrednia / Biznesowa / Kontakt:** `hello@jaison.pl`
+- **Strategia Domenowa i Landing Page:**
+  - **Główna domena `jaison.pl`** jest zarezerwowana na luksusowy, interaktywny frontend (np. Streamlit, chatbot, widgety, integracja z `cal.com`).
+  - **Systeme.io (Funnele i Landingi):** Wszystkie strony lądowania, podstrony pobierania lead magnetów, oraz e-booki w Systeme.io mają działać pod dedykowaną subdomeną, np. **`go.jaison.pl`** lub **`leads.jaison.pl`**. Kategorycznie zabrania się podpinania głównej domeny pod Systeme.io, aby nie blokować interaktywnego frontendu i zachować czysty podział na "premium biuro" (`jaison.pl`) i "maszynę generującą ruch" (`go.jaison.pl`).
+- **Skille Ads i Ruchu (Media Buyer):**
+  - Wszystkie taktyki, SOP-y i checklisty dla kampanii reklamowych Meta Ads, Google Ads i TikTok Ads mają być centralizowane wyłącznie w jednym skillu: **`.agents/skills/media-buyer-ads`**. Agenci mają unikać tworzenia zduplikowanych, rozproszonych plików o reklamach.
+
+
 
