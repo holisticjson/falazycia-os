@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bezpieczny Komputer: Prywatna Twierdza — Jak odciążyć system, odzyskać RAM i zabezpieczyć Windowsa bez zbędnych antywirusów</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f0ff;
+            --primary-dark: #00c2cc;
+            --bg-dark: #080b11;
+            --card-bg: rgba(13, 20, 30, 0.4);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --success: #00b894;
+            --warning: #fdcb6e;
+            --error: #ff7675;
+            --border: rgba(0, 240, 255, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
+            padding: 40px 20px;
+        }
+
+        .ebook-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .ebook-container {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Front Cover */
+        .cover {
+            text-align: center;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 50px;
+            margin-bottom: 50px;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            background: rgba(130, 177, 255, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #ffffff;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .author {
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        /* Chapter Styling */
+        h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 26px;
+            color: #ffffff;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 20px;
+            color: var(--primary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            font-size: 15px;
+            color: var(--text-main);
+            text-align: justify;
+        }
+
+        strong {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        ul, ol {
+            margin-bottom: 24px;
+            padding-left: 24px;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+
+        /* Callouts / Info boxes */
+        .box {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+        }
+
+        .box-title {
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .box-warning {
+            border-left-color: var(--error);
+            background: rgba(255, 118, 117, 0.03);
+        }
+
+        .box-success {
+            border-left-color: var(--success);
+            background: rgba(0, 184, 148, 0.03);
+        }
+
+        /* Image Containers */
+        .img-container {
+            text-align: center;
+            margin: 30px 0;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .img-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-height: 480px;
+        }
+
+        .img-caption {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .flex-images {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .flex-images img {
+            max-width: 200px;
+        }
+
+        code {
+            font-family: monospace;
+            background: rgba(130, 177, 255, 0.1);
+            color: var(--primary);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 14.5px;
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: rgba(0, 240, 255, 0.08);
+            color: #ffffff;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Print Button Styling */
+        .print-button-container {
+            max-width: 800px;
+            margin: 0 auto 24px auto;
+            text-align: right;
+        }
+        .print-btn {
+            background-color: var(--primary);
+            color: var(--bg-dark);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14.5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 14px rgba(0, 240, 255, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .print-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        @media print {
+            .print-button-container {
+                display: none !important;
+            }
+        }
+
+        /* PDF Printing Optimization */
+        @media print {
+            body {
+                background: #ffffff;
+                color: #000000;
+                padding: 0;
+            }
+            .ebook-container {
+                box-shadow: none;
+                border: none;
+                background: #ffffff;
+                padding: 0;
+                color: #000000;
+            }
+            h1, h2, h3, strong, .box-title {
+                color: #000000 !important;
+            }
+            .cover {
+                page-break-after: always;
+            }
+            h2 {
+                page-break-before: always;
+            }
+            .img-container {
+                page-break-inside: avoid;
+                background: none;
+                border: none;
+            }
+            .box {
+                background: #f9f9f9;
+                border-left: 4px solid #000000;
+                color: #000000;
+            }
+            code {
+                background: #eeeeee;
+                color: #000000;
+            }
+            a {
+                color: #000000;
+                text-decoration: underline;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-button-container">
+        <button onclick="window.print()" class="print-btn">
+            🖨️ Zapisz jako PDF / Wydrukuj Poradnik
+        </button>
+    </div>
+    <div class="ebook-container">
+        
+        <!-- COVER PAGE -->
+        <div class="cover">
+            <span class="cover-badge">E-book & Poradnik Praktyczny</span>
+            <h1>Bezpieczny Komputer</h1>
+            <p class="subtitle">Prywatna Twierdza: Jak skutecznie zabezpieczyć, odciążyć i zoptymalizować system Windows bez zbędnych programów obciążających RAM i procesor</p>
+            <p class="author">Tomasz | J(AI)SON — ADHD-friendly systems architect</p>
+        </div>
+
+        <!-- INTRO -->
+        <h2>Wstęp: Iluzja ochrony, która pożera Twój sprzęt</h2>
+        <p>
+            Słyszysz głośny szum wentylatora? Widzisz ten wskaźnik myszy kręcący się w nieskończoność? Czujesz narastającą frustrację, gdy proste otwarcie nowej karty w przeglądarce trwa wieczność, a system informuje Cię o braku wolnej pamięci RAM? 
+        </p>
+        <p>
+            Większość użytkowników Windowsa w dobrej wierze instaluje zewnętrzne "tarcze ochronne" i "optymalizatory". Zewnętrzne pakiety antywirusowe oraz programy czyszczące obiecują bezpieczeństwo i porządek. Rzeczywistość jest jednak brutalna: te programy same często zachowują się jak pasożyty. Stale działają w tle, wysyłają gigabajty telemetrii, bombardują powiadomieniami reklamowymi i pożerają cenne zasoby procesora oraz pamięci RAM.
+        </p>
+        <p>
+            <strong>Ten e-book zmieni wszystko.</strong> Pokażę Ci, jak przywrócić komputer do stanu pełnej wydajności, budując wokół niego "Prywatną Twierdzę" – bez ciężkich programów i bez wydawania złotówki. Uwolnisz zablokowany RAM, odciążysz procesor, zaszyfrujesz połączenie sieciowe ultralekkim tunelem i zablokujesz reklamy u samego źródła. Wszystko za pomocą wbudowanych systemowo mechanizmów i lekkich narzędzi Open Source.
+        </p>
+
+        <!-- CHAPTER 1 -->
+        <h2>Rozdział 1: Wielkie odgracanie, czyli pożegnanie z antywirusowym bloatware</h2>
+        <p>
+            Pierwszym krokiem do odzyskania wydajności komputera jest usunięcie zewnętrznego oprogramowania, które dubluje funkcje systemowe. Współczesne systemy Windows 10 i 11 posiadają już wbudowane, doskonałe i całkowicie bezpłatne rozwiązanie ochronne.
+        </p>
+        
+        <h3>Dlaczego ciężkie programy ochronne i optymalizatory w tle to pułapka?</h3>
+        <ul>
+            <li><strong>Dublowanie procesów:</strong> Zewnętrzny pakiet antywirusowy walczy o te same zasoby i uprawnienia co wbudowane zabezpieczenia systemowe, co wywołuje mikrozacięcia systemu.</li>
+            <li><strong>Zbędny start:</strong> Programy czyszczące instalują usługi monitorujące, które stale sprawdzają pliki w tle, bezustannie zużywając pamięć RAM.</li>
+            <li><strong>Telemetria i reklamy:</strong> Tego typu oprogramowanie często rejestruje Twoją aktywność sieciową i wysyła raporty, obciążając łącze oraz wyświetlając irytujące powiadomienia zachęcające do zakupu wersji płatnej.</li>
+        </ul>
+
+        <div class="box box-warning">
+            <div class="box-title">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                Instrukcja: Bezpieczne odinstalowanie zbędnych programów
+            </div>
+            <p>
+                Aby trwale usunąć zbędne oprogramowanie antywirusowe i optymalizacyjne z komputera:
+            </p>
+            <ol>
+                <li>Naciśnij na klawiaturze skrót <strong>Windows + R</strong>, wpisz <code>appwiz.cpl</code> i kliknij Enter.</li>
+                <li>Na liście zainstalowanych aplikacji znajdź programy ochronne lub czyszczące firm trzecich, których chcesz się pozbyć.</li>
+                <li>Kliknij na niego prawym przyciskiem myszy i wybierz <strong>Odinstaluj</strong>.</li>
+                <li>Postępuj zgodnie z instrukcjami deinstalatora. Jeśli zostaniesz zapytany o powód, wybierz dowolną opcję. Na koniec <strong>zrestartuj komputer</strong>.</li>
+            </ol>
+            <div class="img-container">
+                <img src="deinstalacja_programow.png" alt="Ekran odinstalowania programów w Windows" />
+                <div class="img-caption">Rys. 1. Klasyczny panel usuwania zbędnych aplikacji w systemie Windows.</div>
+            </div>
+        </div>
+
+        <h3>Co w zamian? Zabezpieczenia Windows (Defender)</h3>
+        <p>
+            Po odinstalowaniu zewnętrznego antywirusa, system Windows automatycznie aktywuje wbudowane <strong>Zabezpieczenia Windows (Windows Defender)</strong>. Jest to rozwiązanie klasy enterprise, które regularnie wygrywa w niezależnych testach bezpieczeństwa (np. AV-TEST). 
+        </p>
+        <p>
+            Działa bezpośrednio w jądrze systemu, dzięki czemu nie wymaga uruchamiania ciężkich procesów nakładkowych. Uruchamia się w tle tylko podczas zapisu/odczytu plików i nie wpływa negatywnie na płynność pracy.
+        </p>
+
+        <!-- CHAPTER 2 -->
+        <h2>Rozdział 2: Sieciowa tarcza bez obciążenia: Cloudflare WARP i DNS</h2>
+        <p>
+            Gdy Twój system jest już czysty, czas zabezpieczyć ruch internetowy. Zamiast instalować ciężkie VPN-y, które dławią przepustowość łącza i obciążają procesor ciągłym szyfrowaniem, wdrożymy ultralekkie rozwiązanie sieciowe.
+        </p>
+
+        <p>
+            Przed wyborem odpowiedniej metody warto zrozumieć fundamentalną różnicę w działaniu obu tych usług od Cloudflare. Poniższa tabela wyjaśnia, jak działają i kiedy z nich korzystać:
+        </p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Funkcja</th>
+                    <th>Cloudflare WARP (Aplikacja)</th>
+                    <th>Ręczna zmiana DNS (1.1.1.2)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Szyfrowanie ruchu</strong></td>
+                    <td>TAK (cały ruch z Twojego komputera jest w pełni szyfrowany)</td>
+                    <td>NIE (tylko same zapytania o adresy stron są zabezpieczone)</td>
+                </tr>
+                <tr>
+                    <td><strong>Maskowanie adresu IP</strong></td>
+                    <td>TAK (strony www widzą adres serwera Cloudflare zamiast Twojego)</td>
+                    <td>NIE (strony internetowe nadal widzą Twój prawdziwy adres IP)</td>
+                </tr>
+                <tr>
+                    <td><strong>Filtrowanie Malware</strong></td>
+                    <td>TAK (automatyczna blokada zagrożeń)</td>
+                    <td>TAK (blokuje złośliwe domeny u samego źródła zapytań)</td>
+                </tr>
+                <tr>
+                    <td><strong>Obciążenie sprzętu</strong></td>
+                    <td>Minimalne (działa jako bardzo lekka usługa systemowa w tle)</td>
+                    <td>Zerowe (czysta konfiguracja Windowsa, brak aplikacji w tle)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>1. Cloudflare WARP (1.1.1.1) — Szybki i darmowy tunel</h3>
+        <p>
+            <strong>Cloudflare WARP</strong> to aplikacja, która chroni Twoją prywatność w sieci poprzez przekierowanie ruchu przez globalną, zoptymalizowaną sieć Cloudflare przy użyciu nowoczesnego, ultralekkiego protokołu <strong>WireGuard</strong>. Szyfruje Twoje dane, chroniąc Cię np. w publicznych sieciach Wi-Fi, nie powodując przy tym zauważalnego zużycia procesora i pamięci RAM. Oficjalną aplikację możesz pobrać bezpośrednio ze strony <a href="https://1.1.1.1/" target="_blank" style="color: var(--primary); text-decoration: none;"><strong>1.1.1.1</strong></a>.
+        </p>
+
+        <div class="box box-success">
+            <div class="box-title">
+                <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; fill: currentColor;"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                Jak uruchomić Cloudflare WARP na Windows krok po kroku:
+            </div>
+            <ol>
+                <li>Otwórz przeglądarkę internetową, wpisz w pasku adresu <a href="https://1.1.1.1/" target="_blank" style="color: var(--primary); text-decoration: none;"><strong>1.1.1.1</strong></a> i przejdź na stronę.</li>
+                <li>Kliknij przycisk <strong>Windows</strong>, aby pobrać instalator dla swojego systemu.</li>
+                <li>Uruchom pobrany plik i przejdź przez standardowy proces instalacji.</li>
+                <li>Po zainstalowaniu i pierwszym uruchomieniu programu, na ekranie powitalnym wybierz opcję po lewej stronie: <strong>Przeglądanie prywatne</strong> (Nie wymaga rejestracji) i kliknij przycisk <strong>Akceptuj warunki i kontynuuj</strong>.</li>
+                <li>Następnie, w prawym dolnym rogu paska zadań (obok zegarka) kliknij ikonę szarej chmurki Cloudflare i kliknij suwak, aby połączyć się z siecią. Gdy ikona zmieni kolor na pomarańczowy, a status wskaże <strong>Połączono</strong> – Twoje połączenie i adres IP zostaną w pełni zabezpieczone.</li>
+            </ol>
+            <div class="img-container">
+                <div class="flex-images">
+                    <img src="warp_step1.png" alt="Rys. 2a. Wpisanie adresu 1.1.1.1" style="max-width: 175px;" />
+                    <img src="warp_step2.png" alt="Rys. 2b. Pobieranie wersji dla Windows" style="max-width: 175px;" />
+                    <img src="warp_step3.png" alt="Rys. 2c. Akceptacja warunków w aplikacji" style="max-width: 175px;" />
+                    <img src="warp_connected_win.png" alt="Rys. 2d. Cloudflare WARP Połączono" style="max-width: 175px;" />
+                </div>
+                <div class="img-caption">Rys. 2a-2d. Proces instalacji, konfiguracji i uruchomienia Cloudflare WARP na systemie Windows.</div>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="box-title">📊 Wpływ Cloudflare WARP na prędkość łącza — czego się spodziewać?</div>
+            <p>
+                Korzystanie z szyfrowania i tunelowania ruchu (jak w każdym VPN) wiąże się z narzutem technologicznym. Choć Cloudflare WARP jest jednym z najszybszych rozwiązań na rynku, musisz liczyć się z nieznacznym obniżeniem niektórych parametrów sieci.
+            </p>
+            <p>
+                Oto przykład rzeczywistego testu na szybkim łączu światłowodowym:
+            </p>
+            <ul>
+                <li><strong>Opóźnienie (PING):</strong> Wzrost jest praktycznie niezauważalny (w tym przypadku zaledwie z <strong>9 ms</strong> na <strong>10 ms</strong>), co gwarantuje błyskawiczną reakcję stron i stabilną pracę.</li>
+                <li><strong>Wysyłanie (UPLOAD):</strong> Spadek jest marginalny (z <strong>102 Mb/s</strong> do <strong>91 Mb/s</strong>).</li>
+                <li><strong>Pobieranie (DOWNLOAD):</strong> Następuje ok. 3-krotny spadek prędkości (z <strong>569 Mb/s</strong> do <strong>202 Mb/s</strong>). Wynika to z przetwarzania pakietów oraz limitów przepustowości bramek wyjściowych Cloudflare.</li>
+            </ul>
+            <p>
+                <strong>Czy to problem?</strong> Zdecydowanie nie. Prędkość na poziomie <strong>200 Mb/s</strong> jest nadal gigantyczna i w zupełności wystarcza do jednoczesnego oglądania kilku filmów w jakości 4K, pobierania dużych plików oraz bezproblemowej pracy programistycznej. W zamian otrzymujesz bezcenną prywatność, ochronę przed malware i pełne szyfrowanie ruchu.
+            </p>
+            <div class="img-container">
+                <div class="flex-images">
+                    <img src="speedtest_without_warp.png" alt="Rys. 2e. Test prędkości bez Cloudflare WARP" style="max-width: 280px;" />
+                    <img src="speedtest_with_warp.png" alt="Rys. 2f. Test prędkości z aktywnym Cloudflare WARP" style="max-width: 280px;" />
+                </div>
+                <div class="img-caption">Rys. 2e-2f. Porównanie prędkości łącza przed i po włączeniu usługi Cloudflare WARP.</div>
+            </div>
+        </div>
+
+        <h3>2. Bezpieczny DNS chroniący przed złośliwym oprogramowaniem (1.1.1.2)</h3>
+        <p>
+            Jeśli wolisz całkowicie zrezygnować z instalowania dodatkowych aplikacji w tle, możesz skonfigurować bezpieczny serwer DNS bezpośrednio w ustawieniach sieciowych Windowsa. 
+        </p>
+        <p>
+            Cloudflare oferuje specjalną, bezpłatną usługę DNS o nazwie <strong>1.1.1.1 for Families</strong>, która automatycznie blokuje znane złośliwe domeny (malware, phishing, ransomware) na poziomie sieci, zanim strona w ogóle zacznie się ładować na Twoim komputerze.
+        </p>
+
+        <div class="box">
+            <div class="box-title">⚙️ Konfiguracja DNS w systemie Windows krok po kroku:</div>
+            <ol>
+                <li>Naciśnij skrót klawiszowy <strong>Windows + R</strong>, wpisz in okienko polecenie <code>ncpa.cpl</code> i zatwierdź wciskając Enter (spowoduje to natychmiastowe przejście do klasycznego panelu połączeń sieciowych).</li>
+                <li>Kliknij prawym przyciskiem myszy na swoje aktywne połączenie (zazwyczaj <strong>Wi-Fi</strong> lub <strong>Ethernet</strong>) i wybierz <strong>Właściwości</strong>.</li>
+                <li>Na liście zaznaczonych składników znajdź i kliknij dwukrotnie w pozycję <strong>Protokół internetowy w wersji 4 (TCP/IPv4)</strong>.</li>
+                <li>W dolnej części okna zaznacz opcję <strong>Użyj następujących adresów serwerów DNS</strong>.</li>
+                <li>
+                    Wpisz odpowiednio adresy filtrujące:
+                    <br>
+                    • Preferowany serwer DNS: <code>1.1.1.2</code>
+                    <br>
+                    • Alternatywny serwer DNS: <code>1.0.0.2</code>
+                </li>
+                <li>Zaznacz opcję <em>Zatwierdź ustawienia przy wyjściu</em> i kliknij <strong>OK</strong> w obu otwartych okienkach.</li>
+            </ol>
+            <div class="img-container">
+                <div class="flex-images">
+                    <img src="dns_step1.png" alt="Rys. 3a. Wybór karty sieciowej" style="max-width: 175px;" />
+                    <img src="dns_step2.png" alt="Rys. 3b. Właściwości karty" style="max-width: 175px;" />
+                    <img src="dns_step3.png" alt="Rys. 3c. Wybór IPv4" style="max-width: 175px;" />
+                    <img src="dns_step4.png" alt="Rys. 3d. Wpisanie DNS" style="max-width: 175px;" />
+                </div>
+                <div class="img-caption">Rys. 3a-3d. Konfiguracja bezpiecznych serwerów DNS w protokole TCP/IPv4 krok po kroku.</div>
+            </div>
+        </div>
+
+        <!-- CHAPTER 3 -->
+        <h2>Rozdział 3: Walka o każdy megabajt RAM-u: Usypianie nieaktywnych kart</h2>
+        <p>
+            Głównym pożeraczem pamięci RAM w nowoczesnych komputerach są przeglądarki internetowe. Każda otwarta karta (zwłaszcza z mediami społecznościowymi czy aplikacjami webowymi) potrafi zużywać od 100 MB do nawet 1 GB pamięci RAM. Jeśli masz otwartych 20-30 kart, Twój komputer szybko dostanie zadyszki.
+        </p>
+
+        <h3>Krok 1: Wbudowana funkcja oszczędzania pamięci (Chrome / Edge)</h3>
+        <p>
+            Zarówno Google Chrome, jak i Microsoft Edge posiadają wbudowane mechanizmy usypiania nieaktywnych kart. Aby je aktywować w Google Chrome:
+        </p>
+        <ol>
+            <li>Kliknij <strong>trzy pionowe kropki</strong> w prawym górnym rogu przeglądarki i wybierz <strong>Ustawienia</strong>.</li>
+            <li>W lewym menu kliknij zakładkę <strong>Wydajność</strong>.</li>
+            <li>Włącz suwak przy opcji <strong>Oszczędzanie pamięci</strong> (Memory Saver).</li>
+        </ol>
+        <p>
+            Od teraz karty, których nie dotykałeś przez dłuższy czas, zwolnią pamięć RAM. Zostaną ponownie załadowane dopiero w momencie, gdy na nie klikniesz.
+        </p>
+
+        <div class="box">
+            <div class="box-title">⚡ Wtyczka Auto Tab Discard — Agresywne uwalnianie RAM-u</div>
+            <p>
+                Wbudowane narzędzia przeglądarek bywają mało agresywne – usypiają karty dopiero po kilku godzinach bezczynności. Aby kontrolować ten proces w 100%, zainstaluj darmowe, bezpieczne i otwartoźródłowe rozszerzenie <a href="https://chromewebstore.google.com/detail/auto-tab-discard/jhnmjpecljoehpklacclnbonnjpbgifg" target="_blank" style="color: var(--primary); text-decoration: none;"><strong>Auto Tab Discard</strong></a> w sklepie Chrome Web Store.
+            </p>
+            <p>
+                Pozwala ono na:
+            </p>
+            <ul>
+                <li>Ustalenie precyzyjnego czasu (np. automatyczne usypianie kart już po 3 minutach bezczynności).</li>
+                <li>Automatyczne ignorowanie kart, na których aktualnie odtwarzany jest dźwięk, wideo lub w tle przesyłany jest formularz.</li>
+                <li>Możliwość ręcznego uśpienia wszystkich kart jednym kliknięciem.</li>
+            </ul>
+            <div class="img-container">
+                <div class="flex-images">
+                    <img src="autotab_step1.png" alt="Rys. 4a. Auto Tab Discard w Chrome Web Store" style="max-width: 230px;" />
+                    <img src="autotab_step2.png" alt="Rys. 4b. Ustawienia czasu usypiania i favikony" style="max-width: 230px;" />
+                    <img src="autotab_step3.png" alt="Rys. 4c. Zapisanie ustawień wtyczki" style="max-width: 230px;" />
+                </div>
+                <div class="img-caption">Rys. 4a-4c. Konfiguracja wtyczki Auto Tab Discard w przeglądarce krok po kroku.</div>
+            </div>
+        </div>
+
+        <!-- CHAPTER 4 -->
+        <h2>Rozdział 4: Konserwacja bez obciążenia — BleachBit (Open Source)</h2>
+        <p>
+            Większość z nas przyzwyczaiła się do używania programów czyszczących, które stale działają w tle i natarczywie przypominają o usunięciu ciasteczek. To sprzeczność – program mający przyspieszyć system sam go spowalnia, zużywając procesor.
+        </p>
+        <p>
+            Rozwiązaniem jest <strong>BleachBit</strong> – darmowy, otwartoźródłowy (Open Source) program do czyszczenia dysku. Jest niezwykle lekki, nie instaluje żadnych usług działających w tle, nie zbiera danych telemetrycznych i uruchamia się wyłącznie wtedy, gdy sam zdecydujesz o potrzebie "posprzątania" komputera.
+        </p>
+
+        <div class="box box-warning">
+            <div class="box-title">⚙️ Jak bezpiecznie oczyścić komputer za pomocą BleachBit</div>
+            <ol>
+                <li>Wejdź na oficjalną stronę <a href="https://www.bleachbit.org/" target="_blank" style="color: var(--primary); text-decoration: none;"><strong>bleachbit.org</strong></a>, pobierz i zainstaluj program.</li>
+                <li>Uruchom BleachBit. W lewej kolumnie zobaczysz listę elementów do wyczyszczenia.</li>
+                <li>Zaznacz opcje takie jak: <em>System -> Pamięć podręczna</em>, <em>System -> Tymczasowe pliki</em> oraz pamięć podręczną używanych przeglądarek.</li>
+                <li><strong>Wskazówka bezpieczeństwa:</strong> Unikaj zaznaczania opcji <em>Wolne miejsce na dysku</em> (zajmuje to bardzo dużo czasu i nie zwalnia realnie miejsca) oraz haseł w przeglądarkach, aby ich nie utracić.</li>
+                <li>Kliknij przycisk <strong>Podgląd</strong> w lewym górnym rogu, aby zobaczyć, ile miejsca zostanie zwolnione. Następnie kliknij <strong>Wyczyść</strong>.</li>
+            </ol>
+            <div class="img-container">
+                <div class="flex-images">
+                    <img src="bleachbit_step1.png" alt="Rys. 5a. Strona główna pobierania BleachBit" style="max-width: 230px;" />
+                    <img src="bleachbit_step2.png" alt="Rys. 5b. Wybór wersji na system Windows" style="max-width: 230px;" />
+                    <img src="bleachbit_step3.png" alt="Rys. 5c. Proces czyszczenia systemu" style="max-width: 230px;" />
+                </div>
+                <div class="img-caption">Rys. 5a-5c. Proces pobierania, wyboru systemu operacyjnego oraz konfiguracji czyszczenia w aplikacji BleachBit.</div>
+            </div>
+        </div>
+
+        <div class="box box-success">
+            <div class="box-title">⚡ Podsumowanie korzyści Twojej Twierdzy</div>
+            <ul>
+                <li><strong>Odzyskany RAM:</strong> Usunięcie ciężkich procesów działających stale w tle oraz agresywne usypianie nieaktywnych kart w przeglądarce uwalnia od 4 do nawet 8 GB pamięci operacyjnej.</li>
+                <li><strong>Zwolniony procesor (CPU):</strong> Brak nieustannego, dublującego się skanowania w tle przez zbędne programy ochronne. Twój komputer staje się cichszy i chłodniejszy.</li>
+                <li><strong>Ochrona bez spowolnień:</strong> Wbudowany antywirus systemowy chroni pliki na poziomie jądra, a Cloudflare WARP / DNS zabezpiecza połączenie sieciowe u samego źródła.</li>
+                <li><strong>Brak śmieci w tle:</strong> BleachBit czyści dysk na Twoje żądanie, nie rezerwując dla siebie ani jednego cyklu procesora podczas codziennej pracy.</li>
+            </ul>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            Tomasz | J(AI)SON — ADHD-friendly systems architect • E-book: Bezpieczny Komputer - Prywatna Twierdza • Wszystkie Prawa Zastrzeżone • 2026
+        </div>
+
+    </div>
+</body>
+</html>

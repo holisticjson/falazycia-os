@@ -64,3 +64,15 @@ node_modules/
 .pnpm-store/
 .pnpm/
 
+# === GLOBALNE BLOKADY DUŻYCH PLIKÓW (GHOST DIRECTIVE) ===
+*.mp4
+*.mp3
+*.avi
+*.mov
+*.exe
+*.exe.old
+*.old
+*.apk
+*.msi
+02_knowledge_base/technical_and_excluded/
+

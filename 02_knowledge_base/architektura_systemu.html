@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holistic OS - Mapa Systemu & QA Checklist</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0F172A;
+            color: #E2E8F0;
+        }
+        .accordion-content {
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+        }
+        .accordion-content.expanded {
+            max-height: 1000px;
+            opacity: 1;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        textarea:focus, input:focus {
+            outline: 2px solid #3B82F6;
+            outline-offset: 2px;
+        }
+        .checkbox-custom {
+            width: 1.5rem;
+            height: 1.5rem;
+            cursor: pointer;
+            accent-color: #10B981;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-6 md:p-12">
+
+    <div class="max-w-5xl mx-auto">
+        <header class="mb-10 text-center">
+            <h1 class="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500 mb-2">Holistic OS - Architektura & QA</h1>
+            <p class="text-slate-400">Interaktywna mapa modułów. Zaznaczaj postępy i wpisuj uwagi. Dane zapisują się automatycznie w Twojej przeglądarce.</p>
+            <div class="mt-4 flex justify-center gap-4">
+                <button onclick="exportData()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-semibold rounded-lg text-blue-400 border border-slate-700 transition">💾 Eksportuj Raport (JSON)</button>
+                <button onclick="clearData()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-sm font-semibold rounded-lg text-red-400 border border-slate-700 transition">🗑️ Wyczyść Wszystko</button>
+            </div>
+        </header>
+
+        <div id="app" class="space-y-8">
+            <!-- Kontent generowany dynamicznie -->
+        </div>
+    </div>
+
+    <script>
+        const architecture = [
+            {
+                category: "I. WORKSPACE",
+                color: "text-amber-500",
+                bgBorder: "border-amber-500/30",
+                bgHeader: "bg-amber-500/10",
+                items: [
+                    { id: "mission_control", name: "🎯 Mission Control", desc: "Główny ekran dowodzenia, nawigacja po systemie." },
+                    { id: "baza_wiedzy", name: "🧠 Baza Wiedzy (Vertex AI)", desc: "Zarządzanie dokumentami RAG (PDF, TXT) dla agentów." },
+                    { id: "github_explorer", name: "🐙 GitHub Explorer", desc: "Przeglądarka struktury repozytoriów." },
+                    { id: "hermes_map", name: "🗺️ Hermes Mind Map", desc: "Wizualizacja architektury (Graphviz/Mermaid)." }
+                ]
+            },
+            {
+                category: "II. AGENTS",
+                color: "text-pink-500",
+                bgBorder: "border-pink-500/30",
+                bgHeader: "bg-pink-500/10",
+                items: [
+                    { id: "agent_claude", name: "🤖 Claude", desc: "Konsola interaktywna agenta Claude (Anthropic)." },
+                    { id: "agent_hermes", name: "🔱 Hermes", desc: "Główny agent zarządca (Vertex AI/OpenRouter)." },
+                    { id: "agent_gemini", name: "♊ Gemini", desc: "Konsola dedykowana Google Gemini." },
+                    { id: "agent_antigravity", name: "🌌 Antigravity", desc: "Narzędzia developerskie i inżynieryjne." }
+                ]
+            },
+            {
+                category: "III. SELF (Produktywność)",
+                color: "text-emerald-500",
+                bgBorder: "border-emerald-500/30",
+                bgHeader: "bg-emerald-500/10",
+                items: [
+                    { id: "goals", name: "🎯 Goals & Journal", desc: "Zarządzanie celami dziennymi/tygodniowymi, technika Pomodoro, wdzięczność." },
+                    { id: "notebook", name: "📻 Notebook (Obsidian)", desc: "Zarządzanie luźnymi notatkami, integracja markdown." },
+                    { id: "kanban", name: "📋 Kanban Board", desc: "Tablica zadań (To Do, In Progress, Done) z tagami." },
+                    { id: "memory", name: "💾 Memory (Pristine)", desc: "Długoterminowa pamięć wektorowa i zrzuty kontekstu." },
+                    { id: "onboarding", name: "🤝 Onboarding & Grill", desc: "Kreator profili, testy osobowości." },
+                    { id: "swarm", name: "✨ Swarm (Sales/Soul)", desc: "Grupy agentów pracujące nad wspólnym zadaniem." }
+                ]
+            },
+            {
+                category: "IV. BUSINESS & MARKETING",
+                color: "text-blue-500",
+                bgBorder: "border-blue-500/30",
+                bgHeader: "bg-blue-500/10",
+                items: [
+                    { id: "crm", name: "💼 CRM", desc: "Zarządzanie pipeline'em sprzedażowym, tablica Kanban dla Leadów." },
+                    { id: "legal", name: "⚖️ Legal Engine", desc: "Tworzenie i przegląd umów B2B, NDA, polityk prywatności." },
+                    { id: "finance", name: "💰 Finance & KSeF", desc: "Faktury, integracja z KSeF, tracking kosztów." },
+                    { id: "studio", name: "🎬 Studio (Hyperframes)", desc: "Moduł wideo (Pexels, ElevenLabs/Google TTS), generowanie rolek." },
+                    { id: "seo", name: "📈 SEO & Content", desc: "Generowanie artykułów blogowych optymalizowanych pod słowa kluczowe." },
+                    { id: "social_media", name: "📢 Social Media Hub", desc: "Publikacja postów (LinkedIn, FB, IG, TikTok)." },
+                    { id: "website_builder", name: "🌐 AI Website Builder", desc: "Tworzenie kodu HTML/CSS Landing Page'y pod Systeme.io / Firebase." },
+                    { id: "ads_local", name: "📈 Ads & Local SEO", desc: "Menedżer reklam Meta/Google, Serper Grid (pozycje w Google Maps)." },
+                    { id: "prospecting", name: "🕵️ Prospecting Hub", desc: "Wyszukiwanie e-maili (Hunter.io), nasłuch na Reddit, scraper WWW." }
+                ]
+            },
+            {
+                category: "V. INFRASTRUCTURE",
+                color: "text-violet-500",
+                bgBorder: "border-violet-500/30",
+                bgHeader: "bg-violet-500/10",
+                items: [
+                    { id: "domain_hosting", name: "⚙️ Domena & Hosting", desc: "Instrukcje Firebase, Cloud Run, ustawienia DNS dla poczty e-mail." }
+                ]
+            }
+        ];
+
+        // System zapisu/odczytu z LocalStorage
+        const storageKey = 'holistic_qa_state';
+        let qaState = JSON.parse(localStorage.getItem(storageKey)) || {};
+
+        function saveState() {
+            localStorage.setItem(storageKey, JSON.stringify(qaState));
+        }
+
+        function toggleAccordion(id) {
+            const content = document.getElementById(`content-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.classList.add('expanded');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        function updateCheck(itemId, checked) {
+            if (!qaState[itemId]) qaState[itemId] = {};
+            qaState[itemId].checked = checked;
+            
+            const card = document.getElementById(`card-${itemId}`);
+            if(checked) {
+                card.classList.add('border-emerald-500', 'bg-emerald-900/10');
+                card.classList.remove('border-slate-700', 'bg-slate-800');
+            } else {
+                card.classList.remove('border-emerald-500', 'bg-emerald-900/10');
+                card.classList.add('border-slate-700', 'bg-slate-800');
+            }
+            saveState();
+        }
+
+        function updateComment(itemId, text) {
+            if (!qaState[itemId]) qaState[itemId] = {};
+            qaState[itemId].comment = text;
+            saveState();
+        }
+
+        function renderApp() {
+            const container = document.getElementById('app');
+            let html = '';
+
+            architecture.forEach((section, sIdx) => {
+                html += `
+                <div class="border ${section.bgBorder} rounded-xl overflow-hidden bg-slate-800/50">
+                    <button onclick="toggleAccordion('sec-${sIdx}')" class="w-full text-left px-6 py-4 flex justify-between items-center ${section.bgHeader} hover:brightness-110 transition">
+                        <h2 class="text-xl font-bold ${section.color} tracking-wide">${section.category}</h2>
+                        <svg id="icon-sec-${sIdx}" class="w-6 h-6 ${section.color} transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    
+                    <div id="content-sec-${sIdx}" class="accordion-content px-6 bg-slate-900/50">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 pb-4">
+                `;
+
+                section.items.forEach(item => {
+                    const saved = qaState[item.id] || { checked: false, comment: '' };
+                    const checkedState = saved.checked ? 'checked' : '';
+                    const borderClass = saved.checked ? 'border-emerald-500 bg-emerald-900/10' : 'border-slate-700 bg-slate-800';
+
+                    html += `
+                            <div id="card-${item.id}" class="border ${borderClass} rounded-lg p-5 transition-colors duration-300 shadow-sm flex flex-col">
+                                <div class="flex justify-between items-start mb-3">
+                                    <div>
+                                        <h3 class="text-lg font-semibold text-slate-100">${item.name}</h3>
+                                        <p class="text-sm text-slate-400 mt-1">${item.desc}</p>
+                                    </div>
+                                    <div class="ml-4 flex flex-col items-center">
+                                        <input type="checkbox" class="checkbox-custom rounded" ${checkedState} onchange="updateCheck('${item.id}', this.checked)" title="Oznacz jako działające (Tested)">
+                                        <span class="text-xs text-slate-500 mt-1 font-semibold">Działa 100%</span>
+                                    </div>
+                                </div>
+                                <div class="mt-auto pt-4">
+                                    <label class="text-xs text-slate-400 font-semibold mb-1 block uppercase tracking-wider">Komentarz / Błędy / Feedback:</label>
+                                    <textarea 
+                                        oninput="updateComment('${item.id}', this.value)" 
+                                        class="w-full bg-slate-900 border border-slate-600 rounded-md p-3 text-sm text-slate-200 placeholder-slate-600 resize-y" 
+                                        rows="2" 
+                                        placeholder="Np. Przycisk X nie reaguje, należy zmienić pole Y...">${saved.comment}</textarea>
+                                </div>
+                            </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                </div>
+                `;
+            });
+
+            container.innerHTML = html;
+            
+            // Expand first section by default
+            setTimeout(() => toggleAccordion('sec-0'), 100);
+        }
+
+        function exportData() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(qaState, null, 2));
+            const dlAnchorElem = document.createElement('a');
+            dlAnchorElem.setAttribute("href", dataStr);
+            dlAnchorElem.setAttribute("download", "holistic_os_qa_report.json");
+            dlAnchorElem.click();
+        }
+
+        function clearData() {
+            if(confirm("Czy na pewno chcesz usunąć wszystkie zaznaczenia i komentarze?")) {
+                localStorage.removeItem(storageKey);
+                qaState = {};
+                renderApp();
+            }
+        }
+
+        // Initialize
+        renderApp();
+    </script>
+</body>
+</html>

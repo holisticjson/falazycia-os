@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Calming Dark Palette (ADHD-friendly, low-cognitive load) -->
+    <color name="primary_dark">#FF82B1FF</color> <!-- Calming blue -->
+    <color name="on_primary_dark">#FF002F6C</color>
+    <color name="secondary_dark">#FFB0BEC5</color> <!-- Soft slate gray -->
+    <color name="background_dark">#FF121212</color> <!-- True dark -->
+    <color name="surface_dark">#FF1E1E1E</color> <!-- Lightly elevated surface -->
+    <color name="on_background_dark">#FFE0E0E0</color> <!-- Soft white (no harsh pure white) -->
+    <color name="on_surface_dark">#FFE0E0E0</color>
+    <color name="accent_green">#FF81C784</color> <!-- Calm accent green for status/success -->
+    <color name="accent_red">#FFE57373</color> <!-- Calm red for errors/warnings -->
+</resources>

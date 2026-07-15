@@ -1,0 +1,5 @@
+GOOGLE_API_KEY="AQ.Ab8RN6IPFGimAaULr_ZaDcs8uf_euzeUClkaPlH1mFzdO_kWbQ"
+OPENROUTER_API_KEY="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"
+
+export GOOGLE_APPLICATION_CREDENTIALS='/home/holisticjson/gcp-sa-key.json'
+export GOOGLE_CLOUD_PROJECT='holistic-broker'

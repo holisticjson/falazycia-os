@@ -59,6 +59,6 @@ build/
 Thumbs.db
 
 # Heavy data folders in project subdirectories
-02_knowledge_base/raw/
-Baza_Wiedzy/raw/
-raw/
+**/02_knowledge_base/raw/
+**/Baza_Wiedzy/raw/
+**/raw/

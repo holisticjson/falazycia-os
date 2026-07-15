@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pl" data-page-title-i18n="index.page_title">
+<head>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Holistyczny Broker",
+      "url": "https://holistycznybroker.pl",
+      "logo": "https://holistycznybroker.pl/logo.png",
+      "sameAs": [
+        "https://linkedin.com",
+        "https://youtube.com",
+        "https://instagram.com",
+        "https://x.com",
+        "https://facebook.com"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Usługi Holistycznego Brokera",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Due Diligence",
+              "description": "Zautomatyzowany audyt prawny i weryfikacja dokumentacji."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Off-Market Sourcing",
+              "description": "Dostęp do zastrzeżonego katalogu ofert inwestycyjnych off-market."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holistyczny Broker | AI-Driven Real Estate Broker</title>
+    <meta name="description" content="Pierwsza w Polsce agencja nieruchomości nowej generacji. Łączymy model Boutique Advisory z precyzją prywatnych modeli AI. Analiza chłonności, off-market, inwestor zastępczy." data-i18n-meta="index.subtitle">
+    <meta name="keywords" content="holistyczny broker, nieruchomości premium, inwestor zastępczy, grunty inwestycyjne off-market, ai w nieruchomościach, wycena ai, łódź, warszawa, śląsk">
+    <meta name="robots" content="index, follow">
+    <link rel="alternate" hreflang="pl" href="https://holistycznybroker.pl/" />
+    <link rel="alternate" hreflang="en" href="https://holistycznybroker.pl/" />
+    <link rel="alternate" hreflang="x-default" href="https://holistycznybroker.pl/" />
+    <style>
+        /* Language Switcher */
+        .lang-switcher { display: flex; align-items: center; gap: 4px; margin-left: 20px; }
+        .lang-btn { background: transparent; border: 1px solid rgba(212,175,55,0.25); color: rgba(148,163,184,0.8); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; padding: 4px 9px; border-radius: 4px; cursor: pointer; transition: all 0.2s; text-transform: uppercase; }
+        .lang-btn:hover { border-color: rgba(212,175,55,0.6); color: #D4AF37; }
+        .lang-btn--active { border-color: #D4AF37; color: #D4AF37; background: rgba(212,175,55,0.08); }
+        .lang-sep { color: rgba(148,163,184,0.3); font-size: 11px; }
+    </style>
+    
+    <!-- Open Graph for Social Media -->
+    <meta property="og:title" content="Holistyczny Broker | AI-Driven Real Estate">
+    <meta property="og:description" content="Skaluj swój portfel inwestycyjny dzięki precyzji danych i ochronie prywatnych modeli LLM.">
+    <meta property="og:type" content="website">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brand: { dark: '#0B0F19', slate: '#1E293B', gold: '#D4AF37', goldHover: '#B5952F' } },
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Inter"', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background-color: #0B0F19; color: #F8FAFC; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        .glass-panel { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+
+    <link rel="stylesheet" href="chatbot-ui.css">
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-brand-dark">
+
+        <!-- Header -->
+    <header class="fixed w-full z-50 glass-panel border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 relative">
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <img src="logo.png" alt="Logo Holistyczny Broker" class="h-16 w-16 object-contain transition-all duration-500 group-hover:scale-110">
+                    <span class="text-2xl md:text-3xl font-bold tracking-widest text-white uppercase flex flex-col leading-none">
+                        <span>Holistyczny</span><span class="text-brand-gold text-xs md:text-sm tracking-[0.4em] mt-1">Broker</span>
+                    </span>
+                </a>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-brand-gold p-2 focus:outline-none absolute right-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+
+                <nav class="hidden md:flex items-center text-sm font-medium text-slate-300">
+                    <div class="relative group px-4 py-6">
+                        <button class="hover:text-white transition-colors flex items-center gap-1"><span data-i18n="nav.b2b">B2B & Inwestycje</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="bg-brand-dark/90 backdrop-blur border border-brand-gold/30 rounded-lg shadow-xl py-2 mt-2">
+                                <a href="inwestor-zastepczy-lodz-warszawa.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors" data-i18n="nav.investor">Inwestor Zastępczy</a>
+                                <a href="nieruchomosci-komercyjne-off-market.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors" data-i18n="nav.commercial">Nieruchomości Komercyjne</a>
+                                <a href="technologia-ai-due-diligence.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors" data-i18n="nav.ai_due">AI Due Diligence</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group px-4 py-6">
+                        <button class="hover:text-white transition-colors flex items-center gap-1"><span data-i18n="nav.b2c">B2C Premium</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="bg-brand-dark/90 backdrop-blur border border-brand-gold/30 rounded-lg shadow-xl py-2 mt-2">
+                                <a href="nieruchomosci-premium.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors" data-i18n="nav.catalogue">Katalog Nieruchomości</a>
+                                <a href="dla-ciebie.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors" data-i18n="nav.list_property">Zgłoś do sprzedaży</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group px-4 py-6">
+                        <button class="hover:text-white transition-colors flex items-center gap-1"><span data-i18n="nav.knowledge">Wiedza</span>
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="bg-brand-dark/90 backdrop-blur border border-brand-gold/30 rounded-lg shadow-xl py-2 mt-2">
+                                <a href="blog.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors" data-i18n="nav.blog">Ekspertyza (Blog)</a>
+                                <a href="faq.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors" data-i18n="nav.faq">Baza Wiedzy (FAQ)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="zasady-wspolpracy.html" class="px-4 hover:text-white transition-colors" data-i18n="nav.security">Bezpieczeństwo (NDA)</a>
+                    <a href="https://wa.me/48730882961?text=Dzie%C5%84%20dobry,%20kontaktuj%C4%99%20si%C4%99%20w%20sprawie%20wsp%C3%B3%C5%82pracy." target="_blank" class="ml-4 px-5 py-2.5 bg-brand-gold/10 border border-brand-gold/50 text-brand-gold hover:bg-brand-gold hover:text-brand-dark rounded transition-all" data-i18n="nav.whatsapp">WhatsApp</a>
+
+                    <!-- Language Switcher -->
+                    <div class="lang-switcher" role="group" aria-label="Language selector">
+                        <button class="lang-btn" data-lang="pl" onclick="setLang('pl')" aria-pressed="true" id="btn-lang-pl">PL</button>
+                        <span class="lang-sep">|</span>
+                        <button class="lang-btn" data-lang="en" onclick="setLang('en')" aria-pressed="false" id="btn-lang-en">EN</button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU DRAWER OVERLAY -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-brand-dark/80 backdrop-blur-sm z-40 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+    <!-- MOBILE MENU DRAWER -->
+    <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#0B0F19] border-l border-white/10 z-50 flex flex-col transform translate-x-full transition-transform duration-300 shadow-2xl">
+        <div class="flex justify-between items-center p-6 border-b border-white/10 shrink-0">
+            <span class="text-brand-gold font-bold tracking-widest uppercase" data-i18n="nav.menu">Menu</span>
+            <button id="close-mobile-menu-btn" class="text-slate-400 hover:text-white p-2 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex-col px-6 py-4 overflow-y-auto flex-grow pb-24">
+            <!-- Mobile Language Switcher -->
+            <div class="flex items-center gap-2 mb-6 mt-2">
+                <button class="lang-btn" data-lang="pl" onclick="setLang('pl')" aria-pressed="true">PL</button>
+                <span class="lang-sep">|</span>
+                <button class="lang-btn" data-lang="en" onclick="setLang('en')" aria-pressed="false">EN</button>
+            </div>
+            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase mb-4 mt-2 block" data-i18n="nav.b2b">B2B & Inwestycje</span>
+            <a href="inwestor-zastepczy-lodz-warszawa.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold" data-i18n="nav.investor">Inwestor Zastępczy</a>
+            <a href="nieruchomosci-komercyjne-off-market.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold" data-i18n="nav.commercial">Nieruchomości Komercyjne</a>
+            <a href="technologia-ai-due-diligence.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold mb-6" data-i18n="nav.ai_due">AI Due Diligence</a>
+            
+            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase mb-4 mt-4 block" data-i18n="nav.b2c">B2C Premium</span>
+            <a href="nieruchomosci-premium.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold" data-i18n="nav.catalogue">Katalog Nieruchomości</a>
+            <a href="dla-ciebie.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold mb-6" data-i18n="nav.list_property">Zgłoś do sprzedaży</a>
+            
+            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase mb-4 mt-4 block" data-i18n="nav.knowledge">Wiedza</span>
+            <a href="blog.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold" data-i18n="nav.blog">Ekspertyza (Blog)</a>
+            <a href="faq.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold mb-6" data-i18n="nav.faq">Baza Wiedzy (FAQ)</a>
+            
+            <a href="zasady-wspolpracy.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold" data-i18n="nav.security">Bezpieczeństwo (NDA)</a>
+            <a href="https://wa.me/48730882961?text=Dzie%C5%84%20dobry,%20kontaktuj%C4%99%20si%C4%99%20w%20sprawie%20wsp%C3%B3%C5%82pracy." target="_blank" class="block mt-8 text-center px-6 py-4 bg-brand-gold/10 border border-brand-gold/50 text-brand-gold text-xl rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-all font-bold" data-i18n="nav.whatsapp">WhatsApp (Kontakt)</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-mobile-menu-btn');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const drawer = document.getElementById('mobile-menu-drawer');
+            
+            function openMenu() {
+                if(overlay && drawer) {
+                    overlay.classList.remove('pointer-events-none');
+                    overlay.classList.remove('opacity-0');
+                    drawer.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            function closeMenu() {
+                if(overlay && drawer) {
+                    overlay.classList.add('opacity-0');
+                    drawer.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        overlay.classList.add('pointer-events-none');
+                        document.body.style.overflow = '';
+                    }, 300);
+                }
+            }
+            
+            if(mobileBtn) mobileBtn.addEventListener('click', openMenu);
+            if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if(overlay) overlay.addEventListener('click', closeMenu);
+        });
+    </script>
+
+    <main>
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-24 lg:pt-56 lg:pb-40 overflow-hidden border-b border-white/5">
+            <div class="absolute inset-0 z-0 opacity-20 pointer-events-none">
+                <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-gold rounded-full mix-blend-screen filter blur-[128px]"></div>
+            </div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 flex flex-col items-center">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-gold/10 border border-brand-gold/20 text-brand-gold text-xs font-bold tracking-[0.2em] uppercase mb-6 shadow-[0_0_15px_rgba(212,175,55,0.15)]" data-i18n="index.badge">Pierwszy w Polsce AI-Driven Broker</span>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-semibold mb-8 leading-tight max-w-4xl" data-i18n="index.h1">Przyszłość Nieruchomości <br>Zaczyna Się od <span class="gold-gradient italic">Danych.</span></h1>
+                <p class="max-w-2xl text-lg md:text-xl text-slate-400 font-light mb-12 leading-relaxed" data-i18n="index.subtitle">Łączymy model Boutique Advisory z potęgą zamkniętych modeli językowych (LLM). Zabezpieczamy Twój kapitał i maksymalizujemy rentowność.</p>
+                
+                <!-- DYNAMICZNY LEAD MAGNET TALLY.SO -->
+                <div class="w-full max-w-3xl bg-brand-slate/40 p-6 rounded-xl border border-white/10 backdrop-blur-md shadow-2xl relative overflow-hidden">
+                    <h2 class="text-xl md:text-2xl mb-2 font-serif text-white text-left" data-i18n="index.scan_title">Przetestuj analitykę wspartą AI</h2>
+                    <p class="text-sm text-slate-400 mb-6 text-left" data-i18n="index.scan_desc">Wprowadź dane nieruchomości, aby wygenerować algorytmiczną estymację wartości i ryzyka.</p>
+                    
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <input type="text" id="property-address" placeholder="Wprowadź adres lub nr działki..." data-i18n="index.scan_placeholder" class="flex-1 bg-brand-dark border border-slate-700 rounded-lg px-5 py-4 text-white focus:outline-none focus:border-brand-gold">
+                        <button type="button" onclick="openTally()" class="bg-brand-gold text-brand-dark font-bold px-8 py-4 rounded-lg hover:bg-brand-goldHover transition-all flex items-center justify-center gap-2 shadow-[0_0_15px_rgba(212,175,55,0.3)]">
+                            <span data-i18n="index.scan_btn">Skanuj Potencjał</span>
+                        </button>
+                    </div>
+                    <div class="mt-4 flex items-center gap-2 text-xs text-slate-500 text-left">
+                        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                        <span data-i18n="index.scan_privacy">100% zanonimizowane i bezpieczne (Private LLM).</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEKCJA B2B / B2C -->
+        <section class="py-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="relative rounded-3xl overflow-hidden glass-panel p-10 md:p-14 min-h-[400px] flex flex-col justify-end group">
+                        <div class="absolute inset-0 bg-slate-800 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105" style="background-image: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 1) 0%, rgba(11, 15, 25, 1) 100%);"></div>
+                        <div class="relative z-20">
+                            <span class="text-brand-gold text-xs tracking-widest font-bold uppercase mb-4 block" data-i18n="index.b2b_tag">B2B | Deweloperzy & Inwestorzy</span>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white" data-i18n="index.b2b_h3">Proxy Investor. Skaluj bez ograniczeń.</h3>
+                            <a href="dla-biznesu.html" class="inline-flex items-center gap-2 text-white font-medium hover:text-brand-gold transition-colors w-max pb-1 border-b border-brand-gold/50" data-i18n="index.b2b_cta">Odkryj ofertę dla biznesu</a>
+                        </div>
+                    </div>
+                    <div class="relative rounded-3xl overflow-hidden glass-panel p-10 md:p-14 min-h-[400px] flex flex-col justify-end group">
+                        <div class="absolute inset-0 bg-slate-800 mix-blend-overlay transition-transform duration-1000 group-hover:scale-105" style="background-image: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 1) 0%, rgba(11, 15, 25, 1) 100%);"></div>
+                        <div class="relative z-20">
+                            <span class="text-brand-gold text-xs tracking-widest font-bold uppercase mb-4 block" data-i18n="index.b2c_tag">B2C | Klienci Prywatni Premium</span>
+                            <h3 class="text-3xl md:text-4xl font-bold mb-4 text-white" data-i18n="index.b2c_h3">Czas to luksus. Ochrona to standard.</h3>
+                            <a href="dla-ciebie.html" class="inline-flex items-center gap-2 text-white font-medium hover:text-brand-gold transition-colors w-max pb-1 border-b border-brand-gold/50" data-i18n="index.b2c_cta">Odkryj ofertę prywatną</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-[#05070d] pt-20 pb-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="flex items-center gap-4 mb-6 group">
+                        <img src="logo.png" alt="Logo" class="h-14 w-14 object-contain grayscale opacity-60 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110">
+                        <span class="text-xl font-bold tracking-widest text-white uppercase flex flex-col leading-none"><span>Holistyczny</span><span class="text-brand-gold text-xs tracking-[0.4em] mt-1">Broker</span></span>
+                    </a>
+                    <p class="text-sm text-slate-500 mb-6" data-i18n="index.footer_desc">Pierwszy w Polsce AI-Driven Real Estate Broker. Zamknięte modele LLM i sieć Boutique Advisory.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-6 uppercase text-sm tracking-widest" data-i18n="footer.expertise_col">Ekspertyza</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="dla-biznesu.html" class="hover:text-brand-gold transition-colors">Dla Biznesu (B2B)</a></li>
+                        <li><a href="nieruchomosci-komercyjne-off-market.html" class="hover:text-brand-gold transition-colors" data-i18n="index.footer_off_market">Katalog Off-Market</a></li>
+                        <li><a href="dla-ciebie.html" class="hover:text-brand-gold transition-colors" data-i18n="index.footer_private">Klienci Prywatni (B2C)</a></li>
+                        <li><a href="blog.html" class="hover:text-brand-gold transition-colors" data-i18n="nav.blog">Ekspertyza (Blog)</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-gold transition-colors" data-i18n="nav.faq">Baza Wiedzy (FAQ)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-6 uppercase text-sm tracking-widest" data-i18n="footer.security_col">Bezpieczeństwo & B2B</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="polityka-prywatnosci.html" class="hover:text-brand-gold transition-colors" data-i18n="index.footer_privacy">Polityka Prywatności</a></li>
+                        <li><a href="regulamin.html" class="hover:text-brand-gold transition-colors" data-i18n="index.footer_terms">Regulamin</a></li>
+                        <li><a href="disclaimer-inwestycyjny.html" class="hover:text-brand-gold transition-colors" data-i18n="index.footer_disclaimer">Disclaimer Inwestycyjny</a></li>
+                        <li><a href="strefa-partnera.html" class="text-brand-gold font-medium hover:text-white transition-colors" data-i18n="index.footer_partner">Strefa Współpracy (B2B Brokers)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-6 uppercase text-sm tracking-widest" data-i18n="footer.contact_col">Kontakt</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="mailto:kontakt@holistycznybroker.pl" class="hover:text-brand-gold">kontakt@holistycznybroker.pl</a></li>
+                        <li><a href="tel:+48730882961" class="hover:text-brand-gold">+48 730 882 961</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 text-center text-xs text-slate-600">
+                <div class="flex justify-center gap-4 mb-4">
+                    <a href="#" aria-label="LinkedIn" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="#" aria-label="YouTube" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+                    <a href="#" aria-label="Instagram" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    <a href="#" aria-label="X (Twitter)" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="#" aria-label="Facebook" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                </div>
+                
+                <div class="mb-4 text-slate-500">
+                    REVOLTO GROUP SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ <br class="md:hidden"> 
+                    <span class="hidden md:inline">|</span> KRS: 0001074425 <span class="hidden md:inline">|</span> NIP: 7123466389 <span class="hidden md:inline">|</span> REGON: 527156234 <br class="md:hidden">
+                    <span class="hidden md:inline">|</span> Adres siedziby: ul. Wita Stwosza 48 / 105, 02-661 Warszawa
+                </div>
+                
+                <p data-i18n="index.footer_copy">&copy; 2026 Holistyczny Broker. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openTally() {
+            const address = document.getElementById('property-address').value;
+            const tallyUrl = "https://tally.so/r/EkBlbN"; // Zaktualizowano na Twój aktywny formularz Tally
+            
+            if(address.trim() !== '') {
+                window.open(`${tallyUrl}?address=${encodeURIComponent(address)}`, '_blank');
+            } else {
+                window.open(tallyUrl, '_blank');
+            }
+        }
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if(mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    if(mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.remove('hidden');
+                        mobileMenu.classList.add('flex');
+                        setTimeout(() => mobileMenu.classList.remove('opacity-0'), 10);
+                        document.body.style.overflow = 'hidden'; // zapobieganie scrollowaniu pod spodem
+                    } else {
+                        mobileMenu.classList.add('opacity-0');
+                        setTimeout(() => {
+                            mobileMenu.classList.add('hidden');
+                            mobileMenu.classList.remove('flex');
+                            document.body.style.overflow = 'auto';
+                        }, 300);
+                    }
+                });
+            }
+        });
+    </script>
+
+    <script src="lang-switcher.js?v=20260705"></script>
+    <script src="chatbot-ui.js"></script>
+</body>
+</html>

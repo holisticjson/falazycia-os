@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "RealEstateAgent",
+      "name": "Holistyczny Broker",
+      "url": "https://holistycznybroker.pl",
+      "logo": "https://holistycznybroker.pl/logo.png",
+      "sameAs": [
+        "https://linkedin.com",
+        "https://youtube.com",
+        "https://instagram.com",
+        "https://x.com",
+        "https://facebook.com"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Usługi Holistycznego Brokera",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Due Diligence",
+              "description": "Zautomatyzowany audyt prawny i weryfikacja dokumentacji."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Off-Market Sourcing",
+              "description": "Dostęp do zastrzeżonego katalogu ofert inwestycyjnych off-market."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polityka Prywatności i Bezpieczeństwa AI | Holistyczny Broker</title>
+    <meta name="description" content="Poznaj naszą Politykę Prywatności. Gwarantujemy bezpieczeństwo Twoich danych dzięki hermetycznemu środowisku Private AI i rygorystycznym standardom RODO.">
+    <meta name="robots" content="index, follow">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { brand: { dark: '#0B0F19', slate: '#1E293B', gold: '#D4AF37', goldHover: '#B5952F' } },
+                    fontFamily: { serif: ['"Playfair Display"', 'serif'], sans: ['"Inter"', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0B0F19; color: #F8FAFC; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        .glass-panel { background: rgba(30, 41, 59, 0.4); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .gold-gradient { background: linear-gradient(135deg, #D4AF37 0%, #F3E5AB 50%, #D4AF37 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        /* Precyzyjne formatowanie dla dokumentacji prawnej (RODO) */
+        .legal-content h3 { color: white; font-size: 1.5rem; margin-top: 2.5rem; margin-bottom: 1.2rem; font-weight: 600; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 0.5rem; font-family: 'Playfair Display', serif; }
+        .legal-content p { color: #94a3b8; line-height: 1.8; margin-bottom: 1.2rem; font-weight: 300; }
+        .legal-content ul, .legal-content ol { margin-bottom: 1.5rem; padding-left: 0; }
+        .legal-content li { color: #94a3b8; line-height: 1.7; margin-bottom: 0.75rem; font-weight: 300; }
+        
+        /* Niestandardowe wypunktowania (kulki) */
+        .legal-content ul li { position: relative; padding-left: 1.5rem; }
+        .legal-content ul li::before { content: "•"; color: #D4AF37; position: absolute; left: 0; font-size: 1.2rem; line-height: 1.5; }
+        
+        /* Niestandardowe listy numerowane (1., 2., 3...) */
+        .legal-content ol { counter-reset: legal-counter; }
+        .legal-content ol > li { display: block; position: relative; padding-left: 2.2rem; }
+        .legal-content ol > li::before { content: counter(legal-counter) "."; counter-increment: legal-counter; color: #D4AF37; position: absolute; left: 0; font-weight: 600; font-size: 1rem; top: 0.1rem; }
+        
+        .legal-content strong { color: #e2e8f0; font-weight: 600; }
+        .legal-content .highlight-box { background: rgba(30, 41, 59, 0.5); border-left: 4px solid #D4AF37; padding: 1.5rem; margin: 2rem 0; border-radius: 0 0.5rem 0.5rem 0; }
+    </style>
+
+    <link rel="stylesheet" href="chatbot-ui.css">
+</head>
+<body class="antialiased selection:bg-brand-gold selection:text-brand-dark">
+
+    <!-- Uproszczona Nawigacja dla podstron -->
+        <!-- Header -->
+    <header class="fixed w-full z-50 glass-panel border-b border-white/10 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-24 relative">
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <img src="logo.png" alt="Logo Holistyczny Broker" class="h-16 w-16 object-contain transition-all duration-500 group-hover:scale-110">
+                    <span class="text-2xl md:text-3xl font-bold tracking-widest text-white uppercase flex flex-col leading-none">
+                        <span>Holistyczny</span><span class="text-brand-gold text-xs md:text-sm tracking-[0.4em] mt-1">Broker</span>
+                    </span>
+                </a>
+                
+                <button id="mobile-menu-btn" class="md:hidden text-brand-gold p-2 focus:outline-none absolute right-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+
+                <nav class="hidden md:flex items-center text-sm font-medium text-slate-300">
+                    <div class="relative group px-4 py-6">
+                        <button class="hover:text-white transition-colors flex items-center gap-1">B2B & Inwestycje 
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="bg-brand-dark/90 backdrop-blur border border-brand-gold/30 rounded-lg shadow-xl py-2 mt-2">
+                                <a href="inwestor-zastepczy-lodz-warszawa.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors">Inwestor Zastępczy</a>
+                                <a href="nieruchomosci-komercyjne-off-market.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors">Nieruchomości Komercyjne</a>
+                                <a href="technologia-ai-due-diligence.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors">AI Due Diligence</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group px-4 py-6">
+                        <button class="hover:text-white transition-colors flex items-center gap-1">B2C Premium 
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="bg-brand-dark/90 backdrop-blur border border-brand-gold/30 rounded-lg shadow-xl py-2 mt-2">
+                                <a href="nieruchomosci-premium.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors">Katalog Nieruchomości</a>
+                                <a href="dla-ciebie.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors">Zgłoś do sprzedaży</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative group px-4 py-6">
+                        <button class="hover:text-white transition-colors flex items-center gap-1">Wiedza 
+                            <svg class="w-4 h-4 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </button>
+                        <div class="absolute left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="bg-brand-dark/90 backdrop-blur border border-brand-gold/30 rounded-lg shadow-xl py-2 mt-2">
+                                <a href="blog.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors">Ekspertyza (Blog)</a>
+                                <a href="faq.html" class="block px-4 py-2 hover:bg-brand-gold/10 hover:text-brand-gold transition-colors">Baza Wiedzy (FAQ)</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="zasady-wspolpracy.html" class="px-4 hover:text-white transition-colors">Bezpieczeństwo (NDA)</a>
+                    <a href="https://wa.me/48730882961?text=Dzie%C5%84%20dobry,%20kontaktuj%C4%99%20si%C4%99%20w%20sprawie%20wsp%C3%B3%C5%82pracy." target="_blank" class="ml-6 px-6 py-2.5 bg-brand-gold/10 border border-brand-gold/50 text-brand-gold hover:bg-brand-gold hover:text-brand-dark rounded transition-all">WhatsApp</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- MOBILE MENU DRAWER OVERLAY -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-brand-dark/80 backdrop-blur-sm z-40 transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+
+    <!-- MOBILE MENU DRAWER -->
+    <div id="mobile-menu-drawer" class="fixed top-0 right-0 h-full w-4/5 max-w-sm bg-[#0B0F19] border-l border-white/10 z-50 flex flex-col transform translate-x-full transition-transform duration-300 shadow-2xl">
+        <div class="flex justify-between items-center p-6 border-b border-white/10 shrink-0">
+            <span class="text-brand-gold font-bold tracking-widest uppercase">Menu</span>
+            <button id="close-mobile-menu-btn" class="text-slate-400 hover:text-white p-2 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <div class="flex-col px-6 py-4 overflow-y-auto flex-grow pb-24">
+            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase mb-4 mt-2 block">B2B & Inwestycje</span>
+            <a href="inwestor-zastepczy-lodz-warszawa.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold">Inwestor Zastępczy</a>
+            <a href="nieruchomosci-komercyjne-off-market.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold">Nieruchomości Komercyjne</a>
+            <a href="technologia-ai-due-diligence.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold mb-6">AI Due Diligence</a>
+            
+            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase mb-4 mt-4 block">B2C Premium</span>
+            <a href="nieruchomosci-premium.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold">Katalog Nieruchomości</a>
+            <a href="dla-ciebie.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold mb-6">Zgłoś do sprzedaży</a>
+            
+            <span class="text-brand-gold text-xs font-bold tracking-widest uppercase mb-4 mt-4 block">Wiedza</span>
+            <a href="blog.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold">Ekspertyza (Blog)</a>
+            <a href="faq.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold mb-6">Baza Wiedzy (FAQ)</a>
+            
+            <a href="zasady-wspolpracy.html" class="block text-white text-lg py-3 border-b border-white/10 hover:text-brand-gold">Bezpieczeństwo (NDA)</a>
+            <a href="https://wa.me/48730882961?text=Dzie%C5%84%20dobry,%20kontaktuj%C4%99%20si%C4%99%20w%20sprawie%20wsp%C3%B3%C5%82pracy." target="_blank" class="block mt-8 text-center px-6 py-4 bg-brand-gold/10 border border-brand-gold/50 text-brand-gold text-xl rounded-lg hover:bg-brand-gold hover:text-brand-dark transition-all font-bold">WhatsApp (Kontakt)</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const closeBtn = document.getElementById('close-mobile-menu-btn');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const drawer = document.getElementById('mobile-menu-drawer');
+            
+            function openMenu() {
+                if(overlay && drawer) {
+                    overlay.classList.remove('pointer-events-none');
+                    overlay.classList.remove('opacity-0');
+                    drawer.classList.remove('translate-x-full');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+            
+            function closeMenu() {
+                if(overlay && drawer) {
+                    overlay.classList.add('opacity-0');
+                    drawer.classList.add('translate-x-full');
+                    setTimeout(() => {
+                        overlay.classList.add('pointer-events-none');
+                        document.body.style.overflow = '';
+                    }, 300);
+                }
+            }
+            
+            if(mobileBtn) mobileBtn.addEventListener('click', openMenu);
+            if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if(overlay) overlay.addEventListener('click', closeMenu);
+        });
+    </script>
+
+    <!-- Nagłówek Podstrony -->
+    <section class="pt-40 pb-16 bg-gradient-to-b from-brand-slate/30 to-brand-dark border-b border-white/5">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-brand-gold text-xs font-bold tracking-[0.2em] uppercase mb-4 block">Ochrona Danych</span>
+            <h1 class="text-4xl md:text-5xl font-semibold mb-6">Polityka Prywatności <br><span class="italic text-brand-gold text-3xl md:text-4xl">& Bezpieczeństwo AI</span></h1>
+        </div>
+    </section>
+
+    <!-- Główna treść -->
+    <main class="py-16">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 legal-content">
+            
+            <p class="text-lg text-slate-300 mb-10">Dla Holistycznego Brokera dyskrecja oraz bezpieczeństwo danych stanowią fundament każdego procesu inwestycyjnego. Niniejsza Polityka Prywatności określa zasady przetwarzania danych osobowych oraz informacji biznesowych pozyskanych za pośrednictwem serwisu internetowego <strong>holistycznybroker.pl</strong> (zwanego dalej: „Serwisem”).</p>
+            <p>Wdrażamy rygorystyczne standardy ochrony, łącząc wymogi prawne z najwyższym poziomem zabezpieczeń technologicznych właściwych dla sektora PropTech i FinTech.</p>
+
+            <h3>§ 1. Administrator Danych</h3>
+            <ol>
+                <li>Właścicielem Serwisu i Administratorem danych osobowych jest spółka <strong>REVOLTO GROUP SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ</strong> z siedzibą w Warszawie, pod adresem: ul. Wita Stwosza 48 / 105, 02-661 Warszawa, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego (KRS) pod numerem: <strong>0001074425</strong>, posiadająca NIP: <strong>7123466389</strong>, REGON: <strong>527156234</strong> (zwana dalej: Administratorem lub REVOLTO GROUP), prowadząca działalność pod marką <strong>Holistyczny Broker</strong>.</li>
+                <li>Dane przetwarzane są zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 (RODO).</li>
+                <li>We wszelkich sprawach związanych z ochroną prywatności oraz przetwarzaniem danych, Użytkownik może kontaktować się bezpośrednio pod dedykowanym adresem e-mail: <strong>kontakt@holistycznybroker.pl</strong>.</li>
+            </ol>
+
+            <h3>§ 2. Środowisko Private AI a Ochrona Danych (Zero Data Leakage)</h3>
+            <div class="highlight-box">
+                <p class="!mb-0 !text-slate-200">Ta sekcja określa nasze nadrzędne zobowiązanie technologiczne. Gwarantujemy, że innowacja w Holistycznym Brokerze nigdy nie odbywa się kosztem Twoich tajemnic handlowowych.</p>
+            </div>
+            <ol>
+                <li><strong>Prywatne Modele LLM:</strong> Jako firma technologiczna opierająca swoje działania o sztuczną inteligencję (AI Due Diligence, analizy chłonności), gwarantujemy, że dane wrażliwe, dokumentacja prawna (np. numery Ksiąg Wieczystych), strategie portfelowe oraz zapytania przesyłane do algorytmicznej wyceny <strong>przetwarzane są w zamkniętym, szyfrowanym środowisku</strong>.</li>
+                <li><strong>Brak udostępniania publicznym AI:</strong> Dane wprowadzane przez Użytkowników (Kupujących, Sprzedających, Inwestorów) w ramach narzędzi analitycznych Serwisu <strong>nie są udostępniane publicznym modelom językowym</strong> (takim jak ogólnodostępny ChatGPT czy inne zewnętrzne API) w celu ich trenowania. Twoje tajemnice handlowe i dane majątkowe pozostają wyłącznie do Twojej i naszej wiadomości.</li>
+                <li><strong>Anonimizacja:</strong> Przed przeprowadzeniem zautomatyzowanej analizy ryzyka prawnego lub potencjału inwestycyjnego, dane podlegają ścisłym procesom anonimizacji, gwarantując pełną zgodność z zasadą <em>Privacy by Design</em>.</li>
+            </ol>
+
+            <h3>§ 3. Cel, Zakres i Podstawa Przetwarzania Danych</h3>
+            <p>Administrator zbiera i przetwarza dane w następujących sytuacjach:</p>
+            <ol>
+                <li><strong>Korzystanie z narzędzi analitycznych (Skaner Potencjału AI) i formularzy kontaktowych:</strong>
+                    <ul class="mt-2 mb-4">
+                        <li><strong>Zakres:</strong> Imię, nazwisko, adres e-mail, numer telefonu, adres/parametry nieruchomości.</li>
+                        <li><strong>Cel:</strong> Odpowiedź na zapytanie, wygenerowanie algorytmicznego raportu wyceny lub chłonności oraz nawiązanie współpracy biznesowej.</li>
+                        <li><strong>Podstawa prawna:</strong> Niezbędność do podjęcia działań na żądanie osoby, której dane dotyczą, przed zawarciem umowy (art. 6 ust. 1 lit. b RODO) oraz nasz prawnie uzasadniony interes (art. 6 ust. 1 lit. f RODO).</li>
+                    </ul>
+                </li>
+                <li><strong>Działania w segmencie B2B (Deweloperzy, Fundusze, Przedsiębiorstwa):</strong>
+                    <ul class="mt-2 mb-4">
+                        <li><strong>Zakres:</strong> Powyższe dane poszerzone o nazwę firmy (Firmę) oraz numer NIP.</li>
+                    </ul>
+                </li>
+                <li><strong>Ustalanie, dochodzenie i obrona przed roszczeniami:</strong>
+                    <ul class="mt-2">
+                        <li><strong>Podstawa prawna:</strong> Prawnie uzasadniony interes Administratora (art. 6 ust. 1 lit. f RODO).</li>
+                    </ul>
+                </li>
+            </ol>
+            <p class="text-sm italic mt-4">*Przekazanie danych osobowych jest dobrowolne, jednakże niezbędne do wygenerowania raportów analitycznych (AI) lub zawarcia Umowy Brokerskiej / Umowy NDA.*</p>
+
+            <h3>§ 4. Komu udostępniamy dane i jak długo je przechowujemy?</h3>
+            <ol>
+                <li><strong>Odbiorcy danych:</strong> Z uwagi na specyfikę modelu Boutique Advisory, dostęp do danych mają wyłącznie zaufani, zweryfikowani podwykonawcy (tzw. podmioty przetwarzające), tacy jak: dostawcy bezpiecznej infrastruktury chmurowej (hosting), dedykowani analitycy prawni oraz obsługa księgowa.</li>
+                <li>Nie sprzedajemy baz danych klientów. Wszelkie oferty off-market są prezentowane Inwestorom w sposób zanonimizowany, dopóki strony nie podpiszą stosownych umów NDA.</li>
+                <li><strong>Czas przechowywania:</strong>
+                    <ul class="mt-2">
+                        <li>W przypadku danych przetwarzanych na podstawie zgody (np. powiadomienia Smart Matching o nowych gruntach) – do momentu jej odwołania.</li>
+                        <li>W przypadku danych niezbędnych do wykonania umowy brokerskiej/inwestycyjnej – przez czas trwania umowy oraz po jej zakończeniu przez okres przedawnienia ewentualnych roszczeń (standardowo 3 lata dla B2B).</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3>§ 5. Mechanizm Cookies i Analityka</h3>
+            <ol>
+                <li>Serwis wykorzystuje pliki cookies (ciasteczka) w celu zapewnienia prawidłowego działania strony, bezpieczeństwa sesji oraz w celach analitycznych, pozwalających optymalizować nasze usługi.</li>
+                <li>Korzystamy wyłącznie z bezpiecznych cookies analitycznych (np. Google Analytics z włączoną anonimizacją IP), aby badać ruch w serwisie i ulepszać nasze narzędzia wyceny (podstawa prawna: art. 6 ust. 1 lit. f RODO).</li>
+                <li>Serwis Holistycznego Brokera <strong>nie wykorzystuje</strong> agresywnych narzędzi śledzących zachowania użytkownika w celach odsprzedaży danych do zewnętrznych sieci reklamowych. Szanujemy prywatność Twoich poszukiwań inwestycyjnych.</li>
+                <li>Użytkownik może w każdej chwili samodzielnie zarządzać plikami cookies z poziomu ustawień swojej przeglądarki internetowej.</li>
+            </ol>
+
+            <h3>§ 6. Prawa Użytkowników (Zgodność z RODO)</h3>
+            <p>W związku z przetwarzaniem danych, Użytkownikowi przysługuje pełen wachlarz praw:</p>
+            <ul>
+                <li><strong>Prawo dostępu do danych</strong> oraz otrzymania ich kopii.</li>
+                <li><strong>Prawo do sprostowania (poprawiania)</strong> swoich danych.</li>
+                <li><strong>Prawo do usunięcia danych ("prawo do bycia zapomnianym")</strong>, jeśli nie ma już podstaw do ich przetwarzania.</li>
+                <li><strong>Prawo do ograniczenia przetwarzania</strong>.</li>
+                <li><strong>Prawo do sprzeciwu</strong> wobec przetwarzania danych z przyczyn związanych ze szczególną sytuacją Użytkownika.</li>
+                <li><strong>Prawo do przenoszenia danych</strong>.</li>
+                <li><strong>Prawo do cofnięcia zgody</strong> w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania, którego dokonano przed jej cofnięciem).</li>
+            </ul>
+            <p>Aby skorzystać z powyższych praw, skontaktuj się z nami bezpośrednio: <a href="mailto:kontakt@holistycznybroker.pl" class="text-brand-gold hover:text-white transition-colors">kontakt@holistycznybroker.pl</a>. Przysługuje Ci również prawo do wniesienia skargi do Prezesa Urzędu Ochrony Danych Osobowych (PUODO).</p>
+
+            <h3>§ 7. Postanowienia Końcowe</h3>
+            <p>Zastrzegamy sobie prawo do aktualizacji niniejszej Polityki Prywatności w przypadku rozwoju naszych algorytmów analitycznych (AI) lub zmian w przepisach prawa. O istotnych zmianach będziemy informować bezpośrednio w Serwisie.</p>
+            <p class="text-sm text-slate-500 mt-8"><em>Data ostatniej aktualizacji: kwiecień 2026 r.</em></p>
+        </div>
+    </main>
+
+    <!-- Minimalistyczna Stopka -->
+    <footer class="bg-[#05070d] pt-20 pb-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="flex items-center gap-4 mb-6 group">
+                        <img src="logo.png" alt="Logo" class="h-14 w-14 object-contain grayscale opacity-60 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110">
+                        <span class="text-xl font-bold tracking-widest text-white uppercase flex flex-col leading-none"><span>Holistyczny</span><span class="text-brand-gold text-xs tracking-[0.4em] mt-1">Broker</span></span>
+                    </a>
+                    <p class="text-sm text-slate-500 mb-6">Pierwszy w Polsce AI-Driven Real Estate Broker. Zamknięte modele LLM i sieć Boutique Advisory.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-6 uppercase text-sm tracking-widest">Ekspertyza</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="dla-biznesu.html" class="hover:text-brand-gold transition-colors">Dla Biznesu (B2B)</a></li>
+                        <li><a href="katalog-off-market.html" class="hover:text-brand-gold transition-colors">Katalog Off-Market</a></li>
+                        <li><a href="dla-ciebie.html" class="hover:text-brand-gold transition-colors">Klienci Prywatni (B2C)</a></li>
+                        <li><a href="blog.html" class="hover:text-brand-gold transition-colors">Ekspertyza (Blog)</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-gold transition-colors">Baza Wiedzy (FAQ)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-6 uppercase text-sm tracking-widest">Bezpieczeństwo & B2B</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="polityka-prywatnosci.html" class="hover:text-brand-gold transition-colors">Polityka Prywatności</a></li>
+                        <li><a href="regulamin.html" class="hover:text-brand-gold transition-colors">Regulamin</a></li>
+                        <li><a href="disclaimer-inwestycyjny.html" class="hover:text-brand-gold transition-colors">Disclaimer Inwestycyjny</a></li>
+                        <li><a href="strefa-partnera.html" class="text-brand-gold font-medium hover:text-white transition-colors">Strefa Współpracy (B2B Brokers)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-6 uppercase text-sm tracking-widest">Kontakt</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="mailto:kontakt@holistycznybroker.pl" class="hover:text-brand-gold">kontakt@holistycznybroker.pl</a></li>
+                        <li><a href="tel:+48730882961" class="hover:text-brand-gold">+48 730 882 961</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 text-center text-xs text-slate-600">
+                <div class="flex justify-center gap-4 mb-4">
+                    <a href="#" aria-label="LinkedIn" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="#" aria-label="YouTube" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+                    <a href="#" aria-label="Instagram" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    <a href="#" aria-label="X (Twitter)" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="#" aria-label="Facebook" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                </div>
+                
+                <div class="mb-4 text-slate-500">
+                    REVOLTO GROUP SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ <br class="md:hidden"> 
+                    <span class="hidden md:inline">|</span> KRS: 0001074425 <span class="hidden md:inline">|</span> NIP: 7123466389 <span class="hidden md:inline">|</span> REGON: 527156234 <br class="md:hidden">
+                    <span class="hidden md:inline">|</span> Adres siedziby: ul. Wita Stwosza 48 / 105, 02-661 Warszawa
+                </div>
+                
+                <p>&copy; 2026 Holistyczny Broker. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="chatbot-ui.js"></script>
+</body>
+</html>

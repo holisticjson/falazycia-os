@@ -1,0 +1,56 @@
+name: "ADHD Neon Node"
+description: "High-dopamine dark theme with neon accents, optimized for focus."
+colors:
+  background: "#0d1117"
+  background_secondary: "#161b22"
+  text: "#c9d1d9"
+  text_muted: "#8b949e"
+  primary: "#58a6ff"
+  primary_hover: "#3182ce"
+  secondary: "#238636"
+  accent: "#f0883e"
+  border: "#30363d"
+  error: "#f85149"
+  success: "#2ea043"
+  warning: "#d29922"
+fonts:
+  body: "'Inter', sans-serif"
+  code: "'Fira Code', monospace"
+custom_css: |
+  body, #root, main, .app-container, [class*="App"], [class*="Container"], [class*="Layout"] {
+    background-image: none !important;
+    background: radial-gradient(circle at top right, #1f2937, #0d1117) !important;
+    background-color: #0d1117 !important;
+  }
+  .MuiPaper-root, [class*="Paper"] {
+    backdrop-filter: blur(10px) !important;
+    background-color: rgba(22, 27, 34, 0.8) !important;
+    border: 1px solid #30363d !important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+  }
+  .MuiButton-root, button {
+    text-transform: none !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease-in-out !important;
+  }
+  .MuiButton-containedPrimary, button[class*="primary"] {
+    box-shadow: 0 0 15px rgba(88, 166, 255, 0.4) !important;
+  }
+  .MuiButton-containedPrimary:hover, button[class*="primary"]:hover {
+    box-shadow: 0 0 25px rgba(88, 166, 255, 0.7) !important;
+    transform: translateY(-1px) !important;
+  }
+  ::-webkit-scrollbar {
+    width: 8px !important;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0d1117 !important;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #30363d !important;
+    border-radius: 4px !important;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #58a6ff !important;
+  }

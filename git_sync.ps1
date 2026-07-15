@@ -7,10 +7,10 @@
 # ==============================================================================
 
 # Konfiguracja ścieżek
-$RepoPath = "C:\Aplikacje MVP\Holistic Jason"
-$LogPath = "$RepoPath\02-os-jaison\git_sync.log"
+$RepoPath = "C:\Aplikacje MVP"
+$LogPath = "$RepoPath\git_sync.log"
 
-# Funkcja do zapisu logów (czysty ASCII bez emojis, dla stabilności PowerShell 5.1)
+# Funkcja do zapisu logów
 function Write-Log {
     param([string]$message)
     $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
@@ -36,7 +36,7 @@ $gitStatus = git status --porcelain
 if ($gitStatus) {
     Write-Log "[INFO] Wykryto lokalne modyfikacje plikow. Przygotowuje automatyczny zapis..."
     
-    # Dodanie wszystkich dozwolonych plików (wykluczając bazy *.db i sekrety z .gitignore)
+    # Dodanie wszystkich dozwolonych plików (wykluczając sekrety i logi z .gitignore)
     git add -A
     
     # Utworzenie automatycznego commita z nazwą komputera i czasem
@@ -54,14 +54,14 @@ if ($gitStatus) {
 Write-Log "[INFO] Pobieranie stanu z GitHub (git fetch)..."
 git fetch origin main
 
-# 5. Bezpieczny Pull za pomocą Rebase (utrzymuje liniową historię bez pustych merge commitów)
+# 5. Bezpieczny Pull za pomocą Rebase (utrzymuje liniową historię bez merge commitów)
 Write-Log "[INFO] Pobieranie i scalanie zmian (git pull --rebase)..."
 $pullResult = git pull --rebase origin main 2>&1
 
 if ($LASTEXITCODE -ne 0) {
     Write-Log "[ERR] Wykryto konflikt podczas scalania (Pull Rebase)! Bezpiecznie anuluje operacje..."
     git rebase --abort
-    Write-Log "[WARN] Synchronizacja wstrzymana. Rozwiaz konflikty recznie za pomoca terminala (git status, git stash, git pull)."
+    Write-Log "[WARN] Synchronizacja wstrzymana. Rozwiaz konflikty recznie."
     exit
 } else {
     Write-Log "[OK] Scalanie zakonczone sukcesem!"

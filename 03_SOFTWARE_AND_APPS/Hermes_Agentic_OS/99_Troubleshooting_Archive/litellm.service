@@ -1,0 +1,14 @@
+[Unit]
+Description=LiteLLM Proxy
+After=network.target
+
+[Service]
+User=holisticjson
+WorkingDirectory=/home/holisticjson
+Environment="PATH=/home/holisticjson/.local/bin:/usr/bin:/bin"
+ExecStart=/home/holisticjson/.local/bin/uv tool uvx --python 3.12 --from litellm litellm --config /home/holisticjson/litellm_config.yaml --port 4000
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

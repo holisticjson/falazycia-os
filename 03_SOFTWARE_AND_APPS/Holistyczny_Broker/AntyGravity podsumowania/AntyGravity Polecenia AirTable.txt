@@ -1,0 +1,65 @@
+AntyGravity Polecenia:
+
+
+Jesteś Senior Full-Stack Developerem i Ekspertem PropTech. Mamy przygotowaną architekturę bazy danych Headless CMS w Airtable.
+ZADANIE: Zaimplementuj pobieranie danych z Airtable (Fetch API) w naszych plikach katalogowych.
+
+DANE DOSTĘPOWE API AIRTABLE:
+- Base ID: appQeqrV1wJB7jXR3
+- Personal Access Token: patEY2rEsChuLm9gJ.e3c278f8b263962a9ad37fcb416dd7cd1032c37298a9806e3296429cde106578
+- Endpoint B2B: https://api.airtable.com/v0/appQeqrV1wJB7jXR3/B2B%20Off-Market
+- Endpoint B2C: https://api.airtable.com/v0/appQeqrV1wJB7jXR3/B2C%20Premium
+
+KROK 1: INTEGRACJA B2B (grunty-komercyjne-off-market.html)
+- W sekcji katalogu usuń statyczne kafelki i utwórz pusty kontener: `<div id="b2b-offers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>`.
+- Na dole pliku (przed zamknięciem </body>) dodaj skrypt JS pobierający dane z Endpointu B2B. Użyj nagłówka: `Authorization: 'Bearer ' + token`.
+- POBIERAJ TYLKO rekordy gdzie pole `Status` to "Aktywne", "W trakcie negocjacji" lub "Sprzedane". Pomiń "Szkic".
+- DYNAMICZNE RENDEROWANIE KARTY B2B: 
+  * Wykorzystaj nasz mroczny design (glass-card). 
+  * Wstawiaj dane: `record.fields['Kategoria']`, `record.fields['ID Projektu']`, `record.fields['Zajawka Publiczna']`, `record.fields['PUM / GLA']`.
+  * Na zdjęciu wyświetlaj kłódkę i napis "Odblokuj NDA".
+  * Przycisk na dole ma brzmieć "Zapytaj o NDA" i uruchamiać istniejącą już funkcję `prefillContact()`.
+  * Jeśli `record.fields['Status'] === 'Sprzedane'`, nałóż na całą kartę wizualną nakładkę w Tailwind (np. absolutny div z bg-black/60 i złotym napisem "SPRZEDANE").
+
+KROK 2: INTEGRACJA B2C PREMIUM (nieruchomosci-premium.html)
+- Analogicznie utwórz `<div id="b2c-offers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>`.
+- Dodaj skrypt pobierający z Endpointu B2C.
+- DYNAMICZNE RENDEROWANIE KARTY B2C:
+  * Zdjęcie wyciągaj z załącznika Airtable: Jeśli `record.fields['Galeria Zdjęć']` istnieje, użyj `record.fields['Galeria Zdjęć'][0].url`.
+  * Wstawiaj: `record.fields['Tytuł Oferty']`, `record.fields['Lokalizacja']`, `record.fields['Cena']`, `record.fields['Opis Premium']`.
+  * Przycisk na kafelku ma brzmieć "Odkryj detale" i prowadzić jako zwykły link `<a href="nieruchomosc-szczegoly.html?id=${record.id}">`.
+  * Jeśli status to "W trakcie negocjacji", wyświetl elegancki badge "REZERWACJA".
+
+KROK 3: ŁADOWANIE I BŁĘDY (UX)
+- Przed zrenderowaniem kafelków, wewnątrz każdego kontenera wyświetlaj animowany CSS loader (złoty spinner, border-brand-gold) z tekstem "Nawiązywanie bezpiecznego połączenia z bazą...".
+- W przypadku błędu API (`catch`), wyświetl czerwonawy komunikat: "System analityczny jest chwilowo niedostępny. Skontaktuj się z doradcą."
+
+Zwróć mi kompletne bloki skryptów `<script>` dla obu plików oraz poinformuj, co dokładnie zmieniłeś w kodzie HTML.
+
+
+--------------------------------------------------------
+
+Jesteś Senior Full-Stack Developerem. Wdrażamy system Headless CMS. Zastąp statyczne oferty dynamicznym pobieraniem danych z Airtable (Fetch API).
+
+DANE API AIRTABLE:
+- Base ID: appQeqrV1wJB7jXR3
+- Personal Access Token: patEY2rEsChuLm9gJ.e3c278f8b263962a9ad37fcb416dd7cd1032c37298a9806e3296429cde106578
+- Endpoint B2B: https://api.airtable.com/v0/appQeqrV1wJB7jXR3/B2B%20Off-Market
+- Endpoint B2C: https://api.airtable.com/v0/appQeqrV1wJB7jXR3/B2C%20Premium
+
+KROK 1: PLIK `grunty-komercyjne-off-market.html` (B2B)
+- Znajdź sekcję z ofertami i podmień ręcznie wpisane kafelki na pusty kontener: `<div id="b2b-offers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>`.
+- Na dole pliku, przed </body>, dodaj skrypt pobierający dane z Endpointu B2B, autoryzowany nagłówkiem: `Authorization: 'Bearer ' + token`.
+- Filtruj logikę: Wyświetlaj tylko rekordy, gdzie pole "Status" to "Aktywne", "Sprzedane" lub "W trakcie negocjacji".
+- Renderuj kafelki (glass-card) wykorzystując dane: `fields['Kategoria']`, `fields['ID Projektu']`, `fields['Zajawka Publiczna']`, `fields['PUM / GLA']`. Jeśli Status to "Sprzedane", nałóż na kafelek graficzną nakładkę.
+
+KROK 2: PLIK `nieruchomosci-premium.html` (B2C)
+- Podmień siatkę ofert na kontener: `<div id="b2c-offers-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>`.
+- Dodaj skrypt asynchroniczny z endpointem B2C.
+- Renderuj kafelki: użyj zdjęcia (wyciągnij pierwszy URL z tablicy `fields['Galeria Zdjęć']`), wstaw `fields['Tytuł Oferty']`, `fields['Lokalizacja']`, `fields['Cena']`. Przycisk z kafelka ma kierować do detali (z ID rekordu w URL).
+
+KROK 3: LOADER I UX
+- Zanim dane z Fetch API dotrą, pokazuj w obu kontenerach złoty CSS spinner z podpisem: "Nawiązywanie bezpiecznego połączenia z bazą...".
+- Obsłuż blok catch() wyświetlając błąd: "System analityczny chwilowo niedostępny."
+
+Upewnij się, że zachowujesz mroczny design Tailwind i zaktualizuj pliki w obszarze roboczym. Po skończeniu uruchom dla mnie podgląd na żywo (Live Preview).

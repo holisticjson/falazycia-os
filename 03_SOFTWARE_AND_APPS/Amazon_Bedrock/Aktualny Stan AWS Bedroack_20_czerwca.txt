@@ -1,0 +1,88 @@
+Raport — Status limitów AWS Bedrock | 20 czerwca 2026
+CZĘŚĆ 1: Status wniosków o podwyższenie limitów
+❌ Żaden limit NIE został jeszcze podwyższony
+Wniosek	Case ID	Status	Zmiana
+Claude 3.5 Sonnet V2 — Cross-Region TPM (→1,200,000)	178135364700784	Case Opened — wciąż w toku	Brak
+Claude Fable 5 — Cross-Region TPM (→500,000)	178135375500259	Case Closed — skonsolidowany do 178135364700784	Brak
+Claude 3.5 Sonnet V2 — On-demand RPM (→300)	178135423600250	Case Closed — skonsolidowany do 178135364700784	Brak
+Co powiedział AWS Support?
+Ostatnia odpowiedź pochodzi z 18 czerwca 2026 (godz. 13:36) — agent Shine M. napisał, że:
+
+sprawa została eskalowana bezpośrednio do Bedrock Team w regionie us-east-1
+
+zespół ma 24–48 godzin na odpowiedź
+
+żadnej nowej odpowiedzi nie ma do dziś (20.06)
+
+Termin 48h upłynął 20 czerwca ok. 13:36 CEST — AWS spóźnia się z odpowiedzią. Jeśli do końca dnia nie będzie aktualizacji, warto zareplyować do case'u 178135364700784 z pytaniem o status.
+
+CZĘŚĆ 2: Faktyczne aktualne limity (us-east-1)
+Model	Inference type	TPM (effective)	RPM (effective)
+Claude 3.5 Sonnet V2	On-demand	400,000	50 (wąskie gardło!)
+Claude 3.5 Sonnet V2	Cross-Region	800,000	100
+Claude Haiku 4.5	Cross-Region	5,000,000	10,000
+Claude Haiku 4.5	Global cross-region	5,000,000	10,000
+Claude Sonnet 4.5 / 4.6	Cross/Global cross-region	5–6,000,000	10,000
+Claude Fable 5	Cross-Region	200,000	brak (tylko TPM)
+Claude Fable 5	Global cross-region	500,000	brak
+
+Applied value = 0 w Service Quotas oznacza "brak customowego limitu → konto używa wartości AWS default"
+
+CZĘŚĆ 3: Jakimi modelami zasilić API? Analiza budżetu 200 USD
+Cennik aktualny (us-east-1, on-demand)
+Model	Input / 1M tokenów	Output / 1M tokenów	Batch (-50%)
+Amazon Nova Micro	$0.035	$0.14	✅
+Amazon Nova Lite	$0.06	$0.24	✅
+Amazon Nova Pro	$0.80	$3.20	✅
+Claude 3 Haiku	$0.25	$1.25	✅
+Claude 3.5 Haiku	$0.80	$4.00	✅
+Claude Haiku 4.5	$1.00	$5.00	✅
+Claude 3.5 Sonnet V2	$3.00	$15.00	✅
+Claude 3.7 Sonnet	$3.00	$15.00	✅
+Claude Sonnet 4.5 / 4.6	$3.00	$15.00	✅
+Claude Fable 5	$10.00	$50.00	—
+Claude Opus 4.5	$5.00	$25.00	✅
+Claude Opus 4.6 / 4.8	$15.00	$75.00	✅
+Co możesz kupić za 200 USD?
+Zakładając typowy stosunek 1:3 (input:output tokenów):
+
+Model	Przybliżona liczba requestów (avg. 500 input + 1000 output tokenów)
+Nova Micro	~1,800,000 requestów
+Claude 3 Haiku	~230,000 requestów
+Claude Haiku 4.5	~29,000 requestów
+Claude 3.5 Sonnet V2	~9,000 requestów
+Claude Sonnet 4.6	~9,000 requestów
+Claude Opus 4.6	~1,100 requestów
+Claude Fable 5	~2,500 requestów
+CZĘŚĆ 4: Rekomendacje — Czym zasilić aplikację?
+Strategia trójwarstwowa (optymalna dla 200 USD)
+Warstwa 1 — "Tanie żądania masowe" (routing, klasyfikacja, proste odpowiedzi):
+
+Amazon Nova Micro (amazon.nova-micro-v1:0) — $0.035/$0.14 per 1M
+
+Claude 3 Haiku (anthropic.claude-3-haiku-20240307-v1:0) — $0.25/$1.25 per 1M
+
+Warstwa 2 — "Główne zadania agentyczne" (tool-calling, reasoning):
+
+Claude Haiku 4.5 (anthropic.claude-haiku-4-5-20251001-v1:0) — $1.00/$5.00, 10,000 RPM default — idealny jako workhorse
+
+Claude 3.5 Sonnet V2 (anthropic.claude-3-5-sonnet-20241022-v2:0) — $3.00/$15.00 — gdy potrzeba wyższej jakości, ale uważaj na 50 RPM on-demand
+
+Warstwa 3 — "Zadania premium / flagship" (tylko jeśli konieczne):
+
+Claude Sonnet 4.6 (anthropic.claude-sonnet-4-6) — $3.00/$15.00, 10,000 RPM — najlepszy bilans jakości i przepustowości
+
+Claude Fable 5 (anthropic.claude-fable-5) — $10.00/$50.00 — tylko do długotrwałych zadań kodowania/agentic workflows
+
+Najważniejsza rekomendacja praktyczna
+Do czasu podwyższenia limitu RPM dla Claude 3.5 Sonnet V2 On-demand (nadal 50 RPM):
+
+🟢 Używaj Claude Haiku 4.5 lub Claude Sonnet 4.6 przez Cross-Region Inference — mają domyślnie 10,000 RPM i są nowocześniejsze od 3.5 Sonnet V2. To eliminuje problem throttlingu całkowicie.
+
+Model ID do użycia przez API:
+
+text
+us.anthropic.claude-haiku-4-5-20251001-v1:0       # cross-region, 10K RPM
+us.anthropic.claude-sonnet-4-6                     # cross-region, 10K RPM, najlepszy wybór
+us.anthropic.claude-3-5-sonnet-20241022-v2:0       # cross-region, 100 RPM (lepsze niż on-demand 50)
+Prefix us. aktywuje automatyczny cross-region routing w us-east-1.

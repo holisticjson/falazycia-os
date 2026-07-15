@@ -1,0 +1,20 @@
+- [x] 1. Rozbudowa Interfejsu (Dashboard UI) - ZAKOŃCZONO LOKALNIE
+  - [x] Kompletny projekt HTML/CSS/JS (Holistic OS) na dysku C:
+  - [x] Dodanie zakładek Anti-Gravity IDE i Agency Pipeline
+  - [x] Aktualizacja widoku Prospecting (Radar & Social Media)
+  - [x] Moduł Kanban i grywalizacja (Dopamine Tracker)
+- [x] 2. Tworzenie Umiejętności (Hermes Skills) - ZAKOŃCZONO LOKALNIE
+  - [x] `agency_skills/web_researcher.md` 
+  - [x] `agency_skills/landing_page_builder.md` 
+  - [x] `agency_skills/campaign_generator.md` 
+- [ ] 3. Nowe Moduły (Holistic Funnel Builder + Prawo/Finanse) - OCZEKUJE
+  - [ ] Projekt UI / UX w duchu Low Friction
+  - [ ] Opracowanie instrukcji `funnel_architect.md`
+  - [ ] Opracowanie instrukcji `legal_and_finance_admin.md`
+- [ ] 4. Konsultacja Architektoniczna z Hermesem (OCZEKUJE)
+  - [ ] Wymiana informacji na podstawie `implementation_plan.md`
+  - [ ] Rozwiązanie Open Questions (autoryzacja, PDF, mechanizm serwowania UI)
+- [ ] 5. Wdrożenie na serwer (Deployment) - WSTRZYMANE DO CZASU DECYZJI
+  - [ ] Upload plików UI przez WinSCP na serwer GCP
+  - [ ] Odpalenie `install_plugins.sh` na serwerze GCP
+  - [ ] Podłączenie backendowego kanału komunikacji z silnikiem Hermesa

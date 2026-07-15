@@ -1,0 +1,425 @@
+/* 
+ * Holistyczny Broker - AI Concierge Widget Stylesheet
+ * Estetyka: Quiet Luxury (Onyx Black, Deep Emerald, Champagne Gold, Glassmorphism)
+ */
+
+/* Kontener główny całego widżetu */
+#hb-chat-widget {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 99999;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #F8FAFC;
+}
+
+/* --- PRZYCISK FAB (IKONA CZATU) --- */
+#hb-chat-fab {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #022c22 0%, #0B0F19 100%);
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    box-shadow: 0 8px 32px rgba(212, 175, 55, 0.15), 0 0 1px 1px rgba(212, 175, 55, 0.2) inset;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#hb-chat-fab:hover {
+    transform: translateY(-4px) scale(1.05);
+    border-color: #D4AF37;
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.25), 0 0 1px 1px rgba(212, 175, 55, 0.4) inset;
+}
+
+#hb-chat-fab svg {
+    width: 28px;
+    height: 28px;
+    color: #D4AF37;
+    transition: transform 0.3s ease;
+}
+
+#hb-chat-fab:hover svg {
+    transform: rotate(5deg);
+}
+
+/* Pulsująca aura fab w trybie makiety */
+.pulse-glow {
+    position: relative;
+}
+.pulse-glow::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    top: 0;
+    left: 0;
+    animation: hbPulse 2.5s infinite;
+    z-index: -1;
+}
+
+@keyframes hbPulse {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* --- OKNO CZATU --- */
+#hb-chat-window {
+    position: absolute;
+    bottom: 84px;
+    right: 0;
+    width: 380px;
+    height: 560px;
+    background: rgba(11, 15, 25, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    border-radius: 20px;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+}
+
+#hb-chat-window.open {
+    display: flex;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* --- NAGŁÓWEK OKNA --- */
+#hb-chat-header {
+    background-color: rgba(2, 44, 34, 0.85);
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hb-header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Kropka statusu "AI Online" */
+.hb-status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10B981;
+    border-radius: 50%;
+}
+.hb-status-dot.pulse {
+    animation: hbStatusPulse 1.8s infinite;
+}
+@keyframes hbStatusPulse {
+    0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+#hb-chat-header h3 {
+    margin: 0;
+    color: #F8FAFC;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.hb-badge {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: rgba(212, 175, 55, 0.15);
+    color: #D4AF37;
+    padding: 2px 6px;
+    border-radius: 10px;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    letter-spacing: 0.5px;
+}
+
+.hb-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hb-wa-handoff-btn {
+    color: #10B981;
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+}
+.hb-wa-handoff-btn:hover {
+    color: #D4AF37;
+}
+
+#hb-chat-close {
+    background: none;
+    border: none;
+    color: #94A3B8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    transition: color 0.3s ease;
+}
+
+#hb-chat-close:hover {
+    color: #D4AF37;
+}
+
+/* --- OBSZAR WIADOMOŚCI --- */
+#hb-chat-messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    background-color: #0B0F19;
+}
+
+/* Stylizacja scrollbara w duchu minimalistycznym */
+#hb-chat-messages::-webkit-scrollbar {
+    width: 5px;
+}
+#hb-chat-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+#hb-chat-messages::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.15);
+    border-radius: 10px;
+}
+#hb-chat-messages::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.3);
+}
+
+/* --- DYSTKRETNE WIADOMOŚCI --- */
+.hb-msg {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+    animation: hbMsgFadeIn 0.4s ease forwards;
+}
+
+@keyframes hbMsgFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hb-msg.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #D4AF37 0%, #B5952F 100%);
+    color: #0B0F19;
+    font-weight: 500;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+}
+
+.hb-msg.bot {
+    align-self: flex-start;
+    background-color: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #E2E8F0;
+    border-bottom-left-radius: 4px;
+}
+
+.hb-msg.bot strong {
+    color: #D4AF37;
+    font-weight: 600;
+}
+
+/* Luksusowe przyciski interakcji wewnątrz wiadomości bota */
+.hb-msg-action {
+    margin-top: 12px;
+}
+.hb-msg-action-btn {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+.hb-msg-action-btn.wa-btn {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.hb-msg-action-btn.wa-btn:hover {
+    background-color: #10B981;
+    color: #0B0F19;
+    border-color: #10B981;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+/* --- SZYBKIE AKCJE (SUGESTIE) --- */
+#hb-chat-quick-actions {
+    display: flex;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: #0B0F19;
+    overflow-x: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    transition: opacity 0.3s ease;
+}
+#hb-chat-quick-actions::-webkit-scrollbar {
+    height: 0px; /* ukryty scrollbar horyzontalny */
+}
+
+.hb-quick-btn {
+    background-color: rgba(30, 41, 59, 0.6);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    color: #F8FAFC;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.hb-quick-btn:hover {
+    border-color: #D4AF37;
+    background-color: rgba(212, 175, 55, 0.08);
+    color: #D4AF37;
+    transform: scale(1.02);
+}
+
+/* --- WPISYWANIE WIADOMOŚCI --- */
+#hb-chat-input-area {
+    display: flex;
+    padding: 14px 20px;
+    background-color: rgba(11, 15, 25, 0.95);
+    border-top: 1px solid rgba(212, 175, 55, 0.15);
+    align-items: center;
+    gap: 12px;
+}
+
+#hb-chat-input {
+    flex: 1;
+    background-color: #1E293B;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #F8FAFC;
+    padding: 11px 16px;
+    border-radius: 24px;
+    outline: none;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+#hb-chat-input:focus {
+    border-color: #D4AF37;
+    background-color: #0F172A;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+#hb-chat-send {
+    background: none;
+    border: none;
+    color: #D4AF37;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#hb-chat-send:hover {
+    color: #B5952F;
+    transform: scale(1.1) translateX(2px);
+}
+
+/* --- STOPKA CZATU --- */
+#hb-chat-footer {
+    background-color: #0B0F19;
+    padding: 8px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+#hb-chat-footer span {
+    font-size: 9px;
+    color: #475569;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Dot animacji pisania (hb-typing) */
+.hb-typing {
+    font-size: 12px;
+    color: #64748B;
+    font-style: italic;
+    background-color: rgba(30, 41, 59, 0.3) !important;
+    border: none !important;
+}
+.hb-typing-dots span {
+    animation: hbBlink 1.4s infinite both;
+}
+.hb-typing-dots span:nth-child(2) { animation-delay: .2s; }
+.hb-typing-dots span:nth-child(3) { animation-delay: .4s; }
+
+@keyframes hbBlink {
+    0% { opacity: .2; }
+    20% { opacity: 1; }
+    100% { opacity: .2; }
+}
+
+/* --- INTEGRACJA VERTEX WIDGET GOOGLE (REALNY TRYB) --- */
+#hb-vertex-container {
+    flex: 1;
+    width: 100%;
+    height: calc(100% - 60px); /* wysokość minus nagłówek */
+    background-color: #0B0F19;
+}
+
+/* Kontener dla trybu Vertex */
+#hb-chat-window.vertex-mode {
+    height: 600px;
+    width: 420px;
+}
+
+/* Nadpisywanie stylów natywnego widgetu Google (jeśli używa custom variables) */
+gcs-search-widget {
+    --gcs-search-widget-theme-color: #D4AF37;
+    --gcs-search-widget-background-color: #0B0F19;
+    --gcs-search-widget-text-color: #F8FAFC;
+    --gcs-search-widget-accent-color: #022c22;
+    --gcs-search-widget-font-family: 'Inter', sans-serif;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- RESPONSYWNOŚĆ --- */
+@media (max-width: 480px) {
+    #hb-chat-widget {
+        bottom: 16px;
+        right: 16px;
+    }
+    #hb-chat-window {
+        width: calc(100vw - 32px);
+        right: 0;
+        bottom: 76px;
+        height: 70vh;
+    }
+    #hb-chat-window.vertex-mode {
+        width: calc(100vw - 32px);
+        height: 75vh;
+    }
+}

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAPORT INWESTYCYJNY OFF-MARKET: ŁÓDŹ - ŚRÓDMIEŚCIE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --onyx-black: #0B0F19;
+            --slate-grey: #1E293B;
+            --emerald-green: #022c22;
+            --emerald-light: #064e3b;
+            --gold: #D4AF37;
+            --gold-hover: #B5952F;
+            --white: #F8FAFC;
+            --text-muted: #94A3B8;
+        }
+        
+        body {
+            background-color: var(--onyx-black);
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(180deg, var(--emerald-green) 0%, var(--onyx-black) 100%);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        .brand-subtitle {
+            font-family: 'Inter', sans-serif;
+            color: var(--gold);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            letter-spacing: 1px;
+            color: var(--white);
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        /* LUKSUSOWE KARTY METRYK */
+        .kpi-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .kpi-title {
+            color: var(--text-muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .kpi-val {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .kpi-val.gold {
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+        }
+
+        .kpi-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* SEKCJE SZCZEGÓŁOWE */
+        .section-card {
+            background: rgba(30, 41, 59, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 12px;
+            margin-top: 0;
+            margin-bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title span {
+            color: var(--gold);
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+        }
+
+        /* TABELA PARAMETRÓW */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 13.5px;
+        }
+
+        th {
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        td.bold {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        td.gold {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* DUE DILIGENCE GAPS */
+        .gap-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .gap-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 13px;
+        }
+
+        .gap-item::before {
+            content: '⚠️';
+            font-size: 14px;
+        }
+
+        .gap-title {
+            font-weight: 600;
+            color: #EF4444;
+            margin-bottom: 3px;
+        }
+
+        .gap-desc {
+            color: var(--text-muted);
+        }
+
+        /* CTA BUTTON */
+        .cta-container {
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-hover) 100%);
+            color: var(--onyx-black);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 18px 40px;
+            border-radius: 40px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.45);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 11px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-subtitle">Holistyczny Broker — Deal Sourcing Intelligence</div>
+        <h1>Raport Inwestycyjny Off-Market</h1>
+        <div class="status-badge">Kwalifikacja: Klasa A+ (Scoring 91.0%)</div>
+    </header>
+
+    <div class="container">
+
+        <!-- GRID 3: GŁÓWNE KPI -->
+        <div class="grid-3">
+            <div class="kpi-card">
+                <div class="kpi-title">Finalny Scoring Terenu</div>
+                <div class="kpi-val gold">90.95 / 100</div>
+                <div class="kpi-desc">Wysoka ocena wynikająca z posiadania prawomocnego pozwolenia na budowę (PnB) oraz wolnej od roszczeń Księgi Wieczystej.</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">Szacowany PUM (Mieszkalny)</div>
+                <div class="kpi-val">6,642 m²</div>
+                <div class="kpi-desc">Wyliczony przy intensywności zabudowy 1.8 z MPZP (MW/U) z uwzględnieniem 82% efektywności sprawności rzutu.</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-title">Prognozowana Rentowność (ROI)</div>
+                <div class="kpi-val gold">74.3%</div>
+                <div class="kpi-desc">Prognozowany zysk z przedsięwzięcia: <strong>27,738,400.00 PLN</strong> przy szacowanym rocznym <strong>IRR 23.4%</strong> (cykl 3-letni).</div>
+            </div>
+        </div>
+
+        <!-- SPECYFIKACJA GEOPLANISTYCZNA -->
+        <div class="section-card">
+            <div class="section-title">
+                Charakterystyka Geoplanistyczna Działki
+                <span>ID: 106103_9.0022.88/14</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 35%;">Parametr</th>
+                        <th>Wartość z rejestrów (ULDK / RWDZ)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Numer ewidencyjny gruntów</td>
+                        <td class="bold">Działki 88/14, 88/15 (Obręb S-22 Śródmieście)</td>
+                    </tr>
+                    <tr>
+                        <td>Powierzchnia geometryczna</td>
+                        <td class="bold">4,500.0 m²</td>
+                    </tr>
+                    <tr>
+                        <td>Status MPZP</td>
+                        <td class="bold">Uchwalony (Symbol: MW/U-12)</td>
+                    </tr>
+                    <tr>
+                        <td>Przeznaczenie w planie</td>
+                        <td class="bold">Zabudowa mieszkaniowa wielorodzinna oraz usługi nieuciążliwe</td>
+                    </tr>
+                    <tr>
+                        <td>Maksymalna intensywność zabudowy</td>
+                        <td class="bold">1.8</td>
+                    </tr>
+                    <tr>
+                        <td>Dostępność mediów miejskich</td>
+                        <td class="gold">woda, kanalizacja deszczowa i sanitarna, energia elektryczna, ciepłociąg miejski</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SPECYFIKACJA FINANSOWA (INVESTMENT MEMORANDUM DCF) -->
+        <div class="section-card">
+            <div class="section-title">
+                Szybka Kalkulacja Kosztów & Przychodów (DCF Model)
+                <span>Waluta: PLN</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 50%;">Pozycja Budżetowa</th>
+                        <th style="text-align: right;">Kwota</th>
+                        <th style="text-align: right; width: 20%;">Wskaźnik / m² PUM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Koszt zakupu gruntu (off-market)</td>
+                        <td class="bold" style="text-align: right;">4,500,000.00</td>
+                        <td style="text-align: right; color: var(--text-muted); font-size: 12px;">677.51</td>
+                    </tr>
+                    <tr>
+                        <td>Koszt budowy (generalne wykonawstwo - stan deweloperski)</td>
+                        <td class="bold" style="text-align: right;">30,553,200.00</td>
+                        <td style="text-align: right; color: var(--text-muted); font-size: 12px;">4,600.00</td>
+                    </tr>
+                    <tr>
+                        <td>Koszty miękkie (nadzór, projekty, przyłącza miejskie, marketing)</td>
+                        <td class="bold" style="text-align: right;">2,300,000.00</td>
+                        <td style="text-align: right; color: var(--text-muted); font-size: 12px;">346.28</td>
+                    </tr>
+                    <tr style="background: rgba(255,255,255,0.02);">
+                        <td class="gold">Całkowity Koszt Inwestycji (TDC)</td>
+                        <td class="gold" style="text-align: right;">37,353,200.00</td>
+                        <td class="gold" style="text-align: right; font-size: 12px;">5,623.79</td>
+                    </tr>
+                    <tr style="background: rgba(212, 175, 55, 0.05);">
+                        <td class="gold">Prognozowany Przychód ze Sprzedaży PUM</td>
+                        <td class="gold" style="text-align: right;">65,091,600.00</td>
+                        <td class="gold" style="text-align: right; font-size: 12px;">9,800.00</td>
+                    </tr>
+                    <tr style="border-top: 2px solid var(--gold);">
+                        <td style="font-weight: 700; text-transform: uppercase;">Prognozowany Zysk Netto (Przed Tax)</td>
+                        <td style="font-weight: 700; text-align: right; font-size: 18px; color: #10B981;">27,738,400.00</td>
+                        <td class="gold" style="text-align: right; font-weight: 700; font-size: 16px;">74.3% ROI</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- MATRYCA SCORINGOWA OKAZJI -->
+        <div class="section-card">
+            <div class="section-title">
+                Rozkład Wag Matrycy Scoringowej (Procedura 13)
+                <span>Wyliczono ważono</span>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Kryterium Oceny</th>
+                        <th style="text-align: center;">Waga Kryterium</th>
+                        <th style="text-align: center;">Ocena Cząstkowa</th>
+                        <th style="text-align: right;">Wynik Ważony</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="bold">Stan Prawny (KW, Księga wieczysta, brak hipoteki)</td>
+                        <td style="text-align: center;">30%</td>
+                        <td style="text-align: center;" class="bold">92 / 100</td>
+                        <td class="gold" style="text-align: right;">27.60 pkt</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Cena vs Wartość Rynkowa (Wycena likwidacyjna)</td>
+                        <td style="text-align: center;">25%</td>
+                        <td style="text-align: center;" class="bold">96 / 100</td>
+                        <td class="gold" style="text-align: right;">24.00 pkt</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Lokalizacja i dojazd (Śródmieście, Łódź)</td>
+                        <td style="text-align: center;">20%</td>
+                        <td style="text-align: center;" class="bold">88 / 100</td>
+                        <td class="gold" style="text-align: right;">17.60 pkt</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Potencjał Yield / PUM (Wysoki wskaźnik intensywności 1.8)</td>
+                        <td style="text-align: center;">15%</td>
+                        <td style="text-align: center;" class="bold">85 / 100</td>
+                        <td class="gold" style="text-align: right;">12.75 pkt</td>
+                    </tr>
+                    <tr>
+                        <td class="bold">Infrastruktura i media miejskie (Dostępne w drodze)</td>
+                        <td style="text-align: center;">10%</td>
+                        <td style="text-align: center;" class="bold">90 / 100</td>
+                        <td class="gold" style="text-align: right;">9.00 pkt</td>
+                    </tr>
+                    <tr style="background: rgba(212, 175, 55, 0.08); border-top: 1px solid var(--gold);">
+                        <td style="font-weight: 700; text-transform: uppercase;">Suma Ważona (Ocena Końcowa)</td>
+                        <td style="text-align: center; font-weight: 700;">100%</td>
+                        <td style="text-align: center; font-weight: 700;">—</td>
+                        <td class="gold" style="text-align: right; font-size: 16px; font-weight: 700;">90.95 / 100 pkt</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SEKCJA: DUE DILIGENCE GAPS -->
+        <div class="section-card">
+            <div class="section-title">
+                Skaner Due Diligence Gaps (Procedura 13C)
+                <span>Wymaga weryfikacji przed złożeniem wiążącej oferty</span>
+            </div>
+            <ul class="gap-list">
+                <li class="gap-item">
+                    <div>
+                        <div class="gap-title">Weryfikacja Przyłączeń Deszczowych (Zlewnia miejska)</div>
+                        <div class="gap-desc">MPZP stawia rygorystyczne warunki odprowadzania deszczówki. Konieczne jest pozyskanie warunków technicznych przyłączenia osadnika deszczowego oraz upewnienie się, czy sieć deszczowa ma wolne moce przerobowe w tym kwartale.</div>
+                    </div>
+                </li>
+                <li class="gap-item">
+                    <div>
+                        <div class="gap-title">Zgoda Syndyka Masy Upadłościowej / Likwidatora</div>
+                        <div class="gap-desc">Z uwagi na dopisek "w likwidacji" przy inwestorze w KRS, finalna umowa sprzedaży gruntów wymaga prawomocnej zgody zgromadzenia wspólników lub sędziego-komisarza. Należy natychmiast zweryfikować status postępowania likwidacyjnego.</div>
+                    </div>
+                </li>
+                <li class="gap-item">
+                    <div>
+                        <div class="gap-title">Potwierdzenie Bezpieczeństwa Ekologicznego (Badanie Gruntu)</div>
+                        <div class="gap-desc">Teren historycznie znajdował się w pobliżu dawnych zakładów włókienniczych. Rekomendujemy wykonanie odwiertów geologicznych i badań fizykochemicznych na obecność zanieczyszczeń gruntowo-wodnych (metale ciężkie) w celu wyeliminowania ryzyk rekultywacyjnych.</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- CTA BUTTON -->
+        <div class="cta-container">
+            <a href="https://wa.me/48730882961" target="_blank" class="cta-btn">
+                📩 Połącz ze Strategiem & Pobierz pełne IM w PDF
+            </a>
+        </div>
+
+    </div>
+
+    <footer class="bg-[#05070d] pt-20 pb-10 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                <div class="lg:col-span-1">
+                    <a href="index.html" class="flex items-center gap-4 mb-6 group">
+                        <img src="logo.png" alt="Logo" class="h-14 w-14 object-contain grayscale opacity-60 transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110">
+                        <span class="text-xl font-bold tracking-widest text-white uppercase flex flex-col leading-none"><span>Holistyczny</span><span class="text-brand-gold text-xs tracking-[0.4em] mt-1">Broker</span></span>
+                    </a>
+                    <p class="text-sm text-slate-500 mb-6">Pierwszy w Polsce AI-Driven Real Estate Broker. Zamknięte modele LLM i sieć Boutique Advisory.</p>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-6 uppercase text-sm tracking-widest">Ekspertyza</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="dla-biznesu.html" class="hover:text-brand-gold transition-colors">Dla Biznesu (B2B)</a></li>
+                        <li><a href="katalog-off-market.html" class="hover:text-brand-gold transition-colors">Katalog Off-Market</a></li>
+                        <li><a href="dla-ciebie.html" class="hover:text-brand-gold transition-colors">Klienci Prywatni (B2C)</a></li>
+                        <li><a href="blog.html" class="hover:text-brand-gold transition-colors">Ekspertyza (Blog)</a></li>
+                        <li><a href="faq.html" class="hover:text-brand-gold transition-colors">Baza Wiedzy (FAQ)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-6 uppercase text-sm tracking-widest">Bezpieczeństwo & B2B</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="polityka-prywatnosci.html" class="hover:text-brand-gold transition-colors">Polityka Prywatności</a></li>
+                        <li><a href="regulamin.html" class="hover:text-brand-gold transition-colors">Regulamin</a></li>
+                        <li><a href="disclaimer-inwestycyjny.html" class="hover:text-brand-gold transition-colors">Disclaimer Inwestycyjny</a></li>
+                        <li><a href="strefa-partnera.html" class="text-brand-gold font-medium hover:text-white transition-colors">Strefa Współpracy (B2B Brokers)</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white font-semibold mb-6 uppercase text-sm tracking-widest">Kontakt</h3>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li><a href="mailto:kontakt@holistycznybroker.pl" class="hover:text-brand-gold">kontakt@holistycznybroker.pl</a></li>
+                        <li><a href="tel:+48730882961" class="hover:text-brand-gold">+48 730 882 961</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-white/5 text-center text-xs text-slate-600">
+                <div class="flex justify-center gap-4 mb-4">
+                    <a href="#" aria-label="LinkedIn" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg></a>
+                    <a href="#" aria-label="YouTube" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg></a>
+                    <a href="#" aria-label="Instagram" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                    <a href="#" aria-label="X (Twitter)" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+                    <a href="#" aria-label="Facebook" class="text-slate-500 hover:text-brand-gold transition-colors inline-block"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg></a>
+                </div>
+                
+                <div class="mb-4 text-slate-500">
+                    REVOLTO GROUP SPÓŁKA Z OGRANICZONĄ ODPOWIEDZIALNOŚCIĄ <br class="md:hidden"> 
+                    <span class="hidden md:inline">|</span> KRS: 0001074425 <span class="hidden md:inline">|</span> NIP: 7123466389 <span class="hidden md:inline">|</span> REGON: 527156234 <br class="md:hidden">
+                    <span class="hidden md:inline">|</span> Adres siedziby: ul. Wita Stwosza 48 / 105, 02-661 Warszawa
+                </div>
+                
+                <p>&copy; 2026 Holistyczny Broker. Wszelkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

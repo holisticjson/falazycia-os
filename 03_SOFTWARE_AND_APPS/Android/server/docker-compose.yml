@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  hermes-server:
+    build: .
+    container_name: hermes-messenger-server
+    restart: always
+    ports:
+      - "8080:8080"
+    volumes:
+      # Persist SQLite database file
+      - ./hermes.db:/app/hermes.db
+      # Mount web folder to serve landing page and APK
+      - ./web:/app/web
+    environment:
+      - PORT=8080
+      - NODE_ENV=production
+      # NVIDIA API Key will be read from the local .env file
+      - NVIDIA_API_KEY=${NVIDIA_API_KEY}
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n-workflow-server
+    restart: always
+    ports:
+      - "127.0.0.1:5678:5678"
+    environment:
+      - N8N_EDITOR_BASE_URL=https://app.jaison.pl/n8n/
+      - WEBHOOK_URL=https://app.jaison.pl/n8n/
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+
+  n8n-agency:
+    image: docker.n8n.io/n8nio/n8n:latest
+    container_name: n8n-agency-server
+    restart: always
+    ports:
+      - "127.0.0.1:5679:5678"
+    environment:
+      - N8N_EDITOR_BASE_URL=https://n8n.jaison.pl/
+      - WEBHOOK_URL=https://n8n.jaison.pl/
+    volumes:
+      - ./n8n_agency_data:/home/node/.n8n
+
+

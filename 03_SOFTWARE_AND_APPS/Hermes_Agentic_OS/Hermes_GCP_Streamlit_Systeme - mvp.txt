@@ -1,0 +1,1073 @@
+Tak — zróbmy to jako serię, a nie jeden blok. Poniżej daję Ci **część 1**, czyli fundament: co budujemy, jakie są role, co robisz Ty, co robi agent, co trzeba skonfigurować najpierw oraz jak połączyć wcześniejszy workflow z filmu z nowym systemem wykrywania problemów rynkowych. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Zakres serii
+
+Ta seria powinna być podzielona przynajmniej na 6 części: fundament architektury, setup Google Cloud, setup Hermesa, baza wiedzy i dane, content/research engine oraz warstwa funnel + publikacja. To ma sens także dlatego, że film pokazuje pełny creative workflow od setupu repo, przez research konkurencji i generację assetów, aż po launch kampanii, ale u Ciebie chcemy to rozszerzyć o system wykrywania nisz, problemów i organicznego popytu. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+W tej części ustalamy:
+- co jest celem systemu,
+- kto za co odpowiada,
+- co konfigurujesz ręcznie,
+- co delegujesz do Anti-Gravity/Hermesa,
+- jakie środowiska i zasoby muszą powstać najpierw. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Cel systemu
+
+Docelowo budujesz dwa połączone silniki: **Market Signal Engine** i Creative/Offer Engine. Pierwszy ma codziennie wykrywać palące problemy, język rynku i rosnące nisze, a drugi ma zamieniać te sygnały w oferty, lead magnety, treści organiczne, reklamy i później kampanie sprzedażowe. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+Film z YouTube pokazuje gotowy wzorzec dla warstwy creative engine: research konkurencji, generowanie statycznych kreacji, klonowanie reklam, generowanie UGC/video, dodawanie B-rollu i finalnie launch do Meta Ads z copy per-kreacja. U Ciebie różnica polega na tym, że zamiast uzależniać się od Claude Code + Arcads, chcesz przenieść logikę do Google Cloud + Hermes + własnych pipeline’ów, a warstwę asset generation budować low-cost i etapami. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Role i odpowiedzialność
+
+Ty jesteś product ownerem, strategiem i finalnym recenzentem jakości. Nie powinieneś ręcznie wykonywać zadań powtarzalnych, tylko zatwierdzać kierunek: nisze, priorytety, listy źródeł, scoring problemów, top pomysły produktowe i końcowe assety.
+
+Anti-Gravity ma być Twoim głównym agentem wdrożeniowym i developerskim, czyli ma:
+- tworzyć strukturę projektu,
+- pisać kod integracyjny,
+- wdrażać dashboardy i pipeline’y,
+- utrzymywać konfigurację środowisk,
+- rozbijać epiki na taski.
+
+Hermes ma być agentem operacyjnym działającym w chmurze, bo dokumentacja opisuje go jako autonomicznego agenta z pamięcią, skills, cronem, subagentami, wieloma backendami terminala i możliwością działania na VPS, VM, Dockerze czy serverless. Google Cloud ma być warstwą infrastruktury, modeli, danych, notebooków i agent buildingu, bo Gemini Enterprise Agent Platform służy do budowy, skalowania, governance i optymalizacji agentów oraz daje dostęp do modeli, notebooków, pipelines i storage. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Co robisz Ty
+
+Na tym etapie Twoje zadania są głównie decyzyjne i materiałowe:
+1. Wybierasz 3–5 nisz startowych dla monitoringu, np. ADHD, AI dla twórców, finanse osobiste, zdrowie/stres, automatyzacja małych firm. [perplexity](https://www.perplexity.ai/search/fbb9ce59-1468-4ef8-9af5-74c384d219fc)
+2. Tworzysz pierwszą listę polskich źródeł do obserwacji: kanały YouTube, blogi, fora, subreddity, grupy FB do ręcznego monitoringu, twórcy LinkedIn/X. [perplexity](https://www.perplexity.ai/search/e1d0a819-af59-415d-b8aa-5cef991a5204)
+3. Dostarczasz własną bazę wiedzy: hooki, skrypty, frameworki ofert, CTA, notatki z NotebookLM, promptbooki, swipe files i case studies. [perplexity](https://www.perplexity.ai/search/8bbf51bd-c442-42eb-ac81-4c8a50dba73a)
+4. Definiujesz, co dla Ciebie znaczy „okazja rynkowa”, np. wysoka częstotliwość bólu + jasna intencja zakupowa + możliwość monetyzacji usługą lub produktem cyfrowym w 14 dni. [perplexity](https://www.perplexity.ai/search/fbb9ce59-1468-4ef8-9af5-74c384d219fc)
+
+Ty nie powinieneś kodować od zera całej architektury, jeśli Anti-Gravity może to przejąć. Twoja największa wartość jest w selekcji, walidacji i decyzjach biznesowych, nie w ręcznym spinaniu każdego webhooka.
+
+## Co robi agent
+
+Anti-Gravity powinien od razu dostać odpowiedzialność za:
+- strukturę repo,
+- provisioning środowisk,
+- setup bucketów i sekretów,
+- przygotowanie modułów collectorów,
+- przygotowanie schematu danych,
+- panel Streamlit,
+- integrację z webhookami i kolejkami zadań.
+
+Hermes powinien przejąć:
+- harmonogramy dzienne i tygodniowe,
+- uruchamianie collectorów,
+- klasyfikację i klastrowanie problemów,
+- tworzenie i aktualizację skills,
+- podsumowania dzienne,
+- delegację zadań do subagentów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+W praktyce agent nie powinien podejmować decyzji strategicznych bez progu akceptacji, ale powinien samodzielnie wykonywać powtarzalne kroki. To pasuje też do filozofii z filmu, gdzie operator działa jako creative director, a agent wykonuje research, generację, QA i upload. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Co konfigurujemy najpierw
+
+Pierwsza kolejność jest ważniejsza niż pełna funkcjonalność. Najpierw musisz postawić stabilny szkielet środowiska, a dopiero potem dokładać research nisz, creative engine i lejki. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Najpierw konfigurujesz:
+- projekt Google Cloud i podstawowe uprawnienia. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Cloud Storage buckety pod dane, assety, logi i knowledge base. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- VM lub kontener pod Hermesa. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- repo główne projektu oraz zasady nazewnictwa.
+- prosty dashboard operatorski w Streamlit.
+- system wersjonowania promptów, skills i źródeł danych. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Dopiero później:
+- collectory źródeł,
+- scoring problemów,
+- generację ofert,
+- generację treści,
+- integracje funnelowe,
+- automatyczny launch assetów. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Minimalna architektura v1
+
+Na start nie potrzebujesz „pełnego AI OS”, tylko minimalnego, działającego rdzenia. Ten rdzeń powinien mieć 6 elementów:
+- Google Cloud Storage jako magazyn danych i assetów. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Hermes uruchomiony poza laptopem jako scheduler i agent runtime. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Gemini Enterprise Agent Platform do eksperymentów modelowych i części agentowej. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Streamlit jako panel kontroli.
+- knowledge base w plikach + bucketach.
+- moduł ingestion dla sygnałów rynkowych.
+
+To jest spójne z tym, jak film pokazuje pracę agentową: folder projektu, skills, źródła danych, generacja assetów i eksport wyników, tylko u Ciebie środowisko ma być cloud-native i rozbudowane o monitoring trendów oraz organic demand intelligence. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Jak łączymy to z filmem
+
+Film daje Ci 5 ważnych wzorców, które warto zachować:
+- skill-based workflow zamiast jednego prompta. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- praca folderowa/projektowa zamiast chaotycznych czatów. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- QA po generacji i automatyczne retry. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- analiza konkurencji przed tworzeniem kreacji. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- dopasowanie copy i kreacji do realnych danych z konta / rynku. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+To, co zmieniamy:
+- zamiast opierać system na Claude Code jako centrum, centrum stanowią Hermes + GCP. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- zamiast Arcads jako domyślnej warstwy generacji, korzystasz najpierw z modeli i narzędzi dostępnych w Google stacku oraz low-cost pipelines. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- zamiast skupiać się tylko na płatnych reklamach, dodajesz warstwę wykrywania popytu i organicznych tematów przed etapem tworzenia kampanii.
+
+## Skills do przygotowania
+
+Już na etapie części 1 warto zdefiniować docelowe skills Hermesa, bo oficjalna dokumentacja traktuje skills jako proceduralną pamięć, którą agent tworzy i ulepsza z doświadczenia. Na start rekomenduję taki zestaw: [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- `market-source-scanner`
+- `pain-point-extractor`
+- `trend-clusterer`
+- `offer-angle-generator`
+- `lead-magnet-designer`
+- `short-form-script-writer`
+- `static-post-brief-generator`
+- `creative-qa`
+- `systeme-event-router`
+- `weekly-insight-reporter`. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+To są odpowiedniki „skill repo” z filmu, tylko przeniesione z czystego ad-creative workflow na szerszy system: research -> insight -> oferta -> content -> lejek. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Baza do przygotowania
+
+Już teraz powinieneś przygotować bazę wejściową, bo bez niej agent będzie działał zbyt ogólnie. Potrzebujesz co najmniej:
+- listy nisz,
+- listy źródeł,
+- listy person,
+- słownika problemów,
+- słownika formatów contentowych,
+- bazy ofert i CTA,
+- biblioteki dotychczasowych hooków i skryptów. [perplexity](https://www.perplexity.ai/search/fbb9ce59-1468-4ef8-9af5-74c384d219fc)
+
+Minimalny podział katalogów:
+- `knowledge/core-persuasion`
+- `knowledge/niches`
+- `knowledge/offers`
+- `knowledge/hooks`
+- `knowledge/scripts`
+- `knowledge/competitors`
+- `knowledge/funnels`
+- `knowledge/personas`
+- `knowledge/source-lists`.
+
+Jadę dalej. Część druga to już nie „czy da się”, tylko **jak to poukładać**, żebyś nie przepalił kredytów i nie zbudował potwora integracyjnego. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Najkrócej: w Twoim przypadku Google Cloud powinien być warstwą infrastruktury, modeli, storage i ewentualnie agent platform, a Hermes warstwą wykonawczą i operacyjną na VM lub w kontenerze. Sam film, który masz otwarty, dobrze pokazuje logikę „agent jako creative director + pipeline assetów”, ale tam rdzeniem jest Claude Code + Arcads, a u Ciebie trzeba to przepisać na stack Google-first. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Co z filmu warto zachować
+
+Film pokazuje bardzo dobry wzorzec pracy: jeden agent ogarnia setup, potem osobne workflow robią statyczne reklamy, klonowanie obrazów, generowanie wideo, klonowanie wideo, ads w stylu cartoon i na końcu publikację do konta reklamowego. Ważniejsze od samych narzędzi jest to, że autor pracuje jak dyrektor kreatywny: wrzuca brief, asset, folder referencji i pozwala agentowi robić iteracje, QA, retry i równoległe generowanie. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+To właśnie powinieneś przenieść do swojego środowiska:
+- agent planujący kampanię,
+- agent research/RAG na Twojej bazie wiedzy,
+- agent copywriter,
+- agent do generowania obrazów,
+- agent do generowania krótkiego wideo,
+- agent packager zapisujący output do bucketów i przygotowujący paczki do review. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Google-first architektura
+
+Na Google Cloud masz dziś Gemini Enterprise Agent Platform jako główne miejsce do budowy, skalowania i zarządzania agentami, wraz z Agent Platform, Agent Studio, Model Garden, notebookami i integracją z BigQuery. To znaczy, że nie musisz już myśleć tylko kategorią „Vertex jako endpoint modeli”, tylko jako pełna platforma do agentów, promptów, testów, governance i deploymentu. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Pod Twoje use case’y rozrysowałbym to tak:
+- **Compute Engine VM**: Hermes Agent, scheduler, skills, cron, integracje, lokalne kolejki zadań. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- **Cloud Storage**: baza wiedzy, prompty, storyboardy, wygenerowane obrazy, wideo, audio, pliki review. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- **Gemini Enterprise Agent Platform**: agenci planujący, RAG/search, prompt orchestration, model routing. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- **Streamlit**: panel operatorski do akceptacji draftów, podglądu assetów i odpalania nowych batchy.
+- **BigQuery** opcjonalnie: logi promptów, wyniki testów, scoring kreacji i analityka performance. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Rola Hermesa
+
+Hermes jest tu mocny, bo nie jest tylko chatbotem czy IDE copilatem, ale autonomicznym agentem z pamięcią, skills, uczeniem się, cronem, subagentami, MCP i możliwością działania na VPS, Dockerze, SSH, Modal czy serwerless persistence. To czyni go dobrym kandydatem na warstwę „robotyczną”, która ma odpalać zadania, zbierać wyniki, uruchamiać równoległe subagenty i wykonywać długie workflow bez siedzenia przy laptopie. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Dla Ciebie to oznacza konkretnie:
+- Hermes pilnuje kolejki zadań i wywołań.
+- Google dostarcza modele, storage i agent platform.
+- Streamlit daje UI operatora.
+- Twoja baza wiedzy zasila grounding i retrieval. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Jak podzielić modele
+
+Google podaje, że w Model Garden masz modele Google, partnerów i open models, a platforma wspiera budowę agentów, tuning i ewaluację. W praktyce najlepiej rozdzielić zadania po koszcie i typie pracy, bo inaczej przepalisz trial na zbyt ciężkie modele. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Sensowny podział wygląda tak:
+- **Gemini do strategii i copy**: brief decomposition, hooki, angle, warianty skryptu, analiza konkurencji. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- **Gemini / image stack Google**: statyczne grafiki, packshot variations, miniatury, key visuals. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- **Veo / modele wideo Google**: krótkie proof-of-concept rolki, organic snippets, test motion concepts. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- **Hermes**: orchestration, retries, QA routing, transformacje, zapisy do bucketów, odpalanie kolejnych etapów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Na co wydawać kredyty
+
+Nowi klienci dostają 300 USD free credits na Google Cloud i Agent Platform, a pricing jest usage-based dla generative AI, notebooków, storage, pipelines i innych usług platformy. To znaczy, że trial warto wydawać najpierw na elementy, które budują trwały system: storage, lekkie inferencje, testy agentów, RAG i VM pod Hermesa, zamiast od razu pompować dużo generacji wideo. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Najrozsądniejsza kolejność wydawania:
+1. VM + bucket + podstawowa baza wiedzy. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+2. Agent Platform / Agent Studio do workflow planera i RAG. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+3. Dużo taniego text/copy/research inference, bo to daje największy leverage przy małym koszcie. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+4. Obrazy do statyk i karuzel. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+5. Dopiero potem wideo, bo tu koszt rośnie szybciej i łatwiej spalić trial. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Workflow reklamowy
+
+MVP nie powinno od razu robić „wszystkiego”, tylko przejść przez jeden jasny pipeline. Film pokazuje pipeline od promptu do gotowych assetów i nawet launchu na Meta, ale u Ciebie sensowniej będzie najpierw zrobić wersję bez pełnej automatycznej publikacji, tylko z review gate pośrodku. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+Proponowany pipeline:
+- Brief kampanii wpada do Streamlit.
+- Hermes odpala agenta planera.
+- Planner pobiera kontekst z bazy wiedzy i tworzy 5–10 konceptów kampanii.
+- Copy agent robi hooki, skrypty rolek, captiony, CTA i warianty postów.
+- Image/video agent robi tylko najlepsze 2–3 koncepty, nie wszystkie naraz.
+- Wyniki lecą do bucketu i do kolejki review.
+- Operator zatwierdza, poprawia albo odsyła do regeneracji. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Workflow organiczny
+
+To nie musi się kończyć na reklamach performance. Ten sam system może robić rolki organiczne, posty viralowe, karuzele, thought leadership i paczki contentowe, bo Agent Platform wspiera agent workflows, a Hermes umie działać wielosesyjnie, z pamięcią i automatyzacją. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Dla organic content zrobiłbym trzy osobne linie:
+- **Rolki short-form**: hook, storyboard, voiceover script, overlay text, CTA. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- **Statyczne wow-posty**: obraz + nagłówek + krótki insight + kilka wariantów captionu. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- **Karuzele edukacyjne**: slajd 1 hook, slajdy 2–6 framework, slajd 7 CTA, wszystko na bazie Twojego knowledge base. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Czego nie kopiować 1:1 z filmu
+
+Największy problem w filmie jest taki, że workflow jest mocno zależny od Arcads i kilku płatnych API, co nawet komentują widzowie, narzekając na koszt pro planu. U Ciebie przewaga polega właśnie na tym, że masz środki i modele w Google, więc nie ma sensu przepisywać całego stacku „Claude + Arcads + ElevenLabs” 1:1, tylko wykorzystać logikę procesu i podmienić generatory. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+Czyli:
+- zachowujesz wzorzec agentowy z filmu, [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- przenosisz storage i orchestration do Google + Hermes, [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- minimalizujesz zależność od zewnętrznych, drogich API, [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- zostawiasz człowieka na etapie akceptacji, zamiast full auto publikacji na start. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Priorytet wdrożenia
+
+Gdybym to układał dla Ciebie od jutra, to kolejność byłaby taka:
+- Dzień 1: VM na GCP + Hermes + bucket + podstawowy katalog wiedzy. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Dzień 2: prosty Streamlit panel z formularzem briefu i listą jobów.
+- Dzień 3: agent planner + copy agent na Gemini Enterprise Agent Platform. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Dzień 4: generowanie statyk i zapis outputów do Cloud Storage. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Dzień 5: pierwszy workflow short video / reels.
+- Dzień 6: review queue, tagging, scoring konceptów.
+- Dzień 7: eksport gotowych paczek reklamowo-contentowych do publikacji lub ręcznego launchu.
+
+Najpierw zbudowałbym system do statyk, captionów, hooków i karuzel, bo to daje najszybszy ROI i najmniejszy koszt, a dopiero potem dołożył warstwę wideo. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Co bym zrobił dalej
+
+Twoje docelowe „cloud creative OS” powinno być po prostu systemem, w którym Hermes zarządza pracą, Google dostarcza modele i platformę agentową, a Streamlit robi operacyjny cockpit. To jest dużo lepszy kierunek niż klejenie kolejnych jednorazowych promptów, bo budujesz trwały pipeline, który potem łatwo rozszerzysz o Meta, TikTok, Sheets, Airtable albo własny scoring kreacji. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+Jasne — poniżej masz konkretny, praktyczny plan MVP pod Twój setup: Google Cloud + Hermes + Twoja baza wiedzy + workflow do reklam, rolek, postów i grafik. Google Cloud daje Ci platformę agentową, modele, storage i notebooks, a Hermes może działać jako autonomiczna warstwa wykonawcza na VM albo w kontenerze, z pamięcią, skillami, cronem i subagentami. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Architektura
+
+Najprostsza sensowna architektura to: Google Cloud jako warstwa infrastruktury i modeli, Hermes jako agent-operacje, a Streamlit jako panel operatorski do review i odpalania kampanii. W praktyce Agent Platform służy do budowy agentów i prompt flows, Model Garden do modeli, Cloud Storage do assetów i wiedzy, a Hermes dobrze nadaje się do działania „w tle” na VM, z delegacją i automatyzacjami. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Proponowany układ:
+- Cloud Storage bucket `gs://brand-kb` — skrypty rolek, hooki, CTA, frameworki copy, przykłady kampanii, prompt library. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Cloud Storage bucket `gs://brand-assets` — wygenerowane obrazy, video shots, audio, final exports. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Compute Engine VM albo kontener — Hermes Agent + worker pipeline. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Gemini Enterprise Agent Platform — agent strategiczny / research / RAG / prompt evaluation. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Streamlit app — brief in, output review out, zatwierdzanie i eksport. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Role agentów
+
+Nie rób jednego „mega-agenta”, tylko 4–5 małych ról, bo to jest stabilniejsze i tańsze w utrzymaniu. Hermes wspiera pamięć, skills, delegację i subagentów, więc dobrze nadaje się do takiego rozdziału odpowiedzialności. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Podział ról:
+- Strategist Agent — bierze brief, target, offer i generuje kąty komunikacji, ICP, claims, hooki oraz warianty kampanii. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Research/RAG Agent — przeszukuje Twoją bazę wiedzy i wyciąga najlepsze wzorce hooków, struktur i przykładów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Creative Script Agent — produkuje skrypty rolek, shortów, virali, captiony, karuzele, statyczne posty. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Visual Asset Agent — tworzy prompty i wysyła zadania do modeli obrazowych i wideo, zapisuje output do bucketu. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- QA/Packaging Agent — ocenia jakość, taguje, grupuje koncepty, robi naming convention i przygotowuje eksport. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Modele i zadania
+
+Pod względem modeli najlepiej rozdzielić tanie zadania wolumenowe od trudniejszych zadań strategicznych, bo inaczej szybko przepalisz trial credits. Agent Platform udostępnia modele Google i partnerów, więc architekturę możesz zrobić elastycznie, ale na start warto oprzeć ją głównie o rodzinę Gemini i narzędzia Google. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Praktyczny mapping:
+- Gemini Flash / Flash-Lite — hurtowe generowanie hooków, nagłówków, CTA, batch copy, klasyfikacja assetów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- mocniejszy Gemini do planowania w Agent Studio — storyboardy, strategia komunikacyjna, scoring konceptów, ocena zgodności z bazą wiedzy. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- model obrazowy w Agent Platform / Gemini image stack — statyczne grafiki, packshot variations, UGC-like frames. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- model wideo Google dostępny przez Agent Platform — krótkie sekwencje do rolek, organic snippets, motion inserts. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Google pokazuje też, że platforma jest liczona usage-based: płacisz za modele, storage, compute i zasoby chmurowe, a nowi klienci dostają 300 USD kredytów na start. To oznacza, że tekst, RAG i prototypowanie są relatywnie tanie, natomiast intensywne generowanie video i cięższe workflow assetowe będą najdroższym elementem. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Workflow treści
+
+Twój docelowy workflow warto zorganizować jako „brief → retrieval → angle generation → scripts → assets → review → export”. Agent Platform nadaje się do warstwy agentowej i retrieval, a Hermes do wykonania wielu kroków automatycznie i równolegle. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Przykład jednego przebiegu:
+1. W Streamlit wrzucasz brief: produkt, ICP, cel, format, platforma, oferta, ton marki. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+2. Research Agent pobiera z bucketu lub z warstwy retrieval podobne skrypty, viral hooks i frameworki z Twojej bazy wiedzy. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+3. Strategist Agent tworzy 5–10 angle’ów, wybiera 3 najmocniejsze i do każdego daje pakiet: hook, core claim, CTA, wariant organiczny i wariant paid. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+4. Creative Script Agent generuje np. 3 skrypty rolek, 5 captionów, 2 karuzele, 4 statyczne koncepty i 3 warianty nagłówków na format. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+5. Visual Agent robi obrazy, keyframes albo krótkie ujęcia video, po czym zapisuje je do bucketu. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+6. QA Agent ocenia spójność, taguje i odsyła do Streamlit do akceptacji. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Co wdrożyć w 7 dni
+
+W 7 dni da się zrobić sensowne MVP, ale bez „full auto publishing”. Najpierw postaw system do generowania i review, a dopiero potem dokładanie automatycznej publikacji lub zewnętrznych integracji będzie bezpieczne. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Plan 7-dniowy:
+- Dzień 1: projekt GCP, buckety, IAM, VM pod Hermesa, podstawowy Streamlit. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Dzień 2: ingest bazy wiedzy — foldery, tagi, metadata, porządek namingów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Dzień 3: Agent strategiczny + retrieval agent w Agent Platform. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Dzień 4: Hermes workflow orchestration — chain: brief → research → scripts → save outputs. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Dzień 5: generowanie obrazów i podstawowych keyframes; zapis do `brand-assets`. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Dzień 6: panel review w Streamlit: akceptuj, odrzucaj, regenerate, export. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Dzień 7: QA, limity kosztowe, logowanie promptów, fallbacki i monitoring błędów. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Co wynika z filmu
+
+Ten film, który masz otwarty, jest dobrym wzorcem na logikę workflow, ale nie na finalny stack kosztowy, bo autor opiera się na Claude Code, Arcads, Meta API i ElevenLabs, a komentarze pod filmem wyraźnie pokazują, że dla wielu osób problemem jest koszt Arcads Pro. W samym materiale widać jednak bardzo cenny wzorzec architektoniczny: generowanie wielu assetów równolegle, klonowanie kreacji, QA, warstwa B-roll, final packaging oraz uruchamianie kampanii jako osobne etapy pipeline’u. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+Najcenniejsze lekcje z tego filmu do przeniesienia na Twój stack:
+- równoległe generowanie wielu wariantów, nie pojedynczych kreacji;[3, {ts:962}]
+- agent jako creative director assistant, a nie tylko prompt box;[3, {ts:995}]
+- rozdzielenie base video i B-roll oraz automatyczny montaż overlayów;[3, {ts:2013}]
+- analiza już działających kreatyw i tworzenie copy per asset;[3, {ts:3339}]
+- review queue i poprawki zamiast „one shot final”.[3, {ts:830}]
+
+## Priorytety kosztowe
+
+Najlepiej najpierw przepalić kredyty na coś, co buduje trwałą przewagę: bazę wiedzy, retrieval, agent orchestration, storage i pipeline review. Video generacja jest kusząca, ale w trialowej fazie powinna być limitowana do testów i proof-of-concept, bo najszybciej zjada budżet. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Moja rekomendacja budżetowa:
+- 40%: Agent Platform, prompt iteration, retrieval, testy agentów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- 25%: VM/kontenery, Hermes, storage i operacyjna infrastruktura. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- 20%: obrazy i keyframes. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- 15%: krótkie testy video i eksperymenty z workflow rolek. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Tak — przy Twojej bazie wiedzy najlepszy ruch to nie robić jednego „mega-agenta”, tylko zbudować **warstwowy system wiedzy + agentów**, gdzie Google trzyma grounding, źródła i governance, a Hermes robi wykonanie, eksperymenty i samodoskonalenie proceduralne. To daje Ci stabilniejszy workflow niż wrzucanie wszystkiego w jeden prompt, a przy tym dobrze pasuje do Twojego bucketu, planów z NotebookLM i chęci podpinania maili, newsletterów oraz kolejnych źródeł. [docs.cloud.google](https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview)
+
+## Architektura MVP
+
+Trzonem powinien być Gemini Enterprise Agent Platform z Agent Search lub RAG jako warstwą wiedzy, Cloud Storage jako repo dokumentów, oraz Hermes postawiony na VM jako execution layer dla agentów i skilli. Google wprost wspiera grounding do własnych danych przez Agent Search, RAG Engine, Google Search i nawet zewnętrzne search API, więc możesz rozdzielić wiedzę „wewnętrzną” od wiedzy „światowej”. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform/agent-search)
+
+Minimalny układ:
+- Cloud Storage bucket `kb-raw` na surowe źródła: MD, PDF, DOCX, zrzuty newsletterów, transkrypty, eksporty maili. [skills](https://www.skills.google/focuses/104690?parent=catalog)
+- Agent Search / data stores na indeksowanie tych materiałów i odpowiadanie z groundingiem. [skills](https://www.skills.google/focuses/104690?parent=catalog)
+- Hermes na Compute Engine jako agent operacyjny z własnymi skills, memory i bundle’ami workflow. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Streamlit jako panel operatorski: brief in, koncepty out, review, approval, eksport do kampanii i assetów. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Warstwa wiedzy
+
+Twoja baza w buckecie powinna być podzielona nie według autora, tylko według funkcji poznawczej, bo wtedy agent łatwiej pobiera właściwy kontekst i nie miesza taktyk z filozofią czy frameworkami hooków. Agent Search pozwala budować data store’y z Cloud Storage dla nieustrukturyzowanych dokumentów, a NotebookLM Enterprise działa na źródłach takich jak PDF-y, Google Docs, Slides i URL-e, więc te dwa narzędzia mogą się uzupełniać zamiast dublować. [docs.cloud.google](https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview)
+
+Dobry podział katalogów:
+- `01-offer-positioning` — obiekcje, ICP, messaging, value props.
+- `02-hooks-patterns` — hooki, pierwsze 3 sekundy, angle bank.
+- `03-video-scripts` — rolki, UGC, storytelling, CTA structures.
+- `04-editing-retention` — montaż, pacing, beat changes, visual rhythm.
+- `05-platform-native` — Meta, TikTok, Shorts, LinkedIn, X.
+- `06-proof-assets` — case studies, wyniki, testimonial patterns.
+- `07-constraints-policies` — compliance, claims, brand safety.
+- `08-newsletters-mail-intel` — świeże insighty z maili i newsletterów.
+
+W praktyce zrobiłbym co najmniej trzy osobne indeksy:
+- **Core KB** — Twoje najlepsze, ręcznie wybrane materiały referencyjne. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform/agent-search)
+- **Fresh Intel** — newslettery, maile, nowe wpisy i aktualizacje. [codelabs.developers.google](https://codelabs.developers.google.com/vertexai-gws-agents?hl=pl)
+- **Experimental / Swipe** — rzeczy inspiracyjne, mniej zaufane, do luźniejszej eksploracji. [docs.cloud.google](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/overview)
+
+## Rola NotebookLM
+
+NotebookLM traktowałbym jako warstwę badawczo-syntetyczną dla człowieka, a nie jako główny silnik produkcyjny agentów. Jest świetny do budowy notatników na konkretne domeny wiedzy, bo działa na dostarczonych źródłach i pomaga robić streszczenia, mapy tematów i syntezy, ale operacyjny agent reklamowy i tak lepiej oprzeć o Agent Search/RAG + Hermesa. [workspace.google](https://workspace.google.com/products/notebooklm/)
+
+Najlepszy model użycia NotebookLM u Ciebie:
+- osobny notebook „Meta hooks & ad angles” z MD, Docs i URL-ami. [docs.cloud.google](https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview)
+- osobny notebook „UGC / montage / retention”. [docs.cloud.google](https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview)
+- osobny notebook „digital products / offer design / sales”. [docs.cloud.google](https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview)
+
+Potem z NotebookLM wyciągasz:
+- skondensowane syntezy,
+- listy zasad,
+- słowniki pojęć,
+- checklisty jakości,
+i dopiero te artefakty publikujesz z powrotem do bucketu jako „distilled knowledge”, zamiast kazać agentowi za każdym razem czytać cały chaos źródeł. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform/agent-search)
+
+## Hermes jako warstwa agentów
+
+Hermes ma system skills, progressive disclosure, persistent memory i agent-managed skills, więc dobrze nadaje się do zamiany Twojej wiedzy w proceduralne umiejętności agentów, a nie tylko w pasywny magazyn dokumentów. To ważne, bo sama baza wiedzy odpowie na pytanie, ale nie nauczy agenta jak wykonać konkretny workflow; skill już tak. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+U Ciebie zrobiłbym pięć głównych agentów:
+- **Research Agent** — pobiera z KB, newsletterów, maili i źródeł zewnętrznych angle, trendy i benchmarking. [docs.cloud.google](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/overview)
+- **Strategy Agent** — układa kampanię, persony, ICP, matrix hooków, ofert i claimów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- **Creative Script Agent** — generuje hooki, skrypty rolek, storyboardy, posty, karuzele i warianty CTA. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- **Creative QA Agent** — sprawdza zgodność z Twoim frameworkiem, retention, wow-factor, clarity i policy risk. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- **Ops Agent** — zapisuje outputy do bucketu, aktualizuje Sheets/airtable-like warstwy, tworzy kolejki review i odpala następne kroki. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Jak robić skills z bazy
+
+Najlepsza praktyka: nie wklejaj całej bazy do system promptu, tylko z bazy wyciągaj powtarzalne metody i zapisuj je jako skills w Hermesie. Dokumentacja Hermesa mówi wprost, że skills są on-demand knowledge documents i mogą być tworzone lub aktualizowane przez agenta, co dobrze pasuje do Twojego pomysłu „samo doskonalenia”, ale trzeba to kontrolować wersjonowaniem i review. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Czyli zamiast jednego wielkiego promptu:
+- tworzysz skill `viral-hook-generator`,
+- skill `ugc-storyboard-builder`,
+- skill `meta-primary-text-frameworks`,
+- skill `retention-editing-checker`,
+- skill `offer-angle-selector`. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Każdy skill powinien mieć:
+- kiedy go używać,
+- input schema,
+- procedurę,
+- błędy/pitfalls,
+- kryteria jakości,
+- przykłady dobrych i złych outputów. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+To jest dokładnie ta różnica między „agent zna wiedzę” a „agent umie pracować”.
+
+## Samodoskonalenie
+
+Da się to zrobić, ale nie jako pełny autopilot bez nadzoru, bo inaczej agent zacznie nadpisywać sobie dobre wzorce gorszymi heurystykami. Hermes może tworzyć i edytować skills, ale w praktyce najlepszy model to „propose → review → promote”, a nie „self-edit in production”. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Polecam pętlę:
+1. Agent wykonuje zadanie na podstawie KB i skilli. [docs.cloud.google](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/grounding/overview)
+2. QA Agent ocenia output według scorecard: hook strength, novelty, clarity, platform fit, compliance risk. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+3. Jeśli agent odkrył lepszy workflow, zapisuje propozycję nowego skill patcha jako draft. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+4. Ty akceptujesz albo odrzucasz patch.
+5. Dopiero zaakceptowane zmiany trafiają do produkcyjnego katalogu skilli. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Dzięki temu baza wiedzy rośnie, ale nie zamienia się w śmietnik.
+
+## Maile, newslettery, źródła
+
+To jest bardzo dobry pomysł, ale trzeba oddzielić źródła „canonical” od „inspiracyjnych”, bo maile i newslettery są świeże, lecz często bardziej opiniotwórcze niż systemowe. Google pokazuje integrację agentów z danymi użytkownika przez datastore’y obejmujące Google Drive, Calendar i Gmail, więc kierunek z Gmail/newsletterami jest zgodny z ekosystemem, ale warto je wpinać do osobnego indeksu Fresh Intel. [codelabs.developers.google](https://codelabs.developers.google.com/vertexai-gws-agents?hl=pl)
+
+Rekomendowany podział źródeł:
+- **Canonical**: Twoje najlepsze opracowania, kursy, zsyntetyzowane MD, własne SOP-y.
+- **Operational**: maile klientów, feedback, wyniki kampanii, briefy.
+- **Fresh Intel**: newslettery, trendy, nowe tutoriale, release notes.
+- **Inspiration**: swipe files, przykłady reklam, rolki referencyjne.
+
+Wtedy agent dostaje priorytet odpowiedzi:
+1. canonical,
+2. operational,
+3. fresh intel,
+4. inspiration. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform/agent-search)
+
+## Workflow 7 dni
+
+Dałbym Ci taki plan wdrożenia:
+
+| Dzień | Cel |
+|---|---|
+| 1 | Posprzątać bucket i oznaczyć dokumenty metadanymi: temat, format, jakość, źródło, data. |
+| 2 | Utworzyć 3 data store’y lub indeksy: Core KB, Fresh Intel, Swipe/Experimental. [skills](https://www.skills.google/focuses/104690?parent=catalog) |
+| 3 | Postawić Hermesa na VM i przygotować katalog skilli oraz bundle’y workflow. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes) |
+| 4 | Zrobić 5 pierwszych skilli: hooks, scripts, offer angles, editing QA, ad copy frameworks. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes) |
+| 5 | Zbudować Streamlit panel do briefu, uruchomienia pipeline i review wyników. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo) |
+| 6 | Podpiąć NotebookLM do domen wiedzy i publikować distilled notes z powrotem do bucketu. [docs.cloud.google](https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview) |
+| 7 | Uruchomić pętlę self-improvement z approval gate i scorecard jakości. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes) |
+
+## Co bym wdrożył najpierw
+
+Na start nie ruszałbym jeszcze pełnej automatyzacji wideo, tylko skupił się na tekście, kątach kreatywnych i statycznych kreacjach, bo to da największy zwrot z Twojej obecnej bazy wiedzy przy najmniejszym koszcie i chaosie. Dopiero kiedy będziesz miał stabilny pipeline brief → hooks → skrypty → QA → output, dorzuciłbym Veo / image generation / automatyczne assety. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Najpierw zbudowałbym:
+- generator hooków,
+- generator skryptów rolek,
+- generator postów i karuzel,
+- QA zgodności z Twoją bazą,
+- panel review + zapis do bucketu. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+Potem:
+- auto research konkurencji,
+- image prompts,
+- statyczne kreacje,
+- krótkie wideo testowe,
+- publikację / eksport. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Najważniejsza zasada
+
+Twoja baza wiedzy nie powinna być tylko „źródłem cytatów”, ale **silnikiem standardów operacyjnych** dla agentów. Google powinno trzymać prawdę, grounding i retrieval, a Hermes powinien trzymać procedury, skills i workflow execution. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Następny najlepszy krok to rozpisanie Ci już bardzo konkretnie:
+- struktur bucketów,
+- nazewnictwa folderów,
+- schematu metadanych dokumentów,
+- listy pierwszych 10 skilli Hermesa,
+- i szablonu system promptów dla każdego agenta.
+
+Działam — poniżej masz gotowy, praktyczny plan, jak ułożyć Twój system reklamowo-contentowy na Google Cloud + Hermes, bez uzależnienia od Claude Code i z sensownym zużyciem kredytów trialowych. [docs.cloud.google](https://docs.cloud.google.com/free/docs/free-cloud-features)
+
+## Architektura MVP
+
+Google’owy trzon powinien składać się z Agent Platform do budowy agentów, Cloud Storage do assetów i bazy wiedzy oraz VM z Hermesem jako warstwy wykonawczej, bo Agent Platform obsługuje budowę, runtime, pamięć, governance i observability, a Hermes daje CLI, memory i skills do długich workflowów. Nowe konta Google Cloud nadal dostają 300 USD kredytu trialowego na 90 dni, więc ten budżet najlepiej przeznaczyć na prototyp, inference, storage i lekką infrastrukturę, a nie na ciężką, ciągłą produkcję wideo. [cloud.google](https://cloud.google.com/free)
+
+Proponowany układ:
+- GCP Project 1: produkcja agentów i assetów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Cloud Storage: `raw-knowledge`, `creative-outputs`, `reference-assets`, `exports`. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Compute Engine VM: Hermes jako local-cloud operator dla tasków i harmonogramów. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+- Streamlit app: panel operatorski do review, akceptacji i eksportu. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Co budować
+
+Agent Platform ma trzy ścieżki: Agent Studio low-code, Managed Agents API oraz ADK do bardziej złożonych, wieloagentowych orkiestracji. Dla Ciebie najlepszy układ to Agent Studio lub Managed Agents do szybkiego startu oraz Hermes na VM do zadań wykonawczych, bo wtedy Google robi warstwę platformową, a Hermes przejmuje custom workflow i logikę operacyjną. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+
+Zbudowałbym 5 agentów:
+- Strategist: brief, ICP, angle, claimy, pain points, oferta. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Scriptwriter: hooki, skrypty rolek, UGC, captions, CTA. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Creative Director: prompty do obrazów i wideo, warianty konceptów. [ai.google](https://ai.google.dev/gemini-api/docs/gemini-3)
+- Research/RAG Agent: korzysta z Twojej bazy wiedzy, frameworków i case studies. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Ops Agent w Hermesie: odpala pipeline, zapisuje pliki, wersjonuje wyniki, publikuje do storage lub panelu. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills)
+
+## Modele do zadań
+
+Gemini Enterprise Agent Platform daje dostęp do modeli przez Model Garden, a Gemini 3.1 Flash-Lite jest opisany jako najtańszy model pod wysokowolumenowe, niskolatencyjne zadania agentowe. Do obrazów Google wskazuje Gemini 3.1 Flash Image jako model do generacji i edycji obrazów, a do cięższych kreatywnych zastosowań możesz zostawić wyższej jakości warianty tylko dla najlepszych konceptów. [docs.cloud.google](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-1-flash-lite)
+
+Praktyczny mapping:
+- Flash-Lite: klasyfikacja briefów, ekstrakcja z arkuszy, generowanie wielu wariantów hooków i captionów. [ai.google](https://ai.google.dev/gemini-api/docs/models/gemini-3.1-flash-lite)
+- Mocniejszy Gemini: strategia, synteza researchu, scoring pomysłów i plan kampanii. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Flash Image: statyczne kreacje, thumbnaile, key visuale, posty, karuzele. [ai.google](https://ai.google.dev/gemini-api/docs/gemini-3)
+- Wideo: testowo i oszczędnie, bo właśnie ten obszar najszybciej spala budżet. [costgoat](https://costgoat.com/pricing/google-veo)
+
+## Wiedza i RAG
+
+Twoją bazę wiedzy najlepiej trzymać w ekosystemie Google, a nie rozsypywać między wiele narzędzi, bo Agent Platform wspiera RAG Engine, Agent Search, retrieval i długoterminową pamięć przez Memory Bank. Dodatkowo NotebookLM Enterprise może być pomocny jako warstwa researchowo-analityczna dla dokumentów, PDF-ów, Slides, URL-i i nawet XLSX, przy czym źródła są groundingiem odpowiedzi i pozostają w projekcie Google Cloud. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+To daje dwa poziomy pracy:
+- operacyjny RAG do agentów: hooki, skrypty, SOP-y, checklisty, frameworki ofert. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- analityczny research vault w NotebookLM Enterprise: case studies, transcript’y, materiały szkoleniowe, konkurencja, call notes. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Kredyty i priorytety
+
+Trial 300 USD obejmuje szeroko usługi Google Cloud, więc nadaje się do uruchomienia VM, inference, storage i testów agentów. Kredyty promocyjne związane z GenAI App Builder są z zebranych źródeł najbliżej powiązane z Agent Search / Vertex AI Search, więc nie traktowałbym ich jako ogólnego portfela na cały stack kreatywny, tylko właśnie na search/RAG app i knowledge app. [reddit](https://www.reddit.com/r/googlecloud/comments/1h2umes/which_gcp_products_fall_under_trial_credit_for/)
+
+Najlepsza kolejność zużywania środków:
+1. Storage + baza wiedzy + RAG. [docs.cloud.google](https://docs.cloud.google.com/generative-ai-app-builder/docs)
+2. Tani model tekstowy do masowych iteracji. [docs.cloud.google](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-1-flash-lite)
+3. VM z Hermesem i Streamlit panel. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+4. Obrazy na shortlistę konceptów, nie na wszystko. [ai.google](https://ai.google.dev/gemini-api/docs/gemini-3)
+5. Wideo dopiero po przejściu tekst-image fit, bo kosztowo to najbardziej ryzykowny etap. [mindstudio](https://www.mindstudio.ai/blog/google-flow-pricing-credits-tiers-explained)
+
+## Plan 7 dni
+
+Dzień 1: załóż strukturę bucketów, wrzuć bazę wiedzy, posegreguj ją na `hooks`, `offers`, `scripts`, `case-studies`, `ads-copy`, `brand-assets`. Dzień 2: postaw VM, zainstaluj Hermesa i skonfiguruj skills/memory, bo oficjalna dokumentacja Hermesa opisuje go jako self-improving agent z memory i skills systemem. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills)
+
+Dzień 3: zbuduj Research Agent i Script Agent na Agent Platform. Dzień 4: zrób Streamlit cockpit z formularzem briefu, kolejką zadań i galerią outputów. Dzień 5: dodaj generację statycznych obrazów i zapis do bucketu. Dzień 6: dołóż scoring jakości i prosty workflow Accept / Retry / Rewrite. Dzień 7: odpal pierwszy pełny pipeline: brief → 20 hooków → 5 skryptów → 6 statyk → eksport do folderu kampanii. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/)
+
+Najważniejszy wniosek: na Twoim etapie nie potrzebujesz „jednego magicznego narzędzia”, tylko stabilnego systemu, w którym Google robi platformę, storage i modele, a Hermes przejmuje agentową egzekucję i automatyzację. To jest dużo bardziej przyszłościowe niż kopiowanie 1:1 workflow z filmu, zwłaszcza że sam film opiera się mocno na Arcads i dodatkowych płatnych API, co użytkownicy w komentarzach wyraźnie wskazują jako kosztową barierę. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+Tak — robimy to już bez przepisywania cudzych flow i bez powtarzania tych samych wątków. Budujemy **własny** blueprint: Google Cloud jako warstwa modeli, storage i runtime, Hermes jako agent execution layer, a Streamlit jako panel operatorski do akceptacji i uruchamiania pipeline’ów. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Architektura
+
+Rdzeń systemu to agent na Hermesie uruchomiony poza laptopem, bo Hermes jest projektowany jako autonomiczny agent działający na VPS, SSH, Dockerze albo innej zdalnej infrastrukturze, z pamięcią, skillami, subagentami i automatyzacją cron. Po stronie Google najczyściej użyć Agent Platform do budowy i wdrażania agentów, Cloud Storage do assetów i bazy wiedzy oraz Model Garden / modeli Gemini do reasoning, generacji treści i multimodalnych zadań. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Minimalny układ:
+- GCP VM: Hermes + worker pipeline. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Cloud Storage: bucket `knowledge`, bucket `assets-in`, bucket `assets-out`. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Gemini Enterprise Agent Platform: agent RAG / orchestrator / ewentualnie dodatkowy agent search. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Streamlit: panel review, brief intake, approval queue, export. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Role agentów
+
+Nie rób jednego „superagenta”, tylko 4 stałe role, bo Agent Platform i Hermes wspierają orchestration, pamięć, runtime i równoległe ścieżki pracy. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Proponuję taki zestaw:
+- Strategist Agent: bierze brief, wybiera kąty komunikacyjne, ICP, hooki, formaty. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Knowledge Agent: odpytuje Twoją bazę wiedzy, skrypty, frameworki, case’y i wcześniejsze wyniki. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Creative Agent: generuje copy, storyboardy, prompty do obrazów i wideo, warianty assetów. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Operator Agent: pakuje output, zapisuje do bucketów, podaje do Streamlit review i odpala publikacyjne integracje później przez API. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Pipeline
+
+Jeden zamknięty workflow wystarczy, bez rozdrabniania. Agent Platform jest do build-scale-govern-optimize, a Hermes dobrze nadaje się do wykonania długich, wieloetapowych zadań i subagent delegation. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Blueprint:
+1. Użytkownik wrzuca brief w Streamlit: produkt, oferta, persona, kanał, format, constraints. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+2. Knowledge Agent pobiera z bucketu lub RAG engine odpowiednie wzorce: hooki, viral scripts, CTA, style, brand guardrails. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+3. Strategist Agent generuje 3–5 konceptów kampanii i wybiera najlepsze według ustalonego scoringu. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+4. Creative Agent produkuje paczkę: statyczne grafiki, skrypty rolek, captiony, warianty short video, karuzele i posty organiczne. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+5. Operator Agent zapisuje wszystko do `assets-out`, wystawia review queue i oznacza: approve / revise / publish-ready. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Co budować najpierw
+
+Najpierw zrób warstwę, która daje trwałą przewagę, czyli knowledge + orchestration, a dopiero potem ciężkie generowanie wideo. Google daje managed runtime, sessions, Memory Bank, registry i observability, więc warto zacząć od tekstu, RAG i asset orchestration, a nie od przepalania budżetu na najdroższe ścieżki. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Kolejność wdrożenia:
+- etap 1: baza wiedzy w bucketach + tagging + retrieval. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- etap 2: Hermes na VM + 4 role agentów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- etap 3: Streamlit panel do briefów i review. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- etap 4: generacja statics i organic posts. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- etap 5: dopiero potem short video / Veo workflow. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Zasady blueprintu
+
+Żeby nie wracać w kółko do tych samych tematów, przyjmij jedną stałą zasadę projektową: wszystko ma być modułowe, wymienne i osadzone w Twojej wiedzy, nie w cudzym repo. Hermes ma skills, memory i MCP, a Agent Platform ma ADK, runtime, memory, registry i governance, więc cały system powinien być budowany jako własny OS kampanii, nie zestaw hacków. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Twarde reguły:
+- jeden canonical knowledge source; nie duplikuj promptów po plikach. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- każdy output przechodzi przez review queue, nie publikujesz full-auto. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- oddziel strategię od produkcji assetów i od publikacji. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- buduj reusable templates, ale decyzje kreatywne trzymaj w scoringu i wiedzy domenowej, nie w sztywnych skryptach. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Jasne — to rozpiszę Ci teraz w formie konkretnego MVP pod **Google Cloud + Hermes + Streamlit**, tak żebyś mógł ruszyć bez Claude Code i bez uzależniania się od Arcads. Google Agent Platform daje Ci dziś trzy ścieżki budowy agentów — Agent Studio, Managed Agents API i ADK — plus RAG, Memory Bank, managed runtime i governance, więc nadaje się na centralny „mózg” systemu. Hermes z kolei dobrze pasuje jako autonomiczny agent uruchomiony na VM lub innym backendzie, z pamięcią, skills, cronem, subagentami i pracą poza laptopem. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Architektura MVP
+
+Najprostszy i sensowny układ to: Google Cloud jako warstwa modeli, storage i retrieval, Hermes jako egzekutor workflow, a Streamlit jako panel operatorski do uruchamiania zadań i review assetów. Agent Platform oferuje build, scale, govern i optimize, więc możesz tam oprzeć część agentową, a cięższe, niestandardowe workflow kreatywne zostawić Hermesowi. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Proponowany stack:
+- Compute Engine VM: Hermes Agent + workers. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Cloud Storage: buckety na knowledge base, assety wejściowe i wyniki. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Gemini Enterprise Agent Platform: RAG, agent runtime, sessions, memory bank. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Streamlit: cockpit do briefów, kolejek i akceptacji outputów.
+- Opcjonalnie BigQuery: logi promptów, scoring assetów, historia iteracji.
+
+## Role agentów
+
+Nie rób jednego „mega-agenta”, tylko mesh 4–6 agentów. Agent Platform i ADK są właśnie do takich bardziej złożonych orkiestracji, a Hermes potrafi delegować i równoleglić pracę subagentów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Minimalny zestaw agentów:
+- **Strategist** — bierze brief, produkt, ICP i cel kampanii; zwraca kąty komunikacji, persony, hooki i formaty. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- **Research/RAG agent** — przepytuje Twoją bazę wiedzy, Sheets, dokumenty, swipe file i wyciąga najlepsze wzorce. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- **Creative writer** — generuje skrypty rolek, copy do postów, UGC beats, CTA, tytuły, opisy i warianty testowe.
+- **Visual planner** — zamienia skrypt na storyboard, shot listę, prompty do obrazu i wideo.
+- **Asset producer** — odpala modele Google do obrazów i wideo albo przekazuje zadania do Hermesa/workerów. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- **Reviewer/Scorer** — ocenia output pod zgodność z briefem, hook strength, clarity, novelty i brand safety.
+
+## Buckety i dane
+
+Cloud Storage dobrze nadaje się na warstwę trwałych danych i assetów, a Agent Platform ma natywne koncepty RAG, sessions i memory bank, więc możesz rozdzielić to na „wiedzę”, „operacje” i „wyniki”. To da porządek i łatwiejsze wersjonowanie. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Polecam takie buckety:
+- `gs://ai-marketing-kb` — skrypty, frameworki, przykłady reklam, checklisty, swipe file.
+- `gs://ai-marketing-inputs` — zdjęcia produktów, brandbooki, avatary, referencje.
+- `gs://ai-marketing-outputs` — grafiki, rolki, captiony, JSON-y kampanii.
+- `gs://ai-marketing-evals` — scorecards, QA, wyniki testów, porównania wariantów.
+
+Dodatkowo trzy logiczne warstwy danych:
+- knowledge docs do retrieval,
+- session data do bieżących kampanii,
+- long-term memory do preferencji stylu, ofert i formatów użytkownika. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Workflow kampanii
+
+Twoje główne use case’y — reklamy, organiczne rolki, wow-posty i statyczne grafiki — dobrze układają się w jeden pipeline wieloformatowy. Agent Platform wspiera generowanie contentu, discovery informacji i automatyzację workflow, więc ten model jest zgodny z platformą. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Przepływ MVP:
+1. W Streamlit wpisujesz brief: produkt, persona, oferta, cel, kanał, format.
+2. Strategist generuje 5–10 angle’ów i wybiera 3 najlepsze.
+3. Research agent odpytuje bazę wiedzy w bucketach / RAG i dorzuca wzorce z Twoich materiałów. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+4. Creative writer robi warianty: reklama statyczna, karuzela, rolka UGC, post organiczny.
+5. Visual planner tworzy storyboard, prompt pack i listę assetów.
+6. Asset producer generuje obrazy lub krótkie wideo przez modele Google. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+7. Reviewer ocenia i wrzuca wynik do kolejki w Streamlit.
+8. Operator akceptuje, poprawia albo zleca kolejną iterację.
+
+## Zużycie kredytów
+
+Na start nie spalaj trialu na masową generację wideo. Najbardziej opłacalne będzie zużycie środków na storage, retrieval, orchestration agentów, inference tekstowe i dopiero potem selektywnie na assety obraz/wideo. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Priorytet wydatków:
+- 1. VM pod Hermesa i testowy runtime.
+- 2. Buckety + baza wiedzy + RAG.
+- 3. Gemini do strategii, copy i planowania.
+- 4. Obrazy do statyk i thumbnaili.
+- 5. Wideo tylko dla top pomysłów.
+
+To jest ważne też dlatego, że w pokazanym przez Ciebie workflow z YouTube duża część mocy bierze się nie z samego „jednego modelu”, tylko z orkiestracji: analiza referencji, generacja wielu wariantów równolegle, QA, B-roll, składanie finalnych wersji i upload kampanii. Da się więc odtworzyć logikę systemu bez kopiowania dokładnie tamtego stacku, o ile zbudujesz porządny pipeline agentowy. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Plan na 7 dni
+
+Da się to postawić etapami w tydzień roboczy. Hermes ma szybki onboarding, CLI install, pamięć, skills i integracje, więc VM-first setup jest realny bez wielkiej ceremonii. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Plan:
+- Dzień 1: załóż projekt GCP, buckety, IAM, VM i postaw Hermesa. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Dzień 2: wrzuć knowledge base do Cloud Storage i przygotuj strukturę dokumentów pod retrieval. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Dzień 3: postaw prosty Streamlit panel: brief in, status jobów, lista wyników.
+- Dzień 4: zbuduj Strategist + Research agent.
+- Dzień 5: dołóż Creative writer + prompt templates do statyk i rolek.
+- Dzień 6: dołóż Asset producer i Reviewer.
+- Dzień 7: spięcie end-to-end, logowanie outputów, retry, ręczny approval.
+
+Najlepszy pierwszy milestone to nie „pełna automatyzacja reklam”, tylko: brief → 3 kąty → 10 hooków → 3 skrypty rolek → 5 captionów → 3 grafiki statyczne → review w Streamlit. To już da Ci realną wartość, a potem dopniesz video, awatary i publikację.
+
+## Co bym zrobił na Twoim miejscu
+
+Na dziś zrobiłbym rdzeń w Google, a Hermesa potraktował jako warstwę roboczą i eksperymentalną. Agent Platform daje Ci managed runtime, sessions, Memory Bank i governance, a Hermes daje elastyczność, cron, subagenty i niezależność od laptopa, więc to jest dobre połączenie zamiast wybierania jednego albo drugiego. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Najbardziej praktyczna decyzja:
+- Google = pamięć systemu, storage, RAG, modele, deployment agentów. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Hermes = operacje, automatyzacje, równoległe workflow, custom skills. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Streamlit = panel dowodzenia.
+
+W tym wideo, które masz otwarte, najcenniejszy wzorzec nie brzmi „użyj Claude Code”, tylko „zamień się z operatora w creative directora i każ agentom robić równoległe taski: generacja, QA, klonowanie, B-roll, składanie i launch”. To dokładnie możesz przenieść do własnego stacku Google + Hermes, tylko bez zależności od repo autora i bez kosztów typu Arcads Pro, które nawet w komentarzach budziły opór części widzów. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+Tak — to **ma sens**, ale trzeba to rozdzielić na dwie różne warstwy pamięci: Obsidian jako zewnętrzna baza wiedzy / vault dokumentów oraz Hermes jako pamięć operacyjna i egzekucyjna agenta. W materiałach o Hermesie przewija się dokładnie ten wzorzec: Hermes dobrze działa jako „operating layer”, a Obsidian lub wiki-style vault jako rosnąca baza wiedzy, którą agent może odczytywać, indeksować i uzupełniać cronami. [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+
+## Jak to się łączy
+
+Hermes z natury pamięta rozmowy, profile, sesje, skills i może działać przez crony, webhooki oraz subagenty, ale sam z siebie nie zastępuje dużej, uporządkowanej bazy wiedzy z dokumentami, researchami i notatkami domenowymi. Z kolei materiały o Obsidian + Hermes pokazują model „two-way memory system”: Hermes zna Ciebie i workflow, a Obsidian trzyma szerszy korpus wiedzy — artykuły, meeting notes, research, transkrypcje, SOP-y, eksperckie frameworki — i może być wspólną pamięcią dla kilku agentów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+W praktyce:
+- Hermes = pamięć robocza, automatyzacje, cron, webhooki, subagenty, decyzje. [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+- Obsidian = vault Markdown z notatkami, źródłami, wiki i dłuższą wiedzą referencyjną. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- GCP AI Search / RAG = warstwa wyszukiwawcza i retrieval nad wybranym zbiorem dokumentów, szczególnie jeśli chcesz search app i governance po stronie chmury. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## Obsidian a RAG
+
+To nie jest to samo. Obsidian to format i środowisko organizacji wiedzy, zwykle oparte o lokalne lub zsynchronizowane pliki Markdown, natomiast RAG/AI Search w Google Cloud to mechanizm wyszukania i podania właściwych fragmentów wiedzy modelowi w chwili odpowiedzi. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+Najlepszy model architektoniczny dla Ciebie to:
+- Obsidian jako „authoring layer”, gdzie lądują notatki, research, SOP-y, prompty, case studies i syntezy. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Bucket GCP jako „storage / source of truth” dla części zasobów, które chcesz trzymać centralnie w chmurze. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- AI Search / RAG jako „retrieval layer”, jeśli chcesz, by agent na GCP pytał o wiedzę przez indeks, a nie przez bezpośrednie czytanie całego vaultu. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Czyli: Obsidian może być źródłem dla RAG, ale sam nie jest RAG-iem. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Co pasuje do Twojego MVP
+
+Skoro masz już bucket w GCP i Hermesa na VM E2-medium z 30 GB SSD, to najrozsądniej zrobić układ hybrydowy: Hermes na VM jako warstwa wykonawcza, bucket jako centralny storage, a Obsidian jako uporządkowany knowledge vault dla researchu i procedur. Wideo o Hermesie wyraźnie sugerują, żeby nie wrzucać wszystkiego do jednego czatu, tylko budować workspaces, subagentów, crony i mission control; dokładnie tak samo wiedzę lepiej trzymać w osobnej warstwie niż w samym kontekście rozmów. [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+
+Dla Twojego use case’u reklamowo-contentowego sensowny podział byłby taki:
+- Vault/Obsidian: hooki, viral scripts, frameworki kreatywne, biblioteka angle’ów, analizy konkurencji, checklisty produkcji. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- Bucket GCP: assety, eksporty, CSV, obrazy, drafty, transkrypty, gotowe outputy agentów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Hermes: workflow typu research \u2192 synteza \u2192 zapis do vaultu \u2192 selekcja pomysłów \u2192 publikacyjny backlog. [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+- AI Search: zapytania semantyczne po wybranym zbiorze „produkcyjnej” wiedzy, gdy chcesz stabilne retrieval w chmurze. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+## AntiGravity i MCP GitHub
+
+Antigravity jest projektowane jako ekosystem wielu powierzchni: 2.0, IDE, CLI i SDK, z tym samym agentem na wszystkich tych surface’ach, więc dobrze nadaje się jako narzędzie do develop/deploy i pracy projektowej obok Hermesa. Z materiału o Antigravity wynika też, że CLI/IDE/SDK dobrze nadają się do budowy agentów, pracy na repozytorium, uruchamiania skryptów i doglądania zmian, więc jeśli MCP GitHub jest już podpięte do AntiGravity, to naturalnie robi ono za warstwę repo/dev, a Hermes za warstwę operacyjną workflow. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+Wzorzec, który bym Ci polecił:
+- AntiGravity + GitHub MCP: kod, repo, review, deploy, zmiany w aplikacji. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+- Hermes: research ops, cron jobs, webhooki, ingest wiedzy, automatyczne briefy i pipeline contentowe. [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+- Obsidian/RAG: pamięć długoterminowa i retrieval wiedzy. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+
+## Najlepszy układ pamięci
+
+Najbardziej sensowna wersja dla Ciebie to „pamięć warstwowa”:
+1. Hermes memory — krótsza pamięć operacyjna i kontekst pracy. [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+2. Obsidian vault — uporządkowane notatki i wiedza ekspercka w Markdown. [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+3. GCP bucket + AI Search — chmurowy indeks / retrieval dla wybranych kolekcji dokumentów. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+To daje Ci trzy korzyści:
+- nie zaśmiecasz pamięci Hermesa wszystkim, co przeczytał, [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- masz własną, przenośną bazę wiedzy w Markdown, [docs.cloud.google](https://docs.cloud.google.com/vertex-ai/docs/release-notes)
+- możesz równolegle używać Google do search/RAG i governance nad wiedzą „produkcyjną”. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Najkrócej: **Obsidian nie konkuruje z RAG**, tylko może być jego upstreamem albo warstwą redakcyjną. Hermes nie powinien być jedyną bazą wiedzy; powinien być raczej agentem, który tę wiedzę czyta, aktualizuje i wykorzystuje. [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+
+## Co wdrożyć teraz
+
+Przy Twoim obecnym stanie zrobiłbym to w takiej kolejności:
+- osobny folder/vault Obsidian dla projektu, z działami: research, hooks, viral scripts, SOP, competitors, assets-briefs. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- prosty skill w Hermesie typu „index_to_vault”, który zapisuje wynik researchu do Markdown z metadanymi i tagami. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- cron w Hermesie: codzienny research niszy + zapis syntezy do vaultu, zamiast trzymać to tylko w czacie. [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+- osobny pipeline do bucketu GCP dla plików produkcyjnych i assetów, nie dla wszystkich notatek roboczych. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- dopiero potem wybrany podzbiór vaultu wrzucony do AI Search / RAG, gdy zobaczysz, które typy notatek naprawdę warto indeksować w chmurze. [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+
+Wniosek praktyczny: tak, możesz spokojnie połączyć AntiGravity, Hermesa, Obsidian i Google AI Search, ale najlepiej robić to jako system: AntiGravity do budowy, Hermes do operacji, Obsidian do wiedzy, a GCP AI Search do retrievalu chmurowego. [youtube](https://www.youtube.com/watch?v=HHGQN9Zqaxo)
+
+## Porównanie: Hermes Agent vs OpenClaw vs Odysseus
+
+### Hermes Agent (Nous Research)
+
+Hermes jest autonomicznym agentem serwerowym działającym jako „ciche tło operacyjne". Kluczowe cechy to: pamięć długoterminowa (MEMORY.md + USER.md + zewnętrzni providerzy), system skills (tworzonych z doświadczenia, wersjonowanych), cron jobs, webhooki, subagenci/delegacja, profile agentów, gateway Telegram/Discord/Slack/e-mail, web dashboard (HCI), oraz 40+ preinstalowanych narzędzi. Działa na każdym serwerze Linux/macOS/WSL, VPS, Docker, SSH, Modal. Jako jedyny z tej trójki **nadaje się na CI/CD, długie autonomiczne pipeline'y i prawdziwą produkcję**. Ma oficjalny deployment template na GCP Compute Engine przez OpenRouter Spawn. [vibecodingacademy](https://www.vibecodingacademy.ai/blog/hermes-agent)
+
+Twórcy warto śledzić:
+- **Nate Herk** — pełny setup na VPS w 1 godzinę [youtube](https://www.youtube.com/watch?v=gb5TlGw6Uks)
+- autor filmiku który masz otwarty (100 dni z Hermesem) — najlepsze practical patterns [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+- **Tonbi's AI Garage** — Hermes uruchamia web app [github](https://github.com/0xNyk/awesome-hermes-agent)
+- **lushbinary.com** — developer guide: setup, skills, self-improving AI [lushbinary](https://lushbinary.com/blog/hermes-agent-developer-guide-setup-skills-self-improving-ai/)
+
+***
+
+### OpenClaw
+
+OpenClaw to lokalny agent desktopowy (macOS-first), bardziej w stylu narzędzia do klikania i delegowania zadań z poziomu przeglądarki Chrome. Bazuje domyślnie na Claude Opus/Codex. Ma session memory, hooks i jest przydatny tam, gdzie potrzebujesz **dużo tool calls na raz** lub browserowej automatyzacji. Nie jest jednak agentem serwerowym — nie działa autonomicznie na VM, bez Twojej obecności. W stacku autorów np. maxmitcham.substack.com jest traktowany jako opcjonalne narzędzie uzupełniające Hermesa, nie jako zamiennik. [lennysnewsletter](https://www.lennysnewsletter.com/p/openclaw-the-complete-guide-to-building)
+
+***
+
+### Odysseus (PewDiePie / archdaemon)
+
+Odysseus to self-hosted AI workspace — lokalny odpowiednik ChatGPT + Notion AI + Claude + local model server w jednej apce. Działa na własnym hardware, local-first, privacy-first, bez telemetrii. Ma: chat, agentów (oparty na opencode + MCP), Deep Research, Document editor, Email (IMAP/SMTP z AI triage), Notes/Tasks z cronami, Calendar (CalDAV), memory/skills (ChromaDB + fastembed), porównywanie modeli i image editor. Wspiera Ollama, llama.cpp, vLLM, OpenRouter, OpenAI. To **bardziej interfejs/workspace niż silnik autonomicznych workflow** — autor gavinj.net podsumowuje to tak: „Odysseus jest piękny, ale Hermesowi bardziej ufam jako agentowi produkcyjnemu". [germancomplianceinstitute](https://germancomplianceinstitute.com/blogs/news/what-is-odysseus-ai-a-complete-beginners-guide-to-pewdiepies-ai-workspace)
+
+***
+
+## Tabela porównawcza
+
+| Cecha | Hermes Agent | OpenClaw | Odysseus |
+|---|---|---|---|
+| Środowisko | Serwer/VM/VPS/Docker | Lokalny desktop (macOS) | Lokalny/self-hosted |
+| Autonomia | ★★★★★ | ★★★ | ★★★ |
+| Pamięć długoterminowa | ★★★★★ | ★★ | ★★★★ |
+| Cron/Webhooki | Tak, natywnie | Nie | Ograniczone |
+| Subagenci | Tak, delegacja | Nie | Nie |
+| UI/Dashboard | HCI web dashboard | Brak | Pełne GUI |
+| Email/Kalendarz | Przez bramki | Nie | Tak, natywnie |
+| Deep Research | Przez skill/tool | Przez tool calls | Natywnie |
+| Fit na GCP VM | ★★★★★ | ✗ | ★★ |
+| Koszt | Free + model API | Free + model API | Free + model API |
+| Open Source | Tak (MIT) | Tak | Tak |
+
+***
+
+## Czy można je używać równolegle?
+
+**Tak, i ma to sens w konkretnych rolach:**
+- **Hermes na GCP VM** = rdzeń operacyjny, autonomiczne crony, research pipeline, content workflow, webhooks od systeme.io.
+- **Odysseus lokalnie** = Twój osobisty workspace do deep research, edycji dokumentów, email triage, notatek i pracy z modelami lokalnymi; jego output możesz przerzucać do bucketu GCP.
+- **OpenClaw** = opcjonalnie, gdy potrzebujesz browserowej automatyzacji lub masowych tool calls na desktop; najmniej potrzebny przy Twoim stacku cloud-first.
+
+Polecany wzorzec (potwierdzony przez maxmitcham.substack.com): [maxmitcham.substack](https://maxmitcham.substack.com/p/how-to-build-an-ai-agent-operating)
+- Hermes = control tower
+- Odysseus = lokalny research/workspace dla Ciebie jako operatora
+- OpenClaw = opcja gdy zadanie wymaga intensywnego tool-callingu w przeglądarce
+
+***
+
+## Czy Streamlit jest niezbędny?
+
+**Nie jest niezbędny, ale jest najszybszą drogą do panelu review bez budowania frontendu od zera.** Alternatywy:
+
+1. **HCI (Hermes Control Interface)** — darmowy, self-hosted web dashboard do zarządzania agentami, profilami, cronami, webhookami, usage analytics i file managerem. To jest **pierwsza rzecz do zainstalowania zamiast Streamlit**, bo jest natywny dla Hermesa. [youtube](https://www.youtube.com/watch?v=UkCYoEl7g0w)
+2. **Streamlit** — sensowny do budowy customowego panelu review assetów, briefingu kampanii i kolejki zatwierdzania, bo HCI nie ma widoku „galeria kreacji do akceptacji".
+3. **Odysseus** lokalnie może pełnić rolę UI do pracy z dokumentami i notatkami.
+
+**Rekomendacja:** zainstaluj HCI dla operations/monitoring Hermesa, a Streamlit zbuduj tylko dla kreatywnego review queue i briefów kampanii — to dwa różne zastosowania, które się uzupełniają.
+
+***
+
+## Baza wiedzy i linki dla Anti-Gravity
+
+### Hermes Agent — oficjalna dokumentacja
+
+- Strona główna dokumentacji: `https://hermes-agent.nousresearch.com/docs`
+- Web Dashboard / HCI: `https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard` [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard)
+- Cron automation patterns: `https://hermes-agent.nousresearch.com/docs/guides/automate-with-cron` [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/guides/automate-with-cron)
+- Pełny index dokumentacji (architecture, skills, memory, security, delegation, cron internals, webhooki): `https://github.com/mudrii/hermes-agent-docs` [github](https://github.com/mudrii/hermes-agent-docs)
+- Awesome Hermes (skills, tools, integracje, zasoby): `https://github.com/0xNyk/awesome-hermes-agent` [github](https://github.com/0xNyk/awesome-hermes-agent)
+- Deploy na GCP przez OpenRouter Spawn: `https://openrouter.ai/spawn/hermes/gcp` [openrouter](https://openrouter.ai/spawn/hermes/gcp)
+- Developer guide (setup, skills, self-improving): `https://lushbinary.com/blog/hermes-agent-developer-guide-setup-skills-self-improving-ai/` [lushbinary](https://lushbinary.com/blog/hermes-agent-developer-guide-setup-skills-self-improving-ai/)
+- Hermes + GCP Compute Engine tutorial: `https://dev.to/gde/gcp-in-action-building-a-persistent-ai-assistant-with-gce-hermes-agent-and-telegram-1mlg` [dev](https://dev.to/gde/gcp-in-action-building-a-persistent-ai-assistant-with-gce-hermes-agent-and-telegram-1mlg)
+- Praktyczny tutorial (profiles, memory, skills): `https://userorbit.com/blog/getting-started-with-hermes-agent` [userorbit](https://userorbit.com/blog/getting-started-with-hermes-agent)
+- Hermes na GCP — Reddit thread z praktykami: `https://www.reddit.com/r/hermesagent/comments/1s8n8gi/` [reddit](https://www.reddit.com/r/hermesagent/comments/1s8n8gi/installed_hermes_agent_on_google_cloud_now_what/)
+- Deployment roadmap na cloud: `https://www.tencentcloud.com/techpedia/144037` [tencentcloud](https://www.tencentcloud.com/techpedia/144037?lang=en)
+
+### Google Cloud / Gemini Enterprise Agent Platform
+
+- Strona główna platformy: `https://cloud.google.com/products/gemini-enterprise-agent-platform` [cloud.google](https://cloud.google.com/products/gemini-enterprise-agent-platform)
+- Dokumentacja (Agent Studio, Agents, Models, Notebooks): `https://docs.cloud.google.com/gemini-enterprise-agent-platform/overview` [docs.cloud.google](https://docs.cloud.google.com/gemini-enterprise-agent-platform/overview)
+- GitHub repo z przykładami i tutorialami GCP: `https://github.com/Google-Cloud-AI/agent-platform` [github](https://github.com/Google-Cloud-AI/agent-platform)
+- GEAR program (nauka agent buildingu): `https://developers.google.com/program/gear` [developers.google](https://developers.google.com/program/gear)
+- RAG Agent z Vertex AI Agent Builder (krok po kroku): `https://dev.to/jubinsoni/getting-started-with-gemini-agents-build-a-data-connected-rag-agent-using-vertex-ai-agent-builder-50ml` [dev](https://dev.to/jubinsoni/getting-started-with-gemini-agents-build-a-data-connected-rag-agent-using-vertex-ai-agent-builder-50ml)
+- Codelab: Building Google-quality RAG z Vertex AI: `https://codelabs.developers.google.com/build-google-quality-rag` [codelabs.developers.google](https://codelabs.developers.google.com/build-google-quality-rag)
+- ADK + Vertex AI RAG Engine (GitHub): `https://github.com/arjunprabhulal/adk-vertex-ai-rag-engine` [github](https://github.com/arjunprabhulal/adk-vertex-ai-rag-engine)
+- Google Cloud Next 2026 — nowości platformy: `https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/next-2026/` [blog](https://blog.google/innovation-and-ai/infrastructure-and-cloud/google-cloud/next-2026/)
+
+### Odysseus
+
+- Oficjalne repo: `https://github.com/pewdiepie-archdaemon/odysseus` [github](https://github.com/pewdiepie-archdaemon/odysseus)
+- Pełny opis features i setup: `https://explainx.ai/blog/odysseus-self-hosted-ai-workspace-2026` [explainx](https://explainx.ai/blog/odysseus-self-hosted-ai-workspace-2026)
+- Porównanie Odysseus vs Hermes: `https://www.youtube.com/watch?v=O0dnMgoaF8U` [youtube](https://www.youtube.com/watch?v=O0dnMgoaF8U)
+- Recenzja: Odysseus vs Hermes: `https://www.gavinj.net/post/odysseus-review-local-first-ai-workspace` [gavinj](https://www.gavinj.net/post/odysseus-review-local-first-ai-workspace)
+
+### OpenClaw
+
+- Strona oficjalna: `https://openclaw.ai` [openclaw](https://openclaw.ai)
+- Kompletny przewodnik Lenny's Newsletter: `https://www.lennysnewsletter.com/p/openclaw-the-complete-guide-to-building` [lennysnewsletter](https://www.lennysnewsletter.com/p/openclaw-the-complete-guide-to-building)
+- Asseco Academy (po polsku): `https://academy.asseco.pl/learning-center/open-claw/` [academy.asseco](https://academy.asseco.pl/learning-center/open-claw/)
+
+### Dodatkowe zasoby dla Anti-Gravity
+
+- Stack AI OS (Hermes + OpenClaw + Obsidian): `https://maxmitcham.substack.com/p/how-to-build-an-ai-agent-operating` [maxmitcham.substack](https://maxmitcham.substack.com/p/how-to-build-an-ai-agent-operating)
+- Hermes OS — budowa marketing team: `https://www.youtube.com/watch?v=sm5Oqdwm1-A` [youtube](https://www.youtube.com/watch?v=sm5Oqdwm1-A)
+- HCI Mission Control (free dashboard): `https://www.youtube.com/watch?v=UkCYoEl7g0w` [youtube](https://www.youtube.com/watch?v=UkCYoEl7g0w)
+- 10 best open-source AI agents 2026: `https://dev.to/sonotommy/10-best-open-source-ai-agents-for-2026-2l6p` [dev](https://dev.to/sonotommy/10-best-open-source-ai-agents-for-2026-2l6p)
+- Nate Herk — Hermes Zero to Hero (1h course): `https://www.youtube.com/watch?v=gb5TlGw6Uks` [youtube](https://www.youtube.com/watch?v=gb5TlGw6Uks)
+
+***
+
+## Kluczowe wnioski dla Anti-Gravity
+
+Na podstawie zebranych źródeł, najlepsza wersja Twojego MVP to:
+
+1. **Hermes na GCP VM (E2-medium, 30GB SSD)** — już masz, to jest właściwy wybór produkcyjny. Zainstaluj HCI jako dashboard. [youtube](https://www.youtube.com/watch?v=UkCYoEl7g0w)
+2. **Odysseus lokalnie** — jako Twój workspace do deep research, edycji dokumentów i pracy z modelami; output przerzucasz do bucketu.
+3. **GCP Gemini Enterprise Agent Platform** — RAG nad Twoją bazą wiedzy w buckecie, agent strategiczny i model routing. [docs.cloud.google](https://docs.cloud.google.com/gemini-enterprise-agent-platform)
+4. **Streamlit** — tylko do kreatywnego review queue assetów i briefów; nie zastępuje HCI.
+5. **OpenClaw** — opcjonalnie, gdy potrzebujesz desktop browser automation; nie jest priorytetem.
+
+Najważniejsza lekcja z 100 dni z Hermesem: nie pytaj Hermesa o rzeczy, **zamień powtarzalne decyzje w loopy**. Każdy cron to zadanie, które przestajesz robić ręcznie. To jest właśnie model, który wdrażamy w Twoim Marketing OS. [youtube](https://www.youtube.com/watch?v=sCa3BtpkziQ)
+
+## Aion UI — to właśnie masz na myśli
+
+To, co widzisz w dashboardzie Juliana Goldie — sidebar z Claude Code, Hermes, Gemini wszystkimi naraz w jednym oknie — to **Aion UI** (wcześniej nazywany Aether UI). Jest to darmowy, open-source desktop app do zarządzania wieloma agentami jednocześnie. [youtube](https://www.youtube.com/watch?v=vWxE6VO9TKo&vl=pl)
+
+**Repo:** `https://github.com/iofficeai/aionui` [github](https://github.com/iofficeai/aionui)
+
+Aion UI pozwala na:
+- uruchamianie Hermes, Claude Code, OpenClaw, Gemini CLI, Codex i 20+ innych agentów w jednym oknie z zakładkami [youtube](https://www.youtube.com/watch?v=vWxE6VO9TKo&vl=pl)
+- przełączanie między agentami bez zmiany kontekstu
+- planowanie zadań i sterowanie przez telefon
+- konfigurowanie team agentów pracujących równolegle [youtube](https://www.youtube.com/watch?v=vWxE6VO9TKo&vl=pl)
+
+Julian Goldie używa tego jako swojego „command center": zakładka wideo (Hermes + HyperFrames), zakładka studio (obrazy, wideo, podcast), zakładka Claude Code, zakładka Gemini — wszystko w jednym oknie, bez przeskakiwania między tabami. [linkedin](https://www.linkedin.com/posts/juliangoldieseo_new-hermes-ai-video-agent-is-insane-activity-7468201522670133249-x31K)
+
+***
+
+## Budowanie stron/lejków w HTML+CSS przez agenta
+
+Hermes ma wbudowany skill **`popular-web-designs`** z 54 gotowymi design systemami w HTML/CSS — każdy template zawiera kompletny visual language: kolory, typografię, komponenty. Połączone ze skillem `generative-widgets` mogą serwować gotową stronę przez cloudflared tunnel od razu po wygenerowaniu. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/skills/bundled/creative/creative-popular-web-designs)
+
+Workflow dla Twojego use case'u:
+
+**Krok 1 — generowanie lejka w HTML/CSS:**
+- w Aion UI otwierasz Hermesa
+- dajesz mu brief: produkt, offer, CTA, sekcje (hero, features, testimonials, pricing, opt-in)
+- Hermes ładuje design template z `popular-web-designs` skill, generuje pełny HTML+CSS
+- wynik zapisuje do bucketu GCP
+
+**Krok 2 — review w HCI / Streamlit:**
+- podgląd wygenerowanej strony przez tunnel
+- akceptujesz layout lub dajesz poprawki w natural language
+
+**Krok 3 — eksport do systeme.io:**
+- systeme.io pozwala na import custom HTML przez embed blocks lub custom pages
+- agent pakuje kod, eksportuje sekcje i integruje formularze opt-in z Twoim funnel ID w systeme.io
+
+***
+
+## Kompletny stack wizualnego IDE dla agentów
+
+| Warstwa | Narzędzie | Rola |
+|---|---|---|
+| Desktop IDE | **Aion UI** | Sidebar z wszystkimi agentami w jednym oknie |
+| Agent runtime | **Hermes na GCP VM** | Generuje HTML/CSS, zarządza workflow |
+| Web dashboard | **HCI (Hermes Control Interface)** | Monitoring, crony, webhooki, profile |
+| Review UI | **Streamlit** | Galeria lejków do akceptacji, brief intake |
+| Hosting podglądu | **Cloudflared tunnel** | Live preview wygenerowanych stron |
+| Publikacja | **systeme.io** | Finalny funnel z formularzami i automations |
+
+***
+
+## Jak to wdrożyć — konkretne kroki dla Anti-Gravity
+
+**1. Zainstaluj Aion UI lokalnie** — pobierz z `https://github.com/iofficeai/aionui/releases`, skonfiguruj połączenie z Hermesem na GCP VM przez API server (`API_SERVER_ENABLED=true` w `.env` Hermesa) [docs.openwebui](https://docs.openwebui.com/getting-started/quick-start/connect-an-agent/hermes-agent/)
+
+**2. Alternatywnie: Open WebUI** — jeśli wolisz przeglądarkę zamiast desktop app, Open WebUI podpina się pod Hermesa przez OpenAI-compatible endpoint (`http://VM_IP:8642/v1`) [docs.openwebui](https://docs.openwebui.com/getting-started/quick-start/connect-an-agent/hermes-agent/)
+
+**3. Skill do generowania lejków** — Anti-Gravity powinien stworzyć skill `funnel-builder` z logiką:
+- przyjmuje: typ lejka (lead magnet / webinar / sales page / booking), offer, ICP, CTA, branding
+- ładuje matching template z `popular-web-designs`
+- generuje HTML+CSS zgodny z sekcjami systeme.io
+- zapisuje output do `gs://ai-marketing-outputs/funnels/`
+- serwuje przez cloudflared do podglądu
+
+**4. Integracja z systeme.io** — Hermes przez webhook lub API eksportuje:
+- gotowy HTML do custom page w systeme.io
+- form ID do embedowania opt-in
+- tag trigger po submicie formularza
+
+**5. Kanban do zarządzania lejkami** — Hermes Web UI ma już Kanban board — możesz tam trzymać: `Idea → Brief → Generated → Review → Published` jako workflow dla każdego lejka. [youtube](https://www.youtube.com/watch?v=btFOUngoGO8)
+
+***
+
+## Kluczowe linki dla Anti-Gravity
+
+- **Aion UI repo:** `https://github.com/iofficeai/aionui` [github](https://github.com/iofficeai/aionui)
+- **Hermes popular-web-designs skill:** `https://hermes-agent.nousresearch.com/docs/user-guide/skills/bundled/creative/creative-popular-web-designs` [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/skills/bundled/creative/creative-popular-web-designs)
+- **Hermes Web Dashboard docs:** `https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard` [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/features/web-dashboard)
+- **Open WebUI + Hermes integration:** `https://docs.openwebui.com/getting-started/quick-start/connect-an-agent/hermes-agent/` [docs.openwebui](https://docs.openwebui.com/getting-started/quick-start/connect-an-agent/hermes-agent/)
+- **Julian Goldie — Mission Control + Claude:** `https://juliangoldie.com/hermes-agent-claude/` [juliangoldie](https://juliangoldie.com/hermes-agent-claude/)
+- **Hermes Web UI + Kanban (Julian Goldie video):** `https://www.youtube.com/watch?v=btFOUngoGO8` [youtube](https://www.youtube.com/watch?v=btFOUngoGO8)
+- **Aion UI demo (Julian Goldie):** `https://www.youtube.com/watch?v=vWxE6VO9TKo` [youtube](https://www.youtube.com/watch?v=vWxE6VO9TKo&vl=pl)
+
+***
+
+## Najkrótsza ścieżka
+
+Zamiast budować od zera własny visual IDE: **zainstaluj Aion UI + podepnij do Hermesa na GCP VM + dodaj skill `funnel-builder`**. Masz wtedy wizualne środowisko do rozmowy z agentami, generowania lejków w HTML/CSS i eksportu do systeme.io — bez pisania własnego frontendu.
+
+## Claude Design — czym zastąpić w Twoim stacku?
+
+Ferdy używa Claude Design, który jest wbudowanym narzędziem Anthropica do projektowania stron bezpośrednio w przeglądarce — generuje HTML/CSS, zarządza design systemem i eksportuje archiwum ZIP. To bardzo dobry workflow, ale uzależnia Cię od płatnej subskrypcji Anthropica i nie integruje się z Twoją infrastrukturą GCP + Hermes. [youtube](https://www.youtube.com/watch?v=3ZBY7oVZpuM)
+
+**Masz dwie ścieżki — solo lub combo:**
+
+***
+
+## Ścieżka 1: Pełny zamiennik Claude Design przez Hermes
+
+Hermes ma już wbudowany skill `claude-design` do projektowania HTML artifacts (landing, deck, prototype) oraz `popular-web-designs` z 54 gotowymi design systemami (Stripe, Linear, Vercel, Apple, BMW i inne) jako kompletne palety kolorów, typografia, komponenty i spacing. Po połączeniu z skillem `generative-widgets` Hermes serwuje gotową stronę przez cloudflared tunnel do podglądu live — dokładnie tak jak Ferdy otwiera podgląd w Claude Design. [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/reference/skills-catalog)
+
+Twój workflow zamiast Claude Design:
+1. W **Aion UI** (desktop sidebar z Hermesem) dajesz brief: produkt, nisze, sekcje strony, ton, CTA.
+2. Hermes ładuje `popular-web-designs` + `claude-design` skill, wybiera pasujący design system.
+3. Generuje kompletny HTML/CSS z animacjami, responsywnym layoutem i wszystkimi sekcjami.
+4. Generuje obrazy do sekcji hero i innych przez **Gemini 2.5 Flash Image** — do 500 requestów dziennie za darmo w Google AI Studio. [blog.laozhang](https://blog.laozhang.ai/en/posts/gemini-image-api-free)
+5. Serwuje przez cloudflared tunnel do podglądu i zapisuje do bucketu GCP.
+6. Review i akceptacja w Streamlit lub HCI.
+
+***
+
+## Ścieżka 2: Bolt.new / Lovable / v0 jako wizualny builder + Hermes jako backend
+
+Jeśli chcesz bardziej wizualny edytor podobny do Claude Design, najlepsze alternatywy w 2026 to: [aidesigner](https://www.aidesigner.ai/blog/best-ai-coding-tools)
+
+| Narzędzie | Mocna strona | Cena | Fit dla Ciebie |
+|---|---|---|---|
+| **Bolt.new** | Full-stack z jednego promptu, export kodu | Free / $25/mc | ★★★★ |
+| **Lovable** | Design-conscious, dla nietech. founderów | Free / $25/mc | ★★★★ |
+| **v0 by Vercel** | Production-ready React/Tailwind komponenty | Free / $20/mc | ★★★ |
+| **Framer AI** | Animowane strony, natywne CMS, SEO | Free tier | ★★★★ |
+| **Claude Design** | To co Ferdy — jakość kodu, design systemy | ~$20/mc | ★★★★★ |
+
+**Rekomendacja**: Framer AI do landing pages i lejków (baked-in animacje, CMS, SEO, export HTML), a Bolt.new lub Lovable gdy potrzebujesz full-stack app z formularzami i logiką backendową. [framer](https://www.framer.com)
+
+***
+
+## WordPress jako dodatkowy klocek
+
+WordPress ma sens jeśli:
+- klient wymaga WordPressa lub ma tam istniejącą stronę.
+- potrzebujesz WooCommerce, rozbudowanego bloga lub ekosystemu pluginów.
+
+W 2026 najlepszy workflow to **vibe coding**: Cursor + Claude Code nadzoruje całość, generuje Next.js + Tailwind lub czysty HTML/CSS, a WordPress dostaje gotowy theme lub child theme przez deploy. Hermes może automatyzować deploy przez SSH na serwer WordPress. [facebook](https://www.facebook.com/groups/claudeaicommunity/posts/1248612027305962/)
+
+Dla lejków sprzedażowych WordPress **nie jest potrzebny** — systeme.io ma własne custom pages z HTML embed, więc możesz tam wkleić kod wygenerowany przez Hermesa bez WordPressa.
+
+***
+
+## Generowanie obrazów do sekcji
+
+To jest Twój największy atut w tym stacku. Zamiast płacić za Higgs Field (jak Ferdy) masz:
+- **Gemini 2.5 Flash Image** — 500 requestów/dzień za darmo przez Google AI Studio API, model state-of-the-art do generacji i edycji obrazów. [developers.googleblog](https://developers.googleblog.com/en/introducing-gemini-2-5-flash-image/)
+- Hermes wywołuje API, generuje hero image, product shots, team photos i inne sekcje automatycznie po wygenerowaniu HTML.
+- Wszystkie assety trafiają do bucketu `gs://ai-marketing-assets/` i są linkowane w HTML.
+
+***
+
+## Finalny workflow dla Anti-Gravity
+
+```
+Brief w Aion UI / Streamlit
+    ↓
+Hermes: claude-design skill + popular-web-designs
+    ↓
+Gemini Flash Image: hero + sekcje (500/dzień free)
+    ↓
+Hermes: składa HTML + obrazy, cloudflared tunnel (podgląd)
+    ↓
+Review: akceptacja w HCI / Streamlit
+    ↓
+Export: ZIP → systeme.io custom page LUB WordPress deploy przez SSH
+    ↓
+Webhooki systeme.io: lead capture → tag → email sequence
+```
+
+***
+
+## Kluczowe linki dla Anti-Gravity
+
+- **Hermes claude-design skill:** `https://hermes-agent.nousresearch.com/docs/user-guide/skills/bundled/creative/creative-popular-web-designs` [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/user-guide/skills/bundled/creative/creative-popular-web-designs)
+- **Hermes skills catalog (pełny):** `https://hermes-agent.nousresearch.com/docs/reference/skills-catalog` [hermes-agent.nousresearch](https://hermes-agent.nousresearch.com/docs/reference/skills-catalog)
+- **Top Marketing Skills dla Hermes:** `https://dev.to/composiodev/top-marketing-skills-for-claude-code-openclaw-hermes-1n59` [dev](https://dev.to/composiodev/top-marketing-skills-for-claude-code-openclaw-hermes-1n59)
+- **Gemini Image API free (500/dzień):** `https://blog.laozhang.ai/en/posts/gemini-image-api-free` [blog.laozhang](https://blog.laozhang.ai/en/posts/gemini-image-api-free)
+- **Gemini 2.5 Flash Image docs:** `https://ai.google.dev/gemini-api/docs/image-generation` [ai.google](https://ai.google.dev/gemini-api/docs/image-generation)
+- **Framer AI:** `https://framer.com` [framer](https://www.framer.com)
+- **Bolt.new vs Lovable vs v0:** `https://www.vibecodingacademy.ai/blog/best-ai-website-builder-2026` [vibecodingacademy](https://www.vibecodingacademy.ai/blog/best-ai-website-builder-2026)
+- **Gemini 3.1 web design tutorial (YouTube):** `https://www.youtube.com/watch?v=mXlMAkHhgYs` [youtube](https://www.youtube.com/watch?v=mXlMAkHhgYs)
+- **Hermes deploy na VPS step-by-step:** `https://www.interserver.net/tips/kb/deploy-hermes-agent-on-your-vps-and-talk-to-it-from-telegram-24-7/` [interserver](https://www.interserver.net/tips/kb/deploy-hermes-agent-on-your-vps-and-talk-to-it-from-telegram-24-7/)
+
+**Najkrótsza rekomendacja:** nie kupuj Claude Design — masz wszystko czego potrzeba w Hermesie + Gemini Flash Image + Framer dla animowanych stron. Ferdy używa Claude Design bo jest prosty i wizualny, ale Twój stack jest tańszy, szybszy i zintegrowany z całą Twoją infrastrukturą GCP.
