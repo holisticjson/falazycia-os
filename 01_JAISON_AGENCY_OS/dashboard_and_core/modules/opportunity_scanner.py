@@ -471,10 +471,11 @@ def render_lead_radar_page(call_gemini_pro_api_func):
     st.write("")
     
     # Podział na zakładki
-    tab_radar, tab_sales_director, tab_audit, tab_config = st.tabs([
+    tab_radar, tab_sales_director, tab_audit, tab_map, tab_config = st.tabs([
         "📡 Radar Zleceń", 
         "📢 Sales Director (Outbound)", 
         "📋 Audyty 21 Pytań (jaison.pl)", 
+        "🗺️ Mapa Źródeł v2",
         "⚙️ Konfiguracja Skanera"
     ])
     
@@ -756,7 +757,97 @@ Zwróć wynik w ładnym formacie markdown.
                 if st.button("🚀 Zaimportuj do CRM & Utwórz Projekt", key=f"import_mod_{selected_lead}", use_container_width=True, type="primary"):
                     st.success("Lead pomyślnie zaimportowany do CRM Magic Pipeline jako klient do wdrożenia!")
 
-    # ==================== TAB 4: CONFIGURATION ====================
+    # ==================== TAB 4: MAPA ŹRÓDEŁ V2 ====================
+    with tab_map:
+        st.markdown("### 🗺️ Architektura Integracji - Mapa Źródeł Lead Radar v2")
+        st.caption("Centralny rejestr platform prospektowych AntiGravity, kategoryzujący źródła według trudności, ryzyka anty-botowego i zalecanego integratora.")
+        
+        col_f1, col_f2, col_f3 = st.columns([2, 1, 1])
+        with col_f1:
+            search_query = st.text_input("🔍 Szukaj źródła (np. LinkedIn, Zleca):", value="", key="map_search_query")
+        with col_f2:
+            filter_diff = st.selectbox("⚡ Trudność:", ["Wszystkie", "niska", "średnia", "wysoka"], key="map_filter_diff")
+        with col_f3:
+            filter_login = st.selectbox("🔑 Wymaga logowania:", ["Wszystkie", "Tak", "Nie"], key="map_filter_login")
+            
+        map_csv_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\lead_radar_mapa_antigravity_v2_enriched.csv"
+        sources_data = []
+        if os.path.exists(map_csv_path):
+            try:
+                import csv
+                with open(map_csv_path, mode="r", encoding="utf-8") as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        sources_data.append(row)
+            except Exception as e:
+                st.error(f"Błąd wczytywania mapy źródeł: {e}")
+        
+        filtered_sources = []
+        for s in sources_data:
+            if search_query and search_query.lower() not in s["source"].lower() and search_query.lower() not in s["integrator"].lower() and search_query.lower() not in s["notes"].lower():
+                continue
+            if filter_diff != "Wszystkie" and s["difficulty"].lower() != filter_diff.lower():
+                continue
+            if filter_login != "Wszystkie":
+                if filter_login == "Tak" and "nie" in s["needs_login"].lower() and "tak" not in s["needs_login"].lower():
+                    continue
+                if filter_login == "Nie" and "tak" in s["needs_login"].lower():
+                    continue
+            filtered_sources.append(s)
+            
+        st.markdown(f"Znaleziono **{len(filtered_sources)}** pasujących źródeł z 42 zdefiniowanych.")
+        
+        view_mode = st.radio("Styl widoku:", ["Premium Karty 🎴", "Tabela Danych 📊"], horizontal=True, key="map_view_style")
+        
+        if view_mode == "Tabela Danych 📊":
+            if filtered_sources:
+                import pandas as pd
+                df = pd.DataFrame(filtered_sources)
+                df.columns = [
+                    "Źródło", "Integrator / Biblioteka", "Tryb", "Trudność", "Uwagi",
+                    "Wymaga logowania", "Ryzyko blokady", "Hint dla selektora / Tool", "Kadencja", "Lead Score", "Tryb Outreach"
+                ]
+                st.dataframe(df, use_container_width=True)
+            else:
+                st.info("Brak źródeł spełniających kryteria filtrów.")
+        else:
+            if filtered_sources:
+                for idx, s in enumerate(filtered_sources):
+                    if s["difficulty"].lower() == "wysoka":
+                        diff_badge = "background-color: #EF4444; color: white;"
+                        border_color = "#EF4444"
+                    elif s["difficulty"].lower() == "średnia":
+                        diff_badge = "background-color: #3B82F6; color: white;"
+                        border_color = "#3B82F6"
+                    else:
+                        diff_badge = "background-color: #10B981; color: white;"
+                        border_color = "#10B981"
+                        
+                    risk_color = "#10B981" if "niskie" in s["robots_risk"].lower() else ("#F59E0B" if "średnie" in s["robots_risk"].lower() or "api" in s["robots_risk"].lower() else "#EF4444")
+                    
+                    st.markdown(f"""
+                    <div class="custom-card" style="border-left: 5px solid {border_color}; margin-bottom: 15px; padding: 20px;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <span style="font-size: 0.85rem; color: #94A3B8; font-weight: bold; text-transform: uppercase;">🔌 INTEGRATOR: {s["integrator"]}</span>
+                            <span style="padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; {diff_badge}">Trudność: {s["difficulty"]}</span>
+                        </div>
+                        <h4 style="margin: 0 0 10px 0; color: #F3F4F6; font-family: Outfit;">{s["source"]} <span style="font-size: 0.85rem; color: #94A3B8; font-weight: normal;">({s["mode"]})</span></h4>
+                        <p style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">📝 <b>Uwagi integracyjne:</b> {s["notes"]}</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 0.85rem; color: #94A3B8; border-top: 1px solid #1E293B; padding-top: 10px; margin-bottom: 5px;">
+                            <span>🔑 Logowanie: <strong style="color: #E2E8F0;">{s["needs_login"]}</strong></span>
+                            <span>🛡️ Ryzyko blokady: <strong style="color: {risk_color};">{s["robots_risk"]}</strong></span>
+                            <span>🎯 Target Lead Score: <strong style="color: #10B981;">{s["lead_score"]} pkt</strong></span>
+                            <span>⏱️ Częstotliwość: <strong style="color: #E2E8F0;">{s["cadence"]}</strong></span>
+                            <span>🛠️ Hint: <code style="color: #F472B6; background: #2D1B36; padding: 2px 6px; border-radius: 4px;">{s["selector_hint"]}</code></span>
+                            <span>📨 Outreach: <strong style="color: #E2E8F0;">{s["outreach_mode"]}</strong></span>
+                        </div>
+                    </div>
+                    """, unsafe_allow_html=True)
+            else:
+                st.info("Brak źródeł spełniających kryteria filtrów.")
+
+    # ==================== TAB 5: CONFIGURATION ====================
     with tab_config:
         st.markdown("### ⚙️ Ustawienia Źródeł i Agenta Skanowania")
         st.text_input("Główny Prompt Oceny Leada (Gemini API):", value="Jesteś Analitykiem Rynku. Oceń lead pod kątem marży i dopasowania do automatyzacji AI.")

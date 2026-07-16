@@ -1,0 +1,43 @@
+source,integrator,mode,difficulty,notes,needs_login,robots_risk,selector_hint,cadence,lead_score,outreach_mode
+LinkedIn Jobs,composio linkedin + google search api,manual/triggered,wysoka,lepiej przez Composio toolkit lub Google Search query niż pełny crawl,Tak,Niskie (API),composio_tool_call,Na żądanie (triggered),90,LinkedIn InMail / Connection request via Composio
+LinkedIn Posts,composio linkedin + search console style alerts,monitoring + alerts,wysoka,zamiast scrapingu: search queries + alerty + zapis do dashboardu,Tak,Niskie (API),composio_tool_call,Na żądanie (triggered),90,LinkedIn InMail / Connection request via Composio
+LinkedIn Profile Search,composio linkedin + google custom search,query-based lead discovery,wysoka,site:linkedin.com/in + frazy branżowe,Tak,Niskie (API),composio_tool_call,Na żądanie (triggered),90,LinkedIn InMail / Connection request via Composio
+Google Search (SERP),serpapi / composio serpapi / googles custom search api,query-based discovery,średnia,najlepsze do znajdowania profili i ogłoszeń bez logowania,Tak,Niskie (API),composio_tool_call,Codziennie,80,Strona www / Kontakt direct
+Google Search Console,composio gsc,monitoring własnych stron,niska,"nie leady, ale świetne do sygnałów popytu i treści",Tak,Niskie (API),composio_tool_call,Codziennie,80,Strona www / Kontakt direct
+Useme,httpx + bs4,public pages + manual login,średnia,profil i oferty; konto do rozliczeń,Nie (listy) / Tak (kontakt),Średnie,".jobs-page__content, .jobs-summary",Codziennie,85,Formularz Useme
+Zleca.pl,httpx + bs4,public pages,niska,regularny crawl ofert,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+WorkConnect,httpx + bs4,public pages,niska,AI i automatyzacja mają sens,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+Oferteo,playwright + bs4,dynamic pages,średnia,usługi lokalne i B2B,Tak,Wysokie,playwright_selector_card,Codziennie,75,Platforma Oferteo / SMS direct
+Fixly,playwright + bs4,dynamic pages,średnia,filtry JS,Tak,Wysokie,playwright_selector_card,Codziennie,75,Platforma Oferteo / SMS direct
+platformazakupowa.pl,playwright + bs4,dynamic pages,wysoka,logowanie / filtry / postępowania,Nie,Średnie,playwright_js_wait,Codziennie,60,E-mail direct
+oneplace.marketplanet.pl,playwright + bs4,dynamic pages,wysoka,zakupy B2B,Nie,Średnie,playwright_js_wait,Codziennie,60,E-mail direct
+eB2B,playwright + bs4,dynamic pages,wysoka,portale zakupowe,Nie,Średnie,playwright_js_wait,Codziennie,60,E-mail direct
+Baza Konkurencyjności,httpx + bs4,public pages,średnia,zapytania ofertowe,Nie,Niskie,httpx_tender_element,Co 12h,85,Formalna oferta przetargowa (B2B)
+ezamowienia.gov.pl,playwright + bs4,dynamic pages,wysoka,formalny procurement,Nie,Średnie,httpx_tender_element,Co 12h,85,Formalna oferta przetargowa (B2B)
+Przetargi.eGospodarka,httpx + bs4,public pages,niska,agregator przetargów,Nie,Niskie,httpx_tender_element,Co 12h,85,Formalna oferta przetargowa (B2B)
+PrzetargHub,httpx + bs4,public pages,niska,agregator przetargów,Nie,Niskie,httpx_tender_element,Co 12h,85,Formalna oferta przetargowa (B2B)
+i-przetargi,httpx + bs4,public pages,niska,agregator przetargów,Nie,Niskie,httpx_tender_element,Co 12h,85,Formalna oferta przetargowa (B2B)
+Pressinfo,httpx + bs4,public pages,niska,agregator przetargów,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+Panorama Firm,scrapy + bs4,directory crawl,średnia,duży wolumen firm do outboundu,Nie,Średnie,scrapy_xpath_selector,Codziennie,60,E-mail direct
+pkt.pl,scrapy + bs4,directory crawl,średnia,wizytówki firm,Nie,Średnie,scrapy_xpath_selector,Codziennie,60,E-mail direct
+Clutch,playwright + bs4,dynamic pages,średnia,katalog agencyjny,Nie,Średnie,playwright_js_wait,Codziennie,60,E-mail direct
+GoodFirms,playwright + bs4,dynamic pages,średnia,katalog agencyjny,Nie,Średnie,playwright_js_wait,Codziennie,60,E-mail direct
+No Fluff Jobs,httpx + bs4,public pages,niska,proste job boardy IT,Nie,Niskie,job_board_offer_content,Codziennie,70,Formularz aplikacyjny / E-mail rekrutera
+Just Join IT,httpx + bs4,public pages,niska,proste job boardy IT,Nie,Niskie,job_board_offer_content,Codziennie,70,Formularz aplikacyjny / E-mail rekrutera
+Bulldogjob,httpx + bs4,public pages,niska,proste job boardy IT,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+RocketJobs,httpx + bs4,public pages,niska,proste job boardy IT,Nie,Niskie,job_board_offer_content,Codziennie,70,Formularz aplikacyjny / E-mail rekrutera
+Pracuj.pl,playwright + bs4,dynamic pages,wysoka,często JS i anty-bot,Nie,Średnie,job_board_offer_content,Codziennie,70,Formularz aplikacyjny / E-mail rekrutera
+Indeed,httpx + bs4,public pages / agregator,średnia,agregator i crawl z keywordami,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+Jooble,httpx + bs4,public pages / agregator,średnia,agregator i crawl z keywordami,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+4programmers jobs,httpx + bs4,forum + ogłoszenia,średnia,ogłoszenia plus społeczność,Nie,Niskie,job_board_offer_content,Codziennie,70,Formularz aplikacyjny / E-mail rekrutera
+Forum WordPress Polska,httpx + bs4,forum threads,średnia,dobry outbound i lead signal,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+Facebook grupy,manual + graph/API only if allowed,social monitoring,wysoka,najlepiej monitorować ręcznie i alertami,Tak,Wysokie,facebook_graph_api,Na żądanie (triggered),70,Komentarz / Messenger direct
+Reddit PL / Wykop,httpx + bs4 / api,threads,średnia,monitoring fraz i potrzeb,Nie,Niskie,reddit_api_json,Co 6h,65,Reddit DM / Wykop PM
+BIP gov / uczelnie,httpx + bs4,public pages,średnia,"zapytania, ogłoszenia, rekrutacje",Nie,Niskie,N/A,Codziennie,60,E-mail direct
+TED Europa,scrapy + httpx,large-scale public crawl,średnia,"duży wolumen, warto Scrapy",Nie,Średnie,scrapy_xpath_selector,Codziennie,60,E-mail direct
+PARP / akceleracje,httpx + bs4,public pages,średnia,firmy i projekty innowacyjne,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+OLX Usługi/Praca,playwright + bs4,dynamic pages,wysoka,anty-bot i częste zmiany UI,Tak (do kontaktu),Wysokie,olx_card_selector,Codziennie,50,Wiadomość OLX / Telefon
+Serwisy regionalne,httpx + bs4,public pages,niska,lokalne ogłoszenia,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+Katalogi software house,scrapy + bs4,directory crawl,średnia,outbound i partnerstwa,Nie,Średnie,scrapy_xpath_selector,Codziennie,60,E-mail direct
+Bazy startupów,httpx + bs4,public pages,średnia,firmy do outboundu,Nie,Niskie,N/A,Codziennie,60,E-mail direct
+Strony firm z formularzem,manual outbound + playwright,lead discovery only,wysoka,"scraping do identyfikacji, kontakt manualny",Nie,Średnie,playwright_js_wait,Codziennie,60,E-mail direct
