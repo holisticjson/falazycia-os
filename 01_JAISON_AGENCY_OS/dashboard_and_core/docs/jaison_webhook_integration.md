@@ -279,7 +279,7 @@ Na Twoim zrzucie ekranu widać, że domena **`go.jaison.pl`** jest podpięta pod
 7.  W lewym panelu bocznym kliknij przycisk **Edytuj kod** (Edit code).
 8.  W wyskakującym okienku usuń wszelką przykładową treść, **wklej cały poniższy blok kodu HTML/CSS/JS** i kliknij niebieski przycisk **Zapisz** (Save).
 9.  ⚠️ **KLUCZOWY KROK (Konfiguracja Webhooka):** 
-    Przewiń kod do linii **426** wklejonego kodu (w sekcji `<script>`) i znajdź zmienną:
+    Przewiń kod do linii **436** wklejonego kodu (w sekcji `<script>`) i znajdź zmienną:
     `const webhookUrl = 'TUTAJ_WPISZ_TWÓJ_URL_WEBHOOKA_Z_N8N';`
     Zastąp ten tekst **dokładnym adresem Webhooka z Twojego klocka Webhook Trigger w n8n** (np. `https://n8n.twojadomena.pl/webhook/v1/jaison-onboarding`).
 10. Kliknij **Zapisz zmiany** (Save changes) w prawym górnym rogu edytora Systeme.io, a następnie wyjdź z edytora (ikonka drzwi w lewym górnym rogu).
@@ -365,6 +365,15 @@ Na Twoim zrzucie ekranu widać, że domena **`go.jaison.pl`** jest podpięta pod
 <style>
 /* CSS Reset i czcionki */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;700;800&display=swap');
+
+/* Automatyczne wymuszenie ciemnego, kosmicznego tła na całej stronie Systeme.io */
+body, #section-shared, .section, #page-container {
+    background-color: #080A10 !important;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.18) 0px, transparent 40%),
+        radial-gradient(at 100% 100%, rgba(236, 72, 153, 0.12) 0px, transparent 40%) !important;
+    background-attachment: fixed !important;
+}
 
 .jaison-capture-container {
     --primary: #8B5CF6;
@@ -655,7 +664,7 @@ function submitJaisonForm(event) {
     };
     
     // ⚠️ WPISZ SWÓJ DOKŁADNY WEBHOOK URL Z N8N PONIŻEJ:
-    const webhookUrl = 'TUTAJ_WPISZ_TWÓJ_URL_WEBHOOKA_Z_N8N';
+    const webhookUrl = 'https://n8n.jaison.pl/webhook-test/v1/jaison-onboarding';
     
     fetch(webhookUrl, {
         method: 'POST',
@@ -744,6 +753,6 @@ Gdy włączysz workflow przyciskiem **Active**, możesz przetestować cały syst
 ```
 
 ### 🔍 Weryfikacja wyniku:
-1. Sprawdź, czy Twój bot na Telegramie wysłał powiadomienie o pomyślnym onboardingu.
+1. Sprawdź, czy Twój bot na Telegramie wysłał powiadomienie o pomyślnym onboarding.
 2. Wejdź na swoje repozytorium GitHub i sprawdź, czy w katalogu `02_CLIENTS_AND_PROJECTS/Testowy_Klient_B2B/.agents/` pojawiły się pliki `AGENTS.md` oraz `00_memory_loop.md` z poprawnie wypełnioną zawartością strategii AI.
 3. Gdy Twój lokalny skrypt synchronizujący `git_sync.ps1` pobierze pliki (maksymalnie do 15 minut), odśwież Streamlit i przejdź do sekcji "Pamięć Agenta" -> "Knowledge Graph". Nowy klient `Testowy_Klient_B2B` pojawi się na Twojej interaktywnej mapie myśli jako połączony węzeł!
