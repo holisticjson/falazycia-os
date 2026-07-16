@@ -3777,6 +3777,7 @@ elif menu == "Antigravity":
     render_agent_console("Antigravity", "Online", "gemini-2.5-pro", "GCP Proxy", "#10B981")
 
 # 10. PRISTINE MEMORY
+elif menu == "Memory":
     st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • MEMORY</p>", unsafe_allow_html=True)
     st.title("💾 Memory & Obsidian Vault")
     st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Przeszukuj swoje notatki, zapiski głosowe (Omi) i połączone pliki pamięci.</p>", unsafe_allow_html=True)
