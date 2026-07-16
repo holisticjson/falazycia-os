@@ -207,72 +207,205 @@ def call_gemini_scanner_api(messages, system_instruction=None):
         
     return None
 
-def run_ai_market_scan(keywords):
-    """Skanuje i analizuje rynek na podstawie słów kluczowych, generując okazje bezpośrednio do SQLite."""
-    system_instruction = """Jesteś zaawansowanym Agentem Crawlującym i Dyrektorem ds. Sprzedaży w agencji Jaison.pl.
-Przeszukujesz publiczne zlecenia B2B i grupy dyskusyjne pod kątem podanych przez użytkownika słów kluczowych.
-Generujesz 3 niezwykle realistyczne, świeże zlecenia rynkowe. 
-Każdemu zleceniu przypisujesz:
-1. Wiarygodne źródło (np. Useme, Oferteo, LinkedIn, Facebook).
-2. Budżet (odzwierciedlający realia polskie).
-3. Ocena AI (Score: 0-100): wyliczany automatycznie (np. wysoki za budżet >5k i dopasowanie do automatyzacji n8n/CRM/AI).
-4. Etykieta (Label): "🔥 Gorący (High-Ticket)" (score >= 80), "⭐ Średni (Quick Win)" (50-79), lub "❄️ Zimny (Low ROI)" (<50).
-5. Wiadomość Outreach: spersonalizowany, genialny, darmowy outreach w stylu Alex Hormozi i Tomasza Dudy (NLP, obniżenie oporu, propozycja bezpłatnego audytu 15-min).
-6. Next Action: sugerowany krok handlowy.
+def scrape_useme_listings(keyword):
+    import urllib.request
+    import urllib.parse
+    from bs4 import BeautifulSoup
+    import re
+    
+    query = urllib.parse.quote(keyword)
+    search_url = f"https://useme.com/pl/jobs/?q={query}"
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+    }
+    
+    try:
+        req = urllib.request.Request(search_url, headers=headers)
+        with urllib.request.urlopen(req, timeout=15) as r:
+            html = r.read().decode("utf-8")
+        
+        soup = BeautifulSoup(html, "html.parser")
+        seen_urls = set()
+        jobs = []
+        
+        # Wzorzec linku do pojedynczego zlecenia
+        pattern = re.compile(r'/pl/jobs/[^/]+,\d+/?$')
+        
+        for a in soup.find_all('a', href=True):
+            href = a['href']
+            if pattern.search(href):
+                full_url = f"https://useme.com{href}" if href.startswith("/") else href
+                if full_url not in seen_urls:
+                    seen_urls.add(full_url)
+                    title = a.get_text().strip()
+                    jobs.append({"title": title, "url": full_url})
+                    
+        # Fallback do najnowszych zleceń ogólnych, jeśli wyszukiwanie nie zwróciło rezultatów
+        if not jobs:
+            fallback_url = "https://useme.com/pl/jobs/"
+            req_fb = urllib.request.Request(fallback_url, headers=headers)
+            with urllib.request.urlopen(req_fb, timeout=15) as r_fb:
+                html_fb = r_fb.read().decode("utf-8")
+            soup_fb = BeautifulSoup(html_fb, "html.parser")
+            for a in soup_fb.find_all('a', href=True):
+                href = a['href']
+                if pattern.search(href):
+                    full_url = f"https://useme.com{href}" if href.startswith("/") else href
+                    if full_url not in seen_urls:
+                        seen_urls.add(full_url)
+                        title = a.get_text().strip()
+                        jobs.append({"title": title, "url": full_url})
+                        
+        return jobs
+        
+    except Exception as e:
+        print("Błąd parsowania listy Useme:", e)
+        return []
 
-MUSISZ ZWRÓCIĆ WYŁĄCZNIE CZYSTY OBIEKT JSON (LISTĘ SŁOWNIKÓW) BEZ ŻADNEGO DODATKOWEGO TEKSTU, OPAKOWANEGO W BLOK ```json.
-Struktura JSON:
-[
-  {
-    "source": "Nazwa portalu",
-    "title": "Tytuł zlecenia",
-    "budget": "Kwota lub Nieznany",
-    "description": "Opis problemu klienta",
-    "score": 85,
-    "label": "Etykieta",
-    "suggested_outreach": "Tekst wiadomości",
-    "suggested_action": "Zalecany krok",
-    "contact_email": "kontakt@firma.pl",
-    "contact_phone": "+48..."
-  }
-]
-"""
-    user_prompt = f"Wygeneruj 3 nowe i realistyczne zlecenia rynkowe dla słów kluczowych: '{keywords}'."
+def get_job_details(url):
+    import urllib.request
+    from bs4 import BeautifulSoup
+    import re
     
-    messages = [{"role": "user", "content": user_prompt}]
-    raw_response = call_gemini_scanner_api(messages, system_instruction=system_instruction)
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"
+    }
+    try:
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, timeout=15) as r:
+            html = r.read().decode("utf-8")
+        
+        soup = BeautifulSoup(html, "html.parser")
+        
+        # Nazwa zlecenia
+        title_tag = soup.find('h1')
+        title = title_tag.get_text().strip() if title_tag else "Zlecenie Useme"
+        
+        # Opis zlecenia
+        desc_div = soup.find(class_=lambda x: x and 'jobs-page__content' in x)
+        description = "Brak szczegółowego opisu."
+        if desc_div:
+            text_content = desc_div.get_text().strip()
+            text_content = re.sub(r'\s+', ' ', text_content)
+            idx = text_content.find("Opis")
+            if idx != -1:
+                description = text_content[idx + 4:].strip()
+            else:
+                description = text_content[:500] + "..."
+                
+        # Budżet
+        budget = "Do negocjacji"
+        summary_div = soup.find(class_=lambda x: x and 'jobs-summary' in x)
+        if summary_div:
+            text_summary = summary_div.get_text().strip()
+            text_summary = re.sub(r'\s+', ' ', text_summary)
+            m = re.search(r'Budżet\s*([^\s]+(?:\s*[^\s]+)*?)(?:\s*(?:Prawa|Ważne|$))', text_summary)
+            if m:
+                budget = m.group(1).strip()
+            else:
+                m_price = re.search(r'\d[\d\s,]*\s*(?:zł|PLN)', text_summary)
+                if m_price:
+                    budget = m_price.group(0).strip()
+                    
+        return {
+            "title": title,
+            "budget": budget,
+            "description": description
+        }
+    except Exception as e:
+        print(f"Błąd pobierania szczegółów zlecenia {url}: {e}")
+        return None
+
+def run_ai_market_scan(keywords):
+    """Skanuje Useme pod kątem słów kluczowych, ocenia oferty przez Gemini i zapisuje w SQLite."""
+    import json
     
-    if not raw_response:
+    # 1. Pobranie pasujących ogłoszeń z Useme
+    listings = scrape_useme_listings(keywords)
+    if not listings:
         return False
         
-    try:
-        clean_text = raw_response.strip()
-        if clean_text.startswith("```json"):
-            clean_text = clean_text[7:]
-        if clean_text.endswith("```"):
-            clean_text = clean_text[:-3]
-        clean_text = clean_text.strip()
+    # Przetwarzamy maksymalnie 3 najświeższe oferty, aby utrzymać niskie opóźnienie
+    processed_count = 0
+    init_db()
+    
+    system_instruction = """Jesteś zaawansowanym Dyrektorem ds. Sprzedaży w agencji Jaison.pl (automatyzacje n8n, systemy CRM, integracje AI, Vertex AI).
+Otrzymujesz realne ogłoszenie o zlecenie dla freelancera. Twoim zadaniem jest ocenić je pod kątem dopasowania do naszej agencji.
+Kryteria oceny:
+- Wysoki score (80-100), jeśli zlecenie dotyczy automatyzacji procesów, integracji systemów (CRM, e-commerce, BaseLinker), budowy chatbotów, wdrożeń AI, a budżet jest atrakcyjny lub do negocjacji.
+- Średni score (50-79) dla typowych prac deweloperskich (Wordpress, proste skrypty).
+- Niski score (<50) dla zleceń niezwiązanych z naszym profilem (grafika, copywriting, tłumaczenia).
+
+Wygeneruj spersonalizowaną wiadomość outreach (suggested_outreach) w unikalnym, perswazyjnym i bezpośrednim stylu Tomasza Dudy oraz Alexa Hormoziego:
+- Krótko, konkretnie, bez "Szanowni Państwo" ani "Dzień dobry".
+- Odnieś się bezpośrednio do konkretnego problemu ze zlecenia.
+- Zaproponuj pomoc i obniż tarcie poznawcze (propozycja bezpłatnej, 15-minutowej analizy lub przesłania gotowej architektury wdrożenia).
+- Podpisz jako "Tomasz z Jaison.pl".
+
+Zwróć wynik wyłącznie jako czysty obiekt JSON bez żadnego dodatkowego tekstu ani markdownu (oprócz bloku ```json), zawierający klucze:
+{
+  "score": <liczba 0-100>,
+  "suggested_outreach": "<Treść wiadomości>",
+  "suggested_action": "<Zalecany krok handlowy>"
+}
+"""
+
+    for job in listings[:3]:
+        details = get_job_details(job["url"])
+        if not details:
+            continue
+            
+        user_prompt = f"""Przeanalizuj poniższe zlecenie:
+Tytuł: {details['title']}
+Budżet: {details['budget']}
+Opis: {details['description']}
+"""
+        messages = [{"role": "user", "content": user_prompt}]
+        raw_response = call_gemini_scanner_api(messages, system_instruction=system_instruction)
         
-        opps = json.loads(clean_text)
-        if isinstance(opps, list):
-            for opp in opps:
-                add_opportunity(
-                    source=opp.get("source", "Rynek"),
-                    title=opp.get("title", "Nowe zlecenie B2B"),
-                    budget=opp.get("budget", "Do negocjacji"),
-                    description=opp.get("description", "Brak opisu."),
-                    score=int(opp.get("score", 50)),
-                    label=opp.get("label", "⭐ Średni (Quick Win)"),
-                    outreach=opp.get("suggested_outreach", ""),
-                    action=opp.get("suggested_action", ""),
-                    email=opp.get("contact_email", ""),
-                    phone=opp.get("contact_phone", "")
-                )
-            return True
-    except Exception as e:
-        print(f"Error parsing AI Scanner response: {e}")
-        
-    return False
+        if not raw_response:
+            continue
+            
+        try:
+            clean_text = raw_response.strip()
+            if clean_text.startswith("```json"):
+                clean_text = clean_text[7:]
+            if clean_text.endswith("```"):
+                clean_text = clean_text[:-3]
+            clean_text = clean_text.strip()
+            
+            opp_data = json.loads(clean_text)
+            
+            score = int(opp_data.get("score", 50))
+            if score >= 80:
+                label = "🔥 Gorący (High-Ticket)"
+            elif score >= 50:
+                label = "⭐ Średni (Quick Win)"
+            else:
+                label = "❄️ Zimny (Low ROI)"
+                
+            # Zapisujemy źródło z wbudowanym hiperlinkiem HTML dla Streamlit
+            clickable_source = f'Useme.com <a href="{job["url"]}" target="_blank" style="color: #10B981; text-decoration: underline; margin-left: 5px;">[OFERTA 🔗]</a>'
+            
+            add_opportunity(
+                source=clickable_source,
+                title=details["title"],
+                budget=details["budget"],
+                description=details["description"],
+                score=score,
+                label=label,
+                outreach=opp_data.get("suggested_outreach", ""),
+                action=opp_data.get("suggested_action", ""),
+                email="",
+                phone="",
+                status="New"
+            )
+            processed_count += 1
+        except Exception as e:
+            print(f"Błąd analizy oferty: {e}")
+            
+    return processed_count > 0
+
 
 # ==================== RENDEROWANIE INTERFEJSU STREAMLIT (PREMIUM) ====================
 
