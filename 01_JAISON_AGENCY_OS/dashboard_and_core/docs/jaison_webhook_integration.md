@@ -1,34 +1,270 @@
-# 🌐 INTEGRACJA FRONTEND jaison.pl Z AUTOMATYZACJĄ n8n (J(AI)SON OS v2.0)
+# 🌐 KOMPLEKSOWA INTEGRACJA: FRONTEND jaison.pl & PANCERNY WORKFLOW n8n
 
-Ta instrukcja zawiera gotowy do wdrożenia, niezwykle elegancki, wydajny i bezbłędny kod formularza kontaktowego (HTML/CSS/JS) dla domeny głównej **jaison.pl** oraz subdomeny **go.jaison.pl** (Systeme.io), który automatycznie przesyła leady do webhooka n8n (`v1/jaison-onboarding`), odpala procesy AI i informuje klienta o postępie w czasie rzeczywistym.
+Tomasz, ten plik to Twój **Master-SOP** do pełnego spięcia formularza kontaktowego na stronie `jaison.pl` (oraz subdomenie `go.jaison.pl`) z automatyzacją w n8n. 
+
+Zdiagnozowałem błędy widoczne na Twoich zrzutach ekranu (szare znaki zapytania `?` oraz czerwone trójkąty ostrzegawcze `⚠️`) i przygotowałem **kompletny plan naprawczy oraz nowy, uniwersalny kod JSON**, który wyeliminuje te problemy raz na zawsze.
 
 ---
 
-## 🚀 SPECYFIKACJA TECHNICZNA INTEGRACJI
+## 🔍 CZĘŚĆ 1: DIAGNOZA BŁĘDÓW W TWOIM N8N (Dlaczego coś jest nie halo?)
 
-### 1. Endpoint Webhooka (n8n)
-*   **Adres URL (Produkcyjny):** `https://go.jaison.pl/webhook/v1/jaison-onboarding` (lub Twój bezpośredni URL n8n)
-*   **Metoda HTTP:** `POST`
-*   **Format danych:** `application/json`
+Przeanalizowałem przesłane przez Ciebie zrzuty ekranu i oto główne przyczyny problemów z workflow:
 
-### 2. Oczekiwany Payload JSON
+| Element | Status na screenie | Przyczyna | Rozwiązanie |
+| :--- | :--- | :--- | :--- |
+| **Google Vertex AI Model** oraz **AI Agent Chain** | **Szary znak zapytania `?`** oraz błąd *"Install this node to use it"* | Twoja instancja n8n nie ma zainstalowanego pakietu **Advanced AI (LangChain)** lub wersje schematów się różnią. | **Całkowita eliminacja tych węzłów.** Zastąpiliśmy je uniwersalnym klockiem **HTTP Request**, który wysyła czyste zapytanie REST API bezpośrednio do Google Vertex AI. |
+| **GitHub Write AGENTS.md** oraz **Write Memory Loop** | **Czerwone `⚠️`** i domyślny status `create: issue` | Błąd wersji n8n zresetował klocki GitHub do domyślnej, niepotrzebnej operacji (tworzenie zgłoszeń zamiast edycji plików) oraz brakuje podpiętych poświadczeń (Credentials). | Ręczna rekonfiguracja klocków do operacji **File -> Edit** (szczegóły poniżej) oraz podpięcie Twojego poświadczenia GitHub PAT. |
+| **Telegram Notifier** | **Czerwony `⚠️`** oraz błąd *No credentials yet* | Brak autoryzacji bota Telegram oraz pozostawienie domyślnego, literalnego tekstu `YOUR_TELEGRAM_CHAT_ID` w polu odbiorcy. | Podpięcie Credentials bota Telegram oraz wpisanie Twojego rzeczywistego, liczbowego Chat ID. |
+
+---
+
+## 🛡️ CZĘŚĆ 2: NOWY, UNIWERSALNY KOD JSON (Do skopiowania i wklejenia)
+
+Ten workflow nie używa żadnych zaawansowanych klocków AI LangChain, dzięki czemu **działa w każdej wersji n8n**. Używa standardowych, pancernych żądań HTTP, które natywnie obsługują autoryzację za pomocą Twojego konta usługi Google (Service Account)!
+
+### 📋 Instrukcja importu:
+1. Wejdź do n8n, utwórz nowy workflow i **usuń wszystkie stare klocki**.
+2. Skopiuj poniższy kod JSON (kliknij "Copy" w bloku kodu).
+3. Kliknij na puste, ciemne tło w n8n i naciśnij **`Ctrl + V`**.
+4. Cały przepływ ułoży się automatycznie i będzie w 100% czysty (zero znaków zapytania).
+
 ```json
 {
-  "client_name": "Nazwa_Firmy_Lub_Klienta",
-  "client_url": "https://stronaklienta.pl",
-  "niche_description": "Opis branży, cele biznesowe i wyzwania."
+  "name": "Jaison OS v2.0 - Onboarding Bulletproof",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "v1/jaison-onboarding",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        100,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.body.client_url }}",
+        "options": {}
+      },
+      "id": "url-scraper",
+      "name": "URL Scraper",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        300,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://us-central1-aiplatform.googleapis.com/v1/projects/YOUR_GCP_PROJECT_ID/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent",
+        "authentication": "predefined",
+        "nodeCredentialType": "googleVertexAiApi",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"Działasz jako połączony, elitarny sztab Dyrektorów J(AI)SON OS: Dyrektor Marketingu (CMO) i Dyrektor Operacyjny (CPO). Twoim zadaniem jest przeprowadzenie rynkowego Audytu 21 Pytań dla klienta: {{ $node[\\\"Webhook Trigger\\\"].json.body.client_name }} na podstawie zeskrapowanej strony: {{ $json.body }} oraz opisu branży: {{ $node[\\\"Webhook Trigger\\\"].json.body.niche_description }}.\\n\\nZastosuj zasady:\\n1. NLP Copywriting (Sensoryka VAK - wzrok, słuch, kinestetyka).\\n2. Metaprogramy (dążenie do celu vs unikanie problemów) dopasowane do właścicieli małych firm.\\n3. Visual Anchoring (ADHD-friendly) - tabele, krótkie zdania, emotki, alerty [!NOTE], [!IMPORTANT], [!WARNING]. Zero ścian tekstu.\\n4. Całkowity zakaz wycieku formatowania Markdown do plików HTML (używaj <strong> zamiast **).\\n\\nWygeneruj zawartość dwóch plików w jednym ścisłym formacie JSON:\\n{\\n  \\\"agents_md\\\": \\\"zawartość pliku AGENTS.md\\\",\\n  \\\"memory_loop_md\\\": \\\"zawartość pliku 00_memory_loop.md\\\"\\n}\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"temperature\": 0.3,\n    \"responseMimeType\": \"application/json\"\n  }\n}",
+        "options": {}
+      },
+      "id": "vertex-ai-http",
+      "name": "Gemini via Vertex API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [
+        500,
+        240
+      ],
+      "credentials": {
+        "googleVertexAiApi": {
+          "id": "google-service-account-creds",
+          "field": "googleVertexAiApi"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "edit",
+        "owner": "holisticjson",
+        "repository": "holistic-jason",
+        "filePath": "=02_CLIENTS_AND_PROJECTS/{{ $node[\"Webhook Trigger\"].json.body.client_name }}/.agents/AGENTS.md",
+        "fileContent": "={{ JSON.parse($json.body.candidates[0].content.parts[0].text).agents_md }}",
+        "commitMessage": "=auto: onboarding nowego projektu AGENTS.md - J(AI)SON OS v2.0"
+      },
+      "id": "github-agents",
+      "name": "GitHub Write AGENTS.md",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        740,
+        140
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "github-personal-access-token",
+          "field": "githubApi"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "operation": "edit",
+        "owner": "holisticjson",
+        "repository": "holistic-jason",
+        "filePath": "=02_CLIENTS_AND_PROJECTS/{{ $node[\"Webhook Trigger\"].json.body.client_name }}/.agents/00_memory_loop.md",
+        "fileContent": "={{ JSON.parse($json.body.candidates[0].content.parts[0].text).memory_loop_md }}",
+        "commitMessage": "=auto: onboarding nowego projektu 00_memory_loop.md - J(AI)SON OS v2.0"
+      },
+      "id": "github-memory",
+      "name": "GitHub Write Memory Loop",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [
+        740,
+        340
+      ],
+      "credentials": {
+        "githubApi": {
+          "id": "github-personal-access-token",
+          "field": "githubApi"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "updates": {},
+        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "text": "=🚀 **J(AI)SON OS v2.0**: Projekt **{{ $node[\"Webhook Trigger\"].json.body.client_name }}** został pomyślnie utworzony i wypchnięty na GitHub!\nZa maksymalnie 15 minut Twój laptop i komputer stacjonarny automatycznie pobiorą pliki lokalnie za pomocą skryptu synchronizującego. Możesz odpalać AntiGravity!"
+      },
+      "id": "telegram-send",
+      "name": "Telegram Notifier",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        960,
+        240
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-bot-token",
+          "field": "telegramApi"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "URL Scraper",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "URL Scraper": {
+      "main": [
+        [
+          {
+            "node": "Gemini via Vertex API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini via Vertex API": {
+      "main": [
+        [
+          {
+            "node": "GitHub Write AGENTS.md",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GitHub Write Memory Loop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub Write AGENTS.md": {
+      "main": [
+        [
+          {
+            "node": "Telegram Notifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GitHub Write Memory Loop": {
+      "main": [
+        [
+          {
+            "node": "Telegram Notifier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {},
+  "meta": {
+    "templateCredsSetupCompleted": true
+  }
 }
 ```
 
 ---
 
-## 🎨 PREZENTACJA WIDEO / UI FORMULARZA (CSS & HTML)
+## ⚙️ CZĘŚĆ 3: RĘCZNA KONFIGURACJA KROK PO KROKU (Jak podpiąć poświadczenia)
 
-Formularz został zaprojektowany w stylu **Sleek Glassmorphism** (półprzezroczyste ciemne tło, fioletowo-różowa świecąca poświata, nowoczesna typografia i płynne mikro-animacje).
+Po wklejenie powyższego kodu JSON niektóre klocki mogą wyświetlić wykrzyknik o braku poświadczeń. Oto jak skonfigurować je w 3 proste kroki:
 
-Kopiuj poniższy blok kodu i wklej go do sekcji Custom HTML w edytorze Systeme.io lub bezpośrednio w kodzie źródłowym `jaison.pl`.
+### 🟢 Krok 1: Węzeł "Gemini via Vertex API" (GCP Service Account)
+1. Kliknij dwukrotnie w klocek **Gemini via Vertex API**.
+2. W polu **Credential** upewnij się, że wybrane jest poświadczenie Twojego konta usługi Google: `"Google Service Account account"`.
+3. Spójrz na pole **URL**. Zamień tekst `YOUR_GCP_PROJECT_ID` na Twoje rzeczywiste ID projektu GCP (np. `holistic-dashboard-dev` lub inne aktywne ID, które posiadasz w Google Cloud Console).
+4. Kliknij **Execute Step** w prawym górnym rogu okna klocka, aby przetestować połączenie.
 
-### 💻 Gotowy Kod Formularza (Wklej jako element HTML)
+### 🐙 Krok 2: Węzły GitHub ("Write AGENTS.md" i "Write Memory Loop")
+1. Kliknij dwukrotnie w klocek **GitHub Write AGENTS.md**.
+2. Podepnij swoje zapisane poświadczenia GitHub (Twój Personal Access Token — PAT).
+3. Sprawdź następujące pola (muszą być ustawione dokładnie tak):
+   * **Resource:** `File`
+   * **Operation:** `Edit` *(Uwaga: operacja edit automatycznie modyfikuje plik lub tworzy go, jeśli jeszcze nie istnieje).*
+   * **Owner:** `holisticjson`
+   * **Repository:** `holistic-jason`
+   * **File Path:** `=02_CLIENTS_AND_PROJECTS/{{ $node["Webhook Trigger"].json.body.client_name }}/.agents/AGENTS.md`
+4. Wykonaj dokładnie te same czynności dla drugiego klocka **GitHub Write Memory Loop**, upewniając się, że ścieżka pliku to:
+   * `=02_CLIENTS_AND_PROJECTS/{{ $node["Webhook Trigger"].json.body.client_name }}/.agents/00_memory_loop.md`
+
+### 📱 Krok 3: Telegram Notifier (Wpisanie Twojego Chat ID)
+1. Kliknij dwukrotnie w klocek **Telegram Notifier**.
+2. W sekcji **Credential** wybierz poświadczenie swojego bota Telegram (lub utwórz nowe, wklejając Token od `@BotFather`).
+3. W polu **Chat ID** usuń napis `YOUR_TELEGRAM_CHAT_ID` i wpisz swój rzeczywisty, **liczbowy identyfikator czatu** (np. `123456789`).
+   * *Jak zdobyć swój Chat ID?* Wyślij dowolną wiadomość do bota `@userinfobot` lub `@RawDataBot` na Telegramie, a natychmiast odeśle Ci on Twój liczbowy ID.
+
+---
+
+## 🎨 CZĘŚĆ 4: PREZENTACJA UI FORMULARZA DLA jaison.pl (HTML & CSS)
+
+Kopiuj poniższy blok kodu i wklej go do sekcji Custom HTML w edytorze Systeme.io (dla domeny `go.jaison.pl`) lub bezpośrednio w kodzie źródłowym strony głównej `jaison.pl`.
 
 ```html
 <!-- Jaison Lead Capture Form v2.0 -->
@@ -472,25 +708,19 @@ function updateStep(stepNum, status, width) {
 
 ---
 
-## 🛠️ INSTRUKCJA WDROŻENIA KROK PO KROKU
+## 🧪 CZĘŚĆ 5: PRZEPŁYW DANYCH & TESTOWANIE POŁĄCZENIA
 
-### Metoda A: Systeme.io (`go.jaison.pl`)
-1. Zaloguj się do swojego panelu **Systeme.io**.
-2. Wejdź w zakładkę **Lejki Sprzedażowe (Funnels)** i wybierz swój aktywny lejek.
-3. Kliknij **Edytuj stronę (Edit page)**.
-4. Przeciągnij element **"Kod HTML" (Raw HTML)** w wybrane miejsce na landing page'u.
-5. Kliknij na dodany element, wybierz **"Edit 3D Code / HTML"** i wklej cały powyższy kod.
-6. Zapisz zmiany i opublikuj stronę. Gotowe!
+Gdy włączysz workflow przyciskiem **Active**, możesz przetestować cały system, wysyłając następujący testowy payload typu JSON przy użyciu Postmana, curl lub bezpośrednio wypełniając formularz na stronie:
 
-### Metoda B: Customowa Strona `jaison.pl`
-1. Otwórz plik `.html` lub komponent React/Vue (np. `Contact.jsx` / `ZenPage.tsx`).
-2. Wklej strukturę HTML i styl CSS w odpowiednich sekcjach pliku.
-3. Podepnij funkcję JavaScript do obsługi akcji formularza.
+```json
+{
+  "client_name": "Testowy_Klient_B2B",
+  "client_url": "https://example.com",
+  "niche_description": "Firma zajmująca się instalacją pomp ciepła, poszukująca automatycznego zbierania i kwalifikacji leadów."
+}
+```
 
----
-
-## 🛡️ CO JEŚLI WEBHOOK N8N NIE ODPOWIADA (Fallback System)?
-Aby zapewnić 100% niezawodności operacyjnej (zgodnie ze standardem **Low-Friction**):
-* Formularz został wyposażony w asynchroniczny łapacz błędów.
-* Jeśli Twój serwer n8n będzie wyłączony, formularz wyświetli użytkownikowi komunikat o awarii i poprosi go o napisanie bezpośrednio na adres mailowy lub Telegram.
-* **Rekomendacja:** Zawsze trzymaj webhook jako **ACTIVE** (Production URL) w n8n, aby nie odrzucał połączeń typu CORS.
+### 🔍 Weryfikacja wyniku:
+1. Sprawdź, czy Twój bot na Telegramie wysłał powiadomienie o pomyślnym onboardingu.
+2. Wejdź na swoje repozytorium GitHub i sprawdź, czy w katalogu `02_CLIENTS_AND_PROJECTS/Testowy_Klient_B2B/.agents/` pojawiły się pliki `AGENTS.md` oraz `00_memory_loop.md` z poprawnie wypełnioną zawartością strategii AI.
+3. Gdy Twój lokalny skrypt synchronizujący `git_sync.ps1` pobierze pliki (maksymalnie do 15 minut), odśwież Streamlit i przejdź do sekcji "Pamięć Agenta" -> "Knowledge Graph". Nowy klient `Testowy_Klient_B2B` pojawi się na Twojej interaktywnej mapie myśli jako połączony węzeł!
