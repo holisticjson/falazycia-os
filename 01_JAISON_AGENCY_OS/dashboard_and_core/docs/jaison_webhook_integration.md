@@ -234,37 +234,60 @@ Ten workflow nie używa żadnych zaawansowanych klocków AI LangChain, dzięki c
 
 ## ⚙️ CZĘŚĆ 3: RĘCZNA KONFIGURACJA KROK PO KROKU (Jak podpiąć poświadczenia)
 
-Po wklejenie powyższego kodu JSON niektóre klocki mogą wyświetlić wykrzyknik o braku poświadczeń. Oto jak skonfigurować je w 3 proste kroki:
+Po wklejeniu powyższego kodu JSON niektóre klocki mogą wyświetlić wykrzyknik o braku poświadczeń. Oto jak skonfigurować je w 3 proste kroki:
 
 ### 🟢 Krok 1: Węzeł "Gemini via Vertex API" (GCP Service Account)
 1. Kliknij dwukrotnie w klocek **Gemini via Vertex API**.
-2. W polu **Credential** upewnij się, że wybrane jest poświadczenie Twojego konta usługi Google: `"Google Service Account account"`.
-3. Spójrz na pole **URL**. Zamień tekst `YOUR_GCP_PROJECT_ID` na Twoje rzeczywiste ID projektu GCP (np. `holistic-dashboard-dev` lub inne aktywne ID, które posiadasz w Google Cloud Console).
-4. Kliknij **Execute Step** w prawym górnym rogu okna klocka, aby przetestować połączenie.
+2. In the **Credential** field, select your Google Service Account credentials: `"Google Service Account account"`.
+3. In the **URL** field, replace `YOUR_GCP_PROJECT_ID` with your actual Google Cloud Project ID (e.g. `holistic-dashboard-dev`).
+4. Click **Execute Step** to test the API connection.
 
 ### 🐙 Krok 2: Węzły GitHub ("Write AGENTS.md" i "Write Memory Loop")
 1. Kliknij dwukrotnie w klocek **GitHub Write AGENTS.md**.
-2. Podepnij swoje zapisane poświadczenia GitHub (Twój Personal Access Token — PAT).
-3. Sprawdź następujące pola (muszą być ustawione dokładnie tak):
+2. Set **Credential** to your GitHub Personal Access Token (PAT classic, scoped with `repo`).
+3. Verify these properties:
    * **Resource:** `File`
-   * **Operation:** `Edit` *(Uwaga: operacja edit automatycznie modyfikuje plik lub tworzy go, jeśli jeszcze nie istnieje).*
+   * **Operation:** `Edit` *(Automatically creates file if missing, or overwrites if existing).*
    * **Owner:** `holisticjson`
    * **Repository:** `holistic-jason`
    * **File Path:** `=02_CLIENTS_AND_PROJECTS/{{ $node["Webhook Trigger"].json.body.client_name }}/.agents/AGENTS.md`
-4. Wykonaj dokładnie te same czynności dla drugiego klocka **GitHub Write Memory Loop**, upewniając się, że ścieżka pliku to:
+4. Set the exact same parameters on **GitHub Write Memory Loop**, with this file path:
    * `=02_CLIENTS_AND_PROJECTS/{{ $node["Webhook Trigger"].json.body.client_name }}/.agents/00_memory_loop.md`
 
-### 📱 Krok 3: Telegram Notifier (Wpisanie Twojego Chat ID)
+### 📱 Krok 3: Telegram Notifier (Chat ID Setup)
 1. Kliknij dwukrotnie w klocek **Telegram Notifier**.
-2. W sekcji **Credential** wybierz poświadczenie swojego bota Telegram (lub utwórz nowe, wklejając Token od `@BotFather`).
-3. W polu **Chat ID** usuń napis `YOUR_TELEGRAM_CHAT_ID` i wpisz swój rzeczywisty, **liczbowy identyfikator czatu** (np. `123456789`).
-   * *Jak zdobyć swój Chat ID?* Wyślij dowolną wiadomość do bota `@userinfobot` lub `@RawDataBot` na Telegramie, a natychmiast odeśle Ci on Twój liczbowy ID.
+2. Select your Telegram Bot Token under **Credential**.
+3. Replace the placeholder text `YOUR_TELEGRAM_CHAT_ID` with your actual numeric Chat ID (e.g. `51239581`).
+   * *How to get Chat ID:* Message `@userinfobot` on Telegram to get your numeric ID.
 
 ---
 
-## 🎨 CZĘŚĆ 4: PREZENTACJA UI FORMULARZA DLA jaison.pl (HTML & CSS)
+## 🛠️ CZĘŚĆ 4: GDZIE I JAK WKLEIĆ FORMULARZ W SYSTEME.IO (Krok po Kroku)
 
-Kopiuj poniższy blok kodu i wklej go do sekcji Custom HTML w edytorze Systeme.io (dla domeny `go.jaison.pl`) lub bezpośrednio w kodzie źródłowym strony głównej `jaison.pl`.
+Na Twoim zrzucie ekranu widać, że domena **`go.jaison.pl`** jest podpięta pod Systeme.io. To oznacza, że formularz wklejamy bezpośrednio na stronę lądowania (landing page) zarządzaną przez to narzędzie.
+
+### 📋 Instrukcja wdrożenia formularza w Systeme.io:
+
+1.  **Zaloguj się** na swoje konto w [Systeme.io](https://systeme.io/).
+2.  W górnym menu kliknij zakładkę **Strony** -> **Lejki sprzedażowe** (Funnels).
+3.  Kliknij na nazwę lejka powiązanego z Twoją subdomeną `go.jaison.pl`.
+4.  Wybierz krok lejka (np. Strona główna/Landing Page) i po prawej stronie kliknij **ikonkę różdżki/ołówka** (**Edytuj stronę** / Edit page).
+5.  Po wejściu do wizualnego edytora Systeme.io:
+    *   W lewym panelu bocznym zjedź na dół do sekcji **Inne** (Others) lub **Kod**.
+    *   Przeciągnij element **Kod HTML** (Raw HTML) i upuść go w miejscu na stronie, w którym ma się wyświetlać formularz.
+6.  Kliknij na upuszczony na stronę element **Kod HTML** na makiecie strony.
+7.  W lewym panelu bocznym kliknij przycisk **Edytuj kod** (Edit code).
+8.  W wyskakującym okienku usuń wszelką przykładową treść, **wklej cały poniższy blok kodu HTML/CSS/JS** i kliknij niebieski przycisk **Zapisz** (Save).
+9.  ⚠️ **KLUCZOWY KROK (Konfiguracja Webhooka):** 
+    Przewiń kod do linii **426** wklejonego kodu (w sekcji `<script>`) i znajdź zmienną:
+    `const webhookUrl = 'TUTAJ_WPISZ_TWÓJ_URL_WEBHOOKA_Z_N8N';`
+    Zastąp ten tekst **dokładnym adresem Webhooka z Twojego klocka Webhook Trigger w n8n** (np. `https://n8n.twojadomena.pl/webhook/v1/jaison-onboarding`).
+10. Kliknij **Zapisz zmiany** (Save changes) w prawym górnym rogu edytora Systeme.io, a następnie wyjdź z edytora (ikonka drzwi w lewym górnym rogu).
+11. Gotowe! Wejdź na `go.jaison.pl` i przetestuj formularz!
+
+---
+
+## 🎨 CZĘŚĆ 5: KOD HTML/CSS/JS FORMULARZA DO WKLEJENIA
 
 ```html
 <!-- Jaison Lead Capture Form v2.0 -->
@@ -361,7 +384,7 @@ Kopiuj poniższy blok kodu i wklej go do sekcji Custom HTML w edytorze Systeme.i
 
 .jaison-card {
     position: relative;
-    background: rgba(14, 16, 21, 0.85);
+    background: rgba(14, 16, 21, 0.9);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--border-color);
@@ -631,8 +654,8 @@ function submitJaisonForm(event) {
         niche_description: niche_description
     };
     
-    // Endpoint webhooka n8n
-    const webhookUrl = 'https://go.jaison.pl/webhook/v1/jaison-onboarding';
+    // ⚠️ WPISZ SWÓJ DOKŁADNY WEBHOOK URL Z N8N PONIŻEJ:
+    const webhookUrl = 'TUTAJ_WPISZ_TWÓJ_URL_WEBHOOKA_Z_N8N';
     
     fetch(webhookUrl, {
         method: 'POST',
@@ -708,7 +731,7 @@ function updateStep(stepNum, status, width) {
 
 ---
 
-## 🧪 CZĘŚĆ 5: PRZEPŁYW DANYCH & TESTOWANIE POŁĄCZENIA
+## 🧪 CZĘŚĆ 6: PRZEPŁYW DANYCH & TESTOWANIE POŁĄCZENIA
 
 Gdy włączysz workflow przyciskiem **Active**, możesz przetestować cały system, wysyłając następujący testowy payload typu JSON przy użyciu Postmana, curl lub bezpośrednio wypełniając formularz na stronie:
 
