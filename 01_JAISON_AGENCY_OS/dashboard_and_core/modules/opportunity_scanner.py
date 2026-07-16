@@ -415,6 +415,44 @@ def render_lead_radar_page(call_gemini_pro_api_func):
     # Inicjalizacja bazy przy wejściu na stronę
     init_db()
     
+    # --- AKTYWNY KONTEKST PROJEKTU ---
+    st.sidebar.markdown("<p style='color: #10B981; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;'>🔄 PRZEŁĄCZNIK KONTEKSTU</p>", unsafe_allow_html=True)
+    project_contexts = {
+        "Jaison Agency (Ogólny)": {
+            "name": "Jaison.pl",
+            "desc": "Agencja Automatyzacji i Doradztwa AI.",
+            "target": "MŚP, SaaS, automatyzacje n8n, asystenci AI, marketing"
+        },
+        "Holistic Broker": {
+            "name": "Holistic Broker",
+            "desc": "Inwestycje i obrót nieruchomościami.",
+            "target": "Inwestorzy, deweloperzy, agenci nieruchomości"
+        },
+        "coolfon.pl (Serwis GSM)": {
+            "name": "coolfon.pl",
+            "desc": "Serwis naprawy telefonów i GSM.",
+            "target": "Firmy lokalne, klienci indywidualni"
+        },
+        "Kurczak u Jasia (Bar Jaś)": {
+            "name": "Bar Jaś",
+            "desc": "Lokalny bar gastronomiczny i bistro.",
+            "target": "Klienci lokalni, catering, eventy"
+        }
+    }
+    selected_context = st.sidebar.selectbox(
+        "Wybierz aktywny projekt:", 
+        list(project_contexts.keys()),
+        key="active_project_context"
+    )
+    ctx_info = project_contexts[selected_context]
+    st.sidebar.markdown(f"""
+    <div style="background: #0d121c; padding: 12px; border-radius: 6px; border-left: 3px solid #10B981; margin-bottom: 20px; border-top: 1px solid #1E293B; border-right: 1px solid #1E293B; border-bottom: 1px solid #1E293B;">
+        <p style="margin: 0; font-size: 0.85rem; font-weight: bold; color: #E2E8F0;">🏢 {ctx_info['name']}</p>
+        <p style="margin: 3px 0 0 0; font-size: 0.75rem; color: #94A3B8;">{ctx_info['desc']}</p>
+        <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #10B981;">🎯 <b>Target:</b> {ctx_info['target']}</p>
+    </div>
+    """, unsafe_allow_html=True)
+    
     st.markdown("<p style='color: #10B981; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>I. — PROSPECTING & SALES • LEAD RADAR</p>", unsafe_allow_html=True)
     st.title("🎯 Lead Radar (Skaner Okazji)")
     st.markdown("<p style='color: #CBD5E1; font-size: 1.1rem; margin-top: -5px;'>Autonomiczny system skanowania, scoringu i bezpośredniego outreachu B2B leadów zintegrowany z SQLite & n8n.</p>", unsafe_allow_html=True)
@@ -573,6 +611,48 @@ def render_lead_radar_page(call_gemini_pro_api_func):
     with tab_sales_director:
         st.subheader("📢 Sales Director / Handlowiec AI")
         st.markdown("Ten agent przeszukuje fora, grupy dyskusyjne oraz social media i generuje outreach do osób szukających automatyzacji procesów.")
+        
+        with st.expander("📖 Skrypt Sprzedażowy i Protokół Jana Szopy & Hormoziego", expanded=False):
+            st.markdown(f"""
+            Oto oficjalny, wczytany z PDF skrypt **Jana Szopy (Akademia Zdalnej Agencji)** zintegrowany z bezpośrednim, dynamicznym stylem **Alexa Hormoziego**.
+            
+            ---
+            ### ⚡ 15-Minutowy Rytuał Handlowy (Daily Prospecting)
+            1. **Skanowanie (5 min)**: Przejdź do zakładki *Radar Zleceń*, wpisz słowa kluczowe i kliknij `🚀 Uruchom AI Skaner`.
+            2. **Selekcja (3 min)**: Zidentyfikuj zlecenia oznaczone jako **🔥 Gorący (High-Ticket)**.
+            3. **Wysyłka (7 min)**: Skopiuj wygenerowany przez Gemini outreach, kliknij `[OFERTA 🔗]`, wklej na portalu i wyślij.
+            
+            ---
+            ### 📞 Szkielet Skryptu (Straight Line Persuasion / Prosta Linia)
+            Prowadź klienta po prostej linii od początku do zakupu. Gdy klient zbacza – wracaj na linię za pomocą tonacji i pytań kontrolnych.
+            
+            #### 1️⃣ Duża Obietnica (Pierwsze 4 sekundy)
+            *Musisz brzmieć: kompetentnie (bystro/inteligentnie), entuzjastycznie (pasja) oraz jako absolutny ekspert.*
+            > **"Dzień dobry! Z tej strony {ctx_info['name']}. Kontaktuję się z Państwem, ponieważ zauważyliśmy w {ctx_info['name']}, że [placówki medyczne/firmy w danej branży] mogą podwoić ilość klientów/pacjentów i odzyskać 15 godzin tygodniowo za pomocą automatyzacji już w pierwsze 30 dni, eliminując dosłownie trzy błędy. Brzmi to dla Państwa ciekawie?"**
+            
+            #### 2️⃣ Przejście do Kwalifikacji
+            *Płynne przejęcie kontroli nad czasem klienta.*
+            > **"Rozumiem Panią/Pana. Aby być pewnym, że nie marnuję Państwa czasu oraz żeby sprawdzić, czy możemy pomóc za pomocą naszych systemów automatyzacji, zadam tylko kilka prostych i szybkich pytań, dobrze?"**
+            
+            #### 3️⃣ Kwalifikacja (6 Pytań z PDF Jana Szopy)
+            1. **Decyzyjność**: *"Czy sam/a zajmujesz się rozwojem firmy, czy jest ktoś jeszcze odpowiedzialny za te decyzje?"*
+            2. **Bóle obecne**: *"Co podoba się Panu/Pani w obecnym marketingu/systemach, a co nie? Co podczas współpracy z innymi agencjami/firmami było według Pana totalnie niedopuszczalne?"*
+            3. **Obawy i status**: *"Co Pana najbardziej martwi w swoim biznesie? Jak długo to trwa? Pana zdaniem jest coraz lepiej czy gorzej?"*
+            4. **Cele i budżet**: *"Jakie wyniki chciałby Pan osiągnąć? Jaki rodzaj usługi jest u Was najbardziej opłacalny i na niego chcecie najwięcej klientów? Jaki budżet miesięczny na wdrożenie/reklamy jesteście w stanie zainwestować?"*
+            5. **Priorytet**: *"Jaki czynnik spośród tych, które omówiliśmy, jest dla Pana najważniejszy?"*
+            6. **Potwierdzenie**: *"Czy spytałem już o wszystkie istotne dla Pana sprawy?"*
+            
+            #### 4️⃣ Przejście do Prezentacji (Logiczny argument + Emocja)
+            > **"Na podstawie tego, co mi Pan powiedział. Nasze rozwiązanie jest definitywnie, idealnie dopasowane do Pana potrzeb. Jeżeli ma Pan dosłownie 3-4 minuty, to chcę podzielić się z Panem szczegółami dotyczącymi naszego systemu. Ma Pan chwilę?"**
+            
+            #### 5️⃣ Szybka Prezentacja (Max 3 korzyści)
+            *Przedstaw logiczne cyfry i popchnij emocją (np. odzyskanie wolnego czasu, redukcja stresu).*
+            
+            #### 6️⃣ Looping (Zapętlanie Belforta)
+            *Gdy słyszysz „Muszę to przemyśleć” – wtedy zaczyna się sprzedaż!*
+            - **Zgoda**: *"Jasne, rozumiem Pana. Na tym etapie rozmowy też bym tak powiedział, ale proszę pozwolić, że zapytam: czy sam zamysł odzyskania tych 15 godzin i automatyzacji się Panu podoba?"* (Izolowanie obiekcji i powrót na prostą linię).
+            - **Follow-up (Protokół 365 dni)**: Po 3 loopingach kończysz rozmowę i wracasz z kreatywnym follow-upem (np. *"Witam, dziś nasza miesięcznica..."*).
+            """)
         
         lr_search_kw = st.text_input("Słowa kluczowe do skanowania internetu:", value="n8n automatyzacja, szukam crm, błędy BaseLinker", key="lr_sales_search_kw_mod")
         if st.button("Generuj Prospekty i Outreach", type="primary", key="lr_sales_scan_btn_mod"):
