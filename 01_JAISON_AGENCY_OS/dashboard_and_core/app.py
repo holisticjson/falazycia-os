@@ -3855,94 +3855,18 @@ elif menu == "Memory":
             st.info("Brak zsynchronizowanych notatek Omi. Użyj powyższego symulatora lub wyślij notatkę głosową przez bota.")
             
     with tab_graph:
-        st.subheader("🕸️ 3D Knowledge Graph (Wizualizacja powiązań)")
-        st.markdown("Interaktywna mapa notatek w Obsidian Vault powiązanych relacjami.")
-        
-        svg_html = """
-        <div style="background-color: #0E1015; border: 1px solid #1F242E; border-radius: 14px; padding: 20px; height: 420px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden;">
-            <svg width="100%" height="100%" viewBox="0 0 800 400" style="background: #0E1015;">
-                <style>
-                    .node { fill: #7C3AED; stroke: #FFFFFF; stroke-width: 2px; transition: all 0.3s ease; cursor: pointer; }
-                    .node:hover { fill: #EC4899; r: 12px; filter: drop-shadow(0 0 10px #EC4899); }
-                    .link { stroke: #2A303F; stroke-width: 1.5px; stroke-dasharray: 4 2; animation: dash 20s linear infinite; }
-                    .center-node { fill: #EC4899; stroke: #FFFFFF; stroke-width: 3px; r: 14px; filter: drop-shadow(0 0 12px #EC4899); }
-                    .center-node:hover { fill: #F59E0B; }
-                    .text { fill: #94A3B8; font-family: 'Outfit', sans-serif; font-size: 11px; pointer-events: none; }
-                    .node-group:hover .text { fill: #FFFFFF; font-weight: bold; }
-                    @keyframes dash {
-                        to { stroke-dashoffset: -100; }
-                    }
-                </style>
-                
-                <!-- Krawędzie -->
-                <line x1="400" y1="200" x2="250" y2="100" class="link" />
-                <line x1="400" y1="200" x2="550" y2="100" class="link" />
-                <line x1="400" y1="200" x2="180" y2="250" class="link" />
-                <line x1="400" y1="200" x2="620" y2="250" class="link" />
-                <line x1="400" y1="200" x2="400" y2="60" class="link" />
-                <line x1="400" y1="200" x2="400" y2="340" class="link" />
-                
-                <line x1="250" y1="100" x2="400" y2="60" class="link" />
-                <line x1="550" y1="100" x2="400" y2="60" class="link" />
-                <line x1="180" y1="250" x2="400" y2="340" class="link" />
-                <line x1="620" y1="250" x2="400" y2="340" class="link" />
-                
-                <!-- Dodatkowe krawędzie -->
-                <line x1="250" y1="100" x2="120" y2="80" class="link" />
-                <line x1="550" y1="100" x2="680" y2="80" class="link" />
-                
-                <!-- Węzły i etykiety -->
-                <g class="node-group">
-                    <circle cx="400" cy="200" r="10" class="center-node" />
-                    <text x="400" y="225" text-anchor="middle" class="text" style="fill: #EC4899; font-weight: bold;">_index (Master Context)</text>
-                </g>
-                
-                <g class="node-group">
-                    <circle cx="250" cy="100" r="8" class="node" />
-                    <text x="250" y="85" text-anchor="middle" class="text">Tomasz Duda</text>
-                </g>
-                
-                <g class="node-group">
-                    <circle cx="550" cy="100" r="8" class="node" />
-                    <text x="550" y="85" text-anchor="middle" class="text">ADHD OS</text>
-                </g>
-                
-                <g class="node-group">
-                    <circle cx="180" cy="250" r="8" class="node" />
-                    <text x="180" y="270" text-anchor="middle" class="text">CRM Leads</text>
-                </g>
-                
-                <g class="node-group">
-                    <circle cx="620" cy="250" r="8" class="node" />
-                    <text x="620" y="270" text-anchor="middle" class="text">Legal Engine</text>
-                </g>
-                
-                <g class="node-group">
-                    <circle cx="400" cy="60" r="8" class="node" />
-                    <text x="400" y="45" text-anchor="middle" class="text">Hermes Bot</text>
-                </g>
-                
-                <g class="node-group">
-                    <circle cx="400" cy="340" r="8" class="node" />
-                    <text x="400" y="360" text-anchor="middle" class="text">Obsidian Vault</text>
-                </g>
-                
-                <g class="node-group">
-                    <circle cx="120" cy="80" r="6" class="node" />
-                    <text x="120" y="65" text-anchor="middle" class="text">n8n Automation</text>
-                </g>
-                
-                <g class="node-group">
-                    <circle cx="680" cy="80" r="6" class="node" />
-                    <text x="680" y="65" text-anchor="middle" class="text">Voice Notes</text>
-                </g>
-            </svg>
-            <div style="position: absolute; bottom: 10px; right: 15px; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; color: #94A3B8; border: 1px solid #1F242E;">
-                Obsidian Graph Mode
-            </div>
-        </div>
-        """
-        st.components.v1.html(svg_html, height=440)
+        st.subheader("🌐 Dynamiczna Interaktywna Mapa Systemu v2.0")
+        st.markdown(
+            "Poniższa mapa systemu jest generowana **automatycznie w czasie rzeczywistym**. "
+            "Skanuje ona strukturę katalogów `02_CLIENTS_AND_PROJECTS/` i wizualizuje połączone zasoby, "
+            "agenty oraz aktywnych klientów agencji."
+        )
+        try:
+            from modules.dynamic_mindmap import generate_dynamic_html
+            dynamic_html = generate_dynamic_html()
+            st.components.v1.html(dynamic_html, height=800, scrolling=True)
+        except Exception as e:
+            st.error(f"Nie udało się załadować mapy systemu: {str(e)}")
         
     with tab_pristine:
         st.subheader("Edycja Plików Konfiguracyjnych (Pristine Memory)")
