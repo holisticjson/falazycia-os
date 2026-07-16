@@ -70,7 +70,7 @@ Ten workflow nie używa żadnych zaawansowanych klocków AI LangChain, dzięki c
         "nodeCredentialType": "googleVertexAiApi",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"Działasz jako połączony, elitarny sztab Dyrektorów J(AI)SON OS: Dyrektor Marketingu (CMO) i Dyrektor Operacyjny (CPO). Twoim zadaniem jest przeprowadzenie rynkowego Audytu 21 Pytań dla klienta: {{ $node[\\\"Webhook Trigger\\\"].json.body.client_name }} na podstawie zeskrapowanej strony: {{ $json.body }} oraz opisu branży: {{ $node[\\\"Webhook Trigger\\\"].json.body.niche_description }}.\\n\\nZastosuj zasady:\\n1. NLP Copywriting (Sensoryka VAK - wzrok, słuch, kinestetyka).\\n2. Metaprogramy (dążenie do celu vs unikanie problemów) dopasowane do właścicieli małych firm.\\n3. Visual Anchoring (ADHD-friendly) - tabele, krótkie zdania, emotki, alerty [!NOTE], [!IMPORTANT], [!WARNING]. Zero ścian tekstu.\\n4. Całkowity zakaz wycieku formatowania Markdown do plików HTML (używaj <strong> zamiast **).\\n\\nWygeneruj zawartość dwóch plików w jednym ścisłym formacie JSON:\\n{\\n  \\\"agents_md\\\": \\\"zawartość pliku AGENTS.md\\\",\\n  \\\"memory_loop_md\\\": \\\"zawartość pliku 00_memory_loop.md\\\"\\n}\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"temperature\": 0.3,\n    \"responseMimeType\": \"application/json\"\n  }\n}",
+        "jsonBody": "={\n  \"contents\": [\n    {\n      \"role\": \"user\",\n      \"parts\": [\n        {\n          \"text\": \"Działasz jako połączony, elitarny sztab Dyrektorów J(AI)SON OS: Dyrektor Marketingu (CMO) i Dyrektor Operacyjny (CPO). Twoim zadaniem jest przeprowadzenie rynkowego Audytu 21 Pytań dla klienta: {{ $node[\\\"Webhook Trigger\\\"].json.body.client_name }} na podstawie zeskrapowanej strony: {{ $json.body }} oraz opisu branży: {{ $node[\\\"Webhook Trigger\\\"].json.body.niche_description }}.\\n\\nZastosuj zasady:\\n1. NLP Copywriting (Sensoryka VAK - wzrok, słuch, kinestetyka).\\n2. Metaprogramy (dążenie do celu vs unikanie problemów) dopasowane do właścicieli maiels firm.\\n3. Visual Anchoring (ADHD-friendly) - tabele, krótkie zdania, emotki, alerty [!NOTE], [!IMPORTANT], [!WARNING]. Zero ścian tekstu.\\n4. Całkowity zakaz wycieku formatowania Markdown do plików HTML (używaj <strong> zamiast **).\\n\\nWygeneruj zawartość dwóch plików w jednym ścisłym formacie JSON:\\n{\\n  \\\"agents_md\\\": \\\"zawartość pliku AGENTS.md\\\",\\n  \\\"memory_loop_md\\\": \\\"zawartość pliku 00_memory_loop.md\\\"\\n}\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"temperature\": 0.3,\n    \"responseMimeType\": \"application/json\"\n  }\n}",
         "options": {}
       },
       "id": "vertex-ai-http",
@@ -279,7 +279,7 @@ Na Twoim zrzucie ekranu widać, że domena **`go.jaison.pl`** jest podpięta pod
 7.  W lewym panelu bocznym kliknij przycisk **Edytuj kod** (Edit code).
 8.  W wyskakującym okienku usuń wszelką przykładową treść, **wklej cały poniższy blok kodu HTML/CSS/JS** i kliknij niebieski przycisk **Zapisz** (Save).
 9.  ⚠️ **KLUCZOWY KROK (Konfiguracja Webhooka):** 
-    Przewiń kod do linii **436** wklejonego kodu (w sekcji `<script>`) i znajdź zmienną:
+    Przewiń kod do linii **446** wklejonego kodu (w sekcji `<script>`) i znajdź zmienną:
     `const webhookUrl = 'TUTAJ_WPISZ_TWÓJ_URL_WEBHOOKA_Z_N8N';`
     Zastąp ten tekst **dokładnym adresem Webhooka z Twojego klocka Webhook Trigger w n8n** (np. `https://n8n.twojadomena.pl/webhook/v1/jaison-onboarding`).
 10. Kliknij **Zapisz zmiany** (Save changes) w prawym górnym rogu edytora Systeme.io, a następnie wyjdź z edytora (ikonka drzwi w lewym górnym rogu).
@@ -626,6 +626,23 @@ button[type="submit"]:active {
 </style>
 
 <script>
+// Bezkompromisowe usuwanie duplikatów formularza na poziomie całego dokumentu HTML
+function removeFormDuplicates() {
+    const containers = document.querySelectorAll('.jaison-capture-container');
+    if (containers.length > 1) {
+        // Usuń wszystkie kontenery poza pierwszym znalezionym na stronie
+        for (let i = 1; i < containers.length; i++) {
+            containers[i].remove();
+        }
+    }
+}
+// Odpal od razu przy ładowaniu skryptu
+removeFormDuplicates();
+// Odpal po pełnym załadowaniu DOM
+document.addEventListener("DOMContentLoaded", removeFormDuplicates);
+// Odpal z lekkim opóźnieniem, na wypadek gdyby Systeme.io renderowało to asynchronicznie
+setTimeout(removeFormDuplicates, 500);
+
 function submitJaisonForm(event) {
     event.preventDefault();
     
