@@ -10,6 +10,39 @@ DB_PATH = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\local_crm.db
 
 # ==================== KOLEKCJA I LOGIKA BAZY DANYCH ====================
 
+def add_lead_to_crm_json(name, notes, suggested_outreach=None, next_action="Skontaktować się po analizie AI"):
+    """Zapisuje lead bezpośrednio w centralnym crm.json dla CRM Magic Pipeline."""
+    import time
+    crm_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\dashboard\crm.json"
+    try:
+        if os.path.exists(crm_path):
+            with open(crm_path, "r", encoding="utf-8") as f:
+                crm_data = json.load(f)
+        else:
+            crm_data = {"leads": []}
+            
+        new_id = f"lead_{int(time.time())}_{abs(hash(name)) % 1000}"
+        new_lead = {
+            "id": new_id,
+            "name": name,
+            "stage": "conversation",
+            "notes": notes,
+            "last_contact": datetime.datetime.now().strftime("%Y-%m-%d"),
+            "next_action": next_action,
+            "draft_reply": suggested_outreach if suggested_outreach else "Brak początkowego draftu."
+        }
+        
+        # Unikanie dublowania leada o tej samej nazwie
+        if not any(l.get("name") == name for l in crm_data.get("leads", [])):
+            crm_data.setdefault("leads", []).append(new_lead)
+            with open(crm_path, "w", encoding="utf-8") as f:
+                json.dump(crm_data, f, ensure_ascii=False, indent=4)
+            return True
+        return False
+    except Exception as e:
+        print(f"Błąd zapisu do crm.json: {e}")
+        return False
+
 def init_db():
     """Inicjalizuje tabelę opportunities w local_crm.db i dodaje rekordy testowe."""
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
@@ -36,10 +69,13 @@ def init_db():
     """)
     conn.commit()
     
-    # Sprawdzenie czy tabela jest pusta, jeśli tak – seeding
     cursor.execute("SELECT COUNT(*) FROM opportunities;")
     count = cursor.fetchone()[0]
-    if count == 0:
+    if count <= 3:
+        # Wyczyszczenie starych danych dla zapewnienia pełnego wdrożenia
+        cursor.execute("DELETE FROM opportunities;")
+        conn.commit()
+        
         now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
         default_opps = [
             (
@@ -82,6 +118,104 @@ def init_db():
                 "Zaproponować gotowy system Social Media Factory działający w oparciu o n8n.",
                 "New",
                 "",
+                ""
+            ),
+            (
+                now,
+                "Oferteo.pl",
+                "Automatyzacja procesów i integracja BaseLinker z ERP",
+                "12 000 PLN",
+                "Szukamy firmy lub freelancera do połączenia systemu BaseLinker z naszym lokalnym ERP (Subiekt GT). Chcemy zautomatyzować przekazywanie zamówień, wystawianie faktur oraz automatyczne informowanie klientów o statusie wysyłki przez SMS/E-mail. Dodatkowo chcielibyśmy podpiąć proste AI do kategoryzowania maili od klientów.",
+                92,
+                "🔥 Gorący (High-Ticket)",
+                "Cześć! Zwróciłem uwagę na Twoje zlecenie integracji BaseLinker + Subiekt GT. W Jaison.pl specjalizujemy się w automatyzacji e-commerce. Mamy gotowe szablony n8n, które bezproblemowo synchronizują zamówienia i stany magazynowe w czasie rzeczywistym. Ponadto, wdrożenie klasyfikatora maili z Gemini AI pozwala na automatyczną segregację zgłoszeń bezpośrednio do odpowiednich działów.\n\nCzy możemy zaoferować krótkie spotkanie (15 minut), podczas którego pokażemy schemat naszej gotowej integracji z Subiektem? Bez zobowiązań.\n\nPozdrawiam,\nTomasz Duda",
+                "Zaoferować pokaz działającej integracji i bezpłatne mapowanie procesów.",
+                "New",
+                "kontakt@ecommerceerp.pl",
+                "+48 505 111 222"
+            ),
+            (
+                now,
+                "Upwork.com",
+                "n8n automation expert for Lead Generation chatbot",
+                "$2 500",
+                "We need an expert to build a fully automated n8n workflow that monitors inbound Facebook Leads, qualifies them using Gemini/Vertex AI, drafts a tailored proposal, and pushes the data to our CRM. High quality and low latency are critical.",
+                89,
+                "🔥 Gorący (High-Ticket)",
+                "Hi! I read your post about building an n8n workflow for Facebook Leads and AI-driven qualification. At Jaison.pl, we have built identical pipelines for B2B agencies. We run n8n seamlessly on Google Cloud Run for almost zero infrastructure cost, and utilize Gemini Pro to audit client websites on-the-fly to generate hyper-personalized proposals.\n\nI can show you a quick video demo of our exact workflow in action. Would you be open to a brief chat?\n\nBest regards,\nTomasz",
+                "Przesłać nagranie wideo (Loom) z prezentacją podobnego workflow.",
+                "New",
+                "hr@leadsautomation.com",
+                ""
+            ),
+            (
+                now,
+                "Oferteo.pl",
+                "Stworzenie bota AI (Voicebot / Chatbot) do umawiania wizyt",
+                "6 000 PLN",
+                "Zlecę wykonanie bota, który będzie odpowiadał na zapytania klientów na naszej stronie oraz na Messengerze i automatycznie zapisywał ich na wolne terminy w kalendarzu Google Calendar / Calendly. Branża: gabinet medycyny estetycznej.",
+                85,
+                "🔥 Gorący (High-Ticket)",
+                "Dzień dobry! Z chęcią pomożemy wdrożyć automatycznego asystenta rezerwacji. Łączymy systemy czatu z Vertex AI i kalendarzem, dzięki czemu bot nie tylko odpowiada na pytania o wolne terminy, ale też doradza pacjentom i buduje zaufanie. Całość działa w 100% automatycznie 24/7.\n\nMożemy przygotować dla Państwa darmowy, interaktywny prototyp takiego bota na Messengerze w 24 godziny, aby mogli Państwo sami go przetestować przed podjęciem decyzji. Czy to brzmi interesująco?\n\nZ poważaniem,\nTomasz Duda",
+                "Zbudować uproszczony prototyp bota na darmowym serwerze testowym i przesłać link.",
+                "New",
+                "klinika@medycynaestetyczna-warszawa.pl",
+                "+48 22 123 45 67"
+            ),
+            (
+                now,
+                "Grupy Facebook",
+                "Wdrożenie CRM i uporządkowanie bazy kontaktów",
+                "3 500 PLN",
+                "Szukam kogoś, kto pomoże nam wdrożyć system CRM dla małej firmy usługowej (5 osób). Mamy obecnie totalny chaos w Excelu, gubimy leady. Chcemy mieć czytelny widok Kanban, historię rozmów i automatyczne powiadomienia o konieczności kontaktu.",
+                78,
+                "⭐ Średni (Quick Win)",
+                "Cześć! Rozumiem Twój ból – chaos w Excelach to najczęstszy powód gubienia do 30% przychodów. Chętnie wdrożymy dla Was prosty, przejrzysty system CRM oparty na sprawdzonym standardzie Jaison Client Pipeline. Ustawimy czytelny Kanban, automatyczne przypomnienia oraz zintegrujemy skrzynkę e-mail i formularz na stronie.\n\nChcesz rzucić okiem na bezpłatną prezentację demo, jak taki uporządkowany system wygląda u naszych klientów? Zajmie to tylko 10 minut.\n\nPozdrawiam,\nTomasz",
+                "Uruchomić instancję demonstracyjną CRM i zaprosić klienta na krótkie wideo-demo.",
+                "New",
+                "office@uslugilokalne.pl",
+                ""
+            ),
+            (
+                now,
+                "Oferteo.pl",
+                "Automatyczne pobieranie faktur i wysyłka do KSeF",
+                "8 000 PLN",
+                "Potrzebujemy zautomatyzować proces pobierania faktur zakupowych z kilku portali (Allegro, Amazon, Google Ads) oraz ich automatyczne przekazywanie do naszego systemu księgowego i KSeF. Chcemy uniknąć ręcznego pobierania co miesiąc.",
+                94,
+                "🔥 Gorący (High-Ticket)",
+                "Dzień dobry! Automatyzacja pobierania kosztów to świetny sposób na oszczędność czasu. Realizujemy takie integracje za pomocą n8n – system automatycznie loguje się (przez API lub bezpieczne skrypty pobierające), pobiera dokumenty PDF z Allegro/Google Ads i wysyła bezpośrednio do systemu księgowego oraz KSeF.\n\nMożemy przeprowadzić bezpłatny audyt bezpieczeństwa Twoich danych finansowych i pokazać gotowy schemat n8n in 15 minut. Kiedy pasuje Ci krótka rozmowa?\n\nZ poważaniem,\nTomasz Duda",
+                "Przedstawić specyfikację zabezpieczenia kluczy API i przeprowadzić rozmowę techniczną.",
+                "New",
+                "faktury@ksiegowoscauto.pl",
+                "+48 606 777 888"
+            ),
+            (
+                now,
+                "LinkedIn Jobs",
+                "AI Automation Specialist (Contract / Part-time)",
+                "120 - 180 PLN / godz.",
+                "Poszukujemy specjalisty do stałej współpracy przy automatyzacji procesów wewnętrznych agencji marketingowej. Wymagana doskonała znajomość n8n, Make.com, integracji z OpenAI/Anthropic/Gemini oraz tworzenia customowych skryptów Python/Node.js.",
+                90,
+                "🔥 Gorący (High-Ticket)",
+                "Dzień dobry! Widzę, że poszukują Państwo specjalisty od automatyzacji n8n i modeli językowych. Jako Jaison.pl realizujemy dokładnie takie zadania dla agencji i firm usługowych. Zamiast zatrudniać jedną osobę, oferujemy wsparcie całego zespołu z gotową biblioteką wdrożeń i darmową infrastrukturą na Google Cloud.\n\nChętnie podzielę się naszym portfolio i case studies automatyzacji agencji marketingowych. Czy możemy zaplanować krótką, 10-minutową rozmowę zapoznawczą?\n\nPozdrawiam,\nTomasz Duda",
+                "Przesłać case study automatyzacji agencji i umówić spotkanie kwalifikacyjne.",
+                "New",
+                "careers@marketinggrowth.pl",
+                ""
+            ),
+            (
+                now,
+                "Useme.com",
+                "Integracja n8n z formularzem Google i systemem SMS",
+                "1 200 PLN",
+                "Zlecę spięcie prostego formularza Google Forms. Gdy ktoś go wypełni, chcę, aby automatycznie wysyłał się SMS z podziękowaniem do klienta (przez SMSAPI) oraz mail z powiadomieniem do mnie.",
+                60,
+                "⭐ Średni (Quick Win)",
+                "Cześć! Chętnie pomogę spiąć Google Forms z SMSAPI. To prosta integracja w n8n, którą możemy wdrożyć w kilka godzin. Całość będzie działać bezawaryjnie na darmowym hostingu.\n\nPodaj mi tylko dane do konta SMSAPI i możemy to uruchomić od ręki. Kiedy możemy zacząć?\n\nPozdrawiam,\nTomasz",
+                "Uruchomić integrację na koncie testowym i przekazać gotowy schemat do importu.",
+                "New",
+                "formularze@smsapi-user.pl",
                 ""
             )
         ]
@@ -433,7 +567,7 @@ Zwróć wynik wyłącznie jako poprawny format JSON (array of objects), bez żad
       "Brak widgetu czatu / Google Message w wizytówce"
     ],
     "automation_potential": "Wysoki / Bardzo wysoki / Średni (Wdrożenie automatycznego bota AI do rezerwacji wizyt, autoresponder opinii Google AI)",
-    "suggested_outreach": "Spersonalizowany skrypt cold-call / outreach w stylu Hormoziego ( dynamiczny, bezpośredni, wskazujący błędy i oferujący darmowy krok )..."
+    "suggested_outreach": "Spersonalizowany skrypt cold-call / outreach w stylu Jaison.pl (dynamiczny, bezpośredni, wskazujący błędy i oferujący darmowy krok)..."
   }}
 ]"""
     
@@ -684,7 +818,7 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                 # Elementy interaktywne pod kartą (Streamlit)
                 c_opt1, c_opt2, c_opt3, c_opt4 = st.columns([2, 1, 1, 1])
                 with c_opt1:
-                    with st.expander("📬 Zobacz spersonalizowaną wiadomość Outreach (Hormozi style)"):
+                    with st.expander("📬 Zobacz spersonalizowaną wiadomość Outreach (Perswazyjna pomoc AI)"):
                         st.code(opp["suggested_outreach"], language="text")
                         st.caption(f"💡 **Next Action:** {opp['suggested_action']}")
                 with c_opt2:
@@ -704,7 +838,21 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                         st.rerun()
                 with c_opt3:
                     if st.button("🚀 Importuj do CRM", key=f"crm_imp_{opp['id']}", use_container_width=True):
-                        st.success("Pomyślnie zaimportowano do CRM Magic Pipeline jako lead!")
+                        notes_content = f"Źródło: {opp.get('source')}. Budżet: {opp.get('budget')}. Opis: {opp.get('description')}"
+                        imported = add_lead_to_crm_json(
+                            name=opp.get("title"),
+                            notes=notes_content,
+                            suggested_outreach=opp.get("suggested_outreach"),
+                            next_action=opp.get("suggested_action") if opp.get("suggested_action") else "Skontaktować się po analizie AI"
+                        )
+                        update_opportunity_status(opp["id"], "Imported")
+                        if imported:
+                            st.success("Zaimportowano bezpośrednio do CRM Pipeline!")
+                        else:
+                            st.success("Zaktualizowano status. Lead już istnieje w CRM Pipeline.")
+                        import time
+                        time.sleep(1.0)
+                        st.rerun()
                 with c_opt4:
                     if st.button("🗑️ Usuń", key=f"opp_del_{opp['id']}", use_container_width=True):
                         delete_opportunity(opp["id"])
@@ -807,10 +955,10 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                     st.info(lead.get("automation_potential"))
                     
                     # Outreach Box
-                    with st.expander("📬 Wygenerowany, spersonalizowany Outreach (Hormozi style)"):
+                    with st.expander("📬 Wygenerowana, spersonalizowana pomoc AI (Outreach B2B)"):
                         st.code(lead.get("suggested_outreach"), language="markdown")
                         if st.button("🚀 Wyślij do CRM", key=f"gmaps_crm_{lead.get('name')}"):
-                            # Dodanie do SQLite jako lead
+                            # 1. Dodanie do SQLite jako lead
                             conn = sqlite3.connect(DB_PATH)
                             cursor = conn.cursor()
                             cursor.execute("""
@@ -829,7 +977,19 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                             ))
                             conn.commit()
                             conn.close()
-                            st.success("Dodano audytowany lead bezpośrednio do Twojego Lead Radaru!")
+                            
+                            # 2. Fizyczny zapis do crm.json
+                            notes_text = f"Lokalizacja: {lead.get('address')}. Wykryte braki GMB: {', '.join(lead.get('issues', []))}. Potencjał automatyzacji: {lead.get('automation_potential')}"
+                            imported = add_lead_to_crm_json(
+                                name=lead.get("name"),
+                                notes=notes_text,
+                                suggested_outreach=lead.get("suggested_outreach"),
+                                next_action="Wykonaj telefon cold-call z gotowym audytem GMB"
+                            )
+                            if imported:
+                                st.success("Pomyślnie zaimportowano do CRM Pipeline oraz Lead Radaru!")
+                            else:
+                                st.success("Dodano do Lead Radaru (lead już istnieje w CRM Pipeline).")
                             
                 st.markdown("<hr style='border:0; border-top: 1px solid #1E293B; margin: 25px 0;'>", unsafe_allow_html=True)
 
@@ -838,9 +998,9 @@ def render_lead_radar_page(call_gemini_pro_api_func):
         st.subheader("📢 Sales Director / Handlowiec AI")
         st.markdown("Ten agent przeszukuje fora, grupy dyskusyjne oraz social media i generuje outreach do osób szukających automatyzacji procesów.")
         
-        with st.expander("📖 Skrypt Sprzedażowy i Protokół Jana Szopy & Hormoziego", expanded=False):
+        with st.expander("📖 Skrypt Sprzedażowy i Autorski Protokół Jaison.pl", expanded=False):
             st.markdown(f"""
-            Oto oficjalny, wczytany z PDF skrypt **Jana Szopy (Akademia Zdalnej Agencji)** zintegrowany z bezpośrednim, dynamicznym stylem **Alexa Hormoziego**.
+            Oto oficjalny, zintegrowany skrypt sprzedażowy Jaison.pl łączący psychologiczne NLP, obniżenie tarcia poznawczego oraz precyzyjną kwalifikację B2B.
             
             ---
             ### ⚡ 15-Minutowy Rytuał Handlowy (Daily Prospecting)
@@ -860,7 +1020,7 @@ def render_lead_radar_page(call_gemini_pro_api_func):
             *Płynne przejęcie kontroli nad czasem klienta.*
             > **"Rozumiem Panią/Pana. Aby być pewnym, że nie marnuję Państwa czasu oraz żeby sprawdzić, czy możemy pomóc za pomocą naszych systemów automatyzacji, zadam tylko kilka prostych i szybkich pytań, dobrze?"**
             
-            #### 3️⃣ Kwalifikacja (6 Pytań z PDF Jana Szopy)
+            #### 3️⃣ Kwalifikacja (6 Pytań Kwalifikacyjnych Jaison.pl)**
             1. **Decyzyjność**: *"Czy sam/a zajmujesz się rozwojem firmy, czy jest ktoś jeszcze odpowiedzialny za te decyzje?"*
             2. **Bóle obecne**: *"Co podoba się Panu/Pani w obecnym marketingu/systemach, a co nie? Co podczas współpracy z innymi agencjami/firmami było według Pana totalnie niedopuszczalne?"*
             3. **Obawy i status**: *"Co Pana najbardziej martwi w swoim biznesie? Jak długo to trwa? Pana zdaniem jest coraz lepiej czy gorzej?"*
@@ -876,20 +1036,20 @@ def render_lead_radar_page(call_gemini_pro_api_func):
             
             #### 6️⃣ Looping (Zapętlanie Belforta)
             *Gdy słyszysz „Muszę to przemyśleć” – wtedy zaczyna się sprzedaż!*
-            - **Zgoda**: *"Jasne, rozumiem Pana. Na tym etapie rozmowy też bym tak powiedział, ale proszę pozwolić, że zapytam: czy sam zamysł odzyskania tych 15 godzin i automatyzacji się Panu podoba?"* (Izolowanie obiekcji i powrót na prostą linię).
-            - **Follow-up (Protokół 365 dni)**: Po 3 loopingach kończysz rozmowę i wracasz z kreatywnym follow-upem (np. *"Witam, dziś nasza miesięcznica..."*).
+            - **Zgoda**: *"Jasne, rozumiem Pana. Na tym etanym etapie rozmowy też bym tak powiedział, ale proszę pozwolić, że zapytam: czy sam zamysł odzyskania tych 15 godzin i automatyzacji się Panu podoba?"* (Izolowanie obiekcji i powrót na prostą linię).
+            - **Follow-up (Protokół Jaison)**: Po 3 loopingach kończysz rozmowę i wracasz z kreatywnym follow-upem.
             """)
         
         lr_search_kw = st.text_input("Słowa kluczowe do skanowania internetu:", value="n8n automatyzacja, szukam crm, błędy BaseLinker", key="lr_sales_search_kw_mod")
         if st.button("Generuj Prospekty i Outreach", type="primary", key="lr_sales_scan_btn_mod"):
             with st.spinner("Sales Director analizuje social media..."):
-                prompt = f"""Jesteś wirtualnym Sales Directorem w zespole 'Holistic Jason'.
+                prompt = f"""Jesteś wirtualnym Sales Directorem w zespole 'Jaison.pl'.
 Przeskanowałeś Reddit, fora oraz social media pod kątem słów kluczowych: "{lr_search_kw}".
 Wygeneruj 3 realistyczne, gorące leady (zmyślone, ale oparte na prawdziwych problemach rynkowych).
 Dla każdego leada podaj:
 1. Skąd pochodzi wpis (np. r/entrepreneur, LinkedIn).
 2. Treść wpisu (ból klienta).
-3. Gotową, spersonalizowaną wiadomość outreach (w stylu Tomasza Dudy/Hormoziego - oferując pomoc, bez nachalnej sprzedaży, obniżając tarcie poznawcze).
+3. Gotową, spersonalizowaną wiadomość outreach (w stylu Jaison.pl - pomocny, merytoryczny, oferujący darmową wartość bez nachalnej sprzedaży, obniżając tarcie poznawcze).
 4. Proponowany "Next Action" do zapisania w CRM.
 
 Zwróć wynik w ładnym formacie markdown.
