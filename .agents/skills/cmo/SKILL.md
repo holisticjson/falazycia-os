@@ -76,6 +76,12 @@ SOP obejmuje planowanie kampanii, copywriting, projektowanie lejków S-C-A-R ora
 
 - Zweryfikuj, czy nagłówki, struktura i perswazja są zgodne ze standardami, a tekst jest czysty od "śladów AI" (użyj stylu z `Ghost v2 - Głos Marki Tomasz.md`).
 
+➔ **Zaawansowany Playbook Konwersji (Ads Mastery & Sekrety Twórców):**
+*   **The Marketing Picture (Myślenie Top-Down):** Zawsze projektuj lejki z góry na dół: *Gdzie (Rynek)* ➔ *Kto (ICP)* ➔ *Co (Produkt)* ➔ *Jak (Copy)*. Warstwa wyższa kontroluje niższą. Jeśli rynek umiera, najlepsze copy go nie uratuje. Zawsze dostarczaj klientowi psychologiczną **Mapę**: określ punkt A, rozmontuj stare mapy konkurencji i zaprezentuj innowacyjną drogę.
+*   **Przejęcie Kontroli nad Procesem Ewaluacji:** Jeśli decyzja zakupowa zajmuje dłużej niż 7 dni, klient poddaje markę Procesowi Ewaluacji (szuka opinii w Google, na forach, YouTube). Nie polegaj tylko na lejkach. Zaimplementuj system uwiarygodnienia marki na zewnątrz (niezależne recenzje, plasowanie surowego, autentycznego kontentu tam, gdzie klient szuka odpowiedzi na swoje zwątpienie).
+*   **Prawo 97% (Zarabianie na Odrzuceniu):** Zamiast walczyć o 0.3% wzrostu konwersji na obecnym ruchu (3%), skup się na tym, czemu 97% ludzi mówi "NIE". Klienci nie odrzucają obietnicy sukcesu, lecz **kompromis i wydatek energetyczny**, którego od nich żądasz. To, co rynek odrzuca u konkurencji (np. skomplikowane diety, godziny ćwiczeń, wielostronicowe umowy), uczyń sercem swojej nowej oferty ("Schudnij BEZ diety i ćwiczeń", "Zautomatyzuj firmę BEZ kodowania i bez drogich deweloperów").
+*   **Sprzedaż Problemu "TERAZ" vs "Późniejszy Problem":** Ludzie wydają pieniądze wyłącznie na uśmierzenie bólu, z którym borykają się w tej absolutnej sekundzie (lub na oszczędność czasu). Przestań sprzedawać "Późniejsze Problemy" (np. trudne rekrutacje dla kogoś, kto nie potrafi pozyskać leadów). Wszystkie późniejsze wyzwania przesuwaj do upselli (OTO1 i OTO2) lub omawiaj dopiero po zakupie.
+*   **Mobile-First Rigor (Clarity Rule):** Ponad 80% ruchu to telefony. Landing page musi być w 100% zoptymalizowany pod mobile. Pierwsze **3-5 swipe'ów (scrolli) w dół** decydują o przeżyciu oferty. Monitoruj te sesje na Clarity.
 
 ### Step 3: Wdrażanie i Optymalizacja Widoczności AI (AEO/GEO)
 - Wdrażając artykuły i treści na stronę, zoptymalizuj je pod kątem wyszukiwarek AI (GEO/AEO) na bazie wytycznych z pliku `aeo-optymalizacja-pod-ai.json` i transkrypcji Google Tygodnia 2.

@@ -57,5 +57,49 @@ Używaj poniższych technik neurolingwistycznych w nagłówkach i sekcjach ofert
 
 ---
 
-## 4. DOKUMENTACJA REPREZENTACJI SYSTEMÓW (Baza Wiedzy)
+## 4. PLAYBOOK PERSWAZYJNYCH KĄTÓW REKLAMOWYCH (Ads Mastery & Sekrety Twórców)
+
+Treści reklamowe i sprzedażowe muszą opierać się na twardych strukturach psychologicznych, które eliminują opór poznawczy i natychmiast uśmierzają ból odbiorcy:
+
+### A. Ramowanie "Problemu TERAZ" (Zero Późniejszych Problemów)
+*   Umysł klienta kupuje **wyłącznie** rozwiązanie problemu, z którym boryka się w tej absolutnej sekundzie (lub zakup dodatkowego czasu / oszczędność czasu).
+*   **Zasada:** Obietnica główna musi uderzać w ból z obecnej sekundy (np. *"Masz dość ręcznego przepisywania danych z tabelki?"* zamiast *"Jak zoptymalizować strukturę bazodanową na przyszłość"*). Problemy przyszłe/późniejsze przesuwaj wyłącznie do OTO (One-Time Offers / Upselle) lub omawiaj po zakupie.
+
+### B. Prawo 97% — Atak na Kompromis i Wydatek Energetyczny
+*   Skup się na tym, czemu 97% ludzi mówi "NIE" Twojej konkurencji. Klienci odrzucają **kompromis i wydatek energetyczny** (wymagany wysiłek, trudne procedury, restrykcyjne diety).
+*   **Zastosowanie w Copy:** Zbuduj ofertę wokół wyeliminowania tego wydatku, np.: *"Schudnij bez liczenia kalorii i bez katorżniczych treningów"* lub *"Zautomatyzuj biuro bez zatrudniania programistów i bez nauki kodowania"*.
+
+### C. Targetowanie Emocjonalne (Emocjonalne Kryteria Rynku)
+*   Zaprojektuj nagłówek pod silną, dominującą emocję danej grupy (np. złość, frustracja, poczucie bezsilności).
+*   **Struktura:** `[Emocja / Tożsamość]` ➔ `[Pragnienie]` ➔ `[Obalenie Kompromisu]` ➔ `[Narzędzie / Czas]`.
+*   *Przykład:* *"Oto sposób na XYZ, które wkurzone Mamy zastosowały, aby ich Dziecko zaczęło zdobywać lepsze oceny w szkole, nawet jeżeli próbowały już wszystkiego. Szybka 7-minutowa strategia."*
+
+### D. 18 Dynamicznych Kątów Reklamowych (Angles Library)
+Używaj tych struktur jako gotowych filtrów i ram Miltona do generowania wiralowych kreacji:
+1.  **Problem-Based (Konkretny ból):** *"Twoje policzki opadają z każdym rokiem?"*
+2.  **Avatar-Based (Konkretna osoba):** *"To jest Anna. 52 lata. Wyglądała na 62. Dziś wygląda na 45."*
+3.  **Educational (Root cause):** *"Masz 57 mięśni w twarzy. 90% z nich nie ćwiczysz."*
+4.  **Contrarian (Obalenie mitów):** *"Kremy nie mogą podnieść opadającej twarzy — oto dlaczego."*
+5.  **Red Flags (Objawy):** *"3 znaki, że Twoja twarz starzeje się za szybko."*
+6.  **Shocking Statistics (Moc danych):** *"Kobiety po 40-tce tracą 1% mięśni twarzy rocznie."*
+7.  **Creative / Narrative (Antropomorfizacja):** *"Droga Anno, mam do Ciebie prośbę... (List od Twojej twarzy)"*
+8.  **Comparative (Kontrastowy Apples to Oranges):** *"Botoks 1500 zł co 3 miesiące vs Twarzojoga 127 zł raz."*
+9.  **Transformation (Results):** *"Co się stanie z Twoją twarzą po 30 dniach twarzojogi."*
+10. **Future Pacing (Mentalne programowanie):** *"Po 30 dniach Twoje koleżanki by Cię nie poznały."*
+11. **Storytelling Angles (Historia):** *"Patrzyłam w lustro i nie poznawałam siebie. Aż odkryłam TO."*
+12. **Urgency / Fear-Based (Czas ucieka):** *"Każdy rok bez ćwiczeń = 1% mięśni mniej. Czas działa przeciwko Tobie."*
+13. **Method-Focused (Konkretna technika):** *"5-minutowy poranny rytuał, który podnosi opadające policzki."*
+14. **Life Stage Angles (Etapy życia):** *"Po 45-tce twarz zmienia się drastycznie. Oto co zrobić."*
+15. **Identity Angles (Przekonania):** *"Kremy, serum, zabiegi — nic nie działa? To nie one są problemem (Próbowałaś wszystkiego)."*
+16. **Authority Angles (Dowód Autorytetu):** *"Były chirurg plastyczny zdradza, dlaczego nie robi już liftingów."*
+17. **Before/After Angles (Kontrast wizualny):** *"Te 2 zdjęcia dzieli zaledwie 30 dni."*
+18. **Question-Based Angles (Transpochodne zapytania):** *"Kiedy ostatni raz ktoś powiedział, że wyglądasz młodziej?"*
+
+### E. Standard Mobile-First Copywriting
+*   80% ruchu pochodzi z mobile. Pisz ultrakrótkie akapity (maks. 2-3 linie).
+*   Główny hook perswazyjny musi zamknąć się w obrębie pierwszych **3 do 5 scrolli telefonu** na ekranie.
+
+---
+
+## 5. DOKUMENTACJA REPREZENTACJI SYSTEMÓW (Baza Wiedzy)
 Pełen raport naukowy i analizy rynkowe z wdrożeń NLP znajdują się w pliku: `references/nlp_methods_report.md`.

@@ -9,23 +9,45 @@ Ten dokument to standard operacyjny (SOP) dla kampanii płatnych w systemie **J(
 
 ---
 
-## 👥 1. META ADS (Facebook & Instagram Ads)
+## 👥 1. META ADS (Facebook & Instagram Ads) — Standard "Andromeda"
 
-### A. Struktura Kampanii B2B (Maksymalna wydajność algorytmu)
-*   **Struktura CBO (Campaign Budget Optimization):** Zawsze używaj jednej kampanii z optymalizacją budżetu na poziomie kampanii. Pozwala to algorytmowi Mety samodzielnie alokować budżet w zestawy o najwyższej konwersji.
-*   **Zestawy reklamowe (Ad Sets):** Max 3-4 zestawy reklamowe w kampanii:
-    1.  `01_Broad_Broad_Targeting` - Całkowicie szeroki target (tylko wiek, płeć i lokalizacja Polska). Pozwól algorytmowi znaleźć klienta na podstawie kreacji.
-    2.  `02_LAL_Lookalike_1-2%` - Grupa podobnych odbiorców na podstawie bazy obecnych klientów B2B lub leadów z Systeme.io.
-    3.  `03_Interest_B2B_Owners` - Targetowanie na zainteresowania (np. Mała firma, Przedsiębiorczość, Administrowanie stronami na Facebooku).
-    4.  `04_Retargeting_Warm` - Retargeting osób, które odwiedziły `jaison.pl` lub weszły w interakcję z social mediami w ciągu ostatnich 30-90 dni.
+### A. Struktura Kampanii i Alokacja Budżetów (CBO vs ABO)
+Algorytm **Andromeda** wymusza ścisłe dostosowanie struktury kampanii do wielkości dziennego budżetu:
 
-### B. Protokół Testowania Kreacji (Metoda DCT - Dynamic Creative Test)
-*   Do testowania zawsze używaj zestawów reklamowych typu **Dynamic Creative**.
-*   Wgraj w jeden zestaw DCT:
-    *   3 różne wideo / grafiki (z wyraźnym "Scroll Stopperem" w pierwszych 3 sekundach).
-    *   3 teksty główne (nagłówki NLP oparte na różnych metaprogramach klienta).
-    *   3 krótkie nagłówki (Call to Action, np. "Odbierz darmowy audyt AI").
-*   **Wskaźnik interwencji:** Wyłączaj kreacje, których CPA (koszt pozyskania leada) przekracza 1.5x docelowego kosztu konwersji po uzyskaniu min. 1000 wyświetleń.
+*   **Budżety Wysokie (Powyżej 1000 zł / dzień) ➔ Obowiązkowo CBO (Campaign Budget Optimization):**
+    *   CBO przy wysokich budżetach działa jako "maszynka do drukowania gotówki" (ROAS rzędu 3x - 4x). Optymalnie działa od min. 30 kreacji reklamowych.
+    *   **Zasada Zestawów Reklamowych (Ad Sets):**
+        *   **Grafiki/Obrazki:** Wrzucaj w 1 zestaw reklamowy dokładnie **4 grafiki reklamowe** powiązane z 1 grupą docelową (np. `01_Broad`). Algorytm zacznie samodzielnie żonglować grafikami i dobierać odpowiedni obrazek pod odpowiedniego odbiorcę.
+        *   W kolejnym zestawie (np. `02_LAL`) dajesz kolejne 4 grafiki.
+        *   **Wideo:** Zawsze wrzucaj wideo w osobnym, dedykowanym zestawie reklamowym (1 zestaw = wideo).
+    *   **Struktura Lejka CBO:** Dobrze, aby w kampanii CBO ruch był kierowany na 3 typy stron:
+        1.  `PDP` - Strona z produktem / ofertą.
+        2.  `Wpis blogowy (Advertorial)` - Edukacyjny artykuł.
+        3.  `VSL Page` - Strona z wideo sprzedażowym (Video Sales Letter).
+        *   *Test:* Kierowanie "Od razu do koszyka" + remarketing porzuconych koszyków.
+
+*   **Budżety Niskie (Poniżej 1000 zł / dzień) ➔ Obowiązkowo ABO (Ad Set Budget Optimization):**
+    *   CBO bardzo słabo sobie radzi na małych budżetach. 
+    *   Stosuj strukturę: **1 zestaw reklamowy + 1 reklama** (grafika lub wideo) + budżet dzienny przypisany do zestawu.
+
+### B. Hipotezy Emocjonalne i Targetowanie (Kryteria Rynku)
+Zamiast strzelać na oślep w grupy docelowe i liczyć na łut szczęścia algorytmu, buduj kampanie na twardych hipotezach emocjonalnych:
+1.  **Wybór Emocji:** Wybierz jedną dominującą emocję z kryteriów rynku (np. "złość", "frustracja", "lęk", "chęć ulgi").
+2.  **Mapowanie na Niszę:** Zmapuj emocję na swój ICP (np. Nisza: Mamy ➔ Target: *Wkurzone Mamy*).
+3.  **Kreacja i Nagłówek:** Nagłówek musi bezpośrednio odzwierciedlać tę emocję, np.: *"Oto sposób na XYZ, które wkurzone Mamy zastosowały, aby ich Dziecko zaczęło zdobywać lepsze oceny w szkole, nawet jeżeli próbowały już wszystkiego. Szybka 7-minutowa strategia."*
+4.  **Protokół Testowy:** Zainwestuj 100-200 zł na test wybranej emocji. Zbierz dane i przeanalizuj nagrania sesji użytkowników w **Microsoft Clarity** (pod kątem mobile).
+5.  **Decyzja:** Skaluj zwycięską emocję lub zmień hipotezę na inną emocję.
+
+### C. Protokół Prostej Obsługi i Skalowania
+*   **No target (Szeroko):** Ustaw targetowanie szerokie ➔ Budżet: **50% kosztu produktu** na zestaw reklamowy dziennie.
+*   **Rotacja:** Puszczaj 5 reklam obrazkowych dziennie. Codziennie bezlitośnie wyłączaj to, co nie sprzedało.
+*   **Wideo:** Kreacje wideo trzymaj i testuj przez 2-3 dni przed podjęciem decyzji o wyłączeniu.
+*   **Skalowanie:** Zwycięskie zestawy skaluj co 2-3 dni, podnosząc budżet o **100%**.
+*   **AI Ads Automation:** Wykorzystuj systemy AI (Claude + Higgsfield.ai + Meta MCP) do masowej generacji obrazków i wideo (Duży Angle + Duży Wolumen = Duży Ruch).
+
+### D. Standard Mobile-First (Konwersja 80%)
+*   Pamiętaj, że ponad 80% ruchu zakupowego pochodzi z urządzeń mobilnych (telefony).
+*   Główny nacisk optymalizacji kieruj na to, jak strona wygląda i ładuje się na telefonach. Kluczowe dla konwersji są pierwsze **3 do 5 swipe’ów (scrolli) w dół**! Sprawdzaj zachowania użytkowników na Clarity pod tym kątem.
 
 ---
 

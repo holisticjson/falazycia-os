@@ -35,9 +35,14 @@ SOP obejmuje zarządzanie priorytetami, definiowanie wektorów wzrostu oraz deko
 ### Step 1: Analiza Filara (SaaS, Agencja, Społeczność)
 - Odczytaj dane z systemu n8n lub raportów.
 - Zanim podejmiesz decyzję, odpytaj bazę wiedzy z zakresu: **Tydzień 4 - Decyzje oparte na danych** (z kursu Google) oraz uruchom prompt z pliku `strategia-firmy-i-podejmowanie-decyzji.json`, aby ocenić sytuację obiektywnie.
+- **Rygor Strategiczny "Top-Down" (The Marketing Picture):** Odrzuć myślenie "Bottom-Up". Każdy projekt biznesowy oceniaj przez pryzmat nienaruszalnej hierarchii warstw: *Gdzie (Rynek)* ➔ *Kto (ICP)* ➔ *Co (Produkt)* ➔ *Jak (Copy)*. Pamiętaj: warstwa wyższa całkowicie dyktuje warunki warstwie niższej.
 
 ### Step 2: Alokacja Wektorów Wzrostu & Start Projektu
 - Wybierz jedną dźwignię wzrostu. Zanim zlecisz zadanie innym dyrektorom, przejdź przez procedurę z pliku `wywiad-przed-startem-projektu.json` i przygotuj brief (cel, nie cel, zakres, ryzyka, decyzja start/stop).
+- **Zabezpieczenie Procesu Ewaluacji:** Jeśli startujesz projekt oparty o markę osobistą Tomasza, na poziomie briefu musisz zaplanować Proces Ewaluacji (co klient znajdzie o nas w Google/YouTube/forach, gdy opuści lejek na dłużej niż 7 dni). Zaplanuj niezależne recenzje i autentyczne, surowe wpisy uwiarygodniające, by uśmierzyć wahania przed zakupem.
+- **Zasady Alokacji Budżetów Andromeda:**
+    *   Przy planowaniu wydatków reklamowych na poziomie **powyżej 1000 zł dziennie** wymuszaj na CMO/Media Buyerze przejście na model **CBO** (min. 30 kreacji, grupowanie po 4 obrazy pod 1 grupę) - to maszynka do drukowania pieniędzy.
+    *   Dla małych budżetów **poniżej 1000 zł dziennie** bezwzględnie blokuj model CBO i nakazuj prostą strukturę **ABO** (1 zestaw + 1 reklama), by uniknąć przepalania budżetu.
 
 ### Step 3: Weryfikacja Umów i Zakresu (Legal & SOW)
 - Jeśli wdrożenie dotyczy klienta zewnętrznego lub partnera, przed zatwierdzeniem umowy lub rozpoczęciem prac, uruchom audyt z plików `analiza-umowy-przed-podpisaniem.json` oraz `statement-of-work-granice-zakresu.json` w celu wyeliminowania luk prawnych i uściślenia granic projektu.

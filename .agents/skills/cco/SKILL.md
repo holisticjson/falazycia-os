@@ -72,7 +72,12 @@ Zarządzanie bazą wiedzy publiczną (posty, artykuły, wideo) oraz dbanie o sp�
       2.  **The Secret Revealed (Metoda Magika):** Pokaż dokładnie mechanizm oszustwa. Rozbierz iluzję na części pierwsze. Odbiorca musi poczuć fizyczny ból i złość, że dawał się nabierać (Kinestetyka: **zdejmij klapki z oczu**, **wyrwij chwasty**, **poczuć ulgę**).
       3.  **The Robin Hood Gift (Wartość Bezwarunkowa):** Daj mu gotowe rozwiązanie, schemat, pytania lub szablon zupełnie za darmo. *"Oto darmowa checklista, z którą pójdziesz na następne spotkanie..."*
       4.  **Contrast Anchor (Apples to Oranges):** Pokaż, dlaczego Ty działasz inaczej i jak Twój produkt / SaaS eliminuje te patologie u źródła. *"W moim systemie Jaison nie płacisz za godziny pisania maili przez juniora. Płacisz stały, niski abonament za nieskończoną moc agentów AI..."*
-      5.  **Unfiltered Delivery:** Publikuj treści bez pudru, bez sterylnych grafik, w surowej formie. Prawdziwa wiedza nie potrzebuje brokatu — surowość buduje najwyższy poziom wiarygodności (Architecture of Trust).
+      5.  **Unfiltered Delivery:** Publikuj treści bez pudru, bez sterylnych grafik, w surowej formie (styl "zza kółka w aucie, prosto w obiektyw"). Prawdziwa wiedza nie potrzebuje brokatu — surowość buduje najwyższy poziom wiarygodności (Architecture of Trust).
+
+  *   ### 🚀 Wdrożenie "Ads Mastery & Sekrety Twórców" w Kontent:
+      *   **Zarządzanie Procesem Ewaluacji (Thought Leadership):** Pamiętaj, że klienci, u których decyzja zakupowa zajmuje dłużej niż 7 dni, wchodzą w Proces Ewaluacji (szukają nas w Google, na forach, YouTube). Twoim zadaniem jest celowe plasowanie merytorycznych, niezależnych wpisów, artykułów i recenzji tam, gdzie klient szuka odpowiedzi na swoje wątpliwości, aby uwiarygodnić to, co Tomasz mówi w lejkach.
+      *   **Dopaminowy Problem "TERAZ":** W darmowych postach i wiralach skupiaj się na problemach "dzisiaj" (brak czasu, natychmiastowe uproszczenie chaosu). Unikaj poruszania "Późniejszych Problemów" (rekrutacja, skomplikowane procesy), które tylko paraliżują neuroatypowego klienta.
+      *   **18 Wiralowych Kątów:** Jako bazy dla swoich postów, karuzeli i filmów wideo używaj 18 dynamicznych struktur (np. *Problem-Based*, *Avatar-Based*, *Contrarian*, *Red Flags*, *Shocking Statistics*, *Comparative*, *Future Pacing*).
 - Przekaż zarys do GHOST_AI w celu wygenerowania tekstu w standardzie `Ghost v2 - Głos Marki Tomasz.md`.
 
 
