@@ -51,32 +51,39 @@ Zamiast strzelać na oślep w grupy docelowe i liczyć na łut szczęścia algor
 
 ---
 
-## 🔍 2. GOOGLE ADS (Search & Performance Max)
+## 🔍 2. GOOGLE ADS (Search & Performance Max) — Strategia Uśmierzania Bólu
 
-### A. Kampanie w sieci wyszukiwania (Google Search)
-*   **Słowa kluczowe:** Używaj wyłącznie **Dopasowania Ścisłego (Exact Match)** i **Dopasowania do Wyrażenia (Phrase Match)** dla fraz o wysokiej intencji zakupowej B2B (np. `[automatyzacje procesów biznesowych]`, `"agencja ai warszawa"`).
-*   **Kategoryczny zakaz:** Nie używaj dopasowania przybliżonego (Broad Match) bez podpiętej zaawansowanej listy wykluczających słów kluczowych (Negative Keywords). Zapobiega to przepalaniu budżetu na frazy typu "co to jest ai" lub "darmowe automatyzacje".
-*   **Strategia ustalania stawek:** Rozpocznij od *Maksymalizuj liczbę kliknięć* (w celu zebrania pierwszych danych), a po uzyskaniu min. 15-30 konwersji przejdź na *Maksymalizuj liczbę konwersji (tCPA)*.
+### A. Kampanie w sieci wyszukiwania (Google Search) jako Detektor "Problemu TERAZ"
+Wyszukiwarka Google to najdokładniejszy na świecie barometr natychmiastowego bólu klienta. Wykorzystaj to:
+*   **Słowa kluczowe "Problemu TERAZ":** Koncentruj się na frazach o wysokiej intencji zakupowej oraz bezpośrednio opisujących bieżący ból z obecnej sekundy (np. `"jak zautomatyzować fakturowanie"`, `"narzędzie do automatycznego odpisywania klientom"`). Używaj wyłącznie **Dopasowania Ścisłego (Exact Match)** i **Dopasowania do Wyrażenia (Phrase Match)** (np. `[automatyzacja biura bez programisty]`).
+*   **Kategoryczny zakaz:** Nie używaj dopasowania przybliżonego (Broad Match) bez podpiętej rygorystycznej listy wykluczających słów kluczowych (Negative Keywords). Zapobiega to przepalaniu budżetu na zapytania ogólne (np. "co to jest ai").
+*   **Nagłówki oparte na Prawie 97%:** Nagłówki reklam muszą bezlitośnie uderzać w eliminację kompromisu i wysiłku energetycznego, którego klient boi się u konkurencji (np. *"Automatyzuj Bez Kodowania"*, *"Agencja AI bez stałych opłat i bez zatrudniania programistów"*).
 
-### B. Kampanie Performance Max (PMax) B2B
-*   **Zabezpieczenie budżetu (Brand Safety):** Zawsze wykluczaj słowa kluczowe związane z własną marką (`Jaison`, `Jaison Agency`) z kampanii PMax. Pozwala to uniknąć sytuacji, w której Google przypisuje kampanii płatnej konwersje, które i tak wpadłyby organicznie.
-*   **Sygnały dotyczące odbiorców (Audience Signals):** Jako sygnał wejściowy dla PMax wgraj bazę e-mailową zebraną z Systeme.io oraz ruch z Twojej witryny.
-
----
-
-## 🎵 3. TIKTOK ADS (Lead Generation)
-
-*   **Format:** Wykorzystuj wyłącznie formaty pionowe (9:16) oparte na trendach UGC (User Generated Content) – wideo ma wyglądać jak naturalny post na TikToku, a nie jak profesjonalna reklama telewizyjna.
-*   **Formularze błyskawiczne (Instant Forms):** Używaj wbudowanych formularzy TikToka z opcją "Wyższa intencja" (dodatkowy krok weryfikacji danych przez klienta przed wysłaniem), aby odsiać przypadkowe kliknięcia dzieci i nastolatków.
-*   **Integracja n8n:** Każdy lead z TikToka musi w czasie rzeczywistym wpadać przez webhook n8n bezpośrednio do Systeme.io i bazy danych!
+### B. Kampanie Performance Max (PMax) B2B & Proces Ewaluacji
+*   **Zabezpieczenie budżetu (Brand Safety):** Zawsze wykluczaj słowa kluczowe związane z własną marką (`Jaison`, `Jaison Agency`) z kampanii PMax, by nie przypisywać zasług płatnym kampaniom za ruch organiczny.
+*   **Kierowanie na Proces Ewaluacji:** Assety wizualne i tekstowe w PMax muszą kierować ruch na strony zawierające silne, surowe uwiarygodnienie zewnętrzne (artykuły z recenzjami, surowe wideo od Tomasza, autentyczne case studies), ponieważ odbiorcy z PMax przechodzą przez min. 7-dniowy proces porównywania nas z rynkiem.
 
 ---
 
-## 📊 4. RAPORTOWANIE, METRYKI I KOORDYNACJA (Liaison CFO/CMO)
+## 🎵 3. TIKTOK ADS (Lead Generation) — Emocje i Ruch Mobilny
 
-Wszystkie kampanie płatne są audytowane pod kątem twardych wskaźników finansowych. Dane z API Mety i Google Ads są pobierane przez n8n do Twojego dashboardu Streamlit w celu wyliczenia:
+*   **UGC z 18 Kątów Emocjonalnych:** Wideo UGC na TikToku nie może być zwykłą prezentacją funkcji. Pisz skrypty wideo, wybierając jedną emocję z kryteriów rynku (np. złość na marnowanie czasu) i ubieraj ją w 18 dynamicznych kątów (np. *Red Flags*, *Contrarian*, *Before/After*, *Comparative*). Wideo ma wyglądać jak surowy, autentyczny, niemontowany u profesjonalisty post.
+*   **Formularze błyskawiczne (Instant Forms):** Używaj formularzy z opcją "Wyższa intencja" (dodatkowy krok weryfikacji), aby odsiać przypadkowe kliknięcia.
+*   **Standard 3-5 Scrolli na Mobile:** Ponieważ TikTok generuje w 100% ruch mobilny, landing page powiązany z reklamą musi być perfekcyjnie zoptymalizowany pod telefony. Pierwsze **3-5 swipe'ów (scrolli) w dół** muszą bezlitośnie dostarczyć tożsamość obietnicy z reklamy.
 
-1.  **CAC (Customer Acquisition Cost):** Rzeczywisty koszt pozyskania jednego płacącego klienta agencji.
+---
+
+## 📊 4. RAPORTOWANIE, METRYKI I KOORDYNACJA (Liaison CFO/CMO/Clarity)
+
+Dane z API są automatycznie pobierane do Streamlit za pomocą n8n w celu wyliczenia twardych wskaźników finansowych i jakościowych:
+
+### A. Metryki Finansowe (Standard CFO/CMO)
+1.  **CAC (Customer Acquisition Cost):** Rzeczywisty koszt pozyskania jednego płacącego klienta.
 2.  **CPL (Cost Per Lead):** Koszt pozyskania jednego zapytania/e-maila.
-3.  **ROAS (Return on Ad Spend):** Przychód wygenerowany z kampanii podzielony przez koszty reklamowe.
-4.  **MER (Marketing Efficiency Ratio):** Całkowity przychód agencji podzielony przez całkowity budżet marketingowy (organiczny + płatny). Zdrowy wskaźnik MER dla agencji B2B to min. **4x - 6x**.
+3.  **ROAS (Return on Ad Spend):** Przychód z kampanii podzielony przez koszty reklamowe.
+4.  **MER (Marketing Efficiency Ratio):** Całkowity przychód agencji podzielony przez całkowity budżet marketingowy (organiczny + płatny). Zdrowy MER dla agencji B2B to min. **4x - 6x**.
+
+### B. Metryki Jakościowe Ruchu Mobilnego (Standard Clarity)
+*   **mCR (Mobile Conversion Rate):** Współczynnik konwersji wyłącznie dla użytkowników telefonów.
+*   **Mobile Bounce/Swipe Ratio:** Procent użytkowników mobilnych opuszczających stronę przed wykonaniem min. 3 scrolli w dół. 
+    *   *Interpretacja:* Jeśli ten wskaźnik przekracza 50%, oznacza to drastyczny **Misfit** (brak dopasowania) między emocjonalną obietnicą z kreacji reklamowej a pierwszym widokiem (hero section) na telefonie. Media Buyer musi wtedy natychmiast skorygować kreację lub skonsultować z CMO przebudowę pierwszego widoku mobilnego strony.

@@ -88,7 +88,7 @@ def generate_dynamic_html():
     # 1. Parse original NODES array string
     nodes_match = re.search(r"const NODES = \[(.*?)\];", html_content, re.DOTALL)
     if nodes_match:
-        original_nodes_str = nodes_match.group(1).strip()
+        original_nodes_str = nodes_match.group(1).strip().rstrip(",")
         # Add dynamic client nodes sformatowane jako JS obiekty
         dynamic_nodes_js = []
         for cn in client_nodes:
@@ -105,7 +105,7 @@ def generate_dynamic_html():
     # 2. Parse original EDGES array string
     edges_match = re.search(r"const EDGES = \[(.*?)\];", html_content, re.DOTALL)
     if edges_match:
-        original_edges_str = edges_match.group(1).strip()
+        original_edges_str = edges_match.group(1).strip().rstrip(",")
         dynamic_edges_js = []
         for ce in client_edges:
             edge_str = f"  {{ from: {ce['from']}, to: {ce['to']}, label: '{ce['label']}', arrows: '{ce['arrows']}' }}"
