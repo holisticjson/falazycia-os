@@ -17,7 +17,7 @@ W lewym panelu bocznym (Sidebar) lub w sekcji konfiguracji marki użytkownik pod
 | `niche` | Tekstowe (krótkie) | Branża / Specjalizacja (np. `Projektowanie systemów agentowych AI i automatyzacja B2B`) |
 | `target_audience`| Tekstowe (długie) | Grupa docelowa (np. `neuroatypowi founderzy, mali i średni przedsiębiorcy B2B`) |
 | `tone_of_voice` | Wybór (Selectbox) | Styl komunikacji (np. `Ghost v2: bezpośredni, ADHD-friendly, zero lania wody`) |
-| `motto` | Tekstowe (długie) | Unikalne motto (np. `Automatyzuj powtarzalne. Twórz unikalne. Zyskaj.`) |
+| `motto` | Tekstowe (długie) | Unikalne motto (np. `Automatyzuj to, co powtarzalne. Twórz to, co unikalne.`) |
 | `cta` | Tekstowe (krótkie) | Wezwanie do działania (np. `Zacznij automatyzować, żyj lepiej.`) |
 
 ---
@@ -102,7 +102,7 @@ Moduł generujący spójne, profesjonalne banery z wkomponowanym sloganem i wezw
     *   `Twitter/X Banner` -> `1500 x 500` (Proporcje 3:1)
     *   `YouTube Banner` -> `2048 x 1152` (Proporcje 16:9)
 2.  **Styl tła graficznego:** (Identyczny jak style awatarów powyżej, aby zachować spójność wizualną).
-3.  **Slogan na banerze:** Pobierany automatycznie ze zmiennej `motto` (np. *Automatyzuj powtarzalne. Twórz unikalne. Zyskaj.*).
+3.  **Slogan na banerze:** Pobierany automatycznie ze zmiennej `motto` (np. *Automatyzuj to, co powtarzalne. Twórz to, co unikalne.*).
 4.  **CTA na banerze:** Wyświetlane pod sloganem ze zmiennej `cta` (np. *➔ Zacznij automatyzować, żyj lepiej.*).
 
 ---
@@ -119,10 +119,10 @@ Aby uniknąć zasłonięcia tekstu, agent Streamlit **Musi wydać silnikowi graf
 Podczas generowania banerów dla wybranego stylu, system wstrzykuje slogan i CTA w prawą część obrazu. Prompty wysyłane do silnika (np. Flux) muszą wyglądać tak:
 
 #### 🌌 Baner Styl A (Cybernetic Hub):
-> `"A premium panoramic cinematic wide shot of a futuristic dark control center. On the left and center, glowing glass analytics screens display abstract neural connection lines, cyan and purple networks, and subtle data charts. On the RIGHT side of the image, there is a clean, dark charcoal space featuring the glowing, elegant text: 'Automatyzuj powtarzalne. Twórz unikalne. Zyskaj.' with a smaller subtitle '➔ Zacznij automatyzować, żyj lepiej.' underneath. Sharp lighting, ultra-high resolution, minimalist layout, text is perfectly readable, 8k."`
+> `"A premium panoramic cinematic wide shot of a futuristic dark control center. On the left and center, glowing glass analytics screens display abstract neural connection lines, cyan and purple networks, and subtle data charts. On the RIGHT side of the image, there is a clean, dark charcoal space featuring the glowing, elegant text: 'Automatyzuj to, co powtarzalne. Twórz to, co unikalne.' with a smaller subtitle '➔ Zacznij automatyzować, żyj lepiej.' underneath. Sharp lighting, ultra-high resolution, minimalist layout, text is perfectly readable, 8k."`
 
 #### 🌿 Baner Styl B (Cozy Server Sanctuary):
-> `"A premium panoramic wide-angle shot of a warm minimalist server room. On the left and center, modern server racks with glowing soft amber and soft green lights are mixed with lush green potted plants and small bonsais. On the RIGHT side, on a clean, dark matte-wood wall, the following text is beautifully engraved: 'Automatyzuj powtarzalne. Twórz unikalne. Zyskaj.' with a subtitle '➔ Zacznij automatyzować, żyj lepiej.' below. Warm morning side lighting, quiet, cozy, photorealistic, 8k."`
+> `"A premium panoramic wide-angle shot of a warm minimalist server room. On the left and center, modern server racks with glowing soft amber and soft green lights are mixed with lush green potted plants and small bonsais. On the RIGHT side, on a clean, dark matte-wood wall, the following text is beautifully engraved: 'Automatyzuj to, co powtarzalne. Twórz to, co unikalne.' with a subtitle '➔ Zacznij automatyzować, żyj lepiej.' below. Warm morning side lighting, quiet, cozy, photorealistic, 8k."`
 
 #### 🌅 Baner Styl D (Biotech Garden / Freedom):
-> `"An ultra-clean, minimalist wide-angle panoramic shot of a modern glass-clad workspace. On the left and center, a beautiful view of a quiet green biotech garden bathed in golden sunset light through huge clean windows. On the RIGHT side, on a pristine, dark anthracite concrete wall, the text: 'Automatyzuj powtarzalne. Twórz unikalne. Zyskaj.' and subtitle '➔ Zacznij automatyzować, żyj lepiej.' is subtly embossed in matte metallic letters. Sunset lighting, airy atmosphere, quiet operational freedom, 8k."`
+> `"An ultra-clean, minimalist wide-angle panoramic shot of a modern glass-clad workspace. On the left and center, a beautiful view of a quiet green biotech garden bathed in golden sunset light through huge clean windows. On the RIGHT side, on a pristine, dark anthracite concrete wall, the text: 'Automatyzuj to, co powtarzalne. Twórz to, co unikalne.' and subtitle '➔ Zacznij automatyzować, żyj lepiej.' is subtly embossed in matte metallic letters. Sunset lighting, airy atmosphere, quiet operational freedom, 8k."`
