@@ -635,6 +635,10 @@
           <div class="metric-value" style="color: var(--neon-cyan); font-size: 2.8rem; font-weight: 900;" data-animate="0" data-suffix="%">0%</div>
           <div class="metric-label">Prowizji od zamówień</div>
         </div>
+        <div class="metric-card" style="border-color: rgba(245, 158, 11, 0.3); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;">
+          <div class="metric-value" style="color: var(--neon-orange); font-size: 2.8rem; font-weight: 900;" data-animate="1300" data-prefix="$" data-thousand-separator="true">$0</div>
+          <div class="metric-label">Pozyskanych Środków GCP</div>
+        </div>
       </div>
 
       <!-- Demaskowanie Kartelu (Architecture of Trust) -->
@@ -667,7 +671,7 @@
           </p>
           <ul style="color: var(--text-gray); font-size: 0.9rem; margin-left: 20px; line-height: 1.8;">
             <li><strong>WhatsApp Cart Checkout:</strong> Interaktywny koszyk na stronie WWW. Klient klika dania, podaje adres, klika wyślij, a strona generuje gotową wiadomość z podsumowaniem i BLIK-iem na telefon bezpośrednio na WhatsApp kuchni!</li>
-            <li><strong>JaśBot 2.0 (Gemini API):</strong> Wirtualny doradca klienta, który zna całe menu, składniki i historię Baru. Rozmawia naturalnie po łódzku, przechowując pamięć wątków w przeglądarce (`localStorage`).</li>
+            <li><strong>JaśBot 2.0 (Vertex AI Search &amp; Gemini RAG):</strong> Zaawansowany wirtualny doradca klienta wdrożony dzięki grantom GCP ($300 startowych + $1000 na Vertex AI Agent Builder/Search). Bot opiera się na prywatnej bazie wiedzy (RAG), dzięki czemu nie tylko zna całe menu, składniki i historię legendarnego Baru, ale potrafi także autonomicznie układać dopasowaną dietę, rekomendować zdrowe, zbilansowane przepisy na bazie chrupiącego drobiu i prowadzić naturalne, łódzkie rozmowy, przechowując pamięć wątku w przeglądarce.</li>
             <li><strong>CRM n8n + Google Sheets:</strong> Po złożeniu zamówienia, dane wpadają do Google Sheets. Po 120 minutach system automatycznie wysyła do klienta SMS-a z prośbą o opinię w Google Maps (tylko 5 gwiazdek jest kierowane bezpośrednio do wizytówki, niższe oceny trafiają jako feedback wewnętrzny!).</li>
           </ul>
         </div>
@@ -687,7 +691,7 @@
           </div>
           <div class="vak-item" style="border-color: var(--neon-green);">
             <h4>🖐️ Dotyk/Emocje (Kinesthetic)</h4>
-            <p>Poczucie lekkości. Marysia może skupić się na wydawaniu jedzenia i uśmiechu do klientów, zamiast nerwowego przepisywania adresów z telefonu.</p>
+            <p>Poczucie lekkiego i zdrowego stylu życia. Klienci czują radość z faktu, że inteligentny JaśBot pomaga im dobrać pełnowartościową dietę dostosowaną do ich celów treningowych bezpośrednio z menu lokalu.</p>
           </div>
           <div class="vak-item" style="border-color: var(--neon-blue);">
             <h4>📊 Logika (Auditory Digital)</h4>
@@ -721,13 +725,13 @@
               <td><strong>100/100 PageSpeed (błyskawiczne menu na mobile)</strong></td>
             </tr>
             <tr>
-              <td>Asystent zamówień</td>
-              <td>JaśBot 2.0 (Gemini 2.5 Flash)</td>
+              <td>Asystent &amp; Diety RAG</td>
+              <td>Vertex AI Search + Gemini (RAG)</td>
               <td>Brak / Marysia przy telefonie</td>
-              <td><strong>Autonomiczny czatbot z pamięcią localStorage</strong></td>
+              <td><strong>Czatbot układa zdrowe przepisy i diety z menu, zasilany $1300 grantów GCP</strong></td>
             </tr>
             <tr>
-              <td>Opinie & CRM</td>
+              <td>Opinie &amp; CRM</td>
               <td>n8n + GSheets Feedback Loop</td>
               <td>Brak budowania lojalności</td>
               <td><strong>Automatyczny follow-up o opinię po 120 minutach</strong></td>
