@@ -5241,33 +5241,64 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                 
                 col_s1, col_s2 = st.columns([1, 1])
                 with col_s1:
-                    brand_name = st.text_input("Nazwa Marki / Imię i Nazwisko:", value="Holistic Jason", key="suite_brand_name")
-                    niche = st.text_area("Nisza / Branża (w czym pomagasz i komu):", value="Agencja AI i automatyzacji procesów B2B dla zabieganych przedsiębiorców.", height=80, key="suite_niche")
-                    audience = st.text_input("Grupa Docelowa (Idealny Klient):", value="Właścinele małych i średnich firm, twórcy, osoby z ADHD szukające spójności.", key="suite_audience")
+                    brand_name = st.text_input("Nazwa Marki / Imię i Nazwisko:", value="J(AI)SON", key="suite_brand_name")
+                    website_url = st.text_input("URL Strony Głównej:", value="https://jaison.pl", key="suite_website_url")
+                    app_url = st.text_input("URL Oferty / Aplikacji SaaS:", value="https://app.jaison.pl", key="suite_app_url")
+                    niche = st.text_area("Branża / Specjalizacja:", value="Projektowanie systemów agentowych AI i automatyzacja B2B", height=80, key="suite_niche")
                 with col_s2:
-                    style = st.text_input("Styl komunikacji / Tone of Voice:", value="Bezpośredni, merytoryczny, dynamiczny, ADHD-friendly, z humorem, perswazyjny NLP", key="suite_style")
-                    motto = st.text_input("Twoje Unikalne Motto / Slogan przewodni:", value="Automatyzuj to, co powtarzalne. Twórz to, co unikalne.", key="suite_motto")
+                    target_audience = st.text_area("Grupa Docelowa (Idealny Klient):", value="neuroatypowi founderzy, mali i średni przedsiębiorcy B2B", height=80, key="suite_target_audience")
+                    tone_of_voice = st.selectbox("Styl komunikacji / Tone of Voice:", [
+                        "Ghost v2: bezpośredni, ADHD-friendly, zero lania wody",
+                        "Profesjonalny i merytoryczny B2B",
+                        "Luźny, perswazyjny NLP i konwersacyjny",
+                        "Energetyczny, pełen motywacji (ADHD War Room)"
+                    ], key="suite_tone_of_voice")
+                    motto = st.text_input("Twoje Unikalne Motto / Slogan:", value="Automatyzuj to, co powtarzalne. Twórz to, co unikalne. Zyskaj.", key="suite_motto")
+                    cta = st.text_input("Wezwanie do Działania (CTA) na banerze:", value="Zacznij automatyzować, żyj lepiej.", key="suite_cta")
                     
                 if st.button("🚀 Analizuj i generuj Strategię AI", type="primary", use_container_width=True, key="suite_sm_gen_strat_btn"):
                     with st.spinner("Dyrektor ds. Marketingu (CMO AI) oraz Gemini 2.5 Pro analizują rynek i konkurencję..."):
                         prompt = f"""
                         Przeprowadź głęboki wywiad i stwórz kompletną strategię social media oraz opisy BIO dla 6 platform.
                         Marka/Nazwisko: {brand_name}
+                        Strona Główna: {website_url}
+                        Aplikacja/Oferta: {app_url}
                         Nisza/Branża: {niche}
-                        Grupa docelowa: {audience}
-                        Styl komunikacji: {style}
+                        Grupa docelowa: {target_audience}
+                        Styl komunikacji (Tone of Voice): {tone_of_voice}
                         Unikalne motto: {motto}
+                        CTA: {cta}
+
+                        Rygorystycznie przestrzegaj poniższych wytycznych i limitów znakowych dla platform:
+                        1. LinkedIn Profile:
+                           - Nagłówek (Headline): Max 220 znaków. Format: Rola | Obietnica wartości + Kluczowe słowa kluczowe | Nazwa Marki.
+                           - O mnie (About): Max 2600 znaków. Układ: Haczyk (problem), rozwiązanie (metoda), filary oferty, dlaczego my, call to action.
+                           - Opis usług (Services Description): Rygorystyczny limit 500 znaków! Skondensowana pigułka oferty.
+                        2. Instagram Bio:
+                           - Tekst Bio: Max 150 znaków ze spacjami! Musi zawierać emotikony, wezwanie do działania i skrócony link.
+                        3. Facebook Page About:
+                           - Krótki opis (Short Bio): Max 255 znaków.
+                           - Długi opis (Long Description): Bez limitu – pełna historia marki i misja.
+                        4. TikTok Bio:
+                           - Tekst Bio: Max 80 znaków ze spacjami! Maksymalnie skondensowane, jednozdaniowe uderzenie z CTA.
+                        5. Twitter / X Bio:
+                           - Tekst Bio: Max 160 znaków. Pozycjonowanie eksperckie, dynamiczne, tech-friendly.
+                        6. Threads Bio:
+                           - Tekst Bio: Max 150 znaków. Bardziej luźny, osobisty charakter.
 
                         Wygeneruj odpowiedź w czystym formacie JSON o poniższej strukturze (nie umieszczaj żadnych znaczników markdown poza kodem json, tylko czysty, parsujący się JSON bez wstępów):
                         {{
                           "slogan": "krótki, uderzający slogan na baner (max 6-8 słów)",
                           "cta": "krótkie wezwanie do działania na baner (max 4-5 słów)",
-                          "linkedin_bio": "BIO na LinkedIn (profesjonalne, zorientowane na wyniki, autorytet, z podziałem na sekcje, max 3-4 zdania)",
-                          "facebook_bio": "BIO na Facebooka (angażujące, nastawione na społeczność i zaufanie, zaproszenie do grupy, max 3-4 zdania)",
-                          "instagram_bio": "BIO na Instagram (wizualne, lifestylowe, z emotikonami, max 150 znaków, wypunktowane)",
-                          "tiktok_bio": "BIO na TikToka (dynamiczne, z mega mocnym hakiem i CTA, max 80 znaków)",
-                          "twitter_bio": "BIO na X/Twitter (zwięzłe, błyskotliwe, thought-leadership, max 160 znaków)",
-                          "threads_bio": "BIO na Threads (konwersacyjne, otwarte na dyskusję, luźne, max 150 znaków)",
+                          "linkedin_headline": "Nagłówek na LinkedIn (max 220 znaków)",
+                          "linkedin_about": "O mnie na LinkedIn (max 2600 znaków)",
+                          "linkedin_services": "Opis usług na LinkedIn (max 500 znaków)",
+                          "facebook_short_bio": "Krótki opis na Facebooka (max 255 znaków)",
+                          "facebook_long_desc": "Długi opis na Facebooka (pełna historia i misja)",
+                          "instagram_bio": "BIO na Instagram (max 150 znaków z emotikonami i CTA)",
+                          "tiktok_bio": "BIO na TikToka (max 80 znaków z mega mocnym hakiem i CTA)",
+                          "twitter_bio": "BIO na X/Twitter (max 160 znaków, thought-leadership)",
+                          "threads_bio": "BIO na Threads (max 150 znaków, luźne, konwersacyjne)",
                           "strategy_tips": [
                             "Wskazówka 1 (ADHD friendly, konkretna)",
                             "Wskazówka 2 (Dopaminowy hook)",
@@ -5293,10 +5324,13 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                         except Exception as e:
                             st.warning(f"Nie udało się sparsować odpowiedzi JSON, wdrożono domyślną strategię premium. Błąd: {e}")
                             st.session_state.sm_strategy = {
-                                "slogan": f"Zautomatyzuj Swoje B2B z Potęgą AI",
-                                "cta": "Odbierz Darmowy Audyt Procesów",
-                                "linkedin_bio": f"Pomagam zabieganym przedsiębiorcom i osobom z ADHD odzyskać 20+ godzin tygodniowo przez wdrożenia agentów AI i automatyzacje n8n. Sprawdź moje case studies i uwolnij swój czas.",
-                                "facebook_bio": "Dołącz do społeczności twórców i biznesów, którzy zamiast pracować w firmie, pracują nad jej automatyzacją. Praktyczne wskazówki, darmowe szablony i wsparcie.",
+                                "slogan": f"{motto}",
+                                "cta": f"➔ {cta}",
+                                "linkedin_headline": f"AI Systems Architect 🧠 | Projektuję systemy agentowe i automatyzacje n8n B2B | {brand_name}",
+                                "linkedin_about": f"Pomagam zabieganym przedsiębiorcom i osobom z ADHD odzyskać 20+ godzin tygodniowo przez wdrożenia agentów AI i automatyzacje n8n. Sprawdź moje case studies i uwolnij swój czas. Kontakt: {app_url}",
+                                "linkedin_services": f"Projektowanie i wdrożenia systemów AI B2B. Automatyzacje procesów n8n, integracje LLM, autorskie dashboardy Streamlit.",
+                                "facebook_short_bio": f"Dołącz do społeczności twórców i biznesów, którzy zamiast pracować w firmie, pracują nad jej automatyzacją.",
+                                "facebook_long_desc": f"Pełna misja marki {brand_name}: Uwalniamy czas przedsiębiorców. Dostarczamy bezkompromisowe systemy oparte na agentach AI, które pracują 24/7. Nasz cel to pomoc w odzyskaniu kontroli nad czasem i energią w duchu Low-Cost / High-ROI.",
                                 "instagram_bio": "⚡️ Robimy to co ważne, resztę robi kod\n💡 Automatyzacje procesów B2B\n👇 Odbierz bezpłatny zestaw n8n blueprintów!",
                                 "tiktok_bio": "🧠 ADHD & AI Automations | 💡 Odzyskaj 20h w tygodniu! | Kliknij link 👇",
                                 "twitter_bio": f"SaaS founder & AI Agency Director. I build agentic operating systems to automate workflows for fast-growing B2B brands. ADHD builder mode on.",
@@ -5304,7 +5338,7 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                                 "strategy_tips": [
                                   "System 1-Click: Nagrywaj luźne przemyślenia głosowe, a AI (np. Omi lub sformatowany monit) przekształci je w posty na 6 platform.",
                                   "Płynność i Dopamina: Nie edytuj wideo godzinami. Używaj dynamicznych napisów, prostych przejść i gotowych szablonów.",
-                                  "Autentyczność przede wszystkim: Tomasz Duda z o_mnie.md przyciąga, ponieważ mówi prawdę o wyzwaniach ADHD.",
+                                  "Autentyczność przede wszystkim: Buduj markę osobistą w oparciu o prawdziwe wyzwania neuroatypowości (ADHD).",
                                   "Użyj darmowego planu Systeme.io do budowy bazy e-mailowej i spięcia ruchu organicznego."
                                 ]
                             }
@@ -5341,13 +5375,27 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                     
                     col_p1, col_p2 = st.columns([1, 1])
                     with col_p1:
-                        st.text_area("💼 LinkedIn BIO (Autorytet B2B):", value=strat.get("linkedin_bio", ""), height=150, key="suite_bio_li")
-                        st.text_area("👥 Facebook BIO (Budowanie społeczności):", value=strat.get("facebook_bio", ""), height=150, key="suite_bio_fb")
-                        st.text_area("🐦 X/Twitter BIO (Szybki thought-leadership):", value=strat.get("twitter_bio", ""), height=100, key="suite_bio_tw")
+                        st.markdown("<p style='color: #10B981; font-weight: bold;'>💼 LinkedIn (Autorytet B2B):</p>", unsafe_allow_html=True)
+                        st.text_input("LinkedIn Nagłówek (Headline - max 220 znaków):", value=strat.get("linkedin_headline", strat.get("linkedin_bio", "")[:220]), key="suite_bio_li_headline")
+                        st.text_area("LinkedIn O mnie (About - max 2600 znaków):", value=strat.get("linkedin_about", strat.get("linkedin_bio", "")), height=250, key="suite_bio_li_about")
+                        st.text_area("LinkedIn Opis Usług (Services - max 500 znaków):", value=strat.get("linkedin_services", ""), height=100, key="suite_bio_li_services")
+                        
+                        st.markdown("<p style='color: #3B82F6; font-weight: bold;'>👥 Facebook Page:</p>", unsafe_allow_html=True)
+                        st.text_input("Facebook Krótki opis (Short Bio - max 255 znaków):", value=strat.get("facebook_short_bio", strat.get("facebook_bio", "")[:255]), key="suite_bio_fb_short")
+                        st.text_area("Facebook Długi opis (Long Description):", value=strat.get("facebook_long_desc", strat.get("facebook_bio", "")), height=150, key="suite_bio_fb_long")
+                        
                     with col_p2:
-                        st.text_area("📸 Instagram BIO (Zwięzłe z emotikonami):", value=strat.get("instagram_bio", ""), height=150, key="suite_bio_ig")
-                        st.text_area("🎵 TikTok BIO (Maksymalny hak & CTA):", value=strat.get("tiktok_bio", ""), height=150, key="suite_bio_tt")
-                        st.text_area("💬 Threads BIO (Otwarta dyskusja):", value=strat.get("threads_bio", ""), height=100, key="suite_bio_th")
+                        st.markdown("<p style='color: #EC4899; font-weight: bold;'>📸 Instagram (max 150 znaków ze spacjami):</p>", unsafe_allow_html=True)
+                        st.text_area("Instagram Bio:", value=strat.get("instagram_bio", ""), height=100, key="suite_bio_ig")
+                        
+                        st.markdown("<p style='color: #EEF2F6; font-weight: bold;'>🎵 TikTok (max 80 znaków ze spacjami):</p>", unsafe_allow_html=True)
+                        st.text_area("TikTok Bio:", value=strat.get("tiktok_bio", ""), height=80, key="suite_bio_tt")
+                        
+                        st.markdown("<p style='color: #1D9BF0; font-weight: bold;'>🐦 Twitter / X (max 160 znaków):</p>", unsafe_allow_html=True)
+                        st.text_area("Twitter/X Bio:", value=strat.get("twitter_bio", ""), height=100, key="suite_bio_tw")
+                        
+                        st.markdown("<p style='color: #A855F7; font-weight: bold;'>💬 Threads (max 150 znaków):</p>", unsafe_allow_html=True)
+                        st.text_area("Threads Bio:", value=strat.get("threads_bio", ""), height=100, key="suite_bio_th")
                         
             with tab_visuals:
                 st.subheader("🎨 Kreator Tożsamości Wizualnej (Awatary i Bannery)")
@@ -5387,20 +5435,58 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                 col_i1, col_i2 = st.columns([1, 1])
                 with col_i1:
                     st.write("##### 👤 2. Generowanie Spójnego Awatara:")
-                    avatar_desc = st.text_input("Kim ma być postać na awatarze:", value="Młody, charyzmatyczny programista z ADHD w okularach, z inteligentnym uśmiechem", key="suite_avatar_desc")
-                    avatar_style = st.selectbox("Styl graficzny awatara:", [
-                        "Deep technological neon portrait, 3D style, high-end octane render",
-                        "Clean minimalist corporate portrait, professional studio soft lighting",
-                        "Anime cyber-punk detailed aesthetic, vibrant colors, vector illustration"
-                    ], key="suite_avatar_style")
+                    
+                    suite_char_desc = st.text_input(
+                        "Opis Postaci (CHARACTER):", 
+                        value="confident bald man in late 30s, rectangular glasses, thin matte black frames, warm genuine smile", 
+                        key="suite_char_desc",
+                        help="Opis Twoich cech fizycznych w języku angielskim."
+                    )
+                    
+                    avatar_style = st.selectbox(
+                        "Strategiczny Styl Wizualny Marki:", 
+                        [
+                            "🌌 Styl A: Cybernetic Hub (AI systems & Neural Networks)",
+                            "🌿 Styl B: Cozy Server Sanctuary (Biohacking, Nature & Tech)",
+                            "🌃 Styl C: Deep Focus Night Studio (Hyperfocus & High-Performance)",
+                            "🌅 Styl D: Biotech Garden / Freedom (Operational Freedom & Silence)",
+                            "🕴️ Styl E: Executive Cyber-Casual (Founder Authority & B2B Trust)"
+                        ], 
+                        key="suite_avatar_style_spec"
+                    )
+                    
+                    use_lora_for_avatar = False
+                    if "Flux LoRA" in engine_mode and has_lora:
+                        use_lora_for_avatar = st.checkbox(
+                            "Dodaj moją postać (LoRA) do awatara", 
+                            value=True, 
+                            key="suite_avatar_use_lora",
+                            help="Zaznacz, aby model odwzorował Twoją twarz (trigger word: tomasz_hero)."
+                        )
                     
                     if st.button("Generuj Profesjonalny Awatar", type="primary", key="suite_avatar_gen_btn", use_container_width=True):
+                        if use_lora_for_avatar and "Flux LoRA" in engine_mode:
+                            char_prompt = f"{st.session_state.get('lora_trigger_word', 'tomasz_hero')} person ({suite_char_desc})"
+                        else:
+                            char_prompt = suite_char_desc
+                            
+                        if "Styl A" in avatar_style:
+                            full_avatar_prompt = f"A high-end, clean close-up portrait of {char_prompt} facing the camera. The background is a sophisticated and futuristic dark tech command center: glowing translucent glass screens displaying holographic cyan and electric purple data charts, mathematical equations, and delicate network connection lines. Studio key lighting creates sharp masculine features, strong jawline, and natural skin textures. No distortions, highly professional, 8k resolution, cinematic atmosphere, f/1.8."
+                        elif "Styl B" in avatar_style:
+                            full_avatar_prompt = f"A professional cinematic portrait of {char_prompt} with a natural and calm expression. The setting is a cozy, warm minimalist server room where technology meets nature: modern matte-charcoal server racks are softly illuminated by warm amber LED lights and gentle green power indicators. Delicate leafy organic plants like monstera and small bonsai trees grow harmoniously around the technical equipment. Soft morning sunlight streams from a side window, highlighting natural skin fullness, realistic textures, and sharp details. High-end, premium, photorealistic, 8k."
+                        elif "Styl C" in avatar_style:
+                            full_avatar_prompt = f"A high-contrast, moody close-up portrait of {char_prompt} looking confident and focused. He is in a premium, quiet soundproof coding room at night. The background features dark acoustic hexagonal panels with glowing neon cyan linear lights running between them. To the side, there is a softly glowing vertical monitor showing clean coding structures. Warm, dramatic key lighting creates clear masculine facial lines, natural facial fullness, and reflections in his corrective glasses. Cinematic depth of field, photorealistic, premium feel, 8k."
+                        elif "Styl D" in avatar_style:
+                            full_avatar_prompt = f"An ultra-minimalist, airy cinematic portrait of {char_prompt} looking completely relaxed and happy, with a genuine smile. He is standing near a giant floor-to-ceiling clean panoramic glass window of a modern architectural estate. Outside, a pristine biotech garden with clean green plants is bathed in warm, golden sunset light. The atmosphere is quiet, bright, and completely silent. Key soft lighting showcases healthy skin tones, clear masculine structures, and authentic facial fullness. High-end editorial style, premium design, depth of field, 8k."
+                        else: # Styl E
+                            b_name = st.session_state.get("suite_brand_name", "J(AI)SON")
+                            full_avatar_prompt = f"An elegant and luxurious portrait of {char_prompt} dressed in a tailor-made deep navy blue blazer over a premium charcoal grey turtleneck. On the collar of the turtleneck, a very small and clean matte grey embroidered text '{b_name}' is subtly visible. He is standing inside a highly professional, dark-themed executive lounge. The background is a clean matte-black luxury wall with subtle recessed accent lighting. The lighting is soft, dramatic, and prestigious, highlighting natural masculine jawline, authentic facial fullness, and premium fabrics. Perfect corporate identity, photorealistic, 8k."
+
                         if "Flux LoRA" in engine_mode:
                             if not has_lora:
                                 st.error("⚠️ Brak aktywnej LoRA! Wklej link do wag w zakładce LoRA Studio.")
                             else:
                                 with st.spinner("Model Flux-LoRA generuje spersonalizowany awatar..."):
-                                    full_avatar_prompt = f"A professional close-up portrait of {st.session_state.lora_trigger_word} person, {avatar_desc}. style: {avatar_style}. face focused, perfect composition, extremely high quality details, 8k resolution."
                                     from integrations.fal_ai import run_flux_lora_generation
                                     img_bytes, err = run_flux_lora_generation(
                                         full_avatar_prompt, 
@@ -5415,7 +5501,6 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                                         st.success("Spersonalizowany awatar LoRA wygenerowany!")
                         else:
                             with st.spinner("Model Imagen 3 generuje idealnie wykadrowany awatar..."):
-                                full_avatar_prompt = f"Square avatar close-up portrait of {avatar_desc}. Style: {avatar_style}. Face focused, perfect composition, extremely high quality details, 8k resolution, profile picture template."
                                 img_bytes, err = generate_imagen_image(full_avatar_prompt, aspect_ratio="1:1")
                                 if err:
                                     st.error(f"GCP API Error: {err}")
@@ -5438,53 +5523,41 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                     st.write("##### 🖼️ 3. Generowanie Banneru Dostosowanego pod Platformę:")
                     
                     platform_specs = {
-                        "LinkedIn (💼)": {
+                        "LinkedIn Banner (💼)": {
                             "aspect_imagen": "16:9",
                             "aspect_flux": "landscape_16_9",
-                            "dimensions": "1584 x 396 px",
-                            "guide": "⚠️ Zdjęcie profilowe zasłania lewy dolny róg na desktopie, a na telefonie jest wyśrodkowane. Slogan zostanie umieszczony w centralno-prawej strefie bezpieczeństwa.",
-                            "default_title": "AI Systems Architect 🧠 | Pomagam firmom B2B odzyskać 15+ godzin",
-                            "default_style": "Minimalist corporate technology background with deep navy blue, space charcoal grey and elegant neon accents, abstract clean composition, premium cinematic lighting, 8k resolution, suitable for LinkedIn banner."
+                            "dimensions": "1584 x 396 px (Proporcje ok. 4:1)",
+                            "guide": "⚠️ Zdjęcie profilowe zasłania lewy dolny róg na desktopie, a na telefonie jest wyśrodkowane. Slogan i grafika będą w prawej części bezpiecznej.",
                         },
-                        "Instagram (📸)": {
+                        "Facebook Cover (👥)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "851 x 315 px",
+                            "guide": "⚠️ Zdjęcie profilowe na komputerze znajduje się po lewej stronie, więc slogan zostanie przesunięty ku prawej stronie.",
+                        },
+                        "Twitter/X Banner (🐦)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "1500 x 500 px (Proporcje 3:1)",
+                            "guide": "⚠️ Zdjęcie profilowe na Twitterze zasłania dolny lewy narożnik bannera. Slogan i kluczowa grafika zostaną przesunięte w prawo i lekko w górę.",
+                        },
+                        "YouTube Banner (🎵)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "2048 x 1152 px (Proporcje 16:9)",
+                            "guide": "⚠️ Środkowa część 1546x423 px to strefa bezpieczna na komputery i telefony. Slogan po prawej stronie.",
+                        },
+                        "Instagram Post (📸)": {
                             "aspect_imagen": "1:1",
                             "aspect_flux": "square_hd",
                             "dimensions": "1080 x 1080 px",
-                            "guide": "⚠️ Format kwadratowy na Instagram. Kompozycja powinna być idealnie wyśrodkowana z luksusowymi akcentami i minimalistycznym tłem.",
-                            "default_title": "Automatyzuj to, co powtarzalne. Twórz to, co unikalne.",
-                            "default_style": "Sleek luxury design with rich dark violet and gold dust gradients, subtle glassmorphism overlay, high-contrast typography, premium social media post style, 8k."
+                            "guide": "⚠️ Format kwadratowy na Instagram. Kompozycja wyśrodkowana z luksusowymi akcentami.",
                         },
-                        "TikTok (🎵)": {
-                            "aspect_imagen": "9:16",
-                            "aspect_flux": "portrait_16_9",
-                            "dimensions": "1080 x 1920 px (Pionowy)",
-                            "guide": "⚠️ Pionowy format na TikTok. Napisy i postać muszą być w środkowej części (od 20% do 80% wysokości), aby nie zasłoniły ich elementy interfejsu (serduszka, opisy).",
-                            "default_title": "Odzyskaj 20 Godzin Tygodniowo z AI",
-                            "default_style": "Cyberpunk high-octane background with glowing electric pink and neon cyan lasers, tech-style typography, high contrast, dynamic mobile wallpaper aesthetic."
-                        },
-                        "Facebook (👥)": {
-                            "aspect_imagen": "16:9",
-                            "aspect_flux": "landscape_16_9",
-                            "dimensions": "820 x 312 px",
-                            "guide": "⚠️ Zdjęcie profilowe na komputerze znajduje się po lewej stronie, więc slogan i najważniejsze elementy grafiki zostaną przesunięte ku prawej stronie.",
-                            "default_title": "J(AI)SON Operating System — Asynchroniczna Wolność",
-                            "default_style": "Premium abstract gradient background in deep space purple, dark violet and metallic highlights, clean elegant geometry, business cover aesthetic, photorealistic."
-                        },
-                        "X / Twitter (🐦)": {
-                            "aspect_imagen": "16:9",
-                            "aspect_flux": "landscape_16_9",
-                            "dimensions": "1500 x 500 px",
-                            "guide": "⚠️ Zdjęcie profilowe na Twitterze zasłania dolny lewy narożnik bannera. Slogan i kluczowa grafika zostaną przesunięte w prawo i lekko w górę.",
-                            "default_title": "SaaS Founder & AI Agency Director | J(AI)SON OS",
-                            "default_style": "Ultra-minimalist modern tech background, solid carbon black surface with thin glowing emerald green light lines, futuristic corporate style, cinematic composition."
-                        },
-                        "Threads (💬)": {
+                        "Threads Cover (💬)": {
                             "aspect_imagen": "16:9",
                             "aspect_flux": "landscape_16_9",
                             "dimensions": "1080 x 360 px",
-                            "guide": "⚠️ Styl minimalistyczny z dużą ilością wolnej przestrzeni (negative space) i centralnie wyśrodkowanym sloganem.",
-                            "default_title": "AI Agent Builder & Systems Architect",
-                            "default_style": "Calm warm evening sunset sky, gradient of rich orange and deep indigo, minimalist cloud outline, vector tech art style, artistic depth, clean layout."
+                            "guide": "⚠️ Styl minimalistyczny z dużą ilością wolnej przestrzeni (negative space) i sloganem po prawej stronie.",
                         }
                     }
                     
@@ -5499,15 +5572,30 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                     st.caption(f"📏 **Zalecane wymiary:** `{specs['dimensions']}`")
                     st.info(specs['guide'])
                     
+                    slogan_val = st.session_state.get("sm_strategy", {}).get("slogan", st.session_state.get("suite_motto", "Automatyzuj powtarzalne. Twórz unikalne. Zyskaj."))
                     banner_title = st.text_input(
                         "Tekst sloganu na banerze:", 
-                        value=specs['default_title'], 
+                        value=slogan_val, 
                         key="suite_banner_title_dynamic"
                     )
-                    banner_style = st.text_area(
-                        "Styl wizualny tła:", 
-                        value=specs['default_style'], 
-                        key="suite_banner_style_dynamic"
+                    
+                    cta_val = st.session_state.get("sm_strategy", {}).get("cta", st.session_state.get("suite_cta", "➔ Zacznij automatyzować, żyj lepiej."))
+                    banner_cta = st.text_input(
+                        "Wezwanie do działania (CTA) na banerze:", 
+                        value=cta_val, 
+                        key="suite_banner_cta_dynamic"
+                    )
+                    
+                    banner_style_select = st.selectbox(
+                        "Wybierz Styl Wizualny Banera:", 
+                        [
+                            "🌌 Styl A: Cybernetic Hub (AI systems & Neural Networks)",
+                            "🌿 Styl B: Cozy Server Sanctuary (Biohacking, Nature & Tech)",
+                            "🌃 Styl C: Deep Focus Night Studio (Hyperfocus & High-Performance)",
+                            "🌅 Styl D: Biotech Garden / Freedom (Operational Freedom & Silence)",
+                            "🕴️ Styl E: Executive Cyber-Casual (Founder Authority & B2B Trust)"
+                        ],
+                        key="suite_banner_style_select"
                     )
                     
                     include_char_in_banner = False
@@ -5516,17 +5604,41 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                             "Dodaj moją postać (LoRA) do bannera", 
                             value=True, 
                             key="suite_banner_include_char",
-                            help="Jeśli zaznaczone, Twoja sylwetka/twarz zostanie wkomponowana w tło."
+                            help="Jeśli zaznaczone, Twoja sylwetka/twarz zostanie wkomponowana po lewej stronie, zgodnie z wytycznymi kompozycji."
                         )
-                        
+                    elif not has_lora:
+                        include_char_in_banner = st.checkbox(
+                            "Dodaj sylwetkę postaci do bannera", 
+                            value=False, 
+                            key="suite_banner_include_char_base",
+                            help="Jeśli zaznaczone, ogólna sylwetka postaci zostanie wkomponowana po lewej stronie."
+                        )
+
                     if st.button("Generuj Banner (Imagen 3 / Flux LoRA)", type="primary", use_container_width=True, key="suite_banner_gen_btn_dynamic"):
+                        if include_char_in_banner:
+                            if "Flux LoRA" in engine_mode and has_lora:
+                                char_part = f"On the left side, there is a professional, high-end realistic side-profile or silhouette portrait of {st.session_state.lora_trigger_word} person looking confident, integrated seamlessly into the environment. "
+                            else:
+                                char_part = f"On the left side, there is a professional, high-end realistic side-profile or silhouette portrait of {suite_char_desc} looking confident, integrated seamlessly into the environment. "
+                        else:
+                            char_part = ""
+
+                        if "Styl A" in banner_style_select:
+                            full_prompt = f"A premium panoramic cinematic wide shot of a futuristic dark control center. On the left and center, glowing glass analytics screens display abstract neural connection lines, cyan and purple networks, and subtle data charts. {char_part}On the RIGHT side of the image, there is a clean, dark charcoal space featuring the glowing, elegant text: '{banner_title}' with a smaller subtitle '{banner_cta}' underneath. Sharp lighting, ultra-high resolution, minimalist layout, text is perfectly readable, 8k."
+                        elif "Styl B" in banner_style_select:
+                            full_prompt = f"A premium panoramic wide-angle shot of a warm minimalist server room. On the left and center, modern server racks with glowing soft amber and soft green lights are mixed with lush green potted plants and small bonsais. {char_part}On the RIGHT side, on a clean, dark matte-wood wall, the following text is beautifully engraved: '{banner_title}' with a subtitle '{banner_cta}' below. Warm morning side lighting, quiet, cozy, photorealistic, 8k."
+                        elif "Styl C" in banner_style_select:
+                            full_prompt = f"A premium dramatic wide-angle panoramic shot of a quiet coding studio at night. On the left and center, dark hexagonal acoustic wall panels with glowing neon cyan linear lights and a sleek desk setup with glowing code editors. {char_part}On the RIGHT side, on a premium dark matte wall, the text: '{banner_title}' and subtitle '{banner_cta}' is sharply written with crisp light lines. High-contrast, moody volumetric lighting, premium high-performance look, 8k."
+                        elif "Styl D" in banner_style_select:
+                            full_prompt = f"An ultra-clean, minimalist wide-angle panoramic shot of a modern glass-clad workspace. On the left and center, a beautiful view of a quiet green biotech garden bathed in golden sunset light through huge clean windows. {char_part}On the RIGHT side, on a pristine, dark anthracite concrete wall, the text: '{banner_title}' and subtitle '{banner_cta}' is subtly embossed in matte metallic letters. Sunset lighting, airy atmosphere, quiet operational freedom, 8k."
+                        else: # Styl E
+                            full_prompt = f"A luxurious, elegant wide-angle panoramic shot of a prestigious executive lounge. On the left and center, clean matte-black wood panels, leather sofas, and warm recessed soft ambient lights. {char_part}On the RIGHT side, on a premium brushed titanium wall surface, the text: '{banner_title}' and subtitle '{banner_cta}' is neatly engraved with gold or silver inlay. Prestigous executive look, soft studio lighting, corporate identity perfection, 8k."
+
                         if "Flux LoRA" in engine_mode:
                             if not has_lora:
                                 st.error("⚠️ Brak aktywnej LoRA!")
                             else:
                                 with st.spinner("Model Flux-LoRA buduje spersonalizowany banner..."):
-                                    character_part = f"featuring {st.session_state.lora_trigger_word} person looking calm and confident, " if include_char_in_banner else ""
-                                    full_prompt = f"{banner_style}. A panoramic social media banner {character_part}with clean high-contrast modern typography overlays reading precisely: '{banner_title}'. Perfect horizontal centering, professional graphic design, 8k resolution."
                                     from integrations.fal_ai import run_flux_lora_generation
                                     img_bytes, err = run_flux_lora_generation(
                                         full_prompt, 
@@ -5541,7 +5653,6 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                                         st.success("Spersonalizowany banner LoRA wygenerowany!")
                         else:
                             with st.spinner("Model Imagen 3.0 buduje banner..."):
-                                full_prompt = f"{banner_style} Safe zone layout, center aligned design. In the exact horizontal center, there is high-contrast, clean typography reading precisely: '{banner_title}'. Perfect centering, mobile friendly, professional graphic design, 8k resolution."
                                 img_bytes, err = generate_imagen_image(full_prompt, aspect_ratio=specs["aspect_imagen"])
                                 if err:
                                     st.error(f"GCP API Error: {err}")
