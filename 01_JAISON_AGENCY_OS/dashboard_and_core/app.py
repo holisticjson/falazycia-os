@@ -20,7 +20,24 @@ def save_lora_state(url, trigger):
     except:
         pass
 
+def check_telegram_events():
+    events_file = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\dashboard\telegram_events.json"
+    if os.path.exists(events_file):
+        try:
+            with open(events_file, "r", encoding="utf-8") as f:
+                events = json.load(f)
+            if "shown_events" not in st.session_state:
+                st.session_state.shown_events = set()
+            for evt in events:
+                evt_id = evt.get("id")
+                if evt_id not in st.session_state.shown_events:
+                    st.toast(evt.get("message"), icon="📥" if "lead" in evt.get("type", "").lower() else "🎬")
+                    st.session_state.shown_events.add(evt_id)
+        except Exception:
+            pass
+
 def get_selected_context_data():
+
     if "selected_context" not in st.session_state:
         return ""
     
@@ -1425,6 +1442,8 @@ def show_brain_dump_dialog():
             time.sleep(1.0)
             st.rerun()
 
+check_telegram_events()
+
 # Inicjalizacja stanu sesji
 if "one_thing" not in st.session_state:
     st.session_state.one_thing = ""
@@ -2709,27 +2728,73 @@ elif menu == "CRM":
         
         st.markdown("<br>", unsafe_allow_html=True)
         with st.expander("🤖 Hermes Telegram Agent Bridge (Status & Komendy)"):
-            st.markdown("""
-            <div style="background: #111827; border-left: 4px solid #10B981; padding: 15px; border-radius: 4px; margin-bottom: 15px;">
-                <span style="font-weight: bold; color: #10B981; font-size: 1.1rem;">⚡ Status Hermes Telegram Bot:</span> 
-                <span style="background: #064E3B; color: #34D399; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 10px;">ACTIVE (Webhook Mode)</span>
-            </div>
-            """, unsafe_allow_html=True)
+            st.markdown("### 📡 Panel Sterowania Demonem Hermes Telegram Bot")
             
+            pid_file = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\telegram_bridge.pid"
+            daemon_running = False
+            active_pid = None
+            
+            if os.path.exists(pid_file):
+                try:
+                    with open(pid_file, "r") as f:
+                        active_pid = int(f.read().strip())
+                    import subprocess
+                    output = subprocess.check_output(f'tasklist /FI "PID eq {active_pid}"', shell=True).decode()
+                    if str(active_pid) in output:
+                        daemon_running = True
+                except Exception:
+                    pass
+            
+            if daemon_running:
+                st.markdown(f"""
+                <div style="background: #064E3B; border-left: 4px solid #10B981; padding: 15px; border-radius: 4px; margin-bottom: 15px;">
+                    <span style="font-weight: bold; color: #34D399; font-size: 1.1rem;">🟢 Status: AKTYWNY (Real Polling Mode)</span> 
+                    <span style="background: #111827; color: #10B981; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-left: 10px;">PID: {active_pid}</span>
+                </div>
+                """, unsafe_allow_html=True)
+                
+                if st.button("🛑 Zatrzymaj bota Telegram", type="secondary", key="stop_tg_daemon"):
+                    try:
+                        import os, signal
+                        os.kill(active_pid, signal.SIGTERM)
+                        st.info("Zatrzymano proces bota Telegram.")
+                        if os.path.exists(pid_file):
+                            os.remove(pid_file)
+                        time.sleep(1.0)
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"Błąd zatrzymania: {e}")
+            else:
+                st.markdown("""
+                <div style="background: #7F1D1D; border-left: 4px solid #EF4444; padding: 15px; border-radius: 4px; margin-bottom: 15px;">
+                    <span style="font-weight: bold; color: #FCA5A5; font-size: 1.1rem;">🔴 Status: WYŁĄCZONY</span> 
+                </div>
+                """, unsafe_allow_html=True)
+                
+                if st.button("🔌 Uruchom bota Telegram", type="primary", key="start_tg_daemon"):
+                    try:
+                        import subprocess
+                        import sys
+                        script_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\telegram_bridge.py"
+                        p = subprocess.Popen([sys.executable, script_path], creationflags=subprocess.CREATE_NEW_CONSOLE)
+                        st.success(f"🚀 Telegram Bot pomyślnie uruchomiony w tle! (PID: {p.pid})")
+                        time.sleep(1.0)
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"Błąd uruchamiania bota: {e}")
+
             st.markdown("""
-            Twój wirtualny asystent **Hermes Agent** jest w pełni połączony z centralną bazą danych. 
-            Pozwala to na sterowanie CRM-em za pomocą wiadomości głosowych lub tekstowych bezpośrednio z aplikacji Telegram na Twoim telefonie.
+            Twój wirtualny asystent **Hermes Agent** jest połączony bezpośrednio z Twoim systemem.
+            Pozwala to na sterowanie CRM-em oraz tworzenie projektów wideo za pomocą komend bezpośrednio z Twojego telefonu.
             
             ##### 🛠️ Wspierane komendy i akcje:
-            1. **`/lead [Nazwa] [Notatka]`** — Błyskawicznie dodaje nową szansę sprzedażową do bazy `crm.json`.
-               * *Przykład:* `/lead coolfon.pl Pan Tomasz szuka wdrożenia bota AI`
-            2. **`/status [Nazwa]`** — Sprawdza aktualny status klienta w Twoim lejeku Jaisona.
-            3. **`/brief [Nazwa]`** — Wywołuje asynchronicznie wygenerowanie i wysłanie PDF z briefem klienta bezpośrednio na Twój czat Telegrama.
-            
-            ##### 📁 Ścieżka demona nasłuchującego:
-            Wszystkie zdarzenia z Telegrama są asynchronicznie przetwarzane i przekazywane do lokalnego webhooka przez proces tła:
-            `C:\\Aplikacje MVP\\01_JAISON_AGENCY_OS\\dashboard_and_core\\telegram_bridge.py`
+            1. **`/lead [Nazwa] [Notatki]`** — Dodaje nową szansę sprzedażową do bazy `crm.json`.
+               * *Przykład:* `/lead coolfon.pl Szuka wdrożenia automatyzacji`
+            2. **`/tasks`** — Wyświetla listę zadań z Twojego ADHD Kanban board.
+            3. **`/stats`** — Zwraca aktualny stan Twojego pipeline sprzedaży.
+            4. **`/video [Temat]`** — Generuje kompletny projekt wideo pod CapCut Desktop i syncuje go przez Git!
             """)
+
             
             # Dodajmy symulator komendy telegramowej dla Tomasza! (Wspaniały efekt)
             st.markdown("---")

@@ -152,5 +152,37 @@ Wszyscy agenci (w tym Hermes, Antigravity i inni) pracujący nad integracjami sp
   - **Hermes (via Composio MCP)** obsługuje dynamiczne, decyzyjne pętle aktywne, moderację treści i autonomiczne publikacje social media na żądanie użytkownika.
 
 
+16. **STANDARD STACKU LOW-FRICTION / LOW-COST, MEMORY LOOP ORAZ WYTYCZNE CASE STUDY NA KONIEC PROJEKTU**
+
+Dla każdego nowo zakładanego projektu (klienckiego lub własnego agencji) obowiązują następujące twarde wytyczne realizacyjne:
+
+### A. Architektura Low-Friction & Low-Cost (Złoty Stack J(AI)SON)
+*   **Fundament Chmurowy (Google Cloud Platform):** Maksymalnie wykorzystujemy darmowy program $300 Free Trial oraz $1000 GenAI App Builder credit. Wszystkie asynchroniczne i bazodanowe systemy (webhooki, Cloud Run, GCS, BigQuery) mają dążyć do zerowych kosztów stałych u klienta.
+*   **Marketing & Funnele (Systeme.io):** Zawsze wdrażamy darmowy plan Systeme.io pod subdomenami (np. `go.jaison.pl`, `leads.jaison.pl`) do obsługi newsletterów i lead magnetów, nie blokując i nie obciążając głównego frontu aplikacji.
+*   **Orkiestracja & Integracje (n8n & Composio):** Korzystamy z n8n (darmowy hosting lub darmowy plan) do liniowych automatyzacji oraz platformy Composio (via MCP) jako centralnego, bezpiecznego huba do autoryzacji społecznościowych i systemów workspace (Slack, Gmail, Calendar).
+*   **Premium Frontend:** Budujemy czyste, szybkie, nowoczesne interfejsy w oparciu o Vanilla HTML/CSS/JS (z estetycznym dark-mode, neonowymi gradientami i glassmorphismem) lub Streamlit. Unikamy zbędnych, drogich platform subskrypcyjnych.
+
+### B. Obowiązkowy Memory Loop (Project State File)
+Przed rozpoczęciem prac nad jakimkolwiek projektem, agent prowadzący ma **bezwzględny nakaz** utworzenia pliku stanu w katalogu roboczym: `.agents/WORKSPACE_MEMORY.md` lub `WORKSPACE_MEMORY.md`. 
+*   Plik ten służy jako żywy dziennik projektu (Zettelkasten), rejestrujący kluczowe kamienie milowe, strukturę techniczną, zmienne środowiskowe (bez wpisywania sekretów wprost!) oraz aktualne TODO.
+*   Na starcie każdej kolejnej sesji, agent musi najpierw odczytać ten plik stanu, aby kontynuować pracę z pełnym kontekstem i wykluczyć utratę informacji po restartach środowiska.
+
+### C. Obowiązkowe Case Study na Koniec Projektu (Niszowe i Unikalne)
+Każdy projekt realizowany przez J(AI)SON dotyczy innej branży, innej niszy rynkowej oraz opiera się na specyficznych dla klienta wytycznych, integracjach i wzorcach. Dlatego kategorycznie zabrania się stosowania gotowych, generycznych opisów bez głębokiego wgryzienia się w specyfikę projektu.
+
+**Procedura dwuetapowa na koniec prac:**
+1.  **Etap 1: Wywiad Diagnostyczny (Niszowe Pytania):** Agent odpowiedzialny za projekt przed przygotowaniem opisu ma obowiązek sformułować zestaw **5 do 8 precyzyjnych, niszowych pytań diagnostycznych** dedykowanych dla danej branży. Pytania te muszą dotyczyć głębi technologicznej, specyficznych rozwiązań (np. asystent nawyków mentalnych, degustacje, unikalne automatyzacje) oraz twardego, mierzalnego ROI.
+2.  **Etap 2: Adaptacja Szablonu:** Dopiero po uzyskaniu odpowiedzi (z logów wdrożenia lub bezpośredniego wywiadu z Tomaszem), agent tworzy unikalny opis wdrożenia, trzymając się poniższej struktury:
+
+#### Struktura Case Study J(AI)SON (Framework Perswazyjny):
+1.  **Nagłówek Hero (One-sentence hook):** Krótki, magnetyczny hak dostosowany do unikalnego rezultatu (np. *"Jak odzyskaliśmy 20 godzin..."*).
+2.  **Demaskowanie Kartelu (Architecture of Trust):** Bezlitosne obnażenie specyficznych patologii, naciągań lub nieskutecznych praktyk tradycyjnej konkurencji w danej branży klienta.
+3.  **Problem:** Fizyczne, techniczne i czasowe punkty tarcia specyficzne dla danej niszy rynkowej przed wdrożeniem automatyzacji.
+4.  **Sposób (Nasza Technologia):** Łopatologiczne, obrazowe wyjaśnienie zastosowanego stacku (np. suwerenny agent, asystent nawyków itp.).
+5.  **Rozwiązanie & Mierzalne ROI:** Twarde dane biznesowe, zaoszczędzony czas, wzrost zaangażowania zespołu oraz koszty utrzymania bliskie zeru.
+6.  **Głos Marki (Ghost v2):** Tekst napisany w 100% bezpośrednio ("Ty"), surowym, zaangażowanym tonem z **bezwzględnym nakazem stosowania tagów `<strong>` i `</strong>` do pogrubień** (całkowity zakaz używania składni `**` w plikach HTML).
+
+
+
 
 
