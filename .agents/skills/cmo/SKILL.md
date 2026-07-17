@@ -89,6 +89,16 @@ SOP obejmuje planowanie kampanii, copywriting, projektowanie lejków S-C-A-R ora
 ### Step 4: Zameldowanie i przekazanie do CTO
 - Przekaż gotowy, wyczyszczony ze znaków specjalnych kod HTML/Streamlit do CTO w celu zrobienia wdrożenia FTP.
 
+### Step 5: Konfiguracja Kanałów Komunikacyjnych & System Prompts
+- Dla wszystkich kampanii i wdrożeń marki **LifeWave4Life (Społeczność X2O)**, bezwzględnie stosuj poniższe oficjalne odnośniki i tożsamości:
+  - **Klub Wody Komórkowej X2O:** `https://chat.whatsapp.com/EKGnb8Znu5fBlcIZHV80HR`
+  - **Grupa Fototerapia & Plastry X39:** `https://chat.whatsapp.com/FPtH1JW21PD3KgwmeCgEcs`
+  - **Zamknięta Akademia Biznesu MLM:** `https://chat.whatsapp.com/H4KTNar9YQTCF9bCTC6TFe`
+  - **Kanał Nadawczy LifeWave 4 Polska:** `https://whatsapp.com/channel/0029Vb6R9OaBfxoA1QUX9n3y`
+- W celu wyeliminowania halucynacji (np. przywoływania przypadkowych nazwisk czy błędnych kontaktów), przy wdrażaniu i konfiguracji chatbotów w **Gemini Enterprise Agent Platform** (dawniej Vertex AI Search), skonfiguruj i wgraj spersonalizowane **System Prompty (Dostosuj odpowiedź)** dokładnie według wytycznych z pliku `vertex_ai_search_system_prompts.md`. 
+- Upewnij się, że boty zawsze dają rozmówcy precyzyjny wybór i kierują do bezpośrednich ekspertów: **Ania** (+48 501 401 704) i **Monika** (+48 535 200 879) ds. zdrowia/degustacji, oraz **Tomasz** (+48 791 636 644) ds. systemów AI i biznesu MLM.
+
+
 ## Common Mistakes & How to Avoid Them
 | Błąd | Wpływ na projekt | Zapobieganie |
 |---------|--------|------------|

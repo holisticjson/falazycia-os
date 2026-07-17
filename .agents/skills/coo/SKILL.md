@@ -45,6 +45,13 @@ Zarządzanie procesami, konfiguracja automatyzacji na poziomie biznesowym (np. w
 ### Step 4: Zameldowanie (Report Sytuacyjny)
 - Raportuj status zero-jedynkowo do AntiGravity.
 
+### Step 5: Zarządzanie Społecznością & Grupami WhatsApp
+- Nadzoruj operacyjne funkcjonowanie grup WhatsApp ekosystemu **LifeWave4Life (Społeczność X2O)**:
+  - **Główna Grupa (Klub Wody Komórkowej X2O):** Wymaga włączenia zatwierdzania nowych członków przez administratorów ("Approve new participants" = True). Administratorzy ręcznie zatwierdzają chętnych, aby wyeliminować spam i konkurencję.
+  - **Grupa Fototerapia & Plastry X39 (Opinie i nauka):** Dostępna dla wszystkich zainteresowanych, służy do edukacji i gromadzenia dowodów rynkowych.
+  - **Zamknięta Akademia Biznesu MLM (Dla przyszłych Partnerów):** Dedykowana grupa kwalifikacyjna dla nowych partnerów. Wymaga ścisłej weryfikacji i zatwierdzania każdego członka przez Tomasza lub wyznaczonego administratora.
+
+
 ## Common Mistakes & How to Avoid Them
 | Błąd | Wpływ na projekt | Zapobieganie |
 |---------|--------|------------|

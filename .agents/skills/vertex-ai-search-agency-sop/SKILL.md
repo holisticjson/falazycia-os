@@ -81,42 +81,59 @@ W celu zasilenia bota poufnymi informacjami (instrukcje techniczne, wewnętrzne 
     *   `nazwa-klienta-website-store`
 7.  Potwierdź i utwórz aplikację.
 
-### Krok 6: Dostrajanie i System Prompt (Konfiguracja Premium)
+### Krok 6: Dostrajanie i System Prompt (Konfiguracja Premium w Gemini Enterprise Agent Platform)
 Przejdź do sekcji **Konfiguracja** (Configuration) -> zakładka **UI / Dostrajanie**:
-1.  **Wybór Modelu**: Zmień model językowy na **`Gemini 2.5 Flash`** (aktualnie optymalny model pod kątem relacji jakość/koszt w zastosowaniach hybrydowych RAG). Nie wybieraj przestarzałych wersji (gemini-pro).
-2.  **System Prompt (Instrukcje)**: Zastąp domyślny komunikat tym spersonalizowanym szablonem "Ghost v2":
+1.  **Wybór Modelu**: Zmień model językowy na najnowszy stabilny z serii Flash, np. **`Gemini 2.5 Flash`** (lub **`Gemini 2.0 Flash 1`**), a w przypadku testów najnowszych rozwiązań na **`Gemini 3 Flash` (wersja testowa)**. Nie wybieraj przestarzałych wersji (jak 1.5 Flash czy starsze) ani kosztownych modeli z serii Pro (jak Gemini 3.1 Pro / 1.5 Pro) do standardowych zastosowań wyszukiwania, chyba że wymagane jest bardzo zaawansowane wnioskowanie logiczne. Wersje Flash gwarantują najkrótszy czas odpowiedzi przy zachowaniu znikomych kosztów.
+2.  **Tabela Rekomendacji Parametrów GCP**:
+    Upewnij się, że poniższe pola w sekcji "Konfiguracja ogólna" w GCP są ustawione zgodnie z poniższą specyfikacją:
+    
+    | Parametr w GCP | Zalecany Wybór | Rola Techniczna |
+    | :--- | :--- | :--- |
+    | **Typ wyszukiwania** | `Wyszukiwanie z odpowiedzią` | Najbardziej stabilny dla własnego backendu PHP (`chat.php`), który sam zarządza historią sesji. |
+    | **Liczba wyników do podsumowania** | `5` (Marketing) / `3` (Techniczny) | Optymalna wielkość okna kontekstowego dla precyzyjnego syntezowania faktów. |
+    | **Model LLM** | `Gemini 2.5 Flash` lub `Gemini 2.0 Flash 1` | Szybkość, niezawodność, nowoczesność i niski koszt. |
+    | **Ignoruj podsumowanie przy braku odp.** | `WŁĄCZONE` (True) | Zapobiega halucynacjom. Umożliwia automatyczny fallback po stronie backendu PHP. |
+    | **Ignoruj szkodliwe zapytania** | `WŁĄCZONE` (True) | Ochrona przed atakami typu jailbreak na model językowy. |
+    | **Ignoruj mało istotne treści** | `WŁĄCZONE` (True) | Filtruje mało pasujące fragmenty dokumentów. |
+    | **Obraz w odpowiedziach** | `Brak źródła` (None) | Blokada kosztownych wywołań modeli graficznych Imagen. |
+    | **Wyświetl sugestie autouzupełniania** | `WYŁĄCZONE` (False) | Oszczędność ruchu API przy stosowaniu Custom UI. |
+    | **Włącz przesyłanie opinii** | `WYŁĄCZONE` (False) | Paski ocen i opinie sterowane są po stronie customowego frontendu. |
+
+3.  **System Prompt (Dostosuj odpowiedź)**: Zastąp domyślny komunikat poniższym szablonem, dopasowując dane i tożsamości partnerów:
     
     ```text
-    Jesteś wirtualnym doradcą i asystentem AI reprezentującym markę Jaison (jaison.pl), agencję wdrażającą infrastrukturę opartą o sztuczną inteligencję. Twoim celem jest merytoryczna pomoc i kwalifikacja leadów biznesowych.
-    Kierujesz się zasadami Ghost v2 oraz architekturą 'Low-Friction'. Pisz zwięźle, bez korpo-żargonu, jak specjalista B2B.
-    Masz BEZWZGLĘDNY ZAKAZ używania formatowania Markdown (żadnych pogrubień **, kursyw *, nagłówków ###). Pisz czystym tekstem.
+    Jesteś wirtualnym doradcą i asystentem AI reprezentującym markę LifeWave4Life oraz społeczność budowaną przez partnerów handlowych. Twój cel to merytoryczne edukowanie rynku o rewolucyjnej hydratacji biofotonowej X2O™ oraz fototerapii komórkową LifeWave (X39), a także selektywne kwalifikowanie ludzi do współpracy biznesowej.
     
-    TWOJE ZADANIE - AUDYT (21 PYTAŃ):
-    Gdy rozpoznasz, że klient jest zainteresowany współpracą lub szuka rozwiązania, zaproponuj bezpłatny audyt potrzeb (skławający się łącznie z 21 pytań ewaluacyjnych z Twojej bazy wiedzy, opartych m.in. o Umiejętności Jutra).
-    Zadawaj pytania naturalnie, maksymalnie 1-2 na raz, wchodząc w dialog. Kategoryzuj odpowiedzi.
-    Jeśli klient nie zna odpowiedzi na jakieś pytanie, nie dotyczy go ono, lub jawnie wyrazi chęć bezpośredniej rozmowy z człowiekiem, NATYCHMIAST przerwij audyt i zaproponuj bezpośredni kontakt.
+    KIERUJ SIĘ ZASADAMI GHOST V2 (Worre, Damian, Albridges):
+    - PERSPEKTYWA DORADCY: Pisz merytorycznie, z pasją, bez taniego i nachalnego marketingu. Traktuj rozmówcę z szacunkiem i empatią.
+    - REKRUTACJA SELEKTYWNA: Nie obiecuj łatwych zysków bez pracy. Jeśli użytkownik pyta o biznes, zaznacz, że LifeWave4Life to rzetelny system duplikacji oparty o gotowe narzędzia marketingowe i automatyzację (brak tradycyjnej rekrutacji i wciskania). Poszukujemy partnerów zaangażowanych.
+    - ZAKAZ HALUCYNACJI: Jeśli w bazie wiedzy nie ma bezpośredniej odpowiedzi na pytanie, nie zmyślaj faktów i nie łącz ich na siłę z przypadkowymi nazwiskami. Zamiast tego zwięźle zaproponuj bezpośredni kontakt z zespołem doradców na WhatsApp.
     
-    ŚCIEŻKI KONTAKTU (Zawsze podawaj te konkretne linki, aby system wygenerował klikalne adresy URL):
-    Gdy klient chce się skontaktować lub umówić, przedstaw mu 3 opcje wyboru podając te dokładne linki w swoim tekście:
-    1. Umówienie spotkania wideo: https://cal.com/jaison
-    2. Szybka wiadomość na WhatsApp (bezpośrednio do Tomasza): https://wa.me/48791636644
-    3. Wiadomość e-mail (wywołuje program pocztowy): mailto:hello@jaison.pl
-    
-    Zawsze odpowiadaj z dużą empatią, dopasowując się do problemu rozmówcy. Jeśli czegoś nie wiesz, nie zmyślaj - od razu kieruj do człowieka używając powyższych ścieżek kontaktu.
+    ŚCIEŻKI KONTAKTU (Zawsze podawaj te precyzyjne odnośniki dla ułatwienia wyboru):
+    * 💧 KONSULTACJE ZDROWOTNE, REGENERACJA & DEGUSTACJE W ŁODZI (ul. Nawrot, Świątynia Harmonii):
+      - Skontaktuj się z Anią: [+48 501 401 704](https://wa.me/48501401704) (Brand Partner, Specjalistka ds. fotobiomodulacji i zdrowia komórkowego)
+      - Skontaktuj się z Moniką: [+48 535 200 879](https://wa.me/48535200879) (Brand Partner, Director, Doradczyni ds. hydratacji biofotonowej X2O)
+    * 💼 AUTOMATYZACJA, LEJKI MARKETINGOWE, SYSTEM BIZNESOWY DLA NOWYCH PARTNERÓW:
+      - Skontaktuj się z Tomaszem: [+48 791 636 644](https://wa.me/48791636644) (Brand Partner, Specjalistka ds. automatyzacji i systemów AI)
     ```
-3.  **Filtr Halucynacji**: Włącz suwak **`Ignoruj podsumowanie przy braku odpowiedzi na zapytanie`** (zmień na True), aby bot milczał i kierował do kontaktu w przypadku pytań niezwiązanych z ofertą.
-4.  **Generowanie obrazów**: Pozostaw suwak *Obraz w odpowiedziach* w pozycji **`Brak źródła`** (oszczędność budżetu!).
-5.  Kliknij **Zapisz i opublikuj (Save and publish)**.
+
+4.  Kliknij **Zapisz i opublikuj (Save and publish)**.
+
+---
+
+## 🛠️ Autoryzacja Publiczna vs. Prywatne Proxy (Różnice Architektoniczne)
+
+Podczas planowania wdrożenia upewnij się, że rozumiesz różnicę między dwiema ścieżkami integracji. **Opcja B (Rekomendowana)** nie wymaga konfiguracji domen w zakładce "Integracja" w GCP, ponieważ autoryzacja odbywa się po stronie serwera za pomocą konta usługowego, co całkowicie chroni klucze przed wyciekiem.
 
 ---
 
 ## 🛠️ Opcja A: Szybki Start (Darmowy Publiczny Widget Google)
-*Najprostsza metoda bez programowania własnego backendu, dobra na szybki test MVP.*
+*Najprostsza metoda bez programowania własnego backendu, dobra na szybki test MVP. Wymaga publicznej autoryzacji i whitelistingowania domen w GCP.*
 
 ### Krok 1: Wybór Autoryzacji Publicznej i Whitelisting
 1.  W Vertex AI Agent Builder przejdź do zakładki **Integracja (Integration)** w lewym menu.
 2.  **Bezwzględnie zaznacz opcję: `Dostęp publiczny` (Public access)**. 
-3.  W polu **Dodaj dozwolone domeny dla widżetu** wpisz domenę klienta bez protokołu (np. `jaison.pl`) i kliknij niebieski przycisk **Dodaj (Add)**. Zrób to dla wariantu z www i bez www (`jaison.pl` oraz `www.jaison.pl`).
+3.  W polu **Dodaj dozwolone domeny dla widżetu** wpisz domenę klienta bez protokołu (np. `jaison.pl` lub `x2o.jaison.pl`) i kliknij niebieski przycisk **Dodaj (Add)**. Zrób to dla wariantu z www i bez www.
 4.  Zjedź niżej i kliknij przycisk **Zapisz (Save)**.
 5.  Skopiuj wartość `configId="..."` i wklej na sam dół pliku HTML w poniższym kodzie.
 
@@ -178,6 +195,36 @@ sequenceDiagram
     PHP Backend (chat.php)-->>Custom Frontend (JS): Zwraca czysty HTML
     Custom Frontend (JS)-->>Użytkownik (Przeglądarka): Wyświetla luksusowe bąbelki czatu
 ```
+
+### 🛡️ KROK KRYTYCZNY: Generowanie Klucza JSON i Blokada Organizacji (Organization Policy)
+
+Podczas generowania klucza JSON dla konta usługi w organizacjach (np. podpiętych pod domenę `holisticjson.org` lub inne Google Workspace), możesz napotkać błąd bezpieczeństwa:
+**"Tworzenie klucza konta usługi jest wyłączone / W Twojej organizacji egzekwowana jest zasada organizacji, która uniemożliwia tworzenie kluczy kont usług."** (identyfikator: `iam.disableServiceAccountKeyCreation`).
+
+Jest to domyślna polityka bezpieczeństwa Google Cloud mająca na celu zapobieganie wyciekom kluczy JSON. Jako administrator organizacji musisz ją wyłączyć lub nadpisać dla danego projektu.
+
+#### Procedura Odblokowania Tworzenia Klucza JSON (Krok po Kroku):
+
+1. **Wymagane uprawnienia:** Upewnij się, że Twoje konto użytkownika ma rolę **Administrator zasad organizacji (Organization Policy Administrator)** (`roles/orgpolicy.policyAdmin`) na poziomie Organizacji lub Folderu.
+2. **Przejdź do Polityki Organizacji:**
+   * Wyszukaj w górnym pasku wyszukiwania GCP: **"Zasady organizacji" (Organization policies)**.
+   * Alternatywnie: wejdź w menu bocznym w **IAM i administracja (IAM & Admin)** -> **Zasady organizacji (Organization Policies)**.
+3. **Wyszukaj właściwe ograniczenie:**
+   * W polu filtra wpisz: `disableServiceAccountKeyCreation` lub **"Zablokowanie tworzenia klucza konta usługi"**.
+   * Kliknij na wyszukaną zasadę.
+4. **Zarządzaj polityką (Edit/Manage Policy):**
+   * Kliknij **Dostosuj (Customize)** na górnym pasku akcji, aby edytować regułę.
+   * W sekcji **Zasady dotyczące wartości (Applies to / Policy enforcement)** zaznacz opcję **Dostosuj (Customize)** (nadpisując domyślne ustawienia dziedziczone z organizacji parent).
+5. **Dodaj regułę wyłączającą ograniczenie:**
+   * Kliknij **Dodaj regułę (Add a rule)**.
+   * Ustaw typ reguły na **Wyłączone (Off)** (oznacza to: *wyłącz blokadę tworzenia kluczy*, czyli zezwól na ich tworzenie).
+   * Kliknij **Zapisz (Save)** lub **Zastosuj (Apply)**.
+6. **Wygeneruj klucz:**
+   * Odczekaj około 1-2 minuty na propagację zmian w infrastrukturze Google Cloud.
+   * Przejdź z powrotem do **IAM i administracja (IAM & Admin)** -> **Konta usług (Service Accounts)**.
+   * Wybierz swoje konto usługi (np. `x2o-service@jaison-x2o-portal.iam.gserviceaccount.com`).
+   * Wejdź w zakładkę **Klucze (Keys)** -> **Dodaj klucz (Add key)** -> **Utwórz nowy klucz (Create new key)** -> wybierz format **JSON**.
+   * Klucz zostanie pomyślnie pobrany na Twój komputer jako plik `.json`!
 
 ---
 
@@ -524,4 +571,43 @@ function sendJaisonMessage() {
     });
 }
 </script>
+
+---
+
+## 💎 CASE STUDY: WZORCOWE WDROŻENIE PREMIUM — `x2o.jaison.pl` (LifeWave4Life)
+
+To studium przypadku opisuje kanoniczne wdrożenie podwójnego bota RAG z integracją kalendarza Cal.com oraz asynchronicznym CRM społecznościowym na WhatsApp dla marki **LifeWave4Life**. Służy jako kompletna specyfikacja referencyjna do powielania przy kolejnych wdrożeniach agencyjnych.
+
+### 1. Architektura Podwójnego Bota (Dual-Bot Architecture)
+Wdrożono dwie niezależne instancje wyszukiwarki w konsoli GCP, aby zapobiec mieszaniu kontekstów i szumowi informacyjnemu:
+*   **Bot Marketingowy (`x2o-marketing-search`):**
+    *   *Rola:* Edukacja naukowa, fizyka kwantowa, regeneracja EZ, filtrowanie leadów, rekrutacja biznesowa MLM.
+    *   *System Prompt:* Skonfigurowany w duchu Top-Liderów MLM (Worre, Damian, Albridges) z rygorystycznym zakazem halucynacji (Ignoruj podsumowanie przy braku odpowiedzi = True).
+*   **Bot Techniczny (`x2o-technical-search`):**
+    *   *Rola:* Inżynier instalacji, krok po kroku montaż urządzenia, pierwsze płukanie membrany, konserwacja kwaskiem, kody błędów.
+    *   *System Prompt:* Posiada techniczny i zwięzły ton, wyłącza dyskusję o biznesie i kieruje na podstronę instrukcji `x2o-guide-pl.html`.
+
+### 2. Oficjalna Tożsamość & Dane Kontaktowe Partnerów
+W celu zapewnienia perfekcyjnej wiarygodności, System Prompty botów posiadają twardo zakodowane ścieżki wyboru kierujące do konkretnych osób:
+*   **💧 Zdrowie, Regeneracja & Degustacje (ul. Nawrot, Łódź):**
+    *   **Ania:** [+48 501 401 704](https://wa.me/48501401704) (Brand Partner, Specjalistka ds. fotobiomodulacji i naturalnego zdrowia komórkowego).
+    *   **Monika:** [+48 535 200 879](https://wa.me/48535200879) (Brand Partner, Director, Doradczyni ds. hydratacji biofotonowej X2O™ oraz regeneracji).
+*   **💼 Biznes MLM, Automatyzacja & AI dla Nowych Partnerów:**
+    *   **Tomasz:** [+48 791 636 644](https://wa.me/48791636644) (Brand Partner, Specjalista ds. systemów automatyzacji i wdrażania systemów AI dla nowych partnerów handlowych).
+
+### 3. Ekosystem Grup WhatsApp (Społeczność X2O)
+Wszystkie punkty styku i chatboty promują oficjalną strukturę społecznościową:
+*   **Klub Wody Komórkowej X2O (Grupa Główna):** [Dołącz do grupy](https://chat.whatsapp.com/EKGnb8Znu5fBlcIZHV80HR)
+    *   *Reguła Operacyjna:* Włączone zatwierdzanie nowych członków przez administratorów ("Approve new participants" = True). Chroni przed spamem konkurencji.
+*   **Grupa Fototerapia & Plastry X39 (Opinie i Nauka):** [Dołącz do grupy](https://chat.whatsapp.com/FPtH1JW21PD3KgwmeCgEcs)
+    *   *Reguła Operacyjna:* Grupa otwarta dla wszystkich zainteresowanych, gromadząca dowody społeczne i opinie.
+*   **Zamknięta Akademia Biznesu MLM (Dla przyszłych Partnerów):** [Dołącz do grupy](https://chat.whatsapp.com/H4KTNar9YQTCF9bCTC6TFe)
+    *   *Reguła Operacyjna:* Grupa selektywna, wymagająca zatwierdzania każdego członka przez Tomasza po asynchronicznej kwalifikacji.
+*   **Kanał Nadawczy LifeWave 4 Polska:** [Dołącz do kanału](https://whatsapp.com/channel/0029Vb6R9OaBfxoA1QUX9n3y)
+
+### 4. Techniczna Automatyzacja Kalendarza (Cal.com + n8n)
+*   **Ochrona przed kolizją:** Cal.com działa jako "inteligentna nakładka" na Kalendarz Google Ani. Gdy Ania wpisze w swój prywatny kalendarz masaż Kobido, termin ten natychmiast staje się niedostępny dla darmowych degustacji w Cal.com.
+*   **Zarządzanie Wydajnością (Group Booking):** Ponieważ stacja X2O generuje 4 szklanki wody strukturyzowanej w cyklu 45-minutowym, spotkanie w Cal.com ma ustawiony parametr **`Seats = 4`** (Miejsca na jeden slot). Do jednego terminu może zapisać się maksymalnie 4 różnych użytkowników.
+*   **Pętla CRM n8n:** Każdy nowy zapis w Cal.com wyzwala webhook w n8n, który wysyła automatyczny SMS z potwierdzeniem (i adresem gabinetu ul. Nawrot 104) oraz powiadomienie CRM do terapeutek na WhatsApp.
+
 ```
