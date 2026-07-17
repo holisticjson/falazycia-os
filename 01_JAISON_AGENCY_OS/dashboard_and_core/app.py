@@ -5351,11 +5351,42 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                         
             with tab_visuals:
                 st.subheader("🎨 Kreator Tożsamości Wizualnej (Awatary i Bannery)")
-                st.markdown("Model **Google Imagen 3.0** wygeneruje spójne graficznie awatary i bannery reklamowe z symulacją bezpiecznej strefy dla smartfonów.")
+                st.markdown("Wygeneruj spójne graficznie awatary i bannery dostosowane pod każdą z platform przy użyciu **Google Imagen 3.0** lub Twojego prywatnego modelu **Flux LoRA**.")
+                
+                # Sprawdź stan LoRA
+                has_lora = "lora_result_url" in st.session_state and st.session_state.lora_result_url
+                
+                st.markdown("### 🎛️ 1. Wybór Silnika Generacji")
+                col_engine1, col_engine2 = st.columns([2, 1])
+                with col_engine1:
+                    engine_mode = st.radio(
+                        "Silnik graficzny:",
+                        ["Google Imagen 3.0 (Szybki, wszechstronny)", "Flux LoRA (Twój spersonalizowany styl i twarz)"],
+                        index=1 if has_lora else 0,
+                        horizontal=True,
+                        key="visuals_engine_select",
+                        help="Wybierz Flux LoRA, aby wygenerować grafiki bezpośrednio ze swoją twarzą!"
+                    )
+                with col_engine2:
+                    if has_lora:
+                        lora_scale = st.slider(
+                            "Wpływ LoRA (Scale):", 
+                            min_value=0.1, 
+                            max_value=2.0, 
+                            value=0.85, 
+                            step=0.1,
+                            key="visuals_lora_scale",
+                            help="Rekomendowana wartość: 0.85."
+                        )
+                    else:
+                        st.info("💡 Brak aktywnej LoRA. Możesz ją wgrać/wytrenować w LoRA Studio.")
+                        lora_scale = 1.0
+
+                st.markdown("---")
                 
                 col_i1, col_i2 = st.columns([1, 1])
                 with col_i1:
-                    st.write("##### 👤 1. Generowanie Spójnego Awatara:")
+                    st.write("##### 👤 2. Generowanie Spójnego Awatara:")
                     avatar_desc = st.text_input("Kim ma być postać na awatarze:", value="Młody, charyzmatyczny programista z ADHD w okularach, z inteligentnym uśmiechem", key="suite_avatar_desc")
                     avatar_style = st.selectbox("Styl graficzny awatara:", [
                         "Deep technological neon portrait, 3D style, high-end octane render",
@@ -5363,16 +5394,35 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                         "Anime cyber-punk detailed aesthetic, vibrant colors, vector illustration"
                     ], key="suite_avatar_style")
                     
-                    if st.button("Generuj Profesjonalny Awatar (Imagen 3)", type="primary", key="suite_avatar_gen_btn", use_container_width=True):
-                        with st.spinner("Model Imagen 3 generuje idealnie wykadrowany awatar..."):
-                            full_avatar_prompt = f"Square avatar close-up portrait of {avatar_desc}. Style: {avatar_style}. Face focused, perfect composition, extremely high quality details, 8k resolution, profile picture template."
-                            img_bytes, err = generate_imagen_image(full_avatar_prompt, aspect_ratio="1:1")
-                            if err:
-                                st.error(f"GCP API Error: {err}")
-                            elif img_bytes:
-                                st.session_state.sm_generated_avatar = img_bytes
-                                st.success("Awatar wygenerowany pomyślnie!")
-                                
+                    if st.button("Generuj Profesjonalny Awatar", type="primary", key="suite_avatar_gen_btn", use_container_width=True):
+                        if "Flux LoRA" in engine_mode:
+                            if not has_lora:
+                                st.error("⚠️ Brak aktywnej LoRA! Wklej link do wag w zakładce LoRA Studio.")
+                            else:
+                                with st.spinner("Model Flux-LoRA generuje spersonalizowany awatar..."):
+                                    full_avatar_prompt = f"A professional close-up portrait of {st.session_state.lora_trigger_word} person, {avatar_desc}. style: {avatar_style}. face focused, perfect composition, extremely high quality details, 8k resolution."
+                                    from integrations.fal_ai import run_flux_lora_generation
+                                    img_bytes, err = run_flux_lora_generation(
+                                        full_avatar_prompt, 
+                                        st.session_state.lora_result_url, 
+                                        scale=lora_scale, 
+                                        aspect_ratio="square_hd"
+                                    )
+                                    if err:
+                                        st.error(f"Fal.ai API Error: {err}")
+                                    elif img_bytes:
+                                        st.session_state.sm_generated_avatar = img_bytes
+                                        st.success("Spersonalizowany awatar LoRA wygenerowany!")
+                        else:
+                            with st.spinner("Model Imagen 3 generuje idealnie wykadrowany awatar..."):
+                                full_avatar_prompt = f"Square avatar close-up portrait of {avatar_desc}. Style: {avatar_style}. Face focused, perfect composition, extremely high quality details, 8k resolution, profile picture template."
+                                img_bytes, err = generate_imagen_image(full_avatar_prompt, aspect_ratio="1:1")
+                                if err:
+                                    st.error(f"GCP API Error: {err}")
+                                elif img_bytes:
+                                    st.session_state.sm_generated_avatar = img_bytes
+                                    st.success("Awatar wygenerowany pomyślnie!")
+                                    
                     if "sm_generated_avatar" in st.session_state:
                         st.image(st.session_state.sm_generated_avatar, caption="Twój spójny awatar", width=250)
                         st.download_button(
@@ -5385,29 +5435,129 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                         )
                         
                 with col_i2:
-                    st.write("##### 🖼️ 2. Generowanie Banneru z Mobile Safe-Zone:")
-                    banner_title = st.text_input("Tekst sloganu na banerze:", value="Odzyskaj 20 Godzin Tygodniowo z Automatyzacjami AI", key="suite_banner_title")
-                    banner_style = st.text_area("Styl wizualny tła:", value="Minimalist geometric background with deep purple and space black colors, abstract corporate design, glowing neon accents, elegant glassmorphism textures, clean composition, high-end tech aesthetic.", key="suite_banner_style")
+                    st.write("##### 🖼️ 3. Generowanie Banneru Dostosowanego pod Platformę:")
                     
-                    if st.button("Generuj Banner z Safe-Zone (Imagen 3)", type="primary", use_container_width=True, key="suite_banner_gen_btn"):
-                        with st.spinner("Model Imagen 3.0 buduje banner panoramiczny..."):
-                            full_prompt = f"{banner_style} Safe zone layout, center aligned design. In the exact horizontal center, there is high-contrast, clean typography reading precisely: '{banner_title}'. Perfect centering, mobile friendly, professional graphic design, 8k resolution."
-                            img_bytes, err = generate_imagen_image(full_prompt, aspect_ratio="16:9")
-                            if err:
-                                st.error(f"GCP API Error: {err}")
-                            elif img_bytes:
-                                st.session_state.sm_generated_banner = img_bytes
-                                st.success("Banner wygenerowany pomyślnie!")
-                                
+                    platform_specs = {
+                        "LinkedIn (💼)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "1584 x 396 px",
+                            "guide": "⚠️ Zdjęcie profilowe zasłania lewy dolny róg na desktopie, a na telefonie jest wyśrodkowane. Slogan zostanie umieszczony w centralno-prawej strefie bezpieczeństwa.",
+                            "default_title": "AI Systems Architect 🧠 | Pomagam firmom B2B odzyskać 15+ godzin",
+                            "default_style": "Minimalist corporate technology background with deep navy blue, space charcoal grey and elegant neon accents, abstract clean composition, premium cinematic lighting, 8k resolution, suitable for LinkedIn banner."
+                        },
+                        "Instagram (📸)": {
+                            "aspect_imagen": "1:1",
+                            "aspect_flux": "square_hd",
+                            "dimensions": "1080 x 1080 px",
+                            "guide": "⚠️ Format kwadratowy na Instagram. Kompozycja powinna być idealnie wyśrodkowana z luksusowymi akcentami i minimalistycznym tłem.",
+                            "default_title": "Automatyzuj to, co powtarzalne. Twórz to, co unikalne.",
+                            "default_style": "Sleek luxury design with rich dark violet and gold dust gradients, subtle glassmorphism overlay, high-contrast typography, premium social media post style, 8k."
+                        },
+                        "TikTok (🎵)": {
+                            "aspect_imagen": "9:16",
+                            "aspect_flux": "portrait_16_9",
+                            "dimensions": "1080 x 1920 px (Pionowy)",
+                            "guide": "⚠️ Pionowy format na TikTok. Napisy i postać muszą być w środkowej części (od 20% do 80% wysokości), aby nie zasłoniły ich elementy interfejsu (serduszka, opisy).",
+                            "default_title": "Odzyskaj 20 Godzin Tygodniowo z AI",
+                            "default_style": "Cyberpunk high-octane background with glowing electric pink and neon cyan lasers, tech-style typography, high contrast, dynamic mobile wallpaper aesthetic."
+                        },
+                        "Facebook (👥)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "820 x 312 px",
+                            "guide": "⚠️ Zdjęcie profilowe na komputerze znajduje się po lewej stronie, więc slogan i najważniejsze elementy grafiki zostaną przesunięte ku prawej stronie.",
+                            "default_title": "J(AI)SON Operating System — Asynchroniczna Wolność",
+                            "default_style": "Premium abstract gradient background in deep space purple, dark violet and metallic highlights, clean elegant geometry, business cover aesthetic, photorealistic."
+                        },
+                        "X / Twitter (🐦)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "1500 x 500 px",
+                            "guide": "⚠️ Zdjęcie profilowe na Twitterze zasłania dolny lewy narożnik bannera. Slogan i kluczowa grafika zostaną przesunięte w prawo i lekko w górę.",
+                            "default_title": "SaaS Founder & AI Agency Director | J(AI)SON OS",
+                            "default_style": "Ultra-minimalist modern tech background, solid carbon black surface with thin glowing emerald green light lines, futuristic corporate style, cinematic composition."
+                        },
+                        "Threads (💬)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "1080 x 360 px",
+                            "guide": "⚠️ Styl minimalistyczny z dużą ilością wolnej przestrzeni (negative space) i centralnie wyśrodkowanym sloganem.",
+                            "default_title": "AI Agent Builder & Systems Architect",
+                            "default_style": "Calm warm evening sunset sky, gradient of rich orange and deep indigo, minimalist cloud outline, vector tech art style, artistic depth, clean layout."
+                        }
+                    }
+                    
+                    selected_platform = st.selectbox(
+                        "Wybierz platformę społecznościową:",
+                        list(platform_specs.keys()),
+                        key="visuals_platform_select"
+                    )
+                    
+                    specs = platform_specs[selected_platform]
+                    
+                    st.caption(f"📏 **Zalecane wymiary:** `{specs['dimensions']}`")
+                    st.info(specs['guide'])
+                    
+                    banner_title = st.text_input(
+                        "Tekst sloganu na banerze:", 
+                        value=specs['default_title'], 
+                        key="suite_banner_title_dynamic"
+                    )
+                    banner_style = st.text_area(
+                        "Styl wizualny tła:", 
+                        value=specs['default_style'], 
+                        key="suite_banner_style_dynamic"
+                    )
+                    
+                    include_char_in_banner = False
+                    if "Flux LoRA" in engine_mode and has_lora:
+                        include_char_in_banner = st.checkbox(
+                            "Dodaj moją postać (LoRA) do bannera", 
+                            value=True, 
+                            key="suite_banner_include_char",
+                            help="Jeśli zaznaczone, Twoja sylwetka/twarz zostanie wkomponowana w tło."
+                        )
+                        
+                    if st.button("Generuj Banner (Imagen 3 / Flux LoRA)", type="primary", use_container_width=True, key="suite_banner_gen_btn_dynamic"):
+                        if "Flux LoRA" in engine_mode:
+                            if not has_lora:
+                                st.error("⚠️ Brak aktywnej LoRA!")
+                            else:
+                                with st.spinner("Model Flux-LoRA buduje spersonalizowany banner..."):
+                                    character_part = f"featuring {st.session_state.lora_trigger_word} person looking calm and confident, " if include_char_in_banner else ""
+                                    full_prompt = f"{banner_style}. A panoramic social media banner {character_part}with clean high-contrast modern typography overlays reading precisely: '{banner_title}'. Perfect horizontal centering, professional graphic design, 8k resolution."
+                                    from integrations.fal_ai import run_flux_lora_generation
+                                    img_bytes, err = run_flux_lora_generation(
+                                        full_prompt, 
+                                        st.session_state.lora_result_url, 
+                                        scale=lora_scale, 
+                                        aspect_ratio=specs["aspect_flux"]
+                                    )
+                                    if err:
+                                        st.error(f"Fal.ai API Error: {err}")
+                                    elif img_bytes:
+                                        st.session_state.sm_generated_banner = img_bytes
+                                        st.success("Spersonalizowany banner LoRA wygenerowany!")
+                        else:
+                            with st.spinner("Model Imagen 3.0 buduje banner..."):
+                                full_prompt = f"{banner_style} Safe zone layout, center aligned design. In the exact horizontal center, there is high-contrast, clean typography reading precisely: '{banner_title}'. Perfect centering, mobile friendly, professional graphic design, 8k resolution."
+                                img_bytes, err = generate_imagen_image(full_prompt, aspect_ratio=specs["aspect_imagen"])
+                                if err:
+                                    st.error(f"GCP API Error: {err}")
+                                elif img_bytes:
+                                    st.session_state.sm_generated_banner = img_bytes
+                                    st.success("Banner wygenerowany pomyślnie!")
+                                    
                     if "sm_generated_banner" in st.session_state:
-                        st.image(st.session_state.sm_generated_banner, caption="Wygenerowany banner", use_container_width=True)
+                        st.image(st.session_state.sm_generated_banner, caption=f"Twój banner dla {selected_platform}", use_container_width=True)
                         st.download_button(
                             label="💾 Pobierz Banner (PNG)",
                             data=st.session_state.sm_generated_banner,
-                            file_name="jaison_banner.png",
+                            file_name=f"jaison_banner_{selected_platform.split()[0].lower()}.png",
                             mime="image/png",
                             use_container_width=True,
-                            key="suite_banner_dl_btn"
+                            key="suite_banner_dl_btn_dynamic"
                         )
                         st.markdown("""
                         <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19; text-align: center; padding: 15px;">
