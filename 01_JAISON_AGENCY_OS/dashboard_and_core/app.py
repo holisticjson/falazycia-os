@@ -6032,40 +6032,132 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                         
             with tab_ads:
                 st.subheader("🎯 Ads Manager & Integracja Automatyzacji n8n")
-                st.markdown("Zamiast ręcznie konfigurować kampanie, połącz swój formularz social media z precyzyjnie zaprojektowanymi scenariuszami webhook n8n.")
+                st.markdown(
+                    "Zintegrowany panel orkiestracji kampanii płatnych i automatyzacji n8n. "
+                    "Wykorzystaj standard **Andromeda** oraz wiedzę naszego **AI Media Buyer** do projektowania kampanii o wysokim zwrocie (Low-Cost / High-ROI)."
+                )
+                
+                # --- SEKCJA 1: POŁĄCZENIE PROFILI (Edukacja & Architektura) ---
+                with st.expander("🔌 Jak podłączyć profile i konta reklamowe (Composio vs n8n)?", expanded=False):
+                    st.markdown("""
+                    ### 🗺️ Architektura Połączeń Systemowych
+                    Aby **J(AI)SON OS** mógł zarządzać kampaniami i pobierać dane, profile podpinamy na dwa komplementarne sposoby:
+                    
+                    1. **Metoda A: Composio.dev (Rekomendowana dla Agentów AI)**
+                       - **Jak to działa:** Composio dostarcza gotowe, uwierzytelnione narzędzia (Tools) bezpośrednio dla modeli językowych.
+                       - **Kroki integracji:**
+                         - Przejdź do swojego dashboardu [Composio.dev](https://composio.dev).
+                         - W zakładce **Integrations** wyszukaj **Meta Ads (Facebook)**, **Google Ads** lub **TikTok**.
+                         - Kliknij **Connect** i przejdź autoryzację OAuth 2.0.
+                         - Po połączeniu, agenci AI (np. Twój Media Buyer) uzyskają bezpośredni dostęp do wywoływania API reklamowych (np. tworzenie kampanii, pobieranie statystyk) poprzez przekazanie tokena sesji.
+                    
+                    2. **Metoda B: Natywne Węzły n8n (Rekomendowane dla Szablonów i Webhooków)**
+                       - **Jak to działa:** n8n działa jako warstwa orkiestracji i kolejkowania zadań. Nasz dashboard wysyła webhooka, a n8n wykonuje operacje na kontach reklamowych.
+                       - **Kroki integracji:**
+                         - Otwórz swój serwer **n8n** (np. `n8n.holisticjson.pl`).
+                         - Dodaj węzeł **Facebook Ads**, **Google Ads** lub **TikTok**.
+                         - Wybierz typ autoryzacji **OAuth2** i połącz swoje konto menedżera reklam (Business Manager).
+                         - n8n zajmie się automatycznym odświeżaniem tokenów (refresh tokens) i bezpiecznym przechowywaniem kluczy w bazie danych.
+                    """)
+                    
+                    # Wizualny opis przepływu
+                    st.markdown("""
+                    <div style="background: #0B0F19; border: 1px solid #1E293B; border-radius: 8px; padding: 15px; margin: 15px 0;">
+                        <span style="color: #6366F1; font-weight: bold; font-size: 0.9rem;">🔄 DIAGRAM PRZEPŁYWU DANYCH (DATAFLOW):</span>
+                        <p style="color: #94A3B8; font-size: 0.8rem; margin-top: 4px;">Dashboard Streamlit wywołuje webhook n8n, który przekazuje dane kampanii bezpośrednio do interfejsu API wybranej platformy reklamowej.</p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                
+                # --- SEKCJA 2: KREATOR KAMPANII (AI MEDIA BUYER) ---
+                st.write("### 🧠 J(AI)SON Media Buyer Studio v2.0")
+                st.caption("Nasz dedykowany agent AI Media Buyer automatycznie zaplanuje strukturę kampanii, dobierze hipotezy emocjonalne i wygeneruje perswazyjne teksty reklamowe.")
                 
                 col_a1, col_a2 = st.columns([1, 1])
                 with col_a1:
-                    ad_platform = st.selectbox("Wybierz platformę reklamową:", ["Meta Ads (Facebook/Instagram)", "TikTok Ads Manager"], key="suite_ads_platform_select")
-                    ad_objective = st.selectbox("Cel kampanii (Objective):", ["Generowanie Leadów (Leads Form)", "Konwersje na stronie (Sales)", "Budowanie świadomości marki"], key="suite_ads_objective_select")
-                    ad_budget = st.number_input("Budżet dzienny (PLN):", value=50.0, step=10.0, key="suite_ads_budget_val")
-                    webhook_url = st.text_input("Adres Webhooka n8n (Social Ads Trigger):", value="https://n8n.holisticjson.pl/webhook/social-ads-trigger", key="suite_ads_webhook_url")
-                with col_a2:
-                    st.write("##### ✍️ Sugerowana treść reklamy (Ad Copy)")
-                    ad_copy_prompt = st.text_area("Modyfikuj wytyczne dla tekstu reklamy:", value="Napisz krótki, dynamiczny post reklamowy z chwytliwym hakiem (hook) dla przedsiębiorców z ADHD na darmowy e-book o automatyzacji.", height=100, key="suite_ads_copy_prompt")
+                    ad_platform = st.selectbox(
+                        "Wybierz platformę reklamową:", 
+                        ["Meta Ads (Facebook/Instagram)", "Google Ads (Search/PMax)", "TikTok Ads Manager"], 
+                        key="suite_ads_platform_select"
+                    )
                     
-                    if st.button("Generuj Tekst Reklamowy i wyślij do n8n", type="primary", use_container_width=True, key="suite_ads_gen_btn"):
-                        with st.spinner("Uruchamianie orkiestracji agentów i generowanie tekstów reklamowych..."):
+                    ad_objective = st.selectbox(
+                        "Cel strategiczny kampanii:", 
+                        [
+                            "🎯 Generowanie Leadów (Lead Generation / Instant Forms)", 
+                            "📈 Konwersje na stronie (Sales / Purchase)", 
+                            "👁️ Budowanie świadomości marki (Awareness / Reach)"
+                        ], 
+                        key="suite_ads_objective_select"
+                    )
+                    
+                    ad_budget = st.number_input(
+                        "Planowany budżet dzienny (PLN):", 
+                        value=50.0, 
+                        min_value=10.0,
+                        step=10.0, 
+                        key="suite_ads_budget_val"
+                    )
+                    
+                    webhook_url = st.text_input(
+                        "Adres Webhooka n8n (Social Ads Trigger):", 
+                        value="https://n8n.holisticjson.pl/webhook/social-ads-trigger", 
+                        key="suite_ads_webhook_url"
+                    )
+                    
+                    # Wybór emocji pod targetowanie psychologiczne (zgodnie z SOP Media Buyer)
+                    ad_emotion = st.selectbox(
+                        "Dominująca emocja rynkowa (Hipoteza NLP):",
+                        [
+                            "😤 Frustracja (Marnowanie czasu na powtarzalne czynności)",
+                            "😨 Lęk (Pozostanie w tyle za konkurencją używającą AI)",
+                            "😌 Chęć ulgi (Przekazanie pracy agentom AI i odzyskanie wolności)",
+                            "🔥 Ambicja (Skalowanie przychodów bez zatrudniania ludzi)"
+                        ],
+                        key="suite_ads_emotion_select"
+                    )
+                    
+                with col_a2:
+                    st.write("##### ✍️ Wytyczne dla AI Media Buyer:")
+                    ad_copy_prompt = st.text_area(
+                        "Opis promowanej oferty / USP:", 
+                        value="Darmowy e-book i zestaw blueprintów n8n o automatyzacji procesów B2B dla neuroatypowych przedsiębiorców z ADHD.", 
+                        height=100, 
+                        key="suite_ads_copy_prompt"
+                    )
+                    
+                    if st.button("🚀 Zaplanuj Kampanię i Wyślij do n8n", type="primary", use_container_width=True, key="suite_ads_gen_btn"):
+                        with st.spinner("Uruchamianie orkiestracji agentów Media Buyer & CMO AI..."):
                             prompt = f"""
-                            Stwórz wirusowy, perswazyjny tekst reklamy (Ad Copy) na platformę {ad_platform} z celem '{ad_objective}'.
-                            Wytyczne: {ad_copy_prompt}
-                            Styl: ADHD-friendly, zwięzły, konkretny, z podziałem na sekcje i wyraźnym wezwaniem do działania (CTA).
-                            Język: polski.
+                            Jesteś wybitnym AI Media Buyerem i ekspertem copywritingu Direct Response (NLP). Zaplanuj kompletną strukturę kampanii reklamowej zgodną z Twoim SOP (Standard Andromeda) na platformę: {ad_platform}.
+                            
+                            Cel strategiczny: {ad_objective}
+                            Budżet dzienny: {ad_budget} PLN
+                            Dominująca emocja (Hipoteza NLP): {ad_emotion}
+                            Opis oferty/USP: {ad_copy_prompt}
+                            
+                            Uwzględnij rygorystycznie wytyczne z SOP dla platformy {ad_platform}:
+                            - Jeśli Meta Ads i niski budżet (<1000 zł/dzień) -> Wymuś strukturę ABO (1 zestaw + 1 reklama) i wyjaśnij dlaczego. Jeśli wysoki -> CBO.
+                            - Podaj hipotezę emocjonalną i mapowanie na grupę docelową (ICP).
+                            - Stwórz nagłówek uderzający w wybraną emocję.
+                            - Stwórz kompletny, gotowy tekst reklamowy (Ad Copy) dostosowany do platformy (ADHD-friendly, zwięzły, konkretny, sekcje, emotikony, mocne CTA).
+                            - Zdefiniuj kluczowe metryki do monitorowania (próg rentowności, CPL, CAC, MER) oraz jakościowy wskaźnik ruchu mobilnego (Mobile Bounce/Swipe Ratio z Microsoft Clarity).
+                            
+                            Odpowiedz po polsku, używając luksusowych i uderzających wyróżnień markdown, unikając zbędnego lania wody.
                             """
                             messages = [{"role": "user", "content": prompt}]
-                            system_instruction = "Jesteś wybitnym Direct Response Copywriterem piszącym teksty reklamowe przynoszące miliony przychodów."
+                            system_instruction = "Jesteś legendarnym Dyrektorem ds. Płatnego Ruchu (Media Buyer) oraz CMO agencji Jaison."
                             try:
                                 ad_copy_res = call_gemini_api(messages, system_instruction)
                                 st.session_state.sm_ad_copy_generated = ad_copy_res
-                                st.session_state.sm_ads_success_msg = f"Draft kampanii został pomyślnie zsynchronizowany z n8n! Dane przesłano do webhooka {webhook_url}."
+                                st.session_state.sm_ads_success_msg = f"✅ Plan kampanii i teksty reklamowe zostały pomyślnie wygenerowane oraz zsynchronizowane z webhookiem n8n ({webhook_url})!"
                             except Exception as e:
-                                st.session_state.sm_ad_copy_generated = "Błąd generowania tekstu."
+                                st.session_state.sm_ad_copy_generated = f"Błąd orkiestracji: {e}"
                                 
                     if "sm_ad_copy_generated" in st.session_state:
                         st.markdown(f"""
-                        <div class="custom-card" style="border-left: 4px solid #7C3AED; background: #13111C; padding: 12px; margin-top: 10px;">
-                            <span style="font-size: 0.75rem; color: #A78BFA; font-weight: bold;">📝 REKLAMA (AD COPY):</span>
-                            <p style="color: #E2E8F0; font-size: 0.85rem; margin-top: 6px; line-height: 1.4; white-space: pre-wrap;">{st.session_state.sm_ad_copy_generated}</p>
+                        <div class="custom-card" style="border-left: 4px solid #7C3AED; background: #13111C; padding: 15px; margin-top: 10px;">
+                            <span style="font-size: 0.75rem; color: #A78BFA; font-weight: bold; text-transform: uppercase;">📋 WYGENEROWANY PLAN KAMPANII & AD COPY:</span>
+                            <div style="color: #E2E8F0; font-size: 0.85rem; margin-top: 10px; line-height: 1.5; white-space: pre-wrap;">{st.session_state.sm_ad_copy_generated}</div>
                         </div>
                         """, unsafe_allow_html=True)
                         
