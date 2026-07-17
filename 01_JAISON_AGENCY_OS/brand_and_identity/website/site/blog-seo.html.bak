@@ -11,7 +11,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="./logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AEO i SEO 2026: Jak przygotować stronę na wyszukiwarki AI | Holistic Jaison</title>
+    <title>AEO i SEO 2026: Jak przygotować stronę na wyszukiwarki AI | Holistic Jason</title>
     <meta name="description" content="Tradycyjne SEO umiera. Zobacz, jak zoptymalizować treści pod Perplexity, ChatGPT i Google Gemini.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +60,7 @@
         <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
           <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #0f172a, #3b82f6); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.2rem;">HJ</div>
           <div>
-            <div style="font-weight: bold; color: #FFFFFF;">Holistic Jaison</div>
+            <div style="font-weight: bold; color: #FFFFFF;">Holistic Jason</div>
             <div style="font-size: 0.9rem; color: var(--slate-gray);">AI Systems Architect</div>
           </div>
         </div>
@@ -100,7 +100,7 @@
 
     <footer style="background: #0A0F1D; color: white; padding: 60px 0; text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.08);">
       <div class="container">
-        <p style="color: rgba(255,255,255,0.4);">&copy; 2026 Holistic Jaison. Wszelkie prawa zastrzeżone.</p>
+        <p style="color: rgba(255,255,255,0.4);">&copy; 2026 Holistic Jason. Wszelkie prawa zastrzeżone.</p>
       </div>
     </footer>
   </body>

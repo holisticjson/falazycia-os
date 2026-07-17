@@ -409,7 +409,7 @@
   <header>
     <div class="container nav-flex">
       <a href="./" class="logo">
-        <img src="./logo.webp" alt="JAISON Logo" style="height: 38px; width: auto;" width="162" height="38" fetchpriority="high">
+        <img src="./logo.webp" alt="JASON Logo" style="height: 38px; width: auto;" width="162" height="38" fetchpriority="high">
       </a>
       <a href="./" class="btn-back"><span>←</span> Powrót do Startu</a>
     </div>
