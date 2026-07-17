@@ -4171,10 +4171,10 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "Carousel"
                 st.rerun()
                 
-            # 3. BRAND STRATEGY & BIOS
+            # 3. BRAND STRATEGY & BIO'S
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #3B82F6; min-height: 200px;">
-                <h3 style="color: #3B82F6; margin: 0; font-size: 1.3rem;">✍️ Brand Strategy & Profile BIOS</h3>
+                <h3 style="color: #3B82F6; margin: 0; font-size: 1.3rem;">✍️ Brand Strategy & Profile BIO's</h3>
                 <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
                     Kompletny wywiad marki i generowanie spójnych opisów profilowych BIO dla 6 platform (LinkedIn, FB, IG, TikTok, X, Threads).
                 </p>
@@ -4197,7 +4197,7 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "Landing_Page"
                 st.rerun()
 
-            # 9. RESEARCH HUB
+            # 5. RESEARCH HUB
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #06B6D4; min-height: 200px;">
                 <h3 style="color: #06B6D4; margin: 0; font-size: 1.3rem;">🧠 Research Hub</h3>
@@ -4210,7 +4210,7 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "ResearchHub"
                 st.rerun()
 
-            # 12. ADS & GOOGLE MAPS STUDIO
+            # 6. ADS & GOOGLE MAPS STUDIO
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #EF4444; min-height: 200px;">
                 <h3 style="color: #EF4444; margin: 0; font-size: 1.3rem;">🎯 Ads & Local SEO Studio</h3>
@@ -4224,20 +4224,7 @@ elif menu == "Jaison Agency":
                 st.rerun()
 
         with col_c2:
-            # 5. FLUX ART STUDIO
-            st.markdown("""
-            <div class="custom-card" style="border-left: 5px solid #8B5CF6; min-height: 200px;">
-                <h3 style="color: #8B5CF6; margin: 0; font-size: 1.3rem;">🎨 Flux Schnell Art Studio</h3>
-                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
-                    Błyskawiczne generowanie luksusowych grafik w 2 sekundy przez interfejs fal.ai. Najwyższa jakość, dowolne proporcje obrazu.
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("👉 Uruchom Flux Art Studio", key="btn_run_flux", use_container_width=True):
-                st.session_state.active_suite_tool = "Flux"
-                st.rerun()
-                
-            # 6. FACELESS REELS CREATOR
+            # 7. FACELESS REELS CREATOR
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #10B981; min-height: 200px;">
                 <h3 style="color: #10B981; margin: 0; font-size: 1.3rem;">🎬 Faceless Reels Creator</h3>
@@ -4248,19 +4235,6 @@ elif menu == "Jaison Agency":
             """, unsafe_allow_html=True)
             if st.button("👉 Uruchom Generator Reels", key="btn_run_reels", use_container_width=True):
                 st.session_state.active_suite_tool = "Faceless_Reels"
-                st.rerun()
-                
-            # 7. MOBILE SAFE BANNER
-            st.markdown("""
-            <div class="custom-card" style="border-left: 5px solid #6366F1; min-height: 200px;">
-                <h3 style="color: #6366F1; margin: 0; font-size: 1.3rem;">🖼️ Mobile-Safe Banner Grid</h3>
-                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
-                    Zaprojektuj idealnie wyśrodkowany baner na LinkedIn / FB, sprawdzając go pod kątem ucinania na smartfonach (Safe-Zone).
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("👉 Uruchom Generator Banerów", key="btn_run_banners", use_container_width=True):
-                st.session_state.active_suite_tool = "Banners"
                 st.rerun()
 
             # 8. ADK DIRECTORS AGENTS
@@ -4276,33 +4250,7 @@ elif menu == "Jaison Agency":
                 st.session_state.current_page = "Swarm"
                 st.rerun()
 
-            # 13. STUDIO (HYPERFRAMES)
-            st.markdown("""
-            <div class="custom-card" style="border-left: 5px solid #8B5CF6; min-height: 200px;">
-                <h3 style="color: #8B5CF6; margin: 0; font-size: 1.3rem;">🎬 Studio (Hyperframes)</h3>
-                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
-                    Generator zaawansowanych klatek animacji, wideo oraz generowanie wideo-reels z wykorzystaniem modeli wideo fal.ai.
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("👉 Uruchom Studio Wideo", key="btn_run_studio_vid", use_container_width=True):
-                st.session_state.active_suite_tool = "Studio"
-                st.rerun()
-
-            # 14. SOCIAL MEDIA PUBLISHER (n8n)
-            st.markdown("""
-            <div class="custom-card" style="border-left: 5px solid #10B981; min-height: 200px;">
-                <h3 style="color: #10B981; margin: 0; font-size: 1.3rem;">🚀 Social Media Publisher (n8n)</h3>
-                <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
-                    Publikuj treści bezpośrednio do kalendarza Google Sheets, skąd n8n automatycznie roześle je na Facebook, LinkedIn i Google Business Profile.
-                </p>
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("👉 Uruchom Publikator Social Media", key="btn_run_publisher", use_container_width=True):
-                st.session_state.active_suite_tool = "Social_Publisher"
-                st.rerun()
-
-            # 10. E-COMMERCE BACKGROUND REMOVAL STUDIO
+            # 9. E-COMMERCE BACKGROUND REMOVAL STUDIO
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #EC4899; min-height: 200px;">
                 <h3 style="color: #EC4899; margin: 0; font-size: 1.3rem;">⚡ E-Commerce Background Studio</h3>
@@ -4315,7 +4263,7 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "Ecom"
                 st.rerun()
 
-            # 11. 3D WEB GENERATOR & CREATIVE FX
+            # 10. 3D WEB GENERATOR & CREATIVE FX
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #F59E0B; min-height: 200px;">
                 <h3 style="color: #F59E0B; margin: 0; font-size: 1.3rem;">🌌 3D Web & Interactive FX Builder</h3>
@@ -4328,7 +4276,7 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "3D FX"
                 st.rerun()
 
-            # 13. STUDIO (HYPERFRAMES)
+            # 11. STUDIO (HYPERFRAMES)
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #8B5CF6; min-height: 200px;">
                 <h3 style="color: #8B5CF6; margin: 0; font-size: 1.3rem;">🎬 Studio (Hyperframes)</h3>
@@ -4341,7 +4289,7 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "Studio_Video"
                 st.rerun()
 
-            # 14. J(AI)SON LoRA STUDIO
+            # 12. J(AI)SON LoRA STUDIO
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #10B981; min-height: 200px;">
                 <h3 style="color: #10B981; margin: 0; font-size: 1.3rem;">🧬 J(AI)SON LoRA Studio</h3>
@@ -4354,10 +4302,10 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "LoRA_Studio"
                 st.rerun()
 
-            # 15. SOCIAL MEDIA PUBLISHER
+            # 13. SOCIAL MEDIA PUBLISHER
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #0EA5E9; min-height: 200px;">
-                <h3 style="color: #0EA5E9; margin: 0; font-size: 1.3rem;">🚀 Social Media Publisher (n8n)</h3>
+                <h3 style="color: #0EA5E9; margin: 0; font-size: 1.3rem;">🚀 Social Media Publisher</h3>
                 <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
                     Zarządzaj publikacjami bezpośrednio z dashboardu. Wyślij post na LinkedIn, Facebook, Instagram, X, TikTok oraz Google Business Profile automatycznie przez n8n.
                 </p>
@@ -5230,7 +5178,7 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
 
         # --- TOOL 5: BRAND STRATEGY & PROFILE BIOS ---
         elif tool == "Brand_Bios":
-            st.subheader("✍️ Brand Strategy & Profile BIOS")
+            st.subheader("✍️ Brand Strategy & Profile BIO's")
             st.markdown("Uzupełnij poniższy kwestionariusz, aby wygenerować kompletną tożsamość marki, opisy BIO dla 6 platform oraz premium awatary i bannery bezpieczne dla smartfonów.")
             
             tab_strategy, tab_bios, tab_visuals = st.tabs(["📋 Wywiad i Strategia", "✍️ Opisy i BIO (6 Platform)", "🎨 Wizualia (Awatary i Bannery)"])
@@ -5450,10 +5398,20 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                             "🌿 Styl B: Cozy Server Sanctuary (Biohacking, Nature & Tech)",
                             "🌃 Styl C: Deep Focus Night Studio (Hyperfocus & High-Performance)",
                             "🌅 Styl D: Biotech Garden / Freedom (Operational Freedom & Silence)",
-                            "🕴️ Styl E: Executive Cyber-Casual (Founder Authority & B2B Trust)"
+                            "🕴️ Styl E: Executive Cyber-Casual (Founder Authority & B2B Trust)",
+                            "✨ Własny Prompt (Custom Creative Mode)"
                         ], 
                         key="suite_avatar_style_spec"
                     )
+                    
+                    custom_avatar_prompt_val = ""
+                    if avatar_style == "✨ Własny Prompt (Custom Creative Mode)":
+                        custom_avatar_prompt_val = st.text_area(
+                            "Wpisz swój własny prompt dla Awatara (po angielsku):",
+                            value="A high-end cinematic close-up portrait of a founder standing in a modern neon tech office, looking confident, 8k resolution.",
+                            key="suite_avatar_custom_prompt_val",
+                            height=120
+                        )
                     
                     use_lora_for_avatar = False
                     if "Flux LoRA" in engine_mode and has_lora:
@@ -5465,22 +5423,29 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                         )
                     
                     if st.button("Generuj Profesjonalny Awatar", type="primary", key="suite_avatar_gen_btn", use_container_width=True):
-                        if use_lora_for_avatar and "Flux LoRA" in engine_mode:
-                            char_prompt = f"{st.session_state.get('lora_trigger_word', 'tomasz_hero')} person ({suite_char_desc})"
+                        if avatar_style == "✨ Własny Prompt (Custom Creative Mode)":
+                            if use_lora_for_avatar and "Flux LoRA" in engine_mode:
+                                full_avatar_prompt = f"{st.session_state.get('lora_trigger_word', 'tomasz_hero')} person, {custom_avatar_prompt_val}"
+                            else:
+                                full_avatar_prompt = custom_avatar_prompt_val
                         else:
-                            char_prompt = suite_char_desc
-                            
-                        if "Styl A" in avatar_style:
-                            full_avatar_prompt = f"A high-end, clean close-up portrait of {char_prompt} facing the camera. The background is a sophisticated and futuristic dark tech command center: glowing translucent glass screens displaying holographic cyan and electric purple data charts, mathematical equations, and delicate network connection lines. Studio key lighting creates sharp masculine features, strong jawline, and natural skin textures. No distortions, highly professional, 8k resolution, cinematic atmosphere, f/1.8."
-                        elif "Styl B" in avatar_style:
-                            full_avatar_prompt = f"A professional cinematic portrait of {char_prompt} with a natural and calm expression. The setting is a cozy, warm minimalist server room where technology meets nature: modern matte-charcoal server racks are softly illuminated by warm amber LED lights and gentle green power indicators. Delicate leafy organic plants like monstera and small bonsai trees grow harmoniously around the technical equipment. Soft morning sunlight streams from a side window, highlighting natural skin fullness, realistic textures, and sharp details. High-end, premium, photorealistic, 8k."
-                        elif "Styl C" in avatar_style:
-                            full_avatar_prompt = f"A high-contrast, moody close-up portrait of {char_prompt} looking confident and focused. He is in a premium, quiet soundproof coding room at night. The background features dark acoustic hexagonal panels with glowing neon cyan linear lights running between them. To the side, there is a softly glowing vertical monitor showing clean coding structures. Warm, dramatic key lighting creates clear masculine facial lines, natural facial fullness, and reflections in his corrective glasses. Cinematic depth of field, photorealistic, premium feel, 8k."
-                        elif "Styl D" in avatar_style:
-                            full_avatar_prompt = f"An ultra-minimalist, airy cinematic portrait of {char_prompt} looking completely relaxed and happy, with a genuine smile. He is standing near a giant floor-to-ceiling clean panoramic glass window of a modern architectural estate. Outside, a pristine biotech garden with clean green plants is bathed in warm, golden sunset light. The atmosphere is quiet, bright, and completely silent. Key soft lighting showcases healthy skin tones, clear masculine structures, and authentic facial fullness. High-end editorial style, premium design, depth of field, 8k."
-                        else: # Styl E
-                            b_name = st.session_state.get("suite_brand_name", "J(AI)SON")
-                            full_avatar_prompt = f"An elegant and luxurious portrait of {char_prompt} dressed in a tailor-made deep navy blue blazer over a premium charcoal grey turtleneck. On the collar of the turtleneck, a very small and clean matte grey embroidered text '{b_name}' is subtly visible. He is standing inside a highly professional, dark-themed executive lounge. The background is a clean matte-black luxury wall with subtle recessed accent lighting. The lighting is soft, dramatic, and prestigious, highlighting natural masculine jawline, authentic facial fullness, and premium fabrics. Perfect corporate identity, photorealistic, 8k."
+                            if use_lora_for_avatar and "Flux LoRA" in engine_mode:
+                                char_prompt = f"{st.session_state.get('lora_trigger_word', 'tomasz_hero')} person ({suite_char_desc})"
+                            else:
+                                char_prompt = suite_char_desc
+                                
+                            if "Styl A" in avatar_style:
+                                full_avatar_prompt = f"A high-end, clean close-up portrait of {char_prompt} facing the camera. The background is a sophisticated and futuristic dark tech command center: glowing translucent glass screens displaying holographic cyan and electric purple data charts, mathematical equations, and delicate network connection lines. Studio key lighting creates sharp masculine features, strong jawline, and natural skin textures. No distortions, highly professional, 8k resolution, cinematic atmosphere, f/1.8."
+                            elif "Styl B" in avatar_style:
+                                full_avatar_prompt = f"A professional cinematic portrait of {char_prompt} with a natural and calm expression. The setting is a cozy, warm minimalist server room where technology meets nature: modern matte-charcoal server racks are softly illuminated by warm amber LED lights and gentle green power indicators. Delicate leafy organic plants like monstera and small bonsai trees grow harmoniously around the technical equipment. Soft morning sunlight streams from a side window, highlighting natural skin fullness, realistic textures, and sharp details. High-end, premium, photorealistic, 8k."
+                            elif "Styl C" in avatar_style:
+                                full_prompt_part = f"A high-contrast, moody close-up portrait of {char_prompt} looking confident and focused. He is in a premium, quiet soundproof coding room at night. The background features dark acoustic hexagonal panels with glowing neon cyan linear lights running between them. To the side, there is a softly glowing vertical monitor showing clean coding structures. Warm, dramatic key lighting creates clear masculine facial lines, natural facial fullness, and reflections in his corrective glasses. Cinematic depth of field, photorealistic, premium feel, 8k."
+                                full_avatar_prompt = full_prompt_part
+                            elif "Styl D" in avatar_style:
+                                full_avatar_prompt = f"An ultra-minimalist, airy cinematic portrait of {char_prompt} looking completely relaxed and happy, with a genuine smile. He is standing near a giant floor-to-ceiling clean panoramic glass window of a modern architectural estate. Outside, a pristine biotech garden with clean green plants is bathed in warm, golden sunset light. The atmosphere is quiet, bright, and completely silent. Key soft lighting showcases healthy skin tones, clear masculine structures, and authentic facial fullness. High-end editorial style, premium design, depth of field, 8k."
+                            else: # Styl E
+                                b_name = st.session_state.get("suite_brand_name", "J(AI)SON")
+                                full_avatar_prompt = f"An elegant and luxurious portrait of {char_prompt} dressed in a tailor-made deep navy blue blazer over a premium charcoal grey turtleneck. On the collar of the turtleneck, a very small and clean matte grey embroidered text '{b_name}' is subtly visible. He is standing inside a highly professional, dark-themed executive lounge. The background is a clean matte-black luxury wall with subtle recessed accent lighting. The lighting is soft, dramatic, and prestigious, highlighting natural masculine jawline, authentic facial fullness, and premium fabrics. Perfect corporate identity, photorealistic, 8k."
 
                         if "Flux LoRA" in engine_mode:
                             if not has_lora:
@@ -5593,10 +5558,20 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                             "🌿 Styl B: Cozy Server Sanctuary (Biohacking, Nature & Tech)",
                             "🌃 Styl C: Deep Focus Night Studio (Hyperfocus & High-Performance)",
                             "🌅 Styl D: Biotech Garden / Freedom (Operational Freedom & Silence)",
-                            "🕴️ Styl E: Executive Cyber-Casual (Founder Authority & B2B Trust)"
+                            "🕴️ Styl E: Executive Cyber-Casual (Founder Authority & B2B Trust)",
+                            "✨ Własny Prompt (Custom Creative Mode)"
                         ],
                         key="suite_banner_style_select"
                     )
+                    
+                    custom_banner_prompt_val = ""
+                    if banner_style_select == "✨ Własny Prompt (Custom Creative Mode)":
+                        custom_banner_prompt_val = st.text_area(
+                            "Wpisz swój własny prompt dla Banera (po angielsku):",
+                            value="A luxurious, minimalist panoramic banner, with abstract glowing lines, high-end branding, elegant style, ultra-high resolution.",
+                            key="suite_banner_custom_prompt_val",
+                            height=120
+                        )
                     
                     include_char_in_banner = False
                     if "Flux LoRA" in engine_mode and has_lora:
@@ -5623,7 +5598,15 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                         else:
                             char_part = ""
 
-                        if "Styl A" in banner_style_select:
+                        if "Własny Prompt" in banner_style_select:
+                            if include_char_in_banner:
+                                if "Flux LoRA" in engine_mode and has_lora:
+                                    full_prompt = f"{st.session_state.get('lora_trigger_word', 'tomasz_hero')} person, {custom_banner_prompt_val}"
+                                else:
+                                    full_prompt = f"portrait of confident person, {custom_banner_prompt_val}"
+                            else:
+                                full_prompt = custom_banner_prompt_val
+                        elif "Styl A" in banner_style_select:
                             full_prompt = f"A premium panoramic cinematic wide shot of a futuristic dark control center. On the left and center, glowing glass analytics screens display abstract neural connection lines, cyan and purple networks, and subtle data charts. {char_part}On the RIGHT side of the image, there is a clean, dark charcoal space featuring the glowing, elegant text: '{banner_title}' with a smaller subtitle '{banner_cta}' underneath. Sharp lighting, ultra-high resolution, minimalist layout, text is perfectly readable, 8k."
                         elif "Styl B" in banner_style_select:
                             full_prompt = f"A premium panoramic wide-angle shot of a warm minimalist server room. On the left and center, modern server racks with glowing soft amber and soft green lights are mixed with lush green potted plants and small bonsais. {char_part}On the RIGHT side, on a clean, dark matte-wood wall, the following text is beautifully engraved: '{banner_title}' with a subtitle '{banner_cta}' below. Warm morning side lighting, quiet, cozy, photorealistic, 8k."
