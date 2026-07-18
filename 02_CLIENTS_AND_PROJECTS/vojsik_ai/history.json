@@ -112,5 +112,11 @@
         "raw_text": "Wystąpił jakiś konflikt w mapowaniu subdomeny os.jison.pl Widzę, że jest na holisticjson.pl Zmieniłem już DNSy na Cloudflare na typ CNAME i ghs.googlehosted.com  ale os.jaison.pl ta domena jest zmapowana nie w usłudze holistic-seo tylko w regionie Europe Central 2, tylko coś jest nie tak  Dziękuję.",
         "corrected_text": "Wystąpił jakiś konflikt w mapowaniu subdomeny os.jison.pl Widzę, że jest na holisticjson.pl Zmieniłem już DNSy na Cloudflare na typ CNAME i ghs.googlehosted.com  ale os.jaison.pl ta domena jest zmapowana nie w usłudze holistic-seo tylko w regionie Europe Central 2, tylko coś jest nie tak  Dziękuję.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 16:20:20",
+        "raw_text": "Jakie w Hiszpanii aktualnie jest prawo, jeśli chodzi o nieruchomości, księgi wieczyste, prawo bankowe w sytuacji, gdy bank udziela kredytu na zakup nieruchomości, to strona sprzedająca, strona umowy musi być w 100% właścicielem nieruchomości, czy na przykład może?  być związana umową przedstępną od docelowego właściciela tej nieruchomości i wystawić, podpisać umowę umowę przedstępną z docelowym kupującym, który po prostu finansuje ten zakup kredytem.  hipotecznym na tą nieruchomość.",
+        "corrected_text": "Jakie w Hiszpanii aktualnie jest prawo, jeśli chodzi o nieruchomości, księgi wieczyste, prawo bankowe w sytuacji, gdy bank udziela kredytu na zakup nieruchomości, to strona sprzedająca, strona umowy musi być w 100% właścicielem nieruchomości, czy na przykład może?  być związana umową przedstępną od docelowego właściciela tej nieruchomości i wystawić, podpisać umowę umowę przedstępną z docelowym kupującym, który po prostu finansuje ten zakup kredytem.  hipotecznym na tą nieruchomość.",
+        "status": "raw_fallback"
     }
 ]
