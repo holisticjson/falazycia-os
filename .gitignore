@@ -1,16 +1,19 @@
 # === SEKRETY I CREDENTIALS ===
 .env
 !requirements.txt
+# Precyzyjne blokowanie JSON-ow zawierajacych wrażliwe dane i klucze
+*key*.json
+*secret*.json
+*token*.json
+*credential*.json
+*sa-key*.json
+*sa_key*.json
+*-key.json
+*private-key*.json
 holistic-dashboard-dev-*.json
 service-account*.json
 auth.json
 tokens/
-*credentials*.json
-*client_secret*.json
-*token*.json
-*sa-key*.json
-*-key.json
-*private-key*.json
 
 # === PYTHON ===
 __pycache__/

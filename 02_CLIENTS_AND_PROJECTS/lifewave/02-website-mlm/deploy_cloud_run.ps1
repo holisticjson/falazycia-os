@@ -1,5 +1,5 @@
 # ======================================================================
-# Deploy Jaison X2O Portal na Google Cloud Run (PowerShell)
+# Deploy Jaison MLM Portal na Google Cloud Run (PowerShell)
 # ======================================================================
 # Wymagania: 
 #   1. Zainstalowany gcloud CLI (https://cloud.google.com/sdk/docs/install)
@@ -7,11 +7,11 @@
 
 $ErrorActionPreference = "Stop"
 $PROJECT = "holistic-dashboard-dev"
-$REGION = "europe-central2"  # Warszawa — najniższe opóźnienie dla Polski
-$SERVICE = "jaison-x2o-portal"
+$REGION = "europe-central2"  # Warszawa — najnizsze opoznienie dla Polski
+$SERVICE = "jaison-mlm-portal"
 $IMAGE = "gcr.io/$PROJECT/$SERVICE"
 
-Write-Host "Jaison X2O Portal - Deploy na Cloud Run" -ForegroundColor Cyan
+Write-Host "Jaison MLM Portal - Deploy na Cloud Run" -ForegroundColor Cyan
 Write-Host "========================================" -ForegroundColor Cyan
 
 # Krok 0: Autoryzacja - Korzystamy z domyslnej sesji uzytkownika, poniewaz projekt docelowy
@@ -38,6 +38,6 @@ gcloud run deploy $SERVICE --image $IMAGE --platform managed --region $REGION --
 # Krok 5: Pobierz URL i podsumuj
 Write-Host "Deploy zakonczony sukcesem!" -ForegroundColor Green
 $URL = gcloud run services describe $SERVICE --region $REGION --format "value(status.url)"
-Write-Host "Portal Jaison X2O dostepny pod adresem Cloud Run:" -ForegroundColor Cyan
+Write-Host "Portal Jaison MLM dostepny pod adresem Cloud Run:" -ForegroundColor Cyan
 Write-Host "URL: $URL" -ForegroundColor Green
-Write-Host "Aby podpiac domene x2o.jaison.pl, uzyj gotowego szablonu Nginx (nginx_x2o_jaison.conf)" -ForegroundColor DarkGray
+Write-Host "Aby podpiac domene mlm.jaison.pl, uzyj mapowania domen Cloud Run lub Nginx." -ForegroundColor DarkGray

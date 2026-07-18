@@ -2,7 +2,7 @@
 :: Premium GCP Cloud Run Deployment script for Jaison X2O Portal
 :: Designed by Jaison AI Engineering
 
-set PROJECT_ID=jaison-x2o-portal
+set PROJECT_ID=holistic-dashboard-dev
 set SERVICE_NAME=jaison-x2o-portal
 set REGION=europe-west1
 

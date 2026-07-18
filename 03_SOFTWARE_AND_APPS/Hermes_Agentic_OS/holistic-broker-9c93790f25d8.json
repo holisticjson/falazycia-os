@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "holistic-broker",
+  "private_key_id": "9c93790f25d890999cefc2858ba09a76b8c5def4",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCd16KXfoIYXUcT\nXQ/CjDasru4lhbvgNNaNAhAfZs5lxWzpuoU2PguKdoME/YfN6SVvqEQPlVKVb3SX\n9BBVTQGSLIMGrbC3Ky/FH0Hz+IJlMnV+zcHtGHWEeUcbAn62oG0/qHwn3L02usA0\nupaJDATKCnkuyyfm8HX/bzGaMpcZ2XTp9Tkw1XDHpvKep7sQegMG1jG23ftLX0dv\n0m6hqLgRBKC4iX3X1Quid3CB2YuwJOvNrXl4ik/xfn/kH2nzILPoprj2bth45Cdb\nhIXHfAW3reIPq0xe1ZmU9U4c/+YkWFY/05Z8Z1ZB7vTmgET69qrOCRbLtlK8UIbC\n/ZKfznJtAgMBAAECggEAGWUviXjG9SUS0ax8I+S7yjpF4h8bbHYL2/mMPwUjKZAj\nVxKVqrW+VRt+tn+VCT3c8lNMCgbQF+9r/qO7ugGvAkXrmdg5saq+35QJIDfoQOBm\ns41myV8RT0xU8qVK3la+5QpWWXKENelDkehAXpHitmALgcoZZChlj8Cj5ieEFJod\np5hQ8+/h0vQP5iOptl40EyUxSwUvbwyO/i0JZq0xw/RgTMLqBbNqf3LSjuveetLv\nwwoCDLV2pnQB+uPC0z1utrcRBw6Mm6P89KJPQrSl3U7s9zamCipiUR+ZKMy/eQV0\ng5gBBzQaRi9brFkg8X8/ONvyAgycB1/SjJb0dwRWYQKBgQDN+bQbOFjzaThSoSnS\n3R64cbpuFMYfAAWOFuBebTa4ROAV/hPZ6hh3jOIGXduEpFO8J8jS1SRnWxcwacbT\n3XNAjr4IjOmKw4tLp0YMyi3nj146Eumsyd0jnilYhH9BFi6Yhx/KWi+m1Sh2jxtb\nJCrZTEzyxAQxEr5HSt/ONA3YIQKBgQDELU9M+uZjBLaUCkwb7O0j+6xSGFSnxJR4\nohQCT/NgGeEmfyp5Dk1GOE50PZunJA+2stIw4bJdiitbIlefPmeey1NrDRu5UZ7K\nXb0nr58uteKNsj4QPUJ/uVApa8Jd0LWiPKTmRUjq5P5vWCVEF4GZbsTtQGPAiT3n\n4ttxWixgzQKBgFtvnwF6aRpdOlCMFMnzuSB99BnMBQtb8htakm24o9L3WFbK/Lr/\nDa98jhXvcnSWkklzi9X0In3zVP775fTFWNVuyHN5Qm+EUQDbl+AznF8wKM80+CDp\nV87o9kfCQc997l9tlLI6iO7Rr226J5W1H4RpN7uJQqcaP/fcCDA8sWyhAoGAbUCW\nk1Z/i9GKJLP/YuX1wz5b33RxYOVXkj8hSZBhB7oh66CSdMyEOIEPIClXUCQDJEo+\nSL7I6NMUBjL//U1xw7uUf1/Tesd72VOPDlT+H7NnsmX7rmuPZzY68HZ0zm53WRzQ\n8PTRAQ/6quO6DUvR/zLzNPXRF97WvRdYAq6nXFkCgYEAr4dTz9mSfFr+GAo/DnyH\nSOHRlYoxJlBQJqEInvyDY8HNM9jh45D9kjo/b6ukB0hIUDgvHtkpDFk0+18cJ0Iu\nVO6YZQLATYI6rspiCrJCpdo4QA+0GvkkNf0xc8bsoNlX1FgdyyQeEo15C17cPVTq\nv3p0dCTuzfIVjAy4m4BcFsM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "holistic-broker-agent@holistic-broker.iam.gserviceaccount.com",
+  "client_id": "106403343937155788132",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/holistic-broker-agent%40holistic-broker.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

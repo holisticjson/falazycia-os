@@ -1,0 +1,92 @@
+[
+    {
+        "timestamp": "2026-07-14 21:37:59",
+        "raw_text": "Ok, to trzeba będzie przeskanować, zobaczyć czy krok po kroku, po kolei w każdych projektach, folderach te pliki.env, czy po prostu są prawidłowe dane dostępowe do każdego projektu. Bo nieraz agent się myli po prostu i próbuje robić deploy.  Na przykład na Hostido w projekcie agencji Jaison, gdzie Jaison leży na Google Cloud. Trzeba to będzie wszystko posprawdzać, czyli te projekty w Google Cloud Project, te wszystkie API, webhook itd.",
+        "corrected_text": "Ok, to trzeba będzie przeskanować, zobaczyć czy krok po kroku, po kolei w każdych projektach, folderach te pliki.env, czy po prostu są prawidłowe dane dostępowe do każdego projektu. Bo nieraz agent się myli po prostu i próbuje robić deploy.  Na przykład na Hostido w projekcie agencji Jaison, gdzie Jaison leży na Google Cloud. Trzeba to będzie wszystko posprawdzać, czyli te projekty w Google Cloud Project, te wszystkie API, webhook itd.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-14 21:38:23",
+        "raw_text": "A to co Ci wkleiłem to jeszcze pozostawiłeś jakieś tutaj luzem foldery. Nie wiem do czego one służą i jaki jest cel ich istnienia.",
+        "corrected_text": "A to co Ci wkleiłem to jeszcze pozostawiłeś jakieś tutaj luzem foldery. Nie wiem do czego one służą i jaki jest cel ich istnienia.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-14 21:43:32",
+        "raw_text": "Podłognie ten plik jest niepotrzebny, bo on dotyczy wtyczki jakiejś, która historycznie kiedyś była zainstalowana jeszcze w Anti-Gravity IDE. Dotyczy subagentów. W ogóle to nie jest używane. Mamy sztab swoich dyrektorów i subagentów. Także on jest niepotrzebny. Sprawdzałem na laptop  Sync jakby nie przekopiował, nie zaktualizował struktury folderów. Tak jak to zrobiliśmy tutaj na stacjonarnym komputerze, na laptopie tutaj nie zrobiło się to. Owszem te pliki.nv no to trzeba byłoby to zrobić przez pendrive'a, tylko że tam już wiele poczyniłem  W różnych tematach, projektach. Otworzyłem nowy projekt Live Wave MLM-owy taki. No ale to trzeba zdecydować. Jeśli chodzi o tą pozostałą część, to jak najbardziej się zgadzam. Działaj z porządkami.  Dziękuję.",
+        "corrected_text": "Podłognie ten plik jest niepotrzebny, bo on dotyczy wtyczki jakiejś, która historycznie kiedyś była zainstalowana jeszcze w Anti-Gravity IDE. Dotyczy subagentów. W ogóle to nie jest używane. Mamy sztab swoich dyrektorów i subagentów. Także on jest niepotrzebny. Sprawdzałem na laptop  Sync jakby nie przekopiował, nie zaktualizował struktury folderów. Tak jak to zrobiliśmy tutaj na stacjonarnym komputerze, na laptopie tutaj nie zrobiło się to. Owszem te pliki.nv no to trzeba byłoby to zrobić przez pendrive'a, tylko że tam już wiele poczyniłem  W różnych tematach, projektach. Otworzyłem nowy projekt Live Wave MLM-owy taki. No ale to trzeba zdecydować. Jeśli chodzi o tą pozostałą część, to jak najbardziej się zgadzam. Działaj z porządkami.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-14 22:07:04",
+        "raw_text": "Ok, to jak to zsynchronizować teraz tą strukturę i układ klipów, folderów i projektów? Zrobimy git sync, to i tak osobno będziemy musieli przerzucać przez pendrive'a na przykład pliki.env, tak?",
+        "corrected_text": "Ok, to jak to zsynchronizować teraz tą strukturę i układ klipów, folderów i projektów? Zrobimy git sync, to i tak osobno będziemy musieli przerzucać przez pendrive'a na przykład pliki.env, tak?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:12:37",
+        "raw_text": "Problem z chatbotem nadal występuje na stronie. Nie może się połączyć z bazą wiedzy. Taka jest informacja.",
+        "corrected_text": "Problem z chatbotem nadal występuje na stronie. Nie może się połączyć z bazą wiedzy. Taka jest informacja.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:14:55",
+        "raw_text": "Dzień dobry, chciałbym skorzystać z usług Państwa firmy.",
+        "corrected_text": "Dzień dobry, chciałbym skorzystać z usług Państwa firmy.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:29:26",
+        "raw_text": "Powiedz mi jeszcze, bo ten automatyczny git sync co 30 minut, który jest aktualnie ustawiony i dzieje się w tle zarówno na laptopie jak i na skompa stacjonarnego, to tam czy tam nie trzeba będzie też zmienić ścieżki tego głównego katalogu? Ponieważ no on od zmiany struktury folderów, zrobienia porządków, no cały czas  działa, ale tak jak mówię, nic się nie wydarzyło na laptopie. Tam pozostał stary układ folderów i plików.",
+        "corrected_text": "Powiedz mi jeszcze, bo ten automatyczny git sync co 30 minut, który jest aktualnie ustawiony i dzieje się w tle zarówno na laptopie jak i na skompa stacjonarnego, to tam czy tam nie trzeba będzie też zmienić ścieżki tego głównego katalogu? Ponieważ no on od zmiany struktury folderów, zrobienia porządków, no cały czas  działa, ale tak jak mówię, nic się nie wydarzyło na laptopie. Tam pozostał stary układ folderów i plików.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:39:50",
+        "raw_text": "ale potwierdzić git push?",
+        "corrected_text": "ale potwierdzić git push?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:53:07",
+        "raw_text": "Dzień dobry. Jestem zainteresowany usługą automatyzacją nas w firmie. Chciałbym dowiedzieć się coś więcej szczegółów.",
+        "corrected_text": "Dzień dobry. Jestem zainteresowany usługą automatyzacją nas w firmie. Chciałbym dowiedzieć się coś więcej szczegółów.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:57:12",
+        "raw_text": "Dzień dobry, jestem zainteresowany Państwa usługami. Posiadam firmę transportową i chciałbym zrobić analizę i uzyskać ofertę od Państwa.",
+        "corrected_text": "Dzień dobry, jestem zainteresowany Państwa usługami. Posiadam firmę transportową i chciałbym zrobić analizę i uzyskać ofertę od Państwa.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:58:39",
+        "raw_text": "Wiesz co, no może nie wkleiłem całego bloku naraz, ale po kolei wszystkie te komendy. Poniżej jest taka zwrotka z terminala.",
+        "corrected_text": "Wiesz co, no może nie wkleiłem całego bloku naraz, ale po kolei wszystkie te komendy. Poniżej jest taka zwrotka z terminala.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:05:44",
+        "raw_text": "Dobra, zrobione. Sprawdź tutaj ten wynik, wklejam z terminala. Cały folder, aplikacje, MVP kopiuje się na pendrive'a. I co dalej? W sensie,  czy zaktualizować ten skrypt git sync rozumiem, że on będzie się robił co pół godziny na laptopie i na stacjonarnym ale nie będzie wypychał ciężkich plików, tak? dużych, czyli na przykład jak zrobię, nie wiem, jakąś aplikację albo coś, no to będę musiał używać dalej pendrive'a, tak? czy to jest, nie wiem,  w git sync lub w ustawieniach w konfiguracji, żeby takie pliki się jednak przenosiły.",
+        "corrected_text": "Dobra, zrobione. Sprawdź tutaj ten wynik, wklejam z terminala. Cały folder, aplikacje, MVP kopiuje się na pendrive'a. I co dalej? W sensie,  czy zaktualizować ten skrypt git sync rozumiem, że on będzie się robił co pół godziny na laptopie i na stacjonarnym ale nie będzie wypychał ciężkich plików, tak? dużych, czyli na przykład jak zrobię, nie wiem, jakąś aplikację albo coś, no to będę musiał używać dalej pendrive'a, tak? czy to jest, nie wiem,  w git sync lub w ustawieniach w konfiguracji, żeby takie pliki się jednak przenosiły.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:09:58",
+        "raw_text": "Dobra, czy muszę na laptopie zmienić nazwę folderu roboczego? Czy po prostu przy kopiowaniu z pendrive'a na laptopa wcisnąć, zrobić opcję zastąp? Ponieważ są tam... Mam tam pewne rozpoczęte czaty, panty Gravity, agentic. Chciałbym je kontynuować, tak? A widzę, że mogę. Bo na stacjonarn  kontynuuje, tylko że tak jakby w starych poprzednich folderach, ale agent kontynuuje tak pracę i rozmowę w kontekście wcześniejszych rozmów. Chciałbym po prostu pewne tam rzeczy dokończyć w konwersacjach, w folderach, projektach na laptopie i tutaj na stacjonarnym tak samo, a później po prostu  po prostu zarchiwizuję czy usunę te rozmowy w projektach i będę kontynuował już od świeżych nowo otwartych projektach w folderach według nowej struktury",
+        "corrected_text": "Dobra, czy muszę na laptopie zmienić nazwę folderu roboczego? Czy po prostu przy kopiowaniu z pendrive'a na laptopa wcisnąć, zrobić opcję zastąp? Ponieważ są tam... Mam tam pewne rozpoczęte czaty, panty Gravity, agentic. Chciałbym je kontynuować, tak? A widzę, że mogę. Bo na stacjonarn  kontynuuje, tylko że tak jakby w starych poprzednich folderach, ale agent kontynuuje tak pracę i rozmowę w kontekście wcześniejszych rozmów. Chciałbym po prostu pewne tam rzeczy dokończyć w konwersacjach, w folderach, projektach na laptopie i tutaj na stacjonarnym tak samo, a później po prostu  po prostu zarchiwizuję czy usunę te rozmowy w projektach i będę kontynuował już od świeżych nowo otwartych projektach w folderach według nowej struktury",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:14:24",
+        "raw_text": "Nie wiem czemu tak długo trwa przenoszenie tutaj tego folderu aplikacji MVP na USB. Czy to chodzi o szybkość gniazda, szybkość USB, czy rodzaj pendrive'a? To po pierwsze, po drugie. No dobra, załóżmy, że przeniosę już tak na laptopa skopiowany folder aplikacji MVP.  No właśnie, bo jak ja przeniosę... Przeniosę na przykład z tego... Ok, jak robiłem zmiany na laptopie,  na jakichś projektach, no to przez ten automatyczny git sync wcześniej to się synchronizowało z komputerem stacjonarnym, czyli teraz przenoszę z komputera stacjonarnego folder aplikacji MVP już ze zmianami, które tam wprowadziłem czy rozpocząłem na laptopie, tak? Nic mi się tam nie skasuje, w sensie  Dziękuję.",
+        "corrected_text": "Nie wiem czemu tak długo trwa przenoszenie tutaj tego folderu aplikacji MVP na USB. Czy to chodzi o szybkość gniazda, szybkość USB, czy rodzaj pendrive'a? To po pierwsze, po drugie. No dobra, załóżmy, że przeniosę już tak na laptopa skopiowany folder aplikacji MVP.  No właśnie, bo jak ja przeniosę... Przeniosę na przykład z tego... Ok, jak robiłem zmiany na laptopie,  na jakichś projektach, no to przez ten automatyczny git sync wcześniej to się synchronizowało z komputerem stacjonarnym, czyli teraz przenoszę z komputera stacjonarnego folder aplikacji MVP już ze zmianami, które tam wprowadziłem czy rozpocząłem na laptopie, tak? Nic mi się tam nie skasuje, w sensie  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:21:39",
+        "raw_text": "Folder się kompresuje, aplikacja MVP. Pytanie czy jesteś w stanie sprawdzić ostatnie synchronizacje przez Gita właśnie między laptopem a komputerem stacjonarnym. Ponieważ po zmianie wczoraj struktury folderów na stacjonarnym,  ale jeszcze nie została zmieniona struktura na laptopie czy ten git sync prawidłowo działał. Wiesz o co mi chodzi. Jeśli chodzi o wskazane źródła, tak, ścieżkę folderów i tak dalej.",
+        "corrected_text": "Folder się kompresuje, aplikacja MVP. Pytanie czy jesteś w stanie sprawdzić ostatnie synchronizacje przez Gita właśnie między laptopem a komputerem stacjonarnym. Ponieważ po zmianie wczoraj struktury folderów na stacjonarnym,  ale jeszcze nie została zmieniona struktura na laptopie czy ten git sync prawidłowo działał. Wiesz o co mi chodzi. Jeśli chodzi o wskazane źródła, tak, ścieżkę folderów i tak dalej.",
+        "status": "raw_fallback"
+    }
+]
