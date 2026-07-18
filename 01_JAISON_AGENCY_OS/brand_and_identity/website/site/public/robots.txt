@@ -14,6 +14,7 @@ User-agent: *
 Disallow: /wp-admin/
 Disallow: /wp-content/
 Disallow: /wp-includes/
+Disallow: /oferty/
 Allow: /
 
 Sitemap: https://jaison.pl/sitemap.xml
