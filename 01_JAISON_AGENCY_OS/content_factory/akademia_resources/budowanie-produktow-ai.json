@@ -1,0 +1,132 @@
+{
+  "id": "budowanie-produktow-ai",
+  "type": "checklist",
+  "title": "Budowanie produktów AI: evals, taste i wąskie gardła",
+  "description": "Checklista budowania produktów opartych o AI: stopniowe oddawanie autonomii, evals jako kluczowa umiejętność, myślenie ogrodnika zamiast budowniczego, trzy ery internetu od kuracji do generacji, przesuwanie wąskich gardeł oraz co naprawdę poprawia aplikacje AI.",
+  "shortDescription": "Buduj produkty AI mądrze: oddawaj autonomię stopniowo, mierz jakość przez evals i rozwijaj taste.",
+  "industry": "IT / Software / SaaS",
+  "industrySlug": "it-software-saas",
+  "application": "Automatyzacja i AI",
+  "applicationSlug": "automatyzacja-ai",
+  "tags": [
+    "Produkty AI",
+    "Evals"
+  ],
+  "url": "/checklisty/automatyzacja-ai/budowanie-produktow-ai/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Budowanie produktów AI: evals, taste i wąskie gardła",
+  "body": "Budowanie produktów opartych o AI rządzi się innymi prawami niż klasyczny software. Ta checklista zbiera frameworki liderów produktu z ery AI: stopniowe oddawanie autonomii systemowi zamiast skoku do pełnej automatyzacji, evals jako nową kluczową umiejętność, myślenie ogrodnika zamiast budowniczego, trzy ery internetu od kuracji przez rekomendację do generacji, model przesuwania wąskich gardeł, gdy AI pisze większość kodu, oraz wnioski o tym, co naprawdę poprawia aplikacje AI. Wspólny mianownik brzmi: o jakości produktu AI nie decyduje wielkość modelu, tylko lepszy prompting, ewaluacja i taste, czyli smak budowania czegoś innego, niż wygenerowałby sam model.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem produktu AI, który budujesz albo planujesz. Poproś AI, żeby zaprojektowało stopniowe oddawanie autonomii w trzech wersjach: sugestie, generowanie z przeglądem człowieka i pełna autonomia, oraz żeby zbudowało prosty system evals: zbieranie outputów, ocena przez jedną osobę, kryteria i automatyczne metryki. Następnie niech AI wskaże, gdzie w Twoim procesie przesuwają się wąskie gardła, gdy AI pisze większość kodu, i co realnie poprawi jakość, czyli prompting, ewaluacja i strategia próbkowania zamiast samej wielkości modelu.",
+  "checklistSections": [
+    {
+      "title": "Stopniowe oddawanie autonomii, Reganti i Badam",
+      "items": [
+        "Każde oddanie autonomii systemowi AI oznacza utratę kontroli, więc budujesz stopniowo.",
+        "Wersja 1: sugestie, czyli wysoka kontrola człowieka.",
+        "Wersja 2: generowanie z przeglądem człowieka.",
+        "Wersja 3: pełna autonomia, do której nie skaczesz na starcie.",
+        "Pain is the new moat: firmy, które przechodzą ból uczenia się AI teraz, budują trudną do dogonienia przewagę."
+      ]
+    },
+    {
+      "title": "Evals jako kluczowa umiejętność, Hamel Husain i Shreya Shankar",
+      "items": [
+        "Evals to najważniejsza nowa umiejętność dla budujących produkty w erze AI, tym, czym metryki są dla tradycyjnych produktów.",
+        "Proces: zbierasz outputy, jedna osoba, łagodny dyktator, ocenia je jako dobre albo złe, definiujesz kryteria, budujesz automatyczne metryki i iterujesz.",
+        "Najczęstszy błąd to AI ocenia AI, bo to nie działa."
+      ]
+    },
+    {
+      "title": "Myślenie ogrodnika zamiast budowniczego, Alex Komoroske",
+      "items": [
+        "Budowniczy: mam plan i realizuję plan, więc wynik jest mniejszy lub równy włożonemu wysiłkowi.",
+        "Ogrodnik: sadzę, pielęgnuję i kierunkuję, więc wynik może przekroczyć wysiłek.",
+        "LLM to rower elektryczny dla przestrzeni idei: pokrywasz 10 razy więcej terenu intelektualnego, ale musisz wiedzieć, dokąd jechać.",
+        "W epoce AI taste, czyli smak, to zdolność tworzenia czegoś innego niż to, co model wygenerowałby sam."
+      ]
+    },
+    {
+      "title": "Trzy ery internetu, Rauch i Soderstrom",
+      "items": [
+        "Era kuracji: użytkownik sam organizuje treści.",
+        "Era rekomendacji: organizują algorytmy.",
+        "Era generacji: AI tworzy treści, a każda era wymaga przebudowania doświadczenia i modelu biznesowego.",
+        "Zasada godzin obserwacji: mierzysz, ile czasu spędzasz, obserwując użytkowników, bo im więcej, tym lepszy taste, który jest rozwijany, nie wrodzony."
+      ]
+    },
+    {
+      "title": "Przesuwanie wąskich gardeł, Mike Krieger",
+      "items": [
+        "Gdy AI pisze 90 procent kodu, wąskie gardło przesuwa się w górę procesu, do uzgadniania decyzji, oraz w dół, do kolejki merge i review.",
+        "Używasz modelu AI jako partnera strategicznego: do testowania pomysłów, pisania dokumentów i brainstormu.",
+        "AI nie eliminuje pracy, tylko przesuwa wąskie gardła, więc organizacja musi identyfikować nowe wąskie gardła."
+      ]
+    },
+    {
+      "title": "Co naprawdę poprawia aplikacje AI, Chip Huyen i Howie Liu",
+      "items": [
+        "Ludzie myślą, że jakość AI poprawia więcej danych i większe modele, a naprawdę działa lepszy prompting, evals i strategia próbkowania odpowiedzi.",
+        "Strategia próbkowania odpowiedzi bywa ważniejsza niż wielkość modelu.",
+        "Ćwiczenie refounding, Howie Liu: wyobraź sobie, że zakładasz firmę od zera w podejściu AI-native, a jeśli nie potrafisz odpowiedzieć jak, może lepiej znaleźć kupca.",
+        "Full stack builder, Tomer Cohen: model trio product manager, designer, inżynier jest złamany, a przyszłość to pełnostackowi twórcy w małych zespołach wspierani przez AI, bo 70 procent umiejętności zmieni się do 2030."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy budujesz produkt albo funkcję opartą o AI i chcesz uniknąć typowych błędów: skoku do pełnej autonomii, braku ewaluacji jakości i wiary, że większy model rozwiąże wszystko.",
+  "order": 97,
+  "published": true,
+  "seoTitle": "Budowanie produktów AI, evals, taste i wąskie gardła, checklista",
+  "seoDescription": "Buduj produkty AI mądrze: stopniowe oddawanie autonomii, evals jako kluczowa umiejętność, myślenie ogrodnika, trzy ery internetu i co naprawdę poprawia aplikacje AI.",
+  "keywords": [
+    "produkty AI",
+    "evals",
+    "budowanie produktów AI",
+    "AI product",
+    "prompting"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "produkty-ai",
+  "internalLinks": [
+    "zarzadzanie-produktem-roadmapy-i-discovery",
+    "audyt-powtarzalnych-workflow-w-codex",
+    "dopasowanie-produktu-do-rynku-pmf"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Evals, autonomia, taste i wąskie gardła w produktach AI",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło frameworków produktowych przytoczonych w checkliście, do dalszego posłuchania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym są evals w produktach AI?",
+      "answer": "Evals to systematyczna ocena jakości outputów modelu, która dla produktów AI pełni rolę, jaką metryki pełnią dla tradycyjnych produktów. Proces wygląda tak: zbierasz outputy, jedna zaufana osoba ocenia je jako dobre albo złe, definiujesz kryteria, budujesz automatyczne metryki i iterujesz. Najczęstszym błędem jest pozwalanie AI oceniać AI, bo to po prostu nie działa."
+    },
+    {
+      "question": "Dlaczego nie oddawać AI pełnej autonomii od razu?",
+      "answer": "Bo każde oddanie autonomii systemowi oznacza utratę kontroli, a skok od razu do pełnej automatyzacji kończy się błędami i utratą zaufania użytkowników. Lepiej budować stopniowo: najpierw sugestie z pełną kontrolą człowieka, potem generowanie z przeglądem, a dopiero na końcu pełna autonomia. Firmy, które przechodzą ten ból uczenia się teraz, budują trudną do dogonienia przewagę."
+    },
+    {
+      "question": "Czym jest taste w budowaniu produktów AI?",
+      "answer": "Taste, czyli smak, to zdolność tworzenia czegoś innego i lepszego niż to, co model wygenerowałby sam z siebie. W metaforze ogrodnika i budowniczego to ogrodnik osiąga wynik większy niż włożony wysiłek, bo wie, dokąd kierować. Taste nie jest wrodzonym talentem, tylko umiejętnością rozwijaną przez godziny obserwowania, jak ludzie naprawdę używają produktów."
+    },
+    {
+      "question": "Co naprawdę poprawia jakość aplikacji AI?",
+      "answer": "Wbrew intuicji nie chodzi głównie o więcej danych ani większe modele, tylko o lepszy prompting, dobre evals i przemyślaną strategię próbkowania odpowiedzi. Często sposób, w jaki dobierasz i oceniasz odpowiedzi modelu, daje większy skok jakości niż przejście na większy model. Dlatego warto inwestować czas w prompting i ewaluację, zanim sięgniesz po droższy model."
+    },
+    {
+      "question": "Jak AI zmienia wąskie gardła w pracy?",
+      "answer": "Gdy AI pisze większość kodu, praca się nie kończy, tylko wąskie gardło się przesuwa. W górę procesu rośnie znaczenie uzgadniania decyzji i kierunku, a w dół kolejki przeglądu i scalania kodu. Dlatego organizacje muszą świadomie identyfikować nowe wąskie gardła i używać AI także jako partnera do testowania pomysłów i pisania dokumentów, nie tylko do kodu."
+    }
+  ]
+}

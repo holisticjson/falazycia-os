@@ -1,0 +1,516 @@
+{
+  "id": "checklista-copywritingu-strony-sprzedazowej",
+  "type": "checklist",
+  "title": "Copywriting i perswazja strony sprzedażowej",
+  "description": "Pełna checklista copywritingu i perswazji do audytu strony sprzedażowej: nagłówki, hooki, formuły, body copy, słowa widmo, wezwanie do działania, social proof, gwarancje, email, pricing i storytelling.",
+  "shortDescription": "Pełna biblioteka copywritingu od nagłówków po storytelling.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-sprzedaz",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Copywriting",
+    "Konwersja"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/checklista-copywritingu-strony-sprzedazowej/",
+  "active": true,
+  "views": 0,
+  "postedAt": "June 9, 2026",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Copywriting i perswazja strony sprzedażowej",
+  "body": "Checklista przenosi pełną bibliotekę copywritingu z wewnętrznego źródła wiedzy: nagłówki, hooki, emocjonalne wyzwalacze, formuły sprzedażowe, pisanie body copy, słowa widmo i zamienniki, wezwanie do działania, social proof, gwarancje, email copy, cennik, oferta i storytelling frameworks. To nie jest skrócony audyt strony. To szczegółowy materiał do pracy z AI, w którym trzeba przejść od pierwszego wrażenia i nagłówka aż po PS, gwarancję, pricing, dowody, obiekcje i narrację strategiczną.",
+  "usage": "Wklej checklistę do ChatGPT, Claude, Gemini albo własnego asystenta AI razem z URL strony, treścią sekcji, screenshotami, opisem produktu, ceną, grupą docelową, źródłem ruchu i celem strony. Poproś AI, żeby przeszło przez sekcje A do J, nie tylko przez ogólną strukturę landing page. Najpierw niech oceni nagłówek, hook, lead in, formułę sprzedażową, body copy i słowa widmo. Potem niech sprawdzi wezwanie do działania, social proof, gwarancję, email follow up, pricing, ofertę i storytelling. Na końcu poproś o listę 10 największych blokad konwersji, priorytet wpływ kontra łatwość poprawy, 5 nowych nagłówków, 3 wersje wezwanie do działania, poprawioną sekcję social proof, poprawioną gwarancję i nową kolejność sekcji. Jeśli używasz zewnętrznych frameworków albo nazwisk z tej checklisty, traktuj je jako inspirację i odniesienia, nie jako oficjalny materiał tych autorów.",
+  "checklistSections": [
+    {
+      "title": "Zasady nagłówków (Dan Kennedy)",
+      "items": [
+        "Nagłówek = 80% sukcesu reklamy; 5x więcej ludzi czyta nagłówek niż resztę tekstu (David Ogilvy)",
+        "Obiecuj konkretną korzyść: nie \"Naucz się marketingu\" ale \"Jak podwoić sprzedaż w 90 dni bez wydawania więcej na reklamy\"",
+        "Długie nagłówki (8 do 12 słów) prawie zawsze pokonują krótkie, nie bój się długości",
+        "Nagłówki w cudzysłowach mają wyższy readership, testuj",
+        "Napisz MINIMUM 5 wariantów nagłówka i wybierz najsilniejszy",
+        "Test \"co z tego?\": Czy klient przeczyta nagłówek i powie \"to mnie interesuje!\" czy \"no i co z tego?\"",
+        "Rozważ umieszczenie gwarancji w nagłówku: \"Podwój sprzedaż w 90 dni LUB zwracam 100% pieniędzy\"",
+        "Rozważ umieszczenie opinii klienta jako nagłówka: \"Zarobiłam 47,000 PLN w pierwszym miesiącu...\", Ania K., Warszawa"
+      ]
+    },
+    {
+      "title": "5 emocjonalnych wyzwalaczy (Dan Kennedy)",
+      "items": [
+        "strach, przed utratą, błędem, porażką (\"Czy popełniasz ten błąd który kosztuje...\")",
+        "poczucie winy, że nie robi się wystarczająco dużo (\"Twoi konkurenci już to robią\")",
+        "duma, chęć bycia podziwianym (\"Dołącz do 47 firm które...\")",
+        "chciwość, pragnienie więcej (\"Jak zarobić dodatkowe 14,237 PLN w 23 dni\")",
+        "miłość, ochrona bliskich (\"Zapewnij swojej rodzinie...\")",
+        "Każdy tekst sprzedażowy powinien wykorzystywać minimum 2 do 3 z tych emocji"
+      ]
+    },
+    {
+      "title": "Hooki z Lenny's Podcast",
+      "items": [
+        "Strategic Narrative hook (Andy Raskin): \"Stary świat się kończy. Nowy świat nadchodzi. Oto jak dołączyć do zwycięzców.\"",
+        "Memification hook (Yuhki Yamashita albo Figma): Czy ten insight można zacytować w połowie spotkania? Jeśli tak, osiągnąłeś memifikację",
+        "\"Put the Pill in Cheese\" (Lulu Cheng): Ukryj trudny przekaz w atrakcyjnej historii, nikt nie chce łykać tabletek, ale w serze połkną chętnie",
+        "Cultural Erogenous Zones (Lulu Cheng): Znajdź to na czym Twojej publiczności zależy i zbuduj most do produktu"
+      ]
+    },
+    {
+      "title": "Struktura wprowadzenie (Dan Kennedy)",
+      "items": [
+        "Nagłówek główny, podtytuł pogłębiający, pierwsze zdanie ciągnące w tekst",
+        "Tekst zaczyna się od bólu albo problemu klienta, nie od opisu produktu",
+        "Nie \"My oferujemy...\" ale \"Jeśli Twoim problemem jest X, wiem dokładnie jak się czujesz...\""
+      ]
+    },
+    {
+      "title": "AIDA",
+      "items": [
+        "Attention, Przyciągnij uwagę nagłówkiem (obietnica, statystyka, prowokacja)",
+        "Interest, Zainteresuj pogłębieniem problemu (3 do 4 zdania \"wiem jak to jest...\")",
+        "Desire, Wzbudź pragnienie rozwiązaniem (korzyści, case study, wizja przyszłości)",
+        "Action, Wezwij do działania (jasny wezwanie do działania z jedną opcją)"
+      ]
+    },
+    {
+      "title": "PAS",
+      "items": [
+        "Problem, Nazwij problem (w ich języku, nie w Twoim)",
+        "Agitate, Pogłęb ból (konsekwencje, koszty, emocje, \"ile jeszcze będziesz...?\")",
+        "Solve, Pokaż rozwiązanie (korzyści, mechanizm, dowód, wezwanie do działania)"
+      ]
+    },
+    {
+      "title": "Przed albo Po albo Most",
+      "items": [
+        "Przed: Stan obecny, opisz sytuację czytelnika (frustracjami, problemami, kosztami)",
+        "Po: Stan docelowy, namaluj wizję przyszłości po rozwiązaniu",
+        "Most: Twoje rozwiązanie jako most, pokaż konkretne kroki jak przejść od Przed do Po"
+      ]
+    },
+    {
+      "title": "Bohater, historia, rozwiązanie",
+      "items": [
+        "Star: Bohater, osoba podobna do czytelnika (klient, Ty sam, ktoś rozpoznawalny)",
+        "Story: Historia sukcesu, z konkretnym problemem, momentem przełomowym i wynikiem",
+        "Solution: Rozwiązanie, to samo które pomogło bohaterowi, teraz dostępne dla czytelnika"
+      ]
+    },
+    {
+      "title": "Momentum małych \"tak\" (Dan Kennedy)",
+      "items": [
+        "Sprzedaż to nie jeden wielki \"TAK\", to seria małych decyzji prowadzących do zakupu",
+        "Buduj momentum: pytanie, zgoda, pytanie, zgoda, oferta",
+        "Każde \"tak\" (nawet małe: \"Zgadza się?\", \"Ma Pan rację?\") buduje zaangażowanie i konsekwencję"
+      ]
+    },
+    {
+      "title": "Pisanie body copy (Dan Kennedy + PERSONALIZACJA.md)",
+      "items": [
+        "Osobisty, konwersacyjny ton, jak list do przyjaciela, nie jak reklama",
+        "Krótkie zdania, krótkie akapity, dużo białej przestrzeni",
+        "Jedno najważniejsze przesłanie jako fundament całego tekstu",
+        "Korzyści większe niż cechy: \"przestaniesz gubić klientów\" nie \"moduł CRM\"",
+        "Konkretne liczby większe niż przymiotniki: \"47 firm\" nie \"wiele firm\", \"14,237 PLN\" nie \"dużo pieniędzy\"",
+        "Tekst na poziomie 6 klasy szkoły podstawowej, proste słowa, bez żargonu (11,1% konwersji vs 5,3% dla profesjonalnego języka, Unbounce)",
+        "Tekst \"mówi\" do jednej osoby: test \"Ty albo Twój\" vs \"My albo Nasz\", przewaga \"Ty\"",
+        "Przeczytaj tekst na głos, jeśli brzmi sztucznie, przepisz"
+      ]
+    },
+    {
+      "title": "Podwójna ścieżka czytelnika (Dan Kennedy)",
+      "items": [
+        "Każdy tekst działa na dwóch poziomach: (1) dla \"skanerów\", nagłówki, podnagłówki, bullets, wyróżnienia; (2) dla \"czytelników\", pełny tekst",
+        "Większość ludzi najpierw skanuje, \"ścieżka skanowania\" musi samodzielnie sprzedawać",
+        "Podpisy pod zdjęciami są czytane 4x częściej niż tekst"
+      ]
+    },
+    {
+      "title": "Repetycja wewnętrzna (Dan Kennedy)",
+      "items": [
+        "Kluczowe argumenty powtórz minimum 3 razy w różnych formach: nagłówek, treść, bullets, gwarancja, PS",
+        "\"Tell them what you're going to tell them, tell them, then tell them what you told them\""
+      ]
+    },
+    {
+      "title": "Ból sprzedaje lepiej niż przyjemność (Dan Kennedy)",
+      "items": [
+        "Ludzie silniej reagują na unikanie bólu niż na zdobywanie przyjemności",
+        "Strach, poczucie winy i frustracja są silniejszymi motywatorami niż obietnica zysku",
+        "Najpierw pokaż problem albo ból, potem rozwiązanie"
+      ]
+    },
+    {
+      "title": "Precyzja przebija ogólniki (Dan Kennedy)",
+      "items": [
+        "\"Zarobisz 14,237 PLN w 23 dni\" jest 10x silniejsze niż \"Zarobisz dużo pieniędzy szybko\"",
+        "Precyzyjne dane budują wiarygodność i powodują że obietnice stają się realne",
+        "Używaj \"lingo\", języka którym mówi Twój klient, nie Twojego języka"
+      ]
+    },
+    {
+      "title": "Bardzo konkretne jak (Wes Kao)",
+      "items": [
+        "Pisz MNIEJ o \"co\" i \"dlaczego\", WIĘCEJ o \"jak dokładnie to zrobić\"",
+        "Czytelnicy już się zgadzają z premisą, chcą wiedzieć JAK",
+        "Większość contentu ma za dużo \"co\" i \"dlaczego\" a za mało \"jak dokładnie\""
+      ]
+    },
+    {
+      "title": "Lista zakazanych słów",
+      "items": [
+        "innowacyjny: Każdy tak mówi. Zero informacji.. Zamiennik: \"skraca z 4h do 10 min\".",
+        "kompleksowy: Klient nie wie co dostaje.. Zamiennik: \"obsługuje faktury, przypomnienia i nowych klientów\".",
+        "profesjonalny: Nic nie znaczy.. Zamiennik: \"używany przez 47 biur rachunkowych\".",
+        "skuteczny: Subiektywne.. Zamiennik: \"23% więcej rezerwacji w 60 dni\".",
+        "holistyczny: Nikt tak nie mówi.. Zamiennik: \"od pozyskania do obsługi, jeden system\".",
+        "transformacyjny: Pusty przymiotnik.. Zamiennik: \"z 8 klientów na 22 w 3 miesiące\".",
+        "synergia: Korporacyjny żargon.. Zamiennik: \"Twój CRM wysyła maile automatycznie\".",
+        "przełomowa zmiana: Nadużywane do granic.. Zamiennik: \"Pierwszy miesiąc zaoszczędzisz 6h tygodniowo\".",
+        "fascynujący: Brzmi jak AI.. Zamiennik: usuń i napisz co DOKŁADNIE jest ciekawe.",
+        "zanurz się: Brzmi jak AI.. Zamiennik: \"zacznij od...\".",
+        "odkryj moc: Brzmi jak AI.. Zamiennik: \"zobacz jak...\"."
+      ]
+    },
+    {
+      "title": "Zakazane konstrukcje",
+      "items": [
+        "\"Nie tylko X, ale także Y\", pisz: \"X. Poza tym Y.\"",
+        "\"Warto zauważyć że\", usuń, zacznij od meritum",
+        "\"W dzisiejszych czasach\", usuń, niepotrzebne",
+        "\"Kluczowe jest to że\", usuń, napisz wprost",
+        "\"Oferujemy kompleksowe rozwiązania\", napisz CO DOKŁADNIE oferujesz"
+      ]
+    },
+    {
+      "title": "Test nagłówka",
+      "items": [
+        "Czy zawiera zakazane słowo?, zamień na konkretny wynik",
+        "Czy możesz podmienić nazwę firmy albo branży i nagłówek nadal ma sens?, jeśli tak, jest za ogólny",
+        "Czy klient z tej branży powie \"to jest o mnie\"?, jeśli nie, doprecyzuj",
+        "Czy jest krótszy niż 15 słów?, jeśli nie, skróć"
+      ]
+    },
+    {
+      "title": "Zasady wezwania do działania (Dan Kennedy + PERSONALIZACJA.md)",
+      "items": [
+        "NIGDY generyczne \"Sprawdź\" czy \"Dowiedz się więcej\", to nie jest wezwanie do działania",
+        "Format: [AKCJA] + [DLA KOGO] + [CO DOSTANIE]",
+        "wezwanie do działania w 1. osobie konwertuje lepiej: \"Zacznij mój darmowy trial\" wygrywa vs \"Zacznij swój trial\"",
+        "Personalizowane wezwanie do działania konwertują 42% lepiej niż generyczne",
+        "Maksymalnie 4 słowa: \"Zarezerwuj demo teraz\"",
+        "Jedno wezwanie do działania na sekcję, nie dawaj 5 opcji",
+        "\"Wypróbuj\" większe niż \"Kup\", \"Zacznij\" większe niż \"Zamów\", \"Dołącz\" większe niż \"Zapisz się\"",
+        "Każdy wezwanie do działania mówi dokładnie CO zrobić, JAK i KIEDY: \"Zadzwoń TERAZ pod 500 123 456\""
+      ]
+    },
+    {
+      "title": "Wezwanie do działania per kontekst",
+      "items": [
+        "business to business: \"Umów demo\", \"Porozmawiaj z ekspertem\", \"Pobierz raport\"",
+        "business to consumer: \"Wypróbuj za darmo\", \"Zacznij dziś\", \"Dołącz do nas\"",
+        "Cold email: \"Czy warto porozmawiać 15 minut w tym tygodniu?\"",
+        "Landing page: \"Pobierz darmowy szablon [czegoś konkretnego] dla [branży]\""
+      ]
+    },
+    {
+      "title": "Lawinowe nagromadzenie dowodów (Dan Kennedy)",
+      "items": [
+        "Nie 1 do 2 opinie ale 10 do 20 plus z różnych źródeł: opinie klientów, studia przypadków, liczby, zdjęcia, certyfikaty",
+        "Opinie KONKRETNE: nie \"Świetny kurs!\" ale \"Zarobiłam dodatkowe 23,400 PLN w 3 miesiące dzięki strategii X\", Ania K., Warszawa, kwiecień 2026",
+        "3 do 5 testimoniali na stronie głównej = optymalny balans",
+        "Wideo testimoniale: +80% konwersji; poniżej sekcji cenowej: +27%",
+        "w czasie rzeczywistym social proof: \"Jan z Krakowa kupił 5 min temu\" = +98% konwersji",
+        "Logo klientów = +400% konwersji (Unbounce)",
+        "Optymalny rating: 4,2 do 4,5 gwiazdek (nie 5,0, zbyt idealne = podejrzane)",
+        "Stosuj formułę testimonialu przed, po, polecam: przed produktem miałem dany problem, po produkcie już go nie mam, jeśli masz ten problem, polecam, bo taki format jest dużo skuteczniejszy niż ogólna pochwała."
+      ]
+    },
+    {
+      "title": "Damaging Admission, szkodliwe przyznanie (Dan Kennedy)",
+      "items": [
+        "Celowe przyznanie się do słabości buduje OGROMNĄ wiarygodność",
+        "\"Ten program NIE jest dla leniwych ludzi\"",
+        "\"Nie jestem najtańszy, i oto dlaczego...\"",
+        "\"Nie robimy X (i dlatego Y jest u nas lepsze)\"",
+        "Ludzie nie ufają perfekcji, szczerość w kwestii wad przekonuje o prawdziwości zalet"
+      ]
+    },
+    {
+      "title": "Budowanie autorytetu (Dan Kennedy)",
+      "items": [
+        "Checklist autorytetu: książka albo ebook, wystąpienia publiczne, artykuły, cytaty w mediach, specjalizacja",
+        "Status autora książki automatycznie podnosi wiarygodność 5 do 10 razy",
+        "Komunikacja od osoby, nie od firmy, ludzie ufają ludziom, nie korporacjom",
+        "Opowiedz SWOJĄ HISTORIĘ: dlaczego to robisz, skąd wiesz że działa, jakie błędy popełniłeś",
+        "Endorsement od jednej szanowanej osoby większe niż 100 anonimowych opinii"
+      ]
+    },
+    {
+      "title": "FAQ jako narzędzie sprzedaży",
+      "items": [
+        "Proaktywnie odpowiadaj na ZASTRZEŻENIA klienta zanim o nich pomyśli",
+        "5 do 8 pytań: produkt, cena, bezpieczeństwo, wdrożenie",
+        "Adresuj: \"Nie mamy na to czasu\", \"Nasz dział IT to zablokuje\", \"Co jeśli nie zadziała?\""
+      ]
+    },
+    {
+      "title": "Gwarancja jako narzędzie sprzedaży (Dan Kennedy)",
+      "items": [
+        "Im MOCNIEJSZA gwarancja, tym WIĘCEJ sprzedajesz, a zwroty rosną znacznie wolniej niż sprzedaż",
+        "Paradoks: śmiała gwarancja zwiększa sprzedaż bardziej niż zwiększa zwroty",
+        "Gwarancja musi być WIDOCZNA, nie ukryta w stopce",
+        "Dodaj gwarancję zwrotu pieniędzy: +30 do 60 procent konwersji"
+      ]
+    },
+    {
+      "title": "Rodzaje gwarancji (od słabej do najsilniejszej)",
+      "items": [
+        "Podstawowa: Gwarancja satysfakcji, \"Nie jesteś zadowolony? Zwrócimy pieniądze\"",
+        "Warunkowa na wynik: \"Jeśli nie osiągniesz X w Y dni, zwracam pieniądze\"",
+        "\"Lepiej niż pieniądze\": \"Zwracam pieniądze + daję Ci bonus Z za stracony czas\"",
+        "Długi okres: 365 dni, eliminuje presję czasu i poczucie ryzyka",
+        "Trial albo Pilotaż: Darmowy okres lub etapowe wdrożenie, \"wypróbuj zanim kupisz\"",
+        "Klauzula wyjścia: \"Możesz zrezygnować w dowolnym momencie bez kar\""
+      ]
+    },
+    {
+      "title": "Direct mail rules (Dan Kennedy)",
+      "items": [
+        "Wiadomość musi wyglądać jak osobista korespondencja, nie jak newsletter firmowy",
+        "Wysyłaj do odpowiedniej listy, lista większe niż oferta większe niż copy; najlepsze copy nie uratuje złej listy",
+        "List od osoby, nie od firmy: podpisany imieniem, napisany w 1. osobie, personalny ton",
+        "\"Grabber\" na początku: szokujący fakt, pytanie, statystyka, coś co wymusza dalsze czytanie",
+        "Tekst zaczyna się od rozpoznania problemu: \"Jeśli Twoim problemem jest X, wiem dokładnie jak się czujesz...\"",
+        "PS na końcu, PS to najczęściej czytana część listu po nagłówku!",
+        "PS powtarza główną korzyść + deadline albo pilność",
+        "Formularz zamówienia albo odpowiedzi OSOBNY i powtarza ofertę, wiele osób czyta TYLKO formularz",
+        "Zaplanuj SEKWENCJĘ kontynuacja kontaktu: minimum 3 kontakty w 30 do 45 dni; kontynuacja kontaktu daje 40 do 50 procent wyniku"
+      ]
+    },
+    {
+      "title": "Stick procedure po sprzedaży email (Dan Kennedy)",
+      "items": [
+        "Seria kontynuacja kontaktu wiadomości po zakupie: dzień 1, 3, 6, 10, 14, 30",
+        "Cel: utwierdzić klienta w decyzji, zredukować zwroty, budować lojalność",
+        "Zaawansowana stick procedure redukuje zwroty o 30 do 50 procent"
+      ]
+    },
+    {
+      "title": "Hiper responsywni klienci, złota lista (Dan Kennedy)",
+      "items": [
+        "W każdej bazie klientów jest 5 do 10 procent \"hiper responsywnych\", kupują wszystko, często, drogo",
+        "Ta mała grupa generuje 50 do 80 procent zysków",
+        "Identyfikuj ich, traktuj inaczej, twórz oferty specjalnie dla nich",
+        "Zbieraj dane kontaktowe na każdym etapie, lista klientów to NAJCENNIEJSZY asset firmy"
+      ]
+    },
+    {
+      "title": "Zakotwiczenie cenowe (Dan Kennedy)",
+      "items": [
+        "Cena dopiero po zbudowaniu wartości, nigdy na początku",
+        "Rozbij wartości poszczególnych komponentów: \"Warsztaty warte 3,000 + szablon 500 + konsultacja 1,000 = razem 4,500, Twoja cena: 997\"",
+        "Porównaj cenę do czegoś droższego: \"To mniej niż kawa dziennie\" albo \"To 1/10 tego co zapłaciłbyś konsultantowi\"",
+        "Ramka ROI: \"Inwestujesz 997 PLN, zyskujesz minimum 10,000 PLN\", cena staje się inwestycją, nie kosztem",
+        "Prezentuj cenę jako inwestycję z oczekiwanym ROI, nie jako koszt"
+      ]
+    },
+    {
+      "title": "Decoy effect (efekt wabika)",
+      "items": [
+        "3 tiery konwertują najlepiej, 4 plus tiery konwertują 31% gorzej",
+        "Dodanie opcji nieco gorszej w cenie zbliżonej do docelowej masowo przesuwa wybory na pożądany tier",
+        "Badge \"Najpopularniejszy\" na środkowym tierze znacząco podnosi wybieralność",
+        "30% klientów wybierze droższą opcję (deluxe albo premium), automatycznie podnosi średnią wartość zamówienia"
+      ]
+    },
+    {
+      "title": "Slack adjuster (Dan Kennedy)",
+      "items": [
+        "Każdy biznes potrzebuje produktu \"slack adjuster\", drogie, wysokomarżowe rozwiązanie",
+        "Sprzedawane małemu procentowi klientów, ale nieproporcjonalnie zasila zysk",
+        "Przykłady: bootcamp albo VIP, rozszerzona gwarancja, pakiet premium, konsultacja 1 na 1"
+      ]
+    },
+    {
+      "title": "Oferta nie do odrzucenia (Dan Kennedy)",
+      "items": [
+        "Minimum 2 do 3 bonusy o wysokiej postrzeganej wartości (bonus wart więcej niż produkt główny)",
+        "Przynajmniej jeden bonus ograniczony czasowo: \"tylko dla pierwszych 50 osób\"",
+        "Opcje płatności ratalne: 3x, 6x, 12x, dramatycznie zwiększa konwersje",
+        "Minimum 2 opcje cenowe: Basic vs Premium",
+        "Jasny deadline lub LIMIT, z wytłumaczonym powodem: \"bo sala ma 30 miejsc\"",
+        "Upsell zaraz po zakupie: 20%+ klientów kupi coś dodatkowego natychmiast"
+      ]
+    },
+    {
+      "title": "Strategic Narrative, stara gra, nowa gra (Andy Raskin)",
+      "items": [
+        "Zamiast \"problem, rozwiązanie, dlaczego lepsze\" opowiedz historię zmiany świata",
+        "Struktura 5 kroków: Krok 1: Wielka zmiana w świecie (niezaprzeczalna). Krok 2: Będą zwycięzcy i przegrani. Krok 3: Wyobraź sobie ziemię obiecaną (wizja przyszłości). Krok 4: Oto magiczne narzędzia (Twój produkt). Krok 5: Dowód że to działa (case study).",
+        "Definiuj ruch, nie produkt, zmiana narracji (bez zmiany produktu) dramatycznie zmienia wyniki"
+      ]
+    },
+    {
+      "title": "Jak jest teraz kontra jak mogłoby być (Nancy Duarte)",
+      "items": [
+        "Prezenter NIE jest bohaterem, jest mentorem; publiczność jest bohaterem",
+        "Oscyluj między \"jak jest teraz\" i \"jak mogłoby być\", tworzy napięcie prowadzące do akcji",
+        "Ludzie nie pamiętają danych, pamiętają kontrast między \"teraz\" a \"mogłoby być\"",
+        "Każda prezentacja albo tekst powinna budować ten kontrast"
+      ]
+    },
+    {
+      "title": "Pięciosekundowy moment transformacji (Matthew Dicks)",
+      "items": [
+        "Każda dobra historia prowadzi do jednego momentu zmiany (5 sekund) w którym bohater widzi świat inaczej",
+        "To jest rdzeń historii, nie fabuła, znajdź ten moment i zbuduj wokół niego",
+        "Dinner Test: opowiedz historię przy kolacji, jeśli ludzie słuchają, działa",
+        "Homework for Life: codziennie zapisz jeden moment z dnia który mógłby być historią"
+      ]
+    },
+    {
+      "title": "5 technik rozprzestrzeniania idei (Lulu Cheng Meservey)",
+      "items": [
+        "Zamień w żart, humor zapada w pamięć i jest udostępniany",
+        "Użyj analogii, powiąż z czymś co publiczność już zna i rozumie",
+        "Powtarzaj, frazy pamiętane to frazy powtarzane (memifikacja)",
+        "Stwórz obraz mentalny, nie używaj przymiotników, opisz scenę (\"move fast and break things\")",
+        "Opowiedz historię zamiast podawać fakty, historia większe niż statystyka w zapamiętywaniu"
+      ]
+    },
+    {
+      "title": "Test frazy (Lulu Cheng Meservey)",
+      "items": [
+        "Czy siedmiolatek zrozumie?, jeśli nie, uprość",
+        "Czy to klisza?, jeśli tak, wyrzuć",
+        "Czy tworzy obraz mentalny?, jeśli nie, przepisz na scenę albo historię"
+      ]
+    },
+    {
+      "title": "Memification (Yuhki Yamashita albo Figma)",
+      "items": [
+        "Czy ten insight można zacytować w połowie spotkania?, jeśli tak, osiągnąłeś memifikację",
+        "Najlepsza umiejętność to syntetyzowanie wielu obserwacji w jeden zapamiętywalny insight",
+        "\"reset wewnętrznego komputera\": zacznij od zera, udawaj że nie masz kontekstu, opowiedz historię od początku"
+      ]
+    },
+    {
+      "title": "MOO + \"Sales, Then Logistics\" (Wes Kao)",
+      "items": [
+        "Najpierw \"sprzedaj\" DLACZEGO to ważne, POTEM szczegóły, odwrotna kolejność = brak zaangażowania",
+        "Umysł executive'a ciągle mówi \"dalej, dalej\", bądź zwięzły",
+        "Kiepski Slack albo email do 15 osób = 15x zmarnowany czas",
+        "Jeśli nie dostajesz akceptacji, to TWOJA komunikacja jest problemem, nie ludzie"
+      ]
+    },
+    {
+      "title": "Kluczowe zasady (podsumowanie)",
+      "items": [
+        "Nagłówek = 80% sukcesu. 5x więcej ludzi czyta nagłówek niż resztę. Testuj minimum 5 wariantów.",
+        "Ból większe niż przyjemność. Ludzie silniej reagują na unikanie bólu niż na zdobywanie zysku.",
+        "Precyzja większe niż ogólniki. \"14,237 PLN w 23 dni\" jest 10x silniejsze niż \"dużo pieniędzy szybko\".",
+        "Prostota wygrywa. Poziom 6 klasy = 2x wyższa konwersja niż profesjonalny język.",
+        "Powtarzaj. Kluczowe argumenty minimum 3 razy w różnych formach.",
+        "Gwarancja sprzedaje. Im mocniejsza gwarancja, tym mniej zwrotów (paradoks).",
+        "PS to złoto. Najczęściej czytana część po nagłówku, powtórz korzyść + deadline.",
+        "Zero słów widmo. \"Innowacyjny\", \"kompleksowy\", \"profesjonalny\" = zero informacji. Zamień na liczby.",
+        "Jedna osoba. Pisz do JEDNEGO czytelnika, używaj \"Ty\", testuj na głos.",
+        "Historia większe niż dane. Ludzie pamiętają kontrast i momenty transformacji, nie statystyki."
+      ]
+    }
+  ],
+  "example": "Poproś AI: przeanalizuj moją stronę sprzedażową według pełnej checklisty Copywriting i Perswazja. Przejdź przez sekcje A do J. Wskaż, które punkty są spełnione, które są słabe, których brakuje, co ma największy wpływ na konwersję, a potem zaproponuj nowy nagłówek, lead in, wezwanie do działania, social proof, gwarancję, pricing i narrację strony.",
+  "order": 7,
+  "published": true,
+  "seoTitle": "Copywriting i perswazja strony sprzedażowej, checklista | Akademia.pl",
+  "seoDescription": "Pełna checklista copywritingu strony sprzedażowej: nagłówki, hooki, wezwanie do działania, social proof, gwarancje, pricing, email copy i storytelling.",
+  "keywords": [
+    "copywriting strony sprzedażowej",
+    "checklista copywritingu",
+    "perswazja w sprzedaży",
+    "wezwanie do działania landing page",
+    "social proof",
+    "storytelling sprzedażowy"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "copywriting-sprzedazowy",
+  "internalLinks": [
+    "tekst-bez-sladow-ai",
+    "personalizacja-marketingowa-4-poziomy",
+    "strategia-marketingowa-ze-strony-internetowej",
+    "meta-ads-2026-grafiki-teksty"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy checklista Copywriting i perswazja strony sprzedażowej?",
+      "answer": "Służy do pełnego audytu strony sprzedażowej, nie tylko do oceny nagłówka. Obejmuje hooki, formuły sprzedażowe, body copy, słowa widmo, wezwanie do działania, social proof, gwarancje, email follow up, pricing, ofertę i storytelling."
+    },
+    {
+      "question": "Co wkleić do AI razem z checklistą?",
+      "answer": "Najlepiej wkleić URL strony, treść wszystkich sekcji, screenshoty, opis produktu, cenę, grupę docelową, źródło ruchu, etap lejka, cel konwersji, obecne wyniki i najczęstsze obiekcje klientów."
+    },
+    {
+      "question": "Dlaczego checklista zawiera tak dużo liczb i przykładów?",
+      "answer": "Bo dobry copywriting wymaga konkretu. Liczby, przykłady nagłówków, przykłady wezwanie do działania, benchmarki, ceny, terminy i formuły pomagają AI ocenić stronę praktycznie, zamiast zwracać ogólne porady."
+    },
+    {
+      "question": "Czy ta checklista nadaje się tylko do landing page?",
+      "answer": "Nie. Możesz użyć jej do strony produktu, strony usługi business to business, strony kursu, oferty konsultingu, kampanii email, strony webinaru, strony lead magnetu albo sekwencji sprzedażowej."
+    },
+    {
+      "question": "Jak AI powinno zwrócić wynik audytu?",
+      "answer": "Poproś o tabelę: punkt checklisty, ocena, problem, przykład z Twojej strony, rekomendowana poprawka, priorytet i wpływ na konwersję. Potem poproś o gotowe wersje nagłówka, wezwanie do działania, gwarancji, social proof i sekcji cenowej."
+    },
+    {
+      "question": "Czy można używać nazwisk i frameworków z checklisty w publicznym tekście?",
+      "answer": "Tak, ale ostrożnie. Traktuj je jako inspiracje i odniesienia, nie jako oficjalne materiały tych autorów. Jeśli publikujesz tekst z takimi odniesieniami, dodaj źródła i nie sugeruj autoryzacji."
+    }
+  ],
+  "sourceReferences": [
+    {
+      "title": "Dan Kennedy marketing",
+      "author": "Dan Kennedy",
+      "url": "https://dankennedy.com/",
+      "relation": "Odniesienie do klasycznych zasad direct response, ofert, gwarancji, direct mail i psychologii sprzedaży użytych jako inspiracja checklisty."
+    },
+    {
+      "title": "David Ogilvy biography",
+      "author": "Ogilvy",
+      "url": "https://en.wikipedia.org/wiki/David_Ogilvy_(businessman)",
+      "relation": "Odniesienie do klasycznej zasady znaczenia nagłówka w reklamie i czytelnictwa reklam."
+    },
+    {
+      "title": "Unbounce Conversion Benchmark",
+      "author": "Unbounce",
+      "url": "https://unbounce.com/conversion-benchmark-report/",
+      "relation": "Odniesienie pomocnicze do benchmarków konwersji i wpływu prostoty języka oraz elementów strony na skuteczność landing page."
+    },
+    {
+      "title": "Andy Raskin strategic narrative",
+      "author": "Andy Raskin",
+      "url": "https://andyraskin.com/",
+      "relation": "Odniesienie do strategic narrative i struktury opowiadania o zmianie rynku zamiast samego produktu."
+    },
+    {
+      "title": "Duarte storytelling resources",
+      "author": "Nancy Duarte",
+      "url": "https://www.duarte.com/",
+      "relation": "Odniesienie do ramy kontrastu między obecnym stanem i możliwą przyszłością w komunikacji perswazyjnej."
+    },
+    {
+      "title": "Matthew Dicks storytelling",
+      "author": "Matthew Dicks",
+      "url": "https://en.wikipedia.org/wiki/Matthew_Dicks",
+      "relation": "Odniesienie do pracy nad momentem transformacji i codziennym zbieraniem materiału do historii."
+    },
+    {
+      "title": "Wes Kao marketing writing",
+      "author": "Wes Kao",
+      "url": "https://www.weskao.com/",
+      "relation": "Odniesienie do podejścia bardzo konkretne jak oraz komunikacji skupionej na praktycznym jak dokładnie."
+    }
+  ]
+}

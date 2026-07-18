@@ -1,0 +1,67 @@
+{
+  "id": "agent-team-budowa-feature",
+  "type": "prompt",
+  "title": "Agent team do budowy feature",
+  "description": "Stwórz zespół AI agentów, który najpierw projektuje feature, a potem koordynuje backend, frontend i testy.",
+  "shortDescription": "Zespół AI do zaplanowania i budowy feature.",
+  "industry": "IT / Software / SaaS",
+  "industrySlug": "it-software-saas",
+  "application": "AI agenci i kod",
+  "applicationSlug": "ai-agenci-kod",
+  "tags": [
+    "Architektura",
+    "Feature"
+  ],
+  "url": "/prompty/ai-agenci-kod/agent-team-budowa-feature/",
+  "active": true,
+  "views": 0,
+  "postedAt": "June 9, 2026",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Agent team do budowy feature",
+  "body": "Prompt pomaga uporządkować pracę nad większym feature przez role architect, backend-dev, frontend-dev i test-dev.",
+  "usage": "Użyj tego prompta w Claude Code, OpenAI Codex albo innym agentowym środowisku codingowym, które ma dostęp do repozytorium i może koordynować pracę nad plikami. Najlepiej sprawdza się przy większych feature, gdzie samo polecenie napisania kodu jest zbyt ryzykowne: najpierw potrzebujesz architektury, potem backendu, frontendu i testów. W zwykłym ChatGPT albo Claude bez dostępu do kodu możesz użyć go do przygotowania specyfikacji, ale implementację trzeba będzie przenieść ręcznie do projektu.",
+  "prompt": "Chcę, żebyś stworzył zespół AI agentów do zaprojektowania i zbudowania nowego feature. Feature:\n[opisz feature, np. chat 1:1, panel administracyjny, system rekomendacji, płatności, onboarding, scoring leadów] Kontekst projektu:\n[opisz produkt, użytkowników, stack technologiczny, backend, frontend, bazę danych, autoryzację, hosting, ograniczenia i aktualne wzorce w kodzie] Working directory:\n[ścieżka albo moduł projektu] Stwórz 4 role: 1. architect\nNajpierw zaprojektuj feature. Uwzględnij cel biznesowy, user flow, data model, API endpoints, eventy, uprawnienia, edge cases, ryzyka, plan migracji danych, observability, test strategy oraz decyzję techniczną: WebSocket, polling, REST, kolejka, cron albo inny mechanizm.\nArchitect musi zakończyć pracę tech specem i listą decyzji do zatwierdzenia.\nDopóki plan architecta nie jest zatwierdzony, backend-dev i frontend-dev nie mogą implementować. 2. backend-dev\nPo zatwierdzeniu planu architecta dopasuj implementację do istniejącego stylu backendu. Dodaj handlery, endpointy, walidację, modele danych i integracje. Zadbaj o auth, idempotency, retries i error handling. Nie wprowadzaj nowych wzorców, jeśli istniejące wystarczą. 3. frontend-dev\nPo zatwierdzeniu planu architecta zaprojektuj i zbuduj UI zgodny z istniejącym stylem aplikacji. Uwzględnij loading, empty state, error state i edge cases. Zadbaj o responsywność i dostępność. Nie buduj landing page, tylko właściwy ekran feature. 4. test-dev\nPracuj równolegle od początku. Na podstawie planu architecta przygotuj test cases, unit tests backendu, integration tests API, edge cases frontendu, testy regresji i minimalny plan ręcznej weryfikacji. Zasady koordynacji:\nTy jesteś leadem i koordynujesz pracę agentów.\nArchitect blokuje backend-dev i frontend-dev do czasu zatwierdzenia planu.\nTest-dev może pracować od początku na podstawie specyfikacji.\nKażdy agent raportuje status: TODO / IN PROGRESS / BLOCKED / DONE.\nJeśli agent jest zablokowany, musi jasno napisać czego brakuje.\nNie koduj, dopóki plan nie zostanie zatwierdzony. Na końcu przygotuj:\n1. Tech spec.\n2. Listę plików do zmiany.\n3. Kolejność implementacji.\n4. Test plan.\n5. Ryzyka.\n6. Pytania do właściciela produktu.\n7. Definicję done. Po przygotowaniu specyfikacji oceń feature przez 5 filtrów: czy rozwiązuje realny problem użytkownika, czy da się wdrożyć mniejszym zakresem, czy wymaga migracji danych, czy zwiększa ryzyko bezpieczeństwa, czy ma jasne testy akceptacyjne. Jeśli któryś filtr nie przechodzi, zatrzymaj implementację i zaproponuj mniejszy wariant. Na końcu przygotuj też komunikat dla właściciela produktu: co dostanie użytkownik, czego nie robimy w tej wersji i jakie decyzje blokują start pracy.",
+  "order": 4,
+  "published": true,
+  "seoTitle": "Agent team do budowy feature | Akademia.pl",
+  "seoDescription": "Prompt do pracy z agentami w Claude Code albo OpenAI Codex przy projektowaniu, implementacji i testowaniu nowej funkcji.",
+  "keywords": [
+    "agent team feature",
+    "Claude Code feature",
+    "OpenAI Codex feature",
+    "AI coding agents",
+    "budowa funkcji"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "ai-agenci-kod",
+  "internalLinks": [
+    "agent-team-code-review",
+    "wywiad-przed-startem-projektu",
+    "5-poziomow-delegowania"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy używać agent team do budowy feature?",
+      "answer": "Użyj go przy większej funkcji, która wymaga architektury, backendu, frontendu i testów. Prompt jest szczególnie przydatny, gdy zwykłe polecenie napisania kodu grozi chaosem albo pominięciem ważnych decyzji."
+    },
+    {
+      "question": "Dlaczego rola architect blokuje implementację?",
+      "answer": "Architect ma najpierw ustalić cel, przepływ użytkownika, model danych, API, ryzyka i strategię testów. Bez tego backend i frontend mogą zacząć budować różne wersje tej samej funkcji."
+    },
+    {
+      "question": "Czy prompt nadaje się do małego zadania?",
+      "answer": "Do bardzo małych zmian może być zbyt ciężki. Najlepiej działa przy funkcjach z kilkoma modułami, stanami UI, uprawnieniami, integracjami albo ryzykiem regresji."
+    },
+    {
+      "question": "Co trzeba wkleić przed użyciem prompta?",
+      "answer": "Wklej opis funkcji, cel biznesowy, użytkownika, stack, katalog projektu, wzorce w kodzie, ograniczenia i znane ryzyka. Im lepszy kontekst, tym lepszy plan i mniej przypadkowych decyzji."
+    },
+    {
+      "question": "Jaki jest dobry wynik pracy agent team?",
+      "answer": "Dobry wynik to tech spec, lista plików, kolejność implementacji, plan testów, ryzyka, pytania do właściciela i definicja done. Implementacja powinna ruszyć dopiero po zaakceptowaniu planu."
+    }
+  ]
+}

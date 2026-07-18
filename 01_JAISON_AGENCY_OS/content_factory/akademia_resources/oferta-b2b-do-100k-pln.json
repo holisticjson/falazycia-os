@@ -1,0 +1,165 @@
+{
+  "id": "oferta-b2b-do-100k-pln",
+  "type": "checklist",
+  "title": "Oferta B2B do 100k PLN",
+  "description": "Checklista do oferty B2B do około 100k PLN. Pilnuje, żeby w ofercie było zdanie typu: „Po naszej rozmowie widzę, że celem projektu jest X, a największym ryzykiem jest Y”, jasna cena netto, zakres, wyłączenia, termin decyzji i jeden kolejny krok.",
+  "shortDescription": "Napisz ofertę, która prowadzi do decyzji, a nie do kolejnych pytań.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Oferta B2B",
+    "Sprzedaż"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/oferta-b2b-do-100k-pln/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-11",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Oferta B2B do 100k PLN",
+  "body": "Checklista pomaga sprawdzić ofertę B2B zanim trafi do klienta. Oferta nie ma być „ładną prezentacją”. Ma sprawić, że klient po 30 sekundach rozumie: co kupuje, po co, za ile, co jest poza zakresem, co ryzykuje bez decyzji i co ma zrobić dalej. Dla ofert do około 100k PLN często wygrywa prosty dokument, który zaczyna się od problemu klienta i kończy konkretnym krokiem: „Jeżeli akceptują Państwo zakres i cenę 48 000 PLN netto, kolejnym krokiem jest podpisanie SoW i kickoff w tygodniu X”.",
+  "usage": "Skopiuj checklistę do ChatGPT, Claude, Gemini albo własnego asystenta AI razem z treścią oferty, notatkami po rozmowie, nazwą klienta, osobami decyzyjnymi, ceną, zakresem, terminem i informacją, skąd klient przyszedł. Poproś AI, żeby przepisało ofertę tak, aby pierwszy akapit brzmiał konkretnie: „Po naszej rozmowie widzę, że najważniejszym celem jest [rezultat], a największym ryzykiem jest [ryzyko]”. Następnie niech AI wskaże luki, miejsca do negocjacji, niejasne obietnice, brakujące wyłączenia, słabe dowody, niebezpieczne zdania i wszystko, co nie prowadzi do decyzji.",
+  "checklistSections": [
+    {
+      "title": "Przed ofertą, research i rozmowa discovery",
+      "items": [
+        "Zbadałeś firmę klienta przed spotkaniem: aktualności, projekty, rynek, konkurencję, możliwe wyzwania i kontekst biznesowy.",
+        "Zbadałeś osobę, z którą rozmawiasz: rola, LinkedIn, ostatnie posty, do kogo raportuje, co może być jej osobistą stawką w projekcie.",
+        "Na spotkaniu nie atakowałeś od razu sprzedażą, tylko zbudowałeś krótkie, profesjonalne połączenie.",
+        "Zadałeś otwarte pytania i robiłeś notatki, zamiast zgadywać, czego klient potrzebuje.",
+        "Masz zapisane minimum 3 zdania klienta słowo w słowo i używasz ich w ofercie.",
+        "Streściłeś klientowi kluczowe punkty rozmowy i upewniłeś się, że dobrze rozumiesz problem.",
+        "Dostałeś zgodę na wysłanie albo omówienie oferty. Celem rozmowy było uzyskać prawo do kolejnego kroku."
+      ]
+    },
+    {
+      "title": "Kontekst klienta i decyzja zakupowa",
+      "items": [
+        "Oferta jest napisana do konkretnej osoby decyzyjnej, a nie do abstrakcyjnej firmy.",
+        "Wiadomo, jaki problem biznesowy ma rozwiązać usługa i dlaczego teraz jest to ważne.",
+        "Oferta pokazuje, jak firma klienta zarobi więcej, wyda mniej, oszczędzi czas albo zmniejszy ryzyko.",
+        "Oferta pokazuje, jak konkretna osoba po stronie klienta dowiezie KPI, projekt, awans albo trudną decyzję.",
+        "Znasz interesariuszy: decydenta, użytkowników, procurement, zarząd, dział prawny albo techniczny.",
+        "Oferta odpowiada na motywacje ważnych osób, a nie tylko jednej perspektywy."
+      ]
+    },
+    {
+      "title": "Problem, rezultat i transformacja",
+      "items": [
+        "Pierwsze zdania mówią, jaki rezultat klient dostanie, a nie tylko co wykonasz.",
+        "Pierwszy akapit można przeczytać klientowi na głos i brzmi jak podsumowanie jego sytuacji, nie jak broszura sprzedażowa.",
+        "Problem jest opisany językiem klienta z rozmowy, nie Twoim żargonem.",
+        "Widać konsekwencje braku decyzji: strata czasu, pieniędzy, szansy, kontroli albo reputacji.",
+        "Oferta pokazuje koszt zwlekania i powód, dlaczego warto ruszyć teraz.",
+        "Klient po 30 sekundach rozumie, dlaczego ma czytać dalej.",
+        "Nie zaczynasz od historii firmy, listy funkcji albo opisu zespołu."
+      ]
+    },
+    {
+      "title": "Dlaczego Ty i dlaczego ta metoda",
+      "items": [
+        "Oferta ma minimum dwa mocne powody, dlaczego klient ma wybrać właśnie Ciebie.",
+        "Pokazujesz specjalizację, metodę pracy, doświadczenie, wyniki, szybkość, lokalny kontekst albo nietypową przewagę.",
+        "Dowód jest konkretny: liczby, zakres, podobny projekt, znana branża, próbka myślenia albo proof of concept.",
+        "Nie używasz pustych claimów typu profesjonalizm, indywidualne podejście albo wysoka jakość.",
+        "Jeśli nie masz case study, pokazujesz proces i sposób podejmowania decyzji, żeby klient widział jak myślisz.",
+        "Oferta pokazuje, czym różnisz się od alternatyw, a nie tylko że jesteś kolejnym dostawcą."
+      ]
+    },
+    {
+      "title": "Zakres i format oferty",
+      "items": [
+        "Klient dokładnie wie, co wchodzi w ofertę.",
+        "Zakres mieści się w 4 do 6 głównych punktach, jeśli to prosta oferta usługowa.",
+        "Każdy punkt zakresu jest opisany rezultatem, nie samą czynnością.",
+        "Przy ofertach do około 100k PLN nie komplikujesz dokumentu bez potrzeby. Prosty dokument może wygrać z przeładowaną prezentacją.",
+        "Wskazujesz, czego nie ma w zakresie i co będzie dodatkowo płatne.",
+        "Unikasz obietnic, które otwierają niekontrolowane oczekiwania."
+      ]
+    },
+    {
+      "title": "Cena, warianty i negocjacje",
+      "items": [
+        "Cena jest podana jasno i nie przepraszasz za nią.",
+        "Cena jest zapisana konkretnie, na przykład: „Cena za etap 1 wynosi 24 000 PLN netto. Start po akceptacji i płatności 50 procent”.",
+        "Cena jest powiązana z wartością biznesową, a nie tylko z liczbą godzin.",
+        "Sprawdziłeś, jak podobne usługi wycenia konkurencja albo jak klient porównuje tę decyzję.",
+        "Jeśli obniżasz cenę, zmniejszasz zakres, przyspieszasz płatność albo zmieniasz warunki. Nie oddajesz wartości za darmo.",
+        "Masz bufor negocjacyjny, jeśli klient lubi negocjować.",
+        "Jeśli pokazujesz warianty, każdy wariant różni się realną wartością, nie kosmetyką."
+      ]
+    },
+    {
+      "title": "Ryzyko, złoty most i warunki współpracy",
+      "items": [
+        "Oferta usuwa główne ryzyko po stronie klienta.",
+        "Masz złoty most, czyli prosty mechanizm obniżający strach przed decyzją.",
+        "Złoty most jest konkretny, na przykład: „Zaczynamy od 14 dni diagnozy za 6 000 PLN netto. Po tym etapie mogą Państwo zakończyć współpracę albo odliczyć tę kwotę od wdrożenia”.",
+        "Opisujesz, co stanie się, jeśli projekt nie spełni uzgodnionych warunków.",
+        "Klient wie, kto prowadzi projekt, jak wygląda komunikacja i jak często dostanie status.",
+        "Wiesz, jakie dokumenty będą potrzebne po akceptacji: umowa, NDA, harmonogram, SoW albo zamówienie.",
+        "Nie ukrywasz rzeczy, które mogą później stać się sporem."
+      ]
+    },
+    {
+      "title": "Termin, follow up i zamknięcie",
+      "items": [
+        "Oferta ma konkretny termin ważności i ten termin ma sens biznesowy.",
+        "Harmonogram dostarczenia jest realistyczny i uwzględnia opóźnienia po stronie klienta.",
+        "Klient wie, co musi zrobić, żeby projekt ruszył.",
+        "Oferta kończy się jedną konkretną akcją: odpisać, podpisać, umówić rozmowę, zaakceptować albo opłacić pierwszy etap.",
+        "Ostatnie zdanie nie brzmi „w razie pytań jestem do dyspozycji”, tylko wskazuje akcję: „Jeżeli zakres się zgadza, proszę odpisać TAK, a wyślę SoW do podpisu”.",
+        "Masz zaplanowany follow up, jeśli klient nie odpowie.",
+        "Po negocjacjach wysyłasz pisemne podsumowanie ustaleń, żeby nie było dwóch wersji prawdy."
+      ]
+    }
+  ],
+  "example": "Najlepsza do sprawdzenia oferty B2B przed wysłaniem lub omówieniem z klientem, szczególnie dla konsultingu, wdrożeń, marketingu, technologii, usług kreatywnych i projektów, gdzie zakres może się rozjechać.",
+  "order": 29,
+  "published": true,
+  "seoTitle": "Oferta B2B do 100k PLN, checklista przed wysłaniem klientowi",
+  "seoDescription": "Sprawdź ofertę B2B przed wysłaniem. Research, potrzeby klienta, rezultat, zakres, cena, negocjacje, ryzyko, deadline, follow up i jasne CTA.",
+  "keywords": [
+    "oferta B2B",
+    "checklista oferty",
+    "sprzedaż B2B",
+    "oferta dla klienta",
+    "wycena usługi B2B"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "oferta-b2b",
+  "internalLinks": [
+    "wiadomosc-1-1-po-researchu-kontekstu",
+    "10-zasad-negocjacji-sprzedazowych",
+    "checklista-copywritingu-strony-sprzedazowej",
+    "strategia-cenowa-produktu"
+  ],
+  "sourceCourse": "Szkoła Pierwszego Klienta, Szkoła Pisania, Akademia Usług",
+  "sourceLesson": "Ustalenie potrzeb, oferta do 100k PLN, wycena, negocjacje, granice zakresu",
+  "faq": [
+    {
+      "question": "Czy oferta B2B do 100k PLN musi mieć rozbudowaną prezentację?",
+      "answer": "Nie zawsze. Dla wielu usług wystarczy dobrze napisany dokument na kilka stron, jeśli jasno pokazuje problem, rezultat, zakres, cenę, ryzyko i kolejny krok. Forma jest mniej ważna niż decyzja, którą klient ma podjąć."
+    },
+    {
+      "question": "Czy w ofercie B2B pokazywać cenę od razu?",
+      "answer": "Tak, jeśli zakres jest jasny i rozmowa była wystarczająco konkretna. Ukrywanie ceny często wydłuża proces i przenosi negocjacje na złe tory, szczególnie gdy klient musi porównać kilka opcji."
+    },
+    {
+      "question": "Co zrobić, gdy klient mówi, że jest za drogo?",
+      "answer": "Najpierw zapytaj, z czym porównuje cenę i jaka kwota miałaby sens. Nie negocjuj sam ze sobą. Możesz zmienić zakres, termin albo warunki, zamiast po prostu obniżać cenę."
+    },
+    {
+      "question": "Czy warto dawać kilka wariantów oferty?",
+      "answer": "Tak, jeśli warianty pomagają klientowi wybrać poziom wartości. Nie dawaj wariantów, które różnią się tylko liczbą godzin albo kosmetyką, bo utrudniasz decyzję i osłabiasz postrzeganą wartość."
+    },
+    {
+      "question": "Co jest najczęstszym błędem w ofertach B2B?",
+      "answer": "Najczęstszy błąd to opisanie siebie i listy usług zamiast decyzji klienta. Oferta ma pokazać, jaki problem rozwiązujesz, co klient zyska, co ryzykuje bez działania i dlaczego warto wybrać właśnie Ciebie."
+    }
+  ]
+}

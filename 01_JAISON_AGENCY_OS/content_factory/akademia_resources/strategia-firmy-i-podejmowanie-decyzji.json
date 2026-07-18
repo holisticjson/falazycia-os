@@ -1,0 +1,165 @@
+{
+  "id": "strategia-firmy-i-podejmowanie-decyzji",
+  "type": "checklist",
+  "title": "Strategia firmy i podejmowanie decyzji",
+  "description": "Checklista strategii firmy i podejmowania decyzji: Playing to Win Rogera Martina, Strategy Kernel Richarda Rumelta, framework 7 Powers Hamiltona Helmera, pre-mortem i kill criteria Annie Duke, disagree and commit oraz priorytetyzacja LNO i ICE.",
+  "shortDescription": "Zbuduj prawdziwą strategię i podejmuj lepsze decyzje, zamiast trzymać listę życzeń.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Strategia",
+    "Decyzje"
+  ],
+  "url": "/checklisty/strategia-decyzje/strategia-firmy-i-podejmowanie-decyzji/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Strategia firmy i podejmowanie decyzji",
+  "body": "Większość tego, co firmy nazywają strategią, to lista życzeń, a nie strategia. Ta checklista porządkuje myślenie strategiczne i decyzyjne: Playing to Win Rogera Martina, czyli pięć wyborów, Strategy Kernel Richarda Rumelta, czyli diagnoza, polityka i spójne działanie, oraz framework 7 Powers Hamiltona Helmera, czyli siedem źródeł trwałej przewagi. Druga część to podejmowanie decyzji: pre-mortem i kill criteria Annie Duke, disagree and commit oraz priorytetyzacja metodą LNO i ICE. Wspólna zasada brzmi: strategia to wybór, z czego rezygnujesz, a prawdziwa strategia zaczyna się od brutalnie uczciwej diagnozy problemu.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojej firmy, rynku i dylematu strategicznego. Poproś AI, żeby przeprowadziło Cię przez pięć wyborów Playing to Win, nazwało prawdziwą diagnozę problemu według Strategy Kernel i sprawdziło, czy masz realne źródło przewagi z 7 Powers, a nie tylko dobre wykonanie. Następnie niech AI pomoże podjąć konkretną decyzję: przeprowadzi pre-mortem z ustalonymi z góry kill criteria oraz spriorytetyzuje zadania i eksperymenty metodą LNO i ICE, żebyś nie dawał stu procent energii na wszystko.",
+  "checklistSections": [
+    {
+      "title": "Playing to Win, Roger Martin",
+      "items": [
+        "Strategia to pięć wyborów w ścisłej kolejności: jaka jest nasza aspiracja zwycięstwa, gdzie będziemy grać, jak wygramy, jakie zdolności muszą być na miejscu, jakie systemy zarządzania są potrzebne.",
+        "Test: jeśli Twoja strategia nie wymaga rezygnacji z czegoś, to nie jest strategia.",
+        "Seth Godin: strategia to wybór, czego nie robić, a jeśli nikomu nie przeszkadza, to nie jest strategia.",
+        "Shreyas Doshi: jeśli strategia wymaga 6 tygodni planowania kwartalnego, nie masz strategii, masz listę życzeń."
+      ]
+    },
+    {
+      "title": "Strategy Kernel, Richard Rumelt",
+      "items": [
+        "Dobra strategia ma 3 elementy: diagnoza, czyli prawdziwy problem, nie symptom, polityka kierująca, czyli ogólna odpowiedź, oraz spójne działanie, czyli konkretne kroki.",
+        "Większość strategii to listy życzeń, a prawdziwa strategia zaczyna się od brutalnie uczciwej diagnozy.",
+        "Patrick Campbell, schemat problem, przyczyna, rozwiązanie: opisz symptom, znajdź przyczynę źródłową i zaadresuj przyczynę, nie symptom."
+      ]
+    },
+    {
+      "title": "7 Powers, Hamilton Helmer",
+      "items": [
+        "Siedem źródeł trwałej przewagi, każde wymaga korzyści i bariery: korzyści skali, efekty sieciowe, pozycja kontrująca, koszty zmiany, marka, zarezerwowany zasób, siła procesu.",
+        "Mamy najlepszy zespół to nie jest power, tylko bieżnia, którą każdy może powtórzyć.",
+        "Jeśli nie masz źródła power, nie masz strategii, masz tylko wykonanie.",
+        "Model DHM Gibsona Biddle z Netflixa: każda inicjatywa ma zachwycać, być trudna do skopiowania i poprawiać marżę."
+      ]
+    },
+    {
+      "title": "Dodatkowe narzędzia strategiczne",
+      "items": [
+        "Eigenquestions, Shishir Mehrotra: jakie pytanie, jeśli znasz odpowiedź, odpowiada na wszystkie inne pytania, czyli znajdź rdzeń problemu.",
+        "Pattern Breakers, Mike Maples: przełomowy startup wymaga punktu zwrotnego, nieintuicyjnego wniosku i dopasowania foundera do przyszłości.",
+        "Casey Winters: najlepsza strategia wzrostu to taka, w której produkt sam tworzy popyt na więcej produktu, czyli wiralność wbudowana w użytkowanie.",
+        "Refounding, Howie Liu z Airtable: wyobraź sobie, że zakładasz firmę od zera z tą samą misją, jak zbudowałbyś ją w podejściu AI-native."
+      ]
+    },
+    {
+      "title": "Pre-mortem i kill criteria, Annie Duke",
+      "items": [
+        "Pre-mortem: wyobraź sobie, że projekt zakończył się porażką, i odpowiedz dlaczego.",
+        "Pre-mortem działa tylko, jeśli z góry ustalisz kill criteria, czyli co musi się wydarzyć, żebyś zabił projekt.",
+        "Bez kill criteria pre-mortem to akademickie ćwiczenie.",
+        "Mental Time Travel: zapytaj, jak będę o tym myśleć za 10 lat, bo większość apokaliptycznych rzeczy za 10 lat będzie śmieszną historią.",
+        "Zasada uczyń niejawne jawnym: wypowiedz na głos to, co zakładasz intuicyjnie, bo to najważniejsza dźwignia jakości decyzji.",
+        "Annie Duke: jeśli myślisz o rezygnacji z czegoś, prawdopodobnie już dawno powinieneś był zrezygnować."
+      ]
+    },
+    {
+      "title": "Disagree and commit oraz odwaga decyzyjna",
+      "items": [
+        "Disagree and commit, Amazon: masz obowiązek wypowiedzieć sprzeciw z nowymi informacjami, a gdy lider zrozumiał Twój punkt i mimo to idzie inaczej, angażujesz się w pełni, nie na niby.",
+        "Przywództwo niemniej jednak, Annie Duke: słyszę Cię, niemniej jednak robimy X, czyli balans między wysłuchaniem a konsekwencją.",
+        "Stare into the Abyss, Ben Horowitz: najgorsze, co lider może zrobić, to wahać się przed kolejną decyzją, bo jedyna wartość, jaką dodajesz, to decyzje, z którymi większość się nie zgadza.",
+        "Fear Bet, Matt Mochary: strach daje złe rady, więc jeśli boisz się powiedzieć inwestorom o problemach, zrób dokładnie to, a zakład z osobą bez strachu daje neutralną perspektywę.",
+        "Jak byłem współwinny, Jerry Colonna: w jaki sposób przyczyniłem się do warunków, których mówię, że nie chcę, co przywraca sprawczość."
+      ]
+    },
+    {
+      "title": "Priorytetyzacja LNO i ICE",
+      "items": [
+        "LNO, Shreyas Doshi: zadania o wysokim wpływie L dostają 100 procent energii, neutralne N 80 procent, czyli wystarczająco dobrze, a administracyjne O minimum wymagane.",
+        "Nie dajesz 100 procent na wszystko, bo to droga do wypalenia i słabych wyników w kluczowych zadaniach.",
+        "Problemy z wykonaniem to zwykle ukryte problemy strategiczne, więc gdy widzisz problem z egzekucją, szukaj głębiej.",
+        "ICE, Sean Ellis: każdy eksperyment oceniasz przez wpływ, pewność i łatwość w skali 1 do 10, a po 3 tygodniach bez efektu porzucasz.",
+        "GIST, Itamar Gilad: cele, pomysły, kroki, zadania plus miernik pewności od 0,1, czyli opinia, do 0,9, czyli potwierdzone eksperymentem.",
+        "GEM, Fareed Mosavat: oceniasz projekty produktowe w trzech wymiarach, wzrost, zaangażowanie, monetyzacja.",
+        "Highlight Method, Jake Knapp: codziennie rano wybierasz jedną najważniejszą rzecz dnia i jej bronisz, bo produktywność to nie robić więcej, tylko chronić to, co ma znaczenie."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy budujesz albo rewidujesz strategię firmy i chcesz podjąć trudną decyzję świadomie, zamiast trzymać listę życzeń i dawać tyle samo energii na wszystkie zadania.",
+  "order": 94,
+  "published": true,
+  "seoTitle": "Strategia firmy i podejmowanie decyzji, checklista frameworków",
+  "seoDescription": "Zbuduj prawdziwą strategię: Playing to Win, Strategy Kernel, 7 Powers oraz podejmuj decyzje przez pre-mortem, kill criteria, disagree and commit i priorytety LNO i ICE.",
+  "keywords": [
+    "strategia firmy",
+    "playing to win",
+    "7 powers",
+    "podejmowanie decyzji",
+    "priorytetyzacja"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "strategia-decyzje",
+  "internalLinks": [
+    "leadership-zespol-feedback-i-zmiana",
+    "hierarchy-of-engagement-i-churn",
+    "jedno-radykalne-uzupelnienie"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Strategia firmy, frameworki strategiczne i podejmowanie decyzji",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie i przywództwie",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło frameworków strategii, decyzji i przywództwa przytoczonych w checkliście, do dalszego posłuchania."
+    },
+    {
+      "title": "Playing to Win, strategia jako pięć wyborów",
+      "author": "Roger Martin",
+      "url": "https://rogerlmartin.com",
+      "relation": "Odniesienie do frameworku pięciu wyborów strategicznych, źródło do dalszego czytania."
+    },
+    {
+      "title": "7 Powers, fundamenty strategii biznesowej",
+      "author": "Hamilton Helmer",
+      "url": "https://7powers.com",
+      "relation": "Odniesienie do siedmiu źródeł trwałej przewagi, źródło do dalszego czytania."
+    },
+    {
+      "title": "Thinking in Bets i kill criteria",
+      "author": "Annie Duke",
+      "url": "https://www.annieduke.com",
+      "relation": "Odniesienie do pre-mortem i kryteriów zabicia projektu, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest strategia według Playing to Win?",
+      "answer": "Według Rogera Martina strategia to pięć powiązanych wyborów: aspiracja zwycięstwa, gdzie grać, jak wygrać, jakie zdolności i jakie systemy zarządzania. Kluczowy test brzmi: jeśli Twoja strategia nie wymaga z czegoś zrezygnować, to nie jest strategia, tylko zbiór dobrych chęci. Strategia zawsze oznacza świadomy wybór jednych rzeczy kosztem innych."
+    },
+    {
+      "question": "Czym jest framework 7 Powers?",
+      "answer": "To siedem źródeł trwałej przewagi konkurencyjnej według Hamiltona Helmera: korzyści skali, efekty sieciowe, pozycja kontrująca, koszty zmiany, marka, zarezerwowany zasób i siła procesu. Każde wymaga jednocześnie korzyści i bariery, której konkurent nie może łatwo powtórzyć. Bez takiego źródła przewagi masz tylko dobre wykonanie, które każdy może skopiować."
+    },
+    {
+      "question": "Na czym polega pre-mortem z kill criteria?",
+      "answer": "Pre-mortem to ćwiczenie Annie Duke, w którym wyobrażasz sobie, że projekt już się nie udał, i szukasz przyczyn. Ma sens tylko wtedy, gdy z góry ustalisz kill criteria, czyli konkretne warunki, po których zabijesz projekt. Bez nich pre-mortem jest tylko akademickim ćwiczeniem, bo i tak będziesz brnąć w przedsięwzięcie mimo narastających sygnałów ostrzegawczych."
+    },
+    {
+      "question": "Co oznacza priorytetyzacja zadań LNO?",
+      "answer": "LNO to framework Shreyasa Doshiego, w którym dzielisz zadania na trzy kategorie: Leverage o wysokim wpływie, którym dajesz pełną energię, Neutral, którym wystarczy poziom wystarczająco dobry, oraz Overhead, czyli administracyjne, którym dajesz absolutne minimum. Chodzi o to, by nie wkładać stu procent w każde zadanie, bo to prowadzi do wypalenia i słabszych wyników tam, gdzie naprawdę się liczy."
+    },
+    {
+      "question": "Czym jest disagree and commit?",
+      "answer": "To zasada decyzyjna z Amazona: masz obowiązek otwarcie wyrazić sprzeciw, gdy masz nowe informacje, ale gdy lider zrozumiał Twój punkt widzenia i mimo to wybiera inny kierunek, w pełni się angażujesz, a nie sabotujesz decyzji po cichu. Pozwala to szybko podejmować decyzje bez paraliżu, jednocześnie zachowując szczerą dyskusję przed ich podjęciem."
+    }
+  ]
+}

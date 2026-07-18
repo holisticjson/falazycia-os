@@ -1,0 +1,70 @@
+{
+  "id": "wersja-easy-produktu-sprzedaj-zanim-zbudujesz",
+  "type": "prompt",
+  "title": "Wersja Easy produktu, sprzedaj zanim zbudujesz",
+  "description": "Prompt zmusza do znalezienia wersji Easy: konsultacji, warsztatu, audytu, usługi „zrobię to za Ciebie” albo concierge delivery, którą można sprzedać pierwszym 3 klientom zanim powstanie aplikacja, kurs, landing page albo automatyzacja.",
+  "shortDescription": "Sprzedaj ręczną wersję zanim zbudujesz produkt.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-reklama",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "MVP",
+    "Sprzedaż"
+  ],
+  "url": "/prompty/strategia-decyzje/wersja-easy-produktu-sprzedaj-zanim-zbudujesz/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-11",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Wersja Easy produktu, sprzedaj zanim zbudujesz",
+  "body": "Prompt zatrzymuje przed budową zbyt dużego produktu i pyta: „co możesz sprzedać w tym tygodniu bez aplikacji, strony, automatyzacji i idealnej marki?”. Wersja Easy ma dowieźć rezultat, nie wyglądać jak finalny produkt. Przykład: zamiast platformy AI do ofert, sprzedajesz 3 ręcznie przygotowane oferty B2B za 1500 PLN każda. Zamiast kursu, robisz warsztat dla 5 osób po 297 PLN. Zamiast SaaS, robisz concierge delivery w arkuszu i mailu.",
+  "usage": "Wklej prompt do AI, gdy chcesz budować produkt, ale nie masz jeszcze płacących klientów. Podaj pomysł, grupę, problem, wersję docelową, dostęp do pierwszych 10 klientów, swoje umiejętności i ograniczenia czasowe. AI ma przepisać pomysł do zdania: „Zamiast budować [duży produkt], sprzedam [ręczną wersję] dla [kogo], obiecując [rezultat] w [czas] za [cena]”. Nie pozwól AI dodawać funkcji, które nie są konieczne do pierwszej płatności.",
+  "prompt": "Jesteś doradcą od walidacji biznesu i wersji Easy produktu. Twoim zadaniem jest zatrzymać mnie przed budową zbyt dużego produktu i zaprojektować najprostszą wersję, którą mogę sprzedać zanim zbuduję finalne rozwiązanie.\n\nMoja zasada:\n\nNajpierw sprzedaję i dostarczam najprostszą wersję. Dopiero potem buduję produkt docelowy.\n\nPamiętaj:\n\n1. Pieniądze na koncie są mocniejszą walidacją niż opinie.\n2. Wersja Easy nie musi być skalowalna.\n3. Wersja Easy ma dowieźć rezultat klientowi, nie imponować funkcjami.\n4. Nie budujemy aplikacji, kursu, platformy, automatyzacji, brandingu ani landing page, jeśli można najpierw sprzedać ręcznie.\n5. Po pierwszych klientach celem jest dojść do minimum 10 klientów w wersji prostej, żeby poznać rynek głębiej.\n\nNajpierw zadaj mi maksymalnie 10 pytań:\n\n1. Co chcę zbudować?\n2. Dla kogo konkretnie?\n3. Jaki problem rozwiązuję?\n4. Jak klient rozwiązuje to dziś?\n5. Ile ten problem kosztuje klienta w czasie, pieniądzach, stresie, ryzyku albo utraconych szansach?\n6. Jaką wersję docelową mam w głowie?\n7. Jakie elementy są konieczne do pierwszego rezultatu?\n8. Jakie elementy są tylko moją ambicją, perfekcjonizmem albo wyobrażeniem pełnego produktu?\n9. Czy mam dostęp do 10 potencjalnych klientów?\n10. Jak szybko mogę dostarczyć coś ręcznie jednej osobie?\n\nNastępnie rozbij mój pomysł na:\n\n1. Problem klienta.\n2. Obiecany rezultat.\n3. Wersję docelową, którą chcę zbudować.\n4. Wersję Easy, którą mogę sprzedać ręcznie.\n5. Elementy, których na start nie wolno budować.\n6. Elementy, które można zastąpić rozmową, arkuszem, dokumentem, konsultacją, warsztatem albo usługą zrobię to za Ciebie.\n7. Dowody, które muszę zebrać od pierwszych klientów.\n\nZaproponuj minimum 7 wersji Easy:\n\n1. Wersja konsultacyjna.\n2. Wersja warsztatowa.\n3. Wersja usługi zrobię to za Ciebie.\n4. Wersja audytu lub dokumentu.\n5. Wersja przedsprzedaży.\n6. Wersja concierge, gdzie wszystko robię ręcznie za kulisami.\n7. Wersja kohortowa dla małej grupy klientów.\n\nDla każdej wersji podaj:\n\n1. Co dokładnie sprzedaję.\n2. Jaki rezultat obiecuję.\n3. Jak wygląda dostarczenie krok po kroku.\n4. Ile mogę za to policzyć na start.\n5. Ile czasu zajmie dostarczenie.\n6. Jak zdobyć pierwszych 3 klientów.\n7. Jakie ryzyko klienta trzeba usunąć.\n8. Jakie pytanie za większą wartość mam zadać klientowi.\n9. Jakie dowody zbieram po dostarczeniu.\n10. Co z tej wersji może później stać się produktem.\n\nPotem wybierz najlepszą wersję Easy i przygotuj:\n\n1. Jednozdaniową obietnicę.\n2. Prosty opis oferty.\n3. Zakres w 5 punktach.\n4. Cenę startową.\n5. Wiadomość 1:1 do potencjalnego klienta.\n6. Minimalny proces dostarczenia.\n7. Kryterium sukcesu po 7 dniach.\n8. Kryterium sukcesu po 10 klientach.\n9. Decyzję, czy kontynuować wersję Easy, budować produkt, szukać inwestora czy porzucić temat.\n\nZastosuj filtr:\n\nJeśli nie potrafię sprzedać wersji Easy jednej osobie, nie mam prawa budować dużego produktu.\n\nMoje dane:\n\n[Wklej opis pomysłu, klienta, problemu, aktualny plan produktu, dostępne zasoby i listę potencjalnych klientów]",
+  "example": "Dobry do zamiany pomysłu na SaaS, kurs, marketplace, aplikację, społeczność albo produkt cyfrowy w prostą ofertę, którą można sprzedać ręcznie i dowieźć bez dużej technologii.",
+  "order": 32,
+  "published": true,
+  "seoTitle": "Wersja Easy produktu, prompt do sprzedaży zanim zbudujesz",
+  "seoDescription": "Zamień aplikację, kurs albo produkt w wersję Easy do sprzedaży przed budową. Prompt do MVP, ręcznej walidacji, concierge delivery i pierwszej płatności.",
+  "keywords": [
+    "wersja Easy produktu",
+    "MVP",
+    "sprzedaż przed budową",
+    "walidacja produktu",
+    "pierwszy klient"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "mvp-i-walidacja",
+  "internalLinks": [
+    "walidacja-pomyslu-na-biznes",
+    "10-rozmow-z-klientami-przed-budowa-produktu",
+    "dokument-prawdy-wybor-pomyslu-biznesowego"
+  ],
+  "sourceCourse": "Szkoła Pierwszego Klienta, Akademia Produktów Cyfrowych",
+  "sourceLesson": "Wersja Easy, pierwsza płatność, 10 klientów przed skalowaniem, sprzedaż przed budową",
+  "faq": [
+    {
+      "question": "Czym jest wersja Easy produktu?",
+      "answer": "Wersja Easy to najprostsza forma dostarczenia obiecanego rezultatu. Może być konsultacją, usługą, warsztatem, audytem, arkuszem albo ręcznie wykonanym procesem, zanim powstanie produkt docelowy."
+    },
+    {
+      "question": "Czy wersja Easy musi być skalowalna?",
+      "answer": "Nie. Jej celem jest walidacja popytu i zrozumienie klienta. Skalowanie przychodzi później, gdy wiadomo, że ludzie płacą za rezultat i wiadomo, które elementy naprawdę tworzą wartość."
+    },
+    {
+      "question": "Czy można sprzedawać produkt, którego jeszcze nie ma?",
+      "answer": "Można, jeśli jasno komunikujesz, co klient dostanie, kiedy i na jakich warunkach. Nie chodzi o udawanie gotowego produktu, tylko o uczciwą przedsprzedaż albo ręczne dostarczenie wyniku."
+    },
+    {
+      "question": "Co jeśli klient chce pełny produkt?",
+      "answer": "To dobry sygnał, ale nadal warto zapytać, za co dokładnie zapłaci teraz. Możesz sprzedać pierwszy etap, proof of concept albo usługę przejściową, żeby nie budować wszystkiego na własne ryzyko."
+    },
+    {
+      "question": "Kiedy budować pełną wersję docelową?",
+      "answer": "Dopiero gdy masz płatne sygnały, powtarzalne problemy, zrozumiany proces dostarczenia i wiesz, które elementy produktu naprawdę tworzą wartość. Wcześniej łatwo przepalić czas na rzeczy, których rynek nie chce."
+    }
+  ]
+}

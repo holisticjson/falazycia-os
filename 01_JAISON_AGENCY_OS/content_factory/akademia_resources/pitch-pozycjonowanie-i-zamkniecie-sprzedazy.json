@@ -1,0 +1,204 @@
+{
+  "id": "pitch-pozycjonowanie-i-zamkniecie-sprzedazy",
+  "type": "checklist",
+  "title": "Pitch, pozycjonowanie i zamknięcie sprzedaży",
+  "description": "Checklista prezentacji oferty, pozycjonowania wartości, obsługi obiekcji i zamknięcia sprzedaży: vision casting Jen Abel, strategic narrative Andy'ego Raskina, formuła uwagi i zamykanie Robbinsa, metoda JOLT Matta Dixona, Command of the Message oraz follow-up i stick procedure Dana Kennedy'ego.",
+  "shortDescription": "Zaprezentuj wartość, rozbrój obiekcje i domknij sprzedaż frameworkami vision casting, JOLT i Command of the Message.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Sprzedaż",
+    "Zamykanie sprzedaży"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/pitch-pozycjonowanie-i-zamkniecie-sprzedazy/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Pitch, pozycjonowanie i zamknięcie sprzedaży",
+  "body": "Po dobrym discovery przychodzi moment, w którym pokazujesz wartość, rozbrajasz obiekcje i domykasz sprzedaż. Ta checklista zbiera najskuteczniejsze podejścia do tej części rozmowy: vision casting Jen Abel, czyli sprzedaż luki między teraźniejszością a wizją, strategic narrative Andy'ego Raskina, formułę uwagi i zamykanie Tony'ego Robbinsa, metodę JOLT Matta Dixona, która pokonuje niezdecydowanie zamiast podkręcać pilność, framework Command of the Message oraz follow-up i stick procedure Dana Kennedy'ego. Wspólna myśl jest jedna: największym konkurentem nie jest inna firma, tylko status quo i decyzja zróbmy to w przyszłym roku.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojej oferty, klienta i jego głównego bólu. Poproś AI, żeby ułożyło prezentację wartości w stylu jak jest teraz, jak powinno być, dlaczego my i dowód, dobrało scenariusze przed i po dla każdej osoby decyzyjnej oraz przygotowało odpowiedzi na najczęstsze obiekcje techniką JOLT i ramą zgody. Następnie niech AI zaproponuje test close w trakcie rozmowy, sposób zamknięcia przez wybór zamiast zgody oraz sekwencję follow-up po spotkaniu, jeśli klient nie zdecyduje od razu.",
+  "checklistSections": [
+    {
+      "title": "Vision casting, Jen Abel",
+      "items": [
+        "Nie sprzedajesz problemu, sprzedajesz lukę między stanem obecnym a wizją przyszłości.",
+        "Mówisz: oto co będziesz mógł robić jutro dzięki nam dzisiaj.",
+        "Gdy stajesz się jednym z trzech w porównaniu, już przegrałeś, bo gra polega na byciu kategorią, nie opcją.",
+        "Rynek nie chce być sprzedawany, chce kupować, więc Twoja rola to pomóc zobaczyć wizję przyszłości."
+      ]
+    },
+    {
+      "title": "Strategic narrative, stara gra i nowa gra, Andy Raskin",
+      "items": [
+        "Zamiast problem, rozwiązanie, dlaczego lepsze, opowiadasz historię zmiany świata.",
+        "Struktura: stary świat się kończy, nowy świat nadchodzi, są zwycięzcy i przegrani, my pomagamy być wśród zwycięzców.",
+        "Definiujesz ruch, nie produkt, bo narracja strategiczna zmienia wyniki sprzedaży bez zmiany produktu."
+      ]
+    },
+    {
+      "title": "Sześciokrokowa formuła uwagi, Robbins",
+      "items": [
+        "Krok 1: wielka obietnica, co klient zyska.",
+        "Krok 2: ponieważ, czyli uzasadnienie, bo ludzie automatycznie akceptują coś po słowie ponieważ.",
+        "Krok 3: fakt na poparcie, statystyka, case study, dowód.",
+        "Krok 4: co to oznacza dla Ciebie, przekładasz na ich sytuację.",
+        "Krok 5: co to naprawdę oznacza, pogłębienie emocjonalne.",
+        "Krok 6: prośba o pozwolenie na głębsze pytania, czyli mikrozobowiązanie."
+      ]
+    },
+    {
+      "title": "Prezentacja rozwiązania",
+      "items": [
+        "Mówisz o korzyściach, nie o funkcjach, bo ludzie kupują znaczenie: co to będzie dla mnie znaczyć.",
+        "Budujesz dowody: historie klientów, testimoniale, statystyki, analogie, demonstracje.",
+        "Używasz kontrastu i pokazujesz ROI, czyli wartość rozwiązania wobec kosztu.",
+        "Dajesz emocjonalne powody do kupna teraz i logiczne powody jako uzasadnienie.",
+        "Pamiętasz, że sprzedajesz wartość, nie cenę."
+      ]
+    },
+    {
+      "title": "Jak jest teraz kontra jak mogłoby być, Nancy Duarte",
+      "items": [
+        "Oscylujesz między jak jest teraz a jak mogłoby być, bo to tworzy napięcie prowadzące do akcji.",
+        "Pamiętasz, że ludzie nie pamiętają danych, tylko kontrast między teraz a mogłoby być.",
+        "Nie jesteś bohaterem prezentacji, jesteś mentorem, a bohaterem jest klient."
+      ]
+    },
+    {
+      "title": "Command of the Message, Force Management",
+      "items": [
+        "Scenariusze przed i po: dla każdej osoby decyzyjnej opisujesz sytuację przed, z problemem, i po, z rozwiązaniem.",
+        "Stan przed konkretny, bolesny, mierzalny, na przykład tracimy 200 godzin miesięcznie, trzy osoby robią to ręcznie.",
+        "Stan po konkretny, pozytywny, mierzalny, na przykład automatyzacja, zero godzin ręcznych, realokacja trzech osób.",
+        "Definiujesz 3 do 5 pozytywnych rezultatów biznesowych dopasowanych do roli, na przykład dyrektor finansowy redukcja kosztów, dyrektor sprzedaży skrócenie cyklu.",
+        "Każdy rezultat jest mierzalny i powiązany z konkretną funkcją produktu, ale rezultat to nie funkcja, tylko biznesowy efekt dzięki niej.",
+        "Pytania pułapki na konkurencję: dla 3 unikalnych wyróżników formułujesz pytanie, które klient zada konkurentowi, a ten nie odpowie dobrze, bez atakowania konkurencji wprost."
+      ]
+    },
+    {
+      "title": "Pozycjonowanie w sprzedaży, April Dunford",
+      "items": [
+        "Stosujesz pięć kroków w ścisłej kolejności: realne alternatywy klienta, Twoje unikalne możliwości, ich wartość, kto najbardziej ją docenia, kategoria rynkowa. Pełny framework masz w osobnej checkliście pozycjonowania.",
+        "Pamiętasz, że 40 do 60 procent procesów zakupowych B2B kończy się brakiem decyzji, nie dlatego, że stare rozwiązanie jest lepsze, tylko bo kupujący nie potrafią pewnie wybrać.",
+        "Największy konkurent to nie inna firma, tylko status quo i decyzja zróbmy to w przyszłym roku.",
+        "Gdy produkt się nie sprzedaje, problem często leży w pozycjonowaniu, nie w produkcie."
+      ]
+    },
+    {
+      "title": "Test close i sygnały zakupu, Robbins",
+      "items": [
+        "Test close to pytanie o opinię, nie o decyzję, stosujesz je ciągle, nie tylko na końcu.",
+        "Otwierający test close: od jak dawna rozważa Pan takie rozwiązanie, jak poważnie.",
+        "Progresywny test close: załóżmy na chwilę, że chce Pan to kupić, kiedy chciałby Pan zacząć.",
+        "Sygnały zakupu: klient pyta o wdrożenie, cenę albo warunki płatności, porównuje Cię z konkretnym konkurentem, wspomina o innych decydentach, wyobraża sobie użytkowanie, prosi o referencje."
+      ]
+    },
+    {
+      "title": "Obsługa obiekcji, JOLT i rama zgody",
+      "items": [
+        "Nie walczysz z obiekcją, bo większość jest automatyczna: najpierw zignoruj, potem wysłuchaj, potem powtórz.",
+        "Używasz ramy zgody zamiast ale: zgadzam się i, szanuję to i, doceniam to i.",
+        "Zamieniasz obiekcję w pytanie: prawdziwe pytanie brzmi, czy ta wartość uzasadnia tę cenę.",
+        "Formuła TOM: odwróć obiekcję w powód do kupna, zminimalizuj cenę rozbijając na najmniejszą jednostkę, wytłumacz kontekstem i danymi.",
+        "Metoda JOLT Matta Dixona: oceń poziom niezdecydowania, zarekomenduj konkretne rozwiązanie, ogranicz opcje do 2 do 3, zdejmij ryzyko gwarancją albo trialem.",
+        "Kluczowy insight JOLT: 87 procent prób podkręcania pilności jest kontrproduktywne, bo klienci boją się popełnić błąd, nie stracić okazję, więc de-ryzykowanie bije FOMO.",
+        "Najczęstsze obiekcje: za drogo rozbijasz na dzień i porównujesz z kosztem problemu, muszę się zastanowić diagnozujesz co konkretnie, używamy już X pytasz co działa, a co mogłoby być lepiej.",
+        "Kotwiczenie emocji, Robbins: łączysz konkretne uczucia z produktem, czyli ból z niekupowaniem i przyjemność z kupowaniem, poznając, jakich stanów klient najbardziej pragnie.",
+        "Pełne ramowanie: preframe przed obiekcją, reframe obiekcji w pytanie, deframe, czyli rozbicie ramy klienta, oraz technika AS IF, czyli a gdyby założyć, że problem jest już rozwiązany, co byś zrobił."
+      ]
+    },
+    {
+      "title": "Zamknięcie i follow-up",
+      "items": [
+        "Zawsze zakładasz sprzedaż i pytasz o wybór, nie o zgodę: który termin lepszy, poniedziałek czy piątek.",
+        "Dajesz dwa powody: wystarczająco duże pragnienie plus uzasadnienie, dlaczego teraz, a po zamknięciu gratulujesz mądrej decyzji.",
+        "Nie odpuszczasz przed minimum 5 odmowami, bo proces sprzedaży często zaczyna się przy piątym nie.",
+        "Challenger close, Matt Dixon: nie pytasz co nie daje Ci spać, tylko pokazujesz klientowi, co powinno, przedstawiając insight o jego biznesie.",
+        "Odpowiadasz na 8 pytań klienta: co to jest, co mi to da, czy możesz to udowodnić, czy naprawdę da mi to, czego chcę, czy będzie warte, co powiedzą inni, czy mogę to uzasadnić, czy potrzebuję tego teraz.",
+        "Stick procedure po sprzedaży, Dan Kennedy: maile w dniach 0, 1, 3 do 5, 6 do 9, 14 i 30, co redukuje zwroty o 30 do 50 procent.",
+        "Follow-up po spotkaniu bez zamknięcia: pierwszy w 24 godziny, drugi za 3 do 5 dni z nową wartością, trzeci za 7 do 14 dni jako break-up, minimum 3 kontakty w 30 do 45 dni."
+      ]
+    }
+  ],
+  "example": "Najlepsza na etapie prezentacji oferty i zamykania w sprzedaży B2B i konsultingu, gdy chcesz pokazać wartość, rozbroić obiekcje techniką JOLT i domknąć rozmowę bez sztucznej presji.",
+  "order": 92,
+  "published": true,
+  "seoTitle": "Pitch, pozycjonowanie i zamknięcie sprzedaży, checklista",
+  "seoDescription": "Zaprezentuj wartość i domknij sprzedaż: vision casting, strategic narrative, formuła Robbinsa, Command of the Message, metoda JOLT na obiekcje oraz follow-up i stick procedure.",
+  "keywords": [
+    "zamykanie sprzedaży",
+    "obsługa obiekcji",
+    "JOLT",
+    "pitch sprzedażowy",
+    "follow-up sprzedaż"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "sprzedaz",
+  "internalLinks": [
+    "discovery-i-frameworki-pytan-sprzedazowych",
+    "pozycjonowanie-marki-dunford",
+    "kwalifikacja-meddpicc-pipeline-i-founder-led"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Pitch, pozycjonowanie wartości, obiekcje, zamknięcie i follow-up",
+  "sourceReferences": [
+    {
+      "title": "Strategic narrative w sprzedaży",
+      "author": "Andy Raskin",
+      "url": "https://andyraskin.com",
+      "relation": "Odniesienie do narracji strategicznej stara gra nowa gra, do dalszego czytania."
+    },
+    {
+      "title": "Jak jest teraz kontra jak mogłoby być",
+      "author": "Nancy Duarte",
+      "url": "https://www.duarte.com",
+      "relation": "Odniesienie do budowania kontrastu w prezentacji, do dalszego czytania."
+    },
+    {
+      "title": "The JOLT Effect, pokonywanie niezdecydowania",
+      "author": "Matt Dixon",
+      "url": "https://www.amazon.com/Jolt-Effect-High-Performers-Overcome-Indecision/dp/0593538102",
+      "relation": "Książka, z której pochodzi metoda JOLT, źródło do dalszego czytania."
+    },
+    {
+      "title": "Command of the Message, framework wartości",
+      "author": "Force Management",
+      "url": "https://www.forcemanagement.com",
+      "relation": "Odniesienie do scenariuszy przed i po oraz pozytywnych rezultatów biznesowych, do dalszego czytania."
+    },
+    {
+      "title": "Stick procedure i direct response",
+      "author": "Dan Kennedy",
+      "url": "https://dankennedy.com",
+      "relation": "Odniesienie do sekwencji follow-up po sprzedaży, do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest vision casting w sprzedaży?",
+      "answer": "Vision casting, opisany przez Jen Abel, to sprzedawanie luki między obecną sytuacją klienta a pożądaną wizją przyszłości, a nie samego problemu. Zamiast przekonywać, pokazujesz, co klient będzie mógł robić dzięki rozwiązaniu. Kluczem jest stać się dla klienta osobną kategorią, a nie jedną z trzech porównywanych opcji, bo wtedy przestaje toczyć się gra o cenę."
+    },
+    {
+      "question": "Na czym polega metoda JOLT na obiekcje?",
+      "answer": "JOLT Matta Dixona pokonuje niezdecydowanie klienta zamiast podkręcać pilność. Oceniasz poziom niezdecydowania, rekomendujesz konkretne rozwiązanie, ograniczasz liczbę opcji do dwóch lub trzech i zdejmujesz ryzyko gwarancją albo trialem. Badania pokazują, że aż osiemdziesiąt siedem procent prób wywoływania FOMO jest kontrproduktywne, bo klienci bardziej boją się błędu niż utraty okazji."
+    },
+    {
+      "question": "Jak skutecznie domykać sprzedaż z klientem?",
+      "answer": "Zakładaj sprzedaż i pytaj o wybór, a nie o zgodę, na przykład który termin jest lepszy. Daj klientowi wystarczająco duże pragnienie i logiczne uzasadnienie, dlaczego teraz, a po decyzji pogratuluj mu mądrego wyboru. Pamiętaj, że proces sprzedaży często zaczyna się dopiero przy kilku odmowach, więc nie poddawaj się po pierwszym nie."
+    },
+    {
+      "question": "Co to jest Command of the Message?",
+      "answer": "To framework Force Management oparty na scenariuszach przed i po dla każdej osoby decyzyjnej oraz na pozytywnych rezultatach biznesowych dopasowanych do roli. Stan przed i po musi być konkretny i mierzalny, a rezultat to nie funkcja produktu, tylko biznesowy efekt dzięki niej. Dochodzą do tego pytania pułapki, które subtelnie obnażają słabości konkurencji."
+    },
+    {
+      "question": "Jak prowadzić follow-up po spotkaniu?",
+      "answer": "Jeśli klient nie zdecydował od razu, pierwszy follow-up wyślij w ciągu doby z podsumowaniem ustaleń, drugi po kilku dniach z nową wartością, a trzeci po jednym do dwóch tygodni jako wiadomość zamykająca. Po sprzedaży warto wdrożyć stick procedure Dana Kennedy'ego, czyli serię maili w pierwszym miesiącu, która redukuje zwroty nawet o połowę."
+    }
+  ]
+}

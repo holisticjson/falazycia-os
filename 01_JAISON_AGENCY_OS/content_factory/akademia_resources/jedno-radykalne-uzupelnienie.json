@@ -1,0 +1,68 @@
+{
+  "id": "jedno-radykalne-uzupelnienie",
+  "type": "prompt",
+  "title": "Jedno radykalne uzupełnienie",
+  "description": "Poproś AI o jedno najmądrzejsze i najbardziej wartościowe uzupełnienie planu, funkcji, oferty albo projektu.",
+  "shortDescription": "Znajdź jedno najmocniejsze uzupełnienie pomysłu.",
+  "industry": "Automatyzacja i AI",
+  "industrySlug": "automatyzacja-ai",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Innowacja",
+    "Decyzje"
+  ],
+  "url": "/prompty/strategia-decyzje/jedno-radykalne-uzupelnienie/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Jedno radykalne uzupełnienie",
+  "body": "Mini prompt do momentu, gdy plan, funkcja albo oferta są już dobre, ale chcesz znaleźć jedno mocne uzupełnienie, które może znacząco podnieść wartość.",
+  "usage": "Użyj tego prompta na końcu pracy nad planem, funkcją, stroną, produktem, ofertą albo roadmapą, kiedy materiał jest już sensowny, ale brakuje mu jednego elementu o dużej sile. Najlepiej wklej aktualny materiał, cel biznesowy, grupę odbiorców, ograniczenia, rzeczy już odrzucone i kryterium sukcesu. Prompt ma wymusić wybór jednej propozycji, ocenę wpływu, koszt wdrożenia, ryzyko rozproszenia i najprostszy test w 48 godzin.",
+  "prompt": "Pracujesz jako wymagający doradca strategiczny, który nie produkuje listy inspiracji, tylko wybiera jedno uzupełnienie o największym wpływie.\n\nPrzeanalizuj materiał, który wklejam poniżej:\n[wklej plan, funkcję, ofertę, projekt albo roadmapę]\n\nCel materiału:\n[wpisz cel]\n\nOdbiorca albo użytkownik:\n[wpisz odbiorcę]\n\nOgraniczenia:\n[czas, budżet, zespół, technologia, ryzyka]\n\nNajpierw napisz w 5 punktach, co już działa dobrze. Potem wskaż największą lukę, która może ograniczyć efekt.\n\nNastępnie zaproponuj dokładnie jedno radykalne uzupełnienie. Nie dawaj alternatyw ani listy 10 pomysłów.\n\nWybrane uzupełnienie opisz przez:\nnazwę, problem który rozwiązuje, dlaczego ma największy wpływ, co zmienia dla użytkownika, jak wpływa na konwersję albo jakość decyzji, koszt wdrożenia, ryzyko rozproszenia, najprostszy wariant do przetestowania i kryterium sukcesu.\n\nDodaj też antyrekomendację:\nczego nie dodawać, mimo że brzmi atrakcyjnie.\n\nFormat odpowiedzi:\ndiagnoza obecnego materiału, największa luka, jedno uzupełnienie, dlaczego właśnie ono, najprostszy wariant, koszt wdrożenia, ryzyko, test w 48 godzin, metryka sukcesu, czego nie dodawać.\n\nNa końcu przygotuj plan wdrożenia w 3 krokach na najbliższe 48 godzin oraz decyzję: wdrażać teraz, zaparkować, albo odrzucić.\n\nJeżeli nie masz wystarczającego kontekstu, zadaj maksymalnie 5 pytań przed rekomendacją. Nie proponuj funkcji dekoracyjnych. Nie wybieraj pomysłu tylko dlatego, że brzmi efektownie. Preferuj uzupełnienie, które zwiększa zrozumienie, zaufanie, konwersję, użyteczność albo szybkość decyzji.\n\nDodaj sekcję porównania z alternatywami, ale bez tworzenia listy pomysłów. Wymień 3 oczywiste dodatki, które odrzucasz, i wyjaśnij, dlaczego przegrywają z wybraną rekomendacją. Dzięki temu decyzja ma być odporna na pokusę dopisywania funkcji, które wyglądają atrakcyjnie, ale nie zwiększają wyniku użytkownika.",
+  "example": "Dobry do końcowego dopracowania planu, szukania wyróżnika produktu, ulepszania oferty, wzmacniania funkcji albo podbijania jakości prezentacji.",
+  "order": 24,
+  "published": true,
+  "seoTitle": "Jedno radykalne uzupełnienie, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt, który pomaga znaleźć jedno najmądrzejsze, najbardziej wartościowe i użyteczne uzupełnienie planu, funkcji, oferty albo projektu.",
+  "keywords": [
+    "prompt innowacja",
+    "ulepszenie planu",
+    "jedna najlepsza sugestia",
+    "strategia produktu",
+    "radykalne uzupełnienie"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "strategia-decyzje",
+  "internalLinks": [
+    "perspektywa-product-ownera",
+    "wywiad-przed-startem-projektu",
+    "strategia-marketingu-pasywnego"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy używać prompta o jednym radykalnym uzupełnieniu?",
+      "answer": "Użyj go wtedy, gdy materiał jest już wstępnie dobry, ale chcesz znaleźć jeden element, który może zrobić największą różnicę. Prompt jest szczególnie przydatny na końcu pracy nad planem, funkcją, ofertą albo strategią."
+    },
+    {
+      "question": "Dlaczego prompt prosi tylko o jeden pomysł?",
+      "answer": "Lista wielu pomysłów często rozmywa decyzję. Prośba o jeden najlepszy element zmusza AI do priorytetyzacji, uzasadnienia wyboru i pokazania realnego wpływu zamiast produkowania kolejnych wariantów."
+    },
+    {
+      "question": "Co wkleić do AI razem z tym promptem?",
+      "answer": "Wklej aktualny plan, opis funkcji, ofertę, projekt albo stronę. Dodaj też cel, grupę odbiorców, ograniczenia i informację, co już jest ustalone. Dzięki temu model nie będzie proponował rzeczy oderwanych od kontekstu."
+    },
+    {
+      "question": "Jak odróżnić radykalne uzupełnienie od przypadkowego pomysłu?",
+      "answer": "Dobre uzupełnienie wzmacnia główny cel, jest użyteczne dla użytkownika, da się wdrożyć w pierwszej wersji i zmienia percepcję wartości. Przypadkowy pomysł jest ciekawy, ale nie przesuwa realnie wyniku."
+    },
+    {
+      "question": "Czy ten prompt pasuje do małych projektów?",
+      "answer": "Tak. W małych projektach działa nawet lepiej, bo pomaga nie rozbudowywać zakresu bez sensu. Model ma znaleźć jedno uzupełnienie, które ma największy stosunek wartości do kosztu wdrożenia."
+    }
+  ]
+}

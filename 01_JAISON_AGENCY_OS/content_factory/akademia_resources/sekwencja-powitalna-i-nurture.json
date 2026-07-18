@@ -1,0 +1,122 @@
+{
+  "id": "sekwencja-powitalna-i-nurture",
+  "type": "checklist",
+  "title": "Sekwencja powitalna i nurture mailowy",
+  "description": "Checklista sekwencji powitalnej pięciu maili w dziewięć do dziesięciu dni, budowania listy i lead magnetów oraz nurture opartego o automatyzację i wyzwalacze, z benchmarkami open rate i przychodu.",
+  "shortDescription": "Zbuduj sekwencję powitalną i nurture, które zamieniają nowego subskrybenta w klienta.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Email marketing",
+    "Onboarding"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/sekwencja-powitalna-i-nurture/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Sekwencja powitalna i nurture mailowy",
+  "body": "Pierwsze dni po zapisie decydują o relacji z subskrybentem, bo większość zakupów pada w ciągu dziesięciu dni od zapisu. Ta checklista podaje sekwencję powitalną pięciu maili w dziewięć do dziesięciu dni, od powitania i lead magnetu, przez historię marki i social proof, po mapę drogową i miękką sprzedaż. Dokłada ranking skuteczności lead magnetów oraz zasady nurture opartego o automatyzację i wyzwalacze po kamieniach milowych. Maile powitalne generują wielokrotnie więcej przychodu niż zwykłe wysyłki, więc dobrze ustawiona sekwencja to jeden z najsilniejszych elementów email marketingu.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojego lead magnetu, produktu i grupy docelowej. Poproś AI, żeby napisało pięć maili sekwencji powitalnej według struktury z checklisty: powitanie z prośbą o odpowiedź, historia marki, social proof, mapa drogowa i miękka sprzedaż, z rozłożeniem na dziewięć do dziesięciu dni. Następnie niech AI zaproponuje, który lead magnet podnieść albo zmienić zgodnie z rankingiem skuteczności oraz jakie wyzwalacze nurture ustawić po zakupie, ukończeniu modułu i braku aktywności.",
+  "checklistSections": [
+    {
+      "title": "Sekwencja powitalna, 5 maili w 9 do 10 dni",
+      "items": [
+        "Email 1, natychmiast do 10 minut: powitanie plus lead magnet plus ustawienie oczekiwań plus prośba o odpowiedź, powiedz mi konkretną rzecz. Welcome email open rate około 83,63 procent.",
+        "Email 2, dzień 2: historia marki, misja i wartości, budujesz relację.",
+        "Email 3, dni 4 do 5: social proof, testimoniale, case studies, wyniki klientów.",
+        "Email 4, dzień 7: mapa drogowa, konkretne kroki do sukcesu z Twoim produktem.",
+        "Email 5, dni 9 do 10: miękka sprzedaż plus ekskluzywna oferta plus pilność. Wcześniejszy pitch potrafi dać plus 89 procent przychodu, bo większość zakupów pada w 10 dni od zapisu.",
+        "Wymagasz odpowiedzi na email powitalny i wyjaśniasz dlaczego, bo to podnosi open rate całej sekwencji."
+      ]
+    },
+    {
+      "title": "Budowanie listy i lead magnety",
+      "items": [
+        "Ranking skuteczności lead magnetów: quiz 40,1 procent opt-in, checklista 34 procent, spin to win 29,99 procent, kalkulator 9,4 procent, ebook poniżej 0,9 procent.",
+        "Interaktywne lead magnety, czyli quizy i kalkulatory, dają ponad 5,2 procent konwersji wobec 0,9 procent dla statycznych, czyli sześciokrotna różnica.",
+        "Szablon albo toolkit ma 72 procent wyższy email capture niż poradnik, optymalny rozmiar 5 do 25 stron albo quiz 5 do 10 pytań.",
+        "Content upgrade, przynęta wewnątrz treści, podnosi opt-in z 0,37 do 4,14 procent.",
+        "Stopniowe zbieranie danych: pierwsze pobranie tylko email, kolejne więcej danych, plus 35 procent więcej zapisów."
+      ]
+    },
+    {
+      "title": "Nurture i edukacja",
+      "items": [
+        "Zautomatyzowane maile mają open rate około 45,38 procent i generują około 40 procent przychodu emailowego przy zaledwie 3 procentach wysyłek.",
+        "Wyzwalacze behawioralne: obejrzał 80 procent kursu to oferta następnego, 3 logowania to propozycja wyższego planu.",
+        "Ustawiasz wyzwalacze po kamieniach milowych: zakup, ukończenie modułu, rocznica, brak aktywności 14 dni.",
+        "Segmentujesz listę: inny mail dla nowych, aktywnych i nieaktywnych, bo segmentowane kampanie dają nawet 760 procent więcej przychodu."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy zbierasz adresy przez lead magnet i chcesz, żeby nowy subskrybent dostał przemyślaną sekwencję powitalną zamiast ciszy albo od razu twardej sprzedaży.",
+  "order": 73,
+  "published": true,
+  "seoTitle": "Sekwencja powitalna i nurture mailowy, checklista 5 maili",
+  "seoDescription": "Zbuduj sekwencję powitalną pięciu maili i nurture: lead magnety, struktura maili, automatyzacja i wyzwalacze z benchmarkami open rate i przychodu emailowego.",
+  "keywords": [
+    "sekwencja powitalna",
+    "welcome email",
+    "lead magnet",
+    "nurture",
+    "email marketing"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "kampania-email",
+  "internalLinks": [
+    "segmentacja-i-wyzwalacze-mailowe",
+    "platny-newsletter-premium-first",
+    "lead-magnet-popup-thank-you-page",
+    "win-back-i-reaktywacja-maili"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Sekwencja powitalna pięciu maili oraz nurture",
+  "sourceReferences": [
+    {
+      "title": "Raporty Email Marketing Benchmarks",
+      "author": "GetResponse",
+      "url": "https://www.getresponse.com",
+      "relation": "Źródło danych i benchmarków open rate, ROI i automatyzacji przytoczonych w checkliście."
+    },
+    {
+      "title": "Strategia maili powitalnych i pitchu",
+      "author": "Graham Cochrane",
+      "url": "https://grahamcochrane.com",
+      "relation": "Inspiracja zasady o wcześniejszym pitchu w sekwencji powitalnej, do dalszego czytania u autora."
+    },
+    {
+      "title": "Marketing Examined, prośba o odpowiedź w powitaniu",
+      "author": "Alex Garcia",
+      "url": "https://www.marketingexamined.com",
+      "relation": "Odniesienie do taktyki wymagania odpowiedzi na email powitalny, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Ile maili powinna mieć sekwencja powitalna?",
+      "answer": "Sprawdza się pięć maili rozłożonych na dziewięć do dziesięciu dni: powitanie z lead magnetem, historia marki, social proof, mapa drogowa i na końcu miękka sprzedaż z ofertą. Taki rytm buduje relację, zanim poprosisz o zakup, a większość decyzji zakupowych pada właśnie w pierwszych dziesięciu dniach od zapisu."
+    },
+    {
+      "question": "Który lead magnet konwertuje najlepiej?",
+      "answer": "Najwyższy opt-in mają lead magnety interaktywne: quiz osiąga około 40 procent, checklista około 34 procent, a spin to win blisko 30 procent. Statyczny ebook wypada najsłabiej, poniżej jednego procenta. Dlatego warto stawiać na quizy, kalkulatory, szablony i checklisty zamiast klasycznego ebooka."
+    },
+    {
+      "question": "Dlaczego prosić o odpowiedź na email powitalny?",
+      "answer": "Prośba o odpowiedź na pierwszy mail zwiększa zaangażowanie i poprawia dostarczalność, bo skrzynki traktują dwustronną komunikację jako sygnał, że odbiorca chce Twoich maili. Warto wyjaśnić, dlaczego prosisz o odpowiedź, i zadać konkretne pytanie, na które łatwo i szybko odpisać jednym zdaniem."
+    },
+    {
+      "question": "Jak działa nurture oparty o automatyzację?",
+      "answer": "Zautomatyzowane maile wyzwalane zachowaniem mają wysoki open rate, około 45 procent, i generują nieproporcjonalnie dużo przychodu, około 40 procent, przy zaledwie kilku procentach wszystkich wysyłek. Ustawiasz je po kamieniach milowych, takich jak zakup, ukończenie modułu, rocznica czy brak aktywności przez dwa tygodnie."
+    },
+    {
+      "question": "Czy segmentacja naprawdę zwiększa przychód z maili?",
+      "answer": "Tak, i to znacząco. Segmentowane kampanie, w których inny mail dostają nowi, aktywni i nieaktywni subskrybenci, potrafią generować wielokrotnie więcej przychodu niż jeden mail do całej listy. Dopasowanie treści do etapu relacji sprawia, że odbiorca dostaje wiadomość, która faktycznie jest dla niego trafna."
+    }
+  ]
+}

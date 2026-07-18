@@ -1,0 +1,85 @@
+{
+    "leads": [
+        {
+            "id": "lead_1782832448",
+            "name": "Testowy Tomasz",
+            "stage": "conversation",
+            "notes": "Kontakt: tomasz-test@holisticjson.pl | Źródło: Mercury Ebook. Problem: Pobranie e-booka Bezpieczny Telefon | Ponowny zapis: 2026-07-10 15:11:10 | Ponowny zapis: 2026-07-10 15:12:05",
+            "last_contact": "2026-06-30",
+            "next_action": "Skontaktować się lub sprawdzić status wysyłki Systeme.io",
+            "draft_reply": "Cześć Testowy Tomasz, dziękuję za pobranie e-booka 'Prywatna Twierdza'. Jak oceniasz zawarte tam wskazówki dotyczące prywatności?"
+        },
+        {
+            "id": "lead_1783689070",
+            "name": "Jan Kowalski",
+            "stage": "conversation",
+            "notes": "Kontakt: jan@kowalski.pl | Źródło: Landing Page. Zapis na e-book Bezpieczny Telefon. | Ponowny zapis: 2026-07-10 15:12:05",
+            "last_contact": "2026-07-10",
+            "next_action": "Skontaktować się lub sprawdzić status wysyłki Systeme.io",
+            "draft_reply": "Cześć Jan Kowalski, dziękuję za pobranie e-booka 'Prywatna Twierdza'. Jak oceniasz zawarte tam wskazówki dotyczące prywatności?"
+        },
+        {
+            "id": "lead_1783689070",
+            "name": "Maria Nowak",
+            "stage": "conversation",
+            "notes": "Kontakt: maria@nowak.pl | Źródło: Cold Mail. Problem: Brak klientów | Ponowny zapis: 2026-07-10 15:12:05",
+            "last_contact": "2026-07-10",
+            "next_action": "Skontaktować się lub sprawdzić status wysyłki Systeme.io",
+            "draft_reply": "Cześć Maria Nowak, dziękuję za pobranie e-booka 'Prywatna Twierdza'. Jak oceniasz zawarte tam wskazówki dotyczące prywatności?"
+        },
+        {
+            "id": "lead_1783689070",
+            "name": "Adam",
+            "stage": "conversation",
+            "notes": "Kontakt: adam@gmail.com | Źródło: Facebook. Zapis na e-book Bezpieczny Telefon. | Ponowny zapis: 2026-07-10 15:12:05",
+            "last_contact": "2026-07-10",
+            "next_action": "Skontaktować się lub sprawdzić status wysyłki Systeme.io",
+            "draft_reply": "Cześć Adam, dziękuję za pobranie e-booka 'Prywatna Twierdza'. Jak oceniasz zawarte tam wskazówki dotyczące prywatności?"
+        },
+        {
+            "id": "lead_1783689070",
+            "name": "Ewa",
+            "stage": "conversation",
+            "notes": "Kontakt: ewa@gmail.com | Źródło: Instagram. Zapis na e-book Bezpieczny Telefon. | Ponowny zapis: 2026-07-10 15:12:05",
+            "last_contact": "2026-07-10",
+            "next_action": "Skontaktować się lub sprawdzić status wysyłki Systeme.io",
+            "draft_reply": "Cześć Ewa, dziękuję za pobranie e-booka 'Prywatna Twierdza'. Jak oceniasz zawarte tam wskazówki dotyczące prywatności?"
+        },
+        {
+            "id": "lead_1783689070",
+            "name": "Piotr",
+            "stage": "conversation",
+            "notes": "Kontakt: piotr@gmail.com | Źródło: API. Zapis na e-book Bezpieczny Telefon. | Ponowny zapis: 2026-07-10 15:12:05",
+            "last_contact": "2026-07-10",
+            "next_action": "Skontaktować się lub sprawdzić status wysyłki Systeme.io",
+            "draft_reply": "Cześć Piotr, dziękuję za pobranie e-booka 'Prywatna Twierdza'. Jak oceniasz zawarte tam wskazówki dotyczące prywatności?"
+        },
+        {
+            "id": "lead_1783689070",
+            "name": "Olek",
+            "stage": "conversation",
+            "notes": "Kontakt: olek@gmail.com | Źródło: Referral. Zapis na e-book Bezpieczny Telefon. | Ponowny zapis: 2026-07-10 15:12:05",
+            "last_contact": "2026-07-10",
+            "next_action": "Skontaktować się lub sprawdzić status wysyłki Systeme.io",
+            "draft_reply": "Cześć Olek, dziękuję za pobranie e-booka 'Prywatna Twierdza'. Jak oceniasz zawarte tam wskazówki dotyczące prywatności?"
+        },
+        {
+            "id": "lead_1783689070",
+            "name": "Stefan",
+            "stage": "conversation",
+            "notes": "Kontakt: stefan@wp.pl | Źródło: Website Form. Zapis na e-book Bezpieczny Telefon. | Ponowny zapis: 2026-07-10 15:12:05",
+            "last_contact": "2026-07-10",
+            "next_action": "Skontaktować się lub sprawdzić status wysyłki Systeme.io",
+            "draft_reply": "Cześć Stefan, dziękuję za pobranie e-booka 'Prywatna Twierdza'. Jak oceniasz zawarte tam wskazówki dotyczące prywatności?"
+        },
+        {
+            "id": "lead_1783689070",
+            "name": "Kryspin",
+            "stage": "conversation",
+            "notes": "Kontakt: kryspin@o2.pl | Źródło: Website Form. Zapis na e-book Bezpieczny Telefon. | Ponowny zapis: 2026-07-10 15:12:05",
+            "last_contact": "2026-07-10",
+            "next_action": "Skontaktować się lub sprawdzić status wysyłki Systeme.io",
+            "draft_reply": "Cześć Kryspin, dziękuję za pobranie e-booka 'Prywatna Twierdza'. Jak oceniasz zawarte tam wskazówki dotyczące prywatności?"
+        }
+    ]
+}

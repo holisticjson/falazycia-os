@@ -1,0 +1,107 @@
+{
+  "id": "hooki-i-formuly-wiralowe",
+  "type": "checklist",
+  "title": "Hooki i formuły wiralowe: VFCA i 10 schematów",
+  "description": "Checklista hooków i formuł wiralowych do postów: formuła VFCA, dziesięć sprawdzonych schematów hooków oraz zasady copywritingu, które zwiększają zasięg, zapamiętywalność i konwersję treści w social mediach.",
+  "shortDescription": "Otwieraj posty tak, żeby ludzie się zatrzymali, na bazie formuły VFCA i 10 schematów hooków.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Content i social media",
+  "applicationSlug": "content-social-media",
+  "tags": [
+    "Copywriting",
+    "Social media"
+  ],
+  "url": "/checklisty/content-social-media/hooki-i-formuly-wiralowe/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Hooki i formuły wiralowe: VFCA i 10 schematów",
+  "body": "O zasięgu posta decyduje pierwsze zdanie, czyli hook. Ta checklista zbiera sprawdzone otwarcia i formuły, które zatrzymują uwagę: formułę VFCA, czyli trzewne otwarcie, świeżą perspektywę, wyzwanie i powtórzenie, dziesięć konkretnych schematów hooków oraz zasady copywritingu opartego o prostotę języka i obraz mentalny. Każdy element ma gotowy przykład do podstawienia, więc zamiast wymyślać otwarcie od zera, wybierasz schemat i wypełniasz go swoim tematem. Dzięki temu treść jest nie tylko klikalna, ale też zapamiętywalna i łatwa do rozprzestrzeniania.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z tematem swojego posta i grupą docelową. Poproś AI, żeby napisało dla Ciebie kilka wersji hooka według różnych schematów z listy, na przykład twierdzenie sprzeczne z intuicją, osobista porażka, data drop i framework, oraz żeby zastosowało formułę VFCA do dłuższego otwarcia. Następnie niech AI sprawdzi gotowy tekst pod zasady copywritingu z checklisty, czyli prostotę języka na poziomie 5 do 7 klasy, krótkie CTA w pierwszej osobie i obecność obrazu mentalnego, i wskaże, które frazy są kliszami do wymiany.",
+  "checklistSections": [
+    {
+      "title": "Formuła VFCA",
+      "items": [
+        "Visceral Opener, czyli trzewne otwarcie: emocjonalne zdanie, które maluje obraz w 5 słowach, na przykład uciekłem z wyścigu szczurów.",
+        "Fresh Perspective, czyli świeża perspektywa: intrygująca teza dająca nadzieję, na przykład mój sekret to nie granie w gry statusowe.",
+        "Challenge, czyli wyzwanie: kwestionujesz tradycyjne wyznaczniki sukcesu, na przykład nie chcę budować następnego jednorożca.",
+        "Anaphora, czyli powtórzenie: seria zdań o tym samym początku, na przykład chcę spędzać czas z rodziną, chcę pracować nad ciekawymi projektami.",
+        "Pamiętasz wynik formuły z przykładu źródłowego: 2,6 miliona wyświetleń i 3 tysiące nowych obserwujących."
+      ]
+    },
+    {
+      "title": "10 schematów hooków",
+      "items": [
+        "Twierdzenie sprzeczne z intuicją: wszystko, co wiesz o danym temacie, jest błędne, oto co mówią dane.",
+        "Osobista porażka: straciłem konkretną kwotę przez konkretny błąd, oto czego się nauczyłem.",
+        "Data drop: przeanalizowałem X firm, oto zaskakujące odkrycie.",
+        "Obalanie mitów: 3 mity o danej branży, które kosztują Cię pieniądze lub czas.",
+        "Framework: metoda o danej nazwie, która daje konkretny rezultat, krok pierwszy.",
+        "How to: 5 trików, które powinny być nielegalne.",
+        "Porównanie: metoda A kontra metoda B, wynik mnie zaskoczył.",
+        "Before i after: stan przed kontra stan po, pokazujesz transformację.",
+        "POV: jesteś w danej roli i właśnie odkryłeś daną rzecz.",
+        "Zaskakująca statystyka: dany procent grupy robi daną rzecz, to jest problem, bo."
+      ]
+    },
+    {
+      "title": "Zasady copywritingu",
+      "items": [
+        "Copy na poziomie 5 do 7 klasy konwertuje na 11,1 procent wobec 5,3 procent dla profesjonalnego języka, czyli podwójna różnica.",
+        "CTA w pierwszej osobie wygrywa: zacznij mój darmowy trial bije zacznij swój trial.",
+        "Najlepsze CTA ma maksymalnie 4 słowa, a personalizowane CTA daje 42 procent więcej konwersji.",
+        "Najlepsze frazy to takie, które zrozumie siedmiolatek, nie są kliszą i tworzą obraz mentalny.",
+        "Ukrywasz trudny przekaz w atrakcyjnej historii, bo nikt nie chce łykać tabletki, ale w serze połknie ją chętnie.",
+        "Stosujesz 5 technik rozprzestrzeniania: zamień w żart, użyj analogii, powtarzaj, stwórz obraz mentalny, opowiedz historię."
+      ]
+    }
+  ],
+  "example": "Najlepsza przy pisaniu postów na LinkedIn, X i krótkich wideo, gdy chcesz przestać zaczynać od nudnego pierwszego zdania i potrzebujesz gotowego schematu hooka pod swój temat.",
+  "order": 61,
+  "published": true,
+  "seoTitle": "Hooki i formuły wiralowe, VFCA i 10 schematów hooków",
+  "seoDescription": "Gotowe hooki do postów: formuła VFCA, dziesięć schematów otwarć i zasady copywritingu, które zwiększają zasięg i zapamiętywalność treści w social mediach.",
+  "keywords": [
+    "hooki do postów",
+    "formuły wiralowe",
+    "VFCA",
+    "copywriting social media",
+    "pierwsze zdanie posta"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "copywriting-social",
+  "internalLinks": [
+    "formaty-i-harmonogram-social-media",
+    "tekst-bez-sladow-ai",
+    "building-in-public-glos-marki"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Hooki, formuła VFCA i zasady copywritingu wiralowego",
+  "faq": [
+    {
+      "question": "Czym jest hook w poście i dlaczego jest najważniejszy?",
+      "answer": "Hook to pierwsze zdanie posta albo pierwsze sekundy wideo, które decydują, czy ktoś zatrzyma się na Twojej treści. Algorytmy nagradzają wczesny engagement, więc słaby hook oznacza mały zasięg nawet przy świetnej dalszej części. Dlatego nad otwarciem warto pracować osobno."
+    },
+    {
+      "question": "Co oznacza formuła VFCA w hookach?",
+      "answer": "VFCA to cztery elementy mocnego otwarcia: Visceral Opener, czyli trzewne emocjonalne zdanie, Fresh Perspective, czyli świeża perspektywa, Challenge, czyli zakwestionowanie utartego myślenia, oraz Anaphora, czyli powtórzenie tego samego początku zdań. Razem budują otwarcie, które przyciąga i daje nadzieję."
+    },
+    {
+      "question": "Jak prosty powinien być język w postach?",
+      "answer": "Najlepiej pisać na poziomie 5 do 7 klasy, bo taki copy konwertuje na 11,1 procent wobec 5,3 procent dla języka profesjonalnego. Chodzi o frazy, które zrozumie siedmiolatek, które nie są kliszą i które tworzą w głowie odbiorcy konkretny obraz."
+    },
+    {
+      "question": "Jak pisać skuteczne CTA w postach?",
+      "answer": "Najlepsze CTA ma maksymalnie 4 słowa i jest sformułowane w pierwszej osobie, na przykład zacznij mój darmowy trial zamiast zacznij swój trial. Personalizacja CTA potrafi podnieść konwersję o 42 procent, więc dopasuj tekst przycisku do konkretnej korzyści odbiorcy."
+    },
+    {
+      "question": "Jak użyć tych schematów hooków z AI?",
+      "answer": "Wklej temat posta i tę checklistę do asystenta AI, a potem poproś o kilka wersji hooka według różnych schematów, na przykład twierdzenie sprzeczne z intuicją, osobista porażka i framework. Wybierz najlepszy, a następnie poproś AI o sprawdzenie całego tekstu pod zasady copywritingu z checklisty."
+    }
+  ]
+}

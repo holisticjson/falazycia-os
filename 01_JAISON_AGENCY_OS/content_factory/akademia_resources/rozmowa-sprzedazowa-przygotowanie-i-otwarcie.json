@@ -1,0 +1,152 @@
+{
+  "id": "rozmowa-sprzedazowa-przygotowanie-i-otwarcie",
+  "type": "checklist",
+  "title": "Rozmowa sprzedażowa: przygotowanie i otwarcie",
+  "description": "Checklista przygotowania i otwarcia rozmowy sprzedażowej: zarządzanie stanem emocjonalnym według Tony'ego Robbinsa, research klienta, kwalifikacja NWWAM, przygotowanie obiekcji MOO oraz budowanie rapportu w pierwszych 90 sekundach i na telefonie.",
+  "shortDescription": "Wejdź w rozmowę sprzedażową przygotowany: właściwy stan, research, kwalifikacja i mocne otwarcie.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Sprzedaż",
+    "Rozmowa sprzedażowa"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/rozmowa-sprzedazowa-przygotowanie-i-otwarcie/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Rozmowa sprzedażowa: przygotowanie i otwarcie",
+  "body": "Wynik rozmowy sprzedażowej w dużej części zapada, zanim padnie pierwsze zdanie. Ta checklista prowadzi przez przygotowanie i otwarcie: zarządzanie własnym stanem emocjonalnym według Tony'ego Robbinsa, bo kupowanie to transfer emocji, research klienta, kwalifikację NWWAM, czyli potrzeby, pragnienia, rany, autorytet i pieniądze, oraz przygotowanie najbardziej oczywistych obiekcji. Dokłada zasady pierwszych 90 sekund, rozmowy na telefonie i budowania rapportu. Dzięki temu wchodzisz w rozmowę z pozycji pomagania, a nie potrzeby, i przejmujesz kontrolę przez pytania, zamiast naciskać.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z informacjami o kliencie, z którym masz rozmowę, i o swojej ofercie. Poproś AI, żeby przygotowało research klienta z LinkedIna i strony firmy, wskazało 2 do 3 prawdopodobne bóle dla jego branży i stanowiska oraz jeden konkretny insight, który możesz dać za darmo na początku. Następnie niech AI sprawdzi kwalifikację NWWAM, wypisze 3 najbardziej oczywiste obiekcje z odpowiedziami i preframingiem oraz zaproponuje otwarcie rozmowy budujące rapport w pierwszych dziewięćdziesięciu sekundach.",
+  "checklistSections": [
+    {
+      "title": "Stan emocjonalny, Tony Robbins",
+      "items": [
+        "Zarządzasz swoim stanem emocjonalnym przed rozmową, bo jeśli sam nie jesteś w szczycie, nie masz czym zarazić klienta.",
+        "Zadajesz sobie pytania stanu: ile sprzedaży dzisiaj zamknę, jak mogę się przy tym dobrze bawić.",
+        "Upewniasz się, że wierzysz, iż dajesz 10 razy więcej, niż bierzesz, bo to fundament Twojej pewności.",
+        "Dzwonisz z pozycji pomagania, nie potrzeby, nigdy z desperacji.",
+        "Znasz na pamięć korzyści oferty i mówisz o nich z pełnym przekonaniem."
+      ]
+    },
+    {
+      "title": "Research klienta",
+      "items": [
+        "Czytasz LinkedIn klienta: stanowisko, firma, ostatnie posty, wspólne kontakty.",
+        "Sprawdzasz stronę firmy: wielkość, branża, technologie, ostatnie zmiany, czyli zatrudnienie, finansowanie, restrukturyzacja.",
+        "Identyfikujesz 2 do 3 potencjalne bóle specyficzne dla ich branży i stanowiska.",
+        "Przygotowujesz jeden konkretny insight albo statystykę, którą możesz dać za darmo na początku rozmowy.",
+        "Sprawdzasz, czy firma jest w fazie wzrostu, plateau czy spadku, bo to zmienia pitch."
+      ]
+    },
+    {
+      "title": "NWWAM, kwalifikacja przed rozmową, Robbins",
+      "items": [
+        "Potrzeby: czy wiesz, jaki problem klient chce rozwiązać.",
+        "Pragnienia: czy wiesz, czego naprawdę chce, nie tylko co mówi.",
+        "Rany: czy wiesz, jakie złe doświadczenia miał z podobnymi rozwiązaniami.",
+        "Autorytet: czy rozmawiasz z osobą podejmującą decyzję.",
+        "Pieniądze: czy ma budżet i czy wie, ile to kosztuje."
+      ]
+    },
+    {
+      "title": "MOO, najbardziej oczywista obiekcja, Wes Kao",
+      "items": [
+        "Przed spotkaniem wypisujesz 3 najoczywistsze obiekcje, jakie usłyszysz.",
+        "Przygotowujesz odpowiedź na każdą, z danymi, case studies albo analogiami.",
+        "Planujesz preframing: wplatasz odpowiedzi w prezentację, zanim klient podniesie obiekcję."
+      ]
+    },
+    {
+      "title": "Pierwsze 90 sekund",
+      "items": [
+        "Sprawiasz, żeby poczuli, że jesteś taki jak oni i że Ci zależy, przez wspólne tematy, pytania i słuchanie.",
+        "Dajesz coś pierwszy, radę, komplement albo wartość, uruchamiając zasadę wzajemności.",
+        "Komplementujesz to, co nieoczywiste, bo chcesz zmienić ich stan, a nie powtarzać to, co słyszą od każdego.",
+        "Używasz ich imienia 2 do 3 razy w pierwszych minutach rozmowy.",
+        "Jesteś rozrywką, nie wykładem, bo ludzie wolą być bawieni niż edukowani."
+      ]
+    },
+    {
+      "title": "Na telefonie, Robbins",
+      "items": [
+        "Telefon służy do umówienia spotkania, nie do zamykania sprzedaży.",
+        "Zaczynasz od pytania o stan, nie o czas: jak się Pan dzisiaj czuje, zamiast czy ma Pan minutę.",
+        "Dajesz wielką obietnicę, a potem kwalifikujesz: czy pasujecie do tego rozwiązania.",
+        "Kontrolujesz rozmowę przez pytania z alternatywą: więcej niż 8 osób czy mniej niż 8.",
+        "Przerywasz wzorce: jesteś nieprzewidywalny, zabawny, inny niż wszyscy."
+      ]
+    },
+    {
+      "title": "Zasady rapportu",
+      "items": [
+        "Nigdy się nie kłócisz, zgadzasz się i przekierowujesz.",
+        "Klient mówi 80 procent czasu, Ty 20 procent.",
+        "Pytania to Twój najlepszy przyjaciel, im więcej pytasz, tym więcej masz kontroli nad rozmową.",
+        "Kongruencja: głos, słowa i ciało mówią to samo, bo kupowanie to transfer emocji."
+      ]
+    }
+  ],
+  "example": "Najlepsza przed rozmową sprzedażową, demo albo spotkaniem z klientem, gdy chcesz wejść przygotowany, we właściwym stanie i z mocnym otwarciem, zamiast improwizować od pierwszego zdania.",
+  "order": 90,
+  "published": true,
+  "seoTitle": "Rozmowa sprzedażowa, przygotowanie i otwarcie, checklista",
+  "seoDescription": "Przygotuj rozmowę sprzedażową: stan emocjonalny według Robbinsa, research klienta, kwalifikacja NWWAM, obiekcje MOO oraz budowanie rapportu w pierwszych 90 sekundach.",
+  "keywords": [
+    "rozmowa sprzedażowa",
+    "przygotowanie do sprzedaży",
+    "rapport",
+    "kwalifikacja klienta",
+    "sprzedaż"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "sprzedaz",
+  "internalLinks": [
+    "discovery-i-frameworki-pytan-sprzedazowych",
+    "pitch-pozycjonowanie-i-zamkniecie-sprzedazy",
+    "10-zasad-negocjacji-sprzedazowych"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Przygotowanie, kwalifikacja i otwarcie rozmowy sprzedażowej",
+  "sourceReferences": [
+    {
+      "title": "Metody sprzedaży i wpływu",
+      "author": "Tony Robbins",
+      "url": "https://www.tonyrobbins.com",
+      "relation": "Inspiracja zasad stanu emocjonalnego, rapportu i zamykania w sprzedaży, do dalszego czytania."
+    },
+    {
+      "title": "Most Obvious Objection i komunikacja",
+      "author": "Wes Kao",
+      "url": "https://www.weskao.com",
+      "relation": "Odniesienie do przygotowania najbardziej oczywistej obiekcji i preframingu, do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Dlaczego stan emocjonalny sprzedawcy ma znaczenie?",
+      "answer": "Bo kupowanie to w dużej mierze transfer emocji. Jeśli sam nie jesteś pewny i zaangażowany, nie zarazisz klienta entuzjazmem. Tony Robbins radzi, by przed rozmową świadomie wejść w dobry stan, dzwonić z pozycji pomagania, a nie desperacji, i wierzyć, że dajesz znacznie więcej wartości, niż bierzesz. Ta pewność przenosi się na klienta."
+    },
+    {
+      "question": "Co oznacza kwalifikacja NWWAM w sprzedaży?",
+      "answer": "To pięć rzeczy, które warto znać przed rozmową: potrzeby, czyli jaki problem klient chce rozwiązać, pragnienia, czyli czego naprawdę chce, rany, czyli złe doświadczenia z podobnymi rozwiązaniami, autorytet, czyli czy rozmawiasz z decydentem, oraz pieniądze, czyli czy ma budżet. Kwalifikacja NWWAM chroni przed marnowaniem czasu na rozmowy bez szansy na sprzedaż."
+    },
+    {
+      "question": "Jak zbudować rapport w pierwszych sekundach?",
+      "answer": "Spraw, by klient poczuł, że jesteś podobny do niego i że Ci zależy, przez wspólne tematy, pytania i uważne słuchanie. Daj coś pierwszy, na przykład radę albo komplement dotyczący czegoś nieoczywistego, użyj imienia rozmówcy kilka razy i bądź raczej rozrywką niż wykładem. Ludzie kupują od osób, które lubią i którym ufają."
+    },
+    {
+      "question": "Do czego służy rozmowa telefoniczna w sprzedaży?",
+      "answer": "Według Robbinsa telefon służy przede wszystkim do umówienia spotkania, a nie do zamykania sprzedaży. Zacznij od pytania o samopoczucie, a nie o to, czy ktoś ma chwilę, daj wielką obietnicę i od razu kwalifikuj, czy klient pasuje. Kontrolę utrzymujesz przez pytania z alternatywą i przerywanie schematów, czyli bycie innym niż typowy telemarketer."
+    },
+    {
+      "question": "Po co przygotowywać obiekcje przed spotkaniem?",
+      "answer": "Bo najłatwiej rozbroić obiekcję, zanim w ogóle padnie. Wes Kao radzi wypisać trzy najbardziej oczywiste obiekcje, które na pewno usłyszysz, przygotować na każdą odpowiedź z danymi albo przykładem i wpleść je w prezentację, czyli zastosować preframing. Dzięki temu klient widzi, że rozumiesz jego wątpliwości, i nie musi się bronić."
+    }
+  ]
+}

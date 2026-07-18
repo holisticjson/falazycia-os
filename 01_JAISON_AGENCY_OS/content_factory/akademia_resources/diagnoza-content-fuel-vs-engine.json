@@ -1,0 +1,137 @@
+{
+  "id": "diagnoza-content-fuel-vs-engine",
+  "type": "checklist",
+  "title": "Diagnoza contentu: Fuel vs Engine i Content-Market Fit",
+  "description": "Checklista do zdiagnozowania, czy Twoim problemem jest treść (Fuel), czy dystrybucja (Engine), oraz do znalezienia Content-Market Fit, czyli contentu dopasowanego do realnej audiencji, zanim wydasz złotówkę na promocję.",
+  "shortDescription": "Zanim zatrudnisz marketera, zdiagnozuj, czy brakuje Ci treści czy dystrybucji.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Content i social media",
+  "applicationSlug": "content-social-media",
+  "tags": [
+    "Content marketing",
+    "Strategia"
+  ],
+  "url": "/checklisty/content-social-media/diagnoza-content-fuel-vs-engine/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Diagnoza contentu: Fuel vs Engine i Content-Market Fit",
+  "body": "Większość firm wydaje pieniądze na dystrybucję, kiedy prawdziwym problemem jest treść, której nikt nie chce udostępniać. Ta checklista najpierw pomaga znaleźć Content-Market Fit, czyli content dopasowany do konkretnej audiencji, jej potrzeb i lęków, traktowany jak produkt, a nie jak marketing. Potem stosuje framework Fuel plus Engine: Fuel to treść, którą tworzysz, Engine to kanały, którymi ją dostarczasz. Zanim cokolwiek zatrudnisz albo kupisz, diagnozujesz, który z tych dwóch obszarów jest Twoim większym problemem, bo na każdy potrzebujesz innej osoby i innych działań.",
+  "usage": "Skopiuj tę checklistę do ChatGPT, Claude albo Gemini razem z opisem swojej firmy, audiencji, dotychczasowych treści i kanałów oraz liczbą osób na liście mailowej. Poproś AI, żeby przeszło przez sekcję Content-Market Fit i nazwało dokładnie, kto ma czytać Twój content, czego potrzebuje i czego się boi, a następnie zdiagnozowało, czy Twój większy problem to Fuel, czyli brak treści wartej udostępnienia, czy Engine, czyli brak zasięgu mimo dobrej treści. Na końcu niech AI zaproponuje, kogo zatrudnić albo co zmienić w pierwszej kolejności, oraz wskaże, które obecne treści są kandydatami na content, za który ktoś byłby gotów zapłacić.",
+  "checklistSections": [
+    {
+      "title": "Content-Market Fit, framework Camille Ricketts",
+      "items": [
+        "Zdefiniowana jest audiencja: kto dokładnie ma czytać albo oglądać, czyli stanowisko, branża, etap kariery lub biznesu.",
+        "Wiesz, czego ta audiencja potrzebuje w pracy albo życiu i co musi zrobić, żeby awansować lub uniknąć porażki.",
+        "Wiesz, co sprawia jej lęk i jakie zagrożenia widzi na horyzoncie.",
+        "Tworzysz produkt contentowy, który to adresuje, czyli traktujesz content jak produkt, a nie jak marketing.",
+        "Community-led growth opierasz na prawdziwej wartości, a nie na założeniu zróbmy Slacka i liczmy na organiczny wzrost."
+      ]
+    },
+    {
+      "title": "Customer-Led Growth, Gia Laudi",
+      "items": [
+        "Zmapowany jest journey najlepszych klientów w logice Jobs To Be Done, od pierwszej myśli do aktywnej rekomendacji.",
+        "Pamiętasz, że zmiana messagingu opartego o Jobs To Be Done potrafi podnieść konwersję o 89 procent i trial to paid o 40 procent, bez dotykania produktu.",
+        "Content odpowiada na pytania na każdym etapie journey, nie tylko na górze lejka."
+      ]
+    },
+    {
+      "title": "Co działa najlepiej, dane z bazy treści",
+      "items": [
+        "Tworzysz case studies z liczbami, na przykład zasięg plus 2350 procent, 1826 dolarów oszczędności, 10 minut zamiast godzin, bo dają najwyższy engagement.",
+        "Stawiasz kontrowersyjne tezy, na przykład AI zastąpi pracę albo kopiowanie contentu, bo to engagement gold.",
+        "Pokazujesz konkretne narzędzia z tutorialami, na przykład Claude Code, SuperWhisper, NotebookLM.",
+        "Robisz porównania typu A kontra B oraz wynik mnie zaskoczył.",
+        "Pamiętasz ranking formatów: case studies, potem tutoriale, potem hot takes, potem narzędzia i hacki, potem listy zasobów."
+      ]
+    },
+    {
+      "title": "Diagnoza Fuel, czyli treści",
+      "items": [
+        "Masz content, który ludzie sami udostępniają. Jeśli nie, problem jest po stronie Fuel.",
+        "Treści są odkrywcze, wybijają się ponad szum i utrzymują uwagę. To nie budżet, nie narzędzia i nie strona www decydują, tylko wartościowe treści.",
+        "Ktoś byłby gotów zapłacić za Twój content. Jeśli tak, masz silny Fuel.",
+        "Stosujesz Super Specific How według Wes Kao: piszesz mniej o tym co i dlaczego, a więcej o tym jak dokładnie to zrobić, bo czytelnik już zgadza się z premisą."
+      ]
+    },
+    {
+      "title": "Diagnoza Engine, czyli dystrybucji",
+      "items": [
+        "Masz ponad 1000 osób na liście mailowej. Jeśli nie, buduj Engine.",
+        "Masz regularną dystrybucję, czyli newsletter, social albo SEO. Jeśli nie, to problem z Engine.",
+        "Content jest natywny per platforma, a nie kopiowany jeden do jednego, bo algorytmy wykrywają i karzą kopiowanie.",
+        "Wiesz, że większość firm B2B ma problem z treścią wartą rozmowy, a nie z samą dystrybucją."
+      ]
+    }
+  ],
+  "example": "Najlepsza na start strategii contentu, gdy nie wiesz, czy najpierw poprawić treść, czy zwiększyć zasięg, oraz przy planowaniu pierwszego zatrudnienia w marketingu.",
+  "order": 58,
+  "published": true,
+  "seoTitle": "Fuel vs Engine i Content-Market Fit, checklista diagnozy contentu",
+  "seoDescription": "Zdiagnozuj, czy brakuje Ci treści (Fuel) czy dystrybucji (Engine), i znajdź Content-Market Fit, zanim wydasz budżet na promocję. Frameworki Ricketts, Kramer, Laudi.",
+  "keywords": [
+    "content marketing",
+    "content market fit",
+    "fuel vs engine",
+    "strategia contentu",
+    "dystrybucja treści"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "strategia-contentu",
+  "internalLinks": [
+    "formaty-i-harmonogram-social-media",
+    "budowanie-spolecznosci-online",
+    "aeo-optymalizacja-pod-ai"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Content-Market Fit i diagnoza Fuel vs Engine",
+  "sourceReferences": [
+    {
+      "title": "Content-Market Fit, podejście do contentu jako produktu",
+      "author": "Camille Ricketts",
+      "url": "https://lennyspodcast.com",
+      "relation": "Inspiracja i framework Content-Market Fit, do dalszego czytania u autorki."
+    },
+    {
+      "title": "Fuel plus Engine, treść kontra dystrybucja",
+      "author": "Emily Kramer",
+      "url": "https://mkt1.co",
+      "relation": "Framework diagnozy, czy problemem jest treść czy dystrybucja, odniesienie do materiałów MKT1."
+    },
+    {
+      "title": "Super Specific How",
+      "author": "Wes Kao",
+      "url": "https://www.weskao.com",
+      "relation": "Zasada pisania o tym jak dokładnie zrobić, użyta w sekcji diagnozy Fuel."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym różni się Fuel od Engine w marketingu treści?",
+      "answer": "Fuel to treść, którą tworzysz, czyli content, copy i pozycjonowanie. Engine to kanały, którymi ją dostarczasz, czyli email, SEO, social, ads i partnerstwa. Diagnoza polega na ustaleniu, który z tych obszarów jest Twoim większym problemem, bo każdy wymaga innych osób i działań."
+    },
+    {
+      "question": "Jak poznać, że mam problem z Fuel, a nie z Engine?",
+      "answer": "Sygnałem problemu z Fuel jest brak treści, które ludzie sami udostępniają, i poczucie, że nikt nie zapłaciłby za Twój content. Jeśli masz mocne treści, ale mało osób je widzi i nie masz listy mailowej ani regularnej dystrybucji, to problem leży po stronie Engine."
+    },
+    {
+      "question": "Czym właściwie jest Content-Market Fit w praktyce?",
+      "answer": "Content-Market Fit to dopasowanie treści do konkretnej audiencji, jej potrzeb i lęków, tak żeby content działał jak produkt, a nie jak ogólny marketing. Znajdujesz go, definiując dokładnie, kto ma czytać, czego potrzebuje, czego się boi, i tworząc treść, która wprost to adresuje."
+    },
+    {
+      "question": "Czy lepiej publikować dużo czy rzadziej, ale lepiej?",
+      "answer": "Lepiej publikować rzadziej, ale tak, żeby ludzie sami udostępniali treść. Jeden post tygodniowo, który się rozchodzi, jest wart więcej niż pięć dziennie, które są ignorowane. Najpierw Content-Market Fit i jakość Fuel, dopiero potem zwiększanie częstotliwości."
+    },
+    {
+      "question": "Jak użyć tej checklisty z AI?",
+      "answer": "Wklej checklistę i opis swojej firmy, audiencji oraz dotychczasowych treści i kanałów do asystenta AI. Poproś o nazwanie audiencji, jej potrzeb i lęków, o diagnozę Fuel kontra Engine oraz o rekomendację, co poprawić albo kogo zatrudnić w pierwszej kolejności."
+    }
+  ]
+}

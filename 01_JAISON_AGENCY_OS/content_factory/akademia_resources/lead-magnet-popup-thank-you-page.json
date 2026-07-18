@@ -1,0 +1,448 @@
+{
+  "id": "lead-magnet-popup-thank-you-page",
+  "type": "checklist",
+  "title": "Strona lead magnet, popup i thank you page",
+  "description": "Kompletna checklista landing page do zapisu na lead magnet, popupu exit intent i strony podziękowania po zapisie.",
+  "shortDescription": "Audyt lead magnet landing page, popupu i thank you page.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-sprzedaz",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Lead magnet",
+    "Landing page"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/lead-magnet-popup-thank-you-page/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Strona lead magnet, popup i thank you page",
+  "body": "Ultra szczegółowa checklista do stworzenia i przetestowania strony zapisu na lead magnet, popupu exit intent oraz thank you page. Obejmuje nagłówek, hero, formularz, RODO, CTA, social proof, SEO, responsywność, tracking, tripwire, popup, stronę podziękowania i finalne testy przed publikacją.",
+  "usage": "Skopiuj checklistę i wklej ją do ChatGPT, Claude, Gemini albo własnego asystenta AI razem z opisem lead magnetu, grupą docelową, URL strony, screenami projektu, formularzem, treścią maila powitalnego, popupem i thank you page. Poproś AI, żeby nie skracało audytu, tylko przeszło punkt po punkcie, oznaczyło status: OK, brak, do poprawy, oraz zwróciło listę krytycznych blokad przed publikacją i plan naprawy na 1 dzień.",
+  "checklistSections": [
+    {
+      "title": "Strona zapisu na lead magnet, nagłówek i sekcja hero",
+      "items": [
+        "Nagłówek ma maksymalnie 10 słów.",
+        "Nagłówek zawiera konkretną korzyść albo rezultat.",
+        "Nagłówek używa liczb, gdy to możliwe, na przykład 5 kroków, 30 dni albo 350 zł.",
+        "Nagłówek odnosi się bezpośrednio do problemu grupy docelowej.",
+        "Nagłówek korzysta z formuły: oferta dla kogo, żeby rezultat, bez problem.",
+        "Nagłówek ma duży font: minimum 32 px desktop i 24 px mobile.",
+        "Nagłówek ma kontrastowy, dobrze czytelny kolor.",
+        "Podtytuł ma maksymalnie 1 albo 2 zdania.",
+        "Podtytuł rozszerza obietnicę nagłówka.",
+        "Podtytuł precyzuje, dla kogo jest oferta.",
+        "Podtytuł podkreśla unikalność albo natychmiastowość wartości.",
+        "Podtytuł ma font mniejszy niż nagłówek, najlepiej 18 do 22 px.",
+        "Hero image albo video pokazuje mockup lead magnetu: okładkę PDF, zrzut ekranu szablonu albo podgląd materiału.",
+        "Hero image ma wysoką jakość, minimum 1200 px szerokości.",
+        "Hero image jest w formacie WebP albo zoptymalizowany JPG poniżej 200 KB.",
+        "Hero image ma opisowy alt text pod SEO.",
+        "Hero image pokazuje produkt w kontekście użycia.",
+        "Hero image nie jest generycznym zdjęciem stockowym.",
+        "Jeśli używasz video, ma maksymalnie 60 sekund, autoplay bez dźwięku i napisy albo jasny kontekst wizualny."
+      ]
+    },
+    {
+      "title": "Opis i korzyści lead magnetu",
+      "items": [
+        "Krótki opis oferty ma 1 albo 2 zdania i wyjaśnia dokładnie, czym jest lead magnet.",
+        "Opis jasno określa format: checklista, szablon, e book, guide, kalkulator, arkusz albo inny materiał.",
+        "Opis podkreśla praktyczne zastosowanie materiału.",
+        "Opis używa prostego języka bez żargonu.",
+        "Lista korzyści ma 3 do 5 punktów, nie więcej.",
+        "Każdy punkt listy opisuje konkretny rezultat albo korzyść.",
+        "Każdy punkt ma strukturę: czasownik plus konkretna korzyść.",
+        "Przykład dobrego punktu: zaoszczędzisz 5 godzin tygodniowo dzięki gotowemu szablonowi.",
+        "Przykład dobrego punktu: unikniesz 7 najczęstszych błędów, które kosztują klientów.",
+        "Przykład dobrego punktu: zwiększysz konwersję o 25 procent, stosując sprawdzone techniki.",
+        "Przed każdym punktem użyj ikon albo checkmarków.",
+        "Lista korzyści ma czytelny font, minimum 16 px.",
+        "Lista korzyści ma odpowiednią wysokość linii, najlepiej line height 1.6."
+      ]
+    },
+    {
+      "title": "Formularz opt in",
+      "items": [
+        "Formularz zawiera tylko adres e mail, jeśli nie ma mocnego powodu na więcej pól.",
+        "Maksymalny wariant formularza to imię plus e mail.",
+        "Nie dodawaj nazwiska, telefonu ani firmy, chyba że jest to absolutnie konieczne w B2B.",
+        "Każde pole ma wyraźną etykietę label.",
+        "Każde pole ma placeholder jako przykład.",
+        "Każde pole ma walidację w czasie rzeczywistym.",
+        "Komunikaty błędów są po polsku.",
+        "Pierwsze pole ma autofocus.",
+        "Autofill jest włączony, na przykład autocomplete email.",
+        "Formularz jest wyraźnie wydzielony boxem, obramowaniem albo cieniem.",
+        "Formularz ma kontrastowe tło względem strony, na przykład lekki kolor na białej stronie.",
+        "Pola formularza mają minimum 44 px wysokości na mobile.",
+        "Odstępy między polami mają minimum 16 px.",
+        "Formularz jest responsywny i ma 100 procent szerokości na małych ekranach.",
+        "Nad formularzem jest zdanie wprowadzające: wpisz swój e mail, aby otrzymać nazwę lead magnetu.",
+        "Alternatywne zdanie nad formularzem: otrzymaj natychmiastowy dostęp, podaj e mail.",
+        "Zdanie wprowadzające ma font 16 do 18 px i medium weight.",
+        "Formularz ma wymagany checkbox RODO: zgadzam się na przetwarzanie danych osobowych.",
+        "Checkbox RODO ma link do polityki prywatności otwierany w nowym oknie.",
+        "Formularz ma opcjonalny checkbox zgody marketingowej, jeśli wymaga tego prawo albo model komunikacji.",
+        "Teksty zgód mają 12 do 14 px, ale pozostają czytelne.",
+        "Pod formularzem jest zapewnienie o prywatności: szanujemy Twoją prywatność, bez spamu.",
+        "Alternatywne zapewnienie: nie sprzedajemy danych, możesz wypisać się w każdej chwili.",
+        "Opcjonalnie dodaj ikonę kłódki przy zapewnieniu prywatności.",
+        "Zapewnienie prywatności ma szary kolor i mniejszy font, około 14 px."
+      ]
+    },
+    {
+      "title": "Przycisk CTA na stronie zapisu",
+      "items": [
+        "Tekst przycisku jest zorientowany na akcję i korzyść.",
+        "Tekst przycisku może być w pierwszej osobie, na przykład pobierz moją checklistę.",
+        "Tekst przycisku używa konkretnego czasownika.",
+        "Dobre CTA: pobierz darmowy szablon.",
+        "Dobre CTA: wyślij mi przewodnik.",
+        "Dobre CTA: chcę dostać dostęp.",
+        "Dobre CTA: tak, chcę pobrać.",
+        "Nie używaj CTA: wyślij, prześlij, submit albo kliknij tutaj.",
+        "Tekst CTA ma 2 do 5 słów.",
+        "Przycisk ma kolor maksymalnie kontrastowy z tłem strony.",
+        "Przycisk jest duży i niemożliwy do przeoczenia.",
+        "Na desktopie przycisk ma minimum 180 px szerokości i 50 px wysokości.",
+        "Na mobile przycisk ma minimum 280 px szerokości i 56 px wysokości.",
+        "Przycisk ma pogrubiony font 16 do 18 px.",
+        "Przycisk ma zaokrąglone rogi, najlepiej border radius 4 do 8 px.",
+        "Przycisk ma stan hover: zmianę koloru albo cienia.",
+        "Przycisk ma stan kliknięcia: animację albo feedback.",
+        "Opcjonalnie dodaj ikonę pobrania albo strzałkę.",
+        "Wokół przycisku jest pusta przestrzeń, minimum 30 px margin.",
+        "Główny przycisk jest above the fold, widoczny bez scrollowania.",
+        "Przycisk jest powtórzony na dole strony, jeśli strona jest dłuższa.",
+        "Na mobile można dodać sticky button na dole ekranu.",
+        "Pod przyciskiem jest tekst dodatkowy: natychmiastowy dostęp, pobierz w 30 sekund.",
+        "Alternatywny tekst pod przyciskiem: darmowe, bez karty kredytowej.",
+        "Alternatywny tekst pod przyciskiem: otrzymasz link na e mail w ciągu 2 minut.",
+        "Tekst pod przyciskiem ma około 14 px, może być italic i szary."
+      ]
+    },
+    {
+      "title": "Social proof na stronie zapisu",
+      "items": [
+        "Dodaj 1 do 3 konkretne referencje, jeśli masz prawdziwe opinie.",
+        "Każda opinia zawiera zdjęcie osoby minimum 64 x 64 px, najlepiej okrągłe.",
+        "Każda opinia zawiera imię i nazwisko.",
+        "Każda opinia zawiera stanowisko, firmę albo lokalizację.",
+        "Każda opinia zawiera konkretną korzyść, nie ogólnik.",
+        "Każda opinia ma maksymalnie 2 albo 3 zdania.",
+        "Cytat jest w cudzysłowie albo wyróżnionym boxie.",
+        "Opcjonalnie dodaj 5 gwiazdek przy opinii.",
+        "Dodaj liczby i statystyki, jeśli są prawdziwe.",
+        "Przykład liczby: dołącz do 5247 osób, które już pobrały.",
+        "Przykład liczby: ponad 10000 pobrań.",
+        "Przykład liczby: 98 procent użytkowników ocenia na 5 z 5.",
+        "Liczba ma duży, wyróżniony font.",
+        "Statystyka jest umieszczona pod formularzem albo przy nagłówku.",
+        "Jeśli używasz logotypów, dodaj sekcję zaufali nam albo pisali o nas.",
+        "Sekcja logotypów zawiera 3 do 6 logotypów w jednej linii.",
+        "Logotypy są grayscale albo mają niski kontrast, żeby nie rozpraszać.",
+        "Logotypy mają równą wysokość, około 30 do 40 px.",
+        "Na mobile logotypy przechodzą na 2 kolumny.",
+        "Dodaj element autorytetu autora, jeśli wzmacnia zaufanie.",
+        "Element autorytetu ma zdjęcie autora 80 do 100 px, najlepiej okrągłe.",
+        "Element autorytetu zawiera imię, nazwisko i credentials.",
+        "Element autorytetu zawiera 1 zdanie o doświadczeniu.",
+        "Element autorytetu może być w sidebarze albo osobnej sekcji."
+      ]
+    },
+    {
+      "title": "Elementy techniczne landing page",
+      "items": [
+        "Title tag ma format: darmowy lead magnet, główna korzyść.",
+        "Meta description ma 150 do 160 znaków i zawiera korzyść.",
+        "Strona ma Open Graph tags do udostępniania w social media.",
+        "Strona ma favicon.",
+        "Strona jest przetestowana na iPhone, Android, tablet i desktop.",
+        "Strona jest sprawdzona na breakpointach 320 px, 768 px, 1024 px i 1440 px.",
+        "Na mobile layout jest jednokolumnowy.",
+        "Przyciski mają minimum 44 x 44 px na mobile.",
+        "Font skaluje się automatycznie i pozostaje czytelny.",
+        "Czas ładowania strony jest poniżej 3 sekund.",
+        "Obrazy są zoptymalizowane i lazy loaded.",
+        "CSS i JS są zminifikowane.",
+        "Google PageSpeed score to minimum 80 mobile i 90 desktop.",
+        "Strona jest testowana w PageSpeed Insights albo GTmetrix.",
+        "Formularz jest połączony z narzędziem email, na przykład Mailchimp, ActiveCampaign albo innym systemem.",
+        "Google Analytics tracking działa.",
+        "Pixel Facebooka albo TikToka działa, jeśli używasz płatnego ruchu.",
+        "Tracking konwersji jest ustawiony jako cel.",
+        "Test potwierdza, że formularz faktycznie wysyła dane."
+      ]
+    },
+    {
+      "title": "Czego nie ma na stronie lead magnetu",
+      "items": [
+        "Na stronie nie ma menu nawigacyjnego.",
+        "Na stronie nie ma pełnej stopki z linkami, tylko copyright i polityka prywatności.",
+        "Na stronie nie ma linków zewnętrznych odciągających uwagę, poza koniecznymi linkami prawnymi.",
+        "Na stronie nie ma popupu przy wejściu, tylko ewentualnie exit intent.",
+        "Na stronie nie ma autoplay video z dźwiękiem.",
+        "Na stronie nie ma więcej niż jednego CTA albo jednej oferty."
+      ]
+    },
+    {
+      "title": "Popup exit intent, kiedy się pokazuje",
+      "items": [
+        "Popup pokazuje się przy exit intent, gdy kursor kieruje się do zamknięcia karty.",
+        "Alternatywny trigger: po 45 do 60 sekundach na stronie.",
+        "Alternatywny trigger: po scrollu 50 procent strony w dół.",
+        "Popup nie pokazuje się natychmiast po wejściu.",
+        "Popup pokazuje się tylko raz na sesję.",
+        "Popup ma cookie, żeby nie denerwować użytkownika przez 7 do 30 dni."
+      ]
+    },
+    {
+      "title": "Popup exit intent, zawartość",
+      "items": [
+        "Nagłówek popupu jest krótki i ma maksymalnie 6 do 8 słów.",
+        "Nagłówek popupu jest inny niż nagłówek na głównej stronie.",
+        "Przykład nagłówka: zaczekaj, nie odchodź z pustymi rękami.",
+        "Przykład nagłówka: ostatnia szansa na darmowy lead magnet.",
+        "Przykład nagłówka: zanim wyjdziesz, weź prezent.",
+        "Nagłówek ma duży, pogrubiony font 24 do 28 px.",
+        "Tekst opisowy ma maksymalnie 1 albo 2 zdania.",
+        "Tekst opisowy podkreśla wartość albo korzyść.",
+        "Tekst opisowy używa prostego języka.",
+        "Mini formularz w popupie ma tylko pole e mail, bez imienia.",
+        "Placeholder pola to Twój najlepszy e mail albo podobny prosty tekst.",
+        "Pole e mail jest duże, minimum 280 px szerokości.",
+        "Przycisk CTA ma tekst: tak, wyślij mi to albo chcę pobrać.",
+        "Przycisk CTA ma kontrastowy kolor.",
+        "Przycisk CTA ma pełną szerokość pola e mail.",
+        "Przycisk CTA ma minimum 48 px wysokości.",
+        "Przycisk zamykający X jest wyraźny w prawym górnym rogu.",
+        "Przycisk zamykający ma minimum 32 x 32 px i jest touch friendly.",
+        "Przycisk zamykający ma ciemnoszary kolor.",
+        "Opcjonalnie dodaj tekst pod formularzem: nie, dziękuję, jako link."
+      ]
+    },
+    {
+      "title": "Popup exit intent, design",
+      "items": [
+        "Popup ma szerokość 480 do 600 px na desktopie.",
+        "Popup ma wysokość auto i nie jest za wysoki.",
+        "Na mobile popup ma 90 procent szerokości ekranu.",
+        "Popup jest wycentrowany na ekranie.",
+        "Tło popupu jest białe albo jasne.",
+        "Padding popupu to około 40 px ze wszystkich stron.",
+        "Overlay ma ciemne tło, na przykład rgba 0 0 0 0.7.",
+        "Overlay stosuje blur albo zaciemnienie reszty strony.",
+        "Kliknięcie w overlay zamyka popup.",
+        "Opcjonalny obrazek albo ikona ma maksymalnie 150 x 150 px.",
+        "Obrazek może być ikoną prezentu albo mockupem lead magnetu.",
+        "Obrazek jest umieszczony na górze albo po lewej stronie.",
+        "Popup może mieć mikro testimonial, na przykład najlepszy materiał jaki dostałam, Anna K.",
+        "Popup może mieć liczbę pobrań, na przykład już 3284 osoby pobrały.",
+        "Popup może mieć gwiazdki, na przykład 4.9 z 5.",
+        "Social proof w popupie ma font 12 do 14 px i może być italic."
+      ]
+    },
+    {
+      "title": "Warianty popupu",
+      "items": [
+        "Wariant A: dwuetapowy popup, pierwszy krok ma tylko przycisk: tak, chcę darmowy lead magnet.",
+        "Wariant A: drugi krok pokazuje dopiero formularz z e mailem.",
+        "Wariant A: przejście między krokami ma prostą animację.",
+        "Wariant B: rabat albo bonus popup z komunikatem: zanim wyjdziesz, 20 procent zniżki na produkt.",
+        "Wariant B: kod rabatowy jest automatycznie aplikowany.",
+        "Wariant B jest dobry dla e commerce B2C.",
+        "Wariant C: popup kontekstowy ma różną treść zależnie od podstrony.",
+        "Wariant C: artykuł o SEO prowadzi do checklisty SEO.",
+        "Wariant C: artykuł o social media prowadzi do szablonu postów."
+      ]
+    },
+    {
+      "title": "Thank you page, główne potwierdzenie",
+      "items": [
+        "Nagłówek strony thank you jasno potwierdza sukces.",
+        "Przykład nagłówka: dziękujemy, Twój lead magnet jest w drodze.",
+        "Przykład nagłówka: gotowe, sprawdź swoją skrzynkę e mail.",
+        "Przykład nagłówka: super, za chwilę otrzymasz lead magnet.",
+        "Nagłówek ma duży, pogrubiony font 32 do 40 px.",
+        "Obok nagłówka jest ikona sukcesu, na przykład check albo element celebracji.",
+        "Instrukcje co dalej mówią: sprawdź skrzynkę, również spam.",
+        "Instrukcje mówią: za 2 do 5 minut otrzymasz e mail z linkiem do pobrania.",
+        "Jeśli jest double opt in, instrukcja mówi: kliknij link potwierdzający w e mailu, żeby dokończyć zapis.",
+        "Instrukcje mają font 18 do 20 px i są wyraźne.",
+        "Strona ma bezpośredni link do pobrania jako duży przycisk: lub pobierz natychmiast tutaj.",
+        "Link prowadzi bezpośrednio do pliku PDF albo ZIP.",
+        "Bezpośredni link zapewnia natychmiastową gratyfikację.",
+        "Bezpośredni link jest backupem na wypadek problemów z e mailem.",
+        "Przycisk pobrania używa głównego koloru marki.",
+        "Przycisk pobrania ma ikonę pobrania."
+      ]
+    },
+    {
+      "title": "Thank you page, kolejne kroki",
+      "items": [
+        "Sekcja kolejnych kroków ma nagłówek: podczas gdy czekasz.",
+        "Alternatywny nagłówek: 3 rzeczy, które możesz zrobić teraz.",
+        "Opcja 1: zaproszenie do social media albo społeczności.",
+        "Zaproszenie mówi: dołącz do naszej społeczności.",
+        "Dodaj maksymalnie 3 do 4 przycisków social media.",
+        "Możliwe przyciski: Facebook grupa albo strona, Instagram, LinkedIn, YouTube.",
+        "Każdy przycisk social ma ikonę platformy.",
+        "Każdy przycisk social ma tekst, na przykład obserwuj na Instagram.",
+        "Każdy przycisk social otwiera się w nowym oknie.",
+        "Każdy przycisk social ma minimum 160 px szerokości.",
+        "Opcja 2: polecane treści z nagłówkiem: polecamy również.",
+        "Polecane treści obejmują 2 do 3 najlepszych artykułów albo filmów związanych tematycznie.",
+        "Każda polecana pozycja jest boxem z miniaturą obrazka.",
+        "Każda polecana pozycja ma tytuł jako link.",
+        "Każda polecana pozycja ma krótki opis, maksymalnie 1 zdanie.",
+        "Każda polecana pozycja ma czas czytania albo oglądania.",
+        "Polecane treści mają 3 kolumny na desktopie i 1 kolumnę na mobile.",
+        "Opcja 3: prośba o udostępnienie z nagłówkiem: znasz kogoś, komu to pomoże.",
+        "Sekcja udostępnienia ma tekst: udostępnij z przyjaciółmi.",
+        "Dodaj przyciski share: Facebook, X, LinkedIn i Email.",
+        "Przyciski share mają pre filled message: znalazłem świetny darmowy lead magnet."
+      ]
+    },
+    {
+      "title": "Thank you page, oferta tripwire",
+      "items": [
+        "Tripwire jest opcjonalny i musi naturalnie rozszerzać lead magnet.",
+        "Box z ofertą płatną jest wyraźnie wydzielony borderem, tłem albo cieniem.",
+        "Nagłówek brzmi: ekskluzywna oferta tylko dla Ciebie.",
+        "Opis produktu ma 2 do 3 zdania.",
+        "Oferta ma 3 bullet points z korzyściami.",
+        "Cena pokazuje wersję przed i po zniżce, z przekreśleniem starej ceny.",
+        "Oferta ma element pilności: ważna 24 h albo tylko dla nowych subskrybentów.",
+        "Przycisk CTA brzmi: chcę skorzystać z oferty.",
+        "Kolor przycisku tripwire jest inny niż główny CTA, na przykład pomarańczowy albo czerwony.",
+        "Cena tripwire zwykle mieści się w zakresie 27 do 97 zł.",
+        "Tripwire ma natychmiastowy dostęp po zakupie.",
+        "Tripwire może mieć bonus, na przykład dodatkowy materiał gratis.",
+        "Tripwire może mieć gwarancję zwrotu pieniędzy 30 dni."
+      ]
+    },
+    {
+      "title": "Thank you page, zaufanie i wideo powitalne",
+      "items": [
+        "Dodaj mini social proof: 2 do 3 krótkie opinie.",
+        "Kompaktowa opinia zawiera zdjęcie i imię.",
+        "Kompaktowa opinia zawiera 1 zdanie opinii.",
+        "Kompaktowa opinia może mieć gwiazdki.",
+        "Alternatywnie dodaj liczbę: zobacz, czemu 8421 osób nam ufa.",
+        "Opcjonalne wideo powitalne ma wysoki priorytet, jeśli założyciel albo ekspert buduje zaufanie.",
+        "Wideo powitalne pokazuje założyciela albo eksperta przed kamerą.",
+        "Wideo ma 30 do 60 sekund.",
+        "Wideo dziękuje za zaufanie.",
+        "Wideo krótko mówi o firmie albo misji.",
+        "Wideo wyjaśnia, co będzie w kolejnych e mailach.",
+        "Wideo zachęca do kontaktu.",
+        "Wideo może mieć autoplay bez dźwięku i napisy.",
+        "Alternatywnie wideo ma play button do kliknięcia.",
+        "Dodaj logotypy mediów albo partnerów, jeśli są prawdziwe.",
+        "Sekcja logotypów brzmi: widziano w albo nasi partnerzy.",
+        "Sekcja zawiera 4 do 6 logotypów.",
+        "Logotypy są grayscale i mają równe rozmiary."
+      ]
+    },
+    {
+      "title": "Thank you page, design i technika",
+      "items": [
+        "Hero thank you page z potwierdzeniem zajmuje około 40 procent wysokości viewportu.",
+        "Sekcja kolejnych kroków ma 3 kolumny na desktopie.",
+        "Opcjonalny tripwire jest full width boxem.",
+        "Stopka thank you page jest minimalna: kontakt i polityka prywatności.",
+        "Kolory i branding są spójne z główną landing page.",
+        "Akcent sukcesu może być zielony albo pozytywny kolor marki.",
+        "Strona ma dużo whitespace.",
+        "Na mobile wszystko układa się w 1 kolumnie.",
+        "Przyciski na mobile mają pełną szerokość.",
+        "Strona łatwo się scrolluje.",
+        "Thank you page jest ustawiona jako cel konwersji w Google Analytics.",
+        "Kliknięcia w social media mają event tracking.",
+        "Kliknięcia w tripwire CTA mają event tracking.",
+        "Facebook Pixel odpala event Lead.",
+        "URL jest czytelny, na przykład /dziekujemy, /thank-you albo /pobierz-nazwa-lead-magnetu.",
+        "URL nie wygląda jak /index.php?thankyou=true.",
+        "Strona thank you page nie jest łatwo dostępna bez wypełnienia formularza albo pokazuje inny komunikat dla direct traffic."
+      ]
+    },
+    {
+      "title": "Final checklist przed publikacją",
+      "items": [
+        "Wypełnij formularz testowym e mailem i sprawdź, czy działa.",
+        "Sprawdź, czy e mail powitalny przychodzi z prawidłowym linkiem.",
+        "Przetestuj Chrome, Firefox, Safari i Edge.",
+        "Przetestuj iPhone, Android i iPad.",
+        "Sprawdź wszystkie linki i upewnij się, że żaden nie jest broken.",
+        "Przetestuj popup i sprawdź, czy pokazuje się po exit intent.",
+        "Przetestuj przycisk zamykający popup.",
+        "Sprawdź redirect na thank you page.",
+        "Sprawdź, czy wszystkie obrazki się ładują.",
+        "Sprawdź, czy fonty wyświetlają się poprawnie.",
+        "Sprawdź, czy kolory są spójne z brandem.",
+        "Sprawdź brak literówek i błędów ortograficznych.",
+        "Sprawdź responsywność i wygląd na mobile.",
+        "Sprawdź PageSpeed Insights i score 80 plus.",
+        "Sprawdź, czy czas ładowania jest poniżej 3 sekund.",
+        "Sprawdź, czy obrazki są zoptymalizowane.",
+        "Sprawdź, czy lazy loading jest włączony.",
+        "Sprawdź, czy polityka prywatności jest dostępna.",
+        "Sprawdź, czy checkbox RODO jest wymagany.",
+        "Sprawdź informację o cookies, jeśli używasz cookies.",
+        "Sprawdź, czy w e mailach jest opcja wypisania się."
+      ]
+    }
+  ],
+  "example": "Poproś AI: przeanalizuj moją stronę lead magnetu, popup i thank you page według tej checklisty. Nie usuwaj punktów. Zwróć tabelę: punkt, status, problem, rekomendacja, priorytet. Na końcu daj listę zmian krytycznych przed publikacją.",
+  "order": 28,
+  "published": true,
+  "seoTitle": "Lead magnet landing page, popup i thank you page, checklista | Akademia.pl",
+  "seoDescription": "Kompletna checklista do audytu strony zapisu na lead magnet, formularza, popupu exit intent, thank you page, RODO, tracking i testów przed publikacją.",
+  "keywords": [
+    "lead magnet",
+    "landing page",
+    "popup exit intent",
+    "thank you page",
+    "formularz opt in"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "lead-magnet-landing-page",
+  "internalLinks": [
+    "checklista-copywritingu-strony-sprzedazowej",
+    "audyt-marki-storytellingu-content-engine",
+    "meta-ads-2026-grafiki-teksty",
+    "strategia-marketingu-pasywnego"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy checklista strony lead magnet?",
+      "answer": "Checklista pomaga zaprojektować i sprawdzić cały proces zapisu na lead magnet: landing page, formularz, RODO, CTA, social proof, popup exit intent, thank you page, tracking, mail powitalny i testy przed publikacją."
+    },
+    {
+      "question": "Jak użyć tej checklisty z AI?",
+      "answer": "Wklej checklistę do ChatGPT, Claude, Gemini albo własnego asystenta razem z linkiem do strony, opisem lead magnetu, screenami, tekstami, popupem i thank you page. Poproś AI o audyt punkt po punkcie oraz priorytety napraw."
+    },
+    {
+      "question": "Czy na landing page lead magnetu powinno być menu?",
+      "answer": "Najczęściej nie. Strona zapisu powinna mieć jeden cel i jedną ofertę, więc menu, zewnętrzne linki i rozbudowana stopka zwykle odciągają uwagę od formularza."
+    },
+    {
+      "question": "Kiedy popup exit intent powinien się pokazywać?",
+      "answer": "Popup nie powinien wyskakiwać natychmiast po wejściu. Najlepiej pokazywać go przy zamiarze wyjścia, po 45 do 60 sekundach albo po głębszym scrollu, z limitem raz na sesję i cookie na kilka dni."
+    },
+    {
+      "question": "Co powinno być na thank you page po zapisie?",
+      "answer": "Thank you page powinna potwierdzić sukces, wyjaśnić co dalej, dać bezpośredni link do pobrania, zaproponować kolejny krok, opcjonalnie pokazać social proof, social media, polecane treści albo niską ofertę tripwire."
+    },
+    {
+      "question": "Jakie testy trzeba zrobić przed publikacją lead magnetu?",
+      "answer": "Trzeba przetestować formularz, email powitalny, link do pobrania, redirect na thank you page, popup, tracking konwersji, mobile, przeglądarki, PageSpeed, RODO, politykę prywatności i wszystkie linki."
+    }
+  ]
+}

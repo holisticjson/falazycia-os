@@ -1,0 +1,138 @@
+{
+  "pl": {
+    "nav": {
+      "b2b": "B2B & Inwestycje",
+      "investor": "Inwestor Zastępczy",
+      "commercial": "Nieruchomości Komercyjne",
+      "ai_due": "AI Due Diligence",
+      "b2c": "B2C Premium",
+      "catalogue": "Katalog Nieruchomości",
+      "list_property": "Zgłoś do sprzedaży",
+      "knowledge": "Wiedza",
+      "blog": "Ekspertyza (Blog)",
+      "faq": "Baza Wiedzy (FAQ)",
+      "security": "Bezpieczeństwo (NDA)",
+      "whatsapp": "WhatsApp",
+      "menu": "Menu"
+    },
+    "index": {
+      "badge": "Pierwszy w Polsce AI-Driven Broker",
+      "h1": "Przyszłość Nieruchomości <br>Zaczyna Się od <span class=\"gold-gradient italic\">Danych.</span>",
+      "subtitle": "Łączymy model Boutique Advisory z potęgą zamkniętych modeli językowych (LLM). Zabezpieczamy Twój kapitał i maksymalizujemy rentowność.",
+      "scan_title": "Przetestuj analitykę wspartą AI",
+      "scan_desc": "Wprowadź dane nieruchomości, aby wygenerować algorytmiczną estymację wartości i ryzyka.",
+      "scan_placeholder": "Wprowadź adres lub nr działki...",
+      "scan_btn": "Skanuj Potencjał",
+      "scan_privacy": "100% zanonimizowane i bezpieczne (Private LLM).",
+      "b2b_tag": "B2B | Deweloperzy & Inwestorzy",
+      "b2b_h3": "Proxy Investor. Skaluj bez ograniczeń.",
+      "b2b_cta": "Odkryj ofertę dla biznesu",
+      "b2c_tag": "B2C | Klienci Prywatni Premium",
+      "b2c_h3": "Czas to luksus. Ochrona to standard.",
+      "b2c_cta": "Odkryj ofertę prywatną",
+      "footer_desc": "Pierwszy w Polsce AI-Driven Real Estate Broker. Zamknięte modele LLM i sieć Boutique Advisory.",
+      "footer_expertise": "Ekspertyza",
+      "footer_off_market": "Katalog Off-Market",
+      "footer_private": "Klienci Prywatni (B2C)",
+      "footer_security": "Bezpieczeństwo & B2B",
+      "footer_privacy": "Polityka Prywatności",
+      "footer_terms": "Regulamin",
+      "footer_disclaimer": "Disclaimer Inwestycyjny",
+      "footer_partner": "Strefa Współpracy (B2B Brokers)",
+      "footer_contact": "Kontakt",
+      "footer_copy": "&copy; 2026 Holistyczny Broker. Wszelkie prawa zastrzeżone.",
+      "page_title": "Holistyczny Broker | AI-Driven Real Estate Broker"
+    },
+    "dla_biznesu": {
+      "badge": "Dla Instytucji i Deweloperów",
+      "h1": "Inteligentny Partner w Transakcjach B2B",
+      "subtitle": "Automatyzujemy Due Diligence, weryfikację dokumentów i sourcing okazji inwestycyjnych. Twój czas to zasób — my go oszczędzamy.",
+      "page_title": "Dla Biznesu | Holistyczny Broker"
+    },
+    "off_market": {
+      "badge": "Off-Market | Nieruchomości Komercyjne",
+      "h1": "Dostęp do Ofert, <span class=\"gold-gradient italic\">Których Nie Ma w Internecie.</span>",
+      "subtitle": "Grunty inwestycyjne, hale produkcyjne, hotele i obiekty PRS — wyłącznie dla zweryfikowanych inwestorów instytucjonalnych.",
+      "page_title": "Nieruchomości Komercyjne Off-Market | Holistyczny Broker"
+    },
+    "technology": {
+      "badge": "Technologia | AI Due Diligence",
+      "h1": "Zamknięte Modele LLM. <span class=\"gold-gradient italic\">Bezprecedensowa Precyzja.</span>",
+      "subtitle": "Audyt Ksiąg Wieczystych, MPZP i pozwoleń budowlanych w ciągu minut, nie tygodni. Zero wycieku danych.",
+      "page_title": "AI Due Diligence Technology | Holistyczny Broker"
+    },
+    "footer": {
+      "expertise_col": "Ekspertyza",
+      "security_col": "Bezpieczeństwo & B2B",
+      "contact_col": "Kontakt"
+    }
+  },
+  "en": {
+    "nav": {
+      "b2b": "B2B & Investment",
+      "investor": "Proxy Investor",
+      "commercial": "Commercial Real Estate",
+      "ai_due": "AI Due Diligence",
+      "b2c": "B2C Premium",
+      "catalogue": "Property Catalogue",
+      "list_property": "List Your Property",
+      "knowledge": "Knowledge",
+      "blog": "Expertise (Blog)",
+      "faq": "Knowledge Base (FAQ)",
+      "security": "Security (NDA)",
+      "whatsapp": "WhatsApp",
+      "menu": "Menu"
+    },
+    "index": {
+      "badge": "Poland's First AI-Driven Real Estate Broker",
+      "h1": "The Future of Real Estate <br>Begins with <span class=\"gold-gradient italic\">Data.</span>",
+      "subtitle": "We combine the Boutique Advisory model with the power of private large language models (LLM). We protect your capital and maximise returns.",
+      "scan_title": "Test our AI-powered analytics",
+      "scan_desc": "Enter property details to generate an algorithmic valuation and risk assessment.",
+      "scan_placeholder": "Enter address or land parcel number...",
+      "scan_btn": "Scan Potential",
+      "scan_privacy": "100% anonymised and secure (Private LLM).",
+      "b2b_tag": "B2B | Developers & Investors",
+      "b2b_h3": "Proxy Investor. Scale Without Limits.",
+      "b2b_cta": "Explore our B2B offering",
+      "b2c_tag": "B2C | Private Premium Clients",
+      "b2c_h3": "Time is a luxury. Privacy is the standard.",
+      "b2c_cta": "Explore private offering",
+      "footer_desc": "Poland's first AI-Driven Real Estate Broker. Private LLM models and a Boutique Advisory network.",
+      "footer_expertise": "Expertise",
+      "footer_off_market": "Off-Market Catalogue",
+      "footer_private": "Private Clients (B2C)",
+      "footer_security": "Security & B2B",
+      "footer_privacy": "Privacy Policy",
+      "footer_terms": "Terms of Service",
+      "footer_disclaimer": "Investment Disclaimer",
+      "footer_partner": "Partner Zone (B2B Brokers)",
+      "footer_contact": "Contact",
+      "footer_copy": "&copy; 2026 Holistyczny Broker. All rights reserved.",
+      "page_title": "Holistyczny Broker | AI-Driven Real Estate Broker — Poland"
+    },
+    "dla_biznesu": {
+      "badge": "For Institutions & Developers",
+      "h1": "Your Intelligent Partner for B2B Transactions",
+      "subtitle": "We automate Due Diligence, document verification and deal sourcing. Your time is an asset — we protect it.",
+      "page_title": "For Business | Holistyczny Broker"
+    },
+    "off_market": {
+      "badge": "Off-Market | Commercial Real Estate",
+      "h1": "Access to Deals <span class=\"gold-gradient italic\">You Won't Find Online.</span>",
+      "subtitle": "Investment land, industrial warehouses, hotels and PRS assets — exclusively for verified institutional investors.",
+      "page_title": "Commercial Real Estate Off-Market | Holistyczny Broker"
+    },
+    "technology": {
+      "badge": "Technology | AI Due Diligence",
+      "h1": "Private LLM Models. <span class=\"gold-gradient italic\">Unprecedented Precision.</span>",
+      "subtitle": "Land registry, zoning plan and building permit audits in minutes, not weeks. Zero data leakage.",
+      "page_title": "AI Due Diligence Technology | Holistyczny Broker"
+    },
+    "footer": {
+      "expertise_col": "Expertise",
+      "security_col": "Security & B2B",
+      "contact_col": "Contact"
+    }
+  }
+}

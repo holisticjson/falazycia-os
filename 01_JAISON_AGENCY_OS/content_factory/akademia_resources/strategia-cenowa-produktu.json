@@ -1,0 +1,69 @@
+{
+  "id": "strategia-cenowa-produktu",
+  "type": "prompt",
+  "title": "Strategia cenowa produktu",
+  "description": "Zaprojektuj 3 poziomy cen, strategię upsellu i test ceny na podstawie treści strony produktowej.",
+  "shortDescription": "Pricing produktu na podstawie strony sprzedażowej.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-sprzedaz",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Pricing",
+    "Sprzedaż"
+  ],
+  "url": "/prompty/marketing-sprzedaz/strategia-cenowa-produktu/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Strategia cenowa produktu na podstawie strony sprzedażowej",
+  "body": "Prompt pomaga przeanalizować ofertę, gotowość do zapłaty, metrykę wartości i strukturę pakietów, a potem przygotować propozycję ceny, upsellu, mikrokopii na stronę płatności oraz testu ceny.",
+  "usage": "Wklej prompt do ChatGPT, Claude, Gemini albo własnego asystenta AI razem z treścią strony produktowej, aktualnymi cenami, grupą docelową, krajem sprzedaży i informacją, czy produkt jest kursem, usługą, SaaS, społecznością, mentoringiem albo pakietem mieszanym. Dodaj koszty, marżę, dotychczasowe wyniki sprzedaży, obiekcje klientów i 3 do 5 ofert konkurencyjnych. Jeśli model ma dostęp do internetu, może sprawdzić aktualne punkty odniesienia. Jeśli nie ma, nie powinien zgadywać konkurentów.",
+  "prompt": "Przeanalizuj strategię cenową produktu na podstawie treści strony sprzedażowej. Rola:\nJesteś MonetizerPro, strategiem pricingu łączącym ekonomię behawioralną, growth i myślenie według pierwszych zasad: dostarczona wartość, gotowość do zapłaty, cena. Twoje zadanie:\nPomóż mi zaprojektować strategię cenową, która maksymalizuje przychód, ale pozostaje wiarygodna dla klienta. Dane wejściowe:\nProdukt: treść strony produktowej wklejam na końcu promptu.\nObecne ceny: [wpisz obecne ceny i pakiety].\nRynek: [wpisz kraj, segment, typ klienta, jeśli wiesz].\nModel sprzedaży: [kurs, usługa, SaaS, społeczność, mentoring, subskrypcja, jednorazowa płatność]. Jeśli brakuje danych, najpierw wypisz założenia, a potem pracuj dalej. Wykonaj: 1. Wyjaśnij główny rezultat produktu.\n2. Określ metrykę wartości, czyli za co klient realnie płaci.\n3. Podaj realnych konkurentów albo analogiczne produkty i ich ceny.\n4. Oszacuj gotowość do zapłaty w trzech przedziałach: dolny, oczywisty wybór, środkowy, uczciwy, górny, premium.\n5. Dobierz psychologiczny punkt cenowy dla każdego przedziału.\n6. Zaprojektuj 3 poziomy oferty powiązane z metryką wartości.\n7. Zaproponuj jedną strategię rozszerzenia przychodu, na przykład dodatek, upsell, opłata za przekroczenie limitu albo pakiet premium.\n8. Napisz mikrokopię na stronę płatności, która zmniejsza obiekcje.\n9. Zaprojektuj 14 dniowy test ceny albo pakietów. Format odpowiedzi: 1. Podsumowanie filozofii cenowej, maksymalnie 80 słów.\n2. Tabela: gotowość do zapłaty vs proponowane ceny.\n3. Tabela 3 poziomów: nazwa, cena miesięczna albo jednorazowa, kluczowy limit, najlepsza funkcja, dla kogo.\n4. Strategia rozszerzenia przychodu, jeden akapit.\n5. Tekst na stronę płatności: nagłówek, podtytuł, 3 punkty obietnic, zapewnienie o braku ryzyka.\n6. Plan eksperymentu 14 dni: cel, wariant, metryka, próg sukcesu.\n7. Widoczny tok rozumowania, maksymalnie 250 słów. Ograniczenia:\nNie zgaduj konkurentów. Jeśli nie masz dostępu do internetu albo aktualnych danych, napisz, że potrzebujesz ręcznie podanych punktów odniesienia.\nMinimalizuj żargon.\nPodawaj konkretne liczby.\nŻadna sekcja nie może mieć więcej niż 250 słów, poza tabelami. ==== TREŚĆ STRONY PRODUKTOWEJ ====\n[wklej treść strony]",
+  "example": "Najlepszy do przemyślenia ceny kursu, programu, społeczności, SaaS, usługi produktowej albo oferty z kilkoma pakietami.",
+  "order": 12,
+  "published": true,
+  "seoTitle": "Strategia cenowa produktu, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt do zaprojektowania ceny produktu, 3 pakietów, upsellu, mikrokopii płatności i 14 dniowego testu pricingu.",
+  "keywords": [
+    "strategia cenowa",
+    "pricing produktu",
+    "gotowość do zapłaty",
+    "pakiety cenowe",
+    "test ceny"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "pricing-produktu",
+  "internalLinks": [
+    "analiza-cenowa-produktu-uslugi",
+    "10-zasad-negocjacji-sprzedazowych",
+    "strategia-marketingu-pasywnego",
+    "lista-45-lejkow-sprzedazowych"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy używać prompta do strategii cenowej?",
+      "answer": "Użyj go, gdy masz produkt, usługę, kurs, SaaS, społeczność albo ofertę i chcesz uporządkować cenę, pakiety, upsell oraz test pricingu na podstawie wartości dla klienta."
+    },
+    {
+      "question": "Jakie dane są potrzebne do pricingu?",
+      "answer": "Najlepiej podać aktualną cenę, koszty, segment klienta, konkurencję, alternatywy, obiecany rezultat, poziom wsparcia, marżę, kanał sprzedaży i dane o dotychczasowych zakupach albo rozmowach."
+    },
+    {
+      "question": "Czy AI może samo sprawdzić ceny konkurencji?",
+      "answer": "Tylko jeśli ma dostęp do aktualnego internetu albo dostarczysz mu dane. Bez tego powinno jasno oznaczyć założenia i poprosić o ręcznie podane punkty odniesienia."
+    },
+    {
+      "question": "Dlaczego warto mieć 3 poziomy oferty?",
+      "answer": "Trzy poziomy pomagają obsłużyć różne potrzeby i gotowość do płatności. Dobry pricing nie różni się tylko ceną, ale zakresem, limitem, poziomem wsparcia albo szybkością uzyskania rezultatu."
+    },
+    {
+      "question": "Jak testować nową cenę bez chaosu?",
+      "answer": "Najlepiej testować jedną hipotezę naraz przez 14 dni, z jasną metryką sukcesu: konwersją, przychodem, liczbą rozmów, akceptacją oferty albo średnią wartością koszyka."
+    }
+  ]
+}

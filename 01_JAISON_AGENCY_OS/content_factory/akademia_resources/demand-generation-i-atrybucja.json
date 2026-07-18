@@ -1,0 +1,155 @@
+{
+  "id": "demand-generation-i-atrybucja",
+  "type": "checklist",
+  "title": "Demand generation i atrybucja dla małej firmy",
+  "description": "Checklista demand generation w logice 95/5, z podziałem budżetu na tworzenie i przechwytywanie popytu, kanałami amplifikacji, co-marketingiem oraz prostym systemem atrybucji opartym o MER, self-reported attribution i mini-triangle dla małego biznesu.",
+  "shortDescription": "Buduj popyt, nie tylko go przechwytuj, i mierz marketing prostym systemem atrybucji.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Demand generation",
+    "Atrybucja"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/demand-generation-i-atrybucja/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Demand generation i atrybucja dla małej firmy",
+  "body": "Tylko około 5 procent rynku aktywnie szuka rozwiązania, a 95 procent jeszcze nie wie, że ma problem, dlatego sama gra o przechwytywanie popytu jest za mała. Ta checklista pokazuje, jak tworzyć popyt, a nie tylko go łapać, jak rozłożyć budżet w stronę 60 procent na tworzenie i 40 procent na przechwytywanie, oraz jakie kanały amplifikacji i partnerstwa uruchomić nawet bez budżetu. Druga część to atrybucja dla małej firmy: MER jako metryka nadrzędna, self-reported attribution za zero złotych i prosty mini-triangle, żeby wiedzieć, co naprawdę działa, mimo dark social i dark funnel.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojej oferty, kanałów i budżetu marketingowego. Poproś AI, żeby oceniło, czy Twój podział wydatków jest bliżej tworzenia czy przechwytywania popytu, i zaproponowało przesunięcie w stronę 60 do 40, a także żeby wskazało tanie kanały amplifikacji, na przykład thought leader ads, Reddit Ads albo newsletter sponsorships, dopasowane do Twojej niszy. Następnie niech AI ułoży prosty system atrybucji: definicję MER, pole skąd o nas wiesz na formularze oraz plan mini-triangle z kadencją dzienną, tygodniową, miesięczną i kwartalną.",
+  "checklistSections": [
+    {
+      "title": "Zasada 95/5",
+      "items": [
+        "Pamiętasz, że tylko 5 procent rynku aktywnie szuka rozwiązania, a 95 procent jeszcze nie wie, że ma problem.",
+        "Stosujesz podział 60 procent na tworzenie popytu i 40 procent na jego przechwytywanie, bo większość firm robi odwrotnie.",
+        "Wiesz, że firmy z takim balansem mają 70 procent wyższy zwrot w 12 do 24 miesięcy.",
+        "Pamiętasz przykład Blue Triangle: po odgatowaniu contentu plus 265 procent demo requests i plus 242 procent pipeline."
+      ]
+    },
+    {
+      "title": "Ungated ponad gated",
+      "items": [
+        "Wiesz, że gated content, czyli ebook za email, traci na znaczeniu, bo daje niskiej jakości leady i wysoki bounce.",
+        "Stawiasz na ungated content, bo buduje zaufanie i markę, czyli napędza demand gen.",
+        "Gating zostawiasz tylko dla kalkulatorów ROI, assessmentów i ekskluzywnych raportów z danymi.",
+        "Stosujesz podział 80 procent ungated, żeby budować markę, i 20 procent gated, żeby zbierać leady z intencją."
+      ]
+    },
+    {
+      "title": "Kanały dystrybucji i amplifikacji",
+      "items": [
+        "LinkedIn Thought Leader Ads: CTR 2 do 8 procent wobec 0,4 do 0,6 procent standard, CPC 1 do 3 dolary, promujesz posty z profilu osobistego, nie firmowego.",
+        "Reddit Ads B2B: CPC 0,50 do 2,00 dolara, czyli 75 do 90 procent taniej niż LinkedIn, desktop i godziny pracy.",
+        "Newsletter sponsorships: CPM 50 do ponad 100 dolarów dla niszy B2B, mały zaangażowany newsletter bije duży pasywny.",
+        "Podcast host-read ads: 31 procent wyższy purchase rate niż producer-read, 88 procent słuchaczy podejmuje akcję."
+      ]
+    },
+    {
+      "title": "Dark social i word of mouth",
+      "items": [
+        "Pamiętasz, że 84 procent udostępnień dzieje się w prywatnych kanałach, czyli WhatsApp, DM i Slack, niewidocznych w analityce.",
+        "Wiesz, że ruch z WhatsApp, Slacka i Discorda pojawia się jako direct w GA4.",
+        "Rozwiązujesz to przez brandowane krótkie linki, linki z UTM, pytanie skąd o nas wiesz i forwardowalny content.",
+        "Tworzysz content, który ludzie chcą przesłać dalej, na przykład prześlij to znajomemu, który."
+      ]
+    },
+    {
+      "title": "Co-marketing i partnerstwa od zera",
+      "items": [
+        "Wiesz, że firmy z co-marketingiem mają 52 procent więcej zasięgu i 35 procent wyższą konwersję.",
+        "Stosujesz formaty za zero złotych: wymiany newsletterowe, gościnne wystąpienia, wspólne webinary, współtworzony content.",
+        "Używasz prostego skryptu outreach: dzielimy wartości wokół tematu, my prezentujemy was naszym odbiorcom, w zamian wy wspomnielibyście nas, 15 minut rozmowy."
+      ]
+    },
+    {
+      "title": "Webinar i event-led growth",
+      "items": [
+        "Pamiętasz, że 73 procent marketerów B2B uznaje webinary za numer jeden źródło leadów.",
+        "Warsztaty hands-on dają 15 do 25 procent konwersji, najwyższy format.",
+        "Virtual Summit potrafi dać 25 do 80 tysięcy dolarów z jednego wydarzenia, łącząc pass, sponsorów, backend sales i affiliate.",
+        "Budujesz rytm: tygodniowe case study, miesięczne AMA, kwartalny mega-event."
+      ]
+    },
+    {
+      "title": "Marketing Efficiency Ratio, MER",
+      "items": [
+        "Liczysz MER jako całkowity przychód podzielony przez całkowite wydatki na marketing.",
+        "Trzymasz benchmark: mediana 4,0 w 2025, dobry powyżej 3,0, świetny powyżej 5,0.",
+        "Skalujesz, gdy MER rośnie przy wzroście wydatków, a zatrzymujesz i diagnozujesz, gdy spada.",
+        "Oddzielasz First-Time MER dla nowych klientów od Returning MER dla powracających, bo wzrost napędzany powracającymi nie jest zdrowym wzrostem.",
+        "Używasz MER co tydzień na poziomie firmy, a ROAS kanału codziennie na poziomie kampanii."
+      ]
+    },
+    {
+      "title": "Self-reported attribution",
+      "items": [
+        "Dodajesz pole skąd o nas wiesz na każdym formularzu: rejestracja, checkout, demo request.",
+        "Stosujesz format dropdown plus pole inne, bo open text daje dokładniejsze odpowiedzi.",
+        "Dajesz opcje: Google, YouTube, podcast, Facebook i Instagram, LinkedIn, polecenie, konferencja, newsletter, blog, inne.",
+        "Wiesz, że to nie wpływa negatywnie na konwersję formularza, co potwierdzają testy A/B.",
+        "Łączysz dane w macierz: analityka mówi Google Ads, a użytkownik mówi polecenie, więc word of mouth napędzał, a Google zamykał."
+      ]
+    },
+    {
+      "title": "Mini-triangle i dyscyplina UTM",
+      "items": [
+        "Używasz GA4 DDA jako darmowej atrybucji wielodotykowej, czyli domyślnej.",
+        "Używasz MER jako zastępnika dużych modeli, bo mierzy efektywność całkowitą bez data scientist.",
+        "Robisz test on i off, czyli prosty incrementality: wyłączasz kanał na 2 tygodnie i obserwujesz spadek.",
+        "Uzupełniasz dark funnel self-reported attribution za zero złotych.",
+        "Trzymasz kadencję: codziennie kampanie, tygodniowo MER, miesięcznie model, kwartalnie incrementality.",
+        "Pilnujesz konwencji UTM: małe litery, myślniki zamiast spacji, bez polskich znaków, i nie zmieniasz nazewnictwa w trakcie kampanii."
+      ]
+    }
+  ],
+  "example": "Najlepsza dla małej firmy, która chce przestać gonić tylko gorące leady, zacząć budować popyt i wreszcie wiarygodnie mierzyć, co działa, bez drogich narzędzi i data scientist.",
+  "order": 67,
+  "published": true,
+  "seoTitle": "Demand generation i atrybucja, checklista 95/5 i MER dla małej firmy",
+  "seoDescription": "Buduj popyt w logice 95/5, dziel budżet 60/40, uruchom tanie kanały amplifikacji i mierz marketing prostym systemem MER, self-reported attribution i mini-triangle.",
+  "keywords": [
+    "demand generation",
+    "atrybucja marketingowa",
+    "MER",
+    "zasada 95/5",
+    "self-reported attribution"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "demand-gen",
+  "internalLinks": [
+    "full-funnel-content-i-lead-scoring",
+    "diagnoza-content-fuel-vs-engine",
+    "formaty-i-harmonogram-social-media"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Demand generation 95/5 oraz atrybucja MER, self-reported i mini-triangle",
+  "faq": [
+    {
+      "question": "Czym jest zasada 95/5 w demand generation?",
+      "answer": "Zasada 95/5 mówi, że tylko około 5 procent rynku aktywnie szuka rozwiązania w danym momencie, a 95 procent jeszcze nie wie, że ma problem. Dlatego warto inwestować w tworzenie popytu wśród tych 95 procent, a nie tylko w przechwytywanie 5 procent, które już szuka, na przykład przez reklamy na frazy zakupowe."
+    },
+    {
+      "question": "Jak podzielić budżet między tworzenie a przechwytywanie popytu?",
+      "answer": "Rekomendowany podział to około 60 procent na tworzenie popytu i 40 procent na jego przechwytywanie, mimo że większość firm robi odwrotnie. Firmy z takim balansem osiągają nawet 70 procent wyższy zwrot w horyzoncie 12 do 24 miesięcy, bo budują markę, która z czasem zamyka się szybciej i taniej."
+    },
+    {
+      "question": "Czym jest MER i dlaczego jest metryką nadrzędną?",
+      "answer": "MER, czyli Marketing Efficiency Ratio, to całkowity przychód podzielony przez całkowite wydatki na marketing. Jest metryką nadrzędną, bo pokazuje efektywność całego marketingu, a nie pojedynczego kanału. Mediana benchmarku to 4,0, dobry wynik to powyżej 3,0. Gdy MER rośnie przy wzroście wydatków, skalujesz, gdy spada, diagnozujesz."
+    },
+    {
+      "question": "Jak mierzyć marketing bez drogich narzędzi?",
+      "answer": "Wystarczy prosty mini-triangle: GA4 z atrybucją data-driven jako darmowa baza, MER jako miara efektywności całkowitej, test on i off jako prosty pomiar przyrostu oraz self-reported attribution za zero złotych. Taki zestaw daje małej firmie wiarygodny obraz tego, co działa, bez data scientist i drogich platform."
+    },
+    {
+      "question": "Czym jest dark social i jak je odzyskać?",
+      "answer": "Dark social to udostępnienia w prywatnych kanałach, takich jak WhatsApp, DM i Slack, które stanowią około 84 procent wszystkich udostępnień i pojawiają się w analityce jako direct. Odzyskujesz część tej widoczności przez brandowane krótkie linki, tagowanie UTM, forwardowalny content i pytanie skąd o nas wiesz na formularzach."
+    }
+  ]
+}

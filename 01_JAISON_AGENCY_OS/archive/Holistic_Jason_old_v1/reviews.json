@@ -1,0 +1,32 @@
+[
+  {
+    "id": "7fe8c6be-a5e3-4d4c-851c-6cf132a55ea9",
+    "name": "Marek Burnejko",
+    "company": "akademia.pl",
+    "rating": 5,
+    "comment": "Systemy automatyzacji Jaisona to czysty geniusz operacyjny. Zredukowaliśmy czas obsługi zgłoszeń do zera, a asynchroniczny przepływ z Systeme.io dowozi wyniki każdego dnia. Bezcenne dla neuroatypowych przedsiębiorców!",
+    "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+    "approved": true,
+    "created_at": "2026-07-09 15:20:02"
+  },
+  {
+    "id": "1",
+    "name": "Tomasz",
+    "company": "coolfon.pl",
+    "rating": 5,
+    "comment": "Współpraca z Jaison AI to był strzał w dziesiątkę! Czatbot AI obsługuje zapytania klientów o statusy napraw 24/7 za 0 zł kosztów API. Serwis odżył, a telefony wreszcie milkną.",
+    "avatar": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop",
+    "approved": true,
+    "created_at": "2026-07-01 12:00:00"
+  },
+  {
+    "id": "2",
+    "name": "Maria Widzew",
+    "company": "Bar Jaś (kurczakujasia.pl)",
+    "rating": 5,
+    "comment": "Przeniesienie naszego menu na nowoczesną, błyskawiczną stronę z koszykiem na WhatsApp i BLIK-iem odmieniło nasz biznes. Klienci są zachwyceni JaśBotem, a my nie płacimy prowizji od zamówień!",
+    "avatar": "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop",
+    "approved": true,
+    "created_at": "2026-07-05 15:30:00"
+  }
+]

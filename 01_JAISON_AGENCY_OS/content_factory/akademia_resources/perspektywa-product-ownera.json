@@ -1,0 +1,68 @@
+{
+  "id": "perspektywa-product-ownera",
+  "type": "prompt",
+  "title": "Perspektywa Product Ownera",
+  "description": "Poproś AI, żeby weszło w rolę Product Ownera, spojrzało na temat z lotu ptaka i oddzieliło obserwacje od wniosków oraz sugestii.",
+  "shortDescription": "Spójrz na temat oczami Product Ownera.",
+  "industry": "IT / Software / SaaS",
+  "industrySlug": "it-software-saas",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Produkt",
+    "Decyzje"
+  ],
+  "url": "/prompty/strategia-decyzje/perspektywa-product-ownera/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Perspektywa Product Ownera",
+  "body": "Mini prompt do spojrzenia na produkt, funkcję, projekt albo decyzję z poziomu wartości, priorytetów, ryzyk i doświadczenia użytkownika.",
+  "usage": "Użyj tego prompta, gdy masz pomysł, plan, funkcję, backlog, ofertę albo problem produktowy i potrzebujesz szerszej perspektywy niż lista zadań. Wklej aktualny kontekst, cel biznesowy, użytkownika, etap produktu, ograniczenia, znane dane, feedback klientów i decyzję, którą trzeba podjąć. Model ma oddzielić obserwacje od interpretacji, wskazać priorytety, ryzyka i rzeczy, których nie należy robić teraz. Dobrze działa też po burzy mózgów, gdy masz dużo pomysłów, ale nie wiesz, co powinno wejść do pierwszej wersji. Wtedy model ma pomóc ciąć zakres, a nie dopisywać kolejne funkcje.",
+  "prompt": "Wejdź w rolę doświadczonego Product Ownera.\n\nNie oceniaj tematu tylko przez pryzmat tego, czy da się go zrobić. Oceń go przez wartość dla użytkownika, wpływ na biznes, koszt utrzymania, ryzyko wdrożenia i jasność decyzji.\n\nMateriał do analizy:\n[wklej opis produktu, funkcji, backlogu, problemu albo planu]\n\nKontekst:\n[cel, użytkownicy, dane, ograniczenia, etap produktu]\n\nNajpierw wypisz obserwacje, czyli fakty widoczne w materiale. Potem wypisz interpretacje, jasno oznaczając, które są hipotezami.\n\nNastępnie pokaż, co z tego wynika dla:\n1. Użytkownika.\n2. Produktu.\n3. Biznesu.\n4. Zespołu.\n5. Priorytetów.\n\nWskaż 3 najważniejsze decyzje do podjęcia, 3 ryzyka, 3 rzeczy do uproszczenia i 3 rzeczy, których nie robić teraz.\n\nOceń, czy temat jest gotowy do implementacji, czy wymaga discovery. Jeśli wymaga discovery, przygotuj 7 pytań do użytkowników albo właściciela produktu.\n\nFormat odpowiedzi:\nobserwacje, hipotezy, wpływ na użytkownika, wpływ na biznes, ryzyka, priorytety, rekomendacja.\n\nNa końcu daj rekomendację: zrobić teraz, ograniczyć zakres, przetestować ręcznie, odłożyć, albo odrzucić. Uzasadnij ją konkretnie. Przy każdej rekomendacji podaj koszt, oczekiwany efekt i pierwszy krok.\n\nJeżeli materiał jest za mało konkretny, nie zgaduj intencji. Zadaj do 7 pytań discovery. Oceń też, czy problem jest naprawdę produktem do zbudowania, procesem do uproszczenia, komunikatem do poprawienia czy decyzją właścicielską do podjęcia.\n\nDodaj sekcję decyzji produktowej. Wskaż, czy temat powinien trafić do discovery, eksperymentu, backlogu, implementacji albo kosza. Dla każdej opcji podaj kryterium wejścia. Jeżeli rekomendujesz implementację, podaj najmniejszy zakres, który nadal dowozi wartość. Jeżeli rekomendujesz discovery, podaj konkretne pytania i dane do zebrania.\n\nNa końcu wskaż jedną rzecz, którą trzeba zrobić w tym tygodniu, i jedną rzecz, której nie wolno robić jeszcze przez najbliższe 30 dni.",
+  "example": "Dobry do planowania funkcji, porządkowania backlogu, oceny roadmapy, przeglądu MVP i rozmowy, w której trzeba wyjść poza pojedyncze zadanie.",
+  "order": 22,
+  "published": true,
+  "seoTitle": "Perspektywa Product Ownera, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt, który pomaga spojrzeć na funkcję, produkt, backlog albo projekt z perspektywy Product Ownera, priorytetów i wartości użytkownika.",
+  "keywords": [
+    "prompt Product Owner",
+    "analiza produktu",
+    "priorytety produktowe",
+    "backlog produktu",
+    "decyzje produktowe"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "strategia-decyzje",
+  "internalLinks": [
+    "wywiad-przed-startem-projektu",
+    "doskonalosc-funkcji-ponad-zgode",
+    "jak-zarabiac-wiecej-na-etacie"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy warto użyć perspektywy Product Ownera?",
+      "answer": "Warto jej użyć, gdy dyskusja schodzi na detale, a brakuje decyzji o wartości, priorytetach i użytkowniku. Product Owner ma pomóc uporządkować temat, a nie tylko wykonać kolejne polecenie."
+    },
+    {
+      "question": "Co wkleić razem z tym promptem?",
+      "answer": "Wklej opis problemu, obecny plan, listę funkcji, feedback użytkowników, ograniczenia techniczne i biznesowe oraz decyzje, które trzeba podjąć. Im więcej realnego kontekstu, tym lepsze obserwacje i sugestie."
+    },
+    {
+      "question": "Czym różnią się obserwacje od wniosków?",
+      "answer": "Obserwacje opisują to, co widać w materiale. Wnioski tłumaczą, co z tego wynika. To rozdzielenie pomaga uniknąć zbyt szybkich założeń i pozwala zobaczyć, które decyzje są oparte na faktach."
+    },
+    {
+      "question": "Czy prompt nadaje się do pracy nad roadmapą?",
+      "answer": "Tak. Można go użyć do przeglądu roadmapy, backlogu, MVP, wersji funkcji albo planu sprintu. Model powinien wskazać priorytety, ryzyka, zależności i rzeczy, których nie warto robić teraz."
+    },
+    {
+      "question": "Jaki format odpowiedzi jest najpraktyczniejszy?",
+      "answer": "Najlepiej poprosić o trzy sekcje: obserwacje, wnioski i sugestie. Przy większych tematach warto dodać czwartą sekcję z decyzjami, ryzykami oraz rekomendacją najbliższego kroku."
+    }
+  ]
+}

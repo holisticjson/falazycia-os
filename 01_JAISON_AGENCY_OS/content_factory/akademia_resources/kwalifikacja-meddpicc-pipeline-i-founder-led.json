@@ -1,0 +1,165 @@
+{
+  "id": "kwalifikacja-meddpicc-pipeline-i-founder-led",
+  "type": "checklist",
+  "title": "Kwalifikacja MEDDPICC, pipeline i founder-led sprzedaż",
+  "description": "Checklista kwalifikacji dealów B2B metodą MEDDPICC, zarządzania pipeline przez velocity, hygiene i forecasting oraz sprzedaży prowadzonej przez founderów i strategii B2B go-to-market według Lemkina, Kazanjy'ego i Geoffreya Moore'a.",
+  "shortDescription": "Kwalifikuj dealy metodą MEDDPICC, utrzymaj zdrowy pipeline i sprzedawaj jako founder, zanim zatrudnisz handel.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Sprzedaż B2B",
+    "Pipeline"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/kwalifikacja-meddpicc-pipeline-i-founder-led/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Kwalifikacja MEDDPICC, pipeline i founder-led sprzedaż",
+  "body": "Dobra sprzedaż B2B to nie tylko rozmowy, ale też dyscyplina: kwalifikowanie właściwych dealów, utrzymywanie zdrowego pipeline i świadome budowanie procesu, zanim zatrudnisz handlowców. Ta checklista zbiera trzy filary tej dyscypliny: kwalifikację dealów metodą MEDDPICC z prostym scoringiem, zarządzanie pipeline przez velocity, hygiene i forecasting oraz sprzedaż prowadzoną przez foundera i strategię B2B go-to-market, w tym bottom-up, product-led sales escalator i strategię wąskiego segmentu Geoffreya Moore'a. Dzięki temu prognozujesz na danych klienta, a nie na przeczuciu, i wiesz, kiedy founder ma jeszcze sprzedawać sam, a kiedy zbudować zespół.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z listą swoich aktualnych dealów i stanem pipeline. Poproś AI, żeby zakwalifikowało wybrane dealy metodą MEDDPICC, oceniło każdy element w skali i wskazało, które dealy nie powinny być w prognozie. Następnie niech AI przeprowadzi tygodniowy przegląd pipeline według czterech dźwigni velocity, wskaże dealy do re-engage albo zamknięcia oraz doradzi, czy jesteś jeszcze na etapie founder-led sales, czy masz powtarzalny proces gotowy do zatrudnienia handlowców.",
+  "checklistSections": [
+    {
+      "title": "MEDDPICC, 8 elementów kwalifikacji",
+      "items": [
+        "Metrics, metryki: klient podał swoje liczby, nie Twoje szacunki, a business case opiera się na jego danych.",
+        "Economic Buyer, decydent budżetowy: zidentyfikowany i spotkanie się odbyło, czyli osoba z władzą zatwierdzenia budżetu.",
+        "Decision Criteria, kryteria decyzji: znasz formalną listę wymagań klienta, Twoje wyróżniki są wśród must-have, a Ty wpłynąłeś na ich kształt.",
+        "Decision Process, proces decyzji: udokumentowane kroki, osoby i timeline, uzgodniony wspólny plan działania.",
+        "Paper Process, proces formalny: wiesz, ile trwa legal review, procurement jest zaangażowany, znasz wymagania compliance, na przykład SOC 2, RODO.",
+        "Identify Pain, ból: opisany słowami klienta, zmierzony i pilny, z konkretnym wyzwalaczem.",
+        "Champion: przeszedł trzy testy, ma wpływ na decydenta, ma osobistą wygraną i sprzedaje za Ciebie, gdy Cię nie ma.",
+        "Competition, konkurencja: znasz wszystkich konkurentów, w tym status quo, masz strategię na każdego, a klient potwierdza Twoją przewagę."
+      ]
+    },
+    {
+      "title": "MEDDPICC, scoring i Champion kontra Coach",
+      "items": [
+        "Oceniasz każdy element w skali 0 do 5, gdzie 0 to brak danych, 3 zweryfikowane, 5 doskonałe.",
+        "Suma 0 do 10 to stop, uzupełnij albo dyskwalifikuj, 11 do 18 wczesny etap bez prognozy, 19 do 26 pipeline bez commitu, 27 do 32 kwalifikowany, 33 do 40 mocny i aktywne zamykanie.",
+        "Zasada: jakikolwiek element na 0 albo 1 oznacza, że deal nie może być w prognozie commit.",
+        "Test Champion kontra Coach: poproś o spotkanie z decydentem, o prezentację business case na komitecie i zapytaj, co osobiście zyska, a dwa razy nie albo wymówka oznaczają Coacha, nie Championa.",
+        "Re-kwalifikacja: co 30 dni dla dealów powyżej 90 dni w pipeline oraz natychmiast przy zmianie kontaktu, braku odpowiedzi powyżej 14 dni albo reorganizacji u klienta."
+      ]
+    },
+    {
+      "title": "Pipeline velocity, cztery dźwignie",
+      "items": [
+        "Liczba szans: czy masz wystarczająco dealów, pokrycie 3 do 5 razy targetu.",
+        "Win rate: czy kwalifikujesz dobrze, cel 20 do 30 procent według segmentu.",
+        "Średnia wielkość dealu: czy sprzedajesz wystarczająco dużo na deal, przez upsell i tiery cenowe.",
+        "Długość cyklu sprzedaży: czy możesz przyspieszyć, przez wspólne plany działania i kalkulatory ROI."
+      ]
+    },
+    {
+      "title": "Tygodniowy przegląd pipeline i hygiene",
+      "items": [
+        "Total pipeline wobec targetu: czy masz wymagane pokrycie.",
+        "Pipeline utworzony w tym tygodniu: czy prospecting jest na celu.",
+        "Dealy, które ruszyły do przodu w tym tygodniu, oraz dealy zagrożone, bez aktywności powyżej 14 dni albo z datą zamknięcia w przeszłości.",
+        "Pytanie numer jeden: co zrobił kupujący od ostatniego spotkania, a nie co zrobił handlowiec.",
+        "Hygiene: brak aktywności 14 dni to flaga do review, 30 dni to re-engage albo zamknięcie jako przegrane, zero zombie dealów.",
+        "Re-engagement: dzień 3 mail, 7 telefon i case study, 14 break-up mail, 21 pytanie czy zamknąć, 30 zamknięcie jako przegrane.",
+        "Single-threading to ryzyko, więc celujesz w 3 plus kontakty na deal na etapie propozycji."
+      ]
+    },
+    {
+      "title": "Forecasting i analiza strat",
+      "items": [
+        "Trzy warstwy prognozy: prognoza AI jako baseline, kategorie commitu menedżera jako overlay, ważony pipeline jako sanity check, a ich zbieżność buduje zaufanie.",
+        "Leading indicators: pipeline tworzony tygodniowo, multi-threading, bo 3 plus kontakty dają 2 do 3 razy wyższy win rate, odsetek umówionych następnych kroków cel 90 plus procent, odsetek przesunięć daty zamknięcia cel poniżej 20 procent.",
+        "Analiza strat po każdym przegranym dealu: obowiązkowy powód z listy, cena, konkurent, brak decyzji, timing, dopasowanie, utrata Championa.",
+        "Brak decyzji powyżej 40 procent oznacza problem z kwalifikacją, konkurent powyżej 30 procent problem z pozycjonowaniem, cena powyżej 25 procent problem z artykulacją wartości."
+      ]
+    },
+    {
+      "title": "Founder-led sales",
+      "items": [
+        "Founder musi sprzedawać sam aż do powtarzalnego procesu, bo nikt nie zna produktu lepiej, według Jen Abel.",
+        "Bądź szczery: jestem na wczesnym etapie, chcę się uczyć, bo to otwiera drzwi, a founder-led sales to nauka, nie przychód.",
+        "Nie dajesz wczesnych rabatów, bo dają fałszywe poczucie dopasowania, a najlepsi klienci kupują pełną cenę.",
+        "Jason Lemkin: zatrudnij dwóch handlowców, nie jednego, żeby mieć benchmark, a founder zamyka dealy sam, aż ma powtarzalny proces, dopiero potem szef sprzedaży.",
+        "10 niezależnych płacących klientów, którzy nie są znajomymi, to prawdziwe dopasowanie, a głowa produktu powinna być mocno zaangażowana w sprzedaż.",
+        "Pete Kazanjy: founderzy muszą sprzedawać sami na początku, nowoczesna sprzedaż to edukacja i doradztwo, nie nacisk, a handlowców zatrudniasz dopiero przy powtarzalnym procesie."
+      ]
+    },
+    {
+      "title": "B2B go-to-market",
+      "items": [
+        "Bottom-up, model Figmy: miłość indywidualnych użytkowników, potem wewnętrzni ambasadorzy, potem enterprise, a najlepsza strategia to sprawić, by użytkownicy sami sprzedawali produkt wewnątrz firmy.",
+        "Product-led sales escalator, Elena Verna: użycie indywidualne, potem zespołowe, potem enterprise, gdzie produkt pozyskuje użytkownika, a sales zamyka kontrakt, bo self-serve ma sufit około 10 tysięcy dolarów.",
+        "Model motywacja, możliwość, pozwolenie określa, czy użytkownicy eskalują do enterprise: czy chcą, czy umieją kupić, czy firma pozwala.",
+        "Crossing the Chasm, strategia kręgli, Geoffrey Moore: zaczynasz od jednego wąskiego segmentu, dominujesz go w 30 do 50 procentach, potem rozszerzasz, a segment ma być duży na tyle, by się liczył, i mały na tyle, by go opanować.",
+        "GTM jako produkt, Jeanne DeWitt Grosser: traktujesz go-to-market jak produkt, iterujesz i mierzysz CAC, LTV, payback, win rate per segment i powody przegranych."
+      ]
+    }
+  ],
+  "example": "Najlepsza dla foundera i zespołu sprzedaży B2B, który chce kwalifikować dealy metodą MEDDPICC, utrzymywać zdrowy pipeline z wiarygodną prognozą oraz świadomie przejść od sprzedaży prowadzonej przez foundera do powtarzalnego procesu.",
+  "order": 93,
+  "published": true,
+  "seoTitle": "MEDDPICC, pipeline i founder-led sprzedaż B2B, checklista",
+  "seoDescription": "Kwalifikuj dealy B2B metodą MEDDPICC ze scoringiem, zarządzaj pipeline przez velocity, hygiene i forecasting oraz prowadź founder-led sales i strategię go-to-market.",
+  "keywords": [
+    "MEDDPICC",
+    "pipeline sprzedażowy",
+    "founder-led sales",
+    "kwalifikacja dealów",
+    "go-to-market"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "sprzedaz",
+  "internalLinks": [
+    "pitch-pozycjonowanie-i-zamkniecie-sprzedazy",
+    "dopasowanie-produktu-do-rynku-pmf",
+    "account-management-sprzedaz-obecni-klienci"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "MEDDPICC, zarządzanie pipeline i founder-led go-to-market",
+  "sourceReferences": [
+    {
+      "title": "MEDDPICC, metoda kwalifikacji dealów",
+      "author": "MEDDICC",
+      "url": "https://meddicc.com",
+      "relation": "Odniesienie do metody kwalifikacji dealów B2B, źródło do dalszego czytania."
+    },
+    {
+      "title": "SaaStr, playbook sprzedaży SaaS",
+      "author": "Jason Lemkin",
+      "url": "https://www.saastr.com",
+      "relation": "Odniesienie do zasad founder-led sales i budowania zespołu, do dalszego czytania."
+    },
+    {
+      "title": "Crossing the Chasm, strategia wąskiego segmentu",
+      "author": "Geoffrey Moore",
+      "url": "https://www.amazon.com/Crossing-Chasm-3rd-Disruptive-Mainstream/dp/0062292986",
+      "relation": "Książka, z której pochodzi strategia kręgli i dominacji segmentu, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest kwalifikacja MEDDPICC w sprzedaży?",
+      "answer": "MEDDPICC to metoda kwalifikacji dealów B2B sprawdzająca osiem elementów: metryki klienta, decydenta budżetowego, kryteria i proces decyzji, proces formalny, zidentyfikowany ból, Championa oraz konkurencję. Każdy element oceniasz w skali, a niski wynik w którymkolwiek oznacza, że deal nie powinien trafić do prognozy. Dzięki temu prognozujesz na danych, a nie na przeczuciu."
+    },
+    {
+      "question": "Czym różni się Champion od Coacha?",
+      "answer": "Champion to osoba u klienta, która ma realny wpływ na decydenta, ma osobisty interes w Twoim sukcesie i sprzedaje za Ciebie, gdy Cię nie ma. Coach tylko dzieli się informacjami, ale nie działa. Test jest prosty: poproś o spotkanie z decydentem i o prezentację business case na komitecie. Jeśli się wykręca, masz Coacha, nie Championa, i trzeba szukać dalej."
+    },
+    {
+      "question": "Jak utrzymać zdrowy pipeline sprzedażowy?",
+      "answer": "Pilnuj czterech dźwigni velocity: liczby szans, win rate, średniej wielkości dealu i długości cyklu. Co tydzień przeglądaj pipeline, oznaczaj dealy bez aktywności i pytaj przede wszystkim, co zrobił kupujący, a nie handlowiec. Stosuj hygiene: po dwóch tygodniach bez ruchu flaga, po miesiącu re-engage albo zamknięcie, żeby nie trzymać martwych, zombie dealów."
+    },
+    {
+      "question": "Dlaczego founder musi sprzedawać sam na początku?",
+      "answer": "Bo nikt nie zna produktu i wizji lepiej i nikt nie ma większej motywacji. Founder-led sales to przede wszystkim nauka, a nie przychód, bo to founder najszybciej wychwytuje, co działa, a co nie. Handlowców warto zatrudnić dopiero, gdy istnieje powtarzalny proces i kilkunastu niezależnych płacących klientów, którzy nie są znajomymi."
+    },
+    {
+      "question": "Na czym polega strategia Crossing the Chasm?",
+      "answer": "Geoffrey Moore radzi, by nie atakować całego rynku naraz, tylko zacząć od jednego wąskiego segmentu i zdominować go w trzydziestu do pięćdziesięciu procentach. Segment ma być wystarczająco duży, by się liczył, i wystarczająco mały, by dało się go opanować. Dopiero zbudowawszy referencje w jednej niszy, rozszerzasz się na kolejne, jak przewracane kręgle."
+    }
+  ]
+}

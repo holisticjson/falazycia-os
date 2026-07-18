@@ -1,0 +1,70 @@
+{
+  "id": "badania-psychograficzne-deep-research",
+  "type": "prompt",
+  "title": "Badania psychograficzne z Deep Research",
+  "description": "Zbadaj język, przekonania, pytania, obiekcje i bóle grupy docelowej przed stworzeniem reklamy, oferty albo scenariusza.",
+  "shortDescription": "Deep Research psychografii grupy docelowej pod reklamę i ofertę.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-sprzedaz",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Research",
+    "Copywriting"
+  ],
+  "url": "/prompty/marketing-sprzedaz/badania-psychograficzne-deep-research/",
+  "active": true,
+  "views": 0,
+  "postedAt": "June 9, 2026",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Badania psychograficzne z Deep Research",
+  "body": "Prompt prowadzi Deep Research po języku rynku, forach, komentarzach, artykułach i publicznych wypowiedziach, żeby zebrać realne bóle, przekonania, obiekcje, pytania, cyfrowy ekosystem persony i strategiczny profil do reklamy, landing page albo oferty.",
+  "usage": "Użyj tego prompta, gdy chcesz zrozumieć psychografię grupy docelowej przed ofertą, kampanią, stroną sprzedażową albo produktem. Wklej opis avatara, problem, rynek, kraj, język, produkt i decyzję, którą chcesz podjąć po researchu. Jeśli narzędzie ma Deep Research, poproś o źródła i rozdzielenie faktów od hipotez. Jeśli nie ma, podaj ręcznie materiały, rozmowy, komentarze i wyniki ankiet. Dobrym wejściem są także komentarze klientów, recenzje konkurencji, transkrypcje rozmów sprzedażowych i odpowiedzi ankietowe. Im więcej naturalnego języka klienta, tym lepsze hipotezy komunikacyjne.",
+  "prompt": "Uruchom to zadanie w trybie Deep Research. Podmień zmienne:\nAVATAR: [opisz grupę docelową]\nBÓL: [opisz problem, z którym się mierzą]\nRYNEK: [kraj, język, region albo segment, np. Polska, właściciele małych firm]\nKONTEKST: [reklama, scenariusz filmu promocyjnego, landing page, oferta, webinar albo kampania] Piszę materiał promocyjny skierowany do grupy AVATAR, która cierpi z powodu BÓLU. Pomóż mi przeprowadzić badania psychograficzne tej grupy. Cel badania:\nChcę zrozumieć ich język, zmagania, pytania, punkty bólu, przekonania, obawy, nadzieje, frustracje, dotychczasowe rozwiązania i powody, dla których mogą nie ufać nowym rozwiązaniom. Zasady researchu:\n1. Korzystaj z publicznych źródeł, forów, komentarzy, artykułów, recenzji, grup dyskusyjnych, Reddita, Quory, YouTube, TikToka, Facebooka, LinkedIna, blogów i stron branżowych, jeśli są dostępne dla danego rynku.\n2. Priorytetowo traktuj źródła z rynku RYNEK i języka używanego przez AVATAR.\n3. Nie wymyślaj cytatów. Cytuj tylko wypowiedzi znalezione w publicznych źródłach i podawaj link do źródła.\n4. Jeśli nie możesz znaleźć wiarygodnych cytatów, napisz wprost: nie znalazłem wystarczająco mocnych cytatów.\n5. Oddziel fakty od interpretacji. Oznacz, co jest bezpośrednio znalezione w źródłach, a co jest Twoją syntezą.\n6. Nie traktuj przekonań rynku jako prawdy. Opisz je jako przekonania, narracje albo hipotezy obecne w badanej grupie.\n7. Nie zbieraj danych prywatnych, nie identyfikuj pojedynczych osób i nie używaj informacji z prywatnych lub zamkniętych grup. Czego szukamy: I. Profil psychograficzny i demograficzny\n1. Kim jest ten klient?\n2. Jak mówi o swoim problemie własnymi słowami?\n3. Jakie ma postawy społeczne, ekonomiczne, zawodowe lub kulturowe, jeśli da się to wywnioskować ze źródeł?\n4. Jakie ma nadzieje i marzenia?\n5. Jakie ma zwycięstwa i porażki związane z BÓLEM?\n6. Jakie siły zewnętrzne uważa za odpowiedzialne za swoją sytuację?\n7. Jakie ma uprzedzenia, nieufności albo automatyczne reakcje wobec ofert w tej kategorii?\n8. Podsumuj jego podstawowe przekonania o życiu, pracy, rodzinie, statusie, pieniądzach albo zdrowiu, jeśli są istotne dla tego problemu. II. Pytania, które zadaje rynek\n1. Jakie pytania AVATAR zadaje na forach, w komentarzach i wyszukiwarkach?\n2. Jak opisuje swoją obecną sytuację?\n3. Jakie pytania zadaje przed zakupem lub zmianą zachowania?\n4. Jakie pytania zadaje po nieudanej próbie rozwiązania problemu?\n5. Jakie słowa, metafory i porównania powtarzają się najczęściej? III. Istniejące rozwiązania\n1. Z czego rynek już korzysta?\n2. Jakie doświadczenia opisuje z tymi rozwiązaniami?\n3. Co mu się podoba w obecnych rozwiązaniach?\n4. Czego nie lubi?\n5. Jakie są najczęstsze rozczarowania?\n6. Czy istnieją historie grozy albo ostrzeżenia przed rozwiązaniami w tej kategorii?\n7. Czy rynek wierzy, że obecne rozwiązania działają? Jeśli nie, dlaczego?\n8. Jakie obiekcje zakupowe pojawiają się najczęściej? IV. Ciekawostki, anomalie i zapomniane rozwiązania\n1. Czy ktoś próbował rozwiązać BÓL w bardzo nietypowy sposób?\n2. Jaki był rezultat?\n3. Czy istnieją starsze, zapomniane albo historyczne próby rozwiązania tego problemu?\n4. Czy istnieją przykłady sprzed 1960 roku, które rynek lub eksperci przywołują jako inspirację, dowód albo kontrast?\n5. Czy te rozwiązania odniosły sukces, zostały zapomniane, skompromitowane albo odrzucone? Dlaczego? V. Narracje systemowe i antysystemowe\n1. Czy istnieje przekonanie, że BÓL kiedyś nie istniał albo był mniej dotkliwy?\n2. Czy rynek wierzy, że problem został zaostrzony przez zewnętrzne siły, takie jak technologia, regulacje, korporacje, edukacja, media, żywność, styl pracy, kultura albo ekonomia?\n3. Jakie narracje systemowe pojawiają się najczęściej?\n4. Które z tych narracji są oparte na źródłach, a które są tylko przekonaniami lub spekulacjami rynku?\n5. Jak można odwołać się do tych przekonań w reklamie bez wzmacniania fałszywych twierdzeń? VI. Cytaty i język rynku\nPrzygotuj tabelę cytatów z publicznych źródeł:\n1. Cytat lub bardzo krótki fragment wypowiedzi.\n2. Źródło i link.\n3. Co ten cytat ujawnia o bólu, pragnieniu, obiekcji albo przekonaniu.\n4. Jak można wykorzystać ten język w reklamie, nagłówku, hooku albo scenariuszu. VII. Synteza do copywritingu\nNa końcu przygotuj:\n1. 10 najmocniejszych insightów psychograficznych.\n2. 10 zdań, które AVATAR mógłby powiedzieć własnymi słowami.\n3. 10 potencjalnych hooków reklamowych.\n4. 10 kątów komunikacji.\n5. 5 obietnic, które mogą zadziałać, ale są zgodne z realnymi źródłami.\n6. 5 obietnic, których należy unikać, bo są przesadzone, niewiarygodne albo ryzykowne.\n7. Mapę: problem, emocja, przekonanie, obiekcja, możliwy komunikat reklamowy. VIII. Kompleksowy Profil Strategiczny Persony\nPrzygotuj osobny blok, który można od razu wykorzystać w marketingu, sprzedaży i rozwoju produktu: 1. Karta Persony 2.0:, demografia i psychografia,, główne pragnienie,, największy lęk,, bio w 2 do 3 zdaniach,, najważniejsze przekonania o pracy, pieniądzach, sukcesie i porażce. 2. Mapa bólu, TOP 10:, problem,, krótki cytat z publicznego źródła albo informacja, że brakuje mocnego cytatu,, źródło i link,, jak ten ból wpływa na decyzję zakupową,, ranking od najważniejszego. 3. Cyfrowy ekosystem:, minimum 3 konkretne miejsca w social media, grupy, fora albo społeczności,, minimum 3 źródła wiedzy, blogi, newslettery, YouTube, podcasty albo influencerzy,, minimum 3 narzędzia, platformy albo rozwiązania, z których persona korzysta lub które rozważa. 4. Sygnały zakupowe:, frazy, które persona może wpisywać w Google,, zachowania wskazujące gotowość do zakupu,, typowe pytania przed zakupem,, typowe obiekcje przed zakupem. 5. Ukryte narracje i przekonania:, dominujące teorie, przekonania albo mity w grupie,, co grupa uważa, że ją powstrzymuje,, gdzie można oprzeć komunikację na prawdziwym insightcie,, czego nie wolno wzmacniać, jeśli jest fałszywe albo ryzykowne. Format odpowiedzi:\n1. Zacznij od zdania: Analiza zakończona. Przedstawiam kompleksowy profil strategiczny Twojej persony, gotowy do wykorzystania w kolejnych krokach.\n2. Potem krótki executive summary.\n3. Potem źródła i cytaty.\n4. Potem analiza psychograficzna.\n5. Potem Kompleksowy Profil Strategiczny Persony.\n6. Potem synteza dla reklamy, landing page i scenariusza.\n7. Na końcu lista pytań, które warto jeszcze doprecyzować przed pisaniem finalnej kreacji. Wynik researchu ma zawierać: segmenty psychograficzne, język klienta, lęki, pragnienia, obiekcje, wyzwalacze zakupu, fałszywe przekonania, miejsca rozmów, cytaty albo parafrazy, hipotezy komunikacyjne i rekomendacje do oferty. Oddziel fakty ze źródeł od interpretacji. Jeżeli nie masz aktualnych źródeł, wypisz, czego nie wiesz i jakie źródła trzeba sprawdzić. Na końcu przygotuj 10 zdań, które można przetestować w nagłówkach, mailach albo reklamach.",
+  "example": "Najlepszy do przygotowania scenariusza reklamy, landing page, kampanii video albo oferty, zanim zacznie się pisać copy.",
+  "order": 10,
+  "published": true,
+  "seoTitle": "Badania psychograficzne z Deep Research, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt do Deep Research, który bada bóle, przekonania, pytania, język odbiorców, obiekcje, cyfrowy ekosystem i insighty psychograficzne dla reklamy lub oferty.",
+  "keywords": [
+    "badania psychograficzne",
+    "Deep Research prompt",
+    "profil persony",
+    "research grupy docelowej",
+    "język klienta"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "psychografia",
+  "internalLinks": [
+    "deep-research-dowolnego-problemu",
+    "meta-ads-2026-grafiki-teksty",
+    "lista-45-lejkow-sprzedazowych",
+    "checklista-copywritingu-strony-sprzedazowej",
+    "strategia-marketingowa-ze-strony-internetowej"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służą badania psychograficzne z Deep Research?",
+      "answer": "Pomagają zrozumieć, jak grupa docelowa mówi o swoim problemie, czego się boi, czego pragnie, komu nie ufa i jakie pytania zadaje przed zakupem. To baza do reklamy, oferty, landing page i scenariusza video."
+    },
+    {
+      "question": "Czym różni się ten prompt od zwykłego opisu avatara?",
+      "answer": "Zwykły avatar często jest wymyślony przy biurku. Ten prompt wymusza pracę na publicznych źródłach, cytatach, pytaniach i realnym języku rynku, a potem oddziela fakty od interpretacji."
+    },
+    {
+      "question": "W jakim narzędziu użyć tego prompta?",
+      "answer": "Najlepiej użyć go w narzędziu z trybem Deep Research albo dostępem do internetu, na przykład w ChatGPT z Deep Research. Bez dostępu do źródeł prompt może dać tylko hipotezy, a nie pełny research."
+    },
+    {
+      "question": "Czy AI może cytować ludzi z internetu?",
+      "answer": "Tak, ale tylko krótkie fragmenty z publicznych źródeł i z linkiem. Prompt zakazuje wymyślania cytatów oraz korzystania z prywatnych lub zamkniętych grup."
+    },
+    {
+      "question": "Jak wykorzystać wyniki researchu w reklamie?",
+      "answer": "Najpierw wybierz powtarzające się bóle, obiekcje i sformułowania klientów. Potem zamień je na hooki, kąty komunikacji, sekcje landing page, argumenty oferty i pytania do testów reklamowych."
+    }
+  ]
+}

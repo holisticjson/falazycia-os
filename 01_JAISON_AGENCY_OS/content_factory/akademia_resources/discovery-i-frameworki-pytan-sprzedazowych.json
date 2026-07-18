@@ -1,0 +1,179 @@
+{
+  "id": "discovery-i-frameworki-pytan-sprzedazowych",
+  "type": "checklist",
+  "title": "Discovery sprzedażowe: SPIN, Sandler i Gap Selling",
+  "description": "Checklista odkrywania bólu klienta i frameworków pytań sprzedażowych: pogłębianie bólu według Robbinsa, cztery siły Jobs to Be Done, sekwencja SPIN Neila Rackhama, Pain Funnel i Up-Front Contracts metody Sandlera oraz Gap Selling Keenana.",
+  "shortDescription": "Odkryj prawdziwy ból klienta frameworkami SPIN, Sandler Pain Funnel i Gap Selling, zanim zaczniesz sprzedawać.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Sprzedaż",
+    "Discovery"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/discovery-i-frameworki-pytan-sprzedazowych/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Discovery sprzedażowe: SPIN, Sandler i Gap Selling",
+  "body": "Im lepiej rozumiesz ból klienta, tym mniej musisz sprzedawać. Ta checklista zbiera najskuteczniejsze sposoby prowadzenia discovery, czyli etapu odkrywania problemu: pogłębianie bólu według Tony'ego Robbinsa, cztery siły zadania do wykonania, po angielsku Jobs to Be Done, zasadę, że większość klientów kupuje, by uniknąć bólu, a nie zyskać upside, oraz trzy klasyczne frameworki pytań: SPIN Neila Rackhama, Pain Funnel i Up-Front Contracts metody Sandlera i Gap Selling Keenana. Wspólny mianownik jest jeden: klient sam ma usłyszeć i nazwać koszt swojego problemu, bo niezaniepokojony klient nie kupuje.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojego produktu i tego, co wiesz o kliencie. Poproś AI, żeby przygotowało scenariusz discovery: pytania pogłębiające ból, sekwencję SPIN z konkretnymi pytaniami o implikacje i wartość oraz osiem pytań Pain Funnel Sandlera. Następnie niech AI rozpisze diagnozę stanu obecnego i przyszłego w modelu Gap Selling, policzy lukę w pieniądzach, czasie i ryzyku, oraz dobierze pytania do roli rozmówcy, inne dla zarządu, inne dla osoby technicznej, inne dla użytkownika końcowego.",
+  "checklistSections": [
+    {
+      "title": "Pogłębianie bólu, Robbins",
+      "items": [
+        "Szukasz głębokich potrzeb i ran, nie zgadujesz wartości i przekonań klienta, tylko pytasz i słuchasz.",
+        "Odkrywasz strategię kupowania: czy klient jest nastawiony na cel, czy unika bólu, ma wewnętrzny czy zewnętrzny punkt odniesienia.",
+        "Aktywujesz ukryte potrzeby, zamieniasz samozadowolenie w pilną chęć działania.",
+        "Pogłębiasz ból: co się stanie, jeśli nic nie zmienisz, ile Cię to będzie kosztować za 12 miesięcy.",
+        "Pamiętasz, że niezaniepokojony klient nie kupuje, więc Twoja robota to znaleźć ból i sprawić, żeby go poczuł."
+      ]
+    },
+    {
+      "title": "Cztery siły zadania do wykonania, Bob Moesta",
+      "items": [
+        "Pchnięcie, ból status quo: co konkretnie frustruje klienta w obecnym rozwiązaniu i ile go to kosztuje.",
+        "Przyciąganie, wizja lepszego stanu: jak wyobraża sobie idealny stan i co by się zmieniło.",
+        "Lęk przed nowym: czego się boi przy zmianie, czyli wdrożenie, migracja, utrata danych, krzywa uczenia.",
+        "Przyzwyczajenie: co trzyma go przy obecnym rozwiązaniu mimo bólu.",
+        "Jeśli pchnięcie plus przyciąganie jest mniejsze niż lęk plus przyzwyczajenie, klient nie zmieni zachowania, więc zmniejszasz lęk i przyzwyczajenie albo zwiększasz pchnięcie i przyciąganie. Pełny framework masz w osobnej checkliście Jobs to Be Done."
+      ]
+    },
+    {
+      "title": "Zasada 80/20, ból kontra upside, Jeanne DeWitt Grosser",
+      "items": [
+        "80 procent klientów kupuje, żeby uniknąć bólu albo zmniejszyć ryzyko, nie żeby zyskać upside.",
+        "Kupujący w dużej firmie chce uniknąć ryzyka, więc nie opowiadasz o wizji, tylko o unikaniu bólu.",
+        "Startupy kochają mówić o sztuce możliwości, ale to działa tylko na innych founderów, nie na duże firmy."
+      ]
+    },
+    {
+      "title": "Pytania discovery",
+      "items": [
+        "Jaki jest Wasz największy problem w tym obszarze teraz.",
+        "Co próbowaliście do tej pory, co nie zadziałało i dlaczego.",
+        "Ile czasu albo pieniędzy tracicie miesięcznie na ten problem.",
+        "Gdybyście mogli zmienić jedną rzecz, co by to było.",
+        "Kto jeszcze w firmie odczuwa ten problem i kto podejmuje decyzję.",
+        "Co musi się wydarzyć, żebyście powiedzieli, że to było warte swojej ceny."
+      ]
+    },
+    {
+      "title": "SPIN, framework pytań, Neil Rackham",
+      "items": [
+        "Przygotowanie: research klienta eliminuje pytania sytuacyjne, a Ty przygotowujesz 3 do 5 pytań o implikacje i 2 do 3 pytania o wartość.",
+        "Situation, sytuacja, 10 do 15 procent czasu: potwierdzasz sytuację, a nie odkrywasz od zera, na przykład używacie danego narzędzia i macie dany zespół, czy to aktualne.",
+        "Problem, 25 do 30 procent: wydobywasz niezadowolenie, co jest największą frustracją, gdzie tracicie najwięcej czasu.",
+        "Implication, implikacja, 30 do 35 procent, najważniejsze: rozbudowujesz problem, jaki jest koszt tego rocznie, jak wpływa na inne działy, co się stanie, jeśli nic nie zmienicie w 6 miesięcy.",
+        "Need-Payoff, korzyść, 25 do 30 procent: klient sam artykułuje wartość, co byście zrobili z odzyskanym czasem, jaką wartość miałoby to dla Was.",
+        "Po pytaniach o korzyść proponujesz konkretny następny krok, demo, pilot albo spotkanie z decydentem, nie zostawiasz damy znać.",
+        "Dopasowanie do rozmówcy: zarząd pyta o wpływ strategiczny, dyrektor finansowy o koszt i ryzyko, dyrektor o efektywność zespołu, użytkownik o codzienne frustracje.",
+        "Benchmarki: discovery call 30 do 45 minut, klient mówi 60 do 70 procent, minimum 3 do 5 pytań o implikacje i 2 do 4 o korzyść na rozmowę."
+      ]
+    },
+    {
+      "title": "Sandler, Pain Funnel i Up-Front Contracts",
+      "items": [
+        "Pain Funnel, 8 pytań od powierzchni do głębi: opowiedz mi więcej o tym, czy możesz być bardziej konkretny, podaj przykład, od jak dawna to problem, co próbowałeś, czy to zadziałało, ile to Cię kosztowało, jak się z tym czujesz.",
+        "Zasada Pain Funnel: kolejność ważniejsza niż dokładne słowa, nigdy nie przeskakujesz poziomów.",
+        "Up-Front Contract przed spotkaniem: ustalasz agendę, czas, oczekiwania i pozwolenie na nie, czyli wolę szczere nie niż grzeczne może.",
+        "Up-Front Contract na follow-up: jeśli nie odezwiesz się do piątku, zadzwonię w poniedziałek, pasuje.",
+        "Reversals, odpowiadanie pytaniem na pytanie: doceniasz pytanie, powtarzasz je i odwracasz, dlaczego to dla Ciebie ważne, ale nie stosujesz tego, gdy klient pyta o coś technicznego albo faktyczne."
+      ]
+    },
+    {
+      "title": "Gap Selling, Keenan",
+      "items": [
+        "Diagnoza stanu obecnego, 70 procent czasu discovery: środowisko, czyli narzędzia, procesy, ludzie, problemy, ich wpływ na biznes, przyczyna źródłowa i emocja.",
+        "Kwantyfikujesz lukę w pieniądzach: ile kosztuje Was problem rocznie wobec ile zaoszczędzicie.",
+        "Kwantyfikujesz lukę w czasie: ile godzin tygodniowo tracicie wobec ile odzyskacie.",
+        "Kwantyfikujesz lukę w ryzyku: jakie ryzyko ponosicie wobec jak je eliminujecie.",
+        "ROI to luka podzielona przez koszt rozwiązania, a jeśli jest mniejszy niż 2 razy, klient raczej nie ruszy.",
+        "Zasada: nie ma luki, nie ma sprzedaży, bo jeśli klient nie widzi różnicy między teraz a potem, nie kupi.",
+        "Stan przyszły, 30 procent czasu: klient sam opisuje, jak wyglądałoby idealne rozwiązanie i co by zrobił inaczej."
+      ]
+    },
+    {
+      "title": "Sandler pogłębiony: Submarine, Columbo, Budget, Post-Sell",
+      "items": [
+        "Sandler Submarine, 7 kompartmentów w 3 fazach: budowanie relacji i Up-Front Contract, potem ból, budżet i decyzja, na końcu prezentacja dopasowana do bólu i Post-Sell. Przez każdy kompartment przechodzisz, zamykając go, żeby prospekt nie mógł się cofnąć.",
+        "Każdy kompartment ma cel i pytanie domykające, na przykład budżet zamykasz, gdy prospekt potwierdzi realistyczne zasoby, a decyzję, gdy wiesz kto, kiedy, co, jak i dlaczego.",
+        "Playing Columbo, granie zdezorientowanego: przyjmujesz pozę niewiedzy i zadajesz proste pytania, bo profesjonalista robi celowo to, co amator robił nieświadomie, a defensywny prospekt zdejmuje obronę.",
+        "Columbo, technika jeszcze jedno: na odchodne dorzucasz jedno kluczowe pytanie, na przykład jedno mnie jeszcze nurtuje, kto tak naprawdę podejmuje tę decyzję.",
+        "Columbo używasz, gdy prospekt jest ekspertem i lubi mówić albo jest senior executive, który nie lubi być sprzedawany, a NIE używasz z kimś, kto zna tę technikę, ani gdy budujesz pozycję eksperta.",
+        "Budget Step Sandlera: budżet poruszasz w trakcie kwalifikacji, przed prezentacją, bo wolisz wiedzieć teraz niż po trzech miesiącach pracy.",
+        "Technika bracketingu: zamiast pytać jaki macie budżet, podajesz zakres, na przykład firmy z podobnym problemem inwestują od 50 do 150 tysięcy, czy ten zakres ma sens przy skali Waszego problemu.",
+        "Wiązanie budżetu z bólem: budżet zawsze łączysz z kosztem problemu z Pain Funnel, żeby inwestycja była zestawiona z realną stratą.",
+        "Post-Sell, zapobieganie żalowi kupującego, zasada nie odkupuj jutro tego, co sprzedałeś dzisiaj: wentylujesz obiekcje przed zamknięciem, ustalasz kontrakt na wątpliwości, na przykład zadzwoń do mnie zamiast decydować sam, robisz follow-up w 24 do 48 godzin i wracasz do bólu, przypominając, dlaczego kupili."
+      ]
+    }
+  ],
+  "example": "Najlepsza na etapie discovery w sprzedaży B2B i konsultingu, gdy chcesz dobrze zrozumieć i skwantyfikować ból klienta frameworkami SPIN, Sandler i Gap Selling, zamiast od razu prezentować produkt.",
+  "order": 91,
+  "published": true,
+  "seoTitle": "Discovery sprzedażowe, SPIN, Sandler i Gap Selling, checklista",
+  "seoDescription": "Prowadź discovery jak najlepsi: pogłębianie bólu, cztery siły JTBD, sekwencja SPIN, Pain Funnel i Up-Front Contracts Sandlera oraz Gap Selling z kwantyfikacją luki.",
+  "keywords": [
+    "discovery sprzedażowe",
+    "SPIN selling",
+    "Sandler",
+    "gap selling",
+    "odkrywanie bólu"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "sprzedaz",
+  "internalLinks": [
+    "rozmowa-sprzedazowa-przygotowanie-i-otwarcie",
+    "jobs-to-be-done-i-optymalizacja-pmf",
+    "pitch-pozycjonowanie-i-zamkniecie-sprzedazy"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Discovery, SPIN, Sandler Pain Funnel i Gap Selling",
+  "sourceReferences": [
+    {
+      "title": "SPIN Selling, framework pytań sprzedażowych",
+      "author": "Neil Rackham",
+      "url": "https://www.amazon.com/SPIN-Selling-Neil-Rackham/dp/0070511136",
+      "relation": "Książka, z której pochodzi sekwencja SPIN, źródło do dalszego czytania."
+    },
+    {
+      "title": "Metoda sprzedaży Sandlera",
+      "author": "Sandler",
+      "url": "https://www.sandler.com",
+      "relation": "Odniesienie do Pain Funnel i Up-Front Contracts, źródło do dalszego czytania."
+    },
+    {
+      "title": "Gap Selling, sprzedaż przez lukę",
+      "author": "Keenan",
+      "url": "https://www.amazon.com/Gap-Selling-Problem-Centric-Selling-Outcomes/dp/1732891001",
+      "relation": "Książka, z której pochodzi model luki między stanem obecnym a przyszłym, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest discovery w sprzedaży?",
+      "answer": "Discovery to etap rozmowy, na którym odkrywasz i pogłębiasz problem klienta, zanim cokolwiek mu zaproponujesz. Celem nie jest prezentacja produktu, tylko sprawienie, by klient sam nazwał i poczuł koszt swojego problemu. Im lepsze discovery, tym mniej trzeba potem sprzedawać, bo klient jest już przekonany, że zmiana jest pilna i opłacalna."
+    },
+    {
+      "question": "Na czym polega framework SPIN?",
+      "answer": "SPIN to sekwencja czterech rodzajów pytań Neila Rackhama: Situation o sytuację, Problem o trudności, Implication o konsekwencje problemu oraz Need-Payoff o wartość rozwiązania. Najważniejsze są pytania o implikacje, bo to one budują pilność. Dobrze prowadzony SPIN sprawia, że klient sam artykułuje, ile traci i ile zyskałby na zmianie."
+    },
+    {
+      "question": "Jak działa Pain Funnel Sandlera?",
+      "answer": "Pain Funnel to osiem pytań prowadzących od powierzchni do głębi: od opowiedz mi więcej, przez podaj przykład i od jak dawna to trwa, po ile to Cię kosztowało i jak się z tym czujesz. Kolejność jest ważniejsza niż dokładne słowa, a ostatnie pytanie celuje w emocje. Dzięki temu klient przechodzi od ogólnej skargi do realnego, odczuwalnego bólu."
+    },
+    {
+      "question": "Czym jest Gap Selling w sprzedaży?",
+      "answer": "Gap Selling to podejście Keenana, w którym sprzedaż opiera się na luce między stanem obecnym a przyszłym. Najpierw dokładnie diagnozujesz stan obecny, czyli środowisko, problemy, ich wpływ i przyczynę, potem klient opisuje stan pożądany, a Ty kwantyfikujesz lukę w pieniądzach, czasie i ryzyku. Zasada brzmi: nie ma luki, nie ma sprzedaży."
+    },
+    {
+      "question": "Dlaczego klienci kupują, żeby uniknąć bólu?",
+      "answer": "Bo według badań około osiemdziesięciu procent klientów kupuje, by uniknąć bólu albo zmniejszyć ryzyko, a nie po to, by zyskać dodatkowe korzyści. Dotyczy to zwłaszcza dużych firm, gdzie kupujący boi się popełnić błąd. Dlatego w discovery skuteczniejsze jest pokazanie kosztu problemu i ryzyka jego nierozwiązania niż malowanie odległej, ambitnej wizji."
+    }
+  ]
+}

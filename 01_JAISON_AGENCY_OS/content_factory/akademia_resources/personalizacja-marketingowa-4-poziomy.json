@@ -1,0 +1,137 @@
+{
+  "id": "personalizacja-marketingowa-4-poziomy",
+  "type": "checklist",
+  "title": "Personalizacja marketingowa: 4 poziomy i warianty",
+  "description": "Checklista personalizacji marketingowej z czterema poziomami od generycznego po hiper-personalizację per klient, pięcioma elementami wariantu, wzorcami per branża jako materiałem do personalizacji oraz gotowym szablonem wariantu pod konkretną firmę.",
+  "shortDescription": "Personalizuj ofertę po branży, firmie i osobie, żeby klient widział w nagłówku siebie, nie wszystkich.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Personalizacja",
+    "Konwersja"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/personalizacja-marketingowa-4-poziomy/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Personalizacja marketingowa: 4 poziomy i warianty",
+  "body": "Przekaz, który mówi do wszystkich, nie mówi do nikogo. Ta checklista pokazuje cztery poziomy personalizacji: od generycznego, przez personalizację per branżę i per firmę, po hiper-personalizację per klient, wraz z realnym wpływem na konwersję i kosztem każdego poziomu. Dokłada pięć elementów dobrego wariantu, wzorce per branża, czyli gotowy materiał do personalizacji, oraz szablon wariantu pod konkretną firmę. To nie jest checklista o tym, jak pisać, tylko o tym, co i do kogo mówić, więc warto łączyć ją z osobną checklistą copywritingu. Kluczowa zasada brzmi: klient ma zobaczyć w nagłówku siebie, nie abstrakcyjną branżę.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojej oferty i listą branż albo firm, do których celujesz. Poproś AI, żeby wybrało właściwy poziom personalizacji do Twojej sytuacji, a następnie wygenerowało warianty: dla per branżę użyło wzorców branżowych z checklisty, czyli bólu, języka, metryk i social proof danej branży, a dla per firmę wypełniło szablon wariantu nazwą, miastem, wielkością i konkretnym problemem. Poproś też o sprawdzenie każdego nagłówka testem czy klient z tej branży powie to jest o mnie oraz o policzenie, ile czasu i pieniędzy zajmie każdy poziom.",
+  "checklistSections": [
+    {
+      "title": "4 poziomy personalizacji",
+      "items": [
+        "Poziom 0 generyczny: jedna strona, jedna oferta, jeden nagłówek dla wszystkich. Mówi do wszystkich, więc nie mówi do nikogo. Konwersja bazowa, koszt 0.",
+        "Poziom 1 per branżę: oddzielny wariant dla każdej branży, zmienia się nagłówek, propozycja wartości, social proof, CTA i język. Konwersja 2 do 3 razy wyższa niż poziom 0, koszt około 15 minut na wariant z AI. Klucz: klient widzi się w nagłówku.",
+        "Poziom 2 per firmę: wariant skrojony pod konkretną firmę, nazwa, miasto, wielkość, problem, social proof z podobnej firmy. Konwersja 3 do 5 razy wyższa, koszt około 5 minut na firmę plus dane o firmie. Klucz: firma widzi swoje liczby, nie branżę.",
+        "Poziom 3 per klienta: wariant pod konkretną osobę, imię, historia zakupów, zachowanie na stronie. Konwersja 5 do 10 razy wyższa, wymaga danych z CRM i automatyzacji oraz zgodności z RODO. Klucz: klient nie jest anonimowy, jest jednym człowiekiem z jedną historią.",
+        "Matryca: poziom 0 bez danych dla produktu masowego, poziom 1 z listą branż dla 3 do 5 segmentów, poziom 2 z nazwą, branżą, miastem i problemem dla B2B i cold outreach, poziom 3 z CRM i historią dla upsellu i retencji.",
+        "Zaczynasz od poziomu 1 per branżę, a poziom 2 wprowadzasz dopiero przy ponad 10 prospektach miesięcznie."
+      ]
+    },
+    {
+      "title": "5 elementów wariantu",
+      "items": [
+        "Nagłówek: format konkretny ból tej branży albo firmy plus konkretne rozwiązanie, język tej branży, maksymalnie 15 słów, tak żeby osoba pomyślała to jest dokładnie o mnie. Dobry: Biura rachunkowe, przestaniesz gubić klientów w Excelu. Zły: Innowacyjne rozwiązanie dla profesjonalistów.",
+        "Propozycja wartości, 3 punkty: każdy specyficzny dla tej branży albo firmy, każdy z konkretnym wynikiem, czyli liczbą albo czasem, mówisz o wyniku, nie o funkcji.",
+        "Social proof: jedna opinia od klienta z tej branży albo podobnej, podpis imię, stanowisko, firma, miasto, opcjonalnie liczba, na przykład już 47 biur rachunkowych używa. Bez ogólnych opinii typu super produkt.",
+        "CTA: nigdy generyczne sprawdź albo dowiedz się więcej, format akcja plus dla kogo plus co dostanie, jeden CTA na sekcję. Dobry: Pobierz darmowy szablon kalendarza treści dla biur rachunkowych.",
+        "Bonus: jeden element grywalizacji, na przykład pasek postępu, quiz albo wyzwanie, plus jeden growth hack, na przykład polecenie, test A/B nagłówka albo prześlij znajomemu, dobrany do tej branży."
+      ]
+    },
+    {
+      "title": "Wzorce per branża, materiał do personalizacji",
+      "items": [
+        "Biura rachunkowe i księgowość: ból to za dużo klientów na Excela, gubienie terminów i ręczne przypomnienia. Język: rozliczenie kwartalne, klient, termin, faktura, deklaracja. Metryki: ile klientów, ile godzin na administrację, ile zgubionych terminów. Social proof: inne biuro rachunkowe z wielkością i miastem.",
+        "Restauracje i gastronomia: ból to puste stoliki w tygodniu, brak rezerwacji online i klienci, którzy nie wracają. Język: rezerwacja, stolik, gość, menu, wizyta. Metryki: ile rezerwacji, ile stolików, ilu gości wraca. Social proof: inna restauracja z liczbą miejsc i miastem.",
+        "Trenerzy personalni i fitness: ból to za dużo ręcznej roboty, klienci, którzy nie wracają, i brak systemu. Język: trening, klient, harmonogram, no-show, postępy. Metryki: ilu klientów, ile no-show, ile godzin na administrację. Social proof: inny trener z liczbą klientów i miastem.",
+        "E-commerce i sklepy online: ból to porzucone koszyki, brak powrotów i drogi ruch płatny. Język: zamówienie, koszyk, dostawa, zwrot, klient. Metryki: konwersja, średnia wartość zamówienia, procent porzuconych koszyków, procent powracających. Social proof: inny sklep z branżą i roczną sprzedażą.",
+        "Agencje i freelancerzy: ból to za dużo klientów naraz, brak procesu i ginące leady. Język: projekt, brief, deadline, klient, raport. Metryki: ile projektów równocześnie, ile leadów, stosunek leadów do klientów. Social proof: inna agencja albo freelancer ze specjalizacją.",
+        "Edukacja i kursy online: ból to niskie ukończenie kursów, brak zaangażowania i wysoki churn. Język: uczestnik, moduł, lekcja, certyfikat, ukończenie. Metryki: procent ukończenia, retencja, NPS. Social proof: inny twórca kursów z tematem i liczbą uczestników.",
+        "Usługi lokalne, fryzjer, kosmetyczka, lekarz: ból to rezerwacje telefoniczne, brak przypominania i klienci, którzy nie wracają. Język: wizyta, termin, rezerwacja, stały klient. Metryki: ile wizyt na tydzień, ile no-show, ilu stałych klientów. Social proof: inna firma lokalna z miastem i specjalizacją."
+      ]
+    },
+    {
+      "title": "Słowa-widmo, szybki test nagłówka",
+      "items": [
+        "Zamieniasz słowa-widmo na konkret: zamiast innowacyjny napisz skraca z 4 godzin do 10 minut, zamiast profesjonalny napisz używany przez 47 biur rachunkowych, zamiast skuteczny napisz 23 procent więcej rezerwacji w 60 dni.",
+        "Test 1: czy nagłówek zawiera słowo-widmo. Jeśli tak, zamień je na konkretny wynik.",
+        "Test 2: czy możesz podmienić nazwę firmy albo branży i nagłówek nadal ma sens. Jeśli tak, jest za ogólny.",
+        "Test 3: czy klient z tej branży powie to jest o mnie. Jeśli nie, doprecyzuj.",
+        "Test 4: czy nagłówek jest krótszy niż 15 słów. Jeśli nie, skróć. Pełne zasady copywritingu masz w osobnej checkliście copywritingu."
+      ]
+    },
+    {
+      "title": "Format wariantu per firmę, szablon",
+      "items": [
+        "Nagłówek: nazwa firmy, jej konkretny problem, konkretne rozwiązanie.",
+        "Otwarcie na 2 do 3 zdania: prowadzicie co robią w danym mieście, macie daną wielkość i dany problem, wiemy, że dana sytuacja Was boli, dlaczego standardowe rozwiązanie nie pasuje.",
+        "Propozycja wartości: trzy konkretne wyniki z liczbami i czasem.",
+        "Social proof: cytat od podobnej firmy z tej samej branży i o podobnej wielkości, z konkretnym wynikiem, podpisany imieniem, stanowiskiem, firmą i miastem.",
+        "CTA personalne, na przykład porozmawiajmy o Waszych 200 klientach.",
+        "PS z bonusem lokalnym, na przykład dla firm z danego miasta darmowa konfiguracja albo lokalny opiekun."
+      ]
+    },
+    {
+      "title": "Kluczowe zasady",
+      "items": [
+        "Każdy wariant ma 5 elementów: nagłówek, propozycję wartości, social proof, CTA i bonus.",
+        "Zero słów-widmo: sprawdzasz każdy nagłówek i tekst przed użyciem.",
+        "Wynik ponad funkcję: oszczędzisz 8 godzin tygodniowo, nie nasz system jest zintegrowany.",
+        "Wybierasz właściwą strukturę strony: B2B albo B2C, w osobnych checklistach stron sprzedażowych.",
+        "Ścieżka zmiany przekonań: nie pokazujesz ceny przed zbudowaniem wartości.",
+        "Mierzysz konwersję per wariant, bo inaczej nie wiesz, co działa.",
+        "AI generuje, Ty poprawiasz: zawsze czytasz wariant i dostosowujesz język do swojej marki."
+      ]
+    }
+  ],
+  "example": "Najlepsza przy tworzeniu wariantów oferty albo strony pod różne branże i firmy, na przykład w cold outreach B2B albo przy kilku segmentach klientów, gdy chcesz, żeby każdy odbiorca widział przekaz skrojony pod siebie.",
+  "order": 85,
+  "published": true,
+  "seoTitle": "Personalizacja marketingowa, 4 poziomy i warianty per branża",
+  "seoDescription": "Personalizuj ofertę na czterech poziomach: generyczny, per branżę, per firmę i per klient. Pięć elementów wariantu, wzorce per branża i szablon wariantu pod firmę.",
+  "keywords": [
+    "personalizacja marketingowa",
+    "personalizacja oferty",
+    "warianty per branża",
+    "cold outreach",
+    "konwersja"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "personalizacja",
+  "internalLinks": [
+    "checklista-copywritingu-strony-sprzedazowej",
+    "strona-sprzedazowa-b2b",
+    "strona-sprzedazowa-b2c"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Cztery poziomy personalizacji, elementy wariantu i wzorce per branża",
+  "faq": [
+    {
+      "question": "Czym różnią się cztery poziomy personalizacji?",
+      "answer": "Poziom zero to jeden przekaz dla wszystkich. Poziom pierwszy personalizuje per branżę i podnosi konwersję dwa do trzech razy. Poziom drugi personalizuje per firmę, z jej nazwą i liczbami, i daje trzy do pięciu razy wyższą konwersję. Poziom trzeci to hiper-personalizacja per osobę, z historią i zachowaniem, nawet pięć do dziesięciu razy skuteczniejsza, ale wymaga danych z CRM i zgodności z RODO."
+    },
+    {
+      "question": "Od którego poziomu personalizacji zacząć?",
+      "answer": "Najlepiej zacząć od poziomu pierwszego, czyli personalizacji per branżę, bo daje duży skok konwersji przy zerowym koszcie i około piętnastu minutach pracy na wariant z pomocą AI. Personalizację per firmę, czyli poziom drugi, warto wprowadzić dopiero, gdy masz ponad dziesięć prospektów miesięcznie, bo wtedy nakład na indywidualne warianty się zwraca."
+    },
+    {
+      "question": "Czy ta checklista zastępuje checklistę copywritingu?",
+      "answer": "Nie, one się uzupełniają. Ta checklista mówi, co i do kogo powiedzieć, czyli który ból, język, metryki i social proof użyć dla danej branży albo firmy. Checklista copywritingu mówi, jak to napisać, czyli o nagłówkach, formułach sprzedażowych, gwarancjach i storytellingu. Najlepiej używać obu razem, najpierw dobierając przekaz, potem dopracowując rzemiosło."
+    },
+    {
+      "question": "Jak personalizować przekaz pod konkretną branżę?",
+      "answer": "Skorzystaj z wzorców per branża: dla każdej branży masz gotowy zestaw bólu, języka, czyli żargonu, metryk, które ją obchodzą, oraz typu social proof. Na tej podstawie budujesz nagłówek i propozycję wartości w języku tej branży, tak żeby odbiorca od razu rozpoznał swoją sytuację. To jest właśnie materiał do personalizacji na poziomie pierwszym."
+    },
+    {
+      "question": "Co musi zawierać dobry wariant personalizowany?",
+      "answer": "Pięć elementów: nagłówek z konkretnym bólem i rozwiązaniem w języku odbiorcy, propozycję wartości w trzech punktach z konkretnymi wynikami, social proof od podobnego klienta z podpisem, konkretne CTA w formacie akcja plus dla kogo plus co dostanie oraz bonus, czyli jeden element grywalizacji i jeden growth hack. Każdy nagłówek warto przepuścić przez test, czy klient powie to jest o mnie."
+    }
+  ]
+}

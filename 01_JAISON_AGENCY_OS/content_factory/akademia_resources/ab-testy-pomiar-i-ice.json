@@ -1,0 +1,156 @@
+{
+  "id": "ab-testy-pomiar-i-ice",
+  "type": "checklist",
+  "title": "A/B testy, pomiar wzrostu i matryca ICE",
+  "description": "Checklista dyscypliny eksperymentów wzrostu: narzędzia A/B testów, ile ruchu potrzeba, dashboard kluczowych metryk, North Star Metric, darmowy stack analityczny, dziesięć najczęstszych błędów A/B oraz priorytetyzacja eksperymentów metodą ICE.",
+  "shortDescription": "Testuj i mierz wzrost z dyscypliną: narzędzia A/B, kluczowe metryki, stack analityczny i priorytety ICE.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "A/B testy",
+    "Analityka"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/ab-testy-pomiar-i-ice/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "A/B testy, pomiar wzrostu i matryca ICE",
+  "body": "Growth bez pomiaru to zgadywanie, a źle prowadzone testy A/B dają fałszywe wnioski. Ta checklista porządkuje dyscyplinę eksperymentów: jakie narzędzia A/B wybrać, ile ruchu realnie potrzeba, żeby test miał sens, jaki dashboard metryk śledzić, jak wybrać North Star Metric dla swojej branży i jak zbudować darmowy stack analityczny. Dokłada dziesięć najczęstszych błędów A/B oraz matrycę ICE do priorytetyzacji eksperymentów. Dzięki temu zamiast testować wszystko naraz i przerywać za wcześnie, robisz mniej testów, ale wiarygodnych, i zaczynasz od tych o najwyższym ICE.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z informacją o swoim ruchu, obecnej konwersji i pomyśle na eksperyment. Poproś AI, żeby oceniło, czy masz wystarczający ruch na test A/B, a jeśli nie, zaproponowało testowanie dużych zmian metodą przed i po. Następnie niech AI pomoże wybrać North Star Metric dla Twojej branży, dobierze 5 do 7 metryk do dashboardu oraz oceni listę Twoich pomysłów na wzrost metodą ICE, czyli wpływ, pewność i łatwość, i ułoży je od najwyższego priorytetu.",
+  "checklistSections": [
+    {
+      "title": "Narzędzia A/B testów",
+      "items": [
+        "VWO: do 10 000 użytkowników miesięcznie darmowy, najlepsza darmowa opcja, płatny od około 2000 złotych miesięcznie.",
+        "Zoho PageSense: od około 80 złotych miesięcznie, najtańsza płatna opcja all in one.",
+        "Mida.so: do 50 000 użytkowników darmowy, od około 600 złotych miesięcznie, najlżejszy skrypt 20 KB.",
+        "Crazy Egg: od około 400 złotych miesięcznie, najłatwiejszy dla nietechnicznych.",
+        "Nelio AB Testing: darmowy dla WordPressa.",
+        "Rada polskich ekspertów CRO: przy dochodach poniżej około 100 000 złotych miesięcznie odpuść testy A/B i skup się na ruchu."
+      ]
+    },
+    {
+      "title": "Ile ruchu potrzebujesz",
+      "items": [
+        "Założenia: 5 procent bazowej konwersji, 20 procent poprawy, 95 procent pewności.",
+        "100 wizyt dziennie to około 160 dni, nie rób testów A/B, testuj duże zmiany metodą przed i po.",
+        "500 wizyt dziennie to około 32 dni, wykonalne, testuj duże zmiany.",
+        "1000 wizyt dziennie to około 16 dni, standardowe testowanie.",
+        "5000 wizyt dziennie to 3 do 4 dni, szybkie testowanie."
+      ]
+    },
+    {
+      "title": "Dashboard growth hackera, 5 do 7 metryk",
+      "items": [
+        "Conversion Rate, z GA4.",
+        "CAC, koszt pozyskania klienta, z CRM i platform reklamowych.",
+        "LTV, wartość życiowa klienta, z CRM i billingu.",
+        "Churn rate albo retention rate, z billingu i CRM.",
+        "Revenue growth rate miesiąc do miesiąca, z księgowości.",
+        "Active users, czyli DAU, WAU i MAU, z GA4 albo Mixpanel.",
+        "NPS, Net Promoter Score, z narzędzi ankietowych."
+      ]
+    },
+    {
+      "title": "North Star Metric według branży",
+      "items": [
+        "E-commerce: liczba zakupów miesięcznie.",
+        "SaaS: MRR albo Weekly Active Users.",
+        "Usługi B2B: liczba kwalifikowanych leadów.",
+        "Content i media: czas konsumpcji.",
+        "Unikasz metryk próżności: łączna liczba wizyt, liczba obserwujących, pobrania aplikacji bez retencji."
+      ]
+    },
+    {
+      "title": "Darmowy stack analityczny",
+      "items": [
+        "GA4, dane ilościowe: ruch, konwersje, atrybucja, odpowiada na pytanie co.",
+        "Microsoft Clarity, darmowy i nielimitowany: nagrania sesji, heatmapy, mapy scrolla, rage clicks, integracja z GA4 jednym kliknięciem, odpowiada na pytanie dlaczego.",
+        "Google Looker Studio: dashboardy łączące dane z GA4.",
+        "Upgrade za około 200 złotych miesięcznie: Hotjar Plus z ankietami plus Plausible, analityka zgodna z RODO bez bannerów cookie."
+      ]
+    },
+    {
+      "title": "10 najczęstszych błędów A/B testów",
+      "items": [
+        "Zatrzymywanie testów zbyt wcześnie, zawsze czekaj na 95 procent pewności, bo przy 80 procent wyniki się odwracają.",
+        "Testowanie wielu zmiennych naraz, jedna zmienna na test.",
+        "Brak hipotezy przed testem, najpierw jeśli zmienię X, to Y wzrośnie o Z procent.",
+        "Testowanie stron z niskim ruchem, minimum 500 wizyt dziennie.",
+        "Ignorowanie mobile, ponad 60 procent ruchu w 2024.",
+        "Za krótki test, minimum 2 pełne tygodnie, żeby uwzględnić cykle tygodniowe.",
+        "Testowanie podczas anomalii, jak Black Friday albo viralowy post, wyniki niewiarygodne.",
+        "Kopiowanie testów innych firm bez adaptacji do swojego kontekstu.",
+        "Skupianie się tylko na konwersji, bo wyższy CR może przyciągać gorsze leady.",
+        "W ogóle nietestowanie, bo 61 procent marketerów nie testuje nawet tematów maili."
+      ]
+    },
+    {
+      "title": "Matryca ICE, priorytetyzacja eksperymentów",
+      "items": [
+        "I, wpływ: jaki efekt na wzrost, jeśli zadziała, w skali 1 do 10.",
+        "C, pewność: jak bardzo wierzę, że zadziała, w skali 1 do 10.",
+        "E, łatwość: jak łatwo to wdrożyć, w skali 1 do 10, gdzie 10 oznacza bardzo łatwo.",
+        "ICE to średnia z trzech ocen i jest priorytetem eksperymentu.",
+        "Zasada: najpierw eksperymenty z najwyższym ICE, a jeśli nie działa po 3 tygodniach, porzucasz."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy chcesz prowadzić wzrost jak serię eksperymentów: ustawić metryki, wybrać North Star, robić wiarygodne testy A/B i priorytetyzować pomysły metodą ICE zamiast działać na czuja.",
+  "order": 79,
+  "published": true,
+  "seoTitle": "A/B testy, pomiar wzrostu i matryca ICE, checklista",
+  "seoDescription": "Prowadź wzrost z dyscypliną: narzędzia A/B, ile ruchu potrzeba, dashboard metryk, North Star, darmowy stack analityczny, dziesięć błędów A/B i priorytety ICE.",
+  "keywords": [
+    "A/B testy",
+    "matryca ICE",
+    "North Star Metric",
+    "analityka",
+    "growth"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "growth-pomiar",
+  "internalLinks": [
+    "petle-wzrostu-i-programy-polecen",
+    "demand-generation-i-atrybucja",
+    "full-funnel-content-i-lead-scoring"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "A/B testy, metryki wzrostu i matryca ICE",
+  "sourceReferences": [
+    {
+      "title": "Metoda ICE i scoring eksperymentów wzrostu",
+      "author": "Sean Ellis, GrowthHackers",
+      "url": "https://growthhackers.com",
+      "relation": "Odniesienie do metody ICE i podejścia do priorytetyzacji eksperymentów, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest matryca ICE we wzroście?",
+      "answer": "Matryca ICE to prosty sposób priorytetyzacji pomysłów na wzrost. Każdy eksperyment oceniasz w trzech wymiarach w skali od jednego do dziesięciu: Impact, czyli wpływ na wzrost, Confidence, czyli pewność, że zadziała, oraz Ease, czyli łatwość wdrożenia. Średnia z tych ocen daje priorytet, a zaczynasz od pomysłów z najwyższym ICE."
+    },
+    {
+      "question": "Ile ruchu potrzeba do testu A/B?",
+      "answer": "To zależy od konwersji i oczekiwanej poprawy, ale praktyczna zasada brzmi: przy około 100 wizytach dziennie test trwałby ponad sto sześćdziesiąt dni, więc nie warto. Od około 500 wizyt dziennie testy A/B stają się wykonalne, a od 1000 standardowe. Przy małym ruchu testuj duże zmiany metodą przed i po."
+    },
+    {
+      "question": "Jaki dashboard metryk śledzić we wzroście?",
+      "answer": "Wystarczy pięć do siedmiu metryk: conversion rate, koszt pozyskania klienta, wartość życiowa klienta, churn lub retencja, tempo wzrostu przychodu miesiąc do miesiąca, aktywni użytkownicy oraz NPS. Taki zestaw pokazuje zarówno pozyskanie, jak i utrzymanie, i pozwala szybko zauważyć, gdzie wzrost się zacina."
+    },
+    {
+      "question": "Czym jest North Star Metric?",
+      "answer": "North Star Metric to jedna nadrzędna miara wartości, którą Twój produkt dostarcza klientom. W e-commerce to zwykle liczba zakupów, w SaaS przychód cykliczny albo aktywni użytkownicy, a w usługach B2B liczba kwalifikowanych leadów. Kluczowe jest unikanie metryk próżności, takich jak liczba obserwujących czy łączne wizyty bez retencji."
+    },
+    {
+      "question": "Jaki jest najczęstszy błąd w testach A/B?",
+      "answer": "Najczęstszym błędem jest zatrzymywanie testu zbyt wcześnie, zanim osiągnie 95 procent pewności, bo przy niższym poziomie wyniki potrafią się odwrócić. Inne typowe błędy to testowanie wielu zmiennych naraz, brak hipotezy, zbyt krótki czas testu oraz prowadzenie testów na stronach z bardzo małym ruchem."
+    }
+  ]
+}

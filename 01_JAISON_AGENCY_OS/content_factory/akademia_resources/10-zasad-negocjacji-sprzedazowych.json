@@ -1,0 +1,267 @@
+{
+  "id": "10-zasad-negocjacji-sprzedazowych",
+  "type": "checklist",
+  "title": "10 zasad negocjacji sprzedażowych",
+  "description": "Operacyjna checklista negocjacji sprzedażowych: nic za darmo, rabat tylko za coś, nie przyjmuj pierwszej propozycji, nie negocjuj sam ze sobą, zmieniaj pakiet zamiast ceny i zamieniaj nie na jeśli.",
+  "shortDescription": "Negocjuj cenę, pakiet i warunki bez rozdawania wartości za darmo.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Sprzedaż",
+    "Negocjacje"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/10-zasad-negocjacji-sprzedazowych/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-13",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "10 zasad negocjacji sprzedażowych",
+  "body": "Ta checklista porządkuje 10 zasad negocjacji sprzedażowych, które pomagają bronić ceny, pakietu i warunków bez psucia relacji z klientem. Nie chodzi o agresywną grę ani grożenie drugiej stronie. Chodzi o prostą dyscyplinę: niczego nie oddawaj za darmo, nie obniżaj ceny bez kontroferty, nie negocjuj sam ze sobą, zmieniaj zakres zamiast ceny i używaj języka jeśli, który otwiera rozmowę zamiast ją zamykać.",
+  "usage": "Wklej checklistę do AI razem z opisem oferty, ceną, pakietami, typowymi obiekcjami klienta, miejscem w procesie sprzedaży i informacją, o co klient zwykle prosi: rabat, bonus, dłuższy termin, dodatkowy zakres, płatność później albo szybsze wdrożenie. Poproś AI, żeby przygotowało warianty odpowiedzi, propozycje wymiany, nowe pakiety, granice ustępstw i 10 zdań negocjacyjnych do użycia w rozmowie. Najlepiej działa przy ofertach B2B, usługach, konsultingu, szkoleniach, produktach cyfrowych, pakietach premium i negocjacjach ceny po wysłaniu oferty.",
+  "checklistSections": [
+    {
+      "title": "Zasada 1, niczego nie oddawaj za darmo",
+      "items": [
+        "Wszystko w biznesie ma swoją cenę.",
+        "Ceną może być czas, pieniądze, płatność z góry, szybsza decyzja, dłuższa umowa, mniejszy zakres albo referencja.",
+        "Jeśli klient chce bonus, rabat, dodatkowe spotkanie albo szybsze wdrożenie, najpierw nazwij wartość tej rzeczy.",
+        "Nie mów: dorzucę to gratis. Powiedz: możemy to dodać, jeśli ustalimy warunek po drugiej stronie.",
+        "Gotowe zdanie: Mogę to dorzucić, jeśli domkniemy decyzję do piątku.",
+        "Gotowe zdanie: Mogę rozszerzyć zakres, jeśli płatność będzie z góry.",
+        "Czego nie robić: nie rozdawaj pracy, czasu i bonusów tylko dlatego, że klient zapytał.",
+        "Przykład: klient chce dodatkową konsultację. Dajesz ją dopiero w zamian za płatność z góry, dłuższą umowę albo szybszą decyzję."
+      ]
+    },
+    {
+      "title": "Zasada 2, nie ustępuj bez czegoś w zamian",
+      "items": [
+        "Każdy deal składa się z wielu elementów: cena, termin, zakres, płatność, ryzyko, wdrożenie, bonusy, odpowiedzialność i decyzja.",
+        "Klient chce zniżkę albo bonus? Możesz rozmawiać, ale zawsze wymień ustępstwo na coś konkretnego.",
+        "Jeśli dajesz rabat, możesz poprosić o płatność dzisiaj.",
+        "Jeśli dajesz bonus, możesz poprosić o płatność z góry.",
+        "Jeśli skracasz termin, możesz ograniczyć zakres albo podnieść cenę.",
+        "Gotowe zdanie: Tak, możemy zejść z ceny, jeśli wybierzecie płatność za całość z góry.",
+        "Gotowe zdanie: Mogę dodać ten element, jeśli decyzja zapadnie dzisiaj.",
+        "Czego nie robić: nie ustępuj tylko dlatego, że zapadła cisza albo klient kręci nosem.",
+        "Przykład: klient chce 10 procent rabatu. Odpowiedź: możemy to zrobić przy płatności z góry i decyzji do końca tygodnia."
+      ]
+    },
+    {
+      "title": "Zasada 3, nie przyjmuj pierwszej propozycji",
+      "items": [
+        "Pierwsza propozycja ceny często jest zaproszeniem do negocjacji, nie finalnym stanowiskiem.",
+        "Dobry sprzedawca i dobry kupujący wiedzą, że pierwsza cena jest częścią gry.",
+        "Nie traktuj pierwszej prośby o rabat jak ostatecznej bariery.",
+        "Dopytaj, co stoi za propozycją klienta: budżet, proces zakupowy, porównanie z konkurencją, brak zrozumienia wartości czy zwykły test.",
+        "Gotowe zdanie: Rozumiem tę propozycję. Co dokładnie musi się zmienić w ofercie, żeby ten poziom ceny miał sens?",
+        "Gotowe zdanie: Zanim odpowiem, chcę zrozumieć, czy rozmawiamy o budżecie, zakresie czy sposobie płatności.",
+        "Czego nie robić: nie przyjmuj pierwszej propozycji tylko po to, żeby szybko zamknąć rozmowę.",
+        "Przykład: klient mówi, że ma tylko połowę budżetu. Nie zgadzasz się od razu. Pytasz, który zakres jest dla niego najważniejszy i co można usunąć."
+      ]
+    },
+    {
+      "title": "Zasada 4, zaszokuj wstępną ofertą",
+      "items": [
+        "Wysoka pierwsza oferta może ustawić kotwicę negocjacyjną, jeśli Twoja oferta nie jest łatwo porównywalna.",
+        "To działa tylko wtedy, gdy potrafisz uzasadnić wartość, wynik, zakres, ryzyko, proces i różnicę wobec alternatyw.",
+        "Jeśli zaczniesz wysoko, możesz później zejść do ceny nadal bardzo dobrej dla Ciebie, a druga strona może czuć, że coś wynegocjowała.",
+        "Nie używaj tej zasady przy produkcie łatwo porównywalnym cenowo bez różnicy w pakiecie, jakości albo ryzyku.",
+        "Gotowe zdanie: Pełny wariant, który dowozi cały rezultat, kosztuje [kwota]. Mogę też pokazać mniejszy pakiet, jeśli budżet jest niższy.",
+        "Gotowe zdanie: Pokazuję najpierw wariant najlepszy, żebyśmy wiedzieli, co realnie rozwiązuje problem.",
+        "Czego nie robić: nie rzucaj wysokiej ceny bez pakietu wartości, bo będzie wyglądała jak przypadkowa próba.",
+        "Przykład: zamiast zaczynać od najtańszego pakietu, pokazujesz pełny wariant z wynikiem, wsparciem, wdrożeniem i ograniczeniem ryzyka."
+      ]
+    },
+    {
+      "title": "Zasada 5, nie koryguj oferty bez kontroferty",
+      "items": [
+        "Wiele osób popełnia błąd: klient kręci nosem, a sprzedawca od razu negocjuje sam ze sobą.",
+        "Nie mów automatycznie: dam zniżkę.",
+        "Poczekaj na kontrofertę albo konkretne wskazanie, co klient chce zmienić.",
+        "Jeśli klient mówi, że jest drogo, zapytaj: względem czego?",
+        "Jeśli klient mówi, że musi pomyśleć, zapytaj, co konkretnie wymaga decyzji.",
+        "Gotowe zdanie: Rozumiem. Jaką propozycję widzisz po swojej stronie?",
+        "Gotowe zdanie: Co musiałoby się zmienić w zakresie albo płatności, żeby to miało sens?",
+        "Czego nie robić: nie obniżaj ceny w reakcji na mimikę, ciszę albo ogólne niezadowolenie.",
+        "Przykład: klient mówi, że cena jest za wysoka. Odpowiadasz: rozumiem, jaki poziom i jaki zakres byłyby dla Was realne?"
+      ]
+    },
+    {
+      "title": "Zasada 6, pokaż chęć i granicę środków",
+      "items": [
+        "Ta zasada działa po obu stronach: jako kupujący i jako sprzedający.",
+        "Jako kupujący możesz powiedzieć: bardzo chcę to kupić, ale mój budżet jest niższy i nie mam więcej środków.",
+        "Jako sprzedający możesz powiedzieć: bardzo chcę to sprzedać, ale przy tym zakresie nie możemy zejść niżej.",
+        "Granica może wynikać z szefa, dostawcy, zasad, marży, kosztów, terminu albo jakości dowiezienia.",
+        "Nie udawaj fałszywych ograniczeń, jeśli łatwo je obalić. Lepiej oprzeć się na realnych warunkach.",
+        "Gotowe zdanie kupującego: Bardzo chcę to od Was kupić, ale budżet na ten etap to [kwota]. Nie mam ani grosza więcej.",
+        "Gotowe zdanie sprzedającego: Bardzo chcę z Wami pracować, ale przy tym zakresie i jakości to jest najniższy poziom, na którym możemy to dowieźć.",
+        "Czego nie robić: nie przedstawiaj granicy jako groźby. To ma być fakt negocjacyjny, nie atak.",
+        "Przykład: klient chce niższą cenę. Mówisz, że możesz zejść tylko przy mniejszym zakresie albo innym harmonogramie."
+      ]
+    },
+    {
+      "title": "Zasada 7, nie okazuj przesadnej dobrej woli",
+      "items": [
+        "Jeśli ciągle robisz komuś dobrze, druga strona przestaje czuć wartość tego, co dostaje.",
+        "Ludzie lubią negocjować i czuć, że coś wywalczyli.",
+        "Nie dawaj od razu najniższej ceny.",
+        "Nie rozpakowuj wszystkich bonusów na starcie.",
+        "Zostaw przestrzeń do rozmowy, wyboru i poczucia decyzji po stronie klienta.",
+        "Gotowe zdanie: Mogę zobaczyć, co da się przesunąć w pakiecie, ale nie chcę psuć jakości dowiezienia.",
+        "Gotowe zdanie: Zależy mi na tej współpracy, dlatego wolę zmienić zakres niż obiecać coś, czego nie da się dobrze dowieźć.",
+        "Czego nie robić: nie myl dobrej relacji z rozdawaniem ustępstw.",
+        "Przykład: zamiast od razu mówić najniższą cenę, pokazujesz pełny pakiet i dopiero potem wariant ograniczony."
+      ]
+    },
+    {
+      "title": "Zasada 8, nie stosuj gróźb",
+      "items": [
+        "Nie strasz klienta.",
+        "Groźby mogą zamknąć rozmowę, zbudować opór i zepsuć relację.",
+        "Zaawansowani negocjatorzy czasem używają twardych technik, ale w większości sprzedaży bezpieczniej trzymać się celu i warunków.",
+        "Fokus ma być na celu, wartości i warunkach deala.",
+        "Zamiast groźby nazwij konsekwencję spokojnie i konkretnie.",
+        "Gotowe zdanie: Przy tym terminie nie dowieziemy pełnego zakresu, więc proponuję wybrać priorytet.",
+        "Gotowe zdanie: Przy tej cenie możemy zrobić wariant podstawowy, ale nie pełny pakiet.",
+        "Czego nie robić: nie mów rzeczy typu: jeśli teraz nie podpiszecie, oferta przepada, jeśli to nie jest prawda.",
+        "Przykład: klient naciska na termin. Nie straszysz, tylko pokazujesz, co można dowieźć w tym terminie, a co musi wypaść."
+      ]
+    },
+    {
+      "title": "Zasada 9, nie zmieniaj ceny, zmień pakiet",
+      "items": [
+        "Jeśli klient chce niższą cenę i deal jest blisko, nie zaczynaj od obniżania ceny za ten sam zakres.",
+        "Zmień pakiet.",
+        "Odejmij elementy z oferty.",
+        "Zmniejsz liczbę godzin, konsultacji, funkcji, etapów, produktów, materiałów, wdrożeń albo poziom wsparcia.",
+        "To często otwiera oczy, bo klient widzi, za co naprawdę płaci.",
+        "Gotowe zdanie: Możemy zejść do tej ceny, jeśli usuniemy [element] i zostawimy [zakres].",
+        "Gotowe zdanie: Cena za pełny pakiet zostaje. Mogę przygotować mniejszy wariant w Waszym budżecie.",
+        "Czego nie robić: nie dawaj tej samej wartości za mniejsze pieniądze, jeśli nie dostajesz nic w zamian.",
+        "Przykład: klient chce 20 procent mniej. Zamiast rabatu usuwasz dodatkowe spotkania, krótszy support albo część wdrożenia."
+      ]
+    },
+    {
+      "title": "Zasada 10, nie mów nie, mów jeśli",
+      "items": [
+        "Słowo nie często zabija deal albo rodzi wrogość.",
+        "Słowo jeśli pokazuje, że zależy Ci na rozwiązaniu, ale potrzebujesz warunku.",
+        "Nie oznacza zamknięcie. Jeśli oznacza rozmowę o konstrukcji deala.",
+        "Zamiast: nie możemy dać rabatu, powiedz: możemy rozmawiać o niższej cenie, jeśli zmienimy zakres.",
+        "Zamiast: nie możemy odroczyć płatności, powiedz: możemy rozważyć odroczenie, jeśli pierwsza część będzie płatna dzisiaj.",
+        "Gotowe zdanie: A co jeśli rozłożymy tę płatność na kilka mniejszych części?",
+        "Gotowe zdanie: A co jeśli zostawimy cenę, ale zmniejszymy pakiet do najważniejszych elementów?",
+        "Gotowe zdanie: Mogę to zrobić, jeśli decyzja zapadnie do [termin].",
+        "Czego nie robić: nie używaj jeśli jako manipulacji. Warunek musi być realny i uczciwy."
+      ]
+    },
+    {
+      "title": "Rabat tylko za coś",
+      "items": [
+        "Rabat może być narzędziem, ale nie może być odruchem.",
+        "Najlepsze wymiany za rabat: płatność z góry, szybsza decyzja, dłuższa umowa, mniejszy zakres, referencja, case study, większy wolumen albo prostszy proces.",
+        "Przed rabatem zapytaj, czy problemem jest budżet, brak zrozumienia wartości, porównanie z konkurencją czy potrzeba poczucia wygranej.",
+        "Jeśli klient dostaje rabat, powinien wiedzieć, z czego wynika i co daje w zamian.",
+        "Gotowe zdanie: Mogę zejść do [kwota], jeśli płatność będzie dzisiaj i zakres zostaje bez dodatkowych zmian.",
+        "Gotowe zdanie: Mogę dać rabat przy umowie na [okres], bo wtedy mamy stabilność po obu stronach."
+      ]
+    },
+    {
+      "title": "Cena zostaje, zmienia się pakiet",
+      "items": [
+        "Ustal z góry, które elementy pakietu są rdzeniem, a które są dodatkami.",
+        "Rdzeń chroni wynik klienta. Dodatki można przesuwać, usuwać albo sprzedawać osobno.",
+        "Przy presji na cenę pokaż 2 warianty: pełny pakiet za pełną cenę i mniejszy pakiet w budżecie klienta.",
+        "Nie przepraszaj za cenę. Wyjaśnij, co wchodzi w pakiet i co z niego znika przy niższym budżecie.",
+        "Gotowe zdanie: Przy tym budżecie zrobiłbym wersję podstawową: [zakres]. Pełny rezultat wymaga pakietu [nazwa].",
+        "Gotowe zdanie: Cena pełnego pakietu zostaje, ale możemy stworzyć mniejszy wariant startowy."
+      ]
+    },
+    {
+      "title": "Kiedy przerwać negocjacje",
+      "items": [
+        "Przerwij albo zatrzymaj negocjacje, jeśli klient chce pełny zakres za cenę, która niszczy marżę.",
+        "Przerwij, jeśli klient oczekuje ustępstw, ale sam nie daje nic w zamian.",
+        "Przerwij, jeśli klient używa gróźb, presji albo porównań, których nie da się zweryfikować.",
+        "Przerwij, jeśli deal wymaga obietnic, których nie da się uczciwie dowieźć.",
+        "Zatrzymanie negocjacji nie musi być konfliktem. Może być spokojnym nazwaniem granicy.",
+        "Gotowe zdanie: W tej konfiguracji nie dowieziemy jakości, na której mi zależy, więc nie chcę składać obietnicy, której nie dowiozę.",
+        "Gotowe zdanie: Przy tych warunkach to nie będzie dobry deal dla żadnej ze stron."
+      ]
+    },
+    {
+      "title": "Szybka kontrola przed rozmową",
+      "items": [
+        "Wiesz, jaki jest Twój pełny pakiet i cena wyjściowa.",
+        "Wiesz, jaka jest najniższa akceptowalna cena.",
+        "Wiesz, które elementy można wyjąć z pakietu.",
+        "Masz listę rzeczy, które możesz dostać w zamian za ustępstwo.",
+        "Masz przygotowane zdania z jeśli zamiast prostego nie.",
+        "Nie zamierzasz negocjować sam ze sobą.",
+        "Nie oddajesz nic za darmo.",
+        "Nie grozisz klientowi.",
+        "Masz spokojną granicę, przy której rezygnujesz z deala."
+      ]
+    }
+  ],
+  "example": "Poproś AI: przeanalizuj moją ofertę i typowe obiekcje klientów według checklisty 10 zasad negocjacji sprzedażowych. Przygotuj odpowiedzi na prośbę o rabat, wariant mniejszego pakietu, 10 zdań z jeśli zamiast nie oraz listę rzeczy, które mogę dostać w zamian za ustępstwo.",
+  "order": 40,
+  "published": true,
+  "seoTitle": "10 zasad negocjacji sprzedażowych, checklista | Akademia.pl",
+  "seoDescription": "Checklista negocjacji sprzedażowych: nie oddawaj za darmo, nie obniżaj ceny bez kontroferty, zmień pakiet zamiast ceny i zamieniaj nie na jeśli.",
+  "keywords": [
+    "negocjacje sprzedażowe",
+    "techniki negocjacji",
+    "rabat za coś",
+    "obrona ceny",
+    "sprzedaż B2B"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "negocjacje-sprzedazowe",
+  "internalLinks": [
+    "analiza-cenowa-produktu-uslugi",
+    "strategia-cenowa-produktu",
+    "oferta-b2b-do-100k-pln",
+    "statement-of-work-granice-zakresu"
+  ],
+  "sourceReferences": [
+    {
+      "title": "Everything is Negotiable: How to Get the Best Deal Every Time",
+      "author": "Gavin Kennedy",
+      "url": "https://www.penguin.co.nz/books/everything-is-negotiable-9781448150748",
+      "relation": "Odniesienie do autora i książki o negocjacjach, traktowane jako inspiracja teoretyczna, nie oficjalny materiał źródłowy tej checklisty."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy checklista 10 zasad negocjacji sprzedażowych?",
+      "answer": "Służy do przygotowania rozmowy, w której klient prosi o rabat, bonus, zmianę zakresu albo lepsze warunki. Pomaga chronić cenę, wymieniać ustępstwa na konkretną wartość i nie negocjować samemu ze sobą."
+    },
+    {
+      "question": "Czy zawsze trzeba odmawiać rabatu?",
+      "answer": "Nie. Rabat może mieć sens, jeśli dostajesz coś w zamian: płatność z góry, szybszą decyzję, dłuższą umowę, mniejszy zakres, większy wolumen albo zgodę na case study. Problemem jest rabat bez wymiany."
+    },
+    {
+      "question": "Dlaczego lepiej zmienić pakiet niż cenę?",
+      "answer": "Bo obniżenie ceny bez zmiany zakresu uczy klienta, że poprzednia cena była miękka. Zmiana pakietu pokazuje, że niższy budżet oznacza mniejszy zakres, mniej wsparcia, mniej etapów albo inną wersję rezultatu."
+    },
+    {
+      "question": "Jak zamienić nie na jeśli w rozmowie?",
+      "answer": "Zamiast mówić: nie możemy zejść z ceny, powiedz: możemy rozmawiać o niższej cenie, jeśli zmienimy zakres. Zamiast odmawiać bonusu, powiedz: mogę go dodać, jeśli decyzja zapadnie do konkretnego terminu."
+    },
+    {
+      "question": "Czy wysoka pierwsza oferta nie odstraszy klienta?",
+      "answer": "Może odstraszyć, jeśli jest przypadkowa i nieuzasadniona. Ma sens wtedy, gdy pokazujesz pełny wariant wartości, wynik, proces, ograniczenie ryzyka i różnicę wobec alternatyw. Wtedy niższy pakiet jest wyborem, a nie paniczną obniżką."
+    },
+    {
+      "question": "Kiedy warto przerwać negocjacje sprzedażowe?",
+      "answer": "Wtedy, gdy klient chce pełny zakres za cenę niszczącą marżę, oczekuje ustępstw bez wymiany, naciska na obietnice niemożliwe do dowiezienia albo używa presji, która psuje relację. Dobra negocjacja musi działać dla obu stron."
+    }
+  ]
+}

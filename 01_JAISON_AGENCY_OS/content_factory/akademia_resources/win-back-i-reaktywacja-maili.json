@@ -1,0 +1,101 @@
+{
+  "id": "win-back-i-reaktywacja-maili",
+  "type": "checklist",
+  "title": "Win-back i reaktywacja maili",
+  "description": "Checklista odzyskiwania nieaktywnych subskrybentów i klientów: sekwencja win-back trzech do pięciu maili w optymalnym oknie, downsell i pauza przed anulowaniem oraz dogrywka, czyli sekretny reopen po launchu.",
+  "shortDescription": "Odzyskaj nieaktywnych subskrybentów i klientów sekwencją win-back, downsellem i dogrywką.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Email marketing",
+    "Reaktywacja"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/win-back-i-reaktywacja-maili/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Win-back i reaktywacja maili",
+  "body": "Nieaktywny subskrybent i klient na krawędzi rezygnacji to nie strata, tylko okazja do odzyskania tańsza niż pozyskanie nowego. Ta checklista podaje sekwencję win-back od trzech do pięciu maili w optymalnym oknie czasowym, mechanizmy downsell i pauzy przed anulowaniem oparte o konkretny powód rezygnacji oraz dogrywkę, czyli sekretny reopen oferty dwa do czterech tygodni po głównym launchu. Loss aversion działa mocniej niż obietnica korzyści, więc mail w stylu nie trać dostępu czy serii bywa skuteczniejszy niż kolejna zachęta. Transparentność, na przykład podanie współczynnika zwrotów, dodatkowo buduje wiarygodność.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z informacją, jak dawno odbiorcy byli aktywni, oraz z typowymi powodami rezygnacji w Twoim biznesie. Poproś AI, żeby napisało sekwencję win-back na właściwe okno czasowe, od tęsknimy za Tobą po ostatnią szansę z mocniejszą zachętą, oraz dobrało reakcję na konkretny powód rezygnacji, na przykład za drogo, nie używam albo brakuje funkcji. Następnie niech AI zaprojektuje dogrywkę jako sekretny reopen tylko mailowy, z krótkim oknem i transparentnym współczynnikiem zwrotów.",
+  "checklistSections": [
+    {
+      "title": "Sekwencja win-back, 3 do 5 maili w 21 do 100 dni",
+      "items": [
+        "Najlepsze okno na win-back to 21 do 45 dni po ostatniej interakcji, najwyższy open rate około 12,7 procent.",
+        "Email 1, dni 30 do 45: tęsknimy za Tobą plus co nowego od ostatniej wizyty.",
+        "Email 2, dni 50 do 60: social proof plus testimoniale od aktywnych użytkowników.",
+        "Email 3, dni 65 do 75: zachęta, 10 do 20 procent rabatu albo bonus za powrót.",
+        "Email 4, dni 80 do 90: ostatnia szansa z mocniejszą zachętą, 25 do 50 procent rabatu.",
+        "Email 5, dzień 100: czy to pożegnanie, bo 45 procent odbiorców maili win-back otwiera przyszłe wiadomości.",
+        "Email plus SMS razem dają plus 54 procent konwersji wobec samego maila."
+      ]
+    },
+    {
+      "title": "Downsell i pauza przed anulowaniem",
+      "items": [
+        "Za drogo to 20 do 50 procent rabatu na 2 do 3 miesiące albo downgrade do tańszego planu.",
+        "Nie używam to pauza konta na 1 do 3 miesiące, zachowuje dane. Firmy z opcją pauzy mają 95,6 procent renewal rate.",
+        "Brakuje funkcji to roadmapa plus przedłużenie triala.",
+        "Tworzysz mail nie trać serii, statusu albo bonusu przed utratą klienta, bo loss aversion jest silniejszy niż obietnica korzyści."
+      ]
+    },
+    {
+      "title": "Dogrywka, sekretny reopen 2 do 4 tygodnie po launchu",
+      "items": [
+        "Tylko mail, nie publiczny landing i nie reklamy: to nie jest publiczna oferta, piszę tylko do Ciebie.",
+        "Pokazujesz sukces: wyniki pierwszej fali plus testimoniale z pierwszych tygodni.",
+        "Krótkie okno 2 do 3 dni maksymalnie, ta sama cena i warunki, frame jako druga szansa, nie wyprzedaż.",
+        "Podajesz refund rate: współczynnik zwrotów 0,7 procent, 3 osoby z 430, wiarygodność przez transparentność."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy masz listę nieaktywnych subskrybentów albo klientów rezygnujących z subskrypcji i chcesz ich odzyskać sekwencją win-back, downsellem albo dogrywką po launchu.",
+  "order": 74,
+  "published": true,
+  "seoTitle": "Win-back i reaktywacja maili, sekwencja odzyskiwania klientów",
+  "seoDescription": "Odzyskaj nieaktywnych subskrybentów i klientów: sekwencja win-back, optymalne okno czasowe, downsell i pauza przed anulowaniem oraz dogrywka jako sekretny reopen.",
+  "keywords": [
+    "win-back",
+    "reaktywacja subskrybentów",
+    "downsell",
+    "churn",
+    "email marketing"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "kampania-email",
+  "internalLinks": [
+    "sekwencja-powitalna-i-nurture",
+    "segmentacja-i-wyzwalacze-mailowe",
+    "demand-generation-i-atrybucja"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Win-back, downsell i dogrywka po launchu",
+  "faq": [
+    {
+      "question": "Kiedy wysyłać maile win-back do nieaktywnych?",
+      "answer": "Najlepsze okno to 21 do 45 dni po ostatniej interakcji, bo wtedy open rate jest najwyższy. Całą sekwencję rozkładasz na dłużej, od około trzydziestego dnia z mailem tęsknimy za Tobą, przez social proof i rosnące zachęty, aż po mail czy to pożegnanie około setnego dnia, bo nawet wtedy część odbiorców wraca."
+    },
+    {
+      "question": "Jak reagować na powód za drogo przy rezygnacji?",
+      "answer": "Na obiekcję cenową odpowiadasz rabatem 20 do 50 procent na dwa do trzech miesięcy albo propozycją downgrade do tańszego planu. Chodzi o to, żeby utrzymać relację i dane klienta zamiast tracić go całkowicie, bo odzyskanie kogoś, kto już znał produkt, jest tańsze niż pozyskanie zupełnie nowej osoby."
+    },
+    {
+      "question": "Dlaczego opcja pauzy zmniejsza rezygnacje?",
+      "answer": "Gdy klient mówi, że nie używa produktu, pauza konta na jeden do trzech miesięcy z zachowaniem danych często działa lepiej niż anulowanie. Firmy oferujące pauzę osiągają bardzo wysoki renewal rate, około 95,6 procent, bo klient nie traci historii i wraca, gdy znów ma potrzebę, zamiast odchodzić na stałe."
+    },
+    {
+      "question": "Czym jest dogrywka po launchu?",
+      "answer": "Dogrywka to sekretny reopen oferty dwa do czterech tygodni po głównym launchu, wysyłany tylko mailem, bez publicznego landinga i reklam. Ma krótkie okno dwóch do trzech dni, tę samą cenę co wcześniej i jest framowana jako druga szansa. Dodanie transparentnego współczynnika zwrotów zwiększa jej wiarygodność."
+    },
+    {
+      "question": "Czy łączyć maile z SMS w reaktywacji?",
+      "answer": "Tak, połączenie maila i SMS w sekwencji win-back potrafi podnieść konwersję o około 54 procent w porównaniu z samym mailem. Dwa kanały zwiększają szansę, że wiadomość w ogóle zostanie zauważona przez nieaktywnego odbiorcę, zwłaszcza przy ostatniej szansie z mocniejszą zachętą rabatową."
+    }
+  ]
+}

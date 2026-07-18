@@ -1,0 +1,44 @@
+{
+  "last_update": "2026-05-15T13:35:00",
+  "project_name": "Holistic Social Automation Ecosystem",
+  "modules": [
+    {
+      "id": "kb_pipeline",
+      "name": "🧠 Knowledge Base Pipeline",
+      "tasks": [
+        {"id": "kb_1", "task": "YouTube Transcript Harvester (Gemini 2.5 Flash)", "status": "DONE", "automated": true},
+        {"id": "kb_2", "task": "Przetworzenie kursu 'Umiejętności Jutra' (26 filmów)", "status": "DONE", "automated": true},
+        {"id": "kb_3", "task": "Skaner Wiedzy (analiza pain pointów)", "status": "DONE", "automated": true}
+      ]
+    },
+    {
+      "id": "social_planner",
+      "name": "📅 Social Planner & GBP",
+      "tasks": [
+        {"id": "sp_1", "task": "Interfejs Planera Social Media", "status": "DONE", "automated": false},
+        {"id": "sp_2", "task": "Integracja OAuth2 dla Google Business Profile", "status": "DONE", "automated": true},
+        {"id": "sp_3", "task": "Wniosek o dostęp do GBP API (Allowlist)", "status": "IN_PROGRESS", "automated": false, "note": "Wniosek wysłany (8-4775000040623)"},
+        {"id": "sp_4", "task": "Zarządzanie opiniami (odpowiedzi AI)", "status": "DONE", "automated": true}
+      ]
+    },
+    {
+      "id": "faceless_creator",
+      "name": "🎬 Faceless Creator (AI Influencer)",
+      "tasks": [
+        {"id": "fc_1", "task": "Pipeline: Skrypt -> Voiceover -> B-Roll -> FFmpeg", "status": "DONE", "automated": true},
+        {"id": "fc_2", "task": "Integracja Pexels API (B-Roll)", "status": "DONE", "automated": true, "note": "Klucze podpięte"},
+        {"id": "fc_3", "task": "Produkcja pierwszego wideo testowego", "status": "IN_PROGRESS", "automated": true, "note": "Odpalam renderer..."},
+        {"id": "fc_4", "task": "Baza viralowych inspiracji", "status": "DONE", "automated": false}
+      ]
+    },
+    {
+      "id": "monetization",
+      "name": "💰 Monetization & Sales",
+      "tasks": [
+        {"id": "m_1", "task": "Landing Page Lejek (Holistic JSON)", "status": "IN_PROGRESS", "automated": false},
+        {"id": "m_2", "task": "Generator Produktów Cyfrowych (Checklisty/Kursy)", "status": "DONE", "automated": true},
+        {"id": "m_3", "task": "Integracja GHL (CRM & Sales)", "status": "TODO", "automated": false}
+      ]
+    }
+  ]
+}

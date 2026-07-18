@@ -1,0 +1,106 @@
+{
+  "id": "podcast-od-zera-top-4-procent",
+  "type": "checklist",
+  "title": "Podcast od zera: reguła Top 4 procent",
+  "description": "Checklista startu podcastu według reguły Top 4 procent Chrisa Hutchinsa: dziesięć odcinków w dziesięć tygodni, minimalny zestaw sprzętu, format, długość, dystrybucja na Spotify, Apple i YouTube oraz repurposing jednego odcinka na kilkanaście assetów.",
+  "shortDescription": "Wydaj dziesięć odcinków w dziesięć tygodni i znajdź się w górnych 4 procentach podcastów.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Content i social media",
+  "applicationSlug": "content-social-media",
+  "tags": [
+    "Podcast",
+    "Content marketing"
+  ],
+  "url": "/checklisty/content-social-media/podcast-od-zera-top-4-procent/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Podcast od zera: reguła Top 4 procent",
+  "body": "Większości podcastów brakuje nie talentu, tylko konsekwencji, i właśnie to jest Twoja szansa. Reguła Top 4 procent mówi, że jeśli wydasz dziesięć odcinków w dziesięć tygodni, znajdziesz się w górnych 4 procentach wszystkich podcastów, bo większość poddaje się wcześniej. Ta checklista prowadzi od minimalnego zestawu sprzętu, przez wybór formatu i długości, po dystrybucję i repurposing jednego odcinka na kilkanaście materiałów. Kluczowe jest mocne otwarcie w pierwszych 60 sekundach z obietnicą konkretnej wartości oraz regularność, bo to ona, a nie idealna jakość, decyduje o pozycji.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z tematem podcastu, grupą docelową i informacją, czy wolisz format solo czy wywiady. Poproś AI, żeby zaplanowało dziesięć odcinków na dziesięć tygodni z konkretnymi tematami, napisało hooki na pierwsze 60 sekund każdego odcinka z obietnicą konkretnej wartości oraz rozpisało plan repurposingu jednego odcinka na clipy wideo, posty i newsletter. Następnie niech AI przygotuje listę 5 do 10 podcastów w Twojej branży, do których możesz zgłosić się jako gość, wraz z dwoma do trzech gotowymi tematami rozmowy.",
+  "checklistSections": [
+    {
+      "title": "Reguła Top 4 procent, Chris Hutchins",
+      "items": [
+        "Planujesz 10 odcinków w 10 tygodni, bo to stawia Cię w górnych 4 procentach podcastów.",
+        "Stawiasz na konsekwencję ponad talent, bo sam fakt regularnego publikowania przez 10 tygodni daje pozycję w top 4 procentach.",
+        "Startujesz na minimalnym zestawie: mikrofon USB za 200 do 400 złotych plus narzędzie do nagrywania i edycji, na przykład Riverside.fm albo Descript."
+      ]
+    },
+    {
+      "title": "Strategia podcastu",
+      "items": [
+        "Wybierasz format: wywiady są łatwiejsze do skalowania, solo daje silniejszy personal brand.",
+        "Trzymasz długość 20 do 45 minut jako sweet spot dla podcastów biznesowych, dłuższe są ok, jeśli content jest silny.",
+        "Pamiętasz, że ludzie nie mają krótkich okresów uwagi, tylko krótkie okresy rozważania, więc musisz zahaczyć szybko.",
+        "Pierwsze 60 sekund to hook: obiecujesz konkretną wartość, na przykład w tym odcinku dowiesz się trzech rzeczy.",
+        "Repurposujesz jeden odcinek na 5 do 10 clipów wideo, 3 posty na LinkedIn, 1 newsletter i 2 TikToki."
+      ]
+    },
+    {
+      "title": "Dystrybucja podcastu",
+      "items": [
+        "Publikujesz na Spotify, Apple Podcasts i YouTube, czyli pełny odcinek, oraz YouTube Shorts dla clipów.",
+        "Zgłaszasz się jako gość do 5 do 10 podcastów w swojej branży i przygotowujesz 2 do 3 gotowe tematy.",
+        "Robisz cross-promocję, czyli wymianę wzmianek z podcasterami o podobnej wielkości.",
+        "Generujesz podsumowania odcinków w NotebookLM, które brzmią lepiej niż improwizacja, za darmo."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy chcesz wystartować z podcastem albo audio na potrzeby marki osobistej lub firmy i potrzebujesz prostego, wykonalnego planu na pierwsze dziesięć tygodni.",
+  "order": 64,
+  "published": true,
+  "seoTitle": "Podcast od zera, reguła Top 4 procent i plan na 10 tygodni",
+  "seoDescription": "Wystartuj z podcastem: reguła Top 4 procent, minimalny sprzęt, format, długość, hooki na pierwsze 60 sekund, dystrybucja i repurposing jednego odcinka na kilkanaście assetów.",
+  "keywords": [
+    "podcast od zera",
+    "jak nagrać podcast",
+    "top 4 procent",
+    "dystrybucja podcastu",
+    "repurposing podcastu"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "podcast",
+  "internalLinks": [
+    "repurposing-content-1-na-22",
+    "formaty-i-harmonogram-social-media",
+    "building-in-public-glos-marki"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Start podcastu według reguły Top 4 procent i jego dystrybucja",
+  "sourceReferences": [
+    {
+      "title": "Reguła Top 4 procent dla podcastów",
+      "author": "Chris Hutchins",
+      "url": "https://www.allthehacks.com",
+      "relation": "Inspiracja reguły o dziesięciu odcinkach w dziesięć tygodni, do dalszego posłuchania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Na czym polega reguła Top 4 procent w podcastach?",
+      "answer": "Reguła Top 4 procent mówi, że jeśli wydasz dziesięć odcinków w ciągu dziesięciu tygodni, znajdziesz się w górnych czterech procentach wszystkich podcastów. Działa, bo większość twórców poddaje się wcześniej, więc o pozycji decyduje konsekwencja, a nie talent ani idealna jakość produkcji."
+    },
+    {
+      "question": "Jaki sprzęt jest potrzebny na start podcastu?",
+      "answer": "Na początek wystarczy minimalny zestaw: mikrofon USB w cenie 200 do 400 złotych oraz narzędzie do nagrywania i edycji, na przykład Riverside.fm albo Descript. Nie musisz inwestować w drogie studio, bo na starcie ważniejsza jest regularność niż perfekcyjny dźwięk."
+    },
+    {
+      "question": "Jaka długość odcinka jest najlepsza?",
+      "answer": "Dla podcastów biznesowych sweet spot to 20 do 45 minut. Dłuższe odcinki też się sprawdzają, jeśli treść jest naprawdę silna, bo ludzie nie mają krótkich okresów uwagi, tylko krótkie okresy rozważania. Dlatego najważniejsze jest mocne zahaczenie słuchacza w pierwszych sekundach."
+    },
+    {
+      "question": "Jak rozpromować jeden odcinek podcastu?",
+      "answer": "Z jednego odcinka zrób 5 do 10 clipów wideo, 3 posty na LinkedIn, jeden newsletter i 2 TikToki, a pełny odcinek opublikuj na Spotify, Apple Podcasts i YouTube. Dodatkowo zgłaszaj się jako gość do innych podcastów i wymieniaj wzmianki z twórcami o podobnej wielkości."
+    },
+    {
+      "question": "Wywiady czy solo, co wybrać na początek?",
+      "answer": "Format wywiadów jest łatwiejszy do skalowania i pozwala korzystać z zasięgu gości, a format solo buduje silniejszą markę osobistą. Wybór zależy od celu: jeśli zależy Ci na pozycjonowaniu siebie jako eksperta, rozważ solo, jeśli na tempie i sieci kontaktów, zacznij od wywiadów."
+    }
+  ]
+}

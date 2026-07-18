@@ -1,0 +1,97 @@
+{
+  "id": "repurposing-content-1-na-22",
+  "type": "checklist",
+  "title": "Repurposing: jeden pillar content w 15 do 22 assetów",
+  "description": "Checklista systematycznego repurposingu, która zamienia jeden pillar content, czyli długi artykuł lub wideo, w 15 do 22 natywnych assetów na LinkedIn, X, Instagram, YouTube Shorts i newsletter, z zasadami rozłożenia publikacji w czasie.",
+  "shortDescription": "Zamień jeden mocny materiał w 15 do 22 natywnych postów, bez kopiowania jeden do jednego.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Content i social media",
+  "applicationSlug": "content-social-media",
+  "tags": [
+    "Repurposing",
+    "Content marketing"
+  ],
+  "url": "/checklisty/content-social-media/repurposing-content-1-na-22/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Repurposing: jeden pillar content w 15 do 22 assetów",
+  "body": "Najczęstszy błąd małych firm w contencie to robienie wszystkiego od zera za każdym razem. Repurposing odwraca tę logikę: tworzysz jeden mocny pillar content, czyli artykuł 2000 plus słów albo wideo 15 do 20 minut, a potem rozkładasz go na kilkanaście natywnych assetów per platforma. Ta checklista podaje konkretny schemat, jak z jednego materiału zrobić 15 do 22 elementów, oraz zasady, których trzeba pilnować, żeby algorytmy nie ukarały Cię za kopiowanie jeden do jednego. Kluczowe jest rozłożenie publikacji na 2 do 4 tygodni i dopasowanie formatu oraz tonu do każdego medium.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z jednym swoim pillar contentem, czyli pełnym tekstem artykułu albo transkrypcją wideo. Poproś AI, żeby wyciągnęło z niego trzy posty karuzelowe na LinkedIn, około ośmiu krótkich postów na X, dwa do trzech pomysłów na Reelsy lub TikToki z konkretnymi momentami do wycięcia, jeden do dwóch YouTube Shorts, ankietę, post storytellingowy, infografikę i podsumowanie do newslettera. Następnie niech AI rozpisze te assety na kalendarz 2 do 4 tygodni i dla każdego zaproponuje natywny format oraz ton, pilnując, żeby żaden nie był kopią innego.",
+  "checklistSections": [
+    {
+      "title": "Schemat repurposingu z jednego pillara",
+      "items": [
+        "Masz jeden pillar content: artykuł 2000 plus słów albo wideo 15 do 20 minut.",
+        "Z pillara robisz 3 posty na LinkedIn w formie karuzel PDF.",
+        "Robisz 8 tweetów albo postów na X.",
+        "Robisz 2 do 3 Reelsy lub TikToki, wycinając najciekawsze momenty, maksymalnie 60 sekund.",
+        "Robisz 1 do 2 YouTube Shorts.",
+        "Robisz jedną ankietę na LinkedIn.",
+        "Robisz jeden post tekstowy storytelling na LinkedIn.",
+        "Robisz jedną infografikę, na przykład w Canvie.",
+        "Robisz jeden newsletter z podsumowaniem.",
+        "Robisz jeden email do sekwencji powitalnej, jeśli treść jest evergreen.",
+        "Razem powstaje 15 do 22 assetów z jednego pillar contentu."
+      ]
+    },
+    {
+      "title": "Zasady repurposingu",
+      "items": [
+        "Nigdy nie kopiujesz jeden do jednego między platformami, bo algorytmy to wykrywają i karzą.",
+        "Publikację rozkładasz na 2 do 4 tygodni, nie wrzucasz wszystkiego naraz.",
+        "Każda platforma dostaje natywny format i ton.",
+        "Pillar blogowy ma 2000 plus słów z podtytułami, listami i danymi liczbowymi.",
+        "Pillar wideo ma 15 do 20 minut z wyraźnymi momentami do wycięcia co 2 do 3 minuty."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy nagrywasz podcast, webinar albo piszesz długi artykuł i chcesz z jednego materiału wycisnąć kilkanaście postów na cały miesiąc, zamiast tworzyć każdy od zera.",
+  "order": 60,
+  "published": true,
+  "seoTitle": "Repurposing contentu, jeden pillar w 15 do 22 assetów",
+  "seoDescription": "Schemat repurposingu: zamień jeden artykuł lub wideo w 15 do 22 natywnych postów na LinkedIn, X, Instagram, Shorts i newsletter, z planem publikacji na 2 do 4 tygodni.",
+  "keywords": [
+    "repurposing content",
+    "pillar content",
+    "recykling treści",
+    "content na social media",
+    "kalendarz publikacji"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "repurposing",
+  "internalLinks": [
+    "formaty-i-harmonogram-social-media",
+    "podcast-od-zera-top-4-procent",
+    "hooki-i-formuly-wiralowe"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Repurposing jednego pillar contentu na kilkanaście assetów",
+  "faq": [
+    {
+      "question": "Czym jest pillar content w repurposingu?",
+      "answer": "Pillar content to jeden duży, mocny materiał, na przykład artykuł powyżej 2000 słów albo wideo 15 do 20 minut, który zawiera kompletną myśl na dany temat. Stanowi źródło, z którego wycinasz kilkanaście mniejszych assetów na poszczególne platformy, zamiast tworzyć każdy post od zera."
+    },
+    {
+      "question": "Ile assetów realnie wyciągnę z jednego materiału?",
+      "answer": "Według schematu z tej checklisty z jednego pillar contentu powstaje 15 do 22 assetów: trzy karuzele LinkedIn, około ośmiu postów na X, dwa do trzech Reelsów lub TikToków, jeden do dwóch Shorts, ankieta, post storytellingowy, infografika, newsletter i opcjonalnie email do sekwencji powitalnej."
+    },
+    {
+      "question": "Czy mogę po prostu wkleić ten sam tekst wszędzie?",
+      "answer": "Nie warto, bo algorytmy wykrywają i karzą kopiowanie jeden do jednego, a każda platforma nagradza inny format i ton. Repurposing polega na adaptacji: ten sam pomysł zapisujesz inaczej w karuzeli LinkedIn, w wątku na X, w krótkim wideo i w newsletterze."
+    },
+    {
+      "question": "Jak rozłożyć publikację repurposowanych assetów?",
+      "answer": "Najlepiej rozłożyć je na 2 do 4 tygodni, a nie publikować wszystkiego naraz. Dzięki temu jeden pillar content zasila Twój kalendarz przez kilka tygodni, a odbiorcy na różnych platformach nie widzą tej samej treści tego samego dnia."
+    },
+    {
+      "question": "Jak przygotować pillar pod łatwy repurposing?",
+      "answer": "Pillar blogowy pisz z podtytułami, listami i danymi liczbowymi, żeby łatwo było wyciąć z niego pojedyncze tezy. Pillar wideo nagrywaj tak, żeby co 2 do 3 minuty pojawiał się wyraźny moment do wycięcia, czyli gotowy fragment na Reel, TikToka albo Short."
+    }
+  ]
+}

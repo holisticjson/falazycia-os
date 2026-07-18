@@ -1,0 +1,75 @@
+{
+  "id": "sprzedaz-vip-5-do-7-dni",
+  "type": "prompt",
+  "title": "Okienko sprzedażowe 5 do 7 dni",
+  "description": "Prompt dla eksperta od przeprowadzania sprzedaży w krótkim okienku: diagnoza oferty, prelaunch, strona sprzedażowa, maile dzień po dniu, środek kampanii, ostatni dzień i analiza po zamknięciu.",
+  "shortDescription": "Zaplanuj okienko sprzedażowe bez paniki w środku kampanii i bez przedłużania koszyka.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Launch",
+    "Sprzedaż"
+  ],
+  "url": "/prompty/marketing-sprzedaz/okienko-sprzedazowe-5-do-7-dni/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-24",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Okienko sprzedażowe 5 do 7 dni",
+  "body": "Ten prompt traktuje sprzedaż okienkową jako operację, a nie jako luźną kampanię promocyjną. AI ma wejść w rolę eksperta, który pomaga przygotować, przeprowadzić i rozliczyć okienko sprzedażowe dla oferty dostępnej tylko przez 5 do 7 dni. Oferta może być kursem, warsztatem, programem grupowym, usługą, konsultacją, produktem cyfrowym, społecznością albo pakietem premium. Sedno ze źródła zostaje: krótka dostępność, realna data zamknięcia, mocny start, naturalny spadek w środku, ostatni dzień jako największy moment decyzji, brak zmiany strategii w trakcie sprzedaży i analiza dopiero po zamknięciu.",
+  "usage": "Wklej prompt do AI razem z opisem oferty, ceną, grupą docelową, listą odbiorców, kanałami promocji, datą otwarcia i zamknięcia, stroną sprzedażową, planem maili, obiekcjami klientów i ograniczeniami zespołu. Model ma najpierw ocenić, czy oferta nadaje się do okienka sprzedażowego, potem wypunktować braki, zaprojektować prelaunch, rozpisać komunikację na 5 do 7 dni, przygotować plan ostatniego dnia i checklistę rozliczenia po kampanii. Użyj go szczególnie wtedy, gdy boisz się ciszy w środku kampanii albo masz pokusę przedłużyć sprzedaż zanim okno naprawdę się skończy.",
+  "prompt": "Jesteś ekspertem od przeprowadzania sprzedaży w okienku sprzedażowym. Twoim zadaniem jest pomóc mi przygotować i poprowadzić kampanię, w której oferta jest dostępna przez 5 do 7 dni, a potem koszyk, zapisy albo warunki promocyjne realnie się zamykają.\n\nNie zakładaj, że sprzedaję tylko kurs. Okienko może dotyczyć kursu, warsztatu, programu grupowego, konsultacji, usługi, społeczności, produktu cyfrowego, pakietu premium, przedsprzedaży albo oferty B2B. Dopasuj plan do typu oferty, ale pilnuj zasad sprzedaży okienkowej.\n\nNajważniejsza zasada: nie zmieniamy strategii w środku sprzedaży tylko dlatego, że pojawia się cisza. Typowy wzorzec to mocny start, spokojniejszy środek i bardzo mocny ostatni dzień.\n\nMoje dane wejściowe:\n1. Oferta: [opisz produkt, usługę, program, warsztat albo pakiet].\n2. Grupa docelowa: [opisz klienta].\n3. Cena i warianty: [wklej].\n4. Data otwarcia okienka: [wklej].\n5. Data i godzina zamknięcia okienka: [wklej].\n6. Kanały sprzedaży: [lista mailowa, social media, webinar, rozmowy 1 do 1, partnerzy, reklamy, społeczność].\n7. Obecna lista lub baza odbiorców: [liczba, jakość, open rate, segmenty, jeśli są].\n8. Strona sprzedażowa albo opis oferty: [wklej link lub treść].\n9. Dotychczasowe pytania i obiekcje klientów: [wklej].\n10. Ograniczenia: [czas, zespół, budżet, brak referencji, brak listy, brak automatyzacji].\n\nNajpierw oceń, czy ta oferta nadaje się do okienka sprzedażowego. Sprawdź:\n1. Czy istnieje realny powód ograniczonej dostępności.\n2. Czy zamknięcie koszyka jest prawdziwe, a nie udawane.\n3. Czy klient rozumie, co traci po zamknięciu okna.\n4. Czy oferta ma jasną transformację albo konkretny rezultat.\n5. Czy grupa docelowa jest wystarczająco rozgrzana.\n6. Czy mamy kanał dotarcia, który może dowieźć sprzedaż w 5 do 7 dni.\n7. Czy cena pasuje do wartości i segmentu.\n8. Czy są pytania i obiekcje, które trzeba obsłużyć przed ostatnim dniem.\n\nJeśli oferta nie nadaje się jeszcze do okienka, nie udawaj, że wszystko jest gotowe. Wypisz, co trzeba poprawić przed startem: obietnicę, grupę docelową, stronę, listę, rozgrzewkę, dowody, cenę, gwarancję, FAQ, proces płatności albo plan komunikacji.\n\nZaprojektuj strategię okienka 5 do 7 dni. Uwzględnij:\n1. Cel kampanii: sprzedaż, walidacja, przedsprzedaż, rekrutacja do programu, sprzedaż usługi albo zebranie pierwszej grupy.\n2. Główną obietnicę oferty.\n3. Powód, dla którego okienko trwa tylko 5 do 7 dni.\n4. Datę i godzinę zamknięcia.\n5. Co dokładnie znika po zamknięciu: możliwość zakupu, cena, bonus, grupa startowa, termin wdrożenia, dostęp live, konsultacja albo warunki VIP.\n6. Zdanie kontrolne dla zespołu: nie zmieniamy strategii w trakcie sprzedaży, realizujemy plan i wyciągamy wnioski po zamknięciu.\n\nZaprojektuj prelaunch. Nie zaczynaj sprzedaży od zimnego komunikatu kup teraz. Zaproponuj minimum tydzień rozgrzewki, a jeśli to niemożliwe, najkrótszą sensowną wersję rozgrzewki. Wykorzystaj:\n1. Wartościowy mail albo post o problemie.\n2. Case, historię albo diagnozę kosztu braku działania.\n3. Materiał edukacyjny: webinar, live, 3 krótkie wideo, darmowy mini kurs, checklistę albo serię postów.\n4. Zapowiedź daty otwarcia okienka.\n5. Zbieranie pytań i obiekcji przed startem.\n6. Segmentację osób najbardziej zainteresowanych.\n\nZaprojektuj stronę sprzedażową albo stronę oferty. Sprawdź, czy zawiera:\n1. Nagłówek z obietnicą transformacji albo rezultatu.\n2. Krótkie wideo lub sekcję wyjaśniającą, po co jest oferta i dla kogo jest.\n3. Opis problemu klienta i kosztu braku działania.\n4. Powód, dlaczego ta oferta i dlaczego teraz.\n5. Co klient dostaje, w jakiej kolejności i w jakim terminie.\n6. Cenę oraz ewentualną cenę referencyjną albo warunki promocyjne.\n7. Gwarancję, jeśli ma sens, na przykład 30 dni.\n8. Referencje, opinie, wyniki, screeny, cytaty, feedback albo inne dowody.\n9. FAQ z obiekcjami: czas, cena, poziom trudności, czy to dla mnie, dostęp, faktura, gwarancja, termin startu, warunki zamknięcia.\n10. Timer albo bardzo jasną informację o dacie zamknięcia.\n11. Przyciski zakupu albo zgłoszenia w logicznych miejscach.\n\nZaprojektuj test flow przed startem. Wypisz dokładnie, co trzeba sprawdzić:\n1. Wejście na stronę z telefonu i desktopu.\n2. Każdy przycisk kup, zapisz się albo aplikuj.\n3. Płatność testową albo test formularza.\n4. Mail potwierdzający zakup, zapis albo aplikację.\n5. Fakturę, jeśli dotyczy.\n6. Tag, segment albo lista w systemie mailingowym.\n7. Dostęp po zakupie albo instrukcję następnego kroku.\n8. Polskie znaki, linki, timer, datę zamknięcia i teksty na stronie.\n9. UTM, jeśli kampania ma wiele źródeł ruchu.\n10. Plan awaryjny, jeśli link, płatność albo formularz nie działa.\n\nRozpisz komunikację dzień po dniu dla okienka 5 do 7 dni.\n\nDzień 1, otwarcie:\n1. Komunikat: okienko jest otwarte.\n2. Co klient dostaje i dla kogo jest oferta.\n3. Dlaczego warto zdecydować teraz.\n4. Link do strony sprzedaży albo formularza.\n5. Przypomnienie daty zamknięcia.\n6. Założenie: dzień 1 może dać 15 do 25 procent całej sprzedaży.\n\nDzień 2, historia i wartość:\n1. Historia problemu, kosztu braku zmiany albo momentu przełomu.\n2. Konkretna wartość, nie sama sprzedaż.\n3. Miękkie CTA do oferty.\n4. Przypomnienie daty zamknięcia.\n\nDzień 3, obiekcje:\n1. Odpowiedzi na obiekcje: nie mam czasu, za drogo, czy dam radę, czy to dla mnie, czy poziom jest właściwy.\n2. Wyjaśnienie wartości i kosztu braku działania.\n3. Dopasowanie oferty do właściwej osoby oraz jasne wskazanie, dla kogo oferta nie jest.\n4. CTA do strony albo rozmowy.\n\nDzień 4, dowody i pytania:\n1. Referencje, opinie, wyniki, odpowiedzi na pytania albo social proof.\n2. FAQ wynikające z realnych pytań z kampanii.\n3. Przypomnienie, że środek okna zwykle jest spokojniejszy.\n4. CTA do oferty.\n\nDni 5 do 6, jeśli okienko trwa dłużej:\n1. Dodatkowy case albo demo.\n2. Porównanie życia przed i po skorzystaniu z oferty.\n3. Doprecyzowanie bonusów, gwarancji i zakresu.\n4. Segmentowana wiadomość do osób, które kliknęły, ale nie kupiły.\n5. Resend do osób, które nie otworzyły ważnych maili.\n\nOstatni dzień:\n1. Załóż, że ostatni dzień może wygenerować 40 do 60 procent całej sprzedaży.\n2. Zaplanuj 2 do 3 wiadomości przypominające.\n3. Komunikuj konkretnie: koszyk, zapisy albo warunki zamykają się dziś o [godzina].\n4. Przypomnij obietnicę, cenę, gwarancję, bonusy i co znika po zamknięciu.\n5. Odpowiedz jeszcze raz na główne obiekcje.\n6. Nie rozmywaj komunikatu. Ostatni dzień to decyzja teraz albo powrót przy kolejnym otwarciu.\n7. Zamknij sprzedaż punktualnie.\n\nPilnuj psychologii środka okienka:\n1. Spadek sprzedaży w środku nie oznacza, że kampania nie działa.\n2. Nie zmieniaj ceny, obietnicy, bonusów ani długości okna tylko dlatego, że dzień 2, 3 albo 4 jest spokojniejszy.\n3. Nie podejmuj strategicznych decyzji w środku sprzedaży, jeśli nie ma awarii, błędu technicznego albo realnego naruszenia zaufania.\n4. W środku okna realizuj plan, odpowiadaj na pytania i zapisuj obiekcje.\n5. Jeśli wystąpi błąd, popraw go, poinformuj odbiorców i kontynuuj kampanię.\n\nZaprojektuj zasady resendów:\n1. Wyślij ponownie najważniejsze maile do osób, które ich nie otworzyły.\n2. Zmień temat, ale nie zmieniaj obietnicy.\n3. Najważniejsze resendy dotyczą otwarcia, obiekcji i ostatniego dnia.\n4. Sprawdź, czy timer, data i linki są aktualne.\n5. Po kampanii zapisz, które tematy i resendy zadziałały.\n\nZaprojektuj raport po zamknięciu okna. Nie oceniaj kampanii w środku. Po zamknięciu policz:\n1. Wejścia na stronę.\n2. Kliknięcia w CTA.\n3. Liczbę zakupów, zgłoszeń albo rozmów.\n4. Przychód.\n5. Refundy albo rezygnacje, jeśli są.\n6. Koszt pozyskania klienta albo leada.\n7. Konwersję strony.\n8. Konwersję z listy mailowej.\n9. Najlepsze maile.\n10. Najlepsze tematy maili.\n11. Najlepsze kanały promocji.\n12. Najczęstsze pytania i obiekcje.\n13. Co powtórzyć w kolejnym okienku.\n14. Co poprawić przed kolejnym otwarciem.\n\nJeśli oferta wymaga dostarczenia po zakupie, zaprojektuj krótki plan obsługi:\n1. Co klient dostaje od razu po zakupie.\n2. Jaki jest pierwszy krok klienta.\n3. Jak wygląda onboarding.\n4. Jak zbieramy pytania i feedback.\n5. Jak dowozimy obietnicę.\n6. Jak zbieramy referencje, opinie i historie wdrożeń.\n7. Jak te referencje zasilą kolejne okienko.\n\nNa końcu zwróć wynik w tej strukturze:\n1. Decyzja, czy oferta nadaje się do okienka sprzedażowego teraz.\n2. Największe braki przed startem.\n3. Główna obietnica i powód ograniczenia czasowego.\n4. Plan prelaunchu.\n5. Audyt strony sprzedażowej albo oferty.\n6. Test flow przed startem.\n7. Harmonogram 5 do 7 dni, dzień po dniu.\n8. Plan ostatniego dnia z 2 do 3 wiadomościami.\n9. Zasady, czego nie zmieniać w środku okienka.\n10. Plan resendów.\n11. Raport po zamknięciu.\n12. Pierwsze 5 rzeczy do zrobienia dzisiaj.\n\nZasady jakości:\n1. Nie projektuj sztucznej niedostępności. Zamknięcie musi być prawdziwe.\n2. Nie doradzaj przedłużania koszyka w środku kampanii tylko dlatego, że sprzedaż chwilowo spadła.\n3. Nie oceniaj kampanii przed ostatnim dniem.\n4. Nie pisz ogólnych maili. Każdy mail ma mieć cel: otwarcie, wartość, obiekcja, dowód, przypomnienie albo zamknięcie.\n5. Nie zakładaj, że więcej maili oznacza lepszą sprzedaż. Liczy się rytm, segment i jasność decyzji.\n6. Nie chowaj ceny, gwarancji i terminu zamknięcia.\n7. Jeśli brakuje danych, dopytaj przed ułożeniem finalnego harmonogramu.",
+  "example": "Najlepszy, gdy masz ofertę, która ma być dostępna krótko: program, warsztat, usługę, produkt cyfrowy, pakiet konsultacyjny, społeczność albo kurs. Prompt pomaga AI wejść w rolę operatora kampanii i rozpisać okienko sprzedażowe od rozgrzewki po zamknięcie i raport po kampanii.",
+  "order": 101,
+  "published": true,
+  "seoTitle": "Okienko sprzedażowe 5 do 7 dni, prompt AI",
+  "seoDescription": "Prompt AI do zaplanowania okienka sprzedażowego: prelaunch, strona oferty, maile dzień po dniu, ostatni dzień, zamknięcie i raport po kampanii.",
+  "keywords": [
+    "okienko sprzedażowe",
+    "kampania sprzedażowa",
+    "launch oferty",
+    "sprzedaż czasowa",
+    "zamknięcie koszyka"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "okienko-sprzedazowe-5-do-7-dni",
+  "internalLinks": [
+    "lista-45-lejkow-sprzedazowych",
+    "wersja-easy-produktu-sprzedaj-zanim-zbudujesz",
+    "strona-sprzedazowa-b2c",
+    "tematy-maili-sprzedazowych"
+  ],
+  "sourceCourse": "Fabryka Kursów",
+  "sourceLesson": "Strategia, promocja, sprzedaż VIP, przedsprzedaż, mailing next level i platformy sprzedażowe",
+  "faq": [
+    {
+      "question": "Do czego służy prompt okienko sprzedażowe 5 do 7 dni?",
+      "answer": "Prompt pomaga zaplanować krótką kampanię sprzedażową z realnym terminem zamknięcia. Możesz użyć go do programu, usługi, warsztatu, produktu cyfrowego, społeczności, pakietu konsultacyjnego albo kursu."
+    },
+    {
+      "question": "Dlaczego okienko sprzedażowe ma trwać 5 do 7 dni?",
+      "answer": "Taki czas jest wystarczająco krótki, żeby stworzyć decyzję i poczucie realnego terminu, ale wystarczająco długi, żeby obsłużyć otwarcie, wartość, obiekcje, dowody, resendy i mocny ostatni dzień."
+    },
+    {
+      "question": "Co jest najważniejsze w środku okienka?",
+      "answer": "Najważniejsze jest nie panikować. Typowy wzorzec to mocny dzień otwarcia, spokojniejszy środek i duży skok ostatniego dnia. W środku realizujesz plan, odpowiadasz na obiekcje i nie zmieniasz strategii bez powodu."
+    },
+    {
+      "question": "Czy prompt nadaje się tylko do kursów online?",
+      "answer": "Nie. Kurs jest tylko jednym z przykładów. Prompt działa też dla usług, konsultacji, warsztatów, programów grupowych, społeczności, produktów cyfrowych, pakietów premium i ofert B2B, jeśli mają prawdziwy powód ograniczonej dostępności."
+    },
+    {
+      "question": "Ile sprzedaży może wpaść ostatniego dnia?",
+      "answer": "Źródło podaje, że ostatni dzień może wygenerować 40 do 60 procent całej sprzedaży. Dlatego prompt osobno projektuje ostatni dzień, 2 do 3 wiadomości przypominające i jasny komunikat zamknięcia."
+    },
+    {
+      "question": "Co sprawdzić po zamknięciu okienka?",
+      "answer": "Po zamknięciu warto policzyć wejścia na stronę, kliknięcia, zakupy, przychód, refundy, koszt pozyskania, konwersję, najlepsze maile, najlepsze kanały, pytania klientów i obiekcje do poprawy przed kolejnym otwarciem."
+    }
+  ]
+}

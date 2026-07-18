@@ -1,0 +1,289 @@
+{
+  "id": "jak-zarabiac-wiecej-na-etacie",
+  "type": "checklist",
+  "title": "Jak zarabiać więcej na etacie",
+  "description": "Checklista 6 kroków dla osoby na etacie, która chce szybciej awansować, lepiej komunikować dowożenie pracy, ustalić plan podwyżki i wiedzieć, kiedy zmienić pracodawcę.",
+  "shortDescription": "6 kroków do większych zarobków, awansu i lepszej pozycji u szefa.",
+  "industry": "HR i rekrutacja",
+  "industrySlug": "hr-rekrutacja",
+  "application": "Kariera i etat",
+  "applicationSlug": "kariera-etat",
+  "tags": [
+    "Kariera",
+    "Podwyżka"
+  ],
+  "url": "/checklisty/kariera-etat/jak-zarabiac-wiecej-na-etacie/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-13",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Jak zarabiać więcej na etacie",
+  "body": "Checklista powstała z praktycznej rady dla osób na etacie: mniej czekania, aż ktoś zauważy pracę, więcej widocznego dowożenia, krótkiej komunikacji, rozwoju i rozmowy o pieniądzach. Sedno jest proste: dowoź zadania, proś o więcej, raportuj tydzień, nie zgaduj oczekiwań, pokazuj rozwój przez wpływ na firmę i umów konkretny plan podwyżki. Jeśli po takim podejściu nadal nie ma ścieżki na wyższe zarobki, trzeba potraktować zmianę pracodawcy jako normalną decyzję zawodową.",
+  "usage": "Wklej checklistę do AI razem z opisem swojej roli, wynagrodzenia, celu zarobkowego, szefa, rytmu pracy, obowiązków, ostatnich sukcesów i problemów w komunikacji. Poproś AI, żeby przygotowało Twoją wersję poniedziałkowego maila, piątkowego maila, listę zadań do przejęcia, pytania doprecyzowujące oczekiwania, plan rozwoju i scenariusz rozmowy o podwyżce. Najlepiej używać tego jako 4 tygodniowego eksperymentu: przez miesiąc wysyłasz 2 krótkie maile tygodniowo, zbierasz dowody dowożenia i dopiero potem umawiasz rozmowę o pieniądzach.",
+  "checklistSections": [
+    {
+      "title": "Kiedy użyć tej checklisty",
+      "items": [
+        "Chcesz zarabiać więcej na etacie, ale nie masz konkretnej ścieżki podwyżki.",
+        "Masz poczucie, że robisz dużo, ale szef nie widzi pełnego zakresu Twojej pracy.",
+        "Dowożysz zadania, ale nie komunikujesz ich regularnie.",
+        "Czekasz, aż firma sama zadba o Twój rozwój.",
+        "Nie wiesz, jak zapytać o podwyżkę bez brzmienia roszczeniowo.",
+        "Chcesz sprawdzić, czy obecny pracodawca ma dla Ciebie realną ścieżkę wzrostu."
+      ]
+    },
+    {
+      "title": "Krok 1, co jeszcze mogę zrobić",
+      "items": [
+        "Po dowiezieniu zadania nie znikasz. Idziesz do szefa i pokazujesz, że robota jest zrobiona.",
+        "Użyj prostego zdania: Szefie, zrobiłem robotę. Co mogę jeszcze zrobić?",
+        "Mądry szef zobaczy, że zadanie jest dowiezione i że masz gotowość wziąć więcej odpowiedzialności.",
+        "Bierz nowe zadania, dowoź je i znowu proś o więcej.",
+        "Nie proś o więcej, jeśli poprzednia rzecz nie jest skończona. Najpierw dowiezienie, potem większy zakres.",
+        "Celem nie jest bycie zajętym. Celem jest zbudowanie reputacji osoby, która bierze temat, kończy go i wraca po kolejny.",
+        "Jeśli szef daje nowe rzeczy, zapisuj je, ustal termin i kryterium sukcesu.",
+        "Jeśli szef nie daje nowych rzeczy, zaproponuj 2 do 3 konkretne obszary, w których możesz pomóc."
+      ]
+    },
+    {
+      "title": "Krok 2, dwa maile i trzy kroki",
+      "items": [
+        "Każda firma ma jakieś systemy raportowania, ale Ty tworzysz własny prosty system widoczności pracy.",
+        "System składa się z 2 maili tygodniowo: jeden w poniedziałek rano, drugi w piątek po południu.",
+        "Mail ma być krótki. Nie piszesz raportu dla zarządu, tylko dajesz szefowi jasny obraz pracy.",
+        "Ten rytm robi efekt wow, bo większość ludzi albo nie raportuje, albo raportuje dopiero wtedy, gdy ktoś zapyta.",
+        "Ten sam mechanizm działa też w B2B, przy współpracy z klientem albo przełożonym po stronie klienta.",
+        "W poniedziałek pokazujesz plan i potrzeby. W piątek pokazujesz dowiezienie, blokady i naukę.",
+        "Nie ukrywaj rzeczy niedowiezionych. Wyjaśnij, dlaczego nie zostały zrobione i co z nimi dalej.",
+        "Każdy mail powinien być na tyle krótki, żeby szef mógł go przeczytać w mniej niż minutę."
+      ]
+    },
+    {
+      "title": "Mail 1, poniedziałek rano",
+      "items": [
+        "Temat maila: Plan tygodnia, [Twoje imię], [data albo tydzień].",
+        "Sekcja 1: Co planuję na ten tydzień.",
+        "Wypisz 3 do 5 najważniejszych rzeczy, nie całą listę drobiazgów.",
+        "Przy każdym większym zadaniu dopisz oczekiwany efekt, termin albo zależność.",
+        "Sekcja 2: Czego potrzebuję.",
+        "Wpisz decyzję, dostęp, informację, feedback, kontakt albo odblokowanie, którego potrzebujesz od szefa albo zespołu.",
+        "Sekcja 3: Pomysł na innowację w zespole albo w mojej pracy.",
+        "Pomysł może być mały: usprawnienie raportu, skrócenie spotkania, automatyzacja, szablon, poprawa procesu albo lepsza komunikacja.",
+        "Nie dawaj pomysłu dla ozdoby. Połącz go z oszczędnością czasu, mniejszą liczbą błędów, lepszą obsługą klienta albo szybszym dowożeniem."
+      ]
+    },
+    {
+      "title": "Szablon maila poniedziałkowego",
+      "items": [
+        "Cześć [imię], krótko wysyłam plan na ten tydzień.",
+        "W tym tygodniu planuję dowieźć: [zadanie 1], [zadanie 2], [zadanie 3].",
+        "Najważniejszy efekt tygodnia to: [konkretny rezultat].",
+        "Potrzebuję od Ciebie: [decyzja, feedback, dostęp albo priorytet].",
+        "Mam też jeden pomysł na usprawnienie: [pomysł]. Może to dać [korzyść dla zespołu albo firmy].",
+        "Jeśli widzisz inny priorytet, daj proszę znać dzisiaj, żebym dobrze ustawił tydzień."
+      ]
+    },
+    {
+      "title": "Mail 2, piątek po południu",
+      "items": [
+        "Temat maila: Podsumowanie tygodnia, [Twoje imię], [data albo tydzień].",
+        "Sekcja 1: Co zrobiłem w tym tygodniu.",
+        "Wypisz konkretne dowiezione rzeczy, najlepiej z wynikiem, liczbą, decyzją albo statusem.",
+        "Sekcja 2: Dlaczego nie zrobiłem pewnych rzeczy.",
+        "Nie chowaj opóźnień. Napisz krótko: co nie weszło, dlaczego i co z tym dalej.",
+        "Sekcja 3: Czego się nauczyłem.",
+        "Wpisz obserwację z pracy, feedback klienta, wniosek z danych, lekcję z błędu albo rzecz z kursu, którą można wdrożyć.",
+        "Jeśli uczyłeś się po godzinach, możesz to też pokazać, ale od razu połącz wiedzę z firmą.",
+        "Każdy piątkowy mail ma budować obraz osoby, która dowozi, uczy się i bierze odpowiedzialność."
+      ]
+    },
+    {
+      "title": "Szablon maila piątkowego",
+      "items": [
+        "Cześć [imię], krótkie podsumowanie tygodnia.",
+        "Dowiozłem: [zadanie 1 plus wynik], [zadanie 2 plus wynik], [zadanie 3 plus wynik].",
+        "Nie dowiozłem: [rzecz]. Powód: [konkretny powód]. Następny krok: [co zrobię i kiedy].",
+        "Nauczyłem się: [wniosek, kurs, rozmowa, feedback albo obserwacja].",
+        "Widzę możliwość wdrożenia tego u nas tak: [konkretny pomysł].",
+        "Na kolejny tydzień sugeruję priorytet: [priorytet], bo [krótkie uzasadnienie]."
+      ]
+    },
+    {
+      "title": "Krok 3, brak zgadywania",
+      "items": [
+        "Czasami szefowie nie komunikują dobrze. Powodem może być pośpiech, stres albo zbyt szybkie przekazywanie zadań.",
+        "Nie próbuj robić zadania bez obrazu tego, czego naprawdę oczekuje szef.",
+        "Poświęć 5 minut na doprecyzowanie, zanim poświęcisz 5 godzin na pracę w złym kierunku.",
+        "Użyj zdania: Szefie, czy dobrze rozumiem? Pozwól, że powiem swoimi słowami, czego oczekujesz.",
+        "Powtórz własnymi słowami cel, wynik, termin, kryterium sukcesu i rzeczy poza zakresem.",
+        "Zapytaj: co będzie oznaczało, że to jest zrobione dobrze?",
+        "Zapytaj: czego mam nie robić w tym zadaniu?",
+        "Zapytaj: czy ważniejsza jest szybkość, dokładność, koszt, jakość, klient czy ryzyko?",
+        "To ułatwia komunikację, bo szef od razu widzi, czy macie ten sam obraz zadania."
+      ]
+    },
+    {
+      "title": "Mini skrypt doprecyzowania zadania",
+      "items": [
+        "Rozumiem, że celem jest [cel].",
+        "Efekt końcowy ma wyglądać tak: [opis wyniku].",
+        "Termin to [data albo moment].",
+        "Najważniejsze kryterium sukcesu to [kryterium].",
+        "Poza zakresem jest [czego nie robię].",
+        "Największe ryzyko widzę w [ryzyko].",
+        "Czy dobrze to rozumiem, czy coś mam skorygować?"
+      ]
+    },
+    {
+      "title": "Krok 4, nieustanny rozwój i komunikacja",
+      "items": [
+        "Nie zakładaj, że szef zawsze będzie dbał o Twój rozwój.",
+        "W większych firmach proces rozwoju często działa lepiej. W mniejszych firmach częściej trzeba samemu go pilnować.",
+        "Musisz poświęcać czas na rozwój, ale sam rozwój nie wystarczy. Trzeba go komunikować przez wartość dla firmy.",
+        "Mów szefowi o kursach, szkoleniach, konferencjach, książkach, warsztatach i nowych kompetencjach.",
+        "Nie mów tylko: chcę iść na kurs. Powiedz, na czym zyska firma, jeżeli to przerobisz i wdrożysz.",
+        "W piątkowym mailu podsyłaj informację o zdobytej wiedzy, także zdobytej w czasie wolnym.",
+        "Do każdej nowej wiedzy dopisz propozycję wdrożenia w firmie.",
+        "Najlepszy komunikat rozwojowy brzmi: nauczyłem się X, możemy dzięki temu poprawić Y, proponuję mały test Z.",
+        "Rozwój ma być widoczny jako większa wartość dla zespołu, nie jako prywatna lista certyfikatów."
+      ]
+    },
+    {
+      "title": "Szablon komunikacji rozwoju",
+      "items": [
+        "Przerobiłem [kurs, szkolenie, materiał, konferencję].",
+        "Najważniejsza rzecz, którą wynoszę, to [wniosek].",
+        "Widzę zastosowanie w naszej pracy w obszarze [obszar].",
+        "Możemy dzięki temu [korzyść dla firmy, zespołu albo klienta].",
+        "Proponuję mały test: [konkretny test].",
+        "Jeśli zadziała, możemy wdrożyć to szerzej w [proces, projekt albo zespół]."
+      ]
+    },
+    {
+      "title": "Krok 5, umów plan podwyżek",
+      "items": [
+        "Nie zaczynaj rozmowy o pieniądzach od samego: chcę więcej.",
+        "Po krokach 1 do 4 masz już dowody: dowiezione zadania, komunikację tygodniową, brak zgadywania i rozwój połączony z firmą.",
+        "Idź do szefa z konkretnym celem i pytaniem o drogę dojścia.",
+        "Użyj zdania: Co mogę zrobić, aby zarabiać więcej?",
+        "Użyj zdania: Chcę na koniec roku zarabiać 20k miesięcznie. Co mogę zrobić, aby tam dojść?",
+        "Dopasuj kwotę do swojej sytuacji, ale zostaw konkretny cel, konkretny termin i pytanie o warunki.",
+        "Dajesz szefowi wyzwanie: pomóż mi zdefiniować, jaka wartość, odpowiedzialność i wynik uzasadniają tę kwotę.",
+        "Mądry szef, szczególnie po krokach 1 do 4, zobaczy, że nie jesteś losową osobą proszącą o więcej.",
+        "Poproś o plan: jakie wyniki, jakie zadania, jaka odpowiedzialność, jaki termin i kiedy wracacie do rozmowy."
+      ]
+    },
+    {
+      "title": "Szablon rozmowy o podwyżce",
+      "items": [
+        "Chcę porozmawiać o ścieżce dojścia do wyższego wynagrodzenia.",
+        "Moim celem jest [kwota] miesięcznie do [termin].",
+        "Chcę zrozumieć, jaka wartość dla firmy uzasadnia taki poziom.",
+        "Co muszę dowieźć, przejąć albo poprawić, żeby dojść do tej kwoty?",
+        "Jakie 3 warunki musiałyby być spełnione?",
+        "Po czym poznamy, że dowiozłem ten poziom odpowiedzialności?",
+        "Kiedy możemy wrócić do rozmowy i sprawdzić postęp?",
+        "Czy możemy zapisać plan i oczekiwania po tej rozmowie?"
+      ]
+    },
+    {
+      "title": "Krok 6, zwolnij pracodawcę",
+      "items": [
+        "Jeżeli kroki 1 do 5 nic nie dały i nie ma opcji na wyższe zarobki, przejdź do decyzji o zmianie pracodawcy.",
+        "Zwolnij pracodawcę, czyli potraktuj obecną firmę jak miejsce, które może nie mieć dla Ciebie dalszej ścieżki.",
+        "To nie jest bunt ani obrażanie się. To decyzja zawodowa.",
+        "Na świecie jest masa firm i są świetni szefowie, którzy zauważają dowożenie, komunikację, rozwój i etykę pracy.",
+        "Jeśli masz podejście z kroków 1 do 5, masz mocniejszą pozycję na rynku pracy.",
+        "Zanim odejdziesz, zbierz dowody pracy: wyniki, projekty, referencje, procesy, oszczędności, usprawnienia i odpowiedzialności.",
+        "Przygotuj CV i profil LinkedIn wokół rezultatów, nie obowiązków.",
+        "Nie odchodź bez planu, jeśli nie musisz. Najpierw sprawdź rynek, rozmowy i realne widełki.",
+        "Jeśli rynek oferuje lepsze warunki, a obecna firma nie ma ścieżki, zmiana pracy może być najbardziej racjonalnym krokiem."
+      ]
+    },
+    {
+      "title": "Plan 4 tygodni",
+      "items": [
+        "Tydzień 1: zacznij pytać po dowiezieniu zadania, co jeszcze możesz zrobić.",
+        "Tydzień 1: wyślij pierwszy poniedziałkowy i piątkowy mail.",
+        "Tydzień 2: doprecyzuj każde większe zadanie metodą własnych słów.",
+        "Tydzień 2: zapisz wszystkie sytuacje, w których uniknąłeś zgadywania.",
+        "Tydzień 3: wybierz jeden kurs, materiał albo konferencję i połącz wiedzę z firmowym wdrożeniem.",
+        "Tydzień 3: dodaj w piątkowym mailu sekcję, czego się nauczyłem i jak możemy to wdrożyć.",
+        "Tydzień 4: zbierz dowody dowożenia, zadania ponad standard i pomysły wdrożone w pracy.",
+        "Tydzień 4: umów rozmowę o ścieżce dojścia do konkretnego wynagrodzenia.",
+        "Po rozmowie: zapisz plan, warunki i termin powrotu do tematu."
+      ]
+    },
+    {
+      "title": "Sygnały, że to działa",
+      "items": [
+        "Szef zaczyna dawać Ci ważniejsze zadania.",
+        "Szef szybciej odpowiada na Twoje maile, bo widzi w nich porządek.",
+        "Masz mniej nieporozumień, bo przestajesz zgadywać oczekiwania.",
+        "Twoje pomysły rozwojowe zaczynają dotyczyć realnych procesów w firmie.",
+        "Masz zapisany plan wzrostu wynagrodzenia albo jasną informację, że firma nie ma takiej ścieżki.",
+        "Wiesz, czy warto zostać i dowozić plan, czy trzeba sprawdzić rynek."
+      ]
+    },
+    {
+      "title": "Czego nie robić",
+      "items": [
+        "Nie proś o więcej zadań, jeśli nie dowozisz obecnych.",
+        "Nie wysyłaj długich maili, których nikt nie przeczyta.",
+        "Nie ukrywaj opóźnień, bo wtedy szef traci zaufanie do Twoich raportów.",
+        "Nie zgaduj intencji szefa, gdy możesz poświęcić 5 minut na doprecyzowanie.",
+        "Nie mów o rozwoju jako prywatnym hobby, jeśli chcesz, żeby firma w niego inwestowała.",
+        "Nie zaczynaj rozmowy o podwyżce bez przykładów wartości dowiezionej dla firmy.",
+        "Nie zostawaj latami w firmie, która po dobrym dowożeniu i jasnej rozmowie nadal nie ma dla Ciebie ścieżki wzrostu."
+      ]
+    }
+  ],
+  "example": "Poproś AI: na podstawie tej checklisty przygotuj mój 4 tygodniowy plan zwiększenia zarobków na etacie. Napisz poniedziałkowy mail do szefa, piątkowy mail do szefa, listę pytań doprecyzowujących zadania, plan komunikowania rozwoju i scenariusz rozmowy o podwyżce do [kwota] miesięcznie.",
+  "order": 39,
+  "published": true,
+  "seoTitle": "Jak zarabiać więcej na etacie, checklista podwyżki | Akademia.pl",
+  "seoDescription": "Checklista 6 kroków do większych zarobków na etacie: więcej odpowiedzialności, 2 maile tygodniowo, brak zgadywania, rozwój, plan podwyżki i zmiana pracy.",
+  "keywords": [
+    "jak zarabiać więcej na etacie",
+    "podwyżka na etacie",
+    "rozmowa o podwyżce",
+    "awans w pracy",
+    "kariera etat"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "kariera-etat-podwyzka",
+  "internalLinks": [
+    "wywiad-przed-startem-projektu",
+    "tekst-bez-sladow-ai",
+    "perspektywa-product-ownera"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy checklista Jak zarabiać więcej na etacie?",
+      "answer": "Służy do zbudowania praktycznego systemu zwiększania wartości w pracy: dowożenia zadań, proszenia o więcej odpowiedzialności, raportowania tygodnia, doprecyzowania oczekiwań, komunikowania rozwoju i przygotowania rozmowy o podwyżce."
+    },
+    {
+      "question": "Czy dwa maile tygodniowo nie będą denerwować szefa?",
+      "answer": "Nie, jeśli są krótkie i konkretne. Poniedziałkowy mail pokazuje plan, potrzeby i pomysł na usprawnienie. Piątkowy mail pokazuje dowiezione rzeczy, blokady i naukę. To pomaga szefowi widzieć pracę bez dopytywania."
+    },
+    {
+      "question": "Kiedy najlepiej rozmawiać o podwyżce?",
+      "answer": "Najlepiej po kilku tygodniach widocznego dowożenia, gdy masz konkretne przykłady wyników, przejętej odpowiedzialności, usprawnień i rozwoju. Rozmowa powinna dotyczyć planu dojścia do kwoty, a nie samej prośby o więcej pieniędzy."
+    },
+    {
+      "question": "Co powiedzieć, jeśli chcę zarabiać konkretną kwotę?",
+      "answer": "Powiedz wprost: moim celem jest zarabiać [kwota] miesięcznie do [termin]. Chcę zrozumieć, jaka wartość dla firmy uzasadnia taki poziom i co muszę dowieźć, żeby tam dojść."
+    },
+    {
+      "question": "Co jeśli firma nie ma budżetu na podwyżkę?",
+      "answer": "Najpierw ustal, czy problemem jest czas, budżet, Twoje wyniki, polityka firmy czy brak ścieżki. Jeśli po dowożeniu i jasnej rozmowie nadal nie ma realnej drogi do wyższych zarobków, trzeba sprawdzić rynek pracy."
+    },
+    {
+      "question": "Co oznacza hasło zwolnij pracodawcę?",
+      "answer": "To znaczy potraktować zmianę pracy jako normalną decyzję zawodową. Jeśli obecna firma nie potrafi wynagrodzić większej wartości, a rynek oferuje lepsze warunki, zmiana pracodawcy może być rozsądnym krokiem."
+    }
+  ]
+}

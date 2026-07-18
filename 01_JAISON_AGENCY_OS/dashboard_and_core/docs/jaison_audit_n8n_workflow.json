@@ -1,0 +1,170 @@
+{
+  "name": "Jaison OS — Audyt i Checklista 21 Pytań",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "jaison-audit",
+        "options": {}
+      },
+      "id": "18f82810-72f1-4df2-ac24-e1d4b9b23bfa",
+      "name": "⚡ Webhook (Systeme.io Form)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        200,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "keepOnlySet": true,
+        "values": {
+          "string": [
+            {
+              "name": "name",
+              "value": "={{ $json.body.name }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.body.email }}"
+            },
+            {
+              "name": "company",
+              "value": "={{ $json.body.company }}"
+            },
+            {
+              "name": "phone",
+              "value": "={{ $json.body.phone }}"
+            },
+            {
+              "name": "answers_json",
+              "value": "={{ JSON.stringify($json.body.answers || {}) }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "28f82811-82f2-4df2-bc25-f2d4c9b24cfb",
+      "name": "Set Lead Variables",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [
+        400,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "model": "gemini-2.5-pro",
+        "prompt": "=Wygeneruj spersonalizowany, strategiczny raport audytu technologicznego Jaison OS dla użytkownika o imieniu {{ $json.name }} z firmy {{ $json.company }}.\n\nOto ich odpowiedzi na pytania diagnostyczne:\n{{ $json.answers_json }}\n\nZasady Stylu (GHOST v2):\n- Pisz po polsku, bezpośrednio i konkretnie.\n- Skup się na wskazaniu jednego głównego wąskiego gardła i zaproponuj wdrożenie n8n / agentów Jaison OS.\n- Unikaj marketingowego lania wody. Daj im mięso i czysty, strukturalny plan działania.\n- Zaproś ich na 15-minutowe omówienie wyników: https://cal.com/tomasz-jaison/15min",
+        "options": {
+          "temperature": 0.7
+        }
+      },
+      "id": "38f82812-92f3-4df2-cc26-f3d4c9b25dfc",
+      "name": "🧠 Gemini AI Auditor",
+      "type": "n8n-nodes-base.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        600,
+        300
+      ],
+      "credentials": {
+        "googleGeminiApi": {
+          "id": "1",
+          "name": "Gemini Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fromEmail": "holisticjson@gmail.com",
+        "toEmail": "={{ $node[\"Set Lead Variables\"].json.email }}",
+        "subject": "=⚡ Twój Spersonalizowany Audyt Jaison OS dla {{ $node[\"Set Lead Variables\"].json.company }}",
+        "html": "=<h3>Cześć {{ $node[\"Set Lead Variables\"].json.name }}!</h3>\n<p>Dziękuję za wypełnienie naszej diagnozy technologicznej. Twój spersonalizowany raport architektoniczny Jaison OS został pomyślnie wygenerowany przez nasz sztab dyrektorów AI i czeka na Ciebie poniżej.</p>\n<hr/>\n<div style=\"background-color: #0f172a; color: #cbd5e1; padding: 20px; border-radius: 8px; font-family: sans-serif;\">\n  {{ $json.text }}\n</div>\n<hr/>\n<p>Kiedy widzimy się na 15-minutowym omówieniu wdrożenia tych rozwiązań w Twojej firmie?</p>\n<p>👉 <strong><a href=\"https://cal.com/tomasz-jaison/15min\">Zarezerwuj termin w moim kalendarzu Cal.com</a></strong></p>\n<p>Pozdrawiam,<br/><strong>Tomasz Duda | Jaison OS</strong></p>",
+        "options": {}
+      },
+      "id": "48f82813-a2f4-4df2-dc27-f4d4c9b26efd",
+      "name": "📧 Send Audit Email",
+      "type": "n8n-nodes-base.email",
+      "typeVersion": 1,
+      "position": [
+        800,
+        200
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "1",
+          "name": "Gmail SMTP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "text": "=🔥 **NOWY AUDYT NA JAISON.PL!** 🔥\nKlient: **{{ $node[\"Set Lead Variables\"].json.name }}**\nFirma: **{{ $node[\"Set Lead Variables\"].json.company }}**\nE-mail: `{{ $node[\"Set Lead Variables\"].json.email }}`\nTelefon: `{{ $node[\"Set Lead Variables\"].json.phone }}`\n\n📄 Raport został pomyślnie wygenerowany przez Gemini 2.5 Pro i wysłany do klienta!",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "58f82814-b2f5-4df2-ec28-f5d4c9b27efe",
+      "name": "📱 Notify Tomasz",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        800,
+        400
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "1",
+          "name": "Telegram Bot Token"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "⚡ Webhook (Systeme.io Form)": {
+      "main": [
+        [
+          {
+            "node": "Set Lead Variables",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Lead Variables": {
+      "main": [
+        [
+          {
+            "node": "🧠 Gemini AI Auditor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "🧠 Gemini AI Auditor": {
+      "main": [
+        [
+          {
+            "node": "📧 Send Audit Email",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "📱 Notify Tomasz",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "id": "jaison-audit-v2"
+}

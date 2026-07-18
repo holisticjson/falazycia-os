@@ -1,0 +1,180 @@
+{
+  "id": "leadership-zespol-feedback-i-zmiana",
+  "type": "checklist",
+  "title": "Leadership: spotkania, feedback, zmiana i wartime CEO",
+  "description": "Checklista przywództwa: prowadzenie spotkań metodą Discover-Discuss-Decide, feedback przez Radical Candor Kim Scott i trudne rozmowy, tryby Wartime i Peacetime CEO Bena Horowitza, zasady skalowania zespołu, zarządzanie zmianą według Bangaly Kaby oraz founder prenup.",
+  "shortDescription": "Prowadź zespół jasno: dobre spotkania, szczery feedback, zarządzanie zmianą i tryb wartime w kryzysie.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Leadership",
+    "Zarządzanie zespołem"
+  ],
+  "url": "/checklisty/strategia-decyzje/leadership-zespol-feedback-i-zmiana/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Leadership: spotkania, feedback, zmiana i wartime CEO",
+  "body": "Dobre przywództwo to jasność: jasne spotkania, szczery feedback, zrozumiałe zarządzanie zmianą i właściwy tryb dowodzenia w zależności od sytuacji. Ta checklista zbiera sprawdzone zasady prowadzenia zespołu: rozdzielanie spotkań na Discover, Discuss i Decide według Annie Duke, feedback przez Radical Candor Kim Scott, tryby Wartime i Peacetime CEO Bena Horowitza, zasady skalowania zespołu i delegowania, zarządzanie zmianą według pięciu składników Bangaly Kaby oraz founder prenup Alisy Cohn. Powtarza się jeden wniosek: ludzie chcą jasności, a najczęstszy błąd liderów to niemówienie prawdy z troski, czyli ruinous empathy.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojego zespołu i wyzwania, przed którym stoisz. Poproś AI, żeby pomogło zaprojektować spotkanie, które realnie zmienia stan rzeczy, przygotowało skrypt trudnej rozmowy w duchu Radical Candor oraz oceniło, czy jesteś w trybie wartime czy peacetime i co z tego wynika dla stylu dowodzenia. Następnie niech AI zdiagnozuje planowaną zmianę przez pięć składników: wizja, umiejętności, zachęty, zasoby i plan działania, oraz wskaże, którego elementu brakuje i jaki typ porażki to grozi.",
+  "checklistSections": [
+    {
+      "title": "Spotkania, Discover, Discuss, Decide, Annie Duke",
+      "items": [
+        "Rozdzielasz spotkania na 3 typy zamiast mieszać: Discover, czyli zbieranie informacji, robisz poza spotkaniem, asynchronicznie i w dokumentach.",
+        "Discuss, czyli dyskusja, to jedyne, co powinno dziać się na spotkaniu.",
+        "Decide, czyli decyzja, zapada poza spotkaniem, lider decyduje po dyskusji.",
+        "Spotkanie ma zmieniać stan czegoś, a jeśli nie zmienia, jest niepotrzebne, według metody State Change Wes Kao."
+      ]
+    },
+    {
+      "title": "Praktyczne zasady spotkań",
+      "items": [
+        "Wes Kao: przed spotkaniem przemyśl najbardziej oczywistą obiekcję, jaką podniosą uczestnicy.",
+        "Wes Kao: najpierw sprzedaj, dlaczego to ważne, potem szczegóły, bo umysł kadry ciągle mówi dalej, więc bądź zwięzły.",
+        "Kiepski Slack do 15 osób to 15 razy zmarnowany czas, więc piszesz tak, jakby czytało to 15 osób.",
+        "Ami Vora: zakładaj, że osoba decyzyjna utrzyma maksymalnie 3 fakty naraz, więc Twoja robota to zrobić rekomendację.",
+        "Anneka Gupta: podsumowuj dyskusję na żywo, bo to buduje reputację strategicznego myśliciela.",
+        "Foundation Sprint, Jake Knapp: 10-godzinny warsztat na starcie projektu wyrównuje zespół, kto jest klientem, jaki problem rozwiązujemy, jak zmierzymy sukces, zanim zmarnujecie miesiące."
+      ]
+    },
+    {
+      "title": "Radical Candor, Kim Scott",
+      "items": [
+        "Macierz dwa na dwa: troska o człowieka razy bezpośrednie wyzwanie.",
+        "Radical Candor: troszczysz się i mówisz prawdę, to cel.",
+        "Ruinous Empathy: troszczysz się, ale nie mówisz prawdy, to 90 procent błędów feedbackowych.",
+        "Obnoxious Aggression: mówisz prawdę bez troski. Manipulative Insincerity: ani jedno, ani drugie.",
+        "Niemówienie prawdy z troski szkodzi ludziom bardziej niż szczerość."
+      ]
+    },
+    {
+      "title": "Trudne rozmowy",
+      "items": [
+        "Skrypt feedbacku, Alisa Cohn: chciałem porozmawiać o tym, co słyszę, podaj fakty, oboje wiemy, że kluczem do Twojego sukcesu jest dany cel, chcę usłyszeć Twoją stronę, ale wyjdźmy z planem zmiany.",
+        "Twoja praca jako lidera to nie uszczęśliwianie pracowników, tylko prowadzenie do wyników.",
+        "Pinch-Crunch, Carole Robin: małe uszczypnięcia ignorowane długo zamieniają się w zmiażdżenia, więc reagujesz na pinch, zanim stanie się crunch.",
+        "Reguła 15 procent ujawnienia: mów 15 procent więcej, niż czujesz się komfortowo, bo to buduje zaufanie bez nadmiernego ryzyka.",
+        "Fascinating Disagreement, Ami Vora: gdy ktoś mówi coś, z czym się głęboko nie zgadzasz, powiedz fascynujące, powiedz mi więcej, dlaczego tak myślisz, i zakładaj różne informacje, nie złą wolę.",
+        "Matt Mochary: gniew niszczy relacje i trzeba go natychmiast zatrzymać, a zwalnianie jest jedną z najważniejszych umiejętności lidera."
+      ]
+    },
+    {
+      "title": "Wartime kontra Peacetime CEO, Ben Horowitz",
+      "items": [
+        "Peacetime CEO: rynek rośnie, firma dominuje, styl to tworzenie procesów, empowerment i konsensus.",
+        "Wartime CEO: egzystencjalne zagrożenie i kryzys, styl to decyzyjność, bezpośrednie dowodzenie i skupienie na jednym celu.",
+        "Większość porad biznesowych jest pisana dla trybu pokoju i w trybie wojny nie działa.",
+        "Jesteś w trybie wojny, gdy: runway poniżej 6 miesięcy, konkurent kopiuje core product, regulacja zmienia reguły gry, kluczowy klient odchodzi albo zespół traci morale.",
+        "Worse First, Graham Weaver: wszystko, czego chcesz, jest po drugiej stronie etapu gorzej na początku, a ludzie tkwią na plateau, bo nie chcą przez ten etap przejść.",
+        "Alex Hardiman, wartime: zdiagnozuj, co się naprawdę dzieje, stwórz strukturę z chaosu, wskaż najważniejsze problemy i pozwól reszcie zjechać na dalszy plan."
+      ]
+    },
+    {
+      "title": "Leadership i skalowanie zespołu",
+      "items": [
+        "Leaders in Details, Brian Chesky: micromanagement to mówienie ludziom co robić, a bycie w detalach to wiedzenie, co się dzieje, bo skąd wiesz, że robią dobrą robotę, jeśli nie znasz detali.",
+        "Brian Chesky: jedna roadmapa dla całej firmy, jedna historia i jeden kierunek, a founderzy za często przepraszają za to, jak chcą prowadzić firmę, podczas gdy ludzie chcą jasności.",
+        "Single-Threaded Leader, Amazon: jeden lider i jeden zespół z pełną odpowiedzialnością za wynik, autonomiczne zespoły z jasnymi granicami zamiast walki o zasoby.",
+        "Extreme Clarity, Tomer Cohen: lider nie mówi co robić, tylko daje kontekst, bo to kontekst ponad kontrolą.",
+        "Scaling People, Claire Hughes Johnson: zacznij od siebie, spisz swoje zasady działania, zanim będziesz oczekiwał ich od innych, a formalne ścieżki kariery wprowadzaj dopiero przy 50 do 100 osobach.",
+        "Give Away Your Legos, Molly Graham: gdy firma rośnie, oddajesz części swojej pracy innym, co boli jak oddawanie klocków, a kariera to seria krzywych, w których nową rolę poprzedza chwilowy spadek kompetencji.",
+        "Input kontra output, Amazon: mierzysz inputy, które kontrolujesz, osobno od outputów, bo zdrowe inputy prowadzą do zdrowych wyników, a wartość mierz oczami klienta."
+      ]
+    },
+    {
+      "title": "Zarządzanie zmianą, pięć składników, Bangaly Kaba",
+      "items": [
+        "Pięć składników zmiany, wszystkie wymagane: wizja, umiejętności, zachęty, zasoby i plan działania.",
+        "Brak wizji daje chaos, brak umiejętności daje lęk, brak zachęt daje opór, brak zasobów daje frustrację, brak planu daje fałszywe starty.",
+        "Gdy zmiana nie działa, nie dodajesz presji, tylko diagnozujesz, którego składnika brakuje.",
+        "Bangaly Kaba, praca nad zrozumieniem: zaplanuj intencjonalny czas na zrozumienie problemu, zanim zaczniesz budować, nie zakładaj, że rozumiecie problem.",
+        "Komunikujesz zmianę 7 razy różnymi kanałami i zaczynasz od early adopters w zespole, bo ich sukces jest dowodem dla reszty."
+      ]
+    },
+    {
+      "title": "Co-founder i partnerstwo",
+      "items": [
+        "Founder prenup, Alisa Cohn: 65 procent startupów upada z powodu konfliktu między founderami, więc omawiacie trudne tematy, zanim zaczniecie budować.",
+        "Pytania prenup: jakie mamy wartości, jaki styl pracy, jakie oczekiwania finansowe, co robimy, gdy się nie zgadzamy i kto ma głos rozstrzygający, jakie scenariusze wyjścia, jak dzielimy udziały i vesting, co się dzieje, gdy jeden chce odejść, jakie role i jak się zmieniają.",
+        "Jak byłem współwinny, Jerry Colonna: w jaki sposób przyczyniłem się do warunków, których nie chcę, bo to przywraca sprawczość, a osoba z największą władzą musi pierwsza zrobić własną pracę wewnętrzną.",
+        "Bootstrapping kontra VC, Jason Fried: kapitał VC to opcja, nie domyślny wybór, bootstrapping zmusza do umiejętności zarabiania pieniędzy, a ograniczenia prowadzą do lepszych decyzji."
+      ]
+    }
+  ],
+  "example": "Najlepsza dla foundera i menedżera, który chce prowadzić zespół z większą jasnością: lepiej prowadzić spotkania, dawać szczery feedback, zarządzać zmianą i wiedzieć, kiedy przełączyć się w tryb wartime.",
+  "order": 95,
+  "published": true,
+  "seoTitle": "Leadership, spotkania, feedback, zmiana i wartime CEO, checklista",
+  "seoDescription": "Prowadź zespół jasno: spotkania Discover-Discuss-Decide, feedback Radical Candor, tryby wartime i peacetime CEO, skalowanie zespołu, zarządzanie zmianą i founder prenup.",
+  "keywords": [
+    "leadership",
+    "radical candor",
+    "zarządzanie zespołem",
+    "wartime ceo",
+    "zarządzanie zmianą"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "strategia-decyzje",
+  "internalLinks": [
+    "strategia-firmy-i-podejmowanie-decyzji",
+    "onboarding-uzytkownika-pierwsza-wartosc",
+    "dopasowanie-produktu-do-rynku-pmf"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Spotkania, feedback, wartime CEO, skalowanie zespołu i zmiana",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie i przywództwie",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło frameworków strategii, decyzji i przywództwa przytoczonych w checkliście, do dalszego posłuchania."
+    },
+    {
+      "title": "Radical Candor, troska i szczerość",
+      "author": "Kim Scott",
+      "url": "https://www.radicalcandor.com",
+      "relation": "Odniesienie do macierzy feedbacku i pułapki ruinous empathy, źródło do dalszego czytania."
+    },
+    {
+      "title": "Wartime i Peacetime CEO",
+      "author": "Ben Horowitz",
+      "url": "https://a16z.com",
+      "relation": "Odniesienie do dwóch trybów przywództwa, źródło do dalszego czytania."
+    },
+    {
+      "title": "Founder prenup i trudne rozmowy",
+      "author": "Alisa Cohn",
+      "url": "https://www.alisacohn.com",
+      "relation": "Odniesienie do rozmów między founderami i skryptów feedbacku, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Jak prowadzić skuteczne spotkania zespołu?",
+      "answer": "Annie Duke radzi rozdzielić trzy cele, które zwykle mieszamy. Zbieranie informacji rób przed spotkaniem, asynchronicznie i w dokumentach, samą dyskusję prowadź na spotkaniu, a decyzję podejmij po nim. Dobre spotkanie ma zmieniać stan rzeczy, więc jeśli nie zmienia, jest zbędne. Warto też zaczynać od tego, dlaczego temat jest ważny, a potem przechodzić do szczegółów."
+    },
+    {
+      "question": "Czym jest Radical Candor w feedbacku?",
+      "answer": "To podejście Kim Scott do feedbacku, oparte na dwóch osiach: troski o człowieka i bezpośredniego mówienia prawdy. Radical Candor to jednoczesna troska i szczerość. Najczęstszy błąd liderów to ruinous empathy, czyli troska bez prawdy, która odpowiada za większość nieudanego feedbacku, bo niemówienie prawdy z dobrego serca w rzeczywistości szkodzi pracownikom bardziej niż szczera rozmowa."
+    },
+    {
+      "question": "Czym różni się wartime od peacetime CEO?",
+      "answer": "Peacetime CEO działa, gdy rynek rośnie, a firma dominuje, i stawia na procesy, empowerment i konsensus. Wartime CEO działa w kryzysie i przy zagrożeniu istnienia firmy, więc dowodzi bezpośrednio, decyduje szybko i skupia wszystkich na jednym celu. Ben Horowitz zauważa, że większość porad biznesowych jest pisana dla trybu pokoju i w prawdziwym kryzysie po prostu nie działa."
+    },
+    {
+      "question": "Jak dobrze zarządzać zmianą w firmie?",
+      "answer": "Bangaly Kaba wskazuje pięć koniecznych składników zmiany: wizja, umiejętności, zachęty, zasoby i plan działania. Brak każdego z nich daje inny typ porażki, na przykład brak wizji to chaos, a brak zachęt to opór. Gdy zmiana nie idzie, nie dokładaj presji, tylko zdiagnozuj, którego elementu brakuje, i go uzupełnij, a sam komunikat powtarzaj wieloma kanałami."
+    },
+    {
+      "question": "Po co founderom rozmowa typu founder prenup?",
+      "answer": "Bo aż około sześćdziesięciu pięciu procent startupów upada z powodu konfliktu między założycielami. Founder prenup Alisy Cohn to zestaw trudnych pytań, które warto omówić, zanim zaczniecie budować: o wartości, styl pracy, oczekiwania finansowe, sposób rozstrzygania sporów, podział udziałów i scenariusze wyjścia. Rozmowa o tym wcześniej zapobiega kryzysom, gdy stawka jest już bardzo wysoka."
+    }
+  ]
+}

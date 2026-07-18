@@ -1,0 +1,73 @@
+{
+  "id": "deep-research-dowolnego-problemu",
+  "type": "prompt",
+  "title": "Deep Research dowolnego problemu",
+  "description": "Uniwersalny prompt do zbadania dowolnego problemu przez aktualne źródła, ekspertów, rozwiązania, błędy i case studies.",
+  "shortDescription": "Zbadaj dowolny problem i zamień research w plan działania.",
+  "industry": "Automatyzacja i AI",
+  "industrySlug": "automatyzacja-ai",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Research",
+    "Decyzje"
+  ],
+  "url": "/prompty/strategia-decyzje/deep-research-dowolnego-problemu/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-13",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Deep Research dowolnego problemu",
+  "body": "Prosty prompt startowy do sytuacji, w której masz problem, ale nie chcesz od razu zgadywać rozwiązania. AI ma zebrać aktualne badania, opinie ekspertów, potwierdzone metody, błędy do uniknięcia, case studies i zamienić je w decyzję oraz plan pierwszych kroków.",
+  "usage": "Użyj tego prompta w narzędziu z trybem Deep Research albo dostępem do internetu, na przykład w ChatGPT, Claude, Gemini albo innym asystencie researchowym. Najlepiej działa, gdy opiszesz problem w 2 do 3 zdaniach i dodasz kontekst o sobie: kim jesteś, jaki masz cel, jakie masz ograniczenia, co już próbowałeś i jaki wynik chcesz osiągnąć. Jeśli masz plik profilu, brief albo notatki o sytuacji, wklej je jako dodatkowy kontekst. Prompt jest dobry jako pierwszy krok przed decyzją, rozmową z ekspertem, zmianą strategii, zakupem narzędzia albo planem działania.",
+  "prompt": "Uruchom to zadanie w trybie Deep Research.\n\nProblem:\n[opisz swój problem w 2 do 3 zdaniach]\n\nKontekst o mnie:\n[kim jestem, jaki mam cel, jakie mam ograniczenia, co już próbowałem, jakie mam zasoby, czego nie chcę robić]\n\nDecyzja po researchu:\n[co chcę zdecydować po tej analizie]\n\nZbadaj ten problem możliwie praktycznie i źródłowo. Priorytetowo traktuj najświeższe źródła z ostatnich 24 miesięcy, ale uwzględnij też klasyczne badania, książki albo frameworki, jeśli nadal są cytowane i realnie pomagają zrozumieć problem. Oddziel źródła naukowe, eksperckie, branżowe, praktyczne poradniki i case studies. Nie udawaj pewności, jeśli źródła są słabe albo sprzeczne.\n\nWykonaj analizę w tej strukturze:\n1. Krótka diagnoza problemu i jego możliwe przyczyny.\n2. Najnowsze badania i dane, z linkami oraz informacją, czego dokładnie dowodzą.\n3. Top 3 autorytety albo eksperci w tym temacie i ich najważniejsze stanowiska.\n4. Potwierdzone rozwiązania, z oceną siły dowodu: mocne, średnie, słabe albo tylko obiecujące.\n5. Najczęstsze błędy i rzeczy, których unikać.\n6. Case studies osób, firm albo zespołów, które rozwiązały podobny problem.\n7. Co pasuje do mojego kontekstu, a co nie pasuje.\n8. Plan działania na 7 dni.\n9. Pytania, które warto zadać ekspertowi.\n10. Lista źródeł z krótkim opisem, dlaczego są wiarygodne albo ograniczone.\n\nNa końcu przygotuj decyzję praktyczną:\nco zrobić teraz, co sprawdzić dalej, czego nie robić i jaki jest najmniejszy test, który pokaże, czy idę w dobrą stronę.",
+  "example": "Dobry do problemów biznesowych, zdrowotnych, edukacyjnych, organizacyjnych, technologicznych, marketingowych i osobistych, gdy najpierw trzeba zrozumieć źródła oraz możliwe rozwiązania.",
+  "order": 37,
+  "published": true,
+  "seoTitle": "Deep Research dowolnego problemu, prompt AI | Akademia.pl",
+  "seoDescription": "Uniwersalny prompt Deep Research do analizy dowolnego problemu przez aktualne badania, ekspertów, rozwiązania, błędy, case studies i plan działania.",
+  "keywords": [
+    "prompt Deep Research",
+    "research problemu",
+    "analiza problemu AI",
+    "źródła naukowe",
+    "plan działania"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "deep-research",
+  "internalLinks": [
+    "badania-psychograficzne-deep-research",
+    "walidacja-pomyslu-na-biznes",
+    "lista-problemow-ze-skrzynki-mailowej",
+    "research-polskich-nisz-produkt-cyfrowy"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy prompt Deep Research dowolnego problemu?",
+      "answer": "Służy do uporządkowanego zbadania problemu przed podjęciem decyzji. AI ma zebrać aktualne źródła, opinie ekspertów, potwierdzone rozwiązania, typowe błędy i case studies, a potem zamienić research w praktyczny plan działania."
+    },
+    {
+      "question": "Co wkleić do prompta poza opisem problemu?",
+      "answer": "Najlepiej dodać krótki kontekst o sobie: kim jesteś, jaki masz cel, jakie masz ograniczenia, co już próbowałeś i jaką decyzję chcesz podjąć po researchu. Można też wkleić profil, brief albo notatki z własnej sytuacji."
+    },
+    {
+      "question": "Czy prompt wymaga narzędzia z dostępem do internetu?",
+      "answer": "Tak, najlepszy wynik daje narzędzie z trybem Deep Research albo aktualnym dostępem do źródeł. Bez internetu AI może pomóc ułożyć hipotezy i pytania, ale nie powinno udawać świeżego researchu."
+    },
+    {
+      "question": "Jak prompt ocenia wiarygodność źródeł?",
+      "answer": "Prompt wymusza oddzielenie źródeł naukowych, eksperckich, branżowych, poradnikowych i case studies. Każde rozwiązanie powinno mieć ocenę siły dowodu, żeby nie mieszać mocnych badań z pojedynczą opinią."
+    },
+    {
+      "question": "Czy ten prompt nadaje się do problemów osobistych?",
+      "answer": "Tak, ale wynik trzeba traktować jako research i materiał do decyzji, nie jako diagnozę medyczną, prawną albo psychologiczną. Przy wysokiej stawce prompt powinien kończyć się listą pytań do właściwego eksperta."
+    },
+    {
+      "question": "Jaki powinien być końcowy wynik researchu?",
+      "answer": "Dobry wynik to nie sama lista źródeł. Odpowiedź powinna pokazać, co wiadomo, co jest niepewne, które rozwiązania mają najmocniejsze podstawy, czego unikać, co zrobić przez najbliższe 7 dni i jaki mały test wykonać jako pierwszy."
+    }
+  ]
+}

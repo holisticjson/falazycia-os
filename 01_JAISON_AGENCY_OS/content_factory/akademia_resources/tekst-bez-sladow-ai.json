@@ -1,0 +1,244 @@
+{
+  "id": "tekst-bez-sladow-ai",
+  "type": "checklist",
+  "title": "Tekst bez śladów AI",
+  "description": "Rozbudowana checklista redakcyjna do czyszczenia tekstów z pustych fraz, sztucznego tonu, szablonowych podsumowań, nadmiaru formatowania, fałszywych zakresów, niejasnych źródeł i słów, które brzmią jak wygenerowane przez AI.",
+  "shortDescription": "Usuń z tekstu sztuczny ton, ogólniki i formatowanie z AI.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Content i social media",
+  "applicationSlug": "content-social-media",
+  "tags": [
+    "Redakcja",
+    "Styl"
+  ],
+  "url": "/checklisty/content-social-media/tekst-bez-sladow-ai/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-13",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Tekst bez śladów AI",
+  "body": "Ta checklista pomaga przerobić tekst, który jest poprawny, ale brzmi jak wygenerowany przez model: ma za dużo ogólników, zbyt gładkie zdania, teatralne zakończenia, pustą retorykę, nadużyte przymiotniki, niejasne przypisania i formatowanie, którego człowiek zwykle nie używa w roboczym tekście. Nadaje się do artykułów, opisów stron, newsletterów, postów, opisów produktów, notatek eksperckich i tekstów tworzonych z pomocą AI. To nie jest lista do automatycznego kasowania słów. To procedura redakcyjna, która zmusza do konkretu, źródeł i normalnego języka.",
+  "usage": "Wklej do AI tekst, który chcesz oczyścić, razem z tą checklistą. Poproś model, żeby najpierw zaznaczył konkretne miejsca brzmiące sztucznie, potem wyjaśnił powód, a dopiero na końcu przepisał tekst. Nie proś o wygładzenie stylu. Poproś o usunięcie pustych fraz, skrócenie zdań, zamianę ocen na fakty, zostawienie powtórzeń tam, gdzie pilnują precyzji, oraz zachowanie Twojego tonu. Każde podejrzane miejsce ma dostać etykietę: pusta fraza, promocyjny przymiotnik, niejasne źródło, fałszywy zakres, sztuczne podsumowanie, nadmiar formatowania albo zdanie bez informacji. Najlepiej używać tej checklisty jako ostatniego etapu przed publikacją, po sprawdzeniu faktów, źródeł i celu tekstu.",
+  "checklistSections": [
+    {
+      "title": "Puste frazy o znaczeniu i wpływie",
+      "items": [
+        "Usuń zdania typu: stanowi świadectwo, odgrywa kluczową rolę, odgrywa istotną rolę, odgrywa decydującą rolę, podkreśla znaczenie, symbolizuje trwały wpływ, pozostawił niezatarty ślad, głęboko zakorzeniony, przełomowy, rewolucyjny, wpisuje się w szerszy kontekst.",
+        "Zamień ogólne zdanie o znaczeniu na konkretny fakt: datę, liczbę, decyzję, zmianę zachowania, wynik albo przykład.",
+        "Jeśli zdanie pasuje do dowolnego tematu po podmianie nazwy, usuń je albo przepisz od zera.",
+        "Nie dopisuj końcówki o dziedzictwie, społeczności, przyszłości albo wpływie, jeśli tekst wcześniej tego nie dowodzi.",
+        "Usuń ogólnikowe stwierdzenia o znaczeniu dla społeczności albo wkładzie w dziedzictwo kulturowe, jeśli nie ma konkretnych osób, działań, dat albo skutków.",
+        "Jeśli chcesz zostawić słowo przełomowy, dopisz co było przed zmianą, co było po zmianie i kto to potwierdza."
+      ]
+    },
+    {
+      "title": "Sztuczne analizy i imiesłowy",
+      "items": [
+        "Usuń końcówki typu: podkreślając tym samym, ukazując, odzwierciedlając, uwypuklając.",
+        "Sprawdź, czy nieożywiony podmiot nie wykonuje czynności interpretacyjnej. Raport może zawierać dane, ale nie może sam niczego podkreślać.",
+        "Fakty i wydarzenia nie mogą same podkreślać, uwypuklać ani ukazywać. To może zrobić autor, badacz, rozmówca albo konkretna analiza.",
+        "Usuń zdania, w których rynek, historia, architektura, raport albo produkt zachowuje się jak osoba komentująca własne znaczenie.",
+        "Zamiast pisać, że fakt coś pokazuje, napisz wprost, jaki wniosek wyciąga autor i na jakiej podstawie.",
+        "Jeśli zdanie brzmi jak komentarz do szkolnego wypracowania, skróć je do informacji, której potrzebuje czytelnik."
+      ]
+    },
+    {
+      "title": "Język promocyjny bez dowodu",
+      "items": [
+        "Wytnij określenia: wciąż zachwyca, zapierająca dech uroda, trwałe dziedzictwo, w sercu regionu, może poszczycić się, malowniczo położony, tętniący życiem, bogata oferta, wyjątkowe doświadczenie.",
+        "Każdy przymiotnik wartościujący musi mieć powód. Zamiast wybitny wpisz, kto tak ocenia, dlaczego i w jakim kontekście.",
+        "Nie opisuj produktu, miejsca albo osoby tak, jakby tekst był folderem reklamowym, jeśli celem jest informacja albo analiza.",
+        "Gdy brakuje dowodu, usuń przymiotnik i zostaw rzeczownik z konkretnym opisem.",
+        "Zamiast tętniące życiem centrum wpisz, co faktycznie się tam dzieje: liczba wydarzeń, typ lokali, ruch pieszy, godziny działania albo konkretna obserwacja.",
+        "Zamiast może poszczycić się wpisz neutralnie: ma, działa, obejmuje, składa się z, powstało w roku."
+      ]
+    },
+    {
+      "title": "Dydaktyczne zastrzeżenia",
+      "items": [
+        "Usuń frazy: warto pamiętać, należy podkreślić, istotne jest, aby zauważyć, jak czytelnik może zauważyć.",
+        "Nie mów czytelnikowi, na co ma zwrócić uwagę. Pokaż fakt, przykład albo kontrast.",
+        "Nie dodawaj ogólnego zastrzeżenia, że sytuacja może różnić się w zależności od regionu, branży albo kontekstu, jeśli nie rozwijasz tej różnicy.",
+        "Jeżeli zastrzeżenie jest potrzebne, zapisz je konkretnie: gdzie, kiedy, dla kogo i w jakim wyjątku.",
+        "Usuń pouczające wstawki typu: zanim przejdziemy dalej, przyjrzyjmy się, nie sposób nie zauważyć, należy mieć na uwadze.",
+        "Nie pisz do czytelnika z góry. Zamiast instrukcji odbioru tekstu daj informację."
+      ]
+    },
+    {
+      "title": "Szablonowe zakończenia",
+      "items": [
+        "Usuń sekcje zatytułowane Podsumowanie, Wnioski albo Konkluzja, jeśli tylko powtarzają główną tezę.",
+        "Nie kończ tekstu optymistyczną frazą po liście problemów, jeśli nie wynika ona z danych.",
+        "Unikaj schematu: pomimo pozytywów temat stoi przed wyzwaniami.",
+        "Nie kończ tekstu spekulacją o perspektywach na przyszłość, jeśli tekst nie zawiera danych, scenariuszy albo decyzji.",
+        "Nie powtarzaj głównej tezy na końcu akapitu innymi słowami.",
+        "Ostatni akapit ma dodawać decyzję, następny krok, konkretny wniosek albo zamknięcie, a nie retoryczną dekorację."
+      ]
+    },
+    {
+      "title": "Reguła trzech i zbyt gładka retoryka",
+      "items": [
+        "Sprawdź, czy tekst nie układa wszystkiego w trójki tylko dla rytmu: trzy przykłady, trzy przymiotniki, trzy krótkie frazy.",
+        "Zostaw trzy elementy tylko wtedy, gdy naprawdę są trzy najważniejsze elementy.",
+        "Usuń zdania zbudowane dla efektu, jeśli nie dodają informacji.",
+        "Nie używaj kontrastów typu: nie tylko X, ale także Y. Zapisz dwa proste zdania albo wybierz ważniejszą myśl.",
+        "Unikaj konstrukcji: nie chodzi tu o X, chodzi o Y. Nazwij rzecz wprost.",
+        "Nie używaj kontrastu nie X, lecz Y, jeśli zdanie ma tylko brzmieć mocniej. Zwykle wystarczy krótsze zdanie."
+      ]
+    },
+    {
+      "title": "Fałszywe zakresy",
+      "items": [
+        "Nie używaj konstrukcji od X do Y, jeśli X i Y nie tworzą logicznej skali, osi czasu albo zakresu.",
+        "Poprawny zakres: od 1990 do 2000, od łagodnego do ciężkiego, od pierwszego kontaktu do podpisania umowy.",
+        "Błędny zakres: od innowacji technologicznych do duchowego dziedzictwa, od strategii biznesowej do emocji klienta, od lokalnej historii do globalnej przyszłości.",
+        "Jeśli elementy są różne typologicznie, zapisz je jako osobne elementy, nie jako zakres.",
+        "Sprawdź wszystkie zdania z od oraz do. Jeśli nie da się narysować osi między punktami, przepisz zdanie."
+      ]
+    },
+    {
+      "title": "Słowa, które brzmią jak AI",
+      "items": [
+        "Sprawdź słowa: kluczowy, istotny, fundamentalny, wszechstronny, dynamiczny, złożoność, zawiłości, wielowymiarowy, bogaty wachlarz, mozaika.",
+        "Sprawdź czasowniki: zgłębiać, uwypuklać, podkreślać, ukazywać, prezentować, odzwierciedlać.",
+        "Sprawdź frazy: szeroki wachlarz, bogata mozaika, dynamicznie rozwijający się, wieloaspektowe podejście, kompleksowe rozwiązanie, unikalne połączenie.",
+        "Nie zamieniaj prostych słów na eleganckie synonimy tylko po to, żeby uniknąć powtórzenia.",
+        "Dla tego samego pojęcia używaj jednego terminu, nawet jeśli pojawia się kilka razy.",
+        "Nie pisz pisarz, autor, twórca i literat o tej samej osobie tylko dla urozmaicenia. Wybierz jedno określenie.",
+        "Jeśli słowo brzmi ładnie, ale nie zmienia informacji w zdaniu, usuń je."
+      ]
+    },
+    {
+      "title": "Źródła i przypisanie opinii",
+      "items": [
+        "Usuń frazy: eksperci twierdzą, badacze wskazują, obserwatorzy zauważają, jeśli nie podajesz konkretnego źródła.",
+        "Nie udawaj konsensusu, gdy masz jedną opinię, jeden raport albo jeden przykład.",
+        "Źródło ma pomagać sprawdzić fakt, a nie dodawać prestiżu zdaniu.",
+        "Nie pisz według raportu opublikowanego w prestiżowym czasopiśmie, jeśli nazwa źródła i ustalenie są ważniejsze niż aura prestiżu.",
+        "Nie uogólniaj opinii jednej osoby na całą grupę. Zamiast eksperci uważają wpisz imię, nazwisko, instytucję albo tytuł źródła.",
+        "Jeśli czegoś nie wiesz, nie pisz o ograniczonych źródłach. Usuń zdanie albo oznacz rzecz jako pytanie do sprawdzenia.",
+        "Nie dodawaj zdań typu: na podstawie dostępnych źródeł można stwierdzić. Jeśli źródło coś potwierdza, napisz co potwierdza. Jeśli nie potwierdza, nie pisz."
+      ]
+    },
+    {
+      "title": "Tytuły i nagłówki",
+      "items": [
+        "Nagłówki zapisuj jak normalne zdania: wielka litera na początku i w nazwach własnych.",
+        "Błędnie: Historia I Kultura Regionu.",
+        "Poprawnie: Historia i kultura regionu.",
+        "Nie dekoruj nagłówków emoji, ikonami ani ozdobnymi znakami, jeśli format publikacji tego nie wymaga.",
+        "Nagłówek ma nazywać treść sekcji, a nie brzmieć jak hasło motywacyjne."
+      ]
+    },
+    {
+      "title": "Pogrubienia, listy i numerowanie",
+      "items": [
+        "Nie pogrubiaj każdego terminu, nazwy sekcji albo słowa kluczowego.",
+        "Nie twórz listy, w której każdy punkt ma mini nagłówek i dwukropek, jeśli zwykłe zdanie działa lepiej.",
+        "Nie formatuj każdego punktu jako etykieta plus opis. To często wygląda jak domyślny output modelu.",
+        "Preferuj tekst ciągły, gdy lista nie pomaga skanować, porównywać albo wykonać zadania.",
+        "Nie numeruj wszystkich elementów automatycznie. Numeracja ma sens przy kolejności, procedurze, rankingu albo checklistcie.",
+        "Jeśli lista jest konieczna, każdy punkt ma być konkretnym testem, decyzją albo działaniem."
+      ]
+    },
+    {
+      "title": "Emoji, myślniki i interpunkcja",
+      "items": [
+        "Nie dekoruj tekstu emoji, jeśli to nie jest naturalny element marki albo kanału.",
+        "Nie używaj emoji w tekście formalnym, eksperckim, prawnym, encyklopedycznym albo raportowym.",
+        "Nie zastępuj myślnikiem przecinków, nawiasów ani dwukropków.",
+        "Unikaj wielu myślników w jednym akapicie. Jeśli zdanie ma kilka wtrąceń, rozbij je.",
+        "Nie używaj em dash. W polskich treściach Akademii unikamy też długich myślników w widocznej treści.",
+        "Jeśli zdanie potrzebuje myślnika, najpierw sprawdź, czy nie wystarczy kropka, przecinek albo dwukropek."
+      ]
+    },
+    {
+      "title": "Konkret zamiast ogólnika",
+      "items": [
+        "Każde zdanie powinno wnosić informację: fakt, przykład, decyzję, obserwację, liczbę, datę, koszt, ryzyko albo warunek.",
+        "Zamień ogólną ocenę na konkret: zamiast skuteczny podaj wynik, zamiast szybki podaj czas, zamiast popularny podaj skalę albo źródło.",
+        "Nie pisz o znaczeniu tematu, jeśli możesz napisać, co dokładnie zmieniło się po działaniu, decyzji albo wdrożeniu.",
+        "Zostaw zdania mniej eleganckie, jeśli są bardziej precyzyjne i brzmią jak autor.",
+        "Nie zwracaj się do czytelnika frazami: jak możesz zauważyć, warto zwrócić uwagę, przyjrzyjmy się teraz.",
+        "Jeśli zdanie nie zmienia decyzji, zrozumienia albo działania czytelnika, usuń je."
+      ]
+    },
+    {
+      "title": "Procedura czyszczenia tekstu",
+      "items": [
+        "Pierwsze przejście: zaznacz wszystkie puste frazy, sztuczne imiesłowy i słowa brzmiące jak AI.",
+        "Drugie przejście: usuń ozdobne zakończenia, podsumowania i powtórzenia tezy.",
+        "Trzecie przejście: sprawdź źródła, liczby, daty i przypisanie opinii.",
+        "Czwarte przejście: przepisz tekst bez dodawania nowych claimów.",
+        "Piąte przejście: przeczytaj tekst na głos i usuń zdania, których autor nie powiedziałby normalnie."
+      ]
+    },
+    {
+      "title": "Szybka lista przed publikacją",
+      "items": [
+        "Nie ma pustych fraz o znaczeniu, dziedzictwie, wpływie i szerszym kontekście.",
+        "Zdania nie kończą się sztucznymi imiesłowami typu podkreślając, ukazując, odzwierciedlając.",
+        "Nie ma sekcji Podsumowanie, Wnioski albo Konkluzja, jeśli powtarza treść.",
+        "Nie ma schematu: pomimo zalet temat stoi przed wyzwaniami.",
+        "Nie ma nadużyć słów: kluczowy, istotny, fundamentalny, wszechstronny, dynamiczny, wielowymiarowy.",
+        "Nie ma konstrukcji: nie tylko X, ale także Y.",
+        "Nie ma niejasnych przypisań typu eksperci twierdzą albo badacze wskazują bez konkretnego źródła.",
+        "Nagłówki nie są pisane wielką literą każdego słowa.",
+        "Nie ma nadmiernych pogrubień, emoji i ozdobników.",
+        "Myślniki są użyte oszczędnie, bez em dash i bez zastępowania interpunkcji.",
+        "Nie ma spekulacji o ograniczonych źródłach.",
+        "Każde zdanie wnosi konkretną informację albo zostało usunięte."
+      ]
+    }
+  ],
+  "example": "Poproś AI: sprawdź mój tekst według checklisty Tekst bez śladów AI. Najpierw wypisz 20 najbardziej sztucznych miejsc, podaj powód i typ błędu. Potem przepisz tekst tak, żeby zachować mój sens, ale usunąć ogólniki, sztuczne podsumowania, przesadne przymiotniki, niejasne źródła, nadmiar pogrubień i zdania, które brzmią jak model.",
+  "order": 38,
+  "published": true,
+  "seoTitle": "Tekst bez śladów AI, checklista redakcyjna | Akademia.pl",
+  "seoDescription": "Checklista do usuwania z tekstu cech AI: pustych fraz, ogólników, sztucznego tonu, szablonowych zakończeń, nadmiaru formatowania i niejasnych źródeł.",
+  "keywords": [
+    "tekst bez AI",
+    "checklista redakcyjna",
+    "styl pisania",
+    "czyszczenie tekstu AI",
+    "humanizacja tekstu"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "redakcja-tekstu-ai",
+  "internalLinks": [
+    "checklista-copywritingu-strony-sprzedazowej",
+    "rezultaty-zamiast-funkcji",
+    "strona-www-w-twoim-stylu",
+    "wnioski-z-dyskusji-do-poprawy-systemu"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy checklista Tekst bez śladów AI?",
+      "answer": "Służy do ostatniego przejścia redakcyjnego po tekście napisanym albo poprawionym z pomocą AI. Pomaga usunąć puste frazy, sztuczne konstrukcje, zbyt gładkie podsumowania, nadmiar formatowania i słowa, które brzmią jak automatyczny tekst."
+    },
+    {
+      "question": "Czy ta checklista humanizuje tekst automatycznie?",
+      "answer": "Nie chodzi o mechaniczne udawanie człowieka. Checklista zmusza do konkretu, źródeł, prostych zdań i usunięcia fraz, które nie niosą informacji. Dobry wynik ma brzmieć jak autor, a nie jak tekst przepisany przez filtr."
+    },
+    {
+      "question": "Kiedy używać tej checklisty w procesie pisania?",
+      "answer": "Najlepiej na końcu pracy, po sprawdzeniu faktów i struktury tekstu. Wcześniej AI może pomóc w researchu, szkicu albo redakcji, ale ta checklista powinna być etapem czyszczenia przed publikacją."
+    },
+    {
+      "question": "Czy można używać tej checklisty do tekstów sprzedażowych?",
+      "answer": "Tak. W tekstach sprzedażowych szczególnie warto usuwać puste obietnice, przymiotniki bez dowodu i frazy typu kompleksowe rozwiązanie. Zamiast tego tekst powinien pokazywać konkretny problem, wynik, przykład, dowód i następny krok."
+    },
+    {
+      "question": "Czy wszystkie zakazane słowa trzeba zawsze usuwać?",
+      "answer": "Nie. Lista słów jest sygnałem ostrzegawczym, a nie automatem do kasowania. Jeśli słowo ma konkretny sens w danym zdaniu i jest poparte przykładem albo danymi, może zostać. Problemem jest używanie go jako wypełniacza."
+    },
+    {
+      "question": "Jak poprosić AI o pracę z tą checklistą?",
+      "answer": "Najlepiej poprosić AI o trzy kroki: najpierw diagnoza konkretnych zdań, potem lista decyzji redakcyjnych, a dopiero na końcu poprawiona wersja. To ogranicza ryzyko, że model wygładzi tekst i doda nowe ogólniki."
+    }
+  ]
+}

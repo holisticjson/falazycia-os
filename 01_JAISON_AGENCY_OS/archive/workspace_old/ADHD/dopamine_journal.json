@@ -1,0 +1,25 @@
+{
+  "wins": [
+    {
+      "date": "2026-05-16",
+      "time": "12:00",
+      "type": "🎉 System Wdrożenie",
+      "detail": "Uruchomienie pierwszej wersji ADHD Flow",
+      "points": 100
+    },
+    {
+      "date": "2026-05-16",
+      "time": "18:00",
+      "type": "🌿 Rytuał",
+      "detail": "Zakończenie porannej rutyny i wyciszenie",
+      "points": 30
+    },
+    {
+      "date": "2026-05-20",
+      "time": "20:51",
+      "type": "🔥 Zadanie",
+      "detail": "Wykonamy poranną rutynę i trening.",
+      "points": 30
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "id": "audyt-powtarzalnych-workflow-w-antigravity",
+  "type": "prompt",
+  "title": "Audyt powtarzalnych workflow w AntiGravity",
+  "description": "Przejrzyj sesje AntiGravity, Memories, Task Logs i istniejące automatyzacje, aby znaleźć workflow warte opakowania w skill, subagenta albo automatyzację.",
+  "shortDescription": "Znajdź workflow do opakowania w skill, subagenta albo automatyzację.",
+  "industry": "IT / Software / SaaS",
+  "industrySlug": "it-software-saas",
+  "application": "AI agenci i kod",
+  "applicationSlug": "ai-agenci-kod",
+  "tags": [
+    "AntiGravity",
+    "Automatyzacja"
+  ],
+  "url": "/prompty/ai-agenci-kod/audyt-powtarzalnych-workflow-w-antigravity/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-07-01",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Audyt powtarzalnych workflow w AntiGravity",
+  "body": "Prompt pomaga znaleźć powtarzalne prace w AntiGravity i zdecydować, czy warto opakować je jako skill, subagenta, automatyzację albo rozszerzenie istniejącego procesu.",
+  "usage": "Użyj tego prompta w AntiGravity, gdy masz za sobą kilka sesji pracy i chcesz wyłapać powtarzalne procesy, które da się uporządkować. Najlepiej działa u osób, które często kodują, robią research, piszą dokumentację, prowadzą projekty albo koordynują zadania w wielu repozytoriach. Jeśli AntiGravity nie ma dostępu do historii, Memories, wklej krótkie podsumowania ostatnich sesji, listę powtarzalnych zadań i istniejące automatyzacje.",
+  "prompt": "Przejrzyj moją ostatnią pracę z ostatnich 30 dni albo całą dostępną historię, jeśli jest krótsza, i znajdź powtarzalne ręczne workflow, które warto opakować w stały proces. Korzystaj z dostępnych dowodów w tej kolejności: 1. Ostatnie sesje AntiGravity i podsumowania zadań.\n2. AntiGravity Memory (WORKSPACE_MEMORY.md) oraz podsumowania rolloutów, żeby znaleźć wzorce powtarzające się między sesjami.\n3. Logi zadań (task logs), żeby zauważyć powtarzalną pracę poza AntiGravity. Używaj logów tylko do odkrywania wzorców. Ważne szczegóły potwierdzaj w odpowiednim systemie źródłowym, jeśli to możliwe.\n4. Istniejące skille, custom agenty i automatyzacje, żeby użyć albo rozszerzyć to, co już istnieje, zamiast tworzyć duplikaty. Szukaj szeroko pracy, która: 1. Powtarza się.\n2. Zabiera dużo czasu.\n3. Jest podatna na błędy.\n4. Wymaga dużo kontekstu.\n5. Zyskuje na spójnym procesie. Uwzględnij workflow z obszarów: kodowanie, research, pisanie, planowanie, komunikacja, operacje, analiza i administracja osobista. Działaj na kandydacie tylko wtedy, gdy: 1. Wystąpił co najmniej dwa razy albo wyraźnie będzie wracał i będzie kosztowny do powtarzania.\n2. Ma stabilne dane wejściowe, powtarzalną procedurę oraz jasny wynik albo warunek zakończenia.\n3. Realnie poprawi szybkość, jakość, spójność albo niezawodność.\n4. Nie jest już wystarczająco dobrze pokryty istniejącym procesem. Wybierz najmniejszą sensowną formę: 1. Skill, czyli powtarzalny workflow albo playbook.\n2. Custom subagent, czyli ograniczona rola specjalistyczna albo zadanie badawcze nadające się do delegowania.\n3. Automatyzacja, czyli zaplanowany albo cykliczny check, raport, przypomnienie albo monitoring.\n4. Rozszerzenie istniejącego elementu, jeśli coś podobnego już istnieje.\n5. Pominięcie, jeśli praca jest jednorazowa, zbyt niejasna, wrażliwa albo słabo udokumentowana. Najpierw przygotuj krótką listę kandydatów z polami: 1. Powtarzalny workflow.\n2. Dowody wspierające i daty.\n3. Częstotliwość oraz poziom pewności.\n4. Rekomendowana forma: skill, subagent, automatyzacja, rozszerzenie istniejącego elementu albo pominięcie.\n5. Dlaczego warto albo nie warto to tworzyć. Dopiero potem utwórz tylko brakujące elementy o wysokiej pewności. Zasady tworzenia: 1. Trzymaj zakres wąsko i praktycznie.\n2. Odwołuj się do źródeł, z których wynika potrzeba.\n3. Projektuj tak, żeby łatwo było sprawdzić, czy nowy element działa.\n4. Nie twórz spekulacyjnych, nakładających się albo zbyt szerokich assetów.\n5. Jeśli brakuje dowodów, nie twórz nowego elementu, tylko wpisz go na listę do obserwacji. Na końcu podaj: 1. Co utworzyłeś albo rozszerzyłeś.\n2. Co świadomie pominąłeś.\n3. Co wymaga większej liczby dowodów przed opakowaniem w stały proces. Dodaj do wyniku scoring każdego kandydata od 1 do 5 w obszarach: powtarzalność, ryzyko błędu, oszczędność czasu, łatwość automatyzacji i wpływ na jakość. Kandydat z wysokim ryzykiem i wysoką powtarzalnością powinien dostać priorytet. Kandydat z niską powtarzalnością powinien zostać jako checklist albo notatka. Na końcu przygotuj plan wdrożenia w 3 krokach: co zapisać w instrukcji, co zautomatyzować i co sprawdzać walidatorem.",
+  "example": "Najlepszy dla osób, które intensywnie pracują w AntiGravity i chcą zamieniać powtarzalne zadania w skille, subagentów albo automatyzacje.",
+  "order": 17,
+  "published": true,
+  "seoTitle": "Audyt powtarzalnych workflow w AntiGravity, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt do znalezienia powtarzalnych workflow w AntiGravity i opakowania ich w skill, subagenta albo automatyzację.",
+  "keywords": [
+    "AntiGravity workflow",
+    "AntiGravity skill",
+    "custom subagent",
+    "automatyzacja pracy",
+    "AI workflow"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "ai-agenci-kod",
+  "internalLinks": [
+    "agent-team-code-review",
+    "agent-team-budowa-feature",
+    "wywiad-przed-startem-projektu"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy robić audyt workflow w AntiGravity?",
+      "answer": "Warto go zrobić, gdy powtarzasz te same kroki w kilku sesjach, często kopiujesz instrukcje, ręcznie sprawdzasz te same rzeczy albo widzisz, że agent regularnie gubi standard pracy."
+    },
+    {
+      "question": "Co powinno wejść do audytu workflow?",
+      "answer": "Wklej przykłady zadań, powtarzalne komendy, fragmenty instrukcji, błędy, ręczne checklisty i miejsca, w których tracisz czas. Model powinien szukać kandydatów na skill, guard, skrypt albo dokument procesu."
+    },
+    {
+      "question": "Jak odróżnić skill od zwykłej instrukcji?",
+      "answer": "Skill ma sens, gdy proces jest powtarzalny, ma kilka kroków, wymaga stałego standardu i może być ponownie używany w różnych sesjach. Jednorazowa zasada zwykle wystarczy jako dokumentacja."
+    },
+    {
+      "question": "Czy audyt powinien proponować automatyzacje?",
+      "answer": "Tak, ale tylko tam, gdzie automatyzacja zmniejsza ryzyko albo oszczędza powtarzalną pracę. Nie każdy workflow wymaga skryptu. Czasem lepszy jest guard, checklist albo prostsza instrukcja."
+    },
+    {
+      "question": "Jaki wynik jest najbardziej użyteczny?",
+      "answer": "Najlepszy wynik to ranking kandydatów z decyzją: zostawić ręcznie, opisać jako checklistę, zrobić skill, dodać walidator albo napisać skrypt. Każda rekomendacja powinna mieć powód i koszt wdrożenia."
+    }
+  ]
+}

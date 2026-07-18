@@ -1,0 +1,69 @@
+{
+  "id": "wnioski-z-dyskusji-do-poprawy-systemu",
+  "type": "prompt",
+  "title": "Wnioski z dyskusji do poprawy systemu",
+  "description": "Przeanalizuj całą rozmowę z AI i wyciągnij konkretne usprawnienia procesu, zasad i guardów, żeby kolejne sesje były mniej frustrujące.",
+  "shortDescription": "Zamień trudną rozmowę z AI w ulepszenia systemu.",
+  "industry": "Automatyzacja i AI",
+  "industrySlug": "automatyzacja-ai",
+  "application": "AI agenci i kod",
+  "applicationSlug": "ai-agenci-kod",
+  "tags": [
+    "Proces",
+    "Guardy"
+  ],
+  "url": "/prompty/automatyzacja-ai/wnioski-z-dyskusji-do-poprawy-systemu/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Wnioski z dyskusji do poprawy systemu",
+  "body": "Prompt pomaga zamienić chaotyczną albo frustrującą sesję z AI w konkretne reguły, checklisty, guardy i poprawki procesu.",
+  "usage": "Użyj tego prompta po długiej rozmowie z AI, po serii poprawek, po incydencie jakościowym albo po sytuacji, w której agent zignorował ustalenia. Wklej transcript, podsumowanie sesji, listę błędów albo fragmenty rozmowy, które pokazują frustrację. Model ma wyciągnąć reguły do procesu, guardy, testy, checklisty i zmiany dokumentacji, a nie pisać ogólne przeprosiny. Najlepiej użyć go od razu po problematycznej sesji, zanim szczegóły znikną z pamięci. Wklej konkretne zdania użytkownika, miejsca błędu i momenty, w których trzeba było powtarzać ustalenia.",
+  "prompt": "Przeanalizuj tę dyskusję jak retrospektywę systemu pracy z AI.\n\nNie broń wcześniejszych decyzji i nie tłumacz się intencjami. Twoim zadaniem jest znaleźć wzorce, które spowodowały frustrację, powtarzanie pracy, błędne założenia, brak weryfikacji, chaos stylistyczny, utratę szczegółów albo publikację niedopracowanego materiału.\n\nMateriał do analizy:\n[wklej rozmowę, fragmenty albo opis sytuacji]\n\nPrzygotuj wynik w 7 sekcjach:\n1. Co użytkownik naprawdę chciał osiągnąć.\n2. Gdzie agent odszedł od ustaleń.\n3. Jakie zasady były niejawne i trzeba je zapisać.\n4. Jakie guardy albo walidatory powinny blokować podobny błąd.\n5. Jakie checklisty należy dopisać do procesu.\n6. Jakie zachowania agent ma wykonywać przed słowem gotowe.\n7. Jakie zachowania agent ma przestać robić.\n\nDla każdego wniosku podaj:\nproblem, sygnał z rozmowy, konsekwencja, nowa reguła, miejsce zapisania, automatyczna kontrola, przykład dobrego zachowania.\n\nNa końcu przygotuj gotowy wpis do dokumentacji procesu w maksymalnie 12 punktach.\n\nOddziel błędy jednostkowe od błędów systemowych. Nie twórz zasad, których nie da się sprawdzić w praktyce.\n\nNa końcu przygotuj trzy listy:\n1. Poprawki natychmiastowe.\n2. Poprawki do backlogu.\n3. Zachowania, które wymagają ręcznej uwagi użytkownika.\n\nJeśli widzisz konflikt między szybkością pracy a jakością, nazwij go i zaproponuj domyślne rozstrzygnięcie.\n\nDodaj sekcję odpowiedzialności procesu. Rozdziel, co powinno zostać zapisane w instrukcji roli, co w walidatorze, co w checklistach, co w changelogu, a co wymaga decyzji właściciela. Nie wrzucaj wszystkiego do jednego dokumentu. Na końcu wskaż pierwszą poprawkę, która daje największą redukcję ryzyka.",
+  "example": "Dobry po długich sesjach produktowych, pracy nad kodem, deployach, aktualizacjach contentu i sytuacjach, w których AI powinno nauczyć się z własnych potknięć.",
+  "order": 21,
+  "published": true,
+  "seoTitle": "Wnioski z dyskusji do poprawy systemu, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt do analizy rozmowy z AI i zamiany frustracji, błędów oraz powtórek w zasady, guardy, checklisty i poprawki procesu.",
+  "keywords": [
+    "prompt retrospektywa AI",
+    "ulepszanie systemu",
+    "guardy AI",
+    "analiza rozmowy",
+    "process improvement"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "ai-agenci-kod",
+  "internalLinks": [
+    "audyt-powtarzalnych-workflow-w-codex",
+    "tekst-bez-sladow-ai",
+    "doskonalosc-funkcji-ponad-zgode",
+    "agent-team-code-review"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy używać prompta do analizy dyskusji?",
+      "answer": "Najlepiej używać go po sesji, w której pojawiło się dużo poprawek, nieporozumień albo powtarzania ustaleń. Prompt działa jak retrospektywa pracy z AI i pomaga przekuć frustrację w zmiany systemowe."
+    },
+    {
+      "question": "Czy trzeba wkleić całą rozmowę?",
+      "answer": "Jeśli możesz, wklej całą rozmowę albo jej podsumowanie. Jeśli rozmowa jest zbyt długa, wystarczy wkleić najważniejsze momenty: błędy, poprawki, decyzje, powtarzające się uwagi i sytuacje, które najbardziej przeszkadzały."
+    },
+    {
+      "question": "Jaki powinien być wynik tego prompta?",
+      "answer": "Dobry wynik to konkretna lista zasad, guardów, testów, zmian w dokumentacji i zachowań do unikania. Sama refleksja nie wystarczy. Prompt ma kończyć się zmianami, które można wdrożyć w systemie pracy."
+    },
+    {
+      "question": "Czy ten prompt nadaje się tylko do pracy z kodem?",
+      "answer": "Nie. Można go używać po pracy nad contentem, strategią, projektem, mailingiem, stroną internetową, kampanią albo operacjami. W każdym przypadku chodzi o znalezienie powtarzalnych błędów i ulepszenie procesu."
+    },
+    {
+      "question": "Jak uniknąć ogólników w odpowiedzi AI?",
+      "answer": "Poproś model o konkretne pola: problem, przykład z rozmowy, reguła na przyszłość, miejsce wdrożenia, test albo guard. Dzięki temu odpowiedź będzie bardziej operacyjna i łatwiej ją zapisać w dokumentacji."
+    }
+  ]
+}

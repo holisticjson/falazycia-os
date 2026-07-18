@@ -1,0 +1,118 @@
+{
+  "id": "tematy-maili-sprzedazowych",
+  "type": "checklist",
+  "title": "Tematy maili sprzedażowych: hooki i testy A/B",
+  "description": "Checklista pisania tematów maili sprzedażowych: personalizacja imieniem, optymalna długość i format, pięć typów hooków dobieranych do fazy oraz dyscyplina testów A/B z konkretnymi benchmarkami open rate.",
+  "shortDescription": "Pisz tematy maili, które otwierają, na bazie hooków, benchmarków open rate i testów A/B.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Email marketing",
+    "Open rate"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/tematy-maili-sprzedazowych/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Tematy maili sprzedażowych: hooki i testy A/B",
+  "body": "O tym, czy mail w ogóle zostanie przeczytany, decyduje temat. Ta checklista zbiera sprawdzone zasady tematów: personalizację imieniem, która podnosi open rate, optymalną długość pod podgląd mobilny, najważniejsze słowo na początku oraz konkretne dane, na przykład że liczby w temacie dają więcej otwarć, a słowo newsletter mniej. Podaje pięć typów hooków dobieranych do fazy kampanii oraz dyscyplinę testów A/B z progiem istotności. Dzięki temu zamiast zgadywać, dobierasz temat pod fazę i sprawdzasz go danymi.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z tematem maila, fazą kampanii i informacją, czy masz w bazie imiona odbiorców. Poproś AI, żeby napisało kilka wariantów tematu według różnych typów hooków z checklisty, na przykład curiosity gap, urgency i direct question, oraz dopilnowało długości 30 do 60 znaków z najważniejszym słowem na początku. Następnie niech AI przygotuje parę wersji do testu A/B z konkretną, nie kosmetyczną różnicą i zaproponuje, jak interpretować wynik, żeby różnica powyżej 5 procent open rate była uznana za istotną.",
+  "checklistSections": [
+    {
+      "title": "Personalizacja w temacie",
+      "items": [
+        "Używasz imienia w temacie, jeśli masz je w bazie, bo personalizacja imieniem podnosi open rate nawet o 50 procent.",
+        "Jeśli brak imienia, używasz Hej albo Cześć, casualowo, nigdy Szanowny Panie albo Pani.",
+        "Masz ustawiony fallback w systemie, żeby nie wyświetlał pustego znacznika imienia, gdy brakuje danych."
+      ]
+    },
+    {
+      "title": "Długość i format tematu",
+      "items": [
+        "Trzymasz 30 do 60 znaków pod podgląd mobilny, optymalnie 6 do 10 słów, co daje około 21 procent open rate.",
+        "Najważniejsze słowo dajesz na początku, bo na mobile koniec się ucina, a ponad 60 procent czyta na telefonie.",
+        "Sprawdzasz podgląd tematu na telefonie przed wysyłką.",
+        "Bez emoji w temacie open rate bywa wyższy, 42,23 procent wobec 37,5 procent z emoji, więc testujesz A/B.",
+        "Unikasz słowa newsletter w temacie, bo obniża open rate o 18,7 procent.",
+        "Wiesz, że liczby w temacie dają plus 57 procent open rate, a słowo Alert plus 61,8 procent."
+      ]
+    },
+    {
+      "title": "5 typów hooków w temacie, dobierane do fazy",
+      "items": [
+        "Curiosity gap, luka ciekawości: mam do Ciebie jedno ważne pytanie, znam już 12 powodów, mam dzisiaj 3 istotne informacje.",
+        "Urgency, pilność: ostatnie przypomnienie dziś 20:00, za 3 godziny zamykamy, to ostatni mój mail w tej sprawie.",
+        "Direct question, bezpośrednie pytanie: dlaczego Ty tu w ogóle jesteś, będziesz tysięczny, jeszcze się wahasz.",
+        "Warning albo FOMO: przyjacielskie ostrzeżenie, uwaga z imieniem, nie ma Cię z nami.",
+        "Behavioral, tylko dla segmentu engaged: widzę że klikasz, otworzyłeś 8 maili ale."
+      ]
+    },
+    {
+      "title": "Testy A/B tematów",
+      "items": [
+        "Przygotowujesz 2 wersje tematu z konkretną różnicą, nie kosmetyczną.",
+        "Ustawiasz różny tracking UTM dla każdej wersji, na przykład utm_content subject a i subject b.",
+        "Oceniasz wynik po 2 do 4 godzin, różnica powyżej 5 procent open rate jest istotna.",
+        "Dokumentujesz wynik, na przykład temat A 43 procent wobec temat B 38 procent, wniosek pytania wygrywają z pilnością.",
+        "Testujesz tematy na niezaangażowanych subskrybentach przed wysyłką do głównej listy, co daje około 12 procent więcej otwarć."
+      ]
+    }
+  ],
+  "example": "Najlepsza przy pisaniu tematów do kampanii sprzedażowej albo newslettera, gdy chcesz podnieść open rate i przestać wymyślać tematy na czuja.",
+  "order": 69,
+  "published": true,
+  "seoTitle": "Tematy maili sprzedażowych, hooki i testy A/B na open rate",
+  "seoDescription": "Pisz tematy maili z wyższym open rate: personalizacja imieniem, długość pod mobile, pięć typów hooków dobieranych do fazy i dyscyplina testów A/B z benchmarkami.",
+  "keywords": [
+    "tematy maili",
+    "open rate",
+    "subject line",
+    "email marketing",
+    "testy A/B maili"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "kampania-email",
+  "internalLinks": [
+    "kampania-emailowa-fazy-harmonogram",
+    "tresc-i-perswazja-maila-sprzedazowego",
+    "cta-ps-i-checklist-techniczny-maila"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Tematy maili sprzedażowych, hooki i testy A/B",
+  "sourceReferences": [
+    {
+      "title": "Raporty Email Marketing Benchmarks",
+      "author": "GetResponse",
+      "url": "https://www.getresponse.com",
+      "relation": "Źródło danych i benchmarków open rate, ROI i automatyzacji przytoczonych w checkliście."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Jaka jest optymalna długość tematu maila?",
+      "answer": "Najlepiej 30 do 60 znaków, czyli mniej więcej 6 do 10 słów, bo tyle mieści się w podglądzie na telefonie, a ponad 60 procent ludzi czyta maile na mobile. Najważniejsze słowo warto dać na początku, bo koniec tematu często się ucina i może zniknąć kluczowy przekaz."
+    },
+    {
+      "question": "Czy warto używać emoji w temacie maila?",
+      "answer": "To zależy od listy, ale dane pokazują, że tematy bez emoji potrafią mieć wyższy open rate, około 42 procent wobec 37,5 procent z emoji. Dlatego emoji traktuj jako element do przetestowania A/B, a nie jako pewnik, i sprawdź, jak reaguje konkretnie Twoja baza."
+    },
+    {
+      "question": "Jak personalizacja imieniem wpływa na otwarcia?",
+      "answer": "Użycie imienia w temacie potrafi podnieść open rate nawet o 50 procent, dlatego warto z niego korzystać, gdy masz imiona w bazie. Kluczowe jest ustawienie fallbacku w systemie, żeby przy braku danych nie wyświetlał się pusty znacznik imienia, bo to wygląda nieprofesjonalnie."
+    },
+    {
+      "question": "Jak poprawnie testować tematy A/B?",
+      "answer": "Przygotuj dwie wersje z konkretną, nie kosmetyczną różnicą, nadaj im osobny tag UTM, a wynik oceń po dwóch do czterech godzin. Różnicę powyżej pięciu procent open rate traktuj jako istotną i zapisuj wnioski, na przykład że pytania wygrywają z pilnością, żeby uczyć się na kolejnych kampaniach."
+    },
+    {
+      "question": "Które słowa w temacie pomagają, a które szkodzą?",
+      "answer": "Liczby w temacie potrafią dać około 57 procent więcej otwarć, a słowo Alert nawet 61,8 procent więcej, bo zwiększają konkretność i pilność. Z kolei słowo newsletter obniża open rate o około 18,7 procent, bo sygnalizuje masową wysyłkę, więc lepiej go unikać."
+    }
+  ]
+}

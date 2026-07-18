@@ -1,0 +1,168 @@
+{
+  "id": "formaty-i-harmonogram-social-media",
+  "type": "checklist",
+  "title": "Formaty i harmonogram social media, benchmarki PL",
+  "description": "Checklista formatów per platforma, czyli LinkedIn, Instagram, TikTok, YouTube Shorts, X, newsletter i podcast, wraz z benchmarkami zaangażowania, optymalną częstotliwością, szablonem tygodnia i strategią komentowania dla małej firmy.",
+  "shortDescription": "Dobierz format i częstotliwość per platforma na bazie twardych benchmarków, nie przeczuć.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Content i social media",
+  "applicationSlug": "content-social-media",
+  "tags": [
+    "Social media",
+    "LinkedIn"
+  ],
+  "url": "/checklisty/content-social-media/formaty-i-harmonogram-social-media/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Formaty i harmonogram social media, benchmarki PL",
+  "body": "Każda platforma nagradza inny format i inny rytm publikacji, a kopiowanie tej samej treści wszędzie obniża zasięg. Ta checklista zbiera konkretne benchmarki zaangażowania dla LinkedIn, Instagrama, TikToka, YouTube Shorts, X, newslettera i podcastu, podaje optymalną częstotliwość dla małej firmy oraz gotowy szablon tygodnia z rozkładem postów. Dodaje też strategię komentowania, która generuje rozmowy i spotkania. Dzięki temu zamiast publikować na czuja, dobierasz format i godzinę pod realne dane, a swój pillar content rozkładasz na całą siatkę platform.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z listą platform, na których jesteś, swoją grupą docelową i tym, ile razy w tygodniu realnie możesz publikować. Poproś AI, żeby zbudowało dla Ciebie tygodniowy harmonogram na bazie szablonu z checklisty, dobrało format pod każdą platformę zgodnie z benchmarkami zaangażowania i wskazało, gdzie marnujesz zasięg, na przykład wrzucając linki bezpośrednio w post na LinkedIn zamiast w komentarz. Następnie niech AI zaproponuje plan komentowania u idealnych prospektów oraz wskaże, które formaty porzucić, bo dają najniższy engagement.",
+  "checklistSections": [
+    {
+      "title": "LinkedIn",
+      "items": [
+        "Pamiętasz skalę: 8,2 miliona użytkowników w Polsce, a regularnie publikuje tylko 7,1 procenta.",
+        "Karuzele i PDF dają 278 procent więcej zaangażowania niż wideo i 596 procent więcej niż tekst, a mnożnik zasięgu 1,40x jest najwyższy dla firm.",
+        "Posty z wieloma obrazkami mają 6,60 procent engagement, najwyższy ze wszystkich.",
+        "Dokumenty PDF osiągają 5,85 do 6,10 procent engagement.",
+        "Tekst bez grafiki dla stron firmowych ma tylko 0,42x zasięgu.",
+        "Linki w treści posta obniżają zasięg o 25 do 35 procent, więc wstawiasz link w komentarzu po 30 minutach.",
+        "Pierwsze 60 minut decyduje: silny wczesny engagement daje nawet 10x rozszerzenie zasięgu.",
+        "Publikowanie częściej niż 5 razy w tygodniu obniża engagement o 7 procent.",
+        "Ankiety mają mnożnik 1,19x, a zagrywka Comment YES obniża engagement o 22 procent w algorytmie.",
+        "Komentarze ponad 10 słów podwajają zasięg, a ponad 15 słów dają 2,5x zasięgu.",
+        "Komentarze pisane przez AI dostają 5x mniej odpowiedzi i 7x mniej engagement, więc komentujesz osobiście."
+      ]
+    },
+    {
+      "title": "Instagram",
+      "items": [
+        "Pamiętasz skalę: 11,3 miliona użytkowników w Polsce.",
+        "Karuzele mieszane, czyli obraz plus wideo, dają 2,33 procent engagement, najlepszy format.",
+        "Reelsy mają 0,50 procent engagement, ale 1,36x większy zasięg.",
+        "Posty kolaboracyjne dają 3,4x wyższe zaangażowanie, a optymalna karuzela ma 6 do 10 slajdów.",
+        "Zdjęcia statyczne osiągają 0,45 procent, najsłabszy wynik.",
+        "Publikujesz Stories codziennie, żeby utrzymać top of mind."
+      ]
+    },
+    {
+      "title": "TikTok",
+      "items": [
+        "Pamiętasz skalę: 15,5 miliona użytkowników w Polsce, więcej niż Instagram.",
+        "Średni engagement to 4,90 procent, o 12 procent więcej rok do roku, a małe konta poniżej 10 tysięcy mają 7,5 do ponad 10 procent.",
+        "Średnia długość to 42,7 sekundy, a pierwsze 3 sekundy decydują.",
+        "52 procent użytkowników kupuje od małych firm, a decydenci B2B spędzają 45 minut dziennie na TikToku.",
+        "Szukasz wiralowej serii, czyli wideo, które można lekko modyfikować i repostować."
+      ]
+    },
+    {
+      "title": "YouTube Shorts",
+      "items": [
+        "Engagement wynosi 4,71 procent, a shorty 50 do 60 sekund mają 76 procent completion rate.",
+        "Trending audio w pierwszych 5 sekundach daje 21 procent więcej zasięgu."
+      ]
+    },
+    {
+      "title": "X, dawniej Twitter",
+      "items": [
+        "Konta Premium mają 10x większy zasięg niż darmowe, a mediana engagement darmowych kont to 0 procent na marzec 2025.",
+        "Wątki, czyli thready, dają 63 procent więcej impressions niż tweety z linkami i 54 procent więcej engagement.",
+        "Przykład hey_ciara: jeden wątek dał 13 tysięcy nowych obserwujących i 47 tysięcy retweetów."
+      ]
+    },
+    {
+      "title": "Newsletter",
+      "items": [
+        "ROI email marketingu to 36 złotych na każdą wydaną złotówkę.",
+        "Zautomatyzowane maile mają open rate 45,38 procent i generują około 40 procent przychodu emailowego przy zaledwie 3 procentach wysyłek.",
+        "Pełny playbook kampanii email prowadzisz osobno, według checklisty kampanii emailowej."
+      ]
+    },
+    {
+      "title": "Podcast",
+      "items": [
+        "Stosujesz regułę Top 4 procent: 10 odcinków w 10 tygodni stawia Cię w górnych 4 procentach podcastów.",
+        "Szczegóły strategii podcastu prowadzisz w osobnej checkliście podcastowej."
+      ]
+    },
+    {
+      "title": "Optymalna częstotliwość dla małej firmy",
+      "items": [
+        "LinkedIn 3 razy w tygodniu: jedna karuzela, jeden tekst, jedna ankieta albo wideo.",
+        "Instagram 3 do 4 razy w tygodniu: dwie karuzele, jeden do dwóch Reelsów plus codzienne Stories.",
+        "TikTok i Shorts 2 do 3 razy w tygodniu.",
+        "Newsletter raz w tygodniu, bo konsekwencja jest ważniejsza od częstotliwości.",
+        "Razem około 10 do 12 natywnych postów tygodniowo."
+      ]
+    },
+    {
+      "title": "Szablon tygodnia",
+      "items": [
+        "Poniedziałek: karuzela LinkedIn, czyli najwyższy engagement, plus karuzela Instagram.",
+        "Wtorek: tekst na LinkedIn, storytelling albo hot take, plus TikTok.",
+        "Środa: Reel Instagram plus ankieta LinkedIn.",
+        "Czwartek: wątek na X albo post LinkedIn plus TikTok.",
+        "Piątek: newsletter plus karuzela LinkedIn plus Reel Instagram.",
+        "Sobota: YouTube Short repurposowany z TikToka.",
+        "Engagement 45 do 60 minut dziennie: rano LinkedIn 15 minut i Instagram 15 minut, wieczorem LinkedIn 15 minut i X 15 minut."
+      ]
+    },
+    {
+      "title": "Strategia komentowania",
+      "items": [
+        "Stosujesz strategię comment first: 48,14 procent pozytywnych odpowiedzi wobec poniżej 10 procent dla cold maila.",
+        "Schemat: 10 do 15 idealnych prospektów dziennie, merytoryczne komentarze, po 3 do 5 komentarzach w 1 do 2 tygodni connection request, potem wiadomość z wartością.",
+        "Cel realny: trzy spotkania w 30 minut z zaangażowanych prospektów."
+      ]
+    }
+  ],
+  "example": "Najlepsza przy układaniu tygodniowego planu publikacji dla małej firmy albo marki osobistej, gdy chcesz dobrać format i częstotliwość pod realne benchmarki, a nie intuicję.",
+  "order": 59,
+  "published": true,
+  "seoTitle": "Formaty i harmonogram social media, benchmarki i szablon tygodnia",
+  "seoDescription": "Benchmarki zaangażowania LinkedIn, Instagram, TikTok, YouTube Shorts i X, optymalna częstotliwość, szablon tygodnia i strategia komentowania dla małej firmy.",
+  "keywords": [
+    "formaty social media",
+    "harmonogram social media",
+    "benchmarki LinkedIn",
+    "engagement Instagram",
+    "plan publikacji"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "dystrybucja-social",
+  "internalLinks": [
+    "repurposing-content-1-na-22",
+    "hooki-i-formuly-wiralowe",
+    "building-in-public-glos-marki"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Formaty per platforma, częstotliwość i harmonogram social media",
+  "faq": [
+    {
+      "question": "Który format daje najwyższe zaangażowanie na LinkedIn?",
+      "answer": "Najlepiej działają posty z wieloma obrazkami, około 6,60 procent engagement, oraz karuzele i dokumenty PDF, które dają nawet 278 procent więcej zaangażowania niż wideo. Tekst bez grafiki, zwłaszcza ze strony firmowej, ma najniższy zasięg, więc traktuj go jako uzupełnienie, nie podstawę."
+    },
+    {
+      "question": "Ile razy w tygodniu publikować w social mediach?",
+      "answer": "Dla małej firmy rozsądny rytm to około 10 do 12 natywnych postów tygodniowo: LinkedIn 3 razy, Instagram 3 do 4 razy plus Stories, TikTok i Shorts 2 do 3 razy oraz newsletter raz w tygodniu. Na LinkedIn publikowanie częściej niż 5 razy w tygodniu obniża engagement o 7 procent."
+    },
+    {
+      "question": "Dlaczego nie wstawiać linku bezpośrednio w post na LinkedIn?",
+      "answer": "Linki w treści posta obniżają zasięg o 25 do 35 procent, bo algorytm chce zatrzymać użytkownika na platformie. Lepiej opublikować post bez linku, a sam link dodać w komentarzu po około 30 minutach, gdy post zdąży zebrać wczesny engagement."
+    },
+    {
+      "question": "Czy mogę publikować tę samą treść na wszystkich platformach?",
+      "answer": "Nie warto kopiować jeden do jednego, bo algorytmy wykrywają i karzą powielanie, a każda platforma nagradza inny format i ton. Zamiast tego repurposuj jeden pillar content na natywne formaty: karuzelę na LinkedIn, krótkie wideo na TikToka, wątek na X i wpis w newsletterze."
+    },
+    {
+      "question": "Jak działa strategia komentowania jako kanał pozyskiwania klientów?",
+      "answer": "Wybierasz 10 do 15 idealnych prospektów dziennie i zostawiasz pod ich postami merytoryczne komentarze ponad 10 słów. Po kilku komentarzach w ciągu jednego do dwóch tygodni wysyłasz zaproszenie, a potem wiadomość z wartością. Taka droga daje znacznie wyższy odsetek pozytywnych odpowiedzi niż cold mail."
+    }
+  ]
+}

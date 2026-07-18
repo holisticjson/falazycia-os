@@ -1,0 +1,134 @@
+{
+  "id": "hierarchy-of-engagement-i-churn",
+  "type": "checklist",
+  "title": "Hierarchy of Engagement i wykrywanie churnu",
+  "description": "Checklista projektowania zaangażowania według Hierarchy of Engagement Sarah Tavel, akumulacji wartości i efektów sieciowych oraz wykrywania churnu: sygnały ostrzegawcze, diagnostyka Jasona Cohena, proaktywne interwencje i benchmarki churnu.",
+  "shortDescription": "Projektuj zaangażowanie według Hierarchy of Engagement i wyłapuj churn, zanim klient odejdzie.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Retencja",
+    "Churn"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/hierarchy-of-engagement-i-churn/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Hierarchy of Engagement i wykrywanie churnu",
+  "body": "Trwała retencja nie bierze się z pojedynczych trików, tylko z architektury zaangażowania i szybkiego wyłapywania sygnałów odejścia. Ta checklista łączy Hierarchy of Engagement Sarah Tavel, czyli trzy poziomy od core action, przez akumulację wartości, po efekty sieciowe, z systemem wykrywania churnu: sygnałami ostrzegawczymi, diagnostyką Jasona Cohena, proaktywnymi interwencjami i benchmarkami churnu. Najlepsza retencja pojawia się, gdy użytkownik akumuluje wartość rosnącą z czasem, a churn po przejściu całego lejka to sygnał fundamentalnego problemu, nie drobnostka.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojego produktu, kluczowej akcji użytkownika i danych o odejściach. Poproś AI, żeby zmapowało Twój produkt na trzy poziomy Hierarchy of Engagement: core action, akumulacja wartości i efekty sieciowe, oraz wskazało, gdzie wartość mogłaby rosnąć z każdym użyciem. Następnie niech AI zaprojektuje system wykrywania churnu: sygnały ostrzegawcze, progi interwencji dzień po dniu oraz pytania diagnostyczne, a także porówna Twój churn z benchmarkami branżowymi.",
+  "checklistSections": [
+    {
+      "title": "Hierarchy of Engagement, Sarah Tavel",
+      "items": [
+        "Poziom 1 core action: identyfikujesz jedną najważniejszą akcję, na przykład pin w Pinterest, wiadomość w Slack, lekcja w Duolingo, i mierzysz, jaki procent użytkowników wykonuje ją w pierwszych 7 dniach.",
+        "Poziom 1: optymalizujesz onboarding tak, żeby doprowadzić do tej akcji jak najszybciej, bo jak mówi Uri Levine z Waze, jedyna metryka PMF to retencja.",
+        "Poziom 2 akumulacja wartości: projektujesz produkt tak, żeby dane i wartość rosły z każdym użyciem, jak pinboardy w Pinterest, notatki w Evernote, playlisty w Spotify.",
+        "Poziom 2: im dłużej użytkownik korzysta, tym więcej traci, odchodząc, czyli powstają naturalne switching costs, jedno z 7 źródeł trwałej przewagi według Hamiltona Helmera.",
+        "Poziom 2: według Sarah Tavel najlepsza retencja pojawia się, gdy użytkownik akumuluje wartość rosnącą z czasem.",
+        "Poziom 3 self-perpetuating: produkt staje się lepszy, gdy korzysta z niego więcej ludzi, jak Slack, którego wartość rośnie z każdym członkiem zespołu.",
+        "Poziom 3: projektujesz mechanizmy, w których aktywność jednego użytkownika tworzy wartość dla innych, dążąc do pętli, w której wzrost napędza wzrost."
+      ]
+    },
+    {
+      "title": "Wykrywanie churnu, sygnały ostrzegawcze",
+      "items": [
+        "Groove: alerty, gdy użytkownik spędza za dużo czasu na zadaniu, dały 350 procent więcej konwersji po proaktywnym kontakcie.",
+        "Brak logowania przez 14 dni to czerwona flaga numer jeden.",
+        "Niskie ukończenie wideo, poniżej 25 procent, to spadek zaangażowania.",
+        "Nieotwarte 3 plus maile z rzędu oznaczają, że użytkownik mentalnie odszedł.",
+        "Brak interakcji w społeczności po wcześniejszej aktywności to sygnał ostrzegawczy."
+      ]
+    },
+    {
+      "title": "Diagnostyka zatrzymanego wzrostu, Jason Cohen",
+      "items": [
+        "Churn to najważniejszy sygnał, bo klient przeszedł cały lejek i mimo to odchodzi, co oznacza fundamentalny problem.",
+        "Seria pytań diagnostycznych: czy klienci odchodzą, czy ceny są za niskie, czy positioning jest czytelny, czy marketing dociera.",
+        "Ceny startupów są prawie zawsze za niskie, więc podwój cenę i obserwuj, co się stanie."
+      ]
+    },
+    {
+      "title": "Proaktywna interwencja",
+      "items": [
+        "Dzień 7 bez logowania: personalizowany email co przegapiłeś.",
+        "Dzień 14: telefon od success managera.",
+        "Niskie zaangażowanie: oferta darmowej konsultacji.",
+        "Pre-churn: 50 procent zniżki na następny miesiąc.",
+        "Groove: ankieta przy każdym odejściu, co mogliśmy zrobić lepiej, dała minus 71 procent odejść po naprawieniu wzorców."
+      ]
+    },
+    {
+      "title": "Benchmarki churnu",
+      "items": [
+        "Mały SaaS B2B: 3 do 7 procent miesięcznego churnu, mid-market 1 do 3 procent, enterprise 0,5 do 1 procent.",
+        "E-commerce subskrypcje: około 6,5 procent, box subskrypcje 10 do 15 procent.",
+        "Kursy online self-paced: 5 do 15 procent ukończenia, kohortowe nawet 90 procent ukończenia.",
+        "Pierwsze 3 miesiące są kluczowe: churn spada z około 10 procent w miesiącu 1 do około 4 procent w miesiącu 3."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy chcesz zaprojektować trwałe zaangażowanie produktu i zbudować system wczesnego wykrywania churnu z konkretnymi sygnałami i interwencjami, zamiast reagować dopiero po odejściu klienta.",
+  "order": 84,
+  "published": true,
+  "seoTitle": "Hierarchy of Engagement i wykrywanie churnu, checklista retencji",
+  "seoDescription": "Projektuj zaangażowanie według Hierarchy of Engagement Sarah Tavel i wyłapuj churn: sygnały ostrzegawcze, diagnostyka Jasona Cohena, interwencje i benchmarki churnu.",
+  "keywords": [
+    "hierarchy of engagement",
+    "churn",
+    "retencja",
+    "switching costs",
+    "sygnały churnu"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "onboarding-retencja",
+  "internalLinks": [
+    "metryka-aktywacji-i-retencji",
+    "onboarding-uzytkownika-pierwsza-wartosc",
+    "win-back-i-reaktywacja-maili"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Hierarchy of Engagement, switching costs i wykrywanie churnu",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie i wzroście",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło frameworków onboardingu, aktywacji i retencji przytoczonych w checkliście, do dalszego posłuchania."
+    },
+    {
+      "title": "7 Powers, fundamenty strategii biznesowej",
+      "author": "Hamilton Helmer",
+      "url": "https://7powers.com",
+      "relation": "Odniesienie do switching costs jako jednego z siedmiu źródeł trwałej przewagi, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest Hierarchy of Engagement?",
+      "answer": "To framework Sarah Tavel opisujący trzy poziomy zaangażowania produktu. Poziom pierwszy to core action, czyli jedna najważniejsza akcja użytkownika. Poziom drugi to akumulacja wartości, gdy produkt staje się cenniejszy z każdym użyciem. Poziom trzeci to efekty sieciowe, gdy produkt jest lepszy, im więcej ludzi z niego korzysta. Im wyżej, tym trwalsza retencja."
+    },
+    {
+      "question": "Dlaczego akumulacja wartości poprawia retencję?",
+      "answer": "Gdy dane i wartość rosną z każdym użyciem, na przykład playlisty, notatki czy historia, użytkownik traci coraz więcej, odchodząc. Powstają naturalne switching costs, które Hamilton Helmer wymienia jako jedno z siedmiu źródeł trwałej przewagi. Dlatego warto projektować produkt tak, żeby z czasem stawał się dla użytkownika coraz trudniejszy do porzucenia."
+    },
+    {
+      "question": "Jakie są wczesne sygnały churnu?",
+      "answer": "Najczęstsze sygnały to brak logowania przez czternaście dni, niskie ukończenie materiałów wideo poniżej dwudziestu pięciu procent, trzy lub więcej nieotwartych maili z rzędu oraz zanik aktywności w społeczności po wcześniejszym zaangażowaniu. Warto też reagować, gdy użytkownik spędza zbyt dużo czasu na jednym zadaniu, bo to może oznaczać, że utknął."
+    },
+    {
+      "question": "Co zrobić, gdy klient zaczyna odchodzić?",
+      "answer": "Najlepiej interweniować proaktywnie, zanim klient zrezygnuje. Po tygodniu bez logowania wyślij spersonalizowany mail co przegapiłeś, po dwóch tygodniach rozważ telefon od opiekuna, a przy niskim zaangażowaniu zaproponuj darmową konsultację albo zniżkę przed rezygnacją. Pomaga też ankieta przy odejściu, która pozwala naprawiać powtarzające się przyczyny churnu."
+    },
+    {
+      "question": "O czym świadczy wysoki churn po całym lejku?",
+      "answer": "Jak zauważa Jason Cohen, jeśli klient przeszedł cały lejek i mimo to odchodzi, to sygnał fundamentalnego problemu, a nie drobnostki. Warto wtedy zadać pytania diagnostyczne: czy ceny nie są za niskie, czy pozycjonowanie jest czytelne i czy marketing dociera do właściwych osób. Często okazuje się, że cena startupu jest zaniżona i warto ją podnieść."
+    }
+  ]
+}

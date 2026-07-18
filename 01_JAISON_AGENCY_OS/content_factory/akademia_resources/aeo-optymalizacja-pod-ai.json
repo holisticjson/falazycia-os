@@ -1,0 +1,128 @@
+{
+  "id": "aeo-optymalizacja-pod-ai",
+  "type": "checklist",
+  "title": "AEO: optymalizacja pod ChatGPT, Claude i Perplexity",
+  "description": "Checklista Answer Engine Optimization, czyli optymalizacji treści pod cytowanie przez modele AI, takie jak ChatGPT, Claude i Perplexity, obok klasycznego SEO, wraz z zaawansowanymi taktykami i narzędziami monitoringu marki w silnikach AI.",
+  "shortDescription": "Spraw, żeby ChatGPT, Claude i Perplexity cytowały Twoje treści, nie tylko Google.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Automatyzacja i AI",
+  "applicationSlug": "automatyzacja-ai",
+  "tags": [
+    "AEO",
+    "SEO"
+  ],
+  "url": "/checklisty/automatyzacja-ai/aeo-optymalizacja-pod-ai/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "AEO: optymalizacja pod ChatGPT, Claude i Perplexity",
+  "body": "Coraz więcej osób szuka odpowiedzi w modelach AI zamiast w Google, a ruch z takich źródeł konwertuje znacznie lepiej, bo użytkownik jest dalej w procesie decyzyjnym. Answer Engine Optimization to umiejętność tworzenia treści, które modele AI chętnie cytują. Ta checklista łączy framework AEO, konkretne taktyki, podejście Product-Led SEO oraz zaawansowane techniki strukturyzacji treści pod ekstrakcję przez AI. Zamiast walczyć o pozycję numer jeden, grasz o częstotliwość cytowań w wielu źródłach naraz, od własnych artykułów po Reddit i Quora, i strukturyzujesz content tak, żeby model łatwo wyciągnął z niego gotową odpowiedź.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z adresem albo treścią strony, którą chcesz zoptymalizować pod cytowanie przez modele AI. Poproś AI, żeby przebudowało treść pod AEO: dodało format pytań i odpowiedzi, sekwencyjne nagłówki, atomowe paragrafy z kluczową informacją na początku oraz listy i porównania, które modele cytują najczęściej. Następnie niech AI wskaże, gdzie warto dodać dane i benchmarki jako materiał do cytowania, zaproponuje tematy do publikacji na Reddit i Quora oraz przypomni o uzupełnieniu Bing Places i FAQ Schema, bo z nich modele wyciągają odpowiedzi.",
+  "checklistSections": [
+    {
+      "title": "Framework AEO, Ethan Smith",
+      "items": [
+        "Traktujesz optymalizację pod ChatGPT, Claude i Perplexity jako nową umiejętność obok Google.",
+        "Pamiętasz, że ruch z modeli AI konwertuje 6x lepiej niż z Google, bo użytkownik jest dalej w procesie decyzyjnym.",
+        "Grasz nie o pozycję numer jeden, ale o częstotliwość cytowań w różnych źródłach.",
+        "Tworzysz content, który modele chętnie cytują: listy, porównania, definicje, najlepszy X do Y.",
+        "Jesteś cytowany w wielu źródłach, czyli artykuły, Reddit i Quora, bo modele agregują z wielu miejsc."
+      ]
+    },
+    {
+      "title": "Taktyki AEO",
+      "items": [
+        "Piszesz artykuły w formacie pytań i odpowiedzi, odpowiadając na konkretne pytania jak w sekcji People Also Ask.",
+        "Tworzysz porównania produktów albo metod, bo modele lubią ustrukturyzowane porównania.",
+        "Publikujesz merytoryczne odpowiedzi na Reddit i Quora, a widoczność Reddita w Google wzrosła o 1348 procent w 2025.",
+        "Jesteś źródłem danych, czyli badań, benchmarków i statystyk, bo modele cytują źródła z danymi.",
+        "Strukturyzujesz content nagłówkami H2 i H3, bullet pointami i tabelami, żeby ułatwić ekstrakcję."
+      ]
+    },
+    {
+      "title": "Product-Led SEO, Eli Schwartz",
+      "items": [
+        "Myślisz o SEO jak o produkcie, bo to pytanie produktowe, za które powinni odpowiadać product managerowie.",
+        "Zakładasz, że AI przejmie odkrywanie na górze lejka, ale SEO w środku lejka, czyli porównania i decyzje, zostaje i może być jeszcze cenniejsze.",
+        "Grupujesz content w klastry tematyczne, bo dają 30 procent więcej organicznego ruchu i pozycje utrzymują się 2,5x dłużej.",
+        "Szukasz long tail keywords w Google Autocomplete, People Also Ask i AnswerThePublic, za darmo.",
+        "Wykorzystujesz to, że polskie long tail keywords są mniej konkurencyjne niż angielskie."
+      ]
+    },
+    {
+      "title": "AEO zaawansowane",
+      "items": [
+        "Pamiętasz, że 69 procent wyszukiwań Google to zero-click w 2025, a do 2026 około 25 procent ruchu przeniesie się do chatbotów AI.",
+        "Tworzysz listy i rankingi, bo listy odpowiadają za 32 procent cytowań AI.",
+        "Stosujesz sekwencyjne nagłówki H1, potem H2, potem H3, bo zwiększają cytowanie 2,8x.",
+        "Piszesz atomowe paragrafy: jeden akapit to jedna odpowiedź na jedno pytanie, z kluczową informacją na początku.",
+        "Dodajesz FAQ Schema na każdej stronie, bo modele wyciągają treść z sekcji pytań i odpowiedzi.",
+        "Dodajesz rok w tytule, na przykład 2026, bo zwiększa to szanse cytowania.",
+        "Uzupełniasz Bing Places, bo ChatGPT korzysta z Bing do odpowiedzi.",
+        "Monitorujesz markę w silnikach AI narzędziami takimi jak Otterly.ai, 29 dolarów miesięcznie, albo Peec AI, od 99 dolarów."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy chcesz, żeby Twoja firma była cytowana w odpowiedziach ChatGPT, Claude i Perplexity, oraz gdy budujesz treści blogowe pod długi ogon zapytań i ruch z modeli AI.",
+  "order": 62,
+  "published": true,
+  "seoTitle": "AEO 2026, optymalizacja treści pod ChatGPT, Claude i Perplexity",
+  "seoDescription": "Checklista Answer Engine Optimization: jak tworzyć treści cytowane przez modele AI, format pytań i odpowiedzi, listy, dane, FAQ Schema i monitoring marki w silnikach AI.",
+  "keywords": [
+    "AEO",
+    "answer engine optimization",
+    "optymalizacja pod AI",
+    "cytowania ChatGPT",
+    "SEO 2026"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "aeo",
+  "internalLinks": [
+    "diagnoza-content-fuel-vs-engine",
+    "strategia-marketingowa-ze-strony-internetowej",
+    "full-funnel-content-i-lead-scoring"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Answer Engine Optimization i Product-Led SEO",
+  "sourceReferences": [
+    {
+      "title": "Answer Engine Optimization, optymalizacja pod modele AI",
+      "author": "Ethan Smith",
+      "url": "https://graphite.io",
+      "relation": "Framework AEO, odniesienie do publikacji autora o ruchu z modeli AI."
+    },
+    {
+      "title": "Product-Led SEO, książka Eli Schwartza",
+      "author": "Eli Schwartz",
+      "url": "https://www.elischwartz.co",
+      "relation": "Książka i podejście do SEO jako produktu, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest AEO i czym różni się od SEO?",
+      "answer": "AEO, czyli Answer Engine Optimization, to optymalizacja treści pod cytowanie przez modele AI takie jak ChatGPT, Claude i Perplexity. W klasycznym SEO walczysz o pozycję numer jeden w Google, a w AEO grasz o to, jak często model cytuje Twoją treść w odpowiedziach, agregując informacje z wielu źródeł naraz."
+    },
+    {
+      "question": "Dlaczego ruch z modeli AI jest tak wartościowy?",
+      "answer": "Ruch z modeli AI konwertuje około sześć razy lepiej niż z Google, bo użytkownik, który pyta chatbota, jest zwykle dalej w procesie decyzyjnym i dostaje gotową rekomendację. Dodatkowo coraz więcej wyszukiwań kończy się bez kliknięcia w Google, więc obecność w odpowiedziach AI staje się osobnym kanałem."
+    },
+    {
+      "question": "Jakie formaty treści modele AI cytują najczęściej?",
+      "answer": "Najczęściej cytowane są listy i rankingi, które odpowiadają za około 32 procent cytowań, oraz porównania, definicje i treści typu najlepszy X do Y. Pomaga też format pytań i odpowiedzi, sekwencyjne nagłówki, atomowe paragrafy z kluczową informacją na początku i obecność konkretnych danych."
+    },
+    {
+      "question": "Czy SEO ma jeszcze sens w erze AI?",
+      "answer": "Tak, choć zmienia się jego rola. Modele AI przejmują odkrywanie na górze lejka, ale SEO w środku lejka, czyli porównania i treści decyzyjne, zostaje i bywa jeszcze cenniejsze. Klastry tematyczne dają więcej ruchu organicznego, a pozycje utrzymują się dłużej."
+    },
+    {
+      "question": "Od czego zacząć optymalizację pod AI?",
+      "answer": "Zacznij od przebudowy treści: dodaj format pytań i odpowiedzi, sekwencyjne nagłówki, atomowe paragrafy i FAQ Schema, a kluczowe tezy wesprzyj danymi do cytowania. Publikuj też merytoryczne odpowiedzi na Reddit i Quora, uzupełnij Bing Places i rozważ narzędzie do monitoringu marki w silnikach AI."
+    }
+  ]
+}

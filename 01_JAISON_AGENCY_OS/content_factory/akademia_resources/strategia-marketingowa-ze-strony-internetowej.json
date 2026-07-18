@@ -1,0 +1,92 @@
+{
+  "id": "strategia-marketingowa-ze-strony-internetowej",
+  "type": "prompt",
+  "title": "Strategia marketingowa ze strony internetowej",
+  "description": "Przeanalizuj treść strony internetowej, oferty albo opisu produktu i zamień ją w szczegółowy szkic strategii marketingowej na najbliższe 12 miesięcy.",
+  "shortDescription": "Zamień stronę www w szczegółowy plan marketingowy.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Strategia",
+    "Plan marketingowy"
+  ],
+  "url": "/prompty/marketing-sprzedaz/strategia-marketingowa-ze-strony-internetowej/",
+  "active": true,
+  "views": 0,
+  "postedAt": "June 13, 2026",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Strategia marketingowa ze strony internetowej",
+  "body": "Ten prompt bierze treść strony internetowej, landing page, opisu produktu albo oferty i prowadzi AI przez pełną analizę marketingową. Wynikiem nie jest krótka lista kanałów, tylko roboczy dokument strategiczny: misja marketingowa, segmenty rynku, potrzeby klientów, UVP, SWOT, PESTEL, cele, KPI, pozycjonowanie, marketing mix, taktyki promocyjne, plan działań na 3, 6, 12 miesięcy, budżetowe kategorie, system kontroli oraz pierwsze codzienne zadania do przeniesienia do kalendarza albo systemu tasków. Prompt wymusza rozdzielenie faktów widocznych w treści od hipotez, dzięki czemu AI nie udaje danych wewnętrznych, konkurencji, budżetu ani wyników sprzedaży.",
+  "usage": "Użyj tego prompta, gdy masz stronę firmy, landing page, opis usługi, ofertę SaaS, stronę produktu cyfrowego, stronę lokalnej firmy albo tekst sprzedażowy i chcesz szybko zobaczyć, jaka strategia marketingowa wynika z obecnej komunikacji. Najlepiej wkleić pełną treść strony, sekcje hero, ofertę, ceny, FAQ, opinie, opis grupy docelowej, case studies, informacje o procesie zakupu i wszystkie CTA. Jeśli masz też dane wewnętrzne, dopisz ruch, konwersję, źródła leadów, budżet, marżę, średnią wartość koszyka, koszt pozyskania i obecne kanały sprzedaży. Prompt działa jako pierwsza wersja strategii, nie jako finalna decyzja zarządcza. Po odpowiedzi AI warto sprawdzić, które wnioski są oparte na treści strony, a które są hipotezami wymagającymi danych z Google Analytics, Search Console, CRM, reklam, rozmów z klientami albo analizy konkurencji.",
+  "prompt": "Rola:\nJesteś zaawansowanym Asystentem Marketingu Strategicznego AI. Twoim zadaniem jest analiza dostarczonej treści strony internetowej, landing page, oferty albo opisu produktu i wygenerowanie na tej podstawie szczegółowego szkicu strategii marketingowej na najbliższe 12 miesięcy wraz z listą proponowanych zadań.\n\nCel:\nStwórz ustrukturyzowaną propozycję planu marketingowego, który pomoże użytkownikowi zrozumieć potencjalne kierunki działań marketingowych dla jego produktu lub usługi. Oprzyj się przede wszystkim na treści wejściowej. Korzystaj z klasycznych ram planowania marketingowego, takich jak segmentacja, targeting, pozycjonowanie, marketing mix, SWOT, PESTEL, cele i KPI, ale nie traktuj ich jak akademickiego ćwiczenia. Każda sekcja ma kończyć się praktycznym wnioskiem albo zadaniem.\n\nNajważniejsze zasady pracy:\n1. Oddzielaj fakty od hipotez. Fakty to informacje widoczne w dostarczonej treści. Hipotezy to Twoje interpretacje i mają być oznaczone jako hipoteza.\n2. Jeśli czegoś nie da się wywnioskować z treści, napisz: informacja niedostępna w treści.\n3. Nie wymyślaj budżetu, wyników sprzedaży, pozycji SEO, wielkości rynku, konwersji, kosztu leada ani danych o konkurencji.\n4. Nie udawaj, że analizujesz internet, jeśli dostałeś tylko tekst strony. Możesz wskazać, co trzeba później sprawdzić przez research.\n5. Nie skracaj odpowiedzi do ogólnych porad. Strategia ma być konkretna, operacyjna i użyteczna.\n6. Dla każdej większej rekomendacji podaj powód, oczekiwany efekt i pierwszy krok wdrożenia.\n7. Jeśli strona jest słaba, ogólna albo niepełna, powiedz to jasno i wskaż, czego brakuje.\n8. Jeśli treść strony jest dobra, pokaż, które elementy warto wzmocnić i gdzie użyć ich w kampaniach.\n\nStruktura odpowiedzi, przestrzegaj jej ściśle:\n\nWstępna Strategia Marketingowa na najbliższe 12 miesięcy dla [Nazwa Firmy lub Produktu, jeśli możliwa do zidentyfikowania]\n\n0. Tabela wiarygodności analizy\nPrzygotuj krótką tabelę:\n1. Obszar analizy.\n2. Czy dane są w treści, tak, częściowo albo nie.\n3. Poziom pewności, wysoki, średni albo niski.\n4. Co trzeba sprawdzić później.\n\nI. Wstęp i podsumowanie, wnioski z analizy treści\n1. Sugerowana misja marketingowa, Twoja interpretacja misji na podstawie treści.\n2. Sugerowana wizja marketingowa, Twoja interpretacja wizji na podstawie treści.\n3. Główne cele biznesowe sugerowane na podstawie treści.\n4. Najważniejsza obietnica strony, jednym zdaniem.\n5. Najważniejszy problem komunikacji, jeśli występuje.\n6. Podsumowanie proponowanej strategii w 5 punktach.\n\nII. Dogłębna analiza sytuacji, na podstawie treści strony\n\nRynek:\n1. Prawdopodobne segmenty rynku, kogo strona wydaje się targetować.\n2. Segment priorytetowy, który wygląda na najbardziej logiczny na podstawie treści.\n3. Segmenty poboczne albo niewystarczająco opisane.\n4. Identyfikowane potrzeby klientów, jakie problemy i potrzeby strona adresuje.\n5. Język klienta widoczny w treści, wypisz konkretne frazy ze strony.\n6. Trendy rynkowe wnioskowane, np. AI, automatyzacja, ekologia, praca zdalna, redukcja kosztów, bezpieczeństwo, szybkość, specjalizacja, wygoda, edukacja.\n\nProdukt lub usługa:\n1. Opis produktu albo usługi, prostym językiem.\n2. Co klient kupuje formalnie.\n3. Co klient kupuje emocjonalnie albo biznesowo.\n4. Unikalna propozycja wartości, co strona podkreśla jako główną korzyść albo wyróżnik.\n5. Mocne strony komunikowane na stronie.\n6. Słabe strony potencjalne, niewynikające wprost z treści, ale widoczne jako braki w komunikacji, ofercie, dowodach, procesie zakupu albo CTA.\n7. Elementy oferty, które trzeba doprecyzować przed kampanią.\n\nKonkurencja:\n1. Informacje o konkurencji, czy strona wspomina konkurencję albo pozycjonuje się względem niej.\n2. Jeśli brak informacji, napisz: informacja niedostępna w treści.\n3. Prawdopodobne typy konkurencji, oznacz jako hipoteza.\n4. Jaką analizę konkurencji trzeba wykonać przed większym budżetem reklamowym.\n\nDystrybucja:\n1. Sugerowane kanały dystrybucji, jak produkt wydaje się być dostarczany albo sprzedawany.\n2. Czy zakup, kontakt albo zapis są wystarczająco jasne.\n3. Jakie tarcia mogą blokować konwersję.\n4. Jak uprościć drogę użytkownika od wejścia na stronę do kontaktu, zapisu albo zakupu.\n\nOtoczenie makro, PESTEL, wnioski z treści:\n1. Technologia, czy strona odnosi się do konkretnych technologii i jakie ma to znaczenie.\n2. Społeczne, czy strona odnosi się do trendów społecznych, wartości, stylu pracy albo zmiany zachowań.\n3. Ekonomiczne, czy strona dotyka oszczędności, ROI, kosztów, produktywności albo marży.\n4. Prawne, czy są wzmianki o regulacjach, bezpieczeństwie, zgodach, danych albo odpowiedzialności.\n5. Środowiskowe, jeśli temat ma znaczenie. Jeśli nie ma danych, napisz: informacja niedostępna w treści.\n6. Najważniejszy wniosek makro dla marketingu.\n\nIII. Analiza SWOT, wstępna, na podstawie treści\nPrzygotuj tabelę z czterema ćwiartkami:\n1. Mocne strony komunikowane.\n2. Słabe strony potencjalne albo niewymienione.\n3. Szanse sugerowane, jakie szanse rynkowe, technologiczne, kanałowe albo komunikacyjne mogą być istotne.\n4. Zagrożenia sugerowane, jakie ryzyka mogą dotyczyć firmy, oferty, rynku, kanałów pozyskania albo zaufania.\n\nPo tabeli dodaj:\n1. Najważniejsza przewaga do wzmocnienia.\n2. Najważniejsza luka do naprawienia.\n3. Największa szansa na najbliższe 90 dni.\n4. Największe ryzyko przed uruchomieniem kampanii.\n\nIV. Proponowane cele marketingowe i KPI\nZaproponuj 2 do 3 cele marketingowe. Każdy opisz formatem:\n1. Cel.\n2. Dlaczego pasuje do tej firmy albo oferty.\n3. KPI główne.\n4. KPI pomocnicze.\n5. Dane potrzebne do ustawienia wartości liczbowych.\n6. Pierwsze zadanie wdrożeniowe.\n\nPrzykładowe KPI, wybierz tylko pasujące:\nruch organiczny, wejścia na stronę, CTR z wyników wyszukiwania, liczba zapytań z formularza, konwersja landing page, liczba zapisów na listę, koszt leada, koszt zakupu, przychód, ROAS, udział ruchu brandowego, liczba opinii, liczba case studies, liczba rozmów sprzedażowych, współczynnik odpowiedzi, liczba fraz w TOP 10, liczba publikacji contentowych, liczba partnerstw, liczba poleceń.\n\nDodaj uwagę:\nKonkretne wartości KPI wymagają danych wewnętrznych, analityki, CRM albo historii kampanii.\n\nV. Proponowana strategia marketingowa\n1. Segmentacja i targeting, które segmenty wydają się priorytetowe.\n2. Pozycjonowanie, jak firma powinna się pozycjonować na podstawie UVP i treści.\n3. Kluczowe przesłanie, zaproponuj 3 warianty głównego komunikatu marketingowego.\n4. Strategia konkurencyjna, np. specjalizacja, jakość, prostota, szybkość, cena, zaufanie, lokalność, ekspert, społeczność, automatyzacja, personalizacja.\n5. Strategia lejka, opisz ścieżkę od pierwszego kontaktu do decyzji.\n6. Strategia zaufania, jakie dowody trzeba pokazać, żeby użytkownik uwierzył.\n7. Strategia treści, jakie tematy powinny prowadzić do oferty.\n8. Strategia konwersji, co trzeba poprawić na stronie, żeby więcej osób wykonało kolejny krok.\n\nVI. Proponowane taktyki marketingowe, marketing mix i zadania\n\nProdukt:\n1. Sugestie dotyczące doprecyzowania produktu, oferty, pakietów, bonusów, gwarancji, procesu, FAQ albo onboardingu.\n2. Co dopisać na stronie, żeby oferta była bardziej zrozumiała.\n3. Jakie pytania klienta powinny dostać odpowiedź przed kontaktem albo zakupem.\n\nCena:\n1. Czy strona komunikuje strategię cenową.\n2. Jeśli nie, napisz: informacja niedostępna w treści.\n3. Zasugeruj, czy cena powinna być jawna, od widełek, od pakietów, od kalkulatora, od rozmowy albo od konfiguratora.\n4. Wskaż ryzyko obecnego sposobu komunikacji ceny.\n\nMiejsce i dystrybucja:\n1. Sugestie dotyczące optymalizacji albo rozszerzenia kanałów dystrybucji.\n2. Oceń, czy zakup, zapis albo kontakt są wystarczająco proste.\n3. Wskaż, które CTA powinno być główne, a które pomocnicze.\n\nPromocja i komunikacja, propozycje zadań:\n1. Reklama, zasugeruj kanały, grupy docelowe, cel kampanii, typ kreacji i pierwszy test.\n2. Content marketing, zaproponuj minimum 10 tematów evergreen, 5 tematów edukacyjnych, 5 tematów porównawczych i 3 pomysły na case studies.\n3. Social media, zasugeruj platformy, typy postów, rytm publikacji i 10 konkretnych tematów postów.\n4. SEO, zaproponuj klastry fraz, typy stron, optymalizację treści, linkowanie wewnętrzne i tematy long tail.\n5. Email marketing, zaproponuj newsletter, sekwencję edukacyjną, segmentację bazy i 5 tematów maili.\n6. Lead magnet, zaproponuj 3 konkretne pomysły, każdy z tytułem, obietnicą i sposobem użycia w lejku.\n7. Opinie i dowody, wskaż, jakie testimonialsy, liczby, case studies albo logotypy trzeba zebrać.\n8. Partnerstwa, afiliacje albo polecenia, jeśli pasują do produktu.\n9. AI w marketingu, zaproponuj konkretne użycia AI do researchu, treści, wariantów reklam, FAQ, analizy opinii, personalizacji i optymalizacji strony.\n\nVII. Proponowany plan działań\n\nZadania krótkoterminowe, następne 3 miesiące:\nPodaj 8 do 12 zadań. Każde zadanie opisz formatem:\n1. Zadanie.\n2. Cel.\n3. Efekt końcowy.\n4. Priorytet, P0, P1 albo P2.\n5. Szacowany wysiłek, niski, średni albo wysoki.\n6. Zależność, jeśli występuje.\n\nZadania średnioterminowe, następne 6 do 12 miesięcy:\nPodaj 6 do 10 zadań rozwijających content, SEO, automatyzacje, kampanie, dowody społeczne, partnerstwa i sprzedaż.\n\nZadania długoterminowe, ponad 12 miesięcy:\nPodaj 4 do 6 zadań skalujących przewagę marketingową.\n\nVIII. Budżet marketingowy\n1. Jeśli budżet nie wynika z treści, napisz: informacja niedostępna w treści.\n2. Zaproponuj kategorie budżetu, np. treści, SEO, reklama testowa, narzędzia, analityka, kreacje, automatyzacja, landing page, konsultacje, produkcja video, case studies.\n3. Nie podawaj konkretnych kwot, jeśli nie masz danych.\n4. Wskaż, które kategorie są konieczne, a które opcjonalne.\n5. Wskaż, gdzie najłatwiej przepalić budżet przy tej ofercie.\n\nIX. System kontroli i pomiaru\n1. Sugerowane narzędzia, np. Google Analytics, Google Search Console, narzędzia SEO, CRM, system email, pixel reklamowy, heatmapy, checkout analytics, arkusz KPI.\n2. Kluczowe KPI do monitorowania.\n3. Częstotliwość raportowania, np. tygodniowy przegląd działań, miesięczna analiza KPI, kwartalny przegląd strategii.\n4. Jakie decyzje podejmować na podstawie danych.\n5. Jak odróżnić problem z ruchem, problem z ofertą i problem z konwersją strony.\n\nX. Braki danych i pytania do właściciela\nWypisz minimum 10 pytań, które trzeba zadać właścicielowi firmy albo zespołowi, zanim strategia stanie się planem wykonawczym.\nUwzględnij pytania o:\n1. Marżę.\n2. Średnią wartość klienta.\n3. Najlepszych klientów.\n4. Najgorszych klientów.\n5. Obecne źródła leadów.\n6. Cykl sprzedaży.\n7. Budżet.\n8. Zespół.\n9. Ograniczenia prawne albo operacyjne.\n10. Największe obiekcje klientów.\n\nXI. Plan codziennych zadań na pierwsze 14 dni\nJeśli narzędzie, w którym pracujesz, obsługuje zadania albo przypomnienia, zaproponuj ustawienie codziennego przypomnienia o 7:00 z zadaniami na dany dzień.\nJeśli narzędzie nie obsługuje zadań albo przypomnień, przygotuj listę do ręcznego przeniesienia do kalendarza, Notion, Todoist, Asany, ClickUp albo innego systemu.\n\nPrzygotuj tabelę:\n1. Dzień.\n2. Zadanie.\n3. Cel.\n4. Szacowany czas.\n5. Oczekiwany rezultat.\n6. Dane wejściowe potrzebne do wykonania.\n\nXII. Pięć decyzji właścicielskich\nNa końcu podaj 5 najważniejszych decyzji, które użytkownik musi podjąć, żeby strategia mogła zostać wdrożona.\nKażdą decyzję zapisz formatem:\n1. Decyzja.\n2. Dlaczego jest ważna.\n3. Co się stanie, jeśli jej nie podejmiemy.\n4. Rekomendacja na podstawie treści.\n\n=== TU WKLEJ TREŚĆ STRONY, PRODUKTU ALBO OFERTY ===",
+  "example": "Najlepszy do pierwszego strategicznego przeglądu strony firmy, landing page, SaaS, usługi B2B, produktu cyfrowego albo oferty lokalnej przed planowaniem kampanii.",
+  "order": 23,
+  "published": true,
+  "seoTitle": "Strategia marketingowa ze strony internetowej, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt analizuje treść strony internetowej i tworzy szczegółową strategię marketingową z SWOT, PESTEL, KPI, marketing mix, taktykami i planem działań.",
+  "keywords": [
+    "strategia marketingowa ze strony",
+    "prompt strategia marketingowa",
+    "plan marketingowy AI",
+    "analiza strony internetowej marketing",
+    "SWOT PESTEL KPI"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "strategia-marketingowa",
+  "internalLinks": [
+    "strategia-marketingu-pasywnego",
+    "badania-psychograficzne-deep-research",
+    "checklista-copywritingu-strony-sprzedazowej"
+  ],
+  "sourceReferences": [
+    {
+      "title": "Marketing Management textbook",
+      "author": "Philip Kotler, Kevin Lane Keller, Alexander Chernev",
+      "url": "https://www.pearson.com/en-us/subject-catalog/p/marketing-management/P200000006037",
+      "relation": "Odniesienie teoretyczne do klasycznego planowania marketingowego, segmentacji, targetingu, pozycjonowania i marketing mix."
+    },
+    {
+      "title": "PESTLE analysis factsheet",
+      "author": "CIPD",
+      "url": "https://www.cipd.org/uk/knowledge/factsheets/pestle-analysis-factsheet/",
+      "relation": "Odniesienie pomocnicze do analizy otoczenia makro w sekcji PESTEL."
+    },
+    {
+      "title": "SWOT Analysis guide",
+      "author": "Mind Tools",
+      "url": "https://www.mindtools.com/amtbj63/swot-analysis",
+      "relation": "Odniesienie pomocnicze do uporządkowania mocnych stron, słabych stron, szans i zagrożeń."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy prompt Strategia marketingowa ze strony internetowej?",
+      "answer": "Prompt pomaga zamienić treść strony internetowej, landing page albo oferty w roboczy plan marketingowy. AI analizuje komunikację, segmenty klientów, UVP, SWOT, PESTEL, cele, KPI, marketing mix, kanały promocji i zadania na kolejne miesiące."
+    },
+    {
+      "question": "Czym ten prompt różni się od zwykłego planu marketingowego z AI?",
+      "answer": "Zwykły prompt często daje ogólną listę kanałów typu SEO, social media i reklamy. Ten prompt wymusza pracę na treści strony, oddziela fakty od hipotez, pokazuje braki danych i zamienia rekomendacje w konkretne zadania z celem, efektem i priorytetem."
+    },
+    {
+      "question": "Co wkleić do AI razem z tym promptem?",
+      "answer": "Najlepiej wkleić pełną treść strony, sekcję hero, opis oferty, ceny, FAQ, opinie, case studies, CTA, informacje o procesie zakupu i obecne ograniczenia. Jeśli masz dane wewnętrzne, dodaj ruch, konwersję, źródła leadów, budżet, marżę i najczęstsze obiekcje klientów."
+    },
+    {
+      "question": "Czy prompt może stworzyć finalną strategię marketingową?",
+      "answer": "Może stworzyć bardzo dobrą pierwszą wersję strategii, ale nie zastępuje danych wewnętrznych. Finalne decyzje wymagają sprawdzenia analityki, CRM, wyników reklam, Search Console, rozmów z klientami, budżetu, marży i realnych możliwości zespołu."
+    },
+    {
+      "question": "Dlaczego w prompcie jest sekcja braki danych?",
+      "answer": "Bo AI łatwo brzmi pewnie nawet wtedy, gdy nie ma danych. Sekcja braków wymusza uczciwość: pokazuje, które rekomendacje wynikają z treści strony, a które są hipotezą do sprawdzenia przed wydaniem pieniędzy na kampanie."
+    },
+    {
+      "question": "Czy prompt nadaje się do usług B2B i produktów cyfrowych?",
+      "answer": "Tak. Najlepiej sprawdza się przy usługach B2B, SaaS, produktach cyfrowych, kursach, konsultingu, firmach lokalnych i stronach ofertowych. Dla e commerce trzeba dopisać dane o asortymencie, marży, koszyku, sezonowości i źródłach sprzedaży."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "strona-www-w-twoim-stylu",
+  "type": "prompt",
+  "title": "Strona www w Twoim stylu",
+  "description": "Stwórz spersonalizowany prompt do projektowania stron, które nie wyglądają generycznie.",
+  "shortDescription": "Prompt do strony www w stylu Twojej marki.",
+  "industry": "Design i kreacja",
+  "industrySlug": "design-kreacja",
+  "application": "Strony www",
+  "applicationSlug": "strony-www",
+  "tags": [
+    "Web design",
+    "Branding"
+  ],
+  "url": "/prompty/design-kreacja/strona-www-w-twoim-stylu/",
+  "active": true,
+  "views": 0,
+  "postedAt": "June 9, 2026",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Tworzenie strony internetowej w unikalnym stylu marki",
+  "body": "Prompt pomaga zebrać preferencje wizualne, styl marki i brief, a następnie stworzyć stronę internetową z indywidualnym charakterem.",
+  "usage": "Użyj tego prompta, gdy chcesz stworzyć landing page, stronę firmową albo stronę produktu, ale zależy Ci na stylu dopasowanym do marki, a nie na generycznym wyglądzie z szablonu. Prompt najpierw przeprowadza krótki wywiad o osobowości biznesu, kolorach, atmosferze, emocjach i inspiracjach wizualnych, a potem dostosowuje duży prompt projektowy do Twoich odpowiedzi. Najlepiej wkleić go do ChatGPT, Claude, Gemini albo innego narzędzia, które potrafi wygenerować stronę internetową na podstawie intencji, stylu i briefu.",
+  "prompt": "Cześć! Pomożesz mi stworzyć spersonalizowany prompt do tworzenia stron internetowych, które będą miały mój unikalny styl designerski. Zadaj mi pytania o moje preferencje, a następnie dostosuj mega prompt do moich odpowiedzi. WAŻNE: Wszystkie odpowiedzi są opcjonalne. Jeśli nie wiesz co odpowiedzieć na jakieś pytanie, po prostu je pomiń. PYTANIA DO MNIE:\n1. Opisz swoją osobowość biznesową w 3 słowach.\n(np. energiczny, profesjonalny, kreatywny, przyjazny, innowacyjny, tradycyjny, odważny, spokojny, ekskluzywny, przystępny, ekspercki, zabawny, poważny, lokalny, globalny) 2. Jaka atmosfera najlepiej opisuje Twój biznes?\n(ciepła i przyjazna, nowoczesna i tech, elegancka i premium, zabawna i kreatywna, profesjonalna i zaufana, artystyczna i ekspresyjna, minimalistyczna i czysta, bogata i luksusowa, młodzieżowa i energiczna, tradycyjna i stabilna, awangardowa i odważna) 3. Jakie kolory kojarzą Ci się z Twoją marką?\n(opisz nastrój lub podaj konkretne kolory: ciepłe i energiczne, chłodne i profesjonalne, pastelowe i delikatne, żywe i odważne, naturalne i organiczne, monochromatyczne, błękit i zaufanie, czerwień i pasja, zieleń i rozwój, złoto i prestiż) 4. Co chcesz, żeby klienci czuli odwiedzając Twoją stronę?\n(zaufanie, inspirację, spokój, podekscytowanie, bezpieczeństwo, ciekawość, komfort, profesjonalizm, kreatywność, pewność, radość, skupienie, luksus, przystępność, innowacyjność) 5. Jaki styl wizualny Ci się podoba?\n(minimalistyczny, bogaty w detale, vintage/retro, futurystyczny, ręcznie rysowany, fotograficzny, geometryczny, organiczny, industrialny, skandynawski, japoński, amerykański, europejski, brutalistyczny, elegancki) 6. Czy masz ulubione strony internetowe? Podaj 1-2 przykłady, wybierz ze stylu poniżej albo wklej screenshot strony, która Ci się podoba. PRZYKŁADY STYLÓW WIZUALNYCH:\n• Minimalistyczny: Apple.com, Stripe.com, Linear.app\n• Nowoczesny tech: Vercel.com, GitHub.com, Figma.com\n• Ciepły i przyjazny: Mailchimp.com, Slack.com, Notion.so\n• Elegancki premium: Tesla.com, Rolex.com, Chanel.com\n• Kreatywny/artystyczny: Behance.net, Dribbble.com, Awwwards.com\n• Klasyczny biznesowy: Microsoft.com, IBM.com, Deloitte.com\n• E-commerce: Shopify.com, Etsy.com, Amazon.com WSKAZÓWKA: Jeśli wkleisz screenshot strony, AI będzie mógł dokładnie przeanalizować styl wizualny i dostosować do niego Twój prompt. 7. Twoja branża to...\n(np. technologia, medycyna, edukacja, finanse, nieruchomości, gastronomia, moda, sport, kultura, usługi prawne, konsulting, e-commerce, rzemiosło, sztuka, marketing, księgowość, budowlanka, turystyka) Na podstawie moich odpowiedzi dostosuj ten MEGA PROMPT: # MEGA PROMPT: Stwórz stronę, która NIE wygląda jak AI ROLA: Jesteś doświadczonym designerem z 15-letnim doświadczeniem w eksperymentalnej typografii i brandingu. Specjalizujesz się w tworzeniu autentycznych, ludzkich designów, które mają duszę i osobowość. ZADANIE: Stwórz [opisz co chcesz], która wygląda, jakby była projektowana ręcznie przez człowieka w małym studiu designerskim przez kilka miesięcy. ABSOLUTNIE UNIKAJ, AI RED FLAGS: Kolorystyka:, Gradientów blue-600 do purple-600., Domyślnej palety Tailwind, gray-50, blue-500 itd., Perfekcyjnie symetrycznych kolorów., Bezpiecznych kombinacji szarości. Typografia:, Inter jako głównej czcionki., Tylko font-weight 400, 600, 800., Matematycznie perfekcyjnych odstępów., Poppins + Roboto combo. Layout:, grid grid-cols-3 gap-8 wszędzie., Hero z tekstem idealnie na środku., 3-kolumnowych sekcji features., max-w-7xl dla każdego kontenera., py-16, py-12 dla każdej sekcji. Treść:, Unlock your potential, Transform your business, Revolutionize your workflow., Generycznych CTA jak Get Started., Za dużo emotikonów. Zamiast tego używaj custom SVG dopasowanych do stylu. RÓB TO ZAMIAST: Kolorystyka z charakterem:, Użyj kulturowych palet inspirowanych konkretnym miejscem lub nastrojem., Dodaj ciepłe akcenty w chłodnych paletach, 2-3 nieoczekiwane kolory., Stwórz subtelne wariacje powtarzalnych elementów, plus minus 5-10% nasycenia., Zastosuj kolory, które nie powinny działać, ale działają. Typografia z duszą:, Mieszaj kultury designerskie, np. japoński minimalizm i brazylijski maksymalizm., Użyj variable fonts z dynamicznymi zmianami., Stwórz niestandardowe, ryzykowne pary czcionek. Layout opowiadający historię:, Bento box layouts, nieregularne siatki inspirowane japońskimi pudełkami., Elementy zachodzące na siebie organicznie., Nieregularne marginesy i organiczna biała przestrzeń. Ludzkie detale:, Mikroanimacje 200-500ms z organicznym easingiem., Hover effects z charakterem, nieoczekiwane, ale subtelne reakcje., Loading states z osobowością marki., Error states po ludzku, np. Ups, coś poszło nie tak! zamiast Error 404. KONKRETNE TECHNIKI HUMANIZACJI: Celowe niedoskonałości, 20% designu:, Nieregularne odstępy między sekcjami., Lekko off-center wyrównanie tekstu, 2-3%. CSS z charakterem:\ncss\n/* ZAMIAST: margin: 2rem; */\nmargin: 1.75rem 2.1rem 2.3rem 1.9rem; /* ZAMIAST: box-shadow: 0 4px 8px rgba(0,0,0,0.1); */\nbox-shadow: 2px 7px 15px rgba(0,0,0,0.08), -1px 2px 8px rgba(0,0,0,0.05); Responsive z osobowością:, Różne layouty na różnych urządzeniach, nie tylko skalowanie., Mobile ma własne rozwiązania designerskie., Breakpointy dostosowane do treści, nie standardowe. WYMAGANIA TECHNICZNE:, Accessibility: zachowaj standardy WCAG., Performance: optymalizuj obrazy i animacje., SEO: semantyczny HTML i meta tags., Responsive: mobile-first approach z charakterem na każdym urządzeniu. WYMAGANIA TECHNICZNE I JAKOŚCIOWE: Struktura pliku:, Wszystko w 1 pliku HTML z wbudowanym CSS i JavaScript., Favicon wygenerowany inline jako SVG, bez zewnętrznych plików., Semantyczny, czysty kod HTML5. Poziom wykonania:, Daj z siebie wszystko, to ma być Twoje najlepsze dzieło., Najbardziej eleganckie rozwiązanie, jakie potrafisz stworzyć., Jakość, która sprawi, że designerzy Apple i Tesla powiedzą: wow. Funkcjonalność:, Jak najwięcej istotnych funkcji i interakcji., Wszystkie elementy powinny być funkcjonalne, nie tylko wizualne., Smooth scrolling, lazy loading, responsive images. Przemyślane detale UX:, Stany hover z charakterem i płynnością., Przejścia i animacje z organicznym easingiem, cubic-bezier., Mikrointerakcje, które dodają radości użytkowaniu., Loading states, error states, empty states, wszystko z osobowością., Subtelne parallax effects i scroll-triggered animations. Performance & Accessibility:, Szybkie ładowanie mimo bogatej funkcjonalności., Pełna responsywność na wszystkich urządzeniach., WCAG 2.1 compliance., Keyboard navigation., Screen reader friendly. OSTATECZNY TEST JAKOŚCI: PAMIĘTAJ: Celem nie jest ukrycie AI, ale zapewnienie, że ludzka kreatywność, osąd i osobowość przebijają przez każdą decyzję projektową. AI to punkt wyjścia, Ty dodajesz duszę i doskonałość wykonania. BONUS TRENDY 2026: Rozważ elevated brutalism, kinetic typography, cultural localization, sustainable design, dark mode + minimalizm energetyczny, immersive storytelling. TERAZ STWÓRZ: [Tu wklej swój konkretny brief]",
+  "example": "Najlepszy do przygotowania briefu pod AI builder, szybki prototyp landing page albo rozmowę z designerem przed właściwym projektem.",
+  "order": 5,
+  "published": true,
+  "seoTitle": "Strona www w stylu marki, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt do stworzenia strony internetowej dopasowanej do stylu marki, kolorów, osobowości biznesu i preferencji wizualnych.",
+  "keywords": [
+    "prompt do strony www",
+    "strona internetowa AI",
+    "web design AI",
+    "branding strony",
+    "landing page AI"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "strony-www",
+  "internalLinks": [
+    "checklista-copywritingu-strony-sprzedazowej",
+    "tekst-bez-sladow-ai",
+    "badania-psychograficzne-deep-research",
+    "strategia-marketingowa-ze-strony-internetowej"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy prompt strona www w Twoim stylu?",
+      "answer": "Prompt pomaga przygotować szczegółowy brief stylu strony, zanim zaczniesz generować layout, tekst albo kod. Dzięki temu AI nie tworzy generycznej strony, tylko pracuje na Twoich preferencjach."
+    },
+    {
+      "question": "Co warto przygotować przed użyciem prompta?",
+      "answer": "Warto zebrać przykłady stron, marki, kolory, typografię, ton komunikacji, grupę odbiorców, cel strony i rzeczy, których nie chcesz. Im więcej konkretów, tym mniej losowy efekt."
+    },
+    {
+      "question": "Czy prompt tworzy gotową stronę?",
+      "answer": "Najpierw tworzy spersonalizowany prompt albo brief do stworzenia strony. Możesz potem użyć go w narzędziu do kodowania, kreatorze stron albo rozmowie z projektantem."
+    },
+    {
+      "question": "Jak uniknąć generycznego designu strony?",
+      "answer": "Trzeba podać konkretne preferencje, zakazane style, przykłady, branżę i emocję, jaką strona ma budzić. Samo polecenie zrób nowoczesną stronę prawie zawsze prowadzi do podobnych wyników."
+    },
+    {
+      "question": "Czy prompt nadaje się do stron sprzedażowych?",
+      "answer": "Tak, ale warto połączyć go z checklistą copywritingu i promptem rezultatów zamiast funkcji. Styl strony powinien wspierać konwersję, a nie być osobnym ćwiczeniem estetycznym."
+    }
+  ]
+}

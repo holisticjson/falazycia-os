@@ -1,0 +1,968 @@
+[
+    {
+        "timestamp": "2026-07-14 21:37:59",
+        "raw_text": "Ok, to trzeba będzie przeskanować, zobaczyć czy krok po kroku, po kolei w każdych projektach, folderach te pliki.env, czy po prostu są prawidłowe dane dostępowe do każdego projektu. Bo nieraz agent się myli po prostu i próbuje robić deploy.  Na przykład na Hostido w projekcie agencji Jaison, gdzie Jaison leży na Google Cloud. Trzeba to będzie wszystko posprawdzać, czyli te projekty w Google Cloud Project, te wszystkie API, webhook itd.",
+        "corrected_text": "Ok, to trzeba będzie przeskanować, zobaczyć czy krok po kroku, po kolei w każdych projektach, folderach te pliki.env, czy po prostu są prawidłowe dane dostępowe do każdego projektu. Bo nieraz agent się myli po prostu i próbuje robić deploy.  Na przykład na Hostido w projekcie agencji Jaison, gdzie Jaison leży na Google Cloud. Trzeba to będzie wszystko posprawdzać, czyli te projekty w Google Cloud Project, te wszystkie API, webhook itd.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-14 21:38:23",
+        "raw_text": "A to co Ci wkleiłem to jeszcze pozostawiłeś jakieś tutaj luzem foldery. Nie wiem do czego one służą i jaki jest cel ich istnienia.",
+        "corrected_text": "A to co Ci wkleiłem to jeszcze pozostawiłeś jakieś tutaj luzem foldery. Nie wiem do czego one służą i jaki jest cel ich istnienia.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-14 21:43:32",
+        "raw_text": "Podłognie ten plik jest niepotrzebny, bo on dotyczy wtyczki jakiejś, która historycznie kiedyś była zainstalowana jeszcze w Anti-Gravity IDE. Dotyczy subagentów. W ogóle to nie jest używane. Mamy sztab swoich dyrektorów i subagentów. Także on jest niepotrzebny. Sprawdzałem na laptop  Sync jakby nie przekopiował, nie zaktualizował struktury folderów. Tak jak to zrobiliśmy tutaj na stacjonarnym komputerze, na laptopie tutaj nie zrobiło się to. Owszem te pliki.nv no to trzeba byłoby to zrobić przez pendrive'a, tylko że tam już wiele poczyniłem  W różnych tematach, projektach. Otworzyłem nowy projekt Live Wave MLM-owy taki. No ale to trzeba zdecydować. Jeśli chodzi o tą pozostałą część, to jak najbardziej się zgadzam. Działaj z porządkami.  Dziękuję.",
+        "corrected_text": "Podłognie ten plik jest niepotrzebny, bo on dotyczy wtyczki jakiejś, która historycznie kiedyś była zainstalowana jeszcze w Anti-Gravity IDE. Dotyczy subagentów. W ogóle to nie jest używane. Mamy sztab swoich dyrektorów i subagentów. Także on jest niepotrzebny. Sprawdzałem na laptop  Sync jakby nie przekopiował, nie zaktualizował struktury folderów. Tak jak to zrobiliśmy tutaj na stacjonarnym komputerze, na laptopie tutaj nie zrobiło się to. Owszem te pliki.nv no to trzeba byłoby to zrobić przez pendrive'a, tylko że tam już wiele poczyniłem  W różnych tematach, projektach. Otworzyłem nowy projekt Live Wave MLM-owy taki. No ale to trzeba zdecydować. Jeśli chodzi o tą pozostałą część, to jak najbardziej się zgadzam. Działaj z porządkami.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-14 22:07:04",
+        "raw_text": "Ok, to jak to zsynchronizować teraz tą strukturę i układ klipów, folderów i projektów? Zrobimy git sync, to i tak osobno będziemy musieli przerzucać przez pendrive'a na przykład pliki.env, tak?",
+        "corrected_text": "Ok, to jak to zsynchronizować teraz tą strukturę i układ klipów, folderów i projektów? Zrobimy git sync, to i tak osobno będziemy musieli przerzucać przez pendrive'a na przykład pliki.env, tak?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:12:37",
+        "raw_text": "Problem z chatbotem nadal występuje na stronie. Nie może się połączyć z bazą wiedzy. Taka jest informacja.",
+        "corrected_text": "Problem z chatbotem nadal występuje na stronie. Nie może się połączyć z bazą wiedzy. Taka jest informacja.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:14:55",
+        "raw_text": "Dzień dobry, chciałbym skorzystać z usług Państwa firmy.",
+        "corrected_text": "Dzień dobry, chciałbym skorzystać z usług Państwa firmy.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:29:26",
+        "raw_text": "Powiedz mi jeszcze, bo ten automatyczny git sync co 30 minut, który jest aktualnie ustawiony i dzieje się w tle zarówno na laptopie jak i na skompa stacjonarnego, to tam czy tam nie trzeba będzie też zmienić ścieżki tego głównego katalogu? Ponieważ no on od zmiany struktury folderów, zrobienia porządków, no cały czas  działa, ale tak jak mówię, nic się nie wydarzyło na laptopie. Tam pozostał stary układ folderów i plików.",
+        "corrected_text": "Powiedz mi jeszcze, bo ten automatyczny git sync co 30 minut, który jest aktualnie ustawiony i dzieje się w tle zarówno na laptopie jak i na skompa stacjonarnego, to tam czy tam nie trzeba będzie też zmienić ścieżki tego głównego katalogu? Ponieważ no on od zmiany struktury folderów, zrobienia porządków, no cały czas  działa, ale tak jak mówię, nic się nie wydarzyło na laptopie. Tam pozostał stary układ folderów i plików.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:39:50",
+        "raw_text": "ale potwierdzić git push?",
+        "corrected_text": "ale potwierdzić git push?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:53:07",
+        "raw_text": "Dzień dobry. Jestem zainteresowany usługą automatyzacją nas w firmie. Chciałbym dowiedzieć się coś więcej szczegółów.",
+        "corrected_text": "Dzień dobry. Jestem zainteresowany usługą automatyzacją nas w firmie. Chciałbym dowiedzieć się coś więcej szczegółów.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:57:12",
+        "raw_text": "Dzień dobry, jestem zainteresowany Państwa usługami. Posiadam firmę transportową i chciałbym zrobić analizę i uzyskać ofertę od Państwa.",
+        "corrected_text": "Dzień dobry, jestem zainteresowany Państwa usługami. Posiadam firmę transportową i chciałbym zrobić analizę i uzyskać ofertę od Państwa.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 08:58:39",
+        "raw_text": "Wiesz co, no może nie wkleiłem całego bloku naraz, ale po kolei wszystkie te komendy. Poniżej jest taka zwrotka z terminala.",
+        "corrected_text": "Wiesz co, no może nie wkleiłem całego bloku naraz, ale po kolei wszystkie te komendy. Poniżej jest taka zwrotka z terminala.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:05:44",
+        "raw_text": "Dobra, zrobione. Sprawdź tutaj ten wynik, wklejam z terminala. Cały folder, aplikacje, MVP kopiuje się na pendrive'a. I co dalej? W sensie,  czy zaktualizować ten skrypt git sync rozumiem, że on będzie się robił co pół godziny na laptopie i na stacjonarnym ale nie będzie wypychał ciężkich plików, tak? dużych, czyli na przykład jak zrobię, nie wiem, jakąś aplikację albo coś, no to będę musiał używać dalej pendrive'a, tak? czy to jest, nie wiem,  w git sync lub w ustawieniach w konfiguracji, żeby takie pliki się jednak przenosiły.",
+        "corrected_text": "Dobra, zrobione. Sprawdź tutaj ten wynik, wklejam z terminala. Cały folder, aplikacje, MVP kopiuje się na pendrive'a. I co dalej? W sensie,  czy zaktualizować ten skrypt git sync rozumiem, że on będzie się robił co pół godziny na laptopie i na stacjonarnym ale nie będzie wypychał ciężkich plików, tak? dużych, czyli na przykład jak zrobię, nie wiem, jakąś aplikację albo coś, no to będę musiał używać dalej pendrive'a, tak? czy to jest, nie wiem,  w git sync lub w ustawieniach w konfiguracji, żeby takie pliki się jednak przenosiły.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:09:58",
+        "raw_text": "Dobra, czy muszę na laptopie zmienić nazwę folderu roboczego? Czy po prostu przy kopiowaniu z pendrive'a na laptopa wcisnąć, zrobić opcję zastąp? Ponieważ są tam... Mam tam pewne rozpoczęte czaty, panty Gravity, agentic. Chciałbym je kontynuować, tak? A widzę, że mogę. Bo na stacjonarn  kontynuuje, tylko że tak jakby w starych poprzednich folderach, ale agent kontynuuje tak pracę i rozmowę w kontekście wcześniejszych rozmów. Chciałbym po prostu pewne tam rzeczy dokończyć w konwersacjach, w folderach, projektach na laptopie i tutaj na stacjonarnym tak samo, a później po prostu  po prostu zarchiwizuję czy usunę te rozmowy w projektach i będę kontynuował już od świeżych nowo otwartych projektach w folderach według nowej struktury",
+        "corrected_text": "Dobra, czy muszę na laptopie zmienić nazwę folderu roboczego? Czy po prostu przy kopiowaniu z pendrive'a na laptopa wcisnąć, zrobić opcję zastąp? Ponieważ są tam... Mam tam pewne rozpoczęte czaty, panty Gravity, agentic. Chciałbym je kontynuować, tak? A widzę, że mogę. Bo na stacjonarn  kontynuuje, tylko że tak jakby w starych poprzednich folderach, ale agent kontynuuje tak pracę i rozmowę w kontekście wcześniejszych rozmów. Chciałbym po prostu pewne tam rzeczy dokończyć w konwersacjach, w folderach, projektach na laptopie i tutaj na stacjonarnym tak samo, a później po prostu  po prostu zarchiwizuję czy usunę te rozmowy w projektach i będę kontynuował już od świeżych nowo otwartych projektach w folderach według nowej struktury",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:14:24",
+        "raw_text": "Nie wiem czemu tak długo trwa przenoszenie tutaj tego folderu aplikacji MVP na USB. Czy to chodzi o szybkość gniazda, szybkość USB, czy rodzaj pendrive'a? To po pierwsze, po drugie. No dobra, załóżmy, że przeniosę już tak na laptopa skopiowany folder aplikacji MVP.  No właśnie, bo jak ja przeniosę... Przeniosę na przykład z tego... Ok, jak robiłem zmiany na laptopie,  na jakichś projektach, no to przez ten automatyczny git sync wcześniej to się synchronizowało z komputerem stacjonarnym, czyli teraz przenoszę z komputera stacjonarnego folder aplikacji MVP już ze zmianami, które tam wprowadziłem czy rozpocząłem na laptopie, tak? Nic mi się tam nie skasuje, w sensie  Dziękuję.",
+        "corrected_text": "Nie wiem czemu tak długo trwa przenoszenie tutaj tego folderu aplikacji MVP na USB. Czy to chodzi o szybkość gniazda, szybkość USB, czy rodzaj pendrive'a? To po pierwsze, po drugie. No dobra, załóżmy, że przeniosę już tak na laptopa skopiowany folder aplikacji MVP.  No właśnie, bo jak ja przeniosę... Przeniosę na przykład z tego... Ok, jak robiłem zmiany na laptopie,  na jakichś projektach, no to przez ten automatyczny git sync wcześniej to się synchronizowało z komputerem stacjonarnym, czyli teraz przenoszę z komputera stacjonarnego folder aplikacji MVP już ze zmianami, które tam wprowadziłem czy rozpocząłem na laptopie, tak? Nic mi się tam nie skasuje, w sensie  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:21:39",
+        "raw_text": "Folder się kompresuje, aplikacja MVP. Pytanie czy jesteś w stanie sprawdzić ostatnie synchronizacje przez Gita właśnie między laptopem a komputerem stacjonarnym. Ponieważ po zmianie wczoraj struktury folderów na stacjonarnym,  ale jeszcze nie została zmieniona struktura na laptopie czy ten git sync prawidłowo działał. Wiesz o co mi chodzi. Jeśli chodzi o wskazane źródła, tak, ścieżkę folderów i tak dalej.",
+        "corrected_text": "Folder się kompresuje, aplikacja MVP. Pytanie czy jesteś w stanie sprawdzić ostatnie synchronizacje przez Gita właśnie między laptopem a komputerem stacjonarnym. Ponieważ po zmianie wczoraj struktury folderów na stacjonarnym,  ale jeszcze nie została zmieniona struktura na laptopie czy ten git sync prawidłowo działał. Wiesz o co mi chodzi. Jeśli chodzi o wskazane źródła, tak, ścieżkę folderów i tak dalej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:26:47",
+        "raw_text": "Ok, a zobacz czy z laptopa, bo widzę, że w AntyGravity, że dwa dni temu pracowałem nad ofertą Lombard Oranżada. Kantor Oranżada, czy ono się pojawił tutaj na stacjonarnym?",
+        "corrected_text": "Ok, a zobacz czy z laptopa, bo widzę, że w AntyGravity, że dwa dni temu pracowałem nad ofertą Lombard Oranżada. Kantor Oranżada, czy ono się pojawił tutaj na stacjonarnym?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:35:44",
+        "raw_text": "Dobra folder się spakował do pliku zip. Widzę, że wczoraj po tej godzinie 11:52 pracowałem głównie tylko nad LiveWave Project, ale mam pomysł. Gdybym teraz przerzucił plik zip na laptopa po prostu w inne miejsce, później ten plik zip z folderem rozpakował  rozpakowanego folderu aplikację MVP najpierw przerzucił projekt LiveWave w odpowiednie miejsce, czyli 02 clients and projects i później cały ten folder podmienił jakby w miejsce starego aplikację MVP na dysku C na laptopie. Kontynuowałbym konwersację  organizację i na przykład projekt w AntiGravity zachowując ciągłość i kontekst po prostu tam agentowi pisząc, że zmieniamy, że teraz wszystkie pliki źródłowe dotyczące projektu LiveWave znajdują się w innym, w innej ścieżce, w innym folderze i mu to podać. Co ty na to? Czy to dobry pomysł?",
+        "corrected_text": "Dobra folder się spakował do pliku zip. Widzę, że wczoraj po tej godzinie 11:52 pracowałem głównie tylko nad LiveWave Project, ale mam pomysł. Gdybym teraz przerzucił plik zip na laptopa po prostu w inne miejsce, później ten plik zip z folderem rozpakował  rozpakowanego folderu aplikację MVP najpierw przerzucił projekt LiveWave w odpowiednie miejsce, czyli 02 clients and projects i później cały ten folder podmienił jakby w miejsce starego aplikację MVP na dysku C na laptopie. Kontynuowałbym konwersację  organizację i na przykład projekt w AntiGravity zachowując ciągłość i kontekst po prostu tam agentowi pisząc, że zmieniamy, że teraz wszystkie pliki źródłowe dotyczące projektu LiveWave znajdują się w innym, w innej ścieżce, w innym folderze i mu to podać. Co ty na to? Czy to dobry pomysł?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 09:55:09",
+        "raw_text": "Wiesz co, no spakowałem ten folder, wrzuciłem na pendrive'a, ale to jest... próbuję go rozpakować na laptopie, ale jest jakiś problem.",
+        "corrected_text": "Wiesz co, no spakowałem ten folder, wrzuciłem na pendrive'a, ale to jest... próbuję go rozpakować na laptopie, ale jest jakiś problem.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 10:07:48",
+        "raw_text": "Dobra, wypakowałem 7zip, teraz podmieniam foldery na laptopie całe, aplikacja MVP już uzupełniłem folderem całym z LifeWave, ma ponad 5 giga tam z materiami multimedialnymi. Po pierwsze przypomnij mi i zaktualizujmy i na stacjonarnym i na laptopie ten git sync, tak? Ten skrypt zaktualizujmy  Możemy tam skrócić czas do co 15 minut, jeśli to jakoś tam nie wpłynie źle. A dwa, wiesz co, czy agent anti-gravity, można go ustawić tutaj, żeby jak, no wiadomo, realizuję coś, zlecam mu w projekcie, żeby nie ładował do kontekstu dużych plików multimedialnych, tak?  Nie ma mi się, wiesz o co mi chodzi, jak na przykład pracuję w takich projektach jak LifeWave czy innych, gdzie mam jakieś filmy, wideo, czy tam ewentualnie tylko małe zdjęcia, żeby nie ładował do kontekstu, żeby się nie przeładował, żeby nie marnować dużo tokenów. Chyba, że jest to od razu fabrycznie tak ustawione.",
+        "corrected_text": "Dobra, wypakowałem 7zip, teraz podmieniam foldery na laptopie całe, aplikacja MVP już uzupełniłem folderem całym z LifeWave, ma ponad 5 giga tam z materiami multimedialnymi. Po pierwsze przypomnij mi i zaktualizujmy i na stacjonarnym i na laptopie ten git sync, tak? Ten skrypt zaktualizujmy  Możemy tam skrócić czas do co 15 minut, jeśli to jakoś tam nie wpłynie źle. A dwa, wiesz co, czy agent anti-gravity, można go ustawić tutaj, żeby jak, no wiadomo, realizuję coś, zlecam mu w projekcie, żeby nie ładował do kontekstu dużych plików multimedialnych, tak?  Nie ma mi się, wiesz o co mi chodzi, jak na przykład pracuję w takich projektach jak LifeWave czy innych, gdzie mam jakieś filmy, wideo, czy tam ewentualnie tylko małe zdjęcia, żeby nie ładował do kontekstu, żeby się nie przeładował, żeby nie marnować dużo tokenów. Chyba, że jest to od razu fabrycznie tak ustawione.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 10:13:50",
+        "raw_text": "Słuchaj, no wyskoczyło mi coś takiego na laptopie. To są jakieś pliki z długimi nazwami, zwłaszcza w folderze Google umiejętności jutra. No i teraz pytanie, czy on mnie na koniec zapyta, no bo czy ja kopiuję do tego samego folderu na dysk C, folder aplikacji MVP, czy po prostu tam podmienić, bo tam  tak, znaczy plikami z długą nazwą pliku.",
+        "corrected_text": "Słuchaj, no wyskoczyło mi coś takiego na laptopie. To są jakieś pliki z długimi nazwami, zwłaszcza w folderze Google umiejętności jutra. No i teraz pytanie, czy on mnie na koniec zapyta, no bo czy ja kopiuję do tego samego folderu na dysk C, folder aplikacji MVP, czy po prostu tam podmienić, bo tam  tak, znaczy plikami z długą nazwą pliku.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 10:23:48",
+        "raw_text": "No i teraz pytanie, bo nadpisałem, tak? No nie ten scenariusz B się zrealizował, ale jakby w folderze aplikacji MVP na laptopie zostały stare foldery, między innymi ten holistic.json, tu masz rzut na ekranie, jak teraz zsynchronizować? No bo tam się, wiadomo, została stara struktura folderów i plików,  która pewnie wiele plików powiela się pytanie jak to teraz tak zsynchronizować z nową wersją folderu aplikację MVP i jej nową strukturą folderów i plików o tym nie pomyślałem po prostu wcześniej ale znowu nie mogłem zmienić nazwy na aplikację  w aplikację MVP Stary Backup, bo mam cały czas tam otwarte anti-gravity i aktywne konwersacje z agentem.",
+        "corrected_text": "No i teraz pytanie, bo nadpisałem, tak? No nie ten scenariusz B się zrealizował, ale jakby w folderze aplikacji MVP na laptopie zostały stare foldery, między innymi ten holistic.json, tu masz rzut na ekranie, jak teraz zsynchronizować? No bo tam się, wiadomo, została stara struktura folderów i plików,  która pewnie wiele plików powiela się pytanie jak to teraz tak zsynchronizować z nową wersją folderu aplikację MVP i jej nową strukturą folderów i plików o tym nie pomyślałem po prostu wcześniej ale znowu nie mogłem zmienić nazwy na aplikację  w aplikację MVP Stary Backup, bo mam cały czas tam otwarte anti-gravity i aktywne konwersacje z agentem.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 10:44:03",
+        "raw_text": "Dobra, wbiłem w PowerShell jako administrator tą komendę aktualizującą git sync. I tutaj ze stacjonarnego wyskoczyło mi tak.",
+        "corrected_text": "Dobra, wbiłem w PowerShell jako administrator tą komendę aktualizującą git sync. I tutaj ze stacjonarnego wyskoczyło mi tak.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 10:44:51",
+        "raw_text": "A na zrzucie ekranu jest odpowiedź w terminalu na laptopie.",
+        "corrected_text": "A na zrzucie ekranu jest odpowiedź w terminalu na laptopie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 11:40:17",
+        "raw_text": "Dobra, wszystko działa, temat spięty, działa na błysk. Pytanie tylko, czy ten, to co na początku rozmawialiśmy, ten folder.agents, tak? Mam wgrać ręcznie do każdego folderu projektu, czy to na przykład software and apps and clients and projects i osobno do każdego folderu na przykład klienta, czy agent wewnątrz projektu,  W AntiGravity jak będę otwierał to będzie po prostu korzystał z tego folderu na zewnątrz, czyli w folderze głównym\"Aplikacje MVP\".",
+        "corrected_text": "Dobra, wszystko działa, temat spięty, działa na błysk. Pytanie tylko, czy ten, to co na początku rozmawialiśmy, ten folder.agents, tak? Mam wgrać ręcznie do każdego folderu projektu, czy to na przykład software and apps and clients and projects i osobno do każdego folderu na przykład klienta, czy agent wewnątrz projektu,  W AntiGravity jak będę otwierał to będzie po prostu korzystał z tego folderu na zewnątrz, czyli w folderze głównym\"Aplikacje MVP\".",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 11:43:30",
+        "raw_text": "No to poniżej wklejam Ci wycinek zaleceń od agenta w Gemini Pro, który zasugerował tutaj jak postępować i zobacz czy to jest dobre podejście, czy raczej używać tych Sim-linków.",
+        "corrected_text": "No to poniżej wklejam Ci wycinek zaleceń od agenta w Gemini Pro, który zasugerował tutaj jak postępować i zobacz czy to jest dobre podejście, czy raczej używać tych Sim-linków.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 11:52:42",
+        "raw_text": "Jak najbardziej. Pełna automatyzacja to jest nasza domena, więc... Więc tak, jestem jak najbardziej za. Powiedz mi, czy w aktualnej strukturze folderów właśnie klientów, czy tutaj Software and Apps, tak?  Widzę, że jest jeszcze stary zalegający folder holistic.json w głównym folderze aplikacji MVP, który trzeba usunąć, ale do czego dążę? Chodzi mi czy po prostu do tych aktualnych już uruchomionych projektów, czy to aplikacji, czy  czy folderów klienckich możemy stworzyć właśnie takie instrukcje w odniesieniu do tych technicznych plików dostępów deploy strategii i tak dalej stworzyć po kolei i już uruchamiać w nich też właśnie symlinki i fizyczne pliki agents.md  No i zsynchronizować to oczywiście z laptopem. Instrukcje dla agentarzy tworząc nowy folder projektu, czy to aplikacji, czy klienta takiego na automatyzację, marketing, jakby na usługi agencji, stworzyć instrukcję tworzenia tych folderów, struktur właśnie tych plików i symlinków.  I wtedy będzie wszystko grało, hulało jak trzeba.",
+        "corrected_text": "Jak najbardziej. Pełna automatyzacja to jest nasza domena, więc... Więc tak, jestem jak najbardziej za. Powiedz mi, czy w aktualnej strukturze folderów właśnie klientów, czy tutaj Software and Apps, tak?  Widzę, że jest jeszcze stary zalegający folder holistic.json w głównym folderze aplikacji MVP, który trzeba usunąć, ale do czego dążę? Chodzi mi czy po prostu do tych aktualnych już uruchomionych projektów, czy to aplikacji, czy  czy folderów klienckich możemy stworzyć właśnie takie instrukcje w odniesieniu do tych technicznych plików dostępów deploy strategii i tak dalej stworzyć po kolei i już uruchamiać w nich też właśnie symlinki i fizyczne pliki agents.md  No i zsynchronizować to oczywiście z laptopem. Instrukcje dla agentarzy tworząc nowy folder projektu, czy to aplikacji, czy klienta takiego na automatyzację, marketing, jakby na usługi agencji, stworzyć instrukcję tworzenia tych folderów, struktur właśnie tych plików i symlinków.  I wtedy będzie wszystko grało, hulało jak trzeba.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 11:58:41",
+        "raw_text": "Dobra, ok. Świetnie. Tylko teraz te zadania na start. Muszę stworzyć w pierwszej kolejności w podkatalogu projektu nowego dwa pliki. Agents.md oraz 00memoryloop.md W jaki sposób wraz z agentem czy na podstawie jakiejś ankiety  takiej wywiadowczej dotyczącej projektu składającej się z tych 21 pytań. Jak to zautomatyzować? Czy wykorzystać lokalnie ten dashboard Streamlit? Czy na przykład wykorzystać Hermesa, że mógł to też mobilnie robić? Czy na przykład z poziomu Telegrama? Wtedy po przejściu takiej ankiety, zrobieniu researchu na temat  klienta jego strony lub jak nie ma strony to nie wiem jakiejkolwiek wizytówki Google czy jego branży niszy opisanej wyzwań problemów buyer persony pain points zrobienia researchu na rynku i wtedy jesteśmy mając komplet informacji robimy taki plik agents.md tak oraz 00memory.loop czy robią to po prostu dyrektorzy tak  dyrektorów z centralny sztab dyrektorów na podstawie takiego wywiadu no wiadomo, że anti-gravity działa lokalnie, tak, ale jakbym to mógł robić właśnie z poziomu chmurowego Hermesa lub już w wersji takiej działającej dashboard streamlit, która będzie już pójdzie deploy na  na serwer, tak? I będzie już pod subdomeną os.jaison.pl Jak to wszystko spiąć, tak? W jeden współgrający system.",
+        "corrected_text": "Dobra, ok. Świetnie. Tylko teraz te zadania na start. Muszę stworzyć w pierwszej kolejności w podkatalogu projektu nowego dwa pliki. Agents.md oraz 00memoryloop.md W jaki sposób wraz z agentem czy na podstawie jakiejś ankiety  takiej wywiadowczej dotyczącej projektu składającej się z tych 21 pytań. Jak to zautomatyzować? Czy wykorzystać lokalnie ten dashboard Streamlit? Czy na przykład wykorzystać Hermesa, że mógł to też mobilnie robić? Czy na przykład z poziomu Telegrama? Wtedy po przejściu takiej ankiety, zrobieniu researchu na temat  klienta jego strony lub jak nie ma strony to nie wiem jakiejkolwiek wizytówki Google czy jego branży niszy opisanej wyzwań problemów buyer persony pain points zrobienia researchu na rynku i wtedy jesteśmy mając komplet informacji robimy taki plik agents.md tak oraz 00memory.loop czy robią to po prostu dyrektorzy tak  dyrektorów z centralny sztab dyrektorów na podstawie takiego wywiadu no wiadomo, że anti-gravity działa lokalnie, tak, ale jakbym to mógł robić właśnie z poziomu chmurowego Hermesa lub już w wersji takiej działającej dashboard streamlit, która będzie już pójdzie deploy na  na serwer, tak? I będzie już pod subdomeną os.jaison.pl Jak to wszystko spiąć, tak? W jeden współgrający system.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 12:10:58",
+        "raw_text": "zabrzmieć skrajnie i dla matki czy dla rodziców brzmieć troszeczkę brutalnie, ale niestety tak to działa. Więc w momencie, gdy będzie miała załatwione, podstawione, podane, no to tym więcej cech wyuczonej bezradności  na tym etapie nabędzie, co prawdopodobnie źle przełoży się na jej charakter, osobowość i zdolność do osiągania przyszłości.",
+        "corrected_text": "zabrzmieć skrajnie i dla matki czy dla rodziców brzmieć troszeczkę brutalnie, ale niestety tak to działa. Więc w momencie, gdy będzie miała załatwione, podstawione, podane, no to tym więcej cech wyuczonej bezradności  na tym etapie nabędzie, co prawdopodobnie źle przełoży się na jej charakter, osobowość i zdolność do osiągania przyszłości.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 12:12:33",
+        "raw_text": "Trzeba by zadać sobie pytanie, czy nie zostawić tego tak jak jest. Na tyle, na ile zaliczyła, na tyle, na ile przyłożyła się do nauki, do egzaminów, na tyle, na ile  Dziękuję.",
+        "corrected_text": "Trzeba by zadać sobie pytanie, czy nie zostawić tego tak jak jest. Na tyle, na ile zaliczyła, na tyle, na ile przyłożyła się do nauki, do egzaminów, na tyle, na ile  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 12:22:12",
+        "raw_text": "Zadałem, uświadomiłem jej to i ona też sobie z tego zdaje sprawę, ponieważ często zastanawia się nad swoimi myślami, zachowaniem, postępowaniem, które jak dla mnie wyczerpują  Znamiona. Spektrum ADHD.",
+        "corrected_text": "Zadałem, uświadomiłem jej to i ona też sobie z tego zdaje sprawę, ponieważ często zastanawia się nad swoimi myślami, zachowaniem, postępowaniem, które jak dla mnie wyczerpują  Znamiona. Spektrum ADHD.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 12:25:15",
+        "raw_text": "że w Polsce jest prawdopodobnie około miliona osób niezdiagnozowanych przez specjalistę. Kod choroby ustanowiony przez WHO.  to jest prawdopodobnie ICD-10 oraz ICD-11. Ale...",
+        "corrected_text": "że w Polsce jest prawdopodobnie około miliona osób niezdiagnozowanych przez specjalistę. Kod choroby ustanowiony przez WHO.  to jest prawdopodobnie ICD-10 oraz ICD-11. Ale...",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 12:25:31",
+        "raw_text": "Kod choroby ICD-10 i ICD-11 ADHD.",
+        "corrected_text": "Kod choroby ICD-10 i ICD-11 ADHD.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 13:43:09",
+        "raw_text": "lub będzie wpadał wyniki z formularza albo z chatbota na stronie jaison.pl  z bota lub z formularza na stronie jason.pl będzie wpadał właśnie tak musi wpaść na ten web hook trigger będzie analizowany przez sztab dyrektorów  czy w tym audycie 21 pytań jest podanie strony lub wizytówki Google lub gruntowne przepytanie o niszę dobrze to mi się podoba ale musisz dodać źródło tak i co w telegramie też mógłbym w sumie uruchamiać slashem tak szybkie odpowiedzi taką ankietę lub wklej  po prostu stronę czy wizytówkę Google Klienta czy jakiś tam fanpage czy kanał społecznościowy. Ok, to wpada do centralnego sztabu. Ok. Generator ClickUp Agents. Przepuszcza do repozytorium.  i zapisuję na komputerze stacjonarnym lub laptopie, ok. Z jednej strony laptopa mogę mieć wszędzie przy sobie, tylko jeszcze kwestia czy on będzie po drodze. Zakładam ten plik agents i memory loop, tak, symlinki i tak dalej.  Dobra, to to jest to.  Dobra, to będzie w kolejny potrzebny szczegółowy blueprint i polecenie dla agenta w przeglądarce, co metr, bo jemu zlecę założenie, wygenerowanie tych workflow i zaroportowanie nam niezbędnych informacji zwrotnych, które ty będziesz potrzebował. On się musi zająć N8n, tak? Żebym ja tego ręcznie nie musiał robić  To jest raz. No tak, w sumie nie muszę tych folderów generować, zapisywać w chmurze jakichś danych, tak, w zasobniku czy gdzieś, no bo i tak to wyląduje fizycznie u mnie na laptopie oraz komputerze stacjonarnym. Aha, okej. Dobra.  Dobra, to to zaplanuj. Musielibyśmy sobie jeszcze przeskanować, przeanalizować obecnie posiadane skille, sopy i czego nam brakuje.  czy jakiegoś specjalisty Ads Managera od Meta i Google czy Tik Tok Ads poszukać takich nie wiem wiem że fajnie coś na zasadzie Hermasa działa ten agent Wiktor tak przez V Wiktor.com on ma tam skille które można wgrać zrobić zrzut ekranu tylko że no to jest jakby  To jest zaplanowane na moją kampanię afiliacyjną, tak? Ale to musimy bazować na naszym low cost, na naszym stacku technologicznym. Co ja jeszcze chciałem? Tak, i następne musimy porobić też prompty  chyba że w osobnym okienku, w osobnym worktree, w którym tam mam otwarty poinformuję gdzie są wszystkie pliki dashboardu streamlit i zlecę tam agentowi, żeby też brakujących webhook, tak cały workflow do n8n, żebym zlecił też w kolejności agentowi z przeglądarce comet oraz z raportem potrzebnymi  zwrotnymi informacjami, żeby to przyspieszyć. No i trzeba by przeanalizować stronę jaison.pl pod kątem tutaj jako product manager, żeby i z dyrektorem CMO marketingu, co tam ewentualnie usunąć, co dodać, jakie lead magnety, jakieś checklisty do pobrania tak w zamian za uruchomić ten system EIO, tak, czyli ten  Dziękuję.",
+        "corrected_text": "lub będzie wpadał wyniki z formularza albo z chatbota na stronie jaison.pl  z bota lub z formularza na stronie jason.pl będzie wpadał właśnie tak musi wpaść na ten web hook trigger będzie analizowany przez sztab dyrektorów  czy w tym audycie 21 pytań jest podanie strony lub wizytówki Google lub gruntowne przepytanie o niszę dobrze to mi się podoba ale musisz dodać źródło tak i co w telegramie też mógłbym w sumie uruchamiać slashem tak szybkie odpowiedzi taką ankietę lub wklej  po prostu stronę czy wizytówkę Google Klienta czy jakiś tam fanpage czy kanał społecznościowy. Ok, to wpada do centralnego sztabu. Ok. Generator ClickUp Agents. Przepuszcza do repozytorium.  i zapisuję na komputerze stacjonarnym lub laptopie, ok. Z jednej strony laptopa mogę mieć wszędzie przy sobie, tylko jeszcze kwestia czy on będzie po drodze. Zakładam ten plik agents i memory loop, tak, symlinki i tak dalej.  Dobra, to to jest to.  Dobra, to będzie w kolejny potrzebny szczegółowy blueprint i polecenie dla agenta w przeglądarce, co metr, bo jemu zlecę założenie, wygenerowanie tych workflow i zaroportowanie nam niezbędnych informacji zwrotnych, które ty będziesz potrzebował. On się musi zająć N8n, tak? Żebym ja tego ręcznie nie musiał robić  To jest raz. No tak, w sumie nie muszę tych folderów generować, zapisywać w chmurze jakichś danych, tak, w zasobniku czy gdzieś, no bo i tak to wyląduje fizycznie u mnie na laptopie oraz komputerze stacjonarnym. Aha, okej. Dobra.  Dobra, to to zaplanuj. Musielibyśmy sobie jeszcze przeskanować, przeanalizować obecnie posiadane skille, sopy i czego nam brakuje.  czy jakiegoś specjalisty Ads Managera od Meta i Google czy Tik Tok Ads poszukać takich nie wiem wiem że fajnie coś na zasadzie Hermasa działa ten agent Wiktor tak przez V Wiktor.com on ma tam skille które można wgrać zrobić zrzut ekranu tylko że no to jest jakby  To jest zaplanowane na moją kampanię afiliacyjną, tak? Ale to musimy bazować na naszym low cost, na naszym stacku technologicznym. Co ja jeszcze chciałem? Tak, i następne musimy porobić też prompty  chyba że w osobnym okienku, w osobnym worktree, w którym tam mam otwarty poinformuję gdzie są wszystkie pliki dashboardu streamlit i zlecę tam agentowi, żeby też brakujących webhook, tak cały workflow do n8n, żebym zlecił też w kolejności agentowi z przeglądarce comet oraz z raportem potrzebnymi  zwrotnymi informacjami, żeby to przyspieszyć. No i trzeba by przeanalizować stronę jaison.pl pod kątem tutaj jako product manager, żeby i z dyrektorem CMO marketingu, co tam ewentualnie usunąć, co dodać, jakie lead magnety, jakieś checklisty do pobrania tak w zamian za uruchomić ten system EIO, tak, czyli ten  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 13:46:29",
+        "raw_text": "tu leżą pliki z ebookami, tak? GCP i tak dalej bezpieczny telefon",
+        "corrected_text": "tu leżą pliki z ebookami, tak? GCP i tak dalej bezpieczny telefon",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 13:58:19",
+        "raw_text": "Dobra, jeszcze kwestia pozostaje jak się będziemy komunikować, integrować z dashboardu, z trybie, bo tamto jest jakoś wstępnie zaprojektowane przez tego równoległego agenta. Chodzi mi o wiarygodność względem Google, tak, czyli pod Google Business Profile, tam, tak jak to robi agent fiktor.com, tak, przez V, podpinać,  pod konto reklamowe, czy tam wiesz, możemy spiąć się wiesz normalnie pod Facebooki, Instagramy, Tik Toki, YouTube poprzez API logując się na moje konto tam gdzie mam fanpage'e, gdzie mam wiadomo i żeby to po prostu maszynowo automatycznie szło, ale żeby też nie było jakiejś wpadki, żeby meta nie zablokował tak, albo Google  Dobra, bo będziemy działać na instancji N8N  No więc kwestia jeszcze tylko... Ok, to repozytory... Powiedz mi jeszcze skąd pobrać takie wiarygodne... Znaczy no niby ja mam jakieś od Corey Haynes. Na stronie  AITM.pl, które już kiedyś gdzieś przeglądaliśmy. Jakie są skille właśnie. Takie typu ETS i tak dalej.",
+        "corrected_text": "Dobra, jeszcze kwestia pozostaje jak się będziemy komunikować, integrować z dashboardu, z trybie, bo tamto jest jakoś wstępnie zaprojektowane przez tego równoległego agenta. Chodzi mi o wiarygodność względem Google, tak, czyli pod Google Business Profile, tam, tak jak to robi agent fiktor.com, tak, przez V, podpinać,  pod konto reklamowe, czy tam wiesz, możemy spiąć się wiesz normalnie pod Facebooki, Instagramy, Tik Toki, YouTube poprzez API logując się na moje konto tam gdzie mam fanpage'e, gdzie mam wiadomo i żeby to po prostu maszynowo automatycznie szło, ale żeby też nie było jakiejś wpadki, żeby meta nie zablokował tak, albo Google  Dobra, bo będziemy działać na instancji N8N  No więc kwestia jeszcze tylko... Ok, to repozytory... Powiedz mi jeszcze skąd pobrać takie wiarygodne... Znaczy no niby ja mam jakieś od Corey Haynes. Na stronie  AITM.pl, które już kiedyś gdzieś przeglądaliśmy. Jakie są skille właśnie. Takie typu ETS i tak dalej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 14:01:21",
+        "raw_text": "Więc przeszukaj gruntownie tą repozytorium, repozytoria, te zestawy, tak? Przefiltruj pod kątem kategorii. Może jakieś MCP znajdziesz wartościowe. Tam jest też hooks, loops, plugins.",
+        "corrected_text": "Więc przeszukaj gruntownie tą repozytorium, repozytoria, te zestawy, tak? Przefiltruj pod kątem kategorii. Może jakieś MCP znajdziesz wartościowe. Tam jest też hooks, loops, plugins.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 14:12:51",
+        "raw_text": "Dobra, działaj, wdrażaj, zbieraj, wgrywaj skille, tak tylko, żeby się nie powtarzały z tymi, które aktualnie mamy lub po prostu rozumiem, że dyrektorzy mają do dyspozycji te skille, tak? Możemy wzmocnić swoje w ten sposób, żeby się nie pomieszały te wszystkie skille, nie było ich zbyt",
+        "corrected_text": "Dobra, działaj, wdrażaj, zbieraj, wgrywaj skille, tak tylko, żeby się nie powtarzały z tymi, które aktualnie mamy lub po prostu rozumiem, że dyrektorzy mają do dyspozycji te skille, tak? Możemy wzmocnić swoje w ten sposób, żeby się nie pomieszały te wszystkie skille, nie było ich zbyt",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 15:36:35",
+        "raw_text": "Dobry, to daj mi konkretne prompty, polecenia szczegółowe dla tutaj agenta w przeglądarce Comet. Ja nie muszę tego ręcznie robić, ażeby on nam to zrobił. To co może on, a co musi mi przekazać? Tak, stworzymy subdomenę go.jaison.pl. Także dawaj, no.  Jedziemy do przodu.",
+        "corrected_text": "Dobry, to daj mi konkretne prompty, polecenia szczegółowe dla tutaj agenta w przeglądarce Comet. Ja nie muszę tego ręcznie robić, ażeby on nam to zrobił. To co może on, a co musi mi przekazać? Tak, stworzymy subdomenę go.jaison.pl. Także dawaj, no.  Jedziemy do przodu.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 15:46:58",
+        "raw_text": "Zalogowałem się już do Cloudflare, także możesz działać dalej tam od skąd skończyłeś.",
+        "corrected_text": "Zalogowałem się już do Cloudflare, także możesz działać dalej tam od skąd skończyłeś.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 16:07:31",
+        "raw_text": "Przecież to stary model. Proszę nie halucynuj, nie podawaj jakichś nieaktualnych danych co do modeli. Bądź bardzo szczegółowy jeśli chodzi o... Powinieneś, że masz podsumowanie dotychczasowych wdrożeń, ale bądź bardzo szczegółowy jeśli chodzi o prompty, jeśli tam trzeba jakieś zaawansowane prompty i tak dalej, gł",
+        "corrected_text": "Przecież to stary model. Proszę nie halucynuj, nie podawaj jakichś nieaktualnych danych co do modeli. Bądź bardzo szczegółowy jeśli chodzi o... Powinieneś, że masz podsumowanie dotychczasowych wdrożeń, ale bądź bardzo szczegółowy jeśli chodzi o prompty, jeśli tam trzeba jakieś zaawansowane prompty i tak dalej, gł",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 16:11:14",
+        "raw_text": "A jakich danych ma co do skonfigurowania autoryzacji do Google Vertex AI? Czy mogę podać... A tam przypadkiem jest Gemini 2.5 Flash?  To raz, a dwa, czy agent Comat będzie miał dane do autoryzacji? To raz, a dwa, pytanie. Czy w tym audycie 21 pytań?  Są pytania do klienta o jego adres strony, nisze, branże, adres kanału społecznościowych, wizytówki Google, jakiś i tak dalej.",
+        "corrected_text": "A jakich danych ma co do skonfigurowania autoryzacji do Google Vertex AI? Czy mogę podać... A tam przypadkiem jest Gemini 2.5 Flash?  To raz, a dwa, czy agent Comat będzie miał dane do autoryzacji? To raz, a dwa, pytanie. Czy w tym audycie 21 pytań?  Są pytania do klienta o jego adres strony, nisze, branże, adres kanału społecznościowych, wizytówki Google, jakiś i tak dalej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 16:12:02",
+        "raw_text": "Tutaj pytanie czy dane do Google Vertex, w sensie do GCP mogą być z innego konta, teraz świeżego, na którym jest świeższa pula tokenów 300, free trial 300 USD. Czy to N8n ma odpytywać, czy ten model Gavini?",
+        "corrected_text": "Tutaj pytanie czy dane do Google Vertex, w sensie do GCP mogą być z innego konta, teraz świeżego, na którym jest świeższa pula tokenów 300, free trial 300 USD. Czy to N8n ma odpytywać, czy ten model Gavini?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 16:34:01",
+        "raw_text": "Słuchaj, masz otwartą kartę w Google... konsoli Google Cloud na tym właściwym koncie. Weź tylko, słuchaj, załóż projekt no i doprowadź mnie do momentu, w którym tam będę musiał podpiąć konto billingowe, tak? Trwiale, konto rozliczeniowe.",
+        "corrected_text": "Słuchaj, masz otwartą kartę w Google... konsoli Google Cloud na tym właściwym koncie. Weź tylko, słuchaj, załóż projekt no i doprowadź mnie do momentu, w którym tam będę musiał podpiąć konto billingowe, tak? Trwiale, konto rozliczeniowe.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 16:38:24",
+        "raw_text": "Dobra, tam się w tle tutaj...  Chcę równolegle to agentowi zalecić pewne prace odnośnie dashboardu Streamlit, odnośnie tam skanera okazji, więc chciałbym to robić równolegle.  kontekst co robimy a co dotyczy dashboardu Streamlit więc dam ten kontekst oraz folder aplikacji Streamlit dashboardu aktualny daj mu polecenie tak zaktualizowaliśmy strukturę folderów i tak dalej oraz to co tutaj co dotyczy właśnie Streamlit aktualizacje ja będę z nim dalej kontynuował  Dziękuję.",
+        "corrected_text": "Dobra, tam się w tle tutaj...  Chcę równolegle to agentowi zalecić pewne prace odnośnie dashboardu Streamlit, odnośnie tam skanera okazji, więc chciałbym to robić równolegle.  kontekst co robimy a co dotyczy dashboardu Streamlit więc dam ten kontekst oraz folder aplikacji Streamlit dashboardu aktualny daj mu polecenie tak zaktualizowaliśmy strukturę folderów i tak dalej oraz to co tutaj co dotyczy właśnie Streamlit aktualizacje ja będę z nim dalej kontynuował  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 16:55:41",
+        "raw_text": "Chcę abyś otworzył nowy projekt nazwę zgodnie z fachową i podłączyć moje konto rozliczeniowe pod nie. Czyli projekt jaisonn8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n  rozróżniać to trzeba koniecznie podpiąć pod niego aktualne moje konto rozliczeniowe.",
+        "corrected_text": "Chcę abyś otworzył nowy projekt nazwę zgodnie z fachową i podłączyć moje konto rozliczeniowe pod nie. Czyli projekt jaisonn8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n8n  rozróżniać to trzeba koniecznie podpiąć pod niego aktualne moje konto rozliczeniowe.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 17:12:27",
+        "raw_text": "No to leć teraz dalej z krokiem drugim, czyli to co zaplanowałeś, tak? Masz już rzeczy dane do N8n, z Google Cloud Project wszystko zrobiłeś na Google Cloud Console, także jedź dalej, kontynuuj.",
+        "corrected_text": "No to leć teraz dalej z krokiem drugim, czyli to co zaplanowałeś, tak? Masz już rzeczy dane do N8n, z Google Cloud Project wszystko zrobiłeś na Google Cloud Console, także jedź dalej, kontynuuj.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 17:36:47",
+        "raw_text": "Dobra, co dalej?",
+        "corrected_text": "Dobra, co dalej?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 17:40:29",
+        "raw_text": "Dobra, bądź bardziej autonomiczny, sprawdź ten Vertex AI czy jest włączony. No jestem tutaj na bibliotece API na tym projekcie Google Cloud, sprawdź i później przejdź do N8n i doprowadź mnie do momentu, w którym będę miał wkleić tak plik JSON.",
+        "corrected_text": "Dobra, bądź bardziej autonomiczny, sprawdź ten Vertex AI czy jest włączony. No jestem tutaj na bibliotece API na tym projekcie Google Cloud, sprawdź i później przejdź do N8n i doprowadź mnie do momentu, w którym będę miał wkleić tak plik JSON.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 17:46:24",
+        "raw_text": "Co to za problem jest? Wkleiłem już private key, service account, email. Co dalej? Co to za problem jest? Kliknąłem save i wyskoczył ten komunikat.",
+        "corrected_text": "Co to za problem jest? Wkleiłem już private key, service account, email. Co dalej? Co to za problem jest? Kliknąłem save i wyskoczył ten komunikat.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 18:03:05",
+        "raw_text": "No zrobione, działaj dalej. Zgodny z planem.",
+        "corrected_text": "No zrobione, działaj dalej. Zgodny z planem.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 19:02:47",
+        "raw_text": "Czemu zapisujesz takie pliki w bazie wiedzy 02.knowledge.base, a nie w którymś folderze projektu odpowiednim, w którym akurat tutaj działamy i rozmawiamy? Czy jakieś instrukcje, agent, skille, sopy zawiodły, że Ty zapisujesz workflow JSON do N8MET w bazie wiedzy?  więcej wiedzy?",
+        "corrected_text": "Czemu zapisujesz takie pliki w bazie wiedzy 02.knowledge.base, a nie w którymś folderze projektu odpowiednim, w którym akurat tutaj działamy i rozmawiamy? Czy jakieś instrukcje, agent, skille, sopy zawiodły, że Ty zapisujesz workflow JSON do N8MET w bazie wiedzy?  więcej wiedzy?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 19:11:34",
+        "raw_text": "Widzę, że w tym workflow nie ma naszego Hermesa. On jest niepotrzebny? Zbędny? Aha, bo to jest workflow z formularza albo z chatbota, tak? Ze strony jason.pl  A Hermes Argentic, ten bot w Telegramie byłby potrzebny? W której sytuacji, w którym momencie?",
+        "corrected_text": "Widzę, że w tym workflow nie ma naszego Hermesa. On jest niepotrzebny? Zbędny? Aha, bo to jest workflow z formularza albo z chatbota, tak? Ze strony jason.pl  A Hermes Argentic, ten bot w Telegramie byłby potrzebny? W której sytuacji, w którym momencie?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 19:15:18",
+        "raw_text": "Spoko, rozumiem.  narzędziem, jakimś open source, czy jakąś jakiejś integracji, czy masz budowane do generowania takiego aktywnego i edytowalnego edytowalnej mapy myśli. Wiadomo, jak będzie się system rozrastał, będą dochodziły, nie wiem, kolejny landing page lub jakieś źródło pozyskania lida, czy jakaś automatyzacja, to będziemy w  główną mapę myśli będziemy uzupełniać.",
+        "corrected_text": "Spoko, rozumiem.  narzędziem, jakimś open source, czy jakąś jakiejś integracji, czy masz budowane do generowania takiego aktywnego i edytowalnego edytowalnej mapy myśli. Wiadomo, jak będzie się system rozrastał, będą dochodziły, nie wiem, kolejny landing page lub jakieś źródło pozyskania lida, czy jakaś automatyzacja, to będziemy w  główną mapę myśli będziemy uzupełniać.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 20:13:08",
+        "raw_text": "Dobra, generuj mi tą mapę. Jak najbardziej, opcję zalecaną. Ale o co chodzi z podstroną systemu i o nowego klienta?  Tak, no przygotuj dla agenta, no bo my tu musimy dopiąć kwestię tych automatyzacji, tak?  Weź mi tu w artefakcie obok w pliku wygeneruj ten... Czy to jest w pliku walkthrough? Nie, walkthrough jest poprzednie. Okej. Muszę jeszcze githuba, tak.  Zintegrować. Task. Tak, to weźmy ten, żebym miał... Co tam nam jeszcze zostało z tej... WN8n i innych.  Co tam zostało? Aha muszę dodać CNAME Konfiguracja DNS to domeny go.jaison.pl To miało być w Cloudflare zrobione, ale nie wiem czy to jest zrobione Czy to było zrobione?  Nie, gotowa do użycia. Domena w systeme.io, czyli go.jason.pl widzę, że jest gotowa do użycia. W systeme.io. Jestem na etapie tego. Dopiero wgrałem plik JSON do workflow N8n, więc co dalej?  A tu mi napisz też, oddelegujemy to dla agenta od Streamlit'a, tą resztę, a później przejdziemy do Hermesa. Analogicznie wiesz, ten system victor.com jest zbudowany. On się integruje przez Compozio. Teraz patrzyłem, on się integruje przez Compozio.dev z kanałami na przeznaczenie.  społecznościowymi integracje. Tak, czyli idziemy dobrym tropem też. W Streamlicie i w Hermesie też tak możemy, bo to jest jakby dobra ścieżka chyba. Prawidłowa, zaufana.",
+        "corrected_text": "Dobra, generuj mi tą mapę. Jak najbardziej, opcję zalecaną. Ale o co chodzi z podstroną systemu i o nowego klienta?  Tak, no przygotuj dla agenta, no bo my tu musimy dopiąć kwestię tych automatyzacji, tak?  Weź mi tu w artefakcie obok w pliku wygeneruj ten... Czy to jest w pliku walkthrough? Nie, walkthrough jest poprzednie. Okej. Muszę jeszcze githuba, tak.  Zintegrować. Task. Tak, to weźmy ten, żebym miał... Co tam nam jeszcze zostało z tej... WN8n i innych.  Co tam zostało? Aha muszę dodać CNAME Konfiguracja DNS to domeny go.jaison.pl To miało być w Cloudflare zrobione, ale nie wiem czy to jest zrobione Czy to było zrobione?  Nie, gotowa do użycia. Domena w systeme.io, czyli go.jason.pl widzę, że jest gotowa do użycia. W systeme.io. Jestem na etapie tego. Dopiero wgrałem plik JSON do workflow N8n, więc co dalej?  A tu mi napisz też, oddelegujemy to dla agenta od Streamlit'a, tą resztę, a później przejdziemy do Hermesa. Analogicznie wiesz, ten system victor.com jest zbudowany. On się integruje przez Compozio. Teraz patrzyłem, on się integruje przez Compozio.dev z kanałami na przeznaczenie.  społecznościowymi integracje. Tak, czyli idziemy dobrym tropem też. W Streamlicie i w Hermesie też tak możemy, bo to jest jakby dobra ścieżka chyba. Prawidłowa, zaufana.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 21:07:09",
+        "raw_text": "Coś nie tak w tym workflow N8n. Nie wiem jak tam github.",
+        "corrected_text": "Coś nie tak w tym workflow N8n. Nie wiem jak tam github.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 21:09:13",
+        "raw_text": "Dobra, zapisz mi to w instrukcji gdzieś obok w pliku, żebym mógł sobie go wyświetlać i razem z tym testem. Ja to dokończę, gdzie jakiś problem, będę się odnosił tam w komentarzach do tego pliku. Dobra, działaj z tym, znaczy daj mi polecenie dla agenta od Stimulita i resztą my się tutaj zajmie  Kalendarz treści i robienia kampanii i deployu na social media. Trzeba się z tym połączyć. Z Composio tam wgrać, to daj mu polecenie. I przygotujmy w perspektywie już plan takiej migracji całego staku technologicznego, na przykład jak będziemy na innym koncie Google Vertex, Google Platform.  Przenosić na przykład Hermesa instancje z jednej prostej przyczyny bo raz, że u klientów a dwa jak będą się tu kończyć środki to będziemy przerzucać, na przykład kopiować, zapisywać obraz, nie wiem jak to się nazywa takiego Hermesa instancji i innych tych bucketów, sraketów. Zobacz jak się będą kończyć środki te 300USD  Ten AI App Builder wiadomo, że tam jest 3600 zł, bo tam jest duży zasób, duża pula.",
+        "corrected_text": "Dobra, zapisz mi to w instrukcji gdzieś obok w pliku, żebym mógł sobie go wyświetlać i razem z tym testem. Ja to dokończę, gdzie jakiś problem, będę się odnosił tam w komentarzach do tego pliku. Dobra, działaj z tym, znaczy daj mi polecenie dla agenta od Stimulita i resztą my się tutaj zajmie  Kalendarz treści i robienia kampanii i deployu na social media. Trzeba się z tym połączyć. Z Composio tam wgrać, to daj mu polecenie. I przygotujmy w perspektywie już plan takiej migracji całego staku technologicznego, na przykład jak będziemy na innym koncie Google Vertex, Google Platform.  Przenosić na przykład Hermesa instancje z jednej prostej przyczyny bo raz, że u klientów a dwa jak będą się tu kończyć środki to będziemy przerzucać, na przykład kopiować, zapisywać obraz, nie wiem jak to się nazywa takiego Hermesa instancji i innych tych bucketów, sraketów. Zobacz jak się będą kończyć środki te 300USD  Ten AI App Builder wiadomo, że tam jest 3600 zł, bo tam jest duży zasób, duża pula.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-15 21:25:45",
+        "raw_text": "Ok, a przygotowując ten plik streamlit-social-deploy-delegation, instalacji delegacji, zapoznawałeś się z aktualnym stanem, z kodem tego aktualnego, nic tam nie, tylko masz zadanie tak ulepszyć.  To jest to i słuchaj tak jak się teraz zintegrowałem wiktor.com jakbyś jeszcze raz albo ci zapisał tą dokumentację na stałe byśmy się podpięli. On tam ma jeszcze możliwość niestandardowych MCP serwer  podpięcia. Z tego co widzę to on się opiera. Tak no agent który gdzieś w jakiejś instancji na serwerze żyje. Tak Wiktor. On się przez Composio podpina do narzędzi w większości tych właśnie takich lub bezpośrednio wystawiona MCP nie wiem tam jakichś innych narzędzi bo tam jest ponad 3000 możliwości integracji.  Nie wiem czy on w tle używa N8n. Jakbyś zebrał z dokumentacji jego stack technologiczny. I analogicznie byśmy dla naszego Hermesa, który współgra, współpracuje z dashboardem Streamlit.  w jakiś sposób tam z naszą stroną domeną iaison.pl w perspektywie z subdomenami z landing page innymi, które będą powstawać.",
+        "corrected_text": "Ok, a przygotowując ten plik streamlit-social-deploy-delegation, instalacji delegacji, zapoznawałeś się z aktualnym stanem, z kodem tego aktualnego, nic tam nie, tylko masz zadanie tak ulepszyć.  To jest to i słuchaj tak jak się teraz zintegrowałem wiktor.com jakbyś jeszcze raz albo ci zapisał tą dokumentację na stałe byśmy się podpięli. On tam ma jeszcze możliwość niestandardowych MCP serwer  podpięcia. Z tego co widzę to on się opiera. Tak no agent który gdzieś w jakiejś instancji na serwerze żyje. Tak Wiktor. On się przez Composio podpina do narzędzi w większości tych właśnie takich lub bezpośrednio wystawiona MCP nie wiem tam jakichś innych narzędzi bo tam jest ponad 3000 możliwości integracji.  Nie wiem czy on w tle używa N8n. Jakbyś zebrał z dokumentacji jego stack technologiczny. I analogicznie byśmy dla naszego Hermesa, który współgra, współpracuje z dashboardem Streamlit.  w jakiś sposób tam z naszą stroną domeną iaison.pl w perspektywie z subdomenami z landing page innymi, które będą powstawać.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 08:23:49",
+        "raw_text": "Dobra, to przekażmy tutaj do agenta odpowiedzialnego za streamlit, bo rozumiem, że to już sam tam wdrożyłeś. Automatyczny skaner folderów w Pythonie.  Wchodzi ta instrukcja dla dewelopera Streamlit. Co dokładnie skanuje całą zawartość tutaj głównego folderu, aplikacje MVP czy coś jeszcze. No i tutaj jak mi to wrzucisz to wróćmy do  do dokończenia automatyzacji n8n, tak, bo tam wcześniej Ci wysłałem, były jakieś jakieś problemy, jakiś błąd w tym workflow, w tym pliku JSON. Dopnijmy już na CITO wszystkie automatyzacje na stronie jason.pl.  A developer od Striblita nie wdopnie Striblita? No bo trzeba wyjść na rynek już z usługą,  ten skaner. Lead Radar. Poszukać zleceń. Zaplanować tu content, strategię wykorzystując  zanotyzację właśnie dashboardu Streamlit.",
+        "corrected_text": "Dobra, to przekażmy tutaj do agenta odpowiedzialnego za streamlit, bo rozumiem, że to już sam tam wdrożyłeś. Automatyczny skaner folderów w Pythonie.  Wchodzi ta instrukcja dla dewelopera Streamlit. Co dokładnie skanuje całą zawartość tutaj głównego folderu, aplikacje MVP czy coś jeszcze. No i tutaj jak mi to wrzucisz to wróćmy do  do dokończenia automatyzacji n8n, tak, bo tam wcześniej Ci wysłałem, były jakieś jakieś problemy, jakiś błąd w tym workflow, w tym pliku JSON. Dopnijmy już na CITO wszystkie automatyzacje na stronie jason.pl.  A developer od Striblita nie wdopnie Striblita? No bo trzeba wyjść na rynek już z usługą,  ten skaner. Lead Radar. Poszukać zleceń. Zaplanować tu content, strategię wykorzystując  zanotyzację właśnie dashboardu Streamlit.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 08:47:10",
+        "raw_text": "Dobra, super fajnie, ale nie opisałeś mi jak mam naprawić tutaj ten JSON w N8n, ten workflow, bo coś tam jest nie halo. Chciałem, żebyś to uzupełnił właśnie w pliku kompleksowo. JSON Webhook Integration.  w Streamlit dla mojego agenta równoległego, ponieważ tam jest kilka kwestii do zrobienia, więc tam chcę równolegle z nim zajmować się dashboardem w Streamlit, a z Tobą tutaj kwestią automatyzacji formularzami stroną jaison.pl. Nic nie rób w Streamlit,  kontynuujmy tutaj z automatyzacją ze stroną jaison.pl",
+        "corrected_text": "Dobra, super fajnie, ale nie opisałeś mi jak mam naprawić tutaj ten JSON w N8n, ten workflow, bo coś tam jest nie halo. Chciałem, żebyś to uzupełnił właśnie w pliku kompleksowo. JSON Webhook Integration.  w Streamlit dla mojego agenta równoległego, ponieważ tam jest kilka kwestii do zrobienia, więc tam chcę równolegle z nim zajmować się dashboardem w Streamlit, a z Tobą tutaj kwestią automatyzacji formularzami stroną jaison.pl. Nic nie rób w Streamlit,  kontynuujmy tutaj z automatyzacją ze stroną jaison.pl",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 08:58:12",
+        "raw_text": "Dobra sprawdź, zrób sobie review ostatnich zmian w dashboardzie w pliku app.py dashboardu Streamlit i chciałbym abyś zaplanował i wdrożył fizyczne faktycznie podpięcia tego Lead Radar bo na razie to tylko symuluje tak? To jest symulacja tych trzech źródeł  On nigdzie jak jest podane na przykład jakiś lid otrzymane właśnie ze skanera. Aktualnie czy tam freelanceria czy oferteo czy useme on potrzebuje aby on miał też był podlinkowany było podlinkowane  w danym tutaj ogłoszeniu czy źródle danego leada link do źródła tak rozumiem że ani maila ani numeru telefonu nie będzie w stanie zeskrapować bez logowania na danych portalach trzeba mieć  założone konta, tak, rozumiem. I wyszczególnij mi, jakie źródła dokładnie skanuję, jakie aktywne okazje z rynku. I jaki model LLM się tym zajmuje, z którego konta GCP Vertex, Google Cloud.  Dziękuję.",
+        "corrected_text": "Dobra sprawdź, zrób sobie review ostatnich zmian w dashboardzie w pliku app.py dashboardu Streamlit i chciałbym abyś zaplanował i wdrożył fizyczne faktycznie podpięcia tego Lead Radar bo na razie to tylko symuluje tak? To jest symulacja tych trzech źródeł  On nigdzie jak jest podane na przykład jakiś lid otrzymane właśnie ze skanera. Aktualnie czy tam freelanceria czy oferteo czy useme on potrzebuje aby on miał też był podlinkowany było podlinkowane  w danym tutaj ogłoszeniu czy źródle danego leada link do źródła tak rozumiem że ani maila ani numeru telefonu nie będzie w stanie zeskrapować bez logowania na danych portalach trzeba mieć  założone konta, tak, rozumiem. I wyszczególnij mi, jakie źródła dokładnie skanuję, jakie aktywne okazje z rynku. I jaki model LLM się tym zajmuje, z którego konta GCP Vertex, Google Cloud.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 09:12:14",
+        "raw_text": "Jak logicznie nazwać tego bota u siebie w telegramie? Nie wiem czy właśnie w telegramie, czy zrobić to, podpiąć to w Whatsappie, co będzie łatwiej. Co jest łatwiejsze i mniej low friction.",
+        "corrected_text": "Jak logicznie nazwać tego bota u siebie w telegramie? Nie wiem czy właśnie w telegramie, czy zrobić to, podpiąć to w Whatsappie, co będzie łatwiej. Co jest łatwiejsze i mniej low friction.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 09:12:46",
+        "raw_text": "Przypomnij mi w której sekcji, gdzie dokładnie na koncie github wygeneruję swoje credentials.",
+        "corrected_text": "Przypomnij mi w której sekcji, gdzie dokładnie na koncie github wygeneruję swoje credentials.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 09:24:53",
+        "raw_text": "Zrób mi głęboki research polskiego rynku jeśli chodzi o źródła, okazji, zleceń, leadów, zleceń na automatyzację, wykonanie stron internetowych, chatbotów, automatyzację N8n, wdrażanie sztucznej inteligencji w firmach, wszelkie zapytania, takie źródła, które  w których mógłbym założyć konta jako agencja, ja ISON, jako freelancer i źródła, które mógłby mój skanować lead scrapper z dashboardu StreamLead.  Dziękuję.",
+        "corrected_text": "Zrób mi głęboki research polskiego rynku jeśli chodzi o źródła, okazji, zleceń, leadów, zleceń na automatyzację, wykonanie stron internetowych, chatbotów, automatyzację N8n, wdrażanie sztucznej inteligencji w firmach, wszelkie zapytania, takie źródła, które  w których mógłbym założyć konta jako agencja, ja ISON, jako freelancer i źródła, które mógłby mój skanować lead scrapper z dashboardu StreamLead.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 09:32:15",
+        "raw_text": "Tak, przygotuj taką operacyjną tabelę 50 polskich źródeł i dziwaj to mieć konto, czy da się scrapować. Prioritet, trudność, zsugerowano frazy do scrapera.",
+        "corrected_text": "Tak, przygotuj taką operacyjną tabelę 50 polskich źródeł i dziwaj to mieć konto, czy da się scrapować. Prioritet, trudność, zsugerowano frazy do scrapera.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 09:53:12",
+        "raw_text": "Tak, poproszę, a później wygeneruj mi kompleksowy raport dla mojego agenta kodującego AntiGravity. Wraz z planem dla mnie i źródłami wskazaniem od takich priorytetowych, najłatwiejszych, gdzie mogę pozyskać lecenia, tam gdzie powinienem założyć konto, razem z odnośnikami, z link  finansera, jeśli chodzi o założenie kont na właściwych platformach, a tam gdzie nie trzeba zakładać kont to po prostu też wyszczególni gdzie może agent, gdzie ta automatyzacja może zeskrapować te źródła po prostu ogólne. Oczywiście też z podziałem na w kolumnie gdzie mogę działać i oferować  nie posiadając działalności, a gdzie muszę tą działalność mieć i jakie wymagania co do działalności, nie wiem, czy jej stażu, profilu, referencji, doświadczenia. Czyli dwa odrębne dokumenty dla mnie i dla agenta Antigravity, tak? Kompleksowo przygotowane.",
+        "corrected_text": "Tak, poproszę, a później wygeneruj mi kompleksowy raport dla mojego agenta kodującego AntiGravity. Wraz z planem dla mnie i źródłami wskazaniem od takich priorytetowych, najłatwiejszych, gdzie mogę pozyskać lecenia, tam gdzie powinienem założyć konto, razem z odnośnikami, z link  finansera, jeśli chodzi o założenie kont na właściwych platformach, a tam gdzie nie trzeba zakładać kont to po prostu też wyszczególni gdzie może agent, gdzie ta automatyzacja może zeskrapować te źródła po prostu ogólne. Oczywiście też z podziałem na w kolumnie gdzie mogę działać i oferować  nie posiadając działalności, a gdzie muszę tą działalność mieć i jakie wymagania co do działalności, nie wiem, czy jej stażu, profilu, referencji, doświadczenia. Czyli dwa odrębne dokumenty dla mnie i dla agenta Antigravity, tak? Kompleksowo przygotowane.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 10:30:29",
+        "raw_text": "Tak, przygotuj wersję drugiej mapy z kolumnami, ale przygotuj taki jeden kompleksowy dokument z objaśnieniem dla agenta anti-gravity w formie pliku.md i tabel. I ewentualnie jako alternatywa dodaj kolumny, na przykład jak jest LinkedIn, Jabs czy LinkedIn Posts.  Jak jest na przykład opcja zintegrowania z moim panelem dashboardem w Streamlit poprzez brokera integratora composio.dev. Ewentualnie taką metodą, nie wiem jak ona się nazywa, czyli wyszukiwanie, stworzenie takich linków,  skryptów wywołujących po danym branży czy słowie kluczowym w wyszukiwarce Google bo mi zaproponował raz agent Anti Gravity takie rozwiązanie zamiast robienia tego manualnie na przykład w LinkedIn tylko chcę to też zautomatyzować i zapisywać do dashboardu do mojego Lead Radar  komponentu w dashboardzie Streamlit.",
+        "corrected_text": "Tak, przygotuj wersję drugiej mapy z kolumnami, ale przygotuj taki jeden kompleksowy dokument z objaśnieniem dla agenta anti-gravity w formie pliku.md i tabel. I ewentualnie jako alternatywa dodaj kolumny, na przykład jak jest LinkedIn, Jabs czy LinkedIn Posts.  Jak jest na przykład opcja zintegrowania z moim panelem dashboardem w Streamlit poprzez brokera integratora composio.dev. Ewentualnie taką metodą, nie wiem jak ona się nazywa, czyli wyszukiwanie, stworzenie takich linków,  skryptów wywołujących po danym branży czy słowie kluczowym w wyszukiwarce Google bo mi zaproponował raz agent Anti Gravity takie rozwiązanie zamiast robienia tego manualnie na przykład w LinkedIn tylko chcę to też zautomatyzować i zapisywać do dashboardu do mojego Lead Radar  komponentu w dashboardzie Streamlit.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 10:32:14",
+        "raw_text": "Zrób mi proszę taki głęboki research linków, cytowań źródeł na temat firmy LifeWave, patentów, historii twórcy Davida Schmidta, do których mógłbym się odnosić w moich linkach zewnętrznych, tworząc chatbota, datastore na Vertex AI Search, na GCP.  który byłby wyposażony w komplementarną wiedzę dotyczących źródeł badań naukowych, patentów. Zrób mi listę. Tylko listę taką do skopiowania linków. Wcześniej krótko, zwięźlej na temat omów te linki.",
+        "corrected_text": "Zrób mi proszę taki głęboki research linków, cytowań źródeł na temat firmy LifeWave, patentów, historii twórcy Davida Schmidta, do których mógłbym się odnosić w moich linkach zewnętrznych, tworząc chatbota, datastore na Vertex AI Search, na GCP.  który byłby wyposażony w komplementarną wiedzę dotyczących źródeł badań naukowych, patentów. Zrób mi listę. Tylko listę taką do skopiowania linków. Wcześniej krótko, zwięźlej na temat omów te linki.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 10:47:19",
+        "raw_text": "Dobra, super. Teraz jak go fizycznie wdrożyć i uruchomić? Żeby był efekt, tak? Że po prostu, no... Czyli co? Tam, gdzie muszę założyć konta, mieć fizycznie konta na danej platformie, to nie da się zaskrepować z pobraniem oprócz treści ogłoszenia do danych kontaktowych do...  do ogłoszenia dawcy ofertą ofertodawcy jak to teraz podzielić gdzie muszę założyć konta",
+        "corrected_text": "Dobra, super. Teraz jak go fizycznie wdrożyć i uruchomić? Żeby był efekt, tak? Że po prostu, no... Czyli co? Tam, gdzie muszę założyć konta, mieć fizycznie konta na danej platformie, to nie da się zaskrepować z pobraniem oprócz treści ogłoszenia do danych kontaktowych do...  do ogłoszenia dawcy ofertą ofertodawcy jak to teraz podzielić gdzie muszę założyć konta",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 11:15:27",
+        "raw_text": "Dobra, chcę abyś ten protokół operacyjny, ten opis, te podpowiedzi umieścił w... No w dashboardzie, tak? W streamie, w tej sekcji Lead Radar.  Wkleję Ci jeszcze tutaj  Czy podam Ci źródło PDF? Jest to z kursu proces sprzedaży i skrypt Jana Szopy, który możesz wczytać, wgrać też jako dla dyrektora sprzedaży i handlowca. To jest dla takiej małej agencji AI jak moja.  czyli sytuacji takiego cold callingu lub kontaktu chciałbym jeszcze zaplanować taki skaner który dziś chyba jest w dashboardzie więc nie ważne, można go powielać ale ta zakładka Lead Radar by była odpowiednia w podzakładce skaner Google  wizytowe Google tak jak jest to w narzędziu w aplikacji Localo na temat której gdzieś jest dokument który przeskanował i cały jest tak technologiczny pipeline workflow tej aplikacji wewnątrz który skanuje mi wizytówki Google tak wyfiltrowane po obszarze tak czy tam miejscowości  oraz po słowach kluczowych branży, które analizuje jakość tych wizytówek, czy wizytówka Google posiada stronę internetową, czy posiada profile kanałów społecznościowych. Następnie w kolejności mogę zrobić taki audyt wizytów,  i strony internetowej i segregować te leady od tych, które się najbardziej kwalifikują, czyli mają największy potencjał na optymalizacji i wdrożenie automatyzacji lub strony internetowej z automatyzacją dla takich biznesów lokalnych, tak? Rozumiem, że za każdym razem, jak będę klikał w  po uruchomieniu skanowania to do portali właśnie tam gdzie muszę mieć fizyczne konta będzie mnie przenosiło na przykład do przeglądarki i będę musiał się zalogować chciałbym aby oczywiście tworząc taką ofertę  Model tworzył na podstawie mojego prywatnego języka, ale zachowując profesjonalny, dynamiczny styl Hormoziego. Dokładnie to też w odniesieniu do tego skanera Google, czyli wizytówek Google. Trzeba to zaplanować, jaką integrację potrzebujemy, czyli jakąś przez Composio.dev.  Wcześniej planowaliśmy przełączanie kontekstów, tak, czyli na przykład kontekst w dashboardzie, na przykład na holistyczny broker, czy na przykład inny mój klient typu właśnie ten serwis gsm.coolphone.pl, czy kurczakujasia, czyli barjaś lub inny i kontekst przełącza się na folder z bazą wiedzy o danym kliencie,  z ankiety, ze wszystkich rzeczy, które mamy i wtedy możemy też na przykład uruchamiać AI scanner lub wyszukiwać klientów na przykład dla holistycznego brokera typu deweloperzy, typu inwestorzy. Obmawialiśmy to kiedyś.  Póki pamiętam to też zapisz na liście planu kwestie właśnie tam lub trzeba dokończyć te integracje w kalendarzu treści. No i tutaj też musi to być współgrać z  musi to współgrać i być na zewnątrz jako osobna zakładka na przykład pod JSON Creative Suite. Chodzi mi o Social Media Publisher, tak? Czyli kalendarz treści musi być na zewnątrz, ale musi współgrać z JSON Creative Suite i jego modułami.  które tam generują grafiki i tak dalej i tak dalej. I trzeba się zastanowić jak tworząc właśnie tutaj, przełączając się między  jestem firmy projektu ogólnym widzę że jest kontekst klienta trzeba się zastanowić jak generując kalendarzu treści oprócz samego posta  Aha, tutaj widzę, że jest opcja załączniki z Creative Suite, tylko z którego dokładnie modułu? Rozumiem, że on będzie kalendarz treści, funkcjonalność będzie wypychał na wskazany kanał społecznościowy, treść oczywiście ostylowana  platformy emoticonami, wypunktowaniami będzie wypychał wygenerowany przez Creative Suite załącznik w postaci czy to karuzeli, czy to grafiki zoptymalizowanej, czy krótkiego wideo, tak?",
+        "corrected_text": "Dobra, chcę abyś ten protokół operacyjny, ten opis, te podpowiedzi umieścił w... No w dashboardzie, tak? W streamie, w tej sekcji Lead Radar.  Wkleję Ci jeszcze tutaj  Czy podam Ci źródło PDF? Jest to z kursu proces sprzedaży i skrypt Jana Szopy, który możesz wczytać, wgrać też jako dla dyrektora sprzedaży i handlowca. To jest dla takiej małej agencji AI jak moja.  czyli sytuacji takiego cold callingu lub kontaktu chciałbym jeszcze zaplanować taki skaner który dziś chyba jest w dashboardzie więc nie ważne, można go powielać ale ta zakładka Lead Radar by była odpowiednia w podzakładce skaner Google  wizytowe Google tak jak jest to w narzędziu w aplikacji Localo na temat której gdzieś jest dokument który przeskanował i cały jest tak technologiczny pipeline workflow tej aplikacji wewnątrz który skanuje mi wizytówki Google tak wyfiltrowane po obszarze tak czy tam miejscowości  oraz po słowach kluczowych branży, które analizuje jakość tych wizytówek, czy wizytówka Google posiada stronę internetową, czy posiada profile kanałów społecznościowych. Następnie w kolejności mogę zrobić taki audyt wizytów,  i strony internetowej i segregować te leady od tych, które się najbardziej kwalifikują, czyli mają największy potencjał na optymalizacji i wdrożenie automatyzacji lub strony internetowej z automatyzacją dla takich biznesów lokalnych, tak? Rozumiem, że za każdym razem, jak będę klikał w  po uruchomieniu skanowania to do portali właśnie tam gdzie muszę mieć fizyczne konta będzie mnie przenosiło na przykład do przeglądarki i będę musiał się zalogować chciałbym aby oczywiście tworząc taką ofertę  Model tworzył na podstawie mojego prywatnego języka, ale zachowując profesjonalny, dynamiczny styl Hormoziego. Dokładnie to też w odniesieniu do tego skanera Google, czyli wizytówek Google. Trzeba to zaplanować, jaką integrację potrzebujemy, czyli jakąś przez Composio.dev.  Wcześniej planowaliśmy przełączanie kontekstów, tak, czyli na przykład kontekst w dashboardzie, na przykład na holistyczny broker, czy na przykład inny mój klient typu właśnie ten serwis gsm.coolphone.pl, czy kurczakujasia, czyli barjaś lub inny i kontekst przełącza się na folder z bazą wiedzy o danym kliencie,  z ankiety, ze wszystkich rzeczy, które mamy i wtedy możemy też na przykład uruchamiać AI scanner lub wyszukiwać klientów na przykład dla holistycznego brokera typu deweloperzy, typu inwestorzy. Obmawialiśmy to kiedyś.  Póki pamiętam to też zapisz na liście planu kwestie właśnie tam lub trzeba dokończyć te integracje w kalendarzu treści. No i tutaj też musi to być współgrać z  musi to współgrać i być na zewnątrz jako osobna zakładka na przykład pod JSON Creative Suite. Chodzi mi o Social Media Publisher, tak? Czyli kalendarz treści musi być na zewnątrz, ale musi współgrać z JSON Creative Suite i jego modułami.  które tam generują grafiki i tak dalej i tak dalej. I trzeba się zastanowić jak tworząc właśnie tutaj, przełączając się między  jestem firmy projektu ogólnym widzę że jest kontekst klienta trzeba się zastanowić jak generując kalendarzu treści oprócz samego posta  Aha, tutaj widzę, że jest opcja załączniki z Creative Suite, tylko z którego dokładnie modułu? Rozumiem, że on będzie kalendarz treści, funkcjonalność będzie wypychał na wskazany kanał społecznościowy, treść oczywiście ostylowana  platformy emoticonami, wypunktowaniami będzie wypychał wygenerowany przez Creative Suite załącznik w postaci czy to karuzeli, czy to grafiki zoptymalizowanej, czy krótkiego wideo, tak?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 11:17:47",
+        "raw_text": "Przepraszam, nie załączyłem Ci ścieżki do tego, do tej... z kursu\"Proces sprzedaży i skrypt Jana Szopa\". Wklejam Ci, uzupełniam to.",
+        "corrected_text": "Przepraszam, nie załączyłem Ci ścieżki do tego, do tej... z kursu\"Proces sprzedaży i skrypt Jana Szopa\". Wklejam Ci, uzupełniam to.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 11:19:32",
+        "raw_text": "który jest zainstalowany, osadzony na koncie holisticjson@gmail.com na Cloud Run.",
+        "corrected_text": "który jest zainstalowany, osadzony na koncie holisticjson@gmail.com na Cloud Run.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 11:22:35",
+        "raw_text": "Dobra, wdrażaj, zatwierdzam, a następnie przeanalizuj to poniższe.",
+        "corrected_text": "Dobra, wdrażaj, zatwierdzam, a następnie przeanalizuj to poniższe.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 15:10:39",
+        "raw_text": "Jakiego postmana? Gdzie to kurwa jest? Wyrażaj się jaśniej. Gdzie mam to wkleić w panelu N8N dokładnie?",
+        "corrected_text": "Jakiego postmana? Gdzie to kurwa jest? Wyrażaj się jaśniej. Gdzie mam to wkleić w panelu N8N dokładnie?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 15:36:45",
+        "raw_text": "Zapomniałem o formularzu w systeme.io. Weź tu uzupełnij mi w onboarding master SOP gotowy do wklenienia HTML i krok po kroku gdzie co mam wkleić w systeme, bo bez tego to raczej się nie uruchomi formularz i cała automatyzacja.",
+        "corrected_text": "Zapomniałem o formularzu w systeme.io. Weź tu uzupełnij mi w onboarding master SOP gotowy do wklenienia HTML i krok po kroku gdzie co mam wkleić w systeme, bo bez tego to raczej się nie uruchomi formularz i cała automatyzacja.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 16:04:59",
+        "raw_text": "Tak miał wyglądać ten formularz?",
+        "corrected_text": "Tak miał wyglądać ten formularz?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 16:06:01",
+        "raw_text": "i gdzie w N8M jest ten webhook, który mam wkleić w linii 4-2-6.",
+        "corrected_text": "i gdzie w N8M jest ten webhook, który mam wkleić w linii 4-2-6.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 16:08:43",
+        "raw_text": "On był w linii 3, 6, 6, tak? Zerknij.",
+        "corrected_text": "On był w linii 3, 6, 6, tak? Zerknij.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 16:43:49",
+        "raw_text": "Dobra, zmieniłem z końcówką\"audit\", ale jakoś na tej stronie podwójnie ten formularz występuje. Jakiś błąd jest w kodzie HTML chyba.",
+        "corrected_text": "Dobra, zmieniłem z końcówką\"audit\", ale jakoś na tej stronie podwójnie ten formularz występuje. Jakiś błąd jest w kodzie HTML chyba.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 17:09:47",
+        "raw_text": "Sprawdź poniższy kod HTML, który skopiowałem aktualnie z systemu I/O, z Lake'a, który tam jest. Powiedz mi jeszcze co się stanie po kliknięciu przez użytkownika przycisku\"Generate Audit 21 pytań\". Co się wydarzy później, gdzie go przeniesie?",
+        "corrected_text": "Sprawdź poniższy kod HTML, który skopiowałem aktualnie z systemu I/O, z Lake'a, który tam jest. Powiedz mi jeszcze co się stanie po kliknięciu przez użytkownika przycisku\"Generate Audit 21 pytań\". Co się wydarzy później, gdzie go przeniesie?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 17:15:47",
+        "raw_text": "Dobra, ale powiedz mi, czy klient powinien taki audyt, taki formularz chyba wypełnić swoimi słowami? Mieć jakieś ewentualnie podpowiedzi? Kto ma się domyśleć, jakie są odpowiedzi na wszystkie pytania?",
+        "corrected_text": "Dobra, ale powiedz mi, czy klient powinien taki audyt, taki formularz chyba wypełnić swoimi słowami? Mieć jakieś ewentualnie podpowiedzi? Kto ma się domyśleć, jakie są odpowiedzi na wszystkie pytania?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 17:44:35",
+        "raw_text": "Wszyscy nowi uczestnicy społeczności będą dodawani tu automatycznie. Wszyscy uczestnicy społeczności tej grupy mogą ze sobą rozmawiać w tym czacie.",
+        "corrected_text": "Wszyscy nowi uczestnicy społeczności będą dodawani tu automatycznie. Wszyscy uczestnicy społeczności tej grupy mogą ze sobą rozmawiać w tym czacie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 18:19:31",
+        "raw_text": "No tak, ale sprawdziłeś ten formularz, kod HTML w systemie I/O? Bo nadal występuje podwójnie jakby był. No i pytanie, czy coś da się zrobić z tym tłem, tak? Bo jest białe tło. Czy to tylko jest osadzone tak centralnie na...",
+        "corrected_text": "No tak, ale sprawdziłeś ten formularz, kod HTML w systemie I/O? Bo nadal występuje podwójnie jakby był. No i pytanie, czy coś da się zrobić z tym tłem, tak? Bo jest białe tło. Czy to tylko jest osadzone tak centralnie na...",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 18:34:41",
+        "raw_text": "Dobra, weź się w garść chłopie, bo wkleiłem to, ale cały czas występuje podwójnie. Ten formularz.",
+        "corrected_text": "Dobra, weź się w garść chłopie, bo wkleiłem to, ale cały czas występuje podwójnie. Ten formularz.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 19:03:38",
+        "raw_text": "Uruchom cały sztab dyrektorski specjalistów od wizerunku, content, marketingu, webwritingu, treści, brandingu, UX, Userflow, UI, Pro, UX Pro. Przeanalizuj poniższą konkurencję oraz ten zrzut ekranu. To jest zrzut z pierwszej strony Google po wywołaniu słowa kluczowego automatyzację AI Wood  To są nasi najwięksi konkurenci. Przeanalizuj ich strony, przeskanuj i generalnie zaproponuj, zróbmy kompleksowy audyt naszej strony agencji i przeanalizujmy w czym możemy być lepsi. Zastosujmy pewne metody techniki, czy to pokazywać,  Sposób, czyli technologia, jaki problem rozwiązuje. Po części już mamy u nas, ale można to pewnie zrobić jeszcze lepiej. Jeszcze dopracować kwestie SEO i dla silników wyszukiwarek sztucznej inteligencji. Co poprawić wizerunkowo, czego jeszcze brakuje w linkach, w stopce, w podlinkach, gdzieś tam.  Coś jeszcze nie działa.",
+        "corrected_text": "Uruchom cały sztab dyrektorski specjalistów od wizerunku, content, marketingu, webwritingu, treści, brandingu, UX, Userflow, UI, Pro, UX Pro. Przeanalizuj poniższą konkurencję oraz ten zrzut ekranu. To jest zrzut z pierwszej strony Google po wywołaniu słowa kluczowego automatyzację AI Wood  To są nasi najwięksi konkurenci. Przeanalizuj ich strony, przeskanuj i generalnie zaproponuj, zróbmy kompleksowy audyt naszej strony agencji i przeanalizujmy w czym możemy być lepsi. Zastosujmy pewne metody techniki, czy to pokazywać,  Sposób, czyli technologia, jaki problem rozwiązuje. Po części już mamy u nas, ale można to pewnie zrobić jeszcze lepiej. Jeszcze dopracować kwestie SEO i dla silników wyszukiwarek sztucznej inteligencji. Co poprawić wizerunkowo, czego jeszcze brakuje w linkach, w stopce, w podlinkach, gdzieś tam.  Coś jeszcze nie działa.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 19:06:37",
+        "raw_text": "Dobra, naprawiło się. Tylko niepotrzebnie ona się tak ta strona też przewija do dołu, ale no nieważne. Najpierw piszmy tutaj na próbę. Zróbmy, przetestujmy formularz i to działanie tego audytu. Wpiszmy nasze dane. Normalnie helumałpa.ja.ison.pl, nazwę firmy oraz opis  Dziękuję.",
+        "corrected_text": "Dobra, naprawiło się. Tylko niepotrzebnie ona się tak ta strona też przewija do dołu, ale no nieważne. Najpierw piszmy tutaj na próbę. Zróbmy, przetestujmy formularz i to działanie tego audytu. Wpiszmy nasze dane. Normalnie helumałpa.ja.ison.pl, nazwę firmy oraz opis  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 19:13:03",
+        "raw_text": "Jak zwykle nigdy nic nie może być zrobione tak, żeby to działało od A do Z, tylko ciągle kurwa są iteracje z wami kurwa tempakami kurwa sztucznej inteligencji. Nic nie pika kurwa, bo nic nie działa.",
+        "corrected_text": "Jak zwykle nigdy nic nie może być zrobione tak, żeby to działało od A do Z, tylko ciągle kurwa są iteracje z wami kurwa tempakami kurwa sztucznej inteligencji. Nic nie pika kurwa, bo nic nie działa.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 19:14:10",
+        "raw_text": "Masz zabrać sztab dyrektorski wszystkich specjalistów, a jak Ci skilli jakieś brakuje, umiejętności, to sobie kurwa znajdź. Dotyczących N8n, systemy I/O czy Google Cloud Vertex. Masz tu wszystko wgrane, więc chcę mieć to wszystko przetestowane na sucho, sprawdzone, aż będzie działało i lądowało u  dalej. Ona zblokuje. Bo mam taki amatorski zespół, kurwa, dyrektorów technicznych i senior master developerów.",
+        "corrected_text": "Masz zabrać sztab dyrektorski wszystkich specjalistów, a jak Ci skilli jakieś brakuje, umiejętności, to sobie kurwa znajdź. Dotyczących N8n, systemy I/O czy Google Cloud Vertex. Masz tu wszystko wgrane, więc chcę mieć to wszystko przetestowane na sucho, sprawdzone, aż będzie działało i lądowało u  dalej. Ona zblokuje. Bo mam taki amatorski zespół, kurwa, dyrektorów technicznych i senior master developerów.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 19:54:29",
+        "raw_text": "Co się zaczęło?",
+        "corrected_text": "Co się zaczęło?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 20:51:30",
+        "raw_text": "No generalnie skaner działa, ale wypluł mi na słowo kluczowe automatyzacja AI tylko dwie pozycje tam z serwisu useme i z serwisu o. Tak z useme. Z useme jobs.  Nie wiem czy oskaluję wszystkie te, co Ci wgrałem wcześniej, te źródła linki po researchu, który zrobiłem tu z Perplexity. Czy to wgrałeś te zasady? Tą ścieżkę z folderu holistic.json, nośnie z kryptu, no to usuń, nie? No bo to...  Sprawdź czy to wszystko hula, czy on się odwołuje, przeszukuje ten agent researcher.  Zaplanuj zewnętrzny moduł do social media Publishera. Zaczynał z Composio.dev. Dobra, to wejdź w tryb Goal i to zaplanuj. Przepatrz jeszcze tam jakieś luki niedziałające czy dublujące się funkcjonalności w Streamlit. No i przede wszystkim pousuwaj wszystkie takie cytowania. To znaczy tam Hormozy  No ale jak gdzieś tam bazę, skulajt, jakieś takie techniczne rzeczy, to gdzieś tam możesz je poukrywać. One mogą być odkrywane, klikne, tak? I pamiętaj, że te chmurki podpowiadające, tak? Czy prompty, sugestia promptów, znaczy to w tej sekcji JSON Creative Suite, no to się posiłkuj wiedzą od Adriana Kill  W tym miejscu jest wgrane  No i to jest spoko, to jest ok, ale ten CRM Magic Pipeline, no to nie wiem, to jakoś trzeba albo połączyć ten Kanban, czy to jest po prostu, dotyczy innej funkcjonalności, że ja sobie ręcznie dodaję jakieś zadanie, tak? Ok, ten w tym Kanbanie, a tutaj wpada do tego  No i mówię, jakichś takich autorów, twórców zewnętrznych to po prostu pousuwaj z tego streamlita, nie? Żeby później ewentualnie przekaże, że to jest nie tak, że to jest nie tak.  użytkownikowi, kiemuś, no to nie będzie tego widział, tak? Konteksty klienta, nie wiem czy to coś uzupełniałeś, JSON agency, holistic JSON, ale nie widzę rockera, ani tych klientów, no to pewnie nad tym trzeba popracować. Też.",
+        "corrected_text": "No generalnie skaner działa, ale wypluł mi na słowo kluczowe automatyzacja AI tylko dwie pozycje tam z serwisu useme i z serwisu o. Tak z useme. Z useme jobs.  Nie wiem czy oskaluję wszystkie te, co Ci wgrałem wcześniej, te źródła linki po researchu, który zrobiłem tu z Perplexity. Czy to wgrałeś te zasady? Tą ścieżkę z folderu holistic.json, nośnie z kryptu, no to usuń, nie? No bo to...  Sprawdź czy to wszystko hula, czy on się odwołuje, przeszukuje ten agent researcher.  Zaplanuj zewnętrzny moduł do social media Publishera. Zaczynał z Composio.dev. Dobra, to wejdź w tryb Goal i to zaplanuj. Przepatrz jeszcze tam jakieś luki niedziałające czy dublujące się funkcjonalności w Streamlit. No i przede wszystkim pousuwaj wszystkie takie cytowania. To znaczy tam Hormozy  No ale jak gdzieś tam bazę, skulajt, jakieś takie techniczne rzeczy, to gdzieś tam możesz je poukrywać. One mogą być odkrywane, klikne, tak? I pamiętaj, że te chmurki podpowiadające, tak? Czy prompty, sugestia promptów, znaczy to w tej sekcji JSON Creative Suite, no to się posiłkuj wiedzą od Adriana Kill  W tym miejscu jest wgrane  No i to jest spoko, to jest ok, ale ten CRM Magic Pipeline, no to nie wiem, to jakoś trzeba albo połączyć ten Kanban, czy to jest po prostu, dotyczy innej funkcjonalności, że ja sobie ręcznie dodaję jakieś zadanie, tak? Ok, ten w tym Kanbanie, a tutaj wpada do tego  No i mówię, jakichś takich autorów, twórców zewnętrznych to po prostu pousuwaj z tego streamlita, nie? Żeby później ewentualnie przekaże, że to jest nie tak, że to jest nie tak.  użytkownikowi, kiemuś, no to nie będzie tego widział, tak? Konteksty klienta, nie wiem czy to coś uzupełniałeś, JSON agency, holistic JSON, ale nie widzę rockera, ani tych klientów, no to pewnie nad tym trzeba popracować. Też.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 22:44:47",
+        "raw_text": "Onboarding and Grill Agent  Wydziału Wydziału Wydziału Wydziału",
+        "corrected_text": "Onboarding and Grill Agent  Wydziału Wydziału Wydziału Wydziału",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-16 22:46:50",
+        "raw_text": "Jak ten moduł działa? Jak jest system prompt pod spodem agenta i czy automatycznie ląduje ten raport w Obsidian Vault? Czy ten brief później można przepuścić przez zespół dyrektorski, nie wiem, zapisać go?  do Kanban. Czy to ma sens logiczny, czy... Aha, no i te GHL, tak, porównanie do GHL, to też to...  Można w tytule CRM Magic Pipeline wywalić. No bo CRM Magic Pipeline jest ok, tylko że to są na.dhd/canbanboard, no to są dwa różne jakby typy, dwa różne zastosowania.  Pytanie czy to wszystko będzie podpięty Hermes Agent z poziomu telegrama. Trzeba to też jakoś zaplanować. Co do reszty się zgadza tych kluczowych filarów jak najbardziej z implementation plan.",
+        "corrected_text": "Jak ten moduł działa? Jak jest system prompt pod spodem agenta i czy automatycznie ląduje ten raport w Obsidian Vault? Czy ten brief później można przepuścić przez zespół dyrektorski, nie wiem, zapisać go?  do Kanban. Czy to ma sens logiczny, czy... Aha, no i te GHL, tak, porównanie do GHL, to też to...  Można w tytule CRM Magic Pipeline wywalić. No bo CRM Magic Pipeline jest ok, tylko że to są na.dhd/canbanboard, no to są dwa różne jakby typy, dwa różne zastosowania.  Pytanie czy to wszystko będzie podpięty Hermes Agent z poziomu telegrama. Trzeba to też jakoś zaplanować. Co do reszty się zgadza tych kluczowych filarów jak najbardziej z implementation plan.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:02:40",
+        "raw_text": "Dziękuję.",
+        "corrected_text": "Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:04:05",
+        "raw_text": "Czyli bramka Hermes Agentico S, który mamy na maszynie wirtualnej na Google Cloud zainstalowaną, on nie jest nam potrzebny. Możemy spiąć bezpośrednio, stworzyć swojego bota na Telegramie, spiąć go z dashboardem naszym Streamlit. Odpowiedz mi jeszcze tylko na to pytanie. I wklejam Ci poniżej takie zapytanie wysłane do  wersji warki Google odnośnie API CapCut. Tam zdaje się chyba można przez MCP się połączyć i co zlecać, bo chcę wejść na wersję pro, a później może na wersję ultra CapCut. Wiem, że teraz są jakieś promocje tam na pierwszy miesiąc. Pytanie, czy możemy się połączyć z nim też w ramach naszego dashboardu Streamlit  centralnie z desktopa oraz z telegrama, tak?",
+        "corrected_text": "Czyli bramka Hermes Agentico S, który mamy na maszynie wirtualnej na Google Cloud zainstalowaną, on nie jest nam potrzebny. Możemy spiąć bezpośrednio, stworzyć swojego bota na Telegramie, spiąć go z dashboardem naszym Streamlit. Odpowiedz mi jeszcze tylko na to pytanie. I wklejam Ci poniżej takie zapytanie wysłane do  wersji warki Google odnośnie API CapCut. Tam zdaje się chyba można przez MCP się połączyć i co zlecać, bo chcę wejść na wersję pro, a później może na wersję ultra CapCut. Wiem, że teraz są jakieś promocje tam na pierwszy miesiąc. Pytanie, czy możemy się połączyć z nim też w ramach naszego dashboardu Streamlit  centralnie z desktopa oraz z telegrama, tak?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:07:32",
+        "raw_text": "To znaczy na pewno rozszerzenie schema.rg oraz stopki obszar działalności największych polskich miast, czyli Łódź, Warszawa, Wrocław, Kraków, Trójmiasto, Szczecin, Katowice, Rzeszów.  Jakie największe miasta wojewódzkie oraz ich obszar administracyjny i poza. To jest jakby... To na pewno.  Tak, no to ten...",
+        "corrected_text": "To znaczy na pewno rozszerzenie schema.rg oraz stopki obszar działalności największych polskich miast, czyli Łódź, Warszawa, Wrocław, Kraków, Trójmiasto, Szczecin, Katowice, Rzeszów.  Jakie największe miasta wojewódzkie oraz ich obszar administracyjny i poza. To jest jakby... To na pewno.  Tak, no to ten...",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:08:14",
+        "raw_text": "Myślę, że to nawet można by było napisać\"odzyskaj 20 godzin w tygodniu\", połowę takiego etapu, nie? Można spokojnie. Jest to realne i takie wiarygodne.",
+        "corrected_text": "Myślę, że to nawet można by było napisać\"odzyskaj 20 godzin w tygodniu\", połowę takiego etapu, nie? Można spokojnie. Jest to realne i takie wiarygodne.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:12:21",
+        "raw_text": "Jeśli chodzi o kwestie wizerunkowe, social media,",
+        "corrected_text": "Jeśli chodzi o kwestie wizerunkowe, social media,",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:13:01",
+        "raw_text": "No to muszę się za to wziąć i pouzupełniać te profile wszystkie tutaj z agentem odpowiedzialnym od social mediów. Był plan, ale ciągle to odkładam. Pytanie, czy mam generować zdjęcia do social mediów AI na jakimś tle swoje, czy po prostu wrzucać takie naturalne.",
+        "corrected_text": "No to muszę się za to wziąć i pouzupełniać te profile wszystkie tutaj z agentem odpowiedzialnym od social mediów. Był plan, ale ciągle to odkładam. Pytanie, czy mam generować zdjęcia do social mediów AI na jakimś tle swoje, czy po prostu wrzucać takie naturalne.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:13:45",
+        "raw_text": "Tak, zacznij po prostu to wdrażać co masz, a ja tutaj w międzyczasie będę uzupełniał te braki do kroku pierwszego. Zaraz Ci tu wkleję też case study nowego portalu, który zrobiłem tutaj.",
+        "corrected_text": "Tak, zacznij po prostu to wdrażać co masz, a ja tutaj w międzyczasie będę uzupełniał te braki do kroku pierwszego. Zaraz Ci tu wkleję też case study nowego portalu, który zrobiłem tutaj.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:15:14",
+        "raw_text": "A propos case study tego portalu takiego pod projekt MLM LifeWave, czyli x2o.jaison.pl, napisz mi taki szablon, według którego agent, który zajmuje się tym projektem, powinien przygotować opis tego case study, tak, zgodnie tutaj z tym, w jaki sposób robi to nasza konkurencja i w jaki sposób my to możemy  zrobić lepiej, tak opisując to",
+        "corrected_text": "A propos case study tego portalu takiego pod projekt MLM LifeWave, czyli x2o.jaison.pl, napisz mi taki szablon, według którego agent, który zajmuje się tym projektem, powinien przygotować opis tego case study, tak, zgodnie tutaj z tym, w jaki sposób robi to nasza konkurencja i w jaki sposób my to możemy  zrobić lepiej, tak opisując to",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:25:53",
+        "raw_text": "Dobra, czyli jeśli dobrze zrozumiałem to nie potrzebuje bramki Gateway łączyć się poprzez Hermesa Hermesa Gentico S, który jest zainstalowany na równolegle z dashboardem z Streamlit. Dobrze to zrozumiałem. No, Hermes według aktualnej dokumentacji jakie ma zalety, tak? Z których my moglibyśmy skorzystać tutaj. Na pewno ma funkcję  OnJobs, tak, powtarzalnych codziennych zadań, auto uczenia się, tak, memory loop. No, ten pomysł z CapCutem podoba mi się jak najbardziej. Ja odpalam wersję pro i działamy. Chyba CapCut ma możliwość właśnie też od razu wypychania, podłączenia się do swoich social mediów.  to czyli będziemy mieli dwie drogi albo inaczej na przykład formę postów grafik czy postów typu karuzel robić z poziomu dashboard streamlit za pośrednictwem composio.dev do tych platform społecznościowych na swoje konto a na przykład nagrywane filmy rolki montowane mogę wrzucać z poziomu cupcuta tak wstępnie przygotowane te 90%  Pytanie czy tylko możemy korzystać z Pexels czy np. jest opcja korzystania z repozytorium CapCata, bo być może ono ma bogate też repozytorium takich przebitek, b-rolli.  przykład nie wykorzystać githuba mojego konta bezpłatnego do synchronizacji tak jak robimy synchronizuje właśnie laptopa z komputerem stacjonarnym tak automatyczny skrypt git sync czy nie można by jakoś iść w tą stronę no musisz podjąć surową decyzję a jeśli chodzi o resztę to jak najbardziej zatwierdzam ten kierunek działań",
+        "corrected_text": "Dobra, czyli jeśli dobrze zrozumiałem to nie potrzebuje bramki Gateway łączyć się poprzez Hermesa Hermesa Gentico S, który jest zainstalowany na równolegle z dashboardem z Streamlit. Dobrze to zrozumiałem. No, Hermes według aktualnej dokumentacji jakie ma zalety, tak? Z których my moglibyśmy skorzystać tutaj. Na pewno ma funkcję  OnJobs, tak, powtarzalnych codziennych zadań, auto uczenia się, tak, memory loop. No, ten pomysł z CapCutem podoba mi się jak najbardziej. Ja odpalam wersję pro i działamy. Chyba CapCut ma możliwość właśnie też od razu wypychania, podłączenia się do swoich social mediów.  to czyli będziemy mieli dwie drogi albo inaczej na przykład formę postów grafik czy postów typu karuzel robić z poziomu dashboard streamlit za pośrednictwem composio.dev do tych platform społecznościowych na swoje konto a na przykład nagrywane filmy rolki montowane mogę wrzucać z poziomu cupcuta tak wstępnie przygotowane te 90%  Pytanie czy tylko możemy korzystać z Pexels czy np. jest opcja korzystania z repozytorium CapCata, bo być może ono ma bogate też repozytorium takich przebitek, b-rolli.  przykład nie wykorzystać githuba mojego konta bezpłatnego do synchronizacji tak jak robimy synchronizuje właśnie laptopa z komputerem stacjonarnym tak automatyczny skrypt git sync czy nie można by jakoś iść w tą stronę no musisz podjąć surową decyzję a jeśli chodzi o resztę to jak najbardziej zatwierdzam ten kierunek działań",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:28:12",
+        "raw_text": "Dobra, wiesz co, tak myślę sobie, że może należałoby to w stałych instrukcjach umieścić, tak? W memory loop i state pliku każdego projektu nowo zakładanego, tak? Klienckiego lub własnego i umieścić to w instrukcjach, że po każdym, tak? Znaczy inaczej, też jakieś wytyczne odnośnie naszego stack  technologicznego, low friction i low cost i właśnie taki szablon w jaki sposób na koniec wstępnie przygotowuje agent, który zajmuje się danym projektem, w jaki sposób ma przygotować case study. A ja już mu wysyłam właśnie ten template, case study live wave, żeby to przygotował i zaraz Ci tutaj  Cześć.",
+        "corrected_text": "Dobra, wiesz co, tak myślę sobie, że może należałoby to w stałych instrukcjach umieścić, tak? W memory loop i state pliku każdego projektu nowo zakładanego, tak? Klienckiego lub własnego i umieścić to w instrukcjach, że po każdym, tak? Znaczy inaczej, też jakieś wytyczne odnośnie naszego stack  technologicznego, low friction i low cost i właśnie taki szablon w jaki sposób na koniec wstępnie przygotowuje agent, który zajmuje się danym projektem, w jaki sposób ma przygotować case study. A ja już mu wysyłam właśnie ten template, case study live wave, żeby to przygotował i zaraz Ci tutaj  Cześć.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:33:04",
+        "raw_text": "Wiesz co, tak, tylko że to jest, tym case study jest takie troszeczkę narzucenie, ponieważ ty zaproponowałeś tutaj większość rzeczy się zgadza, nie wiem, czy wyciągnąłeś je po prostu z dokumentacji, ze strony. Tak, bo tutaj ideą jest właśnie obsługa tak umawiania bezpłatnych spotkań i degustacji.  biofotonowej wody, z filtra urządzenia X2O, edukacja w zakresie fotobiemodulacji oraz wyposażenie partnerów marki LifeWave w inteligentnego asystenta, mentora AI, który wspiera ich codzienne działania.  egzekwowanie planu działania, jak w biznesie porządnego partnera w biznesie MLM przystało. Pilnuje ich nawyków mentalnych, zdrowotnych. Więc tutaj może należałoby też zadać konkretne pytania w takim szablonie case study danego agenta, który się  na jakie pytanie jeszcze trzeba byłoby odpowiedzieć co jeszcze zostało wdrożone? jeśli tutaj na przykład w takim case jest coś pominięte albo no tak no bo agent który się zajmuje tym który zna najlepiej od podstaw od wewnątrz od zakresu i ten projekt odpowie na nie najlepiej tak opisze  Aha, no zgodnie z tym szablonem, ale być może coś jeszcze wymaga uzupełnienia, tak?",
+        "corrected_text": "Wiesz co, tak, tylko że to jest, tym case study jest takie troszeczkę narzucenie, ponieważ ty zaproponowałeś tutaj większość rzeczy się zgadza, nie wiem, czy wyciągnąłeś je po prostu z dokumentacji, ze strony. Tak, bo tutaj ideą jest właśnie obsługa tak umawiania bezpłatnych spotkań i degustacji.  biofotonowej wody, z filtra urządzenia X2O, edukacja w zakresie fotobiemodulacji oraz wyposażenie partnerów marki LifeWave w inteligentnego asystenta, mentora AI, który wspiera ich codzienne działania.  egzekwowanie planu działania, jak w biznesie porządnego partnera w biznesie MLM przystało. Pilnuje ich nawyków mentalnych, zdrowotnych. Więc tutaj może należałoby też zadać konkretne pytania w takim szablonie case study danego agenta, który się  na jakie pytanie jeszcze trzeba byłoby odpowiedzieć co jeszcze zostało wdrożone? jeśli tutaj na przykład w takim case jest coś pominięte albo no tak no bo agent który się zajmuje tym który zna najlepiej od podstaw od wewnątrz od zakresu i ten projekt odpowie na nie najlepiej tak opisze  Aha, no zgodnie z tym szablonem, ale być może coś jeszcze wymaga uzupełnienia, tak?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 09:33:37",
+        "raw_text": "Pamiętaj, że każdy case study dotyczy innej branży, innej niszy, więc to case study będzie inne, oparte o inne realizacje wytyczne, inne wzorce.",
+        "corrected_text": "Pamiętaj, że każdy case study dotyczy innej branży, innej niszy, więc to case study będzie inne, oparte o inne realizacje wytyczne, inne wzorce.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 10:30:51",
+        "raw_text": "Dobra, zacznijmy po kolei z tymi social mediami. Zacznijmy od LinkedIn. Kompleksowo, tak jak strony, podstrony. Wklejam się zrzuty, jak to poustawiać, jak zmieniać tam, pozmieniać linki czy zdjęcie, który prompt i tak dalej. Po kolei. Zacznijmy od jednego, później przejdziemy do",
+        "corrected_text": "Dobra, zacznijmy po kolei z tymi social mediami. Zacznijmy od LinkedIn. Kompleksowo, tak jak strony, podstrony. Wklejam się zrzuty, jak to poustawiać, jak zmieniać tam, pozmieniać linki czy zdjęcie, który prompt i tak dalej. Po kolei. Zacznijmy od jednego, później przejdziemy do",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 10:31:35",
+        "raw_text": "Pamiętaj, że zrobiliśmy porządki, nastąpiła zmiana struktury folderów. Więc teraz główny folder projektu\"jaison-agency.os\" jest tutaj.",
+        "corrected_text": "Pamiętaj, że zrobiliśmy porządki, nastąpiła zmiana struktury folderów. Więc teraz główny folder projektu\"jaison-agency.os\" jest tutaj.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 10:46:26",
+        "raw_text": "Strony internetowej landing page, squeeze page do pozyskiwania i automatycznej rekrutacji, scoringu zgłaszających się pracowników do pracy w Hiszpanii. System przeprowadza wstępną, czy chatbot przeprowadza wstępną rekrutację, kwalifikuje i przekierowuje do koordynatora prac.  na miejscu w Hiszpanii, na Whatsapp.",
+        "corrected_text": "Strony internetowej landing page, squeeze page do pozyskiwania i automatycznej rekrutacji, scoringu zgłaszających się pracowników do pracy w Hiszpanii. System przeprowadza wstępną, czy chatbot przeprowadza wstępną rekrutację, kwalifikuje i przekierowuje do koordynatora prac.  na miejscu w Hiszpanii, na Whatsapp.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:03:25",
+        "raw_text": "Nie widzę zmian wdrożonych na stronie jaison.pl Zerknąłem tylko na sekcję hero.",
+        "corrected_text": "Nie widzę zmian wdrożonych na stronie jaison.pl Zerknąłem tylko na sekcję hero.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:05:14",
+        "raw_text": "Tu mamy ograniczenie do 500 znaków w sekcji usługi.",
+        "corrected_text": "Tu mamy ograniczenie do 500 znaków w sekcji usługi.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:06:29",
+        "raw_text": "Na czym stanęło powiedz? Przerwało połączenie? Czy o co chodzi? Czy ten test, ta automatyzacja N8n działa? Na czym myśmy tam skończyli? Zaraz to sprawdzę.",
+        "corrected_text": "Na czym stanęło powiedz? Przerwało połączenie? Czy o co chodzi? Czy ten test, ta automatyzacja N8n działa? Na czym myśmy tam skończyli? Zaraz to sprawdzę.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:08:55",
+        "raw_text": "Takie są opcje, rozwinąłem niektóre kategorie w sekcji usług, które z nich wybrać dokładnie.",
+        "corrected_text": "Takie są opcje, rozwinąłem niektóre kategorie w sekcji usług, które z nich wybrać dokładnie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:14:28",
+        "raw_text": "Jak i dać opis tutaj dla certyfikatu oraz grafiki z zaliczonym testem.",
+        "corrected_text": "Jak i dać opis tutaj dla certyfikatu oraz grafiki z zaliczonym testem.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:18:10",
+        "raw_text": "Sprawdź jeszcze, bo jak podaję link publiczny do domeny głównej agencji jaison.pl to wyświetla się to stare zdjęcie z hero co tam ewentualnie trzeba zmienić. Czemu ty się kurwa pogubiłeś znowu? Dziś deploy robisz kurwa na holistyczny broker. To jest na gcp, na cloud run. Co ty pierd  to kurwa usuń ten deploy FTP to niech to będzie dla projektu holistyczny broker klienckiego",
+        "corrected_text": "Sprawdź jeszcze, bo jak podaję link publiczny do domeny głównej agencji jaison.pl to wyświetla się to stare zdjęcie z hero co tam ewentualnie trzeba zmienić. Czemu ty się kurwa pogubiłeś znowu? Dziś deploy robisz kurwa na holistyczny broker. To jest na gcp, na cloud run. Co ty pierd  to kurwa usuń ten deploy FTP to niech to będzie dla projektu holistyczny broker klienckiego",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:29:55",
+        "raw_text": "To oficjalne narzędzie milczy, jest biała plansza. Nie wczytuje się strona.",
+        "corrected_text": "To oficjalne narzędzie milczy, jest biała plansza. Nie wczytuje się strona.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:38:40",
+        "raw_text": "Nie widzę tej sekcji projekty, w której głównej sekcji jest, w którym miejscu.",
+        "corrected_text": "Nie widzę tej sekcji projekty, w której głównej sekcji jest, w którym miejscu.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:39:20",
+        "raw_text": "Czy na moich sekcjach w tle powinny się pojawić ten slogan oraz call to action? Bo mnie się bardzo podoba. Tylko czy na zdjęciach w tle, czy na Facebooku, czy na LinkedIn X i innych? Bo myślę, że po prostu bym powielał. Bardzo mi się ten slogan podoba i ten call to action.",
+        "corrected_text": "Czy na moich sekcjach w tle powinny się pojawić ten slogan oraz call to action? Bo mnie się bardzo podoba. Tylko czy na zdjęciach w tle, czy na Facebooku, czy na LinkedIn X i innych? Bo myślę, że po prostu bym powielał. Bardzo mi się ten slogan podoba i ten call to action.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:42:08",
+        "raw_text": "To w tej sekcji powinienem dodać, więc dopisz tutaj to wszystko do linki add in rebrand blueprint. Projekt, znaczy certyfikat tu powinienem wrzucić, tylko skąd wziąć link poświadczający? Identyfikator poświadczenia, no to wiadomo, jest na samym...  ale poświadczenie tego certyfikatu Google i SGH.",
+        "corrected_text": "To w tej sekcji powinienem dodać, więc dopisz tutaj to wszystko do linki add in rebrand blueprint. Projekt, znaczy certyfikat tu powinienem wrzucić, tylko skąd wziąć link poświadczający? Identyfikator poświadczenia, no to wiadomo, jest na samym...  ale poświadczenie tego certyfikatu Google i SGH.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:54:09",
+        "raw_text": "Widzisz, jeszcze kwestia żeby generować banery na LinkedIn, Iksa, czyli Twitter, na Facebooka, Instagrama, Triz, czy inne kanały społecznościowe. Ja muszę osobno przechodzić do... nie mogę tutaj użyć tego mojego LoRa Trigger w tej sekcji dashboardu Brand Strategy& Profile BIOS.  Strategia opisy i bio platform 6. Fajnie to generuje, tylko tego wizualia. Jest tu widzę tylko opcja spójny awator, ale tu nie jest podłączony ten wytrenowany model Mylora Studio i chyba powinno być też 6 sekcji, tak? W sensie dla Linkedina, Instagram, TikTok, Facebook, xTwitter, tweets.  bo każdy ma inny wymiar, tak? Inaczej powinien być zaprojektowany, wyśrodkowany, no bo z uwagi na specyficzne umieszczenie zdjęcia profilowego czy awataru, na przykład na LinkedIn czy na Facebooku, ale mógłbym tutaj jednym pociągnięciem wpisać tekst sloganu na banerze, opisać na przykład, albo wpisać cz  logo czy czcionki ze strony internetowej i żeby to było spójne z marką i kolorami marki na stronie internetowej czy w innych social mediach to tak to chyba powinno wyglądać bo w innym przypadku muszę wchodzić do jason creative studio do jason lora studio  No i tutaj, aha, bo tu jest trening. Ok. A, Jason Face Swap Studio. Tutaj, no ale tutaj mam ograniczone opcje. Myślę, że tamto miejsce Brand.  Brand Strategy byłoby chyba najlepsze.",
+        "corrected_text": "Widzisz, jeszcze kwestia żeby generować banery na LinkedIn, Iksa, czyli Twitter, na Facebooka, Instagrama, Triz, czy inne kanały społecznościowe. Ja muszę osobno przechodzić do... nie mogę tutaj użyć tego mojego LoRa Trigger w tej sekcji dashboardu Brand Strategy& Profile BIOS.  Strategia opisy i bio platform 6. Fajnie to generuje, tylko tego wizualia. Jest tu widzę tylko opcja spójny awator, ale tu nie jest podłączony ten wytrenowany model Mylora Studio i chyba powinno być też 6 sekcji, tak? W sensie dla Linkedina, Instagram, TikTok, Facebook, xTwitter, tweets.  bo każdy ma inny wymiar, tak? Inaczej powinien być zaprojektowany, wyśrodkowany, no bo z uwagi na specyficzne umieszczenie zdjęcia profilowego czy awataru, na przykład na LinkedIn czy na Facebooku, ale mógłbym tutaj jednym pociągnięciem wpisać tekst sloganu na banerze, opisać na przykład, albo wpisać cz  logo czy czcionki ze strony internetowej i żeby to było spójne z marką i kolorami marki na stronie internetowej czy w innych social mediach to tak to chyba powinno wyglądać bo w innym przypadku muszę wchodzić do jason creative studio do jason lora studio  No i tutaj, aha, bo tu jest trening. Ok. A, Jason Face Swap Studio. Tutaj, no ale tutaj mam ograniczone opcje. Myślę, że tamto miejsce Brand.  Brand Strategy byłoby chyba najlepsze.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 11:59:54",
+        "raw_text": "Certificate using AI in Business Development",
+        "corrected_text": "Certificate using AI in Business Development",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 12:00:53",
+        "raw_text": "Przypomnij mi to słowo klucz, Laura Trigger, mój.",
+        "corrected_text": "Przypomnij mi to słowo klucz, Laura Trigger, mój.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 12:05:39",
+        "raw_text": "Słuchaj, tu jest taka informacja, że brak aktywnej LoRa, możesz ją grać i wytrenować w LoRa Studio. No przecież ja już to robiłem i poniosłem z tego tytułu koszty. 7 czy 8 dolarów, więc jak to jest... Tam było chyba Tomasz, podkreślik hero.  będzie grał i tu jest podpięty ten model LoRa, aktywne LoRa Studio właśnie do tej kreatora tożsamości wizualnej.",
+        "corrected_text": "Słuchaj, tu jest taka informacja, że brak aktywnej LoRa, możesz ją grać i wytrenować w LoRa Studio. No przecież ja już to robiłem i poniosłem z tego tytułu koszty. 7 czy 8 dolarów, więc jak to jest... Tam było chyba Tomasz, podkreślik hero.  będzie grał i tu jest podpięty ten model LoRa, aktywne LoRa Studio właśnie do tej kreatora tożsamości wizualnej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 12:13:03",
+        "raw_text": "Powiedz na czym się zatrzymałeś, zawiesiłeś, co zgubiłeś? Nazwę projektu, konta GCP, na której jest maszyna wirtualna? Czy o co chodzi?",
+        "corrected_text": "Powiedz na czym się zatrzymałeś, zawiesiłeś, co zgubiłeś? Nazwę projektu, konta GCP, na której jest maszyna wirtualna? Czy o co chodzi?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 12:21:17",
+        "raw_text": "Czyli dobrze rozumiałem, że idąc tym tokiem i sposobem, powiedz mi jak można w ogóle, czy jest opcja maksymalnie zautomatyzować obsługę agenta anti-gravity z odpowiednimi uprawnieniami, zarządzać Google Cloud Platform? No bo takie właśnie rzeczy, tworzenie instancji i automatyzację oraz zarządzać instancją na przykład n8n.jason.pl  i tworzyć automatycznie, projektować i tworzyć automatyzację. Jeśli agent ma tam powiedzmy dostępy, klucze, credentials i tak dalej do odpowiednich integracji, to maksymalnie zautomatyzować, czyli ja odpowiadam za pomysł, kreację, a agent Antigravity po prostu to automatycznie realizuje, podpina się pod Google Cloud Platform  Wiem, że agent victor.com ma taką opcję, że integruje się z kontem Google Cloud Platform. Trzeba tam wygenerować wiadomo klucz service account, ale chyba trzeba nadać odpowiednie uprawnienia. No i to samo w przypadku N8n, czy to jest możliwe z poziomu lokalnego anti-gravity.",
+        "corrected_text": "Czyli dobrze rozumiałem, że idąc tym tokiem i sposobem, powiedz mi jak można w ogóle, czy jest opcja maksymalnie zautomatyzować obsługę agenta anti-gravity z odpowiednimi uprawnieniami, zarządzać Google Cloud Platform? No bo takie właśnie rzeczy, tworzenie instancji i automatyzację oraz zarządzać instancją na przykład n8n.jason.pl  i tworzyć automatycznie, projektować i tworzyć automatyzację. Jeśli agent ma tam powiedzmy dostępy, klucze, credentials i tak dalej do odpowiednich integracji, to maksymalnie zautomatyzować, czyli ja odpowiadam za pomysł, kreację, a agent Antigravity po prostu to automatycznie realizuje, podpina się pod Google Cloud Platform  Wiem, że agent victor.com ma taką opcję, że integruje się z kontem Google Cloud Platform. Trzeba tam wygenerować wiadomo klucz service account, ale chyba trzeba nadać odpowiednie uprawnienia. No i to samo w przypadku N8n, czy to jest możliwe z poziomu lokalnego anti-gravity.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 12:30:32",
+        "raw_text": "Dobra, jestem za, ponieważ inne moje projekty, wiadomo, MLM, LifeWave, czy Kulfon, czy inni nowi klienci będą się opierały o ten sam stack technologiczny, tą samą infrastrukturę i to jest chyba najprostsze, najszybsze, najbardziej low friction. Tam jeszcze dochodzi tylko zarządzanie kalendarzem, cal.com, można to zrobić na  Jeśli to jest na celu prywatnym, na jednym koncie, gmail na przykład, ale ten kalendarz przecież gmail, na który jest założone konto cała.com można przecież udostępniać już z poziomu kalendarza gmail innym osobom, na przykład członkom zespołu, czyli mają stały podgląd. To raz. A druga kwestia właśnie jeszcze  ma funkcje tworzenia lejków, kampanii, dnsy są wiarygodne, można tworzyć też strony internetowe, lejki, sklepy cyfrowe, blogi, ale tu już możemy sobie robić, ma też wizytę CRM,  ma też CRM. Importuj kontakty, można importować. Ciekawe z jakich z CSV.  ma ograniczenie na bezpłatnym koncie do jednego tagu automatyzacja zasady przepływy pracy opcje społeczności  Subskrypcje na subskrypcje.  Panel partnerski. Okej. Więc musielibyśmy chyba, nie wiem, czy to dobry pomysł stworzyć takiego stałego skilla i sob. To co właśnie teraz do czego doszliśmy. Oczywiście stworzyć taki harness, czyli czego nie może agent, tak? Czyli musi być to human in the loop.  Zatwierdzenie. Czyli tak naprawdę Ty możesz też tworzyć powtarzalne takie obrazy i instancje pod Hermes Argentico S. Czyli można raz zaprojektować takiego Hermesa i go powielać. Jego, nie wiem, skilla, zasady, tak? Powtarzalne clone jobs i tak dalej.  Także trzeba coś takiego stworzyć, bo...  wysyłają przypomnienia i śledzą działania. Można nowy przepływ albo korzystać z szablonów AI. Z tego co widzę to tam jest opcja połączeń, może dzwonić głosowo.  Można nadać skrypt rozmowy. Niesamowite. Trzeba tylko kupić numer telefonu i zaimportować taki, który już posiadasz w Twilio. Powierzę Wam, że chyba Twilio to będzie się gadało z jakimiś kosztami.  Wysyłka przypomnień, SMS, przypomnień uczestnikom. No mam masę, masę. Masę możliwości.  Ciekawe czy ma też publiczny REST API. Ma webhooki, klucze interfejsu API, klienci OAuth, rejestruj aplikacje OAuth i zarządzaj nimi.",
+        "corrected_text": "Dobra, jestem za, ponieważ inne moje projekty, wiadomo, MLM, LifeWave, czy Kulfon, czy inni nowi klienci będą się opierały o ten sam stack technologiczny, tą samą infrastrukturę i to jest chyba najprostsze, najszybsze, najbardziej low friction. Tam jeszcze dochodzi tylko zarządzanie kalendarzem, cal.com, można to zrobić na  Jeśli to jest na celu prywatnym, na jednym koncie, gmail na przykład, ale ten kalendarz przecież gmail, na który jest założone konto cała.com można przecież udostępniać już z poziomu kalendarza gmail innym osobom, na przykład członkom zespołu, czyli mają stały podgląd. To raz. A druga kwestia właśnie jeszcze  ma funkcje tworzenia lejków, kampanii, dnsy są wiarygodne, można tworzyć też strony internetowe, lejki, sklepy cyfrowe, blogi, ale tu już możemy sobie robić, ma też wizytę CRM,  ma też CRM. Importuj kontakty, można importować. Ciekawe z jakich z CSV.  ma ograniczenie na bezpłatnym koncie do jednego tagu automatyzacja zasady przepływy pracy opcje społeczności  Subskrypcje na subskrypcje.  Panel partnerski. Okej. Więc musielibyśmy chyba, nie wiem, czy to dobry pomysł stworzyć takiego stałego skilla i sob. To co właśnie teraz do czego doszliśmy. Oczywiście stworzyć taki harness, czyli czego nie może agent, tak? Czyli musi być to human in the loop.  Zatwierdzenie. Czyli tak naprawdę Ty możesz też tworzyć powtarzalne takie obrazy i instancje pod Hermes Argentico S. Czyli można raz zaprojektować takiego Hermesa i go powielać. Jego, nie wiem, skilla, zasady, tak? Powtarzalne clone jobs i tak dalej.  Także trzeba coś takiego stworzyć, bo...  wysyłają przypomnienia i śledzą działania. Można nowy przepływ albo korzystać z szablonów AI. Z tego co widzę to tam jest opcja połączeń, może dzwonić głosowo.  Można nadać skrypt rozmowy. Niesamowite. Trzeba tylko kupić numer telefonu i zaimportować taki, który już posiadasz w Twilio. Powierzę Wam, że chyba Twilio to będzie się gadało z jakimiś kosztami.  Wysyłka przypomnień, SMS, przypomnień uczestnikom. No mam masę, masę. Masę możliwości.  Ciekawe czy ma też publiczny REST API. Ma webhooki, klucze interfejsu API, klienci OAuth, rejestruj aplikacje OAuth i zarządzaj nimi.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 12:36:29",
+        "raw_text": "Dobra, przygotuj mi teraz odrębne pliki, szablony dla każdego z osobno każdego kanału na social media i osobno na jego bazie. Przygotuj mi taki szablon, tak?  właśnie dla agenta od dashboardu Streamlit który ma sekcję Brand Strategy and Profile BIOS gdzie wpisuje się nazwę marki lub imię nazwisko dobrze by było tutaj wpisać też adres strony czy aplikacji  czy jest też mniejsza branża, grupa docelowa, styl komunikacji, twoje unikalne motto. No i tworzy mi opisy i bio dla sześciu platform LinkedIn, Instagram, Facebook, TikTok, Twitter i Tweets. Następnie w trzeciej podzakładce tworzy wizualia.  czyli generowanie spójnego awataru z użyciem albo Google Imagen 3.0 lub Flux LoRa. Tu się wybiera silnik właśnie. Generowanie spójnego awatara, kim ma być postać na awatarze. Styl graficzny awatara. Generuje się profesjonalny awatar.  No i generuje się na przykład banery dostosowane pod platformę. Pod jedną z sześciu: LinkedIn, Instagram, TikTok, Facebook, Twitter, Tweets. Zachowując oczywiście formatowanie, formaty.  Jest tekst sloganu na banarze i styl wizualny tła. Więc stwórz mi zarówno właśnie na bazie tego LinkedIn Rebrand Blueprint, tylko bez żadnych tam korekt, nazwisk, tylko że tutaj co krok po kroku musi być najlepiej dodane.  No i każdy plik osobny właśnie dla pozostałych pięciu platform. I taki szablon, generalny dokument dla właśnie tego agenta od Streamlit, który go zmodyfikuje.",
+        "corrected_text": "Dobra, przygotuj mi teraz odrębne pliki, szablony dla każdego z osobno każdego kanału na social media i osobno na jego bazie. Przygotuj mi taki szablon, tak?  właśnie dla agenta od dashboardu Streamlit który ma sekcję Brand Strategy and Profile BIOS gdzie wpisuje się nazwę marki lub imię nazwisko dobrze by było tutaj wpisać też adres strony czy aplikacji  czy jest też mniejsza branża, grupa docelowa, styl komunikacji, twoje unikalne motto. No i tworzy mi opisy i bio dla sześciu platform LinkedIn, Instagram, Facebook, TikTok, Twitter i Tweets. Następnie w trzeciej podzakładce tworzy wizualia.  czyli generowanie spójnego awataru z użyciem albo Google Imagen 3.0 lub Flux LoRa. Tu się wybiera silnik właśnie. Generowanie spójnego awatara, kim ma być postać na awatarze. Styl graficzny awatara. Generuje się profesjonalny awatar.  No i generuje się na przykład banery dostosowane pod platformę. Pod jedną z sześciu: LinkedIn, Instagram, TikTok, Facebook, Twitter, Tweets. Zachowując oczywiście formatowanie, formaty.  Jest tekst sloganu na banarze i styl wizualny tła. Więc stwórz mi zarówno właśnie na bazie tego LinkedIn Rebrand Blueprint, tylko bez żadnych tam korekt, nazwisk, tylko że tutaj co krok po kroku musi być najlepiej dodane.  No i każdy plik osobny właśnie dla pozostałych pięciu platform. I taki szablon, generalny dokument dla właśnie tego agenta od Streamlit, który go zmodyfikuje.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 12:43:24",
+        "raw_text": "Słuchaj, ty tu się zajmujesz kwestią tylko social media.  Dziękuję.  Dziękuję.  Dzięki.  Ok, ale te niezależne szablony dla każdego kanału w moim projekcie.  profil. Jeszcze muszę tylko baner wygenerować i avatar. Jeśli chodzi o profil bimac i bycoffee.to jest już też zrobiony. Ty się zajmujesz tylko tutaj social media. Póki co. Tylko widzę, że to są template, tak?  Ok, czyli takich gotowych dla mnie, dla mojej marki, ja ISON,  A powiedz mi w którym folderze są te template do każdego i jest jeden plik streamlit.social.factory.spec. Specifikacja. Być może ja muszę przekazać wszystkie te templatki.  Może tutaj zaproponować więcej tych stylów wizualnych, nie wiem. Jak to, jakie system prompty dawać jeszcze do poszczególnych? Aha, Content Factory Templates, tutaj.  Dziękuję.",
+        "corrected_text": "Słuchaj, ty tu się zajmujesz kwestią tylko social media.  Dziękuję.  Dziękuję.  Dzięki.  Ok, ale te niezależne szablony dla każdego kanału w moim projekcie.  profil. Jeszcze muszę tylko baner wygenerować i avatar. Jeśli chodzi o profil bimac i bycoffee.to jest już też zrobiony. Ty się zajmujesz tylko tutaj social media. Póki co. Tylko widzę, że to są template, tak?  Ok, czyli takich gotowych dla mnie, dla mojej marki, ja ISON,  A powiedz mi w którym folderze są te template do każdego i jest jeden plik streamlit.social.factory.spec. Specifikacja. Być może ja muszę przekazać wszystkie te templatki.  Może tutaj zaproponować więcej tych stylów wizualnych, nie wiem. Jak to, jakie system prompty dawać jeszcze do poszczególnych? Aha, Content Factory Templates, tutaj.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 12:46:38",
+        "raw_text": "Słuchaj, zapoznaj się z tym folderem. Tam są szablony, templatki i jeden plik. Jeden plik, słuchaj, Streamlit Social Factory Spec, czyli potężna specyfikacja dla Ciebie. Więc to trzeba będzie o to wzbogacić tutaj ten moduł nasz kreator tożsamości wizualnej, ogólnie brand.  strategy and profile bios cały moduł i podmoduły i w sekcji wizualia awatary i banery musisz w punkcie drugim czyli po wybraniu silnika generacji generowania spójnego awatara to musi być opcja też tak jak przy generowaniu banera checkbox czyli żeby dodał postać lora czy tam awatar tak  do banera. Już wytrenowane, tak? Pierwotnie. No bo tutaj głównie chodzi o generowanie swojego awatara, czyli wytrenowanej najczęściej postaci. Twórcy, użytkownika, przedsiębiorcy.",
+        "corrected_text": "Słuchaj, zapoznaj się z tym folderem. Tam są szablony, templatki i jeden plik. Jeden plik, słuchaj, Streamlit Social Factory Spec, czyli potężna specyfikacja dla Ciebie. Więc to trzeba będzie o to wzbogacić tutaj ten moduł nasz kreator tożsamości wizualnej, ogólnie brand.  strategy and profile bios cały moduł i podmoduły i w sekcji wizualia awatary i banery musisz w punkcie drugim czyli po wybraniu silnika generacji generowania spójnego awatara to musi być opcja też tak jak przy generowaniu banera checkbox czyli żeby dodał postać lora czy tam awatar tak  do banera. Już wytrenowane, tak? Pierwotnie. No bo tutaj głównie chodzi o generowanie swojego awatara, czyli wytrenowanej najczęściej postaci. Twórcy, użytkownika, przedsiębiorcy.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 13:09:20",
+        "raw_text": "Czy wszystko na stronę jaison.pl zgodnie z kompleksowym audytem strategicznym zostało wdrożone? To raz. No i jeśli chodzi o case study template, to czy wszystkie projekty zostały właśnie zgodnie z tym standardem zaprezentowane?  Dziękuję.  Dziękuję.",
+        "corrected_text": "Czy wszystko na stronę jaison.pl zgodnie z kompleksowym audytem strategicznym zostało wdrożone? To raz. No i jeśli chodzi o case study template, to czy wszystkie projekty zostały właśnie zgodnie z tym standardem zaprezentowane?  Dziękuję.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 13:15:48",
+        "raw_text": "Zapoznaj się proszę z tym plikiem i trzeba wyposażyć tą wiedzą, nasze skille, naszych specjalistów od marketingu, reklamy, dyrektorów. W kolejnym kroku  Dziękuję.",
+        "corrected_text": "Zapoznaj się proszę z tym plikiem i trzeba wyposażyć tą wiedzą, nasze skille, naszych specjalistów od marketingu, reklamy, dyrektorów. W kolejnym kroku  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 13:17:21",
+        "raw_text": "Poniżej wklejam Ci spostrzeżenia z grupy facebookowej twórcy Sekrety Twórców Polscy Marketerzy od Jana Szopy. Wkleję Ci prosto z tablicy facebookowej. Proszę również je opracuj i ewentualnie wdruż też do...  I zrób mi raport, które dokładnie skille, których wyposażyłeś, których dyrektorów w tą wiedzę.",
+        "corrected_text": "Poniżej wklejam Ci spostrzeżenia z grupy facebookowej twórcy Sekrety Twórców Polscy Marketerzy od Jana Szopy. Wkleję Ci prosto z tablicy facebookowej. Proszę również je opracuj i ewentualnie wdruż też do...  I zrób mi raport, które dokładnie skille, których wyposażyłeś, których dyrektorów w tą wiedzę.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 13:25:53",
+        "raw_text": "wygenerować jakiś SOP, jakieś wytyczne, skill dla mojego agenta, który się zajmuje właśnie w projekcie klienckim, znaczy tym dla x2o.jaison.pl, czyli projekt zdrowotny, tak? Automatyzację właśnie kalendarza cal.com  automatyzacja bota WhatsApp, który obsługuje nowych użytkowników, klientów.",
+        "corrected_text": "wygenerować jakiś SOP, jakieś wytyczne, skill dla mojego agenta, który się zajmuje właśnie w projekcie klienckim, znaczy tym dla x2o.jaison.pl, czyli projekt zdrowotny, tak? Automatyzację właśnie kalendarza cal.com  automatyzacja bota WhatsApp, który obsługuje nowych użytkowników, klientów.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 13:44:31",
+        "raw_text": "Wiesz co, no nie widzę. W repozytorium.  nie wiem gdzie jest aha all repositories okej  Dziękuję.  Dziękuję.  Pytanie, bo w dashboardzie Streamlit tego nie widzę, nie wygenerował się ten memory graph, knowledge graph.  Z tego co widzę, jeszcze raz spojrzę, ale nie widzę. Na githubie w repozytorym zapisały się dwa pliki.",
+        "corrected_text": "Wiesz co, no nie widzę. W repozytorium.  nie wiem gdzie jest aha all repositories okej  Dziękuję.  Dziękuję.  Pytanie, bo w dashboardzie Streamlit tego nie widzę, nie wygenerował się ten memory graph, knowledge graph.  Z tego co widzę, jeszcze raz spojrzę, ale nie widzę. Na githubie w repozytorym zapisały się dwa pliki.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 13:46:06",
+        "raw_text": "Lokalnie też się zapisały tutaj. Sprawdź te pliki, czy one tak powinny zgodnie z założeniami wyglądać.  Aha, czyli mam zmodyfikować ten formularz na systeme.io jeszcze, tak? względem tego, który jest obecnie Dobra",
+        "corrected_text": "Lokalnie też się zapisały tutaj. Sprawdź te pliki, czy one tak powinny zgodnie z założeniami wyglądać.  Aha, czyli mam zmodyfikować ten formularz na systeme.io jeszcze, tak? względem tego, który jest obecnie Dobra",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 13:53:59",
+        "raw_text": "z synchronizującego dane na laptopie i na komputerze stacjonarnym przez git sync nie pobierają się w czasie rzeczywistym, nie aktualizują lokalnie na dysku komputera i laptopa, nie pobiera się z repozytorium github, nie wiem czemu.",
+        "corrected_text": "z synchronizującego dane na laptopie i na komputerze stacjonarnym przez git sync nie pobierają się w czasie rzeczywistym, nie aktualizują lokalnie na dysku komputera i laptopa, nie pobiera się z repozytorium github, nie wiem czemu.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 13:57:42",
+        "raw_text": "A czy ten skill również jest, że tak powiem, wzbogacony, logicznie uzupełniony, jeśli tam nie ma takich informacji w tym skillu? Weź go przejrzyj.",
+        "corrected_text": "A czy ten skill również jest, że tak powiem, wzbogacony, logicznie uzupełniony, jeśli tam nie ma takich informacji w tym skillu? Weź go przejrzyj.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 14:01:08",
+        "raw_text": "Nie widzę na stronie case studies przytoczonego studium przypadku holistycznybroker.pl. Zajrzyj do niego tam do folderu i tam jest opisane.  Jest Master PRD holistyczny broker i MVP Real Estate Scanner Architecture. Możesz napisać w case study, że oczekuje na grant 2000 USD. Tam trzeba będzie chyba popracować jeszcze, muszę agentowi  nad SEO. Ciekawe jak zrobić najszybciej taki. Na page speed insights chyba muszę zrobić. Tak, czy jest jeszcze jakiś sposób takiego audytu i poprawki SEO i pod wyszukiwarki sztucznej inteligencji schema.org i tak dalej.",
+        "corrected_text": "Nie widzę na stronie case studies przytoczonego studium przypadku holistycznybroker.pl. Zajrzyj do niego tam do folderu i tam jest opisane.  Jest Master PRD holistyczny broker i MVP Real Estate Scanner Architecture. Możesz napisać w case study, że oczekuje na grant 2000 USD. Tam trzeba będzie chyba popracować jeszcze, muszę agentowi  nad SEO. Ciekawe jak zrobić najszybciej taki. Na page speed insights chyba muszę zrobić. Tak, czy jest jeszcze jakiś sposób takiego audytu i poprawki SEO i pod wyszukiwarki sztucznej inteligencji schema.org i tak dalej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 14:07:13",
+        "raw_text": "Wiesz co, nie dostałem powiadomienia na Telegrama, ale być może ja muszę jeszcze jakiś ID podać swój, swojego konta na Telegram, co? Żeby... O tym może zapomnieliśmy. To po pierwsze, po drugie... Po drugie...  Coś jeszcze... Napisałeś mi, że w tym pliku JSON Webhook Integration jest, no bo jest faktycznie kod JSON, tak? Ja mam go teraz podmienić na ten aktualny w...  systemy i o wyedytować ten lejek sprzedażowy formularza może nie używa  Kurczę, audyt 21 pytań, po prostu generuj audyt, generuj kompleksowy audyt. No i teraz pytanie, no bo to przyjdzie do mnie, ale jak pójdzie do klienta na maila? To jeszcze będzie musiał maila podać. Ale żeby uzyskać ten audyt, no to nie tak łatwo, w sensie, że będzie musiał...  Jakąś ścieżkę klienta tu trzeba wymyślić, użyć najlepszych skilli.",
+        "corrected_text": "Wiesz co, nie dostałem powiadomienia na Telegrama, ale być może ja muszę jeszcze jakiś ID podać swój, swojego konta na Telegram, co? Żeby... O tym może zapomnieliśmy. To po pierwsze, po drugie... Po drugie...  Coś jeszcze... Napisałeś mi, że w tym pliku JSON Webhook Integration jest, no bo jest faktycznie kod JSON, tak? Ja mam go teraz podmienić na ten aktualny w...  systemy i o wyedytować ten lejek sprzedażowy formularza może nie używa  Kurczę, audyt 21 pytań, po prostu generuj audyt, generuj kompleksowy audyt. No i teraz pytanie, no bo to przyjdzie do mnie, ale jak pójdzie do klienta na maila? To jeszcze będzie musiał maila podać. Ale żeby uzyskać ten audyt, no to nie tak łatwo, w sensie, że będzie musiał...  Jakąś ścieżkę klienta tu trzeba wymyślić, użyć najlepszych skilli.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 14:10:25",
+        "raw_text": "Tutaj w case study przy kurczaku.jasia.pl trzeba byłoby napisać, że pozyskane 300 dolarów USD środków startowych free trial plus 1000 USD na Vertex AI Search.  No i dobra, teraz...  przekierowania tak na stronie case studies",
+        "corrected_text": "Tutaj w case study przy kurczaku.jasia.pl trzeba byłoby napisać, że pozyskane 300 dolarów USD środków startowych free trial plus 1000 USD na Vertex AI Search.  No i dobra, teraz...  przekierowania tak na stronie case studies",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 14:30:48",
+        "raw_text": "Trzeba będzie popracować jeszcze nad system promptu. No i usunąć ten MobileSafeBannerGrid, bo on się powiela, ten moduł, w JSON Creative Studio, bo przecież mamy Brand Strategy Profile BIOS. Tutaj w BIOS trzeba między O a S dać  apostrof, bo to liczba mnoga. A w samym...  Nie wiem, Studio Hyperframes. Ok, to niech zostanie, dobra. No i Social Media Publisher, ten N8n w nawiasie usunąć.  Pytanie czy tutaj już możemy spinać po Composio.dev czy moduł Ads and Local SEO Studio też już można się łączyć z kontami reklamowymi Facebook Meta na przykład czy Google Ads Manager.  Studio HyperFrames się powtarza dwa razy. Ten moduł, podmoduł w module głównym JSON Creative Studio. Ale jeszcze wracając do Brand Strategy Profile& BIOS, no to tutaj musimy dać też troszeczkę więcej swobody.  I pytanie, czy to na pewno się, to jeszcze sprawdzę, czy się opis usług generuje pod LinkedIn. To raz, a dwa, no musimy, wiesz, zrewidować i zaktualizować te wszystkie tam  wewnątrz system prompty i skille, tak, bo ja tutaj ads, mastery dodałem, zaktualizowałem wiedzę naszych dyrektorów, a jeśli chodzi o wizualia awatary i banery w Brand Strategy, no to tutaj jest na sztywno ustawiona, wybierz styl wizualny banera, ale może ktoś po prostu chciałby sobie wgrać swojego prompta albo dać obraz  lub wklei też postać lub jakiś określony napis, tak? Jakiś tam tekst sloganu, albo właśnie wezwanie do działania. No i tak samo w drugiej sekcji generowanie spójnego awatara. Trzeba dać, tutaj jest na sztywno ustawiony strategiczny styl wizualny marki i tam są pod spodem prompty, ale tu też trzeba dać swobod  po prostu swój prompt, tak? Wygenerowany z palca. No to chyba tyle z uwag na razie.",
+        "corrected_text": "Trzeba będzie popracować jeszcze nad system promptu. No i usunąć ten MobileSafeBannerGrid, bo on się powiela, ten moduł, w JSON Creative Studio, bo przecież mamy Brand Strategy Profile BIOS. Tutaj w BIOS trzeba między O a S dać  apostrof, bo to liczba mnoga. A w samym...  Nie wiem, Studio Hyperframes. Ok, to niech zostanie, dobra. No i Social Media Publisher, ten N8n w nawiasie usunąć.  Pytanie czy tutaj już możemy spinać po Composio.dev czy moduł Ads and Local SEO Studio też już można się łączyć z kontami reklamowymi Facebook Meta na przykład czy Google Ads Manager.  Studio HyperFrames się powtarza dwa razy. Ten moduł, podmoduł w module głównym JSON Creative Studio. Ale jeszcze wracając do Brand Strategy Profile& BIOS, no to tutaj musimy dać też troszeczkę więcej swobody.  I pytanie, czy to na pewno się, to jeszcze sprawdzę, czy się opis usług generuje pod LinkedIn. To raz, a dwa, no musimy, wiesz, zrewidować i zaktualizować te wszystkie tam  wewnątrz system prompty i skille, tak, bo ja tutaj ads, mastery dodałem, zaktualizowałem wiedzę naszych dyrektorów, a jeśli chodzi o wizualia awatary i banery w Brand Strategy, no to tutaj jest na sztywno ustawiona, wybierz styl wizualny banera, ale może ktoś po prostu chciałby sobie wgrać swojego prompta albo dać obraz  lub wklei też postać lub jakiś określony napis, tak? Jakiś tam tekst sloganu, albo właśnie wezwanie do działania. No i tak samo w drugiej sekcji generowanie spójnego awatara. Trzeba dać, tutaj jest na sztywno ustawiony strategiczny styl wizualny marki i tam są pod spodem prompty, ale tu też trzeba dać swobod  po prostu swój prompt, tak? Wygenerowany z palca. No to chyba tyle z uwag na razie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 14:45:29",
+        "raw_text": "Wiesz co, ta architektura jest spoko, to co zaplanowałeś JSON Audit Customer Journey. Powiedz mi jeszcze tylko, czy ja mam wkleić świeży nowy kod JSON do workflow na N8n? No bo wygenerowałeś mi  Czyli całkowicie nowy mam workflow, tak? A tamten stary usunąć i wkleić tutaj, okej. Tylko muszę jeszcze wkleić swój ten ID konta Telegram. Dobra, otworzyłeś tego nowego skill'a Client Production Automation, tylko że widzisz, ten git sync  się robi widzę, że się odpala odpala się skrypt w tle co 15 minut na komputerze stacjonarnym na laptopie ale ja na laptopie nie widzę na bieżąco i w drugą stronę na stacjonarnym nowo zapisywanych powstałych plików w projektach czy właśnie chociażby tych nowych skillów poprzez tego githuba poprzez repo  nie wiem co się stało, czy coś jest nie tak, czy... Więc nie mogę na laptopie odpalić tego skilla Client Production Automation, bo rozumiem, że dzięki temu skillowi to maksymalnie zautomatyzuje tworzenie tych workflow N8n, tak?  Pytanie czy... Bo jest taki skill CKM 2.N8N, myślnik automation, myślnik blueprints. Czyli tam są szablony, instrukcje tworzenia asynchronicznych przepływów. Pytanie czy my z tego korzystamy. Czy to jest jakby osobna wartość?  tych szablonów. No dobra, teraz ścieżka tego audytu, 21 pytań. Spoko. Ręczny formularz, ale...  No i pytanie, czy aby tutaj się zwołać do dyrektorów, czy to nie jest takie oddawanie takiego audytu za darmo takiemu klientowi, czy to nie lepiej zrobić, nie wiem, za... No nie wiem, jak jest ze standardami rynkowymi, tak? No ale to jest...  taki wstępny generowany czytam na przykład zalecenia co do reklamy tak wykorzystując nasz sztab dyrektorów i nowy skill tam od Media Buyer i wiedza z Ads Mastery czy to nie jest właśnie oddawanie za darmo mimo, że to jest taki lead magnet  Lead magnet za podanie maila Raczej jakąś taką prostą checklistę, nie?  Dziękuję.",
+        "corrected_text": "Wiesz co, ta architektura jest spoko, to co zaplanowałeś JSON Audit Customer Journey. Powiedz mi jeszcze tylko, czy ja mam wkleić świeży nowy kod JSON do workflow na N8n? No bo wygenerowałeś mi  Czyli całkowicie nowy mam workflow, tak? A tamten stary usunąć i wkleić tutaj, okej. Tylko muszę jeszcze wkleić swój ten ID konta Telegram. Dobra, otworzyłeś tego nowego skill'a Client Production Automation, tylko że widzisz, ten git sync  się robi widzę, że się odpala odpala się skrypt w tle co 15 minut na komputerze stacjonarnym na laptopie ale ja na laptopie nie widzę na bieżąco i w drugą stronę na stacjonarnym nowo zapisywanych powstałych plików w projektach czy właśnie chociażby tych nowych skillów poprzez tego githuba poprzez repo  nie wiem co się stało, czy coś jest nie tak, czy... Więc nie mogę na laptopie odpalić tego skilla Client Production Automation, bo rozumiem, że dzięki temu skillowi to maksymalnie zautomatyzuje tworzenie tych workflow N8n, tak?  Pytanie czy... Bo jest taki skill CKM 2.N8N, myślnik automation, myślnik blueprints. Czyli tam są szablony, instrukcje tworzenia asynchronicznych przepływów. Pytanie czy my z tego korzystamy. Czy to jest jakby osobna wartość?  tych szablonów. No dobra, teraz ścieżka tego audytu, 21 pytań. Spoko. Ręczny formularz, ale...  No i pytanie, czy aby tutaj się zwołać do dyrektorów, czy to nie jest takie oddawanie takiego audytu za darmo takiemu klientowi, czy to nie lepiej zrobić, nie wiem, za... No nie wiem, jak jest ze standardami rynkowymi, tak? No ale to jest...  taki wstępny generowany czytam na przykład zalecenia co do reklamy tak wykorzystując nasz sztab dyrektorów i nowy skill tam od Media Buyer i wiedza z Ads Mastery czy to nie jest właśnie oddawanie za darmo mimo, że to jest taki lead magnet  Lead magnet za podanie maila Raczej jakąś taką prostą checklistę, nie?  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 14:48:53",
+        "raw_text": "Dobra, tworzę nowy workflow, w N8n wkleiłem ten kod JSON, wpisałem ID swoje telegrama. Tylko teraz nie wiem, gdzie ten ręczny formularz. Aha. Dobra, w systeme i o, tak, jeszcze będę. No i tu na stronie pamiętać trzeba te przyciski, które na stronie głównej jaison.pl, czyli tam zrób audyt.  Trzeba będzie podlinkować pod właściwy adres. Czyli pobierz audyt. Nie wiem, za 97 złotych, no nie wiem, trzeba tu przeanalizować. Dobra, ja już ustawiam N8n i systemy i oj zaraz, zaraz...  Zaraz to skonfiguruję.",
+        "corrected_text": "Dobra, tworzę nowy workflow, w N8n wkleiłem ten kod JSON, wpisałem ID swoje telegrama. Tylko teraz nie wiem, gdzie ten ręczny formularz. Aha. Dobra, w systeme i o, tak, jeszcze będę. No i tu na stronie pamiętać trzeba te przyciski, które na stronie głównej jaison.pl, czyli tam zrób audyt.  Trzeba będzie podlinkować pod właściwy adres. Czyli pobierz audyt. Nie wiem, za 97 złotych, no nie wiem, trzeba tu przeanalizować. Dobra, ja już ustawiam N8n i systemy i oj zaraz, zaraz...  Zaraz to skonfiguruję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 14:53:20",
+        "raw_text": "Jakiś tu konflikt jest, co tu mam usunąć?  No i to jak będzie...  Dziękuję.",
+        "corrected_text": "Jakiś tu konflikt jest, co tu mam usunąć?  No i to jak będzie...  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 15:04:30",
+        "raw_text": "I wytłumacz mi po co te dwa workflows, bo pogubiłem się po prostu w logice. Czyli ten pierwszy, JSON Onboarding.",
+        "corrected_text": "I wytłumacz mi po co te dwa workflows, bo pogubiłem się po prostu w logice. Czyli ten pierwszy, JSON Onboarding.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 15:04:50",
+        "raw_text": "I ten drugi, JSON Audit.",
+        "corrected_text": "I ten drugi, JSON Audit.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 15:09:29",
+        "raw_text": "No dobra, ale te dwa przepływy workflow będą reagować z tego samego poziomu? Czy z chatbota, czy z przycisku CTA na sekcji hero? Jaki jest sens takiej stosowania? Systemowy, wewnętrzny, no to co? To ja mogę sobie zrobić gdzie? Na stronie, czy z panelu Streamlit?  Dobra, na laptopie to zrobiłem te trzy komendy, tylko parę pytań teraz na stacjonarne, bo tutaj też się nie zaktualizowały te pliki, które powstały ostatnio na laptopie w projektach.",
+        "corrected_text": "No dobra, ale te dwa przepływy workflow będą reagować z tego samego poziomu? Czy z chatbota, czy z przycisku CTA na sekcji hero? Jaki jest sens takiej stosowania? Systemowy, wewnętrzny, no to co? To ja mogę sobie zrobić gdzie? Na stronie, czy z panelu Streamlit?  Dobra, na laptopie to zrobiłem te trzy komendy, tylko parę pytań teraz na stacjonarne, bo tutaj też się nie zaktualizowały te pliki, które powstały ostatnio na laptopie w projektach.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 15:26:54",
+        "raw_text": "Dobra, ale te dwa workflow'y, przepływy startują z domeny go.ja.ison.pl, to znaczy z formularza na stronie, tak? Po kliknięciu przycisku\"call to action\". Bo to na stronie jest jeszcze...  Pobierz audyt AI za 0 złotych w sekcji hero. No to nie wiem czy o ten chodzi czy z poziomu chatbota. I też z formularza. Aha bo on tutaj tak czy tak.  Tu jeszcze są, nie wiem czy te automatyzacje. Odkryć aplikację JSON, aha to przenosi na subdomenę, kalkulator działa. Jest jeszcze odbierz darmowy ebook, ale co to jest za ebook?  tutaj są jeszcze pozmieniać tam takie drobne przez Jason ja i są a tak zgadzam się na przetwarzanie moich danych osobowych czyli tutaj ten checkbox ale co to co to dokładnie miał być za ebook  No i tutaj w sekcji case studies  Aha, odkryj pełne case studies. No to można na tej głównej stronie w tej sekcji podmienić tą pracę.smartrade.pl No i tutaj też w tych sekcjach, tak, tam jest opisane Brand Book, strona www, logotypy, no ale też trzeba zagaić o takich technicznych jak jakiś tam czarny,  bo to co było, żeby od razu klient widział, a tą pracasmartrade.pl z tej sekcji wdrożenia AI i systemy w praktyce przenieść do tej podstrony z case studies, żeby tam się pojawiło, a na wierzchu był ten portal x2o.jaison.pl.  No i tutaj w opiniach no to coolphone.pl no to tam podpisz Łukasz. W drugim tutaj reviews, czyli opinie naszych partnerów w łamku sekundy w tej sekcji no to podmień na panią, gdzie Marysia. No i usuń VIP Transporter, no tam trzeba wkleić,  A, no to oficjalna lista referencyjna jest jeszcze do uzupełnienia. No i nie wiem jak się zachowuje ten\"dodaj moją opinię\" ten przycisk.  to jest urzadnik checklista AI Ready co tutaj jest zaszyte i jaka checklista tam była chyba taka 10 pytań no i tutaj też trzeba w tym checkboxie przetwarzania danych osobowych jaison agency zmienić też tam w polityce prywatności no i tą checklistę znaleźć gdzie ona jest tam było 10 pytań czy coś i to byłby jakby później ten tripwire czyli jaki  ograniczony w czasie, tak, z licznikiem tego audytu, że tylko dzisiaj do północy, czy tam przez 15 minut będzie za 97 złotych stara cena przekreślona 497 złotych.  Dziękuję.",
+        "corrected_text": "Dobra, ale te dwa workflow'y, przepływy startują z domeny go.ja.ison.pl, to znaczy z formularza na stronie, tak? Po kliknięciu przycisku\"call to action\". Bo to na stronie jest jeszcze...  Pobierz audyt AI za 0 złotych w sekcji hero. No to nie wiem czy o ten chodzi czy z poziomu chatbota. I też z formularza. Aha bo on tutaj tak czy tak.  Tu jeszcze są, nie wiem czy te automatyzacje. Odkryć aplikację JSON, aha to przenosi na subdomenę, kalkulator działa. Jest jeszcze odbierz darmowy ebook, ale co to jest za ebook?  tutaj są jeszcze pozmieniać tam takie drobne przez Jason ja i są a tak zgadzam się na przetwarzanie moich danych osobowych czyli tutaj ten checkbox ale co to co to dokładnie miał być za ebook  No i tutaj w sekcji case studies  Aha, odkryj pełne case studies. No to można na tej głównej stronie w tej sekcji podmienić tą pracę.smartrade.pl No i tutaj też w tych sekcjach, tak, tam jest opisane Brand Book, strona www, logotypy, no ale też trzeba zagaić o takich technicznych jak jakiś tam czarny,  bo to co było, żeby od razu klient widział, a tą pracasmartrade.pl z tej sekcji wdrożenia AI i systemy w praktyce przenieść do tej podstrony z case studies, żeby tam się pojawiło, a na wierzchu był ten portal x2o.jaison.pl.  No i tutaj w opiniach no to coolphone.pl no to tam podpisz Łukasz. W drugim tutaj reviews, czyli opinie naszych partnerów w łamku sekundy w tej sekcji no to podmień na panią, gdzie Marysia. No i usuń VIP Transporter, no tam trzeba wkleić,  A, no to oficjalna lista referencyjna jest jeszcze do uzupełnienia. No i nie wiem jak się zachowuje ten\"dodaj moją opinię\" ten przycisk.  to jest urzadnik checklista AI Ready co tutaj jest zaszyte i jaka checklista tam była chyba taka 10 pytań no i tutaj też trzeba w tym checkboxie przetwarzania danych osobowych jaison agency zmienić też tam w polityce prywatności no i tą checklistę znaleźć gdzie ona jest tam było 10 pytań czy coś i to byłby jakby później ten tripwire czyli jaki  ograniczony w czasie, tak, z licznikiem tego audytu, że tylko dzisiaj do północy, czy tam przez 15 minut będzie za 97 złotych stara cena przekreślona 497 złotych.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 15:34:34",
+        "raw_text": "Dobra, zapisuję póki pamiętam. Tutaj ten moduł. Ten moduł dotyczący właśnie Ads and Local SEO. No dobra, słowo kluczowe, audyt widoczności. Tylko, że tu nie jest podpięty profil, w jaki sposób te profile będziemy podpinać, czy przez  Composio.dev/n8n Jak działa Ads Manager i N8n. Jak to działa. Tu są trzy rodzaje celów kampanii generowanie leadów konwersje na stronie budowanie świadomości marki.  Zaangażuj nasze nowe skille Media Buyer oraz z Ads Mastery. Dyrektorzy mają nowe SOPy, więc tutaj myślę, że może się wiedzowo wykazać w Ads Manager.",
+        "corrected_text": "Dobra, zapisuję póki pamiętam. Tutaj ten moduł. Ten moduł dotyczący właśnie Ads and Local SEO. No dobra, słowo kluczowe, audyt widoczności. Tylko, że tu nie jest podpięty profil, w jaki sposób te profile będziemy podpinać, czy przez  Composio.dev/n8n Jak działa Ads Manager i N8n. Jak to działa. Tu są trzy rodzaje celów kampanii generowanie leadów konwersje na stronie budowanie świadomości marki.  Zaangażuj nasze nowe skille Media Buyer oraz z Ads Mastery. Dyrektorzy mają nowe SOPy, więc tutaj myślę, że może się wiedzowo wykazać w Ads Manager.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 15:40:43",
+        "raw_text": "Weź mi tu zmodyfikuj ten prompt tak, żeby mnie nie było na tym bannerze w tle, tylko żeby był slogan i cta.",
+        "corrected_text": "Weź mi tu zmodyfikuj ten prompt tak, żeby mnie nie było na tym bannerze w tle, tylko żeby był slogan i cta.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 17:08:33",
+        "raw_text": "Coś trzeba zrobić z tym przyciskiem\"call to action\" w sekcji hero\"pobierz audyt\" czy jakoś tutaj ma się znaleźć czy gdzieś indziej i ten\"lejek tripwire\" później zrobić.",
+        "corrected_text": "Coś trzeba zrobić z tym przyciskiem\"call to action\" w sekcji hero\"pobierz audyt\" czy jakoś tutaj ma się znaleźć czy gdzieś indziej i ten\"lejek tripwire\" później zrobić.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 17:46:47",
+        "raw_text": "Wyskoczył włąc portem 8089 Lite LLM. Nie udało mi się skutecznie uruchomić skanera okazji z rynku.",
+        "corrected_text": "Wyskoczył włąc portem 8089 Lite LLM. Nie udało mi się skutecznie uruchomić skanera okazji z rynku.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 17:53:05",
+        "raw_text": "Dobra, napiszmy jeszcze dokładnie w której tych ostatnich przygotowanych JSON Webhook Integration, w której tam linii dla systemu IEO w HTMLu są te webhooki, muszę powklejać, i które są dwa odrębne, tak?",
+        "corrected_text": "Dobra, napiszmy jeszcze dokładnie w której tych ostatnich przygotowanych JSON Webhook Integration, w której tam linii dla systemu IEO w HTMLu są te webhooki, muszę powklejać, i które są dwa odrębne, tak?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 18:07:12",
+        "raw_text": "Dobra, zrobione. Wklejone JSON onboarding w linii 392. Co dalej? W planie marketingowym mamy te wszystkie tam klocki na stronie, formularze poukładane, podlinkowane, ten call to action, zrób audyt. Tylko nie wiem właśnie, gdzie ten call to action umieścić odnośnie tego lejka tripwire.  Dziękuję.",
+        "corrected_text": "Dobra, zrobione. Wklejone JSON onboarding w linii 392. Co dalej? W planie marketingowym mamy te wszystkie tam klocki na stronie, formularze poukładane, podlinkowane, ten call to action, zrób audyt. Tylko nie wiem właśnie, gdzie ten call to action umieścić odnośnie tego lejka tripwire.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 21:17:38",
+        "raw_text": "Wiesz co wygenerowałem... Okej skaner okazji działa. Tak no działa, tylko że wiesz co, no bardzo mało wyników generuje tutaj z tych wszystkich źródeł linków, które Ci tutaj wcześniej zrobiłem research w Perplexity i Ci wrzuciłem taki dokument z researchu z linkami. Tam był podział, tak?  w CSV pliku. Chyba, że wolisz w innym formacie, to nie wiem. Ale generalnie, no to bardzo mało. Bardzo mało. Nie ma tutaj, wiesz, pod spodem, żeby podpowiadał, tak? Jakieś słowa kluczowe. Nie wiem. Najbardziej takie, wiesz, występujące najczęściej w takich zapytaniach.  Muzyka",
+        "corrected_text": "Wiesz co wygenerowałem... Okej skaner okazji działa. Tak no działa, tylko że wiesz co, no bardzo mało wyników generuje tutaj z tych wszystkich źródeł linków, które Ci tutaj wcześniej zrobiłem research w Perplexity i Ci wrzuciłem taki dokument z researchu z linkami. Tam był podział, tak?  w CSV pliku. Chyba, że wolisz w innym formacie, to nie wiem. Ale generalnie, no to bardzo mało. Bardzo mało. Nie ma tutaj, wiesz, pod spodem, żeby podpowiadał, tak? Jakieś słowa kluczowe. Nie wiem. Najbardziej takie, wiesz, występujące najczęściej w takich zapytaniach.  Muzyka",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-17 22:05:54",
+        "raw_text": "Poniżej wklejam Ci rady pewnego marketera Tomasza, ale nie cytuj go nigdzie, tylko trzeba byłoby wzmocnić, może uzupełnić skille w odpowiedni sposób dla dyrektora sprzedaży, marketingu. Po raz tego od MLM  i zastosować taką... Ten Tomek ma specyficzną strategię na content organiczny w sieci. Można by to przeanalizować, zwołać zarząd i ewentualnie zastosować. W odpowiednim skillu  i sopach dyrektorów.",
+        "corrected_text": "Poniżej wklejam Ci rady pewnego marketera Tomasza, ale nie cytuj go nigdzie, tylko trzeba byłoby wzmocnić, może uzupełnić skille w odpowiedni sposób dla dyrektora sprzedaży, marketingu. Po raz tego od MLM  i zastosować taką... Ten Tomek ma specyficzną strategię na content organiczny w sieci. Można by to przeanalizować, zwołać zarząd i ewentualnie zastosować. W odpowiednim skillu  i sopach dyrektorów.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 09:01:57",
+        "raw_text": "W jaki sposób mógł może nam się ten skill lub MCP tutaj zerknij w tym repozytorium, ten skill Context 7, w jaki sposób może nam się to przydać. Najpierw im przedstaw, a później...  Dziękuję.",
+        "corrected_text": "W jaki sposób mógł może nam się ten skill lub MCP tutaj zerknij w tym repozytorium, ten skill Context 7, w jaki sposób może nam się to przydać. Najpierw im przedstaw, a później...  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 09:02:27",
+        "raw_text": "Zdecydujmy wspólnie zainstalowanie w naszej infrastrukturze lub użycie skilla.",
+        "corrected_text": "Zdecydujmy wspólnie zainstalowanie w naszej infrastrukturze lub użycie skilla.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 09:13:57",
+        "raw_text": "Tutaj z kolei na drugim zrzucie zleciłem w tym module Sales Director- Handlowiec AI przeszukanie for Group Discussing oraz Social Mediów.  znalazł, agent znalazł, wykryte szanse, gotowe outreach w postaci leadów, ale nie ma tutaj dziś podane, nie ma, nie ma po prostu źródła, tak, nie ma linku do, nie wiem, danej grupy, czy posta, czy, czy, czy dziś na, na tym, na grupie dyskusyjnej, tak, żeby automatycznie się przenie  komuś, tak? Tutaj też należałoby w tej sekcji słów kluczowych do skanowania internetu, aby inteligentnie w system promptcie tam pod spodem agent podpowiadał, tak? W zależności od, no nie musi to być automatyzacja, bo to w zależności od kontekstu użytkownika, jego branży, niszy, tak? Te  tutaj na holistycznego brokera którego widzę nie ma stworzonego kontekst klienta i pytanie jeszcze raz mnie wytłumaczy jak tworzę kontekst klienta tak na podstawie czego najpierw wypełnianego tego onboarding grillowanie i ankieta 21 pytań  dodałeś własne SAS w kontekście jakiegoś jednego klienta. Nie ma barujaś, czyli klienta kurczakujaśa.pl. Kontekst cały z jego folderu i folderu tak clients, ale jest jakiś dodałeś własne SAS w nawiasie Mercury Pro. Nie wiem czego to dotyczy konkretnie, bo Mercury Pro to jest jakaś przestarzała już nazwa apl  w wykonaniu moim, czyli jaison.pl jest dedykowany landing page app.jason.pl Tak, więc to trzeba byłoby naprawić, ulepszyć.  Tutaj jest zakładka mapa źródeł V2. Architektura integracji mapa źródeł LIDRADAR V2. Nie wiem co tutaj jest.  Aha, czyli to są sposoby na... Okej. Czyli to są te wszystkie sposoby, które pod spodem używa w skaneru, tak? W radarze zleceń agent.  Dobra. Konfiguracja skanera. Główny prompt oceny leada. Gemini API. Webhook n8n nasłuchujący. No tak, ale ten webhook nie jest stworzony fizycznie, co? Na instancji n8n.com.  należałoby go najpierw stworzyć bo na razie no to jest nie wiem jak to działa w takim razie ten crawler trigger  Dobra, widzę w sekcji audyty 27 pytań, w nawiasie jaison.pl. Kwalifikacja inbound, audyt systemowy 27 pytań, nie wiem jaką działa.  czyli on tutaj zgłoszenie do analizy, czyli potencjalny klient lead wpada tutaj, tak, pojawi się jego checkbox. Czy na razie to jest taki placeholder?  Widzisz, bo ja tam równolegle z agentem obok zrobiliśmy automatyzację N8n, czyli ten audyt generuje się w momencie, gdy klient ze strony jaison.pl  przeciwkleje zrzut wypełnia formularz więc agent w tle analizuje jego biznes stronę niszę wysyła taki audyt do niego na maila do mnie powiadomienie na telegrama  jest ten audyt płatny tak czyli tam ustawiamy paywall ale też audyt taki z drugiego poziomu znaczy źródła będzie z panelu holistyki właśnie z dashboardu czyli ja wypełniam ręcznie albo na podstawie tutaj udzielonych pytań przez klienta którego tam pozyskałem nie wiem ręcznie manualnie  gdzieś po prostu się zgłosił wtedy wypełniamy tą ankietę albo na spotkaniu online przeprowadzam z nim właśnie taką ankietę i wprowadzam ją w dashboardzie tylko nie wiem gdzie dokładnie  gdzieś ten moduł był on onboarding grill ale nie wiem czy już go nie ma po prostu tak i on wtedy co wpada tutaj do tego modułu  podmodułu w głównym modułze Lead Radar, czyli do podmodułu Audyt 21 pytań. Dobra, sprawdź to na razie, przeanalizuj, zwołaj zespół dyrektorów, techniczny, CEO, marketingowy i sprzedażowy i product manager.  Dziękuję.",
+        "corrected_text": "Tutaj z kolei na drugim zrzucie zleciłem w tym module Sales Director- Handlowiec AI przeszukanie for Group Discussing oraz Social Mediów.  znalazł, agent znalazł, wykryte szanse, gotowe outreach w postaci leadów, ale nie ma tutaj dziś podane, nie ma, nie ma po prostu źródła, tak, nie ma linku do, nie wiem, danej grupy, czy posta, czy, czy, czy dziś na, na tym, na grupie dyskusyjnej, tak, żeby automatycznie się przenie  komuś, tak? Tutaj też należałoby w tej sekcji słów kluczowych do skanowania internetu, aby inteligentnie w system promptcie tam pod spodem agent podpowiadał, tak? W zależności od, no nie musi to być automatyzacja, bo to w zależności od kontekstu użytkownika, jego branży, niszy, tak? Te  tutaj na holistycznego brokera którego widzę nie ma stworzonego kontekst klienta i pytanie jeszcze raz mnie wytłumaczy jak tworzę kontekst klienta tak na podstawie czego najpierw wypełnianego tego onboarding grillowanie i ankieta 21 pytań  dodałeś własne SAS w kontekście jakiegoś jednego klienta. Nie ma barujaś, czyli klienta kurczakujaśa.pl. Kontekst cały z jego folderu i folderu tak clients, ale jest jakiś dodałeś własne SAS w nawiasie Mercury Pro. Nie wiem czego to dotyczy konkretnie, bo Mercury Pro to jest jakaś przestarzała już nazwa apl  w wykonaniu moim, czyli jaison.pl jest dedykowany landing page app.jason.pl Tak, więc to trzeba byłoby naprawić, ulepszyć.  Tutaj jest zakładka mapa źródeł V2. Architektura integracji mapa źródeł LIDRADAR V2. Nie wiem co tutaj jest.  Aha, czyli to są sposoby na... Okej. Czyli to są te wszystkie sposoby, które pod spodem używa w skaneru, tak? W radarze zleceń agent.  Dobra. Konfiguracja skanera. Główny prompt oceny leada. Gemini API. Webhook n8n nasłuchujący. No tak, ale ten webhook nie jest stworzony fizycznie, co? Na instancji n8n.com.  należałoby go najpierw stworzyć bo na razie no to jest nie wiem jak to działa w takim razie ten crawler trigger  Dobra, widzę w sekcji audyty 27 pytań, w nawiasie jaison.pl. Kwalifikacja inbound, audyt systemowy 27 pytań, nie wiem jaką działa.  czyli on tutaj zgłoszenie do analizy, czyli potencjalny klient lead wpada tutaj, tak, pojawi się jego checkbox. Czy na razie to jest taki placeholder?  Widzisz, bo ja tam równolegle z agentem obok zrobiliśmy automatyzację N8n, czyli ten audyt generuje się w momencie, gdy klient ze strony jaison.pl  przeciwkleje zrzut wypełnia formularz więc agent w tle analizuje jego biznes stronę niszę wysyła taki audyt do niego na maila do mnie powiadomienie na telegrama  jest ten audyt płatny tak czyli tam ustawiamy paywall ale też audyt taki z drugiego poziomu znaczy źródła będzie z panelu holistyki właśnie z dashboardu czyli ja wypełniam ręcznie albo na podstawie tutaj udzielonych pytań przez klienta którego tam pozyskałem nie wiem ręcznie manualnie  gdzieś po prostu się zgłosił wtedy wypełniamy tą ankietę albo na spotkaniu online przeprowadzam z nim właśnie taką ankietę i wprowadzam ją w dashboardzie tylko nie wiem gdzie dokładnie  gdzieś ten moduł był on onboarding grill ale nie wiem czy już go nie ma po prostu tak i on wtedy co wpada tutaj do tego modułu  podmodułu w głównym modułze Lead Radar, czyli do podmodułu Audyt 21 pytań. Dobra, sprawdź to na razie, przeanalizuj, zwołaj zespół dyrektorów, techniczny, CEO, marketingowy i sprzedażowy i product manager.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 09:16:10",
+        "raw_text": "Wiesz co, tak, jeśli chodzi o crowd developerski to jak najbardziej stworzymy te systemy I/O. Te strony tak, Bridge, Page i tak dalej, podziękowania do tego lejka Tripwire, natomiast najpierw musimy sprawdzić, ponieważ nie działa.  ten formularz audytu wyświetla się jakiś błąd tak jak na załączniku na zrzucie ekranu więc nie wiem co tam się dzieje",
+        "corrected_text": "Wiesz co, tak, jeśli chodzi o crowd developerski to jak najbardziej stworzymy te systemy I/O. Te strony tak, Bridge, Page i tak dalej, podziękowania do tego lejka Tripwire, natomiast najpierw musimy sprawdzić, ponieważ nie działa.  ten formularz audytu wyświetla się jakiś błąd tak jak na załączniku na zrzucie ekranu więc nie wiem co tam się dzieje",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 09:25:40",
+        "raw_text": "Po pierwsze to panel N8n znajduje się pod adresem n8n.jaison.pl Ten, który Ty podałeś to jest podstrona, landing page, znaczy to jest landing page na subdomenie dotyczący aplikacji, które tworzę, czyli komunikator jaison oraz będzie tam też to narzędzie Speech-to-Text, voice'ik.  promowane, opisane instrukcje. Zrzucam Ci tutaj zrzut ekranu z Anosiem N aktualnego stanu. Tam są trzy workflow'y. Dwa jakieś powtarzają się z tą samą nazwą. Otworzyłem chyba równolegle.  Więc zrzucam Ci, jak one wyglądają.",
+        "corrected_text": "Po pierwsze to panel N8n znajduje się pod adresem n8n.jaison.pl Ten, który Ty podałeś to jest podstrona, landing page, znaczy to jest landing page na subdomenie dotyczący aplikacji, które tworzę, czyli komunikator jaison oraz będzie tam też to narzędzie Speech-to-Text, voice'ik.  promowane, opisane instrukcje. Zrzucam Ci tutaj zrzut ekranu z Anosiem N aktualnego stanu. Tam są trzy workflow'y. Dwa jakieś powtarzają się z tą samą nazwą. Otworzyłem chyba równolegle.  Więc zrzucam Ci, jak one wyglądają.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 09:34:36",
+        "raw_text": "Dobra, to teraz wyłączyłem już, tak, zrobiłem unpublish tej wersji prostszej z 17 lipca i zostawiłem published, to czyli tą wersję onboarding z 15 lipca wczoraj aktualizowaną. Widzę, że tutaj mam pod...  możliwość create credential, create folder, create data table. Czy ja powinienem na tej instancji tworzyć sobie foldery, tak? Dla, nie wiem, tego projektu, dla innego, czy mi się to wszystko nie pomiesza, jak to właściwie strukturalnie rozwiązać, to raz. Powiedz mi teraz ten...  Ta wersja z workflow z 15 lipca, bardziej zaawansowana, ona dotyczy, ona będzie współgrała z tym formularzem audytu 21 pytań. Czy gdzie jest jej źródło, wywołanie jej? Pytam, ponieważ no też...  mogę robić taki onboarding czyli ten formularz i dodawać klienta tam do CRM no na dashboardzie Streamlit tak czyli ręcznie jakby no po wywiadzie z klientem który robię tam meeting z nim online czy z jakiegoś tam źródła no analogowego bezpośredniego czy tam z polecenia tak  i wtedy mi się to wykonuje, wywołuje z dashboardu Streamlit, tak, dlatego tam chciałem też poinformować agenta, który się opiekuje i zajmuje dashboardem Streamlit.",
+        "corrected_text": "Dobra, to teraz wyłączyłem już, tak, zrobiłem unpublish tej wersji prostszej z 17 lipca i zostawiłem published, to czyli tą wersję onboarding z 15 lipca wczoraj aktualizowaną. Widzę, że tutaj mam pod...  możliwość create credential, create folder, create data table. Czy ja powinienem na tej instancji tworzyć sobie foldery, tak? Dla, nie wiem, tego projektu, dla innego, czy mi się to wszystko nie pomiesza, jak to właściwie strukturalnie rozwiązać, to raz. Powiedz mi teraz ten...  Ta wersja z workflow z 15 lipca, bardziej zaawansowana, ona dotyczy, ona będzie współgrała z tym formularzem audytu 21 pytań. Czy gdzie jest jej źródło, wywołanie jej? Pytam, ponieważ no też...  mogę robić taki onboarding czyli ten formularz i dodawać klienta tam do CRM no na dashboardzie Streamlit tak czyli ręcznie jakby no po wywiadzie z klientem który robię tam meeting z nim online czy z jakiegoś tam źródła no analogowego bezpośredniego czy tam z polecenia tak  i wtedy mi się to wykonuje, wywołuje z dashboardu Streamlit, tak, dlatego tam chciałem też poinformować agenta, który się opiekuje i zajmuje dashboardem Streamlit.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 09:43:55",
+        "raw_text": "Słuchaj, przeniosłem folder projektu do wyżej wymienionej ścieżki, odtąd po prostu pracujemy w tej przestrzeni, tak?",
+        "corrected_text": "Słuchaj, przeniosłem folder projektu do wyżej wymienionej ścieżki, odtąd po prostu pracujemy w tej przestrzeni, tak?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 09:47:56",
+        "raw_text": "Tak to jest ok, tylko jakby jeśli chodzi o oprogramowanie czy tworzenie jakiejś aplikacji no to one się znajdują w folderze 03 Software and Apps, natomiast  W tym folderze są jakieś też stare foldery i pliki odnośnie Githuba czy Amazon Bedrock.  To nie są rzeczy dotyczące aplikacji często.  Nie ma nic do wymyślenia.  Poczekajcie, proszę o mnak.",
+        "corrected_text": "Tak to jest ok, tylko jakby jeśli chodzi o oprogramowanie czy tworzenie jakiejś aplikacji no to one się znajdują w folderze 03 Software and Apps, natomiast  W tym folderze są jakieś też stare foldery i pliki odnośnie Githuba czy Amazon Bedrock.  To nie są rzeczy dotyczące aplikacji często.  Nie ma nic do wymyślenia.  Poczekajcie, proszę o mnak.",
+        "status": "raw_fallback"
+    }
+]

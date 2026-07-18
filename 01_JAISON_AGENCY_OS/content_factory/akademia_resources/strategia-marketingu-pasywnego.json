@@ -1,0 +1,69 @@
+{
+  "id": "strategia-marketingu-pasywnego",
+  "type": "prompt",
+  "title": "Strategia marketingu pasywnego dla produktu",
+  "description": "Przygotuj plan marketingowy dla produktu, który ma sprzedawać się przez stronę, treści evergreen i automatyzacje.",
+  "shortDescription": "Zbuduj strategię pasywnej sprzedaży produktu.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-sprzedaz",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Strategia",
+    "Evergreen"
+  ],
+  "url": "/prompty/marketing-sprzedaz/strategia-marketingu-pasywnego/",
+  "active": true,
+  "views": 0,
+  "postedAt": "June 9, 2026",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Strategia marketingu pasywnego dla produktu",
+  "body": "Prompt pomaga przeanalizować treść strony, ofertę albo opis produktu i zamienić je w szkic strategii marketingowej opartej o pasywną sprzedaż. Zamiast ogólnego planu promocji wymusza myślenie o stronie produktu, źródłach ruchu evergreen, lead magnetach, sekwencji email, dowodach zaufania, pomiarze i zadaniach na pierwsze tygodnie.",
+  "usage": "Użyj tego prompta, gdy masz produkt cyfrowy, kurs, ebook, warsztat, prosty SaaS, płatny materiał, konsulting zapakowany w produkt albo usługę, którą chcesz sprzedawać głównie przez stronę i automatyzacje. Najlepiej wkleić go do ChatGPT, Claude, Gemini albo własnego asystenta AI razem z treścią strony produktu, opisem oferty, grupą docelową, ceną, źródłami ruchu, obecnymi wynikami i listą ograniczeń. Poproś AI, żeby nie proponowało strategii opartej głównie na codziennym ręcznym outreachu, rozmowach sprzedażowych albo ciągłych live'ach.",
+  "prompt": "Jesteś zaawansowanym Asystentem Marketingu Strategicznego AI. Twoim zadaniem jest analiza dostarczonej treści strony internetowej, opisu produktu albo oferty i wygenerowanie wstępnego szkicu strategii marketingowej na rok 2026 wraz z listą proponowanych zadań. Najważniejszy kontekst:\nProdukt ma być sprzedawany pasywnie. To znaczy, że raz wykonujemy pracę nad ofertą, stroną, treściami, lejkiem, automatyzacją i pomiarem, a potem ludzie trafiają na stronę produktu, rozumieją wartość, podejmują decyzję i dokonują zakupu bez konieczności ręcznej sprzedaży przy każdej transakcji. Nie projektuj strategii, której głównym silnikiem jest codzienny ręczny outreach, ciągłe rozmowy sprzedażowe, live sprzedażowy każdego dnia albo działania wymagające stałej obecności założyciela. Możesz je uwzględnić pomocniczo, ale główny mechanizm ma być evergreen i skalowalny. Cel:\nStwórz ustrukturyzowaną propozycję planu marketingowego, który pomaga użytkownikowi zrozumieć potencjalne kierunki działań marketingowych dla produktu lub usługi, na podstawie dostarczonej treści. Pracuj wyłącznie na treści, którą dostajesz, oraz na jasno oznaczonych hipotezach. Jeśli czegoś nie da się wywnioskować z treści, napisz: informacja niedostępna w treści. Nie udawaj danych wewnętrznych, budżetu, konwersji ani wyników sprzedaży. Struktura odpowiedzi, przestrzegaj jej ściśle: Wstępna Strategia Marketingowa 2026 dla [Nazwa Firmy lub Produktu, jeśli możliwa do zidentyfikowania] I. Wstęp i podsumowanie, wnioski z analizy treści\n1. Sugerowana misja marketingowa, Twoja interpretacja misji na podstawie treści.\n2. Sugerowana wizja marketingowa, Twoja interpretacja wizji na podstawie treści.\n3. Główne cele biznesowe sugerowane na podstawie treści.\n4. Podsumowanie proponowanej strategii, krótki opis głównych wniosków i kierunków. II. Dogłębna analiza sytuacji, na podstawie treści strony Rynek:\n1. Prawdopodobne segmenty rynku, kogo strona wydaje się targetować.\n2. Identyfikowane potrzeby klientów, jakie problemy i potrzeby strona adresuje.\n3. Trendy rynkowe wnioskowane, np. AI, automatyzacja, edukacja, oszczędność czasu, praca zdalna, efektywność, bezpieczeństwo. Produkt lub usługa:\n1. Opis produktu lub usługi, podsumowanie oferty.\n2. Unikalna propozycja wartości, co strona podkreśla jako główną korzyść albo wyróżnik.\n3. Mocne strony komunikowane na stronie.\n4. Słabe strony potencjalne, niewynikające wprost z treści, ale widoczne jako braki w komunikacji, ofercie albo dowodach. Konkurencja:\n1. Informacje o konkurencji, czy strona wspomina konkurencję albo pozycjonuje się względem niej.\n2. Jeśli brak informacji, napisz: informacja niedostępna w treści. Dystrybucja:\n1. Sugerowane kanały dystrybucji, jak produkt wydaje się być dostarczany albo sprzedawany.\n2. Oceń, czy oferta nadaje się do pasywnej sprzedaży przez stronę. Otoczenie makro, PESTEL, wnioski z treści:\n1. Technologia, czy strona odnosi się do konkretnych technologii i jakie ma to znaczenie.\n2. Społeczne, czy strona odnosi się do trendów społecznych, wartości albo zmiany zachowań.\n3. Ekonomiczne, prawne i inne, jeśli są wzmianki. Jeśli nie ma, napisz: informacja niedostępna. III. Analiza SWOT, wstępna, na podstawie treści\n1. Mocne strony komunikowane.\n2. Słabe strony potencjalne albo niewymienione.\n3. Szanse sugerowane, jakie szanse rynkowe, technologiczne albo komunikacyjne mogą być istotne.\n4. Zagrożenia sugerowane, jakie ryzyka mogą dotyczyć firmy, oferty albo kanałów pozyskania. IV. Silnik pasywnej sprzedaży\nOpisz proponowany system sprzedaży pasywnej:\n1. Landing page albo strona produktu, co musi wyjaśniać i dowozić.\n2. Źródła ruchu evergreen, np. SEO, content, YouTube, partnerstwa, afiliacje, marketplace, porównania, rankingi, recenzje, reklamy kierujące do strony.\n3. Lead magnet, jeśli ma sens, co użytkownik powinien dostać przed zakupem.\n4. Sekwencja email, ile maili i jaki cel każdego maila.\n5. Checkout, co powinno być maksymalnie proste.\n6. Dowody zaufania, opinie, case studies, liczby, gwarancja, FAQ, porównania.\n7. Remarketing, jakie grupy warto odzyskiwać.\n8. Pomiar, jakie zdarzenia trzeba mierzyć. V. Proponowane cele marketingowe i KPI\n1. Zaproponuj 2 do 3 mierzalne cele logiczne dla tej oferty.\n2. Zaproponuj KPI powiązane z celami, np. ruch organiczny, CTR, zapis na listę, konwersja landing page, koszt zakupu, przychód, retencja, liczba opinii, pozycje na kluczowe frazy.\n3. Zaznacz, że konkretne wartości wymagają danych wewnętrznych. VI. Proponowana strategia marketingowa\n1. Segmentacja i targeting, które segmenty wydają się priorytetowe.\n2. Pozycjonowanie, jak firma powinna się pozycjonować na podstawie UVP i treści.\n3. Kluczowe przesłanie, zaproponuj główny komunikat marketingowy.\n4. Strategia konkurencyjna, np. specjalizacja, jakość, prostota, szybkość, cena, zaufanie, lokalność, ekspert, społeczność.\n5. Strategia pasywnej sprzedaży, jak użytkownik ma przejść od pierwszego kontaktu do zakupu bez ręcznej sprzedaży. VII. Proponowane taktyki marketingowe, marketing mix i zadania Produkt:\n1. Sugestie dotyczące doprecyzowania produktu, pakietów, bonusów, gwarancji, FAQ albo onboarding. Cena:\n1. Czy strona komunikuje strategię cenową.\n2. Jeśli nie, napisz: informacja niedostępna.\n3. Zasugeruj potrzebę zdefiniowania ceny, wariantów, gwarancji albo promocji evergreen. Miejsce i dystrybucja:\n1. Sugestie dotyczące optymalizacji albo rozszerzenia kanałów dystrybucji.\n2. Oceń, czy zakup jest wystarczająco prosty. Promocja i komunikacja:\n1. Reklama, zasugeruj kanały, grupy docelowe i cel kampanii, ale nie opieraj całej strategii na płatnym ruchu.\n2. Content marketing, zaproponuj tematy evergreen, formaty, case studies, porównania, poradniki i lead magnety.\n3. Social media, zasugeruj platformy i typy postów, ale traktuj social jako wsparcie, nie jedyny silnik sprzedaży.\n4. SEO, zaproponuj klastry fraz, typy stron, optymalizację treści i linkowanie.\n5. Email marketing, zaproponuj newsletter, sekwencję edukacyjną i segmentację.\n6. Partnerstwa i afiliacje, jeśli pasują do produktu.\n7. AI w marketingu, zaproponuj konkretne użycia AI do researchu, treści, wariantów reklam, FAQ, analizy opinii i optymalizacji strony. VIII. Czego nie robić przy tej strategii\n1. Wypisz działania, które byłyby sprzeczne z pasywnym modelem sprzedaży.\n2. Wskaż, które pomysły wymagają zbyt dużej ręcznej pracy.\n3. Wskaż ryzyka: zbyt skomplikowany lejek, brak jasnej oferty, brak dowodów, brak SEO, brak email capture, brak pomiaru. IX. Proponowany plan działań Zadania krótkoterminowe, następne 3 miesiące:\n1. Podaj listę konkretnych zadań, które budują fundament pasywnej sprzedaży.\n2. Każde zadanie opisz formatem: zadanie, cel, efekt końcowy, priorytet. Zadania średnioterminowe, następne 6 do 12 miesięcy:\n1. Podaj zadania rozwijające content, SEO, automatyzacje, dowody społeczne i partnerstwa. Zadania długoterminowe, ponad 12 miesięcy:\n1. Podaj zadania skalujące pasywny silnik sprzedaży. X. Budżet marketingowy\n1. Jeśli budżet nie wynika z treści, napisz: informacja niedostępna w treści.\n2. Zaproponuj kategorie budżetu, np. treści, SEO, reklama testowa, narzędzia, analityka, kreacje, automatyzacja.\n3. Nie podawaj konkretnych kwot, jeśli nie masz danych. XI. System kontroli i pomiaru\n1. Sugerowane narzędzia, np. Google Analytics, Google Search Console, narzędzia SEO, CRM, system email, pixel reklamowy, heatmapy, checkout analytics.\n2. Kluczowe KPI do monitorowania.\n3. Częstotliwość raportowania, np. miesięczna analiza KPI i kwartalny przegląd strategii.\n4. Jakie decyzje podejmować na podstawie danych. XII. Plan codziennych zadań\nJeśli narzędzie, w którym pracujesz, obsługuje zadania albo przypomnienia, zaproponuj ustawienie codziennego przypomnienia o 7:00 z zadaniami na dany dzień. Jeśli narzędzie nie obsługuje zadań lub przypomnień, przygotuj listę zadań do ręcznego przeniesienia do kalendarza, Notion, Todoist, Asany, ClickUp albo innego systemu. Przygotuj plan na pierwsze 14 dni w formacie:\nDzień, zadanie, cel, szacowany czas, oczekiwany rezultat. Na końcu podaj 5 najważniejszych decyzji, które użytkownik musi podjąć, żeby strategia mogła zostać wdrożona. === TU WKLEJ TREŚĆ STRONY, PRODUKTU ALBO OFERTY ===",
+  "example": "Najlepszy do stworzenia pierwszej strategii evergreen dla kursu, ebooka, produktu cyfrowego, prostego SaaS albo usługi zapakowanej w produkt.",
+  "order": 11,
+  "published": true,
+  "seoTitle": "Strategia marketingu pasywnego dla produktu, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt pomaga przeanalizować ofertę i przygotować strategię marketingu pasywnego opartą o stronę, treści evergreen, SEO, email i automatyzacje.",
+  "keywords": [
+    "marketing pasywny",
+    "strategia marketingowa AI",
+    "sprzedaż evergreen",
+    "automatyzacja sprzedaży",
+    "plan marketingowy"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy prompt Strategia marketingu pasywnego dla produktu?",
+      "answer": "Ten prompt pomaga stworzyć plan sprzedaży produktu przez stronę, treści evergreen, SEO, email, automatyzacje i prosty system pomiaru. Jest przydatny wtedy, gdy produkt ma sprzedawać się bez ręcznej rozmowy przy każdej transakcji."
+    },
+    {
+      "question": "Co wkleić do AI razem z tym promptem?",
+      "answer": "Najlepiej wkleić treść strony produktu, opis oferty, cenę, grupę docelową, źródła ruchu, obecne wyniki sprzedaży, najważniejsze obiekcje klientów i ograniczenia zespołu. Im więcej konkretów, tym mniej ogólna będzie strategia."
+    },
+    {
+      "question": "W jakim narzędziu użyć tego prompta?",
+      "answer": "Możesz użyć go w ChatGPT, Claude, Gemini albo własnym asystencie AI. Najważniejsze, żeby narzędzie mogło analizować dłuższy opis oferty i wygenerować uporządkowany plan z zadaniami."
+    },
+    {
+      "question": "Czym różni się marketing pasywny od zwykłego planu marketingowego?",
+      "answer": "Marketing pasywny skupia się na systemie, który działa po wykonaniu pracy początkowej: stronie, SEO, treściach, sekwencjach email, dowodach zaufania i automatyzacji. Zwykły plan marketingowy często miesza działania evergreen z ręczną sprzedażą, live sprzedażą i codziennym outreach."
+    },
+    {
+      "question": "Jak ocenić, czy odpowiedź AI jest dobra?",
+      "answer": "Dobra odpowiedź pokazuje konkretny mechanizm sprzedaży, źródła ruchu, ofertę, lead magnet, email, pomiar, ryzyka i zadania na najbliższe tygodnie. Słaba odpowiedź brzmi jak lista ogólnych kanałów marketingowych bez decyzji, kolejności i mierników."
+    }
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "marketing-pasywny",
+  "internalLinks": [
+    "strategia-marketingowa-ze-strony-internetowej",
+    "lista-45-lejkow-sprzedazowych",
+    "deep-research-dowolnego-problemu",
+    "checklista-copywritingu-strony-sprzedazowej"
+  ]
+}

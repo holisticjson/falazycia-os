@@ -1,0 +1,11 @@
+{
+    "gemini_api_key": "",
+    "gcp_service_account_json_path": "",
+    "gcp_project_id": "",
+    "gcp_location": "us-central1",
+    "gemini_engine": "ai_studio",
+    "stt_engine": "nvidia",
+    "nvidia_api_key": "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",
+    "nvidia_function_id": "b702f636-f60c-4a3d-a6f4-f3568c13bd7d",
+    "hotkey": "alt+q"
+}

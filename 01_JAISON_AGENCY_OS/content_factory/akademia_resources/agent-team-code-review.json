@@ -1,0 +1,67 @@
+{
+  "id": "agent-team-code-review",
+  "type": "prompt",
+  "title": "Agent team do code review projektu",
+  "description": "Stwórz zespół AI reviewerów, który sprawdzi projekt pod kątem bezpieczeństwa, wydajności i niezawodności.",
+  "shortDescription": "Zespół AI do code review projektu.",
+  "industry": "IT / Software / SaaS",
+  "industrySlug": "it-software-saas",
+  "application": "AI agenci i kod",
+  "applicationSlug": "ai-agenci-kod",
+  "tags": [
+    "Code review",
+    "Security"
+  ],
+  "url": "/prompty/ai-agenci-kod/agent-team-code-review/",
+  "active": true,
+  "views": 0,
+  "postedAt": "June 9, 2026",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Agent team do code review projektu",
+  "body": "Prompt pomaga uruchomić wielorole review kodu, w którym osobne role sprawdzają bezpieczeństwo, wydajność i niezawodność projektu.",
+  "usage": "Użyj tego prompta w Claude Code, OpenAI Codex albo innym agentowym środowisku codingowym, które ma dostęp do plików projektu i potrafi czytać repozytorium. Najlepiej sprawdza się przed większym mergem, deployem, refaktorem albo po zakończeniu feature. Wklej zakres review, stack, najważniejsze ryzyka i informację, czy review ma być tylko czytające, czy może proponować poprawki. Przed uruchomieniem ustal, czy agent ma tylko raportować ryzyka, czy może od razu przygotować poprawki. Przy pracy na produkcyjnym kodzie zacznij od trybu read only i wymagaj file level references.",
+  "prompt": "Stwórz zespół AI reviewerów do code review mojego projektu.\n\nPracuj w trybie ostrożnym: najpierw czytaj, potem diagnozuj, a dopiero po zgodzie proponuj zmiany.\n\nKontekst projektu:\n[opisz produkt, stack, backend, frontend, bazę danych, autoryzację, hosting, integracje i środowiska]\n\nZakres review:\n[foldery, moduły, pull request, diff albo feature]\n\nRyzyka szczególne:\n[bezpieczeństwo, płatności, dane osobowe, wydajność, deploy, koszty]\n\nStwórz 4 role:\n1. Security reviewer: szuka injection, auth bypass, data leaks, złych uprawnień, sekretów, problemów OWASP, braku walidacji i ryzyk w integracjach.\n2. Performance reviewer: szuka wolnych zapytań, N plus 1, dużych payloadów, braku cache, niepotrzebnych requestów, cold startów i kosztownych operacji.\n3. Reliability reviewer: szuka brakującego error handlingu, braku retry, race conditions, problemów z timeoutami, braku idempotency i niespójności danych.\n4. Product risk reviewer: sprawdza, czy kod realizuje właściwy user flow, czy edge casey są obsłużone i czy zmiana nie psuje doświadczenia użytkownika.\n\nKażdy finding zapisz w formacie:\nseverity, obszar, plik albo moduł, opis problemu, dowód, sposób odtworzenia, rekomendowana poprawka, ryzyko poprawki i test, który powinien istnieć.\n\nNa końcu przygotuj:\n1. Listę CRITICAL i HIGH do naprawy przed mergem.\n2. Listę MEDIUM i LOW do backlogu.\n3. Pytania do właściciela.\n4. Decyzję: merge, merge po poprawkach, albo blokada.\n\nFormat końcowy:\nexecutive summary, tabela CRITICAL i HIGH, tabela MEDIUM i LOW, testy do dodania, decyzje architektoniczne, pytania do właściciela, rekomendacja merge.\n\nKażdy reviewer ma pracować niezależnie, a potem wskazać konflikty między swoimi rekomendacjami. Jeżeli nie masz dostępu do plików, poproś o diff albo strukturę projektu. Nie zmyślaj luk bezpieczeństwa bez dowodu. Jeśli widzisz tylko hipotezę, oznacz ją jako hipotezę i napisz, jak ją sprawdzić. Review ma priorytetyzować realne ryzyka produkcyjne.",
+  "order": 3,
+  "published": true,
+  "seoTitle": "Agent team do code review projektu | Akademia.pl",
+  "seoDescription": "Prompt do uruchomienia zespołu agentów code review, który sprawdza security, performance i reliability w projekcie technologicznym.",
+  "keywords": [
+    "agent team code review",
+    "Claude Code",
+    "OpenAI Codex",
+    "security review",
+    "performance review"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "ai-agenci-kod",
+  "internalLinks": [
+    "agent-team-budowa-feature",
+    "analiza-umowy-przed-podpisaniem",
+    "wywiad-przed-startem-projektu"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy używać agent team do code review?",
+      "answer": "Najlepiej przed większym mergem, deployem, refaktorem albo po zakończeniu funkcji. Prompt pomaga wymusić review z kilku perspektyw, zamiast jednej ogólnej opinii o kodzie."
+    },
+    {
+      "question": "Czy prompt wymaga dostępu do repozytorium?",
+      "answer": "Najlepiej działa w narzędziu z dostępem do repozytorium, takim jak Codex albo Claude Code. Bez dostępu do plików można użyć go jako szablonu, ale trzeba wkleić diff, pliki albo opis architektury."
+    },
+    {
+      "question": "Jakie role są w tym review?",
+      "answer": "Prompt uruchamia role bezpieczeństwa, wydajności, niezawodności i ryzyka produktowego. Dzięki temu review nie skupia się wyłącznie na składni albo stylu kodu."
+    },
+    {
+      "question": "Jak powinny wyglądać findings w review?",
+      "answer": "Każdy finding powinien mieć severity, obszar, dowód, sposób odtworzenia, rekomendowaną poprawkę i test. Bez tego review jest trudne do wykonania i łatwo zmienia się w ogólne uwagi."
+    },
+    {
+      "question": "Czy agent powinien od razu poprawiać kod?",
+      "answer": "Nie zawsze. Przy dużym review najpierw powinien czytać i raportować. Poprawki warto robić po decyzji właściciela, szczególnie gdy mogą zmienić architekturę, bezpieczeństwo albo zachowanie produktu."
+    }
+  ]
+}

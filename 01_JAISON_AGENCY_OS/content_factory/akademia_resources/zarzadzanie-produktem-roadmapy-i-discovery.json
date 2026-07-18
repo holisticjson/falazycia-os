@@ -1,0 +1,152 @@
+{
+  "id": "zarzadzanie-produktem-roadmapy-i-discovery",
+  "type": "checklist",
+  "title": "Zarządzanie produktem: roadmapy i discovery",
+  "description": "Checklista nowoczesnego zarządzania produktem: Working Backwards z Amazona, Opportunity Solution Tree Teresy Torres, roadmapa Now, Next, Later Janny Bastow, wychodzenie z pułapki budowania Melissy Perri, Shape Up Ryana Singera oraz model GIST z miernikiem pewności.",
+  "shortDescription": "Buduj produkt od klienta i wyniku, a nie od listy funkcji, z roadmapą bez dat i prawdziwym discovery.",
+  "industry": "IT / Software / SaaS",
+  "industrySlug": "it-software-saas",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Zarządzanie produktem",
+    "Roadmapa"
+  ],
+  "url": "/checklisty/strategia-decyzje/zarzadzanie-produktem-roadmapy-i-discovery/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Zarządzanie produktem: roadmapy i discovery",
+  "body": "Większość zespołów produktowych myli bycie zajętym z byciem produktywnym i mierzy sukces liczbą dostarczonych funkcji zamiast wartością dla klienta. Ta checklista zbiera frameworki, które to odwracają: Working Backwards z Amazona, czyli start od press release i FAQ, Opportunity Solution Tree Teresy Torres do prawdziwego discovery, roadmapę Now, Next, Later Janny Bastow bez dat, wychodzenie z pułapki budowania Melissy Perri oraz Shape Up Ryana Singera jako alternatywę dla Agile. Dokłada model GIST z miernikiem pewności. Wspólna zasada brzmi: zaczynasz od klienta i wyniku, a roadmapa to prototyp strategii do iterowania, nie obietnica z datami.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojego produktu, zespołu i obecnej roadmapy. Poproś AI, żeby pomogło napisać dokument Working Backwards, czyli press release i FAQ dla planowanej funkcji, oraz zbudować Opportunity Solution Tree, rozróżniając przestrzeń problemu od przestrzeni rozwiązań. Następnie niech AI przekształci Twoją roadmapę z dat na format Now, Next, Later, oceni pomysły miernikiem pewności GIST i wskaże, gdzie wpadasz w pułapkę budowania, czyli mierzysz liczbę funkcji zamiast wyników dla klienta.",
+  "checklistSections": [
+    {
+      "title": "Working Backwards, Amazon",
+      "items": [
+        "Zaczynasz od press release i FAQ, a nie od specyfikacji technicznej, co wymusza myślenie o kliencie i rezultacie, zanim cokolwiek zbudujesz.",
+        "Press release opisuje gotowy produkt oczami klienta: jaki problem rozwiązuje i jaką zmianę przynosi.",
+        "FAQ odpowiada na trudne pytania o produkt, zanim zaczniesz go budować.",
+        "Zasada: zaczynasz od klienta i cofasz się do technologii, nigdy odwrotnie."
+      ]
+    },
+    {
+      "title": "Opportunity Solution Tree, Teresa Torres",
+      "items": [
+        "Budujesz drzewo: rezultat na górze, pod nim szanse, czyli problemy klienta, pod nimi rozwiązania, a pod nimi testy założeń.",
+        "Rozróżniasz przestrzeń problemu od przestrzeni rozwiązań, bo 98 procent ludzi myślących, że opisuje szanse, opisuje rozwiązania.",
+        "Stosujesz wywiad oparty o historie: opowiedz o ostatnim razie, gdy, zamiast pytań bezpośrednich.",
+        "Utrzymujesz stały rytm rozmów z klientami, minimum cotygodniowo."
+      ]
+    },
+    {
+      "title": "Roadmapa Now, Next, Later, Janna Bastow",
+      "items": [
+        "Zamiast osi czasu z datami stosujesz trzy kolumny: Now, czyli nad czym pracujemy teraz, Next, czyli co planujemy następnie, Later, czyli co jest na horyzoncie.",
+        "Zero dat i zero zobowiązań na przyszłość, bo to obniża presję i fałszywe obietnice.",
+        "Roadmapa to prototyp strategii, a wartość leży w procesie roadmapowania, nie w samym dokumencie.",
+        "Traktujesz roadmapę jak prototyp do iterowania, nie jak obietnicę."
+      ]
+    },
+    {
+      "title": "Wyjście z pułapki budowania, Melissa Perri",
+      "items": [
+        "Pułapka budowania to mierzenie sukcesu liczbą dostarczonych funkcji zamiast wartością dla klienta.",
+        "Wyjście to wyniki ponad produkcję, czyli outcomes over outputs.",
+        "Budujesz kaskadę: wizja, potem intencje strategiczne, potem działania, każdy poziom z innym horyzontem czasowym.",
+        "Pamiętasz, że mylenie zajętego z produktywnym to największy błąd organizacji produktowych."
+      ]
+    },
+    {
+      "title": "Shape Up, Ryan Singer",
+      "items": [
+        "Appetites zamiast deadline'ów: pytasz ile chcemy na to poświęcić, zamiast ile to zajmie.",
+        "Pracujesz w 6-tygodniowych cyklach ze zmiennym zakresem.",
+        "Shaping, czyli kształtowanie pracy, robisz przed przydzieleniem zadania do zespołu, więc zespół dostaje ukształtowane problemy, nie bilety.",
+        "Hill Charts wizualizują postęp: faza odkrywania, jak coś zrobić, oraz faza wykonania.",
+        "Pamiętasz, że problemem Agile jest brak kształtowania pracy, a nie same sprinty."
+      ]
+    },
+    {
+      "title": "Model GIST i miernik pewności, Itamar Gilad",
+      "items": [
+        "GIST łączy cztery poziomy: cele, pomysły, kroki, zadania, spinając OKR-y, pomysły, eksperymenty i wykonanie.",
+        "Miernik pewności: skala od 0,1, czyli opinia, do 0,9, czyli potwierdzone eksperymentem.",
+        "Nigdy nie stawiasz dużych zasobów na pomysły o niskiej pewności.",
+        "Drzewo metryk rozkłada North Star na sub-metryki, a przejście z decyzji opartych o opinie na oparte o dowody wymaga systemu."
+      ]
+    }
+  ],
+  "example": "Najlepsza dla product managera i foundera, który chce przejść od dostarczania funkcji do dostarczania wyników: zrobić prawdziwe discovery, ułożyć roadmapę bez dat i podejmować decyzje na dowodach.",
+  "order": 96,
+  "published": true,
+  "seoTitle": "Zarządzanie produktem, roadmapy i discovery, checklista frameworków",
+  "seoDescription": "Nowoczesny product management: Working Backwards, Opportunity Solution Tree, roadmapa Now Next Later, wyjście z pułapki budowania, Shape Up i model GIST.",
+  "keywords": [
+    "zarządzanie produktem",
+    "product management",
+    "roadmapa",
+    "opportunity solution tree",
+    "discovery produktowe"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "zarzadzanie-produktem",
+  "internalLinks": [
+    "budowanie-produktow-ai",
+    "dopasowanie-produktu-do-rynku-pmf",
+    "strategia-firmy-i-podejmowanie-decyzji"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Working Backwards, Opportunity Solution Tree, roadmapy i Shape Up",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło frameworków produktowych przytoczonych w checkliście, do dalszego posłuchania."
+    },
+    {
+      "title": "Continuous Discovery Habits i Opportunity Solution Tree",
+      "author": "Teresa Torres",
+      "url": "https://www.producttalk.org",
+      "relation": "Odniesienie do drzewa szans i ciągłego discovery, źródło do dalszego czytania."
+    },
+    {
+      "title": "Escaping the Build Trap",
+      "author": "Melissa Perri",
+      "url": "https://melissaperri.com",
+      "relation": "Książka o wynikach ponad produkcję, źródło do dalszego czytania."
+    },
+    {
+      "title": "Shape Up, metoda pracy nad produktem",
+      "author": "Ryan Singer, Basecamp",
+      "url": "https://basecamp.com/shapeup",
+      "relation": "Darmowa książka o appetites, cyklach i kształtowaniu pracy, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest metoda Working Backwards Amazona?",
+      "answer": "To metoda Amazona, w której zanim cokolwiek zbudujesz, piszesz press release i FAQ gotowego produktu. Press release opisuje produkt oczami klienta i zmianę, jaką przynosi, a FAQ odpowiada na trudne pytania. Wymusza to myślenie o kliencie i rezultacie od samego początku, bo zaczynasz od klienta i cofasz się do technologii, nigdy odwrotnie."
+    },
+    {
+      "question": "Czym jest Opportunity Solution Tree?",
+      "answer": "To wizualne drzewo Teresy Torres, które porządkuje discovery: na górze jest rezultat, pod nim szanse, czyli problemy klienta, pod nimi rozwiązania, a najniżej testy założeń. Najważniejsze jest rozróżnienie przestrzeni problemu od przestrzeni rozwiązań, bo większość ludzi, którzy myślą, że nazywają szanse, w rzeczywistości od razu opisuje rozwiązania."
+    },
+    {
+      "question": "Dlaczego roadmapa bez dat jest lepsza?",
+      "answer": "Roadmapa Now, Next, Later Janny Bastow rezygnuje z dat na rzecz trzech horyzontów: teraz, następnie i na później. Dzięki temu nie składasz fałszywych obietnic na przyszłość i traktujesz roadmapę jak prototyp strategii do iterowania, a nie jak sztywny harmonogram. Cała wartość leży w procesie roadmapowania, czyli w rozmowie o priorytetach, nie w samym dokumencie."
+    },
+    {
+      "question": "Czym jest pułapka budowania produktu?",
+      "answer": "Pułapka budowania, opisana przez Melissę Perri, to mierzenie sukcesu liczbą dostarczonych funkcji zamiast wartością dla klienta. Organizacje w niej tkwiące mylą bycie zajętym z byciem produktywnym. Wyjście to wyniki ponad produkcję oraz kaskada od wizji, przez intencje strategiczne, po konkretne działania, gdzie każdy poziom ma inny horyzont czasowy."
+    },
+    {
+      "question": "Czym różni się Shape Up od Agile?",
+      "answer": "Shape Up Ryana Singera stawia na appetites zamiast deadline'ów, czyli pyta, ile chcemy na coś poświęcić, a nie ile to zajmie, oraz na sześciotygodniowe cykle ze zmiennym zakresem. Kluczem jest kształtowanie pracy przed przydzieleniem jej zespołowi, żeby dostawał ukształtowane problemy, a nie gotowe bilety. To właśnie brak kształtowania jest częstym problemem w Agile."
+    }
+  ]
+}

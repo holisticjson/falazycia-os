@@ -1,0 +1,68 @@
+{
+  "id": "doskonalosc-funkcji-ponad-zgode",
+  "type": "prompt",
+  "title": "Doskonałość funkcji ponad zgodę",
+  "description": "Ustaw AI w roli wymagającego partnera, który ma dopilnować jakości funkcji, a nie tylko potwierdzać Twoje pomysły.",
+  "shortDescription": "Zmuś AI do obrony jakości funkcji.",
+  "industry": "IT / Software / SaaS",
+  "industrySlug": "it-software-saas",
+  "application": "AI agenci i kod",
+  "applicationSlug": "ai-agenci-kod",
+  "tags": [
+    "Jakość",
+    "Produkt"
+  ],
+  "url": "/prompty/ai-agenci-kod/doskonalosc-funkcji-ponad-zgode/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Doskonałość funkcji ponad zgodę",
+  "body": "Mini prompt do pracy nad funkcją, produktem albo kodem, gdy chcesz, żeby AI broniło jakości użytkownika końcowego, a nie tylko realizowało polecenia bez dyskusji.",
+  "usage": "Użyj tego prompta w Codex, Claude Code, ChatGPT albo innym narzędziu AI przed implementacją funkcji, po review albo podczas planowania zmiany w produkcie. Wklej opis funkcji, użytkownika, cel biznesowy, ekran, fragment kodu, ograniczenia techniczne i decyzje, które już zapadły. Model ma zakwestionować założenia, obronić jakość użytkownika końcowego i wskazać, co trzeba poprawić przed wdrożeniem. Dobrze działa także jako końcowe review przed publikacją strony, automatyzacji albo maila. Wtedy zamiast plików kodu wklej treść, ekran, cel użytkownika i oczekiwane zachowanie.",
+  "prompt": "Twoim zadaniem nie jest zgodzić się ze mną. Twoim zadaniem jest obronić jakość funkcji, z której będą korzystać prawdziwi użytkownicy.\n\nTraktuj moje założenia jako hipotezy.\n\nMateriał do oceny:\n[wklej opis funkcji, ekran, diff, plan albo decyzję]\n\nKontekst użytkownika:\n[kto używa, po co, w jakim momencie]\n\nCel biznesowy:\n[co funkcja ma zmienić]\n\nOgraniczenia:\n[czas, technologia, ryzyka, zależności]\n\nNajpierw podsumuj funkcję w 5 zdaniach. Potem wypisz założenia, które przyjmuję bez dowodu.\n\nNastępnie oceń funkcję w 7 obszarach:\n1. Wartość dla użytkownika.\n2. Prostota.\n3. Niezawodność.\n4. Bezpieczeństwo.\n5. Dostępność.\n6. Utrzymanie.\n7. Ryzyko regresji.\n\nDla każdego obszaru daj ocenę od 1 do 10, uzasadnienie i jedną konkretną poprawkę. Wskaż także 5 edge caseów, 5 pytań do właściciela produktu, minimalny plan testów i decyzję, czy funkcja jest gotowa do wdrożenia.\n\nFormat odpowiedzi:\nkrótka diagnoza, tabela ocen, najważniejsze ryzyka, lepsza wersja rozwiązania, testy, pytania do właściciela, decyzja końcowa.\n\nPrzy każdym ryzyku dopisz, jak mogłoby objawić się na produkcji i jaki test może je złapać. Nie zwiększaj zakresu bez powodu. Jeśli proponujesz uproszczenie, pokaż dokładnie, co usuwasz i dlaczego użytkownik nic ważnego nie traci.\n\nDodaj sekcję granice jakości:\n1. Minimalny poziom, poniżej którego funkcja nie powinna trafić do użytkowników.\n2. Poziom wystarczająco dobry na pierwszą wersję.\n3. Poprawki konieczne.\n4. Elementy, które byłyby już perfekcjonizmem.\n\nJeżeli proponujesz zmianę, napisz, czy poprawia ona wynik użytkownika, obniża ryzyko, czy tylko zwiększa elegancję rozwiązania. Jeśli funkcja powinna zostać zatrzymana, napisz to wprost i podaj minimalny warunek, po którym można wrócić do implementacji.",
+  "example": "Dobry do review funkcji, dopracowania UX, oceny architektury, planowania produktu i sytuacji, w których AI ma być wymagającym partnerem, a nie wykonawcą bez własnej oceny.",
+  "order": 19,
+  "published": true,
+  "seoTitle": "Doskonałość funkcji ponad zgodę, prompt AI | Akademia.pl",
+  "seoDescription": "Mini prompt, który ustawia AI w roli wymagającego partnera do oceny jakości funkcji, ryzyk, UX, bezpieczeństwa i utrzymania produktu.",
+  "keywords": [
+    "prompt do jakości funkcji",
+    "AI code review",
+    "product quality",
+    "UX review",
+    "ocena funkcji"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "ai-agenci-kod",
+  "internalLinks": [
+    "agent-team-code-review",
+    "audyt-powtarzalnych-workflow-w-codex",
+    "perspektywa-product-ownera"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy używać prompta o doskonałości funkcji?",
+      "answer": "Użyj go przed wdrożeniem ważnej funkcji, przy review kodu, po pierwszej wersji makiety albo wtedy, gdy czujesz, że model zbyt szybko zgadza się z Twoimi pomysłami. Prompt przesuwa rozmowę z wykonania polecenia na jakość decyzji."
+    },
+    {
+      "question": "Czy ten prompt pasuje tylko do kodowania?",
+      "answer": "Nie. Można go stosować do funkcji produktowej, procesu, ekranu aplikacji, strony internetowej, automatyzacji albo maila. Najważniejsze jest to, że AI ma bronić użytkownika końcowego i jakości rozwiązania."
+    },
+    {
+      "question": "Jakie dane wkleić razem z tym promptem?",
+      "answer": "Najlepiej wklej opis funkcji, cel biznesowy, docelowego użytkownika, aktualne ograniczenia, link do makiety albo fragment kodu. Im więcej kontekstu, tym lepiej AI oceni ryzyka, kompromisy i możliwe poprawki."
+    },
+    {
+      "question": "Czy AI ma wtedy krytykować każdą decyzję?",
+      "answer": "Nie chodzi o krytykę dla krytyki. Model ma sprawdzić, czy decyzje są dobre dla użytkownika, jakości i utrzymania. Jeśli coś jest dobre, powinien to potwierdzić. Jeśli coś jest słabe, powinien powiedzieć to wprost."
+    },
+    {
+      "question": "Jaki powinien być wynik pracy z tym promptem?",
+      "answer": "Dobry wynik to lista ryzyk, lepsza propozycja rozwiązania, konkretne kompromisy, rekomendowany wariant i jasne uzasadnienie. Prompt powinien pomagać podjąć mądrzejszą decyzję, a nie tylko wygenerować więcej tekstu."
+    }
+  ]
+}

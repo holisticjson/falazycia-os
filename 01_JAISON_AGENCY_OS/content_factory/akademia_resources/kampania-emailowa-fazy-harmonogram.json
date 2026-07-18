@@ -1,0 +1,112 @@
+{
+  "id": "kampania-emailowa-fazy-harmonogram",
+  "type": "checklist",
+  "title": "Kampania emailowa: fazy i harmonogram 12 maili",
+  "description": "Checklista faz kampanii emailowej od pre-launch do final day, z gotowym harmonogramem dwunastu maili, celem, długością i tonem każdej fazy oraz zasadami częstotliwości i monitoringu unsubscribe rate.",
+  "shortDescription": "Zaplanuj kampanię mailową fazami, od pre-launch po final day, według gotowego harmonogramu 12 maili.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Email marketing",
+    "Kampania sprzedażowa"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/kampania-emailowa-fazy-harmonogram/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Kampania emailowa: fazy i harmonogram 12 maili",
+  "body": "Skuteczna kampania mailowa to nie zbiór przypadkowych maili, tylko sekwencja faz, z których każda ma inny cel, ton i długość. Ta checklista najpierw pomaga określić fazę, bo to ona decyduje o technikach, a potem podaje gotowy harmonogram dwunastu maili od pre-launch przez launch day, value, engagement, objections i urgency po final day. Dokłada zasady częstotliwości i monitoring unsubscribe rate, żebyś wiedział, kiedy przyspieszyć, a kiedy zwolnić. Final day to najważniejszy moment, bo zapada na nim większość zakupów, więc plan domyka się intensywnym finiszem.",
+  "usage": "Skopiuj tę checklistę do ChatGPT, Claude albo Gemini razem z opisem swojej oferty, datą startu i deadline kampanii oraz wielkością listy. Poproś AI, żeby rozpisało pełny harmonogram dwunastu maili na konkretne daty i godziny, przypisało każdemu mailowi fazę, cel, długość i ton z checklisty oraz zaznaczyło, gdzie wchodzi resend do non-openers. Następnie niech AI sprawdzi, czy częstotliwość nie jest zbyt agresywna, i zaproponuje, które maile final day wysłać rano, po południu i tuż przed deadline, bo na finiszu zapada najwięcej decyzji.",
+  "checklistSections": [
+    {
+      "title": "Określenie fazy, krytyczne przed pisaniem",
+      "items": [
+        "Określasz fazę kampanii przed pisaniem maila, bo faza decyduje o tonie, długości i technikach.",
+        "Pre-launch, 2 maile: przypomnienia o evencie albo webinarze, 100 do 200 słów, zero sprzedaży, fokus na jedną akcję, czyli zapis na event.",
+        "Launch day, 1 mail, najważniejszy: oficjalny start, pełna oferta, cena, bonusy, deadline i gwarancja, 500 do 800 słów, CTA powtórzony trzy razy.",
+        "Value, dni 2 do 4, 3 maile: storytelling, edukacja, case studies, 500 do ponad 1000 słów, subtelna sprzedaż, CTA na końcu. Najdłuższe maile osiągają 43 do 49 procent open rate dla premium audience.",
+        "Engagement, dni 4 do 6, 3 maile: pytania, dialog, origin story, 300 do 500 słów, zaproszenie do odpowiedzi, lekka pilność.",
+        "Objections, dni 6 do 7, 1 mega mail: 10 do 12 obiekcji rozbrojonych, 700 do ponad 1000 słów, transparentność typu dla kogo to nie jest, proof stacking.",
+        "Urgency, ostatnie 48 godzin, 3 maile: FOMO, wyzwalacze behawioralne, milestone, 200 do 400 słów, 3 do 6 warstw urgency naraz.",
+        "Final, ostatnie godziny, 1 mail: to ostatni mail w tej sprawie, empatia i finalność, 150 do 300 słów, zero nowych argumentów."
+      ]
+    },
+    {
+      "title": "Harmonogram wysyłek, wzorzec 12 maili",
+      "items": [
+        "Mail 00, pre-launch: przypomnienie o evencie, konkretna godzina i obietnica wartości.",
+        "Mail 01, pre-launch: event startuje teraz albo ostatnie minuty.",
+        "Mail 02, launch day: oficjalny start, cena, bonusy, deadline, gwarancja, CTA trzy razy.",
+        "Mail 03, value, dzień plus 1: story albo case study plus edukacja, subtelne CTA.",
+        "Mail 04, value, dzień plus 2: ostrzeżenie branżowe albo insight z rynku.",
+        "Mail 05, engagement, dzień plus 4: pytanie co Cię blokuje, zaproszenie do odpowiedzi.",
+        "Mail 06, engagement, dzień plus 5: bezpośrednie pytanie, dialog.",
+        "Mail 07, engagement albo story, dzień plus 6: origin story, dlaczego tu jesteś.",
+        "Mail 08, objections, dzień plus 8: mega mail, 10 do 12 obiekcji rozbrojonych.",
+        "Mail 09, urgency, final day rano: milestone plus aktualizacja social proof.",
+        "Mail 10, urgency, final day popołudnie: tracking behawioralny do segmentu kliknął ale nie kupił.",
+        "Mail 11, final, final day wieczór: ostatnie przypomnienie, 2 do 4 godziny przed deadline.",
+        "Resend do non-openers: 24 do 48 godzin po kluczowych mailach, zmieniony temat, raz na kampanię."
+      ]
+    },
+    {
+      "title": "Częstotliwość wysyłek",
+      "items": [
+        "Pre-launch: 1 do 2 maile, remindery.",
+        "Launch week: 1 mail dziennie, akceptowalne.",
+        "Urgency, ostatnie 48 godzin: 2 maile dziennie, w porządku.",
+        "Final day: 2 do 3 maile, rano, popołudnie, ostatnia godzina.",
+        "Monitorujesz unsubscribe rate: poniżej 0,5 procent jest OK, powyżej 1 procent to alarm."
+      ]
+    }
+  ],
+  "example": "Najlepsza przy planowaniu kampanii sprzedażowej z deadline, na przykład launch kursu, warsztatu albo programu, gdy chcesz mieć gotowy plan maili zamiast pisać je od przypadku.",
+  "order": 68,
+  "published": true,
+  "seoTitle": "Kampania emailowa, fazy i harmonogram 12 maili krok po kroku",
+  "seoDescription": "Zaplanuj kampanię mailową fazami: pre-launch, launch, value, engagement, objections, urgency i final. Gotowy harmonogram 12 maili, długości, ton i częstotliwość.",
+  "keywords": [
+    "kampania emailowa",
+    "harmonogram maili",
+    "fazy kampanii",
+    "email marketing",
+    "launch kampanii"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "kampania-email",
+  "internalLinks": [
+    "tematy-maili-sprzedazowych",
+    "tresc-i-perswazja-maila-sprzedazowego",
+    "urgency-i-fomo-w-mailach"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Fazy kampanii emailowej i harmonogram 12 maili",
+  "faq": [
+    {
+      "question": "Ile maili powinna mieć kampania sprzedażowa?",
+      "answer": "Sprawdzony wzorzec to dwanaście maili rozłożonych na fazy: dwa pre-launch, jeden launch day, dwa value, trzy engagement, jeden mega mail z obiekcjami i trzy urgency plus final. Liczbę można skracać, ale każda faza pełni inną rolę, więc warto zachować ich kolejność i cel."
+    },
+    {
+      "question": "Dlaczego faza maila jest tak ważna?",
+      "answer": "Faza decyduje o tonie, długości i technikach. Mail launch day jest pełną ofertą na 500 do 800 słów z potrójnym CTA, a mail final to krótkie, empatyczne przypomnienie bez nowych argumentów. Pisanie maila bez określenia fazy prowadzi do niespójnej kampanii i słabszej konwersji."
+    },
+    {
+      "question": "Kiedy wysyłać maile w final day?",
+      "answer": "W final day wysyłasz zwykle dwa do trzech maili: rano milestone i social proof, po południu mail behawioralny do osób, które klikały, ale nie kupiły, oraz wieczorem ostatnie przypomnienie na dwie do czterech godzin przed deadline. To na finiszu zapada większość zakupów."
+    },
+    {
+      "question": "Jak często można wysyłać maile w kampanii?",
+      "answer": "W tygodniu launchu jeden mail dziennie jest akceptowalny, w ostatnich 48 godzinach można dwa dziennie, a w final day dwa do trzech. Kluczowe jest monitorowanie unsubscribe rate: poniżej 0,5 procent jest w porządku, powyżej 1 procent to sygnał, że coś poszło nie tak."
+    },
+    {
+      "question": "Czym jest resend do non-openers?",
+      "answer": "To ponowna wysyłka kluczowego maila do osób, które go nie otworzyły, z innym tematem, wykonana 24 do 48 godzin później i maksymalnie raz na kampanię. Pozwala odzyskać część otwarć bez męczenia osób, które mail już widziały, bo trafia tylko do segmentu non-openers."
+    }
+  ]
+}

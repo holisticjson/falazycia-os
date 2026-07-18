@@ -1,0 +1,253 @@
+{
+  "id": "audyt-marki-storytellingu-content-engine",
+  "type": "checklist",
+  "title": "Audyt marki, storytellingu i content engine",
+  "description": "Sprawdź, czy marka ma powód istnienia, historię dlaczego, wyjątkowy produkt, spójny przekaz, content engine i miejsce w życiu klienta.",
+  "shortDescription": "Checklista składników nowoczesnej marki i historii sprzedażowej.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-sprzedaz",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Branding",
+    "Storytelling"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/audyt-marki-storytellingu-content-engine/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Audyt marki, storytellingu i content engine",
+  "body": "Checklista pomaga sprawdzić, czy marka ma prawdziwy powód istnienia, aktywny problem do rozwiązania, historię dlaczego, wyjątkowy produkt, system contentu, głębokie zrozumienie klienta, spójny przekaz wizualny, dobrą obsługę i jasne miejsce w życiu odbiorcy. To autorskie opracowanie praktyczne inspirowane materiałami Nika Sharmy o storytellingu, performance brandingu i składnikach nowoczesnej marki.",
+  "usage": "Skopiuj checklistę i wklej ją do ChatGPT, Claude, Gemini albo własnego asystenta AI razem z opisem marki, stroną sprzedażową, ofertą, profilami social media, reklamami, opiniami klientów, najczęstszymi pytaniami i przykładami contentu. Poproś AI, żeby zrobiło audyt punkt po punkcie, wskazało najsłabsze elementy historii marki, ułożyło jedną wersję odpowiedzi na pytanie „dlaczego ta marka”, zaproponowało content engine na 30 dni i rozpisało 5 transformacji klienta, które warto pokazać w komunikacji.",
+  "checklistSections": [
+    {
+      "title": "Powód istnienia marki",
+      "items": [
+        "Napisz jednym zdaniem, jaki aktywny problem klienta rozwiązuje marka.",
+        "Sprawdź, czy problem istnieje teraz, czy jest tylko wygodną narracją marketingową.",
+        "Sprawdź, czy klient już szuka rozwiązania, płaci za obejścia albo narzeka na obecne alternatywy.",
+        "Odpowiedz brutalnie: gdyby marka zniknęła jutro, kto realnie miałby problem i dlaczego.",
+        "Sprawdź, czy marka nie jest kolejną kopią produktu, który już istnieje, bez jasnej różnicy.",
+        "Nazwij, co robicie inaczej: mechanizm, segment, doświadczenie, wynik, obsługa, dystrybucja, cena albo filozofia.",
+        "Zapisz, jak wyjaśniacie różnicę w 10 sekund osobie, która nigdy o Was nie słyszała.",
+        "Sprawdź, czy strona główna komunikuje problem i powód istnienia szybciej niż listę funkcji.",
+        "Usuń zdania, które brzmią jak każda inna marka w kategorii.",
+        "Jeśli nie potrafisz jasno powiedzieć, dlaczego marka istnieje, zatrzymaj pracę nad reklamami i dopracuj fundament."
+      ]
+    },
+    {
+      "title": "Historia dlaczego",
+      "items": [
+        "Odpowiedz na pytanie: dlaczego założyciel albo zespół spędza swoje dni właśnie na tym problemie.",
+        "Zapisz historię, którą klient może powtórzyć znajomemu, gdy ktoś spyta: dlaczego kupiłeś właśnie tam.",
+        "Sprawdź, czy odpowiedź klienta dotyczy tylko produktu, czy także marki, jej podejścia i przekonań.",
+        "Nazwij moment napięcia: co w rynku, branży albo życiu klienta było tak irytujące, że marka musiała powstać.",
+        "Pokaż, dlaczego stare rozwiązania nie wystarczają albo dlaczego dotychczasowy standard jest za słaby.",
+        "Zbuduj prostą sekwencję: problem, odkrycie, decyzja, unikalny mechanizm, rezultat dla klienta.",
+        "Sprawdź, czy historia jest konkretna, a nie generyczna: bez pustych haseł typu pasja, jakość i innowacja.",
+        "Dodaj do historii prawdziwe szczegóły: miejsce, osoba, obserwacja, klient, błąd, test, przełom albo koszt.",
+        "Przenieś historię nie tylko na stronę o nas, ale do reklam, landing pages, maili, social media i sprzedaży.",
+        "Sprawdź, czy nowa osoba przechodzi przez stronę jak przez podróż, a nie przez katalog sekcji."
+      ]
+    },
+    {
+      "title": "Genialny produkt, nie tylko dobry produkt",
+      "items": [
+        "Sprawdź, czy produkt jest wystarczająco dobry, żeby klient chciał go pokazać komuś innemu.",
+        "Nazwij jeden element produktu, który jest ponad standard kategorii i jest widoczny dla klienta.",
+        "Sprawdź, czy produkt ma efekt „wow” przed zakupem, w trakcie użycia albo po dostarczeniu.",
+        "Zapisz, co klient może powiedzieć po pierwszym użyciu: tego się nie spodziewałem, to było łatwiejsze, to rozwiązało konkretny problem.",
+        "Sprawdź, czy produkt generuje earned media: rekomendacje, screeny, recenzje, publikacje, zdjęcia, rozmowy albo polecenia.",
+        "Nie przykrywaj słabego produktu mocną historią. Najpierw popraw doświadczenie, potem skaluj narrację.",
+        "Wypisz najczęstsze punkty tarcia w produkcie i zdecyduj, które niszczą historię marki.",
+        "Sprawdź, czy produkt spełnia obietnicę szybciej niż konkurencja albo w bardziej zapamiętywalny sposób.",
+        "Zadbaj o detal, który klient może zauważyć bez instrukcji: opakowanie, onboarding, dashboard, mail, support, rytuał albo pierwszy wynik.",
+        "Jeśli produkt jest tylko dobry, zapisz, co musi się zmienić, żeby stał się wart opowiadania."
+      ]
+    },
+    {
+      "title": "Content engine: płatny, własny i earned",
+      "items": [
+        "Rozdziel content na płatny, własny i earned: reklamy, social media, strona, blog, podcast, PR, influencerzy, afiliacje i polecenia.",
+        "Sprawdź, czy każdy kanał powtarza dlaczego marki, a nie tylko produkt, cenę i promocję.",
+        "Dla płatnego contentu przygotuj testy kreacji, copy, hooków, landing pages i ofert, które budują markę podczas sprzedaży.",
+        "Dla własnych mediów zaplanuj tematy, które edukują, odpowiadają na pytania i prowadzą przez historię marki.",
+        "Dla earned media zaplanuj momenty, o których ktoś może chcieć mówić: wydarzenie, rekord, akcja społeczna, launch, partnerstwo, badanie albo nietypowy produkt.",
+        "Wykorzystaj twórców i influencerów, żeby opowiedzieli własną wersję: dlaczego ta marka ma dla nich sens.",
+        "Nie deleguj budowy całej marki na agencję. Zewnętrzni partnerzy mogą wzmacniać dystrybucję, ale momenty marki muszą powstawać wewnętrznie.",
+        "Sprawdź, czy landing page, reklama, mail i social mówią tym samym językiem, nawet jeśli mają różne cele.",
+        "Wykorzystaj feedback klientów jako źródło contentu: pytania, obiekcje, komentarze, historie, powody zakupu i powody rezygnacji.",
+        "Nie uciekaj wyłącznie w rabaty. Jeśli nie możesz obniżyć ceny, musisz lepiej wyjaśnić, dlaczego warto zapłacić."
+      ]
+    },
+    {
+      "title": "Głębokie zrozumienie klienta",
+      "items": [
+        "Wyjdź poza demografię. Opisz dzień klienta, jego rutynę, aplikacje, źródła informacji i sytuacje zakupowe.",
+        "Wypisz aplikacje, które klient ma na telefonie i z których korzysta naprawdę, nie deklaratywnie.",
+        "Wypisz, co klient konsumuje codziennie: newslettery, podcasty, kanały YouTube, TikTok, LinkedIn, grupy, fora, media, twórcy.",
+        "Sprawdź, skąd klient bierze aktualizacje branżowe i komu ufa przed podjęciem decyzji.",
+        "Opisz, co jeszcze jest w rutynie klienta: praca, zakupy, dojazdy, rodzina, sport, nauka, spotkania, raporty, narzędzia.",
+        "Zapisz momenty dnia albo tygodnia, w których problem jest najbardziej odczuwalny.",
+        "Wypisz język klienta: dokładne słowa, którymi opisuje problem, obawy, frustracje i oczekiwany rezultat.",
+        "Sprawdź, czy strona i reklamy używają języka klienta, czy języka firmy.",
+        "Zbierz pytania, które klient zadaje przed zakupem, i wpleć odpowiedzi w stronę, maile, reklamy i content.",
+        "Jeśli nie potrafisz opisać klienta od środka, zatrzymaj tworzenie kreacji i zrób research rozmów, opinii oraz komentarzy."
+      ]
+    },
+    {
+      "title": "Unikalny przekaz i wizualna tożsamość",
+      "items": [
+        "Sprawdź, czy marka ma coś więcej niż logo, kolor i font: rytm zdjęć, ton komunikacji, kompozycję, rekwizyty, słowa, gesty i zasady layoutu.",
+        "Zapisz 5 elementów, po których można rozpoznać markę bez widzenia logo.",
+        "Sprawdź, czy zdjęcie zrobione dziś i zdjęcie zrobione za 5 lat mogłyby należeć do tej samej marki.",
+        "Ustal, które elementy wizualne są stałe, a które mogą się zmieniać sezonowo albo kampanijnie.",
+        "Sprawdź spójność punktów styku: reklama, landing page, koszyk, mail, social, produkt, support, faktura, onboarding i opakowanie.",
+        "Nazwij, jak marka mówi: krótko czy narracyjnie, ekspercko czy prosto, spokojnie czy ostro, premium czy przystępnie.",
+        "Usuń komunikaty, które nie pasują do tożsamości marki nawet jeśli chwilowo podnoszą kliknięcia.",
+        "Sprawdź, czy wizualna estetyka pomaga zrozumieć historię, a nie tylko wygląda ładnie.",
+        "Zbuduj mini style guide: przykłady dobrego zdjęcia, złego zdjęcia, dobrego nagłówka, złego nagłówka, dobrego CTA i złego CTA.",
+        "Nie pozwól, żeby każda kampania wyglądała jak inna firma."
+      ]
+    },
+    {
+      "title": "Obsługa klienta i word of mouth",
+      "items": [
+        "Sprawdź, czy firma jest gotowa zrobić dobrze dla klienta nawet wtedy, gdy krótkoterminowo kosztuje to marżę.",
+        "Zapisz sytuacje, w których nie warto niszczyć word of mouth przez drobny koszt, spór albo sztywną procedurę.",
+        "Sprawdź, czy support ma prawo rozwiązywać problemy szybko, czy tylko odsyłać do regulaminu.",
+        "Zaprojektuj standard odpowiedzi po złym doświadczeniu: szybka reakcja, empatia, rozwiązanie, rekompensata, lekcja dla systemu.",
+        "Sprawdź, czy niezadowolony klient po zobaczeniu reklamy marki miałby ochotę ostrzegać innych.",
+        "Zbieraj powody kontaktu do supportu i przerabiaj je na poprawki produktu, FAQ, onboarding i content.",
+        "Pokazuj publicznie historie, w których marka stanęła po stronie klienta, jeśli są prawdziwe i nie naruszają prywatności.",
+        "Zadbaj o to, żeby zadowolony klient miał łatwy sposób polecenia marki 2 lub 3 kolejnym osobom.",
+        "Mierz nie tylko czas odpowiedzi, ale też jakość rozwiązania i wpływ na powrót klienta.",
+        "Jeśli support jest słaby, nie skaluj reklam. Najpierw napraw doświadczenie po zakupie."
+      ]
+    },
+    {
+      "title": "Miejsce marki w dniu albo życiu klienta",
+      "items": [
+        "Nazwij konkretną rolę produktu w życiu klienta: codzienny nawyk, tygodniowy rytuał, moment decyzji, ratunek w problemie, narzędzie pracy albo symbol statusu.",
+        "Sprawdź, czy produkt pojawia się w istniejącej rutynie klienta, czy wymaga zbudowania zupełnie nowego zachowania.",
+        "Jeśli wymaga nowego zachowania, zaprojektuj onboarding i przypomnienia, które wprowadzą produkt do dnia klienta.",
+        "Opisz sytuację wyzwalającą: kiedy klient ma pomyśleć „potrzebuję tego właśnie teraz”.",
+        "Sprawdź, czy produkt ma jasny powód powrotu: nowy wynik, postęp, oszczędność czasu, społeczność, status, wiedza, raport albo rytuał.",
+        "Nazwij, co produkt zastępuje w życiu klienta: inne narzędzie, konsultanta, notatki, chaos, ręczną pracę, ryzyko albo niepewność.",
+        "Sprawdź, czy marka może stać się częścią dnia przez mail, aplikację, społeczność, checklistę, raport, powiadomienie albo rytuał tygodniowy.",
+        "Nie zakładaj, że klient będzie pamiętał o marce. Zaprojektuj powód, żeby wracał.",
+        "Jeśli produkt nie pełni jasnej roli, koszt pozyskania klienta będzie rósł, bo marka nie jest w kategorii niezbędne.",
+        "Zapisz jedną rzecz, którą marka może robić regularnie, żeby być użyteczna przed zakupem i po zakupie."
+      ]
+    },
+    {
+      "title": "Transformacja klienta",
+      "items": [
+        "Nazwij transformację klienta w formule przed i po: z jakiego stanu wychodzi i do jakiego stanu dochodzi.",
+        "Użyj transformacji, które ludzie intuicyjnie rozumieją: chaos do kontroli, niepewność do decyzji, ręczna praca do automatyzacji, słaba sprzedaż do przewidywalnego lejka, niewidoczność do rozpoznawalności.",
+        "Sprawdź, czy transformacja jest widoczna, mierzalna albo możliwa do pokazania w historii klienta.",
+        "Zbierz 3 historie klientów pokazujące drogę od problemu do rezultatu.",
+        "Przy każdym case study pokaż punkt startu, napięcie, decyzję, mechanizm, przeszkodę i rezultat.",
+        "Nie opowiadaj tylko o funkcjach. Pokaż, kim klient może się stać po użyciu produktu.",
+        "Zamień opinie klientów w historie transformacji, nie tylko cytaty zadowolenia.",
+        "Sprawdź, czy reklamy pokazują zmianę, a nie tylko ofertę.",
+        "Pokaż transformację w content engine: posty, maile, landing pages, demo, webinar, social proof i materiały sprzedażowe.",
+        "Nie obiecuj transformacji, której produkt nie dowozi. Historia musi być ambitna, ale prawdziwa."
+      ]
+    },
+    {
+      "title": "Audyt strony i ścieżki sprzedaży",
+      "items": [
+        "Sprawdź, czy nowa osoba na stronie od razu rozumie, co to jest, dla kogo jest, dlaczego istnieje i dlaczego warto czytać dalej.",
+        "Sprawdź, czy strona odpowiada na pytania klienta w kolejności, w jakiej naturalnie się pojawiają.",
+        "Przejdź stronę jak red carpet: problem, dlaczego marka, produkt, mechanizm, dowód, pytania, oferta, decyzja.",
+        "Sprawdź, czy sekcje są edukujące i prowadzące, a nie tylko ładne.",
+        "Dodaj odpowiedzi na najczęstsze pytania klientów w miejscach, gdzie pojawia się wątpliwość.",
+        "Oddziel ścieżkę nowego klienta od ścieżki obecnego klienta, jeśli obecni klienci chcą tylko szybko wrócić, dokupić albo odnowić dostęp.",
+        "Sprawdź, czy reklama prowadzi do strony, która kontynuuje tę samą historię, a nie zaczyna od zera.",
+        "Sprawdź, czy maile po zapisie i po zakupie wzmacniają dlaczego marki, zamiast tylko potwierdzać transakcję.",
+        "Wykorzystaj nieużywane miejsca kontaktu: stopka maila, opakowanie, potwierdzenie, onboarding, faktura, ekran sukcesu, SMS i panel klienta.",
+        "Zapisz 5 miejsc w ścieżce, gdzie można dodać historię marki bez wydłużania procesu zakupu."
+      ]
+    },
+    {
+      "title": "Plan pracy z AI po audycie",
+      "items": [
+        "Poproś AI o ocenę każdego obszaru w skali 1 do 10 i uzasadnienie na podstawie dostarczonych materiałów.",
+        "Poproś AI o listę 10 braków, które najbardziej blokują zrozumienie marki przez nowego klienta.",
+        "Poproś AI o jedną krótką historię dlaczego, którą klient mógłby powtórzyć znajomemu.",
+        "Poproś AI o 5 transformacji klienta, które warto pokazać w reklamach, case studies i landing pages.",
+        "Poproś AI o 30 dni content engine z podziałem na paid, owned i earned.",
+        "Poproś AI o 10 pytań klientów, które powinny trafić na stronę albo do FAQ.",
+        "Poproś AI o audyt spójności przekazu między stroną, reklamą, mailem i social media.",
+        "Poproś AI o wskazanie elementów, które brzmią generycznie i mogłyby należeć do dowolnej marki.",
+        "Poproś AI o 5 pomysłów na momenty marki, które mogą uruchomić PR, influencerów albo organiczne udostępnienia.",
+        "Na końcu poproś AI o plan 7 dni: co poprawić najpierw, co wymaga researchu, co wymaga decyzji założyciela i czego nie da się naprawić copywritingiem."
+      ]
+    }
+  ],
+  "example": "Wklej do AI stronę marki, opisy produktów, reklamy, social media i opinie klientów. Poproś: przejdź przez checklistę, oceń każdy obszar, wskaż 10 największych luk, napisz historię dlaczego i zaproponuj content engine na 30 dni.",
+  "order": 27,
+  "published": true,
+  "seoTitle": "Audyt marki i storytellingu, checklista | Akademia.pl",
+  "seoDescription": "Checklista do audytu marki, storytellingu, content engine, powodu istnienia, zrozumienia klienta, obsługi i transformacji klienta.",
+  "keywords": [
+    "audyt marki",
+    "storytelling marki",
+    "content engine",
+    "strategia marki",
+    "performance branding"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "audyt-marki-storytelling",
+  "internalLinks": [
+    "badania-psychograficzne-deep-research",
+    "checklista-copywritingu-strony-sprzedazowej",
+    "strategia-marketingu-pasywnego",
+    "meta-ads-2026-grafiki-teksty"
+  ],
+  "sourceReferences": [
+    {
+      "title": "9 Secrets to Make Sure You Do Not Suck at Storytelling",
+      "author": "Nik Sharma",
+      "url": "https://www.nik.co/resources/9-secrets-to-make-sure-you-dont-suck-at-storytelling",
+      "relation": "Inspiracja strategiczna dla części o storytellingu, performance brandingu, stronie jako podróży klienta i content engine. Zasób Akademia.pl jest autorskim opracowaniem wdrożeniowym, nie kopią artykułu."
+    },
+    {
+      "title": "A Modern Day Brand Ingredient List",
+      "author": "Nik Sharma",
+      "url": "https://www.nik.co/",
+      "relation": "Odniesienie do publicznie pokazywanej listy składników nowoczesnej marki dostarczonej przez użytkownika jako screenshot. Zasób rozwija ją w autorską checklistę audytu marki."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy checklista audytu marki i storytellingu?",
+      "answer": "Checklista pomaga sprawdzić, czy marka ma prawdziwy powód istnienia, historię dlaczego, wyjątkowy produkt, content engine, głębokie zrozumienie klienta i spójną komunikację. To audyt fundamentów marki przed skalowaniem reklam, social media i sprzedaży."
+    },
+    {
+      "question": "Jak użyć tej checklisty z AI?",
+      "answer": "Wklej checklistę do ChatGPT, Claude, Gemini albo własnego asystenta razem z opisem marki, stroną sprzedażową, reklamami, profilami social media, opiniami klientów i pytaniami od klientów. Poproś AI o ocenę każdego obszaru, luki w historii marki, propozycję content engine i listę poprawek."
+    },
+    {
+      "question": "Czym różni się historia marki od opisu produktu?",
+      "answer": "Opis produktu mówi, co produkt robi. Historia marki wyjaśnia, dlaczego marka istnieje, jaki aktywny problem rozwiązuje, dlaczego robi to inaczej i dlaczego klient miałby wybrać właśnie tę markę zamiast konkurencji."
+    },
+    {
+      "question": "Dlaczego content engine jest częścią audytu marki?",
+      "answer": "Bo marka nie rośnie tylko przez ładną stronę. Potrzebuje systemu treści: płatnych reklam, własnych mediów, social media, strony, newslettera, PR, influencerów, partnerstw i materiałów, które stale powtarzają dlaczego marki oraz edukują klienta."
+    },
+    {
+      "question": "Czy ta checklista nadaje się do marek usługowych i B2B?",
+      "answer": "Tak. Można jej używać dla e commerce, usług, B2B, SaaS, produktów cyfrowych, edukacji, społeczności i marek osobistych. W B2B szczególnie ważne są powód istnienia, wiarygodna historia, zrozumienie rutyny klienta i dowód, że produkt ma realną rolę w pracy odbiorcy."
+    },
+    {
+      "question": "Kiedy warto zrobić taki audyt?",
+      "answer": "Audyt warto zrobić przed dużą kampanią reklamową, redesignem strony, wejściem na nowy rynek, zmianą oferty, spadkiem konwersji albo wtedy, gdy marka wygląda dobrze, ale klient nie rozumie, dlaczego miałby wybrać właśnie ją."
+    }
+  ]
+}

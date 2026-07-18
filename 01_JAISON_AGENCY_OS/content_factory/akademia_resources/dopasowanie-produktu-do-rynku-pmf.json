@@ -1,0 +1,160 @@
+{
+  "id": "dopasowanie-produktu-do-rynku-pmf",
+  "type": "checklist",
+  "title": "Dopasowanie produktu do rynku: rozpoznanie i pomiar",
+  "description": "Checklista rozpoznawania i mierzenia dopasowania produktu do rynku, czyli Product-Market Fit: test Seana Ellisa o 40 procentach bardzo rozczarowanych, cztery poziomy dopasowania według Todda Jacksona, sygnały jakościowe, metryki ilościowe, ankiety, klienci referencyjni oraz retencja jako miara dopasowania.",
+  "shortDescription": "Sprawdź i zmierz, czy masz dopasowanie produktu do rynku, zamiast zgadywać po przychodzie.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Product-Market Fit",
+    "Walidacja"
+  ],
+  "url": "/checklisty/strategia-decyzje/dopasowanie-produktu-do-rynku-pmf/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Dopasowanie produktu do rynku: rozpoznanie i pomiar",
+  "body": "Dopasowanie produktu do rynku, po angielsku Product-Market Fit, w skrócie PMF, to moment, w którym produkt naprawdę rozwiązuje problem na tyle, że ludzie go używają, wracają i polecają. To nie jest stan zero-jedynkowy, tylko spektrum, więc warto wiedzieć, gdzie się jest. Ta checklista podaje konkretne sposoby rozpoznania i pomiaru dopasowania: test Seana Ellisa o czterdziestu procentach bardzo rozczarowanych, cztery poziomy dopasowania według Todda Jacksona, sygnały jakościowe bez ankiet, metryki ilościowe, ankiety, klientów referencyjnych oraz retencję jako najprostszą miarę. Bez tego pomiaru łatwo wziąć przychód z dobrego marketingu za realne dopasowanie.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z danymi o swoim produkcie, użytkownikach i ich zachowaniach. Poproś AI, żeby przygotowało ankietę testu Seana Ellisa z pytaniem, jak bardzo użytkownik byłby rozczarowany, gdyby produkt zniknął, i podpowiedziało, jak ją wysłać tylko do aktywnych użytkowników. Następnie niech AI oceni, na którym z czterech poziomów dopasowania jesteś, dobierze metryki do śledzenia, takie jak procent bardzo rozczarowanych, Net Revenue Retention, stosunek aktywnych dziennie do miesięcznie i retencja kohortowa, oraz wskaże, ilu klientów referencyjnych potrzebujesz, zanim uznasz, że masz dopasowanie.",
+  "checklistSections": [
+    {
+      "title": "Test Seana Ellisa, 40 procent bardzo rozczarowanych",
+      "items": [
+        "Zadajesz użytkownikom pytanie: jak bardzo byłbyś rozczarowany, gdyby produkt zniknął, z odpowiedziami bardzo, trochę, wcale, nie dotyczy.",
+        "Jeśli ponad 40 procent mówi bardzo rozczarowany, masz dopasowanie produktu do rynku.",
+        "Poniżej 40 procent iterujesz na produkcie, a nie na marketingu.",
+        "Pamiętasz, że dopasowanie to spektrum, nie stan zero-jedynkowy: możesz mieć 30 procent, czyli blisko, albo 15 procent, czyli daleko.",
+        "Potrzebujesz minimum 40 odpowiedzi do wiarygodnego wyniku, mniej to szum statystyczny.",
+        "Ankietujesz aktywnych użytkowników, czyli tych z ostatnich 2 tygodni, nie wszystkich zarejestrowanych."
+      ]
+    },
+    {
+      "title": "Cztery poziomy dopasowania, Todd Jackson",
+      "items": [
+        "Poziom 1 zalążkowy: pierwsza grupa klientów płaci i używa, ale nie wiadomo dlaczego, lejek jest nieszczelny, a churn wysoki.",
+        "Poziom 2 rozwijający się: jasny profil idealnego klienta, po angielsku ICP, powtarzalny lejek sprzedażowy i stabilizująca się retencja. 60 procent firm nie przechodzi tego poziomu.",
+        "Poziom 3 silny: klienci sami przychodzą, czyli inbound przewyższa outbound, działa poczta pantoflowa, a przychód rośnie bez proporcjonalnego wzrostu kosztów.",
+        "Poziom 4 ekstremalny: popyt przekracza podaż, klienci czekają w kolejce, następuje ekspansja na sąsiednie segmenty, jak Slack, Notion, Figma.",
+        "Gdy utkniesz na poziomie 1 albo 2, zmieniasz jedną z czterech zmiennych: persona, problem, obietnica albo produkt."
+      ]
+    },
+    {
+      "title": "Sygnały jakościowe dopasowania, bez ankiet",
+      "items": [
+        "Klienci sami polecają produkt bez zachęty, czyli organiczna poczta pantoflowa.",
+        "Klienci dzwonią albo piszą, gdy coś nie działa, bo zależy im na produkcie.",
+        "Próby usunięcia funkcji spotykają się z buntem użytkowników.",
+        "Klienci używają produktu w sposób, którego nie przewidziałeś.",
+        "Sprzedaż staje się łatwiejsza z każdym miesiącem, a lejek napełnia się sam."
+      ]
+    },
+    {
+      "title": "Metryki ilościowe pomiaru",
+      "items": [
+        "Wynik Seana Ellisa: procent bardzo rozczarowanych, cel powyżej 40 procent.",
+        "Net Revenue Retention powyżej 100 procent oznacza, że ekspansja przychodu przewyższa churn.",
+        "Stosunek aktywnych dziennie do miesięcznie, czyli DAU do MAU, powyżej 25 procent oznacza silne zaangażowanie, a benchmark Facebooka to około 50 procent.",
+        "Stosunek ruchu organicznego do płatnego: powyżej 50 procent organicznego oznacza, że dopasowanie daje darmową dystrybucję.",
+        "Time-to-Value: ile czasu od rejestracji do pierwszego aha momentu.",
+        "Activation rate: procent nowych użytkowników, którzy wykonują kluczową akcję w pierwszych 7 dniach."
+      ]
+    },
+    {
+      "title": "Ankiety jakościowe",
+      "items": [
+        "Ankieta Seana Ellisa, jak bardzo byłbyś rozczarowany, co 4 do 6 tygodni.",
+        "NPS, jak prawdopodobne, że polecisz, co kwartał.",
+        "Wywiad o zadaniach do wykonania, opowiedz o momencie decyzji o zakupie, najlepiej co tydzień, według Teresy Torres.",
+        "Ankieta przy odejściu, co mogliśmy zrobić lepiej, dla każdego odchodzącego klienta.",
+        "Ankieta wartości funkcji, która funkcja jest dla Ciebie najbardziej wartościowa, co kwartał."
+      ]
+    },
+    {
+      "title": "Sygnały behawioralne",
+      "items": [
+        "Użytkownicy używają produktu częściej, niż oczekiwałeś.",
+        "Użytkownicy sami zapraszają znajomych, czyli organiczna wiralność.",
+        "Zgłoszenia do supportu dotyczą jak zrobić więcej, a nie dlaczego nie działa.",
+        "Użytkownicy bronią się przed downgrade, wolą zapłacić więcej.",
+        "Rozmowy sprzedażowe przesuwają się z dlaczego my na jak zacząć."
+      ]
+    },
+    {
+      "title": "Klienci referencyjni",
+      "items": [
+        "B2B: zdobądź 6 do 8 klientów referencyjnych, zanim uznasz, że masz dopasowanie, według Christiana Idiodi z SVPG.",
+        "B2C: zdobądź 15 do 25 klientów referencyjnych.",
+        "Klient referencyjny płaci pełną cenę, używa produktu w realnej pracy i poleciłby go publicznie.",
+        "10 niezależnych płacących klientów to prawdziwe dopasowanie, według Jen Abel."
+      ]
+    },
+    {
+      "title": "Retencja jako miara dopasowania, Uri Levine",
+      "items": [
+        "Uri Levine z Waze: jedyna metryka dopasowania to retencja, bo jeśli ludzie wracają i używają, masz dopasowanie, a jeśli nie, to go nie masz.",
+        "Zakochaj się w problemie, nie w rozwiązaniu, bo problem jest gwiazdą polarną całej podróży startupu.",
+        "Mierzysz retencję kohortowo, nie średnią, i sprawdzasz, czy nowsze kohorty mają lepszą retencję.",
+        "Jeśli krzywa retencji się wypłaszcza, dopasowanie istnieje, a jeśli ciągle spada do zera, dopasowania nie ma.",
+        "70 procent użytkowników Wise przychodzi z poleceń, więc poczta pantoflowa to nie bonus, tylko główna strategia wzrostu."
+      ]
+    }
+  ],
+  "example": "Najlepsza dla założyciela i zespołu produktowego, który chce świadomie sprawdzić, czy ma dopasowanie produktu do rynku, i wybrać metryki do regularnego pomiaru, zamiast wnioskować o tym z samego przychodu.",
+  "order": 86,
+  "published": true,
+  "seoTitle": "Dopasowanie produktu do rynku, jak rozpoznać i zmierzyć PMF",
+  "seoDescription": "Rozpoznaj i zmierz dopasowanie produktu do rynku: test Seana Ellisa 40 procent, cztery poziomy Todda Jacksona, metryki, ankiety, klienci referencyjni i retencja.",
+  "keywords": [
+    "product market fit",
+    "dopasowanie produktu do rynku",
+    "test Seana Ellisa",
+    "walidacja produktu",
+    "retencja"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "product-market-fit",
+  "internalLinks": [
+    "jobs-to-be-done-i-optymalizacja-pmf",
+    "metryka-aktywacji-i-retencji",
+    "hierarchy-of-engagement-i-churn"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Rozpoznanie i pomiar dopasowania produktu do rynku",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie i wzroście",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło frameworków dopasowania produktu do rynku przytoczonych w checkliście, do dalszego posłuchania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest dopasowanie produktu do rynku?",
+      "answer": "Dopasowanie produktu do rynku, po angielsku Product-Market Fit, to stan, w którym produkt rozwiązuje realny problem na tyle dobrze, że ludzie go używają, wracają i polecają innym. To nie jest moment zero-jedynkowy, tylko spektrum, dlatego warto regularnie mierzyć, jak blisko jesteś, na przykład testem Seana Ellisa albo poziomami dopasowania."
+    },
+    {
+      "question": "Na czym polega test Seana Ellisa?",
+      "answer": "Pytasz aktywnych użytkowników, jak bardzo byliby rozczarowani, gdyby produkt zniknął, z odpowiedziami bardzo, trochę, wcale. Jeśli ponad czterdzieści procent wybiera bardzo rozczarowany, masz dopasowanie produktu do rynku. Poniżej tego progu lepiej iterować na produkcie niż na marketingu. Do wiarygodnego wyniku potrzeba minimum czterdziestu odpowiedzi od osób, które realnie korzystały z produktu."
+    },
+    {
+      "question": "Jakie są cztery poziomy dopasowania według Todda Jacksona?",
+      "answer": "Poziom pierwszy zalążkowy to pierwsi klienci bez jasnego dlaczego i wysoki churn. Poziom drugi rozwijający się to jasny profil klienta i powtarzalny lejek, na którym zatrzymuje się aż sześćdziesiąt procent firm. Poziom trzeci silny to inbound i poczta pantoflowa. Poziom czwarty ekstremalny to popyt większy niż podaż, jak w Slacku czy Figmie."
+    },
+    {
+      "question": "Dlaczego retencja jest najlepszą miarą dopasowania?",
+      "answer": "Bo pokazuje, czy ludzie realnie wracają do produktu, a nie tylko go raz wypróbowali. Jak mówi Uri Levine z Waze, jeśli użytkownicy wracają i używają, masz dopasowanie, a jeśli nie, to go nie masz. Retencję mierzysz kohortowo, a jej wypłaszczenie świadczy o dopasowaniu. Ciągły spadek do zera oznacza jego brak, nawet przy dobrych wynikach pozyskiwania."
+    },
+    {
+      "question": "Ilu klientów referencyjnych potrzeba, żeby uznać dopasowanie?",
+      "answer": "Dla B2B przyjmuje się zwykle od sześciu do ośmiu klientów referencyjnych, a dla B2C od piętnastu do dwudziestu pięciu. Klient referencyjny to taki, który płaci pełną cenę, używa produktu w realnej pracy i poleciłby go publicznie. Jen Abel dodaje, że dziesięciu niezależnych płacących klientów to już sygnał prawdziwego dopasowania."
+    }
+  ]
+}

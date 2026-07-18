@@ -1,0 +1,104 @@
+{
+    "autotab_step1.png": {
+        "step_number": "KROK 1",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "autotab_step2.png": {
+        "step_number": "KROK 2",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "autotab_step3.png": {
+        "step_number": "KROK 3",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "bleachbit_step1.png": {
+        "step_number": "KROK 4",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "bleachbit_step2.png": {
+        "step_number": "KROK 5",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "bleachbit_step3.png": {
+        "step_number": "KROK 6",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "deinstalacja_programow.png": {
+        "step_number": "KROK 7",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "dns_step1.png": {
+        "step_number": "KROK 8",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "dns_step2.png": {
+        "step_number": "KROK 9",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "dns_step3.png": {
+        "step_number": "KROK 10",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "dns_step4.png": {
+        "step_number": "KROK 11",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "speedtest_with_warp.png": {
+        "step_number": "KROK 12",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "speedtest_without_warp.png": {
+        "step_number": "KROK 13",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "warp_connected_win.png": {
+        "step_number": "KROK 14",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "warp_step1.png": {
+        "step_number": "KROK 15",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "warp_step2.png": {
+        "step_number": "KROK 16",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "warp_step3.png": {
+        "step_number": "KROK 17",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    }
+}

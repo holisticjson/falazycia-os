@@ -1,0 +1,418 @@
+{
+  "id": "strona-sprzedazowa-b2c",
+  "type": "checklist",
+  "title": "Strona sprzedażowa B2C, pełna checklista",
+  "description": "Kompletna checklista strony sprzedażowej B2C, od nagłówka i sekcji hero, przez problem, możliwości i mechanizm rozwiązania, po pricing, social proof, FAQ, transformację i sekcję przed publikacją, oparta na pięciu ramach copywritingu i mechanice zmiany przekonań.",
+  "shortDescription": "Zbuduj stronę sprzedażową B2C, która zmienia przekonania klienta, zanim pokażesz cenę.",
+  "industry": "E-commerce",
+  "industrySlug": "e-commerce",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Strona sprzedażowa",
+    "B2C"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/strona-sprzedazowa-b2c/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Strona sprzedażowa B2C, pełna checklista",
+  "body": "Checklista prowadzi przez pełną stronę sprzedażową B2C kierowaną do konsumenta, gdzie decyduje emocja, tożsamość i transformacja, a nie ROI komitetu zakupowego. Sercem jest mechanika zmiany przekonań w kolejności: najpierw pokazujesz, że rezultat jest możliwy w dzisiejszym świecie, potem że działa dla innych osób, a na końcu że zadziała dla konkretnego klienta mimo jego ograniczeń. Strona korzysta z pięciu ram copywritingu, PRESTO, AIDA, HOT, PAS i Message Match, i prowadzi od problemu, przez dowód i mechanizm rozwiązania, do oferty i ceny dopiero po zbudowaniu wartości. Każda sekcja, hero, problem, możliwości, korzyści, pricing, social proof, FAQ, transformacja, mobile i przed publikacją, ma swój zestaw punktów kontrolnych.",
+  "usage": "Skopiuj tę checklistę do ChatGPT, Claude albo Gemini razem z treścią swojej strony sprzedażowej B2C, opisem produktu, ceną, grupą docelową, listą obiekcji i posiadanymi dowodami, czyli opiniami, ocenami i liczbami klientów. Poproś AI, żeby przeszło stronę sekcja po sekcji i wskazało, których punktów brakuje, gdzie cena pojawia się przed zbudowaniem wartości, gdzie brakuje emocji i dowodu, oraz gdzie łamiesz kolejność zmiany przekonań świat, inni, klient. Następnie niech AI zaproponuje konkretne poprawki nagłówków, sekcji problemu, mechanizmu rozwiązania, oferty i CTA, dobierając odpowiednią ramę copywritingu spośród PRESTO, AIDA, HOT, PAS i Message Match.",
+  "checklistSections": [
+    {
+      "title": "Struktura strony i flow",
+      "items": [
+        "Nagłówek jest jasny, skupiony na korzyściach i przyciąga uwagę.",
+        "Podtytuł wzmacnia główną korzyść.",
+        "Pierwszy akapit nawiązuje do problemu odbiorcy i krótko przedstawia rozwiązanie.",
+        "Tytuł jest zoptymalizowany pod SEO według wzoru: [X] Najlepsze [Produkty, Strategie, Porady] dla [Grupy Docelowej].",
+        "Jest hook, czyli zaczepka wzbudzająca ciekawość albo przedstawiająca interesujący fakt.",
+        "Określone są jasne oczekiwania, co czytelnik zyska.",
+        "Treść ma hierarchiczną strukturę organizacji.",
+        "Na początku jest zapowiedź albo przegląd głównych punktów listy.",
+        "Stosujesz formuły nagłówków typu Pożądany Rezultat mimo Obiekcji.",
+        "Jest jednolita ścieżka nawigacji do szybkiego dostępu do kluczowych sekcji.",
+        "Główne CTA jest widoczne w sticky header.",
+        "Wprowadzasz strukturę zmiany przekonań w kolejności: najpierw możliwość w świecie, potem możliwość dla innych, na końcu możliwość dla klienta.",
+        "Budujesz narrację zamiast typowego układu sprzedażowego."
+      ]
+    },
+    {
+      "title": "Angażujące elementy treści",
+      "items": [
+        "Dodajesz elementy narracyjne i spostrzeżenia ekspertów, żeby budować wiarygodność.",
+        "Przedstawiasz dane z case study na poparcie twierdzeń.",
+        "Dzielisz się osobistym doświadczeniem, żeby nawiązać kontakt z odbiorcami.",
+        "Uwzględniasz spostrzeżenia branżowe, żeby zademonstrować ekspertyzę.",
+        "Każdy element listy ma: numer plus nazwę, krótkie wyjaśnienie, powód umieszczenia na liście, przykład zastosowania oraz profesjonalną wskazówkę.",
+        "Stosujesz ramę PRESTO: Pain, Resonate, Educate, Simplify, Testify, Offer.",
+        "Stosujesz ramę AIDA: Attention, Interest, Desire, Action.",
+        "Stosujesz ramę HOT: Who, How, What.",
+        "Stosujesz ramę PAS: Problem, Agitate, Solution.",
+        "Stosujesz ramę Message Match: spójność przekazu przed kliknięciem i po kliknięciu.",
+        "Skupiasz się na transformacji, a nie transakcji, pokazując proces zmiany życia klienta.",
+        "Używasz języka edukacyjnego zamiast typowo sprzedażowego.",
+        "Prezentujesz historie sukcesu osób podobnych do grupy docelowej.",
+        "Mechanizm działania rozwiązania przedstawiasz tak, żeby wydawał się osiągalny."
+      ]
+    },
+    {
+      "title": "Sekcja hero, above the fold",
+      "items": [
+        "Jest przyciągający nagłówek.",
+        "Od razu wyróżnione są 3 główne korzyści.",
+        "Jest wyraźne wezwanie do działania, CTA.",
+        "Zidentyfikowany jest problem i złe alternatywy, czyli value props.",
+        "Pokazujesz swoje lepsze rozwiązanie.",
+        "Używasz krótkich, informacyjnych nagłówków.",
+        "Skupiasz się na wartości, a nie cenie.",
+        "Adresujesz główne obiekcje od samej góry.",
+        "Zaczynasz od pokazania, że rozwiązanie jest możliwe w dzisiejszym świecie.",
+        "Wyjaśniasz, dlaczego teraz jest właściwy moment na to rozwiązanie.",
+        "Odnosisz się do zmian w świecie, które czynią Twoje rozwiązanie szczególnie istotnym."
+      ]
+    },
+    {
+      "title": "Sekcja problem, agitacja",
+      "items": [
+        "Rozwijasz opis punktów bólu albo problemów odbiorcy.",
+        "Podkreślasz emocjonalny wpływ problemu na życie odbiorcy.",
+        "Pokazujesz konsekwencje nierozwiązania problemu.",
+        "Tworzysz dramatyczne napięcie przed przedstawieniem rozwiązania.",
+        "Pokazujesz, że rozumiesz sytuację odbiorcy.",
+        "Opisujesz typowe nieudane próby rozwiązania problemu.",
+        "Przedstawiasz statystyki albo dane potwierdzające powszechność problemu."
+      ]
+    },
+    {
+      "title": "Sekcja możliwości w świecie",
+      "items": [
+        "Wyjaśniasz okoliczności i wydarzenia, które sprawiają, że Twój produkt albo usługa są teraz możliwe.",
+        "Pokazujesz, że technologia, wiedza albo narzędzia potrzebne do osiągnięcia wyniku są dostępne.",
+        "Omawiasz zmiany w świecie albo branży, które sprawiają, że Twoje rozwiązanie jest teraz potrzebne.",
+        "Przedstawiasz dane i statystyki potwierdzające, że rozwiązanie już istnieje i działa.",
+        "Kreślisz szerszy kontekst, w którym Twoje rozwiązanie ma sens.",
+        "Adresujesz typowe przekonanie, że to niemożliwe, i obalasz je faktami."
+      ]
+    },
+    {
+      "title": "Sekcja możliwości dla innych",
+      "items": [
+        "Prezentujesz konkretne historie sukcesu innych osób, case studies.",
+        "Pokazujesz dowody, że Twoje rozwiązanie działa dla innych: referencje, opinie.",
+        "Wyjaśniasz, jak inne osoby z podobnymi ograniczeniami osiągnęły sukces.",
+        "Przedstawiasz siebie jako przykład sukcesu, jeśli to dotyczy.",
+        "Pokazane przykłady są podobne do Twojej grupy docelowej.",
+        "Używasz testimoniali, które odnoszą się do przezwyciężania typowych obaw.",
+        "Pokazujesz różnorodność osób, które odniosły sukces: różne tła, umiejętności."
+      ]
+    },
+    {
+      "title": "Elementy wizualne i demonstracje",
+      "items": [
+        "Używasz tabel porównawczych, żeby zilustrować różnice.",
+        "Dołączasz zrzuty ekranu produktów, żeby pokazać, o czym mówisz.",
+        "Dodajesz analizy funkcji dla lepszego zrozumienia.",
+        "Dołączasz demonstracje wideo, gdy to ma zastosowanie, maksymalnie 2 do 3 minut.",
+        "Przedstawiasz ofertę jasno i przyciągająco w sekcji zamówienia.",
+        "Stosujesz wizualne siatki porównawcze dla łatwego skanowania.",
+        "Używasz ikon dla kluczowych zalet albo cech produktu.",
+        "Dbasz o spójny styl wizualny zgodny z identyfikacją marki.",
+        "Dodajesz wizualizacje przed i po, pokazujące transformację klienta.",
+        "Używasz infografik pokazujących mechanizm działania rozwiązania.",
+        "Prezentujesz wizualnie ścieżkę od problemu do rozwiązania.",
+        "Dodajesz zdjęcia rzeczywistych klientów przy historiach sukcesu.",
+        "Pokazujesz, jak produkt działa: wideo demo, zdjęcia, ilustracje.",
+        "Dostarczasz wizualne dowody, dane albo potwierdzenie rezultatów.",
+        "Używasz wysokiej jakości zdjęć produktu z różnych perspektyw, minimum 6."
+      ]
+    },
+    {
+      "title": "Sekcja możliwości dla klienta",
+      "items": [
+        "Odnosisz się do typowych ograniczeń klientów: czas, pieniądze, energia, doświadczenie.",
+        "Wyjaśniasz, dlaczego te ograniczenia nie są przeszkodą.",
+        "Pokazujesz, jak produkt albo usługa pomaga pokonać te ograniczenia.",
+        "Budujesz scenariusz sukcesu dostosowany do sytuacji klienta.",
+        "Pomagasz wyobrazić sobie rezultaty we własnym życiu.",
+        "Odpowiadasz na niewypowiedzianą obiekcję to nie zadziała dla mnie, bo.",
+        "Przedstawiasz jasną ścieżkę od punktu, w którym jest klient, do pożądanego wyniku."
+      ]
+    },
+    {
+      "title": "Sekcja korzyści i funkcji",
+      "items": [
+        "Eksponujesz najważniejsze 4 korzyści albo funkcje.",
+        "Wyjaśniasz, jak produkt spełnia oczekiwania klienta.",
+        "Wyjaśniasz, dlaczego jest lepszy od alternatyw.",
+        "Podkreślasz, jakie problemy rozwiązuje produkt.",
+        "Przedstawiasz korzyści w formie: cecha, potem korzyść, potem dowód albo przykład.",
+        "Używasz nagłówków opartych na korzyściach, nie cechach technicznych.",
+        "Pokazujesz rezultaty przed i po, gdzie to możliwe.",
+        "Koncentrujesz się na uczuciach, które klient będzie miał po osiągnięciu rezultatu.",
+        "Opisujesz nową tożsamość, którą klient może przyjąć po zastosowaniu rozwiązania.",
+        "Komunikujesz wartość wyniku, a nie tylko samego produktu albo usługi.",
+        "Pokazujesz, jak życie klienta zmieni się po zastosowaniu rozwiązania.",
+        "Wypisujesz konkretne cechy produktu albo usługi w przejrzysty sposób.",
+        "Wyjaśniasz, w jaki sposób każda funkcja prowadzi do konkretnej korzyści.",
+        "Używasz punktów dla czytelności przy prezentacji korzyści."
+      ]
+    },
+    {
+      "title": "Sekcja mechanizmu rozwiązania",
+      "items": [
+        "Wyjaśniasz mechanizm działania rozwiązania tak, żeby wydawał się osiągalny.",
+        "Rozbijasz proces na proste, wykonalne kroki.",
+        "Unikasz prezentowania zbyt skomplikowanych mechanizmów.",
+        "Pokazujesz, jak Twoje rozwiązanie przezwycięża typowe przeszkody.",
+        "Używasz analogii i metafor, które ułatwiają zrozumienie.",
+        "Przedstawiasz gwarancję skuteczności mechanizmu.",
+        "Odnosisz się do badań albo ekspertyz stojących za mechanizmem."
+      ]
+    },
+    {
+      "title": "Strategia cenowa i gwarancje",
+      "items": [
+        "Wyróżniasz środkowy plan jako Most Popular albo Best Value.",
+        "Limity funkcji skalują się logicznie.",
+        "Pod każdym planem jest krótki opis korzyści.",
+        "Cena, z ewentualnym rabatem, obietnica dostawy i przycisk dodawania do koszyka są blisko siebie.",
+        "Pokazujesz oszczędność przy dłuższych planach abonamentowych.",
+        "Rozważasz dodanie limitowanej oferty czasowej.",
+        "Wyraźnie oznaczasz zawartość każdego pakietu checkboxami.",
+        "Zaznaczasz rekomendowany plan dla typowego użytkownika.",
+        "Cenę wprowadzasz dopiero po przeprowadzeniu klienta przez proces zmiany przekonań.",
+        "Porównujesz wartość transformacji z ceną produktu.",
+        "Pokazujesz ROI w kontekście zmiany życia.",
+        "Przeformułowujesz cenę jako inwestycję w nową rzeczywistość klienta.",
+        "Przedstawiasz cenę jasno i przejrzyście.",
+        "Stosujesz value stacking: pokazujesz wszystko, co klient otrzymuje za tę cenę.",
+        "Dodajesz opcje planów płatności albo zniżek, jeśli to możliwe.",
+        "Uwzględniasz gwarancję zwrotu pieniędzy albo satysfakcji.",
+        "Podkreślasz element odwrócenia ryzyka, risk reversal.",
+        "Wzmacniasz aspekt gwarancji albo niskiego ryzyka."
+      ]
+    },
+    {
+      "title": "Budowanie zaufania i social proof",
+      "items": [
+        "Wyświetlasz opinie klientów powyżej zagięcia strony.",
+        "Wyraźnie pokazujesz status w magazynie.",
+        "Uwzględniasz etykiety weryfikowanych zakupów.",
+        "Zapewniasz przejrzystość cen.",
+        "Eksponujesz oceny gwiazdkowe.",
+        "Pokazujesz liczbę recenzji.",
+        "Wyróżniasz zarówno pozytywne, jak i krytyczne opinie.",
+        "Dołączasz sekcję pytań i odpowiedzi ograniczoną do 5 do 8 dobrze dobranych pytań.",
+        "Prezentujesz treści generowane przez użytkowników, rekomendacje i recenzje.",
+        "Uwzględniasz poparcie influencerów albo ekspertów.",
+        "Dodajesz elementy społecznego dowodu na całej stronie.",
+        "Dodajesz logotypy klientów, prasy i integracji.",
+        "Umieszczasz dowody społeczne strategicznie blisko sekcji cenowej.",
+        "Przedstawiasz konkretne liczby, na przykład ponad 10 000 użytkowników albo 95 procent zadowolonych klientów.",
+        "Dodajesz certyfikaty bezpieczeństwa i zgodności.",
+        "Wybierasz testimoniale, które opisują zmianę przekonań i transformację.",
+        "Dodajesz opinie osób, które początkowo miały wątpliwości, ale osiągnęły sukces.",
+        "Prezentujesz historie z życia wzięte, pokazujące długoterminowe rezultaty.",
+        "Uwzględniasz szczegółowe studia przypadku albo historie sukcesu.",
+        "Dodajesz recenzje z wiarygodnych źródeł zewnętrznych."
+      ]
+    },
+    {
+      "title": "Pokonywanie obiekcji i FAQ",
+      "items": [
+        "Odpowiadasz na obiekcje, zanim się pojawią.",
+        "Dodajesz porównania side by side z konkurencją.",
+        "Podkreślasz gwarancję zwrotu, na przykład 30 dniową.",
+        "Umieszczasz krótkie wideo demo, 2 minuty.",
+        "Adresujesz główne obawy: co jeśli mi się nie spodoba, jak to się porównuje z X.",
+        "Pokazujesz łatwość użycia produktu.",
+        "Umieszczasz FAQ strategicznie przed sekcją checkout.",
+        "Grupujesz pytania tematycznie dla łatwiejszego znalezienia odpowiedzi.",
+        "Dodajesz pytania adresujące typowe przekonania ograniczające.",
+        "Uwzględniasz FAQ o mechanizmie działania rozwiązania.",
+        "Odpowiadasz na pytanie dlaczego to zadziała dla mnie.",
+        "Adresujesz obiekcje o czas, pieniądze, doświadczenie i inne ograniczenia.",
+        "Wprost adresujesz potencjalne wątpliwości i obawy.",
+        "Używasz FAQ do uprzedzającego odpowiadania na najczęstsze pytania."
+      ]
+    },
+    {
+      "title": "Elementy konwersji",
+      "items": [
+        "Umieszczasz wiele CTA na całej stronie: początek, środek i koniec.",
+        "Tworzysz pakiet odwrócenia ryzyka: polityka zwrotów, gwarancja dostawy, ochrona ceny i dostęp do obsługi klienta.",
+        "Zachęcasz do natychmiastowego działania w podsumowaniu.",
+        "Kończysz finalnym wezwaniem do działania.",
+        "Oferujesz darmową, wartościową treść, na przykład listę kontrolną, ściągawkę albo kalkulator, jako zachętę.",
+        "Używasz przycisku CTA w kontrastowym kolorze.",
+        "Dodajesz elementy pilności, na przykład limited spots albo only 5 left.",
+        "Stosujesz elementy bezpieczeństwa, na przykład 14 day free trial albo cancel anytime.",
+        "Dopasowujesz tekst przycisku do korzyści, a nie tylko akcji, na przykład Start Saving Today zamiast Sign Up.",
+        "Formułujesz CTA w kontekście rozpoczęcia transformacji, a nie zakupu.",
+        "Podkreślasz pierwszy krok w kierunku zmiany zamiast transakcji.",
+        "Unikasz języka, który może być odebrany jako sprzedawanie.",
+        "Proponujesz wypróbowanie zmiany zamiast kupienia produktu.",
+        "Zapewniasz wyraźny przycisk CTA nad zagięciem strony i w wielu miejscach.",
+        "Wzmacniasz korzyść z podjęcia działania teraz.",
+        "Dodajesz prowokujący do działania przycisk z jasnymi instrukcjami."
+      ]
+    },
+    {
+      "title": "Sekcja transformacji",
+      "items": [
+        "Pokazujesz, jak klient przejdzie od obecnej sytuacji do pożądanego stanu.",
+        "Opisujesz nową tożsamość i sposób postrzegania siebie po transformacji.",
+        "Prezentujesz wizualnie podróż klienta przez proces transformacji.",
+        "Podkreślasz emocjonalne korzyści z osiągnięcia celu.",
+        "Porównujesz życie przed i życie po zastosowaniu rozwiązania.",
+        "Opisujesz konkretne, namacalne rezultaty transformacji.",
+        "Podkreślasz długoterminowe korzyści, nie tylko krótkoterminowe efekty."
+      ]
+    },
+    {
+      "title": "Domknięcie sprzedaży i pilność",
+      "items": [
+        "Pokazujesz wartość na pierwszym miejscu, na przykład start closing deals today.",
+        "Dodajesz elementy pilności, na przykład limited beta spots.",
+        "Proponujesz bezpieczne opcje, na przykład 14 day free trial albo cancel anytime.",
+        "Tworzysz CTA zgodne z korzyścią, a nie tylko akcją.",
+        "Adresujesz niewyartykułowane obiekcje z góry.",
+        "Podkreślasz brak ryzyka, na przykład no credit card required.",
+        "Dodajesz social proof tuż przed ostatecznym CTA.",
+        "Uwzględniasz gwarancję satysfakcji.",
+        "Podsumowujesz kluczowe zmiany przekonań przed finalizacją.",
+        "Przypominasz o transformacji, a nie tylko zakupie produktu.",
+        "Wskazujesz pierwszy krok w nowe życie zamiast zakończenia transakcji.",
+        "Podkreślasz społeczność, do której klient dołącza, nie tylko produkt.",
+        "Tworzysz poczucie pilności: limitowana oferta czasowa, ograniczona dostępność.",
+        "Wykorzystujesz liczniki czasu i wskaźniki dostępności towaru, jeśli to stosowne.",
+        "Dodajesz bonusy, które zwiększają postrzeganą wartość oferty."
+      ]
+    },
+    {
+      "title": "Sekcja PS",
+      "items": [
+        "Podkreślasz ponownie główne korzyści.",
+        "Podsumowujesz całą ofertę.",
+        "Zachęcasz do natychmiastowego działania.",
+        "Dodajesz dodatkowy element wartości albo bonus dostępny tylko teraz.",
+        "Przypominasz o gwarancji albo polityce zwrotów.",
+        "Odpowiadasz na ostatnie potencjalne wątpliwości."
+      ]
+    },
+    {
+      "title": "Optymalizacja mobilna",
+      "items": [
+        "Wdrażasz przyklejony przycisk dodawania do koszyka.",
+        "Używasz przesuwalnych obrazów.",
+        "Dołączasz opcję zakupu jednym kliknięciem.",
+        "Ułatwiasz wybór rozmiaru.",
+        "Zapewniasz uproszczoną nawigację.",
+        "Dostosowujesz rozmiar przycisków do obsługi dotykowej.",
+        "Minimalizujesz liczbę kroków do zakończenia transakcji.",
+        "Zapewniasz czytelność treści bez konieczności powiększania.",
+        "Optymalizujesz czas ładowania dla użytkowników mobilnych.",
+        "Zachowujesz pełną ścieżkę zmiany przekonań również w wersji mobilnej.",
+        "Elementy narracyjne dostosowujesz do szybszego skanowania na urządzeniach mobilnych.",
+        "Kluczowe elementy zmiany przekonań są widoczne przed scrollowaniem."
+      ]
+    },
+    {
+      "title": "Częste błędy do uniknięcia",
+      "items": [
+        "Wyróżniasz 3 do 5 najczęstszych błędów przy wyborze produktu albo usługi.",
+        "Unikasz przytłaczania użytkowników zbyt wieloma elementami FAQ.",
+        "Ograniczasz punktory do maksymalnie 5.",
+        "Prezentujesz informacje o produkcie w określonej kolejności: tytuł z kluczowymi korzyściami, cena plus wysyłka, zdjęcia produktu, minimum 6, punktory, maksymalnie 5, opis, recenzje.",
+        "Unikasz niejasnych nagłówków i zbyt kreatywnych określeń.",
+        "Nie wprowadzasz zbyt wielu opcji wyboru, żeby uniknąć paradoksu wyboru.",
+        "Nie ukrywasz istotnych informacji, na przykład kosztów wysyłki, do ostatniego kroku.",
+        "Unikasz niedopasowania komunikatu w różnych częściach strony.",
+        "Testujesz responsywność na różnych urządzeniach.",
+        "Unikasz przejścia do sprzedaży przed przeprowadzeniem zmiany przekonań.",
+        "Nie pokazujesz ceny zbyt wcześnie, zanim zbudujesz wartość.",
+        "Unikasz języka typowo sprzedażowego, który może wywołać opór.",
+        "Nie pomijasz kroków w procesie zmiany przekonań: świat, inni, klient.",
+        "Unikasz nietransparentności co do mechanizmu działania rozwiązania.",
+        "Nie pokazujesz zbyt idealnych wyników, które mogą wydawać się nieosiągalne."
+      ]
+    },
+    {
+      "title": "Informacje kontaktowe i zgodność prawna",
+      "items": [
+        "Dodajesz informacje kontaktowe albo wsparcia dla pytań.",
+        "Uwzględniasz politykę prywatności, warunki i inne wymagane prawnie oświadczenia.",
+        "Zapewniasz łatwy dostęp do informacji o zgodności z przepisami.",
+        "Umieszczasz dane kontaktowe w stopce i w sekcji FAQ.",
+        "Dodajesz informacje o bezpieczeństwie danych i płatności."
+      ]
+    },
+    {
+      "title": "Przed publikacją",
+      "items": [
+        "Czytasz całą stronę pod kątem języka, który może brzmieć jak typowa sprzedaż.",
+        "Upewniasz się, że przekaz jest spójny w całej ścieżce klienta.",
+        "Sprawdzasz, czy każda sekcja przyczynia się do zmiany przekonań.",
+        "Usuwasz elementy, które mogłyby wywołać pytanie jak dużo to kosztuje, przed zmianą przekonań.",
+        "Dbasz o to, żeby klient przeszedł przez proces zmiany przekonań przed zobaczeniem ceny.",
+        "Upewniasz się, że mechanizm działania jest wyjaśniony zrozumiale.",
+        "Sprawdzasz, czy historie sukcesu są wiarygodne i relacyjne dla grupy docelowej.",
+        "Weryfikujesz, czy przekonująco wyjaśniono, dlaczego ograniczenia nie są przeszkodą.",
+        "Przeglądasz całość pod kątem spójności komunikacji o transformacji."
+      ]
+    }
+  ],
+  "example": "Najlepsza przy projektowaniu albo audycie strony sprzedażowej B2C dla produktów cyfrowych, kursów, e-commerce, aplikacji i ofert konsumenckich, gdzie decyduje emocja i transformacja klienta.",
+  "order": 57,
+  "published": true,
+  "seoTitle": "Strona sprzedażowa B2C, pełna checklista krok po kroku",
+  "seoDescription": "Kompletna checklista strony sprzedażowej B2C: hero, problem, możliwości, mechanizm, pricing, social proof, FAQ, transformacja, pięć ram copywritingu i zmiana przekonań.",
+  "keywords": [
+    "strona sprzedażowa B2C",
+    "landing page B2C",
+    "checklista strony sprzedażowej",
+    "ramy copywritingu",
+    "zmiana przekonań w sprzedaży"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "strona-sprzedazowa",
+  "internalLinks": [
+    "strona-sprzedazowa-b2b",
+    "checklista-copywritingu-strony-sprzedazowej",
+    "strona-www-w-twoim-stylu"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Checklista stron sprzedażowych B2C z ramami copywritingu i zmianą przekonań",
+  "faq": [
+    {
+      "question": "Czym różni się strona sprzedażowa B2C od B2B?",
+      "answer": "Strona B2C kieruje się do pojedynczego konsumenta i gra emocją, tożsamością i transformacją życia. Strona B2B przekonuje komitet zakupowy językiem ROI, ryzyka i procesu. W B2C silniejsze są opinie, oceny gwiazdkowe, koszyk i pilność, w B2B case studies, framework i wycena."
+    },
+    {
+      "question": "Które ramy copywritingu warto stosować na stronie B2C?",
+      "answer": "Checklista korzysta z pięciu ram: PRESTO, AIDA, HOT, PAS i Message Match. Nie używasz wszystkich naraz. Dobierasz jedną do sekcji albo do całej strony, w zależności od produktu i odbiorcy. Message Match pilnuje, żeby przekaz po kliknięciu reklamy był spójny z tym przed kliknięciem."
+    },
+    {
+      "question": "Dlaczego nie pokazywać ceny od razu na stronie B2C?",
+      "answer": "Cena pokazana przed zbudowaniem wartości uruchamia ocenę kosztu zamiast pragnienia rezultatu. Najpierw pokaż problem, możliwość w świecie, dowód u innych i mechanizm rozwiązania, a dopiero potem cenę z value stacking i odwróceniem ryzyka. Wtedy klient widzi inwestycję w nowe życie, nie wydatek."
+    },
+    {
+      "question": "Czym jest kolejność zmiany przekonań świat, inni, klient?",
+      "answer": "To trzy kroki perswazji na stronie. Najpierw pokazujesz, że rezultat jest możliwy w dzisiejszym świecie, potem że inne osoby już go osiągnęły, a na końcu że zadziała dla konkretnego klienta mimo jego ograniczeń czasu, pieniędzy i doświadczenia. Pominięcie kroku osłabia przekonanie."
+    },
+    {
+      "question": "Jak użyć tej checklisty z AI do audytu strony?",
+      "answer": "Wklej checklistę i obecną treść strony do asystenta AI, a potem poproś o przejście sekcja po sekcji i wskazanie brakujących punktów, miejsc gdzie cena pojawia się za wcześnie i gdzie brakuje emocji albo dowodu. Następnie poproś o konkretne propozycje poprawek nagłówków, sekcji problemu, oferty i CTA."
+    },
+    {
+      "question": "Czy ta checklista pasuje do kursów i produktów cyfrowych?",
+      "answer": "Tak. Struktura sprawdza się dla kursów, produktów cyfrowych, aplikacji i fizycznego e-commerce. Różnią się głównie sekcje produktu, dostawy i koszyka, ale logika problemu, możliwości, mechanizmu rozwiązania, social proof, transformacji i zmiany przekonań pozostaje ta sama."
+    }
+  ]
+}

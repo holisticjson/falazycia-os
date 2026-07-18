@@ -1,0 +1,70 @@
+{
+  "id": "wywiad-przed-startem-projektu",
+  "type": "prompt",
+  "title": "Wywiad przed startem projektu",
+  "description": "Pozwól AI przeprowadzić Cię przez trudne pytania, zanim zaczniesz nowy projekt.",
+  "shortDescription": "AI przepyta Cię przed startem projektu.",
+  "industry": "Automatyzacja i AI",
+  "industrySlug": "automatyzacja-ai",
+  "application": "Start projektu",
+  "applicationSlug": "start-projektu",
+  "tags": [
+    "Strategia",
+    "Decyzje"
+  ],
+  "url": "/prompty/automatyzacja-ai/wywiad-przed-startem-projektu/",
+  "active": true,
+  "views": 0,
+  "postedAt": "June 9, 2026",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Wywiad przed startem nowego projektu",
+  "body": "Prompt pomaga doprecyzować cel nowego projektu, zakwestionować założenia i odkryć, czego naprawdę chcesz przed rozpoczęciem pracy.",
+  "usage": "Użyj tego prompta, gdy zaczynasz nowy projekt, ale czujesz, że masz więcej pomysłów niż jasności. Najlepiej działa przed pisaniem planu, briefu, roadmapy albo specyfikacji. Wklej ogólny opis pomysłu, powód startu, ograniczenia, oczekiwany efekt i wszystko, czego jeszcze nie jesteś pewien. AI ma prowadzić rozmowę jedno pytanie naraz, aż powstanie jasny brief decyzyjny. Jeśli projekt dotyczy klienta, dodaj kto decyduje, kto używa efektu, jaki jest termin i co się stanie, jeśli projekt nie powstanie. To pomaga odróżnić realną potrzebę od pomysłu bez właściciela.",
+  "prompt": "Zaczynam nowy projekt i chcę, żebyś przeprowadził ze mną wymagający wywiad przed startem.\n\nNie twórz planu od razu. Najpierw pomóż mi odkryć, czego naprawdę chcę, jakie mam założenia i gdzie mogę się oszukiwać.\n\nZadawaj jedno pytanie naraz. Po każdej mojej odpowiedzi napisz:\n1. Co jest jasne.\n2. Co jest niejasne.\n3. Jakie założenie warto sprawdzić.\n4. Jakie pytanie powinno paść dalej.\n\nDrąż, dopóki nie osiągniesz 95 procent pewności w 7 obszarach:\nprawdziwy cel projektu, odbiorca, problem do rozwiązania, kryterium sukcesu, ograniczenia, ryzyka i powód, dla którego ten projekt jest ważny teraz.\n\nNie pozwalaj mi uciekać w ogólniki. Jeśli odpowiadam zbyt szeroko, poproś o przykład, liczbę, termin albo konkretną decyzję. Jeśli widzisz sprzeczność, nazwij ją. Jeśli projekt wygląda jak ucieczka od trudniejszej decyzji, powiedz to ostrożnie, ale jasno.\n\nFormat pracy:\npytanie, moja odpowiedź, Twoje odbicie, luka, następne pytanie.\n\nNa końcu przygotuj brief projektu:\ncel w jednym zdaniu, zakres, poza zakresem, użytkownik, ryzyka, pierwsze 3 kroki, pytania otwarte i decyzja, czy projekt zaczynać teraz.\n\nBrief końcowy zapisz w formacie:\ncel, nie cel, odbiorca, problem, miernik sukcesu, zakres, poza zakresem, ryzyka, pierwsze 3 kroki, decyzja start albo stop.\n\nDodaj sekcję testu decyzji. Po zebraniu odpowiedzi sprawdź projekt pytaniami: czy ten projekt ma właściciela, czy ma użytkownika, czy ma miernik sukcesu, czy ma termin, czy ma rzecz poza zakresem i czy wiemy, co przerwie pracę. Jeśli brakuje dwóch odpowiedzi, rekomenduj jeszcze nie startować.",
+  "example": "Dobry do projektów osobistych, firmowych, produktowych i kreatywnych, gdy trzeba najpierw ustalić właściwe pytanie, a dopiero potem plan działania.",
+  "order": 1,
+  "published": true,
+  "seoTitle": "Wywiad przed startem projektu, prompt AI | Akademia.pl",
+  "seoDescription": "Skopiuj prompt, który pomaga doprecyzować prawdziwy cel projektu, założenia, kryteria sukcesu i ograniczenia przed planowaniem działań.",
+  "keywords": [
+    "prompt projekt",
+    "start projektu",
+    "brief projektu",
+    "decyzje strategiczne",
+    "AI do planowania"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "start-projektu",
+  "internalLinks": [
+    "deep-research-dowolnego-problemu",
+    "agent-team-budowa-feature",
+    "agent-team-code-review",
+    "strategia-marketingu-pasywnego",
+    "analiza-umowy-przed-podpisaniem"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy używać wywiadu przed startem projektu?",
+      "answer": "Użyj go przed rozpoczęciem projektu, kiedy masz pomysł, ale brakuje jasnego celu, zakresu albo kryterium sukcesu. Prompt pomaga uniknąć startu z mglistą motywacją i przypadkowym planem."
+    },
+    {
+      "question": "Dlaczego prompt zadaje jedno pytanie naraz?",
+      "answer": "Jedno pytanie naraz wymusza prawdziwą rozmowę i pozwala drążyć odpowiedzi. Długa lista pytań często kończy się powierzchownymi odpowiedziami, a projekt nadal nie ma jasnej decyzji."
+    },
+    {
+      "question": "Co powinien zawierać wynik wywiadu?",
+      "answer": "Dobry wynik to krótki brief projektu: cel, odbiorca, problem, zakres, rzeczy poza zakresem, kryteria sukcesu, ryzyka i pierwsze kroki. Bez tego łatwo zacząć pracę nad niewłaściwą rzeczą."
+    },
+    {
+      "question": "Czy prompt nadaje się do projektów biznesowych?",
+      "answer": "Tak. Można go użyć do produktu, kampanii, strony, automatyzacji, projektu klienta, procesu wewnętrznego albo nowej oferty. Najważniejsze jest ustalenie, po co projekt istnieje i jak poznamy, że ma sens."
+    },
+    {
+      "question": "Jak rozpoznać, że wywiad jest zakończony?",
+      "answer": "Wywiad jest zakończony, gdy potrafisz powiedzieć jednym zdaniem, jaki jest cel projektu, kto ma skorzystać, co jest poza zakresem i jakie kryterium zdecyduje o sukcesie albo zatrzymaniu pracy."
+    }
+  ]
+}

@@ -1,0 +1,171 @@
+{
+    "_comment": "Konfiguracja adnotacji dla screenshotów e-booka GCP. Każdy klucz to nazwa pliku PNG. Wartości: blur_regions (regiony do rozmycia), arrows (strzałki), labels (etykiety), step_number (numer kroku).",
+    "_instrukcja": "Współrzędne (x1,y1,x2,y2) podaj po przeskalowaniu do 1200px szerokości. Użyj dowolnego edytora graficznego aby zmierzyć koordynaty.",
+    
+    "ETAP_01_KROK_01_strona_powitalna.png": {
+        "step_number": "ETAP 1 / KROK 1",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_01_KROK_03_baner_free_trial.png": {
+        "step_number": "ETAP 1 / KROK 3",
+        "arrows": [
+            {"start": [600, 120], "end": [750, 60], "_comment": "Strzałka na przycisk Activate"}
+        ],
+        "labels": [
+            {"position": [500, 130], "text": "Kliknij \"Activate\" →"}
+        ],
+        "blur_regions": []
+    },
+    "ETAP_01_KROK_05_potwierdzenie_aktywacji.png": {
+        "step_number": "ETAP 1 / KROK 5",
+        "arrows": [],
+        "labels": [
+            {"position": [400, 200], "text": "✅ Free Trial aktywowany!"}
+        ],
+        "blur_regions": [
+            {"x1": 800, "y1": 20, "x2": 1150, "y2": 50, "_comment": "Blur e-maila w prawym górnym rogu"}
+        ]
+    },
+    "ETAP_02_KROK_01_billing_overview.png": {
+        "step_number": "ETAP 2 / KROK 1",
+        "arrows": [
+            {"start": [300, 300], "end": [500, 250], "_comment": "Strzałka na saldo kredytów"}
+        ],
+        "labels": [
+            {"position": [200, 310], "text": "Twoje $300 Free Trial"}
+        ],
+        "blur_regions": [
+            {"x1": 800, "y1": 20, "x2": 1150, "y2": 50, "_comment": "Blur e-maila"},
+            {"x1": 100, "y1": 100, "x2": 400, "y2": 130, "_comment": "Blur Billing Account ID"}
+        ]
+    },
+    "ETAP_04_KROK_02_vertex_ai_api_detail.png": {
+        "step_number": "ETAP 4 / KROK 2",
+        "arrows": [
+            {"start": [400, 350], "end": [300, 300], "_comment": "Strzałka na przycisk Enable"}
+        ],
+        "labels": [
+            {"position": [310, 360], "text": "Kliknij \"Enable\" →"}
+        ],
+        "blur_regions": [
+            {"x1": 800, "y1": 20, "x2": 1150, "y2": 50, "_comment": "Blur e-maila"}
+        ]
+    },
+    "ETAP_08_KROK_02_quotas_filtered.png": {
+        "step_number": "ETAP 8 / KROK 2",
+        "arrows": [],
+        "labels": [
+            {"position": [50, 200], "text": "Zaznacz modele Gemini ↓"}
+        ],
+        "blur_regions": [
+            {"x1": 800, "y1": 20, "x2": 1150, "y2": 50, "_comment": "Blur e-maila"},
+            {"x1": 100, "y1": 60, "x2": 350, "y2": 85, "_comment": "Blur Project ID"}
+        ]
+    },
+    "ETAP_08_KROK_03_edit_quotas_form.png": {
+        "step_number": "ETAP 8 / KROK 3",
+        "arrows": [
+            {"start": [600, 400], "end": [700, 350], "_comment": "Strzałka na pole wartości"}
+        ],
+        "labels": [
+            {"position": [500, 410], "text": "Wpisz: 120"}
+        ],
+        "blur_regions": [
+            {"x1": 800, "y1": 20, "x2": 1150, "y2": 50, "_comment": "Blur e-maila"}
+        ]
+    },
+    "ETAP_11_KROK_03_vertex_studio_response.png": {
+        "step_number": "ETAP 11 / KROK 3",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_06_KROK_01_login_antigravity.png": {
+        "step_number": "ETAP 6 / KROK 1",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": [
+            {"x1": 215, "y1": 245, "x2": 780, "y2": 310, "_comment": "Blur Project ID input field 'gtrm-project'"}
+        ]
+    },
+    "ETAP_06_KROK_00_welcome_antigravity.png": {
+        "step_number": "ETAP 6 / KROK 0",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_04_KROK_08_compute_engine_api.png": {
+        "step_number": "ETAP 4 / KROK 8",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_08_KROK_01_quotas_page.png": {
+        "step_number": "ETAP 8 / KROK 1",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_09_KROK_01_disks_list.png": {
+        "step_number": "ETAP 9 / KROK 1",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_09_KROK_02_buckets_list.png": {
+        "step_number": "ETAP 9 / KROK 2",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_11_KROK_01_model_garden_overview.png": {
+        "step_number": "ETAP 11 / KROK 1",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_02_KROK_01b_activate_billing.png": {
+        "step_number": "ETAP 2 / KROK 1b",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_04_KROK_06a_agent_platform_api_banner.png": {
+        "step_number": "ETAP 4 / KROK 6a",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_04_KROK_06b_agent_platform_welcome.png": {
+        "step_number": "ETAP 4 / KROK 6b",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_04_KROK_06c_agent_platform_enable_popup.png": {
+        "step_number": "ETAP 4 / KROK 6c",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_02_KROK_01c_billing_activated.png": {
+        "step_number": "ETAP 2 / KROK 5b",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_12_KROK_00a_search_ai_applications.png": {
+        "step_number": "ETAP 12 / KROK 0a",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    },
+    "ETAP_12_KROK_00b_activate_vertex_search.png": {
+        "step_number": "ETAP 12 / KROK 0b",
+        "arrows": [],
+        "labels": [],
+        "blur_regions": []
+    }
+}

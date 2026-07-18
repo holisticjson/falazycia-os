@@ -1,0 +1,70 @@
+{
+  "id": "dokument-prawdy-wybor-pomyslu-biznesowego",
+  "type": "prompt",
+  "title": "Dokument Prawdy do wyboru pomysłu biznesowego",
+  "description": "Prompt każe ocenić każdy pomysł jak decyzję inwestycyjną: dostęp do 10 pierwszych klientów, konkurencja jako dowód popytu, cena startowa, test w 48 godzin i najważniejsze pytanie, który pomysł ma największą szansę dać pierwszy przelew.",
+  "shortDescription": "Wybierz pomysł, który ma największą szansę dać pierwszy przelew.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-reklama",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Pomysł biznesowy",
+    "Decyzje"
+  ],
+  "url": "/prompty/strategia-decyzje/dokument-prawdy-wybor-pomyslu-biznesowego/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-11",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Dokument Prawdy do wyboru pomysłu biznesowego",
+  "body": "Prompt tworzy Dokument Prawdy, czyli brutalnie praktyczny ranking pomysłów. Nie wybierasz tego, co brzmi sexy. Wybierasz to, co ma dostęp do klientów, jasny ból, realną konkurencję, możliwą cenę i najkrótszą drogę do pieniędzy na koncie. Jeżeli pomysł nie ma dojścia do 10 osób z grupy docelowej, nie ma ceny albo wymaga budowy dużego produktu przed rozmową z klientem, AI ma to oznaczyć jako ryzyko, a nie dekorować entuzjazmem.",
+  "usage": "Wklej prompt do ChatGPT, Claude albo Gemini, gdy masz kilka pomysłów i nie chcesz wybierać na emocjach. Podaj swoje cele, budżet, czas, umiejętności, listę pomysłów, nisze, dostęp do klientów, znane branże i ograniczenia życiowe. Dopisz też, ile dni możesz dać na pierwszy test i ile pieniędzy możesz stracić bez dramatu. AI ma wymusić ranking 1 do N, wskazać pomysł na teraz, pomysły do mindmapy, pomysły do odrzucenia i test, który w 48 godzin sprawdzi nie opinie, tylko gotowość do płatności.",
+  "prompt": "Jesteś moim bezstronnym doradcą strategicznym. Pomóż mi stworzyć Dokument Prawdy do wyboru najlepszego pomysłu biznesowego.\n\nNie wybieraj pomysłu, który brzmi najbardziej ekscytująco. Wybierz ten, który najlepiej pasuje do moich celów, zasobów, dostępu do klientów i szansy na pierwszy przelew.\n\nNajważniejsza zasada:\n\nCelem nie jest tylko zweryfikować pomysł. Celem jest dojść do pierwszego klienta, czyli do realnej płatności albo bardzo konkretnej przedpłaty. Bez pieniędzy walidacja jest niepełna.\n\nNajpierw zadaj mi maksymalnie 12 pytań, jeśli brakuje danych:\n\n1. Jaki jest mój główny cel biznesowy?\n2. Czy chcę cashflow, wolność czasu, sprzedaż firmy, dużą zmianę na rynku czy stabilną firmę usługową?\n3. Ile czasu tygodniowo mogę poświęcić?\n4. Jaki mam budżet startowy?\n5. Jakie mam umiejętności i doświadczenia?\n6. Do jakich klientów mam dostęp?\n7. Jakie branże znam od środka?\n8. Jak szybko potrzebuję pierwszego przychodu?\n9. Jakich typów biznesu nie chcę prowadzić?\n10. Jakie pomysły rozważam?\n11. Jakie nisze albo grupy klientów rozważam?\n12. Czy znam konkurencję albo alternatywy dla każdego pomysłu?\n\nPo zebraniu danych stwórz Dokument Prawdy.\n\nWypisz wszystkie pomysły w tabeli i oceń każdy w skali 1 do 10 w tych kategoriach:\n\n1. Prosty start.\n2. Dostęp do pierwszych klientów.\n3. Klient zwiększa dzięki temu wartość, przychód, oszczędność, status albo bezpieczeństwo.\n4. Mogę zacząć sam albo z małą pomocą.\n5. Nie wymaga od razu ekspertów, dużego zespołu ani skomplikowanej technologii.\n6. Dopasowanie do mojego celu życiowego.\n7. Proste wejście na szerszy rynek albo inne nisze.\n8. Możliwość automatyzacji lub delegowania po pierwszych klientach.\n9. Mam wiedzę albo realny dostęp do wiedzy potrzebnej do dostarczenia.\n10. Problem jest duży, częsty i kosztowny.\n11. Istnieje konkurencja albo alternatywa jako dowód popytu.\n12. Można znaleźć pierwszą cenę przez analizę konkurencji albo alternatyw.\n\nZastosuj też ranking twardy:\n\nJeśli mam N pomysłów, wskaż dla każdej kategorii miejsce pomysłu od 1 do N. 1 oznacza najlepszy w tej kategorii. Nie dawaj wszystkim tej samej oceny. Zmuszaj mnie do porównania.\n\nDla każdego pomysłu podaj:\n\n1. Łączny wynik jakościowy.\n2. Miejsce w rankingu.\n3. Największy argument za.\n4. Największe ryzyko.\n5. Czy konkurencja jest dobrym znakiem czy czerwoną flagą.\n6. Jaką cenę startową można przyjąć na bazie konkurencji lub alternatyw.\n7. Najprostszy test w 48 godzin.\n8. Najprostsza wersja sprzedaży ręcznej.\n9. Kogo powinienem zapytać jako pierwszego klienta.\n10. Co musiałoby się wydarzyć, żebym porzucił ten pomysł.\n\nZastosuj twarde reguły:\n\n1. Jeśli pomysł nie pasuje do mojego celu życiowego, oznacz go jako „nie robić teraz”, nawet jeśli ma wysoki potencjał finansowy.\n2. Jeśli nie ma żadnej konkurencji ani alternatywy, oznacz to jako ryzyko edukowania rynku.\n3. Jeśli nie mam dostępu do pierwszych klientów, obniż ocenę, nawet jeśli pomysł jest ciekawy.\n4. Jeśli pomysł wymaga budowy dużego produktu przed pierwszą sprzedażą, zaproponuj wersję Easy.\n5. Jeśli pomysł jest świeży i ekscytujący, ale nie ma danych, zapisz go do mindmapy na później.\n\nNa końcu przygotuj:\n\n1. Krótki werdykt.\n2. Ranking pomysłów od najlepszego do najgorszego.\n3. Jeden pomysł rekomendowany na teraz.\n4. Jeden pomysł do zapisania na później.\n5. Pomysły do odrzucenia.\n6. Najprostszy test pierwszej płatności.\n7. Plan działania na 7 dni, którego celem jest płatny sygnał, nie lajki ani opinie.\n8. Lista pytań, na które nadal nie mam odpowiedzi.\n\nFormat odpowiedzi:\n\n1. Werdykt w 5 zdaniach.\n2. Tabela scoringu.\n3. Tabela rankingu 1 do N per kategoria.\n4. Analiza top 3.\n5. Decyzja końcowa.\n6. Plan 7 dni.\n7. Co zapisujemy do mindmapy i nie ruszamy teraz.\n\nMoje dane:\n\n[Wklej swoje cele, zasoby, ograniczenia, nisze i listę pomysłów]",
+  "example": "Dobry do uporządkowania 3 do 20 pomysłów na produkt, usługę, kurs, aplikację, newsletter albo nową ofertę B2B, zanim zaczniesz budować cokolwiek publicznie.",
+  "order": 30,
+  "published": true,
+  "seoTitle": "Dokument Prawdy, prompt do wyboru najlepszego pomysłu biznesowego",
+  "seoDescription": "Wklej listę pomysłów i wybierz najlepszy biznes według dokumentu prawdy: klienci, konkurencja, cena, automatyzacja, prosty start i pierwszy przelew.",
+  "keywords": [
+    "dokument prawdy",
+    "wybór pomysłu biznesowego",
+    "pomysł na biznes",
+    "walidacja pomysłu",
+    "prompt strategiczny"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "pomysly-biznesowe",
+  "internalLinks": [
+    "generator-pomyslow-biznesowych-john-rush",
+    "walidacja-pomyslu-na-biznes",
+    "research-polskich-nisz-produkt-cyfrowy"
+  ],
+  "sourceCourse": "Szkoła Pierwszego Klienta",
+  "sourceLesson": "Dokument Prawdy, wybór pomysłu, konkurencja jako walidacja, pierwszy klient",
+  "faq": [
+    {
+      "question": "Czym jest Dokument Prawdy w biznesie?",
+      "answer": "To narzędzie decyzyjne, które pomaga wybrać pomysł biznesowy na podstawie kryteriów, a nie emocji. Jego celem jest ograniczyć chaos i pokazać, który pomysł ma największy sens teraz."
+    },
+    {
+      "question": "Czy ten prompt wybierze pomysł za mnie?",
+      "answer": "Nie powinien podejmować decyzji za Ciebie. Ma pomóc zobaczyć ranking, ryzyka i najprostszy test. Ostateczna decyzja zostaje po Twojej stronie, bo tylko Ty znasz swoje cele i ograniczenia."
+    },
+    {
+      "question": "Dlaczego pomysł musi pasować do celu życiowego?",
+      "answer": "Bo dobry biznes na papierze może być złym biznesem dla Ciebie. Inny model pasuje do osoby, która chce cashflow, a inny do osoby, która chce sprzedać firmę albo mieć więcej wolnego czasu."
+    },
+    {
+      "question": "Czy brak konkurencji to dobry znak?",
+      "answer": "Nie zawsze. Brak konkurencji często oznacza brak popytu albo konieczność edukowania rynku. Konkurencja może być dobrym znakiem, jeśli pokazuje, że klienci już płacą za rozwiązanie."
+    },
+    {
+      "question": "Co jest najlepszą walidacją pomysłu?",
+      "answer": "Najlepszą walidacją jest płatność albo bardzo konkretna deklaracja zakupu po rozmowie z realnym klientem. Same lajki, komentarze i teksty typu fajny pomysł nie wystarczą."
+    }
+  ]
+}

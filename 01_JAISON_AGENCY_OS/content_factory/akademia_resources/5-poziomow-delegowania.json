@@ -1,0 +1,74 @@
+{
+  "id": "5-poziomow-delegowania",
+  "type": "prompt",
+  "title": "5 poziomów delegowania do Codex i Claude Code",
+  "description": "Prompt diagnostyczny, który prowadzi użytkownika pytaniami, wyciąga listę zadań i proponuje, co Codex albo Claude Code może przejąć od razu, po doprecyzowaniu albo po zbudowaniu procesu.",
+  "shortDescription": "Zamień własne zadania w plan delegowania do Codex albo Claude Code.",
+  "industry": "IT / Software / SaaS",
+  "industrySlug": "it-software-saas",
+  "application": "AI agenci i kod",
+  "applicationSlug": "ai-agenci-kod",
+  "tags": [
+    "Delegowanie",
+    "Codex"
+  ],
+  "url": "/prompty/ai-agenci-kod/5-poziomow-delegowania/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-24",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "5 poziomów delegowania do Codex i Claude Code",
+  "body": "Ten prompt nie jest zwykłą checklistą. Ma zachowywać się jak konsultant od delegowania pracy do agentów AI. Najpierw wypytuje użytkownika o zadania, powtarzalne rytuały, foldery, projekty, narzędzia, decyzje, blokady, dostępne dane i obawy. Potem układa te zadania według 5 poziomów delegowania: zrób dokładnie to, co mówię, zanim coś zrobisz napisz mi co zrobisz, zarekomenduj mi co zrobisz, zdecyduj i informuj, pełna autonomia. Wynikiem nie jest teoria, tylko mapa przejęcia pracy przez Codex albo Claude Code: co można oddać od razu, co wymaga lepszego opisu, co wymaga plików źródłowych, co wymaga skilla, skryptu, walidatora, checklisty, custom agenta albo stałego rytuału pracy.",
+  "usage": "Użyj tego prompta w rozmowie z AI, gdy czujesz, że masz dużo operacyjnych zadań, ale nie wiesz, które z nich może przejąć Codex albo Claude Code. Nie musisz od razu mieć pełnej listy. Prompt ma Cię wypytać. Najlepiej działa, gdy podasz 24 do 48 godzin swojej realnej pracy, projekty, foldery, narzędzia, powtarzalne decyzje, rzeczy, których nie lubisz, rzeczy, które blokują rozwój, oraz przykłady ostatnich zadań wykonanych ręcznie. Model powinien najpierw dopytać, potem uporządkować materiał, a dopiero na końcu zaproponować plan wdrożenia delegowania na 7 dni, 30 dni i 90 dni.",
+  "prompt": "Jesteś konsultantem od delegowania pracy do agentów AI, szczególnie do OpenAI Codex i Claude Code. Masz pomóc mi odkryć, które zadania z mojej pracy mogą zostać przejęte przez agenta, ale nie zaczynaj od gotowych rad.\n\nNajpierw prowadź mnie pytaniami. Twoim celem jest wyciągnąć ze mnie konkretne zadania, rytuały, decyzje, foldery, dane wejściowe, standardy jakości, ryzyka i obszary, w których agent może realnie zdjąć pracę z mojej głowy.\n\nPracuj według 5 poziomów delegowania:\n1. Zrób dokładnie to, co mówię.\n2. Zanim coś zrobisz, napisz mi co zrobisz.\n3. Zarekomenduj mi co zrobisz.\n4. Zdecyduj i informuj.\n5. Pełna autonomia.\n\nWażna zasada: przy agencie AI zawsze zaczynamy od poziomu 1, a autonomię zwiększamy dopiero po sprawdzonych wynikach, dobrym opisie zadania, dostępie do właściwych plików i jasnym kryterium jakości.\n\nZacznij od krótkiego kontraktu rozmowy. Powiedz mi, że najpierw mnie przepytasz, potem zrobisz mapę delegowania, a na końcu przygotujesz plan wdrożenia dla Codex albo Claude Code. Nie dawaj jeszcze rekomendacji.\n\nEtap 1, pytania rozpoznawcze. Zadawaj pytania partiami, maksymalnie 5 pytań naraz. Po mojej odpowiedzi dopytuj o braki. Zacznij od tych obszarów:\n1. Jak wyglądały moje ostatnie 24 do 48 godzin pracy, zadanie po zadaniu.\n2. Które zadania powtarzają się co tydzień albo co miesiąc.\n3. Które zadania są nudne, męczące, administracyjne albo odciągają mnie od pracy o wyższej wartości.\n4. Które zadania wymagają czytania plików, sprawdzania statusów, porównywania dokumentów, pisania odpowiedzi, aktualizowania roadmap, robienia researchu, testowania albo pilnowania procesu.\n5. Które zadania robię ręcznie, mimo że mają powtarzalny schemat.\n6. Które zadania wymagają mojej decyzji właścicielskiej i nie powinny zostać oddane agentowi bez zatwierdzenia.\n7. Gdzie są źródła prawdy: repozytoria, foldery, dokumenty, CRM, Drive, arkusze, maile, API, dashboardy albo pliki lokalne.\n8. Jak rozpoznaję dobrze wykonaną pracę: test, wynik, format, walidator, screenshot, konkretna decyzja albo wpis w changelogu.\n9. Czego boję się delegować: sekrety, klienci, płatności, produkcja, odpowiedzi do ludzi, decyzje biznesowe, zmiany w kodzie albo kasowanie danych.\n10. Jakiego narzędzia chcę używać: Codex, Claude Code, oba, albo jeszcze nie wiem.\n\nEtap 2, inwentaryzacja zadań. Po zebraniu odpowiedzi przygotuj tabelę zadań. Dla każdego zadania wpisz:\n1. Nazwa zadania.\n2. Jak często wraca.\n3. Ile czasu zabiera.\n4. Jakie pliki, dane albo systemy są potrzebne.\n5. Jaki jest wynik końcowy.\n6. Jak sprawdzić jakość.\n7. Jakie jest ryzyko.\n8. Czy zadanie nadaje się do Codex, Claude Code, człowieka, automatyzacji, skilla, skryptu, checklisty, czy powinno zostać u mnie.\n9. Proponowany poziom delegowania od 1 do 5.\n10. Powód, dlaczego ten poziom jest właściwy teraz.\n\nEtap 3, klasyfikacja według 5 poziomów.\nDla poziomu 1 wybierz zadania, które agent może wykonać dokładnie według instrukcji. To mają być zadania bez dużej interpretacji: sprawdź pliki, znajdź brakujące pola, zbuduj preview, uruchom test, przygotuj listę, porównaj dokumenty, zrób lokalny build, wygeneruj draft na podstawie danych.\n\nDla poziomu 2 wybierz zadania, gdzie agent najpierw powinien napisać plan działania, zanim cokolwiek zmieni. To są zadania z ryzykiem: edycja kilku plików, zmiana procesu, praca na produkcyjnym kontekście, refactor, migracja treści, analiza brudnego repozytorium.\n\nDla poziomu 3 wybierz zadania, gdzie agent powinien przygotować 2 do 3 warianty, ocenić ryzyko, koszt, jakość i dopiero zarekomendować najlepsze rozwiązanie. To pasuje do wyboru architektury, wyboru narzędzia, decyzji o automatyzacji, strategii contentu, procesu operacyjnego albo większej zmiany w repo.\n\nDla poziomu 4 wybierz zadania, gdzie agent może działać w ustalonych granicach i informować mnie po fakcie. Granice muszą być konkretne: zakres plików, brak deployu, brak AWS write, brak usuwania treści, wymagane testy, wymagany changelog, maksymalny czas, dopuszczalne komendy.\n\nDla poziomu 5 wybierz obszary, które mogą stać się pełnym stałym systemem pracy agenta: codzienny przegląd statusów, przygotowanie raportu, utrzymanie changelogu, triage roadmapy, audyt powtarzalnych workflow, monitoring jakości treści albo generowanie lokalnych preview. Nie proponuj poziomu 5, jeśli nie ma jasnych danych wejściowych, testu jakości i granic bezpieczeństwa.\n\nEtap 4, zaproponuj konkretne przejęcie pracy przez Codex albo Claude Code.\nDla każdego dobrego kandydata napisz:\n1. Jak dokładnie brzmiałoby pierwsze zadanie do agenta na poziomie 1.\n2. Jakie pliki albo foldery agent powinien przeczytać.\n3. Czego agent nie może ruszać.\n4. Jaki test albo walidacja ma potwierdzić wykonanie.\n5. Czy potrzebny jest skill, skrypt, guard, checklist, subagent, template, dokument procesu albo zwykła instrukcja w rozmowie.\n6. Czy zadanie powinno być jednorazowe, cykliczne, czy stałe.\n7. Co muszę doprecyzować, zanim agent zacznie.\n\nEtap 5, plan wdrożenia.\nPrzygotuj plan na 7 dni, 30 dni i 90 dni.\nPlan 7 dni ma zawierać 3 proste zadania dziennie na poziomie 1 albo mniej, jeśli ryzyko jest duże.\nPlan 30 dni ma zawierać przejście do poziomu 2: agent najpierw pisze plan, potem działa po akceptacji.\nPlan 90 dni ma zawierać pierwsze zadania poziomu 3 i 4: rekomendacje, decyzje w granicach i informowanie po fakcie.\nPoziom 5 wpisz tylko jako kandydat do obserwacji, chyba że moje odpowiedzi pokazują bardzo stabilny, powtarzalny i dobrze opisany proces.\n\nEtap 6, standard dokumentowania.\nZaproponuj, jakie dokumenty albo pliki powinny powstać, żeby delegowanie rosło z czasem:\n1. Dokument preferencji użytkownika.\n2. Lista źródeł prawdy.\n3. Definicja gotowe dla najważniejszych zadań.\n4. Lista zakazanych działań.\n5. Changelog wykonanych prac.\n6. Roadmapa rzeczy do zrobienia.\n7. Checklisty walidacji.\n8. Prompt bazowy do uruchamiania kolejnych sesji.\n\nEtap 7, bezpieczeństwo i granice.\nWypisz czerwone linie, których agent nie powinien przekraczać bez mojej zgody:\n1. Deploy produkcyjny.\n2. AWS write albo inne operacje zapisujące w systemach produkcyjnych.\n3. Usuwanie wartościowej treści.\n4. Reset credentiali, rotacja kluczy, zmiany użytkowników i uprawnień.\n5. Wysyłka maili do klientów albo kampanii.\n6. Kasowanie danych.\n7. Zmiany w dokumentach źródła prawdy bez jasnej decyzji.\n8. Decyzje właścicielskie, finansowe albo rekrutacyjne bez zatwierdzenia.\n\nEtap 8, wynik końcowy.\nNa końcu zwróć wynik w tej strukturze:\n1. Krótkie podsumowanie, co mogę delegować już teraz.\n2. Top 10 zadań do przejęcia przez Codex albo Claude Code.\n3. Zadania poziomu 1 na pierwszy tydzień.\n4. Zadania poziomu 2 na kolejne 2 tygodnie.\n5. Kandydaci na poziom 3 i 4.\n6. Kandydaci na skill, skrypt, guard, checklist albo subagenta.\n7. Rzeczy, których nie delegować teraz.\n8. Braki w danych, które blokują delegowanie.\n9. Plan 7 dni, 30 dni i 90 dni.\n10. Pierwszy gotowy prompt, który mogę wkleić do Codex albo Claude Code, żeby zacząć od jednego zadania.\n\nZasady jakości:\n1. Nie zgaduj moich zadań. Najpierw pytaj.\n2. Nie proponuj automatyzacji, jeśli wystarczy dobra instrukcja do agenta.\n3. Nie proponuj poziomu 5 bez dowodów, że proces jest stabilny.\n4. Nie mieszaj roadmapy z changelogiem. Rzeczy do zrobienia trafiają do roadmapy, rzeczy wykonane do changeloga.\n5. Nie usuwaj wartościowej treści ze źródeł, jeśli zadaniem jest migracja albo porządkowanie kontentu.\n6. Każde zadanie dla agenta musi mieć wynik, zakres, ograniczenia i test jakości.\n7. Jeśli brakuje danych, dopytaj, zamiast tworzyć pozornie mądry plan.\n\nZacznij teraz od maksymalnie 5 pytań, które pozwolą Ci zrozumieć moją pracę z ostatnich 24 do 48 godzin.",
+  "example": "Użyj tego prompta, gdy chcesz powiedzieć: nie wiem, co właściwie może przejąć ode mnie Codex albo Claude Code. Model ma Cię przepytać, znaleźć powtarzalne zadania, rozdzielić je na 5 poziomów delegowania i przygotować pierwszy realny plan wdrożenia pracy z agentem.",
+  "order": 99,
+  "published": true,
+  "seoTitle": "5 poziomów delegowania do Codex i Claude Code, prompt AI",
+  "seoDescription": "Prompt, który wypytuje o zadania i tworzy plan delegowania pracy do Codex albo Claude Code według 5 poziomów autonomii, od instrukcji po stały proces.",
+  "keywords": [
+    "delegowanie do Codex",
+    "Claude Code prompt",
+    "5 poziomów delegowania",
+    "agent AI",
+    "automatyzacja pracy"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "delegowanie-pracy-do-agentow-ai",
+  "internalLinks": [
+    "audyt-powtarzalnych-workflow-w-codex",
+    "interaktywny-tutor-ai-do-nauki",
+    "agent-team-budowa-feature"
+  ],
+  "sourceCourse": "Szkoła Delegowania oraz Szkoła Budowania Firmy",
+  "sourceLesson": "5 poziomów delegowania, wdrożenie asystenta, dokumentacja procesów, rytm podsumowań, dostępy i błędy delegowania",
+  "faq": [
+    {
+      "question": "Czym ten prompt różni się od checklisty delegowania?",
+      "answer": "Checklista pokazuje kroki, a ten prompt prowadzi rozmowę. Najpierw zadaje pytania o realne zadania, źródła prawdy, narzędzia, ryzyka i standard jakości, a dopiero potem proponuje, co może przejąć Codex albo Claude Code."
+    },
+    {
+      "question": "Jakie są 5 poziomów delegowania do agenta AI?",
+      "answer": "Poziom 1 to dokładne wykonanie instrukcji. Poziom 2 to plan przed działaniem. Poziom 3 to rekomendacja wariantów. Poziom 4 to decyzja w ustalonych granicach i informowanie. Poziom 5 to stała autonomia w dobrze opisanym procesie."
+    },
+    {
+      "question": "Czy prompt od razu tworzy automatyzacje?",
+      "answer": "Nie powinien zaczynać od automatyzacji. Najpierw ma ustalić, czy wystarczy dobra instrukcja, czy potrzebny jest skill, skrypt, guard, checklist, subagent albo stały rytuał pracy. Automatyzacja ma sens dopiero przy powtarzalnym, stabilnym i kosztownym procesie."
+    },
+    {
+      "question": "Jakie zadania najlepiej delegować do Codex albo Claude Code na start?",
+      "answer": "Na start najlepsze są zadania poziomu 1: przeczytanie wskazanych plików, porównanie treści, przygotowanie draftu, lokalny build, walidacja, uzupełnienie changeloga, wygenerowanie preview albo spisanie braków. Każde z nich powinno mieć jasny zakres i test jakości."
+    },
+    {
+      "question": "Kiedy agent może dostać większą autonomię?",
+      "answer": "Większa autonomia ma sens dopiero wtedy, gdy agent zna źródła prawdy, ograniczenia, standard odpowiedzi, testy jakości i czerwone linie. Wtedy można przejść z poziomu 1 do poziomu 2, potem do rekomendacji, a dopiero później do decyzji w granicach."
+    },
+    {
+      "question": "Czego nie delegować agentowi AI bez zgody?",
+      "answer": "Bez jasnej zgody nie deleguj deployu produkcyjnego, operacji zapisujących w systemach produkcyjnych, kasowania danych, resetu credentiali, wysyłki maili do klientów, zmian uprawnień, usuwania wartościowej treści ani decyzji właścicielskich, finansowych i rekrutacyjnych."
+    }
+  ]
+}

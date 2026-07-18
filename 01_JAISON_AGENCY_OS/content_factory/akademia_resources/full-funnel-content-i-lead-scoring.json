@@ -1,0 +1,112 @@
+{
+  "id": "full-funnel-content-i-lead-scoring",
+  "type": "checklist",
+  "title": "Full-funnel content i lead scoring",
+  "description": "Checklista architektury contentu pełnego lejka, od TOFU przez MOFU do BOFU, z praktycznym modelem lead scoringu, benchmarkami pipeline dla edukacji i kursów premium oraz obsługą dark funnel i self-reported attribution.",
+  "shortDescription": "Twórz content na każdy etap lejka i punktuj leady, zamiast karmić tylko górę lejka.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Lejek",
+    "Lead scoring"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/full-funnel-content-i-lead-scoring/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Full-funnel content i lead scoring",
+  "body": "Większość firm tworzy tylko content na górę lejka i dziwi się, że ruch nie zamienia się w klientów. Ta checklista pokazuje, jak mapować content na każdy etap, od świadomości przez rozważanie do decyzji, oraz jak punktować leady, żeby sprzedaż wiedziała, kto jest gotowy. Dokłada benchmarki pipeline dla edukacji i kursów premium, model lead scoringu na dwóch osiach oraz obsługę dark funnel, czyli sytuacji, w której kupujący kończy podróż, zanim się odezwie. Marki z full-funnel strategią mają około 45 procent wyższy ROI niż te skupione na jednym etapie.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojego lejka, oferty i dotychczasowych treści. Poproś AI, żeby przypisało Twój istniejący content do etapów TOFU, MOFU i BOFU, wskazało luki, czyli etapy bez treści, i zaproponowało konkretne formaty do uzupełnienia, na przykład webinar w MOFU albo FAQ obiekcji w BOFU. Następnie niech AI zbuduje prosty model lead scoringu na osiach fit i engagement z progami cold, warm, MQL i SQL oraz zaproponuje pole skąd o nas wiesz do formularzy, żeby odzyskać część dark funnel.",
+  "checklistSections": [
+    {
+      "title": "Mapowanie contentu per etap lejka",
+      "items": [
+        "TOFU, czyli świadomość: blog SEO, posty social, Reelsy i TikToki, podcast, infografiki, cel to ruch i rozpoznawalność, konwersja na lead 1 do 5 procent.",
+        "MOFU, czyli rozważanie: webinary, case studies, porównania, quizy, email nurture, kalkulatory ROI, cel to lead do MQL, konwersja 5 do 15 procent.",
+        "BOFU, czyli decyzja: demo, konsultacja, oferta, testimoniale wideo, FAQ obiekcji, countdown, cel to MQL do klienta, konwersja 15 do 30 procent.",
+        "Pamiętasz, że lejek 2025 i 2026 jest nieliniowy, kupujący krążą między etapami, więc tworzysz content na każdy etap, nie tylko TOFU.",
+        "Wiesz, że marki z full-funnel strategią mają 45 procent wyższy ROI niż te single-stage.",
+        "Stosujesz webinar live jako najsilniejszy format MOFU do BOFU: 30 do 40 procent rejestracja, 57 procent show up, 5 do 12 procent sprzedaż."
+      ]
+    },
+    {
+      "title": "Lead scoring, praktyczny model",
+      "items": [
+        "Punktujesz na dwóch osiach: fit, czyli 40 punktów za branżę, stanowisko i budżet, oraz engagement, czyli 60 punktów za zachowania.",
+        "Stosujesz progi: cold 0 do 29, warm 30 do 49, MQL 50 do 74, SQL 75 plus.",
+        "Przyznajesz punkty za akcje: obecność na webinarze plus 20, klik w stronę z ceną plus 15, pobranie case study plus 10, otwarcie 3 plus maili plus 5.",
+        "Stosujesz score decay: minus 25 procent miesięcznie bez aktywności, żeby nie zaśmiecać pipeline.",
+        "Pamiętasz, że PQL, czyli Product Qualified Lead, konwertuje 15 do 30 procent, czyli 2 do 3x lepiej niż MQL.",
+        "Reagujesz na leada w czasie poniżej 1 godziny, bo to daje 400 procent więcej konwersji niż reakcja powyżej 24 godzin."
+      ]
+    },
+    {
+      "title": "Benchmarki pipeline dla edukacji i kursów premium",
+      "items": [
+        "Lead do MQL 5 do 15 procent, MQL do SQL 13 do 21 procent, SQL do szansy 50 do 70 procent, szansa do klienta 20 do 30 procent.",
+        "MER, czyli Marketing Efficiency Ratio, mediana 4,0 w 2025, cel powyżej 3,0.",
+        "CAC Payback w edukacji to 3,8 miesiąca, najlepszy ze wszystkich branż.",
+        "LTV do CAC minimum 3 do 1, cel 5 do 1 i więcej.",
+        "Cykl sprzedaży w edukacji to 21 do 45 dni, wobec 84 dni w B2B SaaS."
+      ]
+    },
+    {
+      "title": "Dark funnel",
+      "items": [
+        "Pamiętasz, że 61 procent kupujących B2B kończy podróż, zanim skontaktuje się z dostawcą.",
+        "Wiesz, że 94 procent używa modeli AI w procesie, co jest niewidoczne w atrybucji.",
+        "Dodajesz self-reported attribution: pole skąd o nas wiesz na każdym formularzu, open text plus dropdown.",
+        "Pamiętasz przykład: firma odkryła 30 procent konwersji z YouTube wobec poniżej 5 procent w atrybucji software, dzięki pytaniu skąd o nas wiesz."
+      ]
+    }
+  ],
+  "example": "Najlepsza dla firmy edukacyjnej, kursowej albo usługowej, która ma ruch, ale słabo go konwertuje, i chce uporządkować content oraz kwalifikację leadów na całym lejku.",
+  "order": 65,
+  "published": true,
+  "seoTitle": "Full-funnel content i lead scoring, checklista TOFU MOFU BOFU",
+  "seoDescription": "Mapuj content na TOFU, MOFU i BOFU, zbuduj lead scoring na osiach fit i engagement, poznaj benchmarki pipeline dla edukacji i odzyskaj dark funnel.",
+  "keywords": [
+    "full funnel",
+    "lead scoring",
+    "lejek marketingowy",
+    "TOFU MOFU BOFU",
+    "dark funnel"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "lejek-contentu",
+  "internalLinks": [
+    "lista-45-lejkow-sprzedazowych",
+    "demand-generation-i-atrybucja",
+    "diagnoza-content-fuel-vs-engine"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Architektura full-funnel, lead scoring i dark funnel",
+  "faq": [
+    {
+      "question": "Czym są etapy TOFU, MOFU i BOFU?",
+      "answer": "TOFU to góra lejka, czyli świadomość i ruch, MOFU to środek, czyli rozważanie i zamiana leada w MQL, a BOFU to dół, czyli decyzja i zakup. Każdy etap potrzebuje innych treści: blog i social na górze, webinary i porównania w środku, demo i FAQ obiekcji na dole."
+    },
+    {
+      "question": "Dlaczego nie wystarczy tworzyć tylko contentu TOFU?",
+      "answer": "Sam content na górę lejka generuje ruch, ale słabo konwertuje, bo nie prowadzi człowieka do decyzji. Marki z pełną strategią lejka mają około 45 procent wyższy ROI, bo odpowiadają na pytania na każdym etapie. Współczesny lejek jest nieliniowy i kupujący krążą między etapami."
+    },
+    {
+      "question": "Jak zbudować prosty lead scoring?",
+      "answer": "Punktuj leady na dwóch osiach: fit, czyli dopasowanie po branży, stanowisku i budżecie, do 40 punktów, oraz engagement, czyli zachowania, do 60 punktów. Ustaw progi cold, warm, MQL i SQL, przyznawaj punkty za akcje takie jak udział w webinarze i stosuj spadek punktów przy braku aktywności."
+    },
+    {
+      "question": "Czym jest dark funnel i dlaczego ma znaczenie?",
+      "answer": "Dark funnel to część podróży kupującego niewidoczna w analityce, bo 61 procent kupujących B2B decyduje, zanim się odezwie, a 94 procent korzysta z modeli AI. Dlatego warto dodać pole skąd o nas wiesz na formularzach, żeby odzyskać część tej niewidocznej atrybucji."
+    },
+    {
+      "question": "Jak szybko reagować na nowego leada?",
+      "answer": "Najlepiej w czasie poniżej jednej godziny, bo tak szybka reakcja daje nawet 400 procent więcej konwersji niż odpowiedź po ponad 24 godzinach. Warto też pamiętać, że Product Qualified Lead, czyli ktoś, kto już używał produktu, konwertuje dwa do trzech razy lepiej niż klasyczny MQL."
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "id": "metryka-aktywacji-i-retencji",
+  "type": "checklist",
+  "title": "Metryka aktywacji i metryki retencji",
+  "description": "Checklista definiowania metryki aktywacji i pomiaru retencji: jak znaleźć metrykę aktywacji skorelowaną z retencją, jak mierzyć D1, D7 i D30, retencję kohortową oraz Net Revenue Retention, z benchmarkami i frameworkiem PMF.",
+  "shortDescription": "Znajdź metrykę aktywacji skorelowaną z retencją i mierz D1, D7, D30, kohorty oraz Net Revenue Retention.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Aktywacja",
+    "Retencja"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/metryka-aktywacji-i-retencji/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Metryka aktywacji i metryki retencji",
+  "body": "Bez właściwej metryki aktywacji i pomiaru retencji nie da się świadomie poprawiać produktu. Ta checklista pokazuje, jak znaleźć metrykę aktywacji, czyli akcję wykonywaną przez użytkowników, którzy zostają, jak unikać fałszywych korelacji oraz jak mierzyć retencję przez D1, D7 i D30, retencję kohortową i Net Revenue Retention. Dokłada framework PMF Seana Ellisa, benchmarki retencji per typ produktu oraz zasadę, że retencja jest wynikiem, nie dźwignią, więc celujesz w krótkoterminową metrykę, która ją napędza. Dzięki temu mierzysz to, co naprawdę przewiduje, czy użytkownik zostanie.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z danymi o swoich użytkownikach, ich zachowaniach i retencji. Poproś AI, żeby pomogło zdefiniować metrykę aktywacji w zakresie 5 do 15 procent skorelowaną z retencją, sprawdziło różne progi, na przykład 1, 3 i 5 akcji, oraz ostrzegło przed fałszywymi korelacjami. Następnie niech AI rozpisze pomiar retencji przez D1, D7 i D30, retencję kohortową i Net Revenue Retention, porówna Twoje wyniki z benchmarkami branżowymi i wskaże, na której krótkoterminowej metryce warto celować.",
+  "checklistSections": [
+    {
+      "title": "Definiowanie metryki aktywacji",
+      "items": [
+        "Lauryn Isford z Airtable: metryka aktywacji powinna być w zakresie 5 do 15 procent, bo to oznacza wysoką korelację z retencją i pole do poprawy.",
+        "Merci Grace ze Slacka: 3 prawdziwe osoby plus 50 prawdziwych wiadomości to zespół, który zostanie, więc szukaj swojego odpowiednika tej metryki.",
+        "Sean Ellis, test PMF: pytaj użytkowników, jak bardzo byliby rozczarowani, gdyby produkt zniknął, a powyżej 40 procent odpowiedzi bardzo rozczarowany oznacza product-market fit.",
+        "Josh Miller: mierz retencję w dniu 5 i 7 po instalacji jako kluczowy wskaźnik product-market fit.",
+        "Jessica Lachs z DoorDash: retencja to wynik, a nie dźwignia, więc znajdź krótkoterminową metrykę, która ją napędza, i na niej celuj."
+      ]
+    },
+    {
+      "title": "Proces znajdowania metryki",
+      "items": [
+        "Identyfikujesz akcję wykonywaną przez użytkowników, którzy zostają, i porównujesz ją z tymi, którzy odchodzą.",
+        "Sprawdzasz korelację: czy użytkownicy, którzy wykonali akcję X w ciągu Y dni, mają istotnie wyższą retencję.",
+        "Uważasz na fałszywe korelacje: Facebook 10 przyjaciół w 14 dni to korelacja, nie przyczyna.",
+        "Testujesz różne progi, na przykład 1, 3 i 5 akcji, i szukasz progu, gdzie retencja skokowo rośnie.",
+        "Stosujesz PLG Audit Framework Eleny Verny: zdefiniuj metrykę aktywacji, zmapuj user journey, zmierz konwersje na każdym etapie, znajdź najsłabsze ogniwo, optymalizuj."
+      ]
+    },
+    {
+      "title": "Kluczowe metryki retencji",
+      "items": [
+        "D1, D7 i D30 retention: procent użytkowników aktywnych po 1, 7 i 30 dniach od rejestracji.",
+        "Josh Miller: D5 i D7 jako kluczowy wskaźnik product-market fit.",
+        "Retencja kohortowa: śledzisz każdą kohortę, czyli miesiąc rejestracji, osobno, unikając uśredniania.",
+        "Net Revenue Retention: przychód z istniejących klientów po roku podzielony przez przychód rok temu razy 100 procent, cel powyżej 100 procent, czyli ekspansja większa niż churn.",
+        "Jessica Lachs: retencja jest wynikiem, nie dźwignią, więc nie celuj na samą retencję, tylko na krótkoterminową metrykę, która ją napędza.",
+        "Uri Levine z Waze: jedyna metryka product-market fit to retencja, bo jeśli wracają, tworzysz wartość."
+      ]
+    },
+    {
+      "title": "Benchmarki retencji",
+      "items": [
+        "Aplikacja konsumencka, dobry wynik: D1 powyżej 40 procent, D7 powyżej 20 procent, D30 powyżej 10 procent.",
+        "SaaS B2B: miesięczna retencja 93 do 97 procent, czyli 3 do 7 procent churnu, najlepszy Net Revenue Retention 120 do 140 procent.",
+        "Edtech: D30 15 do 25 procent to dobry wynik, D30 5 do 10 procent to przeciętny.",
+        "Marketplace: D30 powyżej 25 procent po obu stronach, czyli supply i demand."
+      ]
+    },
+    {
+      "title": "Dashboard retencji",
+      "items": [
+        "Krzywa retencji: wykreślasz D1 do D90 dla każdej kohorty i szukasz momentu spłaszczenia, bo to Twoja naturalna retencja.",
+        "Jeśli krzywa się nie spłaszcza, nie masz retencji, masz powolne wykrwawianie.",
+        "Porównujesz kohorty: czy nowsze kohorty mają lepszą retencję, co świadczy o poprawie produktu."
+      ]
+    },
+    {
+      "title": "Formuła wzrostu",
+      "items": [
+        "Wzrost to iloczyn akwizycji, aktywacji i retencji, więc każdy z tych filarów wymaga osobnej strategii.",
+        "Dariusz Eliasz: trzy filary modelu wzrostu to akwizycja, retencja i monetyzacja.",
+        "Elena Verna: self-serve ma sufit około 10 tysięcy dolarów, powyżej potrzebny jest sales.",
+        "Patrick Campbell z ProfitWell: firmy, które regularnie rewidują ceny, rosną 2 do 4 razy szybciej, bo pricing to najszybsza dźwignia wzrostu przychodu."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy chcesz świadomie mierzyć produkt: zdefiniować metrykę aktywacji skorelowaną z retencją i ustawić pomiar D1, D7, D30, kohort i Net Revenue Retention zamiast patrzeć na średnie.",
+  "order": 83,
+  "published": true,
+  "seoTitle": "Metryka aktywacji i metryki retencji, checklista D1 D7 D30",
+  "seoDescription": "Znajdź metrykę aktywacji skorelowaną z retencją i mierz D1, D7, D30, retencję kohortową, Net Revenue Retention oraz test PMF, z benchmarkami branżowymi.",
+  "keywords": [
+    "metryka aktywacji",
+    "retencja",
+    "D1 D7 D30",
+    "net revenue retention",
+    "product market fit"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "onboarding-retencja",
+  "internalLinks": [
+    "onboarding-uzytkownika-pierwsza-wartosc",
+    "hierarchy-of-engagement-i-churn",
+    "ab-testy-pomiar-i-ice"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Metryka aktywacji, metryki retencji i benchmarki",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie i wzroście",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło frameworków onboardingu, aktywacji i retencji przytoczonych w checkliście, do dalszego posłuchania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest metryka aktywacji w produkcie?",
+      "answer": "Metryka aktywacji to konkretna akcja, którą wykonują użytkownicy, którzy zostają z produktem, na przykład w Slacku zespół, który wymienił pięćdziesiąt wiadomości. Dobrze dobrana metryka mieści się zwykle w zakresie pięciu do piętnastu procent użytkowników i jest silnie skorelowana z retencją, więc poprawiając ją, realnie zwiększasz utrzymanie."
+    },
+    {
+      "question": "Jak znaleźć właściwą metrykę aktywacji?",
+      "answer": "Porównaj zachowania użytkowników, którzy zostają, z tymi, którzy odchodzą, i szukaj akcji oraz progu, przy którym retencja skokowo rośnie. Testuj różne progi, na przykład jedną, trzy i pięć akcji w danym oknie czasu. Uważaj na fałszywe korelacje, bo nie każda wspólna cecha lojalnych użytkowników jest realną przyczyną ich pozostania."
+    },
+    {
+      "question": "Czym różni się D1, D7 i D30 retention?",
+      "answer": "To procent użytkowników nadal aktywnych po jednym, siedmiu i trzydziestu dniach od rejestracji. D1 i D7 pokazują, czy onboarding i pierwsza wartość działają, a D30 mówi o trwalszym przyzwyczajeniu. Niektórzy, jak Josh Miller, traktują retencję w dniu piątym i siódmym jako kluczowy sygnał product-market fit."
+    },
+    {
+      "question": "Czym jest Net Revenue Retention?",
+      "answer": "Net Revenue Retention to przychód z istniejących klientów po roku podzielony przez przychód sprzed roku, pomnożony przez sto procent. Wynik powyżej stu procent oznacza, że ekspansja, czyli upsell i mniejszy churn, przewyższa utratę klientów. W najlepszych firmach SaaS B2B sięga stu dwudziestu do stu czterdziestu procent."
+    },
+    {
+      "question": "Dlaczego nie celować bezpośrednio na retencję?",
+      "answer": "Jak zauważa Jessica Lachs z DoorDash, retencja jest wynikiem, a nie dźwignią, na którą da się bezpośrednio naciskać. Lepiej znaleźć krótkoterminową metrykę, która ją napędza, na przykład konkretną akcję aktywacyjną, i celować właśnie w nią. Wtedy poprawa tej metryki przekłada się na wyższą retencję w dłuższym okresie."
+    }
+  ]
+}

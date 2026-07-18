@@ -1,0 +1,156 @@
+{
+  "id": "strategia-cenowa-gotowosc-do-zaplaty",
+  "type": "checklist",
+  "title": "Strategia cenowa: gotowość do zapłaty, modele i tiery",
+  "description": "Checklista ustalania ceny: badanie gotowości do zapłaty przed budową produktu, wybór modelu cenowego, architektura trzech tierów z efektem wabika i zakotwiczeniem oraz psychologia ceny, oparta o podejście Madhavana Ramanujama i benchmarki konwersji.",
+  "shortDescription": "Ustal cenę świadomie: zbadaj gotowość do zapłaty, wybierz model i zbuduj cennik trzech tierów.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Pricing",
+    "Strategia cenowa"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/strategia-cenowa-gotowosc-do-zaplaty/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Strategia cenowa: gotowość do zapłaty, modele i tiery",
+  "body": "Większość firm ustala cenę na końcu, na czuja, i to jest błąd. Ta checklista odwraca kolejność: najpierw badasz gotowość do zapłaty, po angielsku willingness to pay, czyli ile produkt jest dla klienta wart, jeszcze zanim go zbudujesz, bo to cena powinna informować, co budować. Następnie wybierasz model cenowy, bo zły model zabija szybciej niż zła kwota, projektujesz architekturę trzech tierów z efektem wabika i zakotwiczeniem oraz dobierasz psychologię ceny. Dzięki temu cena staje się miarą wartości, a nie doliczeniem do kosztu, i prowadzi większość klientów do tieru, na którym Ci zależy.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojego produktu, grupy docelowej i tego, co już wiesz o cenach konkurencji. Poproś AI, żeby przygotowało scenariusz rozmów o gotowości do zapłaty według metody Van Westendorpa, czyli pytania o cenę za drogą, okazyjną i progową, oraz doradziło, jaki model cenowy pasuje do Twojej wartości: subskrypcja, usage, outcome, freemium, tiery albo kredyty. Następnie niech AI zaprojektuje cennik trzech tierów z docelowym środkowym, efektem wabika i zakotwiczeniem oraz dobierze psychologię ceny do Twojego segmentu, B2B albo B2C.",
+  "checklistSections": [
+    {
+      "title": "Cena przed produktem, zasada kluczowa",
+      "items": [
+        "Przeprowadzasz rozmowy o gotowości do zapłaty, zanim zaczniesz budować, bo 72 procent innowacji upada, bo nikt tego nie sprawdził, według Madhavana Ramanujama.",
+        "Pytasz nie ile to kosztuje, ale ile jest to warte, bo cena jest miarą wartości, nie kosztem.",
+        "Projektujesz produkt wokół ceny, nie ustalasz ceny na końcu, bo cena powinna informować, co budować.",
+        "Pamiętasz, że 20 procent tego, co budujesz, napędza 80 procent gotowości do zapłaty, więc identyfikujesz te 20 procent i budujesz je najpierw.",
+        "Pricing siedzi w dziale produktu, nie w finansach, bo decyzje cenowe to decyzje produktowe."
+      ]
+    },
+    {
+      "title": "Jak badać gotowość do zapłaty",
+      "items": [
+        "Pytasz 20 do 30 potencjalnych klientów metodą Van Westendorpa: za jaką cenę to byłoby za drogie, za jaką byłoby okazją, za jaką zaczynasz się wahać.",
+        "Pokazujesz 3 warianty cenowe i obserwujesz reakcje, zamiast pytać wprost, ile zapłacisz.",
+        "Jeśli klient targuje każdy grosz, nie jest przekonany do wizji, bo najlepsi klienci kupują pełną cenę, według Jen Abel.",
+        "Weryfikujesz z minimum 10 niezależnymi płacącymi klientami, bo 10 niezależnych płatności to prawdziwe dopasowanie cenowe.",
+        "Zakotwiczasz na wyższej cenie, bo ceny startupów są prawie zawsze za niskie, według Jasona Cohena."
+      ]
+    },
+    {
+      "title": "Wybór modelu cenowego",
+      "items": [
+        "Model cenowy jest ważniejszy niż konkretna kwota, bo błędny model oznacza śmierć firmy, według Ramanujama.",
+        "Subskrypcja miesięczna albo roczna: najlepsza dla powtarzalnej wartości i przewidywalnego przychodu, domyślny wybór dla SaaS.",
+        "Usage-based, czyli płać za użycie: najlepszy, gdy wartość koreluje z użyciem, na przykład wywołania API, wiadomości, transakcje, niższa bariera wejścia.",
+        "Outcome-based, czyli za wynik: kwadrant wysokiej autonomii i wysokiej atrybucji, jest tu tylko 5 procent firm, ale to tu chcesz być.",
+        "Freemium: darmowa wersja podstawowa plus płatne rozszerzenia, działa, gdy produkt ma efekt sieciowy albo wiralowy.",
+        "Tiery, czyli pakiety: 3 poziomy z różnym zestawem funkcji i limitów, najczęściej spotykany model.",
+        "Kredytowy: kupujesz pakiety kredytów ze zniżką, co obniża początkową barierę."
+      ]
+    },
+    {
+      "title": "Udział w rynku kontra udział w portfelu",
+      "items": [
+        "Diagnozujesz, czy jesteś Market Maker, czyli zdobywasz udział rynkowy, czy Money Maker, czyli optymalizujesz przychód na klienta, i opanowujesz oba wymiary.",
+        "Self-serve, czyli samoobsługa, ma sufit około 10 tysięcy dolarów, powyżej potrzebny jest sales do zamknięcia kontraktów, według Eleny Verny."
+      ]
+    },
+    {
+      "title": "Architektura trzech tierów",
+      "items": [
+        "3 tiery konwertują najlepiej, a 4 plus tiery konwertują o 31 procent gorzej.",
+        "Tier 1 podstawowy: niska cena, ograniczone funkcje, służy jako kotwica i punkt wejścia.",
+        "Tier 2 docelowy: tu ma trafić większość klientów, a badge najpopularniejszy znacząco podnosi wybieralność.",
+        "Tier 3 premium albo enterprise: wysoka cena, służy jako górna kotwica, żeby tier 2 wyglądał na okazję.",
+        "Projektujesz tiery według modelu dzień 1 kontra dzień 100: co użytkownik potrzebuje pierwszego dnia, czyli prostota, a co po 100 dniach, czyli zaawansowane funkcje, według Naomi Ionity."
+      ]
+    },
+    {
+      "title": "Efekt wabika i zakotwiczenie",
+      "items": [
+        "Dodajesz zakotwiczenie: pokazujesz droższą opcję obok docelowej, żeby tier 2 wyglądał atrakcyjniej.",
+        "Efekt wabika: dodanie opcji nieco gorszej w cenie zbliżonej do docelowej masowo przesuwa wybory na pożądany tier.",
+        "Spersonalizowane rekomendacje planów: zadajesz 2 do 3 pytania i wskazujesz najlepszy plan, jak GitHub z plus 61 procent płatnych konwersji.",
+        "Domyślne przełączanie na fakturowanie roczne daje plus 19 procent adopcji planu rocznego.",
+        "Przykład Lyyti: przebudowa strony cenowej dała plus 93,71 procent wizyt na stronie lead gen, a BIGContacts plus 76 procent darmowych prób."
+      ]
+    },
+    {
+      "title": "Psychologia ceny",
+      "items": [
+        "Testujesz cenę: okrągła, na przykład 100 złotych, nierówna, na przykład 97 złotych, albo premium, na przykład 149 złotych, bo każda działa w innym kontekście.",
+        "Reguła 100: produkt poniżej 100 złotych to atrakcyjniejszy procent rabatu, na przykład 20 procent zniżki, powyżej 100 złotych to kwota, na przykład 50 złotych zniżki.",
+        "Ceny kończące się na 7 albo 9, na przykład 97 i 99, dają percepcję okazji w segmencie B2C.",
+        "Ceny okrągłe, na przykład 100, 500, 1000, dają percepcję premium i jakości w segmencie B2B.",
+        "Dodajesz gwarancję zwrotu pieniędzy, bo zmniejsza ryzyko zakupu i daje plus 30 do 60 procent konwersji.",
+        "Tworzysz pakiet: kilka produktów taniej niż osobno, co podnosi średnią wartość zamówienia.",
+        "Pamiętasz, że klienci, którzy płacą więcej, mniej narzekają, więc nie boisz się wyższych cen."
+      ]
+    }
+  ],
+  "example": "Najlepsza przy ustalaniu ceny nowego produktu albo przebudowie cennika, gdy chcesz oprzeć cenę na realnej gotowości do zapłaty, wybrać właściwy model i zaprojektować tiery prowadzące do docelowego planu.",
+  "order": 88,
+  "published": true,
+  "seoTitle": "Strategia cenowa, gotowość do zapłaty, modele i tiery",
+  "seoDescription": "Ustal cenę świadomie: zbadaj gotowość do zapłaty przed budową, wybierz model cenowy, zaprojektuj trzy tiery z efektem wabika i dobierz psychologię ceny.",
+  "keywords": [
+    "strategia cenowa",
+    "gotowość do zapłaty",
+    "modele cenowe",
+    "tiery cenowe",
+    "pricing"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "pricing",
+  "internalLinks": [
+    "pricing-w-czasie-podwyzki-i-modele",
+    "analiza-cenowa-produktu-uslugi",
+    "strategia-cenowa-produktu"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Gotowość do zapłaty, modele cenowe i architektura tierów",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie i wzroście",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło rozmów o pricingu z ekspertami przytoczonymi w checkliście, do dalszego posłuchania."
+    },
+    {
+      "title": "Monetizing Innovation, podejście do pricingu",
+      "author": "Madhavan Ramanujam, Simon-Kucher",
+      "url": "https://www.simon-kucher.com",
+      "relation": "Odniesienie do zasady ceny przed produktem i wyboru modelu cenowego, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Dlaczego ustalać cenę przed zbudowaniem produktu?",
+      "answer": "Bo cena jest miarą wartości i powinna informować, co w ogóle warto budować. Madhavan Ramanujam zauważa, że aż siedemdziesiąt dwa procent innowacji upada, bo nikt wcześniej nie sprawdził, czy ktoś za nie zapłaci. Badając gotowość do zapłaty na starcie, projektujesz produkt wokół ceny, a nie doklejasz cenę na końcu w oderwaniu od wartości."
+    },
+    {
+      "question": "Jak zbadać gotowość do zapłaty?",
+      "answer": "Najprościej metodą Van Westendorpa: pytasz dwadzieścia do trzydziestu potencjalnych klientów, za jaką cenę produkt byłby za drogi, za jaką byłby okazją i przy jakiej zaczynają się wahać. Zamiast pytać wprost, ile zapłacą, pokazujesz trzy warianty i obserwujesz reakcje. Wiarygodny sygnał to dziesięciu niezależnych płacących klientów przy pełnej cenie."
+    },
+    {
+      "question": "Co jest ważniejsze, model cenowy czy kwota?",
+      "answer": "Model cenowy. Ramanujam podkreśla, że błędny model zabija firmę szybciej niż błędna kwota. Najpierw wybierasz, czy rozliczasz się subskrypcją, za użycie, za wynik, w modelu freemium, w tierach czy w kredytach, dopasowując model do tego, jak powstaje wartość dla klienta. Dopiero potem dostrajasz konkretne kwoty w ramach tego modelu."
+    },
+    {
+      "question": "Ile tierów powinien mieć cennik?",
+      "answer": "Najlepiej trzy, bo cenniki z czterema i więcej tierami konwertują nawet o trzydzieści jeden procent gorzej. Tier pierwszy to tania kotwica i wejście, tier drugi to plan docelowy, na który ma trafić większość klientów, oznaczony jako najpopularniejszy, a tier trzeci to droga górna kotwica, która sprawia, że środkowy plan wygląda na okazję."
+    },
+    {
+      "question": "Czy stosować końcówki cen typu 97 i 99?",
+      "answer": "To zależy od segmentu. W B2C ceny kończące się na siedem albo dziewięć budują percepcję okazji i sprawdzają się przy zakupach impulsowych. W B2B lepiej działają ceny okrągłe, na przykład sto, pięćset czy tysiąc, bo kojarzą się z premium i jakością. Warto przetestować obie wersje, bo psychologia ceny działa inaczej w różnych kontekstach."
+    }
+  ]
+}

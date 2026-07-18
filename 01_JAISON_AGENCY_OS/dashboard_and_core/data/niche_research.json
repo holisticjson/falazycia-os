@@ -1,0 +1,6 @@
+{
+    "product_type": "Checklista / Arkusz",
+    "description": "Jeden agent dla soloprenerów, twórców, przedsiębiorców oraz usług lokalnych, którym sterujesz przez swój ulubiony komunikator: Telegram, WhatsApp, Discord czy Signal. Dla neuroatypowych z ADHD w Polsce, agent, który steruje Twoimi ulubionymi narzędziami do zarządzania Twoimi social mediami zgodnie z Twoim stylem. Robi codzienny research, automatyzuje codzienne zadania oraz procesy zarządzania biznesowego i marketingu.",
+    "analysis": "Błąd: Brak połączenia z lokalnym proxy, brak autoryzacji GCP (Vertex AI HTTP 500: The read operation timed out) oraz brak klucza GEMINI_API_KEY w .env.",
+    "timestamp": "2026-06-25 17:42:32"
+}

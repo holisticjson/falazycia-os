@@ -1,0 +1,67 @@
+{
+  "id": "analiza-umowy-przed-podpisaniem",
+  "type": "prompt",
+  "title": "Analiza umowy przed podpisaniem",
+  "description": "Znajdź czerwone flagi, konflikty interesów i zapisy, które mogą działać przeciwko Tobie.",
+  "shortDescription": "Wykryj czerwone flagi przed podpisaniem umowy.",
+  "industry": "Prawo",
+  "industrySlug": "prawo",
+  "application": "Prawo i umowy",
+  "applicationSlug": "prawo-umowy",
+  "tags": [
+    "Umowy",
+    "Ryzyka"
+  ],
+  "url": "/prompty/prawo/analiza-umowy-przed-podpisaniem/",
+  "active": true,
+  "views": 0,
+  "postedAt": "June 9, 2026",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Analiza umowy przed podpisaniem",
+  "body": "Prompt pomaga przejrzeć umowę pod kątem ryzyk, konfliktów interesów, niekorzystnych zapisów i czerwonych flag przed podjęciem decyzji.",
+  "usage": "Użyj tego prompta, gdy masz projekt umowy i chcesz szybko zobaczyć, które zapisy mogą być ryzykowne, niejasne albo jednostronnie korzystne dla drugiej strony. Wklej treść umowy, opisz swoją rolę, cel biznesowy, drugą stronę, wartość umowy i największe obawy. Wynik potraktuj jako listę punktów do sprawdzenia z prawnikiem, a nie jako poradę prawną. Dodaj też informację, czy bardziej boisz się płatności, odpowiedzialności, praw autorskich, zakazu konkurencji, rozwiązania umowy czy kar. To pozwala modelowi priorytetyzować ryzyka zamiast robić płaski przegląd każdego paragrafu.",
+  "prompt": "Przeanalizuj umowę przed podpisaniem z perspektywy ochrony moich interesów.\n\nTo nie jest porada prawna. Twoim zadaniem jest wskazać ryzyka, czerwone flagi i pytania do prawnika albo drugiej strony.\n\nKontekst:\npodpisuję umowę jako [moja rola].\n\nDruga strona:\n[kto]\n\nCel umowy:\n[po co podpisuję]\n\nWartość albo stawka:\n[kwota albo znaczenie biznesowe]\n\nMoje największe obawy:\n[wpisz obawy]\n\nTreść umowy:\n[wklej umowę]\n\nPrzeanalizuj dokument w 12 obszarach:\n1. Strony i definicje.\n2. Zakres obowiązków.\n3. Płatności.\n4. Terminy.\n5. Kary.\n6. Odpowiedzialność.\n7. Własność intelektualna.\n8. Poufność.\n9. Dane osobowe.\n10. Wypowiedzenie.\n11. Automatyczne odnowienia.\n12. Rozstrzyganie sporów.\n\nDla każdego ryzyka podaj konkretny zapis albo parafrazę, dlaczego jest problemem, jak może zostać wykorzystany, poziom ryzyka od 1 do 5, pytanie do zadania i możliwą zmianę brzmienia.\n\nKażde ryzyko oznacz priorytetem:\nP0 oznacza, że nie podpisywać bez wyjaśnienia.\nP1 oznacza negocjować albo doprecyzować.\nP2 oznacza zapisać do świadomości.\n\nFormat odpowiedzi:\nostrzeżenie, że to nie jest porada prawna, tabela ryzyk, lista pytań do drugiej strony, lista pytań do prawnika, propozycje doprecyzowań, podsumowanie decyzji.\n\nNa końcu przygotuj listę 10 najważniejszych pytań przed podpisaniem, listę zapisów do negocjacji i decyzję: można podpisać po wyjaśnieniach, wymaga prawnika, albo nie podpisywać w obecnej formie.\n\nJeśli brakuje pełnej treści umowy, wypisz brakujące sekcje i nie udawaj, że analiza jest kompletna. Zwróć szczególną uwagę na zapisy, które działają dopiero po zakończeniu współpracy. Dodaj także sekcję negocjacyjną: które zapisy warto zaakceptować, które doprecyzować, które negocjować, a które powinny zatrzymać podpis. Przy każdym temacie podaj neutralne pytanie do kontrahenta, żeby rozmowa nie brzmiała agresywnie. Zakończ krótką listą dokumentów albo załączników, które trzeba sprawdzić przed podpisem.",
+  "order": 2,
+  "published": true,
+  "seoTitle": "Analiza umowy przed podpisaniem, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt pomaga przejrzeć umowę pod kątem ryzyk, konfliktów interesów, czerwonych flag i zapisów niekorzystnych dla podpisującego.",
+  "keywords": [
+    "analiza umowy AI",
+    "prompt umowa",
+    "ryzyka w umowie",
+    "czerwone flagi w umowie",
+    "prawo i umowy"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "analiza-umowy",
+  "internalLinks": [
+    "agent-team-code-review",
+    "wywiad-przed-startem-projektu",
+    "statement-of-work-granice-zakresu"
+  ],
+  "faq": [
+    {
+      "question": "Czy ten prompt zastępuje prawnika?",
+      "answer": "Nie. Prompt pomaga znaleźć ryzyka, pytania i czerwone flagi, ale nie zastępuje porady prawnej. Przy ważnych umowach wynik trzeba potraktować jako materiał do konsultacji z prawnikiem."
+    },
+    {
+      "question": "Jakie umowy można analizować tym promptem?",
+      "answer": "Można analizować umowy usługowe, współpracy, zlecenia, SaaS, licencyjne, partnerskie, sprzedażowe i B2B. Im większa wartość albo ryzyko, tym bardziej wynik powinien trafić do prawnika."
+    },
+    {
+      "question": "Co wkleić poza treścią umowy?",
+      "answer": "Wklej swoją rolę, cel umowy, wartość, termin, drugą stronę i największe obawy. Ten kontekst jest ważny, bo ten sam zapis może być neutralny w jednej sytuacji i ryzykowny w innej."
+    },
+    {
+      "question": "Jakie czerwone flagi są najważniejsze?",
+      "answer": "Najczęściej warto sprawdzić kary, jednostronne obowiązki, automatyczne odnowienia, brak wypowiedzenia, szeroką odpowiedzialność, prawa do własności intelektualnej, poufność i niejasne terminy płatności."
+    },
+    {
+      "question": "Jaki format odpowiedzi jest najpraktyczniejszy?",
+      "answer": "Najlepsza jest tabela ryzyk z poziomem pilności, opisem zapisu, możliwym skutkiem i pytaniem do zadania. Dzięki temu wynik można szybko przenieść do rozmowy z prawnikiem albo kontrahentem."
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "id": "10-rozmow-z-klientami-przed-budowa-produktu",
+  "type": "checklist",
+  "title": "10 rozmów z klientami przed budową produktu",
+  "description": "Checklista prowadzi przez 10 rozmów z klientami przed budową produktu. Daje progi decyzji: minimum 20 osób na liście, 10 rozmów, 7 pozytywnych reakcji jako sygnał zainteresowania i 3 płatności albo przedpłaty jako mocny sygnał popytu.",
+  "shortDescription": "Zdobądź 10 rozmów, cytaty klientów i pierwszy płatny sygnał.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-reklama",
+  "application": "Start projektu",
+  "applicationSlug": "start-projektu",
+  "tags": [
+    "Research klienta",
+    "Walidacja"
+  ],
+  "url": "/checklisty/start-projektu/10-rozmow-z-klientami-przed-budowa-produktu/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-11",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "10 rozmów z klientami przed budową produktu",
+  "body": "Checklista pomaga sprawdzić pomysł przez rozmowy z realnymi klientami, zanim zaczniesz budować produkt. Pierwsze 10 rozmów to słuchanie, nie sprzedaż. Nie pytasz „czy kupiłbyś mój produkt?”. Pytasz: „kiedy ostatnio miałeś ten problem?”, „ile Cię to kosztowało?”, „co robisz dzisiaj?” i „czy znasz kogoś, kto też ma ten problem?”. Najcenniejszy wynik to nie pochwała pomysłu, tylko cytaty, powtarzalny ból i ktoś, kto chce zapłacić za prostą wersję.",
+  "usage": "Skopiuj checklistę do AI razem z opisem pomysłu, grupy docelowej, listą kontaktów i miejsc, gdzie siedzi klient. Poproś AI, żeby przygotowało 20 konkretnych osób do kontaktu, 3 wersje krótkiej zaczepki, listę pytań, arkusz notatek i kryteria decyzji. Użyj formuły wiadomości: „Cześć [imię], sprawdzam temat [problem] u osób takich jak Ty. Nie sprzedaję niczego. Czy mogę zadać Ci 3 pytania albo złapać 15 minut rozmowy?”.",
+  "checklistSections": [
+    {
+      "title": "Przygotowanie rynku i hipotezy",
+      "items": [
+        "Masz jedną konkretną grupę klientów. Wszyscy to nikt.",
+        "Potrafisz opisać ich problem jednym zdaniem.",
+        "Wiesz, gdzie ich znaleźć i masz minimum 10 miejsc, w których realnie bywają.",
+        "Masz listę minimum 20 potencjalnych osób, żeby umówić 10 rozmów.",
+        "Lista 20 osób ma imię, źródło kontaktu i powód, dlaczego ta osoba pasuje do problemu.",
+        "Masz plik do notatek, w którym zapisujesz cytaty, nie swoje interpretacje.",
+        "Wiesz, że pierwsze rozmowy są po to, żeby słuchać, a nie wygłaszać pitch.",
+        "Masz przygotowaną hipotezę, ale zgadzasz się ją zmienić, jeśli rynek pokaże coś innego."
+      ]
+    },
+    {
+      "title": "10 miejsc, gdzie może być klient",
+      "items": [
+        "Własne kontakty w telefonie i mailu.",
+        "Znajomi, którzy znają idealnych klientów.",
+        "Obecni albo byli klienci.",
+        "Grupy Facebook i Discord.",
+        "LinkedIn, szczególnie osoby aktywne w komentarzach.",
+        "Instagram, YouTube i komentarze pod treściami branżowymi.",
+        "Społeczności innych twórców, firm i narzędzi.",
+        "Konferencje, meetupy, fora i wydarzenia branżowe.",
+        "Partnerzy, dostawcy, księgowi, prawnicy, software housey, agencje albo konsultanci pracujący z tą grupą.",
+        "Narzędzia, których używa klient, oraz ich społeczności, na przykład grupy wokół platform ecommerce, CRM albo AI."
+      ]
+    },
+    {
+      "title": "Zaczepka bez sprzedaży",
+      "items": [
+        "Zaczepka jest osobista i pokazuje, skąd znasz tę osobę albo dlaczego piszesz właśnie do niej.",
+        "Nie sprzedajesz w pierwszej wiadomości.",
+        "Prosisz o krótką pomoc, jedno pytanie albo 15 minut rozmowy.",
+        "Masz gotową zaczepkę: „Nie sprzedaję niczego. Chcę zrozumieć, jak osoby takie jak Ty radzą sobie z [problem]”.",
+        "Wiadomość jest krótka i nie brzmi jak automatyczny cold mailing.",
+        "Jeśli piszesz do znajomych, prosisz też o polecenie osoby z właściwej grupy.",
+        "Zakładasz grę liczb: wysyłasz 10 zaczepek i szukasz minimum jednej odpowiedzi, zamiast przeżywać każdą ciszę.",
+        "Po rozmowie prosisz o kolejną osobę, którą warto zapytać."
+      ]
+    },
+    {
+      "title": "Pierwsze 10 rozmów, tylko słuchanie",
+      "items": [
+        "W pierwszych 10 rozmowach nie sprzedajesz rozwiązania.",
+        "Nawet gdy rozmówca mówi, że pomysł brzmi dobrze, nie zamieniasz od razu rozmowy w ofertę.",
+        "Nie bronisz swojego pomysłu, gdy klient opisuje inny problem.",
+        "Nie sugerujesz odpowiedzi i nie prowadzisz rozmówcy do swojej tezy.",
+        "Zapisujesz dokładne słowa, emocje, przykłady i sytuacje z życia klienta.",
+        "Obserwujesz, przy których tematach rozmówca zaczyna mówić szybciej, konkretniej albo bardziej emocjonalnie.",
+        "Jeśli problem nie interesuje rozmówcy, notujesz to jako dane, a nie jako porażkę."
+      ]
+    },
+    {
+      "title": "Pytania do rozmowy",
+      "items": [
+        "Jak dziś radzisz sobie z tym problemem?",
+        "Kiedy ostatnio ten problem realnie Ci przeszkodził?",
+        "Co wtedy zrobiłeś i ile to trwało?",
+        "Ile czasu, pieniędzy albo energii to kosztowało?",
+        "Co próbowałeś wcześniej?",
+        "Co działało, a co nie działało?",
+        "Dlaczego obecne rozwiązanie nie jest wystarczające?",
+        "Co musiałoby się znaleźć w rozwiązaniu, żeby było warte 10 razy więcej?",
+        "Ile byłoby warte rozwiązanie tego problemu?",
+        "Kogo jeszcze powinienem zapytać o ten temat?",
+        "Jeśli miałbyś zapłacić za rozwiązanie tego problemu, jaka kwota byłaby oczywista, jaka uczciwa, a jaka za wysoka?"
+      ]
+    },
+    {
+      "title": "Zasada dopytywania",
+      "items": [
+        "Po każdej ogólnej odpowiedzi dopytujesz: dlaczego?",
+        "Dopytujesz minimum 3 razy, gdy odpowiedź jest powierzchowna.",
+        "Prosisz o konkretny przykład ostatniej sytuacji, a nie opinię ogólną.",
+        "Nie zadowalasz się zdaniem: fajny pomysł.",
+        "Odróżniasz prawdziwy ból od grzecznego zainteresowania.",
+        "Odróżniasz problem, za który ktoś zapłaci, od problemu, o którym ktoś lubi pogadać.",
+        "Notujesz, jakie słowa klient powtarza. To później jest materiał do oferty, strony i maili."
+      ]
+    },
+    {
+      "title": "Sygnały walidacji",
+      "items": [
+        "Odpowiedzi zaczynają się powtarzać.",
+        "Problem jest realny, częsty i kosztowny.",
+        "Klient już dziś płaci za alternatywę albo ponosi wyraźny koszt problemu.",
+        "Ludzie pytają, kiedy rozwiązanie będzie dostępne.",
+        "Ktoś proponuje płatność, przedpłatę albo konkretny kolejny krok.",
+        "Masz minimum 7 pozytywnych reakcji na 10 rozmów, jeśli testujesz zainteresowanie.",
+        "Masz minimum 3 realne płatności albo przedpłaty na 10 rozmów, jeśli testujesz gotowość do płacenia.",
+        "Jeśli masz 10 rozmów i 0 osób chce kolejnego kroku, nie masz walidacji, masz tylko research."
+      ]
+    },
+    {
+      "title": "Decyzja po rozmowach",
+      "items": [
+        "Jeśli rynek reaguje słabo, nie forsujesz pomysłu na siłę. Wracasz do grupy docelowej, problemu albo wersji Easy.",
+        "Jeśli ludzie mówią tak, ale nikt nie chce zapłacić, traktujesz to jako słaby sygnał.",
+        "Jeśli ludzie płacą z góry w ciemno, masz najsilniejszą walidację.",
+        "Po 10 rozmowach wybierasz najprostszy rezultat, który da się dostarczyć ręcznie.",
+        "Jeśli rozmowy odsłoniły inny, ważniejszy problem, zapisujesz go jako osobny pomysł.",
+        "Nie budujesz automatyzacji, aplikacji ani pełnego kursu, dopóki nie masz płatnego sygnału.",
+        "Pieniądze na koncie są mocniejszym dowodem niż lajki, komentarze i opinie znajomych."
+      ]
+    }
+  ],
+  "example": "Dobra do walidacji nowego produktu, usługi, kursu, aplikacji, społeczności albo oferty B2B przed tworzeniem strony, automatyzacji i dużego brandingu.",
+  "order": 31,
+  "published": true,
+  "seoTitle": "10 rozmów z klientami przed budową produktu, checklista walidacji",
+  "seoDescription": "Zanim zbudujesz produkt, przeprowadź 10 rozmów z klientami. Checklista zaczepek, pytań, notatek, poleceń, sygnałów płatności i decyzji.",
+  "keywords": [
+    "rozmowy z klientami",
+    "walidacja produktu",
+    "research klienta",
+    "customer development",
+    "start projektu"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "walidacja-klienta",
+  "internalLinks": [
+    "wywiad-przed-startem-projektu",
+    "wiadomosc-1-1-po-researchu-kontekstu",
+    "walidacja-pomyslu-na-biznes"
+  ],
+  "sourceCourse": "Szkoła Pierwszego Klienta",
+  "sourceLesson": "Czy klient ma problemy, 10 miejsc klienta, 10 rozmów, walidacja przez płatność",
+  "faq": [
+    {
+      "question": "Dlaczego warto przeprowadzić akurat 10 rozmów?",
+      "answer": "Dziesięć rozmów to praktyczny próg startowy. Nie daje pełnej prawdy o rynku, ale zwykle wystarcza, żeby zobaczyć powtarzające się problemy, język klienta i pierwsze sygnały gotowości do płacenia."
+    },
+    {
+      "question": "Czy można pytać o opinię znajomych?",
+      "answer": "Tak, jeśli są w grupie docelowej albo mają dostęp do takich osób. Trzeba jednak uważać na grzeczne odpowiedzi. Znajomy może chwalić pomysł, ale nie oznacza to, że rynek zapłaci."
+    },
+    {
+      "question": "Czy w rozmowie można pokazać produkt?",
+      "answer": "Na początku lepiej nie. Najpierw trzeba zrozumieć problem. Gdy za wcześnie pokażesz rozwiązanie, rozmówca zaczyna oceniać Twoją ideę, zamiast opowiadać o własnym bólu."
+    },
+    {
+      "question": "Co jeśli nikt nie chce rozmawiać?",
+      "answer": "To też jest sygnał. Możliwe, że grupa nie czuje problemu, zaczepka jest zbyt sprzedażowa albo szukasz w złych miejscach. Wtedy popraw listę osób i powód kontaktu."
+    },
+    {
+      "question": "Kiedy przejść z rozmów do sprzedaży?",
+      "answer": "Gdy problem się powtarza, rozmówcy rozumieją wartość rozwiązania i możesz zaproponować prostą wersję Easy. Najlepszy test to prośba o realną płatność albo konkretny kolejny krok."
+    }
+  ]
+}

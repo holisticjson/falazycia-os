@@ -1,11 +1,16 @@
 # === SEKRETY I CREDENTIALS ===
 .env
-*.json
 !requirements.txt
 holistic-dashboard-dev-*.json
 service-account*.json
 auth.json
 tokens/
+*credentials*.json
+*client_secret*.json
+*token*.json
+*sa-key*.json
+*-key.json
+*private-key*.json
 
 # === PYTHON ===
 __pycache__/

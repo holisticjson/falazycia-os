@@ -1,0 +1,26 @@
+[
+    {
+        "timestamp": "2026-07-10 15:11:10",
+        "name": "Kryspin",
+        "contact": "kryspin@o2.pl",
+        "project": "broker",
+        "budget": "",
+        "investment_type": "",
+        "industry": "",
+        "problem": "",
+        "source": "Website Form",
+        "status": "sheets_api_fallback"
+    },
+    {
+        "timestamp": "2026-07-10 15:12:05",
+        "name": "Kryspin",
+        "contact": "kryspin@o2.pl",
+        "project": "broker",
+        "budget": "",
+        "investment_type": "",
+        "industry": "",
+        "problem": "",
+        "source": "Website Form",
+        "status": "sheets_api_fallback"
+    }
+]

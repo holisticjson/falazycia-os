@@ -1,0 +1,144 @@
+{
+  "id": "jobs-to-be-done-i-optymalizacja-pmf",
+  "type": "checklist",
+  "title": "Po co klient naprawdę kupuje (Jobs to Be Done) i optymalizacja dopasowania",
+  "description": "Checklista zrozumienia, po co klient naprawdę kupuje, czyli Jobs to Be Done: cztery siły postępu Boba Moesty, badanie przez wywiady, pętla optymalizacji dopasowania według Rahula Vohry z Superhuman oraz teoria użytkownika sąsiedniego Bangaly Kaby.",
+  "shortDescription": "Zrozum, po co klient naprawdę kupuje, i systematycznie zwiększaj dopasowanie produktu do rynku.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Jobs to Be Done",
+    "Product-Market Fit"
+  ],
+  "url": "/checklisty/strategia-decyzje/jobs-to-be-done-i-optymalizacja-pmf/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Po co klient naprawdę kupuje (Jobs to Be Done) i optymalizacja dopasowania",
+  "body": "Klient nie kupuje produktu, tylko zatrudnia go do wykonania jakiegoś zadania w swoim życiu. To podejście nazywa się Jobs to Be Done, po polsku zadania do wykonania, w skrócie JTBD. Ta checklista pokazuje cztery siły postępu Boba Moesty, które decydują, czy ktoś zmieni dotychczasowe rozwiązanie, jak prowadzić wywiady, które odkrywają prawdziwy powód zakupu, oraz jak systematycznie zwiększać dopasowanie produktu do rynku pętlą optymalizacji Rahula Vohry z Superhuman. Dokłada teorię użytkownika sąsiedniego Bangaly Kaby, czyli skąd weźmie się następna fala wzrostu. Dzięki temu zamiast zgadywać, rozumiesz, co naprawdę pcha i hamuje decyzję klienta.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojego produktu i tym, co wiesz o decyzjach klientów. Poproś AI, żeby zmapowało cztery siły postępu dla Twojego produktu: co wypycha klienta z obecnego rozwiązania, co przyciąga do nowego, czego się boi i co go trzyma przy starym, oraz oceniło, czy siły zmiany przeważają nad siłami oporu. Następnie niech AI przygotuje scenariusz wywiadu JTBD z osobami, które niedawno kupiły, oraz rozpisze pętlę optymalizacji dopasowania: segmentację klientów, którzy kochają produkt, i plan przesuwania niezdecydowanych do grupy bardzo rozczarowanych.",
+  "checklistSections": [
+    {
+      "title": "Cztery siły postępu, Bob Moesta",
+      "items": [
+        "Siła 1 pchnięcie, czyli ból status quo: co wypycha klienta z obecnego rozwiązania, zidentyfikuj momenty frustracji.",
+        "Siła 2 przyciąganie, czyli wizja lepszego stanu: co przyciąga do nowego rozwiązania, jakie postępy w życiu obiecujesz.",
+        "Siła 3 lęk przed nowym: co straszy w przejściu na nowe, czyli ryzyko, krzywa uczenia, integracja.",
+        "Siła 4 przyzwyczajenie do obecnego: co trzyma przy starym, czyli działa wystarczająco dobrze, znajomość, dotychczasowa inwestycja.",
+        "Zasada: jeśli pchnięcie plus przyciąganie jest mniejsze niż lęk plus przyzwyczajenie, ludzie nie zmienią zachowania, nawet jeśli nowe jest obiektywnie lepsze.",
+        "Paradoks: dodawanie funkcji może zwiększać lęk zamiast zwiększać atrakcyjność."
+      ]
+    },
+    {
+      "title": "Badanie zadań do wykonania, wywiady",
+      "items": [
+        "Przeprowadzasz wywiady z 10 do 15 klientami, którzy niedawno kupili, w ostatnich 30 do 60 dni.",
+        "Pytasz: opowiedz o momencie, gdy pierwszy raz pomyślałeś o zmianie, a nie dlaczego kupiłeś.",
+        "Mapujesz fazy: pierwsza myśl, pasywne rozglądanie, aktywne szukanie, decyzja.",
+        "Gdy czyjeś zachowanie wydaje się irracjonalne, to znaczy, że nie masz pełnej historii kontekstu, według Moesty.",
+        "Roadmapa to momenty frustracji, nie lista funkcji, bo momenty frustracji nie znikają, gdy pojawia się nowa technologia."
+      ]
+    },
+    {
+      "title": "Pętla optymalizacji dopasowania, Rahul Vohra, Superhuman",
+      "items": [
+        "Krok 1 segmentuj: znajdź, kto kocha produkt, czyli respondentów bardzo rozczarowanych, to Twój klient o najwyższych oczekiwaniach.",
+        "Krok 2 analizuj: dlaczego kochają, jaki główny benefit wymienia ta grupa.",
+        "Krok 3 buduj: co przekona niezdecydowanych, czyli trochę rozczarowanych, jakie jedno ulepszenie przesunie ich do bardzo rozczarowanych.",
+        "Krok 4 mierz: powtarzasz ankietę Seana Ellisa co 4 do 6 tygodni i sprawdzasz, czy procent bardzo rozczarowanych rośnie.",
+        "Cel: przesuwasz trochę rozczarowanych do bardzo rozczarowanych, nie próbujesz przekonać wcale rozczarowanych, bo to nie Twoi klienci.",
+        "Ignorujesz feedback od użytkowników, którzy wybrali wcale rozczarowany, bo nie są Twoim rynkiem."
+      ]
+    },
+    {
+      "title": "Przykład Superhuman",
+      "items": [
+        "Rahul Vohra: wynik dopasowania wynosił 22 procent, a po 4 cyklach optymalizacji wzrósł do 58 procent.",
+        "Pytanie dodatkowe: jaki główny benefit otrzymujesz z produktu, a odpowiedzi grupy bardzo rozczarowanych to Twoja główna propozycja wartości.",
+        "Drugie pytanie: jak możemy ulepszyć produkt, a odpowiedzi grupy trochę rozczarowanych to Twoja roadmapa."
+      ]
+    },
+    {
+      "title": "Użytkownik sąsiedni, Bangaly Kaba",
+      "items": [
+        "Następna fala wzrostu nie pochodzi od obecnych super-userów, tylko od użytkowników sąsiednich, którzy prawie korzystają, ale coś ich blokuje.",
+        "Użytkownicy sąsiedni to ci, którzy pobrali, ale nie aktywowali, aktywowali, ale nie wrócili, wrócili, ale nie zapłacili.",
+        "Identyfikujesz, co ich blokuje, bo to nie są błędy techniczne, tylko bariery onboardingu, wartości albo zrozumienia.",
+        "Framework: zrozum, zidentyfikuj, wykonaj, a pracę nad zrozumieniem planujesz jako konkretne zadanie w sprincie.",
+        "Rozszerzasz wzrost na użytkowników obok swojego profilu idealnego klienta bez zmiany produktu pod nich, tylko usuwając bariery."
+      ]
+    },
+    {
+      "title": "Diagnoza blokad użytkowników sąsiednich",
+      "items": [
+        "Nie rozumieją propozycji wartości: zmieniasz przekaz, bo według Gii Laudi zmiana przekazu opartego o zadania do wykonania potrafi dać plus 89 procent konwersji.",
+        "Nie potrafią się onboardować: upraszczasz pierwsze 5 minut, cel Time-to-Value poniżej 2 minut.",
+        "Nie widzą wartości wystarczająco szybko: dodajesz demo data, szablon, szybki sukces.",
+        "Ich firma albo kontekst nie pozwala: zmieniasz model, na przykład self-serve pod limitem procurement albo freemium."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy chcesz zrozumieć prawdziwy powód, dla którego klienci kupują albo nie kupują, i systematycznie zwiększać dopasowanie produktu do rynku zamiast dokładać przypadkowe funkcje.",
+  "order": 87,
+  "published": true,
+  "seoTitle": "Jobs to Be Done i optymalizacja dopasowania produktu do rynku",
+  "seoDescription": "Zrozum, po co klient kupuje: cztery siły postępu Boba Moesty, wywiady Jobs to Be Done, pętla optymalizacji Rahula Vohry i teoria użytkownika sąsiedniego Bangaly Kaby.",
+  "keywords": [
+    "jobs to be done",
+    "JTBD",
+    "cztery siły postępu",
+    "product market fit",
+    "adjacent users"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "product-market-fit",
+  "internalLinks": [
+    "dopasowanie-produktu-do-rynku-pmf",
+    "onboarding-uzytkownika-pierwsza-wartosc",
+    "metryka-aktywacji-i-retencji"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Jobs to Be Done, cztery siły postępu i optymalizacja dopasowania",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie i wzroście",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło frameworków dopasowania produktu do rynku przytoczonych w checkliście, do dalszego posłuchania."
+    },
+    {
+      "title": "Jobs to Be Done i cztery siły postępu",
+      "author": "Bob Moesta, The Re-Wired Group",
+      "url": "https://www.therewiredgroup.com",
+      "relation": "Odniesienie do metody Jobs to Be Done i czterech sił postępu, źródło do dalszego czytania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest Jobs to Be Done?",
+      "answer": "Jobs to Be Done, po polsku zadania do wykonania, to podejście, według którego klient nie kupuje produktu dla niego samego, tylko zatrudnia go, żeby wykonać jakieś zadanie albo osiągnąć postęp w swoim życiu. Zamiast pytać dlaczego kupiłeś, badasz, do jakiego zadania klient zatrudnia produkt, co pozwala lepiej zrozumieć jego prawdziwe motywacje i konkurencję."
+    },
+    {
+      "question": "Czym są cztery siły postępu Boba Moesty?",
+      "answer": "To cztery siły decydujące o zmianie: pchnięcie, czyli ból obecnego rozwiązania, przyciąganie, czyli wizja lepszego stanu, lęk przed nowym oraz przyzwyczajenie do starego. Jeśli pchnięcie i przyciąganie są słabsze niż lęk i przyzwyczajenie, klient nie zmieni zachowania, nawet jeśli nowy produkt jest obiektywnie lepszy. Dlatego warto osłabiać lęk i przyzwyczajenie, nie tylko kusić korzyściami."
+    },
+    {
+      "question": "Jak działa pętla optymalizacji dopasowania Vohry?",
+      "answer": "Najpierw segmentujesz użytkowników, którzy kochają produkt, czyli odpowiadają bardzo rozczarowany w teście Seana Ellisa, i ustalasz, za co go kochają. Potem szukasz jednego ulepszenia, które przesunie trochę rozczarowanych do grona bardzo rozczarowanych, i co kilka tygodni mierzysz, czy ich odsetek rośnie. W Superhuman ten proces podniósł wynik dopasowania z dwudziestu dwóch do pięćdziesięciu ośmiu procent."
+    },
+    {
+      "question": "Kim są tak zwani użytkownicy sąsiedni?",
+      "answer": "To osoby, które prawie korzystają z produktu, ale coś je blokuje, na przykład pobrały i nie aktywowały, aktywowały i nie wróciły albo wróciły i nie zapłaciły. Według Bangaly Kaby następna fala wzrostu pochodzi właśnie od nich, a nie od obecnych super-userów. Kluczem jest zrozumienie i usunięcie barier wartości, onboardingu i zrozumienia, bez przebudowy produktu pod nich."
+    },
+    {
+      "question": "Jak wykorzystać wywiady Jobs to Be Done?",
+      "answer": "Rozmawiasz z dziesięcioma do piętnastoma klientami, którzy kupili w ostatnich tygodniach, i zamiast pytać dlaczego kupili, prosisz, żeby opowiedzieli o momencie, gdy pierwszy raz pomyśleli o zmianie. Mapujesz całą drogę od pierwszej myśli przez rozglądanie się po decyzję. Wynikiem jest roadmapa oparta o realne momenty frustracji klientów, a nie o przypadkową listę funkcji."
+    }
+  ]
+}

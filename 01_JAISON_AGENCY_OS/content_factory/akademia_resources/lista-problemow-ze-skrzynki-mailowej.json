@@ -1,0 +1,68 @@
+{
+  "id": "lista-problemow-ze-skrzynki-mailowej",
+  "type": "prompt",
+  "title": "Lista problemów ze skrzynki mailowej",
+  "description": "Przeszukaj ostatnie maile od realnych osób i wyciągnij problemy, z którymi mierzą się ludzie w biznesie albo życiu.",
+  "shortDescription": "Znajdź problemy ludzi w mailach od realnych osób.",
+  "industry": "Automatyzacja i AI",
+  "industrySlug": "automatyzacja-ai",
+  "application": "Automatyzacja i AI",
+  "applicationSlug": "automatyzacja-ai",
+  "tags": [
+    "Research",
+    "Email"
+  ],
+  "url": "/prompty/automatyzacja-ai/lista-problemow-ze-skrzynki-mailowej/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Lista problemów ze skrzynki mailowej",
+  "body": "Prompt do analizy skrzynek mailowych pod kątem realnych problemów klientów, odbiorców, partnerów albo znajomych, bez oceniania i bez mieszania powiadomień z prawdziwymi wiadomościami.",
+  "usage": "Użyj tego prompta w asystencie, który ma legalny i bezpieczny dostęp do Twojej skrzynki mailowej albo do wyeksportowanych wiadomości. Najlepiej działa przy szukaniu insightów do produktu, contentu, sprzedaży, społeczności albo nowych usług. Określ zakres czasu, typy nadawców, które wolno analizować, kategorie do pominięcia i zasady anonimizacji. Nie używaj go do prywatnych skrzynek innych osób bez zgody. Jeśli pracujesz na eksporcie, usuń dane osobowe przed analizą. Jeśli agent ma dostęp do skrzynki, każ mu najpierw pokazać kryteria filtrowania i dopiero potem analizować wiadomości.",
+  "prompt": "Przejrzyj wiadomości z mojej skrzynki z ostatniego okresu:\n[wpisz zakres, na przykład ostatnie 30 dni]\n\nSzukasz wyłącznie maili od realnych osób. Pomijaj newslettery, powiadomienia systemowe, faktury, spam, automaty, oferty sprzedażowe i wątki bez realnego problemu człowieka.\n\nTwoim celem jest znaleźć problemy, z którymi ludzie mierzą się w biznesie albo życiu, a potem zamienić je w uporządkowaną listę insightów.\n\nZasady prywatności:\nanonimizuj imiona, adresy, telefony, nazwy firm i szczegóły poufne. Nie cytuj wrażliwych danych.\n\nDla każdego problemu zapisz:\nkrótki opis, parafrazę wiadomości, kontekst sytuacji, kategorię, częstotliwość podobnych sygnałów, poziom bólu od 1 do 10, czy problem jest pilny, czy ktoś już płaci za rozwiązanie, możliwe zastosowanie biznesowe i pomysł na następny krok.\n\nFormat wyniku:\ntabela problemów, ranking bólu, ranking częstotliwości, lista cytatów po anonimizacji, klastry problemów, pomysły na produkt, pomysły na content i pytania do pogłębienia.\n\nNa końcu przygotuj:\n1. Ranking 10 najważniejszych problemów.\n2. Pięć tematów contentowych.\n3. Pięć hipotez produktowych.\n4. Pięć pytań do pogłębienia w rozmowie z człowiekiem.\n5. Trzy problemy, które warto zweryfikować rozmową 1:1 w tym tygodniu.\n\nNie zapisuj danych osobowych. Nie mieszaj problemów ludzi z prośbami technicznymi od systemów. Jeśli wiadomość zawiera kilka problemów, rozbij ją na osobne pozycje. Jeśli problem jest jednostkowy, oznacz go jako pojedynczy sygnał, a nie jako trend.\n\nDodaj sekcję jakości danych. Oceń, czy znalezione problemy pochodzą od klientów, leadów, partnerów, znajomych czy przypadkowych osób. Oddziel problemy kupujących od komentarzy obserwatorów. Na końcu wskaż, które problemy mają największy potencjał monetyzacji, a które są tylko ciekawą obserwacją bez jasnej ścieżki sprzedaży.",
+  "example": "Dobry do szukania problemów klientów, tematów contentowych, insightów produktowych, języka rynku i pomysłów na nowe oferty na bazie prawdziwych wiadomości.",
+  "order": 23,
+  "published": true,
+  "seoTitle": "Lista problemów ze skrzynki mailowej, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt do analizy maili od realnych osób i tworzenia listy problemów klientów, odbiorców oraz partnerów bez powiadomień i ofert.",
+  "keywords": [
+    "analiza skrzynki mailowej",
+    "problemy klientów",
+    "research z maili",
+    "customer insights",
+    "prompt email"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "automatyzacja-ai",
+  "internalLinks": [
+    "badania-psychograficzne-deep-research",
+    "research-polskich-nisz-produkt-cyfrowy",
+    "generator-pomyslow-biznesowych-john-rush"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy prompt do listy problemów z maili?",
+      "answer": "Służy do znalezienia realnych problemów ludzi w wiadomościach od osób, a nie w newsletterach, ofertach albo powiadomieniach. Dzięki temu można zobaczyć prawdziwy język rynku i powtarzające się potrzeby."
+    },
+    {
+      "question": "Czy AI powinno czytać wszystkie maile?",
+      "answer": "Nie. Prompt wyraźnie ogranicza zakres do ostatniego miesiąca i do maili od realnych osób. Powiadomienia, oferty, spam, newslettery i automatyczne komunikaty powinny być pominięte."
+    },
+    {
+      "question": "Jak zadbać o prywatność przy tym promptcie?",
+      "answer": "Najlepiej anonimizować dane osobowe i zapisywać cytaty tylko wtedy, gdy są potrzebne oraz bez imion, adresów mailowych, numerów telefonów i poufnych szczegółów. Prompt powinien działać wyłącznie na skrzynkach, do których masz prawo dostępu."
+    },
+    {
+      "question": "Co powinien zawierać plik lista_problemow?",
+      "answer": "Praktyczny plik powinien zawierać problem, kontekst, cytat albo parafrazę, kategorię, częstotliwość, poziom bólu i możliwe zastosowanie biznesowe. Dzięki temu lista nie jest tylko zbiorem notatek, ale materiałem do decyzji."
+    },
+    {
+      "question": "Jak wykorzystać taką listę problemów?",
+      "answer": "Można ją wykorzystać do pomysłów na produkt, ofertę, checklistę, prompt, kampanię, wpis na blogu, newsletter albo rozmowę sprzedażową. Największą wartość mają problemy powtarzalne i opisane językiem realnych ludzi."
+    }
+  ]
+}

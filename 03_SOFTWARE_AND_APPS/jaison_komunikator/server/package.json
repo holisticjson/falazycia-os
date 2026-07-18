@@ -1,0 +1,25 @@
+{
+  "name": "hermes-messenger-server",
+  "version": "1.0.0",
+  "description": "Secure E2EE signaling & LLM proxy server for Hermes Messenger",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsnd --respawn src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "nodemailer": "^9.0.3",
+    "sqlite3": "^5.1.7",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "@types/nodemailer": "^8.0.1",
+    "@types/sqlite3": "^3.1.11",
+    "@types/ws": "^8.5.10",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "id": "onboarding-uzytkownika-pierwsza-wartosc",
+  "type": "checklist",
+  "title": "Onboarding użytkownika i pierwsza wartość",
+  "description": "Checklista onboardingu i pierwszych 30 sekund użytkownika oparta o framework First Mile Scotta Belsky'ego, zasadę Speed to Value Seana Ellisa oraz gotowy schemat onboardingu dzień po dniu od dnia zero do siódmego, z momentami zaskoczenia i grywalizacją.",
+  "shortDescription": "Doprowadź użytkownika do pierwszej wartości w mniej niż 2 minuty i zatrzymaj go onboardingiem dzień po dniu.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Onboarding",
+    "Aktywacja"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/onboarding-uzytkownika-pierwsza-wartosc/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-18",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Onboarding użytkownika i pierwsza wartość",
+  "body": "O retencji decydują pierwsze sekundy i pierwsze dni, a nie późniejsze funkcje. Ta checklista łączy framework First Mile Scotta Belsky'ego, według którego użytkownik w pierwszych 30 sekundach jest leniwy, próżny i egoistyczny, z zasadą Speed to Value Seana Ellisa, czyli doprowadzeniem do pierwszej wartości w mniej niż 2 minuty. Dokłada momenty zaskoczenia, bo tylko one napędzają word of mouth, oraz gotowy schemat onboardingu dzień po dniu od dnia zero do siódmego, z grywalizacją. Onboarding to jedyny moment ze stuprocentową adopcją, więc jest najważniejszą dźwignią wzrostu.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojego produktu albo usługi, momentu rejestracji i tego, co użytkownik widzi w pierwszych sekundach. Poproś AI, żeby zaprojektowało First Mile: zredukowało kroki do pierwszej wartości poniżej 2 minut, usunęło pusty stan i ustawiło product tour na 3 do 5 kroków. Następnie niech AI rozpisze onboarding dzień po dniu od dnia zero do siódmego, z mailem powitalnym w 10 minut, check-inem, paskiem postępu i celebracją kluczowej akcji, oraz zaproponuje 1 do 2 momentów zaskoczenia w pierwszej sesji.",
+  "checklistSections": [
+    {
+      "title": "First Mile, zasada Lazy, Vain, Selfish, Scott Belsky",
+      "items": [
+        "Projektujesz pod to, że użytkownik w pierwszych 30 sekundach jest leniwy, próżny i egoistyczny, według Scotta Belsky'ego, CPO Adobe.",
+        "Redukujesz liczbę kroków do pierwszej wartości, cel poniżej 2 minut do aha momentu, według zasady Speed to Value Seana Ellisa.",
+        "Usuwasz wszystko, co nie prowadzi do pierwszej wartości, bo każdy dodatkowy krok to ryzyko porzucenia.",
+        "Pamiętasz, że 63 procent klientów bierze pod uwagę onboarding przy decyzji o zakupie, według Wyzowl.",
+        "Unikasz pustego stanu: zawsze pokazujesz demo data, przykłady i szablony, nie pusty dashboard.",
+        "Product tour ma maksymalnie 3 do 5 kroków, bo każdy dodatkowy obniża ukończenie o 10 do 15 procent.",
+        "Stewart Butterfield ze Slacka: zrozumienie produktu jest ważniejsze niż redukcja tarcia, więc lepiej wyjaśnić dlaczego niż uprościć jak.",
+        "Adam Fishman: onboarding to jedyny touchpoint ze stuprocentową adopcją, marka to obietnica, a produkt to jej realizacja."
+      ]
+    },
+    {
+      "title": "Surprise and Delight",
+      "items": [
+        "Scott Belsky: oczekiwane działanie nie generuje word of mouth, tylko zaskoczenie.",
+        "Projektujesz 1 do 2 momentów zaskoczenia w pierwszej sesji, na przykład nieoczekiwany bonus, personalizację albo gratulacje.",
+        "Nilan Peiris z Wise: żeby ludzie mówili o produkcie, musisz dać im doświadczenie, którego nie wiedzieli, że jest możliwe."
+      ]
+    },
+    {
+      "title": "Onboarding dzień po dniu, dni 0 do 7",
+      "items": [
+        "Dzień 0: email powitalny w ciągu 10 minut, open rate maili powitalnych to około 83,63 procent, plus quick start z jedną akcją CTA zamiast pięciu opcji.",
+        "Dzień 0: product tour 3 do 5 kroków plus demo data, oraz ustawienie oczekiwań, co użytkownik osiągnie w 7 dni.",
+        "Dzień 1: personalny check-in w stylu jak leci plus link do rozmowy jeden na jeden.",
+        "Dzień 1: udostępnianie ekranu z nowymi użytkownikami i obserwacja, gdzie się gubią, jak Syften z poprawą z 42 do 74 procent sukcesu w 15 iteracji.",
+        "Dzień 2: feature deep dive z krótkim wideo do 2 do 3 minut plus nudge, jeśli setup jest niekompletny.",
+        "Dzień 2: pasek postępu w procesie setup, jak Flir Systems z plus 28,2 procent konwersji.",
+        "Dzień 3: pro-tip pokazujący jedną zaawansowaną funkcję, która robi wrażenie, plus historia sukcesu klienta.",
+        "Dzień 3: celebracja ukończenia kluczowej akcji odznaką, gratulacjami albo konfetti.",
+        "Dzień 5: zaproszenie do społeczności i baza wiedzy, bo aktywni w społeczności mają 3 razy lepszą retencję.",
+        "Dzień 7: podsumowanie tygodnia, co użytkownik osiągnął, plus szybki feedback jednym kliknięciem, NPS albo CSAT, nie ankieta na 20 pytań.",
+        "Dzień 7 dla triala: przypomnienie o wygaśnięciu plus wartość, którą użytkownik już otrzymał."
+      ]
+    },
+    {
+      "title": "Grywalizowany onboarding",
+      "items": [
+        "Navexa: przedłużasz trial za eksplorację kluczowych funkcji, co dało 50 procent konwersji z trial do paid.",
+        "Modal z zadaniami do wykonania plus informacja, ile dni doda każde zadanie, plus pasek postępu z aktualizacją na żywo.",
+        "Lauryn Isford z Airtable: onboarding jest najważniejszą dźwignią wzrostu, ważniejszą niż marketing i niż nowe funkcje."
+      ]
+    }
+  ],
+  "example": "Najlepsza przy projektowaniu albo naprawie onboardingu aplikacji, narzędzia SaaS, kursu albo usługi, gdy chcesz doprowadzić użytkownika do pierwszej wartości szybko i zatrzymać go w pierwszym tygodniu.",
+  "order": 82,
+  "published": true,
+  "seoTitle": "Onboarding użytkownika i pierwsza wartość, checklista First Mile",
+  "seoDescription": "Zaprojektuj onboarding: First Mile Scotta Belsky'ego, Speed to Value poniżej 2 minut, momenty zaskoczenia i schemat dzień po dniu od dnia zero do siódmego.",
+  "keywords": [
+    "onboarding",
+    "first mile",
+    "speed to value",
+    "aktywacja użytkownika",
+    "pierwsza wartość"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "onboarding-retencja",
+  "internalLinks": [
+    "metryka-aktywacji-i-retencji",
+    "hierarchy-of-engagement-i-churn",
+    "grywalizacja-aplikacji-produktu-uslugi"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "First Mile, Speed to Value i onboarding dzień po dniu",
+  "sourceReferences": [
+    {
+      "title": "Lenny's Podcast, rozmowy o produkcie i wzroście",
+      "author": "Lenny Rachitsky i goście",
+      "url": "https://www.lennyspodcast.com",
+      "relation": "Źródło frameworków onboardingu, aktywacji i retencji przytoczonych w checkliście, do dalszego posłuchania."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Czym jest framework First Mile w onboardingu?",
+      "answer": "First Mile to podejście Scotta Belsky'ego, według którego użytkownik w pierwszych trzydziestu sekundach jest leniwy, próżny i egoistyczny, więc onboarding trzeba projektować pod te nastawienia. Zamiast tłumaczyć wszystko, prowadzisz go najkrótszą drogą do pierwszej wartości, usuwając każdy krok, który nie przybliża go do aha momentu."
+    },
+    {
+      "question": "Czym jest Speed to Value i ile powinno trwać?",
+      "answer": "Speed to Value to zasada Seana Ellisa mówiąca, że im szybciej użytkownik doświadczy pierwszej realnej wartości, tym lepsza retencja. Praktyczny cel to mniej niż dwie minuty do aha momentu. Pomaga w tym usuwanie pustego stanu, demo data, krótki product tour na trzy do pięciu kroków i jedna jasna akcja zamiast wielu opcji."
+    },
+    {
+      "question": "Dlaczego unikać pustego stanu w produkcie?",
+      "answer": "Pusty dashboard zniechęca, bo użytkownik nie wie, co zrobić, i nie widzi wartości. Dlatego zawsze warto pokazać demo data, przykłady albo szablony, żeby od pierwszej sekundy było widać, jak produkt wygląda w działaniu. Pusty stan to jedno z najczęstszych miejsc porzucenia onboardingu, zwłaszcza w narzędziach i aplikacjach."
+    },
+    {
+      "question": "Jak wygląda dobry schemat onboardingu w pierwszym tygodniu?",
+      "answer": "Dzień zero to mail powitalny w dziesięć minut, quick start i product tour. Kolejne dni dokładają check-in, krótkie wideo o funkcji, pro-tip, historię sukcesu, zaproszenie do społeczności i podsumowanie tygodnia z prośbą o feedback. Każdy dzień ma jeden cel, a kluczowe akcje warto celebrować, na przykład odznaką albo gratulacjami."
+    },
+    {
+      "question": "Dlaczego momenty zaskoczenia są ważne w onboardingu?",
+      "answer": "Według Scotta Belsky'ego oczekiwane działanie nie generuje word of mouth, ludzie mówią tylko o tym, co ich zaskoczyło. Dlatego warto wpleść jeden do dwóch momentów zaskoczenia w pierwszej sesji, na przykład nieoczekiwany bonus albo personalizację. Nilan Peiris z Wise dodaje, że trzeba dać doświadczenie, którego użytkownik nie wiedział, że jest możliwe."
+    }
+  ]
+}

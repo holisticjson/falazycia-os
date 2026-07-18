@@ -1,0 +1,99 @@
+{
+  "id": "segmentacja-i-wyzwalacze-mailowe",
+  "type": "checklist",
+  "title": "Segmentacja i wyzwalacze behawioralne w mailach",
+  "description": "Checklista segmentacji listy w kampanii sprzedażowej: cztery kluczowe segmenty, wyzwalacze behawioralne oparte o zachowanie odbiorcy oraz timing wysyłek z najlepszymi i najgorszymi porami.",
+  "shortDescription": "Wysyłaj właściwy mail do właściwego segmentu, zamiast jednego broadcastu do wszystkich.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Email marketing",
+    "Segmentacja"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/segmentacja-i-wyzwalacze-mailowe/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-17",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Segmentacja i wyzwalacze behawioralne w mailach",
+  "body": "Ten sam mail do całej listy marnuje potencjał kampanii, bo kupujący, niezdecydowani i nieaktywni potrzebują innej wiadomości. Ta checklista dzieli odbiorców na cztery kluczowe segmenty kampanii sprzedażowej i pokazuje, jak ustawić wyzwalacze behawioralne na podstawie zachowania, na przykład otwarć, kliknięć, odwiedzin strony i porzuconego koszyka. Dokłada timing wysyłek z najlepszymi i najgorszymi porami. Maile do wąskiego segmentu kliknął ale nie kupił mają dużo wyższy open rate niż broadcast, więc segmentacja realnie podnosi wynik kampanii.",
+  "usage": "Skopiuj tę checklistę do asystenta AI razem z opisem swojej listy, etapem kampanii i tym, jakie zachowania możesz śledzić w swoim narzędziu mailowym. Poproś AI, żeby zdefiniowało cztery segmenty: wszyscy, non-buyers, buyers i engaged non-buyers, oraz przypisało, który mail trafia do którego segmentu i jak często aktualizować listę kupujących. Następnie niech AI zaproponuje konkretne wyzwalacze behawioralne, na przykład dla porzuconego koszyka albo obejrzenia 80 procent kursu, i dobierze najlepsze pory wysyłki dla Twojej grupy.",
+  "checklistSections": [
+    {
+      "title": "4 kluczowe segmenty kampanii sprzedażowej",
+      "items": [
+        "Wszyscy subskrybenci: pre-launch, launch day, maile value.",
+        "Non-buyers only, z wykluczeniem kupujących: większość kampanii sprzedażowej, aktualizujesz listę kupujących co 24 godziny, a w fazie finalnej co 6 do 12 godzin.",
+        "Buyers only, tylko kupujący: prośba o udostępnienie, upsell, prośba o testimonial, na przykład podziel się opinią i pomóż innym zdecydować.",
+        "Engaged non-buyers, kliknęli ale nie kupili: mail behawioralny urgency, follow-up za 12 do 24 godzin, widzę po statystykach że czytasz i klikasz i nic."
+      ]
+    },
+    {
+      "title": "Wyzwalacze behawioralne",
+      "items": [
+        "Otworzył 3 plus maile i kliknął 2 plus linki i brak zakupu to segment engaged non-buyer, czyli mail behawioralny urgency w ostatnie 24 do 48 godzin.",
+        "Odwiedził stronę sprzedażową 2 plus razy bez zakupu to retargeting mailem z rozbrajaniem obiekcji.",
+        "Rozpoczął checkout ale nie dokończył to porzucony koszyk, czyli follow-up po 1 godzinie, 24 i 48 godzin.",
+        "Obejrzał 80 procent kursu albo webinaru to propozycja upgrade albo następnego poziomu, 3 do 5 razy wyższa konwersja niż masowe maile.",
+        "Kampanie do małych grup poniżej 50 osób mają 5,8 procent reply rate wobec 2,1 procent przy masowych wysyłkach."
+      ]
+    },
+    {
+      "title": "Timing wysyłek",
+      "items": [
+        "Najlepsze czasy: wtorek do czwartku 9:00 do 11:00 albo 18:00 do 20:00, sobota 9:00 do 12:00.",
+        "Unikasz: niedzieli, niski open rate, poniedziałku rano, przeładowany inbox, oraz piątku wieczorem, tryb weekend.",
+        "Final day: mail rano plus przypomnienie wieczorem, 2 do 4 godziny przed deadline.",
+        "Resend do non-openers: 24 do 48 godzin po wysyłce, zmieniony temat, segment non-openers, maksymalnie raz na kampanię."
+      ]
+    }
+  ],
+  "example": "Najlepsza, gdy chcesz przejść z jednego broadcastu do całej listy na segmentowane wysyłki i ustawić wyzwalacze behawioralne dla porzuconego koszyka, niezdecydowanych i kupujących.",
+  "order": 72,
+  "published": true,
+  "seoTitle": "Segmentacja i wyzwalacze behawioralne w mailach, checklista",
+  "seoDescription": "Segmentuj listę w kampanii: cztery segmenty, wyzwalacze behawioralne dla porzuconego koszyka i niezdecydowanych oraz najlepszy timing wysyłek maili.",
+  "keywords": [
+    "segmentacja maili",
+    "wyzwalacze behawioralne",
+    "porzucony koszyk",
+    "email marketing",
+    "timing wysyłek"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "kampania-email",
+  "internalLinks": [
+    "urgency-i-fomo-w-mailach",
+    "sekwencja-powitalna-i-nurture",
+    "full-funnel-content-i-lead-scoring"
+  ],
+  "sourceCourse": "Materiały wewnętrzne AI Biznes Lab",
+  "sourceLesson": "Segmentacja listy i wyzwalacze behawioralne w mailach",
+  "faq": [
+    {
+      "question": "Na jakie segmenty dzielić listę w kampanii?",
+      "answer": "W kampanii sprzedażowej liczą się cztery segmenty: wszyscy subskrybenci, non-buyers z wykluczeniem kupujących, buyers, czyli sami kupujący, oraz engaged non-buyers, którzy klikali, ale nie kupili. Każdy dostaje inną wiadomość, a listę kupujących aktualizujesz często, w finale nawet co kilka godzin."
+    },
+    {
+      "question": "Czym jest segment engaged non-buyer?",
+      "answer": "To osoby, które otworzyły kilka maili i kliknęły linki, ale nie kupiły. Ten segment ma bardzo wysoki open rate, więc warto wysłać do niego osobny mail behawioralny urgency w ostatnich 24 do 48 godzinach, w którym transparentnie odnosisz się do ich aktywności i pytasz, co je blokuje."
+    },
+    {
+      "question": "Jak obsłużyć porzucony koszyk mailem?",
+      "answer": "Gdy ktoś rozpoczął checkout, ale go nie dokończył, ustaw sekwencję follow-up: pierwszy mail po około godzinie, kolejne po 24 i 48 godzinach. Przypominasz o produkcie, rozbrajasz obiekcje i ułatwiasz dokończenie zakupu, bo świeży, gorący lead najłatwiej odzyskać w pierwszych godzinach."
+    },
+    {
+      "question": "Kiedy najlepiej wysyłać maile do listy?",
+      "answer": "Najlepiej działają wtorek do czwartku w godzinach 9:00 do 11:00 albo 18:00 do 20:00 oraz sobota rano. Unikaj niedzieli, poniedziałkowego poranka, gdy skrzynki są przeładowane, oraz piątkowego wieczoru. W final day sprawdza się mail rano i przypomnienie wieczorem przed samym deadline."
+    },
+    {
+      "question": "Czy mniejsze, segmentowane wysyłki są skuteczniejsze?",
+      "answer": "Tak. Kampanie do małych, dobrze dobranych grup poniżej pięćdziesięciu osób potrafią mieć około 5,8 procent reply rate wobec 2,1 procent przy masowych wysyłkach. Trafniejsza treść do węższego segmentu niemal zawsze bije jeden ogólny broadcast wysłany do całej listy naraz."
+    }
+  ]
+}

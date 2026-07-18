@@ -1,0 +1,175 @@
+{
+  "id": "statement-of-work-granice-zakresu",
+  "type": "checklist",
+  "title": "Statement of Work i granice zakresu",
+  "description": "Checklista SoW pilnuje, żeby przed startem projektu było jasne: co dokładnie robimy, czego nie robimy, ile rund poprawek wchodzi w cenę, kto akceptuje zmiany i jakie zdanie wysyłasz, gdy klient prosi o „małą rzecz” poza zakresem.",
+  "shortDescription": "Zabezpiecz zakres, poprawki i prace dodatkowo płatne.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Zakres projektu",
+    "B2B"
+  ],
+  "url": "/checklisty/marketing-sprzedaz/statement-of-work-granice-zakresu/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-11",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Statement of Work i granice zakresu",
+  "body": "Checklista pomaga sprawdzić Statement of Work przed startem projektu B2B. Jej cel jest bardzo praktyczny: nie dopuścić do sytuacji, w której klient mówi „to przecież mała rzecz”, a zespół dokłada 12 godzin pracy bez pieniędzy i bez zmiany terminu. Oryginalna zasada jest prosta: wszystko poza SoW oznacza dodatkową kasę, zmianę terminu albo świadomą decyzję biznesową, a nie ciche dokładanie pracy.",
+  "usage": "Skopiuj checklistę do AI razem z umową, ofertą, zakresem projektu, harmonogramem, NDA, notatkami po rozmowie i listą osób po stronie klienta. Poproś AI, żeby wypisało 10 miejsc, w których klient może później powiedzieć „myślałem, że to jest w cenie”. Następnie niech AI dopisze konkretne klauzule do SoW i gotową odpowiedź na prośbę poza zakresem: „Tak, możemy to zrobić, ale to jest poza obecnym zakresem i wymaga osobnej wyceny albo przesunięcia terminu”.",
+  "checklistSections": [
+    {
+      "title": "Cel projektu i decyzja biznesowa",
+      "items": [
+        "Dokument jasno opisuje, po co projekt istnieje.",
+        "Cel jest biznesowy, a nie tylko techniczny.",
+        "Wiadomo, jak klient oceni sukces.",
+        "Są mierzalne kryteria zakończenia albo odbioru.",
+        "Cel nie jest zbyt szeroki.",
+        "Wiadomo, kto po stronie klienta jest właścicielem decyzji."
+      ]
+    },
+    {
+      "title": "Zespół, role i osoby kontaktowe",
+      "items": [
+        "Po Twojej stronie jest wskazany szef projektu.",
+        "Po stronie klienta jest jedna osoba kontaktowa albo jasna lista osób decyzyjnych.",
+        "Wiadomo, kto dostarcza materiały, kto daje feedback, kto akceptuje i kto płaci.",
+        "Zespół wie, kim są osoby po stronie klienta i jakie są relacje oraz nastawienie do projektu.",
+        "Każda osoba rozumie swoją rolę w projekcie.",
+        "Nowe osoby w projekcie muszą zostać dopisane do komunikacji i ustaleń."
+      ]
+    },
+    {
+      "title": "Zakres prac",
+      "items": [
+        "Lista prac jest konkretna.",
+        "Każdy element zakresu ma jasny rezultat.",
+        "Wiadomo, ile wariantów, rund poprawek, spotkań albo iteracji wchodzi w cenę.",
+        "Liczby są zapisane wprost, na przykład: 2 rundy poprawek, 1 spotkanie statusowe tygodniowo, 5 dni roboczych na feedback klienta.",
+        "Zakres nie zawiera ogólnych słów typu wsparcie, optymalizacja albo doradztwo bez granic.",
+        "Wiadomo, co jest dostarczane jako plik, dostęp, raport, warsztat, wdrożenie albo konsultacja.",
+        "Zakres jest spójny z ceną i nie wymaga ukrytej pracy, której nikt nie wycenił."
+      ]
+    },
+    {
+      "title": "Poza zakresem",
+      "items": [
+        "Dokument mówi, czego nie robisz.",
+        "Sekcja poza zakresem zawiera minimum 5 rzeczy, które klient mógłby błędnie uznać za oczywiste.",
+        "Wyłączone są rzeczy, które klient może uznać za oczywiste.",
+        "Wyłączone są prace zależne od innych dostawców.",
+        "Wyłączone są prace, których nie da się kontrolować.",
+        "Klient wie, że wszystko poza zakresem jest dodatkowo płatne.",
+        "Masz przygotowaną spokojną formułę: możemy to zrobić, ale to jest poza obecnym zakresem i wymaga osobnej wyceny."
+      ]
+    },
+    {
+      "title": "Zmiany, poprawki i dodatkowa praca",
+      "items": [
+        "Opisany jest proces zmiany zakresu.",
+        "Klient wie, że zmiana zakresu może zmienić cenę i termin.",
+        "Masz gotowe zdanie: „Ta zmiana jest możliwa, ale wpływa na zakres, termin albo budżet. Proszę potwierdzić, który wariant wybieramy”.",
+        "Każda zmiana musi być zaakceptowana pisemnie.",
+        "Wiadomo, kto po stronie klienta może akceptować zmiany.",
+        "Rabat albo obniżka ceny oznacza zmianę zakresu, terminu albo warunków płatności.",
+        "Nie oddajesz nic za darmo tylko dlatego, że klient poprosił o małą rzecz."
+      ]
+    },
+    {
+      "title": "Odpowiedzialności klienta",
+      "items": [
+        "Klient wie, co musi dostarczyć.",
+        "Są terminy na materiały, feedback i decyzje.",
+        "Wiadomo, co się stanie, jeśli klient opóźni swoją część.",
+        "Opisujesz, które prace zależą od dostępów, danych, materiałów, decyzji albo ludzi klienta.",
+        "Jeśli klient nie dowozi materiałów, harmonogram może się przesunąć.",
+        "Brak feedbacku w ustalonym terminie ma określony skutek, na przykład akceptację etapu albo zmianę terminu.",
+        "Jeśli klient spóźnia materiały o 5 dni roboczych, harmonogram przesuwa się automatycznie albo wymaga nowego potwierdzenia terminu."
+      ]
+    },
+    {
+      "title": "Komunikacja i raportowanie",
+      "items": [
+        "Wiadomo, gdzie odbywa się komunikacja: mail, Slack, Teams, CRM, Notion albo inny kanał.",
+        "Wiadomo, jak często wysyłasz status projektu.",
+        "Ustalony jest format raportu postępu prac.",
+        "Po spotkaniach wysyłasz podsumowanie ustaleń.",
+        "Ustalenia ustne trzeba potwierdzać pisemnie.",
+        "Klient wie, kiedy ma spodziewać się kolejnej informacji."
+      ]
+    },
+    {
+      "title": "Dokumenty, bezpieczeństwo i start projektu",
+      "items": [
+        "Przed startem wiadomo, czy potrzebna jest umowa, NDA, harmonogram, RODO, dostęp do systemów albo inne dokumenty branżowe.",
+        "Wiadomo, gdzie trzymacie dokumentację projektu.",
+        "Dostępy są przekazywane w bezpieczny sposób.",
+        "Spotkanie kick off przedstawia cel, role, harmonogram i zasady komunikacji.",
+        "Jeśli projekt wymaga dokumentacji technicznej, jej format jest ustalony przed pracą.",
+        "Wszystkie ważne linki, dokumenty i decyzje są w jednym miejscu."
+      ]
+    },
+    {
+      "title": "Akceptacja, płatność i zakończenie",
+      "items": [
+        "Są jasne etapy odbioru.",
+        "Klient ma określony czas na feedback.",
+        "Finalny odbiór jest udokumentowany.",
+        "Cena jest powiązana z zakresem.",
+        "Prace dodatkowe mają osobną stawkę albo osobną wycenę.",
+        "Deal jest zamknięty dopiero wtedy, gdy dokumenty i warunki są zaakceptowane, a nie gdy ktoś ustnie powiedział tak."
+      ]
+    }
+  ],
+  "example": "Dobra do sprawdzenia zakresu projektu wdrożeniowego, strony www, kampanii, konsultingu, software, automatyzacji, dokumentacji technicznej, onboardingu klienta albo stałej współpracy B2B.",
+  "order": 33,
+  "published": true,
+  "seoTitle": "Statement of Work, checklista granic zakresu w projekcie B2B",
+  "seoDescription": "Sprawdź SoW przed startem projektu. Zakres, wyłączenia, role, zmiany, raportowanie, dokumenty, odbiory i dodatkowo płatne prace.",
+  "keywords": [
+    "Statement of Work",
+    "SoW",
+    "zakres projektu",
+    "scope creep",
+    "projekt B2B"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "oferta-b2b",
+  "internalLinks": [
+    "oferta-b2b-do-100k-pln",
+    "10-zasad-negocjacji-sprzedazowych",
+    "analiza-umowy-przed-podpisaniem",
+    "checklista-copywritingu-strony-sprzedazowej"
+  ],
+  "sourceCourse": "Akademia Usług",
+  "sourceLesson": "Klient wymaga za dużo, Statement of Work, kick off, komunikacja, protokoły i granice zakresu",
+  "faq": [
+    {
+      "question": "Co to jest Statement of Work?",
+      "answer": "Statement of Work to dokument opisujący zakres projektu, odpowiedzialności, rezultaty, terminy, sposób akceptacji i zasady zmian. W praktyce chroni obie strony przed nieporozumieniami."
+    },
+    {
+      "question": "Czy SoW jest potrzebny przy małych projektach?",
+      "answer": "Tak, choć może być prosty. Nawet krótki dokument z zakresem, wyłączeniami i zasadami poprawek może oszczędzić wiele stresu, szczególnie gdy klient lubi dorzucać drobne zadania."
+    },
+    {
+      "question": "Jak pisać, czego nie ma w zakresie?",
+      "answer": "Najlepiej wprost. Warto dodać sekcję poza zakresem, gdzie wymieniasz rzeczy, które często są mylone z podstawowym zakresem albo zależą od innych dostawców."
+    },
+    {
+      "question": "Co zrobić, gdy klient prosi o coś dodatkowego?",
+      "answer": "Nie trzeba mówić od razu nie. Można powiedzieć: tak, możemy to zrobić, ale to jest poza obecnym zakresem i wymaga osobnej wyceny. To utrzymuje relację i chroni marżę."
+    },
+    {
+      "question": "Czy SoW zastępuje pełną umowę?",
+      "answer": "Nie zawsze. SoW zwykle jest załącznikiem albo częścią ustaleń projektowych. Przy większych projektach warto połączyć go z umową przygotowaną lub sprawdzoną przez prawnika."
+    }
+  ]
+}

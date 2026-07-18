@@ -1,0 +1,76 @@
+{
+  "id": "account-management-sprzedaz-obecni-klienci",
+  "type": "prompt",
+  "title": "Account management jako źródło sprzedaży",
+  "description": "Prompt do przejrzenia obecnych klientów B2B i znalezienia realnych okazji sprzedażowych: upsell, cross sell, referencja, drugi dział, kolejna spółka, powrót po projekcie albo nowa osoba decyzyjna.",
+  "shortDescription": "Znajdź sprzedaż w obecnych klientach bez spamowania i bez wciskania oferty.",
+  "industry": "Marketing i reklama",
+  "industrySlug": "marketing-reklama",
+  "application": "Marketing i sprzedaż",
+  "applicationSlug": "marketing-sprzedaz",
+  "tags": [
+    "Account management",
+    "Sprzedaż B2B"
+  ],
+  "url": "/prompty/marketing-sprzedaz/account-management-sprzedaz-obecni-klienci/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-24",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Account management jako źródło sprzedaży",
+  "body": "W firmie usługowej najtańsza sprzedaż często nie siedzi w nowym kanale marketingowym, tylko w obecnych klientach. Ten prompt pomaga przejrzeć klientów, projekty, osoby decyzyjne, notatki CRM i wyniki współpracy, a potem zamienić je w konkretny plan account managementu na 14 dni. Zachowuje logikę pracy z CRM ze źródła: IDEA, KONTAKT, USTALONO POTRZEBY, OFERTA, NEGOCJACJE, CLOSE, REFERENCJE. AI nie ma pisać generycznej kampanii do wszystkich. Ma znaleźć, gdzie istnieje realny powód kontaktu: klient dostał wynik, ma kolejny problem, może dać referencję, zna inny dział, ma drugą spółkę, zmienił rolę albo potrzebuje kolejnego etapu. Najważniejsze jest to, żeby każda okazja miała jedną historię w CRM, następną akcję, dokładną kwotę i datę możliwego wpływu pieniędzy na konto.",
+  "usage": "Wklej do AI listę klientów, historię projektów, osoby kontaktowe, kwoty, statusy, notatki CRM, ostatnie ustalenia i informacje o tym, co firma oraz konkretni decydenci zyskali dzięki współpracy. Wklej także etap lejka dla każdego dealu, jeśli go znasz: IDEA, KONTAKT, USTALONO POTRZEBY, OFERTA, NEGOCJACJE, CLOSE albo REFERENCJE. Poproś model, żeby nie tworzył masowej sekwencji sprzedażowej, tylko ocenił każdego klienta osobno. Najpierw ma sprawdzić, czy pomagasz firmie zarobić więcej, wydać mniej albo zmniejszyć ryzyko, a potem czy konkretna osoba po stronie klienta może dzięki temu dowieźć KPI, awansować, dostać większy budżet albo mieć spokojniejszy projekt. Wynikiem ma być ranking okazji, następna akcja, kwota, możliwa data wpływu pieniędzy na konto, notatka CRM, gotowa wiadomość 1:1 i lista brakujących danych, których nie wolno zgadywać.",
+  "prompt": "Jesteś account managerem B2B dla firmy usługowej. Twoim zadaniem jest znaleźć sprzedaż w obecnych klientach bez spamowania, bez wciskania oferty i bez udawania relacji.\n\nPracuj na zasadzie: najpierw dowód wartości, potem następny sensowny krok. Nie proponuj kontaktu, jeśli nie widzisz konkretnego powodu biznesowego albo osobistego po stronie decydenta.\n\nKontekst źródłowy, którego masz pilnować:\n1. CRM to nie tylko narzędzie, ale proces pracy z klientem.\n2. Lejek ma fazy: IDEA, KONTAKT, USTALONO POTRZEBY, OFERTA, NEGOCJACJE, CLOSE, REFERENCJE.\n3. Każda kolumna oznacza etap procesu z klientem, a projekty trzeba stale przesuwać w prawo.\n4. W fazie IDEA wrzucasz wszystko bez ograniczeń, ale do KONTAKT przechodzą tylko zweryfikowani, dobrzy klienci.\n5. Przed kontaktem sprawdzasz firmę, stronę, KRS, rejestr dłużników i podstawową wiarygodność. Słabych klientów usuwasz z procesu, nie karmisz CRM śmieciami.\n6. Każdy deal w KONTAKT musi mieć następną akcję, na przykład telefon do Elwiry w poniedziałek o 11:00.\n7. Brak następnej akcji oznacza problem operacyjny.\n8. Każda interakcja z klientem ma notatkę CRM: data, osoba, treść, ustalenia i kolejny krok.\n9. W notatkach warto zapisywać też ludzkie szczegóły, jeśli są prawdziwe i stosowne, na przykład Pearl Jam, motocykle, dwójka dzieci, bo relacja B2B nadal jest relacją z człowiekiem.\n10. Jeden deal ma jedną historię. Nie twórz nowych dealów przy każdej zmianie tematu, jeśli to nadal ta sama szansa.\n11. Predykcja przychodu wymaga dokładnej kwoty i daty, kiedy pieniądze mogą być na koncie, nie tylko daty podpisania umowy.\n12. W B2B działasz na dwóch warstwach: firma ma zarobić więcej, wydać mniej albo zmniejszyć ryzyko, a konkretna osoba ma dowieźć KPI, awansować, dostać budżet, mieć spokój albo poprawić pozycję w organizacji.\n13. Interesariusze mają różne motywacje: dyrektor może chcieć awansu na zarząd, pracownicy ciekawszych projektów i podwyżki, procurement lepiej wynegocjowanych deali.\n14. Jeśli pomagasz osobie zarobić więcej albo awansować, możesz stać się jej partnerem na lata, nawet gdy zmieni firmę.\n15. Jeśli firma zyska, ale osoba po stronie klienta ucierpi, relacja może się skończyć.\n16. Negocjacje są naturalne. Nie oddawaj nic za darmo: jeśli cena spada, zmienia się zakres, termin płatności albo warunki.\n17. CLOSE to nie koniec. Deal jest domknięty operacyjnie dopiero, gdy wiadomo, kto ustala umowę, NDA i harmonogram prac, oraz gdy dokumenty są dodane do plików CRM.\n\nDane wejściowe, które dostajesz ode mnie:\n1. Lista klientów i status współpracy.\n2. Etap lejka dla każdego klienta, jeśli istnieje: IDEA, KONTAKT, USTALONO POTRZEBY, OFERTA, NEGOCJACJE, CLOSE albo REFERENCJE.\n3. Projekty, które już dowieźliśmy.\n4. Kwoty, marże, zakresy, terminy płatności i daty ostatnich działań.\n5. Osoby decyzyjne, użytkownicy, procurement, zarząd i inne osoby zaangażowane.\n6. Oficjalne cele firmy oraz osobiste cele osób po stronie klienta, jeśli je znamy.\n7. Notatki z CRM, ustalenia, obiekcje, terminy, dokumenty i kolejny krok, jeśli istnieje.\n8. Dowody wyniku, na przykład wzrost przychodu, oszczędność czasu, mniejsze ryzyko, lepszy proces, wdrożenie, raport, rekomendacja albo pozytywny feedback.\n9. Informacje relacyjne, jeśli są prawdziwe i etycznie użyteczne: hobby, wcześniejsze rozmowy, ważne daty, zespół, ulubione tematy, kontekst osobisty.\n10. Ograniczenia: klientów, których nie chcemy, firmy źle płacące, konflikty, obietnice bez pokrycia, zakresy poza specjalizacją.\n\nDla każdego klienta przygotuj analizę w tej strukturze:\n1. Aktualny etap lejka i czy etap jest poprawny.\n2. Czy klient powinien być w procesie, czy powinien zostać usunięty, odłożony albo przeniesiony do innej fazy.\n3. Oficjalny cel firmy, czyli jak pomagamy firmie zarobić więcej, wydać mniej, oszczędzić czas albo zmniejszyć ryzyko.\n4. Osobisty cel decydenta, czyli co konkretna osoba może zyskać: awans, podwyżkę, spełnienie KPI, większy budżet, spokój, lepszy wynik zespołu albo większą wiarygodność w firmie.\n5. Mapa interesariuszy: decydent, użytkownik, procurement, zarząd, dział prawny, techniczny albo finansowy, oraz motywacja każdej osoby.\n6. Co już dowieźliśmy i jakie mamy dowody, bez przesady i bez obietnic bez pokrycia.\n7. Najbliższa okazja sprzedażowa: upsell, cross sell, referencja, drugi dział, kolejna spółka, powrót po przerwie, rozszerzenie zakresu, partnerstwo, oferta do omówienia, negocjacje do domknięcia albo operacyjny close.\n8. Czy najpierw potrzebujemy ustalić potrzeby, zebrać feedback, poprosić o referencję, wrócić z ofertą, podsumować negocjacje czy przejść do dokumentów.\n9. Ryzyko złego kontaktu, czyli dlaczego wiadomość mogłaby zabrzmieć nachalnie, za wcześnie albo bez kontekstu.\n10. Jedna konkretna następna akcja, wpisana tak, żeby można ją przenieść do CRM. Ma zawierać osobę, kanał, dzień, godzinę i cel.\n11. Szacowana kwota, prawdopodobieństwo i możliwa data wpływu pieniędzy na konto.\n12. Notatka CRM z datą, osobą, treścią ustalenia, powodem kontaktu, etapem lejka, kwotą, datą wpływu i następnym krokiem.\n13. Wiadomość 1:1 do wysłania, maksymalnie 900 znaków, napisana do jednej osoby, nie do firmy.\n\nOceń każdą okazję w skali 1 do 5 w siedmiu kryteriach:\n1. Siła dowodu wartości z poprzedniej współpracy.\n2. Dopasowanie do oficjalnego celu firmy.\n3. Dopasowanie do osobistego celu decydenta.\n4. Jasność następnej akcji.\n5. Jakość danych w CRM.\n6. Ryzyko klienta, w tym płatności, zakres, chaos decyzyjny i złe dopasowanie.\n7. Szansa na pieniądze w najbliższych 30 do 90 dniach.\n\nNa końcu przygotuj ranking top 5 okazji na najbliższe 14 dni. Dla każdej wpisz: klient, osoba, etap lejka, powód kontaktu, typ okazji, kwota, data możliwego wpływu, następna akcja, wiadomość 1:1 i notatka CRM.\n\nPrzygotuj też listę higieny CRM:\n1. Deale bez następnej akcji.\n2. Deale bez kwoty.\n3. Deale bez daty wpływu pieniędzy.\n4. Deale bez osoby decyzyjnej.\n5. Deale bez notatki po ostatniej interakcji.\n6. Deale, które trzeba usunąć, bo klient jest słaby, ryzykowny albo niezweryfikowany.\n7. Deale, które są w złej fazie lejka.\n8. Deale, które wymagają podsumowania negocjacji mailem.\n9. Deale w CLOSE, którym brakuje umowy, NDA albo harmonogramu.\n10. Deale, które mogą przejść do REFERENCJE.\n\nUżyj struktury wiadomości:\nCześć [imię],\n\nwracam do naszego projektu, bo [konkretny rezultat albo sytuacja klienta].\n\nZauważyłem jedną rzecz, którą możemy teraz wykorzystać: [okazja].\n\nProponuję prosty kolejny krok: [konkretna akcja, termin, forma].\n\nJeśli ma to sens, odpisz jednym słowem tak, a przygotuję 2 warianty.\n\nZasady jakości:\n1. Nie twórz fake powodów kontaktu.\n2. Nie proponuj sprzedaży, jeśli najpierw trzeba poprosić o feedback, referencję albo uzupełnić brakujący kontekst.\n3. Nie rozbijaj jednego dealu na kilka historii. Jedna okazja ma jedną historię w CRM.\n4. Każdy deal musi mieć następną akcję. Brak następnej akcji oznacza, że analiza jest niegotowa.\n5. Każda interakcja musi kończyć się notatką CRM: data, osoba, treść, ustalenie, kolejny krok.\n6. Predykcja przychodu wymaga kwoty i daty możliwego wpływu pieniędzy na konto.\n7. Jeśli klient jest słaby, ryzykowny albo źle płaci, oznacz go jako nie kontaktować teraz i wyjaśnij dlaczego.\n8. Jeśli brakuje danych, napisz czego brakuje. Nie zgaduj osoby decyzyjnej, motywacji, kwoty ani daty.\n9. Jeśli klient jest w negocjacjach, nie zaczynaj od nowej oferty. Najpierw podsumuj ustalenia i określ wymianę wartości.\n10. Jeśli klient jest w CLOSE, skup się na umowie, NDA, harmonogramie i operacyjnym domknięciu, nie na kolejnej rozmowie sprzedażowej.\n\nMoje dane:\n[wklej listę klientów, etapy lejka, projekty, kwoty, osoby, notatki CRM, wyniki, statusy, dokumenty, terminy i ograniczenia]",
+  "example": "Najlepszy dla konsultanta, agencji, software house, firmy wdrożeniowej albo eksperta B2B, który ma już klientów i chce znaleźć sprzedaż jakościową w obecnych relacjach, zamiast dokładać kolejny zimny kanał pozyskiwania leadów.",
+  "order": 98,
+  "published": true,
+  "seoTitle": "Account management jako źródło sprzedaży, prompt AI",
+  "seoDescription": "Prompt AI do przejrzenia obecnych klientów B2B, znalezienia upsell, cross sell, referencji i kolejnych okazji sprzedażowych z notatką CRM.",
+  "keywords": [
+    "account management",
+    "sprzedaż z obecnych klientów",
+    "upsell B2B",
+    "cross sell B2B",
+    "notatka CRM",
+    "sprzedaż B2B"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "sprzedaz-b2b-account-management",
+  "internalLinks": [
+    "oferta-b2b-do-100k-pln",
+    "wiadomosc-1-1-po-researchu-kontekstu",
+    "lista-45-lejkow-sprzedazowych",
+    "kwalifikacja-meddpicc-pipeline-i-founder-led"
+  ],
+  "sourceCourse": "Akademia Usług",
+  "sourceLesson": "Moduł CRM, lejek i fazy, moduł account management, zrozumienie rynku usług B2B, KPI i wzrost z obecnych klientów",
+  "faq": [
+    {
+      "question": "Do czego służy prompt account management jako źródło sprzedaży?",
+      "answer": "Prompt pomaga znaleźć sprzedaż w obecnych klientach B2B. Zamiast tworzyć kampanię do nowych leadów, analizuje projekty, osoby, wyniki i notatki CRM, a potem wskazuje okazje typu upsell, cross sell, referencja, drugi dział, kolejna spółka albo powrót po zakończonym projekcie."
+    },
+    {
+      "question": "Jakie dane trzeba wkleić do AI przed użyciem prompta?",
+      "answer": "Najlepiej wkleić listę klientów, statusy projektów, kwoty, marże, osoby decyzyjne, uczestników projektu, notatki CRM, ostatnie ustalenia, obiekcje i dowody wyniku. Im więcej konkretów, tym lepiej AI odróżni prawdziwą okazję od przypadkowego pretekstu do kontaktu."
+    },
+    {
+      "question": "Czym różni się account management od zwykłego follow upu?",
+      "answer": "Zwykły follow up często pyta tylko, czy klient czegoś potrzebuje. Account management szuka powodu biznesowego i osobistego: co firma może zyskać, co decydent może dowieźć, jaki wynik już pokazaliśmy i jaki następny krok ma sens. Dzięki temu kontakt brzmi jak kontynuacja wartości, nie jak przypomnienie o sobie."
+    },
+    {
+      "question": "Jak AI ma oceniać okazje sprzedażowe u obecnych klientów?",
+      "answer": "Prompt każe ocenić każdą okazję w pięciu kryteriach: dowód wartości z poprzedniej współpracy, dopasowanie do celu firmy, dopasowanie do celu decydenta, jasność następnej akcji i szansa na pieniądze w 30 do 90 dniach. Wynikiem jest ranking top 5 okazji na 14 dni."
+    },
+    {
+      "question": "Czy prompt może pisać wiadomości do wszystkich klientów naraz?",
+      "answer": "Nie powinien. Ten prompt ma chronić przed masowym spamem. Każda wiadomość ma być napisana do jednej osoby i wynikać z konkretnego rezultatu, sytuacji klienta albo uzasadnionej okazji. Jeśli brakuje powodu kontaktu, AI ma oznaczyć klienta jako nie kontaktować teraz."
+    },
+    {
+      "question": "Co powinno trafić do CRM po analizie account managementu?",
+      "answer": "Do CRM powinna trafić jedna historia dealu, nie kilka rozproszonych wątków. Notatka ma zawierać datę, osobę, ustalenie, powód kontaktu, następną akcję, kwotę, prawdopodobieństwo i możliwą datę wpływu pieniędzy na konto. Bez następnej akcji deal nie jest operacyjnie przygotowany."
+    }
+  ]
+}

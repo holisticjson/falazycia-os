@@ -1,0 +1,68 @@
+{
+  "id": "research-rynku-na-x-z-grok",
+  "type": "prompt",
+  "title": "Research rynku na X z Grok",
+  "description": "Przeanalizuj wątki na X, znajdź bóle rynku, oceń gotowość do zapłaty i zamień insighty w pomysły na produkt lub usługę.",
+  "shortDescription": "Social listening na X pod pomysł, ofertę i avatar.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-sprzedaz",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Research",
+    "Pomysły"
+  ],
+  "url": "/prompty/strategia-decyzje/research-rynku-na-x-z-grok/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Research rynku na X z Grok",
+  "body": "Prompt pomaga użyć Groka do analizy publicznych wątków na X, znalezienia powtarzalnych problemów, oceny gotowości do zapłaty i przełożenia insightów na avatar klienta, pomysł na produkt oraz komunikację oferty.",
+  "usage": "Użyj tego prompta, gdy chcesz zbadać rynek, niszę, trend, produkt albo konkurencję przez rozmowy na X z pomocą Grok. Najlepiej działa przy tematach technologicznych, startupowych, twórczych i marketingowych, gdzie świeże opinie pojawiają się szybciej niż w raportach. Podaj frazy, konta, konkurentów, język, kraj, horyzont czasowy i decyzję, którą chcesz podjąć po researchu. Po researchu warto przenieść najlepsze sygnały do osobnej listy: cytaty, obiekcje, frazy klientów i pomysły na ofertę. To są elementy, które później karmią landing page, maile i rozmowy sprzedażowe.",
+  "prompt": "Uruchom analizę w trybie Think. Rola:\nJesteś badaczem rynku, który robi social listening na X. Twoim zadaniem jest znaleźć realne problemy, za które konkretna grupa może zapłacić, a potem zamienić je w pomysły na produkt, usługę, ofertę i komunikację. Dane wejściowe:\nGRUPA DOCELOWA: [opisz grupę, np. dyrektorzy marketingu w Polsce w globalnych korporacjach]\nRYNEK: [kraj, język, branża]\nTEMAT LUB PROBLEM: [np. rozwój konta na LinkedIn, raportowanie marketingu, presja zarządu, AI w marketingu]\nLICZBA WĄTKÓW: 10\nCEL ANALIZY: [pomysł na produkt, usługa, content, oferta, avatar, research przed kampanią] Zadanie:\nPrzeanalizuj 10 najlepszych publicznych wątków na X dotyczących GRUPY DOCELOWEJ i TEMATU LUB PROBLEMU. Wybór wątków:\n1. Wybieraj wątki istotne jakościowo, nie tylko viralowe.\n2. Priorytetowo traktuj wypowiedzi osób z grupy docelowej albo osób, które z nią pracują.\n3. Dla każdego wątku podaj link, datę, autora albo opis autora, liczbę reakcji jeśli jest widoczna, krótki cytat i powód wyboru.\n4. Nie używaj prywatnych danych i nie identyfikuj osób poza tym, co publicznie widoczne w wątku.\n5. Nie wymyślaj cytatów. Jeśli nie ma wystarczających danych, napisz to wprost. Analiza każdego wątku:\nDla każdego z 10 wątków podaj:\n1. Link do wątku.\n2. Krótki cytat lub parafrazę z jasnym oznaczeniem, co jest cytatem, a co interpretacją.\n3. Jaki problem ujawnia wątek.\n4. Kto odczuwa ten problem.\n5. Jak pilny jest ten problem w skali 1 do 10.\n6. Czy problem wygląda na operacyjny, strategiczny, emocjonalny, polityczny, finansowy albo kompetencyjny.\n7. Jakie obecne rozwiązania pojawiają się w rozmowach.\n8. Dlaczego obecne rozwiązania są niewystarczające.\n9. Jakie sygnały gotowości do zapłaty widać.\n10. Jakie pytania warto zadać tej grupie w rozmowie walidacyjnej. Po analizie wątków wyodrębnij:\n1. TOP 10 punktów bólu.\n2. Największy problem, który jest słabo rozwiązany, źle obsługiwany albo taki, za którego szybsze rozwiązanie rynek może zapłacić.\n3. 10 pomysłów na produkt, usługę albo ofertę, ustawionych od najwyższej do najniższej gotowości do zapłaty. Scoring każdego pomysłu:\nDla każdego pomysłu oceń:\n1. Gotowość do zapłaty, 1 do 10.\n2. Pilność, 1 do 10.\n3. Łatwość dotarcia do buyerów, 1 do 10.\n4. Konkurencję, 1 do 10, gdzie 10 oznacza bardzo zatłoczony rynek.\n5. Możliwość zbudowania MVP w 14 dni, 1 do 10.\n6. Potencjalny model przychodu.\n7. Pierwszy eksperyment walidacyjny. Na górze rankingu ma być pomysł z największą gotowością do zapłaty, nie pomysł najłatwiejszy albo najbardziej modny. Następnie przygotuj osobny blok: Na bazie tej analizy opisz:\n1. Idealny avatar klienta.\n2. Produkt albo usługę, która rozwiązuje najważniejszy problem.\n3. Główną obietnicę wartości.\n4. Headline.\n5. Subheadline.\n6. 3 warianty oferty: szybka usługa, produkt cyfrowy, pakiet premium.\n7. 5 obiekcji, które trzeba rozbroić w komunikacji.\n8. 5 pytań do rozmów walidacyjnych. Format odpowiedzi:\n1. Executive summary, maksymalnie 150 słów.\n2. Tabela 10 wątków z X: link, autor, data, cytat lub parafraza, problem, pilność.\n3. Mapa bólu: TOP 10 problemów.\n4. Największy problem słabo rozwiązany.\n5. Ranking 10 pomysłów z scoringiem.\n6. Idealny avatar klienta.\n7. Produkt lub usługa.\n8. Headline i subheadline.\n9. Plan walidacji na 7 dni.\n10. Ryzyka i założenia, które trzeba sprawdzić. Przykład 1:\nPrzeanalizuj 10 najlepszych wątków na X o dyrektorach marketingu w Polsce, pracujących w globalnych korporacjach. Wyodrębnij ich punkty bólu i zidentyfikuj największy problem słabo rozwiązany, za którego rozwiązanie mogliby zapłacić. Daj 10 pomysłów. Na górze ma być ten, gdzie jest największa gotowość do zapłaty. Przykład 2:\nPrzeanalizuj 10 najlepszych wątków na X o osobach narzekających na trudności w rozwoju konta na LinkedIn. Wyodrębnij ich punkty bólu i zidentyfikuj, w jaki sposób ktoś, kto dobrze radzi sobie z rozwijaniem kont na LinkedIn, mógłby im pomóc. Następnie opisz idealny avatar klienta, produkt lub usługę, headline i subheadline. Wynik researchu ma oddzielać sygnały od hałasu. Grupuj posty i wypowiedzi według problemów, obiekcji, pragnień, konkurentów, języka klienta i pomysłów na ofertę. Przy każdym wniosku podaj, czy opiera się na pojedynczym przykładzie, kilku podobnych wypowiedziach czy wyraźnym wzorcu. Na końcu przygotuj listę 10 zapytań do dalszego researchu, 5 tematów contentowych i 5 hipotez do sprawdzenia poza X.",
+  "example": "Najlepszy do pracy w Grok, gdy chcesz zamienić publiczne rozmowy z X w pomysł na produkt, ofertę, usługę albo kampanię.",
+  "order": 14,
+  "published": true,
+  "seoTitle": "Research rynku na X z Grok, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt do analizy wątków na X w Grok, identyfikacji punktów bólu, gotowości do zapłaty, pomysłów na produkt i avatara klienta.",
+  "keywords": [
+    "research rynku na X",
+    "Grok prompt",
+    "social listening",
+    "pomysł na produkt",
+    "avatar klienta"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "research-rynku",
+  "internalLinks": [
+    "badania-psychograficzne-deep-research",
+    "generator-pomyslow-biznesowych-john-rush",
+    "strategia-cenowa-produktu"
+  ],
+  "faq": [
+    {
+      "question": "Kiedy używać researchu rynku na X?",
+      "answer": "Użyj go, gdy chcesz sprawdzić, jak ludzie rozmawiają o problemie, produkcie, niszy albo trendzie na X. To dobre źródło języka klientów, obiekcji, kontrowersji i wczesnych sygnałów."
+    },
+    {
+      "question": "Co można znaleźć przez Grok i X?",
+      "answer": "Można znaleźć powtarzające się pytania, narzekania, opinie o konkurencji, przykłady użycia, popularne wątki, liderów opinii, świeże trendy i język, którego ludzie używają bez marketingowego filtra."
+    },
+    {
+      "question": "Jak uniknąć fałszywych wniosków z X?",
+      "answer": "Trzeba oddzielać głośne opinie od powtarzalnych sygnałów. Jeden viralowy post nie oznacza rynku. Szukaj wielu niezależnych wypowiedzi, wzorców i potwierdzeń w innych źródłach."
+    },
+    {
+      "question": "Jak wykorzystać wyniki researchu rynku?",
+      "answer": "Wyniki można zamienić w tematy contentu, hipotezy produktowe, argumenty sprzedażowe, listę obiekcji, persony, landing page albo pytania do rozmów z klientami."
+    },
+    {
+      "question": "Czy research na X wystarczy do decyzji biznesowej?",
+      "answer": "Nie. To dobry sygnał jakościowy, ale nie pełna walidacja. Warto połączyć go z rozmowami z klientami, analizą konkurencji, danymi SEO i testem płatnej oferty."
+    }
+  ]
+}

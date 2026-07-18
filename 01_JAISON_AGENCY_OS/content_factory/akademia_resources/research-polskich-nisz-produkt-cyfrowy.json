@@ -1,0 +1,68 @@
+{
+  "id": "research-polskich-nisz-produkt-cyfrowy",
+  "type": "prompt",
+  "title": "Research polskich nisz pod produkt cyfrowy",
+  "description": "Znajdź polskie nisze, problemy i mikroprodukty cyfrowe możliwe do zbudowania w 7 dni.",
+  "shortDescription": "Polski research nisz pod szybki produkt cyfrowy.",
+  "industry": "Marketing i sprzedaż",
+  "industrySlug": "marketing-sprzedaz",
+  "application": "Strategia i decyzje",
+  "applicationSlug": "strategia-decyzje",
+  "tags": [
+    "Research",
+    "Nisze"
+  ],
+  "url": "/prompty/strategia-decyzje/research-polskich-nisz-produkt-cyfrowy/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Research polskich nisz pod produkt cyfrowy",
+  "body": "Prompt prowadzi research polskojęzycznych blogów, forów, komentarzy YouTube i społeczności, żeby znaleźć nisze, powtarzalne problemy oraz produkty cyfrowe możliwe do stworzenia w 7 dni.",
+  "usage": "Użyj tego prompta, gdy szukasz polskiej niszy pod produkt cyfrowy, kurs, narzędzie, społeczność, newsletter albo usługę produktową. Podaj obszary zainteresowań, swoje kompetencje, typ produktu, ograniczenia i kryteria atrakcyjności. Prompt powinien szukać realnych problemów, języka klientów, konkurencji, kanałów dotarcia i pierwszego testu popytu, zamiast kończyć na ogólnej liście trendów. Jeśli narzędzie nie ma dostępu do internetu, wklej ręcznie źródła: komentarze, fora, wyniki wyszukiwania, recenzje, posty i listę konkurentów. Model ma wtedy analizować dostarczony materiał, nie udawać researchu.",
+  "prompt": "Uruchom to zadanie w trybie Deep Research. Cel:\nPrzeprowadź kompleksową analizę polskojęzycznych blogów, forów, komentarzy YouTube i publicznych społeczności w celu identyfikacji obiecujących nisz biznesowych dla produktów cyfrowych, które można stworzyć w 7 dni. Wykorzystaj profile podane na końcu promptu do dopasowania wyników. Zasady jakości danych:\n1. Podawaj linki do źródeł przy każdej ważnej obserwacji.\n2. Cytuj tylko krótkie fragmenty publicznych postów lub komentarzy.\n3. Nie wymyślaj cytatów, liczb, twórców ani społeczności.\n4. Jeśli liczba użytkowników, komentarzy, wyświetleń albo aktywności jest tylko szacunkiem, oznacz ją jako szacunek i napisz, na czym go opierasz.\n5. Jeśli nie masz wiarygodnego źródła dla liczby, napisz: brak wiarygodnej liczby.\n6. Oddziel fakty, cytaty i interpretacje.\n7. Skup się na rynku polskojęzycznym.\n8. Nie używaj danych z prywatnych lub zamkniętych grup, jeśli nie są publicznie dostępne. 1. Identyfikacja nisz, minimum 10 obszarów Szukaj społeczności, tematów i nisz z aktywną grupą odbiorców. Orientacyjny zakres: 10 000 do 500 000 aktywnych użytkowników, komentujących, odwiedzających albo obserwujących. Jeśli nie da się tego potwierdzić, oznacz jako szacunek. Analizuj:\n1. Popularne tagi i tematy na blogach.\n2. Fora tematyczne.\n3. Sekcje komentarzy pod filmami YouTube.\n4. Publiczne społeczności i dyskusje.\n5. Newslettery, podcasty, live'y i webinary, jeśli są istotne. Dla każdej niszy podaj:\n1. Główne tagi i słowa kluczowe.\n2. Kluczowych twórców, autorów, moderatorów albo źródła dyskusji.\n3. Szacowany poziom zaangażowania: komentarze, polubienia, odpowiedzi, częstotliwość dyskusji.\n4. Dominujące tematy rozmów.\n5. Linki do źródeł. 2. Analiza problemów dla każdej niszy Zidentyfikuj TOP 5 najczęściej powtarzających się problemów albo frustracji. Przeszukaj posty i komentarze z ostatnich 3 miesięcy, szukając fraz:, potrzebuję,, szukam,, ktoś wie,, mam problem z,, mam dość,, czy istnieje,, jak zrobić,, jakie narzędzie do. Skup się na wątkach z dużym engagement: długa dyskusja, dużo polubień, dużo odpowiedzi albo częste powroty tematu. Dla każdego problemu podaj:\n1. Krótki opis problemu.\n2. Cytat jako dowód.\n3. Link do źródła.\n4. Liczbę odpowiedzi, polubień albo inny widoczny sygnał zaangażowania, jeśli jest dostępny.\n5. Interpretację, dlaczego problem może mieć wartość biznesową. 3. Walidacja biznesowa Dla każdej niszy odpowiedz:\n1. Czy użytkownicy aktywnie proszą o rozwiązania? Podaj cytaty.\n2. Czy wspominają, że zapłacą za dobre narzędzie, szablon, kurs, checklistę, automatyzację albo usługę?\n3. Jak często problem wraca? Podaj częstotliwość nowych wątków, jeśli da się ją oszacować.\n4. Czy popularni twórcy też o tym mówią?\n5. Jak wysoki jest poziom frustracji w dyskusjach w skali 1 do 10? 4. Analiza konkurencji Dla każdej niszy sprawdź:\n1. Jakie istniejące rozwiązania są polecane w komentarzach.\n2. Co ludzie krytykują w tych narzędziach.\n3. Które wątki o rozwiązaniach mają największy zasięg.\n4. Czy widać niewypełnione luki rynkowe.\n5. Czy luka wynika z ceny, jakości, języka polskiego, lokalnych realiów, braku prostoty, braku wsparcia albo złego dopasowania. 5. Potencjał produktu cyfrowego Dla każdej okazji określ:\n1. Typ produktu: narzędzie, szablon, automatyzacja, checklista, kurs, newsletter, baza danych, kalkulator, mini audyt, pakiet promptów.\n2. Czy da się go stworzyć w 7 dni, realistyczna ocena.\n3. Szacowana cena w zakresie 10 do 200 USD albo równowartość w PLN.\n4. Unikalna propozycja wartości.\n5. Kanały dystrybucji: Google, influencerzy, organic, YouTube, newslettery, partnerstwa, społeczności, reklamy.\n6. Potencjalny zasięg i konwersja, oznaczone jako szacunek, jeśli nie ma twardych danych. 6. Insights z platform Dla każdej mocnej niszy określ:\n1. Kto jest thought leaderem w niszy i czy jest szansa na partnerstwo.\n2. Jakie popularne live'y, webinary, podcasty albo kanały poruszają ten temat.\n3. Czy istnieją newslettery lub płatne community w tej niszy.\n4. Jaki content najbardziej angażuje ludzi: poradniki, listy błędów, case studies, narzędzia, checklisty, reakcje, porównania, historie porażek. 7. Dopasowanie do profili Na końcu promptu dostaniesz:\nMój profil przedsiębiorcy.\nProfil idealnego klienta. Dla każdej niszy oceń:\n1. Dopasowanie do umiejętności przedsiębiorcy, 1 do 10.\n2. Dopasowanie do idealnego klienta, 1 do 10.\n3. Czy idealny klient faktycznie udziela się w tej niszy.\n4. Odrzuć nisze z wynikiem poniżej 7 na 10 w którejkolwiek z tych ocen. 8. Ranking okazji Uszereguj TOP 5 według kryteriów:\n1. Wielkość problemu i częstotliwość wspominania, 1 do 10.\n2. Łatwość rozwiązania, 1 do 10.\n3. Gotowość do płacenia, 1 do 10.\n4. Brak dominującego rozwiązania, 1 do 10.\n5. Dopasowanie do przedsiębiorcy, 1 do 10.\n6. Dopasowanie do klienta, 1 do 10.\n7. Możliwość wykonania w 7 dni, 1 do 10.\n8. Potencjał wiralowy, 1 do 10. 9. Szczegółowy plan dla TOP 1 Dla najlepszej okazji przygotuj:\n1. Nazwę produktu i haczyk marketingowy.\n2. Draft ogłoszenia: post na blogu, post LinkedIn, post Facebook albo opis do newslettera.\n3. MVP: lista funkcji albo zawartości.\n4. Stos technologiczny albo sposób wykonania.\n5. Harmonogram 7 dni.\n6. Strategię launchu: kanały, influencerzy, tagi, miejsca publikacji.\n7. Plan pierwszych 10 sprzedaży.\n8. Metryki sukcesu. 10. Quick wins Wskaż 3 mikroprodukty do zrobienia w 1 do 2 dni, dobre na szybki test. Format wyniku:\n1. Executive summary: 3 najlepsze okazje.\n2. Szczegółowa analiza każdej niszy z cytatami postów i komentarzy.\n3. Mapa influencerów i społeczności.\n4. Porównanie okazji opisowe, bez tabel.\n5. Strategia launchu dla TOP 1.\n6. Quick wins.\n7. Założenia i dane, których nie udało się potwierdzić. MÓJ PROFIL PRZEDSIĘBIORCY:\n[Wklej swój profil] PROFIL IDEALNEGO KLIENTA:\n[Wklej profil idealnego klienta] Wynik researchu ma zawierać ranking nisz, opis klienta, dowody bólu, istniejące alternatywy, możliwe ceny, kanały dotarcia, pomysł na produkt cyfrowy, ryzyka i test sprzedażowy. Każdą niszę oceń od 1 do 10 w obszarach: pilność problemu, częstotliwość, gotowość do płatności, dostęp do odbiorców, konkurencja, prostota pierwszej wersji i potencjał contentu. Na końcu wybierz jedną niszę do testu w tym tygodniu.",
+  "example": "Najlepszy do szukania mikroproduktów, checklist, szablonów, automatyzacji i mini kursów dla polskiego rynku.",
+  "order": 15,
+  "published": true,
+  "seoTitle": "Research polskich nisz pod produkt cyfrowy, prompt AI | Akademia.pl",
+  "seoDescription": "Prompt do Deep Research polskich blogów, forów i komentarzy YouTube w celu znalezienia nisz i produktów cyfrowych do stworzenia w 7 dni.",
+  "keywords": [
+    "research nisz",
+    "produkt cyfrowy",
+    "polski rynek",
+    "mikroprodukt",
+    "Deep Research"
+  ],
+  "intent": "commercial",
+  "canonicalCluster": "research-nisz",
+  "internalLinks": [
+    "research-rynku-na-x-z-grok",
+    "generator-pomyslow-biznesowych-john-rush",
+    "strategia-cenowa-produktu"
+  ],
+  "faq": [
+    {
+      "question": "Do czego służy research polskich nisz?",
+      "answer": "Prompt pomaga znaleźć nisze, w których są realne problemy, aktywne rozmowy, płatne potrzeby i miejsce na produkt cyfrowy. Nie chodzi o trend, tylko o powtarzalny ból i możliwość dotarcia do klientów."
+    },
+    {
+      "question": "Jakie źródła warto analizować w researchu?",
+      "answer": "Warto analizować fora, grupy, komentarze, blogi, YouTube, marketplace, newslettery, społeczności branżowe, porównywarki i miejsca, w których ludzie proszą o pomoc albo narzekają na obecne rozwiązania."
+    },
+    {
+      "question": "Jak ocenić atrakcyjność wybranej niszy?",
+      "answer": "Sprawdź pilność problemu, częstotliwość sygnałów, gotowość do płatności, konkurencję, dostęp do odbiorców, prostotę pierwszego produktu i ryzyko, że nisza jest zbyt mała."
+    },
+    {
+      "question": "Czy brak konkurencji jest dobrym znakiem?",
+      "answer": "Niekoniecznie. Brak konkurencji może oznaczać ukrytą szansę, ale często oznacza brak popytu albo trudny rynek do edukowania. Prompt powinien traktować to jako ryzyko do sprawdzenia."
+    },
+    {
+      "question": "Jaki powinien być wynik researchu?",
+      "answer": "Dobry wynik to ranking nisz, opis problemów, język klientów, istniejące alternatywy, pomysły na produkt, pierwsze kanały dotarcia i test, który można zrobić bez budowania pełnego produktu."
+    }
+  ]
+}

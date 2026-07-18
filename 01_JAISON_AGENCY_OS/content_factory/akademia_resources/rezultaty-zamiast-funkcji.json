@@ -1,0 +1,69 @@
+{
+  "id": "rezultaty-zamiast-funkcji",
+  "type": "prompt",
+  "title": "Rezultaty zamiast funkcji",
+  "description": "Przerób sekcję strony z listy funkcji na sekcję rezultatów, czyli tego, co użytkownik realnie osiąga dzięki produktowi.",
+  "shortDescription": "Zamień funkcje produktu na rezultaty użytkownika.",
+  "industry": "Design i kreacja",
+  "industrySlug": "design-kreacja",
+  "application": "Strony www",
+  "applicationSlug": "strony-www",
+  "tags": [
+    "Copywriting",
+    "Konwersja"
+  ],
+  "url": "/prompty/strony-www/rezultaty-zamiast-funkcji/",
+  "active": true,
+  "views": 0,
+  "postedAt": "2026-06-10",
+  "votes": {
+    "up": 0,
+    "down": 0
+  },
+  "bodyTitle": "Rezultaty zamiast funkcji",
+  "body": "Mini prompt do poprawiania stron sprzedażowych i landing page, gdy sekcja funkcji opisuje produkt, ale nie pokazuje użytkownikowi, co dzięki niemu zyska.",
+  "usage": "Użyj tego prompta, gdy strona, oferta albo landing page opisuje funkcje produktu, ale nie pokazuje użytkownikowi, co dzięki nim realnie osiągnie. Wklej aktualną sekcję funkcji, opis produktu, grupę docelową, główny problem klienta, obiekcje, źródło ruchu i cel strony. Model ma przepisać komunikację na rezultaty, ale zachować funkcje jako dowody, jeśli pomagają uwiarygodnić obietnicę. Jeżeli masz dane liczbowe, dodaj je od razu: czas przed i po, koszt, liczba błędów, konwersja, liczba kliknięć albo liczba ręcznych kroków. Bez danych model powinien pisać konkret sytuacyjny, a nie wymyślać metryki.",
+  "prompt": "Przepisz sekcję strony z języka funkcji na język rezultatów.\n\nAktualna treść:\n[wklej sekcję funkcji albo opis produktu]\n\nProdukt:\n[opisz produkt]\n\nOdbiorca:\n[opisz klienta]\n\nGłówny problem:\n[opisz problem]\n\nCel strony:\n[kontakt, zapis, zakup, demo, pobranie]\n\nNajpierw wypisz wszystkie funkcje, które widzisz w materiale. Dla każdej funkcji odpowiedz na pytanie: co użytkownik może dzięki temu zrobić szybciej, łatwiej, taniej, bezpieczniej albo z większą pewnością.\n\nNastępnie wybierz 4 do 6 najmocniejszych rezultatów i zapisz je jako gotową sekcję strony:\nnagłówek, krótkie wprowadzenie, lista rezultatów, zdanie dowodu pod każdym rezultatem i wezwanie do działania.\n\nUnikaj pustych obietnic typu lepsza efektywność albo kompleksowe rozwiązanie. Każdy rezultat ma zawierać konkretną zmianę, sytuację użytkownika albo mierzalny efekt.\n\nFormat odpowiedzi:\ndiagnoza obecnej sekcji, mapa funkcja do rezultat, nowa sekcja rezultatów, krótsza wersja na hero, wariant business to business, wariant business to consumer, lista funkcji do FAQ i lista zdań do usunięcia.\n\nKażdy rezultat zapisz w formacie:\nużytkownik może, dzięki temu, mierzalna albo obserwowalna zmiana, dowód.\n\nJeżeli brakuje danych, nie wymyślaj liczb. Zamiast tego zaproponuj miejsce na liczbę i napisz, jakie dane trzeba zebrać. Na końcu dodaj 5 pytań, które copywriter powinien zadać właścicielowi produktu.\n\nDodaj sekcję antyprzykładów. Pokaż 3 zdania, które nadal brzmią jak funkcje udające rezultaty, oraz popraw je na język efektu użytkownika.\n\nNastępnie zaproponuj prosty test czytelności: czy odbiorca po 5 sekundach wie, co będzie miał lepiej, szybciej albo łatwiej po użyciu produktu.",
+  "example": "Dobry do landing page, stron SaaS, ofert usług, stron kursów, stron sprzedażowych i sekcji, które brzmią technicznie zamiast sprzedażowo.",
+  "order": 20,
+  "published": true,
+  "seoTitle": "Rezultaty zamiast funkcji, prompt AI do strony www | Akademia.pl",
+  "seoDescription": "Prompt do zamiany sekcji funkcji na sekcję rezultatów użytkownika na landing page, stronie sprzedażowej albo stronie produktu.",
+  "keywords": [
+    "prompt landing page",
+    "rezultaty zamiast funkcji",
+    "copywriting strony www",
+    "sekcja rezultaty",
+    "konwersja strony"
+  ],
+  "intent": "informational",
+  "canonicalCluster": "strony-www",
+  "internalLinks": [
+    "strona-www-w-twoim-stylu",
+    "tekst-bez-sladow-ai",
+    "checklista-copywritingu-strony-sprzedazowej",
+    "strategia-marketingu-pasywnego"
+  ],
+  "faq": [
+    {
+      "question": "Po co zamieniać funkcje na rezultaty?",
+      "answer": "Użytkownik rzadko kupuje samą funkcję. Kupuje zmianę, którą ta funkcja ma mu dać: oszczędność czasu, większą sprzedaż, mniej błędów, lepszą decyzję albo większy spokój. Sekcja rezultatów szybciej pokazuje wartość."
+    },
+    {
+      "question": "Czy trzeba całkowicie usuwać funkcje ze strony?",
+      "answer": "Nie zawsze. Funkcje mogą zostać jako dowód, szczegół techniczny albo część porównania. Chodzi o to, żeby główna sekcja sprzedażowa nie zaczynała od tego, co produkt robi, tylko od tego, co użytkownik dzięki temu osiąga."
+    },
+    {
+      "question": "Jakie materiały wkleić do AI razem z promptem?",
+      "answer": "Wklej aktualną sekcję funkcji, opis produktu, grupę docelową, główny problem klienta i cel strony. Jeśli masz przykłady rozmów sprzedażowych albo feedback klientów, dodaj je, bo pomogą pisać językiem odbiorcy."
+    },
+    {
+      "question": "Czy ten prompt nadaje się do stron B2B?",
+      "answer": "Tak. W B2B szczególnie dobrze działa zamiana funkcji na rezultaty, bo decydenci chcą wiedzieć, jaki efekt biznesowy uzyskają: mniej ręcznej pracy, szybszy proces, niższy koszt, większą kontrolę albo lepsze dane."
+    },
+    {
+      "question": "Jak sprawdzić, czy sekcja rezultatów jest dobra?",
+      "answer": "Dobra sekcja rezultatów odpowiada na pytanie: co konkretnie zmieni się w życiu albo pracy użytkownika. Jeśli po przeczytaniu tekstu nadal widać głównie opis produktu, sekcja wymaga dopracowania."
+    }
+  ]
+}
