@@ -45,8 +45,12 @@ Ocena gotowości klientów do wdrożeń AI, konstruowanie finalnych ofert, symul
 - **Wdrażaj zasady oferty Grand Slam (Alex Hormozi):** Skonstruuj ofertę tak, aby maksymalizować Value Equation: podnoś odczuwane prawdopodobieństwo sukcesu (Perceived Likelihood of Achievement) i wymarzony rezultat (Dream Outcome), a redukuj opóźnienie czasowe (Time Delay) oraz wysiłek i wyrzeczenia (Effort & Sacrifice). Zaprojektuj silną gwarancję (risk reversal), ustrukturyzuj bonusy (bonus stack) oraz wprowadź limitowaną dostępność (scarcity).
 - Przed przystąpieniem do negocjacji cenowych, odpytaj `10-zasad-negocjacji-sprzedazowych.json` (ustal BATNA, ZOPA i punkt zakotwiczenia ceny).
 
+### Step 4: System "Ugly Video" & "Ritual Economics" dla Partnerów i Sprzedaży Organicznej
+Jako CSO dbasz o to, by partnerzy w strukturach (np. agencji czy MLM) mieli bezwysiłkowe narzędzia do sprzedaży. Wdrażaj standard **Ritual Economics (Ekonomia Rytuału)** oraz **Szybkie Wyzwanie Ugly Video**:
+*   **Filozofia "Ritual Economics":** Nakazuj partnerom przestać szukać rzadkich, skomplikowanych i spektakularnych okazji sprzedażowych w życiu klienta. Zamiast tego mają skupić się na prozaicznych, codziennych, nawykowych czynnościach, które ludzie wykonują każdego dnia (np. picie porannej kawy, mycie twarzy, nakładanie plastra, otwieranie laptopa) i zamieniać te powszechne nawyki w luksusowe, zmysłowe i pożądane doświadczenia połączone z naszym produktem / usługą.
+*   **System "Ugly Video Wyzwanie" (Bezwysiłkowa Sprzedaż):** Naucz partnerów rygoru szybkiego działania. Zamiast udawać "eksperta" i przez 30 dni szukać idealnego, plastikowego materiału, mają odpalić komórkę i zrealizować **3-dniowe wyzwanie (3 dni po 8 surowych, autentycznych filmów dziennie)**, nagrywając proste, szczere "ugly video" z życia i rytuałów codziennych. To generuje kolosalny, naturalny ruch organiczny i domyka sprzedaż bez oporu.
 
-### Step 4: Aktualizacja CRM
+### Step 5: Aktualizacja CRM
 - Aktualizuj Obsidian Kanban / Supabase z prognozami finansowymi.
 
 ## Common Mistakes & How to Avoid Them

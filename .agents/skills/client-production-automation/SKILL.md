@@ -151,10 +151,10 @@ Projekt ma na celu maksymalne zautomatyzowanie kwalifikacji, onboardingu oraz ed
 4.  **Routing logiczny (n8n):**
     *   *Ścieżka A (Klient Zdrowotny):* Bot przesyła materiały o regeneracji organizmu i link do zakupu plastrów w sklepie.
     *   *Ścieżka B (Biznes / MLM):* Bot ocenia potencjał leada. Jeśli lead ma doświadczenie i czas -> bot automatycznie udostępnia link do **Cal.com** w celu umówienia strategicznej rozmowy z Tomaszem.
-5.  **Onboarding Nowego Partnera:** Po zakupie pakietu startowego, n8n uruchamia sekwencję szkoleniową:
-    *   Dzień 1: Jak prawidłowo naklejać plastry X39 (instrukcja wideo).
-    *   Dzień 3: Pierwsze kroki w biznesie (Darmowe szablony zaproszeń dla znajomych).
-    *   Dzień 5: Zaproszenie na najbliższy webinar zespołowy (przypomnienie na WhatsApp 15 minut przed startem).
+5.  **Onboarding Nowego Partnera (Edukacja & Szybki Start):** Po rejestracji i zakupie pakietu startowego, n8n uruchamia asynchroniczną sekwencję szkoleniową na WhatsApp, wdrażając rewolucyjny system generowania leadów:
+    *   **Dzień 1 (Użytkowanie produktu):** Jak prawidłowo naklejać plastry X39 (instrukcja wideo, zaufanie do produktu).
+    *   **Dzień 3 (Szybki Start Organiczny — Wyzwanie "Ugly Video"):** Bot uczy partnera systemu **Ritual Economics (Ekonomii Rytuału)**. Zamiast udawania "eksperta" i paraliżu decyzyjnego, partner dostaje zadanie: nagrać w 3 dni (3 dni po 8 filmów dziennie) surowe, szczere "ugly wideo" z życia codziennego przy użyciu telefonu. Treści skupiają się na prozaicznych rytuałach każdego dnia (np. naklejanie plastra rano po prysznicu, odklejanie przed snem, nagły przypływ energii podczas otwierania laptopa w pracy), zamieniając te nawyki w zmysłowe i pożądane doświadczenia premium. Bot przesyła partnerowi gotowy prompt do Gemini, który generuje dla niego 24 precyzyjne scenariusze wideo (click triggery, hooki i sposoby realizacji).
+    *   **Dzień 5 (Duplikacja i Skalowanie):** Zaproszenie na najbliższy webinar zespołowy (przypomnienie na WhatsApp 15 minut przed startem z linkiem) oraz udostępnienie szablonów do domykania leadów na czacie.
 
 ---
 
