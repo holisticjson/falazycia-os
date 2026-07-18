@@ -36,44 +36,114 @@ def check_telegram_events():
         except Exception:
             pass
 
-def get_selected_context_data():
+def find_client_profile_text(client_path):
+    """Przeszukuje folder klienta pod kątem plików profilowych .md (np. Profil_*.md, ghost_profile.md, oferta.md)."""
+    candidates = []
+    
+    # 1. Sprawdź najpierw ghost_profile.md w katalogu głównym
+    gp = os.path.join(client_path, "ghost_profile.md")
+    if os.path.exists(gp):
+        candidates.append(gp)
+        
+    # 2. Przeszukaj rekurencyjnie do głębokości 2 poziomów
+    for root, dirs, files in os.walk(client_path):
+        depth = root.replace(client_path, '').count(os.sep)
+        if depth > 2:
+            continue
+        for f in files:
+            f_lower = f.lower()
+            if f_lower.startswith("profil_") and f_lower.endswith(".md"):
+                candidates.append(os.path.join(root, f))
+            elif f_lower == "oferta.md":
+                candidates.append(os.path.join(root, f))
+                
+    # 3. Fallback: poszukaj jakichkolwiek markdownów w folderze 01-brand
+    if not candidates:
+        brand_dir = os.path.join(client_path, "01-brand")
+        if os.path.exists(brand_dir):
+            for f in os.listdir(brand_dir):
+                if f.endswith(".md"):
+                    candidates.append(os.path.join(brand_dir, f))
+                    
+    # Odczytaj pierwszy plik
+    if candidates:
+        try:
+            with open(candidates[0], "r", encoding="utf-8") as f_prof:
+                return f_prof.read(), os.path.basename(candidates[0])
+        except:
+            pass
+    return None, None
 
+def get_selected_context_data():
     if "selected_context" not in st.session_state:
         return ""
     
     ctx_name = st.session_state.selected_context
-    clients_dir = os.path.join(BASE_DIR, "04_clients")
+    context_str = f"\n--- AKTYWNY KONTEKST KLIENTA / PROJEKTU: {ctx_name} ---\n"
     
-    context_str = f"\\n--- AKTYWNY KONTEKST KLIENTA / PROJEKTU: {ctx_name} ---\\n"
-    
+    # Przeszukaj C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS (Rzeczywisty folder roboczy!)
+    real_clients_dir = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS"
     target_folder = None
-    if os.path.exists(clients_dir):
-        for item in os.listdir(clients_dir):
-            if os.path.isdir(os.path.join(clients_dir, item)):
-                config_path = os.path.join(clients_dir, item, "context_config.json")
-                if os.path.exists(config_path):
-                    try:
-                        with open(config_path, "r", encoding="utf-8") as f_conf:
-                            cfg = json.load(f_conf)
-                            if cfg.get("name") == ctx_name or item == ctx_name:
-                                target_folder = os.path.join(clients_dir, item)
-                                context_str += f"Typ kontekstu: {cfg.get('type', 'Nieznany')}\\nOpis: {cfg.get('description', '')}\\n"
-                                if "system_prompt_override" in cfg:
-                                    context_str += f"Zalecenia Strategiczne: {cfg['system_prompt_override']}\\n"
-                                break
-                    except:
-                        pass
     
+    # Mapowanie ładnych nazw na foldery robocze
+    mapping = {
+        "coolfon.pl": "coolfon",
+        "kurczakujasia.pl (Bar Jaś)": "kurczakujasia",
+        "lifewave.com (MLM)": "lifewave",
+        "smartrade.pl": "smartrade_client",
+        "viptransporter.pl": "viptransporter",
+        "kantororanzada.pl": "kantor_lombard_oranzada",
+        "vojsik.ai": "vojsik_ai",
+        "apps.jaison.pl (SaaS)": "apps.jaison.pl"
+    }
+    
+    dir_name = mapping.get(ctx_name)
+    if dir_name and os.path.exists(os.path.join(real_clients_dir, dir_name)):
+        target_folder = os.path.join(real_clients_dir, dir_name)
+    else:
+        # Sprawdź dopasowanie bezpośrednie
+        if os.path.exists(real_clients_dir):
+            for folder in os.listdir(real_clients_dir):
+                if folder == ctx_name or folder.lower() in ctx_name.lower():
+                    target_folder = os.path.join(real_clients_dir, folder)
+                    break
+                    
+    # Fallback do starego folderu 04_clients (jeśli istnieje)
+    if not target_folder:
+        clients_dir = os.path.join(BASE_DIR, "04_clients") if "BASE_DIR" in globals() else os.path.expanduser("~/Agentic_OS/04_clients")
+        if os.path.exists(clients_dir):
+            for item in os.listdir(clients_dir):
+                if os.path.isdir(os.path.join(clients_dir, item)):
+                    config_path = os.path.join(clients_dir, item, "context_config.json")
+                    if os.path.exists(config_path):
+                        try:
+                            with open(config_path, "r", encoding="utf-8") as f_conf:
+                                cfg = json.load(f_conf)
+                                if cfg.get("name") == ctx_name or item == ctx_name:
+                                    target_folder = os.path.join(clients_dir, item)
+                                    context_str += f"Typ kontekstu: {cfg.get('type', 'Nieznany')}\nOpis: {cfg.get('description', '')}\n"
+                                    if "system_prompt_override" in cfg:
+                                        context_str += f"Zalecenia Strategiczne: {cfg['system_prompt_override']}\n"
+                                    break
+                        except:
+                            pass
+                            
     if target_folder:
-        profile_path = os.path.join(target_folder, "ghost_profile.md")
-        if os.path.exists(profile_path):
-            try:
-                with open(profile_path, "r", encoding="utf-8") as f_prof:
-                    context_str += f"\\nBAZA WIEDZY PROFILU (ghost_profile.md):\\n{f_prof.read()}\\n"
-            except:
-                pass
-                
-    context_str += "-----------------------------------------------------\\n"
+        profile_content, profile_file = find_client_profile_text(target_folder)
+        if profile_content:
+            context_str += f"\nBAZA WIEDZY PROFILU ({profile_file}):\n{profile_content}\n"
+        else:
+            context_str += f"\nBrak szczegółowego profilu .md w folderze: {os.path.basename(target_folder)}\n"
+    else:
+        # Statyczne opisy dla domyślnych kontekstów
+        if ctx_name == "J(AI)SON Agency":
+            context_str += "Typ: Usługi B2B / Automatyzacje AI & n8n\nOpis: Oficjalny profil agencji jaison.pl dostarczającej systemy AI dla firm.\n"
+        elif ctx_name == "Holistic Jason":
+            context_str += "Typ: Marka Osobista / Edukacja ADHD\nOpis: Społeczność ADHD4life i doradztwo energetyczne.\n"
+        elif ctx_name == "Własne SaaS (jaison.pl)":
+            context_str += "Typ: SaaS / Platforma App\nOpis: Portal app.jaison.pl zintegrowany z agentami agencji Jaison.\n"
+            
+    context_str += "-----------------------------------------------------\n"
     return context_str
 
 
@@ -1461,31 +1531,44 @@ with st.sidebar:
     # 0. KONTEKST
     st.markdown("<p style='color: #10B981; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 6px; margin-top: 5px;'>0. KONTEKST KLIENTA</p>", unsafe_allow_html=True)
     
-    # Wczytaj dostepne konteksty
-    clients_dir = os.path.join(BASE_DIR, "04_clients")
-    available_contexts = []
-    if os.path.exists(clients_dir):
-        for item in os.listdir(clients_dir):
-            if os.path.isdir(os.path.join(clients_dir, item)):
-                config_path = os.path.join(clients_dir, item, "context_config.json")
-                if os.path.exists(config_path):
-                    try:
-                        with open(config_path, "r", encoding="utf-8") as f:
-                            cfg = json.load(f)
-                            available_contexts.append(cfg.get("name", item))
-                    except:
-                        available_contexts.append(item)
+    # Wczytaj dostepne konteksty dynamicznie z realnego folderu klientów
+    available_contexts = ["J(AI)SON Agency", "Holistic Jason", "Własne SaaS (jaison.pl)"]
+    real_clients_dir = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS"
     
-    if not available_contexts:
-        available_contexts = ["J(AI)SON Agency", "Holistic Jason", "coolfon.pl", "Agencja Reklamowa Premium", "Własne SaaS (Mercury Pro)"]
+    if os.path.exists(real_clients_dir):
+        mapping_names = {
+            "coolfon": "coolfon.pl",
+            "kurczakujasia": "kurczakujasia.pl (Bar Jaś)",
+            "lifewave": "lifewave.com (MLM)",
+            "smartrade_client": "smartrade.pl",
+            "viptransporter": "viptransporter.pl",
+            "kantor_lombard_oranzada": "kantororanzada.pl",
+            "vojsik_ai": "vojsik.ai",
+            "apps.jaison.pl": "apps.jaison.pl (SaaS)"
+        }
+        for item in os.listdir(real_clients_dir):
+            if os.path.isdir(os.path.join(real_clients_dir, item)):
+                if item in ["Szablon_Projektu", "coolfon_pl_test", "vojsik_mvp"]:
+                    continue
+                nice_name = mapping_names.get(item, item)
+                if nice_name not in available_contexts:
+                    available_contexts.append(nice_name)
+                    
+    # Dodaj fallback w razie braku plików na dysku
+    if len(available_contexts) <= 3:
+        available_contexts.extend(["coolfon.pl", "kurczakujasia.pl (Bar Jaś)", "lifewave.com (MLM)"])
         
     if "selected_context" not in st.session_state:
         st.session_state.selected_context = "J(AI)SON Agency"
         
+    # Upewnij się, że aktualny stan sesji istnieje w nowo załadowanej liście
+    if st.session_state.selected_context not in available_contexts:
+        st.session_state.selected_context = available_contexts[0]
+        
     new_context = st.selectbox(
         "Wybierz obszar roboczy:",
         available_contexts,
-        index=available_contexts.index(st.session_state.selected_context) if st.session_state.selected_context in available_contexts else 0,
+        index=available_contexts.index(st.session_state.selected_context),
         label_visibility="collapsed"
     )
     

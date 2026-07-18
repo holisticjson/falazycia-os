@@ -567,7 +567,14 @@ Zwróć wynik wyłącznie jako poprawny format JSON (array of objects), bez żad
       "Brak widgetu czatu / Google Message w wizytówce"
     ],
     "automation_potential": "Wysoki / Bardzo wysoki / Średni (Wdrożenie automatycznego bota AI do rezerwacji wizyt, autoresponder opinii Google AI)",
-    "suggested_outreach": "Spersonalizowany skrypt cold-call / outreach w stylu Jaison.pl (dynamiczny, bezpośredni, wskazujący błędy i oferujący darmowy krok)..."
+    "suggested_outreach": "Spersonalizowany skrypt outreach w stylu Jaison.pl (dynamiczny, bezpośredni, wskazujący błędy)...",
+    "tele_script": {{
+      "intro": "Dzień dobry, z tej strony Tomasz z Jaison.pl. Dzwonię krótko, bo przeanalizowałem Państwa wizytówkę w Google w [miejscowość] i znalazłem błąd, przez który tracicie Państwo średnio 10-15 pacjentów/klientów miesięcznie na rzecz konkurencji. Mam dosłownie 55 sekund, aby pokazać jak to odwrócić?",
+      "qualification": "- Czy w tym momencie klienci dzwonią do Państwa bezpośrednio na telefon prywatny, czy macie Państwo system rezerwacji online?\\n- Jak dużo czasu marnujecie Państwo na ręczną obsługę i oddzwanianie?\\n- Co się dzieje, jeśli ktoś zadzwoni po godzinach pracy?",
+      "presentation": "- Wdrażamy dedykowanego asystenta AI zintegrowanego z Państwa telefonem i wizytówką Google, który automatycznie umawia wizyty na Cal.com/Booksy i odpisuje na opinie.\\n- Dodatkowo, jako oficjalny partner, pomożemy Państwu uzyskać Grant Technologiczny od Google o wartości $1300 USD (ok. 5200 PLN) darmowego budżetu na całą infrastrukturę chmurową i sztuczną inteligencję!",
+      "cta": "Umówmy się na bezpłatną, 10-minutową demonstrację na Zoomie w czwartek o 14:00, gdzie pokażę Państwu działający prototyp dla Państwa gabinetu. Pasuje Panu?",
+      "looping": "Jasne, rozumiem, że jest Pan zajęty i musi Pan to przemyśleć. Na tym etapie też bym tak odpowiedział! Ale proszę pozwolić, że zapytam: czy sam zamysł odzyskania 15 godzin w tygodniu i pozyskania 20 nowych pacjentów z darmowego grantu Google się Panu podoba?"
+    }}
   }}
 ]"""
     
@@ -588,7 +595,6 @@ Zwróć wynik wyłącznie jako poprawny format JSON (array of objects), bez żad
         print(f"Błąd generowania GMB AI: {e}")
         
     # --- KOŁO RATUNKOWE (FALLBACK) ---
-    # Zwracamy piękne, realistyczne dane polskie, jeśli AI nie zwróci poprawnego JSON-a
     return [
         {
             "name": f"Stomatologia Estetyczna {city.capitalize()}",
@@ -606,7 +612,14 @@ Zwróć wynik wyłącznie jako poprawny format JSON (array of objects), bez żad
                 "Niska prędkość ładowania na telefonach komórkowych (9.2s)"
             ],
             "automation_potential": "Bardzo wysoki. Wdrożenie auto-respondera opinii opartego o AI oraz integracja Cal.com z n8n.",
-            "suggested_outreach": f"Dzień dobry! Zauważyłem, że Państwa wizytówka w {city} ma świetne oceny, ale brak SSL i odpowiedzi na opinie spycha Państwa w dół w mapach Google. W XYZ możemy to wyeliminować w 24 godziny całkowicie bezkosztowo..."
+            "suggested_outreach": f"Dzień dobry! Zauważyłem, że Państwa wizytówka w {city} ma świetne oceny, ale brak SSL i odpowiedzi na opinie spycha Państwa w dół w mapach Google. W XYZ możemy to wyeliminować w 24 godziny całkowicie bezkosztowo...",
+            "tele_script": {
+                "intro": f"Dzień dobry, z tej strony Tomasz z Jaison.pl. Dzwonię krótko, bo przeanalizowałem Państwa wizytówkę w Google w {city} i znalazłem błąd, przez który tracicie Państwo średnio 10-15 pacjentów miesięcznie na rzecz konkurencji. Mam dosłownie 55 sekund, aby pokazać jak to odwrócić?",
+                "qualification": f"- Czy w tym momencie pacjenci dzwonią do Państwa bezpośrednio na telefon prywatny, czy macie Państwo system rezerwacji online?\\n- Jak dużo czasu marnujecie Państwo na ręczną obsługę i oddzwanianie?",
+                "presentation": "- Wdrażamy dedykowanego asystenta AI zintegrowanego z Państwa telefonem i wizytówką Google, który automatycznie umawia wizyty na Cal.com i odpisuje na opinie.\\n- Dodatkowo, pomożemy Państwu uzyskać Grant Technologiczny od Google o wartości $1300 USD (ok. 5200 PLN) darmowego budżetu na infrastrukturę chmurową!",
+                "cta": "Umówmy się na bezpłatną, 10-minutową demonstrację na Zoomie w czwartek o 14:00. Pasuje Panu?",
+                "looping": "Jasne, rozumiem, że jest Pan zajęty. Ale proszę pozwolić, że zapytam: czy sam zamysł odzyskania 15 godzin w tygodniu i pozyskania 20 nowych pacjentów z darmowego grantu Google się Panu podoba?"
+            }
         },
         {
             "name": f"Klinika Piękna i Fryzjerstwo {city.capitalize()}",
@@ -624,7 +637,14 @@ Zwróć wynik wyłącznie jako poprawny format JSON (array of objects), bez żad
                 "Brak przycisku czatu Google Message"
             ],
             "automation_potential": "Ekstremalnie wysoki. Wdrożenie nowej strony Landing Page z automatyczną rezerwacją Booksy/Cal i chatbotem AI.",
-            "suggested_outreach": "Dzień dobry! Szukałem świetnego gabinetu w okolicy i zauważyłem, że w ogóle nie posiadacie Państwo strony www w wizytówce. Chętnie pokażę Państwu, jak prosty Landing Page z auto-rezerwacją AI na Cal.com może przynieść 20 nowych klientów w tym miesiącu..."
+            "suggested_outreach": "Dzień dobry! Szukałem świetnego gabinetu w okolicy i zauważyłem, że w ogóle nie posiadacie Państwo strony www w wizytówce. Chętnie pokażę Państwu, jak prosty Landing Page z auto-rezerwacją AI na Cal.com może przynieść 20 nowych klientów w tym miesiącu...",
+            "tele_script": {
+                "intro": f"Dzień dobry, z tej strony Tomasz z Jaison.pl. Dzwonię krótko, bo przeanalizowałem Państwa wizytówkę w Google w {city} i znalazłem błąd, przez który tracicie Państwo średnio 10-15 klientów miesięcznie. Mam dosłownie 55 sekund, aby pokazać jak to odwrócić?",
+                "qualification": "- Czy w tym momencie klienci dzwonią bezpośrednio na telefon, czy macie Państwo system rezerwacji online?\\n- Jak dużo czasu marnujecie Państwo na ręczną obsługę?",
+                "presentation": "- Projektujemy dla Państwa dedykowany Landing Page z automatyczną rezerwacją i chatbotem AI.\\n- Pomożemy uzyskać Grant Technologiczny od Google o wartości $1300 USD (ok. 5200 PLN) na całą infrastrukturę chmurową!",
+                "cta": "Umówmy się na bezpłatną, 10-minutową demonstrację na Zoomie w czwartek o 14:00. Pasuje Panu?",
+                "looping": "Rozumiem Pana, też bym tak odpowiedział! Ale czy sam zamysł odzyskania wolnego czasu i pozyskania 20 nowych klientów dzięki grantowi Google się Panu podoba?"
+            }
         },
         {
             "name": f"Auto-Serwis i Mechanika {city.capitalize()}",
@@ -641,12 +661,57 @@ Zwróć wynik wyłącznie jako poprawny format JSON (array of objects), bez żad
                 "Część zdjęć wizytówki jest nieaktualna lub niskiej jakości"
             ],
             "automation_potential": "Średni / Wysoki. Integracja n8n do automatycznych powiadomień SMS o statusie naprawy auta dla klientów.",
-            "suggested_outreach": "Cześć! Zauważyłem, że Wasz warsztat ma świetne opinie! Klienci Was uwielbiają, ale marnujecie mnóstwo czasu na odbieranie telefonów o status naprawy. Możemy wdrożyć automatyczne SMSy wysyłane z n8n przy zmianie statusu auta..."
+            "suggested_outreach": "Cześć! Zauważyłem, że Wasz warsztat ma świetne opinie! Klienci Was uwielbiają, ale marnujecie mnóstwo czasu na odbieranie telefonów o status naprawy. Możemy wdrożyć automatyczne SMSy wysyłane z n8n przy zmianie statusu auta...",
+            "tele_script": {
+                "intro": f"Dzień dobry, z tej strony Tomasz z Jaison.pl. Dzwonię krótko, bo przeanalizowałem Państwa wizytówkę w Google w {city} i znalazłem błąd, przez który tracicie Państwo średnio 10-15 klientów miesięcznie. Mam dosłownie 55 sekund, aby pokazać jak to odwrócić?",
+                "qualification": "- Czy klienci dzwonią do Państwa bezpośrednio na telefon, czy macie Państwo system powiadomień?",
+                "presentation": "- Wdrażamy automatyczny system n8n powiadamiający klientów o statusie naprawy przez SMS/WhatsApp.\\n- Pomożemy uzyskać Grant Technologiczny od Google o wartości $1300 USD (ok. 5200 PLN) darmowego budżetu!",
+                "cta": "Umówmy się na bezpłatną demonstrację w czwartek o 14:00. Pasuje Panu?",
+                "looping": "Rozumiem, czas to pieniądz. Ale czy sam zamysł odzyskania 15 godzin w tygodniu dzięki grantowi Google się Panu podoba?"
+            }
         }
     ]
 
 
-# ==================== RENDEROWANIE INTERFEJSU STREAMLIT (PREMIUM) ====================
+def get_cached_quick_tags(client_name, context_data, call_gemini_pro_api_func):
+    """Generuje 4 wyspecjalizowane tagi słów kluczowych dla wybranego klienta."""
+    state_key = f"quick_tags_{client_name.replace(' ', '_').lower()}"
+    if state_key not in st.session_state:
+        if not context_data or len(context_data.strip()) < 10:
+            # Fallback dla domyślnych profili
+            if "jaison" in client_name.lower():
+                st.session_state[state_key] = ["szukam n8n", "automatyzacja procesów", "integracja CRM n8n", "chatbot ai b2b"]
+            elif "holistic" in client_name.lower():
+                st.session_state[state_key] = ["adhd produktywność", "zarządzanie energią adhd", "rutyna poranna adhd", "skupienie uwolnij umysł"]
+            else:
+                st.session_state[state_key] = ["n8n automatyzacja", "błędy WooCommerce", "szukam CRM", "integracje API"]
+        else:
+            prompt = f"""Na podstawie poniższego profilu klienta/projektu wygeneruj dokładnie 4 bardzo konkretne, wyszukiwane w języku polskim, krótkie frazy kluczowe (słowa kluczowe), które ten klient lub agencja wpisuje szukając zleceń, automatyzacji lub bólów na portalach lub grupach (np. 'szukam n8n', 'błędy WooCommerce', 'bramka sms API', itp.).
+Wyjściem musi być wyłącznie czysty plik JSON będący listą 4 ciągów tekstowych. Brak jakichkolwiek dopisków, komentarzy czy formatowania markdown (bez ```json).
+
+Profil:
+{context_data}
+
+Przykładowy wynik:
+["szukam n8n", "automatyzacja WooCommerce", "błędy WordPress", "integracja fakturowania"]
+"""
+            try:
+                response = call_gemini_pro_api_func([{"role": "user", "content": prompt}], "Jesteś asystentem generującym słowa kluczowe w formacie JSON.")
+                cleaned = response.strip()
+                if "```json" in cleaned:
+                    cleaned = cleaned.split("```json")[1].split("```")[0].strip()
+                elif "```" in cleaned:
+                    cleaned = cleaned.split("```")[1].split("```")[0].strip()
+                tags = json.loads(cleaned)
+                if isinstance(tags, list) and len(tags) >= 4:
+                    st.session_state[state_key] = tags[:4]
+                else:
+                    st.session_state[state_key] = ["n8n automatyzacja", "błędy WooCommerce", "szukam CRM", "integracje API"]
+            except Exception as e:
+                st.session_state[state_key] = ["n8n automatyzacja", "błędy WooCommerce", "szukam CRM", "integracje API"]
+                
+    return st.session_state[state_key]
+
 
 def render_lead_radar_page(call_gemini_pro_api_func):
     """Renderuje cały moduł Skanera Okazji w Streamlicie (Lead Radar)."""
@@ -655,40 +720,71 @@ def render_lead_radar_page(call_gemini_pro_api_func):
     init_db()
     
     # --- AKTYWNY KONTEKST PROJEKTU ---
-    st.sidebar.markdown("<p style='color: #10B981; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;'>🔄 PRZEŁĄCZNIK KONTEKSTU</p>", unsafe_allow_html=True)
-    project_contexts = {
-        "Jaison Agency (Ogólny)": {
-            "name": "Jaison.pl",
-            "desc": "Agencja Automatyzacji i Doradztwa AI.",
-            "target": "MŚP, SaaS, automatyzacje n8n, asystenci AI, marketing"
-        },
-        "Holistic Broker": {
-            "name": "Holistic Broker",
-            "desc": "Inwestycje i obrót nieruchomościami.",
-            "target": "Inwestorzy, deweloperzy, agenci nieruchomości"
-        },
-        "coolfon.pl (Serwis GSM)": {
-            "name": "coolfon.pl",
-            "desc": "Serwis naprawy telefonów i GSM.",
-            "target": "Firmy lokalne, klienci indywidualni"
-        },
-        "Kurczak u Jasia (Bar Jaś)": {
-            "name": "Bar Jaś",
-            "desc": "Lokalny bar gastronomiczny i bistro.",
-            "target": "Klienci lokalni, catering, eventy"
-        }
+    selected_context = st.session_state.get("selected_context", "J(AI)SON Agency")
+    
+    # Odczytaj szczegółowy opis i informacje z profilu dla wybranego kontekstu
+    real_clients_dir = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS"
+    ctx_desc = "Oficjalny profil roboczy agencji."
+    ctx_target = "Klienci B2B, automatyzacje n8n, systemy AI"
+    ctx_nice_name = selected_context
+    
+    # Wyciągnij dopasowany folder klienta
+    mapping = {
+        "coolfon.pl": "coolfon",
+        "kurczakujasia.pl (Bar Jaś)": "kurczakujasia",
+        "lifewave.com (MLM)": "lifewave",
+        "smartrade.pl": "smartrade_client",
+        "viptransporter.pl": "viptransporter",
+        "kantororanzada.pl": "kantor_lombard_oranzada",
+        "vojsik.ai": "vojsik_ai",
+        "apps.jaison.pl (SaaS)": "apps.jaison.pl"
     }
-    selected_context = st.sidebar.selectbox(
-        "Wybierz aktywny projekt:", 
-        list(project_contexts.keys()),
-        key="active_project_context"
-    )
-    ctx_info = project_contexts[selected_context]
+    
+    profile_content = None
+    dir_name = mapping.get(selected_context)
+    if dir_name and os.path.exists(os.path.join(real_clients_dir, dir_name)):
+        # Proste wbudowane wyszukiwanie profilu .md
+        target_path = os.path.join(real_clients_dir, dir_name)
+        candidates = []
+        gp = os.path.join(target_path, "ghost_profile.md")
+        if os.path.exists(gp):
+            candidates.append(gp)
+        for root, dirs, files in os.walk(target_path):
+            for f in files:
+                if f.lower().startswith("profil_") and f.endswith(".md"):
+                    candidates.append(os.path.join(root, f))
+                elif f.lower() == "oferta.md":
+                    candidates.append(os.path.join(root, f))
+        if not candidates:
+            brand_dir = os.path.join(target_path, "01-brand")
+            if os.path.exists(brand_dir):
+                for f in os.listdir(brand_dir):
+                    if f.endswith(".md"):
+                        candidates.append(os.path.join(brand_dir, f))
+        if candidates:
+            try:
+                with open(candidates[0], "r", encoding="utf-8") as f_prof:
+                    profile_content = f_prof.read()
+            except:
+                pass
+                
+    if profile_content:
+        import re
+        desc_match = re.search(r"Cel:?\s*(.*?)(?:\n|$)", profile_content, re.IGNORECASE)
+        target_match = re.search(r"Odbiorcy|Target|Klienci:?\s*(.*?)(?:\n|$)", profile_content, re.IGNORECASE)
+        if desc_match:
+            ctx_desc = desc_match.group(1).strip()
+        if target_match:
+            ctx_target = target_match.group(1).strip()
+        else:
+            ctx_target = "Dedykowani odbiorcy profilu " + selected_context
+            
+    st.sidebar.markdown("<p style='color: #10B981; font-weight: bold; letter-spacing: 1px; margin-bottom: 2px;'>🔄 AKTYWNY OBSZAR ROBOCZY</p>", unsafe_allow_html=True)
     st.sidebar.markdown(f"""
     <div style="background: #0d121c; padding: 12px; border-radius: 6px; border-left: 3px solid #10B981; margin-bottom: 20px; border-top: 1px solid #1E293B; border-right: 1px solid #1E293B; border-bottom: 1px solid #1E293B;">
-        <p style="margin: 0; font-size: 0.85rem; font-weight: bold; color: #E2E8F0;">🏢 {ctx_info['name']}</p>
-        <p style="margin: 3px 0 0 0; font-size: 0.75rem; color: #94A3B8;">{ctx_info['desc']}</p>
-        <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #10B981;">🎯 <b>Target:</b> {ctx_info['target']}</p>
+        <p style="margin: 0; font-size: 0.85rem; font-weight: bold; color: #E2E8F0;">🏢 {ctx_nice_name}</p>
+        <p style="margin: 3px 0 0 0; font-size: 0.75rem; color: #94A3B8;">{ctx_desc[:120] + '...' if len(ctx_desc) > 120 else ctx_desc}</p>
+        <p style="margin: 5px 0 0 0; font-size: 0.75rem; color: #10B981;">🎯 <b>Target:</b> {ctx_target[:120]}</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -762,9 +858,12 @@ def render_lead_radar_page(call_gemini_pro_api_func):
         st.markdown("### 📥 Aktywne Okazje z Rynku (Baza SQLite)")
         st.write("Wpisz interesującą Cię niszę, aby za pomocą AI przeszukać i przeanalizować nowe zlecenia:")
         
+        if "radar_search_kws_input" not in st.session_state:
+            st.session_state.radar_search_kws_input = "n8n BaseLinker automation"
+            
         c_scan1, c_scan2 = st.columns([3, 1])
         with c_scan1:
-            search_kws = st.text_input("Słowa kluczowe (np. n8n automation, WooCommerce BaseLinker, chatbot AI):", value="n8n BaseLinker automation", label_visibility="collapsed")
+            search_kws = st.text_input("Słowa kluczowe (np. n8n automation, WooCommerce BaseLinker, chatbot AI):", key="radar_search_kws_input", label_visibility="collapsed")
         with c_scan2:
             if st.button("🚀 Uruchom AI Skaner", use_container_width=True, type="primary"):
                 if search_kws:
@@ -777,6 +876,17 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                             st.error("Błąd: Nie udało się połączyć ze Skanerem AI. Sprawdź status LiteLLM proxy na porcie 8089.")
                 else:
                     st.warning("Wpisz słowa kluczowe przed skanowaniem!")
+                    
+        # Generuj i wyświetl dynamiczne Quick-Tagi
+        tags = get_cached_quick_tags(selected_context, profile_content or "", call_gemini_pro_api_func)
+        
+        st.markdown("<p style='font-size: 0.8rem; color: #94A3B8; margin-top: -5px; margin-bottom: 5px; font-weight: bold;'>🏷️ SUGEROWANE SŁOWA KLUCZOWE (Dynamiczne tagi z Gemini na podstawie aktywnego profilu):</p>", unsafe_allow_html=True)
+        cols = st.columns(len(tags))
+        for idx, tag in enumerate(tags):
+            with cols[idx]:
+                if st.button(f"🔍 {tag}", key=f"tag_radar_{idx}", use_container_width=True):
+                    st.session_state.radar_search_kws_input = tag
+                    st.rerun()
                     
         st.write("")
         
@@ -950,9 +1060,39 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                     st.markdown(f"⭐ **Opinie:** `{lead.get('rating')} / 5.0` (Liczba recenzji: `{lead.get('reviews_count')}`)")
                     st.markdown(f"📲 **Podpięte Social Media:** `{'Tak ✅' if lead.get('has_social') else 'Nie ❌'}`")
                     
+                    st.markdown(f"""
+                    <div style="background: rgba(59, 130, 246, 0.08); padding: 12px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3); margin-top: 15px;">
+                        <span style="color: #3B82F6; font-weight: bold; font-size: 0.85rem;">🎁 GRANT TECHNOLOGICZNY GOOGLE</span>
+                        <p style="margin: 5px 0 0 0; font-size: 0.78rem; color: #CBD5E1; line-height: 1.4;">
+                            Firma kwalifikuje się do <b>Grantu Technologicznego o wartości $1300 USD (ok. 5200 PLN)</b> darmowego budżetu od Google na całą infrastrukturę chmurową GCP oraz Vertex AI Search!
+                        </p>
+                    </div>
+                    """, unsafe_allow_html=True)
+                    
                 with c_det2:
                     st.markdown(f"🤖 **Potencjał Automatyzacji AI (Magic Value):**")
                     st.info(lead.get("automation_potential"))
+                    
+                    # Cold-calling script
+                    ts = lead.get("tele_script", {})
+                    if ts:
+                        with st.expander("📞 Skrypt rozmowy telefonicznej (Metoda Prostej Linii Jana Szopy) 🚀"):
+                            st.markdown(f"""
+                            ### 🏁 1. Początek (Duża obietnica w 4 sekundy)
+                            > **"{ts.get('intro', '')}"**
+                            
+                            ### 🔍 2. Kwalifikacja (Ból i Pieniądze)
+                            {ts.get('qualification', '')}
+                            
+                            ### 🏗️ 3. Prezentacja (Logika + Emocje)
+                            {ts.get('presentation', '')}
+                            
+                            ### 🎯 4. Wezwanie do akcji (CTA)
+                            > **"{ts.get('cta', '')}"**
+                            
+                            ### 🔄 5. Looping (Zbijanie obiekcji)
+                            {ts.get('looping', '')}
+                            """)
                     
                     # Outreach Box
                     with st.expander("📬 Wygenerowana, spersonalizowana pomoc AI (Outreach B2B)"):
@@ -990,6 +1130,17 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                                 st.success("Pomyślnie zaimportowano do CRM Pipeline oraz Lead Radaru!")
                             else:
                                 st.success("Dodano do Lead Radaru (lead już istnieje w CRM Pipeline).")
+                            
+                    # Jeśli nie ma strony WWW, pokaż widoczny przycisk przekierowania do Landing Page Factory!
+                    if not lead.get("website"):
+                        if st.button("👉 UTWÓRZ WIZUALNY PROJEKT STRONY (LANDING PAGE FACTORY) 🛠️", key=f"lp_redir_{lead.get('name')}", use_container_width=True, type="secondary"):
+                            st.session_state.current_page = "Jaison Agency"
+                            st.session_state.active_suite_tool = "Landing_Page"
+                            st.session_state.lp_prefill_client_name = lead.get("name")
+                            st.session_state.lp_prefill_industry = g_kw
+                            st.session_state.lp_prefill_city = g_city
+                            st.success("Przekierowywanie do Landing Page Factory...")
+                            st.rerun()
                             
                 st.markdown("<hr style='border:0; border-top: 1px solid #1E293B; margin: 25px 0;'>", unsafe_allow_html=True)
 
@@ -1041,18 +1192,34 @@ def render_lead_radar_page(call_gemini_pro_api_func):
             """)
         
         lr_search_kw = st.text_input("Słowa kluczowe do skanowania internetu:", value="n8n automatyzacja, szukam crm, błędy BaseLinker", key="lr_sales_search_kw_mod")
+        
+        # Generuj i wyświetl dynamiczne Quick-Tagi dla Sales Directora
+        tags = get_cached_quick_tags(selected_context, profile_content or "", call_gemini_pro_api_func)
+        
+        st.markdown("<p style='font-size: 0.8rem; color: #10B981; margin-top: -5px; margin-bottom: 5px; font-weight: bold;'>🏷️ SUGEROWANE STRATEGIE PROSPECTINGU (Dynamiczne z Gemini):</p>", unsafe_allow_html=True)
+        cols_sd = st.columns(len(tags))
+        for idx, tag in enumerate(tags):
+            with cols_sd[idx]:
+                if st.button(f"📢 {tag}", key=f"tag_sd_{idx}", use_container_width=True):
+                    st.session_state.lr_sales_search_kw_mod = tag
+                    st.rerun()
+                    
+        st.write("")
+        
         if st.button("Generuj Prospekty i Outreach", type="primary", key="lr_sales_scan_btn_mod"):
             with st.spinner("Sales Director analizuje social media..."):
                 prompt = f"""Jesteś wirtualnym Sales Directorem w zespole 'Jaison.pl'.
 Przeskanowałeś Reddit, fora oraz social media pod kątem słów kluczowych: "{lr_search_kw}".
-Wygeneruj 3 realistyczne, gorące leady (zmyślone, ale oparte na prawdziwych problemach rynkowych).
-Dla każdego leada podaj:
-1. Skąd pochodzi wpis (np. r/entrepreneur, LinkedIn).
-2. Treść wpisu (ból klienta).
-3. Gotową, spersonalizowaną wiadomość outreach (w stylu Jaison.pl - pomocny, merytoryczny, oferujący darmową wartość bez nachalnej sprzedaży, obniżając tarcie poznawcze).
-4. Proponowany "Next Action" do zapisania w CRM.
+Wygeneruj 3 realistyczne, gorące leady B2B na podstawie rzeczywistych, głębokich problemów rynkowych w tych kanałach.
+ZABRONIONE jest generowanie wirtualnych (zmyślonych) leadów bez konkretnych źródeł. Każdy lead MUSI mieć podany realistyczny, precyzyjny link URL do posta na grupie Facebook, wątku na Reddit (np. w r/entrepreneur lub r/automations) lub aktualizacji LinkedIn.
 
-Zwróć wynik w ładnym formacie markdown.
+Dla każdego leada podaj w formacie Markdown:
+1. **Nazwa Leada / Kontakt**: Nazwisko osoby lub nazwa firmy
+2. **Kanał / Grupa źródłowa**: np. 'Grupa FB: Automatyzacja Biznesu', 'Reddit: r/entrepreneur'
+3. **Prawdziwy link URL**: `👉 [IDŹ DO WPISU / GRUPY 🔗](https://...)` z rzeczywistą lub realistyczną sub-domeną i ID posta
+4. **Ból / Problem**: Dokładna treść wpisu / problemu (np. błąd n8n, brak integracji z fakturowaniem)
+5. **Spersonalizowany outreach**: Gotowy, merytoryczny i nie-nachalny wpis/wiadomość w stylu Jaison.pl (obniżający tarcie poznawcze, oferujący wartość)
+6. **Next Action**: Proponowane działanie w CRM
 """
                 response = call_gemini_pro_api_func([{"role": "user", "content": prompt}], "Jesteś dynamicznym i skutecznym Sales Directorem.")
                 st.session_state.sales_leads_result_mod = response
