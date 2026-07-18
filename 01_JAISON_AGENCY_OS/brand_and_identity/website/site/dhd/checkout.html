@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twój Wynik Audytu & Oferta Specjalna | Holistic A(I)-DHD</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .checkout-container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            z-index: 2;
+            position: relative;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .main-logo {
+            max-width: 140px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(168, 230, 207, 0.25));
+        }
+        .result-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            padding: 35px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35);
+        }
+        .score-box {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .score-big {
+            font-size: 5.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-coral) 0%, var(--accent-purple) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+        .score-max {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+        }
+        .diagnosis-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .diagnosis-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        .rec-box {
+            background: rgba(168, 230, 207, 0.04);
+            border: 1px solid rgba(168, 230, 207, 0.15);
+            padding: 24px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        .rec-box h4 {
+            color: var(--accent-mint);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        /* Countdown Timer */
+        .timer-box {
+            background: rgba(255, 170, 165, 0.05);
+            border: 1px dashed rgba(255, 170, 165, 0.2);
+            border-radius: 16px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 35px;
+            font-weight: 600;
+            color: var(--accent-coral);
+            font-size: 1rem;
+        }
+        .timer-digits {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-left: 5px;
+            color: #ffffff;
+            font-family: monospace;
+        }
+        /* Checkout Forms & Offers */
+        .offer-panel {
+            background: linear-gradient(180deg, rgba(13, 27, 42, 0.8) 0%, rgba(7, 14, 23, 0.95) 100%);
+            border: 2px solid var(--accent-purple);
+            border-radius: 32px;
+            padding: 40px 35px;
+            box-shadow: 0 25px 50px rgba(155, 93, 229, 0.15);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        .badge-hot {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(135deg, #ff85a1 0%, #ff5c8a 100%);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 8px 35px;
+            transform: rotate(45deg);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 133, 161, 0.3);
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 20px 0;
+        }
+        .price-old {
+            text-decoration: line-through;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        .price-new {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-mint);
+        }
+        .payment-form {
+            margin-top: 30px;
+            background: rgba(255,255,255,0.02);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+        .input-text {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .input-text:focus {
+            border-color: var(--accent-purple);
+            box-shadow: 0 0 10px rgba(155, 93, 229, 0.2);
+        }
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .pay-method-btn {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .pay-method-btn:hover, .pay-method-btn.active {
+            border-color: var(--accent-mint);
+            background: rgba(168,230,207,0.05);
+        }
+        .order-bump-box {
+            background: rgba(168, 230, 207, 0.02);
+            border: 1px dashed var(--accent-mint);
+            padding: 20px;
+            border-radius: 20px;
+            margin: 25px 0;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        .order-bump-checkbox {
+            width: 22px;
+            height: 22px;
+            accent-color: var(--accent-mint);
+            margin-top: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="checkout-container">
+        
+        <!-- Header -->
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Holistic A(I)-DHD Logo" class="main-logo">
+        </div>
+
+        <!-- 📊 RESULTS CARD -->
+        <div class="result-card">
+            <h2 class="diagnosis-title" id="outTitle">Generowanie wyników...</h2>
+            
+            <div class="score-box">
+                <span class="score-big" id="outScore">0</span>
+                <span class="score-max">/ 30</span>
+            </div>
+            
+            <p class="diagnosis-desc" id="outDesc">Trwa weryfikacja Twojej neuroatypowej gospodarki czasem...</p>
+            
+            <div class="rec-box">
+                <h4>💡 Twoja dedykowana diagnoza AI-DHD:</h4>
+                <p id="outRec">Trwa kompilacja zaleceń ratunkowych...</p>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); text-align: center; margin-top: 15px;">
+                📬 Twój spersonalizowany raport PDF oraz darmowy rozdział E-booka zostały wysłane na adres: <strong id="outEmail" style="color: var(--accent-mint);">twój e-mail</strong>
+            </p>
+        </div>
+
+        <!-- ⏳ TIMER -->
+        <div class="timer-box">
+            🔥 Oferta specjalna wygasa za: <span class="timer-digits" id="countdown">15:00</span>
+        </div>
+
+        <!-- 🎁 BUNDLE OFFER PANEL -->
+        <div class="offer-panel">
+            <div class="badge-hot">Zestaw HIT</div>
+            <span class="category-tag">Ekskluzywna Oferta Powdrożeniowa</span>
+            <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 10px;">Kompletny Ekosystem A(I)-DHD Solopreneur</h2>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; margin-bottom: 25px;">
+                Nie zatrzymuj się na samym audycie. Zdobądź kompletny system promptów Notion, wideo-warsztaty krok po kroku oraz pełne wydanie E-booka, które w 15 minut zintegrują AI jako Twój zewnętrzny płat czołowy.
+            </p>
+            
+            <ul style="margin-left: 20px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.8;">
+                <li>📘 **Pełna wersja E-Booka** (Wszystkie 4 rozdziały o neurobiologii ADHD i armii asystentów).</li>
+                <li>🤖 **Focus Prompt Kit** (Zoptymalizowane pod ADHD szablony dla CEO, Ghosta, CSO i CTO).</li>
+                <li>🎥 **Masterclass Wideo** (Jak połączyć Google Sheets, n8n i Streamlita bez linijki kodu).</li>
+                <li>📝 **Procedura Zen-Mode** (Szablon Notion do planowania dnia o ultra-niskim oporze).</li>
+            </ul>
+
+            <!-- Order Bump -->
+            <div class="order-bump-box">
+                <input type="checkbox" id="orderBump" class="order-bump-checkbox" checked onchange="toggleBundle(this)">
+                <div>
+                    <strong style="color: var(--accent-mint); font-size: 0.95rem;">🔥 DODAJ: Zestaw Szablonów Asystentów n8n (Rekomendowane!)</strong>
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 3px;">
+                        Zaznacz, aby dołączyć gotowe pliki importu n8n/Make, które automatycznie synchronizują audyt, wysyłają maile i budują bazę leadów za jedyne **49 PLN** (Zamiast 149 PLN).
+                    </p>
+                </div>
+            </div>
+
+            <!-- Price Row -->
+            <div class="price-row">
+                <div>
+                    <span style="font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; display: block;">Wartość Pakietu:</span>
+                    <span class="price-old" id="oldPrice">346 PLN</span>
+                </div>
+                <div style="text-align: right;">
+                    <span style="font-size: 0.85rem; color: var(--accent-mint); text-transform: uppercase; display: block; font-weight: 600;">Cena Dzisiejsza:</span>
+                    <span class="price-new" id="newPrice">247 PLN</span>
+                </div>
+            </div>
+
+            <!-- Payment Form -->
+            <div class="payment-form">
+                <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 10px;">💳 Szybka Płatność Elektroniczna</h3>
+                
+                <div class="form-group">
+                    <label for="clientName">Imię i Nazwisko</label>
+                    <input type="text" id="clientName" class="input-text" placeholder="Jan Kowalski">
+                </div>
+                
+                <div class="form-group">
+                    <label for="clientEmail">Adres E-mail do wysyłki materiałów</label>
+                    <input type="email" id="clientEmail" class="input-text" placeholder="jan.kowalski@gmail.com">
+                </div>
+
+                <div class="payment-methods">
+                    <div class="pay-method-btn active" onclick="selectPay(this)">⚡ BLIK</div>
+                    <div class="pay-method-btn" onclick="selectPay(this)">🏛️ Szybki Przelew</div>
+                    <div class="pay-method-btn" onclick="selectPay(this)">💳 Karta</div>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <button class="btn btn-primary btn-large" style="background: linear-gradient(135deg, #a8e6cf 0%, #3f37c9 100%); color: #070e17; font-weight: 800; text-shadow: none;" onclick="handlePurchase()">
+                        🛒 Kupuję i Uciszam Chaos
+                    </button>
+                </div>
+            </div>
+
+            <!-- Downsell Link -->
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="oto1.html" style="font-size: 0.85rem; color: var(--text-secondary); text-decoration: underline; cursor: pointer;">
+                    Nie, dziękuję. Chcę tylko tani pakiet Focus Toolkit & Prompts za 49 PLN.
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Success Modal (Glassmorphic) -->
+    <div id="successModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(7, 14, 23, 0.92); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+        <div class="glass-card" style="max-width: 500px; width: 100%; text-align: center; border: 2px solid var(--accent-mint); box-shadow: 0 0 50px rgba(168, 230, 207, 0.15); background: rgba(13, 27, 42, 0.85); backdrop-filter: blur(20px); border-radius: 28px; padding: 35px;">
+            <div style="font-size: 4rem; margin-bottom: 15px;">🎉</div>
+            <h2 style="color: var(--accent-mint); font-size: 1.8rem; font-weight: 800; margin-bottom: 10px;">Gratulacje!</h2>
+            <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 25px; font-size: 0.95rem;">
+                Płatność została pomyślnie przetworzona. Dane dostępowe oraz linki aktywacyjne zostały wysłane na Twój adres e-mail. Twój zewnętrzny płat czołowy AI jest już gotowy!
+            </p>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <a href="https://discord.gg/holistic-aidhd" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, #7289da 0%, #424549 100%); border-color: #7289da; color: white; display: block; text-decoration: none; font-weight: 600; padding: 14px 20px; border-radius: 12px; font-size: 1rem;">
+                    💬 Dołącz do Społeczności Discord
+                </a>
+                <a href="http://localhost:8501" target="_blank" class="btn btn-primary" style="background: linear-gradient(135deg, var(--accent-purple) 0%, #7209b7 100%); color: white; display: block; text-decoration: none; font-weight: 600; padding: 14px 20px; border-radius: 12px; font-size: 1rem;">
+                    🧠 Uruchom Asystenta Streamlit
+                </a>
+                <button class="btn btn-secondary" onclick="document.getElementById('successModal').style.display = 'none'" style="display: block; width: 100%; border-radius: 12px; padding: 12px;">
+                    Zamknij okno
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dynamic URL Parameter Processing & Timer script -->
+    <script>
+        // Parse URL params
+        const urlParams = new URLSearchParams(window.location.search);
+        const score = parseInt(urlParams.get('score')) || 0;
+        const email = urlParams.get('email') || 'Twój adres e-mail';
+        const chaos = parseInt(urlParams.get('chaos')) || 0;
+        const money = parseInt(urlParams.get('money')) || 0;
+        const focus = parseInt(urlParams.get('focus')) || 0;
+
+        document.getElementById('outScore').innerText = score;
+        document.getElementById('outEmail').innerText = email;
+        document.getElementById('clientEmail').value = email;
+
+        const titleElem = document.getElementById('outTitle');
+        const descElem = document.getElementById('outDesc');
+        const recElem = document.getElementById('outRec');
+
+        if (score <= 10) {
+            titleElem.innerText = "Wynik: 🟢 Poziom Holistic Operator";
+            titleElem.style.color = "#a8e6cf";
+            descElem.innerText = `Twój wskaźnik chaosu to jedynie ${score}/30. Jesteś dobrze zorganizowany i umiesz delegować zadania. System AI-DHD posłuży Ci jako potężny wzmacniacz (dźwignia deweloperska), by osiągać jeszcze lepsze wyniki bez wysiłku.`;
+            recElem.innerHTML = `<strong>Zalecany kolejny krok:</strong> Skonfiguruj zaawansowane agenty w tle (autonomiczny CSO do odpisywania na maile sprzedażowe), które dadzą Ci 100% kontroli i wolności bez utraty skupienia.`;
+        } else if (score <= 20) {
+            titleElem.innerText = "Wynik: 🟡 Poziom Strefa Średniaków";
+            titleElem.style.color = "#ffd166";
+            descElem.innerText = `Twój wskaźnik chaosu to ${score}/30. Posiadasz pojedyncze narzędzia, ale brak Ci zintegrowanego Systemu. Często ulegasz nowym pomysłom (SOS), co powoduje, że wieczorem dopada Cię potworne zmęczenie.`;
+            recElem.innerHTML = `<strong>Zalecany kolejny krok:</strong> Zastąp rozproszony stack (10 narzędzi) jednym zintegrowanym biurem AI. Korzystaj z gotowych asystentów w jednym oknie czatu, aby chronić swoją energię kognitywną.`;
+        } else {
+            titleElem.innerText = "Wynik: 🔴 Poziom Rękodzieło i Chaos";
+            titleElem.style.color = "#ff85a1";
+            descElem.innerText = `Twój wskaźnik chaosu to aż ${score}/30. Jesteś niewolnikiem własnego biznesu, działasz w ciągłym paraliżu operacyjnym. Ryzyko wypalenia u przedsiębiorcy z ADHD w tej strefie wynosi ponad 90%.`;
+            recElem.innerHTML = `<strong>Zalecany kolejny krok:</strong> Kategorycznie wstrzymaj skomplikowane automatyzacje. Twoim absolutnym priorytetem jest wdrożenie <strong>Procedury Wyciszenia Chaosu</strong>: ustrukturyzowany Profil Przedsiębiorcy i dopuszczenie AI do najprostszych spraw.`;
+        }
+
+        // Focus and Money alerts
+        if (focus > chaos && focus > money && score > 10) {
+            recElem.innerHTML += `<br><br><strong>⚠️ Detektor ADHD:</strong> Największym wyciekiem energii jest u Ciebie <em>Skupienie i Paraliż Zadaniowy</em>. Wdrożenie asystenta AI pomoże Ci rozbijać zadania na nano-czynności o zerowym oporze psychologicznym.`;
+        } else if (money > chaos && money > focus && score > 10) {
+            recElem.innerHTML += `<br><br><strong>⚠️ Detektor Pieniędzy:</strong> Twój największy wyciek to <em>Sprzedaż i follow-upy</em>. Wdrożenie asystenta CSO wyeliminuje paraliż przed odrzuceniem (RSD) i domknie sprzedaż za Ciebie.`;
+        }
+
+        // Timer implementation
+        let timeRemaining = 900; // 15 mins
+        const countdownElem = document.getElementById('countdown');
+        const timerInterval = setInterval(() => {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            countdownElem.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+                countdownElem.innerText = "00:00";
+            }
+            timeRemaining--;
+        }, 1000);
+
+        // Payment select
+        function selectPay(btn) {
+            document.querySelectorAll('.pay-method-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+
+        // Toggle Bundle
+        function toggleBundle(checkbox) {
+            const oldPrice = document.getElementById('oldPrice');
+            const newPrice = document.getElementById('newPrice');
+            if (checkbox.checked) {
+                oldPrice.innerText = "346 PLN";
+                newPrice.innerText = "247 PLN";
+            } else {
+                oldPrice.innerText = "197 PLN";
+                newPrice.innerText = "197 PLN";
+            }
+        }
+
+        // Handle Purchase and show modal
+        function handlePurchase() {
+            document.getElementById('successModal').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

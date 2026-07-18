@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-DHD Business Audit — Ucisz chaos w swojej firmie</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .logo-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .main-logo {
+            max-width: 140px;
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(168, 230, 207, 0.25));
+            transition: transform 0.4s ease;
+        }
+        .main-logo:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="container">
+        <!-- Progress Bar -->
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <!-- Glass Card -->
+        <div class="glass-card" id="auditCard">
+            <!-- SLIDE 0: Welcome -->
+            <div class="slide active" id="slide0">
+                <div class="logo-container">
+                    <img src="assets/logo.png" alt="Holistic A(I)-DHD Logo" class="main-logo">
+                </div>
+                <h1>Ucisz chaos w swojej firmie za pomocą AI</h1>
+                <p class="subtitle">15-pytaniowy, bezwysiłkowy audyt operacyjny dla przedsiębiorców, freelancerów i twórców o wielotorowym myśleniu (ADHD).</p>
+                <div class="info-badges">
+                    <span class="badge">⏱️ Czas: 3 minuty</span>
+                    <span class="badge">🔥 Konkretny wynik</span>
+                    <span class="badge">🛡️ Astygmatyzm-safe</span>
+                </div>
+                <button class="btn btn-primary btn-large" onclick="nextSlide()">Rozpocznij Audyt 🚀</button>
+            </div>
+
+            <!-- SLIDE 1: Pytanie 1 (Chaos Operacyjny) -->
+            <div class="slide" id="slide1" data-category="chaos">
+                <span class="category-tag">Sfera 1: Chaos Operacyjny</span>
+                <h2>1. Ile czasu tygodniowo spędzasz na "przeklejaniu" danych między mailami, arkuszami i aplikacjami?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(1, 0)">Prawie wcale, większość mam zautomatyzowane (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(1, 1)">Około 2-4 godziny tygodniowo (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(1, 2)">Ponad 5 godzin tygodniowo – to mój koszmar! (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: Pytanie 2 -->
+            <div class="slide" id="slide2" data-category="chaos">
+                <span class="category-tag">Sfera 1: Chaos Operacyjny</span>
+                <h2>2. Czy w Twojej firmie istnieje JEDNO, łatwo dostępne źródło prawdy o klientach (CRM)?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(2, 0)">Tak, cała wiedza jest w jednym czystym systemie (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(2, 1)">Mamy jakieś narzędzie, ale nikt go nie aktualizuje (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(2, 2)">Nie, dane są rozproszone w głowie, notatkach i Excelu (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: Pytanie 3 -->
+            <div class="slide" id="slide3" data-category="chaos">
+                <span class="category-tag">Sfera 1: Chaos Operacyjny</span>
+                <h2>3. Gdzie zapisujesz nagłe zadania, aby nie uciekły w ciągu dnia?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(3, 0)">W jednym dedykowanym Inboxie / analogowym notesie (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(3, 1)">W kilku miejscach (Notatnik w telefonie, Messenger) (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(3, 2)">Nigdzie – próbuję wszystko trzymać w głowie (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: Pytanie 4 -->
+            <div class="slide" id="slide4" data-category="chaos">
+                <span class="category-tag">Sfera 1: Chaos Operacyjny</span>
+                <h2>4. Jak reagujesz, gdy musisz wdrożyć nowego współpracownika lub asystenta?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(4, 0)">Daję mu gotowe instrukcje wideo/tekstowe (SOP) (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(4, 1)">Tłumaczę mu wszystko na żywo przez godzinę (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(4, 2)">Wolę zrobić sam, bo tłumaczenie zajmie mi 3x dłużej! (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: Pytanie 5 -->
+            <div class="slide" id="slide5" data-category="chaos">
+                <span class="category-tag">Sfera 1: Chaos Operacyjny</span>
+                <h2>5. Ile małych, operacyjnych decyzji dziennie musisz podejmować osobiście?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(5, 0)">Bardzo mało, procesy i ludzie działają sami (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(5, 1)">Średnio – gaszę kilka pożarów dziennie (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(5, 2)">Mnóstwo – jestem wąskim gardłem własnej firmy (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: Pytanie 6 (Wycieki Pieniędzy) -->
+            <div class="slide" id="slide6" data-category="money">
+                <span class="category-tag">Sfera 2: Wycieki Pieniędzy</span>
+                <h2>6. Jaki jest średni czas Twojej odpowiedzi na nowe zapytanie ofertowe od klienta?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(6, 0)">Do 15 minut – system od razu reaguje (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(6, 1)">W ciągu kilku godzin lub na koniec dnia (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(6, 2)">Dopiero po 24-48 godzinach (lub zapominam) (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 7: Pytanie 7 -->
+            <div class="slide" id="slide7" data-category="money">
+                <span class="category-tag">Sfera 2: Wycieki Pieniędzy</span>
+                <h2>7. Czy masz automatyczny system "odgrzewania" starych leadów, którzy nie kupili?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(7, 0)">Tak, system sam wysyła im wartościowe materiały (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(7, 1)">Czasami piszę do nich ręcznie, gdy brakuje zleceń (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(7, 2)">Nie, zapominam o nich zaraz po zamknięciu rozmowy (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 8: Pytanie 8 -->
+            <div class="slide" id="slide8" data-category="money">
+                <span class="category-tag">Sfera 2: Wycieki Pieniędzy</span>
+                <h2>8. Jak wygląda u Ciebie proces umawiania spotkań z klientami?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(8, 0)">Klient klika link i sam rezerwuje termin w kalendarzu (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(8, 1)">Piszę maile w stylu: "A o której Panu pasuje?" (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(8, 2)">Gramy w mailowego ping-ponga przez kilka dni (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 9: Pytanie 9 -->
+            <div class="slide" id="slide9" data-category="money">
+                <span class="category-tag">Sfera 2: Wycieki Pieniędzy</span>
+                <h2>9. Czy wiesz dokładnie, które działania marketingowe przynoszą Ci realnych klientów?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(9, 0)">Tak, mierzę konwersję i wiem, co działa (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(9, 1)">Mniej więcej, domyślam się z luźnych pytań (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(9, 2)">Nie mam pojęcia – strzelam całkowicie na oślep (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 10: Pytanie 10 -->
+            <div class="slide" id="slide10" data-category="money">
+                <span class="category-tag">Sfera 2: Wycieki Pieniędzy</span>
+                <h2>10. Co dzieje się automatycznie po tym, jak klient dokona zakupu lub skończy projekt?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(10, 0)">Dostaje fakturę, onboarding i zaproszenie do opinii (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(10, 1)">Sam wysyłam mu ręcznie maila podsumowującego (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(10, 2)">Nic, przechodzę od razu do szukania kolejnego zlecenia (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 11: Pytanie 11 (Neuroatypowość & Skupienie) -->
+            <div class="slide" id="slide11" data-category="focus">
+                <span class="category-tag">Sfera 3: Skupienie & ADHD</span>
+                <h2>11. Jak często cierpisz na "paraliż zadaniowy" (task paralysis) na początku dnia?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(11, 0)">Rzadko, mam jasny plan i po prostu działam (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(11, 1)">Czasami, szczególnie gdy zadanie jest nudne lub trudne (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(11, 2)">Codziennie – tracę 2 godziny na zastanawianie się (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 12: Pytanie 12 -->
+            <div class="slide" id="slide12" data-category="focus">
+                <span class="category-tag">Sfera 3: Skupienie & ADHD</span>
+                <h2>12. Czy dopada Cię Shiny Object Syndrome (rzucanie się na nowe pomysły/narzędzia)?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(12, 0)">Potrafię zachować fokus na jednym projekcie (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(12, 1)">Często kupuję kursy lub SaaS-y, których nie używam (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(12, 2)">Non-stop – zaczynam 10 projektów i żadnego nie kończę! (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 13: Pytanie 13 -->
+            <div class="slide" id="slide13" data-category="focus">
+                <span class="category-tag">Sfera 3: Skupienie & ADHD</span>
+                <h2>13. Czy Twoja wiedza firmowa (know-how) jest spisana w formacie gotowym pod AI?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(13, 0)">Tak, mam czystą bazę wiedzy w plikach tekstowych (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(13, 1)">Mam notatki w Notion/Wordpress, ale nie są poukładane (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(13, 2)">Wszystko mam wyłącznie w głowie! (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 14: Pytanie 14 -->
+            <div class="slide" id="slide14" data-category="focus">
+                <span class="category-tag">Sfera 3: Skupienie & ADHD</span>
+                <h2>14. Gdybyś jutro chciał obsłużyć 10x więcej klientów, co pękłoby pierwsze?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(14, 0)">Nic, systemy są gotowe na skalowanie (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(14, 1)">Mój zespół nie dałby rady z ręczną robotą (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(14, 2)">Ja sam – wylądowałbym w szpitalu z wycieńczenia! (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 15: Pytanie 15 -->
+            <div class="slide" id="slide15" data-category="focus">
+                <span class="category-tag">Sfera 3: Skupienie & ADHD</span>
+                <h2>15. Czy czujesz się właścicielem swojej firmy, czy jej najbardziej zmęczonym niewolnikiem?</h2>
+                <div class="answers">
+                    <button class="answer-btn" onclick="selectAnswer(15, 0)">Mam wolność czasową i zajmuję się tylko strategią (0 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(15, 1)">Mieszaniec – zarabiam, ale ciągle pracuję po godzinach (1 pkt)</button>
+                    <button class="answer-btn" onclick="selectAnswer(15, 2)">Niewolnik – bez mojej obecności wszystko natychmiast leży (2 pkt)</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 15_EMAIL: Email Capture -->
+            <div class="slide" id="slide15_email">
+                <span class="category-tag" style="background: rgba(168,230,207,0.15); color: var(--accent-mint); border-color: rgba(168,230,207,0.25);">Krok Finalny</span>
+                <h2>Gdzie mam wysłać Twój raport PDF oraz darmowy E-book "A(I)-DHD"?</h2>
+                <div style="margin-bottom: 25px;">
+                    <input type="email" id="leadEmail" placeholder="Twój najlepszy adres e-mail..." class="answer-btn" style="width: 100%; border-color: rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); color: white; padding: 18px 24px; font-size: 1.1rem; text-align: left; border-radius: 18px; outline: none; transition: all 0.25s ease;" oninput="this.style.borderColor = this.value ? 'var(--accent-mint)' : 'rgba(255,255,255,0.1)'; this.style.boxShadow = this.value ? '0 0 10px rgba(168,230,207,0.1)' : 'none';">
+                </div>
+                <button class="btn btn-primary btn-large" onclick="submitLead()">Odbierz Wyniki i Bonusy 🎁</button>
+            </div>
+
+            <!-- SLIDE 16: Results -->
+            <div class="slide" id="slide16">
+                <div class="logo">📊 Wyniki Twojego Audytu</div>
+                <div class="score-display">
+                    <span class="score-number" id="finalScore">0</span>
+                    <span class="score-max">/ 30</span>
+                </div>
+                <h3 id="resultTitle">Diagnoza: Trwa ładowanie...</h3>
+                <p id="resultDesc" class="result-description">Trwa analizowanie Twoich wycieków czasu i energii...</p>
+                
+                <div class="recommendation-box">
+                    <h4>💡 Rekomendacja A(I)-DHD na teraz:</h4>
+                    <p id="resultRec">Wdrażanie skomplikowanych automatyzacji tylko Cię przytłoczy. Zacznij od wgrania jednego Profilu Przedsiębiorcy do asystenta AI.</p>
+                </div>
+
+                <div class="result-actions">
+                    <button class="btn btn-primary" onclick="window.print()">🖨️ Zapisz / Drukuj Raport</button>
+                    <button class="btn btn-secondary" onclick="restartAudit()">🔄 Uruchom Ponownie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

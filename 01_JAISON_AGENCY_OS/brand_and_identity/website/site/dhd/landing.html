@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holistic A(I)-DHD — System Operacyjny dla Przedsiębiorcy z ADHD</title>
+    <meta name="description" content="Nie kolejny planner. System operacyjny dla przedsiębiorcy z ADHD — łączący AI, biohacking i regulację układu nerwowego. Sprawdzone dla ~1 mln Polaków żyjących z ADHD.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #060c14;
+            --bg-card: rgba(13, 27, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.07);
+            --accent-mint: #a8e6cf;
+            --accent-purple: #9b5de5;
+            --accent-blue: #4cc9f0;
+            --accent-gold: #f8c15a;
+            --text-primary: #f0f4f8;
+            --text-secondary: rgba(240, 244, 248, 0.6);
+            --text-muted: rgba(240, 244, 248, 0.38);
+            --red-problem: #ff6b6b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.65;
+            overflow-x: hidden;
+        }
+
+        /* === STARFIELD BACKGROUND === */
+        .stars-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 20% 10%, rgba(155,93,229,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 40% at 80% 80%, rgba(76,201,240,0.06) 0%, transparent 60%);
+        }
+
+        /* === LAYOUT === */
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === STICKY PROGRESS BAR === */
+        #reading-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-mint), var(--accent-purple));
+            width: 0%;
+            transition: width 0.1s linear;
+            z-index: 999;
+        }
+
+        /* === HEADER === */
+        .site-header {
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .logo-wrapper {
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 32px;
+        }
+
+        .logo-img {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            object-fit: contain;
+            background: rgba(168,230,207,0.08);
+            padding: 8px;
+            border: 1px solid rgba(168,230,207,0.15);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        .logo-text .ai { color: var(--accent-mint); }
+
+        /* === HERO === */
+        .hero {
+            padding: 20px 0 60px;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            background: rgba(168,230,207,0.08);
+            border: 1px solid rgba(168,230,207,0.2);
+            color: var(--accent-mint);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 7px 16px;
+            border-radius: 50px;
+            margin-bottom: 28px;
+        }
+
+        .hero h1 {
+            font-size: clamp(1.9rem, 5vw, 2.7rem);
+            font-weight: 900;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 22px;
+            color: var(--text-primary);
+        }
+
+        .hero h1 .highlight-mint { color: var(--accent-mint); }
+        .hero h1 .highlight-purple { color: #c8b6ff; }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.65;
+        }
+
+        /* === STAT BAR === */
+        .stat-bar {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 42px;
+        }
+
+        .stat-pill {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--glass-border);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .stat-pill strong { color: var(--accent-mint); }
+
+        /* === BUTTONS === */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            border-radius: 14px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            transition: all 0.25s cubic-bezier(0.2,1,0.3,1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #a8e6cf 0%, #4cc9f0 100%);
+            color: #060c14;
+            box-shadow: 0 8px 24px rgba(168,230,207,0.25);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(168,230,207,0.4);
+        }
+
+        .btn-secondary {
+            background: rgba(155,93,229,0.15);
+            color: #c8b6ff;
+            border: 1px solid rgba(155,93,229,0.3);
+        }
+        .btn-secondary:hover {
+            background: rgba(155,93,229,0.25);
+            transform: translateY(-2px);
+        }
+
+        .btn-large { font-size: 1.05rem; padding: 18px 36px; }
+
+        /* === VSL BOX === */
+        .vsl-section {
+            margin: 0 0 70px;
+        }
+
+        .vsl-box {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .video-thumb {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: radial-gradient(circle at 50% 50%, #1a2f4c 0%, #0d1b2a 100%);
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s cubic-bezier(0.2,1,0.3,1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-thumb::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(155,93,229,0.1) 0%, rgba(76,201,240,0.05) 100%);
+        }
+
+        .video-thumb:hover {
+            border-color: rgba(168,230,207,0.3);
+            box-shadow: 0 0 40px rgba(168,230,207,0.1);
+        }
+
+        .play-btn {
+            width: 68px;
+            height: 68px;
+            background: linear-gradient(135deg, var(--accent-purple) 0%, #5a189a 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            margin-bottom: 14px;
+            box-shadow: 0 8px 24px rgba(155,93,229,0.4);
+            position: relative;
+            z-index: 1;
+            transition: transform 0.3s;
+        }
+
+        .video-thumb:hover .play-btn { transform: scale(1.08); }
+
+        .play-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .play-duration {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* === SECTION TITLES === */
+        .section {
+            margin-bottom: 70px;
+        }
+
+        .section-eyebrow {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-purple);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -0.5px;
+            margin-bottom: 20px;
+        }
+
+        .section-lead {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.65;
+        }
+
+        /* === PROBLEM CARDS === */
+        .problems-grid {
+            display: grid;
+            gap: 14px;
+        }
+
+        .problem-card {
+            background: rgba(255,107,107,0.04);
+            border: 1px solid rgba(255,107,107,0.12);
+            border-radius: 16px;
+            padding: 20px 22px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            transition: all 0.25s ease;
+        }
+
+        .problem-card:hover {
+            background: rgba(255,107,107,0.07);
+            border-color: rgba(255,107,107,0.2);
+        }
+
+        .problem-icon {
+            font-size: 1.6rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .problem-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--red-problem);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .problem-desc {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        .problem-quote {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* === MECHANISM BLOCK === */
+        .mechanism-box {
+            background: linear-gradient(135deg, rgba(155,93,229,0.08) 0%, rgba(76,201,240,0.05) 100%);
+            border: 1px solid rgba(155,93,229,0.15);
+            border-radius: 24px;
+            padding: 36px;
+            margin-bottom: 28px;
+        }
+
+        .mechanism-box h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #c8b6ff;
+            margin-bottom: 14px;
+        }
+
+        .mechanism-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .mechanism-list li {
+            display: flex;
+            gap: 12px;
+            font-size: 0.93rem;
+            color: var(--text-secondary);
+            align-items: flex-start;
+        }
+
+        .mechanism-list li::before {
+            content: '→';
+            color: var(--accent-purple);
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* === SOLUTION CARDS (4 Functions) === */
+        .solution-grid {
+            display: grid;
+            gap: 14px;
+        }
+
+        .solution-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 22px 24px;
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+            transition: all 0.3s cubic-bezier(0.2,1,0.3,1);
+        }
+
+        .solution-card:hover {
+            border-color: rgba(168,230,207,0.2);
+            transform: translateX(4px);
+        }
+
+        .solution-num {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-mint) 0%, #4cc9f0 100%);
+            color: #060c14;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .solution-name {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .solution-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* === COMPARISON TABLE === */
+        .comparison-section {
+            margin-bottom: 70px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+        }
+
+        .comparison-table th {
+            padding: 14px 18px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .comparison-table th:first-child {
+            background: rgba(255,107,107,0.1);
+            color: var(--red-problem);
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .comparison-table th:last-child {
+            background: rgba(168,230,207,0.08);
+            color: var(--accent-mint);
+        }
+
+        .comparison-table td {
+            padding: 14px 18px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            vertical-align: top;
+        }
+
+        .comparison-table td:first-child {
+            border-right: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+        }
+
+        .comparison-table td:last-child {
+            color: var(--text-primary);
+        }
+
+        /* === EVIDENCE BLOCK === */
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .evidence-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            padding: 18px;
+        }
+
+        .evidence-num {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-mint);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .evidence-label {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* === PRODUCT STACK === */
+        .product-stack {
+            background: var(--bg-card);
+            border: 1px solid rgba(168,230,207,0.12);
+            border-radius: 24px;
+            padding: 36px;
+            margin-bottom: 28px;
+        }
+
+        .stack-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .stack-item:last-child { border-bottom: none; }
+
+        .stack-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            background: rgba(168,230,207,0.06);
+            border: 1px solid rgba(168,230,207,0.1);
+        }
+
+        .stack-title {
+            font-weight: 700;
+            font-size: 0.97rem;
+            margin-bottom: 3px;
+        }
+
+        .stack-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* === BONUS CARDS === */
+        .bonuses {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .bonus-card {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            background: rgba(248,193,90,0.04);
+            border: 1px solid rgba(248,193,90,0.12);
+            border-radius: 16px;
+            padding: 18px 20px;
+        }
+
+        .bonus-emoji {
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .bonus-content { flex: 1; }
+
+        .bonus-title {
+            font-weight: 700;
+            font-size: 0.97rem;
+            margin-bottom: 3px;
+        }
+
+        .bonus-desc {
+            font-size: 0.84rem;
+            color: var(--text-secondary);
+        }
+
+        .bonus-value {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            background: rgba(248,193,90,0.1);
+            border: 1px solid rgba(248,193,90,0.2);
+            padding: 4px 10px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        /* === OFFER CARDS === */
+        .offer-section {
+            margin-bottom: 70px;
+        }
+
+        .offer-card {
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 20px;
+        }
+
+        .offer-free {
+            background: rgba(168,230,207,0.04);
+            border: 1px solid rgba(168,230,207,0.15);
+        }
+
+        .offer-paid {
+            background: rgba(155,93,229,0.05);
+            border: 1px solid rgba(155,93,229,0.2);
+        }
+
+        .offer-badge {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .badge-free {
+            background: rgba(168,230,207,0.1);
+            color: var(--accent-mint);
+            border: 1px solid rgba(168,230,207,0.2);
+        }
+
+        .badge-oto1 {
+            background: rgba(248,193,90,0.1);
+            color: var(--accent-gold);
+            border: 1px solid rgba(248,193,90,0.2);
+        }
+
+        .badge-oto2 {
+            background: rgba(155,93,229,0.12);
+            color: #c8b6ff;
+            border: 1px solid rgba(155,93,229,0.25);
+        }
+
+        .offer-title {
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .offer-desc {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .offer-items {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .offer-items li {
+            display: flex;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .offer-items li::before {
+            content: '✓';
+            color: var(--accent-mint);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .offer-price {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--accent-mint);
+            line-height: 1;
+        }
+
+        .offer-price .old {
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-left: 8px;
+        }
+
+        /* === GUARANTEE === */
+        .guarantee-box {
+            background: rgba(255,255,255,0.015);
+            border: 1px dashed rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .guarantee-icon { font-size: 2.8rem; margin-bottom: 12px; display: block; }
+
+        .guarantee-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .guarantee-text {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* === FAQ === */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .faq-q {
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            padding: 20px 22px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            transition: background 0.2s;
+        }
+
+        .faq-q:hover { background: rgba(255,255,255,0.02); }
+
+        .faq-arrow {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: transform 0.25s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-arrow { transform: rotate(180deg); }
+
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.2,1,0.3,1), padding 0.25s;
+        }
+
+        .faq-item.open .faq-a {
+            max-height: 300px;
+        }
+
+        .faq-a-inner {
+            padding: 0 22px 20px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.65;
+            border-top: 1px solid rgba(255,255,255,0.04);
+            padding-top: 16px;
+        }
+
+        .faq-a-inner strong { color: var(--accent-mint); }
+
+        /* === FOMO STRIP === */
+        .fomo-strip {
+            background: linear-gradient(90deg, rgba(155,93,229,0.12) 0%, rgba(168,230,207,0.06) 100%);
+            border: 1px solid rgba(168,230,207,0.12);
+            border-radius: 16px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+        }
+
+        .fomo-icon { font-size: 1.8rem; }
+
+        .fomo-text { flex: 1; }
+
+        .fomo-text strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .fomo-text span {
+            font-size: 0.83rem;
+            color: var(--text-secondary);
+        }
+
+        #countdown {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            font-variant-numeric: tabular-nums;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        /* === CTA SECTION === */
+        .cta-section {
+            text-align: center;
+            padding: 60px 0 80px;
+        }
+
+        .cta-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+
+        /* === FOOTER === */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        footer a { color: var(--text-muted); text-decoration: none; }
+        footer a:hover { color: var(--accent-mint); }
+
+        /* === SECTION DIVIDER === */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+            margin: 60px 0;
+        }
+
+        /* === HIGHLIGHTED QUOTE === */
+        .insight-quote {
+            background: rgba(168,230,207,0.04);
+            border-left: 3px solid var(--accent-mint);
+            padding: 20px 24px;
+            border-radius: 0 14px 14px 0;
+            margin: 28px 0;
+        }
+
+        .insight-quote p {
+            font-size: 0.97rem;
+            color: var(--text-primary);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .insight-quote cite {
+            display: block;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: normal;
+        }
+
+        /* === SCROLLBAR === */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(168,230,207,0.2); border-radius: 4px; }
+
+        /* === ANIMATIONS === */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in { animation: fadeUp 0.6s ease forwards; }
+
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        .pulse-dot {
+            display: inline-block;
+            width: 8px; height: 8px;
+            background: var(--accent-mint);
+            border-radius: 50%;
+            animation: pulse-dot 1.5s ease-in-out infinite;
+            margin-right: 6px;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 540px) {
+            .evidence-grid { grid-template-columns: 1fr 1fr; }
+            .fomo-strip { flex-direction: column; text-align: center; }
+            #countdown { text-align: center; }
+            .product-stack { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div id="reading-bar"></div>
+
+    <div class="container">
+
+        <!-- === HEADER === -->
+        <header class="site-header">
+            <div class="logo-wrapper">
+                <img src="assets/logo.png" alt="Holistic A(I)-DHD" class="logo-img"
+                     onerror="this.style.display='none'">
+                <span class="logo-text">Holistic <span class="ai">A(I)</span>-DHD</span>
+            </div>
+        </header>
+
+        <!-- === HERO === -->
+        <section class="hero fade-in" id="hero">
+            <span class="hero-eyebrow">System Operacyjny dla Neuroatypowych Przedsiębiorców</span>
+            <h1>
+                Masz ADHD, pomysły i ambicję —<br>
+                ale Twój dzień rozsypuje się między<br>
+                <span class="highlight-mint">bodźcami, zadaniami i przeciążeniem</span>
+            </h1>
+            <p class="hero-subtitle">
+                To nie brak dyscypliny. To architektura Twojego mózgu — z niską dopaminą bazową i przeciążoną pamięcią roboczą. Możesz ją zaprojektować na nowo, używając AI jako zewnętrznego płata czołowego.
+            </p>
+
+            <div class="stat-bar">
+                <div class="stat-pill"><span class="pulse-dot"></span><strong>~1 000 000</strong> Polaków żyje z ADHD</div>
+                <div class="stat-pill">tylko <strong>6 943</strong> zdiagnozowanych dorosłych w 2024</div>
+                <div class="stat-pill"><strong>~29%</strong> przedsiębiorców może mieć ADHD</div>
+            </div>
+
+            <a href="index.html" class="btn btn-primary btn-large" id="hero-cta">
+                🧠 Wykonaj Darmowy Audyt AI-DHD — 3 minuty
+            </a>
+            <p style="font-size:0.8rem; color: var(--text-muted); margin-top: 12px;">
+                Bez podawania danych karty. Zero spamu. Odbierz spersonalizowany raport PDF.
+            </p>
+        </section>
+
+        <!-- === VSL === -->
+        <section class="vsl-section">
+            <div class="vsl-box">
+                <div class="video-thumb" onclick="alert('Tu zostanie osadzone Twoje nagranie VSL — Tomaszu, nagraj krótkie 3-min wideo wyjaśniające mechanizm paraliżu ADHD.')">
+                    <div class="play-btn">▶</div>
+                    <div class="play-label">Obejrzyj — dlaczego standardowe planowanie u Ciebie nie działa</div>
+                    <div class="play-duration">⏱ 3:20 min · Tomasz tłumaczy biologię Twojego paraliżu</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- === PROBLEM === -->
+        <section class="section" id="problem">
+            <p class="section-eyebrow">🔴 Problem</p>
+            <h2 class="section-title">Rozpoznajesz to?</h2>
+            <p class="section-lead">Te 6 wzorców nie jest kwestią charakteru ani siły woli. To objawy przeciążonej pamięci roboczej i braku regulacji dopaminergicznej.</p>
+
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">🧊</div>
+                    <div>
+                        <div class="problem-label">Task Paralysis</div>
+                        <div class="problem-desc">Wiesz, co masz zrobić — ale nie możesz zacząć. Siedzisz, zaciskasz zęby i... otwierasz kolejną kartę.</div>
+                        <div class="problem-quote">"Mam otwartych 30 kart i totalny paraliż o 10 rano."</div>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">⏳</div>
+                    <div>
+                        <div class="problem-label">Time Blindness</div>
+                        <div class="problem-desc">Mówisz "to zajmie 15 minut" — a mija 4 godziny. Termin podjazd. Panika.</div>
+                        <div class="problem-quote">"Znów się spóźniłem z projektem, który miałem skończyć w środę."</div>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">⚡</div>
+                    <div>
+                        <div class="problem-label">Decision Paralysis</div>
+                        <div class="problem-desc">Za dużo opcji, za mało domknięcia. Analizujesz wszystko, decydujesz o niczym. Projekt stoi w miejscu.</div>
+                        <div class="problem-quote">"Mam 3 dobre pomysły i nie wiem, który wybrać — więc nie robię żadnego."</div>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">🌀</div>
+                    <div>
+                        <div class="problem-label">Shiny Object Syndrome</div>
+                        <div class="problem-desc">Zaczynasz 10 projektów naraz. Żadnego nie kończysz. Nisza zmienia się co 3 tygodnie.</div>
+                        <div class="problem-quote">"Mam pięć rozgrzebanych kursów i cztery niezapisane pomysły na biznesy."</div>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">🔇</div>
+                    <div>
+                        <div class="problem-label">Przebodźcowanie</div>
+                        <div class="problem-desc">Po 3 godzinach Slacka, maili i powiadomień Twój umysł po prostu wysiada. Nie możesz myśleć.</div>
+                        <div class="problem-quote">"Wieczorem jestem tak zmęczony, że nie mogę zrobić nawet jednej sensownej rzeczy."</div>
+                    </div>
+                </div>
+
+                <div class="problem-card">
+                    <div class="problem-icon">😞</div>
+                    <div>
+                        <div class="problem-label">Shame Loop</div>
+                        <div class="problem-desc">Kupiłeś narzędzie, kurs, planner. Po 3 dniach leżą nieużywane — a Ty czujesz wstyd, że znowu się nie udało.</div>
+                        <div class="problem-quote">"Mam konto Notion z 40 szablonami, których nie używam."</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- === MECHANISM === -->
+        <section class="section" id="mechanism">
+            <p class="section-eyebrow">🧬 Mechanizm</p>
+            <h2 class="section-title">To nie brak dyscypliny.<br>To architektura Twojego mózgu.</h2>
+
+            <div class="mechanism-box">
+                <h3>Neurobiologia ADHD w 4 zdaniach:</h3>
+                <ul class="mechanism-list">
+                    <li>Twój układ nagrody ma genetycznie niższy poziom dopaminy bazowej — stąd ciągłe szukanie nowości i stymulacji.</li>
+                    <li>Pamięć robocza jest przeciążona — utrzymywanie planów, priorytetów i kroków działania „w głowie" kosztuje cię 3x więcej energii.</li>
+                    <li>Korteks przedczołowy włącza się dopiero pod wpływem silnego pobudzenia (deadline, kryzys, pasja) — stąd paraliż w normalnych warunkach.</li>
+                    <li>Dysregulacja noradrenaliny powoduje time blindness i trudność z przełączaniem między zadaniami.</li>
+                </ul>
+            </div>
+
+            <div class="insight-quote">
+                <p>"Badania CBT na 37 randomizowanych próbach klinicznych (2 289 uczestników) potwierdzają: strukturalne wsparcie zewnętrzne, małe kroki i regulacja układu nerwowego działają — niezależnie od farmakoterapii."</p>
+                <cite>— Przegląd systematyczny, ADHD u dorosłych, non-pharmacological interventions</cite>
+            </div>
+
+            <div class="evidence-grid">
+                <div class="evidence-card">
+                    <div class="evidence-num">~1M</div>
+                    <div class="evidence-label">Polaków żyje z ADHD — 94% bez formalnej diagnozy</div>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-num">29%</div>
+                    <div class="evidence-label">przedsiębiorców może mieć ADHD — nadreprezentacja vs. populacja</div>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-num">37</div>
+                    <div class="evidence-label">badań RCT potwierdza skuteczność CBT-style systems dla ADHD</div>
+                </div>
+                <div class="evidence-card">
+                    <div class="evidence-num">+250%</div>
+                    <div class="evidence-label">wzrost zainteresowania diagnozą ADHD w Polsce w 3 lata</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- === SOLUTION === -->
+        <section class="section" id="solution">
+            <p class="section-eyebrow">🟢 Rozwiązanie</p>
+            <h2 class="section-title">System Operacyjny<br>dla Twojego neuroatypowego mózgu</h2>
+            <p class="section-lead">Nie kolejny planner. AI pełni rolę Twojej zewnętrznej pamięci roboczej — łączymy 4 funkcje, których nie ma żadna aplikacja "productivity":</p>
+
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="solution-num">1</div>
+                    <div>
+                        <div class="solution-name">🧠 Brain Dump — Zrzut Chaosu</div>
+                        <div class="solution-desc">Wylewasz chaos myśli jednym prostym tekstem lub głosem. Zero struktury, zero oporu. AI natychmiast rozbija go na nano-kroki o zerowym oporze psychologicznym (3-minutowe zadania).</div>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-num">2</div>
+                    <div>
+                        <div class="solution-name">🎯 Task Distillation — Priorytet na Teraz</div>
+                        <div class="solution-desc">Z 30 "ważnych" zadań AI wyciąga 1 wynik dnia i 2 kroki drugorzędne. Koniec z decision paralysis — masz jasną, jedną ścieżkę na kolejne 25 minut.</div>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-num">3</div>
+                    <div>
+                        <div class="solution-name">⚡ Focus Scaffolding — Start bez Motywacji</div>
+                        <div class="solution-desc">Sesje startowe, timery, body doubling i protokół "rescue day" na dni totalnego chaosu. System działa nawet gdy Ty jesteś w najtrudniejszym momencie cyklu.</div>
+                    </div>
+                </div>
+
+                <div class="solution-card">
+                    <div class="solution-num">4</div>
+                    <div>
+                        <div class="solution-name">✍️ Content Acceleration — Twórca bez Blokady</div>
+                        <div class="solution-desc">AI szkicuje posty, oferty, maile i briefy w Twoim stylu. Od pomysłu do publikacji w minutach, nie godzinach. Koniec z lękiem przed białą kartą i RSD przy wysyłaniu ofert.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === COMPARISON === -->
+        <section class="comparison-section">
+            <h2 class="section-title" style="margin-bottom: 24px;">Transformacja: Przed i Po</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Bez A(I)-DHD 🔴</th>
+                        <th>Z A(I)-DHD 🟢</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Paraliż o poranku</strong> — nie wiesz od czego zacząć, prokrastynajesz 2 godziny</td>
+                        <td><strong>Nano-Krok w 15 sekund</strong> — wylewasz chaos, dostajesz konkretne zadanie na teraz</td>
+                    </tr>
+                    <tr>
+                        <td><strong>30 otwartych kart</strong> i totalne rozproszenie przez cały dzień</td>
+                        <td><strong>Jedno okno</strong> — cały business, marketing i zadania z jednego czatu AI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pętla wstydu</strong> — kolejne narzędzie leży nieużywane po 3 dniach</td>
+                        <td><strong>Setup w 15 minut</strong> i tryb "minimum viable day" gdy brakuje energii</td>
+                    </tr>
+                    <tr>
+                        <td><strong>RSD przy ofertach</strong> — odkładasz wysyłanie ofert i follow-upów</td>
+                        <td><strong>Wirtualny Asystent</strong> pisze asertywne wiadomości w Twoim stylu</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Przebodźcowanie wieczorem</strong> — nie możesz skończyć żadnego zadania sensownie</td>
+                        <td><strong>Rytuał regulacyjny</strong> — protokół reset, oddech, shutdown sequence</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- === PRODUCT === -->
+        <section class="section" id="produkt">
+            <p class="section-eyebrow">📦 Produkt</p>
+            <h2 class="section-title">Ekosystem Holistic A(I)-DHD</h2>
+            <p class="section-lead">Nie kupujesz aplikacji. Wdrażasz kompletny, spójny system biologiczno-technologiczny dla neuroatypowego przedsiębiorcy.</p>
+
+            <div class="product-stack">
+                <div class="stack-item">
+                    <div class="stack-icon">🔬</div>
+                    <div>
+                        <div class="stack-title">Bezpłatny Audyt Diagnostyczny</div>
+                        <div class="stack-desc">15-pytaniowy test obliczający Twój poziom chaosu i generujący spersonalizowany raport PDF z pierwszymi nano-krokami. Zanim wydasz złotówkę.</div>
+                    </div>
+                </div>
+
+                <div class="stack-item">
+                    <div class="stack-icon">📘</div>
+                    <div>
+                        <div class="stack-title">E-Book "Holistic A(I)-DHD" (4 rozdziały)</div>
+                        <div class="stack-desc">Neurobiologia ADHD + protokół biohackingowy (zimne prysznice, rytm dopaminowy, suplementacja) + technologia AI jako zewnętrzna pamięć robocza. Twarda wiedza, zero bełkotu motywacyjnego.</div>
+                    </div>
+                </div>
+
+                <div class="stack-item">
+                    <div class="stack-icon">🧠</div>
+                    <div>
+                        <div class="stack-title">Dashboard Streamlit — Command Center</div>
+                        <div class="stack-desc">Moduł Brain Dump z AI kategoryzacją nano-kroków + Wirtualny Asystent przeprowadzający Cię przez wywiad diagnostyczny i dobierający strategię do Twojego profilu ADHD.</div>
+                    </div>
+                </div>
+
+                <div class="stack-item">
+                    <div class="stack-icon">🤝</div>
+                    <div>
+                        <div class="stack-title">Zamknięta Społeczność A(I)-DHD Tribe</div>
+                        <div class="stack-desc">Bezpieczna przestrzeń dla neuroatypowych przedsiębiorców — bez przebodźcowania, bez spamu. Wymiana gotowych systemów promptów i praktyczne wsparcie wdrożeniowe.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="index.html" class="btn btn-primary btn-large" id="product-cta">
+                    🚀 Zacznij od Darmowego Audytu
+                </a>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 10px;">
+                    Czas: 3 minuty · Zero danych karty · Raport PDF na email
+                </p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- === BONUSES === -->
+        <section class="section" id="bonusy">
+            <p class="section-eyebrow">🎁 Bonusy</p>
+            <h2 class="section-title">Otrzymujesz przy zakupie</h2>
+
+            <div class="bonuses">
+                <div class="bonus-card">
+                    <div class="bonus-emoji">🌡️</div>
+                    <div class="bonus-content">
+                        <div class="bonus-title">Protokół Biohackingowy A(I)-DHD</div>
+                        <div class="bonus-desc">Gotowy, rozpisany plan: suplementacja L-Tyrozyny/ALCAR, zimny prysznic rano (+250% dopaminy), Physiological Sigh, Zone 2 Cardio. Z disclaimerem medycznym i instrukcją onboardingu.</div>
+                    </div>
+                    <div class="bonus-value">Wartość: 99 PLN</div>
+                </div>
+
+                <div class="bonus-card">
+                    <div class="bonus-emoji">⚡</div>
+                    <div class="bonus-content">
+                        <div class="bonus-title">Focus Prompt Kit — 20 Szablonów AI</div>
+                        <div class="bonus-desc">Skopiuj-wklej szablony promptów eliminujące "AI-bełkot". Piszą w Twoim autentycznym stylu. Gotowe dla CEO, Ghost Writera, CSO (oferty), CMO (posty), CTO (technika).</div>
+                    </div>
+                    <div class="bonus-value">Wartość: 149 PLN</div>
+                </div>
+
+                <div class="bonus-card">
+                    <div class="bonus-emoji">🛡️</div>
+                    <div class="bonus-content">
+                        <div class="bonus-title">7-dniowy Protokół Porannego Resetu</div>
+                        <div class="bonus-desc">Krok po kroku rytm poranny zaprojektowany dla mózgu ADHD: światło, nawodnienie, ruch, oddech, brain dump, jedna intencja. Bez motywacji. Tylko system.</div>
+                    </div>
+                    <div class="bonus-value">Wartość: 79 PLN</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- === OFFERS === -->
+        <section class="offer-section" id="oferty">
+            <p class="section-eyebrow">💰 Oferty</p>
+            <h2 class="section-title" style="margin-bottom: 32px;">Wybierz swój poziom</h2>
+
+            <!-- Free -->
+            <div class="offer-card offer-free">
+                <span class="offer-badge badge-free">🎯 START — Za Darmo</span>
+                <div class="offer-title">Darmowy Audyt AI-DHD + E-book (Rozdział 1)</div>
+                <p class="offer-desc">Zanim zdecydujesz się na cokolwiek — sprawdź, jaki jest Twój realny poziom chaosu i poznaj mechanizm swojego paraliżu. Zero ryzyka.</p>
+                <ul class="offer-items">
+                    <li>Test diagnostyczny 15 pytań (3 minuty)</li>
+                    <li>Spersonalizowany raport PDF na email</li>
+                    <li>Rozdział 1 E-Booka: Neurobiologia Twojego ADHD</li>
+                    <li>Pierwsze nano-kroki do wdrożenia już dziś</li>
+                </ul>
+                <div style="text-align:center; margin-top: 10px;">
+                    <a href="index.html" class="btn btn-primary" id="free-cta">Zacznij za darmo →</a>
+                </div>
+            </div>
+
+            <!-- OTO 1 -->
+            <div class="offer-card" style="background: rgba(248,193,90,0.03); border: 1px solid rgba(248,193,90,0.12);">
+                <span class="offer-badge badge-oto1">⚡ OTO 1 — Solopreneur Kit</span>
+                <div class="offer-title">Pełny Pakiet A(I)-DHD</div>
+                <p class="offer-desc">Dostępny wyłącznie po ukończeniu audytu, za ułamek ceny regularnej. Masz profil — teraz dostajesz kompletny system.</p>
+                <ul class="offer-items">
+                    <li>Pełna wersja E-Booka (wszystkie 4 rozdziały)</li>
+                    <li>Kompletny Focus Prompt Kit (20 szablonów AI)</li>
+                    <li>Protokół Biohackingowy A(I)-DHD</li>
+                    <li>7-dniowy Rytuał Porannego Resetu</li>
+                    <li>Dostęp do zamkniętej społeczności Tribe</li>
+                </ul>
+                <div class="offer-price">49 PLN <span class="old">199 PLN</span></div>
+            </div>
+
+            <!-- OTO 2 -->
+            <div class="offer-card offer-paid">
+                <span class="offer-badge badge-oto2">🚀 OTO 2 — Systemization Masterclass</span>
+                <div class="offer-title">A(I)-DHD Automation & GCP Setup</div>
+                <p class="offer-desc">Pełne wdrożenie automatyzacji backendu. Jak połączyć CRM (Google Sheets), asystentów AI i automatyzacje n8n/Make — krok po kroku, bez płatnych narzędzi.</p>
+                <ul class="offer-items">
+                    <li>Wideo-przewodniki krok po kroku (konfiguracja GCP)</li>
+                    <li>Gotowe schematy automatyzacji n8n/Make do importu</li>
+                    <li>Instrukcja Monk Mode i Dziennika Dopaminowego</li>
+                    <li>Bezpośrednie wsparcie techniczne przy wdrożeniu</li>
+                </ul>
+                <div class="offer-price">197 PLN <span class="old">997 PLN</span></div>
+            </div>
+        </section>
+
+        <!-- === FOMO === -->
+        <div class="fomo-strip">
+            <div class="fomo-icon">⏰</div>
+            <div class="fomo-text">
+                <strong>Cena startowa dostępna przez ograniczony czas</strong>
+                <span>Pierwsze 50 osób otrzymuje bonusy + bezpośrednie wsparcie wdrożeniowe. Zostało: <strong id="slots-left">38</strong> miejsc.</span>
+            </div>
+            <div id="countdown">14:59</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- === GUARANTEE === -->
+        <div class="guarantee-box">
+            <span class="guarantee-icon">🛡️</span>
+            <div class="guarantee-title">30-dniowa Żelazna Gwarancja ADHD-Safe</div>
+            <p class="guarantee-text">
+                Jeśli w ciągu 30 dni stwierdzisz, że system nie pomógł Ci uciszyć chaosu, nie odciążył Twojej głowy — lub po prostu zapomniałeś o nim i leży nieużywany — napisz jednego maila. Oddajemy 100% środków bez pytań i bez żalu. <strong>Możesz zatrzymać wszystkie pobrane bonusy.</strong>
+            </p>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- === FAQ === -->
+        <section class="section" id="faq">
+            <p class="section-eyebrow">💬 FAQ</p>
+            <h2 class="section-title">Najczęstsze obawy<br>(i uczciwe odpowiedzi)</h2>
+
+            <div class="faq-list">
+                <div class="faq-item" id="faq-1">
+                    <button class="faq-q" onclick="toggleFaq('faq-1')" id="faq-btn-1">
+                        "Mam już Notion, Todoist i 10 innych aplikacji. Po co kolejna?"
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-a" id="faq-a-1">
+                        <div class="faq-a-inner">
+                            To nie jest kolejny organizer zadań. <strong>A(I)-DHD to system decyzji, startu i regulacji</strong> — nie narzędzie do zapisywania tasków. Notion nie rozbije Ci dnia na nano-kroki, nie napisze oferty za Ciebie i nie ma protokołu biohackingowego. To działa razem jako jeden ekosystem, a nie jako kolejna aplikacja do zarządzania.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-2">
+                    <button class="faq-q" onclick="toggleFaq('faq-2')" id="faq-btn-2">
+                        "Mam słomiany zapał. Boję się, że porzucę to po 3 dniach."
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-a" id="faq-a-2">
+                        <div class="faq-a-inner">
+                            <strong>Zaprojektowaliśmy to specjalnie pod słomiany zapał.</strong> Onboarding zajmuje 15 minut. Mamy tryb "Minimum Viable Day" — używasz systemu tylko gdy czujesz chaos, wylewasz myśli i dostajesz natychmiastową ulgę. Nie musisz wypełniać tabelek codziennie. A jeśli zapomnisz — masz 30 dni gwarancji zwrotu pełnej kwoty.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-3">
+                    <button class="faq-q" onclick="toggleFaq('faq-3')" id="faq-btn-3">
+                        "Mam problem z energią i przebodźcowaniem, a nie tylko z planowaniem."
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-a" id="faq-a-3">
+                        <div class="faq-a-inner">
+                            Dokładnie dlatego stworzyliśmy ten produkt. <strong>Większość aplikacji ADHD skupia się na task managerze, ignorując regulację układu nerwowego.</strong> A(I)-DHD łączy workflow z protokołem biohackingowym: rytm dobowy, Physiological Sigh, zimny prysznic, regulacja snu. Energia jest warunkiem wykonania — nie dodatkiem.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-4">
+                    <button class="faq-q" onclick="toggleFaq('faq-4')" id="faq-btn-4">
+                        "Czy to zastępuje terapię lub diagnozę psychiatryczną?"
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-a" id="faq-a-4">
+                        <div class="faq-a-inner">
+                            <strong>Nie.</strong> A(I)-DHD to narzędzie wspierające codzienne funkcjonowanie — nie diagnoza ani leczenie. Działa niezależnie od farmakoterapii, zarówno dla osób na lekach, jak i bez nich. Przeglądy naukowe potwierdzają skuteczność CBT, mindfulness, psychoedukacji i ruchu jako interwencji komplementarnych. Zachęcamy do konsultacji medycznej przy pytaniach zdrowotnych.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-5">
+                    <button class="faq-q" onclick="toggleFaq('faq-5')" id="faq-btn-5">
+                        "Czy to wymaga płatnych narzędzi lub subskrypcji?"
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-a" id="faq-a-5">
+                        <div class="faq-a-inner">
+                            <strong>Nie. Koszt stały: 0 PLN.</strong> Korzystamy w 100% z darmowych pakietów: Google Cloud Platform (Firebase, hosting), Google Sheets (CRM/baza danych) i Streamlit Cloud. Nie potrzebujesz Zapiera, Make'a, Airtable'a ani żadnego płatnego SaaS-a. Cały backend stoi na darmowym GCP Free Tier.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" id="faq-6">
+                    <button class="faq-q" onclick="toggleFaq('faq-6')" id="faq-btn-6">
+                        "Czy AI pisze sztucznym, bezdusznym językiem?"
+                        <span class="faq-arrow">▾</span>
+                    </button>
+                    <div class="faq-a" id="faq-a-6">
+                        <div class="faq-a-inner">
+                            To słuszna obawa — większość domyślnych promptów AI brzmi jak korporacyjny bełkot. <strong>Nasz Prompt Kit jest zaprojektowany specjalnie pod autentyczny styl osoby z ADHD</strong> — szybki, konkretny, z osobowością. Asystent uczy się Twojego stylu pisania i generuje treści, które naprawdę brzmią jak Ty. Plus — zawsze masz kontrolę i możesz edytować.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === FINAL CTA === -->
+        <section class="cta-section" id="start">
+            <h2 class="section-title">Gotowy na uciszenie chaosu?</h2>
+            <p class="section-lead" style="max-width: 480px; margin: 0 auto 32px;">
+                Zacznij od 3-minutowego, darmowego audytu. Bez konta, bez karty, bez zobowiązań. Odbierz spersonalizowany raport i pierwszy nano-krok jeszcze dziś.
+            </p>
+            <a href="index.html" class="btn btn-primary btn-large" id="final-cta">
+                🧠 Uruchom Darmowy Audyt AI-DHD
+            </a>
+            <p class="cta-label">🛡️ Chroniony 30-dniową gwarancją zwrotu · ☁️ Darmowy GCP Free Tier · 🤖 Zasilany AI</p>
+        </section>
+
+    </div>
+
+    <!-- === FOOTER === -->
+    <footer>
+        <div class="container">
+            <p>
+                © 2026 Holistic A(I)-DHD · Tomasz · Wszystkie prawa zastrzeżone<br>
+                <a href="#">Polityka Prywatności</a> · <a href="#">Regulamin</a> · <a href="mailto:kontakt@holistic-aidhd.pl">Kontakt</a><br>
+                <small>Produkt ma charakter edukacyjny i nie zastępuje diagnozy ani leczenia psychiatrycznego.</small>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // === Reading Progress Bar ===
+        window.addEventListener('scroll', () => {
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / total) * 100;
+            document.getElementById('reading-bar').style.width = progress + '%';
+        });
+
+        // === Countdown Timer (15 min, resets on reload) ===
+        let seconds = 14 * 60 + 59;
+        const countdownEl = document.getElementById('countdown');
+
+        function updateCountdown() {
+            if (seconds <= 0) {
+                countdownEl.textContent = '00:00';
+                return;
+            }
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            countdownEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+            seconds--;
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // === FAQ Accordion ===
+        function toggleFaq(id) {
+            const item = document.getElementById(id);
+            const isOpen = item.classList.contains('open');
+
+            // Close all
+            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+
+            // Open clicked if was closed
+            if (!isOpen) item.classList.add('open');
+        }
+
+        // === Intersection Observer for fade-in ===
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section, .comparison-section, .offer-section').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
