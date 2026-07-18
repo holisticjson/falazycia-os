@@ -118,5 +118,17 @@
         "raw_text": "Jakie w Hiszpanii aktualnie jest prawo, jeśli chodzi o nieruchomości, księgi wieczyste, prawo bankowe w sytuacji, gdy bank udziela kredytu na zakup nieruchomości, to strona sprzedająca, strona umowy musi być w 100% właścicielem nieruchomości, czy na przykład może?  być związana umową przedstępną od docelowego właściciela tej nieruchomości i wystawić, podpisać umowę umowę przedstępną z docelowym kupującym, który po prostu finansuje ten zakup kredytem.  hipotecznym na tą nieruchomość.",
         "corrected_text": "Jakie w Hiszpanii aktualnie jest prawo, jeśli chodzi o nieruchomości, księgi wieczyste, prawo bankowe w sytuacji, gdy bank udziela kredytu na zakup nieruchomości, to strona sprzedająca, strona umowy musi być w 100% właścicielem nieruchomości, czy na przykład może?  być związana umową przedstępną od docelowego właściciela tej nieruchomości i wystawić, podpisać umowę umowę przedstępną z docelowym kupującym, który po prostu finansuje ten zakup kredytem.  hipotecznym na tą nieruchomość.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 16:39:59",
+        "raw_text": "Ok, a jakie podatki są, jakie podatki płaci w tej sytuacji sprzedający? W takiej gminie na przykład Walencja.",
+        "corrected_text": "Ok, a jakie podatki są, jakie podatki płaci w tej sytuacji sprzedający? W takiej gminie na przykład Walencja.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 16:40:47",
+        "raw_text": "Dobra, jakie są podatki, jaką wysokość podatku od wartości umowy płaci w takiej sytuacji sprzedający ta strona pierwsza A przed pośrednikiem, na przykład dla takiej gminy Walencja, czy tam prowincji Walencja, czy gminy, nie wiem jak tam się to nazywa.",
+        "corrected_text": "Dobra, jakie są podatki, jaką wysokość podatku od wartości umowy płaci w takiej sytuacji sprzedający ta strona pierwsza A przed pośrednikiem, na przykład dla takiej gminy Walencja, czy tam prowincji Walencja, czy gminy, nie wiem jak tam się to nazywa.",
+        "status": "raw_fallback"
     }
 ]
