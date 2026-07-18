@@ -737,7 +737,7 @@ def render_lead_radar_page(call_gemini_pro_api_func):
         "viptransporter.pl": "viptransporter",
         "kantororanzada.pl": "kantor_lombard_oranzada",
         "vojsik.ai": "vojsik_ai",
-        "apps.jaison.pl (SaaS)": "apps.jaison.pl"
+        "app.jaison.pl (SaaS)": "apps.jaison.pl"
     }
     
     profile_content = None

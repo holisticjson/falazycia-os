@@ -94,7 +94,7 @@ def get_selected_context_data():
         "viptransporter.pl": "viptransporter",
         "kantororanzada.pl": "kantor_lombard_oranzada",
         "vojsik.ai": "vojsik_ai",
-        "apps.jaison.pl (SaaS)": "apps.jaison.pl"
+        "app.jaison.pl (SaaS)": "apps.jaison.pl"
     }
     
     dir_name = mapping.get(ctx_name)
@@ -140,7 +140,7 @@ def get_selected_context_data():
             context_str += "Typ: Usługi B2B / Automatyzacje AI & n8n\nOpis: Oficjalny profil agencji jaison.pl dostarczającej systemy AI dla firm.\n"
         elif ctx_name == "Holistic Jason":
             context_str += "Typ: Marka Osobista / Edukacja ADHD\nOpis: Społeczność ADHD4life i doradztwo energetyczne.\n"
-        elif ctx_name == "Własne SaaS (jaison.pl)":
+        elif ctx_name == "app.jaison.pl (SaaS)":
             context_str += "Typ: SaaS / Platforma App\nOpis: Portal app.jaison.pl zintegrowany z agentami agencji Jaison.\n"
             
     context_str += "-----------------------------------------------------\n"
@@ -1563,7 +1563,7 @@ with st.sidebar:
     st.markdown("<p style='color: #10B981; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 6px; margin-top: 5px;'>0. KONTEKST KLIENTA</p>", unsafe_allow_html=True)
     
     # Wczytaj dostepne konteksty dynamicznie z realnego folderu klientów
-    available_contexts = ["J(AI)SON Agency", "Holistic Jason", "Własne SaaS (jaison.pl)"]
+    available_contexts = ["J(AI)SON Agency", "Holistic Jason", "app.jaison.pl (SaaS)"]
     real_clients_dir = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS"
     
     if os.path.exists(real_clients_dir):
@@ -1575,7 +1575,7 @@ with st.sidebar:
             "viptransporter": "viptransporter.pl",
             "kantor_lombard_oranzada": "kantororanzada.pl",
             "vojsik_ai": "vojsik.ai",
-            "apps.jaison.pl": "apps.jaison.pl (SaaS)"
+            "apps.jaison.pl": "app.jaison.pl (SaaS)"
         }
         for item in os.listdir(real_clients_dir):
             if os.path.isdir(os.path.join(real_clients_dir, item)):
@@ -5599,49 +5599,103 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                         )
                         
                 with col_i2:
-                    st.write("##### 🖼️ 3. Generowanie Banneru Dostosowanego pod Platformę:")
+                    st.write("##### 🖼️ 3. Generowanie Kreacji, Banneru lub Grafiki pod Platformę:")
                     
                     platform_specs = {
-                        "LinkedIn Banner (💼)": {
+                        "👤 Awatar / Zdjęcie Profilowe (Standard 1:1)": {
+                            "aspect_imagen": "1:1",
+                            "aspect_flux": "square_hd",
+                            "dimensions": "800 x 800 px (Kwadrat 1:1)",
+                            "guide": "👤 Idealny format na spójny awatar lub zdjęcie profilowe (LinkedIn, FB, X, YT, Instagram). Skupia się na twarzy, kadr centralny.",
+                        },
+                        "👔 Portret Biznesowy (Klasyczny Kwadrat 1:1)": {
+                            "aspect_imagen": "1:1",
+                            "aspect_flux": "square_hd",
+                            "dimensions": "1080 x 1080 px (Kwadrat 1:1)",
+                            "guide": "💼 Profesjonalny kadr od klatki piersiowej w górę, doskonały do sekcji 'O nas', wizytówek, stopki e-mail i artykułów.",
+                        },
+                        "💼 LinkedIn Banner (Szeroki)": {
                             "aspect_imagen": "16:9",
                             "aspect_flux": "landscape_16_9",
-                            "dimensions": "1584 x 396 px (Proporcje ok. 4:1)",
+                            "dimensions": "1584 x 396 px (Panoramiczny)",
                             "guide": "⚠️ Zdjęcie profilowe zasłania lewy dolny róg na desktopie, a na telefonie jest wyśrodkowane. Slogan i grafika będą w prawej części bezpiecznej.",
                         },
-                        "Facebook Cover (👥)": {
+                        "👥 Facebook Cover (Standardowy)": {
                             "aspect_imagen": "16:9",
                             "aspect_flux": "landscape_16_9",
-                            "dimensions": "851 x 315 px",
+                            "dimensions": "851 x 315 px (Poziomy)",
                             "guide": "⚠️ Zdjęcie profilowe na komputerze znajduje się po lewej stronie, więc slogan zostanie przesunięty ku prawej stronie.",
                         },
-                        "Twitter/X Banner (🐦)": {
+                        "🐦 Twitter/X Banner (Szeroki)": {
                             "aspect_imagen": "16:9",
                             "aspect_flux": "landscape_16_9",
                             "dimensions": "1500 x 500 px (Proporcje 3:1)",
                             "guide": "⚠️ Zdjęcie profilowe na Twitterze zasłania dolny lewy narożnik bannera. Slogan i kluczowa grafika zostaną przesunięte w prawo i lekko w górę.",
                         },
-                        "YouTube Banner (🎵)": {
+                        "🎵 YouTube Banner (Panoramiczny)": {
                             "aspect_imagen": "16:9",
                             "aspect_flux": "landscape_16_9",
                             "dimensions": "2048 x 1152 px (Proporcje 16:9)",
                             "guide": "⚠️ Środkowa część 1546x423 px to strefa bezpieczna na komputery i telefony. Slogan po prawej stronie.",
                         },
-                        "Instagram Post (📸)": {
-                            "aspect_imagen": "1:1",
-                            "aspect_flux": "square_hd",
-                            "dimensions": "1080 x 1080 px",
-                            "guide": "⚠️ Format kwadratowy na Instagram. Kompozycja wyśrodkowana z luksusowymi akcentami.",
-                        },
-                        "Threads Cover (💬)": {
+                        "💬 Threads Cover (Szeroki)": {
                             "aspect_imagen": "16:9",
                             "aspect_flux": "landscape_16_9",
-                            "dimensions": "1080 x 360 px",
+                            "dimensions": "1080 x 360 px (Poziomy)",
                             "guide": "⚠️ Styl minimalistyczny z dużą ilością wolnej przestrzeni (negative space) i sloganem po prawej stronie.",
+                        },
+                        "🌐 Web Hero Section (Główny baner strony 16:9)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "1920 x 1080 px (FHD 16:9)",
+                            "guide": "🖥️ Główny baner strony (Hero Section). Lewa/środkowa strona powinna mieć przestrzeń na nagłówki i przyciski. Kompozycja zbalansowana pod mobile i desktop.",
+                        },
+                        "🖥️ Web Section Background (Tło sekcji 4:3)": {
+                            "aspect_imagen": "4:3",
+                            "aspect_flux": "landscape_4_3",
+                            "dimensions": "1200 x 900 px (Format 4:3)",
+                            "guide": "📐 Grafika obok bloków tekstu lub tło funkcji. Idealna proporcja dla czytelności i symetrii w sekcjach produktowych.",
+                        },
+                        "📝 Blog Post Header (Baner artykułu)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "1200 x 630 px (Optymalny 16:9)",
+                            "guide": "✍️ Nagłówek artykułu blogowego. Kluczowe elementy są w centrum, dzięki czemu miniatura wygląda zjawiskowo na liście wpisów.",
+                        },
+                        "🎥 YouTube Thumbnail (Miniaturka wideo)": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "1280 x 720 px (Format HD)",
+                            "guide": "📽️ Miniaturka na YouTube. Umieść postać po prawej lub lewej stronie z mocnym kontrastem. Prawy dolny róg zostaw wolny na licznik czasu (timecode)!",
+                        },
+                        "🔗 Social Sharing Card / OG Link Cover": {
+                            "aspect_imagen": "16:9",
+                            "aspect_flux": "landscape_16_9",
+                            "dimensions": "1200 x 630 px (Wymiar OpenGraph)",
+                            "guide": "🔗 Miniaturka generowana po wklejeniu linku w social media (LinkedIn, FB, X, Slack, Discord). Wyśrodkowana kompozycja zapobiega ucięciu detali.",
+                        },
+                        "📱 Shorts / Reels / TikTok Cover (Pion 9:16)": {
+                            "aspect_imagen": "9:16",
+                            "aspect_flux": "portrait_16_9",
+                            "dimensions": "1080 x 1920 px (Pionowy)",
+                            "guide": "📱 Pionowa okładka wideo. Złota strefa bezpieczna to środkowe 1080x1350 px. Górne i dolne krawędzie są zasłonięte przez interfejs platformy.",
+                        },
+                        "📌 Pinterest Pin (Pionowy Portret 2:3)": {
+                            "aspect_imagen": "3:4",
+                            "aspect_flux": "portrait_4_3",
+                            "dimensions": "1000 x 1500 px (Pionowy 2:3 / 3:4)",
+                            "guide": "📌 Wydłużona grafika generująca wysokie kliki w wyszukiwarce Pinterest. Slogan umieszczony w górnej lub środkowej części.",
+                        },
+                        "📸 Instagram Post (Klasyczny Kwadrat)": {
+                            "aspect_imagen": "1:1",
+                            "aspect_flux": "square_hd",
+                            "dimensions": "1080 x 1080 px (Kwadrat)",
+                            "guide": "🎨 Tradycyjny kwadratowy post. Idealnie wyśrodkowana kompozycja, wysoki kontrast, idealne do feedu i karuzeli.",
                         }
                     }
                     
                     selected_platform = st.selectbox(
-                        "Wybierz platformę społecznościową:",
+                        "Wybierz platformę / format docelowy:",
                         list(platform_specs.keys()),
                         key="visuals_platform_select"
                     )
@@ -5666,7 +5720,7 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                     )
                     
                     banner_style_select = st.selectbox(
-                        "Wybierz Styl Wizualny Banera:", 
+                        "Wybierz Styl Wizualny Banera / Grafiki:", 
                         [
                             "🌌 Styl A: Cybernetic Hub (AI systems & Neural Networks)",
                             "🌿 Styl B: Cozy Server Sanctuary (Biohacking, Nature & Tech)",
@@ -5690,20 +5744,20 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                     include_char_in_banner = False
                     if "Flux LoRA" in engine_mode and has_lora:
                         include_char_in_banner = st.checkbox(
-                            "Dodaj moją postać (LoRA) do bannera", 
+                            "Dodaj moją postać (LoRA) do grafiki", 
                             value=True, 
                             key="suite_banner_include_char",
-                            help="Jeśli zaznaczone, Twoja sylwetka/twarz zostanie wkomponowana po lewej stronie, zgodnie z wytycznymi kompozycji."
+                            help="Jeśli zaznaczone, Twoja sylwetka/twarz zostanie wkomponowana zgodnie z wytycznymi kompozycji."
                         )
                     elif not has_lora:
                         include_char_in_banner = st.checkbox(
-                            "Dodaj sylwetkę postaci do bannera", 
+                            "Dodaj sylwetkę postaci do grafiki", 
                             value=False, 
                             key="suite_banner_include_char_base",
-                            help="Jeśli zaznaczone, ogólna sylwetka postaci zostanie wkomponowana po lewej stronie."
+                            help="Jeśli zaznaczone, ogólna sylwetka postaci zostanie wkomponowana w kadr."
                         )
 
-                    if st.button("Generuj Banner (Imagen 3 / Flux LoRA)", type="primary", use_container_width=True, key="suite_banner_gen_btn_dynamic"):
+                    if st.button("Generuj Grafikę (Imagen 3 / Flux LoRA)", type="primary", use_container_width=True, key="suite_banner_gen_btn_dynamic"):
                         if include_char_in_banner:
                             if "Flux LoRA" in engine_mode and has_lora:
                                 char_part = f"On the left side, there is a professional, high-end realistic side-profile or silhouette portrait of {st.session_state.lora_trigger_word} person looking confident, integrated seamlessly into the environment. "
@@ -5735,7 +5789,7 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                             if not has_lora:
                                 st.error("⚠️ Brak aktywnej LoRA!")
                             else:
-                                with st.spinner("Model Flux-LoRA buduje spersonalizowany banner..."):
+                                with st.spinner("Model Flux-LoRA buduje spersonalizowaną grafikę..."):
                                     from integrations.fal_ai import run_flux_lora_generation
                                     img_bytes, err = run_flux_lora_generation(
                                         full_prompt, 
@@ -5747,36 +5801,78 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                                         st.error(f"Fal.ai API Error: {err}")
                                     elif img_bytes:
                                         st.session_state.sm_generated_banner = img_bytes
-                                        st.success("Spersonalizowany banner LoRA wygenerowany!")
+                                        st.success("Spersonalizowana grafika LoRA wygenerowana!")
                         else:
-                            with st.spinner("Model Imagen 3.0 buduje banner..."):
+                            with st.spinner("Model Imagen 3.0 buduje grafikę..."):
                                 img_bytes, err = generate_imagen_image(full_prompt, aspect_ratio=specs["aspect_imagen"])
                                 if err:
                                     st.error(f"GCP API Error: {err}")
                                 elif img_bytes:
                                     st.session_state.sm_generated_banner = img_bytes
-                                    st.success("Banner wygenerowany pomyślnie!")
+                                    st.success("Grafika wygenerowana pomyślnie!")
                                     
                     if "sm_generated_banner" in st.session_state:
-                        st.image(st.session_state.sm_generated_banner, caption=f"Twój banner dla {selected_platform}", use_container_width=True)
+                        st.image(st.session_state.sm_generated_banner, caption=f"Twój obraz dla {selected_platform}", use_container_width=True)
+                        safe_name = "".join([c for c in selected_platform if c.isalnum() or c in " _-"]).strip().replace(" ", "_").lower()
                         st.download_button(
-                            label="💾 Pobierz Banner (PNG)",
+                            label="💾 Pobierz Grafikę (PNG)",
                             data=st.session_state.sm_generated_banner,
-                            file_name=f"jaison_banner_{selected_platform.split()[0].lower()}.png",
+                            file_name=f"jaison_{safe_name}.png",
                             mime="image/png",
                             use_container_width=True,
                             key="suite_banner_dl_btn_dynamic"
                         )
-                        st.markdown("""
-                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19; text-align: center; padding: 15px;">
-                            <span style="color: #10B981; font-weight: bold; font-size: 0.95rem;">👁️ Podgląd strefy Mobile Safe-Zone (Środkowe 60%)</span>
-                            <div style="position: relative; width: 100%; aspect-ratio: 16/9; margin-top: 10px; background-size: cover; background-position: center; border: 1px dashed #EC4899;">
-                                <div style="position: absolute; left: 20%; right: 20%; top: 10%; bottom: 10%; border: 2px solid #10B981; background: rgba(16, 185, 129, 0.1); display: flex; align-items: center; justify-content: center;">
-                                    <span style="color: #10B981; font-weight: bold; font-size: 0.8rem; text-shadow: 0 1px 4px #000;">ZŁOTA STREFA (Smartfony)</span>
+                        
+                        # Dynamiczny podgląd strefy bezpiecznej w zależności od wybranego formatu
+                        if "Pion" in selected_platform or "Pinterest" in selected_platform:
+                            preview_html = """
+                            <div style="position: relative; width: 100%; max-width: 320px; margin: 15px auto 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19; text-align: center; padding: 15px;">
+                                <span style="color: #A78BFA; font-weight: bold; font-size: 0.9rem;">👁️ Strefa Bezpieczna Mobile (Pion 9:16)</span>
+                                <div style="position: relative; width: 100%; aspect-ratio: 9/16; margin-top: 10px; background: #111827; border: 1px dashed #6D28D9; border-radius: 8px;">
+                                    <div style="position: absolute; left: 0; right: 0; top: 15%; bottom: 15%; border: 2px solid #A78BFA; background: rgba(167, 139, 250, 0.15); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                                        <span style="color: #C084FC; font-weight: bold; font-size: 0.85rem; text-shadow: 0 1px 4px #000;">🌟 ZŁOTA STREFA</span>
+                                        <span style="color: #E9D5FF; font-size: 0.7rem; text-shadow: 0 1px 4px #000;">Widoczna na każdym telefonie</span>
+                                    </div>
+                                    <div style="position: absolute; top: 0; left: 0; right: 0; height: 15%; background: rgba(239, 68, 68, 0.15); display: flex; align-items: center; justify-content: center;">
+                                        <span style="color: #F87171; font-size: 0.65rem;">⚠️ UI profilu</span>
+                                    </div>
+                                    <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 15%; background: rgba(239, 68, 68, 0.15); display: flex; align-items: center; justify-content: center;">
+                                        <span style="color: #F87171; font-size: 0.65rem;">⚠️ Opisy i ikony</span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        """, unsafe_allow_html=True)
+                            """
+                        elif "Awatar" in selected_platform or "Portret" in selected_platform or "Instagram" in selected_platform:
+                            preview_html = """
+                            <div style="position: relative; width: 100%; max-width: 320px; margin: 15px auto 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19; text-align: center; padding: 15px;">
+                                <span style="color: #10B981; font-weight: bold; font-size: 0.9rem;">👁️ Pełna Kompatybilność (Kwadrat 1:1)</span>
+                                <div style="position: relative; width: 100%; aspect-ratio: 1/1; margin-top: 10px; background: #111827; border: 1px dashed #10B981; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                                    <div style="border-radius: 50%; width: 80%; height: 80%; border: 2px dashed #3B82F6; background: rgba(59, 130, 246, 0.1); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                                        <span style="color: #60A5FA; font-weight: bold; font-size: 0.85rem;">🔵 KADR OKRĄGŁY</span>
+                                        <span style="color: #93C5FD; font-size: 0.7rem;">Bezpieczna krawędź awatara</span>
+                                    </div>
+                                </div>
+                            </div>
+                            """
+                        else:
+                            preview_html = """
+                            <div style="position: relative; width: 100%; max-width: 600px; margin: 15px auto 0 auto; border: 2px solid #334155; border-radius: 12px; overflow: hidden; background: #0B0F19; text-align: center; padding: 15px;">
+                                <span style="color: #10B981; font-weight: bold; font-size: 0.9rem;">👁️ Podgląd strefy Mobile Safe-Zone (Środkowe 60%)</span>
+                                <div style="position: relative; width: 100%; aspect-ratio: 16/9; margin-top: 10px; background: #111827; border: 1px dashed #EC4899; border-radius: 8px;">
+                                    <div style="position: absolute; left: 15%; right: 15%; top: 10%; bottom: 10%; border: 2px solid #10B981; background: rgba(16, 185, 129, 0.15); display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                                        <span style="color: #34D399; font-weight: bold; font-size: 0.85rem; text-shadow: 0 1px 4px #000;">🌟 ZŁOTA STREFA (Smartfony)</span>
+                                        <span style="color: #A7F3D0; font-size: 0.7rem; text-shadow: 0 1px 4px #000;">Slogan & Twarz powinny być tutaj</span>
+                                    </div>
+                                    <div style="position: absolute; left: 0; width: 15%; top: 0; bottom: 0; background: rgba(239, 68, 68, 0.15); display: flex; align-items: center; justify-content: center;">
+                                        <span style="color: #F87171; font-size: 0.6rem; writing-mode: vertical-lr; transform: rotate(180deg);">⚠️ Margines boczny</span>
+                                    </div>
+                                    <div style="position: absolute; right: 0; width: 15%; top: 0; bottom: 0; background: rgba(239, 68, 68, 0.15); display: flex; align-items: center; justify-content: center;">
+                                        <span style="color: #F87171; font-size: 0.6rem; writing-mode: vertical-lr;">⚠️ Margines boczny</span>
+                                    </div>
+                                </div>
+                            </div>
+                            """
+                        st.markdown(preview_html, unsafe_allow_html=True)
 
         # --- TOOL 6: LANDING PAGE BUILDER ---
         elif tool == "Landing_Page":
