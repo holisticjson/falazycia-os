@@ -177,8 +177,8 @@ except AttributeError:
     pass
 
 st.set_page_config(
-    page_title="Holistic AIDHD OS • Mission Control",
-    page_icon="🧠",
+    page_title="JAISON OS • Mission Control",
+    page_icon="✨",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -234,21 +234,21 @@ KANBAN_FILE = os.path.join(DASHBOARD_DIR, "kanban.json")
 for d in [NOTEBOOKS_DIR, OBSIDIAN_DIR, DASHBOARD_DIR, BRAIN_DUMP_DIR, BRAIN_DUMP_ASSETS, HERMES_DIR]:
     os.makedirs(d, exist_ok=True)
 
-# Luksusowy nocny design zoptymalizowany pod ADHD (Outfit & Atkinson)
+# Luksusowy, kosmiczny design dopasowany do logo JAISON OS (fiolety, neony, sparkles i akcenty teal)
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
     
-    /* Globalny reset barw i typografii */
+    /* Globalny reset barw i luksusowa typografia */
     .stApp {
-        background-color: #08090C !important;
+        background-color: #040508 !important;
         color: #E2E8F0 !important;
         font-family: 'Atkinson Hyperlegible', sans-serif !important;
     }
     
     [data-testid="stSidebar"] {
-        background-color: #0E1015 !important;
-        border-right: 1px solid #1F242E !important;
+        background-color: #080A10 !important;
+        border-right: 1px solid rgba(167, 139, 250, 0.12) !important;
     }
     
     h1, h2, h3, h4, h5, h6 {
@@ -257,53 +257,58 @@ st.markdown("""
         font-weight: 600 !important;
     }
     
-    /* Luksusowe karty z efektem neonowego obramowania po najechaniu */
+    /* Animowane, luksusowe karty z efektem neonowego fioletowo-tealowego obramowania */
     .custom-card {
-        background-color: #121620;
-        border: 1px solid #1E2535;
-        border-radius: 14px;
+        background: linear-gradient(135deg, #0A0D18 0%, #0F1326 100%);
+        border: 1px solid rgba(167, 139, 250, 0.15);
+        border-radius: 16px;
         padding: 24px;
         margin-bottom: 20px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     
     .custom-card:hover {
-        border-color: #7C3AED;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 30px rgba(124, 58, 237, 0.15);
+        border-color: #14B8A6;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 32px rgba(20, 184, 166, 0.18), 0 0 15px rgba(167, 139, 250, 0.1);
     }
     
-    /* Banner One Thing - eliminacja szumu kognitywnego */
+    /* Banner One Thing - eliminacja szumu z gradientem fiolet-teal */
     .one-thing-banner {
-        background: linear-gradient(135deg, #181528 0%, #0E1015 100%);
-        border-left: 6px solid #F59E0B;
-        border-radius: 14px;
+        background: linear-gradient(135deg, #100E26 0%, #080A12 100%);
+        border-left: 6px solid #14B8A6;
+        border-radius: 16px;
         padding: 30px;
         margin-bottom: 30px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+        border-top: 1px solid rgba(167, 139, 250, 0.08);
+        border-right: 1px solid rgba(167, 139, 250, 0.08);
+        border-bottom: 1px solid rgba(167, 139, 250, 0.08);
     }
     
     /* Zaokrąglone przyciski premium (globalnie dla stButton) */
     .stButton>button {
-        background: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%) !important;
+        background: linear-gradient(135deg, #7C3AED 0%, #0D9488 100%) !important;
         color: #FFFFFF !important;
-        border: 1px solid #7C3AED !important;
-        border-radius: 10px !important;
+        border: 1px solid rgba(167, 139, 250, 0.3) !important;
+        border-radius: 12px !important;
         padding: 10px 20px !important;
         font-family: 'Outfit', sans-serif !important;
         font-weight: 600 !important;
         transition: all 0.25s ease !important;
         width: 100%;
-        box-shadow: 0 4px 15px rgba(109, 40, 217, 0.3) !important;
+        box-shadow: 0 4px 15px rgba(124, 58, 237, 0.25) !important;
+        letter-spacing: 0.5px;
     }
     
     .stButton>button:hover {
-        background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%) !important;
+        background: linear-gradient(135deg, #8B5CF6 0%, #14B8A6 100%) !important;
         transform: translateY(-1px) !important;
-        box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5) !important;
+        box-shadow: 0 6px 22px rgba(20, 184, 166, 0.45) !important;
+        border-color: #FFFFFF !important;
     }
-
+ 
     /* Kafelki Nawigacyjne w Pasku Bocznym (ADHD Tiles) */
     div[data-testid="stSidebar"] .stButton>button {
         text-align: left !important;
@@ -312,7 +317,7 @@ st.markdown("""
         margin-bottom: 2px !important;
         width: 100% !important;
     }
-
+ 
     div[data-testid="stSidebar"] .stButton>button[kind="secondary"] {
         background: transparent !important;
         color: #94A3B8 !important;
@@ -320,34 +325,34 @@ st.markdown("""
         box-shadow: none !important;
         font-weight: 500 !important;
     }
-
+ 
     div[data-testid="stSidebar"] .stButton>button[kind="secondary"]:hover {
-        background: rgba(124, 58, 237, 0.1) !important;
-        border-color: #7C3AED !important;
+        background: rgba(167, 139, 250, 0.08) !important;
+        border-color: rgba(167, 139, 250, 0.3) !important;
         color: #FFFFFF !important;
         transform: translateY(-1px) !important;
-        box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15) !important;
+        box-shadow: 0 4px 12px rgba(167, 139, 250, 0.1) !important;
     }
-
+ 
     div[data-testid="stSidebar"] .stButton>button[kind="primary"] {
-        background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%) !important;
+        background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%) !important;
         color: #FFFFFF !important;
-        border: 1px solid #C084FC !important;
-        box-shadow: 0 0 15px rgba(124, 58, 237, 0.35) !important;
+        border: 1px solid rgba(167, 139, 250, 0.4) !important;
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.35) !important;
         font-weight: 700 !important;
     }
     
     div[data-testid="stSidebar"] .stButton>button[kind="primary"]:hover {
         transform: translateY(-1px) !important;
-        box-shadow: 0 0 20px rgba(124, 58, 237, 0.5) !important;
+        box-shadow: 0 0 20px rgba(139, 92, 246, 0.5) !important;
     }
     
     /* ADHD-friendly akcenty kolorystyczne */
-    .dopamine-accent { color: #10B981; font-weight: bold; }
-    .burn-accent { color: #EF4444; font-weight: bold; }
+    .dopamine-accent { color: #14B8A6; font-weight: bold; }
+    .burn-accent { color: #F43F5E; font-weight: bold; }
     .focus-accent { color: #F59E0B; font-weight: bold; }
-
-    /* Pływający Przycisk Szybkiego Zapisu (FAB) zoptymalizowany pod Streamlit DOM */
+ 
+    /* Pływający Przycisk Szybkiego Zapisu (FAB) */
     .fab-wrapper {
         display: none !important;
     }
@@ -367,9 +372,9 @@ st.markdown("""
         width: 60px !important;
         height: 60px !important;
         border-radius: 50% !important;
-        background: radial-gradient(circle, #EC4899 0%, #D946EF 100%) !important;
-        border: 2px solid #F472B6 !important;
-        box-shadow: 0 0 15px rgba(236, 72, 153, 0.6) !important;
+        background: radial-gradient(circle, #8B5CF6 0%, #14B8A6 100%) !important;
+        border: 2px solid #A78BFA !important;
+        box-shadow: 0 0 15px rgba(139, 92, 246, 0.6) !important;
         font-size: 28px !important;
         padding: 0 !important;
         display: flex !important;
@@ -378,31 +383,42 @@ st.markdown("""
         transition: all 0.3s ease !important;
         animation: pulse-fab 2s infinite !important;
     }
-
+ 
     div:has(> .fab-wrapper) + div div.stButton > button:hover {
-        background: radial-gradient(circle, #D946EF 0%, #C084FC 100%) !important;
-        box-shadow: 0 0 25px rgba(236, 72, 153, 0.9) !important;
+        background: radial-gradient(circle, #A78BFA 0%, #2DD4BF 100%) !important;
+        box-shadow: 0 0 25px rgba(20, 184, 166, 0.9) !important;
         transform: scale(1.08) !important;
     }
-
+ 
     @keyframes pulse-fab {
         0% {
-            box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7);
+            box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
             transform: scale(1);
         }
         70% {
-            box-shadow: 0 0 0 15px rgba(236, 72, 153, 0);
+            box-shadow: 0 0 0 15px rgba(139, 92, 246, 0);
             transform: scale(1.05);
         }
         100% {
-            box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+            box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
             transform: scale(1);
         }
-    }tant;
     }
 </style>
-
 """, unsafe_allow_html=True)
+
+import base64
+def get_image_base64(path):
+    if os.path.exists(path):
+        try:
+            with open(path, "rb") as image_file:
+                return base64.b64encode(image_file.read()).decode('utf-8')
+        except:
+            pass
+    return ""
+
+logo_path_sparkles = r"C:\Aplikacje MVP\03_SOFTWARE_AND_APPS\jaison_komunikator\web\app_icon_jaison_sparkles.png"
+logo_base64 = get_image_base64(logo_path_sparkles)
 
 # ==========================================
 # SECURE BASIC AUTHENTICATION WRAPPER
@@ -417,10 +433,16 @@ if not st.session_state.authenticated:
     st.markdown("<br><br>", unsafe_allow_html=True)
     col_login, col_center, col_right = st.columns([1, 1.5, 1])
     with col_center:
-        st.markdown("""
-        <div style="background: linear-gradient(135deg, #0F131E 0%, #151A2E 100%); border: 1px solid #2A3655; border-radius: 20px; padding: 40px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6); text-align: center;">
-            <h2 style="color: #FFFFFF; font-family: Outfit; font-weight: 700; margin-bottom: 10px;">🧠 Holistic OS</h2>
-            <p style="color: #94A3B8; font-size: 0.9rem; margin-bottom: 30px;">Zabezpieczony panel dyrektorski Jaison Agent Agency</p>
+        if logo_base64:
+            logo_html = f'<div style="text-align: center;"><img src="data:image/png;base64,{logo_base64}" style="width: 100px; height: 100px; margin-bottom: 15px; filter: drop-shadow(0 0 15px rgba(167, 139, 250, 0.65));"></div>'
+        else:
+            logo_html = '<div style="text-align: center;"><h1 style="font-size: 4rem; margin-bottom: 10px;">✨</h1></div>'
+            
+        st.markdown(f"""
+        <div style="background: linear-gradient(135deg, #0A0D1A 0%, #11152B 100%); border: 1px solid rgba(167, 139, 250, 0.25); border-radius: 24px; padding: 40px; box-shadow: 0 12px 50px rgba(0, 0, 0, 0.7); text-align: center;">
+            {logo_html}
+            <h2 style="color: #FFFFFF; font-family: Outfit; font-weight: 800; margin-bottom: 10px; letter-spacing: 1.5px; text-shadow: 0 0 15px rgba(167, 139, 250, 0.4);">JAISON OS</h2>
+            <p style="color: #94A3B8; font-size: 0.9rem; margin-bottom: 10px;">Zabezpieczony panel dyrektorski Jaison Agent Agency</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -1524,9 +1546,18 @@ if "current_page" not in st.session_state:
 
 # PASEK BOCZNY - Skrajnie estetyczny z kafelkami zoptymalizowanymi pod ADHD (Styl Julian Goldie)
 with st.sidebar:
-    st.markdown("<h2 style='text-align: center; color: #7C3AED; font-family: Outfit; margin-bottom: 0;'>🧠 Holistic OS</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 5px; margin-bottom: 10px;'>Agentic OS Mission Control v7.0</p>", unsafe_allow_html=True)
-    st.markdown("<hr style='margin: 10px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
+    if logo_base64:
+        st.markdown(f"""
+        <div style="text-align: center; padding-top: 10px; padding-bottom: 5px;">
+            <img src="data:image/png;base64,{logo_base64}" style="width: 100px; height: 100px; filter: drop-shadow(0 0 12px rgba(167, 139, 250, 0.5));">
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.markdown("<div style='text-align: center; font-size: 3rem; padding-top:10px;'>✨</div>", unsafe_allow_html=True)
+        
+    st.markdown("<h2 style='text-align: center; color: #FFFFFF; font-family: Outfit; margin-bottom: 0; margin-top: -5px; font-weight: 800; letter-spacing: 1.5px; text-shadow: 0 0 15px rgba(167, 139, 250, 0.4);'>JAISON OS</h2>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 5px; margin-bottom: 10px;'>Agentic OS Mission Control v8.0</p>", unsafe_allow_html=True)
+    st.markdown("<hr style='margin: 10px 0; border-color: rgba(167, 139, 250, 0.15);'>", unsafe_allow_html=True)
     
     # 0. KONTEKST
     st.markdown("<p style='color: #10B981; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-bottom: 6px; margin-top: 5px;'>0. KONTEKST KLIENTA</p>", unsafe_allow_html=True)
@@ -1913,7 +1944,7 @@ Działasz w oparciu o powyższy wspólny kontekst. Twój styl jest krótki, prec
 if menu == "🎯 Mission Control":
 
     st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>I. — MISSION CONTROL</p>", unsafe_allow_html=True)
-    st.title("🧠 Agentic Mission Control")
+    st.title("✨ JAISON OS")
     st.subheader("Status of every agent, every memory, every signal.")
     
     # Górny pasek statusów (System Status Row)
