@@ -55,6 +55,90 @@ Zarządzanie środowiskiem Google Cloud Platform (GCP), w szczególności archit
 - Połącz kalendarz z webhookiem **n8n**, który przy każdym nowym zapisie wysyła automatyczny SMS z potwierdzeniem oraz wyzwala powiadomienie CRM do doradców na WhatsApp za pomocą API.
 
 
+## SOP: Dynamic GCP Credentials & Customer Multi-Tenant Deployments
+
+### 1. Koncepcja Dynamicznej Infrastruktury GCP
+Infrastruktura Google Cloud (Cloud Run, API Vertex AI, Compute Engine, Cloud Storage) dla J(AI)SON OS oraz klientów agencji **nie jest stała i zmienia się dynamicznie**. Każdy klient posiada własne, wydzielone i odizolowane konto GCP, aby zapewnić pełne bezpieczeństwo danych i niezależność budżetową.
+
+### 2. Bezpieczeństwo i Przechowywanie Poświadczeń
+- **BEZWZGLĘDNY ZAKAZ** zapisywania ścieżek kluczy Service Account JSON oraz nazw projektów w kodzie skryptów.
+- Poświadczenia klienta (plik `.json` wygenerowany w GCP IAM) muszą być przechowywane w dedykowanych folderach projektowych, np. `02_CLIENTS_AND_PROJECTS/[nazwa_klienta]/[nazwa-projektu-gcp].json` i być ignorowane przez `.gitignore` (filtr `*key*.json` lub `*secret*.json`).
+- Plik `.env` lub plik konfiguracyjny projektu (np. `config.json`) w katalogu klienta musi precyzyjnie definiować dynamiczne zmienne:
+  ```env
+  GCP_PROJECT_ID=client-a-project-dev
+  GCP_SERVICE_NAME=client-a-streamlit-dashboard
+  GCP_REGION=europe-central2
+  GCP_SA_KEY_PATH=C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS\client-a\client-sa-key.json
+  ```
+
+### 3. Dynamiczne Skrypty Wdrożeniowe (GCP Cloud Run)
+Każdy skrypt wdrażający (PowerShell lub Python) musi przyjmować parametry konfiguracyjne i autoryzować sesję dynamicznie na podstawie klucza przypisanego do danego klienta:
+```powershell
+param (
+    [string]$CredentialsPath,
+    [string]$ProjectId,
+    [string]$ServiceName,
+    [string]$Region = "europe-central2"
+)
+# Dynamiczna autoryzacja sesji gcloud dla klienta
+gcloud auth activate-service-account --key-file=$CredentialsPath
+gcloud config set project $ProjectId
+```
+
+### 4. SOP: Deploy i Mapowanie Nowej Domeny Głównej / Subdomeny
+Kiedy agent Anti-Gravity lub subagenci otrzymują zadanie wdrożenia nowej domeny głównej lub subdomeny dla klienta / projektu J(AI)SON, wykonują następującą procedurę:
+
+#### Krok A: Wdrożenie Usługi na Cloud Run (GCP)
+1. Odczytaj konfigurację projektu klienta z pliku `.env` lub `config.json`.
+2. Zbuduj kontener Docker i prześlij go do rejestru GCP klienta za pomocą Cloud Build:
+   `gcloud builds submit --tag gcr.io/[PROJECT_ID]/[SERVICE_NAME] .`
+3. Wykonaj deploy usługi na Cloud Run:
+   `gcloud run deploy [SERVICE_NAME] --image gcr.io/[PROJECT_ID]/[SERVICE_NAME] --region [REGION] --allow-unauthenticated`
+4. Zapisz wygenerowany unikalny adres URL usługi GCP (np. `https://[service]-[hash].run.app`).
+
+#### Krok B: Konfiguracja DNS Domeny Klienta
+1. Poproś użytkownika o skierowanie rekordu domeny na zewnętrzny serwer VPS (który działa jako zintegrowane proxy Nginx dla wszystkich instancji):
+   - **Rekord A** dla domeny głównej `@` -> Adres IP VPS
+   - **Rekord CNAME** dla subdomeny -> Adres IP VPS lub CNAME do domeny głównej
+
+#### Krok C: Konfiguracja Nginx Reverse Proxy na VPS
+1. Zaloguj się przez SSH na VPS i utwórz plik konfiguracyjny: `/etc/nginx/sites-available/[domena_klienta]`
+2. Skonfiguruj reverse proxy przekierowujące ruch z domeny na adres z Kroku A, dbając o nagłówki Host i WebSockets:
+   ```nginx
+   server {
+       listen 80;
+       server_name [domena_klienta] www.[domena_klienta];
+       return 301 https://$host$request_uri;
+   }
+   server {
+       listen 443 ssl;
+       server_name [domena_klienta] www.[domena_klienta];
+       ssl_certificate /etc/letsencrypt/live/[domena_klienta]/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/[domena_klienta]/privkey.pem;
+
+       location / {
+           proxy_pass https://[gcp-service-url]/;
+           proxy_set_header Host [gcp-service-url-hostname];
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection "upgrade";
+           proxy_read_timeout 86400;
+       }
+   }
+   ```
+3. Aktywuj stronę: `sudo ln -s /etc/nginx/sites-available/[domena_klienta] /etc/nginx/sites-enabled/`
+
+#### Krok D: Automatyczne Wystawienie SSL Let's Encrypt i Przeładowanie
+1. Uruchom Certbota na VPS, aby wygenerować darmowy certyfikat SSL:
+   `sudo certbot --nginx -d [domena_klienta] -d www.[domena_klienta]`
+2. Przetestuj i przeładuj konfigurację:
+   `sudo nginx -t && sudo systemctl reload nginx`
+3. Zweryfikuj dostępność i poprawność działania (WebSocket).
+
+
 ## Common Mistakes & How to Avoid Them
 | Błąd | Wpływ na projekt | Zapobieganie |
 |---------|--------|------------|
