@@ -1,0 +1,7 @@
+# Ignore all source code and heavy images to optimize cloud upload
+*
+
+# Allow only the Dockerfile and compiled production assets
+!Dockerfile
+!dist/
+!dist/**
