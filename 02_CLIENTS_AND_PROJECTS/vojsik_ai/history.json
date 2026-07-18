@@ -100,5 +100,17 @@
         "raw_text": "I jeszcze wiesz co, tutaj w module Brand Strategy Profile BIOS brakuje mi takiego do przy generowaniu spójnego awatara, też formatu, podziału na formaty, czyli taki no typowy wielkość, rozdzielczość i dla generowania awatara na social media, ale też normalnego zdjęcia jeden na jeden,  też dział banerów, czy do zdjęć do sekcji hero, czy do innych sekcji na strony internetowej, tak, na najbardziej popularne formaty. Czy właśnie też na bloga, czy na YouTube banner, ale też na przykład thumbnail.  Thumbnail na wszystkie platformy. To najbardziej popularne formaty i sformatowane tak aby to się wszystko mieściło i dobrze wyświetlało zarówno na desktopie jak na mobile. Więc to też wdruż i zrób deploy na serwer w trybie",
         "corrected_text": "I jeszcze wiesz co, tutaj w module Brand Strategy Profile BIOS brakuje mi takiego do przy generowaniu spójnego awatara, też formatu, podziału na formaty, czyli taki no typowy wielkość, rozdzielczość i dla generowania awatara na social media, ale też normalnego zdjęcia jeden na jeden,  też dział banerów, czy do zdjęć do sekcji hero, czy do innych sekcji na strony internetowej, tak, na najbardziej popularne formaty. Czy właśnie też na bloga, czy na YouTube banner, ale też na przykład thumbnail.  Thumbnail na wszystkie platformy. To najbardziej popularne formaty i sformatowane tak aby to się wszystko mieściło i dobrze wyświetlało zarówno na desktopie jak na mobile. Więc to też wdruż i zrób deploy na serwer w trybie",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 11:58:31",
+        "raw_text": "Jaki wynik? Jaki raport?",
+        "corrected_text": "Jaki wynik? Jaki raport?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-18 12:07:21",
+        "raw_text": "Wystąpił jakiś konflikt w mapowaniu subdomeny os.jison.pl Widzę, że jest na holisticjson.pl Zmieniłem już DNSy na Cloudflare na typ CNAME i ghs.googlehosted.com  ale os.jaison.pl ta domena jest zmapowana nie w usłudze holistic-seo tylko w regionie Europe Central 2, tylko coś jest nie tak  Dziękuję.",
+        "corrected_text": "Wystąpił jakiś konflikt w mapowaniu subdomeny os.jison.pl Widzę, że jest na holisticjson.pl Zmieniłem już DNSy na Cloudflare na typ CNAME i ghs.googlehosted.com  ale os.jaison.pl ta domena jest zmapowana nie w usłudze holistic-seo tylko w regionie Europe Central 2, tylko coś jest nie tak  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
