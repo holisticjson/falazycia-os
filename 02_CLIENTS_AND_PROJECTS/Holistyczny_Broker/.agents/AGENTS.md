@@ -13,8 +13,8 @@
 - **DEVOPS TRANSFER ONLY:** The only interaction permitted was generating the blueprint deployment instructions ([`personal_jaison_deployment_prompt.md`](file:///C:/Users/tomas_yq1b9su/.gemini/antigravity/brain/c53bf6b5-86ad-4b7f-ad06-f232f35970d9/personal_jaison_deployment_prompt.md)) for the user to hand over to the other agent. No direct execution is allowed on Jaison resources.
 
 ## 🏛️ 3. "Księga Prawdy" (Single Source of Truth)
-- Always follow the architecture and guidelines laid out in [**`MASTER_PRD_HOLISTYCZNY_BROKER.md`**](file:///c:/Aplikacje%20MVP/Holistyczny%20Broker/MASTER_PRD_HOLISTYCZNY_BROKER.md).
-- Prioritize the implementation roadmap found in [**`INSTRUKCJA_WDROZENIA_ROADMAP.md`**](file:///c:/Aplikacje%20MVP/Holistyczny%20Broker/INSTRUKCJA_WDROZENIA_ROADMAP.md).
+- Always follow the architecture and guidelines laid out in [**`MASTER_PRD_HOLISTYCZNY_BROKER.md`**](file:///c:/Aplikacje%20MVP/02_CLIENTS_AND_PROJECTS/Holistyczny_Broker/MASTER_PRD_HOLISTYCZNY_BROKER.md).
+- Prioritize the implementation roadmap found in [**`INSTRUKCJA_WDROZENIA_ROADMAP.md`**](file:///c:/Aplikacje%20MVP/02_CLIENTS_AND_PROJECTS/Holistyczny_Broker/INSTRUKCJA_WDROZENIA_ROADMAP.md).
 - Ensure all forms, GDPR checkboxes, KRS registry details, Privacy Policy, and Terms of Service (ToS) are live, correct, and flawlessly integrated for **Google for Developers & Startups** compliance.
 
 ## ⚙️ 4. Technology & Implementation Guidelines
