@@ -274,5 +274,11 @@
         "raw_text": "Zwołaj zarząd dyrektorów specjalistów od naszej infrastruktury i tutaj są poniżej zalecenia równoległego agenta, który się zajmuje dashboardem Streamlit tutaj w projekcie. Przeanalizuj poniższe zalecenia  bądź zespół będzie krytyczny względem i albo zaakceptuje i wdroży ewentualne zmiany, albo napisze kontraargumenty, które przemawia,  Zatem, aby zostać przy aktualnych konfiguracjach i ustawieniach na Cloud Run i usługach Google Cloud Platform, konta i projektu, na którym znajduje się infrastruktura agencji jason.pl.",
         "corrected_text": "Zwołaj zarząd dyrektorów specjalistów od naszej infrastruktury i tutaj są poniżej zalecenia równoległego agenta, który się zajmuje dashboardem Streamlit tutaj w projekcie. Przeanalizuj poniższe zalecenia  bądź zespół będzie krytyczny względem i albo zaakceptuje i wdroży ewentualne zmiany, albo napisze kontraargumenty, które przemawia,  Zatem, aby zostać przy aktualnych konfiguracjach i ustawieniach na Cloud Run i usługach Google Cloud Platform, konta i projektu, na którym znajduje się infrastruktura agencji jason.pl.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 13:28:21",
+        "raw_text": "Czy zgodnie z polityką Stripe, będąc polskim rezydentem, muszę podawać polski numer konta IBAN? Czy mogę na przykład podać konto, które posiadam w firmie Wise? Fintech Wise.  Czyli IBAN zaczynający się od GB  Dziękuję.",
+        "corrected_text": "Czy zgodnie z polityką Stripe, będąc polskim rezydentem, muszę podawać polski numer konta IBAN? Czy mogę na przykład podać konto, które posiadam w firmie Wise? Fintech Wise.  Czyli IBAN zaczynający się od GB  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
