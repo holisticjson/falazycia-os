@@ -84,10 +84,8 @@ function submitLead() {
     let diagnosis = "";
     if (totalScore <= 10) diagnosis = "Holistic Operator";
     else if (totalScore <= 20) diagnosis = "Strefa Sredniakow";
-    else diagnosis = "Rekodzielo i Chaos";
-    
-    // Target Google Cloud Function URL
-    const functionUrl = "https://us-central1-holistic-dashboard-dev.cloudfunctions.net/handle_audit_submission";
+    else diagnosis = "Rekodzielo i Chaos";    // Target n8n Webhook URL
+    const functionUrl = "https://n8n.jaison.pl/webhook/jaison-audit";
     
     const payload = {
         email: email,
@@ -195,3 +193,12 @@ function restartAudit() {
     document.getElementById(slides[0]).classList.add('active');
     document.getElementById('progressContainer').style.display = 'none';
 }
+
+// ======================================================================
+// 🚀 GLOBAL WINDOW BINDINGS (Bridges scope gap for module onClick handlers)
+// ======================================================================
+window.nextSlide = nextSlide;
+window.selectAnswer = selectAnswer;
+window.submitLead = submitLead;
+window.restartAudit = restartAudit;
+
