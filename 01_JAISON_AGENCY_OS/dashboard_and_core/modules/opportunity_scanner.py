@@ -43,6 +43,82 @@ def add_lead_to_crm_json(name, notes, suggested_outreach=None, next_action="Skon
         print(f"Błąd zapisu do crm.json: {e}")
         return False
 
+def get_scanner_preferences():
+    """Wczytuje preferencje wyszukiwania zleceń (Jakich deali szukasz?) z pliku JSON."""
+    pref_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\config\scanner_preferences.json"
+    os.makedirs(os.path.dirname(pref_path), exist_ok=True)
+    if os.path.exists(pref_path):
+        try:
+            with open(pref_path, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {
+        "search_preferences": "automatyzacje n8n, chatboty AI, integracje BaseLinker i Shopify, systemy CRM, optymalizacja procesów",
+        "min_budget": "1000 PLN",
+        "custom_instruction": "Skup się wyłącznie na firmach, które chcą przyspieszyć obsługę klienta lub wyeliminować ręczne przepisywanie danych."
+    }
+
+def save_scanner_preferences(prefs):
+    """Zapisuje preferencje wyszukiwania zleceń do pliku JSON."""
+    pref_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\config\scanner_preferences.json"
+    os.makedirs(os.path.dirname(pref_path), exist_ok=True)
+    try:
+        with open(pref_path, "w", encoding="utf-8") as f:
+            json.dump(prefs, f, ensure_ascii=False, indent=4)
+        return True
+    except Exception as e:
+        print(f"Błąd zapisu preferencji: {e}")
+        return False
+
+def update_opportunity_feedback(opp_id, feedback_value, reason=None):
+    """Aktualizuje ocenę feedbacku użytkownika dla wybranej okazji (1 = 👍, -1 = 👎)."""
+    init_db()
+    conn = sqlite3.connect(DB_PATH, check_same_thread=False)
+    cursor = conn.cursor()
+    if reason:
+        cursor.execute("UPDATE opportunities SET user_feedback = ?, user_feedback_reason = ? WHERE id = ?;", (feedback_value, reason, opp_id))
+    else:
+        cursor.execute("UPDATE opportunities SET user_feedback = ? WHERE id = ?;", (feedback_value, opp_id))
+    conn.commit()
+    conn.close()
+
+def get_few_shot_context():
+    """Pobiera przykłady ocenione pozytywnie i negatywnie, aby dostarczyć kontekst Few-Shot dla Gemini."""
+    try:
+        conn = sqlite3.connect(DB_PATH, check_same_thread=False)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+        
+        # Pobranie pozytywnych
+        cursor.execute("SELECT title, description, score, suggested_outreach, user_feedback_reason FROM opportunities WHERE user_feedback = 1 ORDER BY id DESC LIMIT 3;")
+        pos_rows = cursor.fetchall()
+        
+        # Pobranie negatywnych
+        cursor.execute("SELECT title, description, score, user_feedback_reason FROM opportunities WHERE user_feedback = -1 ORDER BY id DESC LIMIT 3;")
+        neg_rows = cursor.fetchall()
+        
+        conn.close()
+        
+        context = ""
+        if pos_rows:
+            context += "\n--- PRZYKŁADY OFERT OCENIONYCH POZYTYWNIE (Wzory do naśladowania) ---\n"
+            for r in pos_rows:
+                context += f"Tytuł: {r['title']}\nOpis: {r['description']}\nOcena: {r['score']}\nUzgodniony Outreach: {r['suggested_outreach']}\n"
+                if r.get('user_feedback_reason'):
+                    context += f"Powód pozytywnej oceny: {r['user_feedback_reason']}\n"
+                context += "\n"
+                
+        if neg_rows:
+            context += "\n--- PRZYKŁADY OFERT OCENIONYCH NEGATYWNIE (Tego unikaj lub oceniaj bardzo nisko) ---\n"
+            for r in neg_rows:
+                context += f"Tytuł: {r['title']}\nOpis: {r['description']}\nZłe dopasowanie. Powód negatywnej oceny: {r.get('user_feedback_reason') if r.get('user_feedback_reason') else 'Nieadekwatny profil zlecenia'}\n\n"
+                
+        return context
+    except Exception as e:
+        print(f"Błąd generowania few-shot: {e}")
+        return ""
+
 def init_db():
     """Inicjalizuje tabelę opportunities w local_crm.db i dodaje rekordy testowe."""
     os.makedirs(os.path.dirname(DB_PATH), exist_ok=True)
@@ -67,6 +143,20 @@ def init_db():
         contact_phone TEXT
     );
     """)
+    conn.commit()
+    
+    # Bezpieczne migracje tabeli (Skaner Okazji 2.0)
+    for col_name, col_type in [
+        ("url_link", "TEXT"),
+        ("user_feedback", "INTEGER DEFAULT 0"),
+        ("user_feedback_reason", "TEXT"),
+        ("competitor_ads_context", "TEXT")
+    ]:
+        try:
+            cursor.execute(f"ALTER TABLE opportunities ADD COLUMN {col_name} {col_type};")
+            conn.commit()
+        except sqlite3.OperationalError:
+            pass # Kolumna już istnieje
     conn.commit()
     
     cursor.execute("SELECT COUNT(*) FROM opportunities;")
@@ -242,7 +332,7 @@ def get_opportunities():
         opportunities.append(dict(r))
     return opportunities
 
-def add_opportunity(source, title, budget, description, score, label, outreach, action, email="", phone="", status="New"):
+def add_opportunity(source, title, budget, description, score, label, outreach, action, email="", phone="", status="New", url_link="", user_feedback=0, user_feedback_reason="", competitor_ads_context=""):
     """Zapisuje nową okazję do bazy danych."""
     init_db()
     now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -250,9 +340,9 @@ def add_opportunity(source, title, budget, description, score, label, outreach, 
     cursor = conn.cursor()
     cursor.execute("""
     INSERT INTO opportunities (
-        created_at, source, title, budget, description, score, label, suggested_outreach, suggested_action, status, contact_email, contact_phone
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
-    """, (now, source, title, budget, description, score, label, outreach, action, status, email, phone))
+        created_at, source, title, budget, description, score, label, suggested_outreach, suggested_action, status, contact_email, contact_phone, url_link, user_feedback, user_feedback_reason, competitor_ads_context
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+    """, (now, source, title, budget, description, score, label, outreach, action, status, email, phone, url_link, user_feedback, user_feedback_reason, competitor_ads_context))
     conn.commit()
     conn.close()
 
@@ -470,10 +560,11 @@ Kryteria oceny:
 - Średni score (50-79) dla typowych prac deweloperskich (Wordpress, proste skrypty).
 - Niski score (<50) dla zleceń niezwiązanych z naszym profilem (grafika, copywriting, tłumaczenia).
 
-Wygeneruj spersonalizowaną wiadomość outreach (suggested_outreach) w unikalnym, perswazyjnym i bezpośrednim stylu Tomasza Dudy oraz Alexa Hormoziego:
-- Krótko, konkretnie, bez "Szanowni Państwo" ani "Dzień dobry".
-- Odnieś się bezpośrednio do konkretnego problemu ze zlecenia.
-- Zaproponuj pomoc i obniż tarcie poznawcze (propozycja bezpłatnej, 15-minutowej analizy lub przesłania gotowej architektury wdrożenia).
+Wygeneruj spersonalizowaną wiadomość outreach (suggested_outreach) w unikalnym, perswazyjnym i bezpośrednim stylu Tomasza Dudy (Ghost) oraz modelu Grand Slam Offer Alexa Hormoziego ($100M Offers):
+- Oferta musi budować wartość: Wymarzony Rezultat x Postrzegane Prawdopodobieństwo Sukcesu / (Czas oczekiwania x Wysiłek i poświęcenie klienta).
+- Zaproponuj rozwiązanie, które minimalizuje wysiłek klienta (np. darmowy hosting, gotowe moduły n8n, 15-minutowa konfiguracja).
+- Dodaj unikalną gwarancję lub bonus (np. brak opłat przy braku efektów, audyt 21 pytań).
+- Pisz krótko, konkretnie, bez "Szanowni Państwo" ani "Dzień dobry". Odnieś się bezpośrednio do konkretnego problemu ze zlecenia.
 - Podpisz jako "Tomasz z Jaison.pl".
 
 Zwróć wynik wyłącznie jako czysty obiekt JSON bez żadnego dodatkowego tekstu ani markdownu (oprócz bloku ```json), zawierający klucze:
@@ -483,6 +574,26 @@ Zwróć wynik wyłącznie jako czysty obiekt JSON bez żadnego dodatkowego tekst
   "suggested_action": "<Zalecany krok handlowy>"
 }
 """
+
+    # Pobierz i wstrzyknij preferencje użytkownika
+    prefs = get_scanner_preferences()
+    pref_text = prefs.get("search_preferences", "")
+    min_budget = prefs.get("min_budget", "")
+    custom_instruction = prefs.get("custom_instruction", "")
+    
+    if pref_text or min_budget or custom_instruction:
+        system_instruction += "\n=== FILTRY I PREFERENCJE UŻYTKOWNIKA (Stosuj się do nich rygorystycznie) ===\n"
+        if pref_text:
+            system_instruction += f"- Jakich zleceń szuka użytkownik: {pref_text}\n"
+        if min_budget:
+            system_instruction += f"- Minimalny akceptowalny budżet: {min_budget}\n"
+        if custom_instruction:
+            system_instruction += f"- Specjalna instrukcja biznesowa: {custom_instruction}\n"
+
+    # Pobierz historię kciuków (Feedback Loop)
+    few_shot = get_few_shot_context()
+    if few_shot:
+        system_instruction += f"\n=== HISTORIA OPINII UŻYTKOWNIKA (Ucz się z tych przykładów) ===\n{few_shot}"
 
     for job in listings[:3]:
         details = get_job_details(job["url"])
@@ -532,7 +643,8 @@ Opis: {details['description']}
                 action=opp_data.get("suggested_action", ""),
                 email="",
                 phone="",
-                status="New"
+                status="New",
+                url_link=job["url"]
             )
             processed_count += 1
         except Exception as e:
@@ -891,9 +1003,15 @@ def render_lead_radar_page(call_gemini_pro_api_func):
         st.write("")
         
         # Wyświetlanie listy z bazy danych
+        show_rejected = st.checkbox("Pokaż zlecenia odrzucone (👎)", value=False, key="show_rejected_leads_lr")
+        
         opportunities = get_opportunities()
+        if not show_rejected:
+            # Filtrujemy odrzucone (feedback = -1)
+            opportunities = [opp for opp in opportunities if (opp.get("user_feedback") or 0) != -1]
+            
         if not opportunities:
-            st.info("Baza danych jest pusta. Uruchom skaner powyżej lub przywróć bazę.")
+            st.info("Baza danych nie zawiera pasujących zleceń. Uruchom skaner powyżej lub włącz wyświetlanie odrzuconych.")
         else:
             for opp in opportunities:
                 # Kolor na podstawie oceny
@@ -910,23 +1028,23 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                 # Karta okazji
                 st.markdown(f"""
                 <div class="custom-card" style="border-left: 5px solid {accent_color}; margin-bottom: 15px; padding: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <span style="font-size: 0.85rem; color: #94A3B8; font-weight: bold; text-transform: uppercase;">🌐 Źródło: {opp['source']} | 📅 {opp['created_at']}</span>
-                        <span style="padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; {badge_style}">{opp['label']} (Dopasowanie: {opp['score']}%)</span>
-                    </div>
-                    <h4 style="margin: 0 0 10px 0; color: #F3F4F6; font-family: Outfit;">{opp['title']}</h4>
-                    <p style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">{opp['description']}</p>
-                    <div style="display: flex; gap: 15px; font-size: 0.85rem; color: #94A3B8; border-top: 1px solid #1E293B; padding-top: 10px; margin-bottom: 10px;">
-                        <span>💰 Budżet: <strong style="color: #10B981;">{opp['budget']}</strong></span>
-                        <span>📧 Email: <strong>{opp['contact_email'] if opp['contact_email'] else 'Brak'}</strong></span>
-                        <span>📞 Tel: <strong>{opp['contact_phone'] if opp['contact_phone'] else 'Brak'}</strong></span>
-                        <span>📦 Status: <strong style="color: #F59E0B;">{opp['status']}</strong></span>
-                    </div>
+                	<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                		<span style="font-size: 0.85rem; color: #94A3B8; font-weight: bold; text-transform: uppercase;">🌐 Źródło: {opp['source']} | 📅 {opp['created_at']}</span>
+                		<span style="padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; {badge_style}">{opp['label']} (Dopasowanie: {opp['score']}%)</span>
+                	</div>
+                	<h4 style="margin: 0 0 10px 0; color: #F3F4F6; font-family: Outfit;">{opp['title']}</h4>
+                	<p style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">{opp['description']}</p>
+                	<div style="display: flex; gap: 15px; font-size: 0.85rem; color: #94A3B8; border-top: 1px solid #1E293B; padding-top: 10px; margin-bottom: 10px;">
+                		<span>💰 Budżet: <strong style="color: #10B981;">{opp['budget']}</strong></span>
+                		<span>📧 Email: <strong>{opp['contact_email'] if opp['contact_email'] else 'Brak'}</strong></span>
+                		<span>📞 Tel: <strong>{opp['contact_phone'] if opp['contact_phone'] else 'Brak'}</strong></span>
+                		<span>📦 Status: <strong style="color: #F59E0B;">{opp['status']}</strong></span>
+                	</div>
                 </div>
                 """, unsafe_allow_html=True)
                 
                 # Elementy interaktywne pod kartą (Streamlit)
-                c_opt1, c_opt2, c_opt3, c_opt4 = st.columns([2, 1, 1, 1])
+                c_opt1, c_opt2, c_opt3, c_opt4, c_opt5 = st.columns([2, 1, 1, 1, 1])
                 with c_opt1:
                     with st.expander("📬 Zobacz spersonalizowaną wiadomość Outreach (Perswazyjna pomoc AI)"):
                         st.code(opp["suggested_outreach"], language="text")
@@ -964,10 +1082,49 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                         time.sleep(1.0)
                         st.rerun()
                 with c_opt4:
+                    # System feedbacku (kciuki 👍/👎)
+                    feedback = opp.get("user_feedback", 0) or 0
+                    if feedback == 1:
+                        st.markdown("<p style='color: #10B981; font-weight: bold; text-align: center; margin-top: 5px; font-size: 0.9rem;'>👍 Trafiony!</p>", unsafe_allow_html=True)
+                    elif feedback == -1:
+                        st.markdown("<p style='color: #EF4444; font-weight: bold; text-align: center; margin-top: 5px; font-size: 0.9rem;'>👎 Słaby</p>", unsafe_allow_html=True)
+                    else:
+                        col_f_up, col_f_dn = st.columns(2)
+                        with col_f_up:
+                            if st.button("👍", key=f"f_up_{opp['id']}", use_container_width=True, help="Oznacz jako trafione zlecenie (AI zapamięta ten wzór)"):
+                                update_opportunity_feedback(opp['id'], 1)
+                                st.toast("Dzięki! AI zapamięta ten wzorzec jako pozytywny.")
+                                import time
+                                time.sleep(0.5)
+                                st.rerun()
+                        with col_f_dn:
+                            if st.button("👎", key=f"f_dn_{opp['id']}", use_container_width=True, help="Oznacz jako słabe zlecenie (AI wyeliminuje podobne w przyszłości)"):
+                                st.session_state[f"show_reason_input_{opp['id']}"] = True
+                                st.rerun()
+                with c_opt5:
                     if st.button("🗑️ Usuń", key=f"opp_del_{opp['id']}", use_container_width=True):
                         delete_opportunity(opp["id"])
                         st.success("Usunięto okazję!")
                         st.rerun()
+                
+                # Dodatkowe pole tekstowe na podanie powodu odrzucenia
+                if st.session_state.get(f"show_reason_input_{opp['id']}"):
+                    st.markdown("<div style='background: #1B0F1E; padding: 10px; border-radius: 8px; margin-top: 5px; border-left: 3px solid #EF4444;'>", unsafe_allow_html=True)
+                    reason_val = st.text_input("Dlaczego odrzucasz to zlecenie? (np. za niski budżet, zła branża):", key=f"reason_text_{opp['id']}")
+                    col_sav, col_can = st.columns([1, 1])
+                    with col_sav:
+                        if st.button("Zapisz", key=f"save_reason_{opp['id']}", type="primary", use_container_width=True):
+                            update_opportunity_feedback(opp['id'], -1, reason_val)
+                            st.session_state[f"show_reason_input_{opp['id']}"] = False
+                            st.success("Odrzucono. Skaner nauczył się nowego wzorca!")
+                            import time
+                            time.sleep(0.5)
+                            st.rerun()
+                    with col_can:
+                        if st.button("Anuluj", key=f"cancel_reason_{opp['id']}", use_container_width=True):
+                            st.session_state[f"show_reason_input_{opp['id']}"] = False
+                            st.rerun()
+                    st.markdown("</div>", unsafe_allow_html=True)
                         
                 st.markdown("<hr style='border: 0; border-top: 1px solid #1E293B; margin: 15px 0;'>", unsafe_allow_html=True)
 
@@ -1483,8 +1640,38 @@ Dla każdego leada podaj w formacie Markdown:
     # ==================== TAB 5: CONFIGURATION ====================
     with tab_config:
         st.markdown("### ⚙️ Ustawienia Źródeł i Agenta Skanowania")
+        
+        # Skaner Okazji 2.0 (Lead Radar 2.0) preferencje wyszukiwania
+        st.markdown("#### 🎯 Skaner Okazji 2.0 (Lead Radar 2.0)")
+        prefs = get_scanner_preferences()
+        
+        search_pref_val = st.text_input(
+            "Jakich deali szukasz? (Słowa kluczowe / branże oddzielone przecinkami):", 
+            value=prefs.get("search_preferences", "automatyzacje n8n, chatboty AI, integracje BaseLinker i Shopify, systemy CRM, optymalizacja procesów"),
+            key="cfg_search_preferences"
+        )
+        min_budget_val = st.text_input(
+            "Minimalny akceptowalny budżet (np. 1000 PLN, do negocjacji):", 
+            value=prefs.get("min_budget", "1000 PLN"),
+            key="cfg_min_budget"
+        )
+        custom_inst_val = st.text_area(
+            "Specjalna instrukcja biznesowa dla outreachu (np. styl, ograniczenia, dodatkowe korzyści):", 
+            value=prefs.get("custom_instruction", "Skup się wyłącznie na firmach, które chcą przyspieszyć obsługę klienta lub wyeliminować ręczne przepisywanie danych."),
+            key="cfg_custom_instruction"
+        )
+        
+        st.markdown("---")
+        st.markdown("#### ⚙️ Zaawansowana integracja n8n & Vertex AI")
         st.text_input("Główny Prompt Oceny Leada (Gemini API):", value="Jesteś Analitykiem Rynku. Oceń lead pod kątem marży i dopasowania do automatyzacji AI.")
         st.text_input("Webhook n8n nasłuchujący (Crawler trigger):", value="https://n8n.jaison.pl/webhook/lead-crawler-trigger")
         st.text_input("Vertex AI Data Store ID:", value="jaison-leads-datastore-12345")
+        
         if st.button("💾 Zapisz konfigurację radaru", type="primary", key="save_config_lead_scanner"):
-            st.success("Konfiguracja zapisana pomyślnie!")
+            new_prefs = {
+                "search_preferences": search_pref_val,
+                "min_budget": min_budget_val,
+                "custom_instruction": custom_inst_val
+            }
+            save_scanner_preferences(new_prefs)
+            st.success("Konfiguracja oraz preferencje Lead Radar 2.0 zostały zapisane pomyślnie!")
