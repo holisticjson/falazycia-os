@@ -316,5 +316,23 @@
         "raw_text": "Dobra, jakby ustawienia rekordu DNS na A Cloudflare zrobiłem, podmieniłem. Natomiast przeczytaj tutaj wpis Mirka Burneiko, na którym się tutaj trochę inspiruje, jeśli chodzi o ten skaner rynku Leadradar, skaner okazji. Chciałbym, żebyś się najpierw z nim zapoznał, wyciągnął  wnioski w kontekście zastosowania u nas w dashboardzie z tymi, czego nam jeszcze brakuje. A w następnym kroku poleceniu wkleję Ci raport z Perplexity, jak on to widzi w kwestii wykorzystania  smart routingu podejmiemy decyzje zarówno w kontekście tego lead radar a w kolejnym trzecim wkleję Ci mam pomysł na video automation YouTube video automation skalowanie szukanie nisz i jakby automatyzacja całego pipeline'a video faceless oraz takiego  mojego nagrywanych z ręki wideo tak czy instrukta instrukcji tutoriali czy takich po prostu życiowych shortsów mam też takie prompty zajawki w formie  odnośnie faceless video czy video creator, które też może zastosować. Ale jest ich więcej, więc muszę jakoś je podzielić, abyś mógł odczytać, wyciągnąć z nich tekst i logikę.",
         "corrected_text": "Dobra, jakby ustawienia rekordu DNS na A Cloudflare zrobiłem, podmieniłem. Natomiast przeczytaj tutaj wpis Mirka Burneiko, na którym się tutaj trochę inspiruje, jeśli chodzi o ten skaner rynku Leadradar, skaner okazji. Chciałbym, żebyś się najpierw z nim zapoznał, wyciągnął  wnioski w kontekście zastosowania u nas w dashboardzie z tymi, czego nam jeszcze brakuje. A w następnym kroku poleceniu wkleję Ci raport z Perplexity, jak on to widzi w kwestii wykorzystania  smart routingu podejmiemy decyzje zarówno w kontekście tego lead radar a w kolejnym trzecim wkleję Ci mam pomysł na video automation YouTube video automation skalowanie szukanie nisz i jakby automatyzacja całego pipeline'a video faceless oraz takiego  mojego nagrywanych z ręki wideo tak czy instrukta instrukcji tutoriali czy takich po prostu życiowych shortsów mam też takie prompty zajawki w formie  odnośnie faceless video czy video creator, które też może zastosować. Ale jest ich więcej, więc muszę jakoś je podzielić, abyś mógł odczytać, wyciągnąć z nich tekst i logikę.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 14:58:47",
+        "raw_text": "pod uwagę naszą politykę oraz aktualny stag technologiczny możliwości.",
+        "corrected_text": "pod uwagę naszą politykę oraz aktualny stag technologiczny możliwości.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 15:05:11",
+        "raw_text": "YouTube Video Automation Część pierwsza",
+        "corrected_text": "YouTube Video Automation Część pierwsza",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 15:07:45",
+        "raw_text": "W tym samym folderze Perplexity są dwa kolejne raporty YouTube Video Automation. Tam widzę Perplexity sugeruje też drugą wersję.  Streamlit Dashboard taką na telefon mobilną tak jeśli dobrze pamiętam przyjrzyj się temu oczywiście zwołaj zarząd wrzuć go na zarząd z tym samym podejściem również zrób analizę zrób protokół no i będziemy to wszystko wdrażać po kolei ale jeszcze muszę  A tu wyciągnę tekst z obrazów, z tych inspiracji, z tych zrzutów, z postów twórców odnośnie właśnie wideo i idei tworzenia właśnie viralowych wideo na YouTube i nie tylko.  Dziękuję.",
+        "corrected_text": "W tym samym folderze Perplexity są dwa kolejne raporty YouTube Video Automation. Tam widzę Perplexity sugeruje też drugą wersję.  Streamlit Dashboard taką na telefon mobilną tak jeśli dobrze pamiętam przyjrzyj się temu oczywiście zwołaj zarząd wrzuć go na zarząd z tym samym podejściem również zrób analizę zrób protokół no i będziemy to wszystko wdrażać po kolei ale jeszcze muszę  A tu wyciągnę tekst z obrazów, z tych inspiracji, z tych zrzutów, z postów twórców odnośnie właśnie wideo i idei tworzenia właśnie viralowych wideo na YouTube i nie tylko.  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
