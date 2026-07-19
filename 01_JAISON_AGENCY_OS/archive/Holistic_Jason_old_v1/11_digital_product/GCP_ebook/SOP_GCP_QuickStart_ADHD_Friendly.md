@@ -26,7 +26,48 @@
 
 ---
 
+*   [ ] **KROK 1.6: Przejdź na pełną wersję konta — Zrób to od razu!** 🚀
+
+> 💡 **Wyobraź sobie taką analogię:** dostajesz samochód z góry opłaconym paliwem na 90 dni. Ale ten samochód ma wbudowaną blokadę ograniczającą prędkość do 30 km/h — dopóki nie klikniesz jednego przycisku, który ją zdejmuje. I najważniejsze: kliknięcie tego przycisku **nie zmniejsza ilości paliwa** i **nie zaczyna pobierać pieniędzy z Twojej karty**. Po prostu usuwa ograniczenia. Dokładnie tak działa ten krok.
+
+**Dlaczego ten krok jest krytyczny? (3 fakty, które musisz wiedzieć)**
+- ✅ Twoje środki **ok. 1126 zł / $300 USD** NIE znikają — Google nadal zużywa je w pierwszej kolejności przez wszystkie 90 dni
+- ✅ Zaczniesz płacić własne pieniądze dopiero po wyczerpaniu środków lub po upływie 90 dni
+- ✅ Bez tego kroku Google **automatycznie odrzuci** każdy wniosek o zwiększenie limitów modeli AI Gemini — co zablokuje działanie Twoich agentów przy większym obciążeniu
+
+**Jak to zrobić (4 kliknięcia):**
+
+**Krok A:** Na samej górze konsoli GCP zobaczysz niebieski baner z informacją o bezpłatnym okresie próbnym. Możesz kliknąć niebieski przycisk **„Przejdź na wersję płatną"** w prawym górnym rogu (oznaczony czerwoną strzałką), LUB niebieskie kółko **„Aktualizuj"** na karcie powitalnej poniżej:
+
+![Konsola Google Cloud z banerem bezpłatnego okresu próbnego i dwoma przyciskami do aktywacji pełnego konta](screenshots/annotated/ETAP_01_KROK_06a_baner_free_trial.png)
+
+[Komentarz dla składu: NOWY zrzut ekranu 2026 — strona powitalna Google Cloud z polskim banerem „Stan bezpłatnej wersji próbnej: pozostały Ci środki w wysokości 1 126,16 zł i 90 dni" oraz widocznymi dwoma miejscami do kliknięcia: przycisk „Przejdź na wersję płatną" (prawy górny róg, czerwona strzałka) i przycisk „Aktualizuj" na karcie powitalnej.]
+
+**Krok B:** Na karcie powitalnej po lewej stronie kliknij niebieski przycisk **„Aktualizuj"** (czerwona strzałka wskazuje go bezpośrednio):
+
+![Karta bezpłatnego okresu próbnego z przyciskiem Aktualizuj](screenshots/annotated/ETAP_01_KROK_06b_aktualizuj_karta.png)
+
+[Komentarz dla składu: NOWY zrzut ekranu 2026 — zbliżenie na kartę „Korzystasz z bezpłatnego okresu próbnego" z czerwoną strzałką wskazującą na niebieski przycisk „Aktualizuj".]
+
+**Krok C:** Pojawi się okienko dialogowe **„Przejdź na pełną wersję konta"** z listą 3 korzyści. Przeczytaj je — to oficjalne potwierdzenie od Google, że środki NIE przepadają. Kliknij niebieski przycisk **„Aktualizuj"** w prawym dolnym rogu okna:
+
+![Dialog potwierdzenia przejścia na pełną wersję konta z listą korzyści](screenshots/annotated/ETAP_01_KROK_06c_dialog_aktualizuj.png)
+
+[Komentarz dla składu: NOWY zrzut ekranu 2026 — okienko dialogowe „Przejdź na pełną wersję konta" z trzema punktami: „Utrzymuj niezakłócone działanie swoich usług w chmurze", „Zachowaj wszystkie pozostałe środki, aby je wykorzystać podczas darmowego okresu próbnego", „Płać tylko za to, z czego korzystasz – rozliczanie rozpocznie się po zakończeniu bezpłatnego okresu próbnego". Przycisk „Aktualizuj" (niebieski) po prawej.]
+
+**Krok D:** Pojawi się ekran potwierdzenia z dużym znakiem ✓ (checkmark) i napisem **„Twoje konto zostało zamienione w konto płatne."** Kliknij **„Dalej"**:
+
+![Ekran potwierdzenia zamiany konta na płatne z checkmarkiem](screenshots/annotated/ETAP_01_KROK_06d_konto_platne_potwierdzenie.png)
+
+[Komentarz dla składu: NOWY zrzut ekranu 2026 — ekran potwierdzenia z rysunkowym znakiem ✓, tekstem „Twoje konto zostało zamienione w konto płatne. Masz teraz dostęp do wszystkich usług Google Cloud, płacąc tylko za to, z czego korzystasz." oraz wskazówką o alertach budżetowych i przyciskiem „Dalej".]
+
+> [!IMPORTANT]
+> **Gratulacje! Twoje konto jest teraz w pełni odblokowane.** Darmowe środki (~1126 zł) są nadal w pełni aktywne — Google zużyje je zanim sięgnie po Twoją kartę płatniczą. Wskazówka od Google, którą zobaczysz na ekranie potwierdzenia: możesz teraz ustawić alert budżetowy — zrobimy to w następnym kroku!
+
+---
+
 ## 💰 ETAP 2: Aktywacja i zabezpieczenie darmowych środków
+
 
 Po poprawnym skonfigurowaniu płatności, w Twoim panelu aktywują się dwie niezależne kasy z darmowymi środkami promocji startowej:
 
@@ -62,31 +103,17 @@ Nie zostawiaj swoich finansów przypadkowi. Google Cloud pozwala na zdefiniowani
 
 ---
 
-### 💳 KROK 2.6: Bezpieczna aktywacja pełnej wersji konta (Upgrade)
+### ✅ KROK 2.6: Aktywacja pełnej wersji konta (Upgrade)
 
-Domyślnie Twoje nowe konto ma status „Bezpłatna wersja próbna”. Posiada ono twarde ograniczenia techniczne i uniemożliwia podnoszenie limitów zapytań (Quotas) dla modeli językowych AI, co zablokuje działanie Twoich agentów przy większym obciążeniu. Aby to naprawić, musisz ręcznie aktywować pełną wersję konta.
-
-*   [ ] **KROK 2.6a:** W górnej części konsoli GCP zlokalizuj szary baner informacyjny o bezpłatnej wersji próbnej i kliknij niebieski przycisk **„Aktywuj” (Activate)** po prawej stronie:
-
-![Baner informacyjny z przyciskiem Aktywuj do przejścia na pełną wersję konta](screenshots/annotated/ETAP_02_KROK_01b_activate_billing.png)
-
-[Komentarz dla składu: Zrzut ekranu z konsoli Google Cloud przedstawiający baner informacyjny o bezpłatnej wersji próbnej z niebieskim przyciskiem Aktywuj po prawej stronie.]
-
-*   [ ] **KROK 2.6b:** Po kliknięciu chmura zaktualizuje Twój profil rozliczeniowy i wyświetli okienko potwierdzające sukces:
-
-![Okno potwierdzenia aktywacji pełnej wersji konta w chmurze Google Cloud](screenshots/annotated/ETAP_02_KROK_01c_billing_activated.png)
-
-[Komentarz dla składu: Zrzut ekranu przedstawiający okienko dialogowe z informacją „Pełne konto zostało aktywowane” i przyciskiem Dalej.]
-
-> [!IMPORTANT]
-> **Fakty o aktywacji konta (Upgrade) — Poczuj spokój:**
-> - **Środki 300 USD NIE znikają:** Po włączeniu pełnego konta, Google w pierwszej kolejności nadal pobiera koszty z darmowego pakietu promocyjnego ($300 USD) przez całe pozostałe 90 dni. Nic nie tracisz!
-> - **Kiedy zaczniesz płacić?** Dopiero w momencie, gdy w pełni wyczerpiesz darmowe $300 USD lub gdy minie okres 90 dni od rejestracji. Chmura zacznie wtedy naliczać standardowe opłaty zgodnie z Twoim realnym zużyciem.
-> - **Dlaczego to jest krytyczne?** Bez aktywacji pełnego konta (Upgrade) Google automatycznie odrzuci każdy Twój wniosek o zwiększenie limitów RPM/TPM dla modeli Gemini w Vertex AI.
+> [!NOTE]
+> **Ten krok wykonałeś już w ETAP 1, KROK 1.6!** Jeśli pominąłeś go podczas rejestracji — wróć teraz do ETAP 1 i wykonaj go przed konfiguracją alertów. Aktywacja pełnego konta jest wymagana, aby Google akceptował Twoje wnioski o zwiększenie limitów AI.
 
 ---
 
-## 🚀 ETAP 3: Program Google Cloud Startups (Zdobądź do $100 000 USD)
+## 🎁 BONUS: Program Google Cloud Startups (Zdobądź do $100 000 USD)
+
+> [!TIP]
+> **Ten rozdział jest w 100% opcjonalny — nie blokuje żadnych kolejnych kroków instalacyjnych.** Możesz go przeczytać teraz lub wrócić do niego gdy Twoje pierwsze usługi już działają. Zawiera strategiczne informacje o tym, jak zdobyć gigantyczne granty chmurowe na rozwój projektu. Jeśli budujesz startup lub produkt technologiczny — koniecznie przeczytaj go przed złożeniem wniosku, bo kolejność działań (zwłaszcza kwestia Google Workspace) ma kluczowe znaczenie!
 
 Nie musisz finansować rozwoju swojej technologii z własnej kieszeni. Jako młoda firma, start-up lub agencja wdrażająca nowoczesne rozwiązania, możesz ubiegać się o gigantyczne granty chmurowe. Google bardzo chętnie wspiera projekty technologiczne, o ile spełniają one rygorystyczne warunki wejściowe.
 
@@ -593,10 +620,16 @@ Domyślnie Cloudflare maskuje ruch i serwery docelowe, kierując go przez własn
 
 Budując nowoczesną infrastrukturę AI, zrezygnuj ze starszych wersji modeli. Korzystaj wyłącznie z najnowszych osiągnięć technologicznych Google Cloud Vertex AI oraz Google AI Studio:
 
-1.  **Gemini 3.5 Flash:** Najszybszy model multimodalny. Doskonały do analizy dokumentów, wideo i obrazów, masowego przetwarzania danych i natychmiastowych odpowiedzi. Posiada gigantyczne okno kontekstowe.
-2.  **Gemini 3.1 Pro:** Król zaawansowanej logiki, wieloetapowego planowania, kodowania i pisania skomplikowanych tekstów perswazyjnych (NLP). Rozumie głęboki kontekst biznesowy.
-3.  **Imagen 3:** Najwyższa jakość generowania fotorealistycznych obrazów, logotypów i grafik marketingowych, cechująca się doskonałym renderowaniem napisów i detali.
-4.  **Veo:** Przełomowy model do generowania wideo i dynamicznych animacji o wysokiej rozdzielczości z opisów tekstowych.
+> 💡 **Wskazówka dla laika:** Modele AI to silniki Twojego systemu. Tak jak wybierasz silnik do samochodu — szybszy i mocniejszy pozwoli Ci zrobić więcej, ale zużywa więcej zasobów. Poniżej znajdziesz aktualne "silniki" Google z 2025/2026 roku wraz z ich technicznymi identyfikatorami (ID), które wpisujesz w konsoli GCP.
+
+1.  **Gemini 2.5 Flash** (`gemini-2.5-flash`): Najszybszy i najtańszy model multimodalny — czyli taki, który rozumie jednocześnie tekst, obrazy, wideo i audio. Doskonały do analizy dokumentów, masowego przetwarzania danych i natychmiastowych odpowiedzi chatbotów. Posiada gigantyczne okno kontekstowe (rozumie bardzo długie teksty). **Rekomendowany jako model domyślny** dla większości zastosowań.
+2.  **Gemini 2.5 Pro** (`gemini-2.5-pro`): Król zaawansowanej logiki, wieloetapowego planowania, generowania kodu i pisania skomplikowanych tekstów perswazyjnych (NLP). Wolniejszy niż Flash, ale rozumie głębszy kontekst biznesowy. Używaj do najtrudniejszych i najbardziej złożonych zadań.
+3.  **Gemini 2.0 Flash** (`gemini-2.0-flash-001`): Stabilna wersja produkcyjna — idealna do systemów automatyzacji i agentowych workflow w n8n, gdzie wymagana jest niezawodność i powtarzalność wyników.
+4.  **Imagen 3** (`imagen-3.0-generate-002`): Najwyższa jakość generowania fotorealistycznych obrazów, logotypów i grafik marketingowych. Cechuje się doskonałym renderowaniem napisów i drobnych detali — niezrównany przy tworzeniu materiałów wizualnych marki.
+5.  **Veo 3** (`veo-3.0-generate-preview`): Przełomowy model do generowania wideo i dynamicznych animacji o wysokiej rozdzielczości z opisów tekstowych. Pierwszy model Google zdolny generować wideo razem z dźwiękiem (lektorat, muzyka, efekty).
+
+> [!WARNING]
+> **Częsty błąd — unikaj go!** Modele o nazwach „Gemini 3.5 Flash" lub „Gemini 3.1 Pro" **nie istnieją** w systemie Google Cloud. Jeśli wpiszesz taką nazwę w Vertex AI lub w swoim skrypcie, system zwróci błąd 404 (Nie znaleziono). Zawsze sprawdzaj aktualne ID modelu w panelu **Model Garden** w Vertex AI przed wdrożeniem.
 
 ## 🤖 ETAP 12: Wdrażanie Semantycznej Bazy Wiedzy (Vertex AI Search / RAG)
 
