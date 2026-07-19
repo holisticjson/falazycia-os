@@ -268,5 +268,11 @@
         "raw_text": "Tak, akceptuję te kroki. Tylko kwestia, czy etap 8b Compute Engine jest w tym, a bo akurat w tej instrukcji niezbędny, czy przenieść go do SOP N8n Self Hosted. Pamiętaj, żeby tworząc treści i instrukcje i tłumaczenia,  w tych e-bookach były bardzo zrozumiałe, oprócz żargonu technicznego, nazw, były po prostu wyjaśnienia, tak, jak dla laików, osób właśnie z ADHD, czy...",
         "corrected_text": "Tak, akceptuję te kroki. Tylko kwestia, czy etap 8b Compute Engine jest w tym, a bo akurat w tej instrukcji niezbędny, czy przenieść go do SOP N8n Self Hosted. Pamiętaj, żeby tworząc treści i instrukcje i tłumaczenia,  w tych e-bookach były bardzo zrozumiałe, oprócz żargonu technicznego, nazw, były po prostu wyjaśnienia, tak, jak dla laików, osób właśnie z ADHD, czy...",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 13:13:15",
+        "raw_text": "Zwołaj zarząd dyrektorów specjalistów od naszej infrastruktury i tutaj są poniżej zalecenia równoległego agenta, który się zajmuje dashboardem Streamlit tutaj w projekcie. Przeanalizuj poniższe zalecenia  bądź zespół będzie krytyczny względem i albo zaakceptuje i wdroży ewentualne zmiany, albo napisze kontraargumenty, które przemawia,  Zatem, aby zostać przy aktualnych konfiguracjach i ustawieniach na Cloud Run i usługach Google Cloud Platform, konta i projektu, na którym znajduje się infrastruktura agencji jason.pl.",
+        "corrected_text": "Zwołaj zarząd dyrektorów specjalistów od naszej infrastruktury i tutaj są poniżej zalecenia równoległego agenta, który się zajmuje dashboardem Streamlit tutaj w projekcie. Przeanalizuj poniższe zalecenia  bądź zespół będzie krytyczny względem i albo zaakceptuje i wdroży ewentualne zmiany, albo napisze kontraargumenty, które przemawia,  Zatem, aby zostać przy aktualnych konfiguracjach i ustawieniach na Cloud Run i usługach Google Cloud Platform, konta i projektu, na którym znajduje się infrastruktura agencji jason.pl.",
+        "status": "raw_fallback"
     }
 ]
