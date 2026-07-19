@@ -23,23 +23,35 @@
           "string": [
             {
               "name": "name",
-              "value": "={{ $json.body.name }}"
+              "value": "={{ $json.body.client_name || $json.body.name || \"Klient Jaison\" }}"
             },
             {
               "name": "email",
-              "value": "={{ $json.body.email }}"
+              "value": "={{ $json.body.client_email || $json.body.email || \"brak@email.pl\" }}"
             },
             {
               "name": "company",
-              "value": "={{ $json.body.company }}"
+              "value": "={{ $json.body.business_niche || $json.body.company || \"Brak firmy\" }}"
             },
             {
               "name": "phone",
-              "value": "={{ $json.body.phone }}"
+              "value": "={{ $json.body.phone || \"\" }}"
+            },
+            {
+              "name": "energy_drain",
+              "value": "={{ $json.body.energy_drain || \"\" }}"
+            },
+            {
+              "name": "suggested_solution",
+              "value": "={{ $json.body.suggested_solution || \"\" }}"
+            },
+            {
+              "name": "personality_type",
+              "value": "={{ $json.body.personality_type || \"\" }}"
             },
             {
               "name": "answers_json",
-              "value": "={{ JSON.stringify($json.body.answers || {}) }}"
+              "value": "={{ JSON.stringify($json.body.answers || { \"niche\": $json.body.business_niche, \"bottleneck\": $json.body.primary_bottleneck, \"drain\": $json.body.energy_drain, \"solution\": $json.body.suggested_solution, \"personality\": $json.body.personality_type }) }}"
             }
           ]
         },
@@ -103,7 +115,7 @@
     {
       "parameters": {
         "chatId": "YOUR_TELEGRAM_CHAT_ID",
-        "text": "=🔥 **NOWY AUDYT NA JAISON.PL!** 🔥\nKlient: **{{ $node[\"Set Lead Variables\"].json.name }}**\nFirma: **{{ $node[\"Set Lead Variables\"].json.company }}**\nE-mail: `{{ $node[\"Set Lead Variables\"].json.email }}`\nTelefon: `{{ $node[\"Set Lead Variables\"].json.phone }}`\n\n📄 Raport został pomyślnie wygenerowany przez Gemini 2.5 Pro i wysłany do klienta!",
+        "text": "=🔔 **NOWY ZAKWALIFIKOWANY LEAD — JAISON.PL!** 🔔\n\n* **Imię:** `{{ $node[\"Set Lead Variables\"].json.name }}`\n* **Nisza biznesowa:** `{{ $node[\"Set Lead Variables\"].json.company }}`\n{{ $node[\"Set Lead Variables\"].json.personality_type ? \"* **Profil osobowości:** `\" + $node[\"Set Lead Variables\"].json.personality_type + \"`\\n\" : \"\" }}\n---\n{{ $node[\"Set Lead Variables\"].json.energy_drain ? \"🔴 **NAJWIĘKSZY BÓL (Wyciek energii):**\\n_\\\"\" + $node[\"Set Lead Variables\"].json.energy_drain + \"\\\"_\\n\\n\" : \"\" }}{{ $node[\"Set Lead Variables\"].json.suggested_solution ? \"⚙️ **ZAPROPONOWANE ROZWIĄZANIE:**\\n_\\\"\" + $node[\"Set Lead Variables\"].json.suggested_solution + \"\\\"_\\n\\n\" : \"\" }}---\n* **📧 KONTAKT (E-mail):** `{{ $node[\"Set Lead Variables\"].json.email }}`\n{{ $node[\"Set Lead Variables\"].json.phone ? \"* **📞 Telefon:** `\" + $node[\"Set Lead Variables\"].json.phone + \"`\\n\" : \"\" }}\n🎯 **REKOMENDOWANA AKCJA DLA TOMASZA:**\n1. Wyślij krótką, 60-sekundową wiadomość wideo (np. Loom) nawiązującą do problemu.\n2. Zaproponuj spotkanie 1-on-1 na wdrożenie tego rozwiązania.",
         "additionalFields": {
           "parse_mode": "Markdown"
         }
