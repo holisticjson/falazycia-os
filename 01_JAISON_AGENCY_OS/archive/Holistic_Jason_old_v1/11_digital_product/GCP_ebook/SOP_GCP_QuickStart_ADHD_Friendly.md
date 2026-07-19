@@ -9,6 +9,28 @@
 
 ## 🎯 ETAP 1: Rejestracja bez tarcia (Od zera do pierwszego logowania)
 
+> [!TIP]
+> ### 🤖 Twój bezpłatny asystent techniczny: Gemini Cloud Assist
+>
+> Zanim zaczniesz, wiedz, że przez **cały czas pracy z Google Cloud** masz do dyspozycji wbudowanego, **darmowego asystenta AI** — **Gemini Cloud Assist**. To jakby mieć pod ręką osobistego inżyniera Google, który zna kontekst Twojego projektu, dostęp do konfiguracji Twoich usług i potrafi odpowiadać na pytania techniczne w czasie rzeczywistym.
+>
+> **Jak go uruchomić?** Kliknij ikonę ✨ (gwiazdka/diament) w górnym pasku nawigacji konsoli GCP — lub użyj skrótu klawiszowego **`Alt+G`** aby otworzyć i zamknąć panel w każdej chwili.
+>
+> **Do czego służy Cloud Assist?**
+> - 💬 Zadawanie pytań o dowolną usługę GCP w języku naturalnym
+> - 🔍 Diagnozowanie błędów w konfiguracji (wklej treść błędu i zapytaj dlaczego)
+> - 🏗️ Projektowanie architektury aplikacji i dobór usług do Twojego przypadku
+> - 📋 Generowanie gotowych komend gcloud CLI do skopiowania
+> - 💡 Doradzanie w zakresie sprawdzonych metod i optymalizacji kosztów
+>
+> **Ważna uwaga z panelu:** Rozwiązanie Gemini może nie być dostępne w wybranym języku — kontynuuj w języku angielskim (amerykańskim). Możesz jednak pisać do niego po polsku, a on odpowie po angielsku lub coraz częściej po polsku.
+>
+> **Kiedy z niego korzystać?** Ilekroć napotkasz problem, którego nie opisuje ten e-book, zanim zaczniesz szukać w Google — zapytaj Cloud Assist. Zna Twój projekt i często udziela trafniejszej odpowiedzi niż ogólne wyniki wyszukiwania.
+
+![Panel Gemini Cloud Assist otwarty w konsoli Google Cloud po prawej stronie](screenshots/annotated/ETAP_01_KROK_00_cloud_assist_panel.png)
+
+[Komentarz dla składu: NOWY zrzut ekranu 2026 — konsola GCP po aktywacji pełnego konta z otwartym panelem Cloud Assist po prawej stronie. Widoczny przycisk „Zacznij korzystać z Gemini Cloud Assist bezpłatnie" (niebieski), sekcja „Pomoc" z linkami do pomocy technicznej i rozliczeń. Czerwona strzałka wskazuje na ikonę ✨ w górnym pasku.]
+
 *   [ ] **KROK 1.1:** Otwórz przeglądarkę i wejdź na oficjalną stronę: [Google Cloud Console](https://console.cloud.google.com/).
 *   [ ] **KROK 1.2:** Zaloguj się na swoje konto Google. 
     *   *Sztuczka ułatwiająca życie:* **Możesz użyć zwykłego, darmowego konta Gmail!** Nie musisz na starcie kupować płatnego konta Google Workspace. Zwykły Gmail jest w 100% wystarczający do celów testowych i deweloperskich i nie generuje żadnych kosztów abonamentowych.
