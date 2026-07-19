@@ -1,0 +1,10 @@
+Przyczyna,Źródło,Weryfikacja,Strony
+Błąd serwera (5xx),Strona internetowa,Nie rozpoczęto,7033
+Nie znaleziono (404),Strona internetowa,Nie rozpoczęto,1133
+"Duplikat, użytkownik nie oznaczył strony kanonicznej",Strona internetowa,Nie rozpoczęto,661
+Strona zawiera przekierowanie,Strona internetowa,Nie rozpoczęto,648
+Strona zablokowana z powodu zabronionego dostępu (błąd 403),Strona internetowa,Nie rozpoczęto,123
+Alternatywna strona zawierająca prawidłowy tag strony kanonicznej,Strona internetowa,Nie rozpoczęto,14
+Strona zablokowana z powodu innego błędu 4xx,Strona internetowa,Nie rozpoczęto,1
+"Strona zeskanowana, ale jeszcze nie zindeksowana",Systemy Google,Nie rozpoczęto,8009
+"Duplikat, wyszukiwarka Google wybrała inną stronę kanoniczną niż użytkownik",Systemy Google,Nie rozpoczęto,102

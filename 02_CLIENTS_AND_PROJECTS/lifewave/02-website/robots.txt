@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://x2o.jaison.pl/sitemap.xml
