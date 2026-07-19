@@ -298,5 +298,11 @@
         "raw_text": "Tak, na stronie głównej znajduje się chatbot Tylko pytanie, gdzie on jest w backendzie zasilany Pamiętam, że aplikacją, tak? Vertex AI Search w ramach środków Free Trial 1000 USD  aplikacji.  Dziękuję.  typowy szukiwarka, pytanie czy on nie powinien  W ramach tych środków trzeba by było sprawdzić dokumentację, uruchomić MCP Context 7. Czy te środki Trial Gen AI App Builder pokryją, a prawdopodobnie tak, wersję aplikacji jako agent konwersacyjny.  Trzeba to przeanalizować z zespołem, czym nie lepszy byłby taki typ aplikacji na potrzeby tego projektu i usług agencji.",
         "corrected_text": "Tak, na stronie głównej znajduje się chatbot Tylko pytanie, gdzie on jest w backendzie zasilany Pamiętam, że aplikacją, tak? Vertex AI Search w ramach środków Free Trial 1000 USD  aplikacji.  Dziękuję.  typowy szukiwarka, pytanie czy on nie powinien  W ramach tych środków trzeba by było sprawdzić dokumentację, uruchomić MCP Context 7. Czy te środki Trial Gen AI App Builder pokryją, a prawdopodobnie tak, wersję aplikacji jako agent konwersacyjny.  Trzeba to przeanalizować z zespołem, czym nie lepszy byłby taki typ aplikacji na potrzeby tego projektu i usług agencji.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 14:25:07",
+        "raw_text": "No to w takim razie trzeba zmienić tego chatbota na stronie internetowej, przejść na tego conversational agent, ponieważ ciężko będzie tego obecnego w taki sposób wyszkolić, czy tak go poprowadzić, żeby się zachowywał inteligentnie, elastycznie i prowadził właśnie  taki inteligentny lejek, tak? Trzeba to zaplanować, wdrożyć. Ja tymczasem biorę się za ustawienia i weryfikacje w Stripe. Podłączę kilka kąt, tak jak wspominałeś.  Dziękuję.  Dziękuję.",
+        "corrected_text": "No to w takim razie trzeba zmienić tego chatbota na stronie internetowej, przejść na tego conversational agent, ponieważ ciężko będzie tego obecnego w taki sposób wyszkolić, czy tak go poprowadzić, żeby się zachowywał inteligentnie, elastycznie i prowadził właśnie  taki inteligentny lejek, tak? Trzeba to zaplanować, wdrożyć. Ja tymczasem biorę się za ustawienia i weryfikacje w Stripe. Podłączę kilka kąt, tak jak wspominałeś.  Dziękuję.  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
