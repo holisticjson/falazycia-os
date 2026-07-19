@@ -460,5 +460,17 @@
         "raw_text": "Sprawdź aktualne limity i wskaż mi drogę gdzie to znaleźć i zwiększyć.",
         "corrected_text": "Sprawdź aktualne limity i wskaż mi drogę gdzie to znaleźć i zwiększyć.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 22:17:44",
+        "raw_text": "Czy mogę powyższe te limity zwiększyć jakby komendą w terminalu Cloud Shell?",
+        "corrected_text": "Czy mogę powyższe te limity zwiększyć jakby komendą w terminalu Cloud Shell?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 22:25:33",
+        "raw_text": "Wdrożenie parsera przetargu w publicznych odłóżmy na później. Na razie w kolejnym kroku skoncentrujmy się na optymalizacji responsywności mobilnej dla modułu video.  Dzień dobry.  KONIEC  Tak przejdźmy do, bo widzę, że tamto już co?  pisałem to już jest zrobione, tak? czyli ta responsywna optymalizacja tak, przejdźmy do sekcji wideo i konfiguracji N8M jeśli chodzi o szpiegowanie Facebook Ads Library to co muszą zrobić? założyć konto na API-Fi  Czy to wiąże się z jakimiś kosztami?",
+        "corrected_text": "Wdrożenie parsera przetargu w publicznych odłóżmy na później. Na razie w kolejnym kroku skoncentrujmy się na optymalizacji responsywności mobilnej dla modułu video.  Dzień dobry.  KONIEC  Tak przejdźmy do, bo widzę, że tamto już co?  pisałem to już jest zrobione, tak? czyli ta responsywna optymalizacja tak, przejdźmy do sekcji wideo i konfiguracji N8M jeśli chodzi o szpiegowanie Facebook Ads Library to co muszą zrobić? założyć konto na API-Fi  Czy to wiąże się z jakimiś kosztami?",
+        "status": "raw_fallback"
     }
 ]
