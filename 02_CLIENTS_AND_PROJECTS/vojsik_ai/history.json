@@ -208,5 +208,35 @@
         "raw_text": "Dobra, gdzie go znaleźć? Adres mojego VPS-a. Dla OS adres IP. Gdzie go znaleźć? W konsoli Google Cloud.",
         "corrected_text": "Dobra, gdzie go znaleźć? Adres mojego VPS-a. Dla OS adres IP. Gdzie go znaleźć? W konsoli Google Cloud.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 10:27:41",
+        "raw_text": "Dobra, wyjaśnijmy jeszcze różnicę między tymi regionami, tak, gdzie strony portal MLM, strona agencji, subdomena agencji z aplikacjami, czyli APP znajdują się w regionie Europe West 1, a  Kontener, czyli ta nazwa usługi Holistic SEO znajduje się w regionie Europe Central 2.  Dziękuję.  Dziękuję.",
+        "corrected_text": "Dobra, wyjaśnijmy jeszcze różnicę między tymi regionami, tak, gdzie strony portal MLM, strona agencji, subdomena agencji z aplikacjami, czyli APP znajdują się w regionie Europe West 1, a  Kontener, czyli ta nazwa usługi Holistic SEO znajduje się w regionie Europe Central 2.  Dziękuję.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 10:28:32",
+        "raw_text": "Czy pod tym roboczym adresem znajduje się ta najnowsza wersja dashboardu Streamlit, nad którą pracowaliśmy? Czy ona w tej chwili znajduje się pod innym adresem?",
+        "corrected_text": "Czy pod tym roboczym adresem znajduje się ta najnowsza wersja dashboardu Streamlit, nad którą pracowaliśmy? Czy ona w tej chwili znajduje się pod innym adresem?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 10:29:15",
+        "raw_text": "Wyjaśni mi również różnicę w typach wdrożenia usług na Cloud Run, czyli różnica między container a source.  Dziękuję.",
+        "corrected_text": "Wyjaśni mi również różnicę w typach wdrożenia usług na Cloud Run, czyli różnica między container a source.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 10:34:22",
+        "raw_text": "No właśnie, no to dla strony agencji, czyli na domenie głównej jaison.pl, jeśli tam są wdrożone automatyzacje, tak, podpięte instancja N8N, no do automatycznej tam wysyłki wiadomo, maili też przez systeme.io.  wysyłka PDF, tak, to czy ten typ source jest właściwy dla takiej strony? No i to samo pytanie dla MLM JSON, JSON MLM port, znaczy nie, JSON X2O portal ma typ source, tak,  No tam też jest chatbot, tak, podpięty, spięty z aplikacją wyszukiwarkową, agentem chatbot z podpiętą wiedzą z GCS i odpowiada na podstawie tej wiedzy.  czy to jest właściwy typ wdrożenia. Nie powinien być zarówno na stronie agencji jak i portalu x2o, nie powinny być typ wdrożenia container. Czy to w trakcie da się zmienić ten typ wdrożenia z source na container?",
+        "corrected_text": "No właśnie, no to dla strony agencji, czyli na domenie głównej jaison.pl, jeśli tam są wdrożone automatyzacje, tak, podpięte instancja N8N, no do automatycznej tam wysyłki wiadomo, maili też przez systeme.io.  wysyłka PDF, tak, to czy ten typ source jest właściwy dla takiej strony? No i to samo pytanie dla MLM JSON, JSON MLM port, znaczy nie, JSON X2O portal ma typ source, tak,  No tam też jest chatbot, tak, podpięty, spięty z aplikacją wyszukiwarkową, agentem chatbot z podpiętą wiedzą z GCS i odpowiada na podstawie tej wiedzy.  czy to jest właściwy typ wdrożenia. Nie powinien być zarówno na stronie agencji jak i portalu x2o, nie powinny być typ wdrożenia container. Czy to w trakcie da się zmienić ten typ wdrożenia z source na container?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 10:34:56",
+        "raw_text": "No i jak zalecasz w naszych tu działaniach, projektach, czyli dla stron typu landing page, squeeze page, dla lake of tripwire, pod które jest podpięte systeme I/O i jakaś automatyzacja, workflows N8n, bardziej właściwym jest typ wdrożenia source czy container.",
+        "corrected_text": "No i jak zalecasz w naszych tu działaniach, projektach, czyli dla stron typu landing page, squeeze page, dla lake of tripwire, pod które jest podpięte systeme I/O i jakaś automatyzacja, workflows N8n, bardziej właściwym jest typ wdrożenia source czy container.",
+        "status": "raw_fallback"
     }
 ]
