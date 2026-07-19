@@ -1,0 +1,213 @@
+{
+  "name": "Jaison OS 2.0 - Google Drive Video Ingest & Multi-Platform Repurposer",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "event": "fileCreated",
+        "folderId": "Jaison_OS/Raw_Input",
+        "options": {}
+      },
+      "id": "2de14a0f-eb27-466d-bc11-a8e5616239ff",
+      "name": "Google Drive Trigger (Raw_Input)",
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        250,
+        360
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "your-gdrive-credential-id",
+          "name": "Tomasz Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fileId": "={{$json.id}}",
+        "options": {}
+      },
+      "id": "fb6f0814-2ea4-4828-98e3-05b18bc865cb",
+      "name": "Download Video File",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 2,
+      "position": [
+        470,
+        360
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "your-gdrive-credential-id",
+          "name": "Tomasz Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "transcribe",
+        "model": "whisper-1",
+        "options": {
+          "language": "pl",
+          "responseFormat": "json"
+        }
+      },
+      "id": "67f39bb0-a3fe-425b-ae29-3be0cb3fc870",
+      "name": "Whisper (Transkrypcja Audio)",
+      "type": "n8n-nodes-base.openAi",
+      "typeVersion": 1,
+      "position": [
+        690,
+        360
+      ],
+      "credentials": {
+        "openAiApi": {
+          "id": "your-openai-credential-id",
+          "name": "OpenAI API Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gemini-2.5-flash",
+        "prompt": "=Przeanalizuj poniższą transkrypcję wideo nagranego przez Tomasza i stwórz profesjonalny, wirusowy Content Repurposing Kit dopasowany do jego stylu (Ghost/ADHD4life).\n\nTRANSKRYPCJA:\n{{$json.text}}\n\nWYGENERUJ:\n1. 🎬 Tytuł viralu (do Shorts/Reels/TikTok)\n2. ✍️ Opis zoptymalizowany SEO z hashtagami\n3. 📝 Gotowe posty na social media:\n   - LinkedIn (profesjonalny, ale autentyczny z wnioskami biznesowymi)\n   - X/Twitter (krótki, zwięzły, z przykuwającym uwagę hookiem)\n   - Facebook (lekki, angażujący społeczność)\n\nZwróć wynik jako czysty obiekt JSON o polach:\n- title\n- seo_description\n- post_linkedin\n- post_twitter\n- post_facebook\n- tags",
+        "jsonOutput": true,
+        "options": {}
+      },
+      "id": "fbc66c5d-3d4a-4638-b4b1-8b29c51a99f1",
+      "name": "Gemini (Optymalizacja & Social Copy)",
+      "type": "n8n-nodes-base.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        910,
+        360
+      ],
+      "credentials": {
+        "googleGeminiApi": {
+          "id": "your-gemini-credential-id",
+          "name": "Google Gemini API Token"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://holistic-ceo-771359551342.europe-central2.run.app/webhook/video-repurpose-ingest",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"title\": {{$json.title}},\n  \"description\": {{$json.seo_description}},\n  \"post_linkedin\": {{$json.post_linkedin}},\n  \"post_twitter\": {{$json.post_twitter}},\n  \"post_facebook\": {{$json.post_facebook}},\n  \"tags\": {{$json.tags}},\n  \"video_drive_id\": {{$node[\"Google Drive Trigger (Raw_Input)\"].json.id}}\n}",
+        "options": {}
+      },
+      "id": "4da2b4fa-563b-4899-8ba9-03c09b865ab3",
+      "name": "Zasilenie Jaison OS 2.0 (CRM / Webhook)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [
+        1130,
+        360
+      ]
+    },
+    {
+      "parameters": {
+        "chatId": "your-telegram-group-id",
+        "text": "=🔔 *Nowe wideo z telefonu zostało przetworzone!* 🎬\n\n🎯 *Tytuł:* {{$node[\"Gemini (Optymalizacja & Social Copy)\"].json.title}}\n🏷️ *Tagi:* {{$node[\"Gemini (Optymalizacja & Social Copy)\"].json.tags}}\n\n*Posty na LinkedIn, X oraz Facebook są gotowe w Twoim panelu Jaison OS!* \n🔗 Kliknij tutaj, aby zatwierdzić publikację jednym kliknięciem: https://jaison.pl/app",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "cf690dbd-bb31-4899-ad99-23c09b865ab4",
+      "name": "Powiadomienie Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        1350,
+        360
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "your-telegram-bot-credential-id",
+          "name": "Hermes Telegram Bot"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Google Drive Trigger (Raw_Input)": {
+      "main": [
+        [
+          {
+            "node": "Download Video File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download Video File": {
+      "main": [
+        [
+          {
+            "node": "Whisper (Transkrypcja Audio)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Whisper (Transkrypcja Audio)": {
+      "main": [
+        [
+          {
+            "node": "Gemini (Optymalizacja & Social Copy)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini (Optymalizacja & Social Copy)": {
+      "main": [
+        [
+          {
+            "node": "Zasilenie Jaison OS 2.0 (CRM / Webhook)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Zasilenie Jaison OS 2.0 (CRM / Webhook)": {
+      "main": [
+        [
+          {
+            "node": "Powiadomienie Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "id": "jaison-gdrive-video-ingest-2026",
+  "meta": {
+    "instanceId": "jaison-n8n-instance-id"
+  }
+}
