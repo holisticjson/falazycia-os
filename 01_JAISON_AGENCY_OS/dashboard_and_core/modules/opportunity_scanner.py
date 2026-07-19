@@ -1027,6 +1027,20 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                     badge_style = "background-color: #6B7280; color: white;"
                     
                 # Karta okazji
+                import urllib.parse
+                kw_query = opp['title']
+                if "n8n" in kw_query.lower() or "automatyz" in kw_query.lower() or "integra" in kw_query.lower():
+                    kw_query = "automatyzacja n8n"
+                encoded_card_query = urllib.parse.quote(kw_query)
+                card_fb_url = f"https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=PL&q={encoded_card_query}&sort_data[direction]=desc&sort_data[mode]=relevancy_monthly_grouped&media_type=all"
+                
+                source_link_html = ""
+                if opp.get("url_link"):
+                    source_link_html = f'<span>🔗 <a href="{opp["url_link"]}" target="_blank" style="color: #10B981; font-weight: bold; text-decoration: none;">Link źródłowy</a></span>'
+                else:
+                    source_link_html = f'<span>🔗 <a href="https://useme.com" target="_blank" style="color: #94A3B8; text-decoration: none;">Useme</a></span>'
+
+                # Karta okazji
                 st.markdown(f"""
                 <div class="custom-card" style="border-left: 5px solid {accent_color}; margin-bottom: 15px; padding: 20px;">
                 	<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -1035,11 +1049,13 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                 	</div>
                 	<h4 style="margin: 0 0 10px 0; color: #F3F4F6; font-family: Outfit;">{opp['title']}</h4>
                 	<p style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">{opp['description']}</p>
-                	<div style="display: flex; gap: 15px; font-size: 0.85rem; color: #94A3B8; border-top: 1px solid #1E293B; padding-top: 10px; margin-bottom: 10px;">
+                	<div style="display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; color: #94A3B8; border-top: 1px solid #1E293B; padding-top: 10px; margin-bottom: 10px;">
                 		<span>💰 Budżet: <strong style="color: #10B981;">{opp['budget']}</strong></span>
                 		<span>📧 Email: <strong>{opp['contact_email'] if opp['contact_email'] else 'Brak'}</strong></span>
                 		<span>📞 Tel: <strong>{opp['contact_phone'] if opp['contact_phone'] else 'Brak'}</strong></span>
                 		<span>📦 Status: <strong style="color: #F59E0B;">{opp['status']}</strong></span>
+                		{source_link_html}
+                		<span>🕵️ <a href="{card_fb_url}" target="_blank" style="color: #3B82F6; font-weight: bold; text-decoration: none;">FB Ads Spy</a></span>
                 	</div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -1128,6 +1144,86 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                     st.markdown("</div>", unsafe_allow_html=True)
                         
                 st.markdown("<hr style='border: 0; border-top: 1px solid #1E293B; margin: 15px 0;'>", unsafe_allow_html=True)
+
+    # ==================== TAB 2: FACEBOOK ADS SZPIEG ====================
+    with tab_fb_spy:
+        st.markdown("### 🕵️ Szpiegowanie Reklam Konkurencji (Facebook Ads Library)")
+        st.markdown("""
+        Zgodnie ze strategią **Lead Radar 2.0 & Grand Slam Offer**, analiza działających reklam konkurencji pozwala na natychmiastowe ulepszenie oferty i wstrzyknięcie zwycięskich kreacji bezpośrednio do Twojego skryptu outreach.
+        """)
+        
+        # Banner informacyjny o strategii
+        st.markdown("""
+        <div class="one-thing-banner" style="border-left-color: #3B82F6; background: #0c1524;">
+            <h4 style="margin-top: 0; color: #3B82F6;">🎯 Jak wykorzystać szpiegowanie w Outreach?</h4>
+            <p style="color: #CBD5E1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 0;">
+                Wyszukaj konkurentów lub słowa kluczowe (np. <i>"n8n automatyzacja"</i>, <i>"agencja AI"</i>). Zobacz jakie oferty (Grand Slam) oraz bonusy dają w reklamach. 
+                Nasze AI automatycznie wykorzysta te dane jako kontekst wykluczający lub ulepszający przy generowaniu spersonalizowanych ofert!
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        col_fb_q, col_fb_c = st.columns([2, 1])
+        with col_fb_q:
+            fb_search_query = st.text_input(
+                "🔎 Wpisz słowo kluczowe lub nazwę konkurenta (fanpage):", 
+                value=st.session_state.get("fb_search_kw_preset", "automatyzacje procesów"),
+                key="fb_search_query_input"
+            )
+        with col_fb_c:
+            fb_country = st.selectbox(
+                "🌍 Kraj docelowy:", 
+                ["PL", "ALL", "US", "DE", "GB"], 
+                index=0, 
+                key="fb_country_select"
+            )
+            
+        # Generuj bezpieczny link do Facebook Ads Library
+        import urllib.parse
+        encoded_query = urllib.parse.quote(fb_search_query)
+        country_param = "all" if fb_country == "ALL" else fb_country
+        
+        fb_library_url = f"https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country={country_param}&q={encoded_query}&sort_data[direction]=desc&sort_data[mode]=relevancy_monthly_grouped&media_type=all"
+        
+        st.write("")
+        st.markdown(f"""
+        <div style="text-align: center; margin-bottom: 25px;">
+            <a href="{fb_library_url}" target="_blank" style="text-decoration: none;">
+                <button style="background: linear-gradient(135deg, #1877F2 0%, #0d59b3 100%); color: white; padding: 12px 25px; border-radius: 8px; border: none; font-size: 1rem; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);">
+                    🌐 Otwórz Bezpiecznie Facebook Ads Library dla: "{fb_search_query}" 🚀
+                </button>
+            </a>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Sekcja Integracji Automatycznej z Apify
+        st.markdown("#### 🤖 Automatyczny Monitoring przez Apify & n8n")
+        st.markdown("""
+        Chcesz, aby system automatycznie scrapował reklamy konkurencji w tle bez Twojego udziału? Zintegruj swój crawler za pomocą Apify (Meta Ads Scraper) i webhooka n8n.
+        """)
+        
+        col_api_webhook, col_api_status = st.columns([2, 1])
+        with col_api_webhook:
+            apify_webhook_url = st.text_input(
+                "🔗 Twój Webhook n8n dla Apify Meta Ads:", 
+                value="https://n8n.jaison.pl/webhook/apify-meta-ads-ingest",
+                key="apify_webhook_url_input"
+            )
+        with col_api_status:
+            apify_status = "Aktywny" if apify_webhook_url else "Nieaktywny"
+            st.markdown(f"""
+            <div style="padding: 10px; border-radius: 6px; background-color: #0c1524; text-align: center; border-left: 3px solid #10B981; margin-top: 5px;">
+                <p style="margin: 0; font-size: 0.8rem; color: #94A3B8;">STATUS INTEGRACJI</p>
+                <h4 style="margin: 3px 0 0 0; color: #10B981;">{apify_status}</h4>
+            </div>
+            """, unsafe_allow_html=True)
+            
+        st.markdown("""
+        **Rekomendowany n8n Blueprint dla Apify Meta Ads Scraper:**
+        1. **Trigger:** Cron co 24h lub Webhook ręczny.
+        2. **Action:** Apify node wywołujący scraper `apify/facebook-ads-scraper` ze słowami kluczowymi z Twojego profilu.
+        3. **Webhook Ingest:** n8n przesyła uzyskane reklamy konkurencji (teksty, hooki) bezpośrednio na powyższy webhook, zasilając kolumnę `competitor_ads_context` w bazie.
+        """)
 
     # ==================== TAB: SKANER WIZYTÓWEK GOOGLE (LOCALO STYLE) ====================
     with tab_gmaps:
