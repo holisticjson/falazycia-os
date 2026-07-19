@@ -484,5 +484,17 @@
         "raw_text": "Na liście limitów w ogóle się nie wyświetla taka nazwa. Nie mogłem tego znaleźć.",
         "corrected_text": "Na liście limitów w ogóle się nie wyświetla taka nazwa. Nie mogłem tego znaleźć.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 23:29:19",
+        "raw_text": "A może być przyczyną tego błędu 4.2.9 niewłączone API Dialog Flow API?",
+        "corrected_text": "A może być przyczyną tego błędu 4.2.9 niewłączone API Dialog Flow API?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 23:32:40",
+        "raw_text": "Włączone.",
+        "corrected_text": "Włączone.",
+        "status": "raw_fallback"
     }
 ]
