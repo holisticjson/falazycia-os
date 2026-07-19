@@ -442,5 +442,23 @@
         "raw_text": "Chcę wdrożyć tutaj na swoim stacku technologicznym i nie wiem czy to łączyć z dashboardu Streamlit czy da się, czy jest takie rozwiązanie open source darmowe takiego agregatora odpowiadania na komentarze automatyczne coś ala aplikacja ManyChat. Czy można agregować na przykład komentarze z wielu źródeł  z wielu platform społecznościowych w jednym miejscu, w takim swoim dashboardzie Streamlit. Dzięki jakiemuś brokerowi, łącznikowi na jakimś rozwiązaniu open source. Zrób szczegółowe badania rynku i zarekomenduj mi tutaj rozwiązania.",
         "corrected_text": "Chcę wdrożyć tutaj na swoim stacku technologicznym i nie wiem czy to łączyć z dashboardu Streamlit czy da się, czy jest takie rozwiązanie open source darmowe takiego agregatora odpowiadania na komentarze automatyczne coś ala aplikacja ManyChat. Czy można agregować na przykład komentarze z wielu źródeł  z wielu platform społecznościowych w jednym miejscu, w takim swoim dashboardzie Streamlit. Dzięki jakiemuś brokerowi, łącznikowi na jakimś rozwiązaniu open source. Zrób szczegółowe badania rynku i zarekomenduj mi tutaj rozwiązania.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 21:57:57",
+        "raw_text": "Nigdzie nie widzę tego filtra. Vertex AI API w ogóle się nie wyświetla jako usługa.",
+        "corrected_text": "Nigdzie nie widzę tego filtra. Vertex AI API w ogóle się nie wyświetla jako usługa.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 21:58:39",
+        "raw_text": "Może po prostu muszę zapytać Cloud Assist. Co konkretnie, jaki jest nasz cel, co chcemy zrobić. Może on lepiej na to odpowie.",
+        "corrected_text": "Może po prostu muszę zapytać Cloud Assist. Co konkretnie, jaki jest nasz cel, co chcemy zrobić. Może on lepiej na to odpowie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 21:58:48",
+        "raw_text": "Sprawdź aktualne limity i wskaż mi drogę gdzie to znaleźć i zwiększyć.",
+        "corrected_text": "Sprawdź aktualne limity i wskaż mi drogę gdzie to znaleźć i zwiększyć.",
+        "status": "raw_fallback"
     }
 ]
