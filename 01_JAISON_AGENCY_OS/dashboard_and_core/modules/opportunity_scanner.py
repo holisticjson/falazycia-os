@@ -956,8 +956,9 @@ def render_lead_radar_page(call_gemini_pro_api_func):
     st.write("")
     
     # Podział na zakładki
-    tab_radar, tab_gmaps, tab_sales_director, tab_audit, tab_map, tab_config = st.tabs([
+    tab_radar, tab_fb_spy, tab_gmaps, tab_sales_director, tab_audit, tab_map, tab_config = st.tabs([
         "📡 Radar Zleceń", 
+        "🕵️ Facebook Ads Szpieg",
         "🔍 Skaner Wizytówek Google (Localo style)",
         "📢 Sales Director (Outbound)", 
         "📋 Audyty 21 Pytań (jaison.pl)", 

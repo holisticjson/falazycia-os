@@ -404,6 +404,52 @@ st.markdown("""
             transform: scale(1);
         }
     }
+
+    /* GLOBALNA RESPONSYWNOŚĆ MOBILNA */
+    @media (max-width: 768px) {
+        .stApp {
+            padding: 10px !important;
+        }
+        /* Spłaszczenie kolumn Streamlit do widoku jednokolumnowego */
+        div[data-testid="column"] {
+            width: 100% !important;
+            flex: 1 1 100% !important;
+            margin-bottom: 12px !important;
+        }
+        /* Ukrycie nadmiarowego pustego odstępu */
+        .block-container {
+            padding-top: 2rem !important;
+            padding-bottom: 2rem !important;
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+        }
+        /* Dostosowanie wielkości czcionek */
+        h1 {
+            font-size: 1.8rem !important;
+        }
+        h2 {
+            font-size: 1.4rem !important;
+        }
+        h3 {
+            font-size: 1.2rem !important;
+        }
+        /* Lepsze dotykowe przyciski na telefonach */
+        .stButton>button {
+            padding: 12px 18px !important;
+            font-size: 1rem !important;
+            height: auto !important;
+        }
+        /* Dostosowanie kart i bannerów */
+        .custom-card {
+            padding: 16px !important;
+            border-radius: 12px !important;
+        }
+        .one-thing-banner {
+            padding: 20px !important;
+            border-radius: 12px !important;
+            margin-bottom: 20px !important;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 

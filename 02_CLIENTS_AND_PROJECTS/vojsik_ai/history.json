@@ -406,5 +406,41 @@
         "raw_text": "Akceptuję, działaj z planem.",
         "corrected_text": "Akceptuję, działaj z planem.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 21:31:37",
+        "raw_text": "Nie strzelaj, korzystaj z MCP Server Context 7 lub posiadanych umiejętności. Ponieważ w polu wyszukiwania wpisałem tą wartość i zero. Nie ma takiej.",
+        "corrected_text": "Nie strzelaj, korzystaj z MCP Server Context 7 lub posiadanych umiejętności. Ponieważ w polu wyszukiwania wpisałem tą wartość i zero. Nie ma takiej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 21:34:49",
+        "raw_text": "To znaczy tak, no, czy to bardzo skomplikowane i we wdrożeniu ta integracja parserów przy targach publicznych, czy będzie to wymagało dużo ode mnie zakładania kont na tych publicznych portalach? Jeśli tak, no to... No to tak, to wrzućmy to.  A w pierwszej kolejności integracja bezpiecznego szpigowania reklam.  To wdrożenie.",
+        "corrected_text": "To znaczy tak, no, czy to bardzo skomplikowane i we wdrożeniu ta integracja parserów przy targach publicznych, czy będzie to wymagało dużo ode mnie zakładania kont na tych publicznych portalach? Jeśli tak, no to... No to tak, to wrzućmy to.  A w pierwszej kolejności integracja bezpiecznego szpigowania reklam.  To wdrożenie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 21:35:34",
+        "raw_text": "Będzie miał również publikator Facebook Reels, Shorts. Nie będzie się to wszystko gdzieś tam dublowało z tymi aktualnymi modułami, które mamy. Jeśli tak, to trzeba będzie wszystko scalać albo po prostu zostawić to bardziej zaawansowane, lepsze rozwiązanie.",
+        "corrected_text": "Będzie miał również publikator Facebook Reels, Shorts. Nie będzie się to wszystko gdzieś tam dublowało z tymi aktualnymi modułami, które mamy. Jeśli tak, to trzeba będzie wszystko scalać albo po prostu zostawić to bardziej zaawansowane, lepsze rozwiązanie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 21:36:13",
+        "raw_text": "Oczywiście jak najbardziej robiąc ten moduł, no to należy zoptymalizować responsywność mobilną, tak, na moduł wideo. Wyniki całego chyba tutaj, tak, dashboardu streaming, tak, zrozumiałem.",
+        "corrected_text": "Oczywiście jak najbardziej robiąc ten moduł, no to należy zoptymalizować responsywność mobilną, tak, na moduł wideo. Wyniki całego chyba tutaj, tak, dashboardu streaming, tak, zrozumiałem.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 21:37:55",
+        "raw_text": "Aha, póki pamiętam przypomniała mi się jeszcze kwestia komunikacji w social mediach. Chodzi o taką automatyzację odpowiadania na komentarze coś, ale jak ma menechat.",
+        "corrected_text": "Aha, póki pamiętam przypomniała mi się jeszcze kwestia komunikacji w social mediach. Chodzi o taką automatyzację odpowiadania na komentarze coś, ale jak ma menechat.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-19 21:39:10",
+        "raw_text": "Chcę wdrożyć tutaj na swoim stacku technologicznym i nie wiem czy to łączyć z dashboardu Streamlit czy da się, czy jest takie rozwiązanie open source darmowe takiego agregatora odpowiadania na komentarze automatyczne coś ala aplikacja ManyChat. Czy można agregować na przykład komentarze z wielu źródeł  z wielu platform społecznościowych w jednym miejscu, w takim swoim dashboardzie Streamlit. Dzięki jakiemuś brokerowi, łącznikowi na jakimś rozwiązaniu open source. Zrób szczegółowe badania rynku i zarekomenduj mi tutaj rozwiązania.",
+        "corrected_text": "Chcę wdrożyć tutaj na swoim stacku technologicznym i nie wiem czy to łączyć z dashboardu Streamlit czy da się, czy jest takie rozwiązanie open source darmowe takiego agregatora odpowiadania na komentarze automatyczne coś ala aplikacja ManyChat. Czy można agregować na przykład komentarze z wielu źródeł  z wielu platform społecznościowych w jednym miejscu, w takim swoim dashboardzie Streamlit. Dzięki jakiemuś brokerowi, łącznikowi na jakimś rozwiązaniu open source. Zrób szczegółowe badania rynku i zarekomenduj mi tutaj rozwiązania.",
+        "status": "raw_fallback"
     }
 ]
