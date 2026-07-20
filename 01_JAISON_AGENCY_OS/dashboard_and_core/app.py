@@ -6459,11 +6459,135 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                     </div>
                     """, unsafe_allow_html=True)
 
+def render_multi_publish_selector(video_bytes, key_prefix):
+    """
+    Renderuje luksusowy panel Multi-Publish dla wideo zintegrowany z n8n.
+    """
+    if not video_bytes:
+        return
+        
+    st.markdown("<hr style='border-color: #374151;'>", unsafe_allow_html=True)
+    st.markdown(f"### 🚀 Zunifikowany Multi-Publikator Wideo (One-Click Publish)")
+    st.markdown("<p style='font-size: 0.9rem; color: #9CA3AF; margin-bottom: 15px;'>Zatwierdź i wyślij gotowe wideo jednocześnie na wszystkie swoje kanały social media jednym kliknięciem.</p>", unsafe_allow_html=True)
+    
+    col_pub_t, col_pub_c = st.columns([1, 1])
+    
+    with col_pub_t:
+        pub_title = st.text_input(
+            "Tytuł viralu (Shorts/Reels/TikTok):",
+            value="Jak AI odzyskuje Twój czas? ⚡",
+            key=f"{key_prefix}_pub_title"
+        )
+        pub_desc = st.text_area(
+            "Opis SEO i hashtagi:",
+            value="Oto jak wdrożyć automatycznego asystenta AI w swojej firmie... #ai #automation #n8n #productivity #adhd",
+            height=120,
+            key=f"{key_prefix}_pub_desc"
+        )
+        
+    with col_pub_c:
+        st.markdown("<p style='font-size: 0.9rem; font-weight: bold; color: #9CA3AF; margin-bottom: 5px;'>Wybierz kanały docelowe:</p>", unsafe_allow_html=True)
+        ch_yt = st.checkbox("🩳 YouTube Shorts", value=True, key=f"{key_prefix}_ch_yt")
+        ch_ig = st.checkbox("📸 Instagram Reels", value=True, key=f"{key_prefix}_ch_ig")
+        ch_tt = st.checkbox("🎵 TikTok Video", value=True, key=f"{key_prefix}_ch_tt")
+        ch_fb = st.checkbox("📘 Facebook Reels/Shorts", value=True, key=f"{key_prefix}_ch_fb")
+        
+        webhook_url = st.text_input(
+            "Adres Webhooka n8n Multi-Publish:",
+            value="https://n8n.jaison.pl/webhook/video-multi-publish",
+            key=f"{key_prefix}_webhook"
+        )
+        
+    if st.button("🚀 OPUBLIKUJ NA WYBRANYCH KANAŁACH JEDNYM KLIKNIĘCIEM", type="primary", use_container_width=True, key=f"{key_prefix}_pub_btn"):
+        selected_channels = []
+        if ch_yt: selected_channels.append("YouTube Shorts")
+        if ch_ig: selected_channels.append("Instagram Reels")
+        if ch_tt: selected_channels.append("TikTok")
+        if ch_fb: selected_channels.append("Facebook Reels")
+        
+        if not selected_channels:
+            st.error("⚠️ Wybierz przynajmniej jeden kanał publikacji!")
+        else:
+            with st.spinner("📦 Przygotowywanie paczki wideo i wysyłanie do n8n pipeline..."):
+                try:
+                    import requests
+                    
+                    files = {
+                        "data": ("video.mp4", video_bytes, "video/mp4")
+                    }
+                    data = {
+                        "title": pub_title,
+                        "description": pub_desc,
+                        "channels": ",".join(selected_channels)
+                    }
+                    
+                    response = requests.post(webhook_url, data=data, files=files, timeout=60, verify=False)
+                    
+                    if response.status_code in [200, 201]:
+                        st.success(f"🎉 Sukces! Wideo pomyślnie wysłane do dystrybucji na kanały: {', '.join(selected_channels)}!")
+                        st.toast("⚡ n8n pipeline uruchomiony pomyślnie!")
+                    else:
+                        st.error(f"❌ Błąd webhooka n8n (Kod {response.status_code}): {response.text}")
+                except Exception as ex:
+                    st.error(f"❌ Wyjątek podczas wysyłania do n8n: {str(ex)}")
+
         # --- TOOL 8: STUDIO VIDEO, VOICE & FLUX ---
         elif tool == "Studio_Video":
             st.subheader("🎬 Brand Media Studio")
             st.markdown("Generuj luksusowe efekty 3D, syntezuj unikalne audio, projektuj obrazy i twórz kinowe wideo B-Roll z fal.ai.")
             
+            # --- PROFILE AWATARÓW (PRESETS) ---
+            st.markdown("<div style='background: #111827; border-radius: 8px; padding: 15px; border: 1px solid #1F2937; margin-bottom: 20px;'>", unsafe_allow_html=True)
+            avatar_preset = st.selectbox(
+                "👤 Wybierz profil Cyfrowego Awatara (Preset):",
+                ["Tomasz - Tech CEO (Domyślny)", "Tomasz - Casual Creator", "Cyfrowa Asystentka Marki (Olivia)", "Brak presetu (Własne parametry)"],
+                key="suite_avatar_preset"
+            )
+            st.markdown("</div>", unsafe_allow_html=True)
+            
+            # Inicjalizacja domyślnych wartości sesji dla presetów przy zmianie presetu
+            if "prev_avatar_preset" not in st.session_state:
+                st.session_state.prev_avatar_preset = None
+                
+            if st.session_state.suite_avatar_preset != st.session_state.prev_avatar_preset:
+                 st.session_state.prev_avatar_preset = st.session_state.suite_avatar_preset
+                 preset = st.session_state.suite_avatar_preset
+                 
+                 tomasz_hero_path = "C:\\Aplikacje MVP\\01_JAISON_AGENCY_OS\\brand_and_identity\\website\\site\\tomasz_hero.png"
+                 tomasz_hero_bytes = None
+                 import os
+                 if os.path.exists(tomasz_hero_path):
+                     try:
+                         with open(tomasz_hero_path, "rb") as f:
+                             tomasz_hero_bytes = f.read()
+                     except:
+                         pass
+                 
+                 if preset == "Tomasz - Tech CEO (Domyślny)":
+                     st.session_state.suite_video_start_frame = tomasz_hero_bytes
+                     st.session_state.suite_flux_use_lora = True
+                     st.session_state.suite_video_motion_preset = "🛸 Orbiting 360° Camera"
+                     st.session_state.suite_video_engine = "minimax"
+                     st.session_state.suite_studio_tts_gender = "Męski (MALE)"
+                     st.session_state.lipsync_video_source = "🎬 Użyj ostatnio wygenerowanego wideo B-Roll z fal.ai"
+                     st.session_state.lipsync_audio_source = "🎙️ Użyj ostatniego klonu głosu / audio z sesji"
+                 elif preset == "Tomasz - Casual Creator":
+                     st.session_state.suite_video_start_frame = tomasz_hero_bytes
+                     st.session_state.suite_flux_use_lora = True
+                     st.session_state.suite_video_motion_preset = "💥 Slow-Motion Action"
+                     st.session_state.suite_video_engine = "kling"
+                     st.session_state.suite_studio_tts_gender = "Męski (MALE)"
+                     st.session_state.lipsync_video_source = "🎬 Użyj ostatnio wygenerowanego wideo B-Roll z fal.ai"
+                     st.session_state.lipsync_audio_source = "🎙️ Użyj ostatniego klonu głosu / audio z sesji"
+                 elif preset == "Cyfrowa Asystentka Marki (Olivia)":
+                     st.session_state.suite_video_start_frame = None
+                     st.session_state.suite_flux_use_lora = False
+                     st.session_state.suite_video_motion_preset = "Własny opis (brak presetu)"
+                     st.session_state.suite_video_engine = "minimax"
+                     st.session_state.suite_studio_tts_gender = "Żeński (FEMALE)"
+                     st.session_state.lipsync_video_source = "📁 Prześlij własny plik wideo (MP4)"
+                     st.session_state.lipsync_audio_source = "🎙️ Użyj ostatniego klonu głosu / audio z sesji"
+
             tab_3d, tab_vocal, tab_flux, tab_video, tab_lipsync = st.tabs([
                 "✨ Efekty 3D (Three.js)", 
                 "🎙️ Voice & Audio Clone", 
