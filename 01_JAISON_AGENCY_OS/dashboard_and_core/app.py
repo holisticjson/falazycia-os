@@ -20,6 +20,78 @@ def save_lora_state(url, trigger):
     except:
         pass
 
+def render_multi_publish_selector(video_bytes, key_prefix):
+    """
+    Renderuje luksusowy panel Multi-Publish dla wideo zintegrowany z n8n.
+    """
+    if not video_bytes:
+        return
+        
+    st.markdown("<hr style='border-color: #374151;'>", unsafe_allow_html=True)
+    st.markdown(f"### 🚀 Zunifikowany Multi-Publikator Wideo (One-Click Publish)")
+    st.markdown("<p style='font-size: 0.9rem; color: #9CA3AF; margin-bottom: 15px;'>Zatwierdź i wyślij gotowe wideo jednocześnie na wszystkie swoje kanały social media jednym kliknięciem.</p>", unsafe_allow_html=True)
+    
+    col_pub_t, col_pub_c = st.columns([1, 1])
+    
+    with col_pub_t:
+        pub_title = st.text_input(
+            "Tytuł viralu (Shorts/Reels/TikTok):",
+            value="Jak AI odzyskuje Twój czas? ⚡",
+            key=f"{key_prefix}_pub_title"
+        )
+        pub_desc = st.text_area(
+            "Opis SEO i hashtagi:",
+            value="Oto jak wdrożyć automatycznego asystenta AI w swojej firmie... #ai #automation #n8n #productivity #adhd",
+            height=120,
+            key=f"{key_prefix}_pub_desc"
+        )
+        
+    with col_pub_c:
+        st.markdown("<p style='font-size: 0.9rem; font-weight: bold; color: #9CA3AF; margin-bottom: 5px;'>Wybierz kanały docelowe:</p>", unsafe_allow_html=True)
+        ch_yt = st.checkbox("🩳 YouTube Shorts", value=True, key=f"{key_prefix}_ch_yt")
+        ch_ig = st.checkbox("📸 Instagram Reels", value=True, key=f"{key_prefix}_ch_ig")
+        ch_tt = st.checkbox("🎵 TikTok Video", value=True, key=f"{key_prefix}_ch_tt")
+        ch_fb = st.checkbox("📘 Facebook Reels/Shorts", value=True, key=f"{key_prefix}_ch_fb")
+        
+        webhook_url = st.text_input(
+            "Adres Webhooka n8n Multi-Publish:",
+            value="https://n8n.jaison.pl/webhook/video-multi-publish",
+            key=f"{key_prefix}_webhook"
+        )
+        
+    if st.button("🚀 OPUBLIKUJ NA WYBRANYCH KANAŁACH JEDNYM KLIKNIĘCIEM", type="primary", use_container_width=True, key=f"{key_prefix}_pub_btn"):
+        selected_channels = []
+        if ch_yt: selected_channels.append("YouTube Shorts")
+        if ch_ig: selected_channels.append("Instagram Reels")
+        if ch_tt: selected_channels.append("TikTok")
+        if ch_fb: selected_channels.append("Facebook Reels")
+        
+        if not selected_channels:
+            st.error("⚠️ Wybierz przynajmniej jeden kanał publikacji!")
+        else:
+            with st.spinner("📦 Przygotowywanie paczki wideo i wysyłanie do n8n pipeline..."):
+                try:
+                    import requests
+                    
+                    files = {
+                        "data": ("video.mp4", video_bytes, "video/mp4")
+                    }
+                    data = {
+                        "title": pub_title,
+                        "description": pub_desc,
+                        "channels": ",".join(selected_channels)
+                    }
+                    
+                    response = requests.post(webhook_url, data=data, files=files, timeout=60, verify=False)
+                    
+                    if response.status_code in [200, 201]:
+                        st.success(f"🎉 Sukces! Wideo pomyślnie wysłane do dystrybucji na kanały: {', '.join(selected_channels)}!")
+                        st.toast("⚡ n8n pipeline uruchomiony pomyślnie!")
+                    else:
+                        st.error(f"❌ Błąd webhooka n8n (Kod {response.status_code}): {response.text}")
+                except Exception as ex:
+                    st.error(f"❌ Wyjątek podczas wysyłania do n8n: {str(ex)}")
+
 def check_telegram_events():
     events_file = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\dashboard\telegram_events.json"
     if os.path.exists(events_file):
@@ -6459,78 +6531,6 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                     </div>
                     """, unsafe_allow_html=True)
 
-def render_multi_publish_selector(video_bytes, key_prefix):
-    """
-    Renderuje luksusowy panel Multi-Publish dla wideo zintegrowany z n8n.
-    """
-    if not video_bytes:
-        return
-        
-    st.markdown("<hr style='border-color: #374151;'>", unsafe_allow_html=True)
-    st.markdown(f"### 🚀 Zunifikowany Multi-Publikator Wideo (One-Click Publish)")
-    st.markdown("<p style='font-size: 0.9rem; color: #9CA3AF; margin-bottom: 15px;'>Zatwierdź i wyślij gotowe wideo jednocześnie na wszystkie swoje kanały social media jednym kliknięciem.</p>", unsafe_allow_html=True)
-    
-    col_pub_t, col_pub_c = st.columns([1, 1])
-    
-    with col_pub_t:
-        pub_title = st.text_input(
-            "Tytuł viralu (Shorts/Reels/TikTok):",
-            value="Jak AI odzyskuje Twój czas? ⚡",
-            key=f"{key_prefix}_pub_title"
-        )
-        pub_desc = st.text_area(
-            "Opis SEO i hashtagi:",
-            value="Oto jak wdrożyć automatycznego asystenta AI w swojej firmie... #ai #automation #n8n #productivity #adhd",
-            height=120,
-            key=f"{key_prefix}_pub_desc"
-        )
-        
-    with col_pub_c:
-        st.markdown("<p style='font-size: 0.9rem; font-weight: bold; color: #9CA3AF; margin-bottom: 5px;'>Wybierz kanały docelowe:</p>", unsafe_allow_html=True)
-        ch_yt = st.checkbox("🩳 YouTube Shorts", value=True, key=f"{key_prefix}_ch_yt")
-        ch_ig = st.checkbox("📸 Instagram Reels", value=True, key=f"{key_prefix}_ch_ig")
-        ch_tt = st.checkbox("🎵 TikTok Video", value=True, key=f"{key_prefix}_ch_tt")
-        ch_fb = st.checkbox("📘 Facebook Reels/Shorts", value=True, key=f"{key_prefix}_ch_fb")
-        
-        webhook_url = st.text_input(
-            "Adres Webhooka n8n Multi-Publish:",
-            value="https://n8n.jaison.pl/webhook/video-multi-publish",
-            key=f"{key_prefix}_webhook"
-        )
-        
-    if st.button("🚀 OPUBLIKUJ NA WYBRANYCH KANAŁACH JEDNYM KLIKNIĘCIEM", type="primary", use_container_width=True, key=f"{key_prefix}_pub_btn"):
-        selected_channels = []
-        if ch_yt: selected_channels.append("YouTube Shorts")
-        if ch_ig: selected_channels.append("Instagram Reels")
-        if ch_tt: selected_channels.append("TikTok")
-        if ch_fb: selected_channels.append("Facebook Reels")
-        
-        if not selected_channels:
-            st.error("⚠️ Wybierz przynajmniej jeden kanał publikacji!")
-        else:
-            with st.spinner("📦 Przygotowywanie paczki wideo i wysyłanie do n8n pipeline..."):
-                try:
-                    import requests
-                    
-                    files = {
-                        "data": ("video.mp4", video_bytes, "video/mp4")
-                    }
-                    data = {
-                        "title": pub_title,
-                        "description": pub_desc,
-                        "channels": ",".join(selected_channels)
-                    }
-                    
-                    response = requests.post(webhook_url, data=data, files=files, timeout=60, verify=False)
-                    
-                    if response.status_code in [200, 201]:
-                        st.success(f"🎉 Sukces! Wideo pomyślnie wysłane do dystrybucji na kanały: {', '.join(selected_channels)}!")
-                        st.toast("⚡ n8n pipeline uruchomiony pomyślnie!")
-                    else:
-                        st.error(f"❌ Błąd webhooka n8n (Kod {response.status_code}): {response.text}")
-                except Exception as ex:
-                    st.error(f"❌ Wyjątek podczas wysyłania do n8n: {str(ex)}")
-
         # --- TOOL 8: STUDIO VIDEO, VOICE & FLUX ---
         elif tool == "Studio_Video":
             st.subheader("🎬 Brand Media Studio")
@@ -7068,6 +7068,7 @@ def render_multi_publish_selector(video_bytes, key_prefix):
                             use_container_width=True,
                             key="suite_video_download_btn"
                         )
+                        render_multi_publish_selector(st.session_state.suite_video_last_mp4, "broll")
                     st.markdown("</div>", unsafe_allow_html=True)
 
             with tab_lipsync:
@@ -7157,6 +7158,7 @@ def render_multi_publish_selector(video_bytes, key_prefix):
                         use_container_width=True,
                         key="lipsync_download_btn"
                     )
+                    render_multi_publish_selector(st.session_state.suite_lipsync_result_mp4, "lipsync")
 
         # --- TOOL 9: RESEARCH HUB ---
         elif tool == "ResearchHub":
