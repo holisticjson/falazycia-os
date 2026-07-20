@@ -550,5 +550,11 @@
         "raw_text": "Wejdź w tryb Goal, przeanalizuj to co Ci mówiłem, dashboard. Przygotuj wszystkie workflow, pliki JSON do N8n z jasnym planem dla mnie krok po kroku. I dowieź tutaj te dwie funkcjonalności z punktu pierwszego i trzeciego, czyli Facebook Ads Spiek oraz Managed Style.  Chcę wrócić i to ma być wszystko wdrożone, działające, przetestowane. Nie tylko będę musiał wgrać po prostu te pliki JSON Workflow na swoją instancję N8n.",
         "corrected_text": "Wejdź w tryb Goal, przeanalizuj to co Ci mówiłem, dashboard. Przygotuj wszystkie workflow, pliki JSON do N8n z jasnym planem dla mnie krok po kroku. I dowieź tutaj te dwie funkcjonalności z punktu pierwszego i trzeciego, czyli Facebook Ads Spiek oraz Managed Style.  Chcę wrócić i to ma być wszystko wdrożone, działające, przetestowane. Nie tylko będę musiał wgrać po prostu te pliki JSON Workflow na swoją instancję N8n.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-20 20:09:21",
+        "raw_text": "Słuchaj, nie wiem dlaczego, gdzie tkwi błąd w waszych pamięciach o tej memory loop, czytanie pliku state.agents, ale no wplatasz tutaj w stronę agencji automatyzacji, ja ISOM, wplatasz w logikę routingu bota  Jaśka, roboczo nazwanego, wprowadzasz kwestie zdrowia, regeneracji, biznesu, regeneracji, wody komórkowej, fototerapia. Skąd to się wzięło? Przecież to dotyczy w ogóle zupełnie innego projektu. Absolutnie wykraczasz poza jakieś ramy tego projektu agencji JAISON. Agency. Z jakiej racji?  się tak stało, jakim prawem.",
+        "corrected_text": "Słuchaj, nie wiem dlaczego, gdzie tkwi błąd w waszych pamięciach o tej memory loop, czytanie pliku state.agents, ale no wplatasz tutaj w stronę agencji automatyzacji, ja ISOM, wplatasz w logikę routingu bota  Jaśka, roboczo nazwanego, wprowadzasz kwestie zdrowia, regeneracji, biznesu, regeneracji, wody komórkowej, fototerapia. Skąd to się wzięło? Przecież to dotyczy w ogóle zupełnie innego projektu. Absolutnie wykraczasz poza jakieś ramy tego projektu agencji JAISON. Agency. Z jakiej racji?  się tak stało, jakim prawem.",
+        "status": "raw_fallback"
     }
 ]
