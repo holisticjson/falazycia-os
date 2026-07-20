@@ -526,5 +526,11 @@
         "raw_text": "Może sprawdź kontekst 7 przez MCP dokumentację aktualną, użyj wszystkich skilli odpowiednich, które posiadasz, abyśmy rozwiązali szybko tą sytuację.",
         "corrected_text": "Może sprawdź kontekst 7 przez MCP dokumentację aktualną, użyj wszystkich skilli odpowiednich, które posiadasz, abyśmy rozwiązali szybko tą sytuację.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-20 18:26:27",
+        "raw_text": "Ok, wyświetla się już dashboard normalnie. Teraz czas ustawienia automatyzacji tych szablonów do N8n, które wygenerowałeś wcześniej. W którym folderze jest ten plik JSON wygenerowanego workflow, jak on działa, pod co on będzie podpięty, pod który moduł, co będzie realizował.",
+        "corrected_text": "Ok, wyświetla się już dashboard normalnie. Teraz czas ustawienia automatyzacji tych szablonów do N8n, które wygenerowałeś wcześniej. W którym folderze jest ten plik JSON wygenerowanego workflow, jak on działa, pod co on będzie podpięty, pod który moduł, co będzie realizował.",
+        "status": "raw_fallback"
     }
 ]
