@@ -496,5 +496,17 @@
         "raw_text": "Włączone.",
         "corrected_text": "Włączone.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-20 10:05:43",
+        "raw_text": "Słuchaj, zapisuj wszystkie te pliki JSON do automatyzacji, nie wiem, zrób folder n8n lub automatyzację i tam wszystko zapisuj.  No to przejdź w tryb Goal i dowieźć zarówno punkt pierwszy jak i punkt drugi. Testuj tak, aż będzie to działało. Jak wrócę to musi to działać.",
+        "corrected_text": "Słuchaj, zapisuj wszystkie te pliki JSON do automatyzacji, nie wiem, zrób folder n8n lub automatyzację i tam wszystko zapisuj.  No to przejdź w tryb Goal i dowieźć zarówno punkt pierwszy jak i punkt drugi. Testuj tak, aż będzie to działało. Jak wrócę to musi to działać.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-20 10:11:11",
+        "raw_text": "Przygotuj mi taką listę czynności z linkami, gdzie ja mam się zalogować na konta. Chodzi mi o OpenAI, Gemini. Gemini to chodzi o Vertex AI z Google Cloud Platform, z konta.",
+        "corrected_text": "Przygotuj mi taką listę czynności z linkami, gdzie ja mam się zalogować na konta. Chodzi mi o OpenAI, Gemini. Gemini to chodzi o Vertex AI z Google Cloud Platform, z konta.",
+        "status": "raw_fallback"
     }
 ]
