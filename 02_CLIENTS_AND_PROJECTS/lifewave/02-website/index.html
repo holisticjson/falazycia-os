@@ -5,6 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Matematyczne Kody Kreacji X2O™ - Asystent LifeWave4Life Biohacking</title>
   <meta name="description" content="Odkryj przełomową technologię strukturyzacji wody biofotonami X2O. Połączenie fizyki kwantowej, biologii komórkowej i fototerapii LifeWave.">
+  <link rel="canonical" href="https://x2o.jaison.pl/">
+  
+  <!-- Structured Data: JSON-LD Schema (Organization, Product, FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://x2o.jaison.pl/#organization",
+        "name": "LifeWave4Life Biohacking",
+        "url": "https://x2o.jaison.pl/",
+        "logo": "https://x2o.jaison.pl/images/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "kontakt@x2o.jaison.pl",
+          "contactType": "customer service"
+        }
+      },
+      {
+        "@type": "Product",
+        "@id": "https://x2o.jaison.pl/#product",
+        "name": "LifeWave X2O™ - Aktywator Wody Biofotonowej",
+        "description": "System aktywacji i strukturyzacji wody biofotonami X2O. Innowacja w fizyce kwantowej i biohackingu.",
+        "brand": {
+          "@type": "Brand",
+          "name": "LifeWave"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": "https://x2o.jaison.pl/",
+          "priceCurrency": "PLN",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Czym jest woda komórkowa o ujemnym potencjale redox?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Woda strukturyzowana o ujemnym potencjale redox (ORP) to woda zorganizowana heksagonalnie, która działa jak silny antyoksydant. Pomaga w eliminacji wolnych rodników i zapewnia nawodnienie na głębom komórkowym."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Jak działa stacja aktywacji wody X2O?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Stacja X2O wykorzystuje zjawisko biofotonowej strukturyzacji wody. Poprzez precyzyjną modulację światła strukturyzuje cząsteczki wody, eliminując toksyny i przywracając jej naturalną, energetyczną strukturę ciekłokrystaliczną EZ."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -2617,61 +2676,39 @@
     </div>
   </footer>
 
-  <!-- ELITE FLOATING CHATBOT WIDGET -->
-  <div id="chatbot-widget">
-    <!-- Bubble Launcher with Jaison Glowing Heart SVG -->
-    <div id="chat-launcher" onclick="toggleChatWindow()">
-      <div class="chat-launcher-bubble">Skonsultuj się</div>
-      <svg viewBox="0 0 100 100" style="width: 32px; height: 32px;">
-        <path d="M50,32 C50,32 44,22 34,22 C24,22 18,30 18,42 C18,58 50,78 50,78 C50,78 82,58 82,42 C82,30 76,22 66,22 C56,22 50,32 50,32 Z" fill="#FF5A5F" />
-      </svg>
-    </div>
+  <!-- Dialogflow CX Conversational Agent Widget -->
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-cx/assistant/styles/v1/default.css">
+  <script src="https://www.gstatic.com/dialogflow-cx/assistant/shims/v1/iframe/df-messenger.js"></script>
+  <df-messenger
+    project-id="holistic-dashboard-dev"
+    agent-id="jaison-x2o-agent"
+    language-code="pl"
+    chat-title="Jaison AI - Konsjerż Nawodnienia ⚡"
+    region="europe-west1">
+  </df-messenger>
 
-    <!-- Chat window container -->
-    <div id="chat-window">
-      <!-- Chat Header -->
-      <div class="chat-header">
-        <div class="chat-bot-profile">
-          <div class="chat-avatar">
-            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 1 10 10c0 5.523-4.477 10-10 10S2 17.523 2 12a10 10 0 0 1 10-10zm0 3a3 3 0 1 0 0 6 3 3 0 0 0 0-6zm-7 12.5c0-2.5 3.5-3.5 7-3.5s7 1 7 3.5V18H5v-.5z"></path></svg>
-          </div>
-          <div class="chat-title">
-            <h3>Asystent LifeWave4Life</h3>
-            <p>● Konsultant Online</p>
-          </div>
-        </div>
-        <div class="chat-close" onclick="toggleChatWindow()">&times;</div>
-      </div>
-
-      <!-- Chat Messages Container -->
-      <div class="chat-body" id="chat-messages">
-        <!-- Initial welcoming message -->
-        <div class="message msg-bot">
-          Szanowny Gościu! Nazywam się <strong>Asystent LifeWave4Life</strong> – Twój wirtualny doradca ds. biohackingu i inteligentnych systemów zdrowotnych. 
-          <br><br>
-          Z radością opowiem Ci o przełomowym wpływie wody biofotonowej <strong>X2O™</strong> na Twój organizm, o synergii z fototerapią LifeWave, o działaniu oraz unikalnych technologiach LifeWave, a także pomogę zapisać się do naszych grup na WhatsApp czy umówić bezpłatną degustację w Łodzi!
-          <br><br>
-          W czym mogę Ci dziś pomóc? Wybierz jeden z tematów poniżej lub napisz swoje własne pytanie:
-        </div>
-      </div>
-
-      <!-- Quick Action Chips -->
-      <div class="chat-chips" id="quick-chips">
-        <div class="chat-chip" onclick="handleChipClick('Jak działa technologia X2O i biofotony?')">✨ Jak działa technologia biofotonów?</div>
-        <div class="chat-chip" onclick="handleChipClick('Plastry fototerapeutyczne LifeWave X39 & komórki macierzyste')">🧬 Komórki Macierzyste i Plastry X39</div>
-        <div class="chat-chip" onclick="handleChipClick('Degustacja i Gabinet w Łodzi')">📍 Degustacja i Gabinet w Łodzi (ul. Nawrot)</div>
-        <div class="chat-chip" onclick="handleChipClick('Biznes i Grupy WhatsApp (MLM)')">👥 Grupy WhatsApp i Biznes MLM</div>
-      </div>
-
-      <!-- Chat input field -->
-      <div class="chat-footer">
-        <input type="text" class="chat-input" id="chat-user-input" placeholder="Wpisz pytanie..." onkeypress="handleInputKeyPress(event)">
-        <button class="chat-send" onclick="sendUserMessage()">
-          <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-        </button>
-      </div>
-    </div>
-  </div>
+  <style>
+    df-messenger {
+      --df-messenger-brand-color: #0d1b2a;
+      --df-messenger-font-color: #f8f9fa;
+      --df-messenger-user-chat-bubble-color: #1b4965;
+      --df-messenger-agent-chat-bubble-color: rgba(255, 255, 255, 0.08);
+      --df-messenger-chat-background-color: #020c1b;
+      --df-messenger-send-icon: #62b6cb;
+      --df-messenger-button-titlebar-color: #0d1b2a;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+    }
+    df-messenger-chat {
+      border-radius: 16px !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+  </style>
 
   <!-- JavaScript logic -->
   <script>

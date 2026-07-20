@@ -7,7 +7,7 @@
 
 $ErrorActionPreference = "Stop"
 $PROJECT = "holistic-dashboard-dev"
-$REGION = "europe-central2"  # Warszawa — najniższe opóźnienie dla Polski
+$REGION = "europe-west1"  # Belgia — ujednolicony region dla wszystkich usług oraz Vertex AI Agent Builder
 $SERVICE = "jaison-x2o-portal"
 $IMAGE = "gcr.io/$PROJECT/$SERVICE"
 
@@ -34,6 +34,10 @@ gcloud builds submit --tag $IMAGE .
 # Krok 4: Deploy na Cloud Run
 Write-Host "Krok 4: Deploying uslugi na Cloud Run..." -ForegroundColor Yellow
 gcloud run deploy $SERVICE --image $IMAGE --platform managed --region $REGION --allow-unauthenticated --memory 512Mi --cpu 1 --min-instances 0 --max-instances 2 --timeout 300
+
+# Nadanie uprawnien publicznych (gwarancja braku restrykcji IAM)
+Write-Host "Krok 4b: Zapewniam uprawnienia publicznego dostepu (allUsers)..." -ForegroundColor Yellow
+gcloud run services add-iam-policy-binding $SERVICE --region $REGION --member="allUsers" --role="roles/run.invoker" --quiet
 
 # Krok 5: Pobierz URL i podsumuj
 Write-Host "Deploy zakonczony sukcesem!" -ForegroundColor Green

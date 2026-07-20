@@ -9,9 +9,9 @@ sys.stdout.reconfigure(encoding='utf-8')
 CACHE_VERSION = "2.2.2"
 
 # === CONFIG ===
-SRC_DIR   = "04-clients/kurczakujasia/02-website/dev/kurczakujasia_html"
-BUILD_DIR = "04-clients/kurczakujasia/02-website/dev/kurczakujasia_html"
-LOGO_SRC  = "04-clients/kurczakujasia/04-assets/logo/Logo Bar Jaś.png"
+SRC_DIR   = "C:/Aplikacje MVP/02_CLIENTS_AND_PROJECTS/kurczakujasia/02-website/dev/kurczakujasia_html"
+BUILD_DIR = "C:/Aplikacje MVP/02_CLIENTS_AND_PROJECTS/kurczakujasia/02-website/dev/kurczakujasia_html"
+LOGO_SRC  = "C:/Aplikacje MVP/02_CLIENTS_AND_PROJECTS/kurczakujasia/04-assets/logo/Logo Bar Jaś.png"
 LOGO_DEST = f"{BUILD_DIR}/assets/img/logo.png"
 
 FTP_HOST  = "lysitheab.hostido.net.pl"
@@ -1371,6 +1371,7 @@ FOOTER_HTML = """
 # HEADER HTML
 # -------------------------------------------------------
 def make_header(page_name, title, description, extra_head=""):
+    canonical_page = "" if page_name == "index.html" else page_name
     return f"""<!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -1382,10 +1383,10 @@ def make_header(page_name, title, description, extra_head=""):
   <meta property="og:title" content="{title}">
   <meta property="og:description" content="{description}">
   <meta property="og:image" content="https://kurczakujasia.pl/assets/img/logo.png">
-  <meta property="og:url" content="https://kurczakujasia.pl/{page_name}">
+  <meta property="og:url" content="https://kurczakujasia.pl/{canonical_page}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
-  <link rel="canonical" href="https://kurczakujasia.pl/{page_name}">
+  <link rel="canonical" href="https://kurczakujasia.pl/{canonical_page}">
   <link rel="stylesheet" href="assets/css/style.css?v={CACHE_VERSION}">
   <style>{CHATBOT_CSS}</style>
   {extra_head}
@@ -1501,13 +1502,14 @@ def clean_encoding(text):
     return text
 
 def fix_links(text):
-    """Fix broken WordPress-style links"""
+    """Fix broken WordPress-style links and index.html references"""
     text = text.replace('href="/menu/"',    'href="menu.html"')
     text = text.replace('href="/onas/"',    'href="onas.html"')
     text = text.replace('href="/kontakt/"', 'href="kontakt.html"')
     text = text.replace('href="/menu"',     'href="menu.html"')
     text = text.replace('"hasMenu": "https://kurczakujasia.pl/menu/"', '"hasMenu": "https://kurczakujasia.pl/menu.html"')
     text = text.replace('[trustindex no-registration=google]', '')
+    text = text.replace('href="index.html"', 'href="/"')
     return text
 
 def strip_shell(text):
@@ -1529,10 +1531,10 @@ def strip_shell(text):
     return text.strip()
 
 PAGES = {
-    "index.html":   "scratch/previews/home_preview.html",
-    "menu.html":    "scratch/previews/menu_new_preview.html",
-    "onas.html":    "scratch/previews/onas_preview.html",
-    "kontakt.html": "scratch/previews/kontakt_preview.html",
+    "index.html":   f"{SRC_DIR}/index_backup.html",
+    "menu.html":    f"{SRC_DIR}/menu_backup.html",
+    "onas.html":    f"{SRC_DIR}/onas_backup.html",
+    "kontakt.html": f"{SRC_DIR}/kontakt_backup.html",
 }
 
 for out_name, src_path in PAGES.items():
@@ -1658,7 +1660,7 @@ for item in MASTER_MENU:
 menu_readable_text = "\\n".join(menu_text_lines)
 
 # Read the local template gemini_proxy.php
-with open("04_clients/kurczakujasia/kurczakujasia_html/gemini_proxy.php", "r", encoding="utf-8") as f:
+with open(f"{SRC_DIR}/gemini_proxy.php", "r", encoding="utf-8") as f:
     proxy_content = f.read()
 
 # Replace <MENU_PLACEHOLDER> with compiled menu
@@ -1675,7 +1677,7 @@ print("✅ gemini_proxy.php (z wstrzykniętym menu) zapisany")
 # -------------------------------------------------------
 ROBOTS = """User-agent: *
 Allow: /
-Disallow: /assets/
+Allow: /assets/
 
 User-agent: GPTBot
 Allow: /
@@ -1719,6 +1721,22 @@ print("✅ sitemap.xml")
 # -------------------------------------------------------
 HTACCESS = """Options -Indexes
 RewriteEngine On
+
+# 301 Redirect index.html to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/ [NC]
+RewriteRule ^index\.html$ https://kurczakujasia.pl/ [R=301,L]
+
+# 301 Redirect index.php to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/ [NC]
+RewriteRule ^index\.php$ https://kurczakujasia.pl/ [R=301,L]
+
+# 301 Redirect any legacy PHP file (except gemini_proxy.php) to /
+RewriteCond %{REQUEST_URI} !/gemini_proxy\.php$ [NC]
+RewriteCond %{REQUEST_FILENAME} \.php$ [NC]
+RewriteRule ^(.*)$ https://kurczakujasia.pl/ [R=301,L]
+
+# 301 Redirect WordPress remnants to /
+RewriteRule ^wp-(.*)$ https://kurczakujasia.pl/ [R=301,L]
 
 # Force HTTPS
 RewriteCond %{HTTPS} off

@@ -1,6 +1,22 @@
 Options -Indexes
 RewriteEngine On
 
+# 301 Redirect index.html to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\ HTTP/ [NC]
+RewriteRule ^index\.html$ https://kurczakujasia.pl/ [R=301,L]
+
+# 301 Redirect index.php to /
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/ [NC]
+RewriteRule ^index\.php$ https://kurczakujasia.pl/ [R=301,L]
+
+# 301 Redirect any legacy PHP file (except gemini_proxy.php) to /
+RewriteCond %{REQUEST_URI} !/gemini_proxy\.php$ [NC]
+RewriteCond %{REQUEST_FILENAME} \.php$ [NC]
+RewriteRule ^(.*)$ https://kurczakujasia.pl/ [R=301,L]
+
+# 301 Redirect WordPress remnants to /
+RewriteRule ^wp-(.*)$ https://kurczakujasia.pl/ [R=301,L]
+
 # Force HTTPS
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

@@ -5,6 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jaison MLM OS - Cyfrowy Trener Partnerów LifeWave4Life</title>
   <meta name="description" content="Przestań błądzić w chaosie, gubić się i tracić skupienie. Zacznij egzekwować swój plan kariery MLM z sukcesem i krystaliczną energią za pomocą Jaison MLM OS bezpośrednio na WhatsAppie.">
+  <link rel="canonical" href="https://mlm.jaison.pl/">
+  
+  <!-- Structured Data: JSON-LD Schema (Organization, SoftwareApplication, FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://mlm.jaison.pl/#organization",
+        "name": "Jaison MLM",
+        "url": "https://mlm.jaison.pl/",
+        "logo": "https://mlm.jaison.pl/images/logo.png"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://mlm.jaison.pl/#application",
+        "name": "Jaison MLM OS",
+        "description": "Cyfrowy system asystencki i trener nawyków na WhatsApp dla partnerów społeczności LifeWave4Life.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "All"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Jak działa system wdrożeniowy Jaison MLM OS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Jaison MLM OS działa bezpośrednio na komunikatorze WhatsApp. Codziennie rano monitoruje Twoje nawyki biohackingowe, dostarcza szablony komunikacyjne NLP w ciągu dnia i przeprowadza wieczorny mikro-audyt dyscypliny."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -898,6 +936,40 @@
       activateStep(1);
     };
   </script>
+
+  <!-- Dialogflow CX Conversational Agent Widget -->
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-cx/assistant/styles/v1/default.css">
+  <script src="https://www.gstatic.com/dialogflow-cx/assistant/shims/v1/iframe/df-messenger.js"></script>
+  <df-messenger
+    project-id="holistic-dashboard-dev"
+    agent-id="jaison-mlm-agent"
+    language-code="pl"
+    chat-title="Jaison MLM - Asystent Duplikacji 🚀"
+    region="europe-west1">
+  </df-messenger>
+
+  <style>
+    df-messenger {
+      --df-messenger-brand-color: #240046;
+      --df-messenger-font-color: #f8f9fa;
+      --df-messenger-user-chat-bubble-color: #5c0099;
+      --df-messenger-agent-chat-bubble-color: rgba(255, 255, 255, 0.08);
+      --df-messenger-chat-background-color: #05010d;
+      --df-messenger-send-icon: #9d4edd;
+      --df-messenger-button-titlebar-color: #240046;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+    }
+    df-messenger-chat {
+      border-radius: 16px !important;
+      border: 1px solid rgba(255, 255, 255, 0.1) !important;
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+    }
+  </style>
 
 </body>
 </html>

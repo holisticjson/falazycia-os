@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bar Jaś Łódź | Kurczak z Rożna od 2001 | Rokicińska 190</title>
-  <meta name="description" content="Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso. Zamów: 663 970 016. ul. Rokicińska 190 (obok Selgros), Widzew.">
+  <title>Bar Jaś Łódź | Kurczak z Rożna od 2001 | Rokicińska 190/214</title>
+  <meta name="description" content="Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso. Zamów: 663 970 016. ul. Rokicińska 190/214 (na parkingu przy wejściu do Selgrosa).">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Bar Jaś Łódź | Kurczak z Rożna od 2001 | Rokicińska 190">
-  <meta property="og:description" content="Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso. Zamów: 663 970 016. ul. Rokicińska 190 (obok Selgros), Widzew.">
+  <meta property="og:title" content="Bar Jaś Łódź | Kurczak z Rożna od 2001 | Rokicińska 190/214">
+  <meta property="og:description" content="Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso. Zamów: 663 970 016. ul. Rokicińska 190/214 (na parkingu przy wejściu do Selgrosa).">
   <meta property="og:image" content="https://kurczakujasia.pl/assets/img/logo.png">
-  <meta property="og:url" content="https://kurczakujasia.pl/index.html">
+  <meta property="og:url" content="https://kurczakujasia.pl/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
-  <link rel="canonical" href="https://kurczakujasia.pl/index.html">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="canonical" href="https://kurczakujasia.pl/">
+  <link rel="stylesheet" href="assets/css/style.css?v=2.2.2">
   <style>
 #jasbot-widget { position:fixed; bottom:2rem; right:2rem; z-index:10000; font-family:'Plus Jakarta Sans',sans-serif; }
-.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; }
-.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); }
+.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; animation: chickenPulse 3s infinite ease-in-out; }
+.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); animation: none; }
 .jasbot-badge { position:absolute; top:-5px; right:-5px; background:#FCC036; color:#2D1A1E; font-weight:800; font-size:0.8rem; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
 .jasbot-window { position:fixed; bottom:7.5rem; right:2rem; width:380px; height:520px; background:#FAF6EE; border:3px solid #2D1A1E; border-radius:1.5rem; box-shadow:0px 15px 40px rgba(0,0,0,0.15),6px 6px 0px #2D1A1E; display:flex; flex-direction:column; overflow:hidden; transform:scale(0.8) translateY(50px); opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); z-index:10001; }
 .jasbot-window.open { transform:scale(1) translateY(0); opacity:1; pointer-events:all; }
 .jasbot-header { background:#2D1A1E; padding:1rem 1.2rem; display:flex; align-items:center; justify-content:space-between; }
 .jasbot-header-info { display:flex; align-items:center; gap:0.8rem; }
-.jasbot-header-text h3 { font-family:'Lilita One',cursive; color:#FCC036; font-size:1.1rem; margin:0; }
+.jasbot-header-text h3 { font-family:'Fredoka',sans-serif; color:#FCC036; font-size:1.1rem; margin:0; }
 .jasbot-header-text p { color:#FAF6EE; font-size:0.8rem; margin:0; opacity:0.8; }
 .jasbot-close-btn { background:none; border:none; color:#FAF6EE; font-size:1.5rem; cursor:pointer; opacity:0.7; transition:opacity 0.2s; }
 .jasbot-close-btn:hover { opacity:1; }
@@ -38,7 +38,26 @@
 .jasbot-send-btn:hover { background:#A01828; }
 .jasbot-cart-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:#2D1A1E; color:#FAF6EE; padding:0.8rem 1.5rem; z-index:9998; align-items:center; justify-content:space-between; border-top:3px solid #FCC036; }
 .jasbot-cart-bar.visible { display:flex; }
-@media(max-width:768px) { .jasbot-window { width:calc(100vw - 2rem); height:480px; bottom:5.5rem; right:1rem; } #jasbot-widget { bottom:1rem; right:1rem; } .jasbot-label { right:1rem; bottom:5rem; font-size:0.7rem; } }
+@media(max-width:768px) {
+  .jasbot-window { left:1rem; right:1rem; width:auto; max-width:none; height:calc(100vh - 7rem); max-height:480px; bottom:5.5rem; border-radius:1.2rem; }
+  #jasbot-widget { bottom:1rem; right:1rem; }
+  .jasbot-toggle { width:55px; height:55px; }
+  .jasbot-toggle img { width:34px !important; height:34px !important; }
+  .jasbot-label { display:none !important; }
+}
+#jasbot-widget:has(.jasbot-window.open) .jasbot-label { display:none !important; }
+@keyframes chickenPulse {
+  0% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+  50% { transform: scale(1.06); box-shadow: 0px 12px 28px rgba(211,47,47,0.6), 4px 4px 0px #2D1A1E; }
+  100% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+}
+@keyframes thinkingDots {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.thinking-dot { animation: thinkingDots 1.4s infinite both; font-weight: bold; font-size: 1.2rem; }
+.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
 </style>
   <script type="application/ld+json">
 {
@@ -75,7 +94,7 @@
   "priceRange": "$$",
   "menu": "https://kurczakujasia.pl/menu.html",
   "hasMap": "https://maps.app.goo.gl/kurczakujasia",
-  "description": "Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso, ul. Rokicińska 190 obok Selgros."
+  "description": "Najlepszy kurczak z rożna w Łodzi od ponad 20 lat. Rodzinna receptura, świeże polskie mięso, ul. Rokicińska 190/214 (na parkingu, tuż przy wejściu do Selgrosa)."
 }
 </script>
 <script type="application/ld+json">
@@ -85,8 +104,9 @@
   "mainEntity": [
     {"@type":"Question","name":"Do której godziny jest otwarty Bar Jaś?","acceptedAnswer":{"@type":"Answer","text":"Bar Jaś jest otwarty od poniedziałku do soboty w godzinach 9:00–19:00. W niedziele jesteśmy nieczynni."}},
     {"@type":"Question","name":"Ile kosztuje zestaw z kurczakiem z rożna?","acceptedAnswer":{"@type":"Answer","text":"Zestaw z połówką kurczaka z rożna (z frytkami i surówkami) kosztuje 34 zł. Cały kurczak to 38 zł."}},
-    {"@type":"Question","name":"Gdzie znajduje się Bar Jaś w Łodzi?","acceptedAnswer":{"@type":"Answer","text":"Bar Jaś mieści się przy ul. Rokicińskiej 190, 92-412 Łódź, w dzielnicy Widzew, tuż obok Selgros."}},
-    {"@type":"Question","name":"Czy Bar Jaś przyjmuje zamówienia online?","acceptedAnswer":{"@type":"Answer","text":"Tak! Zamówienia możesz złożyć przez naszego chatbota JaśBota na stronie, przez WhatsApp lub telefonicznie pod numerem +48 663 970 016."}}
+    {"@type":"Question","name":"Gdzie znajduje się Bar Jaś w Łodzi?","acceptedAnswer":{"@type":"Answer","text":"Bar Jaś mieści się przy ul. Rokicińskiej 190/214, 92-412 Łódź (na parkingu, tuż przy wejściu do Selgrosa)."}},
+    {"@type":"Question","name":"Czy Bar Jaś przyjmuje zamówienia online?","acceptedAnswer":{"@type":"Answer","text":"Tak! Zamówienia możesz złożyć przez naszego chatbota JaśBota na stronie, przez WhatsApp lub telefonicznie pod numerem +48 663 970 016."}},
+    {"@type":"Question","name":"Czy Bar Jaś ma opcję dostawy do domu?","acceptedAnswer":{"@type":"Answer","text":"Obecnie oferujemy odbiór osobisty przy ul. Rokicińskiej 190/214. Zamówienie zgłoś przez JaśBota, WhatsApp lub telefon — będzie gotowe na Twoje przybycie!"}}
   ]
 }
 </script>
@@ -115,11 +135,10 @@
   </button>
 </header>
 
-
 <!-- STRONA GŁÓWNA - RETRO MODERN LANDING PAGE DLA BARU JAŚ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -130,7 +149,7 @@
     --bg-cream: #FAF6EE; /* Retro Cream Background */
     --dark-brown: #2D1A1E; /* Retro Dark Brown/Black */
     --light-cream: #FFF;
-    --font-heading: 'Lilita One', cursive;
+    --font-heading: 'Fredoka', cursive;
     --font-body: 'Plus Jakarta Sans', sans-serif;
     --shadow-flat: 4px 4px 0px var(--dark-brown);
     --shadow-flat-hover: 7px 7px 0px var(--dark-brown);
@@ -611,7 +630,7 @@
     </div>
   </div>
   <div style="text-align:center;margin-top:1.5rem;">
-    <a href="https://g.page/r/barjas" target="_blank" rel="noopener noreferrer" class="jas-btn jas-btn-outline">
+    <a href="https://g.page/r/CWKq0_yDruxCEBM/review" target="_blank" rel="noopener noreferrer" class="jas-btn jas-btn-outline">
       <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
       Wystaw Opinię na Google
     </a>
@@ -630,21 +649,94 @@
   </details>
   <details class="jas-faq-item">
     <summary>Gdzie znajduje się Bar Jaś? <span>+</span></summary>
-    <p>Znajdziesz nas przy <strong>ul. Rokicińskiej 190, 92-412 Łódź</strong>, w dzielnicy Widzew, tuż obok Selgros. Łatwy dojazd i parking.</p>
+    <p>Znajdziesz nas przy <strong>ul. Rokicińskiej 190/214, 92-412 Łódź</strong>, w dzielnicy Widzew, tuż na terenie Selgrosa (na parkingu, przy samym wejściu do Selgrosa). Łatwy dojazd i darmowy parking.</p>
   </details>
   <details class="jas-faq-item">
     <summary>Czy można zamówić online lub przez WhatsApp? <span>+</span></summary>
-    <p>Tak! Skorzystaj z naszego <strong>JaśBota</strong> w prawym dolnym rogu — wybierz dania i wyślij zamówienie przez WhatsApp bezpośrednio do nas. Możesz też zadzwonić: <strong>663 970 016</strong>.</p>
+    <p>Tak! Skorzystaj z naszego <strong>JaśBota</strong> w prawym dolnym rogu — wybierz dania i wyślij zamówienie przez WhatsApp bezpośrednio do nas. Możecz też zadzwonić: <strong>663 970 016</strong>.</p>
   </details>
   <details class="jas-faq-item">
     <summary>Czy Bar Jaś ma opcję dostawy do domu? <span>+</span></summary>
-    <p>Obecnie oferujemy <strong>odbiór osobisty</strong> przy ul. Rokicińskiej 190. Zamówienie zgłoś przez JaśBota, WhatsApp lub telefon — będzie gotowe na Twoje przybycie!</p>
+    <p>Obecnie oferujemy <strong>odbiór osobisty</strong> przy ul. Rokicińskiej 190/214. Zamówienie zgłoś przez JaśBota, WhatsApp lub telefon — będzie gotowe na Twoje przybycie!</p>
   </details>
 </section>
 
 
-<div class="jasbot-label">🍗 Złóż zamówienie u JaśBota!</div>
+
+  <div class="jasbot-window" id="jasbot-window" role="dialog" aria-label="Chat z JaśBotem">
+    <div class="jasbot-header">
+      <div class="jasbot-header-info">
+        <img src="assets/img/logo.png" alt="JaśBot Logo" class="jasbot-avatar-img" style="width:40px;height:40px;object-fit:contain;border-radius:50%;background:var(--cream);">
+        <div class="jasbot-header-text">
+          <h3>JaśBot</h3>
+          <p>Złóż zamówienie online!</p>
+        </div>
+      </div>
+      <button class="jasbot-close-btn" id="jasbot-close-btn" aria-label="Zamknij chat">&times;</button>
+    </div>
+    <div class="jasbot-body" id="jasbot-messages"></div>
+    <div class="jasbot-input-area">
+      <input type="text" class="jasbot-input" id="jasbot-input" placeholder="Wpisz wiadomość..." autocomplete="off">
+      <button class="jasbot-send-btn" id="jasbot-send-btn" aria-label="Wyślij">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+<section class="jas-reviews-section" id="opinie">
+  <h2>Co Mówią Nasi Goście?</h2>
+  <div class="jas-reviews-grid">
+    <div class="jas-review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Najlepszy kurczak z rożna w całej Łodzi! Chrupka skórka, soczyste mięso i rewelacyjne surówki. Wracamy tu od lat i nigdy się nie zawiedliśmy."</p>
+      <div class="reviewer">— Marek K., Google Reviews</div>
+    </div>
+    <div class="jas-review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Obsługa błyskawiczna, ceny uczciwe, a jakość jedzenia na najwyższym poziomie. Kurczak świeży i gorący. Polecam wszystkim z okolicy Widzewa!"</p>
+      <div class="reviewer">— Ania P., Google Reviews</div>
+    </div>
+    <div class="jas-review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Bar Jaś to prawdziwa perełka! Sekretna receptura kurczaka jest coś! Niedaleko Selgros, zawsze zatrzymuję się tu po zakupach. Rodzinny klimat, super ceny."</p>
+      <div class="reviewer">— Tomasz W., Google Reviews</div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:1.5rem;">
+    <a href="https://g.page/r/CWKq0_yDruxCEBM/review" target="_blank" rel="noopener noreferrer" class="jas-btn jas-btn-outline">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" style="margin-right:6px;"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Wystaw Opinię na Google
+    </a>
+  </div>
+</section>
+
+<section class="jas-faq-section" id="faq">
+  <h2>Najczęściej Zadawane Pytania</h2>
+  <details class="jas-faq-item">
+    <summary>Do której godziny jest otwarty Bar Jaś? <span>+</span></summary>
+    <p>Jesteśmy otwarci od <strong>poniedziałku do soboty</strong> w godzinach <strong>9:00–19:00</strong>. W niedziele jesteśmy nieczynni.</p>
+  </details>
+  <details class="jas-faq-item">
+    <summary>Ile kosztuje zestaw z kurczakiem z rożna? <span>+</span></summary>
+    <p>Zestaw z <strong>połówką kurczaka</strong> z rożna (z frytkami i surówką) kosztuje <strong>34 zł</strong>. Cały kurczak to <strong>38 zł</strong>. Kebab w zestawie od 29 zł.</p>
+  </details>
+  <details class="jas-faq-item">
+    <summary>Gdzie znajduje się Bar Jaś? <span>+</span></summary>
+    <p>Znajdziesz nas przy <strong>ul. Rokicińskiej 190/214, 92-412 Łódź</strong>, w dzielnicy Widzew, tuż na terenie Selgrosa (na parkingu, przy samym wejściu do Selgrosa). Łatwy dojazd i darmowy parking.</p>
+  </details>
+  <details class="jas-faq-item">
+    <summary>Czy można zamówić online lub przez WhatsApp? <span>+</span></summary>
+    <p>Tak! Skorzystaj z naszego <strong>JaśBota</strong> w prawym dolnym rogu — wybierz dania i wyślij zamówienie przez WhatsApp bezpośrednio do nas. Możecz też zadzwonić: <strong>663 970 016</strong>.</p>
+  </details>
+  <details class="jas-faq-item">
+    <summary>Czy Bar Jaś ma opcję dostawy do domu? <span>+</span></summary>
+    <p>Obecnie oferujemy <strong>odbiór osobisty</strong> przy ul. Rokicińskiej 190/214. Zamówienie zgłoś przez JaśBota, WhatsApp lub telefon — będzie gotowe na Twoje przybycie!</p>
+  </details>
+</section>
+
+
 <div id="jasbot-widget">
+  <div class="jasbot-label" id="jasbot-label">🍗 Złóż zamówienie u JaśBota!</div>
   <div class="jasbot-toggle" id="jasbot-toggle" aria-label="Otwórz chat JaśBot">
     <img src="assets/img/logo.png" alt="JaśBot" style="width:42px;height:42px;object-fit:contain;border-radius:50%;">
     <div class="jasbot-badge" id="jasbot-badge" style="display:none;">0</div>
@@ -685,7 +777,7 @@
       <p>
         <strong>Adres:</strong><br>
         ul. Rokicińska 190/214, 92-412 Łódź<br>
-        (obok Selgros, dzielnica Widzew)
+        (na parkingu, przy samym wejściu do Selgrosa)
       </p>
       <p><strong>Telefon:</strong> <a href="tel:+48663970016">+48 663 970 016</a></p>
       <p><strong>E-mail:</strong> <a href="mailto:kontakt@kurczakujasia.pl">kontakt@kurczakujasia.pl</a></p>
@@ -706,7 +798,7 @@
 </footer>
 
 
-<script src="assets/js/main.js"></script>
-<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/main.js?v=2.2.2"></script>
+<script src="assets/js/chatbot.js?v=2.2.2"></script>
 </body>
 </html>

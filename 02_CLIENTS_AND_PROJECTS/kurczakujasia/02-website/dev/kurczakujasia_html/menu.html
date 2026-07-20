@@ -13,17 +13,17 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <link rel="canonical" href="https://kurczakujasia.pl/menu.html">
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=2.2.2">
   <style>
 #jasbot-widget { position:fixed; bottom:2rem; right:2rem; z-index:10000; font-family:'Plus Jakarta Sans',sans-serif; }
-.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; }
-.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); }
+.jasbot-toggle { width:65px; height:65px; background:#D32F2F; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0px 8px 24px rgba(211,47,47,0.4),3px 3px 0px #2D1A1E; border:3px solid #FCC036; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); position:relative; animation: chickenPulse 3s infinite ease-in-out; }
+.jasbot-toggle:hover { transform:scale(1.12) rotate(8deg); animation: none; }
 .jasbot-badge { position:absolute; top:-5px; right:-5px; background:#FCC036; color:#2D1A1E; font-weight:800; font-size:0.8rem; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; }
 .jasbot-window { position:fixed; bottom:7.5rem; right:2rem; width:380px; height:520px; background:#FAF6EE; border:3px solid #2D1A1E; border-radius:1.5rem; box-shadow:0px 15px 40px rgba(0,0,0,0.15),6px 6px 0px #2D1A1E; display:flex; flex-direction:column; overflow:hidden; transform:scale(0.8) translateY(50px); opacity:0; pointer-events:none; transition:all 0.3s cubic-bezier(0.175,0.885,0.32,1.275); z-index:10001; }
 .jasbot-window.open { transform:scale(1) translateY(0); opacity:1; pointer-events:all; }
 .jasbot-header { background:#2D1A1E; padding:1rem 1.2rem; display:flex; align-items:center; justify-content:space-between; }
 .jasbot-header-info { display:flex; align-items:center; gap:0.8rem; }
-.jasbot-header-text h3 { font-family:'Lilita One',cursive; color:#FCC036; font-size:1.1rem; margin:0; }
+.jasbot-header-text h3 { font-family:'Fredoka',sans-serif; color:#FCC036; font-size:1.1rem; margin:0; }
 .jasbot-header-text p { color:#FAF6EE; font-size:0.8rem; margin:0; opacity:0.8; }
 .jasbot-close-btn { background:none; border:none; color:#FAF6EE; font-size:1.5rem; cursor:pointer; opacity:0.7; transition:opacity 0.2s; }
 .jasbot-close-btn:hover { opacity:1; }
@@ -38,7 +38,26 @@
 .jasbot-send-btn:hover { background:#A01828; }
 .jasbot-cart-bar { display:none; position:fixed; bottom:0; left:0; right:0; background:#2D1A1E; color:#FAF6EE; padding:0.8rem 1.5rem; z-index:9998; align-items:center; justify-content:space-between; border-top:3px solid #FCC036; }
 .jasbot-cart-bar.visible { display:flex; }
-@media(max-width:768px) { .jasbot-window { width:calc(100vw - 2rem); height:480px; bottom:5.5rem; right:1rem; } #jasbot-widget { bottom:1rem; right:1rem; } .jasbot-label { right:1rem; bottom:5rem; font-size:0.7rem; } }
+@media(max-width:768px) {
+  .jasbot-window { left:1rem; right:1rem; width:auto; max-width:none; height:calc(100vh - 7rem); max-height:480px; bottom:5.5rem; border-radius:1.2rem; }
+  #jasbot-widget { bottom:1rem; right:1rem; }
+  .jasbot-toggle { width:55px; height:55px; }
+  .jasbot-toggle img { width:34px !important; height:34px !important; }
+  .jasbot-label { display:none !important; }
+}
+#jasbot-widget:has(.jasbot-window.open) .jasbot-label { display:none !important; }
+@keyframes chickenPulse {
+  0% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+  50% { transform: scale(1.06); box-shadow: 0px 12px 28px rgba(211,47,47,0.6), 4px 4px 0px #2D1A1E; }
+  100% { transform: scale(1); box-shadow: 0px 8px 24px rgba(211,47,47,0.4), 3px 3px 0px #2D1A1E; }
+}
+@keyframes thinkingDots {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+.thinking-dot { animation: thinkingDots 1.4s infinite both; font-weight: bold; font-size: 1.2rem; }
+.thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+.thinking-dot:nth-child(3) { animation-delay: 0.4s; }
 </style>
   
 </head>
@@ -66,11 +85,10 @@
   </button>
 </header>
 
-
-<!-- BULGUR KING RETRO STYLE MENU FOR BAR JAĹ -->
+<!-- BULGUR KING RETRO STYLE MENU FOR BAR JAŚ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root {
@@ -81,7 +99,7 @@
     --bg-cream: #FAF6EE; /* Retro Cream Background */
     --dark-brown: #2D1A1E; /* Retro Dark Brown/Black */
     --light-cream: #FFF;
-    --font-heading: 'Lilita One', cursive;
+    --font-heading: 'Fredoka', cursive;
     --font-body: 'Plus Jakarta Sans', sans-serif;
     --shadow-flat: 4px 4px 0px var(--dark-brown);
     --shadow-flat-hover: 7px 7px 0px var(--dark-brown);
@@ -299,11 +317,25 @@
     box-shadow: var(--shadow-flat);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
+    /* Animated staggered entry */
+    animation: cardAppear 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) both;
   }
 
   .jas-menu-card:hover {
-    transform: translate(-4px, -4px);
-    box-shadow: var(--shadow-flat-hover);
+    transform: translate(-6px, -6px);
+    box-shadow: 10px 10px 0px var(--primary-color), 13px 13px 0px var(--dark-brown);
+    border-color: var(--secondary-color);
+  }
+
+  @keyframes cardAppear {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .jas-card-badge {
@@ -542,54 +574,54 @@
 
 <div class="jas-menu-container">
   <div class="jas-menu-header">
-    <h1>MENU BARU JAĹ</h1>
-    <p>KrĂłlewski smak kurczaka z roĹźna i soczystych kebabĂłw! Wybierz swoje ulubione pozycje i zamĂłw w minutÄ przez WhatsApp!</p>
+    <h1>MENU BARU JAŚ</h1>
+    <p>Królewski smak kurczaka z rożna i soczystych kebabów! Wybierz swoje ulubione pozycje i zamów w minutę przez WhatsApp!</p>
   </div>
 
-  <!-- 3-KROKOWA INSTRUKCJA ZAMĂWIENIA -->
+  <!-- 3-KROKOWA INSTRUKCJA ZAMÓWIENIA -->
   <div class="jas-menu-steps">
     <div class="jas-menu-step">
       <div class="jas-step-num">1</div>
       <div class="jas-step-text">
         <h4>Wybierz Dania</h4>
-        <p>Dodaj ulubione pozycje z menu poniĹźej do swojego koszyka.</p>
+        <p>Dodaj ulubione pozycje z menu poniżej do swojego koszyka.</p>
       </div>
     </div>
     <div class="jas-menu-step">
       <div class="jas-step-num">2</div>
       <div class="jas-step-text">
-        <h4>WyĹlij Koszyk</h4>
-        <p>Kliknij przycisk, aby przejĹÄ do WhatsApp z gotowym zamĂłwieniem.</p>
+        <h4>Wyślij Koszyk</h4>
+        <p>Kliknij przycisk, aby przejść do WhatsApp z gotowym zamówieniem.</p>
       </div>
     </div>
     <div class="jas-menu-step">
       <div class="jas-step-num">3</div>
       <div class="jas-step-text">
-        <h4>Odbierz GorÄce</h4>
-        <p>PotwierdĹş godzinÄ odbioru, zapĹaÄ na miejscu i ciesz siÄ smakiem!</p>
+        <h4>Odbierz Gorące</h4>
+        <p>Potwierdś godzinę odbioru, zapłać na miejscu i ciesz się smakiem!</p>
       </div>
     </div>
   </div>
 
   <!-- FILTRY KATEGORII -->
   <div class="jas-menu-filters">
-    <button class="jas-filter-btn active" data-category="all">Wszystko đ</button>
-    <button class="jas-filter-btn" data-category="sets">Obiadowe Zestawy đą</button>
-    <button class="jas-filter-btn" data-category="kebab">Kebaby & Burgery đ</button>
-    <button class="jas-filter-btn" data-category="sides">Dodatki đ</button>
-    <button class="jas-filter-btn" data-category="drinks">Napoje đĽ¤</button>
+    <button class="jas-filter-btn active" data-category="all">Wszystko 🍗</button>
+    <button class="jas-filter-btn" data-category="sets">Obiadowe Zestawy 🍽</button>
+    <button class="jas-filter-btn" data-category="kebab">Kebaby & Burgery 🌯</button>
+    <button class="jas-filter-btn" data-category="sides">Dodatki 🍟</button>
+    <button class="jas-filter-btn" data-category="drinks">Napoje 🥤</button>
   </div>
 
-  <!-- LISTA DAĹ -->
+  <!-- LISTA DAŃ -->
   <div class="jas-menu-grid" id="jas-menu-grid">
     <!-- Dania generowane dynamicznie przez JS -->
   </div>
 
   <!-- INFORMACJA O ALERGENACH -->
   <div class="jas-allergen-notice">
-    <h4>â ď¸ Informacja o alergenach i wagach</h4>
-    <p>Informujemy, Ĺźe nasze potrawy mogÄ zawieraÄ substancje alergogenne, w tym: zboĹźa zawierajÄce gluten, jaja, mleko (laktozÄ), seler, gorczycÄ oraz nasiona sezamu. SzczegĂłĹowy wykaz alergenĂłw dla kaĹźdego dania dostÄpny jest u obsĹugi baru.</p>
-    <p>Podane wagi potraw sÄ wartoĹciami przybliĹźonymi (waga przed obrĂłbkÄ termicznÄ / gramatura netto) i mogÄ siÄ nieznacznie rĂłĹźniÄ w zaleĹźnoĹci od partii surowca.</p>
+    <h4>⚠️ Informacja o alergenach i wagach</h4>
+    <p>Informujemy, że nasze potrawy mogą zawierać substancje alergogenne, w tym: zboża zawierające gluten, jaja, mleko (laktozę), seler, gorczycę oraz nasiona sezamu. Szczegółowy wykaz alergenów dla każdego dania dostępny jest u obsługi baru.</p>
+    <p>Podane wagi potraw są wartościami przybliżonymi (waga przed obróbką termiczną / gramatura netto) i mogą się nieznacznie różnić w zależności od partii surowca.</p>
   </div>
 </div>
 
@@ -598,126 +630,221 @@
   <div class="jas-jas-cart-toggle" style="display:flex; align-items:center; width: 100%; justify-content: space-between;">
     <div class="jas-cart-info">
       <div class="jas-cart-icon-wrap">
-        đ
+        🛒
         <div class="jas-cart-count" id="jas-cart-count">0</div>
       </div>
       <div class="jas-cart-text">
-        <h4 id="jas-cart-total-price">0.00 zĹ</h4>
-        <p id="jas-cart-summary-text">TwĂłj koszyk jest pusty</p>
+        <h4 id="jas-cart-total-price">0.00 zł</h4>
+        <p id="jas-cart-summary-text">Twój koszyk jest pusty</p>
       </div>
     </div>
     <button class="jas-cart-checkout-btn" id="jas-cart-checkout-btn">
-      ZamĂłw przez WhatsApp đĽ
+      Zamów przez WhatsApp 🔥
     </button>
   </div>
 </div>
 
 <script>
-  // DAĹ BAZA DANYC  const JAS_MENU_ITEMS = [
-    {
-      id: "set-chicken",
-      name: "Zestaw Kurczak z RoĹźna (PoĹĂłwka)",
-      category: "sets",
-      price: 34.00,
-      description: "Danie flagowe! PoĹĂłwka soczystego kurczaka z roĹźna (~450g) w zestawie ze zĹocistymi frytkami (150g) lub opiekanymi ziemniaczkami oraz ĹwieĹźym zestawem domowych surĂłwek (150g).",
-      badge: "KULTOWE đĽ",
-      image: "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
-    },
-    {
-      id: "set-kebab",
-      name: "Zestaw Kebab z Frytkami i SurĂłwkami",
-      category: "sets",
-      price: 32.00,
-      description: "SycÄca porcja dobrze doprawionego miÄsa kebab (~180g), podawana ze zĹocistymi frytkami (150g), ĹwieĹźym zestawem surĂłwek (150g) oraz autorskim sosem czosnkowym lub pikantnym.",
-      badge: "HIT đ",
-      image: "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_z_frytkami.png"
-    },
-    {
-      id: "chicken-whole",
-      name: "Legendarny Kurczak z RoĹźna (CaĹy)",
-      category: "sets",
-      price: 38.00,
-      description: "CaĹy, dorodny kurczak z polskiej hodowli (~900g), rÄcznie marynowany w naszej autorskiej, tajnej kompozycji ziĂłĹ, powoli pieczony na roĹźnie na zĹocisty, chrupiÄcy kolor.",
-      badge: "BESTSELLER đ",
-      image: "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
-    },
-    {
-      id: "chicken-half",
-      name: "Kurczak z RoĹźna (PoĹĂłwka)",
-      category: "sets",
-      price: 20.00,
-      description: "Sama poĹĂłwka soczystego, ĹwieĹźo upieczonego kurczaka (~450g). Tradycyjna, chrupiÄca skĂłrka, delikatne i miÄkkie miÄso w Ĺrodku.",
-      badge: null,
-      image: "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
-    },
-    {
-      id: "kebab-bun",
-      name: "Kebab w BuĹce z SurĂłwkami",
-      category: "kebab",
-      price: 22.00,
-      description: "ChrupiÄca, opiekana buĹka rzemieĹlnicza wypeĹniona po brzegi dobrze przypieczonym miÄsem kebab (~150g), ĹwieĹźymi warzywami i domowym sosem Ĺagodnym lub pikantnym.",
-      badge: null,
-      image: "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_w_bulce.png"
-    },
-    {
-      id: "burger-chicken",
-      name: "Hamburger z Filetem z Kurczaka",
-      category: "kebab",
-      price: 20.00,
-      description: "Soczysty i chrupiÄcy panierowany filet z piersi kurczaka (~150g) w puszystej buĹce sezamowej ze ĹwieĹźym pomidorem, ogĂłrkiem, saĹatÄ i wyrazistym sosem.",
-      badge: "DLA GĹODNYCH âĄ",
-      image: "https://kurczakujasia.pl/wp-content/uploads/2023/12/Hamburger-z-filetem-z-kurczaka-2-1.png"
-    },
-    {
-      id: "set-kids",
-      name: "Smerf â Zestaw dla Dzieci",
-      category: "sets",
-      price: 18.00,
-      description: "Mniejsza porcja chrupiÄcych, delikatnych kÄskĂłw z piersi kurczaka (~100g) z frytkami (100g), Ĺagodnym ketchupem i zimnym soczkiem (200ml) â radoĹÄ dla najmĹodszych!",
-      badge: "DLA DZIECI đś",
-      image: "https://kurczakujasia.pl/wp-content/uploads/2026/07/zestaw_dla_dzieci.png"
-    },
-    {
-      id: "soup-day",
-      name: "Domowa Zupa Dnia",
-      category: "sides",
-      price: 10.00,
-      description: "Tradycyjna, poĹźywna i gorÄca zupa dnia (350ml) gotowana codziennie rano na ĹwieĹźym wywarze warzywno-miÄsnym. Zapytaj naszÄ obsĹugÄ o dzisiejszÄ pozycjÄ!",
-      badge: "ĹWIEĹťA đĽŁ",
-      image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      id: "fries",
-      name: "ZĹociste Frytki (Porcja 150g)",
-      category: "sides",
-      price: 10.00,
-      description: "ChrupiÄce na zewnÄtrz i miÄkkie w Ĺrodku zĹociste frytki (150g) â idealne same lub jako uzupeĹnienie kaĹźdego dania.",
-      badge: null,
-      image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      id: "salads",
-      name: "Zestaw Domowych SurĂłwek",
-      category: "sides",
-      price: 8.00,
-      description: "Codziennie ĹwieĹźo siekane, naturalne surĂłwki (Porcja 150g; m.in. z biaĹej i czerwonej kapusty, marchewki) przygotowywane na miejscu bez konserwantĂłw.",
-      badge: "BOMBA WITAMINOWA đĽ",
-      image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"
-    },
-    {
-      id: "drinks",
-      name: "Zimne Napoje (Pepsi / Mirinda 0.33l)",
-      category: "drinks",
-      price: 8.00,
-      description: "Zimna, mocno orzeĹşwiajÄca puszka Pepsi, Mirindy lub 7Up (0.33l), ktĂłra idealnie ugasi pragnienie po sytym posiĹku.",
-      badge: null,
-      image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80"
-    }
-  ];ku u Jasia.",
-      badge: null,
-      image: "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=600&q=80"
-    }
-  ];
+  const JAS_MENU_ITEMS = [
+  {
+    "id": "chicken-whole",
+    "name": "Kurczak z rożna (1 sztuka)",
+    "category": "sets",
+    "price": 40.0,
+    "description": "Legendarny, cały chrupiący kurczak z rożna obrotowego, ręcznie marynowany w kompozycji 12 ziół i powoli pieczony na złocisty kolor (sama sztuka).",
+    "badge": "BESTSELLER 👑",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "chicken-half",
+    "name": "Kurczak z rożna (1/2 sztuki)",
+    "category": "sets",
+    "price": 20.0,
+    "description": "Soczysta połówka chrupiącego kurczaka, pieczona na tradycyjnym rożnie obrotowym (sama połówka).",
+    "badge": "KULTOWE 🔥",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "set-half-chicken-fries-salad",
+    "name": "Zestaw z połówką kurczaka (z frytkami i surówką)",
+    "category": "sets",
+    "price": 36.0,
+    "description": "Sycący zestaw obiadowy: połówka soczystego kurczaka z rożna (20 zł) podawana ze złocistymi frytkami (150g — 9 zł) oraz świeżą, domową surówką (250g — 7 zł).",
+    "badge": "POLECAMY ⭐",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "set-whole-chicken-fries-salad",
+    "name": "Zestaw z całym kurczakiem (z frytkami i surówką)",
+    "category": "sets",
+    "price": 56.0,
+    "description": "Olbrzymi zestaw dla naprawdę głodnych lub dla dwojga: cały, legendarny kurczak z rożna (40 zł) podawany ze złocistymi frytkami (150g — 9 zł) oraz świeżą, domową surówką (250g — 7 zł).",
+    "badge": "GIGANT 👑",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "set-chicken-salad",
+    "name": "Kurczak z rożna zestaw (ze świeżymi surówkami)",
+    "category": "sets",
+    "price": 40.0,
+    "description": "Cały chrupiący kurczak z rożna (1 sztuka) serwowany w zestawie z naszym codziennie przygotowywanym, świeżym bukietem domowych surówek (250g).",
+    "badge": "Z SURÓWKAMI 🥗",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Kurczak-z-rozna_zestaw-z-surowkami_frytki-1.png"
+  },
+  {
+    "id": "set-kebab",
+    "name": "Kebab zestaw (z frytkami lub ryżem)",
+    "category": "sets",
+    "price": 35.0,
+    "description": "Sycąca porcja dobrze doprawionego, soczystego mięsa kebab podawana ze złocistymi frytkami lub sypkim ryżem oraz bukietem surówek i sosem.",
+    "badge": "SYCĄCY 🔥",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2026/07/kebab_z_frytkami.png"
+  },
+  {
+    "id": "kebab-bun",
+    "name": "Kebab w bułce (z surówkami)",
+    "category": "kebab",
+    "price": 25.0,
+    "description": "Opiekana, chrupiąca rzemieślnicza bułka wypełniona soczystym mięsem kebab, świeżymi warzywami oraz autorskim sosem (czosnkowym lub pikantnym).",
+    "badge": "HIT 👍",
+    "image": "assets/img/kebab_w_bulce.jpg"
+  },
+  {
+    "id": "kebab-tortilla",
+    "name": "Kebab w tortilli",
+    "category": "kebab",
+    "price": 24.0,
+    "description": "Ciepła tortilla ściśle zawinięta z dużą ilością przypieczonego mięsa kebab, chrupiącymi surówkami i wyrazistymi sosami.",
+    "badge": "KLASYK 🌯",
+    "image": "assets/img/kebab_w_tortilli.jpg"
+  },
+  {
+    "id": "burger-chicken",
+    "name": "Hamburger z filetem z kurczaka",
+    "category": "kebab",
+    "price": 20.0,
+    "description": "Chrupiący panierowany filet z piersi kurczaka w puszystej bułce sezamowej z pomidorem, ogórkiem, sałatą i wyrazistym sosem burgerowym.",
+    "badge": "CHRUPIĄCY 🍗",
+    "image": "https://kurczakujasia.pl/wp-content/uploads/2023/12/Hamburger-z-filetem-z-kurczaka-2-1.png"
+  },
+  {
+    "id": "burger-classic",
+    "name": "Hamburger",
+    "category": "kebab",
+    "price": 16.0,
+    "description": "Klasyczny, soczysty kotlet wołowy w bułce z sezamem, podawany z chrupiącym ogórkiem kiszonym, cebulką, ketchupem i musztardą.",
+    "badge": "KLASYK 🍔",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "hot-dog",
+    "name": "Hot-Dog",
+    "category": "kebab",
+    "price": 14.0,
+    "description": "Gorąca parówka w chrupiącej, podgrzanej bułce z ulubionymi sosami (ketchup, musztarda, duński) i prażoną cebulką.",
+    "badge": "SZYBKA PRZEKĄSKA 🌭",
+    "image": "https://images.unsplash.com/photo-1619740455993-9e612b1af08a?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "sausage-grilled",
+    "name": "Kiełbasa z grilla (porcja 100g)",
+    "category": "sets",
+    "price": 10.0,
+    "description": "Aromatyczna, doskonale przypieczona na grillu tradycyjna polska kiełbasa, podawana na gorąco z musztardą lub ketchupem (cena za porcję 100g).",
+    "badge": "Z GRILLA 🪵",
+    "image": "assets/img/kielbasa_z_grilla.png"
+  },
+  {
+    "id": "fries",
+    "name": "Frytki (porcja 150g)",
+    "category": "sides",
+    "price": 9.0,
+    "description": "Złociste, chrupiące frytki, idealnie usmażone i delikatnie posolone - doskonały dodatek do każdego zamówienia.",
+    "badge": "KULTOWE 🍟",
+    "image": "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "salad-portion",
+    "name": "Surówka (porcja 250g)",
+    "category": "sides",
+    "price": 7.0,
+    "description": "Świeżo siekane, pełne witamin domowe surówki przygotowywane codziennie rano ze świeżych warzyw.",
+    "badge": "ZDROWY WYBÓR 🥗",
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "bun-poznanska",
+    "name": "Bułka Poznańska",
+    "category": "sides",
+    "price": 2.5,
+    "description": "Świeża, chrupiąca rzemieślnicza Bułka Poznańska (przedzielana), doskonała jako tradycyjny dodatek do kurczaka z rożna.",
+    "badge": "ŚWIEŻA 🥖",
+    "image": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "bun-kajzerka",
+    "name": "Bułka Kajzerka",
+    "category": "sides",
+    "price": 1.0,
+    "description": "Klasyczna, świeża bułka kajzerka z chrupiącą złocistą skórką, idealny tradycyjny dodatek.",
+    "badge": null,
+    "image": "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "drink-coffee",
+    "name": "Kawa",
+    "category": "drinks",
+    "price": 10.0,
+    "description": "Aromatyczna, gorąca kawa parzona, idealna na każdą porę dnia.",
+    "badge": "GORĄCA ☕",
+    "image": "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "drink-tea",
+    "name": "Herbata",
+    "category": "drinks",
+    "price": 6.0,
+    "description": "Gorąca, rozgrzewająca herbata podawana z cytryną.",
+    "badge": null,
+    "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": "drink-pepsi",
+    "name": "Pepsi",
+    "category": "drinks",
+    "price": 8.0,
+    "description": "Mocno schłodzona, orzeźwiająca puszka Pepsi (lub inny zimny napój z oferty) prosto z lodówki.",
+    "badge": "PROMO 🥤",
+    "image": "assets/img/pepsi_bottle.png"
+  },
+  {
+    "id": "fee-packaging",
+    "name": "Opakowanie",
+    "category": "sides",
+    "price": 1.0,
+    "description": "Opakowanie na wynos zapewniające bezpieczny i higieniczny transport posiłku oraz utrzymanie temperatury.",
+    "badge": "OPŁATA 📦",
+    "image": "assets/img/opakowanie.png"
+  },
+  {
+    "id": "fee-cutlery",
+    "name": "Sztućce",
+    "category": "sides",
+    "price": 0.5,
+    "description": "Komplet jednorazowych, ekologicznych sztućców drewnianych (widelec, nóż, serwetka) dla Twojej wygody.",
+    "badge": null,
+    "image": "assets/img/sztucce.png"
+  },
+  {
+    "id": "fee-bottle-deposit",
+    "name": "Kubek / Kaucja za butelkę",
+    "category": "sides",
+    "price": 0.5,
+    "description": "Kaucja zwrotna za butelkę szklaną lub jednorazowy kubek do napojów na wynos.",
+    "badge": null,
+    "image": "https://images.unsplash.com/photo-1527661591475-527312dd65f5?auto=format&fit=crop&w=600&q=80"
+  }
+];
 
   let cart = {};
 
@@ -730,9 +857,10 @@
       ? JAS_MENU_ITEMS 
       : JAS_MENU_ITEMS.filter(item => item.category === categoryFilter);
 
-    filtered.forEach(item => {
+    filtered.forEach((item, index) => {
       const card = document.createElement("div");
       card.className = "jas-menu-card";
+      card.style.animationDelay = `${index * 0.05}s`;
       card.setAttribute("data-category", item.category);
 
       let badgeHTML = item.badge ? `<div class="jas-card-badge">${item.badge}</div>` : "";
@@ -745,12 +873,12 @@
         <div class="jas-card-content">
           <div class="jas-card-title-row">
             <h3 class="jas-card-title">${item.name}</h3>
-            <span class="jas-card-price">${item.price.toFixed(2).replace('.', ',')} zĹ</span>
+            <span class="jas-card-price">${item.price.toFixed(2).replace('.', ',')} zł</span>
           </div>
           <p class="jas-card-desc">${item.description}</p>
           <div class="jas-card-footer">
             <button class="jas-add-to-cart-btn" onclick="addToCart('${item.id}')">
-              Dodaj do zamĂłwienia â
+              Dodaj do zamówienia ➕
             </button>
           </div>
         </div>
@@ -759,7 +887,7 @@
     });
   }
 
-  // OBSĹUGA KOSZYKA
+  // OBSŁUGA KOSZYKA
   window.addToCart = function(id) {
     const item = JAS_MENU_ITEMS.find(i => i.id === id);
     if (!item) return;
@@ -775,7 +903,7 @@
     }
     updateCartUI();
     
-    // Efekt klikniÄcia
+    // Efekt kliknięcia
     if (navigator.vibrate) navigator.vibrate(50);
   };
 
@@ -797,7 +925,7 @@
 
     if (totalQty > 0) {
       cartCount.textContent = totalQty;
-      cartTotalPrice.textContent = `${totalPrice.toFixed(2).replace('.', ',')} zĹ`;
+      cartTotalPrice.textContent = `${totalPrice.toFixed(2).replace('.', ',')} zł`;
       cartSummaryText.textContent = itemsText.slice(0, 2).join(", ") + (itemsText.length > 2 ? "..." : "");
       cartBar.classList.add("visible");
     } else {
@@ -805,7 +933,7 @@
     }
   }
 
-  // FILTROWANIE DAĹ
+  // FILTROWANIE DAŃ
   document.querySelectorAll(".jas-filter-btn").forEach(btn => {
     btn.addEventListener("click", function() {
       document.querySelector(".jas-filter-btn.active").classList.remove("active");
@@ -817,20 +945,20 @@
 
   // INTEGRACJA Z JASBOTEM (WHATSAPP REDIRECT)
   document.getElementById("jas-cart-checkout-btn").addEventListener("click", function() {
-    // Sprawdzamy czy globalny chatbot jest obecny i wyzwalamy w nim flow zamĂłwienia z przekazanym koszykiem
+    // Sprawdzamy czy globalny chatbot jest obecny i wyzwalamy w nim flow zamówienia z przekazanym koszykiem
     if (window.jasBotOpenWithCart) {
       window.jasBotOpenWithCart(cart);
     } else {
-      // Fallback - generujemy wiadomoĹÄ i przekierowujemy bezpoĹrednio na wa.me
+      // Fallback - generujemy wiadomość i przekierowujemy bezpośrednio na wa.me
       let total = 0;
       let orderLines = "";
       for (const id in cart) {
         const item = cart[id];
-        orderLines += `- ${item.qty}x ${item.name} (${(item.qty * item.price).toFixed(2).replace('.', ',')} zĹ)\\n`;
+        orderLines += `- ${item.qty}x ${item.name} (${(item.qty * item.price).toFixed(2).replace('.', ',')} zł)\\n`;
         total += item.qty * item.price;
       }
 
-      const textMessage = `đ NOWE ZAMĂWIENIE - BAR JAĹ đ\\n---------------------------------\\nđ POZYCJE:\\n${orderLines}---------------------------------\\nđĽ SUMA: ${total.toFixed(2).replace('.', ',')} zĹ\\n---------------------------------\\nProszÄ o przygotowanie zamĂłwienia! Dane do kontaktu i odbioru podam za chwilÄ.`;
+      const textMessage = `🍗 NOWE ZAMÓWIENIE - BAR JAŚ 🍗\\n---------------------------------\\n🛒 POZYCJE:\\n${orderLines}---------------------------------\\n🔥 SUMA: ${total.toFixed(2).replace('.', ',')} zł\\n---------------------------------\\nProszę o przygotowanie zamówienia! Dane do kontaktu i odbioru podam za chwilę.`;
       const waUrl = `https://wa.me/48663970016?text=${encodeURIComponent(textMessage)}`;
       window.open(waUrl, "_blank");
     }
@@ -845,8 +973,30 @@
 
 
 
-<div class="jasbot-label">🍗 Złóż zamówienie u JaśBota!</div>
+
+  <div class="jasbot-window" id="jasbot-window" role="dialog" aria-label="Chat z JaśBotem">
+    <div class="jasbot-header">
+      <div class="jasbot-header-info">
+        <img src="assets/img/logo.png" alt="JaśBot Logo" class="jasbot-avatar-img" style="width:40px;height:40px;object-fit:contain;border-radius:50%;background:var(--cream);">
+        <div class="jasbot-header-text">
+          <h3>JaśBot</h3>
+          <p>Złóż zamówienie online!</p>
+        </div>
+      </div>
+      <button class="jasbot-close-btn" id="jasbot-close-btn" aria-label="Zamknij chat">&times;</button>
+    </div>
+    <div class="jasbot-body" id="jasbot-messages"></div>
+    <div class="jasbot-input-area">
+      <input type="text" class="jasbot-input" id="jasbot-input" placeholder="Wpisz wiadomość..." autocomplete="off">
+      <button class="jasbot-send-btn" id="jasbot-send-btn" aria-label="Wyślij">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
 <div id="jasbot-widget">
+  <div class="jasbot-label" id="jasbot-label">🍗 Złóż zamówienie u JaśBota!</div>
   <div class="jasbot-toggle" id="jasbot-toggle" aria-label="Otwórz chat JaśBot">
     <img src="assets/img/logo.png" alt="JaśBot" style="width:42px;height:42px;object-fit:contain;border-radius:50%;">
     <div class="jasbot-badge" id="jasbot-badge" style="display:none;">0</div>
@@ -887,7 +1037,7 @@
       <p>
         <strong>Adres:</strong><br>
         ul. Rokicińska 190/214, 92-412 Łódź<br>
-        (obok Selgros, dzielnica Widzew)
+        (na parkingu, przy samym wejściu do Selgrosa)
       </p>
       <p><strong>Telefon:</strong> <a href="tel:+48663970016">+48 663 970 016</a></p>
       <p><strong>E-mail:</strong> <a href="mailto:kontakt@kurczakujasia.pl">kontakt@kurczakujasia.pl</a></p>
@@ -908,7 +1058,7 @@
 </footer>
 
 
-<script src="assets/js/main.js"></script>
-<script src="assets/js/chatbot.js"></script>
+<script src="assets/js/main.js?v=2.2.2"></script>
+<script src="assets/js/chatbot.js?v=2.2.2"></script>
 </body>
 </html>
