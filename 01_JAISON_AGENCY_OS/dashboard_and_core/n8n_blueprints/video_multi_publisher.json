@@ -1,0 +1,346 @@
+{
+  "name": "Jaison OS 2.0 - Video Multi-Publisher",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "video-multi-publish",
+        "responseMode": "lastNode",
+        "options": {
+          "rawBody": false
+        }
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        240
+      ],
+      "id": "webhook-trigger",
+      "name": "Webhook - Jaison OS 2.0"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "type": "string"
+          },
+          "conditions": [
+            {
+              "id": "cond-yt",
+              "leftValue": "={{ $json.body.channels }}",
+              "operator": "contains",
+              "rightValue": "YouTube Shorts"
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        220,
+        100
+      ],
+      "id": "if-yt-shorts",
+      "name": "Czy YouTube Shorts?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "type": "string"
+          },
+          "conditions": [
+            {
+              "id": "cond-ig",
+              "leftValue": "={{ $json.body.channels }}",
+              "operator": "contains",
+              "rightValue": "Instagram Reels"
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        220,
+        240
+      ],
+      "id": "if-ig-reels",
+      "name": "Czy Instagram Reels?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "type": "string"
+          },
+          "conditions": [
+            {
+              "id": "cond-tt",
+              "leftValue": "={{ $json.body.channels }}",
+              "operator": "contains",
+              "rightValue": "TikTok"
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        220,
+        380
+      ],
+      "id": "if-tiktok",
+      "name": "Czy TikTok?"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "type": "string"
+          },
+          "conditions": [
+            {
+              "id": "cond-fb",
+              "leftValue": "={{ $json.body.channels }}",
+              "operator": "contains",
+              "rightValue": "Facebook Reels"
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        220,
+        520
+      ],
+      "id": "if-fb-reels",
+      "name": "Czy Facebook Reels?"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "upload",
+        "title": "={{ $('Webhook - Jaison OS 2.0').item.json.body.title }}",
+        "description": "={{ $('Webhook - Jaison OS 2.0').item.json.body.description }}",
+        "binaryData": true,
+        "binaryPropertyName": "data",
+        "additionalFields": {
+          "category": "Science & Technology",
+          "public": true
+        }
+      },
+      "type": "n8n-nodes-base.youtube",
+      "typeVersion": 1,
+      "position": [
+        480,
+        60
+      ],
+      "id": "node-yt-upload",
+      "name": "YouTube Shorts Upload"
+    },
+    {
+      "parameters": {
+        "resource": "media",
+        "operation": "upload",
+        "caption": "={{ $('Webhook - Jaison OS 2.0').item.json.body.title }}\\n\\n={{ $('Webhook - Jaison OS 2.0').item.json.body.description }}",
+        "mediaType": "reel",
+        "binaryData": true,
+        "binaryPropertyName": "data"
+      },
+      "type": "n8n-nodes-base.instagram",
+      "typeVersion": 1,
+      "position": [
+        480,
+        200
+      ],
+      "id": "node-ig-upload",
+      "name": "Instagram Reels Upload"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "text": "={{ $('Webhook - Jaison OS 2.0').item.json.body.title }} #shorts #ai",
+        "binaryData": true,
+        "binaryPropertyName": "data",
+        "additionalFields": {
+          "privacy_level": "PUBLIC",
+          "disable_duet": false,
+          "disable_stitch": false
+        }
+      },
+      "type": "n8n-nodes-base.tiktok",
+      "typeVersion": 1,
+      "position": [
+        480,
+        340
+      ],
+      "id": "node-tt-upload",
+      "name": "TikTok Upload"
+    },
+    {
+      "parameters": {
+        "resource": "pageVideo",
+        "pageId": "10293847562910",
+        "title": "={{ $('Webhook - Jaison OS 2.0').item.json.body.title }}",
+        "description": "={{ $('Webhook - Jaison OS 2.0').item.json.body.description }}",
+        "binaryData": true,
+        "binaryPropertyName": "data"
+      },
+      "type": "n8n-nodes-base.facebookPage",
+      "typeVersion": 1,
+      "position": [
+        480,
+        480
+      ],
+      "id": "node-fb-upload",
+      "name": "Facebook Page Video Upload"
+    },
+    {
+      "parameters": {
+        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "text": "=[Jaison OS 2.0] Wideo \\\"{{ $('Webhook - Jaison OS 2.0').item.json.body.title }}\\\" zostało pomyślnie przetworzone i wysłane do dystrybucji na wybrane kanały:\\n- YouTube Shorts\\n- Instagram Reels\\n- TikTok\\n- Facebook Reels\\n⚡ Status: Sukces!"
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [
+        800,
+        240
+      ],
+      "id": "node-telegram-alert",
+      "name": "Telegram Notification"
+    }
+  ],
+  "connections": {
+    "Webhook - Jaison OS 2.0": {
+      "main": [
+        [
+          {
+            "node": "Czy YouTube Shorts?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Czy Instagram Reels?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Czy TikTok?",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Czy Facebook Reels?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Czy YouTube Shorts?": {
+      "main": [
+        [
+          {
+            "node": "YouTube Shorts Upload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Czy Instagram Reels?": {
+      "main": [
+        [
+          {
+            "node": "Instagram Reels Upload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Czy TikTok?": {
+      "main": [
+        [
+          {
+            "node": "TikTok Upload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Czy Facebook Reels?": {
+      "main": [
+        [
+          {
+            "node": "Facebook Page Video Upload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "YouTube Shorts Upload": {
+      "main": [
+        [
+          {
+            "node": "Telegram Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instagram Reels Upload": {
+      "main": [
+        [
+          {
+            "node": "Telegram Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TikTok Upload": {
+      "main": [
+        [
+          {
+            "node": "Telegram Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Facebook Page Video Upload": {
+      "main": [
+        [
+          {
+            "node": "Telegram Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {}
+}
