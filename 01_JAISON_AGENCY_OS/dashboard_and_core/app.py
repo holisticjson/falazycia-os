@@ -6464,7 +6464,13 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
             st.subheader("🎬 Brand Media Studio")
             st.markdown("Generuj luksusowe efekty 3D, syntezuj unikalne audio, projektuj obrazy i twórz kinowe wideo B-Roll z fal.ai.")
             
-            tab_3d, tab_vocal, tab_flux, tab_video = st.tabs(["✨ Efekty 3D (Three.js)", "🎙️ Voice & Audio Clone", "🖼️ Flux Art Studio (fal.ai)", "🎬 Image-to-Video Studio (fal.ai)"])
+            tab_3d, tab_vocal, tab_flux, tab_video, tab_lipsync = st.tabs([
+                "✨ Efekty 3D (Three.js)", 
+                "🎙️ Voice & Audio Clone", 
+                "🖼️ Flux Art Studio (fal.ai)", 
+                "🎬 Image-to-Video Studio (fal.ai)",
+                "👄 Lipsync & Avatar Sync (fal.ai)"
+            ])
             
             with tab_3d:
                 st.subheader("✨ Generator Interaktywnych Efektów 3D (Three.js)")
@@ -6939,6 +6945,94 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                             key="suite_video_download_btn"
                         )
                     st.markdown("</div>", unsafe_allow_html=True)
+
+            with tab_lipsync:
+                st.subheader("👄 Cyfrowy Awatar i Lipsync (wav2lip)")
+                st.markdown("""
+                Synchronizuj ruch ust wygenerowanej postaci lub dowolnego wideo z plikiem audio lektora, aby stworzyć fotorealistyczny, gadający awatar.
+                """)
+                
+                # Inicjalizacja stanu dla Lipsync
+                if "suite_lipsync_result_mp4" not in st.session_state:
+                    st.session_state.suite_lipsync_result_mp4 = None
+                
+                col_lip_v, col_lip_a = st.columns(2)
+                
+                with col_lip_v:
+                    st.markdown("<div style='background: #111827; border-radius: 12px; padding: 16px; border: 1px solid #374151;'>", unsafe_allow_html=True)
+                    st.markdown("#### 🎥 1. Wybierz Wideo (Postać)")
+                    
+                    video_source = st.selectbox(
+                        "Źródło wideo do Lipsync:",
+                        ["🎬 Użyj ostatnio wygenerowanego wideo B-Roll z fal.ai", "📁 Prześlij własny plik wideo (MP4)"],
+                        key="lipsync_video_source"
+                    )
+                    
+                    selected_lip_video_bytes = None
+                    if video_source == "🎬 Użyj ostatnio wygenerowanego wideo B-Roll z fal.ai":
+                        if st.session_state.get("suite_video_last_mp4"):
+                            st.success("🔌 Pomyślnie załadowano ostatni klip B-Roll!")
+                            selected_lip_video_bytes = st.session_state.suite_video_last_mp4
+                            st.video(selected_lip_video_bytes)
+                        else:
+                            st.warning("⚠️ Brak wygenerowanego wideo B-Roll w tej sesji. Przejdź do zakładki Image-to-Video lub prześlij plik poniżej.")
+                    else:
+                        uploaded_lip_vid = st.file_uploader("Prześlij plik wideo postaci (MP4):", type=["mp4", "mov"], key="lipsync_vid_upload")
+                        if uploaded_lip_vid:
+                            selected_lip_video_bytes = uploaded_lip_vid.read()
+                            st.video(selected_lip_video_bytes)
+                    st.markdown("</div>", unsafe_allow_html=True)
+                    
+                with col_lip_a:
+                    st.markdown("<div style='background: #111827; border-radius: 12px; padding: 16px; border: 1px solid #374151;'>", unsafe_allow_html=True)
+                    st.markdown("#### 🎙️ 2. Wybierz Audio (Głos / Lektor)")
+                    
+                    audio_source = st.selectbox(
+                        "Źródło dźwięku do Lipsync:",
+                        ["🎙️ Użyj ostatniego klonu głosu / audio z sesji", "📁 Prześlij własny plik audio (MP3/WAV)"],
+                        key="lipsync_audio_source"
+                    )
+                    
+                    selected_lip_audio_bytes = None
+                    if audio_source == "🎙️ Użyj ostatniego klonu głosu / audio z sesji":
+                        if st.session_state.get("suite_vocal_last_mp3"): # sprawdzamy czy istnieje
+                            st.success("🔌 Pomyślnie załadowano nagranie głosowe z sesji!")
+                            selected_lip_audio_bytes = st.session_state.suite_vocal_last_mp3
+                            st.audio(selected_lip_audio_bytes)
+                        else:
+                            st.warning("⚠️ Brak aktywnego klonu audio w tej sesji. Stwórz go w zakładce Voice & Audio Clone lub prześlij plik poniżej.")
+                    else:
+                        uploaded_lip_aud = st.file_uploader("Prześlij nagranie audio lektora (MP3/WAV):", type=["mp3", "wav", "m4a"], key="lipsync_aud_upload")
+                        if uploaded_lip_aud:
+                            selected_lip_audio_bytes = uploaded_lip_aud.read()
+                            st.audio(selected_lip_audio_bytes)
+                    st.markdown("</div>", unsafe_allow_html=True)
+                    
+                st.write("")
+                has_both_files = selected_lip_video_bytes is not None and selected_lip_audio_bytes is not None
+                
+                if st.button("👄 URUCHOM SYNCHRONIZACJĘ UST (wav2lip)", type="primary", use_container_width=True, disabled=not has_both_files, key="lipsync_run_btn"):
+                    with st.spinner("Uruchamianie modelu fal-ai/wav2lip na fal.ai... Oczekiwanie na przetworzenie klatek (to może potrwać do 60 sekund)..."):
+                        from integrations.fal_ai import run_lipsync
+                        result_bytes, err = run_lipsync(selected_lip_video_bytes, selected_lip_audio_bytes)
+                        if err:
+                            st.error(f"❌ Błąd Lipsync: {err}")
+                        else:
+                            st.session_state.suite_lipsync_result_mp4 = result_bytes
+                            st.success("🎉 Awatar zsynchronizowany pomyślnie!")
+                            st.rerun()
+                            
+                if st.session_state.suite_lipsync_result_mp4:
+                    st.markdown("### 👄 Twój Zsynchronizowany Cyfrowy Awatar:")
+                    st.video(st.session_state.suite_lipsync_result_mp4)
+                    st.download_button(
+                        label="💾 Pobierz Zsynchronizowane Wideo (MP4)",
+                        data=st.session_state.suite_lipsync_result_mp4,
+                        file_name="avatar_lipsync_jaison.mp4",
+                        mime="video/mp4",
+                        use_container_width=True,
+                        key="lipsync_download_btn"
+                    )
 
         # --- TOOL 9: RESEARCH HUB ---
         elif tool == "ResearchHub":
