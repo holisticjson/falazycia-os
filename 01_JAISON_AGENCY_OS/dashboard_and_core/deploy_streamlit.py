@@ -9,7 +9,7 @@ import subprocess
 import sys
 
 PROJECT_ID = "holistic-dashboard-dev"
-REGION = "europe-central2"  # Warszawa — najniższe opóźnienia
+REGION = "europe-west1"  # Belgia — wspiera bezpośrednie mapowanie domen
 SERVICE_NAME = "holistic-ceo"
 IMAGE_TAG = f"gcr.io/{PROJECT_ID}/{SERVICE_NAME}:latest"
 
@@ -100,7 +100,7 @@ def main():
     print("\n" + "=" * 50)
     print("🎉 WDROŻENIE ZAKOŃCZONE SUKCESEM!")
     print("=" * 50)
-    print(f"🔗 Bezpośredni URL:       https://holistic-ceo-771359551342.europe-central2.run.app")
+    print(f"🔗 Bezpośredni URL:       (Wypisany powyżej w logu GCP)")
     print(f"📊 Domena (os.jaison.pl): https://os.jaison.pl")
     print(f"🔑 Hasło panelu:          holistic2026")
     print("=" * 50 + "\n")

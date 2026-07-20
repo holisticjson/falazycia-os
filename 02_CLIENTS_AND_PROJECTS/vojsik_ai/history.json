@@ -514,5 +514,17 @@
         "raw_text": "Wklejam Ci ostatnią historię naszych rozmów. Chciałbym tutaj w tym czacie, w tym folderze kontynuować tą pracę na temat dotyczącą rozbudowy konfiguracji i ulepszeń dashboardu Streamlit.",
         "corrected_text": "Wklejam Ci ostatnią historię naszych rozmów. Chciałbym tutaj w tym czacie, w tym folderze kontynuować tą pracę na temat dotyczącą rozbudowy konfiguracji i ulepszeń dashboardu Streamlit.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-20 18:07:44",
+        "raw_text": "Nie mogę zaznaczyć według tego filtra, nie może to. Próbowałem nawet z konsoli Cloud Shell z asystentem Gemini Cloud Assist przy użyciu kodu i tego limitu Global Interaction Throughput Bytes Per Day Per Project i wyskakuje błąd. Nie ma tego.  nie wiem jak to obejść, jak to sprawdzić, jak podwyższyć tą wartość.",
+        "corrected_text": "Nie mogę zaznaczyć według tego filtra, nie może to. Próbowałem nawet z konsoli Cloud Shell z asystentem Gemini Cloud Assist przy użyciu kodu i tego limitu Global Interaction Throughput Bytes Per Day Per Project i wyskakuje błąd. Nie ma tego.  nie wiem jak to obejść, jak to sprawdzić, jak podwyższyć tą wartość.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-20 18:08:02",
+        "raw_text": "Może sprawdź kontekst 7 przez MCP dokumentację aktualną, użyj wszystkich skilli odpowiednich, które posiadasz, abyśmy rozwiązali szybko tą sytuację.",
+        "corrected_text": "Może sprawdź kontekst 7 przez MCP dokumentację aktualną, użyj wszystkich skilli odpowiednich, które posiadasz, abyśmy rozwiązali szybko tą sytuację.",
+        "status": "raw_fallback"
     }
 ]
