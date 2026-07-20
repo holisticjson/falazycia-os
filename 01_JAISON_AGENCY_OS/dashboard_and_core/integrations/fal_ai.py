@@ -431,3 +431,65 @@ def generate_audio_fal(prompt, reference_audio_url=None):
             
     except Exception as ex:
         return None, f"Wyjątek podczas generowania audio: {str(ex)}"
+
+
+def run_lipsync(video_bytes, audio_bytes):
+    """
+    Synchronizuje ruch ust postaci na wideo (MP4) z podanym plikiem audio (MP3/WAV).
+    Używa modelu fal-ai/wav2lip na platformie fal.ai.
+    Zwraca surowe bajty gotowego pliku wideo (MP4) lub None i opis błędu.
+    """
+    import fal_client
+    import tempfile
+    import os
+    import requests
+    
+    key = os.getenv("FAL_KEY") or FAL_KEY
+    if key:
+        os.environ["FAL_KEY"] = key
+    else:
+        return None, "Brak klucza FAL_KEY w środowisku lub .env!"
+        
+    try:
+        # Zapisz wideo tymczasowo
+        with tempfile.NamedTemporaryFile(suffix=".mp4", delete=False) as tmp_vid:
+            tmp_vid.write(video_bytes)
+            tmp_vid_path = tmp_vid.name
+            
+        # Zapisz audio tymczasowo
+        with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False) as tmp_aud:
+            tmp_aud.write(audio_bytes)
+            tmp_aud_path = tmp_aud.name
+            
+        try:
+            # Wgraj oba pliki na fal.ai CDN
+            video_url = fal_client.upload_file(tmp_vid_path)
+            audio_url = fal_client.upload_file(tmp_aud_path)
+        finally:
+            if os.path.exists(tmp_vid_path):
+                os.remove(tmp_vid_path)
+            if os.path.exists(tmp_aud_path):
+                os.remove(tmp_aud_path)
+                
+        if not video_url or not audio_url:
+            return None, "Nie udało się wgrać plików wideo/audio do CDN fal.ai."
+            
+        endpoint = "fal-ai/wav2lip"
+        arguments = {
+            "video_url": video_url,
+            "audio_url": audio_url
+        }
+        
+        result = fal_client.subscribe(endpoint, arguments=arguments, with_logs=True)
+        
+        if "video" in result and "url" in result["video"]:
+            res_url = result["video"]["url"]
+            res_get = requests.get(res_url, timeout=120)
+            if res_get.status_code == 200:
+                return res_get.content, None
+            return None, f"Nie udało się pobrać zsynchronizowanego wideo: {res_get.status_code}"
+            
+        return None, f"API fal.ai (wav2lip) nie zwróciło ścieżki wideo. Wynik: {result}"
+        
+    except Exception as ex:
+        return None, f"Wyjątek podczas wywoływania Lipsync (wav2lip) na fal.ai: {str(ex)}"
