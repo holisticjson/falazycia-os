@@ -521,6 +521,35 @@ st.markdown("""
             border-radius: 12px !important;
             margin-bottom: 20px !important;
         }
+        
+        /* Luksusowy Hamburger Menu na smartfonie */
+        div[data-testid="collapsedControl"] {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.85) 0%, rgba(139, 92, 246, 0.85) 100%) !important;
+            border: 1px solid rgba(167, 139, 250, 0.5) !important;
+            border-radius: 50% !important;
+            width: 48px !important;
+            height: 48px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5) !important;
+            position: fixed !important;
+            left: 12px !important;
+            top: 12px !important;
+            z-index: 999999 !important;
+            cursor: pointer !important;
+        }
+        div[data-testid="collapsedControl"] svg {
+            display: none !important;
+        }
+        div[data-testid="collapsedControl"]::before {
+            content: "☰" !important;
+            color: #FFFFFF !important;
+            font-size: 22px !important;
+            font-family: Arial, sans-serif !important;
+            font-weight: bold !important;
+            line-height: 1 !important;
+        }
     }
 </style>
 """, unsafe_allow_html=True)

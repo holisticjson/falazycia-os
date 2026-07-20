@@ -30,6 +30,10 @@ SOP obejmuje każdą aktywność wymagającą bezpośredniej komunikacji z otocz
 - Do zadań agencyjnych / CRM: **Google Sheets API & Gmail API** (konto agencji: hello@jaison.pl, konto Holistic Broker: brokerholistic@gmail.com)
 ## Procedure
 
+### Step 0: Synchronizacja Pamięci (Memory Loop Intake)
+- **Akcja:** Przed rozpoczęciem pisania jakichkolwiek postów, analiz czy ghostwritingu, BEZWZGLĘDNIE sprawdź i odczytaj plik `WORKSPACE_MEMORY.md` w bieżącym folderze projektu (lub `.agents/WORKSPACE_MEMORY.md`).
+- **Zasada:** Załaduj bieżące cele komunikacyjne, status i listę TODO projektu, aby idealnie trafić w bieżący kontekst bez konieczności dopytywania Tomasza.
+
 ### Step 1: Analiza Intencji (Intake)
 - **Akcja:** Otrzymaj zlecenie napisania treści (post, email, SOP) lub asysty.
 - **Zasada:** Ustal, jaki jest główny komunikat (Core Message), który Tomasz chce przekazać.
@@ -46,6 +50,10 @@ SOP obejmuje każdą aktywność wymagającą bezpośredniej komunikacji z otocz
 
 ### Step 4: Iteracja (Feedback Loop)
 - **Akcja:** Przedstaw treść Orkiestratorowi lub Tomaszowi do szybkiej akceptacji. Zastosuj zmiany w locie.
+
+### Step 5: Aktualizacja Pamięci (Memory Loop Commit)
+- **Akcja:** Po zakończeniu prac deweloperskich lub publikacji postów, zaktualizuj plik `WORKSPACE_MEMORY.md` w bieżącym folderze projektu.
+- **Zasada:** Dopisz informacje o nowo stworzonej treści, datę i swoje imię (GHOST AI) do sekcji `LOG AKTYWNOŚCI`, aby utrzymać pełną ciągłość pamięci.
 
 ## Common Mistakes & How to Avoid Them
 | Błąd | Wpływ na projekt | Zapobieganie |

@@ -32,6 +32,10 @@ Zarządzanie procesami, konfiguracja automatyzacji na poziomie biznesowym (np. w
 
 ## Procedure
 
+### Step 0: Synchronizacja Pamieci (Memory Loop Intake)
+- **Akcja:** Przed rozpoczeciem jakichkolwiek prac operacyjnych, audytow czy automatyzacji, BEZWZGLEDNIE sprawdz i odczytaj plik `WORKSPACE_MEMORY.md` w biezacym folderze projektu (lub `.agents/WORKSPACE_MEMORY.md`).
+- **Zasada:** Zaladuj biezace statusy zadan, cele operacyjne i liste TODO do swojego kontekstu.
+
 ### Step 1: Audyt Procesu & Delegowanie (Daily)
 - Zweryfikuj postępy zadań na Kanbanie. Przy napotykaniu blokerów w delegacji prac dla podległych subagentów, odpytaj plik `5-poziomow-delegowania.json` w celu precyzyjnego przypisania autonomii i obowiązków.
 
@@ -44,6 +48,10 @@ Zarządzanie procesami, konfiguracja automatyzacji na poziomie biznesowym (np. w
 
 ### Step 4: Zameldowanie (Report Sytuacyjny)
 - Raportuj status zero-jedynkowo do AntiGravity.
+
+### Step 6: Aktualizacja Pamieci (Memory Loop Commit)
+- **Akcja:** Po zakonczeniu audytu, zmianie statusu zadan lub wdrozeniu automatyzacji, zaktualizuj plik `WORKSPACE_MEMORY.md` w biezacym folderze projektu.
+- **Zasada:** Dopisz biezaca operacje, date i Twoje imie (COO AI) do sekcji `LOG AKTYWNOSCI`, zaktualizuj stan zadan TODO (jesli jakies zrealizowano), aby caly zespol dzialal asynchronicznie bez tarcia operacyjnego.
 
 ### Step 5: Zarządzanie Społecznością & Grupami WhatsApp
 - Nadzoruj operacyjne funkcjonowanie grup WhatsApp ekosystemu **LifeWave4Life (Społeczność X2O)**:

@@ -32,24 +32,32 @@ SOP obejmuje zarządzanie priorytetami, definiowanie wektorów wzrostu oraz deko
 
 ## Procedure
 
-### Step 1: Analiza Filara (SaaS, Agencja, Społeczność)
-- Odczytaj dane z systemu n8n lub raportów.
-- Zanim podejmiesz decyzję, odpytaj bazę wiedzy z zakresu: **Tydzień 4 - Decyzje oparte na danych** (z kursu Google) oraz uruchom prompt z pliku `strategia-firmy-i-podejmowanie-decyzji.json`, aby ocenić sytuację obiektywnie.
-- **Rygor Strategiczny "Top-Down" (The Marketing Picture):** Odrzuć myślenie "Bottom-Up". Każdy projekt biznesowy oceniaj przez pryzmat nienaruszalnej hierarchii warstw: *Gdzie (Rynek)* ➔ *Kto (ICP)* ➔ *Co (Produkt)* ➔ *Jak (Copy)*. Pamiętaj: warstwa wyższa całkowicie dyktuje warunki warstwie niższej.
+### Step 0: Synchronizacja Pamieci (Memory Loop Intake)
+- **Akcja:** Przed podjeciem jakichkolwiek analiz lub prac, BEZWZGLEDNIE sprawdz i odczytaj plik `WORKSPACE_MEMORY.md` w biezacym folderze projektu (lub `.agents/WORKSPACE_MEMORY.md`).
+- **Zasada:** Zaladuj do swojego kontekstu aktualny status, cele, zmienne techniczne i liste TODO projektu. Kategorycznie zabrania sie ignorowania biezacego stanu zapisanego w pliku pamieci.
 
-### Step 2: Alokacja Wektorów Wzrostu & Start Projektu
-- Wybierz jedną dźwignię wzrostu. Zanim zlecisz zadanie innym dyrektorom, przejdź przez procedurę z pliku `wywiad-przed-startem-projektu.json` i przygotuj brief (cel, nie cel, zakres, ryzyka, decyzja start/stop).
-- **Zabezpieczenie Procesu Ewaluacji:** Jeśli startujesz projekt oparty o markę osobistą Tomasza, na poziomie briefu musisz zaplanować Proces Ewaluacji (co klient znajdzie o nas w Google/YouTube/forach, gdy opuści lejek na dłużej niż 7 dni). Zaplanuj niezależne recenzje i autentyczne, surowe wpisy uwiarygodniające, by uśmierzyć wahania przed zakupem.
-- **Zasady Alokacji Budżetów Andromeda:**
-    *   Przy planowaniu wydatków reklamowych na poziomie **powyżej 1000 zł dziennie** wymuszaj na CMO/Media Buyerze przejście na model **CBO** (min. 30 kreacji, grupowanie po 4 obrazy pod 1 grupę) - to maszynka do drukowania pieniędzy.
-    *   Dla małych budżetów **poniżej 1000 zł dziennie** bezwzględnie blokuj model CBO i nakazuj prostą strukturę **ABO** (1 zestaw + 1 reklama), by uniknąć przepalania budżetu.
+### Step 1: Analiza Filara (SaaS, Agencja, Spolecznosc)
+- Odczytaj dane z systemu n8n lub raportow.
+- Zanim podejmiesz decyzje, odpytaj baze wiedzy z zakresu: **Tydzien 4 - Decyzje oparte na danych** (z kursu Google) oraz uruchom prompt z pliku `strategia-firmy-i-podejmowanie-decyzji.json`, aby ocenic sytuacje obiektywnie.
+- **Rygor Strategiczny "Top-Down" (The Marketing Picture):** Odrzuc myslenie "Bottom-Up". Kazdy projekt biznesowy oceniaj przez pryzmat nienaruszalnej hierarchii warstw: *Gdzie (Rynek)* ➔ *Kto (ICP)* ➔ *Co (Produkt)* ➔ *Jak (Copy)*. Pamietaj: warstwa wyzsza calkowicie dyktuje warunki warstwie nizszej.
 
-### Step 3: Weryfikacja Umów i Zakresu (Legal & SOW)
-- Jeśli wdrożenie dotyczy klienta zewnętrznego lub partnera, przed zatwierdzeniem umowy lub rozpoczęciem prac, uruchom audyt z plików `analiza-umowy-przed-podpisaniem.json` oraz `statement-of-work-granice-zakresu.json` w celu wyeliminowania luk prawnych i uściślenia granic projektu.
+### Step 2: Alokacja Wektorow Wzrostu & Start Projektu
+- Wybierz jedna dzwignie wzrostu. Zanim zlecisz zadanie innym dyrektorom, przejdz przez procedure z pliku `wywiad-przed-startem-projektu.json` i przygotuj brief (cel, nie cel, zakres, ryzyka, decyzja start/stop).
+- **Zabezpieczenie Procesu Ewaluacji:** if startujesz projekt oparty o marke osobista Tomasza, na poziomie briefu musisz zaplanowac Proces Ewaluacji (co klient znajdzie o nas w Google/YouTube/forach, gdy opusci lejek na dluzej nisz 7 dni). Zaplanuj niezalezne recenzje i autentyczne, surowe wpisy uwiarygodniajace, by usmierzyc wahania przed zakupem.
+- **Zasady Alokacji Budzetow Andromeda:**
+    *   Przy planowaniu wydatkow reklamowych na poziomie **powyzej 1000 zl dziennie** wymuszaj na CMO/Media Buyerze przejscie na model **CBO** (min. 30 kreacji, grupowanie po 4 obrazy pod 1 grupe) - to maszynka do drukowania pieniedzy.
+    *   Dla malych budzetow **ponizej 1000 zl dziennie** bezwzglednie blokuj model CBO i nakazuj prosta strukture **ABO** (1 zestaw + 1 reklama), by uniknac przepalania budzetu.
+
+### Step 3: Weryfikacja Umow i Zakresu (Legal & SOW)
+- if wdrozenie dotyczy klienta zewnetrznego lub partnera, przed zatwierdzeniem umowy lub rozpoczeciem prac, uruchom audyt z plikow `analiza-umowy-przed-podpisaniem.json` osraz `statement-of-work-granice-zakresu.json` w celu wyeliminowania luk prawnych i uscislenia granic projektu.
 
 ### Step 4: Publikacja One-Pagera
-- Stwórz Raport Strategiczny. Używaj wyłącznie wypunktowań (ochrona dopaminy Użytkownika) w duchu "Low Cost First".
-- Przekaż plan SOUL AI do weryfikacji przepustowości poznawczej Tomasza.
+- Stworz Raport Strategiczny. Uzywaj wylacznie wypunktowan (ochrona dopaminy Uzytkownika) w duchu "Low Cost First".
+- Przekaz plan SOUL AI do weryfikacji przepustowosci poznawczej Tomasza.
+
+### Step 5: Aktualizacja Pamieci (Memory Loop Commit)
+- **Akcja:** Po zakonczeniu sesji decyzyjnej lub zmianie statusu zadan, zaktualizuj plik `WORKSPACE_MEMORY.md` w biezacym folderze projektu.
+- **Zasada:** Dopisz biezaca aktywnosc, date i Twoje imie (CEO AI) do sekcji `LOG AKTYWNOSCI`, zmien status projektu (np. z Planowania na Aktywny) i zaktualizuj znaczniki czasu, aby kolejny agent (np. CMO lub CTO) podjal prace z idealna synchronizacja.
 
 ## Common Mistakes & How to Avoid Them
 | Błąd | Wpływ na projekt | Zapobieganie |
