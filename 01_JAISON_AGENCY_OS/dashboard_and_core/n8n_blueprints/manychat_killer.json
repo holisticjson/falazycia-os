@@ -1,0 +1,190 @@
+{
+  "name": "💬 ManyChat-Killer Auto-Reply (IG/FB DM Bot)",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "manychat-killer-trigger",
+        "options": {}
+      },
+      "id": "node_webhook_mc",
+      "name": "Webhook (New Comment)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "https://os.jaison.pl/manychat_rules.json",
+        "options": {}
+      },
+      "id": "node_get_mc_rules",
+      "name": "Get Rules JSON",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const rules = $node['Get Rules JSON'].json;\nconst commentText = $node['Webhook (New Comment)'].json.body.comment_text || '';\nconst matched = rules.find(r => commentText.toUpperCase().includes(r.keyword.toUpperCase()));\n\nreturn {\n  matched_rule: matched || null,\n  has_match: !!matched\n};"
+      },
+      "id": "node_match_logic",
+      "name": "Match Keyword Logic",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.has_match }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "node_check_match",
+      "name": "Is Rule Matched?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [850, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $node['Match Keyword Logic'].json.matched_rule.use_ai }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "node_check_ai",
+      "name": "Use Gemini AI?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1050, 200]
+    },
+    {
+      "parameters": {
+        "model": "gemini-1.5-flash",
+        "prompt": "=Spersonalizuj poniższą wiadomość według instrukcji dla użytkownika @{{ $node['Webhook (New Comment)'].json.body.username }}:\n\nSzablon: \"{{ $node['Match Keyword Logic'].json.matched_rule.action_text }}\"\nInstrukcja personalizacji: \"{{ $node['Match Keyword Logic'].json.matched_rule.ai_prompt }}\"\n\nNapisz bezpośrednią, gotową odpowiedź DM, bez żadnych wstępów.",
+        "options": {}
+      },
+      "id": "node_gemini_personalize_mc",
+      "name": "Gemini Personalize",
+      "type": "n8n-nodes-base.googleGemini",
+      "typeVersion": 1,
+      "position": [1250, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v17.0/me/messages",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $node['Webhook (New Comment)'].json.body.sender_id }}\"\n  },\n  \"message\": {\n    \"text\": \"{{ $json.text }}\"\n  }\n}",
+        "options": {}
+      },
+      "id": "node_send_ig_dm_ai",
+      "name": "Send IG DM (AI)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1450, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v17.0/me/messages",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"recipient\": {\n    \"id\": \"{{ $node['Webhook (New Comment)'].json.body.sender_id }}\"\n  },\n  \"message\": {\n    \"text\": \"{{ $node['Match Keyword Logic'].json.matched_rule.action_text }}\"\n  }\n}",
+        "options": {}
+      },
+      "id": "node_send_ig_dm_static",
+      "name": "Send IG DM (Static)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1250, 300]
+    }
+  ],
+  "connections": {
+    "Webhook (New Comment)": {
+      "main": [
+        [
+          {
+            "node": "Get Rules JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Rules JSON": {
+      "main": [
+        [
+          {
+            "node": "Match Keyword Logic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Match Keyword Logic": {
+      "main": [
+        [
+          {
+            "node": "Is Rule Matched?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Rule Matched?": {
+      "main": [
+        [
+          {
+            "node": "Use Gemini AI?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use Gemini AI?": {
+      "main": [
+        [
+          {
+            "node": "Gemini Personalize",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send IG DM (Static)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini Personalize": {
+      "main": [
+        [
+          {
+            "node": "Send IG DM (AI)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {}
+}

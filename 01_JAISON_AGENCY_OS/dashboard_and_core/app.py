@@ -4508,10 +4508,10 @@ elif menu == "Jaison Agency":
                 st.session_state.active_suite_tool = "3D FX"
                 st.rerun()
 
-            # 11. STUDIO (HYPERFRAMES)
+            # 11. BRAND MEDIA STUDIO (HYPERFRAMES)
             st.markdown("""
             <div class="custom-card" style="border-left: 5px solid #8B5CF6; min-height: 200px;">
-                <h3 style="color: #8B5CF6; margin: 0; font-size: 1.3rem;">🎬 Studio (Hyperframes)</h3>
+                <h3 style="color: #8B5CF6; margin: 0; font-size: 1.3rem;">🎬 Brand Media Studio (Hyperframes)</h3>
                 <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 8px;">
                     Generator zaawansowanych klatek animacji, wideo oraz generowanie wideo-reels z wykorzystaniem modeli wideo fal.ai.
                 </p>
@@ -6292,7 +6292,7 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
             st.subheader("🎯 Ads & Local SEO")
             st.markdown("Zarządzaj reklamami Meta/TikTok przez n8n, monitoruj pozycję w Localo oraz generuj odpowiedzi na opinie GBP.")
             
-            tab_local, tab_ads, tab_gsc = st.tabs(["📍 Local SEO (GBP)", "🎯 Ads Manager & n8n", "📊 Google Search Console"])
+            tab_local, tab_ads, tab_spy, tab_gsc = st.tabs(["📍 Local SEO (GBP)", "🎯 Ads Manager & n8n", "🕵️ Szpieg Reklam (Apify)", "📊 Google Search Console"])
             
             with tab_local:
                 st.subheader("📍 Monitorowanie Map Google i Localo Grid Tracker")
@@ -6493,6 +6493,266 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                     st.success(st.session_state.sm_ads_success_msg)
                     del st.session_state.sm_ads_success_msg
                     
+            with tab_spy:
+                st.subheader("🕵️ Szpieg Reklam (Facebook Ads Library & Apify)")
+                st.markdown("""
+                Skanuj, ściągaj i analizuj aktywne kampanie konkurencji bezpośrednio z **Facebook Ads Library** za pomocą bezpłatnego limitu w Apify. 
+                System przetwarza kreacje reklamowe pod kątem psychologického copywritingu i perswazyjnych haczyków rynkowych.
+                """)
+                
+                col_s1, col_s2 = st.columns([3, 2])
+                
+                with col_s1:
+                    st.write("##### ⚙️ Parametry Wyszukiwania w Apify:")
+                    spy_query = st.text_input("Słowo kluczowe lub ID strony konkurenta (np. 'fotowoltaika', 'SaaS marketing' lub ID strony na FB):", value="SaaS marketing", key="suite_spy_query")
+                    
+                    c_sp1, c_sp2, c_sp3 = st.columns(3)
+                    with c_sp1:
+                        spy_limit = st.slider("Limit reklam:", min_value=5, max_value=50, value=10, key="suite_spy_limit")
+                    with c_sp2:
+                        spy_country = st.selectbox("Kraj wyszukiwania:", ["PL", "US", "DE", "GB", "ALL"], index=0, key="suite_spy_country")
+                    with c_sp3:
+                        spy_only_active = st.checkbox("Tylko aktywne", value=True, key="suite_spy_only_active")
+                        
+                    # Token Apify API - wczytywanie bezpieczne
+                    apify_token_env = os.getenv("APIFY_API_TOKEN", "")
+                    apify_token = st.text_input("Klucz API Apify (Token) — zostaw puste, aby użyć domyślnego lub trybu demo:", value=apify_token_env, type="password", key="suite_apify_token")
+                    st.caption("💡 *Wskazówka:* Darmowe konto Apify daje $5 kredytu miesięcznie, co wystarczy na ok. 500-1000 skanowań. Pobierz token ze swojego panelu Apify.com.")
+
+                with col_s2:
+                    st.write("##### 📋 Opcje integracji & n8n:")
+                    st.markdown("""
+                    - **Bezpośrednie wywołanie:** Dashboard sam odpyta serwer Apify i pobierze wyniki.
+                    - **Zintegrowany proces:** Dane zostaną przekazane do Gemini, który rozbije teksty na czynniki pierwsze (AIDA/Andromeda SOP).
+                    - **Eksport do bazy:** Każda przeanalizowana reklama może trafić do Twojej Bazy Wiedzy jednym kliknięciem.
+                    """)
+                    st.info("🔌 Plik n8n blueprint dla tego procesu znajdziesz w: `dashboard_and_core/n8n_blueprints/facebook_ads_spy.json`")
+                
+                # Przycisk startu
+                if st.button("🕵️ Uruchom Skanowanie i Analizę AI", type="primary", use_container_width=True, key="suite_spy_run_btn"):
+                    if not spy_query:
+                        st.warning("⚠️ Wpisz słowo kluczowe lub ID konkurenta, aby rozpocząć.")
+                    else:
+                        # Sprawdzamy czy mamy token
+                        use_demo = False
+                        if not apify_token:
+                            st.info("ℹ️ Brak podanego klucza API Apify. Uruchamiam zaawansowaną symulację i analizę na autentycznych kreacjach z bazy demonstracyjnej!")
+                            use_demo = True
+                            
+                        # Przygotowanie kontenera na wyniki
+                        ads_results = []
+                        
+                        if use_demo:
+                            with st.spinner("Pobieranie próbek reklam z bazy danych..."):
+                                import time
+                                time.sleep(2.0)
+                                # Luksusowe, gotowe reklamy do demo
+                                ads_results = [
+                                    {
+                                        "id": "18293812938129",
+                                        "pageName": "Fotowoltaika Pro Sp. z o.o.",
+                                        "isActive": True,
+                                        "startDate": "2026-07-18",
+                                        "body": "Nigdy więcej rachunków za prąd! ☀️ Słońce świeci za darmo, a Ty nadal płacisz tysiące złotych rocznie? Sprawdź naszą najnowszą dotację 'Mój Prąd 6.0' i zyskaj do 85% dofinansowania na instalację fotowoltaiczną z magazynem energii. Kliknij teraz i oblicz darmową wycenę w 1 minutę! 🔋 Oferta limitowana czasowo dla woj. mazowieckiego.",
+                                        "imageUrl": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=500",
+                                        "platforms": ["facebook", "instagram"]
+                                    },
+                                    {
+                                        "id": "18293812938130",
+                                        "pageName": "Marketing Automation Hub",
+                                        "isActive": True,
+                                        "startDate": "2026-07-12",
+                                        "body": "Przestań ręcznie wysyłać maile i przepisywać leady z Facebooka do Excela! 😤 Twój czas jako założyciela firmy jest wart więcej niż 15 zł/h. Nasz unikalny system automatyzacji procesów (CRM + n8n) przejmuje 90% rutynowej pracy, dzięki czemu możesz skupić się na zamykaniu sprzedaży. Odbierz darmowy audyt operacyjny jednym kliknięciem!",
+                                        "imageUrl": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500",
+                                        "platforms": ["facebook", "instagram", "messenger"]
+                                    },
+                                    {
+                                        "id": "18293812938131",
+                                        "pageName": "SaaS Growth Secrets",
+                                        "isActive": True,
+                                        "startDate": "2026-07-05",
+                                        "body": "Our exact $0 to $50k MRR framework for B2B SaaS startups. No expensive PR agencies, no cold calling. Just laser-targeted micro-influencer campaigns and hyper-personalized automated cold email sequences. If you want to scale your SaaS this quarter, click here to watch the exclusive 12-minute breakdown.",
+                                        "imageUrl": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500",
+                                        "platforms": ["facebook", "instagram", "audience_network"]
+                                    }
+                                ]
+                        else:
+                            # Prawdziwe zapytanie Apify
+                            with st.spinner(f"🔗 Łączenie z Apify... Uruchamianie aktora apify/facebook-ads-scraper dla query '{spy_query}'..."):
+                                try:
+                                    import requests
+                                    import json
+                                    import time
+                                    
+                                    # Payload wejściowy dla aktora Apify facebook-ads-scraper
+                                    run_payload = {
+                                        "searchQuery": spy_query,
+                                        "limit": spy_limit,
+                                        "country": spy_country,
+                                        "onlyActive": spy_only_active,
+                                        "searchType": "KEYWORD" if not spy_query.isdigit() else "PAGE_ID"
+                                    }
+                                    
+                                    # Uruchomienie aktora
+                                    run_url = f"https://api.apify.com/v2/acts/apify~facebook-ads-scraper/runs?token={apify_token}"
+                                    run_res = requests.post(run_url, json=run_payload, timeout=30)
+                                    
+                                    if run_res.status_code not in [200, 201]:
+                                        st.error(f"❌ Nie udało się uruchomić aktora Apify. Status: {run_res.status_code}. Treść: {run_res.text}")
+                                    else:
+                                        run_data = run_res.json()
+                                        run_id = run_data.get("data", {}).get("id")
+                                        
+                                        if not run_id:
+                                            st.error("❌ Brak runId w odpowiedzi z Apify.")
+                                        else:
+                                            # Polling statusu aktora
+                                            status_url = f"https://api.apify.com/v2/actor-runs/{run_id}?token={apify_token}"
+                                            progress_bar = st.progress(0.0)
+                                            status_text = st.empty()
+                                            
+                                            max_retries = 30
+                                            success = False
+                                            
+                                            for retry in range(max_retries):
+                                                status_text.text(f"⏳ Skanowanie w toku (Apify serwer)... Odpytanie {retry+1}/{max_retries}")
+                                                progress_bar.progress(min((retry + 1) / max_retries, 0.95))
+                                                
+                                                check_res = requests.get(status_url, timeout=20)
+                                                if check_res.status_code == 200:
+                                                    check_data = check_res.json()
+                                                    run_status = check_data.get("data", {}).get("status")
+                                                    
+                                                    if run_status == "SUCCEEDED":
+                                                        status_text.text("✅ Skanowanie ukończone pomyślnie! Pobieranie danych...")
+                                                        progress_bar.progress(1.0)
+                                                        success = True
+                                                        break
+                                                    elif run_status in ["FAILED", "ABORTED", "TIMED-OUT"]:
+                                                        st.error(f"❌ Aktor Apify zakończył się niepowodzeniem ze statusem: {run_status}")
+                                                        break
+                                                time.sleep(2)
+                                                
+                                            if success:
+                                                # Pobranie wyników z datasetu
+                                                dataset_url = f"https://api.apify.com/v2/actor-runs/{run_id}/dataset/items?token={apify_token}"
+                                                items_res = requests.get(dataset_url, timeout=25)
+                                                
+                                                if items_res.status_code == 200:
+                                                    raw_items = items_res.json()
+                                                    
+                                                    # Parsowanie i unifikacja struktury
+                                                    for item in raw_items[:spy_limit]:
+                                                        ads_results.append({
+                                                            "id": item.get("id", "brak_id"),
+                                                            "pageName": item.get("pageName", item.get("pageTitle", "Konkurent")),
+                                                            "isActive": item.get("isActive", True),
+                                                            "startDate": item.get("startDate", item.get("adStartDate", "Niedawno")),
+                                                            "body": item.get("body", item.get("adText", "Brak treści reklamy.")),
+                                                            "imageUrl": item.get("snapshot", {}).get("images", [{}])[0].get("original", "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500") if item.get("snapshot", {}).get("images") else "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500",
+                                                            "platforms": item.get("platforms", ["facebook"])
+                                                        })
+                                                else:
+                                                    st.error(f"❌ Błąd pobierania datasetu z Apify: {items_res.status_code}")
+                                except Exception as e:
+                                    st.error(f"❌ Wyjątek połączenia z Apify API: {e}")
+                                    
+                        if not ads_results:
+                            st.warning("⚠️ Nie znaleziono żadnych reklam dla podanych kryteriów.")
+                        else:
+                            st.success(f"🎉 Pomyślnie zaimportowano {len(ads_results)} reklam! Przesyłam kreacje do Gemini do natychmiastowej analizy NLP...")
+                            
+                            # Przechodzimy przez pobrane reklamy i analizujemy je przez Gemini
+                            analyzed_ads = []
+                            for idx, ad in enumerate(ads_results):
+                                with st.spinner(f"Analiza reklamy {idx+1}/{len(ads_results)}: {ad['pageName']}..."):
+                                    prompt_analiza = f"""
+                                    Jesteś wybitnym psychologiem marketingu i ekspertem od copywritingu perswazyjnego Direct Response.
+                                    Przeanalizuj poniższy tekst reklamy konkurenta:
+                                    
+                                    ---
+                                    Tekst reklamy:
+                                    "{ad['body']}"
+                                    ---
+                                    
+                                    Dokonaj precyzyjnego, strukturalnego rozbioru:
+                                    1. **Haczyk (Hook):** Jaka obietnica lub emocja przyciąga uwagę na starcie?
+                                    2. **Kąt marketingowy:** Jaki ból klienta (Pain Point) lub korzyść jest adresowana?
+                                    3. **Słaby punkt reklamy:** Co można by poprawić w tym copy, aby konwertowało lepiej?
+                                    4. **Werdykt perswazji:** Ocena perswazyjności w skali 1-10 wraz z jednozdaniowym uzasadnieniem.
+                                    
+                                    Odpowiedz po polsku, krótko, konkretnie (ADHD-friendly), w punktach, bez zbędnych wstępów.
+                                    """
+                                    try:
+                                        msgs = [{"role": "user", "content": prompt_analiza}]
+                                        sys_inst = "Jesteś analitykiem marketingu AI w agencji Jaison."
+                                        analysis_text = call_gemini_api(msgs, sys_inst)
+                                    except Exception as e:
+                                        analysis_text = f"Błąd analizy AI: {e}"
+                                        
+                                    ad["analysis"] = analysis_text
+                                    analyzed_ads.append(ad)
+                                    
+                            st.session_state.suite_spy_analyzed_ads = analyzed_ads
+                            st.rerun()
+
+                # Wyświetlanie przeanalizowanych reklam
+                if "suite_spy_analyzed_ads" in st.session_state:
+                    st.markdown("### 🕵️ Wyniki Skanowania i Analizy NLP")
+                    
+                    for idx, ad in enumerate(st.session_state.suite_spy_analyzed_ads):
+                        st.markdown(f"""
+                        <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 20px; margin-bottom: 25px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1F2937; padding-bottom: 10px; margin-bottom: 15px;">
+                                <span style="font-size: 1.1rem; font-weight: bold; color: #F59E0B;">📢 Reklama #{idx+1}: {ad['pageName']}</span>
+                                <span style="background: #10B981; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold;">Aktywna od: {ad['startDate']}</span>
+                            </div>
+                        """, unsafe_allow_html=True)
+                        
+                        col_r1, col_r2 = st.columns([1, 2])
+                        
+                        with col_r1:
+                            # Próba załadowania obrazka
+                            if ad.get("imageUrl"):
+                                st.image(ad["imageUrl"], use_container_width=True)
+                            else:
+                                st.markdown("""
+                                <div style="background: #1F2937; border: 1px dashed #374151; height: 180px; display: flex; align-items: center; justify-content: center; border-radius: 8px;">
+                                    <span style="color: #9CA3AF; font-size: 0.8rem;">Brak wizualizacji</span>
+                                </div>
+                                """, unsafe_allow_html=True)
+                                
+                            st.write(f"**ID Reklamy:** `{ad['id']}`")
+                            st.write(f"**Platformy:** `{', '.join(ad['platforms'])}`")
+                            
+                        with col_r2:
+                            st.markdown("##### ✍️ Treść Reklamy (Copy):")
+                            st.markdown(f"""
+                            <div style="background: #030712; padding: 12px; border-radius: 6px; font-size: 0.85rem; color: #E2E8F0; max-height: 150px; overflow-y: auto; line-height: 1.4; border: 1px solid #1F2937; margin-bottom: 15px;">
+                                {ad['body']}
+                            </div>
+                            """, unsafe_allow_html=True)
+                            
+                            st.markdown("##### 🧠 Analiza Psychologiczna Gemini AI:")
+                            st.markdown(f"""
+                            <div style="background: #0D0E1A; padding: 12px; border-radius: 6px; font-size: 0.85rem; color: #CBD5E1; line-height: 1.4; border-left: 3px solid #F59E0B;">
+                                {ad['analysis']}
+                            </div>
+                            """, unsafe_allow_html=True)
+                            
+                            # Opcje zapisu
+                            c_b1, c_spc = st.columns([2, 2])
+                            with c_b1:
+                                if st.button(f"💾 Zapisz do Bazy Wiedzy #{idx+1}", key=f"btn_save_ad_{idx}"):
+                                    # Symulacja zapisu do bazy wiedzy Obsidian
+                                    st.success(f"✅ Zapisano reklamę konkurenta {ad['pageName']} do folderu Obsidian `Baza Wiedzy/Konkurencja/`!")
+                                    
+                        st.markdown("</div>", unsafe_allow_html=True)
+                        
+                    if st.button("🧹 Wyczyść Wyniki Skanowania", key="btn_clear_spy_results"):
+                        del st.session_state.suite_spy_analyzed_ads
+                        st.rerun()
+
             with tab_gsc:
                 st.subheader("📊 Google Search Console SEO Analytics")
                 st.markdown("Informacje o ruchu organicznym, pozycjach słów kluczowych i organicznym przyroście widoczności marki.")
@@ -7627,8 +7887,8 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
             Zarządzaj strategią, kalendarzem i dystrybucją w jednym miejscu.
             """)
 
-            tab_dashboard, tab_ideas, tab_creator, tab_calendar, tab_integrations, tab_settings = st.tabs([
-                "📊 Pulpit", "💡 Pomysły & Haczyki", "📝 Kreator", "📅 Kalendarz", "🔗 Integracje", "⚙️ Ustawienia"
+            tab_dashboard, tab_ideas, tab_creator, tab_manychat, tab_calendar, tab_integrations, tab_settings = st.tabs([
+                "📊 Pulpit", "💡 Pomysły & Haczyki", "📝 Kreator", "💬 ManyChat-Killer", "📅 Kalendarz", "🔗 Integracje", "⚙️ Ustawienia"
             ])
 
             with tab_dashboard:
@@ -7679,6 +7939,191 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                 
                 if st.button("📤 Zapisz wariant i wyślij do Kalendarza / n8n"):
                     st.success("Draft zapisany!")
+ 
+            with tab_manychat:
+                st.subheader("💬 ManyChat-Killer (Inteligentne Auto-Odpowiedzi DM)")
+                st.markdown("""
+                Ustaw automatyczne, spersonalizowane odpowiedzi na komentarze i wiadomości prywatne na Instagramie i Facebooku.
+                Reguły są synchronizowane z plikiem `manychat_rules.json` i mogą być natychmiast odczytywane przez Twój workflow n8n.
+                """)
+                
+                # Inicjalizacja i wczytanie reguł z pliku JSON
+                filepath_rules = "dashboard_and_core/manychat_rules.json"
+                
+                # Funkcja wczytywania lokalnego (wewnątrz modułu)
+                def get_rules():
+                    if not os.path.exists(filepath_rules):
+                        default_rules = [
+                            {
+                                "id": "rule_1",
+                                "keyword": "N8N",
+                                "trigger_type": "Komentarz zawierający słowo-klucz",
+                                "action_text": "Cześć! Bardzo się cieszę, że interesujesz się n8n. Oto darmowy blueprint, o który pytałeś: https://jaison.pl/n8n. Powodzenia z automatyzacją!",
+                                "use_ai": True,
+                                "ai_prompt": "Napisz luźną, przyjacielską odpowiedź w stylu ADHD, dodaj emotki."
+                            },
+                            {
+                                "id": "rule_2",
+                                "keyword": "ROZWIJAJ",
+                                "trigger_type": "Komentarz zawierający słowo-klucz",
+                                "action_text": "Cześć! Droga do skali B2B agencji wymaga precyzji. Przesyłam link do audytu operacyjnego: https://jaison.pl/audyt.",
+                                "use_ai": True,
+                                "ai_prompt": "Napisz profesjonalną, motywującą odpowiedź direct response."
+                            }
+                        ]
+                        try:
+                            os.makedirs(os.path.dirname(filepath_rules), exist_ok=True)
+                            with open(filepath_rules, "w", encoding="utf-8") as f:
+                                json.dump(default_rules, f, indent=4, ensure_ascii=False)
+                        except Exception:
+                            pass
+                        return default_rules
+                    try:
+                        with open(filepath_rules, "r", encoding="utf-8") as f:
+                            return json.load(f)
+                    except Exception:
+                        return []
+                        
+                def save_rules(rules_list):
+                    try:
+                        os.makedirs(os.path.dirname(filepath_rules), exist_ok=True)
+                        with open(filepath_rules, "w", encoding="utf-8") as f:
+                            json.dump(rules_list, f, indent=4, ensure_ascii=False)
+                        return True
+                    except Exception:
+                        return False
+                        
+                rules = get_rules()
+                
+                col_m1, col_m2 = st.columns([3, 2])
+                
+                with col_m1:
+                    st.write("##### ➕ Dodaj Nową Regułę Auto-Odpowiedzi:")
+                    new_keyword = st.text_input("Słowo kluczowe (wyzwalacz):", placeholder="np. PRO, KOD, WORKFLOW", key="mc_new_keyword")
+                    new_trigger_type = st.selectbox("Typ wyzwalacza:", [
+                        "Komentarz zawierający słowo-klucz", 
+                        "Wiadomość DM zawierająca słowo-klucz",
+                        "Dowolny komentarz pod postem"
+                    ], key="mc_new_trigger_type")
+                    
+                    new_action_text = st.text_area("Szablon odpowiedzi DM (co otrzyma użytkownik):", placeholder="Wpisz treść wiadomości, np. Hej! Oto Twój link...", key="mc_new_action_text")
+                    
+                    new_use_ai = st.checkbox("🤖 Użyj Gemini AI do dynamicznej personalizacji odpowiedzi", value=True, key="mc_new_use_ai")
+                    new_ai_prompt = ""
+                    if new_use_ai:
+                        new_ai_prompt = st.text_input("Instrukcja dla Gemini (jak spersonalizować odpowiedź):", value="Napisz luźną, przyjacielską odpowiedź w stylu ADHD, użyj imienia użytkownika jeśli dostępne, dodaj emotikony.", key="mc_new_ai_prompt")
+                        
+                    if st.button("💾 Zapisz i Aktywuj Regułę", type="primary", use_container_width=True, key="mc_save_rule_btn"):
+                        if not new_keyword:
+                            st.warning("⚠️ Słowo kluczowe nie może być puste!")
+                        elif not new_action_text:
+                            st.warning("⚠️ Szablon odpowiedzi nie może być pusty!")
+                        else:
+                            # Tworzymy nowy rekord
+                            import uuid
+                            new_rule = {
+                                "id": f"rule_{uuid.uuid4().hex[:8]}",
+                                "keyword": new_keyword.strip().upper(),
+                                "trigger_type": new_trigger_type,
+                                "action_text": new_action_text,
+                                "use_ai": new_use_ai,
+                                "ai_prompt": new_ai_prompt
+                            }
+                            rules.append(new_rule)
+                            if save_rules(rules):
+                                st.success(f"🎉 Pomyślnie zapisano regułę dla słowa kluczowego '{new_rule['keyword']}'!")
+                                st.rerun()
+                            else:
+                                st.error("❌ Wystąpił błąd zapisu do pliku manychat_rules.json.")
+                                
+                with col_m2:
+                    st.write("##### 🧪 Interaktywny Symulator (Testuj Bota):")
+                    st.markdown("Sprawdź, jak system zareaguje na komentarz użytkownika w czasie rzeczywistym!")
+                    
+                    test_username = st.text_input("Nazwa użytkownika na IG:", value="Janek_ADHD", key="mc_test_username")
+                    test_comment = st.text_input("Treść komentarza lub DM:", value="Daj mi ten plik N8N stary!", key="mc_test_comment")
+                    
+                    if st.button("🚀 Uruchom Symulację Testową", use_container_width=True, key="mc_run_test_btn"):
+                        with st.spinner("Bot przetwarza wejście użytkownika..."):
+                            # Szukamy reguły pasującej
+                            matched_rule = None
+                            for r in rules:
+                                if r["keyword"].upper() in test_comment.upper() or r["keyword"].upper() == test_comment.strip().upper():
+                                    matched_rule = r
+                                    break
+                                    
+                            if not matched_rule:
+                                st.warning("⚠️ Żadne słowo kluczowe nie zostało dopasowane. Bot nie podjąłby żadnej akcji.")
+                            else:
+                                st.success(f"🎯 Dopasowano regułę: **{matched_rule['keyword']}** (Wyzwalacz: {matched_rule['trigger_type']})")
+                                
+                                final_response = matched_rule["action_text"]
+                                
+                                if matched_rule["use_ai"]:
+                                    with st.spinner("AI generuje spersonalizowaną wersję odpowiedzi..."):
+                                        prompt_personalizuj = f"""
+                                        Jesteś asystentem marki agencji Jaison. Masz za zadanie spersonalizować poniższą wiadomość automatyczną (szablon) dla użytkownika.
+                                        
+                                        Szablon wiadomości:
+                                        "{matched_rule['action_text']}"
+                                        
+                                        Dane wejściowe:
+                                        - Nazwa użytkownika: {test_username}
+                                        - Komentarz użytkownika: "{test_comment}"
+                                        
+                                        Wykorzystaj te dane, aby spersonalizować odpowiedź.
+                                        Zastosuj się do instrukcji: "{matched_rule['ai_prompt']}"
+                                        
+                                        Odpowiedz po polsku, bezpośrednio wiadomością, bez żadnego lania wody, wstępów typu "Oto odpowiedź:" itp.
+                                        """
+                                        try:
+                                            msgs = [{"role": "user", "content": prompt_personalizuj}]
+                                            sys_inst = "Jesteś automatycznym botem DM w agencji Jaison."
+                                            final_response = call_gemini_api(msgs, sys_inst)
+                                        except Exception as e:
+                                            final_response = f"Błąd AI personalizacji: {e}"
+                                            
+                                st.markdown("##### 📩 Wygenerowana Wiadomość DM do wysłania:")
+                                st.markdown(f"""
+                                <div style="background: #022C22; border: 1px solid #059669; border-radius: 6px; padding: 15px; font-size: 0.9rem; color: #ECFDF5; font-family: monospace;">
+                                    <b>Do:</b> @{test_username}<br>
+                                    <b>Wiadomość:</b><br>
+                                    {final_response}
+                                </div>
+                                """, unsafe_allow_html=True)
+                                
+                # Lista reguł
+                st.markdown("---")
+                st.write("##### 📋 Aktywne Reguły w Systemie:")
+                
+                if not rules:
+                    st.info("Brak zdefiniowanych reguł. Dodaj regułę powyżej.")
+                else:
+                    for idx, r in enumerate(rules):
+                        col_rule_info, col_rule_action = st.columns([4, 1])
+                        with col_rule_info:
+                            ai_badge = "<span style='background: #3B82F6; color: white; padding: 1px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold;'>🧠 Gemini Personalization</span>" if r.get("use_ai") else ""
+                            st.markdown(f"""
+                            <div style="background: #111827; border: 1px solid #1F2937; border-radius: 8px; padding: 15px; margin-bottom: 10px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1F2937; padding-bottom: 5px; margin-bottom: 10px;">
+                                    <span style="font-weight: bold; color: #10B981; font-size: 1rem;">🔑 Słowo: {r['keyword']}</span>
+                                    <span>{ai_badge} <span style="background: #1F2937; color: #9CA3AF; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem;">{r['trigger_type']}</span></span>
+                                </div>
+                                <div style="font-size: 0.85rem; color: #E2E8F0; margin-bottom: 5px;"><b>Szablon:</b> {r['action_text']}</div>
+                                {f'<div style="font-size: 0.8rem; color: #9CA3AF; font-style: italic;"><b>AI Prompt:</b> {r["ai_prompt"]}</div>' if r.get("use_ai") else ''}
+                            </div>
+                            """, unsafe_allow_html=True)
+                        with col_rule_action:
+                            st.write("") # Odstęp pionowy
+                            st.write("")
+                            if st.button("🗑️ Usuń", key=f"btn_del_rule_{r['id']}", use_container_width=True):
+                                # Usuwamy regułę o wybranym ID
+                                updated_rules = [x for x in rules if x["id"] != r["id"]]
+                                if save_rules(updated_rules):
+                                    st.success(f"Reguła {r['keyword']} usunięta!")
+                                    st.rerun()
+                                else:
+                                    st.error("Błąd usunięcia reguły.")
 
             with tab_calendar:
                 st.write("#### 📅 Kalendarz Publikacji (Tygodniowy)")

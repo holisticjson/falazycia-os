@@ -1,0 +1,212 @@
+{
+  "name": "🕵️ Facebook Ads Spy (Apify to Telegram)",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "facebook-ads-spy",
+        "options": {}
+      },
+      "id": "node_webhook_spy",
+      "name": "Webhook (Spy Trigger)",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apify.com/v2/acts/apify~facebook-ads-scraper/runs",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"searchQuery\": \"{{ $json.body.query }}\",\n  \"limit\": {{ $json.body.limit || 10 }},\n  \"country\": \"{{ $json.body.country || 'PL' }}\",\n  \"onlyActive\": true\n}",
+        "options": {}
+      },
+      "id": "node_apify_run",
+      "name": "Apify Run Actor",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [450, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "apify_token_cred"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 5,
+        "unit": "seconds"
+      },
+      "id": "node_wait_apify",
+      "name": "Wait for Apify",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/actor-runs/{{ $('Apify Run Actor').item.json.data.id }}",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "node_check_status",
+      "name": "Check Apify Status",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [850, 300],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "apify_token_cred"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "string": [
+            {
+              "value1": "={{ $json.data.status }}",
+              "value2": "SUCCEEDED"
+            }
+          ]
+        }
+      },
+      "id": "node_is_done",
+      "name": "Is Scraping Done?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 1,
+      "position": [1050, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.apify.com/v2/actor-runs/{{ $('Apify Run Actor').item.json.data.id }}/dataset/items",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "options": {}
+      },
+      "id": "node_get_items",
+      "name": "Get Dataset Items",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1250, 200],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "apify_token_cred"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "gemini-1.5-flash",
+        "prompt": "=Przeanalizuj poniższe teksty reklam konkurencji pod kątem perswazyjności, wyciągnij najlepsze haczyki (hooks) i zrób zestawienie uderzających ofert dla Tomasza:\n\n{{ JSON.stringify($json) }}",
+        "options": {}
+      },
+      "id": "node_gemini_analysis",
+      "name": "Gemini NLP Analysis",
+      "type": "n8n-nodes-base.googleGemini",
+      "typeVersion": 1,
+      "position": [1450, 200]
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $node.Webhook.json.body.chat_id }}",
+        "text": "=🕵️ *Facebook Ads Spy Raport dla: {{ $node.Webhook.json.body.query }}*\n\n🔥 *Analiza psychologiczna Gemini:* \n{{ $json.text }}\n\n📥 *Liczba pobranych kreacji:* {{ $node['Get Dataset Items'].item.json.length }}"
+      },
+      "id": "node_telegram_send",
+      "name": "Send Report Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1,
+      "position": [1650, 200]
+    }
+  ],
+  "connections": {
+    "Webhook (Spy Trigger)": {
+      "main": [
+        [
+          {
+            "node": "Apify Run Actor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apify Run Actor": {
+      "main": [
+        [
+          {
+            "node": "Wait for Apify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Apify": {
+      "main": [
+        [
+          {
+            "node": "Check Apify Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Apify Status": {
+      "main": [
+        [
+          {
+            "node": "Is Scraping Done?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Is Scraping Done?": {
+      "main": [
+        [
+          {
+            "node": "Get Dataset Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait for Apify",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Dataset Items": {
+      "main": [
+        [
+          {
+            "node": "Gemini NLP Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini NLP Analysis": {
+      "main": [
+        [
+          {
+            "node": "Send Report Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {}
+}
