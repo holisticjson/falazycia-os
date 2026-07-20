@@ -964,5 +964,17 @@
         "raw_text": "Tak to jest ok, tylko jakby jeśli chodzi o oprogramowanie czy tworzenie jakiejś aplikacji no to one się znajdują w folderze 03 Software and Apps, natomiast  W tym folderze są jakieś też stare foldery i pliki odnośnie Githuba czy Amazon Bedrock.  To nie są rzeczy dotyczące aplikacji często.  Nie ma nic do wymyślenia.  Poczekajcie, proszę o mnak.",
         "corrected_text": "Tak to jest ok, tylko jakby jeśli chodzi o oprogramowanie czy tworzenie jakiejś aplikacji no to one się znajdują w folderze 03 Software and Apps, natomiast  W tym folderze są jakieś też stare foldery i pliki odnośnie Githuba czy Amazon Bedrock.  To nie są rzeczy dotyczące aplikacji często.  Nie ma nic do wymyślenia.  Poczekajcie, proszę o mnak.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-20 21:05:24",
+        "raw_text": "Wdrażamy wszystkie po kolei do systemu produktywności. Należałoby też przeanalizować tutaj kod funkcjonalności dashboardu Streamlit, który chcę zarządzać też z poziomu telefonu. Będę mobilny, nie będę miał dostępu do lokalnego Antigraphy.  poniżej skopiowałem z terminala na laptopie informacje coś tam chyba trzeba poprawić",
+        "corrected_text": "Wdrażamy wszystkie po kolei do systemu produktywności. Należałoby też przeanalizować tutaj kod funkcjonalności dashboardu Streamlit, który chcę zarządzać też z poziomu telefonu. Będę mobilny, nie będę miał dostępu do lokalnego Antigraphy. Poniżej skopiowałem z terminala na laptopie informacje, coś tam chyba trzeba poprawić.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-20 21:11:16",
+        "raw_text": "Przeanalizuj ten ważny raport Roden od inżynierów z Anthropica. W jaki sposób moglibyśmy te zasady funkcjonalnie pętli uczenia się zastosować w naszym ekosystemie Dashboard Streaming. Tak naprawdę też pytanie jak pod spodem. Nigdy tego nie rozumiałem. W zależności od modułu, narzędzia to pod spodem  Zawsze któryś z dyrektorów, odpowiednio czy subagentów przypisany, czy skill, umiejętność jest przypisana do danego modułu czy funkcjonalności.",
+        "corrected_text": "Przeanalizuj ten ważny raport Roden od inżynierów z Anthropica. W jaki sposób moglibyśmy te zasady funkcjonalnie pętli uczenia się zastosować w naszym ekosystemie Dashboard Streaming. Tak naprawdę też pytanie jak pod spodem. Nigdy tego nie rozumiałem. W zależności od modułu, narzędzia to pod spodem  Zawsze któryś z dyrektorów, odpowiednio czy subagentów przypisany, czy skill, umiejętność jest przypisana do danego modułu czy funkcjonalności.",
+        "status": "raw_fallback"
     }
 ]
