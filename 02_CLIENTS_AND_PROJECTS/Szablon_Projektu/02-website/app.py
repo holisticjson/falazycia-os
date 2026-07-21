@@ -141,7 +141,8 @@ memory_path = find_workspace_memory()
 # 4. Sidebar (Nawigacja i Status)
 st.sidebar.image("https://www.aitmpl.com/assets/img/logo.png", width=180)
 st.sidebar.title("🤖 JaiSON OS")
-st.sidebar.markdown("<p style='color: rgba(255,255,255,0.5); font-size:0.9rem;'>Zarządzanie Projektami & Pętla Pamięci</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='color: #00f0ff; font-size:0.85rem; font-weight:600; font-style:italic; margin-top:-10px; margin-bottom:15px;'>\"Automatyzuj to, co powtarzalne, twórz to, co unikalne\"</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='color: rgba(255,255,255,0.5); font-size:0.85rem; margin-top:-10px;'>Zarządzanie Projektami & Pętla Pamięci</p>", unsafe_allow_html=True)
 st.sidebar.markdown("---")
 
 st.sidebar.subheader("📍 10 Silosów Roboczych")
@@ -165,6 +166,7 @@ st.sidebar.caption("© 2026 JaiSON Agency OS - Powered by AntiGravity.")
 
 # 5. Panel Główny i Nagłówek
 st.title("🏛️ JaiSON Client OS")
+st.markdown("<p style='color: #00f0ff; font-size:1.1rem; font-weight:600; font-style:italic; margin-top:-15px; margin-bottom:10px;'>\"Automatyzuj to, co powtarzalne, twórz to, co unikalne\"</p>", unsafe_allow_html=True)
 st.write("---")
 
 # 6. Parsowanie pliku WORKSPACE_MEMORY.md (Robust & Safe)
