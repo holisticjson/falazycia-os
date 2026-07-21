@@ -1114,5 +1114,17 @@
         "raw_text": "i zaktualizować ją do stanu zgodnie z naszą metodologią, naszymi procedurami utrzymywania projektów i struktury plików, folderów, tworzenia, umiejscowiania plików w odniesieniu do naszego projektu, tworzenia żywego paszportu projektu i sposobu postępowania.  Więc zrób wnikligę bardzo uważnie, nie przeanalizuj, zmodyfikuj, dostosuj do naszej aktualnej polityki i procedur operacyjnych. Ten właśnie główny folder agencji.  Dziękuję.",
         "corrected_text": "i zaktualizować ją do stanu zgodnie z naszą metodologią, naszymi procedurami utrzymywania projektów i struktury plików, folderów, tworzenia, umiejscowiania plików w odniesieniu do naszego projektu, tworzenia żywego paszportu projektu i sposobu postępowania.  Więc zrób wnikligę bardzo uważnie, nie przeanalizuj, zmodyfikuj, dostosuj do naszej aktualnej polityki i procedur operacyjnych. Ten właśnie główny folder agencji.  Dziękuję.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 12:44:37",
+        "raw_text": "Projekty dotyczące tworzonych aplikacji zostają w folderze.",
+        "corrected_text": "Projekty dotyczące tworzonych aplikacji zostają w folderze.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-21 12:47:34",
+        "raw_text": "I pliki oraz paszporty cyklu życia projektu, tożsamości projektu będziemy tworzyć dla tych aplikacji w sposób podobny, czy należałoby w jakiś sposób je zmodyfikować.  Zastanawiam się również nad prawidłowością umiejscowienia projektu holistyczny Broker w tym miejscu, czy nie powinienem?  powinien on wrócić do folderu.",
+        "corrected_text": "I pliki oraz paszporty cyklu życia projektu, tożsamości projektu będziemy tworzyć dla tych aplikacji w sposób podobny, czy należałoby w jakiś sposób je zmodyfikować.  Zastanawiam się również nad prawidłowością umiejscowienia projektu holistyczny Broker w tym miejscu, czy nie powinienem?  powinien on wrócić do folderu.",
+        "status": "raw_fallback"
     }
 ]
