@@ -1348,5 +1348,29 @@
         "raw_text": "To nie chodzi o ten plik w tej lokalizacji? Sprawdź dokładnie co tam mamy, a czego nie mamy.",
         "corrected_text": "To nie chodzi o ten plik w tej lokalizacji? Sprawdź dokładnie co tam mamy, a czego nie mamy.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 22:54:08",
+        "raw_text": "Musimy jeszcze zrobić research albo we własnym zakresie albo z pomocą perplexity. Trzeba by wygenerować prąd dla niego w poszukiwaniu alternatyw dla pexels API, pizza by API. Być może są jakieś źródła, nie wiem, open source, takich fajnych tematycznie dedykowanych do B-roli, gdzie mamy największy  wybor tematycznie czy to pod sztuczną inteligencję usługi automatyzacji czy nawet tematy zdrowotne które można by było też dla klientów dla serwisu na kurczaku jasia",
+        "corrected_text": "Musimy jeszcze zrobić research albo we własnym zakresie albo z pomocą perplexity. Trzeba by wygenerować prąd dla niego w poszukiwaniu alternatyw dla pexels API, pizza by API. Być może są jakieś źródła, nie wiem, open source, takich fajnych tematycznie dedykowanych do B-roli, gdzie mamy największy  wybor tematycznie czy to pod sztuczną inteligencję usługi automatyzacji czy nawet tematy zdrowotne które można by było też dla klientów dla serwisu na kurczaku jasia",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 22:54:56",
+        "raw_text": "Jeśli ten stack mógłby zastąpić nam subskrypcję Cat Pro i uszczędzić, bardziej to zautomatyzować, to jak najbardziej.",
+        "corrected_text": "Jeśli ten stack mógłby zastąpić nam subskrypcję Cat Pro i uszczędzić, bardziej to zautomatyzować, to jak najbardziej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 22:55:36",
+        "raw_text": "Tak, to jak najbardziej możemy wypróbować, jeśli to jest rzeczywiście tak tanie w porównaniu do modeli Claude od Anthropic czy innych dostawców. Jak najbardziej, bo żeby to jutro przetestować i uwzględnić w naszym planie.",
+        "corrected_text": "Tak, to jak najbardziej możemy wypróbować, jeśli to jest rzeczywiście tak tanie w porównaniu do modeli Claude od Anthropic czy innych dostawców. Jak najbardziej, bo żeby to jutro przetestować i uwzględnić w naszym planie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 22:56:01",
+        "raw_text": "Ja idę spać, bo już jest późno, więc zaplanujmy dokończenie. Przeanalizuj tylko jeszcze szybko i resztę dokończymy jutro.",
+        "corrected_text": "Ja idę spać, bo już jest późno, więc zaplanujmy dokończenie. Przeanalizuj tylko jeszcze szybko i resztę dokończymy jutro.",
+        "status": "raw_fallback"
     }
 ]
