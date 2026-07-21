@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AntiGravity OS - Low Friction Workflow Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #07080d;
+            --bg-secondary: #0f111a;
+            --card-bg: rgba(18, 20, 29, 0.6);
+            --border-color: rgba(255, 255, 255, 0.06);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-cyan: #00f0ff;
+            --accent-purple: #bd93f9;
+            --accent-green: #00f5a0;
+            --glow-cyan: rgba(0, 240, 255, 0.15);
+            --glow-purple: rgba(189, 147, 249, 0.15);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .badge {
+            background: rgba(0, 240, 255, 0.1);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: var(--accent-cyan);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* Bento Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.75rem;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255,255,255,0.02), transparent 60%);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .card-cyan:hover {
+            box-shadow: 0 12px 30px var(--glow-cyan);
+            border-color: rgba(0, 240, 255, 0.3);
+        }
+
+        .card-purple:hover {
+            box-shadow: 0 12px 30px var(--glow-purple);
+            border-color: rgba(189, 147, 249, 0.3);
+        }
+
+        .col-12 { grid-column: span 12; }
+        .col-8 { grid-column: span 8; }
+        .col-6 { grid-column: span 6; }
+        .col-4 { grid-column: span 4; }
+
+        @media (max-width: 900px) {
+            .col-8, .col-6, .col-4 { grid-column: span 12; }
+        }
+
+        h2, h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            color: #ffffff;
+        }
+
+        /* List Styling ADHD-Friendly */
+        ul, ol {
+            list-style: none;
+        }
+
+        .step-list li {
+            position: relative;
+            padding-left: 2.5rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0.1rem;
+            width: 1.75rem;
+            height: 1.75rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Comparison Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.03);
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        td strong {
+            color: var(--accent-cyan);
+        }
+
+        /* Flow Visualizer */
+        .flow-path {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 12px;
+            border: 1px dashed var(--border-color);
+        }
+
+        .flow-node {
+            text-align: center;
+            flex: 1;
+        }
+
+        .node-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .node-name {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .flow-arrow {
+            color: var(--text-secondary);
+            font-weight: bold;
+            padding: 0 0.5rem;
+        }
+
+        /* Code Block */
+        pre {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: var(--accent-cyan);
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+
+        .highlight-text {
+            background: linear-gradient(90deg, rgba(0,240,255,0.1), transparent);
+            border-left: 3px solid var(--accent-cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <span class="badge">Low-Friction Standard</span>
+            <h1>AntiGravity OS</h1>
+            <p>Spójna i bezkonkurencyjna instrukcja delegowania zadań agentom AI</p>
+        </header>
+
+        <div class="grid">
+            <!-- KARTY SZYBKIEGO STARTU -->
+            <div class="card col-8 card-cyan">
+                <h2>🚀 Szybka Inicjalizacja Projektu w 3 Krokach</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">Zasada zerowego oporu (Low Friction). Stosuj tę checklistę przy każdym nowym projekcie:</p>
+                
+                <ul class="step-list">
+                    <li>
+                        <div class="step-number">1</div>
+                        <div class="step-title">Klonowanie Szablonu</div>
+                        <div class="step-desc">Skopiuj folder <code>Szablon_Projektu</code> i nazwij go nazwą klienta w katalogu <code>02_CLIENTS_AND_PROJECTS</code>.</div>
+                    </li>
+                    <li>
+                        <div class="step-number">2</div>
+                        <div class="step-title">Audyt 21 Pytań</div>
+                        <div class="step-desc">Otwórz plik <code>00-admin/21_questions_audit_template.md</code> i wypełnij odpowiedzi (lub wklej wyniki z wywiadu/bota). Stanowi to fundament wiedzy dla agentów.</div>
+                    </li>
+                    <li>
+                        <div class="step-number">3</div>
+                        <div class="step-title">Inicjalizacja WORKSPACE_MEMORY.md</div>
+                        <div class="step-desc">Stwórz plik <code>WORKSPACE_MEMORY.md</code> w głównym folderze projektu (skopiuj go z bazy). Zdefiniuje to bieżący cel, status oraz tech stack.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="card col-4">
+                <h3>💡 ADHD Quick-Win</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Gdy czujesz przebodźcowanie, <strong>nie rozgrzebuj kilku plików na raz</strong>. 
+                </p>
+                <div class="highlight-text" style="border-color: var(--accent-purple);">
+                    Zleć zadanie agentowi w trybie <strong>New Worktree</strong> i odejdź od komputera na kawę. Wrócisz do gotowego, opisanego wyniku bez chaosu w kodzie.
+                </div>
+                <div class="flow-path">
+                    <div class="flow-node">
+                        <div class="node-icon">📝</div>
+                        <div class="node-name">Audyt</div>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="flow-node">
+                        <div class="node-icon">🤖</div>
+                        <div class="node-name">Worktree</div>
+                    </div>
+                    <div class="flow-arrow">➔</div>
+                    <div class="flow-node">
+                        <div class="node-icon">🟢</div>
+                        <div class="node-name">Merge</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PORÓWNANIE LOCAL VS WORKTREE -->
+            <div class="card col-12 card-purple">
+                <h2>⚙️ Środowisko: Local vs New Worktree (Kluczowa Decyzja)</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Otwierając nową konwersację z agentem w AntiGravity, zawsze wybieraj mądrze:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Cecha</th>
+                            <th>🟢 Local (Środowisko Lokalne)</th>
+                            <th>🔮 New Worktree (Nowe Drzewo Robocze)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Opis działania</strong></td>
+                            <td>Agent edytuje pliki bezpośrednio na Twoim dysku na żywo.</td>
+                            <td>Agent klonuje projekt do ukrytego folderu w tle i tam pracuje.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wielowątkowość</strong></td>
+                            <td><strong>Niska.</strong> Uruchomienie kilku agentów w Local zniszczy kod.</td>
+                            <td><strong>Nielimitowana.</strong> Możesz delegować 5 zadań na raz.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zastosowanie</strong></td>
+                            <td>Szybkie poprawki, natychmiastowe debugowanie, gdy patrzysz na kod.</td>
+                            <td>Duże zadania, pisanie modułów, marketing, asynchroniczna praca.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rekomendacja</strong></td>
+                            <td>Używaj rzadko, tylko do prostych edycji "tu i teraz".</td>
+                            <td><strong>REKOMENDOWANE domyślnie.</strong> Czysto, bezpiecznie, bez tarć.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- SZTAFETA AGENTÓW -->
+            <div class="card col-6">
+                <h2>🤝 Protokół Sztafety Agentów</h2>
+                <p style="color: var(--text-secondary); margin-size: 0.9rem; margin-bottom: 1rem;">
+                    Aby agenci nie wchodzili sobie w drogę i nie nadpisywali Twojej pracy, stosuj model <strong>sztafety</strong>:
+                </p>
+                <ul class="step-list" style="font-size: 0.9rem;">
+                    <li>
+                        <div class="step-number" style="background: var(--accent-green);">A</div>
+                        <div class="step-title">Główna gałąź to Świętość</div>
+                        <div class="step-desc">Twoje główne VS Code / edytor trzymasz na gałęzi <code>main</code>. Nie robisz na niej eksperymentów.</div>
+                    </li>
+                    <li>
+                        <div class="step-number" style="background: var(--accent-green);">B</div>
+                        <div class="step-title">Delegowanie na boku</div>
+                        <div class="step-desc">Zlecasz zadanie przez <strong>New Worktree</strong> (np. gałąź <code>website/add-contact-form</code>).</div>
+                    </li>
+                    <li>
+                        <div class="step-number" style="background: var(--accent-green);">C</div>
+                        <div class="step-title">Automatyczny Review</div>
+                        <div class="step-desc">Agent kończy pracę, generuje plik <code>walkthrough.md</code> i zgłasza gotowość. Scalasz zmiany do <code>main</code>.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- INTEGRACJA STREAMLIT -->
+            <div class="card col-6">
+                <h2>🐍 Kod do osadzenia w Streamlit Dashboard</h2>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
+                    Chcesz wyświetlić tę instrukcję w swoim luksusowym panelu Streamlit? Skopiuj i wklej ten prosty snippet:
+                </p>
+                <pre>
+import streamlit as st
+import streamlit.components.v1 as components
+
+def render_guide():
+    path = "antigravity_workflow_guide.html"
+    if os.path.exists(path):
+        with open(path, "r", encoding="utf-8") as f:
+            html_code = f.read()
+        components.html(html_code, height=800, scrolling=True)
+    else:
+        st.error("Brak pliku instrukcji!")
+                </pre>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>AntiGravity Agentic OS © 2026. Zaprojektowane z myślą o maksymalnym skupieniu i zerowym tarciu operacyjnym.</p>
+        </div>
+    </div>
+</body>
+</html>
