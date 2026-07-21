@@ -368,6 +368,34 @@ def delete_opportunity(opp_id):
 
 def call_gemini_scanner_api(messages, system_instruction=None):
     """Odporna na błędy komunikacja z Gemini 2.5 przez LiteLLM proxy z fallbackiem do Vertex AI."""
+    # 0. Try direct Google AI Studio API if GEMINI_API_KEY is available (fast and zero-setup fallback)
+    gemini_api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    if gemini_api_key:
+        try:
+            contents = []
+            for m in messages:
+                contents.append({
+                    "role": "user" if m["role"] == "user" else "model",
+                    "parts": [{"text": m["content"]}]
+                })
+            
+            ai_studio_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gemini_api_key}"
+            payload_studio = {
+                "contents": contents
+            }
+            if system_instruction:
+                payload_studio["systemInstruction"] = {
+                    "parts": [{"text": system_instruction}]
+                }
+                
+            req = urllib.request.Request(ai_studio_url, data=json.dumps(payload_studio).encode("utf-8"), headers={"Content-Type": "application/json"}, method="POST")
+            with urllib.request.urlopen(req, timeout=25.0) as response:
+                if response.getcode() == 200:
+                    res_data = json.loads(response.read().decode("utf-8"))
+                    return res_data["candidates"][0]["content"]["parts"][0]["text"]
+        except Exception:
+            pass
+
     proxy_url = "http://127.0.0.1:8089/v1/chat/completions"
     payload = {
         "model": "gemini-2.5-flash",
@@ -544,8 +572,34 @@ def run_ai_market_scan(keywords):
     """Skanuje Useme pod kątem słów kluczowych, ocenia oferty przez Gemini i zapisuje w SQLite."""
     import json
     
-    # 1. Pobranie pasujących ogłoszeń z Useme
-    listings = scrape_useme_listings(keywords)
+    # 0. Inteligentne rozszerzanie zapytania przez AI (Query Expansion) w tle
+    search_terms = [keywords]
+    expansion_prompt = f"""Dla podanego słowa kluczowego/branży: "{keywords}" wygeneruj dokładnie 3 powiązane, alternatywne polskie słowa kluczowe, pod którymi klienci na Useme szukają wsparcia deweloperskiego lub automatyzacji (np. dla 'fryzjer' -> 'rezerwacja, salon, strona'; dla 'GSM' -> 'serwis, telefon, naprawa'; dla 'n8n' -> 'automatyzacja, CRM, integracja').
+Zwróć wyłącznie te 3 słowa oddzielone przecinkami, bez żadnych innych komentarzy, bez markdownu i kropek.
+Wyjście format: fraza1, fraza2, fraza3"""
+    try:
+        expansion_res = call_gemini_scanner_api([{"role": "user", "content": expansion_prompt}], "Jesteś ekspertem SEO i słów kluczowych.")
+        if expansion_res:
+            extra_terms = [t.strip() for t in expansion_res.split(",") if len(t.strip()) > 1]
+            search_terms.extend(extra_terms[:3])
+    except Exception:
+        pass
+
+    # 1. Pobranie pasujących ogłoszeń z Useme dla wszystkich rozszerzonych słów kluczowych (łączymy i usuwamy duplikaty)
+    listings = []
+    seen_urls = set()
+    for term in search_terms:
+        term_listings = scrape_useme_listings(term)
+        if term_listings:
+            for job in term_listings:
+                if job["url"] not in seen_urls:
+                    seen_urls.add(job["url"])
+                    listings.append(job)
+                    
+    if not listings:
+        # Fallback do ogólnego skanu Useme, jeśli brak bezpośrednich wyników
+        listings = scrape_useme_listings(keywords) or []
+        
     if not listings:
         return False
         

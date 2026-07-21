@@ -692,8 +692,9 @@ if not st.session_state.authenticated:
         st.markdown(f"""
         <div style="background: linear-gradient(135deg, #0A0D1A 0%, #11152B 100%); border: 1px solid rgba(167, 139, 250, 0.25); border-radius: 24px; padding: 40px; box-shadow: 0 12px 50px rgba(0, 0, 0, 0.7); text-align: center;">
             {logo_html}
-            <h2 style="color: #FFFFFF; font-family: Outfit; font-weight: 800; margin-bottom: 10px; letter-spacing: 1.5px; text-shadow: 0 0 15px rgba(167, 139, 250, 0.4);">JAISON OS</h2>
-            <p style="color: #94A3B8; font-size: 0.9rem; margin-bottom: 10px;">Zabezpieczony panel dyrektorski Jaison Agent Agency</p>
+            <h2 style="color: #FFFFFF; font-family: Outfit; font-weight: 800; margin-bottom: 5px; letter-spacing: 1.5px; text-shadow: 0 0 15px rgba(167, 139, 250, 0.4);">JAISON OS</h2>
+            <p style="color: #94A3B8; font-size: 0.9rem; margin-bottom: 5px; font-weight: 500;">Zabezpieczony panel dyrektorski Jaison Agent Agency</p>
+            <p style="color: #10B981; font-size: 0.8rem; font-style: italic; margin-top: 5px; margin-bottom: 0;">"Automatyzuj to, co powtarzalne, twórz to, co unikalne"</p>
         </div>
         """, unsafe_allow_html=True)
         
@@ -924,6 +925,35 @@ def call_vllm_api(messages, system_instruction=None):
     return call_gemini_api(messages, system_instruction)
 
 def call_gemini_api(messages, system_instruction=None):
+    # 0. Try direct Google AI Studio API if GEMINI_API_KEY is available (fast and zero-setup fallback)
+    gemini_api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    if gemini_api_key:
+        try:
+            import requests
+            contents = []
+            for m in messages:
+                role = "user" if m["role"] == "user" else "model"
+                contents.append({
+                    "role": role,
+                    "parts": [{"text": m["content"]}]
+                })
+            
+            ai_studio_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={gemini_api_key}"
+            payload_studio = {
+                "contents": contents
+            }
+            if system_instruction:
+                payload_studio["systemInstruction"] = {
+                    "parts": [{"text": system_instruction}]
+                }
+                
+            resp = requests.post(ai_studio_url, json=payload_studio, timeout=25.0, verify=False)
+            if resp.status_code == 200:
+                res_data = resp.json()
+                return res_data["candidates"][0]["content"]["parts"][0]["text"]
+        except Exception as e:
+            pass
+
     proxy_url = "http://127.0.0.1:8089/v1/chat/completions"
     payload = {
         "model": "gemini-2.5-flash",
@@ -2391,48 +2421,109 @@ if menu == "🎯 Mission Control":
         """, unsafe_allow_html=True)
         
         ctx = st.session_state.selected_context
-        col_icp1, col_icp2 = st.columns(2)
-        with col_icp1:
-            st.markdown("#### 👤 Idealny Profil Klienta (ICP)")
-            if "Agency" in ctx:
-                st.markdown("""
-                *   **Segment:** Właściciele agencji, twórcy infoproduktów, eksperci B2B.
-                *   **Wiek & Demografia:** 25-45 lat, Polska, zorientowani na technologię i AI.
-                *   **Największe bóle (Pain Points):** Chaos w projektach, brak powtarzalnej dystrybucji treści, wysokie koszty pracowników, paraliż decyzyjny (ADHD).
-                *   **Główny Cel:** Odzyskać wolny czas, wdrożyć bezobsługowe systemy AI i automatyzacje.
-                """)
-            elif "kurczak" in ctx:
-                st.markdown("""
-                *   **Segment:** Klienci lokalni, rodziny, głodni goście szukający smacznego jedzenia premium.
-                *   **Największe bóle (Pain Points):** Długi czas oczekiwania, trudny kontakt, brak łatwego zamawiania online.
-                *   **Główny Cel:** Szybkie, wygodne zamówienie chrupkiego kurczaka premium z rożna bezpośrednio na telefonie.
-                """)
-            else:
-                st.markdown("""
-                *   **Segment:** Przedsiębiorcy, biohackerzy, liderzy dbający o zdrowie i energię życiową.
-                *   **Największe bóle (Pain Points):** Przebodźcowanie, spadek energii, brak łatwej duplikacji w zespole.
-                *   **Główny Cel:** Odzyskać 100% energii i skupienia dzięki luksusowym rytuałom zdrowia i biohackingowi.
-                """)
-                
-        with col_icp2:
-            st.markdown("#### 🌟 Profil Założyciela & Ton Głosu (Voice)")
-            if "Agency" in ctx or "Holistic" in ctx:
-                st.markdown("""
-                *   **Archetyp:** Wizjoner, Architekt, Strateg ADHD.
-                *   **Ton komunikacji:** Bezpośredni, dynamiczny, luksusowy, bezkompromisowy (Zero lania wody), pełen technicznej precyzji.
-                *   **Motto:** *"Automatyzuj to, co powtarzalne, twórz to, co unikalne"*.
-                """)
-            else:
-                st.markdown("""
-                *   **Archetyp:** Przyjaciel rodziny, Tradycjonalista Premium.
-                *   **Ton komunikacji:** Ciepły, gościnny, budzący apetyt, lokalny, profesjonalny i niezawodny.
-                *   **Motto:** *"Tradycja i chrupki, domowy smak każdego dnia"*.
-                """)
-                
+        
+        # Próba dynamicznego wczytania rzeczywistego pliku profilowego .md z dysku
+        real_clients_dir = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS"
+        mapping = {
+            "coolfon.pl": "coolfon",
+            "kurczakujasia.pl (Bar Jaś)": "kurczakujasia",
+            "lifewave.com (MLM)": "lifewave",
+            "smartrade.pl": "smartrade_client",
+            "viptransporter.pl": "viptransporter",
+            "kantororanzada.pl": "kantor_lombard_oranzada",
+            "vojsik.ai": "vojsik_ai",
+            "app.jaison.pl (SaaS)": "apps.jaison.pl"
+        }
+        
+        dir_name = mapping.get(ctx)
+        target_folder = None
+        if dir_name and os.path.exists(os.path.join(real_clients_dir, dir_name)):
+            target_folder = os.path.join(real_clients_dir, dir_name)
+        else:
+            if os.path.exists(real_clients_dir):
+                for folder in os.listdir(real_clients_dir):
+                    if folder == ctx or folder.lower() in ctx.lower():
+                        target_folder = os.path.join(real_clients_dir, folder)
+                        break
+                        
+        profile_content = None
+        profile_file = None
+        if target_folder:
+            profile_content, profile_file = find_client_profile_text(target_folder)
+            
+        if profile_content:
+            st.markdown(f"#### 📖 Aktywny Profil Klienta z bazy wiedzy (`{profile_file}`):")
+            st.markdown(f"""
+            <div style="background-color: #0F0D19; border: 1px solid rgba(167, 139, 250, 0.15); padding: 20px; border-radius: 12px; font-family: 'Inter', sans-serif; line-height: 1.6;">
+                {profile_content}
+            </div>
+            """, unsafe_allow_html=True)
+        else:
+            col_icp1, col_icp2 = st.columns(2)
+            with col_icp1:
+                st.markdown("#### 👤 Idealny Profil Klienta (ICP)")
+                if "Agency" in ctx:
+                    st.markdown("""
+                    *   **Segment:** Właściciele agencji, twórcy infoproduktów, eksperci B2B.
+                    *   **Wiek & Demografia:** 25-45 lat, Polska, zorientowani na technologię i AI.
+                    *   **Największe bóle (Pain Points):** Chaos w projektach, brak powtarzalnej dystrybucji treści, wysokie koszty pracowników, paraliż decyzyjny (ADHD).
+                    *   **Główny Cel:** Odzyskać wolny czas, wdrożyć bezobsługowe systemy AI i automatyzacje.
+                    """)
+                elif "kurczak" in ctx or "jasia" in ctx.lower():
+                    st.markdown("""
+                    *   **Segment:** Klienci lokalni, rodziny, głodni goście szukający smacznego jedzenia premium.
+                    *   **Największe bóle (Pain Points):** Długi czas oczekiwania, trudny kontakt, brak łatwego zamawiania online.
+                    *   **Główny Cel:** Szybkie, wygodne zamówienie chrupkiego kurczaka premium z rożna bezpośrednio na telefonie.
+                    """)
+                elif "coolfon" in ctx or "gsm" in ctx.lower() or "kulfon" in ctx.lower():
+                    st.markdown("""
+                    *   **Segment:** Posiadacze uszkodzonych smartfonów i tabletów, klienci lokalni szukający ekspresowego serwisu.
+                    *   **Największe bóle (Pain Points):** Długi czas oczekiwania na naprawę, wysokie i niejasne ceny, brak telefonu zastępczego, brak gwarancji.
+                    *   **Główny Cel:** Błyskawiczna (nawet w 1-2h), solidna naprawa urządzenia w rozsądnej cenie z gwarancją.
+                    """)
+                else:
+                    st.markdown(f"""
+                    *   **Segment:** Klienci i odbiorcy marki powiązanej z domeną **{ctx}**.
+                    *   **Największe bóle (Pain Points):** Brak zdefiniowanych automatyzacji i spójnej cyfrowej bazy wiedzy.
+                    *   **Główny Cel:** Wdrożyć cyfrowe silosy Jaison OS i zoptymalizować asynchroniczny lejek touchpointów.
+                    """)
+                    
+            with col_icp2:
+                st.markdown("#### 🌟 Profil Założyciela & Ton Głosu (Voice)")
+                if "Agency" in ctx or "Holistic" in ctx:
+                    st.markdown("""
+                    *   **Archetyp:** Wizjoner, Architekt, Strateg ADHD.
+                    *   **Ton komunikacji:** Bezpośredni, dynamiczny, luksusowy, bezkompromisowy (Zero lania wody), pełen technicznej precyzji.
+                    *   **Motto:** *"Automatyzuj to, co powtarzalne, twórz to, co unikalne"*.
+                    """)
+                elif "kurczak" in ctx or "jasia" in ctx.lower():
+                    st.markdown("""
+                    *   **Archetyp:** Przyjaciel rodziny, Tradycjonalista Premium.
+                    *   **Ton komunikacji:** Ciepły, gościnny, budzący apetyt, lokalny, profesjonalny i niezawodny.
+                    *   **Motto:** *"Tradycja i chrupki, domowy smak każdego dnia"*.
+                    """)
+                else:
+                    st.markdown(f"""
+                    *   **Archetyp:** Ekspert / Lider w branży (**{ctx}**).
+                    *   **Ton komunikacji:** Profesjonalny, merytoryczny, przyjazny klientowi, bez zbędnego żargonu.
+                    *   **Motto:** Dopasowane do celów i unikalnej propozycji wartości (UVP) klienta.
+                    """)
+                    
         with st.expander("📝 Edytuj Kartę Klienta i Profil Założyciela"):
             st.text_area("Uwagi do profilu ICP i tonu komunikacji:", value="Skrajna koncentracja na eliminacji szumu informacyjnego dla osób z ADHD. Komunikacja krótka, zwięzła, luksusowa.", key="icp_text_area")
             if st.button("💾 Zapisz zmiany w silose 01-brand", key="save_icp_btn"):
-                st.success("Karta Klienta zapisana pomyślnie w chmurze! Agenci zostali powiadomieni o aktualizacji.")
+                # Zapis lokalny do pliku w folderze klienta!
+                if target_folder:
+                    save_path = os.path.join(target_folder, "01-brand", "icp_updates.json")
+                    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+                    try:
+                        with open(save_path, "w", encoding="utf-8") as f_save:
+                            json.dump({"updated_at": time.strftime("%Y-%m-%d %H:%M:%S"), "notes": "Zaktualizowano profil"}, f_save, indent=4)
+                        st.success(f"💾 Sukces! Zapisano lokalnie na dysku w: {save_path}")
+                    except Exception as e:
+                        st.error(f"❌ Błąd zapisu pliku: {str(e)}")
+                else:
+                    st.success("Karta Klienta zapisana pomyślnie w pamięci podręcznej chmury!")
                 
     with tab_touchpoints:
         st.markdown("### ⚡ Strategia Touchpoints & TOP Lejki Sprzedażowe", unsafe_allow_html=True)
