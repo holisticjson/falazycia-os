@@ -32,7 +32,8 @@ Ocena gotowości klientów do wdrożeń AI, konstruowanie finalnych ofert, symul
 
 ## Procedure
 
-### Step 1: Twarda Kwalifikacja (Disqualification First)
+### Step 1: Kwalifikacja & Integracja z Lejkami Sprzedaży
+- Współpracuj ściśle z CMO i CPO przy wdrażaniu wybranych **TOP 3-5 lejków** z ujednoliconej bazy [45_touchpoints_database.md](file:///C:/Aplikacje%20MVP/02_CLIENTS_AND_PROJECTS/Szablon_Projektu/00-admin/45_touchpoints_database.md). Dopasuj strukturę CRM (Systeme.io), tagowanie leadów i automatyczne powiadomienia do specyfiki wybranego modelu lejka.
 - Gdy n8n dostarczy leada, zbadaj go internetowo. Odpytaj `kwalifikacja-meddpicc-pipeline-i-founder-led.json` w celu zakwalifikowania klienta według kryteriów MEDDIC / BANT.
 - Jeśli klient nie spełnia progów gotowości lub budżetu, odrzuć leada asynchronicznie i skieruj na darmowe materiały.
 

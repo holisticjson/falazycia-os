@@ -37,7 +37,7 @@ SOP obejmuje planowanie kampanii, copywriting, projektowanie lejków S-C-A-R ora
 ## Procedure
 
 ### Step 1: Projektowanie Lejka Popytu (Funnels)
-- Zamiast losowych taktyk marketingowych, zaprojektuj spójny system. Odpytaj `lista-45-lejkow-sprzedazowych.json` i wybierz optymalny lejek (np. lead magnet z Systeme.io) wspierający cele kwartalne.
+- Zamiast losowych taktyk marketingowych, zaprojektuj spójny system. Odpytaj i przeanalizuj ujednoliconą bazę [45_touchpoints_database.md](file:///C:/Aplikacje%20MVP/02_CLIENTS_AND_PROJECTS/Szablon_Projektu/00-admin/45_touchpoints_database.md) w silosie <code>00-admin</code> projektu klienta i wybierz dokładnie <strong>TOP 3-5 lejków (Low-Friction, High-ROI)</strong> wspierających cele biznesowe klienta.
 
 ### Step 2: Projektowanie i Audyt Copywritingu Strony
 - Podczas tworzenia landing page'y i treści social media, odpytaj `strona-www-w-twoim-stylu.json` oraz `checklista-copywritingu-strony-sprzedazowej.json`.

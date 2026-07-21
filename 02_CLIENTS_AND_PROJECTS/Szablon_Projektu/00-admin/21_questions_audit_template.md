@@ -29,8 +29,12 @@
    - *Odpowiedź:* 
 10. **Jakie lejki marketingowe chcemy wdrożyć lub zoptymalizować w tym projekcie? (np. darmowe wyzwanie, e-book, darmowy audyt, webinar)?**
     - *Odpowiedź:* 
-11. **Jakie są kluczowe punkty styku (według 45 punktów styku Mirka Burnejko), które musimy zaprojektować i monitorować?**
-    - *Odpowiedź:* 
+11. **Które z 45 lejków i punktów styku (zgodnie z bazą [45_touchpoints_database.md](file:///C:/Aplikacje%20MVP/02_CLIENTS_AND_PROJECTS/Szablon_Projektu/00-admin/45_touchpoints_database.md)) są najbardziej optymalne dla tego klienta?**
+    - *Instrukcja:* Przeanalizuj typ firmy i wybierz dokładnie **TOP 3-5 lejków (Low-Friction, High-ROI)** z bazy wiedzy, które dadzą najszybszy zwrot z inwestycji. Dla każdego wybranego lejka określ krótko plan wdrożenia.
+    - *Rekomendowane TOP 3-5 Lejków:* 
+      1. **[Nazwa lejka z bazy]** — [Uzasadnienie i mikro-plan wdrożenia]
+      2. **[Nazwa lejka z bazy]** — [Uzasadnienie i mikro-plan wdrożenia]
+      3. **[Nazwa lejka z bazy]** — [Uzasadnienie i mikro-plan wdrożenia]
 
 ## IV. STRONA WWW I ASPEKTY TECHNICZNE (02-website & Deploy)
 12. **Jaki jest główny cel strony internetowej? (Generowanie leadów, bezpośredni zakup, edukacja)?**

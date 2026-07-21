@@ -86,7 +86,7 @@ Pokaż, gdzie zespół skupia się wyłącznie na technicznych funkcjach ekranu 
 Oceń każdy z 8 etapów w skali **1–5** i uzasadnij ocenę jednym brutalnie szczerym argumentem.
 
 ### Step 5: Rekomendacja Top 3 Poprawek ("Low-Cost First")
-Wybierz 3 zmiany, które najszybciej podniosą wartość dla klienta. Dla każdej określ:
+Wybierz 3 kluczowe zmiany, które najszybciej podniosą wartość dla klienta i zlikwidują wąskie gardła. Przy rekomendowaniu poprawek w obszarze edukacji, akwizycji czy retencji, obowiązkowo odpytaj ujednoliconą bazę [45_touchpoints_database.md](file:///C:/Aplikacje%20MVP/02_CLIENTS_AND_PROJECTS/Szablon_Projektu/00-admin/45_touchpoints_database.md) i zarekomenduj wdrożenie konkretnych modeli lejków (np. <strong>Lejek Audytu (nr 31)</strong> lub <strong>Lejek Case Study (nr 32)</strong>) o najwyższym ROI. Dla każdej poprawki określ:
 - **Cel** — co chcemy osiągnąć.
 - **Metryka sukcesu** — jak zmierzymy efekt.
 - **Właściciel** — kto odpowiada za wdrożenie.
