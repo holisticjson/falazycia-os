@@ -1090,5 +1090,29 @@
         "raw_text": "Automatyzuj to, co powtarzalne, twórz to, co unikalne.",
         "corrected_text": "Automatyzuj to, co powtarzalne, twórz to, co unikalne.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-21 12:13:12",
+        "raw_text": "Ponieważ co równolegle dokończyć konfigurację i dostosowywanie profili prywatnych twórcy, znaczy agencji Jaison, znaczy no to jest marka tak osobista, która jakby no, za którą kryje się agencja tak automatyzacji, wdrażanie niestandardowych rozwiązań, więc sprawdź ten plik, czy ewentualnie  tu się coś zmieniło, ponieważ chcę dać go jako kontekst. A poniżej tak zacznę z nim rozmowę w równoległej konwersacji w tym projekcie Antigravity.",
+        "corrected_text": "Ponieważ co równolegle dokończyć konfigurację i dostosowywanie profili prywatnych twórcy, znaczy agencji Jaison, znaczy no to jest marka tak osobista, która jakby no, za którą kryje się agencja tak automatyzacji, wdrażanie niestandardowych rozwiązań, więc sprawdź ten plik, czy ewentualnie  tu się coś zmieniło, ponieważ chcę dać go jako kontekst. A poniżej tak zacznę z nim rozmowę w równoległej konwersacji w tym projekcie Antigravity.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 12:14:00",
+        "raw_text": "Następnie przejdziemy do kontynuacji wdrażania startu fazy trzeciej.",
+        "corrected_text": "Następnie przejdziemy do kontynuacji wdrażania startu fazy trzeciej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 12:18:42",
+        "raw_text": "W związku z tym po zmianach, tutaj wdrożeniu nowych rzeczy reorganizacji musimy się zastanowić, przeanalizować wnikliwie, gruntownie strukturę folderów i plików naszego gruntownia.  głównego projektu agencji.",
+        "corrected_text": "W związku z tym po zmianach, tutaj wdrożeniu nowych rzeczy reorganizacji musimy się zastanowić, przeanalizować wnikliwie, gruntownie strukturę folderów i plików naszego gruntownia.  głównego projektu agencji.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 12:21:54",
+        "raw_text": "i zaktualizować ją do stanu zgodnie z naszą metodologią, naszymi procedurami utrzymywania projektów i struktury plików, folderów, tworzenia, umiejscowiania plików w odniesieniu do naszego projektu, tworzenia żywego paszportu projektu i sposobu postępowania.  Więc zrób wnikligę bardzo uważnie, nie przeanalizuj, zmodyfikuj, dostosuj do naszej aktualnej polityki i procedur operacyjnych. Ten właśnie główny folder agencji.  Dziękuję.",
+        "corrected_text": "i zaktualizować ją do stanu zgodnie z naszą metodologią, naszymi procedurami utrzymywania projektów i struktury plików, folderów, tworzenia, umiejscowiania plików w odniesieniu do naszego projektu, tworzenia żywego paszportu projektu i sposobu postępowania.  Więc zrób wnikligę bardzo uważnie, nie przeanalizuj, zmodyfikuj, dostosuj do naszej aktualnej polityki i procedur operacyjnych. Ten właśnie główny folder agencji.  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
