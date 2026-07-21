@@ -5,7 +5,7 @@ import re
 # Central paths
 BASE_DIR = r"C:\Aplikacje MVP"
 CLIENTS_DIR = os.path.join(BASE_DIR, "02_CLIENTS_AND_PROJECTS")
-VISUALIZER_PATH = os.path.join(BASE_DIR, "01_JAISON_AGENCY_OS", "dashboard_and_core", "mindmap_visualizer.html")
+VISUALIZER_PATH = os.path.join(BASE_DIR, "01_JAISON_AGENCY_OS", "02-website", "mindmap_visualizer.html")
 
 def scan_clients_and_projects():
     """

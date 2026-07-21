@@ -7,7 +7,7 @@ import requests
 
 sys.stdout.reconfigure(encoding='utf-8')
 
-BASE_DIR = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core"
+BASE_DIR = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\02-website"
 OUTPUT_DIR = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS\capcut_drafts"
 
 # Free Pexels API Key or placeholder

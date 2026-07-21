@@ -9,7 +9,7 @@ import threading
 sys.stdout.reconfigure(encoding='utf-8')
 
 # Paths
-BASE_DIR = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core"
+BASE_DIR = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\02-website"
 CRM_PATH = os.path.join(BASE_DIR, "dashboard", "crm.json")
 KANBAN_PATH = r"C:\Users\tomas_yq1b9su\Agentic_OS\dashboard\kanban.json"
 EVENTS_PATH = os.path.join(BASE_DIR, "dashboard", "telegram_events.json")

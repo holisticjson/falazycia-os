@@ -6,14 +6,14 @@ import urllib.request
 import urllib.error
 import streamlit as st
 
-DB_PATH = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\local_crm.db"
+DB_PATH = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\02-website\local_crm.db"
 
 # ==================== KOLEKCJA I LOGIKA BAZY DANYCH ====================
 
 def add_lead_to_crm_json(name, notes, suggested_outreach=None, next_action="Skontaktować się po analizie AI"):
     """Zapisuje lead bezpośrednio w centralnym crm.json dla CRM Magic Pipeline."""
     import time
-    crm_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\dashboard\crm.json"
+    crm_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\02-website\dashboard\crm.json"
     try:
         if os.path.exists(crm_path):
             with open(crm_path, "r", encoding="utf-8") as f:
@@ -45,7 +45,7 @@ def add_lead_to_crm_json(name, notes, suggested_outreach=None, next_action="Skon
 
 def get_scanner_preferences():
     """Wczytuje preferencje wyszukiwania zleceń (Jakich deali szukasz?) z pliku JSON."""
-    pref_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\config\scanner_preferences.json"
+    pref_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\02-website\config\scanner_preferences.json"
     os.makedirs(os.path.dirname(pref_path), exist_ok=True)
     if os.path.exists(pref_path):
         try:
@@ -61,7 +61,7 @@ def get_scanner_preferences():
 
 def save_scanner_preferences(prefs):
     """Zapisuje preferencje wyszukiwania zleceń do pliku JSON."""
-    pref_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\dashboard_and_core\config\scanner_preferences.json"
+    pref_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\02-website\config\scanner_preferences.json"
     os.makedirs(os.path.dirname(pref_path), exist_ok=True)
     try:
         with open(pref_path, "w", encoding="utf-8") as f:
