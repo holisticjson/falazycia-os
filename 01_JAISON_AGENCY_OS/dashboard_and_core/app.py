@@ -522,33 +522,75 @@ st.markdown("""
             margin-bottom: 20px !important;
         }
         
-        /* Luksusowy Hamburger Menu na smartfonie */
-        div[data-testid="collapsedControl"] {
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.85) 0%, rgba(139, 92, 246, 0.85) 100%) !important;
-            border: 1px solid rgba(167, 139, 250, 0.5) !important;
+        /* Luksusowy Hamburger Menu na smartfonie z usuwaniem czarnego nagłówka */
+        header[data-testid="stHeader"] {
+            background: transparent !important;
+            background-color: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            height: 0px !important;
+            min-height: 0px !important;
+            overflow: visible !important;
+        }
+        
+        /* Celujemy we wszystkie możliwe selektory przycisku otwierania paska bocznego w nowym Streamlicie */
+        div[data-testid="collapsedControl"],
+        button[data-testid="stHeaderAction"],
+        button[aria-label="Open sidebar"],
+        header[data-testid="stHeader"] button {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(139, 92, 246, 0.95) 100%) !important;
+            border: 1px solid rgba(167, 139, 250, 0.6) !important;
             border-radius: 50% !important;
-            width: 48px !important;
-            height: 48px !important;
+            width: 46px !important;
+            height: 46px !important;
+            min-width: 46px !important;
+            min-height: 46px !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5) !important;
+            box-shadow: 0 4px 18px rgba(139, 92, 246, 0.75) !important;
             position: fixed !important;
-            left: 12px !important;
-            top: 12px !important;
+            left: 14px !important;
+            top: 14px !important;
             z-index: 999999 !important;
             cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            padding: 0px !important;
+            margin: 0px !important;
         }
-        div[data-testid="collapsedControl"] svg {
+
+        /* Hover i aktywacja */
+        div[data-testid="collapsedControl"]:hover,
+        button[data-testid="stHeaderAction"]:hover,
+        button[aria-label="Open sidebar"]:hover,
+        header[data-testid="stHeader"] button:hover {
+            transform: scale(1.08) !important;
+            box-shadow: 0 4px 22px rgba(139, 92, 246, 0.9) !important;
+        }
+
+        /* Ukrywamy oryginalne ikony i strzałki wewnątrz */
+        div[data-testid="collapsedControl"] svg,
+        button[data-testid="stHeaderAction"] svg,
+        button[aria-label="Open sidebar"] svg,
+        header[data-testid="stHeader"] button svg {
             display: none !important;
         }
-        div[data-testid="collapsedControl"]::before {
+
+        /* Renderujemy piękny biały hamburger ☰ */
+        div[data-testid="collapsedControl"]::before,
+        button[data-testid="stHeaderAction"]::before,
+        button[aria-label="Open sidebar"]::before,
+        header[data-testid="stHeader"] button::before {
             content: "☰" !important;
             color: #FFFFFF !important;
-            font-size: 22px !important;
+            font-size: 24px !important;
             font-family: Arial, sans-serif !important;
             font-weight: bold !important;
             line-height: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
         }
     }
 </style>
@@ -564,7 +606,16 @@ def get_image_base64(path):
             pass
     return ""
 
-logo_path_sparkles = r"C:\Aplikacje MVP\03_SOFTWARE_AND_APPS\jaison_komunikator\web\app_icon_jaison_sparkles.png"
+# Hybrydowe wczytywanie logotypu (relatywne dla kontenera chmurowego, bezwzględne dla lokalnego fallbacku)
+local_logo_name = "logo_sparkles.png"
+script_dir = os.path.dirname(os.path.abspath(__file__)) if "__file__" in locals() else os.getcwd()
+relative_logo_path = os.path.join(script_dir, local_logo_name)
+
+if os.path.exists(relative_logo_path):
+    logo_path_sparkles = relative_logo_path
+else:
+    logo_path_sparkles = r"C:\Aplikacje MVP\03_SOFTWARE_AND_APPS\jaison_komunikator\web\app_icon_jaison_sparkles.png"
+
 logo_base64 = get_image_base64(logo_path_sparkles)
 
 # ==========================================
