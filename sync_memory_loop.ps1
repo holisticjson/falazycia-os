@@ -1,19 +1,20 @@
-# sync_memory_loop.ps1 - Memory Loop Engine
-# Automatycznie skanuje i synchronizuje pliki WORKSPACE_MEMORY.md w folderach projektowych.
+# sync_memory_loop.ps1 - Memory Loop and Gitkeep Engine (ASCII ONLY to avoid PowerShell parser bugs)
+# 1. Creates/updates WORKSPACE_MEMORY.md files (Memory Loop).
+# 2. Creates .gitkeep in empty subfolders to force Git sync.
 
 $ErrorActionPreference = "SilentlyContinue"
 $DateNow = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 
-Write-Host "===============================================" -ForegroundColor Purple
-Write-Host "INICJALIZACJA PETLI PAMIECI (MEMORY LOOP ENGINE)" -ForegroundColor Cyan
-Write-Host "===============================================" -ForegroundColor Purple
+Write-Host "=====================================================" -ForegroundColor Purple
+Write-Host "INICJALIZACJA PETLI PAMIECI I SYNCHRONIZACJI STRUKTUR" -ForegroundColor Cyan
+Write-Host "=====================================================" -ForegroundColor Purple
 
-# Definicje katalogow roboczych
+# Definicje katalogow
 $BaseDir = "C:\Aplikacje MVP"
 $ClientsDir = Join-Path $BaseDir "02_CLIENTS_AND_PROJECTS"
 $AgencyDir = Join-Path $BaseDir "01_JAISON_AGENCY_OS"
 
-# Funkcja generujaca szablon pamieci roboczej
+# Funkcja generujaca szablon
 function Get-MemoryTemplate($ProjectName) {
     $Lines = @(
         "# MEMORY - $ProjectName",
@@ -43,15 +44,14 @@ function Get-MemoryTemplate($ProjectName) {
         "---",
         "",
         "## LOG AKTYWNOSCI",
-        "- **${DateNow}**: Automatyczna inicjalizacja pliku pamieci WORKSPACE_MEMORY.md przez systemowa petle inzynierii petli."
+        "- **${DateNow}**: Automatyczna inicjalizacja pliku pamieci WORKSPACE_MEMORY.md przez systemowa petle."
     )
     return $Lines -join "`r`n"
 }
 
-# Lista folderow do przeskanowania
 $FoldersToScan = @()
 
-# 1. Dodaj folder glowny agencji
+# 1. Folder agencji
 if (Test-Path $AgencyDir) {
     $FoldersToScan += [PSCustomObject]@{
         Name = "Jaison Agency"
@@ -59,12 +59,11 @@ if (Test-Path $AgencyDir) {
     }
 }
 
-# 2. Pobierz foldery klientow z 02_CLIENTS_AND_PROJECTS
+# 2. Foldery klientow
 if (Test-Path $ClientsDir) {
     $SubDirs = Get-ChildItem -Path $ClientsDir -Directory
     foreach ($d in $SubDirs) {
-        # Omin szablon projektu oraz foldery ukryte / pomocnicze
-        if ($d.Name -ne "Szablon_Projektu" -and !$d.Name.StartsWith(".")) {
+        if (!$d.Name.StartsWith(".")) {
             $FoldersToScan += [PSCustomObject]@{
                 Name = $d.Name
                 Path = $d.FullName
@@ -73,31 +72,47 @@ if (Test-Path $ClientsDir) {
     }
 }
 
-Write-Host "Wykryto $($FoldersToScan.Count) folderow projektowych..." -ForegroundColor Yellow
+Write-Host "Wykryto $($FoldersToScan.Count) folderow..." -ForegroundColor Yellow
 
-# Przejdz przez wszystkie foldery i zweryfikuj plik stanu pamieci
 foreach ($f in $FoldersToScan) {
-    $MemoryPath = Join-Path $f.Path "WORKSPACE_MEMORY.md"
-    
-    if (Test-Path $MemoryPath) {
-        Write-Host "[Istnieje] $($f.Name) -> Aktualizuje znacznik czasu..." -ForegroundColor Green
+    # --- CZESC 1: MEMORY LOOP ---
+    if ($f.Name -ne "Szablon_Projektu") {
+        $MemoryPath = Join-Path $f.Path "WORKSPACE_MEMORY.md"
         
-        $Content = Get-Content -Path $MemoryPath -Raw -Encoding UTF8
-        
-        # Zastap linie z ostatnia aktualizacja za pomoca regex
-        $Pattern = "- \*\*Ostatnia aktualizacja:\*\* .*? przez (.*)"
-        if ($Content -match $Pattern) {
-            $Replacement = "- **Ostatnia aktualizacja:** ${DateNow} przez Jaison Agent OS"
-            $Content = [regex]::Replace($Content, $Pattern, $Replacement)
-            Set-Content -Path $MemoryPath -Value $Content -Encoding UTF8
+        if (Test-Path $MemoryPath) {
+            Write-Host "[PAMIEC] [Istnieje] $($f.Name) -> Aktualizuje timestamp..." -ForegroundColor Green
+            $Content = Get-Content -Path $MemoryPath -Raw -Encoding UTF8
+            $Pattern = "- \*\*Ostatnia aktualizacja:\*\* .*? przez (.*)"
+            if ($Content -match $Pattern) {
+                $Replacement = "- **Ostatnia aktualizacja:** ${DateNow} przez Jaison Agent OS"
+                $Content = [regex]::Replace($Content, $Pattern, $Replacement)
+                Set-Content -Path $MemoryPath -Value $Content -Encoding UTF8
+            }
+        } else {
+            Write-Host "[PAMIEC] [Nowy] $($f.Name) -> Tworze plik WORKSPACE_MEMORY.md..." -ForegroundColor Yellow
+            $TemplateContent = Get-MemoryTemplate -ProjectName $f.Name
+            Set-Content -Path $MemoryPath -Value $TemplateContent -Encoding UTF8
         }
-    } else {
-        Write-Host "[Nowy] $($f.Name) -> Tworze plik WORKSPACE_MEMORY.md..." -ForegroundColor Yellow
-        $TemplateContent = Get-MemoryTemplate -ProjectName $f.Name
-        Set-Content -Path $MemoryPath -Value $TemplateContent -Encoding UTF8
+    }
+
+    # --- CZESC 2: GITKEEP FOR EMPTY DIRECTORIES ---
+    $SubFolders = Get-ChildItem -Path $f.Path -Recurse -Directory
+    
+    foreach ($sf in $SubFolders) {
+        if ($sf.FullName -match "\\\.(git|venv|agents|vscode|roo|pnpm)" -or $sf.FullName -match "node_modules|__pycache__") {
+            continue
+        }
+
+        $Elements = Get-ChildItem -Path $sf.FullName
+        
+        if ($Elements.Count -eq 0) {
+            $GitKeepPath = Join-Path $sf.FullName ".gitkeep"
+            Write-Host "[STABILIZACJA] Tworze .gitkeep w: $($sf.FullName.Replace($BaseDir, ''))" -ForegroundColor Cyan
+            Set-Content -Path $GitKeepPath -Value "# Gitkeep" -Encoding ASCII
+        }
     }
 }
 
-Write-Host "===============================================" -ForegroundColor Purple
-Write-Host "SYNCHRONIZACJA MEMORY LOOP ZAKONCZONA!" -ForegroundColor Cyan
-Write-Host "===============================================" -ForegroundColor Purple
+Write-Host "=====================================================" -ForegroundColor Purple
+Write-Host "SYNCHRONIZACJA ZAKONCZONA SUKCESEM!" -ForegroundColor Cyan
+Write-Host "=====================================================" -ForegroundColor Purple
