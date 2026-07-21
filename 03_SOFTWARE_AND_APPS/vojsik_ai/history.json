@@ -1240,5 +1240,23 @@
         "raw_text": "I w jakiej ścieżce mam w terminale wpisać... Tam od bloku i obsługa długich ścieżek, no tutaj tam te trzy komendy do PowerShell, w jakim katalogu, w jakim folderze.",
         "corrected_text": "I w jakiej ścieżce mam w terminale wpisać... Tam od bloku i obsługa długich ścieżek, no tutaj tam te trzy komendy do PowerShell, w jakim katalogu, w jakim folderze.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 17:31:09",
+        "raw_text": "Niestety tego nie zrobiłeś, nie otworzyłem streamlit i brak tego pewnie na wersji lokalnej, pewnie na serwerze też, no bo...",
+        "corrected_text": "Niestety tego nie zrobiłeś, nie otworzyłem streamlit i brak tego pewnie na wersji lokalnej, pewnie na serwerze też, no bo...",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 17:32:54",
+        "raw_text": "W którym to module jest?  Te trzy główne zakładki, bo nie widzę.",
+        "corrected_text": "W którym to module jest?  Te trzy główne zakładki, bo nie widzę.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 17:40:50",
+        "raw_text": "Tu w międzyczasie otworzę nowy worktree dla automatyzacji i potrzebuję bardzo szczegółowy prompt na tym etapie, ale oprócz tej synchronizacji wdrażanie pełnego git sync.  Dziękuję.  Oraz dla agenta marketingowego tutaj mi przygotuj.  bo ja chcę wyjść na trening i chcę wrócić mieć to wszystko przetestowane w pętli zwrotnej przetestowane kurwa działające żeby nie musiał się kurwa logować i domyślać co jest zepsute tobie wysyłać kurwa zrzutów ekranu że ciągle coś nie działa  utwórz ten git work tree kurwa dla tych tych te dwa pozostałe Feature tak",
+        "corrected_text": "Tu w międzyczasie otworzę nowy worktree dla automatyzacji i potrzebuję bardzo szczegółowy prompt na tym etapie, ale oprócz tej synchronizacji wdrażanie pełnego git sync.  Dziękuję.  Oraz dla agenta marketingowego tutaj mi przygotuj.  bo ja chcę wyjść na trening i chcę wrócić mieć to wszystko przetestowane w pętli zwrotnej przetestowane kurwa działające żeby nie musiał się kurwa logować i domyślać co jest zepsute tobie wysyłać kurwa zrzutów ekranu że ciągle coś nie działa  utwórz ten git work tree kurwa dla tych tych te dwa pozostałe Feature tak",
+        "status": "raw_fallback"
     }
 ]
