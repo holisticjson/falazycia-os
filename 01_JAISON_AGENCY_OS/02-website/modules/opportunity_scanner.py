@@ -1044,17 +1044,8 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                 else:
                     st.warning("Wpisz słowa kluczowe przed skanowaniem!")
                     
-        # Generuj i wyświetl dynamiczne Quick-Tagi
-        tags = get_cached_quick_tags(selected_context, profile_content or "", call_gemini_pro_api_func)
-        
-        st.markdown("<p style='font-size: 0.8rem; color: #94A3B8; margin-top: -5px; margin-bottom: 5px; font-weight: bold;'>🏷️ SUGEROWANE SŁOWA KLUCZOWE (Dynamiczne tagi z Gemini na podstawie aktywnego profilu):</p>", unsafe_allow_html=True)
-        cols = st.columns(len(tags))
-        for idx, tag in enumerate(tags):
-            with cols[idx]:
-                if st.button(f"🔍 {tag}", key=f"tag_radar_{idx}", use_container_width=True):
-                    st.session_state.radar_search_kws_input = tag
-                    st.rerun()
-                    
+        # Inteligentna podpowiedź o rozszerzaniu haseł w tle
+        st.caption("💡 **Silnik Jaison Query Expansion:** Wpisz dowolną branżę, technologię lub frazę (np. *GSM*, *n8n* lub *Automatyzacja*). Skaner AI automatycznie rozszerzy Twoje zapytanie w tle przy użyciu Gemini o 3 alternatywne słowa kluczowe, aby przeszukać cały rynek i zmaksymalizować liczbę pasujących ofert!")
         st.write("")
         
         # Wyświetlanie listy z bazy danych
