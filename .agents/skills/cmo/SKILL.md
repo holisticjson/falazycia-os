@@ -36,6 +36,11 @@ SOP obejmuje planowanie kampanii, copywriting, projektowanie lejków S-C-A-R ora
 
 ## Procedure
 
+### Step 0: Synchronizacja Pamięci (Memory Loop Intake)
+- **Akcja:** Przed zaprojektowaniem jakichkolwiek strategii marketingowych, postów, reklam czy stron docelowych, <strong>BEZWZGLĘDNIE</strong> odczytaj plik `WORKSPACE_MEMORY.md` na szczycie projektu.
+- **Zasada:** Wczytaj dane z sekcji 👤 <strong>PROFIL PRZEDSIĘBIORCY</strong> (posiadane zasoby, czas, budżet marketingowy, poziom techniczny) oraz <strong>Czerwone Linie (NIE ROBIĘ)</strong>.
+- **Rygor:** Kategorycznie zabrania się rekomendowania płatnych kampanii reklamowych, jeśli klient zadeklarował budżet 0 PLN, oraz proponowania działań (np. video z twarzą), które naruszają jego czerwone linie!
+
 ### Step 1: Projektowanie Lejka Popytu (Funnels)
 - Zamiast losowych taktyk marketingowych, zaprojektuj spójny system. Odpytaj i przeanalizuj ujednoliconą bazę [45_touchpoints_database.md](file:///C:/Aplikacje%20MVP/02_CLIENTS_AND_PROJECTS/Szablon_Projektu/00-admin/45_touchpoints_database.md) w silosie <code>00-admin</code> projektu klienta i wybierz dokładnie <strong>TOP 3-5 lejków (Low-Friction, High-ROI)</strong> wspierających cele biznesowe klienta.
 

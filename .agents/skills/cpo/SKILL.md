@@ -65,6 +65,11 @@ Jeśli musisz stworzyć kompletną mapę, a brakuje Ci twardych faktów, kategor
 
 ## 3. PROCEDURA ANALIZY CUSTOMER JOURNEY
 
+### Step 0: Synchronizacja Pamięci (Memory Loop Intake)
+- **Akcja:** Przed przystąpieniem do jakiejkolwiek analizy produktów, audytu 8 etapów Customer Journey czy optymalizacji interfejsów, <strong>BEZWZGLĘDNIE</strong> odczytaj plik `WORKSPACE_MEMORY.md` na szczycie projektu.
+- **Zasada:** Wczytaj dane z sekcji 👤 <strong>PROFIL PRZEDSIĘBIORCY</strong> (motywacje, ograniczenia finansowe i czasowe, czerwone linie) oraz statusy silosów w sekcji 🏗️ <strong>STAN OPERACYJNY</strong>.
+- **Rygor:** Kategorycznie zabrania się rekomendowania poprawek produktowych i technologicznych, które łamią czerwone linie klienta lub generują koszty wykraczające poza jego budżet miesięczny!
+
 ### Step 1: Mapa obecnego stanu (8 etapów)
 Opisz, jak wygląda dziś każdy z 8 etapów. Dla każdego etapu wdrażaj "Metodologię Robin Hooda" i "Protokół Obsługi Braku Danych":
 1. **Awareness** — Jak klient dowiaduje się o produkcie (PR, SEO, social media, paid ads).

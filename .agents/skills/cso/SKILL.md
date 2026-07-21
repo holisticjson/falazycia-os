@@ -32,10 +32,21 @@ Ocena gotowości klientów do wdrożeń AI, konstruowanie finalnych ofert, symul
 
 ## Procedure
 
-### Step 1: Kwalifikacja & Integracja z Lejkami Sprzedaży
-- Współpracuj ściśle z CMO i CPO przy wdrażaniu wybranych **TOP 3-5 lejków** z ujednoliconej bazy [45_touchpoints_database.md](file:///C:/Aplikacje%20MVP/02_CLIENTS_AND_PROJECTS/Szablon_Projektu/00-admin/45_touchpoints_database.md). Dopasuj strukturę CRM (Systeme.io), tagowanie leadów i automatyczne powiadomienia do specyfiki wybranego modelu lejka.
-- Gdy n8n dostarczy leada, zbadaj go internetowo. Odpytaj `kwalifikacja-meddpicc-pipeline-i-founder-led.json` w celu zakwalifikowania klienta według kryteriów MEDDIC / BANT.
-- Jeśli klient nie spełnia progów gotowości lub budżetu, odrzuć leada asynchronicznie i skieruj na darmowe materiały.
+### Step 0: Synchronizacja Pamięci (Memory Loop Intake)
+- **Akcja:** Przed przystąpieniem do jakiejkolwiek analizy leadów, kwalifikacji, przygotowania oferty czy rozmowy sprzedażowej, <strong>BEZWZGLĘDNIE</strong> odczytaj plik `WORKSPACE_MEMORY.md` na szczycie projektu.
+- **Zasada:** Wczytaj dane z sekcji 👤 <strong>PROFIL PRZEDSIĘBIORCY</strong> (finanse, dostępny czas, obawy i bariery) oraz <strong>Czerwone Linie (NIE ROBIĘ)</strong>.
+- **Rygor:** Kategorycznie zabrania się konstruowania ofert, które wymagają od klienta zaangażowania czasowego lub finansowego wykraczającego poza jego limity, oraz działań łamiących jego czerwone linie!
+
+### Step 1: Kwalifikacja, Cenniki & Psychologia Zakupowa B2B
+- **Integracja Lejków:** Współpracuj ściśle z CMO i CPO przy wdrażaniu wybranych <strong>TOP 3-5 lejków</strong> z bazy [45_touchpoints_database.md](file:///C:/Aplikacje%20MVP/02_CLIENTS_AND_PROJECTS/Szablon_Projektu/00-admin/45_touchpoints_database.md). Dopasuj strukturę CRM (Systeme.io), tagowanie leadów i powiadomienia do wybranego modelu lejka.
+- **Ustrukturyzowana Kwalifikacja:** Gdy n8n dostarczy leada, zbadaj go internetowo. Odpytaj `kwalifikacja-meddpicc-pipeline-i-founder-led.json` w celu zakwalifikowania klienta według kryteriów MEDDIC / BANT. Jeśli klient nie spełnia progów gotowości lub budżetu, odrzuć go asynchronicznie.
+- **Konstrukcja Cennika i Pakietów (AI Biznes Lab Standard):**
+  *   <strong>Efekt Zakotwiczenia (Anchoring):</strong> Zawsze prezentuj najdroższy pakiet jako pierwszy, aby zdefiniować wysoką wartość odniesienia.
+  *   <strong>Efekt Przynęty (Decoy Effect):</strong> Projektuj pakiet środkowy (rekomendowany) tak, aby oferował 80% wartości pakietu najdroższego, ale był tylko nieznacznie droższy od pakietu najtańszego (kierowanie uwagi klienta na pakiet optymalny).
+  *   <strong>Trójpodział Pakietów:</strong> Oferuj przejrzysty podział (np. Basic ➔ Pro ➔ Custom Premium).
+- **Psychologia Zakupowa B2B (Minimalizowanie Ryzyka):**
+  *   Redukuj barierę wejścia do zera poprzez gwarancje satysfakcji lub darmowe próbki (np. darmowy audyt).
+  *   Przedstawiaj ROI (zwrot z inwestycji) nie jako obietnicę mglistego zysku, lecz jako fizyczne zabezpieczenie przed stratą pieniędzy i czasu (uśmierzenie problemu "TERAZ").
 
 ### Step 2: Projektowanie Rozmowy & Obiekcji
 - Dla zakwalifikowanych leadów, stwórz strategię rozmowy. Odpytaj `discovery-i-frameworki-pytan-sprzedazowych.json` oraz `rozmowa-sprzedazowa-przygotowanie-i-otwarcie.json` (wykorzystując metodologię SPIN).
