@@ -1156,5 +1156,23 @@
         "raw_text": "Sprawdź jeszcze, wyrzucałem Ci zrzuty ekranu z folderu z eksploratora na laptopie. Nie zgadza mi się coś w folderze głównym, czy ja ISON Agency OS w folderze agencji.",
         "corrected_text": "Sprawdź jeszcze, wyrzucałem Ci zrzuty ekranu z folderu z eksploratora na laptopie. Nie zgadza mi się coś w folderze głównym, czy ja ISON Agency OS w folderze agencji.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 14:16:03",
+        "raw_text": "Czyli w folderze głównym agencji jaisonagency.us te poniższe foldery z implementation plan z architektury docelowej 10 silosów roboczych pomijamy.",
+        "corrected_text": "Czyli w folderze głównym agencji jaisonagency.us te poniższe foldery z implementation plan z architektury docelowej 10 silosów roboczych pomijamy.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 14:18:51",
+        "raw_text": "Przed chwilą zrobił się automatycznie ten co 15 minut git sync na laptopie. Wklejam Ci zrzut ekranu aktualnego stanu laptopa. Mam wrażenie, że po tych automatycznych git sync ta aktualizacja na laptopie się nie robi i chyba w drugą stronę na komputerze stacjonarnym też nie. Być może to jest problemem, jest tutaj,  są nazwy user, tak, użytkowników komputera. Na laptopie jest inny i na komputerze stacjonarnym jest inny. Czy ma to znaczenie?",
+        "corrected_text": "Przed chwilą zrobił się automatycznie ten co 15 minut git sync na laptopie. Wklejam Ci zrzut ekranu aktualnego stanu laptopa. Mam wrażenie, że po tych automatycznych git sync ta aktualizacja na laptopie się nie robi i chyba w drugą stronę na komputerze stacjonarnym też nie. Być może to jest problemem, jest tutaj,  są nazwy user, tak, użytkowników komputera. Na laptopie jest inny i na komputerze stacjonarnym jest inny. Czy ma to znaczenie?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 14:22:15",
+        "raw_text": "No i chyba skoro utworzyłeś powstałe teraz jeszcze te foldery 04assets, silos 04assets oraz 06crm, to czy nie powinno się tam coś znaleźć?  chodzi o grafiki, awatary i banery dla platform i klientów. Nie ma tam rzeczy w innych folderach, które należałoby tu skopiować lub przenieść.",
+        "corrected_text": "No i chyba skoro utworzyłeś powstałe teraz jeszcze te foldery 04assets, silos 04assets oraz 06crm, to czy nie powinno się tam coś znaleźć?  chodzi o grafiki, awatary i banery dla platform i klientów. Nie ma tam rzeczy w innych folderach, które należałoby tu skopiować lub przenieść.",
+        "status": "raw_fallback"
     }
 ]
