@@ -533,12 +533,24 @@ st.markdown("""
             min-height: 0px !important;
             overflow: visible !important;
         }
+
+        /* Ukrywamy domyślne opcje systemowe Streamlita po prawej stronie, aby system wyglądał autorsko i premium */
+        div[data-testid="stHeaderSettingsMenu"],
+        button[aria-label="App settings"],
+        button[aria-label="View app settings"],
+        button[data-testid="stHeaderSettingsMenu"] {
+            display: none !important;
+            width: 0px !important;
+            height: 0px !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
         
-        /* Celujemy we wszystkie możliwe selektory przycisku otwierania paska bocznego w nowym Streamlicie */
+        /* Celujemy TYLKO i wyłącznie w przyciski otwierania paska bocznego w nowym Streamlicie */
         div[data-testid="collapsedControl"],
-        button[data-testid="stHeaderAction"],
+        div[data-testid="collapsedControl"] button,
         button[aria-label="Open sidebar"],
-        header[data-testid="stHeader"] button {
+        button[data-testid="stSidebarCollapse"] {
             background: linear-gradient(135deg, rgba(79, 70, 229, 0.95) 0%, rgba(139, 92, 246, 0.95) 100%) !important;
             border: 1px solid rgba(167, 139, 250, 0.6) !important;
             border-radius: 50% !important;
@@ -560,28 +572,28 @@ st.markdown("""
             margin: 0px !important;
         }
 
-        /* Hover i aktywacja */
+        /* Hover i aktywacja dla hamburgera sidebaru */
         div[data-testid="collapsedControl"]:hover,
-        button[data-testid="stHeaderAction"]:hover,
+        div[data-testid="collapsedControl"] button:hover,
         button[aria-label="Open sidebar"]:hover,
-        header[data-testid="stHeader"] button:hover {
+        button[data-testid="stSidebarCollapse"]:hover {
             transform: scale(1.08) !important;
             box-shadow: 0 4px 22px rgba(139, 92, 246, 0.9) !important;
         }
 
-        /* Ukrywamy oryginalne ikony i strzałki wewnątrz */
+        /* Ukrywamy oryginalne ikony i strzałki wewnątrz hamburgera sidebaru */
         div[data-testid="collapsedControl"] svg,
-        button[data-testid="stHeaderAction"] svg,
+        div[data-testid="collapsedControl"] button svg,
         button[aria-label="Open sidebar"] svg,
-        header[data-testid="stHeader"] button svg {
+        button[data-testid="stSidebarCollapse"] svg {
             display: none !important;
         }
 
         /* Renderujemy piękny biały hamburger ☰ */
         div[data-testid="collapsedControl"]::before,
-        button[data-testid="stHeaderAction"]::before,
+        div[data-testid="collapsedControl"] button::before,
         button[aria-label="Open sidebar"]::before,
-        header[data-testid="stHeader"] button::before {
+        button[data-testid="stSidebarCollapse"]::before {
             content: "☰" !important;
             color: #FFFFFF !important;
             font-size: 24px !important;
@@ -591,6 +603,47 @@ st.markdown("""
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
+        }
+
+        /* Pływający Przycisk FAB Brain Dump z Czaszką 💀 na dole po prawej stronie */
+        .fab-container {
+            position: fixed !important;
+            bottom: 25px !important;
+            right: 25px !important;
+            z-index: 999999 !important;
+        }
+        .fab-container button {
+            background: radial-gradient(circle at 40% 40%, #EC4899, #D946EF) !important;
+            border: 2px solid rgba(244, 114, 182, 0.7) !important;
+            border-radius: 50% !important;
+            width: 64px !important;
+            height: 64px !important;
+            min-width: 64px !important;
+            min-height: 64px !important;
+            font-size: 28px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            box-shadow: 0 4px 20px rgba(236, 72, 153, 0.75) !important;
+            animation: pulse-fab 1.8s infinite !important;
+            color: white !important;
+            padding: 0 !important;
+            cursor: pointer !important;
+            transition: transform 0.2s ease-in-out !important;
+        }
+        .fab-container button:hover {
+            transform: scale(1.12) !important;
+            box-shadow: 0 4px 25px rgba(236, 72, 153, 0.95) !important;
+        }
+        .fab-container button p {
+            font-size: 28px !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        @keyframes pulse-fab {
+            0%   { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.75); }
+            70%  { box-shadow: 0 0 0 18px rgba(236, 72, 153, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(236, 72, 153, 0); }
         }
     }
 </style>
@@ -2597,19 +2650,22 @@ elif menu == "Notebook":
     st.title("📚 Baza Wiedzy")
     st.subheader("Biblioteka zasobów, notatek i promptów do natychmiastowego użycia")
 
-    tab_akademia, tab2, tab1, tab3, tab4 = st.tabs(["📚 Checklisty & Prompty", "📝 Notatki Robocze (Obsidian)", "📻 Podcasty (NotebookLM)", "🔍 Wyszukiwarka AI (RAG)", "💬 Czat z NotebookLM (MCP)"])
+    tab_akademia, tab2, tab1, tab3 = st.tabs(["📚 Checklisty & Prompty", "📝 Notatki Robocze (Obsidian)", "📻 Podcasty (NotebookLM)", "🔍 Wyszukiwarka AI (RAG)"])
 
     with tab_akademia:
         st.markdown("### 📚 Biblioteka Wiedzy — Checklisty, Prompty & Frameworki")
         st.markdown("Gotowe zasoby do natychmiastowego użycia. Wyszukaj po frazie lub przeglądaj według kategorii.")
 
         def get_knowledge_dir():
-            local_path = os.path.join(os.path.dirname(__file__), "deploy", "knowledge")
-            if os.path.exists(local_path):
-                return local_path
-            container_path = os.path.join(os.path.dirname(__file__), "knowledge")
-            if os.path.exists(container_path):
-                return container_path
+            paths_to_try = [
+                r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\agency_knowledge\knowledge",
+                os.path.join(os.path.dirname(__file__), "deploy", "knowledge"),
+                os.path.join(os.path.dirname(__file__), "knowledge"),
+                os.path.join(os.path.dirname(os.path.dirname(__file__)), "agency_knowledge", "knowledge")
+            ]
+            for p in paths_to_try:
+                if os.path.exists(p):
+                    return p
             return None
 
         # Kategorie na podstawie słów kluczowych w nazwie pliku
@@ -2779,230 +2835,6 @@ elif menu == "Notebook":
                                         st.markdown("**Pasujące fragmenty tekstu:**")
                                         for seg in res['extractive_segments']:
                                             st.write(seg)
-
-    with tab4:
-        st.markdown("""
-        <div class="custom-card" style="border-left: 4px solid #3B82F6;">
-            <h4 style="margin: 0; color: #3B82F6;">💬 Bezpośredni czat z NotebookLM (MCP)</h4>
-            <p style="color: #94A3B8; font-size: 0.9rem; margin-top: 5px;">
-                Rozmawiaj bezpośrednio ze swoimi notatnikami w chmurze NotebookLM za pomocą lokalnego serwera MCP.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        import subprocess
-        import json
-        
-        def call_notebooklm_mcp(tool_name, arguments={}):
-            cmd = [
-                "sudo", "-u", "holisticjson", "sh", "-c",
-                "cd /home/holisticjson && "
-                "NODE_PATH=/home/holisticjson/.npm/_npx/0d29dd9f4e472da9/node_modules "
-                "/home/holisticjson/.hermes/node/bin/node "
-                "/home/holisticjson/.npm/_npx/0d29dd9f4e472da9/node_modules/notebooklm-mcp/dist/index.js"
-            ]
-            try:
-                proc = subprocess.Popen(
-                    cmd,
-                    stdin=subprocess.PIPE,
-                    stdout=subprocess.PIPE,
-                    stderr=subprocess.PIPE,
-                    text=True,
-                    bufsize=1
-                )
-                
-                # Send init
-                proc.stdin.write(json.dumps({
-                    "jsonrpc": "2.0",
-                    "id": 1,
-                    "method": "initialize",
-                    "params": {
-                        "protocolVersion": "2024-11-05",
-                        "capabilities": {},
-                        "clientInfo": {"name": "streamlit", "version": "1.0"}
-                    }
-                }) + "\n")
-                proc.stdin.flush()
-                
-                for _ in range(100):
-                    line = proc.stdout.readline()
-                    if not line:
-                        break
-                    try:
-                        data = json.loads(line.strip())
-                        if data.get("id") == 1:
-                            break
-                    except:
-                        pass
-                
-                # Call tool
-                proc.stdin.write(json.dumps({
-                    "jsonrpc": "2.0",
-                    "id": 2,
-                    "method": "tools/call",
-                    "params": {"name": tool_name, "arguments": arguments}
-                }) + "\n")
-                proc.stdin.flush()
-                
-                tool_res = None
-                for _ in range(100):
-                    line = proc.stdout.readline()
-                    if not line:
-                        break
-                    try:
-                        data = json.loads(line.strip())
-                        if data.get("id") == 2:
-                            tool_res = data
-                            break
-                    except:
-                        pass
-                
-                proc.stdin.close()
-                proc.terminate()
-                if tool_res and "result" in tool_res:
-                    return tool_res["result"]
-                elif tool_res and "error" in tool_res:
-                    return {"error": tool_res["error"].get("message", "Unknown error")}
-                else:
-                    return {"error": "No response"}
-            except Exception as e:
-                return {"error": str(e)}
-
-        # Load notebooks
-        with st.spinner("Pobieram listę notatników..."):
-            res = call_notebooklm_mcp("list_notebooks")
-            notebooks = []
-            if "error" not in res:
-                try:
-                    text = res["content"][0]["text"]
-                    notebooks = json.loads(text).get("data", {}).get("notebooks", [])
-                except Exception as e:
-                    st.error(f"Błąd parsowania biblioteki: {e}")
-            else:
-                st.error(f"Błąd serwera MCP: {res.get('error')}")
-                
-        # Layout
-        col_list, col_chat = st.columns([1, 2])
-        
-        with col_list:
-            st.subheader("📚 Twoje Notatniki")
-            
-            if not notebooks:
-                st.info("Brak zarejestrowanych notatników w bibliotece.")
-            else:
-                for nb in notebooks:
-                    is_active = st.session_state.get("active_mcp_notebook_id") == nb["id"]
-                    card_border = "border-left: 4px solid #10B981;" if is_active else "border-left: 4px solid #1E2535;"
-                    st.markdown(f"""
-                    <div class="custom-card" style="{card_border} padding: 12px; margin-bottom: 8px;">
-                        <b style="color: #FFFFFF;">{nb.get('name', 'Nienazwany')}</b><br>
-                        <span style="font-size: 0.8rem; color:#94A3B8;">{nb.get('description', '')[:80]}...</span>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    if st.button(f"Wybierz: {nb.get('name')}", key=f"sel_nb_{nb['id']}", use_container_width=True):
-                        st.session_state.active_mcp_notebook_id = nb["id"]
-                        st.session_state.active_mcp_notebook_name = nb["name"]
-                        st.session_state.mcp_chat_history = []
-                        st.session_state.mcp_session_id = None
-                        st.rerun()
-            
-            st.markdown("---")
-            st.subheader("➕ Dodaj nowy notatnik")
-            nb_url = st.text_input("NotebookLM Share URL:", placeholder="https://notebooklm.google.com/notebook/...")
-            nb_name = st.text_input("Nazwa wyświetlana:")
-            nb_desc = st.text_input("Opis zawartości:")
-            nb_topics = st.text_input("Główne tematy (oddziel przecinkami):", "biznes, marketing")
-            
-            if st.button("Zarejestruj Notatnik", type="primary", use_container_width=True):
-                if not nb_url or not nb_name or not nb_desc:
-                    st.error("Uzupełnij wszystkie wymagane pola.")
-                else:
-                    topics_list = [t.strip() for t in nb_topics.split(",") if t.strip()]
-                    with st.spinner("Dodaję notatnik..."):
-                        add_res = call_notebooklm_mcp("add_notebook", {
-                            "url": nb_url,
-                            "name": nb_name,
-                            "description": nb_desc,
-                            "topics": topics_list
-                        })
-                        if "error" in add_res:
-                            st.error(f"Błąd: {add_res['error']}")
-                        else:
-                            st.success(f"Notatnik '{nb_name}' dodany pomyślnie!")
-                            time.sleep(1)
-                            st.rerun()
-                            
-        with col_chat:
-            active_id = st.session_state.get("active_mcp_notebook_id")
-            active_name = st.session_state.get("active_mcp_notebook_name")
-            
-            if not active_id:
-                st.info("👈 Wybierz notatnik z listy po lewej stronie, aby rozpocząć rozmowę.")
-            else:
-                st.subheader(f"💬 Czat: {active_name}")
-                st.caption(f"ID: `{active_id}` | Połączenie: `MCP stdio`")
-                
-                # Session info
-                session_id = st.session_state.get("mcp_session_id")
-                if session_id:
-                    st.markdown(f"**Aktywna sesja:** `{session_id}` (zachowuje kontekst rozmowy)")
-                
-                # Initialize chat history
-                if "mcp_chat_history" not in st.session_state:
-                    st.session_state.mcp_chat_history = []
-                    
-                # Display chat history
-                for chat in st.session_state.mcp_chat_history:
-                    role_color = "#3B82F6" if chat["role"] == "user" else "#10B981"
-                    role_name = "Ty" if chat["role"] == "user" else "NotebookLM"
-                    st.markdown(f"""
-                    <div style="background-color: #121620; padding: 12px; border-radius: 8px; margin-bottom: 8px; border-left: 3px solid {role_color};">
-                        <b style="color: {role_color};">{role_name}:</b><br>
-                        <span style="color: #E2E8F0; white-space: pre-wrap;">{chat['content']}</span>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
-                # Chat input
-                chat_query = st.text_input("Zadaj pytanie do notatnika:", key="mcp_chat_query_input")
-                
-                c_send, c_clear = st.columns([4, 1])
-                with c_send:
-                    if st.button("Wyślij pytanie", type="primary", use_container_width=True):
-                        if chat_query:
-                            st.session_state.mcp_chat_history.append({"role": "user", "content": chat_query})
-                            
-                            args = {
-                                "question": chat_query,
-                                "notebook_id": active_id
-                            }
-                            if session_id:
-                                args["session_id"] = session_id
-                                
-                            with st.spinner("NotebookLM myśli..."):
-                                ask_res = call_notebooklm_mcp("ask_question", args)
-                                
-                            if "error" in ask_res:
-                                st.error(f"Błąd: {ask_res['error']}")
-                            else:
-                                try:
-                                    ans_text = ask_res["content"][0]["text"]
-                                    ans_json = json.loads(ans_text)
-                                    answer = ans_json.get("data", {}).get("answer", "Brak odpowiedzi")
-                                    new_session_id = ans_json.get("data", {}).get("session_id")
-                                    
-                                    if new_session_id:
-                                        st.session_state.mcp_session_id = new_session_id
-                                        
-                                    st.session_state.mcp_chat_history.append({"role": "assistant", "content": answer})
-                                except Exception as e:
-                                    st.error(f"Błąd parsowania odpowiedzi: {e}. Surowa odpowiedź: {ask_res}")
-                            
-                            st.rerun()
-                with c_clear:
-                    if st.button("Wyczyść historię", use_container_width=True):
-                        st.session_state.mcp_chat_history = []
-                        st.session_state.mcp_session_id = None
-                        st.rerun()
 
 
 # 4a. LEAD RADAR
@@ -8615,73 +8447,14 @@ Popraw post, eliminując wszystkie wskazane błędy i podnosząc perswazyjność
 
 
 
-# --- GLOBALNE ELEMENTY (FAB BRAIN DUMP) ---
-# Prawdziwy fixed FAB przez st.components.v1.html — uniezależniony od DOM Streamlit
-import streamlit.components.v1 as components
-components.html("""
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-  body { margin:0; background: transparent; }
-  #fab {
-    position: fixed;
-    bottom: 28px;
-    right: 28px;
-    z-index: 9999999;
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, #EC4899, #D946EF);
-    border: 2px solid rgba(244,114,182,0.7);
-    box-shadow: 0 0 0 0 rgba(236,72,153,0.7);
-    font-size: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    animation: pulse 1.8s infinite;
-    user-select: none;
-    transition: transform 0.2s;
-  }
-  #fab:hover { transform: scale(1.12); }
-  @keyframes pulse {
-    0%   { box-shadow: 0 0 0 0 rgba(236,72,153,0.7); }
-    70%  { box-shadow: 0 0 0 18px rgba(236,72,153,0); }
-    100% { box-shadow: 0 0 0 0 rgba(236,72,153,0); }
-  }
-  #tooltip {
-    position: fixed;
-    bottom: 100px;
-    right: 20px;
-    background: #1E293B;
-    color: #E2E8F0;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-family: 'Outfit', sans-serif;
-    font-size: 13px;
-    display: none;
-    border: 1px solid #334155;
-  }
-</style>
-</head>
-<body>
-  <div id="tooltip">💀 Zrzuć chaos z głowy</div>
-  <div id="fab" title="Brain Dump" onmouseenter="document.getElementById('tooltip').style.display='block'" onmouseleave="document.getElementById('tooltip').style.display='none'" onclick="sendMsg()">💀</div>
-  <script>
-    function sendMsg() {
-      // Kliknij ukryty przycisk Streamlit przez postMessage
-      window.parent.postMessage({type: 'streamlit:setComponentValue', value: true}, '*');
-    }
-  </script>
-</body>
-</html>
-""", height=0, scrolling=False)
+# --- GLOBALNE ELEMENTY (PŁYWAJĄCY FAB BRAIN DUMP) ---
+# Prawdziwy, 100% stabilny floating przycisk z czaszką 💀 na dole po prawej stronie na każdej podstronie
+st.markdown('<div class="fab-container">', unsafe_allow_html=True)
+if st.button("💀", key="fixed_fab_brain_dump", help="Szybki zrzut myśli i chaosu z głowy (Brain Dump)"):
+    show_brain_dump_dialog()
+st.markdown('</div>', unsafe_allow_html=True)
 
-# Backup: Streamlit-natywny trigger u dołu strony (fallback gdy postMessage nie przejdzie)
-if "show_fab_dump" not in st.session_state:
-    st.session_state.show_fab_dump = False
-
+# Dodatkowy backup przycisku w dolnej części paska bocznego
 with st.sidebar:
     st.markdown("---")
     if st.button("💀 Brain Dump", key="fab_sidebar_dump", help="Szybki zrzut myśli i chaosu z głowy", use_container_width=True):
