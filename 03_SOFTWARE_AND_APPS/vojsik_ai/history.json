@@ -1174,5 +1174,17 @@
         "raw_text": "No i chyba skoro utworzyłeś powstałe teraz jeszcze te foldery 04assets, silos 04assets oraz 06crm, to czy nie powinno się tam coś znaleźć?  chodzi o grafiki, awatary i banery dla platform i klientów. Nie ma tam rzeczy w innych folderach, które należałoby tu skopiować lub przenieść.",
         "corrected_text": "No i chyba skoro utworzyłeś powstałe teraz jeszcze te foldery 04assets, silos 04assets oraz 06crm, to czy nie powinno się tam coś znaleźć?  chodzi o grafiki, awatary i banery dla platform i klientów. Nie ma tam rzeczy w innych folderach, które należałoby tu skopiować lub przenieść.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 14:33:54",
+        "raw_text": "właściwych folderów nie została zrobiona reorganizacja tak samo jak na komputerze stacjonarnym.",
+        "corrected_text": "właściwych folderów nie została zrobiona reorganizacja tak samo jak na komputerze stacjonarnym.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 14:41:20",
+        "raw_text": "Nie mam pewności właśnie, no dzisiaj na pewno wcześniej jakieś tam grafiki wrzucałem do projektu kurczak u Jasia, ponieważ robiłem update... Robiłem update...  Robiłem update.  Zdjęć na sekcję hero, czy i tak dalej, nie mam pewności. Tutaj poniżej jest odpowiedź. Odpowiedź jest z terminala. Prześledź historię, zobacz co tam się wydarzyło. No i teraz pytanie, jak poinformować w każdym projekcie agenta po otwieraniu  o danych projektach na AntiGravity na laptopie, o zmianach strukturowych folderów i plików, żeby zrobili tam porządek, nie wiem, według tej instrukcji workspace memory, żeby się odnieśli do tego.",
+        "corrected_text": "Nie mam pewności właśnie, no dzisiaj na pewno wcześniej jakieś tam grafiki wrzucałem do projektu kurczak u Jasia, ponieważ robiłem update... Robiłem update...  Robiłem update.  Zdjęć na sekcję hero, czy i tak dalej, nie mam pewności. Tutaj poniżej jest odpowiedź. Odpowiedź jest z terminala. Prześledź historię, zobacz co tam się wydarzyło. No i teraz pytanie, jak poinformować w każdym projekcie agenta po otwieraniu  o danych projektach na AntiGravity na laptopie, o zmianach strukturowych folderów i plików, żeby zrobili tam porządek, nie wiem, według tej instrukcji workspace memory, żeby się odnieśli do tego.",
+        "status": "raw_fallback"
     }
 ]
