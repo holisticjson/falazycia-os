@@ -1342,5 +1342,11 @@
         "raw_text": "Czyli filmy YouTube, ich treść i zalecenia. Tutaj też coś wkleiłem uprzednio odnośnie...  dot and sprinkled in some reasoning from Kimi K3 and GLM 5.2.  lokalnych rozwiązań. Tam jeszcze w jednym filmie Hasan coś mówił na temat darmowej obróbki wideo chyba, ale wykorzystując chyba clod.",
         "corrected_text": "Czyli filmy YouTube, ich treść i zalecenia. Tutaj też coś wkleiłem uprzednio odnośnie...  dot and sprinkled in some reasoning from Kimi K3 and GLM 5.2.  lokalnych rozwiązań. Tam jeszcze w jednym filmie Hasan coś mówił na temat darmowej obróbki wideo chyba, ale wykorzystując chyba clod.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 22:31:59",
+        "raw_text": "To nie chodzi o ten plik w tej lokalizacji? Sprawdź dokładnie co tam mamy, a czego nie mamy.",
+        "corrected_text": "To nie chodzi o ten plik w tej lokalizacji? Sprawdź dokładnie co tam mamy, a czego nie mamy.",
+        "status": "raw_fallback"
     }
 ]
