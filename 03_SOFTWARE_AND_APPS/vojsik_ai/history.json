@@ -1144,5 +1144,17 @@
         "raw_text": "Rozumiem, że wszystko tutaj jeśli chodzi o Loop Engineering wdrożyliśmy lokalnie w AntiGravity, wszystkie założenia oraz w Streamlit Dashboard, tak?",
         "corrected_text": "Rozumiem, że wszystko tutaj jeśli chodzi o Loop Engineering wdrożyliśmy lokalnie w AntiGravity, wszystkie założenia oraz w Streamlit Dashboard, tak?",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 14:04:43",
+        "raw_text": "poniżej odpowiedź z laptopa w momencie jak uruchomiłem pobranie pól",
+        "corrected_text": "poniżej odpowiedź z laptopa w momencie jak uruchomiłem pobranie pól",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 14:10:42",
+        "raw_text": "Sprawdź jeszcze, wyrzucałem Ci zrzuty ekranu z folderu z eksploratora na laptopie. Nie zgadza mi się coś w folderze głównym, czy ja ISON Agency OS w folderze agencji.",
+        "corrected_text": "Sprawdź jeszcze, wyrzucałem Ci zrzuty ekranu z folderu z eksploratora na laptopie. Nie zgadza mi się coś w folderze głównym, czy ja ISON Agency OS w folderze agencji.",
+        "status": "raw_fallback"
     }
 ]
