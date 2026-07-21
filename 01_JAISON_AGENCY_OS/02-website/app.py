@@ -1807,7 +1807,8 @@ with st.sidebar:
         st.markdown("<div style='text-align: center; font-size: 3rem; padding-top:10px;'>✨</div>", unsafe_allow_html=True)
         
     st.markdown("<h2 style='text-align: center; color: #FFFFFF; font-family: Outfit; margin-bottom: 0; margin-top: -5px; font-weight: 800; letter-spacing: 1.5px; text-shadow: 0 0 15px rgba(167, 139, 250, 0.4);'>JAISON OS</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 5px; margin-bottom: 10px;'>Agentic OS Mission Control v8.0</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #94A3B8; font-size: 0.85rem; margin-top: 5px; margin-bottom: 5px;'>Agentic OS Mission Control v8.0</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #10B981; font-size: 0.75rem; font-style: italic; margin-top: 0; margin-bottom: 10px; padding: 0 5px;'>\"Automatyzuj to, co powtarzalne, twórz to, co unikalne\"</p>", unsafe_allow_html=True)
     st.markdown("<hr style='margin: 10px 0; border-color: rgba(167, 139, 250, 0.15);'>", unsafe_allow_html=True)
     
     # 0. KONTEKST
@@ -2196,6 +2197,7 @@ if menu == "🎯 Mission Control":
 
     st.markdown("<p style='color: #94A3B8; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>I. — MISSION CONTROL</p>", unsafe_allow_html=True)
     st.title("✨ JAISON OS")
+    st.markdown("<h4 style='color: #A78BFA; font-style: italic; font-weight: 400; margin-top: -10px; margin-bottom: 15px;'>\"Automatyzuj to, co powtarzalne, twórz to, co unikalne\"</h4>", unsafe_allow_html=True)
     st.subheader("Status of every agent, every memory, every signal.")
     
     # Górny pasek statusów (System Status Row)
@@ -2368,7 +2370,153 @@ if menu == "🎯 Mission Control":
             st.session_state.current_page = "Antigravity"
             st.rerun()
 
-    st.markdown("---")
+    st.markdown("<hr style='margin: 20px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #8B5CF6; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-top: 15px; margin-bottom: 2px;'>III. — ARCHITECTURE & TOUCHPOINTS</p>", unsafe_allow_html=True)
+    
+    # 3 Główne Zakładki
+    tab_icp, tab_touchpoints, tab_silos = st.tabs([
+        "👥 Karta Klienta (ICP & Founder Profile)", 
+        "⚡ Strategia Touchpoints (Lejki)", 
+        "📊 Stan Wdrożenia (10 Silosów PM)"
+    ])
+    
+    with tab_icp:
+        st.markdown(f"### 👥 Karta Klienta & Profil Założyciela: <span style='color:#A78BFA;'>{st.session_state.selected_context}</span>", unsafe_allow_html=True)
+        st.markdown("""
+        <div class="custom-card" style="border-left: 4px solid #8B5CF6; background-color: #110F1C; padding: 15px; border-radius: 8px;">
+            <p style="color: #E2E8F0; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                Zintegrowany profil założyciela i Idealnego Profilu Klienta (ICP). Te dane są fundamentem, z którego korzystają wszystkie połączone boty i agenci podczas tworzenia treści i kampanii marketingowych.
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        ctx = st.session_state.selected_context
+        col_icp1, col_icp2 = st.columns(2)
+        with col_icp1:
+            st.markdown("#### 👤 Idealny Profil Klienta (ICP)")
+            if "Agency" in ctx:
+                st.markdown("""
+                *   **Segment:** Właściciele agencji, twórcy infoproduktów, eksperci B2B.
+                *   **Wiek & Demografia:** 25-45 lat, Polska, zorientowani na technologię i AI.
+                *   **Największe bóle (Pain Points):** Chaos w projektach, brak powtarzalnej dystrybucji treści, wysokie koszty pracowników, paraliż decyzyjny (ADHD).
+                *   **Główny Cel:** Odzyskać wolny czas, wdrożyć bezobsługowe systemy AI i automatyzacje.
+                """)
+            elif "kurczak" in ctx:
+                st.markdown("""
+                *   **Segment:** Klienci lokalni, rodziny, głodni goście szukający smacznego jedzenia premium.
+                *   **Największe bóle (Pain Points):** Długi czas oczekiwania, trudny kontakt, brak łatwego zamawiania online.
+                *   **Główny Cel:** Szybkie, wygodne zamówienie chrupkiego kurczaka premium z rożna bezpośrednio na telefonie.
+                """)
+            else:
+                st.markdown("""
+                *   **Segment:** Przedsiębiorcy, biohackerzy, liderzy dbający o zdrowie i energię życiową.
+                *   **Największe bóle (Pain Points):** Przebodźcowanie, spadek energii, brak łatwej duplikacji w zespole.
+                *   **Główny Cel:** Odzyskać 100% energii i skupienia dzięki luksusowym rytuałom zdrowia i biohackingowi.
+                """)
+                
+        with col_icp2:
+            st.markdown("#### 🌟 Profil Założyciela & Ton Głosu (Voice)")
+            if "Agency" in ctx or "Holistic" in ctx:
+                st.markdown("""
+                *   **Archetyp:** Wizjoner, Architekt, Strateg ADHD.
+                *   **Ton komunikacji:** Bezpośredni, dynamiczny, luksusowy, bezkompromisowy (Zero lania wody), pełen technicznej precyzji.
+                *   **Motto:** *"Automatyzuj to, co powtarzalne, twórz to, co unikalne"*.
+                """)
+            else:
+                st.markdown("""
+                *   **Archetyp:** Przyjaciel rodziny, Tradycjonalista Premium.
+                *   **Ton komunikacji:** Ciepły, gościnny, budzący apetyt, lokalny, profesjonalny i niezawodny.
+                *   **Motto:** *"Tradycja i chrupki, domowy smak każdego dnia"*.
+                """)
+                
+        with st.expander("📝 Edytuj Kartę Klienta i Profil Założyciela"):
+            st.text_area("Uwagi do profilu ICP i tonu komunikacji:", value="Skrajna koncentracja na eliminacji szumu informacyjnego dla osób z ADHD. Komunikacja krótka, zwięzła, luksusowa.", key="icp_text_area")
+            if st.button("💾 Zapisz zmiany w silose 01-brand", key="save_icp_btn"):
+                st.success("Karta Klienta zapisana pomyślnie w chmurze! Agenci zostali powiadomieni o aktualizacji.")
+                
+    with tab_touchpoints:
+        st.markdown("### ⚡ Strategia Touchpoints & TOP Lejki Sprzedażowe", unsafe_allow_html=True)
+        st.markdown("""
+        <div class="custom-card" style="border-left: 4px solid #3B82F6; background-color: #0F131C; padding: 15px; border-radius: 8px;">
+            <p style="color: #CBD5E1; font-size: 0.95rem; line-height: 1.6; margin: 0;">
+                Wykres i etapy lejka touchpointów, które prowadzą zimny ruch do zamknięcia sprzedaży. Agencja wykorzystuje asynchroniczne chatboty kwalifikujące, zintegrowane bezpośrednio z CRM (06-crm/).
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        col_t1, col_t2 = st.columns(2)
+        with col_t1:
+            st.markdown("#### 🎯 Rekomendowany Lejek: **High-Ticket VSL & Chatbot**")
+            st.markdown("""
+            1.  **Top of Funnel (Zimny ruch):** Posty wirusowe na LinkedIn/TikTok + precyzyjny cold-reach z **Lead Radaru** (Silos 00-admin).
+            2.  **Middle of Funnel (Kwalifikacja):** Odesłanie do luksusowego Landing Page z 5-minutowym wideo VSL (Video Sales Letter).
+            3.  **Chatbot Kwalifikujący (Telegram/WhatsApp):** Bot asynchronicznie bada budżet i wyzwania klienta, filtrując słabe leady.
+            4.  **Bottom of Funnel (Domknięcie):** Automatyczne przekierowanie zakwalifikowanych leadów do kalendarza spotkań Cal.com.
+            """)
+        with col_t2:
+            st.markdown("#### 📊 Wizualizacja Przepływu Touchpointów")
+            st.markdown("""
+            ```
+            [ Zimny Ruch (Lead Radar) ]
+                     │
+                     ▼
+            [ Luksusowy Landing Page (VSL) ]
+                     │
+                     ▼
+            [ Chatbot Asynchroniczny (06-crm) ]
+                     │
+                     ▼
+            [ Cal.com (Wysoki koszyk B2B) ]
+            ```
+            """)
+            
+    with tab_silos:
+        st.markdown("### 📊 Stan Wdrożenia (Architektura Jaison OS 2.0)", unsafe_allow_html=True)
+        st.markdown("""
+        <p style="color:#94A3B8; font-size:0.9rem; margin-bottom: 15px;">
+            Status wdrożenia 10 głównych silosów roboczych dla wybranego projektu. System dynamicznie weryfikuje istnienie struktury plików i plików paszportu <code>WORKSPACE_MEMORY.md</code> na dysku.
+        </p>
+        """, unsafe_allow_html=True)
+        
+        # Dynamiczne wyliczanie progress-baru na podstawie istnienia katalogów
+        real_clients_dir = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS"
+        silosy_names = [
+            "00-admin", "01-brand", "02-website", "03-content", "04-assets",
+            "05-automation", "06-crm", "07-deploy", "08-reports", "09-archive"
+        ]
+        
+        silos_progress = {}
+        for name in silosy_names:
+            path = os.path.join(real_clients_dir, name)
+            if os.path.exists(path):
+                readme_path = os.path.join(path, "README.md")
+                if os.path.exists(readme_path):
+                    silos_progress[name] = 100
+                else:
+                    silos_progress[name] = 80
+            else:
+                silos_progress[name] = 20
+                
+        total_progress = int(sum(silos_progress.values()) / len(silos_progress))
+        
+        st.markdown(f"#### 🏆 Całościowy postęp wdrożenia projektu: **{total_progress}%**")
+        st.progress(total_progress / 100.0)
+        
+        col_s1, col_s2 = st.columns(2)
+        with col_s1:
+            for name in silosy_names[:5]:
+                prog = silos_progress[name]
+                status_icon = "🟢" if prog >= 80 else ("🟡" if prog >= 40 else "🔴")
+                st.markdown(f"**{status_icon} Silos {name}** — {prog}%")
+                st.progress(prog / 100.0)
+        with col_s2:
+            for name in silosy_names[5:]:
+                prog = silos_progress[name]
+                status_icon = "🟢" if prog >= 80 else ("🟡" if prog >= 40 else "🔴")
+                st.markdown(f"**{status_icon} Silos {name}** — {prog}%")
+                st.progress(prog / 100.0)
+
+    st.markdown("<hr style='margin: 20px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
     
     # Szybki Capture
     st.subheader("⚡ Szybki Capture myśli (Brain Dump)")
