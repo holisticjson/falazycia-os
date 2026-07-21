@@ -8038,7 +8038,7 @@ Popraw post, eliminując wszystkie wskazane błędy i podnosząc perswazyjność
                 """)
                 
                 # Inicjalizacja i wczytanie reguł z pliku JSON
-                filepath_rules = "dashboard_and_core/manychat_rules.json"
+                filepath_rules = "02-website/manychat_rules.json"
                 
                 # Funkcja wczytywania lokalnego (wewnątrz modułu)
                 def get_rules():
@@ -8459,4 +8459,3 @@ with st.sidebar:
     st.markdown("---")
     if st.button("💀 Brain Dump", key="fab_sidebar_dump", help="Szybki zrzut myśli i chaosu z głowy", use_container_width=True):
         show_brain_dump_dialog()
-                    
