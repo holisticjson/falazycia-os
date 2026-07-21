@@ -1282,5 +1282,29 @@
         "raw_text": "Rozumiem, że rozmawiając o Hermes mówimy o tym samym, czyli system agentowy Hermes Agentic OS od twórców Nous Portal.",
         "corrected_text": "Rozumiem, że rozmawiając o Hermes, mówimy o tym samym, czyli system agentowy Hermes Agentic OS od twórców Nous Portal.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-21 21:50:50",
+        "raw_text": "Najpierw jeszcze się upewnię, że przeanalizowaliśmy te raporty z tych plików, żeby zarząd zrobił analizę, wykluczył jakby niezgodne z naszą polityką elementy. Przejrzyj też te linki, te filmy YouTube oraz te wpisy, czy jesteśmy w stanie w ogóle,  jest osiągalne, ma to sens, tam jest też wpis o sprzedaży KUBy, więc można by taką wizę też zasilić, że dyrektora sprzedaży, marketingu, product managera, no wszystkich tych, którzy powinni o tym wiedzieć, tworząc content, lejki sprzedażowe, landing page, kanały społecznościowe dla projektów i tak dalej.",
+        "corrected_text": "Najpierw jeszcze się upewnię, że przeanalizowaliśmy te raporty z tych plików, żeby zarząd zrobił analizę, wykluczył jakby niezgodne z naszą polityką elementy. Przejrzyj też te linki, te filmy YouTube oraz te wpisy, czy jesteśmy w stanie w ogóle,  jest osiągalne, ma to sens, tam jest też wpis o sprzedaży KUBy, więc można by taką wizę też zasilić, że dyrektora sprzedaży, marketingu, product managera, no wszystkich tych, którzy powinni o tym wiedzieć, tworząc content, lejki sprzedażowe, landing page, kanały społecznościowe dla projektów i tak dalej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 21:54:13",
+        "raw_text": "Chodzi też o optymalizację użycia modeli LMO Open Source, które by się nadawały do prac wykonywanych przez agentów typu research, skanowanie. Tu też trzeba wziąć pod uwagę mocno ograniczenia i limity RPM i TPM. Ale poprzednio chyba podjęliśmy decyzję o routingu smartwatchu.  z wykorzystaniem modeli od Nvidia tak jest build Nvidia.com  Dziękuję.",
+        "corrected_text": "Chodzi też o optymalizację użycia modeli LMO Open Source, które by się nadawały do prac wykonywanych przez agentów typu research, skanowanie. Tu też trzeba wziąć pod uwagę mocno ograniczenia i limity RPM i TPM. Ale poprzednio chyba podjęliśmy decyzję o routingu smartwatchu.  z wykorzystaniem modeli od Nvidia tak jest build Nvidia.com  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 21:54:57",
+        "raw_text": "Tu też trzeba byłoby przeanalizować ofertę tak popularnego reklamowanego, wiadomo w ramach też afiliacji dużo twórców reklamuje rozwiązania od Hostinger.com.",
+        "corrected_text": "Tu też trzeba byłoby przeanalizować ofertę tak popularnego reklamowanego, wiadomo w ramach też afiliacji dużo twórców reklamuje rozwiązania od Hostinger.com.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 21:55:10",
+        "raw_text": "i trzeba by było skonfrontować ich ofertę względem naszych rozwiązań.",
+        "corrected_text": "i trzeba by było skonfrontować ich ofertę względem naszych rozwiązań.",
+        "status": "raw_fallback"
     }
 ]
