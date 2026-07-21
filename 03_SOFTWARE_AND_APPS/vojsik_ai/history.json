@@ -1306,5 +1306,23 @@
         "raw_text": "i trzeba by było skonfrontować ich ofertę względem naszych rozwiązań.",
         "corrected_text": "i trzeba by było skonfrontować ich ofertę względem naszych rozwiązań.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 21:58:43",
+        "raw_text": "Tu też trzeba by zmusić dyrektora ds. marketingu do analizy folderu 11 Digital Products, przeanalizowanie oferty tych e-booków, które nie są skończone, ale które można by wykorzystać na lead magnet i przeanalizować samą stronę internetową agencji,  się znajduje jako lead magnet i czy fizycznie to jest dostępne. Gdzie to poukładać właśnie w tych digital products, może jakieś checklisty do pobrania dla klientów. Zastanowić się krytycznym tutaj też spojrzeniem na ewentualnie propozycje, biorąc pod uwagę  nasz stag technologiczny, nasze podejście do rozwiązań, jakie można by stworzyć proste jeszcze lub zmodyfikować obecne proste infoprodukty stanowiące lead magnet, które mogłyby być częścią też strategii kontentu organicznego.  No i też ewentualnie uruchomić, czy to subagenta od reklam i może zaproponować jakąś kampanię, taką mini kampanię, czyli czy to w ogóle ma sens, na przykład, nie wiem, na 10-20 złotych dziennie, czy to na Meta Ads, czy na Google Ads.",
+        "corrected_text": "Tu też trzeba by zmusić dyrektora ds. marketingu do analizy folderu 11 Digital Products, przeanalizowanie oferty tych e-booków, które nie są skończone, ale które można by wykorzystać na lead magnet i przeanalizować samą stronę internetową agencji,  się znajduje jako lead magnet i czy fizycznie to jest dostępne. Gdzie to poukładać właśnie w tych digital products, może jakieś checklisty do pobrania dla klientów. Zastanowić się krytycznym tutaj też spojrzeniem na ewentualnie propozycje, biorąc pod uwagę  nasz stag technologiczny, nasze podejście do rozwiązań, jakie można by stworzyć proste jeszcze lub zmodyfikować obecne proste infoprodukty stanowiące lead magnet, które mogłyby być częścią też strategii kontentu organicznego.  No i też ewentualnie uruchomić, czy to subagenta od reklam i może zaproponować jakąś kampanię, taką mini kampanię, czyli czy to w ogóle ma sens, na przykład, nie wiem, na 10-20 złotych dziennie, czy to na Meta Ads, czy na Google Ads.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 21:59:58",
+        "raw_text": "To też pytanie, czy Gemini API Key z Google AI Studio w wersji 3 tier nie ma zbyt dużych ograniczeń limitów, które jakby w kontekście tego przeznaczenia na skaner czy research będzie wystarczające. Trzeba tutaj znowu  wrócić do raportów na temat modeli LLM Open Source i które moglibyśmy ewentualnie też jako fallback albo jako pierwszy model przetestować, tak, jak się sprawdzają.",
+        "corrected_text": "To też pytanie, czy Gemini API Key z Google AI Studio w wersji 3 tier nie ma zbyt dużych ograniczeń limitów, które jakby w kontekście tego przeznaczenia na skaner czy research będzie wystarczające. Trzeba tutaj znowu  wrócić do raportów na temat modeli LLM Open Source i które moglibyśmy ewentualnie też jako fallback albo jako pierwszy model przetestować, tak, jak się sprawdzają.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 22:01:14",
+        "raw_text": "Tu jest też potrzebne wsparcie do skonfigurowania, wygenerowania avatarów, zdjęć w tle, opisów, bio i tak dalej. To co rozpoczął poprzedni agent chyba w Content Factory. Stanęło na tym, że profil LinkedIn Tomasza, jako twórcy agencji Allison,  jest praktycznie w pełni uzupełnione, tylko jeszcze został awatar i zdjęcie w tle do wygenerowania. No i w całości optymalizacja, konfiguracja pozostałych kanałów społecznościowych rekomendowanych.",
+        "corrected_text": "Tu jest też potrzebne wsparcie do skonfigurowania, wygenerowania avatarów, zdjęć w tle, opisów, bio i tak dalej. To co rozpoczął poprzedni agent chyba w Content Factory. Stanęło na tym, że profil LinkedIn Tomasza, jako twórcy agencji Allison,  jest praktycznie w pełni uzupełnione, tylko jeszcze został awatar i zdjęcie w tle do wygenerowania. No i w całości optymalizacja, konfiguracja pozostałych kanałów społecznościowych rekomendowanych.",
+        "status": "raw_fallback"
     }
 ]

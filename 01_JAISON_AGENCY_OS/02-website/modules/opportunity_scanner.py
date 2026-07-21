@@ -396,6 +396,31 @@ def call_gemini_scanner_api(messages, system_instruction=None):
         except Exception:
             pass
 
+    # 0.5. Try direct NVIDIA NIM API if NVIDIA_API_KEY is available (unlimited developer fallback)
+    nvidia_api_key = os.environ.get("NVIDIA_API_KEY")
+    if nvidia_api_key:
+        try:
+            nvidia_url = "https://integrate.api.nvidia.com/v1/chat/completions"
+            nvidia_payload = {
+                "model": "meta/llama-3.1-70b-instruct",
+                "messages": []
+            }
+            if system_instruction:
+                nvidia_payload["messages"].append({"role": "system", "content": system_instruction})
+            for m in messages:
+                nvidia_payload["messages"].append({"role": m["role"], "content": m["content"]})
+                
+            req = urllib.request.Request(nvidia_url, data=json.dumps(nvidia_payload).encode("utf-8"), headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {nvidia_api_key}"
+            }, method="POST")
+            with urllib.request.urlopen(req, timeout=25.0) as response:
+                if response.getcode() == 200:
+                    res_data = json.loads(response.read().decode("utf-8"))
+                    return res_data["choices"][0]["message"]["content"]
+        except Exception:
+            pass
+
     proxy_url = "http://127.0.0.1:8089/v1/chat/completions"
     payload = {
         "model": "gemini-2.5-flash",
