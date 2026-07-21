@@ -1324,5 +1324,23 @@
         "raw_text": "Tu jest też potrzebne wsparcie do skonfigurowania, wygenerowania avatarów, zdjęć w tle, opisów, bio i tak dalej. To co rozpoczął poprzedni agent chyba w Content Factory. Stanęło na tym, że profil LinkedIn Tomasza, jako twórcy agencji Allison,  jest praktycznie w pełni uzupełnione, tylko jeszcze został awatar i zdjęcie w tle do wygenerowania. No i w całości optymalizacja, konfiguracja pozostałych kanałów społecznościowych rekomendowanych.",
         "corrected_text": "Tu jest też potrzebne wsparcie do skonfigurowania, wygenerowania avatarów, zdjęć w tle, opisów, bio i tak dalej. To co rozpoczął poprzedni agent chyba w Content Factory. Stanęło na tym, że profil LinkedIn Tomasza, jako twórcy agencji Allison,  jest praktycznie w pełni uzupełnione, tylko jeszcze został awatar i zdjęcie w tle do wygenerowania. No i w całości optymalizacja, konfiguracja pozostałych kanałów społecznościowych rekomendowanych.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 22:14:07",
+        "raw_text": "Jak byś mógł jeszcze się wgryźć w ofertę VPS-ów od reklamujących się dostawców, dostrzec ewentualne haczyki u nich i nadal przewagę naszych rozwiązań.",
+        "corrected_text": "Jak byś mógł jeszcze się wgryźć w ofertę VPS-ów od reklamujących się dostawców, dostrzec ewentualne haczyki u nich i nadal przewagę naszych rozwiązań.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 22:15:21",
+        "raw_text": "Hostingernie wydaje jeszcze 30 dni gwarancji, tak? Darmowa domena, tak? Na rok. Z rocznym planem. Pytanie, gdzie są haczyki w tych ich ofertach?",
+        "corrected_text": "Hostingernie wydaje jeszcze 30 dni gwarancji, tak? Darmowa domena, tak? Na rok. Z rocznym planem. Pytanie, gdzie są haczyki w tych ich ofertach?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-21 22:21:15",
+        "raw_text": "Czyli filmy YouTube, ich treść i zalecenia. Tutaj też coś wkleiłem uprzednio odnośnie...  dot and sprinkled in some reasoning from Kimi K3 and GLM 5.2.  lokalnych rozwiązań. Tam jeszcze w jednym filmie Hasan coś mówił na temat darmowej obróbki wideo chyba, ale wykorzystując chyba clod.",
+        "corrected_text": "Czyli filmy YouTube, ich treść i zalecenia. Tutaj też coś wkleiłem uprzednio odnośnie...  dot and sprinkled in some reasoning from Kimi K3 and GLM 5.2.  lokalnych rozwiązań. Tam jeszcze w jednym filmie Hasan coś mówił na temat darmowej obróbki wideo chyba, ale wykorzystując chyba clod.",
+        "status": "raw_fallback"
     }
 ]
