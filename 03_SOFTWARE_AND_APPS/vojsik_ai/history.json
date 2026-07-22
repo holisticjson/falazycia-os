@@ -1612,5 +1612,11 @@
         "raw_text": "Powiedz mi tutaj w ustawieniach anti-gravity coś przesadziliśmy z czymś, to znaczy customization token budget exceeded, large customization will be truncated.",
         "corrected_text": "Powiedz mi tutaj w ustawieniach anti-gravity coś przesadziliśmy z czymś, to znaczy customization token budget exceeded, large customization will be truncated.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 23:19:40",
+        "raw_text": "Dziwne, bo globalnie jest tylko tyle skilli, ale w projekcie dalej nie ma. Jak i w agency OS jest tych skilli niepotrzebnych. Pytanie czy Ty możesz je wyłączyć, te które są nam niepotrzebne, nie dotyczą naszego stacku technologicznego,  potrzebne umiejętności do tego projektu.",
+        "corrected_text": "Dziwne, bo globalnie jest tylko tyle skilli, ale w projekcie dalej nie ma. Jak i w agency OS jest tych skilli niepotrzebnych. Pytanie czy Ty możesz je wyłączyć, te które są nam niepotrzebne, nie dotyczą naszego stacku technologicznego,  potrzebne umiejętności do tego projektu.",
+        "status": "raw_fallback"
     }
 ]
