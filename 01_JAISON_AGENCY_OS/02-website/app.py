@@ -3443,7 +3443,6 @@ elif menu == "CRM":
         </div>
         """, unsafe_allow_html=True)
         
-        # Initialize onboarding state
         if "onb_active" not in st.session_state:
             st.session_state.onb_active = False
             st.session_state.onb_step = 0
@@ -3452,37 +3451,260 @@ elif menu == "CRM":
             st.session_state.onb_type = ""
             st.session_state.onb_target_name = ""
             st.session_state.onb_chat_history = []
+            st.session_state.onb_method = "Szybki Grill AI (Czat dynamiczny - 5 kroków)"
             
         if not st.session_state.onb_active:
-            st.subheader("🚀 Rozpocznij Nowy Wywiad")
-            onb_name = st.text_input("Nazwa Klienta / Nazwa Projektu:", placeholder="np. Gabinet Fizjoterapii Kręgosłup, Nowa Platforma Kursowa...", key="crm_onb_name")
-            onb_type = st.selectbox("Typ wywiadu onboardingowego:", [
-                "A. Nowy klient biznesowy na systemy AI & CRM (B2B)",
-                "B. Shadow Operating dla Twórcy Cyfrowego (Revenue Split)",
-                "C. Nowy członek społeczności ADHD for Life (Onboarding profilowy)"
-            ], key="crm_onb_type")
+            st.subheader("🚀 Rozpocznij Nowy Onboarding")
             
-            if st.button("Uruchom Onboarding & Grill", type="primary", key="crm_onb_start_btn"):
-                if onb_name:
-                    st.session_state.onb_target_name = onb_name
-                    st.session_state.onb_type = onb_type
-                    st.session_state.onb_active = True
-                    st.session_state.onb_step = 1
-                    st.session_state.onb_answers = []
-                    st.session_state.onb_chat_history = []
+            col_onb1, col_onb2 = st.columns(2)
+            with col_onb1:
+                onb_name = st.text_input("Nazwa Klienta / Nazwa Projektu:", placeholder="np. Gabinet Fizjoterapii, Kurczak u Jasia...", key="crm_onb_name")
+                onb_type = st.selectbox("Typ wywiadu onboardingowego:", [
+                    "A. Nowy klient biznesowy na systemy AI & CRM (B2B)",
+                    "B. Shadow Operating dla Twórcy Cyfrowego (Revenue Split)",
+                    "C. Nowy członek społeczności ADHD for Life (Onboarding profilowy)"
+                ], key="crm_onb_type")
+            with col_onb2:
+                onb_method = st.selectbox("Wybierz metodę onboardingu:", [
+                    "🏆 Pełna Ankieta 21 Pytań (Zalecany - Generuje Profil Ghost AI & Brief)",
+                    "⚡ Szybki Grill AI (Czat dynamiczny - 5 kroków)"
+                ], key="crm_onb_method")
+                
+            if onb_method.startswith("🏆"):
+                # RENDEROWANIE PEŁNEJ ANKIETY 21 PYTAŃ
+                st.markdown("<br>", unsafe_allow_html=True)
+                st.markdown("### 📋 Luksusowa Ankieta 21 Pytań — Profilowanie Klienta")
+                st.write("Wypełnij poniższe pytania (lub użyj sprytnych przykładowych podpowiedzi), aby wirtualny zarząd stworzył perfekcyjną strategię, Brief i suwerenny profil copywritingu Ghost AI.")
+                
+                # Szybkie szablony domyślne dla Tomasza (wybitny UX!)
+                biz_template = st.selectbox("Załaduj przykładowe odpowiedzi dla branży:", [
+                    "1. Usługi Lokalne (np. Auto Serwis, Salon GSM, Dekarz)",
+                    "2. Usługi Profesjonalne (np. Biuro Rachunkowe, Kancelaria, Dietetyk)",
+                    "3. Edukator / Twórca Cyfrowy (Kursy online, Społeczność, E-booki)"
+                ])
+                
+                # Definicje domyślnych odpowiedzi na bazie szablonu
+                if "1." in biz_template:
+                    d_q1, d_q2, d_q3, d_q4, d_q5, d_q6, d_q7 = "Salon GSM Auto-Naprawa", "Serwis i naprawa telefonów oraz sprzedaż akcesoriów", "Ekspresowa naprawa ekranów w 30 minut z dożywotnią gwarancją", "Wymiana ekranów i baterii, folie ochronne hydrożel", "Średnia naprawa: 250 zł, akcesoria: 80 zł", "Lokalni mieszkańcy, wiek 18-50, którym zepsuł się telefon i potrzebują go na wczoraj", "Lokalny punkt sieciowy GSM w galerii handlowej"
+                    d_q8, d_q9, d_q10, d_q11, d_q12, d_q13, d_q14 = "Pisanie ręczne tych samych SMS-ów z wycenami i statusami napraw", "Klienci dzwonią co 15 minut pytać czy telefon jest gotowy, paraliżując pracę technika", "SMS z wyceną, SMS z informacją o odbiorze, mail z podziękowaniem i prośbą o opinię", "Wszystko spisujemy na kartkach i w Excelu, totalny chaos przy 20 telefonach dziennie", "Excel, Messenger, SMS Bramka", "Maksymalnie 100 zł miesięcznie za serwery (darmowe plany i trial mile widziane)", "Brak synchronizacji między technikiem a sprzedawcą, gubienie części zamiennych"
+                    d_q15, d_q16, d_q17, d_q18, d_q19, d_q20, d_q21 = "Bezpośredni, pomocny, kumpelski, ale fachowy i konkretny", "Brak, piszemy prosto z mostu", "Ekspresowo, na wczoraj, bez stresu, gwarancja spokoju", "Fachowiec z sąsiedztwa, pogromca zawiłych problemów", "Mirek Burnejko (prostota, konkret), Apple (design i gwarancja)", "Elegancki ciemny (Dark Mode), akcenty neonowej zieleni/fioletu", "Wzrokowiec (V) i Słuchowiec (A) - zdjęcia przed/po naprawie i jasne instrukcje audio"
+                elif "2." in biz_template:
+                    d_q1, d_q2, d_q3, d_q4, d_q5, d_q6, d_q7 = "Biuro Rachunkowe Bilans", "Księgowość, podatki i doradztwo finansowe dla jednoosobowych działalności i spółek", "Księgowość bez stresu i ludzkie tłumaczenie zawiłych przepisów podatkowych", "Pełna księgowość, kadry i płace, optymalizacja podatkowa", "Abonament miesięczny: od 350 zł za JDG, od 1200 zł za Spółki z o.o.", "Mali przedsiębiorcy, programiści B2B, właściciele e-commerce zmęczeni biurokracją", "Tradycyjne, stare biuro rachunkowe z segregatorami i panią Krystyną piszącą maile z pretensjami"
+                    d_q8, d_q9, d_q10, d_q11, d_q12, d_q13, d_q14 = "Odbieranie faktur od klientów, gubienie załączników w mailach", "Ciągłe pytania od klientów o kwoty podatków do zapłaty na ostatnią chwilę (20-ty dzień miesiąca)", "Przypomnienie o fakturach, informacja o podatkach i ZUS, newsletter o zmianach w prawie", "Wymiana mailowa, archiwizacja faktur w PDF, wyliczenia w systemie księgowym", "Własny program księgowy, Gmail, Google Drive", "Do 150 zł miesięcznie za stabilność", "Opóźnienia klientów w dosyłaniu faktur, kary z US za błędy ludzkie"
+                else:
+                    d_q1, d_q2, d_q3, d_q4, d_q5, d_q6, d_q7 = "Akademia ADHD Flow", "Kursy online, e-booki i społeczność dla neuroatypowych twórców i przedsiębiorców", "Metoda projektowania bezszumnego życia i pracy dopasowana do mózgu z ADHD", "Kurs online ADHD OS, masterclass planowania tygodnia, e-book o uwalnianiu dopaminy", "E-book: 49 zł, Kurs główny: 499 zł, Abonament społeczności: 99 zł/msc", "Przedsiębiorcy i wolni strzelcy z ADHD, którzy mają tysiąc pomysłów na minutę i paraliż wdrożeniowy", "Klasyczni trenerzy produktywności mówiący 'po prostu wstań rano i to zrób'"
+                    d_q8, d_q9, d_q10, d_q11, d_q12, d_q13, d_q14 = "Tworzenie grafik, pisanie postów na 5 różnych platform, obróbka wideo Reels", "Szybkie wypalenie dopaminowe po rozpoczęciu nowego projektu, porzucanie rozpoczętych prac", "E-mail onboardingowy po zakupie, cotygodniowy newsletter z dawką dopaminy, powiadomienia o nowych lekcjach", "Sprzedaż przez landing page, wysyłka newslettera, interakcje na Discordzie", "Systeme.io, Discord, Canva, OBS Studio", "Maksymalnie darmowe narzędzia na start MVP", "Brak systematyczności, chaos w plikach i notatkach, przebodźcowanie"
+                
+                with st.expander("⚡ SEK_A: Fundamenty Biznesu & USP (Kto, co i za ile?)", expanded=True):
+                    q1 = st.text_input("A1. Dokładna Nazwa Firmy / Marki:", value=d_q1, key="q1")
+                    q2 = st.text_input("A2. Czym dokładnie zajmuje się firma? (Główna branża):", value=d_q2, key="q2")
+                    q3 = st.text_input("A3. Co jest unikalną cechą oferty (USP)? (Dlaczego klient wybiera właśnie Ciebie, a nie konkurencję):", value=d_q3, key="q3")
+                    q4 = st.text_area("A4. Opisz główne produkty lub usługi w ofercie:", value=d_q4, height=80, key="q4")
+                    q5 = st.text_input("A5. Jak wyglądają ceny? (Średni koszyk zakupowy / model abonamentowy):", value=d_q5, key="q5")
+                    q6 = st.text_input("A6. Kto jest idealnym klientem (ICP)? (Wiek, branża, ból, pragnienie):", value=d_q6, key="q6")
+                    q7 = st.text_input("A7. Kto jest największym konkurentem i czym się wyróżnia?:", value=d_q7, key="q7")
                     
-                    # Predefined starter prompt to generate first question
-                    starter_prompt = f"""Jesteś elitarnym agentem onboardingu i grillowania założeń biznesowych. 
+                with st.expander("⚙️ SEK_B: Punkty Tarcia, Narzędzia i Chaos Operacyjny", expanded=False):
+                    q8 = st.text_input("B1. Jaka jedna powtarzalna czynność zabiera najwięcej czasu w firmie?:", value=d_q8, key="q8")
+                    q9 = st.text_input("B2. Co jest największym źródłem paraliżu operacyjnego u właściciela/zespołu?:", value=d_q9, key="q9")
+                    q10 = st.text_area("B3. Jakie powtarzalne e-maile lub wiadomości są wysyłane do klientów?:", value=d_q10, height=80, key="q10")
+                    q11 = st.text_area("B4. Jak wygląda obecny obieg informacji i zapisywanie leadów?:", value=d_q11, height=80, key="q11")
+                    q12 = st.text_input("B5. Z jakich narzędzi cyfrowych obecnie korzystacie? (np. Excel, Gmail, n8n, WordPress):", value=d_q12, key="q12")
+                    q13 = st.text_input("B6. Jaki jest preferowany budżet na infrastrukturę chmurową? (np. max darmowe plany, do 100 zł/msc):", value=d_q13, key="q13")
+                    q14 = st.text_input("B7. Jakich krytycznych błędów z przeszłości chcecie bezwzględnie uniknąć?:", value=d_q14, key="q14")
+                    
+                with st.expander("🎭 SEK_C: Głos Marki, Tożsamość i Styl Copywritingu (Ghost AI)", expanded=False):
+                    q15 = st.text_input("C1. Jak marka chce brzmieć w komunikacji? (np. luźno, fachowo, dynamicznie, surowo):", value=d_q15, key="q15")
+                    q16 = st.text_input("C2. Jakie są absolutnie zakazane słowa, zwroty lub sformułowania (Słowa AI-ish)?:", value=d_q16, key="q16")
+                    q17 = st.text_input("C3. Jakie słowa klucze i unikalne metafory mają dominować w tekstach?:", value=d_q17, key="q17")
+                    q18 = st.text_input("C4. Jaki archetyp marki najlepiej Was opisuje? (np. Buntownik, Mędrzec, Kumpel, Opiekun):", value=d_q18, key="q18")
+                    q19 = st.text_input("C5. Kto jest Waszym wzorcem biznesowym lub idolem w komunikacji? (np. Mirek Burnejko, Steve Jobs):", value=d_q19, key="q19")
+                    q20 = st.text_input("C6. Preferowana paleta kolorów i ogólna estetyka marki (np. Dark Mode, neon fiolet):", value=d_q20, key="q20")
+                    q21 = st.text_input("C7. Jaka sensoryka dominuje w Waszej marce (V-Wzrok, A-Słuch, K-Dotyk/Emocje - Model VAK)?:", value=d_q21, key="q21")
+                    
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                if st.button("🔥 Generuj Kompletną Tożsamość & Brief Klienta", type="primary", key="suite_crm_gen_21_btn", use_container_width=True):
+                    if q1:
+                        with st.spinner("Wirtualna Flota Dyrektorów oraz Ghostwriter AI analizują 21 pytań..."):
+                            # 1. Przygotuj folder klienta (transliteracja nazwy na bezpieczny katalog)
+                            folder_name = q1.lower().strip()
+                            # Usuwanie polskich znaków i znaków specjalnych
+                            polskie_znaki = {'ą':'a', 'ć':'c', 'ę':'e', 'ł':'l', 'ń':'n', 'ó':'o', 'ś':'s', 'ź':'z', 'ż':'z'}
+                            for pl, eng in polskie_znaki.items():
+                                folder_name = folder_name.replace(pl, eng)
+                            folder_name = re.sub(r'[^a-z0-9]', '', folder_name.replace(' ', '_'))
+                            
+                            real_clients_dir = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS"
+                            client_folder_path = os.path.join(real_clients_dir, folder_name)
+                            
+                            # Tworzenie folderów
+                            os.makedirs(client_folder_path, exist_ok=True)
+                            
+                            # 2. Wywołanie Gemini AI do stworzenia profilu GHOST v2 i Briefu
+                            ai_prompt = f"""Przeanalizuj poniższe 21 pytań z wywiadu onboardingowego dla marki "{q1}" i wygeneruj dla niej kompletny, profesjonalny profil copywritingu GHOST v2 oraz strategiczny Brief biznesowy.
+                            
+UŻYWAJ WYŁĄCZNIE polskiego języka, pisz bezpośrednio ("Ty"), dynamicznie i z głębią perswazyjną NLP (presupozycje, sensoryka VAK).
+KATEGORYCZNY ZAKAZ używania składni markdown do pogrubień (gwiazdek **) w sekcjach HTML, jeśli takowe powstaną. Używaj tagów <strong> i </strong>.
+
+ODPOWIEDZI NA 21 PYTAŃ:
+Sekcja A:
+- Nazwa: {q1}
+- Branża: {q2}
+- USP: {q3}
+- Oferta: {q4}
+- Ceny: {q5}
+- ICP: {q6}
+- Konkurencja: {q7}
+Sekcja B:
+- Najwięcej czasu: {q8}
+- Paraliż: {q9}
+- E-maile: {q10}
+- Obieg info: {q11}
+- Narzędzia: {q12}
+- Budżet GCP: {q13}
+- Błędy z przeszłości: {q14}
+Sekcja C:
+- Komunikacja: {q15}
+- Zakazane słowa: {q16}
+- Słowa klucze: {q17}
+- Archetyp: {q18}
+- Idol: {q19}
+- Estetyka: {q20}
+- Sensoryka VAK: {q21}
+
+GENERUJ NASTĘPUJĄCĄ STRUKTURĘ DO ZAPISU (Wygeneruj dwa osobne bloki):
+
+---BLOK_PROFILE---
+# 👤 PROFIL GHOSTWRITERA AI (GHOST v2) — {q1}
+
+## 🎭 1. Tożsamość i Archetyp Marki
+(Określ surową tożsamość na podstawie idola: {q19} i archetypu: {q18})
+
+## 🗣️ 2. Głos Marki (Tone of Voice)
+- **Styl pisania:** {q15}
+- **Słowa zakazane (AI-ish do eliminacji):** {q16}
+- **Słowa klucze i unikalne metafory:** {q17}
+
+## 🧠 3. Sensoryka VAK & NLP (Perswazyjne zakotwiczenia)
+(Użyj dominującej sensoryki {q21} do stworzenia wzorcowych zwrotów budujących zaufanie u idealnego klienta {q6})
+
+---BLOK_BRIEF---
+# 💼 BRIEF STRATEGICZNY PROJEKTU: {q1}
+- **Typ Projektu:** {onb_type}
+- **Rekomendowany Budżet Chmurowy:** {q13}
+
+## 🎯 1. Główny Cel i Rozwiązanie Chaosu
+(Opisz jak eliminujemy wąskie gardło '{q8}' i paraliż '{q9}')
+
+## ⚙️ 2. Rekomendowana Architektura Low-Friction
+(Zaproponuj automatyzacje z użyciem: {q12}, n8n oraz bezpiecznej izolacji .env)
+"""
+                            synthesis = call_gemini_pro_api([{"role": "user", "content": ai_prompt}], "Jesteś Głównym Ghostwriterem AI i Architektem Systemów Jaison.")
+                            
+                            # Rozdzielenie bloków (lub inteligentne parsowanie)
+                            ghost_content = synthesis
+                            brief_content = synthesis
+                            
+                            if "---BLOK_PROFILE---" in synthesis:
+                                parts = synthesis.split("---BLOK_PROFILE---")
+                                if len(parts) > 1:
+                                    sub_parts = parts[1].split("---BLOK_BRIEF---")
+                                    ghost_content = sub_parts[0].strip()
+                                    brief_content = sub_parts[1].strip() if len(sub_parts) > 1 else synthesis
+                            
+                            # 3. Zapis pliku ghost_profile.md w folderze klienta
+                            ghost_file_path = os.path.join(client_folder_path, "ghost_profile.md")
+                            with open(ghost_file_path, "w", encoding="utf-8") as f_gh:
+                                f_gh.write(ghost_content)
+                                
+                            # 4. Zapis pliku context_config.json w folderze klienta (REJESTRACJA W JAISON OS!)
+                            config_data = {
+                                "name": f"{q1} (Bar Jaś)" if "kurczak" in folder_name else f"{q1}.pl" if "." not in q1 else q1,
+                                "type": q2,
+                                "description": f"Zautomatyzowany system dla {q1}. USP: {q3}",
+                                "system_prompt_override": f"Pisz głosem marki zdefiniowanym w pliku ghost_profile.md. Sensoryka: {q21}."
+                            }
+                            config_file_path = os.path.join(client_folder_path, "context_config.json")
+                            with open(config_file_path, "w", encoding="utf-8") as f_cfg:
+                                json.dump(config_data, f_cfg, indent=4, ensure_ascii=False)
+                                
+                            # 5. Zapis pliku .env.example w folderze klienta (SZABLON IZOLACJI!)
+                            env_example_content = f"""# ==============================================================================
+# IZOLOWANA KONFIGURACJA DLA KLIENTA: {q1}
+# Skopiuj ten plik do .env i uzupełnij prawdziwymi danymi.
+# ==============================================================================
+WP_URL=https://{folder_name}.pl
+WP_USER=Holistic OS Agent
+WP_APP_PASSWORD=xxxx xxxx xxxx xxxx
+
+FTP_HOST=ftp.{folder_name}.pl
+FTP_USER=ftp_{folder_name}
+FTP_PASS=secure_ftp_password_here
+FTP_PORT=21
+FTP_REMOTE_DIR=/public_html
+"""
+                            with open(os.path.join(client_folder_path, ".env.example"), "w", encoding="utf-8") as f_env:
+                                f_env.write(env_example_content)
+                                
+                            # 6. Zapis Brief w Obsidian Vault
+                            brief_filename = f"Brief_{folder_name}_{int(time.time())}.md"
+                            brief_filepath = os.path.join(OBSIDIAN_DIR, brief_filename)
+                            with open(brief_filepath, "w", encoding="utf-8") as f_br:
+                                f_br.write(brief_content)
+                                
+                            # Zapis brief lokalnie
+                            with open(os.path.join(client_folder_path, "brief.md"), "w", encoding="utf-8") as f_br_loc:
+                                f_br_loc.write(brief_content)
+                                
+                            st.markdown(f"""
+                            <div class="custom-card" style="border-left: 4px solid #8B5CF6; background-color: #1E1B4B; padding: 20px; border-radius: 8px;">
+                                <h3 style="color: #A78BFA; margin-top: 0;">🎉 Sukces! Nowa Tożsamość i Klient Zaimplementowani!</h3>
+                                <p style="color: #CBD5E1; line-height: 1.6;">
+                                    System automatycznie utworzył izolowane środowisko dla klienta <strong>{q1}</strong> i zarejestrował go w bazie Jaison OS.
+                                </p>
+                                <ul style="color: #CBD5E1; line-height: 1.6;">
+                                    <li>📂 <strong>Folder projektu utworzony:</strong> <code style="color: #F472B6;">/02_CLIENTS_AND_PROJECTS/{folder_name}/</code></li>
+                                    <li>👤 <strong>Profil copywritingu Ghost AI:</strong> Zapisany w <code style="color: #F472B6;">ghost_profile.md</code></li>
+                                    <li>⚙️ <strong>Konfiguracja kontekstu:</strong> Zapisana w <code style="color: #F472B6;">context_config.json</code> (Klient od razu pojawi się na liście u góry ekranu!)</li>
+                                    <li>🛡️ <strong>Bezpieczny szablon środowiska:</strong> Zapisany w <code style="color: #F472B6;">.env.example</code></li>
+                                    <li>📚 <strong>Brief Projektowy:</strong> Zapisany w Obsidian Vault i folderze klienta</li>
+                                </ul>
+                                <p style="color: #A78BFA; margin-bottom: 0; font-weight: bold;">
+                                    👉 Możesz teraz odświeżyć stronę, wybrać nowego klienta na samej górze panelu i delegować zadania asystentom z pełną pewnością bezpieczeństwa!
+                                </p>
+                            </div>
+                            """, unsafe_allow_html=True)
+                            
+                            st.session_state.suite_scanned_videos = None # Wyczyść tymczasowy skaner
+                            
+                    else:
+                        st.warning("Podaj co najmniej nazwę firmy (A1), aby wygenerować tożsamość.")
+                        
+            else:
+                # INSTALACJA SZYBKIEGO GRILLA AI (CZAT 5 KROKÓW)
+                st.subheader("🚀 Rozpocznij Szybki Grill AI")
+                if st.button("Uruchom Szybki Grill AI", type="primary", key="crm_onb_start_btn_run_grill"):
+                    if onb_name:
+                        st.session_state.onb_target_name = onb_name
+                        st.session_state.onb_type = onb_type
+                        st.session_state.onb_active = True
+                        st.session_state.onb_step = 1
+                        st.session_state.onb_answers = []
+                        st.session_state.onb_chat_history = []
+                        st.session_state.onb_method = "⚡ Szybki Grill AI (Czat dynamiczny - 5 kroków)"
+                        
+                        starter_prompt = f"""Jesteś elitarnym agentem onboardingu i grillowania założeń biznesowych. 
 Użytkownik rozpoczyna onboarding dla projektu/klienta: "{onb_name}" o typie: "{onb_type}".
 Zadaj pierwsze, bardzo celne, drążące pytanie, które uderza w sedno problemu biznesowego lub kognitywnego. 
 Zadaj TYLKO jedno pytanie. Nie pisz powitań ani wstępów."""
-                    with st.spinner("Agent przygotowuje pierwsze pytanie..."):
-                        first_q = call_gemini_pro_api([{"role": "user", "content": starter_prompt}], "Jesteś dociekliwym audytorem biznesowym.")
-                    st.session_state.onb_questions = [first_q]
-                    st.session_state.onb_chat_history.append({"role": "assistant", "content": first_q})
-                    st.rerun()
-                else:
-                    st.warning("Podaj nazwę klienta lub projektu.")
+                        with st.spinner("Agent przygotowuje pierwsze pytanie..."):
+                            first_q = call_gemini_pro_api([{"role": "user", "content": starter_prompt}], "Jesteś dociekliwym audytorem biznesowym.")
+                        st.session_state.onb_questions = [first_q]
+                        st.session_state.onb_chat_history.append({"role": "assistant", "content": first_q})
+                        st.rerun()
+                    else:
+                        st.warning("Podaj nazwę klienta lub projektu.")
         else:
             st.write(f"### 🤝 Wywiad: **{st.session_state.onb_target_name}**")
             st.caption(f"Typ: {st.session_state.onb_type} | Krok {st.session_state.onb_step} z 5")
@@ -5605,10 +5827,90 @@ Połącz Systeme.io z n8n. Cały ruch organiczny zamienia się w leady i subskry
                         
             with tab_repurpose:
                 st.write("##### 🔄 YouTube Content Repurposer (Nate Herk Mode)")
-                st.write("Wklej link YouTube lub bezpośrednio transkrypcję wideo, aby automatycznie stworzyć paczkę dystrybucyjną social media (X/Twitter, LinkedIn, TikTok/Reels) dopasowaną do Twojego o_mnie.md.")
+                st.write("Wyszukuj zyskowne tematy konkurencji, analizuj nisze i generuj paczki dystrybucyjne social media (X/Twitter, LinkedIn, TikTok/Reels) dopasowane do Twojego o_mnie.md.")
                 
-                yt_url = st.text_input("Adres URL filmu na YouTube:", placeholder="https://www.youtube.com/watch?v=...", key="suite_yt_url")
-                pasted_transcript = st.text_area("Lub wklej tutaj transkrypcję filmu (z napisów YouTube):", height=150, placeholder="Wklej tekst transkrypcji tutaj...", key="suite_yt_transcript")
+                # ZINTEGROWANY DETEKTOR TRENDÓW & YOUTUBE SKANER
+                with st.expander("🔍 YouTube Niche & Trend Research (Darmowy Skaner bez klucza!)", expanded=False):
+                    st.write("##### 📊 Skaner Kanałów Konkurencji i Słów Kluczowych")
+                    st.caption("Możesz podać słowo kluczowe (np. 'naprawa telefonów łódź') lub pełny adres URL kanału wroga (np. 'https://www.youtube.com/@KanalWroga'). Skaner automatycznie wyciągnie najpopularniejsze filmy całkowicie za darmo bez potrzeby posiadania płatnych kluczy API.")
+                    
+                    yt_query = st.text_input("Słowo kluczowe lub URL kanału:", placeholder="np. @MirekBurnejko, dekarstwo warszawa, itp.", key="suite_yt_query_input")
+                    
+                    if st.button("Uruchom Skaner YouTube", key="suite_yt_scanner_btn_run", type="primary"):
+                        if yt_query:
+                            with st.spinner("Skanuję YouTube (RSS + Scraping)..."):
+                                try:
+                                    import src.tools.yt_processor as yt_processor
+                                    
+                                    # Sprawdź czy to kanał (URL z @ lub youtube.com)
+                                    is_channel = "@" in yt_query or "youtube.com/channel" in yt_query or "youtube.com/c/" in yt_query or "youtube.com/user" in yt_query
+                                    
+                                    scanned_videos = []
+                                    if is_channel:
+                                        # Pobierz Channel ID
+                                        channel_id = None
+                                        if "youtube.com/channel/" in yt_query:
+                                            channel_id = yt_query.split("/channel/")[-1].split("?")[0].split("/")[0]
+                                        else:
+                                            # Jeśli podano @nazwa lub inny format, pobieramy przez darmowy parser
+                                            full_channel_url = yt_query if yt_query.startswith("http") else f"https://www.youtube.com/{yt_query if yt_query.startswith('@') else '@' + yt_query}"
+                                            channel_id = yt_processor.get_channel_id_from_url_free(full_channel_url)
+                                            
+                                        if channel_id:
+                                            st.success(f"Identyfikator kanału pobrany: `{channel_id}`")
+                                            scanned_videos = yt_processor.get_channel_videos_free(channel_id)
+                                        else:
+                                            st.error("Nie udało się automatycznie wyciągnąć Channel ID. Upewnij się, że podajesz poprawny URL lub nick kanału (np. @MirekBurnejko).")
+                                    else:
+                                        # Wyszukiwanie po słowie kluczowym
+                                        scanned_videos = yt_processor.search_videos_by_keyword_free(yt_query)
+                                        
+                                    if scanned_videos:
+                                        st.session_state.suite_scanned_videos = scanned_videos
+                                        st.success(f"Znaleziono {len(scanned_videos)} powiązanych wideo w niszy!")
+                                    else:
+                                        st.warning("Nie znaleziono filmów spełniających kryteria. Spróbuj innego zapytania.")
+                                except Exception as yt_err:
+                                    st.error(f"Wystąpił błąd skanowania: {yt_err}")
+                        else:
+                            st.warning("Wpisz słowo kluczowe lub link do kanału.")
+                            
+                    # Wyświetlanie wyników skanowania
+                    if "suite_scanned_videos" in st.session_state and st.session_state.suite_scanned_videos:
+                        st.write("### 🎬 Wyniki Skanowania & Najlepsze Tytuły:")
+                        videos = st.session_state.suite_scanned_videos
+                        
+                        # Wyświetlanie w siatce Bento Grid (3 kolumny)
+                        for i in range(0, len(videos), 3):
+                            cols = st.columns(3)
+                            for j in range(3):
+                                if i + j < len(videos):
+                                    vid = videos[i + j]
+                                    with cols[j]:
+                                        st.markdown(f"""
+                                        <div style="border: 1px solid #334155; border-radius: 8px; padding: 10px; background-color: #0F172A; margin-bottom: 15px; height: 100%;">
+                                            <img src="{vid['thumbnail']}" style="width: 100%; border-radius: 6px; margin-bottom: 8px;">
+                                            <p style="font-weight: bold; font-size: 0.85rem; color: #F8FAFC; margin-bottom: 5px; height: 40px; overflow: hidden; line-height: 1.2;">{vid['title']}</p>
+                                            <p style="font-size: 0.75rem; color: #94A3B8; margin-bottom: 3px;">👀 Wyświetlenia: <strong>{vid.get('views', 'N/A')}</strong></p>
+                                            <p style="font-size: 0.75rem; color: #94A3B8; margin-bottom: 10px;">📅 Opublikowano: <strong>{vid.get('published_at', 'N/A')}</strong></p>
+                                        </div>
+                                        """, unsafe_allow_html=True)
+                                        
+                                        # Przycisk wyboru do repurposingu
+                                        if st.button("⚡ Wybierz do Repurposingu", key=f"sel_repurpose_{vid['id']}_{i+j}", use_container_width=True):
+                                            st.session_state.suite_yt_url = vid['url']
+                                            st.session_state.suite_yt_transcript = "" # Wyczyść poprzednią manualną transkrypcję
+                                            st.success(f"Wstrzyknięto wideo: {vid['title']}! URL został wklejony poniżej.")
+                                            st.rerun()
+                                            
+                st.markdown("<br>", unsafe_allow_html=True)
+                
+                # Pola wyjściowe do repurposingu
+                default_yt_url = st.session_state.get("suite_yt_url", "")
+                default_transcript = st.session_state.get("suite_yt_transcript", "")
+                
+                yt_url = st.text_input("Adres URL filmu na YouTube:", value=default_yt_url, placeholder="https://www.youtube.com/watch?v=...", key="suite_yt_url_direct")
+                pasted_transcript = st.text_area("Lub wklej tutaj transkrypcję filmu (z napisów YouTube):", value=default_transcript, height=150, placeholder="Wklej tekst transkrypcji tutaj...", key="suite_yt_transcript_direct")
                 obsidian_repurpose_export = st.checkbox("Automatycznie eksportuj wynik do Obsidian Vault", value=True, key="suite_yt_obsidian")
                 
                 if st.button("Generuj Paczkę Repurposingu", type="primary", key="suite_yt_gen_btn"):
