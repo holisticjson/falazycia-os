@@ -1,0 +1,43 @@
+źródło,integrator / biblioteka,tryb,trudność,uwagi
+LinkedIn Jobs,composio linkedin + google search api,manual/triggered,wysoka,lepiej przez Composio toolkit lub Google Search query niż pełny crawl
+LinkedIn Posts,composio linkedin + search console style alerts,monitoring + alerts,wysoka,zamiast scrapingu: search queries + alerty + zapis do dashboardu
+LinkedIn Profile Search,composio linkedin + google custom search,query-based lead discovery,wysoka,site:linkedin.com/in + frazy branżowe
+Google Search (SERP),serpapi / composio serpapi / googles custom search api,query-based discovery,średnia,najlepsze do znajdowania profili i ogłoszeń bez logowania
+Google Search Console,composio gsc,monitoring własnych stron,niska,"nie leady, ale świetne do sygnałów popytu i treści"
+Useme,httpx + bs4,public pages + manual login,średnia,profil i oferty; konto do rozliczeń
+Zleca.pl,httpx + bs4,public pages,niska,regularny crawl ofert
+WorkConnect,httpx + bs4,public pages,niska,AI i automatyzacja mają sens
+Oferteo,playwright + bs4,dynamic pages,średnia,usługi lokalne i B2B
+Fixly,playwright + bs4,dynamic pages,średnia,filtry JS
+platformazakupowa.pl,playwright + bs4,dynamic pages,wysoka,logowanie / filtry / postępowania
+oneplace.marketplanet.pl,playwright + bs4,dynamic pages,wysoka,zakupy B2B
+eB2B,playwright + bs4,dynamic pages,wysoka,portale zakupowe
+Baza Konkurencyjności,httpx + bs4,public pages,średnia,zapytania ofertowe
+ezamowienia.gov.pl,playwright + bs4,dynamic pages,wysoka,formalny procurement
+Przetargi.eGospodarka,httpx + bs4,public pages,niska,agregator przetargów
+PrzetargHub,httpx + bs4,public pages,niska,agregator przetargów
+i-przetargi,httpx + bs4,public pages,niska,agregator przetargów
+Pressinfo,httpx + bs4,public pages,niska,agregator przetargów
+Panorama Firm,scrapy + bs4,directory crawl,średnia,duży wolumen firm do outboundu
+pkt.pl,scrapy + bs4,directory crawl,średnia,wizytówki firm
+Clutch,playwright + bs4,dynamic pages,średnia,katalog agencyjny
+GoodFirms,playwright + bs4,dynamic pages,średnia,katalog agencyjny
+No Fluff Jobs,httpx + bs4,public pages,niska,proste job boardy IT
+Just Join IT,httpx + bs4,public pages,niska,proste job boardy IT
+Bulldogjob,httpx + bs4,public pages,niska,proste job boardy IT
+RocketJobs,httpx + bs4,public pages,niska,proste job boardy IT
+Pracuj.pl,playwright + bs4,dynamic pages,wysoka,często JS i anty-bot
+Indeed,httpx + bs4,public pages / agregator,średnia,agregator i crawl z keywordami
+Jooble,httpx + bs4,public pages / agregator,średnia,agregator i crawl z keywordami
+4programmers jobs,httpx + bs4,forum + ogłoszenia,średnia,ogłoszenia plus społeczność
+Forum WordPress Polska,httpx + bs4,forum threads,średnia,dobry outbound i lead signal
+Facebook grupy,manual + graph/API only if allowed,social monitoring,wysoka,najlepiej monitorować ręcznie i alertami
+Reddit PL / Wykop,httpx + bs4 / api,threads,średnia,monitoring fraz i potrzeb
+BIP gov / uczelnie,httpx + bs4,public pages,średnia,"zapytania, ogłoszenia, rekrutacje"
+TED Europa,scrapy + httpx,large-scale public crawl,średnia,"duży wolumen, warto Scrapy"
+PARP / akceleracje,httpx + bs4,public pages,średnia,firmy i projekty innowacyjne
+OLX Usługi/Praca,playwright + bs4,dynamic pages,wysoka,anty-bot i częste zmiany UI
+Serwisy regionalne,httpx + bs4,public pages,niska,lokalne ogłoszenia
+Katalogi software house,scrapy + bs4,directory crawl,średnia,outbound i partnerstwa
+Bazy startupów,httpx + bs4,public pages,średnia,firmy do outboundu
+Strony firm z formularzem,manual outbound + playwright,lead discovery only,wysoka,"scraping do identyfikacji, kontakt manualny"

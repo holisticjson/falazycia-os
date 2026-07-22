@@ -1456,5 +1456,17 @@
         "raw_text": "Tu poniżej są linki z możliwości sprawdzania na bieżąco stanów w API-Fi. Więc to trzeba jakoś zmodyfikować w pliku.env odpowiednio. Klucz TOGETHER  Together AI już wkleiłem, jeszcze tylko pozostałe.",
         "corrected_text": "Tu poniżej są linki z możliwości sprawdzania na bieżąco stanów w API-Fi. Więc to trzeba jakoś zmodyfikować w pliku.env odpowiednio. Klucz TOGETHER  Together AI już wkleiłem, jeszcze tylko pozostałe.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 10:57:08",
+        "raw_text": "uruchomiłem skaner aktywny lead radar tutaj radar zleceń no i tak naprawdę jedno jakieś tam w ogóle niedopasowane na projekt układu do zasilania lębki LED jako słowo kluczowe dałem strona internetowa nie wiem co on tam podstawił jakie jeszcze dodał w tle  do zapytania jak rozszerzy zapytanie gdzie on dokładnie wyszukiwa bo na razie to tylko z use.me mi wyskakuje a przecież tyle źródeł tutaj było z raportu perplexity podanych także no to bardzo bardzo ubogie to wyszukiwanie jest z jakiego modelu korzysta na tym smart routingu na ten moduł ponieważ bardzo bardzo ubogo  Masakrycznie mało. Myślę, że to co najmniej kilkadziesiąt ofert będzie, a to jest po prostu raptem dwie sztuki. W tym jedna w ogóle niedopasowana. Napisz mi jeszcze, gdzie...  gdzie jest ten research niche ten youtube research youtube niche research gdzie to w ogóle jest wszystko, te wszystkie nowości",
+        "corrected_text": "uruchomiłem skaner aktywny lead radar tutaj radar zleceń no i tak naprawdę jedno jakieś tam w ogóle niedopasowane na projekt układu do zasilania lębki LED jako słowo kluczowe dałem strona internetowa nie wiem co on tam podstawił jakie jeszcze dodał w tle  do zapytania jak rozszerzy zapytanie gdzie on dokładnie wyszukiwa bo na razie to tylko z use.me mi wyskakuje a przecież tyle źródeł tutaj było z raportu perplexity podanych także no to bardzo bardzo ubogie to wyszukiwanie jest z jakiego modelu korzysta na tym smart routingu na ten moduł ponieważ bardzo bardzo ubogo  Masakrycznie mało. Myślę, że to co najmniej kilkadziesiąt ofert będzie, a to jest po prostu raptem dwie sztuki. W tym jedna w ogóle niedopasowana. Napisz mi jeszcze, gdzie...  gdzie jest ten research niche ten youtube research youtube niche research gdzie to w ogóle jest wszystko, te wszystkie nowości",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 11:04:07",
+        "raw_text": "Nie widzę też tego modułu Mind Map Visualizer. Miał być w dwóch wersjach.",
+        "corrected_text": "Nie widzę też tego modułu Mind Map Visualizer. Miał być w dwóch wersjach.",
+        "status": "success"
     }
 ]
