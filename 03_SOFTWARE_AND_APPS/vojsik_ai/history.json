@@ -1522,5 +1522,11 @@
         "raw_text": "To znaczy jest uruchomione",
         "corrected_text": "To znaczy jest uruchomione",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 13:26:04",
+        "raw_text": "Nie zrozumieliśmy się z tym Hermesem. To jest odpowiedź z przeglądarki. Zapoznaj się z nią. Poniżej. Ty mnie zrozumiałeś. Przeczytaj to. Zweryfikuj to, co tutaj. Ty nie zrozumiałeś mnie chyba. O jakiego Hermesa mi chodzi dokładnie.  Więc albo z niego po prostu rezygnujemy, z jego funkcjonalności pętli uczenia się. Chociaż to jest dobre, no.",
+        "corrected_text": "Nie zrozumieliśmy się z tym Hermesem. To jest odpowiedź z przeglądarki. Zapoznaj się z nią. Poniżej. Ty mnie zrozumiałeś. Przeczytaj to. Zweryfikuj to, co tutaj. Ty nie zrozumiałeś mnie chyba. O jakiego Hermesa mi chodzi dokładnie.  Więc albo z niego po prostu rezygnujemy, z jego funkcjonalności pętli uczenia się. Chociaż to jest dobre, no.",
+        "status": "raw_fallback"
     }
 ]
