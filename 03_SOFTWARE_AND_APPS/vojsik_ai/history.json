@@ -1450,5 +1450,11 @@
         "raw_text": "Dobra, czyli to wszystko z tego planu jest wdrożone, tak? Ja tylko muszę wykonać zgodnie z plikiem jaison-system-audit-report? Nie, sorry. Tomasz API Social Media Guide. Tam muszę pozakładać konta i powklejać API Keys do pliku ENV.  tych plików.env lokalnych dla poszczególnych projektów. Jakieś podsumowanie tego, czy tam się wszystko zgadza, czy będą się jakieś poprawki, żeby nie było halucynacji modeli czy agentów, żeby nie narobić bałaganu.",
         "corrected_text": "Dobra, czyli to wszystko z tego planu jest wdrożone, tak? Ja tylko muszę wykonać zgodnie z plikiem jaison-system-audit-report? Nie, sorry. Tomasz API Social Media Guide. Tam muszę pozakładać konta i powklejać API Keys do pliku ENV.  tych plików.env lokalnych dla poszczególnych projektów. Jakieś podsumowanie tego, czy tam się wszystko zgadza, czy będą się jakieś poprawki, żeby nie było halucynacji modeli czy agentów, żeby nie narobić bałaganu.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 10:19:40",
+        "raw_text": "Tu poniżej są linki z możliwości sprawdzania na bieżąco stanów w API-Fi. Więc to trzeba jakoś zmodyfikować w pliku.env odpowiednio. Klucz TOGETHER  Together AI już wkleiłem, jeszcze tylko pozostałe.",
+        "corrected_text": "Tu poniżej są linki z możliwości sprawdzania na bieżąco stanów w API-Fi. Więc to trzeba jakoś zmodyfikować w pliku.env odpowiednio. Klucz TOGETHER  Together AI już wkleiłem, jeszcze tylko pozostałe.",
+        "status": "raw_fallback"
     }
 ]
