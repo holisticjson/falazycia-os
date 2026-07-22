@@ -1035,12 +1035,8 @@ def render_lead_radar_page(call_gemini_pro_api_func):
     st.write("")
     
     # Podział na zakładki
-    tab_radar, tab_fb_spy, tab_gmaps, tab_sales_director, tab_audit, tab_map, tab_config = st.tabs([
+    tab_radar, tab_map, tab_config = st.tabs([
         "📡 Radar Zleceń", 
-        "🕵️ Facebook Ads Szpieg",
-        "🔍 Skaner Wizytówek Google (Localo style)",
-        "📢 Sales Director (Outbound)", 
-        "📋 Audyty 21 Pytań (jaison.pl)", 
         "🗺️ Mapa Źródeł v2",
         "⚙️ Konfiguracja Skanera"
     ])
@@ -1048,7 +1044,7 @@ def render_lead_radar_page(call_gemini_pro_api_func):
     # ==================== TAB 1: RADAR ZLECEŃ ====================
     with tab_radar:
         st.markdown("### 📥 Aktywne Okazje z Rynku (Baza SQLite)")
-        st.write("Wpisz interesującą Cię niszę, aby za pomocą AI przeszukać i przeanalizować nowe zlecenia:")
+        st.write("Wpisz interesującą Cię niszę, aby za pomocą DeepSeek-R1 i asynchronicznego skanera AI przeszukać i przeanalizować nowe zlecenia:")
         
         if "radar_search_kws_input" not in st.session_state:
             st.session_state.radar_search_kws_input = "n8n BaseLinker automation"
@@ -1059,18 +1055,22 @@ def render_lead_radar_page(call_gemini_pro_api_func):
         with c_scan2:
             if st.button("🚀 Uruchom AI Skaner", use_container_width=True, type="primary"):
                 if search_kws:
-                    with st.spinner("Skaner AI przeczesuje rynek i analizuje zlecenia..."):
-                        success = run_ai_market_scan(search_kws)
-                        if success:
-                            st.success("Pomyślnie zasilono bazę nowymi, przeanalizowanymi okazjami!")
-                            st.rerun()
-                        else:
-                            st.error("Błąd: Nie udało się połączyć ze Skanerem AI. Sprawdź status LiteLLM proxy na porcie 8089.")
+                    with st.spinner("Skaner AI (DeepSeek-R1) przeczesuje rynek i analizuje zlecenia (Useme, Zleca.pl)..."):
+                        try:
+                            from modules.lead_radar_worker import run_lead_radar_sync
+                            success = run_lead_radar_sync(search_kws)
+                            if success:
+                                st.success("Pomyślnie zasilono bazę nowymi okazjami przeanalizowanymi przez DeepSeek-R1!")
+                                st.rerun()
+                            else:
+                                st.warning("Skanowanie zakończone, ale nie wykryto nowych, unikalnych okazji spełniających kryteria.")
+                        except Exception as e:
+                            st.error(f"Błąd podczas uruchamiania skanera: {e}")
                 else:
                     st.warning("Wpisz słowa kluczowe przed skanowaniem!")
                     
         # Inteligentna podpowiedź o rozszerzaniu haseł w tle
-        st.caption("💡 **Silnik Jaison Query Expansion:** Wpisz dowolną branżę, technologię lub frazę (np. *GSM*, *n8n* lub *Automatyzacja*). Skaner AI automatycznie rozszerzy Twoje zapytanie w tle przy użyciu Gemini o 3 alternatywne słowa kluczowe, aby przeszukać cały rynek i zmaksymalizować liczbę pasujących ofert!")
+        st.caption("💡 **Silnik AI Query Expansion:** Wpisz dowolną branżę, technologię lub frazę (np. *n8n* lub *strona www*). Skaner automatycznie rozszerzy Twoje zapytanie za pomocą DeepSeek-R1 o synonimy i powiązane zlecenia technologiczne, przeszukując Useme oraz Zleca.pl i eliminując niepasujące oferty w locie!")
         st.write("")
         
         # Wyświetlanie listy z bazy danych
@@ -1085,18 +1085,18 @@ def render_lead_radar_page(call_gemini_pro_api_func):
             st.info("Baza danych nie zawiera pasujących zleceń. Uruchom skaner powyżej lub włącz wyświetlanie odrzuconych.")
         else:
             for opp in opportunities:
-                # Kolor na podstawie oceny
-                if opp["score"] >= 80:
+                # Kolor na podstawie oceny dopasowania (score)
+                opp_score = opp.get("score") or 50
+                if opp_score >= 80:
                     accent_color = "#EF4444" # Czerwony / Hot
                     badge_style = "background-color: #EF4444; color: white;"
-                elif opp["score"] >= 50:
+                elif opp_score >= 50:
                     accent_color = "#3B82F6" # Niebieski / Medium
                     badge_style = "background-color: #3B82F6; color: white;"
                 else:
                     accent_color = "#6B7280" # Szary / Cold
                     badge_style = "background-color: #6B7280; color: white;"
                     
-                # Karta okazji
                 import urllib.parse
                 kw_query = opp['title']
                 if "n8n" in kw_query.lower() or "automatyz" in kw_query.lower() or "integra" in kw_query.lower():
@@ -1110,15 +1110,50 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                 else:
                     source_link_html = f'<span>🔗 <a href="https://useme.com" target="_blank" style="color: #94A3B8; text-decoration: none;">Useme</a></span>'
 
+                # Wyświetlanie szczegółowych metryk DeepSeek, jeśli są dostępne
+                ds_metrics_html = ""
+                intent_s = opp.get("intent_score")
+                fit_s = opp.get("fit_score")
+                fresh_s = opp.get("freshness_score")
+                priority_s = opp.get("priority_score")
+                
+                if intent_s is not None or fit_s is not None:
+                    ds_metrics_html = f"""
+                    <div style="display: flex; gap: 15px; margin-top: 10px; margin-bottom: 10px; font-size: 0.8rem; background: #131A26; padding: 8px 12px; border-radius: 6px; border: 1px solid #1E293B;">
+                        <span style="color: #A78BFA; font-weight: bold;">🧠 DEEPSEEK SCORES:</span>
+                        <span style="color: #CBD5E1;">🎯 Intencja: <strong>{intent_s or 'N/A'}/100</strong></span>
+                        <span style="color: #CBD5E1;">🛠️ Dopasowanie: <strong>{fit_s or 'N/A'}/100</strong></span>
+                        <span style="color: #CBD5E1;">⏱️ Świeżość: <strong>{fresh_s or 'N/A'}/100</strong></span>
+                        <span style="color: #10B981; font-weight: bold;">👑 Priorytet: <strong>{priority_s or 'N/A'}/100</strong></span>
+                    </div>
+                    """
+
+                # Humanizowanie opisu i outreachu
+                clean_desc = opp['description']
+                if clean_desc:
+                    clean_desc = clean_desc.replace("**", "<strong>").replace("**", "</strong>")
+                    
+                clean_outreach = opp.get("suggested_outreach") or ""
+                if "**" in clean_outreach:
+                    parts = clean_outreach.split("**")
+                    new_outreach_parts = []
+                    for i, part in enumerate(parts):
+                        if i % 2 == 1:
+                            new_outreach_parts.append(f"<strong>{part}</strong>")
+                        else:
+                            new_outreach_parts.append(part)
+                    clean_outreach = "".join(new_outreach_parts)
+
                 # Karta okazji
                 st.markdown(f"""
                 <div class="custom-card" style="border-left: 5px solid {accent_color}; margin-bottom: 15px; padding: 20px;">
                 	<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
                 		<span style="font-size: 0.85rem; color: #94A3B8; font-weight: bold; text-transform: uppercase;">🌐 Źródło: {opp['source']} | 📅 {opp['created_at']}</span>
-                		<span style="padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; {badge_style}">{opp['label']} (Dopasowanie: {opp['score']}%)</span>
+                		<span style="padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; {badge_style}">{opp.get('label') or 'Zlecenie'} (Dopasowanie: {opp_score}%)</span>
                 	</div>
                 	<h4 style="margin: 0 0 10px 0; color: #F3F4F6; font-family: Outfit;">{opp['title']}</h4>
-                	<p style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">{opp['description']}</p>
+                	<p style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">{clean_desc}</p>
+                    {ds_metrics_html}
                 	<div style="display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; color: #94A3B8; border-top: 1px solid #1E293B; padding-top: 10px; margin-bottom: 10px;">
                 		<span>💰 Budżet: <strong style="color: #10B981;">{opp['budget']}</strong></span>
                 		<span>📧 Email: <strong>{opp['contact_email'] if opp['contact_email'] else 'Brak'}</strong></span>
@@ -1130,23 +1165,16 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                 </div>
                 """, unsafe_allow_html=True)
                 
-                # Elementy interaktywne pod kartą (Streamlit)
+                # Elementy interaktywne pod kartą
                 c_opt1, c_opt2, c_opt3, c_opt4, c_opt5 = st.columns([2, 1, 1, 1, 1])
                 with c_opt1:
-                    with st.expander("📬 Zobacz spersonalizowaną wiadomość Outreach (Perswazyjna pomoc AI)"):
-                        st.code(opp["suggested_outreach"], language="text")
+                    with st.expander("📬 Zobacz spersonalizowaną wiadomość Outreach (Pomoc DeepSeek-R1)"):
+                        st.markdown(clean_outreach)
                         st.caption(f"💡 **Next Action:** {opp['suggested_action']}")
                 with c_opt2:
-                    # Wybór statusu
                     status_options = ["New", "Outreached", "Imported", "Archived"]
                     current_idx = status_options.index(opp["status"]) if opp["status"] in status_options else 0
-                    new_status = st.selectbox(
-                        "Status:", 
-                        status_options, 
-                        index=current_idx, 
-                        key=f"status_select_{opp['id']}", 
-                        label_visibility="collapsed"
-                    )
+                    new_status = st.selectbox("Status:", status_options, index=current_idx, key=f"status_select_{opp['id']}", label_visibility="collapsed")
                     if new_status != opp["status"]:
                         update_opportunity_status(opp["id"], new_status)
                         st.success(f"Zaktualizowano status oferty na: `{new_status}`!")
@@ -1157,7 +1185,7 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                         imported = add_lead_to_crm_json(
                             name=opp.get("title"),
                             notes=notes_content,
-                            suggested_outreach=opp.get("suggested_outreach"),
+                            suggested_outreach=clean_outreach,
                             next_action=opp.get("suggested_action") if opp.get("suggested_action") else "Skontaktować się po analizie AI"
                         )
                         update_opportunity_status(opp["id"], "Imported")
@@ -1169,7 +1197,6 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                         time.sleep(1.0)
                         st.rerun()
                 with c_opt4:
-                    # System feedbacku (kciuki 👍/👎)
                     feedback = opp.get("user_feedback", 0) or 0
                     if feedback == 1:
                         st.markdown("<p style='color: #10B981; font-weight: bold; text-align: center; margin-top: 5px; font-size: 0.9rem;'>👍 Trafiony!</p>", unsafe_allow_html=True)
@@ -1178,555 +1205,30 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                     else:
                         col_f_up, col_f_dn = st.columns(2)
                         with col_f_up:
-                            if st.button("👍", key=f"f_up_{opp['id']}", use_container_width=True, help="Oznacz jako trafione zlecenie (AI zapamięta ten wzór)"):
+                            if st.button("👍", key=f"f_up_{opp['id']}", use_container_width=True):
                                 update_opportunity_feedback(opp['id'], 1)
-                                st.toast("Dzięki! AI zapamięta ten wzorzec jako pozytywny.")
-                                import time
-                                time.sleep(0.5)
                                 st.rerun()
                         with col_f_dn:
-                            if st.button("👎", key=f"f_dn_{opp['id']}", use_container_width=True, help="Oznacz jako słabe zlecenie (AI wyeliminuje podobne w przyszłości)"):
+                            if st.button("👎", key=f"f_dn_{opp['id']}", use_container_width=True):
                                 st.session_state[f"show_reason_input_{opp['id']}"] = True
                                 st.rerun()
                 with c_opt5:
                     if st.button("🗑️ Usuń", key=f"opp_del_{opp['id']}", use_container_width=True):
                         delete_opportunity(opp["id"])
-                        st.success("Usunięto okazję!")
                         st.rerun()
                 
-                # Dodatkowe pole tekstowe na podanie powodu odrzucenia
                 if st.session_state.get(f"show_reason_input_{opp['id']}"):
                     st.markdown("<div style='background: #1B0F1E; padding: 10px; border-radius: 8px; margin-top: 5px; border-left: 3px solid #EF4444;'>", unsafe_allow_html=True)
-                    reason_val = st.text_input("Dlaczego odrzucasz to zlecenie? (np. za niski budżet, zła branża):", key=f"reason_text_{opp['id']}")
-                    col_sav, col_can = st.columns([1, 1])
-                    with col_sav:
-                        if st.button("Zapisz", key=f"save_reason_{opp['id']}", type="primary", use_container_width=True):
-                            update_opportunity_feedback(opp['id'], -1, reason_val)
-                            st.session_state[f"show_reason_input_{opp['id']}"] = False
-                            st.success("Odrzucono. Skaner nauczył się nowego wzorca!")
-                            import time
-                            time.sleep(0.5)
-                            st.rerun()
-                    with col_can:
-                        if st.button("Anuluj", key=f"cancel_reason_{opp['id']}", use_container_width=True):
-                            st.session_state[f"show_reason_input_{opp['id']}"] = False
-                            st.rerun()
+                    reason_val = st.text_input("Dlaczego odrzucasz?", key=f"reason_text_{opp['id']}")
+                    if st.button("Zapisz", key=f"save_reason_{opp['id']}", type="primary"):
+                        update_opportunity_feedback(opp['id'], -1, reason_val)
+                        st.session_state[f"show_reason_input_{opp['id']}"] = False
+                        st.rerun()
                     st.markdown("</div>", unsafe_allow_html=True)
                         
                 st.markdown("<hr style='border: 0; border-top: 1px solid #1E293B; margin: 15px 0;'>", unsafe_allow_html=True)
 
-    # ==================== TAB 2: FACEBOOK ADS SZPIEG ====================
-    with tab_fb_spy:
-        st.markdown("### 🕵️ Szpiegowanie Reklam Konkurencji (Facebook Ads Library)")
-        st.markdown("""
-        Zgodnie ze strategią **Lead Radar 2.0 & Grand Slam Offer**, analiza działających reklam konkurencji pozwala na natychmiastowe ulepszenie oferty i wstrzyknięcie zwycięskich kreacji bezpośrednio do Twojego skryptu outreach.
-        """)
-        
-        # Banner informacyjny o strategii
-        st.markdown("""
-        <div class="one-thing-banner" style="border-left-color: #3B82F6; background: #0c1524;">
-            <h4 style="margin-top: 0; color: #3B82F6;">🎯 Jak wykorzystać szpiegowanie w Outreach?</h4>
-            <p style="color: #CBD5E1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 0;">
-                Wyszukaj konkurentów lub słowa kluczowe (np. <i>"n8n automatyzacja"</i>, <i>"agencja AI"</i>). Zobacz jakie oferty (Grand Slam) oraz bonusy dają w reklamach. 
-                Nasze AI automatycznie wykorzysta te dane jako kontekst wykluczający lub ulepszający przy generowaniu spersonalizowanych ofert!
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        col_fb_q, col_fb_c = st.columns([2, 1])
-        with col_fb_q:
-            fb_search_query = st.text_input(
-                "🔎 Wpisz słowo kluczowe lub nazwę konkurenta (fanpage):", 
-                value=st.session_state.get("fb_search_kw_preset", "automatyzacje procesów"),
-                key="fb_search_query_input"
-            )
-        with col_fb_c:
-            fb_country = st.selectbox(
-                "🌍 Kraj docelowy:", 
-                ["PL", "ALL", "US", "DE", "GB"], 
-                index=0, 
-                key="fb_country_select"
-            )
-            
-        # Generuj bezpieczny link do Facebook Ads Library
-        import urllib.parse
-        encoded_query = urllib.parse.quote(fb_search_query)
-        country_param = "all" if fb_country == "ALL" else fb_country
-        
-        fb_library_url = f"https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country={country_param}&q={encoded_query}&sort_data[direction]=desc&sort_data[mode]=relevancy_monthly_grouped&media_type=all"
-        
-        st.write("")
-        st.markdown(f"""
-        <div style="text-align: center; margin-bottom: 25px;">
-            <a href="{fb_library_url}" target="_blank" style="text-decoration: none;">
-                <button style="background: linear-gradient(135deg, #1877F2 0%, #0d59b3 100%); color: white; padding: 12px 25px; border-radius: 8px; border: none; font-size: 1rem; font-weight: bold; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(24, 119, 242, 0.3);">
-                    🌐 Otwórz Bezpiecznie Facebook Ads Library dla: "{fb_search_query}" 🚀
-                </button>
-            </a>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Sekcja Integracji Automatycznej z Apify
-        st.markdown("#### 🤖 Automatyczny Monitoring przez Apify & n8n")
-        st.markdown("""
-        Chcesz, aby system automatycznie scrapował reklamy konkurencji w tle bez Twojego udziału? Zintegruj swój crawler za pomocą Apify (Meta Ads Scraper) i webhooka n8n.
-        """)
-        
-        col_api_webhook, col_api_status = st.columns([2, 1])
-        with col_api_webhook:
-            apify_webhook_url = st.text_input(
-                "🔗 Twój Webhook n8n dla Apify Meta Ads:", 
-                value="https://n8n.jaison.pl/webhook/apify-meta-ads-ingest",
-                key="apify_webhook_url_input"
-            )
-        with col_api_status:
-            apify_status = "Aktywny" if apify_webhook_url else "Nieaktywny"
-            st.markdown(f"""
-            <div style="padding: 10px; border-radius: 6px; background-color: #0c1524; text-align: center; border-left: 3px solid #10B981; margin-top: 5px;">
-                <p style="margin: 0; font-size: 0.8rem; color: #94A3B8;">STATUS INTEGRACJI</p>
-                <h4 style="margin: 3px 0 0 0; color: #10B981;">{apify_status}</h4>
-            </div>
-            """, unsafe_allow_html=True)
-            
-        st.markdown("""
-        **Rekomendowany n8n Blueprint dla Apify Meta Ads Scraper:**
-        1. **Trigger:** Cron co 24h lub Webhook ręczny.
-        2. **Action:** Apify node wywołujący scraper `apify/facebook-ads-scraper` ze słowami kluczowymi z Twojego profilu.
-        3. **Webhook Ingest:** n8n przesyła uzyskane reklamy konkurencji (teksty, hooki) bezpośrednio na powyższy webhook, zasilając kolumnę `competitor_ads_context` w bazie.
-        """)
-
-    # ==================== TAB: SKANER WIZYTÓWEK GOOGLE (LOCALO STYLE) ====================
-    with tab_gmaps:
-        st.subheader("🔍 Skaner i Audytor Wizytówek Google (Localo Style)")
-        st.markdown("""
-        System wyszukuje wizytówki firm (Google Moja Firma) w wybranym regionie, analizuje ich parametry techniczne i automatycznie segreguje według **potencjału wdrożenia automatyzacji AI i nowej strony WWW**.
-        """)
-        
-        # Banner informacyjny
-        st.markdown("""
-        <div class="one-thing-banner" style="border-left-color: #3B82F6; background: #0c1524;">
-            <h4 style="margin-top: 0; color: #3B82F6;">🎯 Strategia Prospectingu GMB</h4>
-            <p style="color: #CBD5E1; font-size: 0.85rem; line-height: 1.5; margin-bottom: 0;">
-                Wizytówki o <b>niskiej punktacji (GMB Score < 50)</b> posiadają krytyczne braki (np. brak strony, brak SSL, brak odpowiedzi na opinie). 
-                To najprostsza droga wejścia dla Twojej agencji – oferujesz im natychmiastową optymalizację lub automatyczny system AI do pozyskiwania i odpowiadania na opinie.
-            </p>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        # Formularz filtrów
-        col_f1, col_f2, col_f3 = st.columns([2, 2, 1])
-        with col_f1:
-            g_kw = st.text_input("Branża / Słowo kluczowe:", value="stomatolog", key="gmaps_search_kw")
-        with col_f2:
-            g_city = st.text_input("Miejscowość / Miasto:", value="Sopot", key="gmaps_search_city")
-        with col_f3:
-            st.markdown("<div style='margin-top: 28px;'></div>", unsafe_allow_html=True)
-            run_g_scan = st.button("🚀 Audytuj GMB", use_container_width=True, type="primary")
-            
-        if run_g_scan or "last_gmaps_results" in st.session_state:
-            if run_g_scan:
-                with st.spinner(f"AI przeczesuje Google Maps i generuje audyty Localo dla '{g_kw}' w '{g_city}'..."):
-                    results = get_gmaps_audit_leads(g_kw, g_city, call_gemini_pro_api_func)
-                    st.session_state.last_gmaps_results = results
-                    st.session_state.last_g_kw = g_kw
-                    st.session_state.last_g_city = g_city
-            
-            leads = st.session_state.last_gmaps_results
-            kw_display = st.session_state.get("last_g_kw", g_kw)
-            city_display = st.session_state.get("last_g_city", g_city)
-            
-            st.markdown(f"### 📍 Wyniki wyszukiwania dla: `{kw_display}` w lokalizacji `{city_display}`")
-            
-            for lead in leads:
-                score = lead.get("gmb_score", 50)
-                # Wyznaczenie koloru dla punktacji
-                if score < 40:
-                    score_color = "#EF4444" # Czerwony - krytyczny
-                    score_bg = "rgba(239, 68, 68, 0.1)"
-                    score_label = "KRYTYCZNY (Wymaga pilnej uwagi)"
-                elif score < 70:
-                    score_color = "#F59E0B" # Żółty - średni
-                    score_bg = "rgba(245, 158, 11, 0.1)"
-                    score_label = "ŚREDNI (Duży potencjał poprawek)"
-                else:
-                    score_color = "#10B981" # Zielony - dobry
-                    score_bg = "rgba(16, 185, 129, 0.1)"
-                    score_label = "DOBRY (Dobrze zoptymalizowany)"
-                
-                # HTML Card
-                st.markdown(f"""
-                <div style="background: #0d131f; padding: 20px; border-radius: 12px; border: 1px solid #1E293B; margin-bottom: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);">
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;">
-                        <div>
-                            <h3 style="margin: 0; font-family: Outfit; color: #E2E8F0;">🏢 {lead.get('name')}</h3>
-                            <p style="margin: 5px 0; color: #94A3B8; font-size: 0.9rem;">📍 {lead.get('address')} | 📞 {lead.get('phone', 'Brak telefonu')}</p>
-                            <p style="margin: 0; color: #3B82F6; font-size: 0.85rem;">
-                                🌐 {f"<a href='{lead.get('website')}' target='_blank' style='color:#3B82F6; text-decoration:none;'>{lead.get('website')}</a>" if lead.get('website') else "<span style='color:#EF4444; font-weight:bold;'>⚠️ Całkowity brak strony www!</span>"}
-                            </p>
-                        </div>
-                        <div style="text-align: right; background: {score_bg}; border: 1px solid {score_color}; padding: 10px 15px; border-radius: 8px;">
-                            <span style="font-size: 0.8rem; color: #94A3B8; font-weight: bold; display: block;">LOCALO GMB SCORE</span>
-                            <span style="font-size: 1.8rem; color: {score_color}; font-weight: bold; font-family: Outfit;">{score} / 100</span>
-                            <span style="font-size: 0.7rem; color: {score_color}; display: block; font-weight: bold;">{score_label}</span>
-                        </div>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-                
-                # Elementy audytu
-                c_det1, c_det2 = st.columns([1, 1])
-                with c_det1:
-                    st.markdown("**🚨 Wykryte błędy i braki w wizytówce:**")
-                    for issue in lead.get("issues", []):
-                        st.markdown(f"- <span style='color:#F59E0B;'>⚠️</span> {issue}", unsafe_allow_html=True)
-                        
-                    st.write("")
-                    st.markdown(f"⭐ **Opinie:** `{lead.get('rating')} / 5.0` (Liczba recenzji: `{lead.get('reviews_count')}`)")
-                    st.markdown(f"📲 **Podpięte Social Media:** `{'Tak ✅' if lead.get('has_social') else 'Nie ❌'}`")
-                    
-                    st.markdown(f"""
-                    <div style="background: rgba(59, 130, 246, 0.08); padding: 12px; border-radius: 8px; border: 1px solid rgba(59, 130, 246, 0.3); margin-top: 15px;">
-                        <span style="color: #3B82F6; font-weight: bold; font-size: 0.85rem;">🎁 GRANT TECHNOLOGICZNY GOOGLE</span>
-                        <p style="margin: 5px 0 0 0; font-size: 0.78rem; color: #CBD5E1; line-height: 1.4;">
-                            Firma kwalifikuje się do <b>Grantu Technologicznego o wartości $1300 USD (ok. 5200 PLN)</b> darmowego budżetu od Google na całą infrastrukturę chmurową GCP oraz Vertex AI Search!
-                        </p>
-                    </div>
-                    """, unsafe_allow_html=True)
-                    
-                with c_det2:
-                    st.markdown(f"🤖 **Potencjał Automatyzacji AI (Magic Value):**")
-                    st.info(lead.get("automation_potential"))
-                    
-                    # Cold-calling script
-                    ts = lead.get("tele_script", {})
-                    if ts:
-                        with st.expander("📞 Skrypt rozmowy telefonicznej (Metoda Prostej Linii Jana Szopy) 🚀"):
-                            st.markdown(f"""
-                            ### 🏁 1. Początek (Duża obietnica w 4 sekundy)
-                            > **"{ts.get('intro', '')}"**
-                            
-                            ### 🔍 2. Kwalifikacja (Ból i Pieniądze)
-                            {ts.get('qualification', '')}
-                            
-                            ### 🏗️ 3. Prezentacja (Logika + Emocje)
-                            {ts.get('presentation', '')}
-                            
-                            ### 🎯 4. Wezwanie do akcji (CTA)
-                            > **"{ts.get('cta', '')}"**
-                            
-                            ### 🔄 5. Looping (Zbijanie obiekcji)
-                            {ts.get('looping', '')}
-                            """)
-                    
-                    # Outreach Box
-                    with st.expander("📬 Wygenerowana, spersonalizowana pomoc AI (Outreach B2B)"):
-                        st.code(lead.get("suggested_outreach"), language="markdown")
-                        if st.button("🚀 Wyślij do CRM", key=f"gmaps_crm_{lead.get('name')}"):
-                            # 1. Dodanie do SQLite jako lead
-                            conn = sqlite3.connect(DB_PATH)
-                            cursor = conn.cursor()
-                            cursor.execute("""
-                                INSERT INTO opportunities (source, title, budget, description, score, label, suggested_outreach, suggested_action, status)
-                                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                            """, (
-                                "Google Maps",
-                                lead.get("name"),
-                                "Średni (Wdrożenie AI/WWW)",
-                                f"Lokalizacja: {lead.get('address')}. Braki: {', '.join(lead.get('issues', []))}",
-                                100 - score, # Niższy wynik GMB = wyższy priorytet handlowy dla nas!
-                                "Gorący" if score < 50 else "Średni",
-                                lead.get("suggested_outreach"),
-                                "Wykonaj telefon cold-call z audytem",
-                                "New"
-                            ))
-                            conn.commit()
-                            conn.close()
-                            
-                            # 2. Fizyczny zapis do crm.json
-                            notes_text = f"Lokalizacja: {lead.get('address')}. Wykryte braki GMB: {', '.join(lead.get('issues', []))}. Potencjał automatyzacji: {lead.get('automation_potential')}"
-                            imported = add_lead_to_crm_json(
-                                name=lead.get("name"),
-                                notes=notes_text,
-                                suggested_outreach=lead.get("suggested_outreach"),
-                                next_action="Wykonaj telefon cold-call z gotowym audytem GMB"
-                            )
-                            if imported:
-                                st.success("Pomyślnie zaimportowano do CRM Pipeline oraz Lead Radaru!")
-                            else:
-                                st.success("Dodano do Lead Radaru (lead już istnieje w CRM Pipeline).")
-                            
-                    # Jeśli nie ma strony WWW, pokaż widoczny przycisk przekierowania do Landing Page Factory!
-                    if not lead.get("website"):
-                        if st.button("👉 UTWÓRZ WIZUALNY PROJEKT STRONY (LANDING PAGE FACTORY) 🛠️", key=f"lp_redir_{lead.get('name')}", use_container_width=True, type="secondary"):
-                            st.session_state.current_page = "Jaison Agency"
-                            st.session_state.active_suite_tool = "Landing_Page"
-                            st.session_state.lp_prefill_client_name = lead.get("name")
-                            st.session_state.lp_prefill_industry = g_kw
-                            st.session_state.lp_prefill_city = g_city
-                            st.success("Przekierowywanie do Landing Page Factory...")
-                            st.rerun()
-                            
-                st.markdown("<hr style='border:0; border-top: 1px solid #1E293B; margin: 25px 0;'>", unsafe_allow_html=True)
-
-    # ==================== TAB 2: SALES DIRECTOR ====================
-    with tab_sales_director:
-        st.subheader("📢 Sales Director / Handlowiec AI")
-        st.markdown("Ten agent przeszukuje fora, grupy dyskusyjne oraz social media i generuje outreach do osób szukających automatyzacji procesów.")
-        
-        ctx_name = st.session_state.get("selected_context", "Jaison.pl")
-        if "kurczak" in ctx_name.lower():
-            ctx_clean = "Kurczak u Jasia"
-        elif "coolfon" in ctx_name.lower():
-            ctx_clean = "COOLFON"
-        elif "jaison" in ctx_name.lower() or "agency" in ctx_name.lower():
-            ctx_clean = "Jaison"
-        else:
-            ctx_clean = ctx_name.split(".")[0].upper()
-            
-        ctx_info = {"name": ctx_clean}
-        
-        with st.expander("📖 Skrypt Sprzedażowy i Autorski Protokół Jaison.pl", expanded=False):
-            st.markdown(f"""
-            Oto oficjalny, zintegrowany skrypt sprzedażowy Jaison.pl łączący psychologiczne NLP, obniżenie tarcia poznawczego oraz precyzyjną kwalifikację B2B.
-            
-            ---
-            ### ⚡ 15-Minutowy Rytuał Handlowy (Daily Prospecting)
-            1. **Skanowanie (5 min)**: Przejdź do zakładki *Radar Zleceń*, wpisz słowa kluczowe i kliknij `🚀 Uruchom AI Skaner`.
-            2. **Selekcja (3 min)**: Zidentyfikuj zlecenia oznaczone jako **🔥 Gorący (High-Ticket)**.
-            3. **Wysyłka (7 min)**: Skopiuj wygenerowany przez Gemini outreach, kliknij `[OFERTA 🔗]`, wklej na portalu i wyślij.
-            
-            ---
-            ### 📞 Szkielet Skryptu (Straight Line Persuasion / Prosta Linia)
-            Prowadź klienta po prostej linii od początku do zakupu. Gdy klient zbacza – wracaj na linię za pomocą tonacji i pytań kontrolnych.
-            
-            #### 1️⃣ Duża Obietnica (Pierwsze 4 sekundy)
-            *Musisz brzmieć: kompetentnie (bystro/inteligentnie), entuzjastycznie (pasja) oraz jako absolutny ekspert.*
-            > **"Dzień dobry! Z tej strony {ctx_info['name']}. Kontaktuję się z Państwem, ponieważ zauważyliśmy w {ctx_info['name']}, że [placówki medyczne/firmy w danej branży] mogą podwoić ilość klientów/pacjentów i odzyskać 15 godzin tygodniowo za pomocą automatyzacji już w pierwsze 30 dni, eliminując dosłownie trzy błędy. Brzmi to dla Państwa ciekawie?"**
-            
-            #### 2️⃣ Przejście do Kwalifikacji
-            *Płynne przejęcie kontroli nad czasem klienta.*
-            > **"Rozumiem Panią/Pana. Aby być pewnym, że nie marnuję Państwa czasu oraz żeby sprawdzić, czy możemy pomóc za pomocą naszych systemów automatyzacji, zadam tylko kilka prostych i szybkich pytań, dobrze?"**
-            
-            #### 3️⃣ Kwalifikacja (6 Pytań Kwalifikacyjnych Jaison.pl)**
-            1. **Decyzyjność**: *"Czy sam/a zajmujesz się rozwojem firmy, czy jest ktoś jeszcze odpowiedzialny za te decyzje?"*
-            2. **Bóle obecne**: *"Co podoba się Panu/Pani w obecnym marketingu/systemach, a co nie? Co podczas współpracy z innymi agencjami/firmami było według Pana totalnie niedopuszczalne?"*
-            3. **Obawy i status**: *"Co Pana najbardziej martwi w swoim biznesie? Jak długo to trwa? Pana zdaniem jest coraz lepiej czy gorzej?"*
-            4. **Cele i budżet**: *"Jakie wyniki chciałby Pan osiągnąć? Jaki rodzaj usługi jest u Was najbardziej opłacalny i na niego chcecie najwięcej klientów? Jaki budżet miesięczny na wdrożenie/reklamy jesteście w stanie zainwestować?"*
-            5. **Priorytet**: *"Jaki czynnik spośród tych, które omówiliśmy, jest dla Pana najważniejszy?"*
-            6. **Potwierdzenie**: *"Czy spytałem już o wszystkie istotne dla Pana sprawy?"*
-            
-            #### 4️⃣ Przejście do Prezentacji (Logiczny argument + Emocja)
-            > **"Na podstawie tego, co mi Pan powiedział. Nasze rozwiązanie jest definitywnie, idealnie dopasowane do Pana potrzeb. Jeżeli ma Pan dosłownie 3-4 minuty, to chcę podzielić się z Panem szczegółami dotyczącymi naszego systemu. Ma Pan chwilę?"**
-            
-            #### 5️⃣ Szybka Prezentacja (Max 3 korzyści)
-            *Przedstaw logiczne cyfry i popchnij emocją (np. odzyskanie wolnego czasu, redukcja stresu).*
-            
-            #### 6️⃣ Looping (Zapętlanie Belforta)
-            *Gdy słyszysz „Muszę to przemyśleć” – wtedy zaczyna się sprzedaż!*
-            - **Zgoda**: *"Jasne, rozumiem Pana. Na tym etanym etapie rozmowy też bym tak powiedział, ale proszę pozwolić, że zapytam: czy sam zamysł odzyskania tych 15 godzin i automatyzacji się Panu podoba?"* (Izolowanie obiekcji i powrót na prostą linię).
-            - **Follow-up (Protokół Jaison)**: Po 3 loopingach kończysz rozmowę i wracasz z kreatywnym follow-upem.
-            """)
-        
-        lr_search_kw = st.text_input("Słowa kluczowe do skanowania internetu:", value="n8n automatyzacja, szukam crm, błędy BaseLinker", key="lr_sales_search_kw_mod")
-        
-        # Generuj i wyświetl dynamiczne Quick-Tagi dla Sales Directora
-        tags = get_cached_quick_tags(selected_context, profile_content or "", call_gemini_pro_api_func)
-        
-        st.markdown("<p style='font-size: 0.8rem; color: #10B981; margin-top: -5px; margin-bottom: 5px; font-weight: bold;'>🏷️ SUGEROWANE STRATEGIE PROSPECTINGU (Dynamiczne z Gemini):</p>", unsafe_allow_html=True)
-        cols_sd = st.columns(len(tags))
-        for idx, tag in enumerate(tags):
-            with cols_sd[idx]:
-                if st.button(f"📢 {tag}", key=f"tag_sd_{idx}", use_container_width=True):
-                    st.session_state.lr_sales_search_kw_mod = tag
-                    st.rerun()
-                    
-        st.write("")
-        
-        if st.button("Generuj Prospekty i Outreach", type="primary", key="lr_sales_scan_btn_mod"):
-            with st.spinner("Sales Director analizuje social media..."):
-                prompt = f"""Jesteś wirtualnym Sales Directorem w zespole 'Jaison.pl'.
-Przeskanowałeś Reddit, fora oraz social media pod kątem słów kluczowych: "{lr_search_kw}".
-Wygeneruj 3 realistyczne, gorące leady B2B na podstawie rzeczywistych, głębokich problemów rynkowych w tych kanałach.
-ZABRONIONE jest generowanie wirtualnych (zmyślonych) leadów bez konkretnych źródeł. Każdy lead MUSI mieć podany realistyczny, precyzyjny link URL do posta na grupie Facebook, wątku na Reddit (np. w r/entrepreneur lub r/automations) lub aktualizacji LinkedIn.
-
-Dla każdego leada podaj w formacie Markdown:
-1. **Nazwa Leada / Kontakt**: Nazwisko osoby lub nazwa firmy
-2. **Kanał / Grupa źródłowa**: np. 'Grupa FB: Automatyzacja Biznesu', 'Reddit: r/entrepreneur'
-3. **Prawdziwy link URL**: `👉 [IDŹ DO WPISU / GRUPY 🔗](https://...)` z rzeczywistą lub realistyczną sub-domeną i ID posta
-4. **Ból / Problem**: Dokładna treść wpisu / problemu (np. błąd n8n, brak integracji z fakturowaniem)
-5. **Spersonalizowany outreach**: Gotowy, merytoryczny i nie-nachalny wpis/wiadomość w stylu Jaison.pl (obniżający tarcie poznawcze, oferujący wartość)
-6. **Next Action**: Proponowane działanie w CRM
-"""
-                response = call_gemini_pro_api_func([{"role": "user", "content": prompt}], "Jesteś dynamicznym i skutecznym Sales Directorem.")
-                st.session_state.sales_leads_result_mod = response
-                st.rerun()
-                
-        if "sales_leads_result_mod" in st.session_state and st.session_state.sales_leads_result_mod:
-            st.markdown("### 🎯 Wykryte Szanse i Gotowy Outreach:")
-            st.markdown(f"""
-            <div class="custom-card" style="border-left: 4px solid #10B981; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #0d121c; padding: 20px;">
-{st.session_state.sales_leads_result_mod}
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("Wyczyść leady", key="lr_sales_clear_btn_mod"):
-                st.session_state.sales_leads_result_mod = None
-                st.rerun()
-
-    # ==================== TAB 3: AUDYTY 21 PYTAŃ ====================
-    with tab_audit:
-        st.markdown("### 📋 Kwalifikacja Inbound - Audyt Systemowy 21 Pytań")
-        st.caption("Przeglądaj odpowiedzi z ankiety kwalifikacyjnej bota na jaison.pl i generuj architektury wdrożeń.")
-        
-        col_list, col_details = st.columns([1, 2])
-        
-        audits = {
-            "Tomasz Kowalski (Holistic Agency)": {
-                "date": "Dzisiaj, 11:20",
-                "score": 14,
-                "tier": "STREFA ŚREDNIAKÓW (Chaos narzędziowy)",
-                "color": "#F59E0B",
-                "phone": "+48 501 234 567",
-                "email": "tomasz@holisticagency.pl",
-                "answers": {
-                    "S1_1": "10 godzin w tygodniu marnujemy na ręczne przepisywanie danych z CRM do GSheets.",
-                    "S1_2": "Nie, wszystko jest w rozproszonych plikach i głowach zespołu.",
-                    "S1_3": "Około tygodnia, brak jasnych SOP-ów.",
-                    "S1_4": "Tak, często zapominamy o follow-upach z Messengera.",
-                    "S1_5": "Codziennie podejmuję 5-10 prostych decyzji za ludzi.",
-                    "S2_6": "Odpisujemy średnio po 2-3 godzinach, czasami na drugi dzień.",
-                    "S2_7": "Nie, nie mamy żadnego automatycznego follow-up.",
-                    "S2_8": "Działamy głównie na wyczucie, brak analityki konwersji.",
-                    "S2_9": "Tracimy około 3-5 dużych kontraktów miesięcznie.",
-                    "S2_10": "Ręcznie ustalamy terminy na czacie lub mailowo.",
-                    "S3_11": "Nie, skrypty są nieuporządkowane.",
-                    "S3_12": "Wszystko by się załamało - głównie mój wolny czas.",
-                    "S3_13": "Słabo, robimy 90% ręcznie.",
-                    "S3_14": "Ręcznie odpisuję na 15 pytań dziennie.",
-                    "S3_15": "Nie zbieramy opinii automatycznie.",
-                    "S4_16": "Jestem zmęczonym operacyjnie niewolnikiem własnej firmy.",
-                    "S4_17": "Pracuję w prawie każdy weekend.",
-                    "S4_18": "Firma przestałaby działać po 5 dniach bez mojego udziału.",
-                    "S4_19": "Marnuję 80% energii na gaszenie pożarów technicznych.",
-                    "S4_20": "Tracę ogromne pieniądze i mnóstwo wolności.",
-                    "S4_21": "Tak, jestem gotowy na wdrożenie Niewidzialnego Pracownika AI!"
-                },
-                "recommendation": """### 🤖 Rekomendacja Systemowa Jaisona (Ewaluacja AI)
-**Klient:** Tomasz Kowalski • **Wynik:** 14/21 pkt (Chaos Narzędziowy)
-**Rekomendowane wdrożenie automatyzacji w darmowym staku:**
-
-1. **Wdrożenie n8n do eliminacji "Rękodzieła" (Odzysk 10h/tydz):**
-   - Połączenie formularzy na Facebook/Messenger z Twoim CRM za pomocą webhooka n8n.
-   - Automatyczny dwustronny sync danych, eliminujący ręczne przepisywanie do arkuszy.
-2. **Automatyzacja Kalendarza & Umawiania Spotkań:**
-   - Wdrożenie darmowego konta **Cal.com** zintegrowanego przez webhook n8n z Twoim Google Calendar. 
-   - Automatyczna wysyłka linku na WhatsApp/E-mail natychmiast po zgłoszeniu.
-3. **Lejki i Retencja (Systeme.io):**
-   - Spięcie n8n z **Systeme.io** w celu automatycznej wysyłki sekwencji edukacyjnej (lead nurturing) dla osób, które nie kupiły od razu (odzyskanie 3-5 transakcji/miesięcznie).
-4. **Baza Wiedzy SOP dla Zespołu:**
-   - Uporządkowanie know-how w Notion/Markdown i podłączenie asystenta opartego na **Vertex AI Search** ($1000 credit), który wdraża nowego pracownika w 3 sekundy."""
-            },
-            "Anna Nowak (E-commerce Brand)": {
-                "date": "Wczoraj, 15:45",
-                "score": 6,
-                "tier": "RĘKODZIEŁO (Zagrożenie wypaleniem)",
-                "color": "#EF4444",
-                "phone": "+48 602 987 654",
-                "email": "kontakt@annafashion.pl",
-                "answers": {
-                    "S1_1": "Ponad 15 godzin spędzamy na kopiowaniu zamówień i adresów wysyłek.",
-                    "S1_2": "Absolutnie nie, ciągły chaos operacyjny.",
-                    "S1_3": "Ponad 2 tygodnie, ciągłe tłumaczenie od zera.",
-                    "S1_4": "Nagminnie uciekają nam zapytania klientów.",
-                    "S1_5": "Każdą decyzję muszę podejmować osobiście.",
-                    "S2_6": "Często dopiero po 24 godzinach.",
-                    "S2_7": "Nie posiadamy takiego systemu.",
-                    "S2_8": "Na wyczucie.",
-                    "S2_9": "Bardzo dużo, nie nadążamy z odpisywaniem.",
-                    "S2_10": "Ręcznie, marnując mnóstwo czasu na maile.",
-                    "S3_11": "Nie.",
-                    "S3_12": "Wydolność zespołu ległaby w gruzach natychmiast.",
-                    "S3_13": "Brak automatyzacji.",
-                    "S3_14": "Dziesiątki powtarzalnych pytań dziennie obsługuję sama.",
-                    "S3_15": "Ręcznie piszę prośby o opinie.",
-                    "S4_16": "Jestem całkowicie niewolnikiem operacyjnym.",
-                    "S4_17": "Pracuję po 12h dziennie, w weekendy również.",
-                    "S4_18": "Wszystko by upadło w 2 dni.",
-                    "S4_19": "95% na gaszenie pożarów.",
-                    "S4_20": "Tracę całe życie prywatne.",
-                    "S4_21": "Błagam o ratunek i wdrożenie AI!"
-                },
-                "recommendation": """### 🤖 Rekomendacja Systemowa Jaisona (Ewaluacja AI)
-**Klient:** Anna Nowak • **Wynik:** 6/21 pkt (Rękodzieło)
-**Krytyczny Plan Ratunkowy (Low-Cost MVP):**
-
-1. **Automatyzacja Obsługi Zamówień (Odzysk 15h/tydz):**
-   - Połączenie Twojego sklepu (np. Shopify/WooCommerce) z systemem kurierskim (Furgonetka/Apaczka) za pomocą **n8n**. Automatyczne generowanie etykiet bez ręcznego przepisywania!
-2. **Asystent AI Klienta (24/7):**
-   - Konfiguracja prostego bota AI na Messengerze/Instagramie zintegrowanego z Twoim asortymentem i odpowiedziami na 30 najczęstszych pytań (FAQ).
-3. **Automatyczne Opinie po zakupie:**
-   - Webhook n8n wyzwalający wysyłkę e-maila z Systeme.io po 5 dniach od dostarczenia przesyłki z prośbą o opinię na Google/Trustpilot."""
-            }
-        }
-        
-        with col_list:
-            selected_lead = st.radio("Wybierz zgłoszenie do analizy:", list(audits.keys()), key="lead_radio_opp_scanner")
-            st.markdown("---")
-            st.info("💡 Dane są gotowe do zasilenia z prawdziwego webhooka n8n zbierającego audyty z Twojej strony jaison.pl.")
-            
-        with col_details:
-            lead_info = audits[selected_lead]
-            st.markdown(f"#### 👤 Profil: {selected_lead}")
-            st.markdown(f"📅 **Data:** {lead_info['date']} | 📞 **Tel:** {lead_info['phone']} | 📧 **Email:** {lead_info['email']}")
-            
-            st.markdown(f"""
-            <div style="background: #111827; border: 1px solid {lead_info['color']}; border-radius: 8px; padding: 12px; margin-bottom: 20px;">
-                <span style="font-weight: bold; color: {lead_info['color']}; font-size: 1.1rem;">Wynik: {lead_info['score']} / 21 pkt</span> — <b>{lead_info['tier']}</b>
-            </div>
-            """, unsafe_allow_html=True)
-            
-            with st.expander("🔍 Zobacz szczegółowe odpowiedzi na 21 pytań"):
-                st.markdown("##### SEKCJA 1: Chaos Operacyjny i Wycieki Czasu")
-                st.write(f"1. Ręczne przepisywanie: *{lead_info['answers']['S1_1']}*")
-                st.write(f"2. Centralne źródło wiedzy: *{lead_info['answers']['S1_2']}*")
-                st.write(f"3. Wdrożenie nowej osoby: *{lead_info['answers']['S1_3']}*")
-                st.write(f"4. Uciekające zadania: *{lead_info['answers']['S1_4']}*")
-                st.write(f"5. Podejmowanie decyzji osobiście: *{lead_info['answers']['S1_5']}*")
-                
-                st.markdown("##### SEKCJA 2: Konwersja i Wycieki Pieniędzy")
-                st.write(f"6. Czas odpowiedzi na lead: *{lead_info['answers']['S2_6']}*")
-                st.write(f"7. System dogrzewania (follow-up): *{lead_info['answers']['S2_7']}*")
-                st.write(f"8. Analityka marketingu: *{lead_info['answers']['S2_8']}*")
-                st.write(f"9. Straty transakcji przez brak follow-up: *{lead_info['answers']['S2_9']}*")
-                st.write(f"10. Automatyzacja spotkań: *{lead_info['answers']['S2_10']}*")
-                
-                st.markdown("##### SEKCJA 3: Skalowalność i Gotowość na AI")
-                st.write(f"11. Ustrukturyzowane know-how pod AI: *{lead_info['answers']['S3_11']}*")
-                st.write(f"12. Skutki 10x wzrostu bazy: *{lead_info['answers']['S3_12']}*")
-                st.write(f"13. Korzystanie z automatyzacji: *{lead_info['answers']['S3_13']}*")
-                st.write(f"14. Powtarzalne pytania od klientów: *{lead_info['answers']['S3_14']}*")
-                st.write(f"15. Automatyczne opinie (Social Proof): *{lead_info['answers']['S3_15']}*")
-                
-                st.markdown("##### SEKCJA 4: Wolność Biznesowa")
-                st.write(f"16. Strateg vs. niewolnik operacyjny: *{lead_info['answers']['S4_16']}*")
-                st.write(f"17. Praca po godzinach/weekendy: *{lead_info['answers']['S4_17']}*")
-                st.write(f"18. Biznes bez Ciebie przez 30 dni: *{lead_info['answers']['S4_18']}*")
-                st.write(f"19. Marnowanie energii na gaszenie pożarów: *{lead_info['answers']['S4_19']}*")
-                st.write(f"20. Straty wolności i zysków: *{lead_info['answers']['S4_20']}*")
-                st.write(f"21. Gotowość na Niewidzialnego Pracownika AI: **{lead_info['answers']['S4_21']}**")
-            
-            st.markdown("""<div style="background: #13111C; border: 1px solid #7C3AED; border-radius: 8px; padding: 18px; margin-top: 15px;">""", unsafe_allow_html=True)
-            st.markdown(lead_info["recommendation"])
-            st.markdown("</div>", unsafe_allow_html=True)
-            
-            col_act1, col_act2 = st.columns(2)
-            with col_act1:
-                if st.button("📨 Wyślij architekturę na E-mail / WhatsApp", key=f"send_mod_{selected_lead}", use_container_width=True):
-                    st.success(f"Architektura wysłana do {lead_info['email']}!")
-            with col_act2:
-                if st.button("🚀 Zaimportuj do CRM & Utwórz Projekt", key=f"import_mod_{selected_lead}", use_container_width=True, type="primary"):
-                    st.success("Lead pomyślnie zaimportowany do CRM Magic Pipeline jako klient do wdrożenia!")
-
-    # ==================== TAB 4: MAPA ŹRÓDEŁ V2 ====================
+    # ==================== TAB 2: MAPA ŹRÓDEŁ V2 ====================
     with tab_map:
         st.markdown("### 🗺️ Architektura Integracji - Mapa Źródeł Lead Radar v2")
         st.caption("Centralny rejestr platform prospektowych AntiGravity, kategoryzujący źródła według trudności, ryzyka anty-botowego i zalecanego integratora.")
@@ -1739,12 +1241,16 @@ Dla każdego leada podaj w formacie Markdown:
         with col_f3:
             filter_login = st.selectbox("🔑 Wymaga logowania:", ["Wszystkie", "Tak", "Nie"], key="map_filter_login")
             
-        map_csv_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\lead_radar_mapa_antigravity_v2_enriched.csv"
+        map_csv_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\08-reports\Perplexity Research\lead_radar_mapa_antigravity_v2 (1).csv"
+        map_fallback_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\lead_radar_mapa_antigravity_v2_enriched.csv"
+        
         sources_data = []
-        if os.path.exists(map_csv_path):
+        path_to_use = map_csv_path if os.path.exists(map_csv_path) else (map_fallback_path if os.path.exists(map_fallback_path) else None)
+        
+        if path_to_use:
             try:
                 import csv
-                with open(map_csv_path, mode="r", encoding="utf-8") as f:
+                with open(path_to_use, mode="r", encoding="utf-8") as f:
                     reader = csv.DictReader(f)
                     for row in reader:
                         sources_data.append(row)
@@ -1753,18 +1259,24 @@ Dla każdego leada podaj w formacie Markdown:
         
         filtered_sources = []
         for s in sources_data:
-            if search_query and search_query.lower() not in s["source"].lower() and search_query.lower() not in s["integrator"].lower() and search_query.lower() not in s["notes"].lower():
+            source_name = s.get("source", s.get("Platforma", ""))
+            integrator_name = s.get("integrator", s.get("Integrator / Biblioteka", ""))
+            notes_val = s.get("notes", s.get("Uwagi", ""))
+            difficulty_val = s.get("difficulty", s.get("Trudność", "średnia"))
+            needs_login_val = s.get("needs_login", s.get("Wymaga logowania", "Nie"))
+            
+            if search_query and search_query.lower() not in source_name.lower() and search_query.lower() not in integrator_name.lower() and search_query.lower() not in notes_val.lower():
                 continue
-            if filter_diff != "Wszystkie" and s["difficulty"].lower() != filter_diff.lower():
+            if filter_diff != "Wszystkie" and difficulty_val.lower() != filter_diff.lower():
                 continue
             if filter_login != "Wszystkie":
-                if filter_login == "Tak" and "nie" in s["needs_login"].lower() and "tak" not in s["needs_login"].lower():
+                if filter_login == "Tak" and "nie" in needs_login_val.lower() and "tak" not in needs_login_val.lower():
                     continue
-                if filter_login == "Nie" and "tak" in s["needs_login"].lower():
+                if filter_login == "Nie" and "tak" in needs_login_val.lower():
                     continue
             filtered_sources.append(s)
             
-        st.markdown(f"Znaleziono **{len(filtered_sources)}** pasujących źródeł z 42 zdefiniowanych.")
+        st.markdown(f"Znaleziono **{len(filtered_sources)}** pasujących źródeł z mapy Perplexity.")
         
         view_mode = st.radio("Styl widoku:", ["Premium Karty 🎴", "Tabela Danych 📊"], horizontal=True, key="map_view_style")
         
@@ -1772,51 +1284,59 @@ Dla każdego leada podaj w formacie Markdown:
             if filtered_sources:
                 import pandas as pd
                 df = pd.DataFrame(filtered_sources)
-                df.columns = [
-                    "Źródło", "Integrator / Biblioteka", "Tryb", "Trudność", "Uwagi",
-                    "Wymaga logowania", "Ryzyko blokady", "Hint dla selektora / Tool", "Kadencja", "Lead Score", "Tryb Outreach"
-                ]
                 st.dataframe(df, use_container_width=True)
             else:
                 st.info("Brak źródeł spełniających kryteria filtrów.")
         else:
             if filtered_sources:
                 for idx, s in enumerate(filtered_sources):
-                    if s["difficulty"].lower() == "wysoka":
+                    source_name = s.get("source", s.get("Platforma", "Nieznana platforma"))
+                    integrator_name = s.get("integrator", s.get("Integrator / Biblioteka", "Własny kod"))
+                    difficulty_val = s.get("difficulty", s.get("Trudność", "średnia"))
+                    notes_val = s.get("notes", s.get("Uwagi", ""))
+                    needs_login_val = s.get("needs_login", s.get("Wymaga logowania", "Nie"))
+                    robots_risk_val = s.get("robots_risk", s.get("Ryzyko blokady", "niskie"))
+                    lead_score_val = s.get("lead_score", s.get("Lead Score", "50"))
+                    cadence_val = s.get("cadence", s.get("Kadencja", "Dziennie"))
+                    selector_hint_val = s.get("selector_hint", s.get("Hint dla selektora / Tool", ""))
+                    outreach_mode_val = s.get("outreach_mode", s.get("Tryb Outreach", "E-mail / Portal"))
+                    mode_val = s.get("mode", s.get("Tryb", "Inbound"))
+                    
+                    if difficulty_val.lower() == "wysoka":
                         diff_badge = "background-color: #EF4444; color: white;"
                         border_color = "#EF4444"
-                    elif s["difficulty"].lower() == "średnia":
+                    elif difficulty_val.lower() == "średnia":
                         diff_badge = "background-color: #3B82F6; color: white;"
                         border_color = "#3B82F6"
                     else:
                         diff_badge = "background-color: #10B981; color: white;"
                         border_color = "#10B981"
                         
-                    risk_color = "#10B981" if "niskie" in s["robots_risk"].lower() else ("#F59E0B" if "średnie" in s["robots_risk"].lower() or "api" in s["robots_risk"].lower() else "#EF4444")
+                    risk_color = "#10B981" if "niskie" in robots_risk_val.lower() else ("#F59E0B" if "średnie" in robots_risk_val.lower() or "api" in robots_risk_val.lower() else "#EF4444")
                     
                     st.markdown(f"""
                     <div class="custom-card" style="border-left: 5px solid {border_color}; margin-bottom: 15px; padding: 20px;">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                            <span style="font-size: 0.85rem; color: #94A3B8; font-weight: bold; text-transform: uppercase;">🔌 INTEGRATOR: {s["integrator"]}</span>
-                            <span style="padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; {diff_badge}">Trudność: {s["difficulty"]}</span>
+                            <span style="font-size: 0.85rem; color: #94A3B8; font-weight: bold; text-transform: uppercase;">🔌 INTEGRATOR: {integrator_name}</span>
+                            <span style="padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; {diff_badge}">Trudność: {difficulty_val}</span>
                         </div>
-                        <h4 style="margin: 0 0 10px 0; color: #F3F4F6; font-family: Outfit;">{s["source"]} <span style="font-size: 0.85rem; color: #94A3B8; font-weight: normal;">({s["mode"]})</span></h4>
-                        <p style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">📝 <b>Uwagi integracyjne:</b> {s["notes"]}</p>
+                        <h4 style="margin: 0 0 10px 0; color: #F3F4F6; font-family: Outfit;">{source_name} <span style="font-size: 0.85rem; color: #94A3B8; font-weight: normal;">({mode_val})</span></h4>
+                        <p style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">📝 <b>Uwagi integracyjne:</b> {notes_val}</p>
                         
                         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 0.85rem; color: #94A3B8; border-top: 1px solid #1E293B; padding-top: 10px; margin-bottom: 5px;">
-                            <span>🔑 Logowanie: <strong style="color: #E2E8F0;">{s["needs_login"]}</strong></span>
-                            <span>🛡️ Ryzyko blokady: <strong style="color: {risk_color};">{s["robots_risk"]}</strong></span>
-                            <span>🎯 Target Lead Score: <strong style="color: #10B981;">{s["lead_score"]} pkt</strong></span>
-                            <span>⏱️ Częstotliwość: <strong style="color: #E2E8F0;">{s["cadence"]}</strong></span>
-                            <span>🛠️ Hint: <code style="color: #F472B6; background: #2D1B36; padding: 2px 6px; border-radius: 4px;">{s["selector_hint"]}</code></span>
-                            <span>📨 Outreach: <strong style="color: #E2E8F0;">{s["outreach_mode"]}</strong></span>
+                            <span>🔑 Logowanie: <strong style="color: #E2E8F0;">{needs_login_val}</strong></span>
+                            <span>🛡️ Ryzyko blokady: <strong style="color: {risk_color};">{robots_risk_val}</strong></span>
+                            <span>🎯 Target Lead Score: <strong style="color: #10B981;">{lead_score_val} pkt</strong></span>
+                            <span>⏱️ Częstotliwość: <strong style="color: #E2E8F0;">{cadence_val}</strong></span>
+                            <span>🛠️ Hint: <code style="color: #F472B6; background: #2D1B36; padding: 2px 6px; border-radius: 4px;">{selector_hint_val}</code></span>
+                            <span>📨 Outreach: <strong style="color: #E2E8F0;">{outreach_mode_val}</strong></span>
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
             else:
                 st.info("Brak źródeł spełniających kryteria filtrów.")
 
-    # ==================== TAB 5: CONFIGURATION ====================
+    # ==================== TAB 3: CONFIGURATION ====================
     with tab_config:
         st.markdown("### ⚙️ Ustawienia Źródeł i Agenta Skanowania")
         
