@@ -1438,5 +1438,17 @@
         "raw_text": "Czy mam to samo wykonać na laptopie? Dokładnie te same polecenia? Bo mi nie odpowiedziałeś na to.",
         "corrected_text": "Czy mam to samo wykonać na laptopie? Dokładnie te same polecenia? Bo mi nie odpowiedziałeś na to.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-22 10:01:01",
+        "raw_text": "Właśnie z restartu i z tego streamlita jeszcze raz bo mam wrażenie, że tam nie zaczytały się w ogóle te zmiany. I z tych rzeczy, które wdrożyłeś.  Więc nie wiem gdzie to jest. Chyba się to sprawdź kurwa jeszcze czy to wszystko wdrożyłeś czy nie.",
+        "corrected_text": "Właśnie z restartu i z tego streamlita jeszcze raz bo mam wrażenie, że tam nie zaczytały się w ogóle te zmiany. I z tych rzeczy, które wdrożyłeś.  Więc nie wiem gdzie to jest. Chyba się to sprawdź kurwa jeszcze czy to wszystko wdrożyłeś czy nie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 10:07:56",
+        "raw_text": "Dobra, czyli to wszystko z tego planu jest wdrożone, tak? Ja tylko muszę wykonać zgodnie z plikiem jaison-system-audit-report? Nie, sorry. Tomasz API Social Media Guide. Tam muszę pozakładać konta i powklejać API Keys do pliku ENV.  tych plików.env lokalnych dla poszczególnych projektów. Jakieś podsumowanie tego, czy tam się wszystko zgadza, czy będą się jakieś poprawki, żeby nie było halucynacji modeli czy agentów, żeby nie narobić bałaganu.",
+        "corrected_text": "Dobra, czyli to wszystko z tego planu jest wdrożone, tak? Ja tylko muszę wykonać zgodnie z plikiem jaison-system-audit-report? Nie, sorry. Tomasz API Social Media Guide. Tam muszę pozakładać konta i powklejać API Keys do pliku ENV.  tych plików.env lokalnych dla poszczególnych projektów. Jakieś podsumowanie tego, czy tam się wszystko zgadza, czy będą się jakieś poprawki, żeby nie było halucynacji modeli czy agentów, żeby nie narobić bałaganu.",
+        "status": "raw_fallback"
     }
 ]
