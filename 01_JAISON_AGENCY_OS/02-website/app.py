@@ -1964,7 +1964,7 @@ with st.sidebar:
         st.session_state.current_page = "Kanban"
         st.rerun()
         
-    if st.button("💾 Pamięć Agenta", use_container_width=True, type="primary" if col_menu == "Memory" else "secondary"):
+    if st.button("🕸️ Mapa Systemu & Pamięć", use_container_width=True, type="primary" if col_menu == "Memory" else "secondary"):
         st.session_state.current_page = "Memory"
         st.rerun()
         
