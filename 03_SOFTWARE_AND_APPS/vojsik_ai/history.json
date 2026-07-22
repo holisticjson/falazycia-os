@@ -1606,5 +1606,11 @@
         "raw_text": "Przeczytaj maila, znaczy przetłumacz mi dokładnie o co chodzi z angielskiego na polski. To jest od gościa z Google. Z supportu, z startup support operations, ponieważ składaliśmy wniosek o ten grant w ATR 2000.  Zadę osiem.  Także dokładnie o co mu chodzi.",
         "corrected_text": "Przeczytaj maila, znaczy przetłumacz mi dokładnie o co chodzi z angielskiego na polski. To jest od gościa z Google. Z supportu, z startup support operations, ponieważ składaliśmy wniosek o ten grant w ATR 2000.  Zadę osiem.  Także dokładnie o co mu chodzi.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 22:49:21",
+        "raw_text": "Powiedz mi tutaj w ustawieniach anti-gravity coś przesadziliśmy z czymś, to znaczy customization token budget exceeded, large customization will be truncated.",
+        "corrected_text": "Powiedz mi tutaj w ustawieniach anti-gravity coś przesadziliśmy z czymś, to znaczy customization token budget exceeded, large customization will be truncated.",
+        "status": "raw_fallback"
     }
 ]
