@@ -6909,13 +6909,26 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                             st.warning("⚠️ Wpisz słowo kluczowe, aby uruchomić audyt.")
                         else:
                             with st.spinner("Wysyłanie sygnału do n8n... Oczekiwanie na połączenie z API Google Business / Localo..."):
-                                # Symulacja wysłania webhooka do n8n
+                                # Wysłanie realnego webhooka do n8n.jaison.pl
                                 try:
-                                    # import requests
-                                    # requests.post("https://n8n.holisticjson.pl/webhook/localo-audit", json={"keyword": grid_keyword, "radius": grid_radius})
-                                    import time
-                                    time.sleep(1.5)
-                                    st.success(f"✅ Zlecenie audytu dla '{grid_keyword}' zostało pomyślnie wysłane do n8n! Raport z wygenerowaną siatką otrzymasz wkrótce na Telegram/Email.")
+                                    import requests
+                                    # Pobieramy nazwę wybranego klienta z sesji jeśli istnieje
+                                    current_client = st.session_state.get("selected_client_name", "Jaison")
+                                    webhook_payload = {
+                                        "client": current_client,
+                                        "keyword": grid_keyword,
+                                        "radius": grid_radius,
+                                        "timestamp": time.time()
+                                    }
+                                    response = requests.post(
+                                        "https://n8n.jaison.pl/webhook/localo-audit",
+                                        json=webhook_payload,
+                                        timeout=10
+                                    )
+                                    if response.status_code == 200:
+                                        st.success(f"✅ Zlecenie audytu dla '{grid_keyword}' zostało pomyślnie wysłane do n8n! Raport z wygenerowaną siatką otrzymasz wkrótce na Telegram/Email.")
+                                    else:
+                                        st.warning(f"⚠️ Webhook wysłany, ale n8n zwróciło status {response.status_code}. Sprawdź, czy workflow na n8n.jaison.pl jest aktywny.")
                                 except Exception as e:
                                     st.error(f"⚠️ Błąd połączenia z n8n: {e}")
                     

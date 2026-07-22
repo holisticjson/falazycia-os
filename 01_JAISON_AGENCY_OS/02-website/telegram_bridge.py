@@ -46,7 +46,7 @@ if os.path.exists(ENV_PATH):
 
 API_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
-print(f"🤖 Hermes Telegram Bridge uruchomiony.")
+print(f"🤖 Jaison OS Telegram Bridge uruchomiony.")
 print(f"🔑 Używany token: {BOT_TOKEN[:10]}...{BOT_TOKEN[-5:]}")
 
 def load_json(path, default):
@@ -80,20 +80,20 @@ def trigger_ui_event(event_type, message, details=None):
 # Git Sync helper
 def trigger_git_sync():
     def run_sync():
-        print("🔄 Hermes: Wywołuję skrypt git_sync.ps1...")
+        print("🔄 Jaison OS: Wywołuję skrypt git_sync.ps1...")
         os.system('powershell.exe -File "C:\\Aplikacje MVP\\git_sync.ps1"')
     threading.Thread(target=run_sync, daemon=True).start()
 
 # Commands handlers
 def cmd_start(chat_id):
     welcome = (
-        "🚀 *Witaj w systemie Hermes Agentic OS!*\n\n"
-        "Jestem Twoim mobilnym asystentem. Pomogę Ci zarządzać agencją i zadaniami bez otwierania komputera.\n\n"
+        "🚀 *Witaj w systemie Jaison Agentic OS!*\n\n"
+        "Jestem Twoim cyfrowym Co-Pilotem. Pomogę Ci bez wysiłku zarządzać agencją i zadaniami, eliminując tarcie i chaos kognitywny.\n\n"
         "*Wspierane komendy:*\n"
         "📥 `/lead [Nazwa] [Opis]` — Dodaj leada do CRM\n"
         "📋 `/tasks` — Wyświetl zadania z ADHD Kanban\n"
-        "📊 `/stats` — Aktualne statystyki lejeka sprzedaży\n"
-        "🎬 `/video [Temat]` — Wygeneruj projekt wideo pod CapCut Desktop\n"
+        "📊 `/stats` — Statystyki lejków sprzedaży\n"
+        "🎬 `/video [Temat]` — Wygeneruj wideo B-Roll + Lektor (CapCut Desktop)\n"
     )
     send_message(chat_id, welcome)
 
@@ -175,7 +175,7 @@ def cmd_video(chat_id, text):
         return
     
     topic = parts[1].strip()
-    send_message(chat_id, f"🎬 *Hermes Brain:* Rozpoczynam generowanie scenariusza i kompletowanie zasobów dla wideo o temacie:\n_\"{topic}\"_\n\n_Pobieram stocki Pexels i generuję lektora..._")
+    send_message(chat_id, f"🎬 *Jaison Brain:* Rozpoczynam generowanie scenariusza i kompletowanie zasobów dla wideo o temacie:\n_\"{topic}\"_\n\n_Pobieram stocki Pexels i generuję lektora..._")
     
     # Simulate generating CapCut project
     time.sleep(2.0)
