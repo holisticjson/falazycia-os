@@ -67,6 +67,43 @@ def scan_clients_and_projects():
             
     return clients_nodes, clients_edges
 
+def read_env_api_keys():
+    """
+    Reads C:\\Aplikacje MVP\\.env and checks which API keys are configured.
+    """
+    env_path = os.path.join(BASE_DIR, ".env")
+    keys_status = {
+        "GEMINI_API_KEY": False,
+        "NVIDIA_API_KEY": False,
+        "SYSTEME_IO_API_KEY": False,
+        "FAL_KEY": False,
+        "PEXELS_API_KEY": False,
+        "PIXABAY_API_KEY": False,
+        "TOGETHER_API_KEY": False,
+        "N8N_API_KEY": False,
+        "POSTHOG_API_KEY": False,
+        "SLACK_BOT_TOKEN": False,
+        "STRIPE_SECRET_KEY": False,
+        "WP_KURCZAKUJASIA_PASS": False,
+    }
+    
+    if os.path.exists(env_path):
+        try:
+            with open(env_path, "r", encoding="utf-8") as f:
+                content = f.read()
+                for key in keys_status.keys():
+                    # Match key=value pattern, handle optional quotes and trailing comments
+                    match = re.search(fr"^\s*{key}\s*=\s*['\"]?(?P<val>[^'\"]+?)['\"]?\s*$", content, re.MULTILINE)
+                    if match:
+                        val = match.group("val").strip()
+                        # Ensure it's not a commented/placeholder value
+                        if val and not val.startswith("#") and not val.startswith("<uzupełnij"):
+                            keys_status[key] = True
+        except Exception:
+            pass
+            
+    return keys_status
+
 def generate_dynamic_html():
     """
     Reads the base mindmap_visualizer.html, injects the static core nodes + dynamically scanned client nodes,
@@ -115,9 +152,17 @@ def generate_dynamic_html():
         new_edges_str = original_edges_str + separator + ",\n".join(dynamic_edges_js)
         html_content = html_content.replace(edges_match.group(0), f"const EDGES = [\n{new_edges_str}\n];")
         
+    # 3. Inject API_STATUS into HTML
+    api_keys = read_env_api_keys()
+    api_status_js = f"const API_STATUS = {json.dumps(api_keys, indent=2)};"
+    
+    if "<script>" in html_content:
+        html_content = html_content.replace("<script>", f"<script>\n// Injected from dynamic_mindmap.py\n{api_status_js}\n", 1)
+        
     return html_content
 
 if __name__ == "__main__":
     # Test script locally and write a temp generated HTML
     output_html = generate_dynamic_html()
     print(f"Pomyślnie przetworzono mapę sieci. Wykryto {len(scan_clients_and_projects()[0])} dynamicznych klientów!")
+    print(f"Statusy kluczy API: {read_env_api_keys()}")

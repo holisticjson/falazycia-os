@@ -224,7 +224,8 @@ import ssl
 # Ręczne wczytanie pliku .env na starcie aplikacji (sprawdzenie bieżącego i nadrzędnego katalogu)
 env_paths = [
     os.path.join(os.path.dirname(__file__), ".env"),
-    os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env")
+    os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"),
+    os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), ".env")
 ]
 
 for env_path in env_paths:
@@ -241,7 +242,6 @@ for env_path in env_paths:
                         os.environ[k.strip()] = val
         except Exception as e:
             pass
-        break
 
 try:
     ssl._create_default_https_context = ssl._create_unverified_context
@@ -1926,6 +1926,10 @@ with st.sidebar:
         st.session_state.current_page = "🎯 Mission Control"
         st.rerun()
         
+    if st.button("🛡️ API Guard & Status", use_container_width=True, type="primary" if col_menu == "API_Guard" else "secondary"):
+        st.session_state.current_page = "API_Guard"
+        st.rerun()
+        
     # II. AGENTS
     st.markdown("<p style='color: #EC4899; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>II. AGENTS</p>", unsafe_allow_html=True)
     
@@ -2643,6 +2647,10 @@ if menu == "🎯 Mission Control":
             st.success("Pomysł bezpiecznie zapisany w chmurze w Skarbcu Myśli. Twoja głowa jest wolna.")
             time.sleep(0.5)
             st.rerun()
+
+elif menu == "API_Guard":
+    from modules.api_guard_view import render_api_guard
+    render_api_guard()
 
 elif menu == "Claude":
     render_agent_console("Claude", "Online", "claude-3-7-sonnet", "Anthropic Native", "#F59E0B")
