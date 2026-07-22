@@ -1402,5 +1402,11 @@
         "raw_text": "No i to co wcześniej tutaj o co prosiłem, czyli taki prywatny asystent ala Gemini Pro, który ma pełni funkcjonalność czy to notebooka LM czy teraz Gemini notebook, tak, według najnowszej aktualizacji, wykorzystując te darmowe TrialGen AI App Builder, czyli agenta konwersacyjnego.  To też musi być ujęte w planie i do wdrożenia. No a ja zakładam konta na apify.together. Nie wiem jeszcze jakie tam potrzebne są serwisy.",
         "corrected_text": "No i to co wcześniej tutaj o co prosiłem, czyli taki prywatny asystent ala Gemini Pro, który ma pełni funkcjonalność czy to notebooka LM czy teraz Gemini notebook, tak, według najnowszej aktualizacji, wykorzystując te darmowe TrialGen AI App Builder, czyli agenta konwersacyjnego.  To też musi być ujęte w planie i do wdrożenia. No a ja zakładam konta na apify.together. Nie wiem jeszcze jakie tam potrzebne są serwisy.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 09:03:02",
+        "raw_text": "działa pod subdomeną os.jaison.pl a strona agencji jaison.pl to jest strona z ofertą  blogiem oraz kalkulatorem ROI wyliczenia zwrotu i oszczędności z tytułu wdrażania automatyzacji AI. Więc musimy być bardziej tutaj szczegółowi.  Tak.",
+        "corrected_text": "Działa pod subdomeną os.jaison.pl, a strona agencji jaison.pl to jest strona z ofertą, blogiem oraz kalkulatorem ROI wyliczenia zwrotu i oszczędności z tytułu wdrażania automatyzacji AI. Więc musimy być bardziej tutaj szczegółowi. Tak.",
+        "status": "success"
     }
 ]

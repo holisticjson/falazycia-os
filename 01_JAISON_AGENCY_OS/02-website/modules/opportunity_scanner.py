@@ -1473,6 +1473,18 @@ def render_lead_radar_page(call_gemini_pro_api_func):
         st.subheader("📢 Sales Director / Handlowiec AI")
         st.markdown("Ten agent przeszukuje fora, grupy dyskusyjne oraz social media i generuje outreach do osób szukających automatyzacji procesów.")
         
+        ctx_name = st.session_state.get("selected_context", "Jaison.pl")
+        if "kurczak" in ctx_name.lower():
+            ctx_clean = "Kurczak u Jasia"
+        elif "coolfon" in ctx_name.lower():
+            ctx_clean = "COOLFON"
+        elif "jaison" in ctx_name.lower() or "agency" in ctx_name.lower():
+            ctx_clean = "Jaison"
+        else:
+            ctx_clean = ctx_name.split(".")[0].upper()
+            
+        ctx_info = {"name": ctx_clean}
+        
         with st.expander("📖 Skrypt Sprzedażowy i Autorski Protokół Jaison.pl", expanded=False):
             st.markdown(f"""
             Oto oficjalny, zintegrowany skrypt sprzedażowy Jaison.pl łączący psychologiczne NLP, obniżenie tarcia poznawczego oraz precyzyjną kwalifikację B2B.

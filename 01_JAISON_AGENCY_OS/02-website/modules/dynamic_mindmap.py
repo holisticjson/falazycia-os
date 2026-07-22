@@ -85,6 +85,7 @@ def read_env_api_keys():
         "SLACK_BOT_TOKEN": False,
         "STRIPE_SECRET_KEY": False,
         "WP_KURCZAKUJASIA_PASS": False,
+        "APIFY_API_KEY": False,
     }
     
     if os.path.exists(env_path):

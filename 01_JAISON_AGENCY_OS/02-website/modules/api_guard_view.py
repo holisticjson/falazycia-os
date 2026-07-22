@@ -102,6 +102,14 @@ API_METADATA = {
         "desc": "Umożliwia agentom automatyczne publikowanie wygenerowanych wpisów blogowych.",
         "link": "https://kurczakujasia.pl",
         "instruction": "W panelu WordPress Kurczaka u Jasia przejdź do Edycji Profilu Użytkownika -> Hasła Aplikacji -> Wygeneruj nowe hasło i skopiuj je."
+    },
+    "APIFY_API_KEY": {
+        "label": "🕸️ Apify API Key",
+        "provider": "Apify Portal",
+        "model": "Facebook Ads Spy / Scrapers",
+        "desc": "Służy do uruchamiania robotów szpiegujących i scrapowania reklam konkurencji na Facebooku.",
+        "link": "https://apify.com/",
+        "instruction": "Zarejestruj się bezpłatnie na Apify, przejdź do Ustawienia (Settings) -> Integrations -> Skopiuj swój 'Personal API Token' i wklej go poniżej."
     }
 }
 

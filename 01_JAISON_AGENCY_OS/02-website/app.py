@@ -2444,7 +2444,7 @@ if menu == "🎯 Mission Control":
         st.markdown("""
         <div class="custom-card" style="border-left: 4px solid #8B5CF6; background-color: #110F1C; padding: 15px; border-radius: 8px;">
             <p style="color: #E2E8F0; font-size: 0.95rem; line-height: 1.6; margin: 0;">
-                Zintegrowany profil założyciela i Idealnego Profilu Klienta (ICP). Te dane są fundamentem, z którego korzystają wszystkie połączone boty i agenci podczas tworzenia treści i kampanii marketingowych.
+                Zintegrowany profil założyciela i Idealnego Profilu Klienta (ICP). Te dane są fundamentem, z którego korzystają wszystkie połączone boty i agenci podczas tworzenia treści i kampanii marketingowych. Możesz edytować aktywny profil bezpośrednio w oknie po prawej stronie!
             </p>
         </div>
         """, unsafe_allow_html=True)
@@ -2482,12 +2482,30 @@ if menu == "🎯 Mission Control":
             
         if profile_content:
             st.markdown(f"#### 📖 Aktywny Profil Klienta z bazy wiedzy (`{profile_file}`):")
-            st.markdown(f"""
-            <div style="background-color: #0F0D19; border: 1px solid rgba(167, 139, 250, 0.15); padding: 20px; border-radius: 12px; font-family: 'Inter', sans-serif; line-height: 1.6;">
-                {profile_content}
-            </div>
-            """, unsafe_allow_html=True)
+            
+            edit_col1, edit_col2 = st.columns([1, 1])
+            with edit_col1:
+                st.markdown("**Podgląd Aktywnego Profilu:**")
+                st.markdown(f"""
+                <div style="background-color: #0F0D19; border: 1px solid rgba(167, 139, 250, 0.15); padding: 20px; border-radius: 12px; font-family: 'Inter', sans-serif; line-height: 1.6; height: 500px; overflow-y: auto; color: #CBD5E1;">
+                    {profile_content.replace(chr(10), '<br>')}
+                </div>
+                """, unsafe_allow_html=True)
+            with edit_col2:
+                st.markdown("**Szybka Edycja Profilu (Markdown):**")
+                new_profile_content = st.text_area("Treść pliku profilu:", value=profile_content, height=450, key="edit_profile_markdown")
+                if st.button("💾 Zapisz Profil w 01-brand", key="save_profile_markdown_btn"):
+                    save_prof_path = os.path.join(target_folder, "01-brand", profile_file)
+                    try:
+                        with open(save_prof_path, "w", encoding="utf-8") as f_save_md:
+                            f_save_md.write(new_profile_content)
+                        st.success(f"💾 Sukces! Zaktualizowano profil na dysku: {save_prof_path}")
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"❌ Błąd zapisu pliku: {str(e)}")
         else:
+            st.info("Brak dedykowanego pliku profilu .md w bazie wiedzy tego klienta. Poniżej znajdują się domyślne dane systemowe. Możesz utworzyć nowy plik profilowy, aby boty miały precyzyjne wytyczne.")
+            
             col_icp1, col_icp2 = st.columns(2)
             with col_icp1:
                 st.markdown("#### 👤 Idealny Profil Klienta (ICP)")
@@ -2538,58 +2556,152 @@ if menu == "🎯 Mission Control":
                     *   **Motto:** Dopasowane do celów i unikalnej propozycji wartości (UVP) klienta.
                     """)
                     
-        with st.expander("📝 Edytuj Kartę Klienta i Profil Założyciela"):
-            st.text_area("Uwagi do profilu ICP i tonu komunikacji:", value="Skrajna koncentracja na eliminacji szumu informacyjnego dla osób z ADHD. Komunikacja krótka, zwięzła, luksusowa.", key="icp_text_area")
-            if st.button("💾 Zapisz zmiany w silose 01-brand", key="save_icp_btn"):
-                # Zapis lokalny do pliku w folderze klienta!
-                if target_folder:
-                    save_path = os.path.join(target_folder, "01-brand", "icp_updates.json")
-                    os.makedirs(os.path.dirname(save_path), exist_ok=True)
+            # Sekcja tworzenia nowego profilu
+            if target_folder:
+                st.markdown("<br><hr style='border-color: rgba(167, 139, 250, 0.15);'>", unsafe_allow_html=True)
+                st.markdown("### ➕ Utwórz dedykowany Profil Klienta")
+                default_name = ctx.replace(".pl", "").upper()
+                default_md = f"""# PROFIL PRZEDSIĘBIORCY: {default_name} ({ctx})
+
+Szczegółowa analiza biznesowa, persony klienta oraz oferty, przygotowana w ramach metodologii "AI Biznes Lab".
+
+---
+
+### **CZĘŚĆ 1: PROFIL PRZEDSIĘBIORCY (Biznesu)**
+
+*   **Nazwa:** {default_name} ({ctx})
+*   **Kim jest:** [Opisz krótko profil biznesu, co robi, jak działa]
+*   **Lokalizacja:** [Np. Ogólnopolska / Lokalna]
+*   **Budżet:** [Np. Średni / Wysoki]
+*   **Zasoby:** [Wypunktuj kluczowe atuty]
+*   **Ograniczenia:** [Wypunktuj kluczowe bariery]
+
+---
+
+### **CZĘŚĆ 2: OFERTA**
+
+*   **Produkty / Usługi:** [Wymień główne usługi lub produkty]
+*   **Cena:** [Scharakteryzuj pozycjonowanie cenowe]
+*   **Grupa docelowa (Dla kogo):** [Opisz idealnego klienta]
+*   **Mechanizm wyróżniający (USP):** [Co wyróżnia markę?]
+
+---
+
+### **CZĘŚĆ 3: PERSONA KLIENTA**
+
+**Nazwa Persony:** [Np. Zdecydowany Przedsiębiorca]
+
+*   **Kim jest:** [Krótki opis persony]
+*   **Jaki ma problem (Ból):** [Najważniejsze wyzwania i frustracje]
+*   **Rozwiązanie AI & Automatyzacja (Jak mu pomóc):** [Jak automatyzacje ułatwią mu życie]
+"""
+                new_created_content = st.text_area("Zaprojektuj treść profilu (Markdown):", value=default_md, height=350, key="create_new_profile_md")
+                if st.button("➕ Stwórz Profil i Zapisz w 01-brand", key="create_profile_md_btn"):
+                    save_new_prof_path = os.path.join(target_folder, "01-brand", f"Profil_{default_name.replace(' ', '_')}.md")
+                    os.makedirs(os.path.dirname(save_new_prof_path), exist_ok=True)
                     try:
-                        with open(save_path, "w", encoding="utf-8") as f_save:
-                            json.dump({"updated_at": time.strftime("%Y-%m-%d %H:%M:%S"), "notes": "Zaktualizowano profil"}, f_save, indent=4)
-                        st.success(f"💾 Sukces! Zapisano lokalnie na dysku w: {save_path}")
+                        with open(save_new_prof_path, "w", encoding="utf-8") as f_new_md:
+                            f_new_md.write(new_created_content)
+                        st.success(f"➕ Sukces! Utworzono i zapisano profil: {save_new_prof_path}")
+                        st.rerun()
                     except Exception as e:
-                        st.error(f"❌ Błąd zapisu pliku: {str(e)}")
-                else:
-                    st.success("Karta Klienta zapisana pomyślnie w pamięci podręcznej chmury!")
-                
+                        st.error(f"❌ Błąd tworzenia pliku: {str(e)}")
+                        
     with tab_touchpoints:
         st.markdown("### ⚡ Strategia Touchpoints & TOP Lejki Sprzedażowe", unsafe_allow_html=True)
         st.markdown("""
         <div class="custom-card" style="border-left: 4px solid #3B82F6; background-color: #0F131C; padding: 15px; border-radius: 8px;">
             <p style="color: #CBD5E1; font-size: 0.95rem; line-height: 1.6; margin: 0;">
-                Wykres i etapy lejka touchpointów, które prowadzą zimny ruch do zamknięcia sprzedaży. Agencja wykorzystuje asynchroniczne chatboty kwalifikujące, zintegrowane bezpośrednio z CRM (06-crm/).
+                Wykres i etapy lejka touchpointów, które prowadzą zimny ruch do zamknięcia sprzedaży. Agencja wykorzystuje asynchroniczne chatboty kwalifikujące, zintegrowane bezpośrednio z CRM (06-crm/). Możesz edytować i spersonalizować ten lejek poniżej!
             </p>
         </div>
         """, unsafe_allow_html=True)
         
+        funnel_config = None
+        funnel_config_file = None
+        if target_folder:
+            funnel_config_file = os.path.join(target_folder, "01-brand", "funnel_config.json")
+            if os.path.exists(funnel_config_file):
+                try:
+                    with open(funnel_config_file, "r", encoding="utf-8") as f_fun:
+                        funnel_config = json.load(f_fun)
+                except:
+                    pass
+
+        # Jeśli brak pliku konfiguracyjnego, wygeneruj inteligentne domyślne dane
+        if not funnel_config:
+            if "coolfon" in ctx or "gsm" in ctx.lower() or "kulfon" in ctx.lower():
+                funnel_config = {
+                    "funnel_name": "Lokalny Lejek 'Ekspresowa Naprawa' (GSM)",
+                    "steps": [
+                        "Top of Funnel (Zimny ruch): Lokalne SEO i Google Maps (Localo) + Reklama lokalna Meta Ads (zasięg 5 km).",
+                        "Middle of Funnel (Edukacja): Formularz wyceny naprawy na stronie z natychmiastową estymacją ceny przez AI.",
+                        "Kwalifikacja i Rezerwacja: Automatyczne SMS-y potwierdzające rezerwację terminu serwisu przez n8n.",
+                        "Bottom of Funnel (Odbiór i Opinia): SMS 'Telefon gotowy do odbioru' z linkiem do wystawienia opinii w Google."
+                    ],
+                    "flow_chart": "[ Google Maps / Meta Ads (Lokalnie) ]\n         │\n         ▼\n[ Wybór usługi i Wycena online ]\n         │\n         ▼\n[ Szybka rezerwacja terminu ]\n         │\n         ▼\n[ Odbiór + Automatyczny SMS z n8n ]"
+                }
+            elif "kurczak" in ctx or "jasia" in ctx.lower():
+                funnel_config = {
+                    "funnel_name": "Lokalny Lejek QR Code & Social Media (Gastronomia Premium)",
+                    "steps": [
+                        "Top of Funnel (Zimny ruch): Instagram/TikTok (wirusowe wideo z chrupania) + ulotki lokalne z kodem QR.",
+                        "Middle of Funnel (Zamówienie): Szybkie skanowanie QR przy stoliku, prowadzące do mobilnego menu zamawiania.",
+                        "Lojalność i Powiadomienia: Zapis do darmowego newslettera SMS o promocjach dnia (Kurczak u Jasia).",
+                        "Bottom of Funnel (Powracający Klient): Retargeting lokalny z zaproszeniem na weekendowe nowości z rożna."
+                    ],
+                    "flow_chart": "[ Wirusowe wideo / QR Code (Stolik) ]\n         │\n         ▼\n[ Szybkie menu zamawiania ]\n         │\n         ▼\n[ Zapis do klubu SMS (Systeme.io) ]\n         │\n         ▼\n[ Powracający Gość / Retargeting ]"
+                }
+            else:
+                funnel_config = {
+                    "funnel_name": "High-Ticket VSL & Chatbot",
+                    "steps": [
+                        "Top of Funnel (Zimny ruch): Posty organiczne LinkedIn/TikTok + precyzyjny outreach z Lead Radaru.",
+                        "Middle of Funnel (Kwalifikacja): Landing Page Systeme.io z 5-minutowym wideo VSL (Video Sales Letter).",
+                        "Chatbot Kwalifikujący (Telegram/WhatsApp): Autonomiczne badanie budżetu i wyzwań przez AI.",
+                        "Bottom of Funnel (Domknięcie): Przekierowanie zakwalifikowanych leadów do kalendarza spotkań Cal.com."
+                    ],
+                    "flow_chart": "[ Zimny Ruch (Lead Radar) ]\n         │\n         ▼\n[ Luksusowy Landing Page (VSL) ]\n         │\n         ▼\n[ Chatbot Asynchroniczny (06-crm) ]\n         │\n         ▼\n[ Cal.com (Wysoki koszyk B2B) ]"
+                }
+                
         col_t1, col_t2 = st.columns(2)
         with col_t1:
-            st.markdown("#### 🎯 Rekomendowany Lejek: **High-Ticket VSL & Chatbot**")
-            st.markdown("""
-            1.  **Top of Funnel (Zimny ruch):** Posty wirusowe na LinkedIn/TikTok + precyzyjny cold-reach z **Lead Radaru** (Silos 00-admin).
-            2.  **Middle of Funnel (Kwalifikacja):** Odesłanie do luksusowego Landing Page z 5-minutowym wideo VSL (Video Sales Letter).
-            3.  **Chatbot Kwalifikujący (Telegram/WhatsApp):** Bot asynchronicznie bada budżet i wyzwania klienta, filtrując słabe leady.
-            4.  **Bottom of Funnel (Domknięcie):** Automatyczne przekierowanie zakwalifikowanych leadów do kalendarza spotkań Cal.com.
-            """)
+            st.markdown(f"#### 🎯 Rekomendowany Lejek: **{funnel_config['funnel_name']}**")
+            for idx, step in enumerate(funnel_config["steps"], 1):
+                st.markdown(f"{idx}.  {step}")
         with col_t2:
             st.markdown("#### 📊 Wizualizacja Przepływu Touchpointów")
-            st.markdown("""
+            st.markdown(f"""
             ```
-            [ Zimny Ruch (Lead Radar) ]
-                     │
-                     ▼
-            [ Luksusowy Landing Page (VSL) ]
-                     │
-                     ▼
-            [ Chatbot Asynchroniczny (06-crm) ]
-                     │
-                     ▼
-            [ Cal.com (Wysoki koszyk B2B) ]
+            {funnel_config['flow_chart']}
             ```
             """)
             
+        # Formularz edycji lejka
+        if target_folder:
+            with st.expander("📝 Edytuj Lejek i Strategię Touchpoints"):
+                f_name = st.text_input("Nazwa Lejka:", value=funnel_config["funnel_name"], key="edit_funnel_name")
+                f_steps_raw = st.text_area("Kroki Lejka (jeden w linii):", value="\n".join(funnel_config["steps"]), height=150, key="edit_funnel_steps")
+                f_chart = st.text_area("Schemat blokowy (Wizualizacja):", value=funnel_config["flow_chart"], height=180, key="edit_funnel_chart")
+                
+                if st.button("💾 Zapisz konfigurację lejka w 01-brand", key="save_funnel_btn"):
+                    import time
+                    steps_list = [s.strip() for s in f_steps_raw.split("\n") if s.strip()]
+                    fun_data = {
+                        "funnel_name": f_name,
+                        "steps": steps_list,
+                        "flow_chart": f_chart,
+                        "updated_at": time.strftime("%Y-%m-%d %H:%M:%S")
+                    }
+                    try:
+                        save_fun_path = os.path.join(target_folder, "01-brand", "funnel_config.json")
+                        with open(save_fun_path, "w", encoding="utf-8") as f_save_fun:
+                            json.dump(fun_data, f_save_fun, indent=4, ensure_ascii=False)
+                        st.success(f"💾 Sukces! Zapisano konfigurację lejka: {save_fun_path}")
+                        st.rerun()
+                    except Exception as e:
+                        st.error(f"❌ Błąd zapisu pliku: {str(e)}")
+                        
     with tab_silos:
         st.markdown("### 📊 Stan Wdrożenia (Architektura Jaison OS 2.0)", unsafe_allow_html=True)
         st.markdown("""
