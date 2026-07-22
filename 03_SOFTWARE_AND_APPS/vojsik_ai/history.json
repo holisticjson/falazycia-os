@@ -1510,5 +1510,17 @@
         "raw_text": "Co do dotychczasowych implementation plan się zgadzam. I dalej kilka tutaj sugestii.",
         "corrected_text": "Co do dotychczasowych implementation plan się zgadzam. I dalej kilka tutaj sugestii.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 13:03:45",
+        "raw_text": "Ok, ale trzeba prześwietlić cały streamlit i tam gdzie w modułach brakuje workflow n8n należy to zrobić i zaplanować to krok po kroku. Workflow'e, bo na pewno brakują, bo  z tego co ja kojarzę, nie są zrobione.",
+        "corrected_text": "Ok, ale trzeba prześwietlić cały streamlit i tam gdzie w modułach brakuje workflow n8n należy to zrobić i zaplanować to krok po kroku. Workflow'e, bo na pewno brakują, bo  z tego co ja kojarzę, nie są zrobione.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 13:09:31",
+        "raw_text": "To znaczy jest uruchomione",
+        "corrected_text": "To znaczy jest uruchomione",
+        "status": "raw_fallback"
     }
 ]
