@@ -1498,5 +1498,17 @@
         "raw_text": "Nie widzę wygenerowanego pliku, nie wiem gdzie on jest, ten\"antygravity.gbp.module.spec\" i drugie pytanie:",
         "corrected_text": "Nie widzę wygenerowanego pliku, nie wiem, gdzie on jest, ten \"antygravity.gbp.module.spec\", i drugie pytanie:",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-22 12:35:07",
+        "raw_text": "Rozumiem, że wersja tej COVERR jest jakaś ograniczona, tak? W darmowej wersji po API. To raz. I dwa, zapoznaj się z tymi raportami perplexity sugestią dla zakładki skaner wizytówek Google czy tam, nie wiem.  właśnie bo jest skaner wizytówek Google to jest jeden moduł lidradar i jest i jest drugi w ads and local sales studio tak w jason creative suite  Jest pytanie czy logicznym będzie pozostawienie je w takiej oddzielnie, w separacji i gdzie ewentualnie wdrożyć. Aha, czyli to raport od perpleksji to raczej w odniesieniu nie do skanera wizytowe Google.  tylko do modułu właśnie Ads and Local Sell w JSON Creative Suite and Agency Hub. Tu jest widzę też szpieg reklam Apify, który przetestuję.  Rozumiem, że ten w tym module Ads& Local SEO, o śpieg reklam Facebook Ads Library& Appify. No właśnie. I jest tutaj Google Search Console podpięte.  ale co to pokazuje za statystyki, czego konkretnie? To jest jakaś atrapa, makieta, ale czego? Nie wiem. Czy konkretnego, nie wiem, klienta, czy kontekst, kontekst, profil klienta pokazuje? No nic, trzeba tu zwołać zarząd i podjąć decyzję, jak to poukładać. Jasny, czytelny pipeline  Tymczasem zapozna się z tymi raportami.",
+        "corrected_text": "Rozumiem, że wersja tej COVERR jest jakaś ograniczona, tak? W darmowej wersji po API. To raz. I dwa, zapoznaj się z tymi raportami perplexity sugestią dla zakładki skaner wizytówek Google czy tam, nie wiem.  właśnie bo jest skaner wizytówek Google to jest jeden moduł lidradar i jest i jest drugi w ads and local sales studio tak w jason creative suite  Jest pytanie czy logicznym będzie pozostawienie je w takiej oddzielnie, w separacji i gdzie ewentualnie wdrożyć. Aha, czyli to raport od perpleksji to raczej w odniesieniu nie do skanera wizytowe Google.  tylko do modułu właśnie Ads and Local Sell w JSON Creative Suite and Agency Hub. Tu jest widzę też szpieg reklam Apify, który przetestuję.  Rozumiem, że ten w tym module Ads& Local SEO, o śpieg reklam Facebook Ads Library& Appify. No właśnie. I jest tutaj Google Search Console podpięte.  ale co to pokazuje za statystyki, czego konkretnie? To jest jakaś atrapa, makieta, ale czego? Nie wiem. Czy konkretnego, nie wiem, klienta, czy kontekst, kontekst, profil klienta pokazuje? No nic, trzeba tu zwołać zarząd i podjąć decyzję, jak to poukładać. Jasny, czytelny pipeline  Tymczasem zapozna się z tymi raportami.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-22 12:36:01",
+        "raw_text": "Co do dotychczasowych implementation plan się zgadzam. I dalej kilka tutaj sugestii.",
+        "corrected_text": "Co do dotychczasowych implementation plan się zgadzam. I dalej kilka tutaj sugestii.",
+        "status": "raw_fallback"
     }
 ]
