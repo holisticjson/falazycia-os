@@ -1654,5 +1654,17 @@
         "raw_text": "Działaj z tym. A ja w międzyczasie muszę przygotować agenta Jaśka, to znaczy aplikację agenta konwersacyjnego Dialogflow na koncie GCP.",
         "corrected_text": "Działaj z tym. A ja w międzyczasie muszę przygotować agenta Jaśka, to znaczy aplikację agenta konwersacyjnego Dialogflow na koncie GCP.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-23 12:16:29",
+        "raw_text": "Można zrobić jakiś upload, nie wiem jaki to rodzaj pliku, jeśli chodzi o ustawienia, natomiast musimy się tu wgryźć bardziej, tak? Bo to w polu goal instructions to jest chyba zbyt płytkie. Ta instrukcja no musi być...  agent OS w komunikatorze. Jeszcze takie rozwiązania. Musi mieć cała oferta ze strony i musi być mistrzem w zamykaniu sprzedaży, że mać metodę NLP, VAC. Metodę z książki Mateusza Grzesiaka. Bądź skuteczny. Musi umiejętnie zadawać pytania, przeprowadzić przez proces klienta  tak, konfiguracji właśnie, jeśli zbada potrzeby, wyzwania, problemy, bolączki, pain points klienta, na przykład możemy zaproponować takiego agenta w komunikatorze włożonym, który zarządza jego narzędziami CRM, wieloma procesami w firmie, czy na przykład pracownicy mogą zostać wyposażeni.",
+        "corrected_text": "Można zrobić jakiś upload, nie wiem jaki to rodzaj pliku, jeśli chodzi o ustawienia, natomiast musimy się tu wgryźć bardziej, tak? Bo to w polu goal instructions to jest chyba zbyt płytkie. Ta instrukcja no musi być...  agent OS w komunikatorze. Jeszcze takie rozwiązania. Musi mieć cała oferta ze strony i musi być mistrzem w zamykaniu sprzedaży, że mać metodę NLP, VAC. Metodę z książki Mateusza Grzesiaka. Bądź skuteczny. Musi umiejętnie zadawać pytania, przeprowadzić przez proces klienta  tak, konfiguracji właśnie, jeśli zbada potrzeby, wyzwania, problemy, bolączki, pain points klienta, na przykład możemy zaproponować takiego agenta w komunikatorze włożonym, który zarządza jego narzędziami CRM, wieloma procesami w firmie, czy na przykład pracownicy mogą zostać wyposażeni.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 12:19:10",
+        "raw_text": "To pole instrukcje zapaliło się na czerwono po wklejeniu tych instrukcji. Coś jest nie tak.",
+        "corrected_text": "To pole instrukcje zapaliło się na czerwono po wklejeniu tych instrukcji. Coś jest nie tak.",
+        "status": "success"
     }
 ]
