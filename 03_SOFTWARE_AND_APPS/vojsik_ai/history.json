@@ -1780,5 +1780,17 @@
         "raw_text": "A tu poniżej coś, żeby mnie po prostu znał mój agent Hermes, czyli jaisonos, który będzie moim doradcą, klinował moich protokołów i robił powtarzalnych cron jobs. To przy okazji właśnie tego MLM, agenta i klinowanie protokołów i moich... Ale to właśnie robię na laptopie chyba.  Tam pracuję nad tym LiveWave projektem i tym agentem MLM. No chciałem taką pokazówkę właśnie zrobić, jak to wygląda. Jak agent pilnuje protokołów, swoich nawyków, pracę egzekwuje, tak układać i im pomaga.",
         "corrected_text": "A tu poniżej coś, żeby mnie po prostu znał mój agent Hermes, czyli jaisonos, który będzie moim doradcą, klinował moich protokołów i robił powtarzalnych cron jobs. To przy okazji właśnie tego MLM, agenta i klinowanie protokołów i moich... Ale to właśnie robię na laptopie chyba.  Tam pracuję nad tym LiveWave projektem i tym agentem MLM. No chciałem taką pokazówkę właśnie zrobić, jak to wygląda. Jak agent pilnuje protokołów, swoich nawyków, pracę egzekwuje, tak układać i im pomaga.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 17:58:11",
+        "raw_text": "Na telefonie sobie tego protokołu biohackingu i treningu nie obejrzę teraz, tylko lokalnie na komputerze.",
+        "corrected_text": "Na telefonie sobie tego protokołu biohackingu i treningu nie obejrzę teraz, tylko lokalnie na komputerze.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 18:02:27",
+        "raw_text": "Na telefonie nie mogę wyświetlić pod tym adresem. Jest w tej samej sieci może VPN. Przez VPN może być problem. Później odpalę bota na Telegramie. Na Discorda go przerzucimy. To obydwa, dwie tożsamości, dwa konteksty.  Ale nie widzę go w tym, nie? Nie widzę go w dashboardzie tego planu treningowego.",
+        "corrected_text": "Na telefonie nie mogę wyświetlić pod tym adresem. Jest w tej samej sieci, może VPN. Przez VPN może być problem. Później odpalę bota na Telegramie. Na Discorda go przerzucimy. To obydwa, dwie tożsamości, dwa konteksty. Ale nie widzę go w tym, nie? Nie widzę go w dashboardzie tego planu treningowego.",
+        "status": "success"
     }
 ]

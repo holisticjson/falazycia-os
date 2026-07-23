@@ -1952,6 +1952,10 @@ with st.sidebar:
     # III. SELF
     st.markdown("<p style='color: #10B981; font-weight: bold; font-size: 0.75rem; letter-spacing: 1px; margin-top: 18px; margin-bottom: 6px;'>III. SELF</p>", unsafe_allow_html=True)
     
+    if st.button("🧘 Biohacking & Trening 🟢", use_container_width=True, type="primary" if col_menu == "Biohacking" else "secondary"):
+        st.session_state.current_page = "Biohacking"
+        st.rerun()
+
     if st.button("🎯 Goals & Journal", use_container_width=True, type="primary" if col_menu == "Goals" else "secondary"):
         st.session_state.current_page = "Goals"
         st.rerun()
@@ -2772,6 +2776,29 @@ elif menu == "Hermes":
 
 elif menu == "Gemini":
     render_agent_console("Gemini", "Online", "gemini-2.5-pro", "Vertex AI Native", "#8B5CF6")
+
+# 1b. BIOHACKING & TRENING
+elif menu == "Biohacking":
+    st.markdown("<p style='color: #10B981; font-family: Outfit; font-weight: bold; letter-spacing: 1.5px; margin-bottom: 2px;'>III. — SELF • BIOHACKING, TRENING & SOUL</p>", unsafe_allow_html=True)
+    st.title("🧘 Tomasz Personal OS — Biohacking & Trening")
+    st.markdown("Kompletny protokół Master OS v4.0: Kalistenika (4 dni), Suplementacja Dopaminowa, Dieta Intermittent Fasting (10:00-18:00) & Wim Hof.")
+    
+    html_proto_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\kompletny_protok_biohacking_trening.html"
+    if os.path.exists(html_proto_path):
+        with open(html_proto_path, "r", encoding="utf-8") as hf:
+            proto_html_content = hf.read()
+        
+        st.components.v1.html(proto_html_content, height=880, scrolling=True)
+        
+        st.download_button(
+            label="📥 Pobierz Plik HTML Protokołu (Do Podglądu Offline)",
+            data=proto_html_content,
+            file_name="kompletny_protok_biohacking_trening.html",
+            mime="text/html",
+            use_container_width=True
+        )
+    else:
+        st.warning("⚠️ Nie odnaleziono pliku protokołu HTML w katalogu głównym agencji.")
 
 # 2. GOALS & OPEN LOOPS
 elif menu == "Goals":
