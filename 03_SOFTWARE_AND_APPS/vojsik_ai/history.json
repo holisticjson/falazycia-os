@@ -1672,5 +1672,17 @@
         "raw_text": "Jak zbudować drugi mózg?  bo finalnie z Trymlita wypchniemy, jak już tutaj poustawiamy wszystko na domenę os.jaison.pl.",
         "corrected_text": "Jak zbudować drugi mózg? Bo finalnie z Trymlita wypchniemy, jak już tutaj poustawiamy wszystko na domenę os.jaison.pl.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-23 13:29:15",
+        "raw_text": "Dziękuję.",
+        "corrected_text": "Dziękuję.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-23 13:30:27",
+        "raw_text": "Słuchaj, no tak, myślę, że przetestujemy szablon Remotion. Przygotowania szablonu, tak? Czyli to jakby pod markę naszą, czyli kolorystykę, logo i tak dalej. Jak najbardziej, a ja w międzyczasie tutaj...  Przygotuję te zadania oczekujące, dokończę to co tam. Mam jeszcze do zrobienia, tak? Autoryzacji, Composio, Stripe. Konfigurację Dialogflow dla bota na stronie właśnie robię też w trakcie  Dziękuję.",
+        "corrected_text": "Słuchaj, no tak, myślę, że przetestujemy szablon Remotion. Przygotowania szablonu, tak? Czyli to jakby pod markę naszą, czyli kolorystykę, logo i tak dalej. Jak najbardziej, a ja w międzyczasie tutaj... Przygotuję te zadania oczekujące, dokończę to, co tam. Mam jeszcze do zrobienia, tak? Autoryzacji, Composio, Stripe. Konfigurację Dialogflow dla bota na stronie właśnie robię też w trakcie. Dziękuję.",
+        "status": "success"
     }
 ]
