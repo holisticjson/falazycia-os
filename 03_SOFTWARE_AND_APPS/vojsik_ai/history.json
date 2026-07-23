@@ -1642,5 +1642,17 @@
         "raw_text": "Zapoznaj się z tym implementation plan oraz zastanaw faktycznie co już jest zrobione, co wymaga uruchomienia, napisz mi prompt i przekażemy tutaj kwestie jakby samej strony internetowej, automatyzacji, workflow, dopięcia formularzy, lead magnet, całego pipeline tam, tak? A my zajmiemy się tutaj w tej konwersacji dalej stream lead. Do kończenia.",
         "corrected_text": "Zapoznaj się z tym implementation plan oraz zastanów faktycznie, co już jest zrobione, co wymaga uruchomienia. Napisz mi prompt i przekażemy tutaj kwestie jakby samej strony internetowej, automatyzacji, workflow, dopięcia formularzy, lead magnet, całego pipeline tam, tak? A my zajmiemy się tutaj w tej konwersacji dalej stream lead. Do kończenia.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-23 12:03:15",
+        "raw_text": "Czy nazwa tego tagu jest właściwa?  Wiem, że tam metodą oprócz tagów jest przypisanie jakiegoś innego parametru zamiast tagu, aby ominąć ograniczenie jednego tagu w planie darmowym.  No i teraz trzeba by skonsultować tutaj z dyrektorem marketingu sprzedaży, product managerem, czy tytuł i treść tego ebooka jest właściwe dla grupy docelowej, biorąc pod uwagę ofertę na stronie.  Jakie jeszcze produkty tak biorąc pod uwagę naszą przewagę, inne podejście względem innych agencji czyli low cost, low friction i secure. Jakie jeszcze e-booki i ewentualnie strategię contentową można by było przyjąć.  contentu, tak? Treści nagrywek, takie najlepiej viralowych. Jak to właśnie zrobić, żeby skanować konkurencję, ewentualnie za granicą podobne treści i  powielać naszym tonem marki na naszym Brand Booku i",
+        "corrected_text": "Czy nazwa tego tagu jest właściwa?  Wiem, że tam metodą oprócz tagów jest przypisanie jakiegoś innego parametru zamiast tagu, aby ominąć ograniczenie jednego tagu w planie darmowym.  No i teraz trzeba by skonsultować tutaj z dyrektorem marketingu sprzedaży, product managerem, czy tytuł i treść tego ebooka jest właściwe dla grupy docelowej, biorąc pod uwagę ofertę na stronie.  Jakie jeszcze produkty tak biorąc pod uwagę naszą przewagę, inne podejście względem innych agencji czyli low cost, low friction i secure. Jakie jeszcze e-booki i ewentualnie strategię contentową można by było przyjąć.  contentu, tak? Treści nagrywek, takie najlepiej viralowych. Jak to właśnie zrobić, żeby skanować konkurencję, ewentualnie za granicą podobne treści i  powielać naszym tonem marki na naszym Brand Booku i",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 12:05:54",
+        "raw_text": "Działaj z tym. A ja w międzyczasie muszę przygotować agenta Jaśka, to znaczy aplikację agenta konwersacyjnego Dialogflow na koncie GCP.",
+        "corrected_text": "Działaj z tym. A ja w międzyczasie muszę przygotować agenta Jaśka, to znaczy aplikację agenta konwersacyjnego Dialogflow na koncie GCP.",
+        "status": "success"
     }
 ]
