@@ -1702,5 +1702,11 @@
         "raw_text": "Czy ta pętla rygoru deweloperskiego z Cloud Code Starter również będzie odnosiła się do kodowania i tworzenia stron, tak? Planowania. To raz, a dwa?  sprawdź czy na laptopie już się pobrały i się zaktualizują te no bo tam nie odpalę, to znaczy odpalę też streamnita na localhost, tak? ale czy on się będzie aktualizował tam to raz, dwa, trzy te skille teraz i sopy to się będzie wszystko aktualizowało na podstawie tego git sync  Dziękuję.",
         "corrected_text": "Czy ta pętla rygoru deweloperskiego z Cloud Code Starter również będzie odnosiła się do kodowania i tworzenia stron, tak? Planowania. To raz, a dwa? Sprawdź, czy na laptopie już się pobrały i się zaktualizują te, no bo tam nie odpalę, to znaczy odpalę też Streamlita na localhost, tak? Ale czy on się będzie aktualizował tam, to raz, dwa, trzy, te skille teraz i sopy, to się będzie wszystko aktualizowało na podstawie tego Git Sync. Dziękuję.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-23 15:09:18",
+        "raw_text": "Trzeba to zatem zapisać do SOPu, do tych rzeczy krok po kroku, które przechodziliśmy, które trzeba pilnować, zważać na błędy i składając wnioski np. na inny projekt lub dla innych klientów o te środki.",
+        "corrected_text": "Trzeba to zatem zapisać do SOPu, do tych rzeczy krok po kroku, które przechodziliśmy, które trzeba pilnować, zważać na błędy i składając wnioski np. na inny projekt lub dla innych klientów o te środki.",
+        "status": "raw_fallback"
     }
 ]

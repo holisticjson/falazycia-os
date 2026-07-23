@@ -182,6 +182,15 @@ Każdy projekt realizowany przez J(AI)SON dotyczy innej branży, innej niszy ryn
 5.  **Rozwiązanie & Mierzalne ROI:** Twarde dane biznesowe, zaoszczędzony czas, wzrost zaangażowania zespołu oraz koszty utrzymania bliskie zeru.
 6.  **Głos Marki (Ghost v2):** Tekst napisany w 100% bezpośrednio ("Ty"), surowym, zaangażowanym tonem z **bezwzględnym nakazem stosowania tagów `<strong>` i `</strong>` do pogrubień** (całkowity zakaz używania składni `**` w plikach HTML).
 
+17. **OBOWIĄZKOWY AUDYT ZGODNOŚCI DLA DARMOWYCH ŚRODKÓW CHMUROWYCH GCP ($300 - $350K+)**
+Przed złożeniem jakiegokolwiek wniosku o granty, kredyty startupowe Google Cloud lub darmowy Trial ($300 Free Trial, $1000 GenAI App Builder) dla projektu własnego lub klienckiego, agent ma bezwzględny obowiązek przeprowadzić audyt strony internetowej według kanonicznego SOP: `.agents/skills/gcp-startup-credits-sop/SKILL.md`.
+Strona musi bezwzględnie posiadać:
+- Działający, pokazany wprost produkt/panel (Live Launched Product Showcase) — zakaz samych waitlist/placeholderów.
+- Zespół i dane założyciela z linkami do LinkedIn.
+- Pełne dane rejestrowe firmy (KRS/NIP/REGON) oraz aktywne linki Polityki Prywatności i ToS w stopce.
+- Czystą dostępność (brak błędów 404/500/logowania).
+
+
 
 
 
