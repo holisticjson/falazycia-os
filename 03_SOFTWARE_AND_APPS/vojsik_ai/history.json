@@ -1756,5 +1756,17 @@
         "raw_text": "Dobra, punkt pierwszy wykonany. Tylko czekam aż się tam zaktualizują te zasady bezpieczeństwa, bo jeszcze nie mogę pobrać klucza. Zanim przeniesiemy na maszynę VM całego streamingu.  No to musimy być pewni, że wszystko działa, tak? I współpracuje z systemem Hermes, tak? Agentic, czyli JSON, ja ISON OS. Musimy to tak produkcyjnie przygotować. Tutaj ton w agencji ja ISON. Robimy to, co ważne, resztę robi kod. Tam jeszcze mieliśmy ten wspaniały motto  \"Twórz to co powtarzalne, twórz to co unikalne\" Tylko nie wiem co lepiej gdzie pasuje, czy do twórcy MLM czy do agencji I co będę mógł mieć dwa profile jakby obsługiwane w... No właśnie, jak to zrobi bot z systemu agentowego Hermes w Discordze  no bo będę mógł się logować tak też na telefonie do panelu dostosowanego do mobile teraz do panelu dashboard streamlit no i będę mógł też z poziomu discorda tak z bota to obsługiwać on będzie miał wgrane dwa różne profile tak",
         "corrected_text": "Dobra, punkt pierwszy wykonany. Tylko czekam aż się tam zaktualizują te zasady bezpieczeństwa, bo jeszcze nie mogę pobrać klucza. Zanim przeniesiemy na maszynę VM całego streamingu.  No to musimy być pewni, że wszystko działa, tak? I współpracuje z systemem Hermes, tak? Agentic, czyli JSON, ja ISON OS. Musimy to tak produkcyjnie przygotować. Tutaj ton w agencji ja ISON. Robimy to, co ważne, resztę robi kod. Tam jeszcze mieliśmy ten wspaniały motto  \"Twórz to co powtarzalne, twórz to co unikalne\" Tylko nie wiem co lepiej gdzie pasuje, czy do twórcy MLM czy do agencji I co będę mógł mieć dwa profile jakby obsługiwane w... No właśnie, jak to zrobi bot z systemu agentowego Hermes w Discordze  no bo będę mógł się logować tak też na telefonie do panelu dostosowanego do mobile teraz do panelu dashboard streamlit no i będę mógł też z poziomu discorda tak z bota to obsługiwać on będzie miał wgrane dwa różne profile tak",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 17:43:19",
+        "raw_text": "Przyznaję się bez bicia, że jeszcze zostały mi te zadania oczekujące, wszystkie. No, oprócz tego Vertex AI Agent, ale to już robię z tym, z równoległym agentem od strony agencji.",
+        "corrected_text": "Przyznaję się bez bicia, że jeszcze zostały mi te zadania oczekujące, wszystkie. No, oprócz tego Vertex AI Agent, ale to już robię z tym, z równoległym agentem od strony agencji.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 17:43:52",
+        "raw_text": "No i widzę, że na komputerze stacjonarnym nie poukładała się struktura folderów w projekcie LiveWave i tam dużo się na laptopa pobrało takich multimediów, więc to podejrzewam, że się nie synchronizuje i nie pobiera do GIT-a.",
+        "corrected_text": "No i widzę, że na komputerze stacjonarnym nie poukładała się struktura folderów w projekcie LiveWave i tam dużo się na laptopa pobrało takich multimediów, więc to podejrzewam, że się nie synchronizuje i nie pobiera do GIT-a.",
+        "status": "raw_fallback"
     }
 ]

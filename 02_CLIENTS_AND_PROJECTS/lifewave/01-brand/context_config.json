@@ -1,0 +1,12 @@
+{
+  "client_id": "lifewave",
+  "client_name": "LifeWave (Twórca MLM)",
+  "motto": "Automatyzuj to, co powtarzalne. Twórz to, co unikalne.",
+  "primary_color": "#3B82F6",
+  "secondary_color": "#10B981",
+  "author": "Tomasz | Lider LifeWave",
+  "handle": "@lifewave.health",
+  "domain": "mlm.jaison.pl",
+  "systeme_subdomain": "mlm.jaison.pl",
+  "n8n_webhook_url": "https://n8n.jaison.pl/webhook/lifewave-lead"
+}
