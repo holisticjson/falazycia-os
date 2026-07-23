@@ -1666,5 +1666,11 @@
         "raw_text": "To pole instrukcje zapaliło się na czerwono po wklejeniu tych instrukcji. Coś jest nie tak.",
         "corrected_text": "To pole instrukcje zapaliło się na czerwono po wklejeniu tych instrukcji. Coś jest nie tak.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-23 13:09:38",
+        "raw_text": "Jak zbudować drugi mózg?  bo finalnie z Trymlita wypchniemy, jak już tutaj poustawiamy wszystko na domenę os.jaison.pl.",
+        "corrected_text": "Jak zbudować drugi mózg? Bo finalnie z Trymlita wypchniemy, jak już tutaj poustawiamy wszystko na domenę os.jaison.pl.",
+        "status": "success"
     }
 ]
