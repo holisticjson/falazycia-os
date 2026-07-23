@@ -1732,5 +1732,11 @@
         "raw_text": "Powiedz mi najpierw sprawdź czy w Stripe na jednym koncie mogę później dodać inne podmioty. Na przykład teraz spółkę i prokurent, który ja nie jestem prokurentem, ktoś inny jest prokurentem, musiałby potwierdzić.  na przykład swoją działalność jednoosobową lub inną spółkę.",
         "corrected_text": "Powiedz mi najpierw sprawdź czy w Stripe na jednym koncie mogę później dodać inne podmioty. Na przykład teraz spółkę i prokurent, który ja nie jestem prokurentem, ktoś inny jest prokurentem, musiałby potwierdzić.  na przykład swoją działalność jednoosobową lub inną spółkę.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 16:55:10",
+        "raw_text": "Odpowiedz mi jeszcze tylko na pytanie. Muszę tutaj, że musieli streamlić, zasilać już z innego konta GCP.  Czy ten smart routing, który aktualnie tam mamy, czyli modele z Together AI, tak? Kimi, K3 i DeepSeek i Fallback na Google AI Studio, czy to nam wystarczy, czy lepiej? Gdybyśmy osiągnęli najwyższy tu poziom, to z jakich modeli korzystać? Z GCP, Gemini, 2.5, Flash i Pro?  Dziękuję.",
+        "corrected_text": "Odpowiedz mi jeszcze tylko na pytanie. Muszę tutaj, że musieli streamlić, zasilać już z innego konta GCP.  Czy ten smart routing, który aktualnie tam mamy, czyli modele z Together AI, tak? Kimi, K3 i DeepSeek i Fallback na Google AI Studio, czy to nam wystarczy, czy lepiej? Gdybyśmy osiągnęli najwyższy tu poziom, to z jakich modeli korzystać? Z GCP, Gemini, 2.5, Flash i Pro?  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
