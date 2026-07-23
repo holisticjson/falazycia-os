@@ -1708,5 +1708,17 @@
         "raw_text": "Trzeba to zatem zapisać do SOPu, do tych rzeczy krok po kroku, które przechodziliśmy, które trzeba pilnować, zważać na błędy i składając wnioski np. na inny projekt lub dla innych klientów o te środki.",
         "corrected_text": "Trzeba to zatem zapisać do SOPu, do tych rzeczy krok po kroku, które przechodziliśmy, które trzeba pilnować, zważać na błędy i składając wnioski np. na inny projekt lub dla innych klientów o te środki.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 15:21:31",
+        "raw_text": "Czy korzystać z tych zaawansowanych funkcji konfiguracji tego website datastore? To co kliknąłem Advanced Options i przerzuciło mnie na stronę tutaj na drugim zrzucie co masz. Czyli głównie to tu chyba chodzi o to zaawansowane indeksowanie witryn.",
+        "corrected_text": "Czy korzystać z tych zaawansowanych funkcji konfiguracji tego website datastore? To co kliknąłem Advanced Options i przerzuciło mnie na stronę tutaj na drugim zrzucie co masz. Czyli głównie to tu chyba chodzi o to zaawansowane indeksowanie witryn.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-23 15:24:30",
+        "raw_text": "Czy powinien mieć jeszcze jakąś wiedzę w sensie... Kolejny datastore tylko tym razem nie website store tylko data z Google Cloud, z GCS, Google Cloud Storage.  Tak, mógłbym dać z Google umiejętność jutro całą wiedzę, ale czy to jest sens? To raz, a dwa. Myślę, że takiego bota sobie podepnę pod Streamlit, ale to już z równoległym agentem, ty się tym nie zajmuj. Tylko mi się po prostu krótko wypowiedz na ten temat, czy mógłbym w Streamlicie wykorzystać  Wszystko to co mają dyrektorzy byłby takim zarządcą też, co? Komplementarną wiedzę ze sprzedaży marketingu, z reklam ciągle  aktualizowaną albo np. jakie to można by było podpiąć bo jeszcze strony internetowe takie.",
+        "corrected_text": "Czy powinien mieć jeszcze jakąś wiedzę w sensie... Kolejny datastore tylko tym razem nie website store tylko data z Google Cloud, z GCS, Google Cloud Storage.  Tak, mógłbym dać z Google umiejętność jutro całą wiedzę, ale czy to jest sens? To raz, a dwa. Myślę, że takiego bota sobie podepnę pod Streamlit, ale to już z równoległym agentem, ty się tym nie zajmuj. Tylko mi się po prostu krótko wypowiedz na ten temat, czy mógłbym w Streamlicie wykorzystać  Wszystko to co mają dyrektorzy byłby takim zarządcą też, co? Komplementarną wiedzę ze sprzedaży marketingu, z reklam ciągle  aktualizowaną albo np. jakie to można by było podpiąć bo jeszcze strony internetowe takie.",
+        "status": "raw_fallback"
     }
 ]
