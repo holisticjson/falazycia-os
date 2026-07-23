@@ -2985,20 +2985,44 @@ Zwróć wyłącznie prawidłowy JSON, bez znaczników ```json i bez innych komen
                 st.warning("Wpisz cel do zrealizowania.")
                 
     with tab_soul_agent:
-        st.subheader("🧘 Soul Agent (Twój Doradca Duchowy & Mentalny)")
-        st.markdown("Osobisty asystent dbający o Twoją energię, poziom dopaminy, zdrowie fizyczne i psychiczne. Zoptymalizowany pod kątem ADHD.")
+        st.subheader("🧘 Tomasz Personal OS — Biohacking, Trening & Soul Agent")
+        st.markdown("Zarządzaj energią, poziomem dopaminy, rytuałami porannymi i treningiem kalisteniki (ADHD Laser Focus Protocol).")
         
-        # User input for current state
-        feelings = st.text_area("Jak się dzisiaj czujesz? (np. mam zjazd energetyczny, czuję ekscytację ale nie umiem się skupić, boli mnie kręgosłup):", placeholder="Opisz swój stan fizyczny i psychiczny...", key="goals_soul_feelings")
+        soul_sub1, soul_sub2 = st.tabs(["📋 Protokół Biohackingu & Treningu (HTML)", "💬 Soul Agent & Przerwanie Wzorca (NLP)"])
         
-        if st.button("Zaplanuj Rytuały Zdrowotne", type="primary", key="goals_soul_run_btn"):
-            if feelings:
-                with st.spinner("Soul Agent analizuje Twój stan i projektuje rytuały..."):
-                    # Load user profile context
-                    o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
-                    o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak pliku o_mnie.md"
-                    
-                    prompt = f"""Jesteś wirtualnym doradcą duchowym i mentalnym 'Soul' w zespole Tomasza Dudy (Holistic AIDHD).
+        with soul_sub1:
+            st.write("##### ⚡ Pełny Protokół Treningowy, Dieta IF & Suplementacja (Interactive View)")
+            st.caption("Poniższy panel wyświetla Twój kompletny protokół Master OS v4.0 z interaktywnym podziałem na 4 dni treningowe, piramidę suplementów oraz dietę 10:00-18:00.")
+            
+            html_proto_path = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\kompletny_protok_biohacking_trening.html"
+            if os.path.exists(html_proto_path):
+                with open(html_proto_path, "r", encoding="utf-8") as hf:
+                    proto_html_content = hf.read()
+                
+                # Render HTML component
+                st.components.v1.html(proto_html_content, height=850, scrolling=True)
+                
+                st.download_button(
+                    label="📥 Pobierz Plik HTML Protokołu (Do Podglądu Offline)",
+                    data=proto_html_content,
+                    file_name="kompletny_protok_biohacking_trening.html",
+                    mime="text/html",
+                    use_container_width=True
+                )
+            else:
+                st.warning("⚠️ Nie odnaleziono pliku protokołu HTML w katalogu głównym agencji.")
+
+        with soul_sub2:
+            feelings = st.text_area("Jak się dzisiaj czujesz? (np. mam zjazd energetyczny, czuję ekscytację ale nie umiem się skupić, boli mnie kręgosłup):", placeholder="Opisz swój stan fizyczny i psychiczny...", key="goals_soul_feelings")
+            
+            if st.button("Zaplanuj Rytuały Zdrowotne", type="primary", key="goals_soul_run_btn"):
+                if feelings:
+                    with st.spinner("Soul Agent analizuje Twój stan i projektuje rytuały..."):
+                        # Load user profile context
+                        o_mnie_path = os.path.join(HERMES_DIR, "o_mnie.md")
+                        o_mnie_context = read_md_file(o_mnie_path) if os.path.exists(o_mnie_path) else "Brak pliku o_mnie.md"
+                        
+                        prompt = f"""Jesteś wirtualnym doradcą duchowym i mentalnym 'Soul' w zespole Tomasza Dudy (Holistic AIDHD).
 Tomasz (lub klient) opisał swoje dzisiejsze samopoczucie: "{feelings}".
 Kontekst użytkownika (historia i tożsamość):
 {o_mnie_context}
@@ -3012,22 +3036,22 @@ Uwzględnij:
  
 Pisz w tonie pełnym empatii, spokoju, wsparcia, lecz konkretnie (ADHD-friendly).
 """
-                    response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś wspierającym doradcą mentalnym i duchowym zorientowanym na ADHD.")
-                    st.session_state.soul_rituals_result = response
-                    st.rerun()
-            else:
-                st.warning("Opisz krótko jak się czujesz, aby model mógł dobrać rytuały.")
-                
-        if "soul_rituals_result" in st.session_state and st.session_state.soul_rituals_result:
-            st.markdown("### 🧘 Rekomendowane Rytuały i Plan Przepływu (Flow):")
-            st.markdown(f"""
-            <div class="custom-card" style="border-left: 4px solid #EC4899; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #170d14;">
+                        response = call_gemini_pro_api([{"role": "user", "content": prompt}], "Jesteś wspierającym doradcą mentalnym i duchowym zorientowanym na ADHD.")
+                        st.session_state.soul_rituals_result = response
+                        st.rerun()
+                else:
+                    st.warning("Opisz krótko jak się czujesz, aby model mógł dobrać rytuały.")
+                    
+            if "soul_rituals_result" in st.session_state and st.session_state.soul_rituals_result:
+                st.markdown("### 🧘 Rekomendowane Rytuały i Plan Przepływu (Flow):")
+                st.markdown(f"""
+                <div class="custom-card" style="border-left: 4px solid #EC4899; white-space: pre-wrap; font-size: 0.95rem; line-height: 1.7; background-color: #170d14;">
 {st.session_state.soul_rituals_result}
-            </div>
-            """, unsafe_allow_html=True)
-            if st.button("Wyczyść rytuały", key="goals_soul_clear_btn"):
-                st.session_state.soul_rituals_result = None
-                st.rerun()
+                </div>
+                """, unsafe_allow_html=True)
+                if st.button("Wyczyść rytuały", key="goals_soul_clear_btn"):
+                    st.session_state.soul_rituals_result = None
+                    st.rerun()
 
 # 3. BAZA WIEDZY
 elif menu == "Notebook":

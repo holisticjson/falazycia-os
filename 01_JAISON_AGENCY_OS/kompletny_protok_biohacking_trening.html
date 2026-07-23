@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="pl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master OS - Protokół Treningowy, Dieta i Suplementacja</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            900: '#14532d',
+                            accent: '#06b6d4',
+                            warning: '#f59e0b',
+                            darkBg: '#0f172a',
+                            cardBg: '#1e293b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #0f172a; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        .tab-active { border-bottom: 3px solid #22c55e; color: #22c55e; font-weight: 700; }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen custom-scrollbar pb-12">
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="bg-slate-900/80 backdrop-blur border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="p-2 bg-emerald-500/20 text-emerald-400 rounded-xl border border-emerald-500/30">
+                    <i data-lucide="activity" class="w-7 h-7"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
+                        TOMASZ PERSONAL OS <span class="text-xs font-mono bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">v4.0 ACTIVE</span>
+                    </h1>
+                    <p class="text-xs text-slate-400">43 Lata | 80 kg | 180 cm | Kalistenika & Gumy | Biohacking ADHD</p>
+                </div>
+            </div>
+
+            <!-- TAB NAV -->
+            <nav class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0">
+                <button onclick="switchTab('workout')" id="btn-workout" class="tab-btn px-4 py-2 text-sm font-medium text-slate-300 hover:text-emerald-400 flex items-center gap-2 transition tab-active">
+                    <i data-lucide="dumbbell" class="w-4 h-4"></i> Trening (4 Dni)
+                </button>
+                <button onclick="switchTab('supplements')" id="btn-supplements" class="tab-btn px-4 py-2 text-sm font-medium text-slate-300 hover:text-emerald-400 flex items-center gap-2 transition">
+                    <i data-lucide="pill" class="w-4 h-4"></i> Suplementacja
+                </button>
+                <button onclick="switchTab('diet')" id="btn-dieta" class="tab-btn px-4 py-2 text-sm font-medium text-slate-300 hover:text-emerald-400 flex items-center gap-2 transition">
+                    <i data-lucide="utensils" class="w-4 h-4"></i> Dieta & IF
+                </button>
+                <button onclick="switchTab('routine')" id="btn-routine" class="tab-btn px-4 py-2 text-sm font-medium text-slate-300 hover:text-emerald-400 flex items-center gap-2 transition">
+                    <i data-lucide="zap" class="w-4 h-4"></i> Poranny Rytuał
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 mt-8">
+
+        <!-- STATUS BAR SUMMARY -->
+        <section class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center gap-4">
+                <div class="p-3 bg-blue-500/10 text-blue-400 rounded-xl border border-blue-500/20">
+                    <i data-lucide="shield-check" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Stan Stawów</span>
+                    <p class="text-sm font-bold text-slate-200">Bark: 100% zakres / Staw skokowy: Ostrożnie</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center gap-4">
+                <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/20">
+                    <i data-lucide="flame" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Cel Treningowy</span>
+                    <p class="text-sm font-bold text-slate-200">Masa Nóg + Brzuch na Pocięcie</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center gap-4">
+                <div class="p-3 bg-amber-500/10 text-amber-400 rounded-xl border border-amber-500/20">
+                    <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Mięso w Diecie</span>
+                    <p class="text-sm font-bold text-slate-200">15–20% (Neuroprotekcja)</p>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex items-center gap-4">
+                <div class="p-3 bg-cyan-500/10 text-cyan-400 rounded-xl border border-cyan-500/20">
+                    <i data-lucide="brain" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Neuro-Format</span>
+                    <p class="text-sm font-bold text-slate-200">ADHD Laser Focus Protocol</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: WORKOUT TAB -->
+        <div id="tab-workout" class="tab-content space-y-8">
+
+            <!-- WARMUP & COOLDOWN CARDS -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Rozgrzewka -->
+                <div class="bg-slate-900 border border-emerald-500/30 rounded-2xl p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 bg-emerald-500/20 text-emerald-400 rounded-lg">
+                            <i data-lucide="flame" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="text-lg font-bold text-white">Protokół Rozgrzewkowy (Przed Każdym Treningiem)</h2>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">Czas: 8–10 minut. Przygotowanie układu nerwowego, mazi stawowej oraz aktywacja rotatorów barku i miednicy.</p>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-emerald-400">1.</span>
+                            <div><strong>Truchot w miejscu / Skakanka bez skakania:</strong> 3 min – podniesienie temperatury i przepływu krwi.</div>
+                        </li>
+                        <li class="flex items-start gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-emerald-400">2.</span>
+                            <div><strong>Koci Grzbiet (Cat-Cow):</strong> 10 powtórzeń – mobilizacja kręgosłupa lędźwiowego.</div>
+                        </li>
+                        <li class="flex items-start gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-emerald-400">3.</span>
+                            <div><strong>Mobilizacja 90/90:</strong> 5 powtórzeń na stronę – otwarcie bioder, ulga dla pośladka.</div>
+                        </li>
+                        <li class="flex items-start gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-emerald-400">4.</span>
+                            <div><strong>Facepulls lekką gumą / Izometria barku:</strong> 2 serie x 15 powtórzeń – aktywacja rotatorów i stabilized łopatki.</div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Wyciszenie po treningu -->
+                <div class="bg-slate-900 border border-cyan-500/30 rounded-2xl p-6 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-2xl pointer-events-none"></div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="p-2 bg-cyan-500/20 text-cyan-400 rounded-lg">
+                            <i data-lucide="wind" class="w-5 h-5"></i>
+                        </div>
+                        <h2 class="text-lg font-bold text-white">Protokół Po-Treningowy (Cool-down)</h2>
+                    </div>
+                    <p class="text-xs text-slate-400 mb-4">Czas: 5–7 minut. Przełączenie układu nerwowego z trybu walki (współczulnego) na regenerację (przywspółczulny).</p>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyan-400">1.</span>
+                            <div><strong>Oddech Fizjologiczny (Physiological Sigh):</strong> 3 minuty w leżeniu na plecach (2 wdechy nosem, 1 długi wydech ustami).</div>
+                        </li>
+                        <li class="flex items-start gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyan-400">2.</span>
+                            <div><strong>Rozciąganie Czworogłowych / Pośladków:</strong> Po 45 sekund na stronę (statyczne, powolne).</div>
+                        </li>
+                        <li class="flex items-start gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyan-400">3.</span>
+                            <div><strong>Pozycja Dziecka (Child's Pose):</strong> 60 sekund rozciągania mięśni najszerszych i dolnego grzbietu.</div>
+                        </li>
+                        <li class="flex items-start gap-2 bg-slate-950 p-2.5 rounded-xl border border-slate-800">
+                            <span class="font-bold text-cyan-400">4.</span>
+                            <div><strong>Szejk Nawadniająco-Regeneracyjny:</strong> Białko + Karbo + BCAA/Beta-Alanina w ciągu 30 min po treningu.</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 4 DAYS SPLIT GRID -->
+            <div class="space-y-8">
+                
+                <!-- DAY 1: DÓŁ A -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 mb-6 gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">PONIEDZIAŁEK</span>
+                            <h3 class="text-xl font-bold text-white mt-1">DZIEŃ 1: DÓŁ A – Czworogłowe, Łydki + Core Górny</h3>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Czas: 45 min + 8 min Brzuch | Przerwy: 90-120 sek</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold text-emerald-400 text-base">1. Przysiad Bułgarski z Gumą</h4>
+                                    <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">4 x 12-15 / noga</span>
+                                </div>
+                                <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                    <!-- Custom SVG Illustration -->
+                                    <svg class="w-32 h-28" viewBox="0 0 120 100" fill="none">
+                                        <rect x="10" y="60" width="25" height="15" rx="3" fill="#334155"/>
+                                        <circle cx="50" cy="20" r="8" fill="#22c55e"/>
+                                        <path d="M50 28 L50 55 M50 55 L35 85 M50 55 L70 60 L85 65" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
+                                        <path d="M50 38 L30 50 M50 38 L70 50" stroke="#06b6d4" stroke-width="3" stroke-linecap="round"/>
+                                        <!-- Band -->
+                                        <path d="M40 85 C 40 70, 60 70, 60 45" stroke="#f59e0b" stroke-width="2" stroke-dasharray="2 2"/>
+                                    </svg>
+                                </div>
+                                <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Mięsień czworogłowy uda, pośladkowy wielki.</p>
+                                <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Guma zakotwiczona pod przednią stopą, trzymana w dłoniach. Powolne opuszczanie (3s).</p>
+                            </div>
+                        </div>
+
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold text-emerald-400 text-base">2. Sissy Squat (Asekuracja)</h4>
+                                    <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">3 x 15</span>
+                                </div>
+                                <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                    <svg class="w-32 h-28" viewBox="0 0 120 100" fill="none">
+                                        <line x1="10" y1="10" x2="10" y2="90" stroke="#475569" stroke-width="4"/>
+                                        <circle cx="45" cy="25" r="8" fill="#22c55e"/>
+                                        <path d="M45 33 L55 55 M55 55 L40 85 M45 38 L15 38" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
+                                        <path d="M55 55 L75 80" stroke="#ef4444" stroke-width="3" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
+                                <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Prostownik uda (M. Rectus Femoris).</p>
+                                <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Trzymaj się framugi drzwi. Linia bioder i tułowia prosta – maksymalny rozciąg czworogłowych.</p>
+                            </div>
+                        </div>
+
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4 flex flex-col justify-between">
+                            <div>
+                                <div class="flex justify-between items-start mb-3">
+                                    <h4 class="font-bold text-emerald-400 text-base">3. Oślicki z Gumą (Łydki)</h4>
+                                    <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">4 x 25</span>
+                                </div>
+                                <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                    <svg class="w-32 h-28" viewBox="0 0 120 100" fill="none">
+                                        <circle cx="30" cy="45" r="8" fill="#22c55e"/>
+                                        <path d="M38 48 L65 50 M65 50 L70 85 M65 50 L75 85" stroke="#22c55e" stroke-width="4" stroke-linecap="round"/>
+                                        <path d="M40 50 L20 75" stroke="#06b6d4" stroke-width="3"/>
+                                    </svg>
+                                </div>
+                                <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Mięsień brzuchaty łydki i płaszczkowaty.</p>
+                                <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Opad tułowia oparty o stół, guma na biodrach. 2 sekundy zatrzymania w pełnym rozciągnięciu na dole!</p>
+                            </div>
+                        </div>
+
+                        <!-- Core Block -->
+                        <div class="bg-slate-950 border border-emerald-500/40 rounded-xl p-4 md:col-span-2 lg:col-span-3">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i data-lucide="target" class="w-4 h-4 text-emerald-400"></i>
+                                <h4 class="font-bold text-white text-sm uppercase tracking-wider">BLOK BRZUCHA „NA POCIĘCIE” (Dzień 1)</h4>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                    <strong class="text-emerald-400 text-sm">Allahy z Gumą Klęcząc:</strong> 3 serie x 15-20 powtórzeń.
+                                    <p class="text-slate-400 mt-1">Przymocuj gumę wyżej. Zginaj kręgosłup i przyciągaj głowę do kolan wydechem! Unikaj ruchu w biodrach.</p>
+                                </div>
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                    <strong class="text-emerald-400 text-sm">Deadbug (Zdechły Robak):</strong> 3 serie x 10 na stronę.
+                                    <p class="text-slate-400 mt-1">Lędźwia maksymalnie wciśnięte w matę. Wolne, chirurgiczne opuszczanie przeciwległej ręki i nogi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 2: GÓRA A -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 mb-6 gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">WTOREK</span>
+                            <h3 class="text-xl font-bold text-white mt-1">DZIEŃ 2: GÓRA A – Klatka, Plecy, Barki (Push Fokus) + Core Skośny</h3>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Czas: 45 min + 8 min Brzuch | Przerwy: 90 sek</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-cyan-400 text-base">1. Pompki z Gumą na Plecach</h4>
+                                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">4 x 8-12</span>
+                            </div>
+                            <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                <svg class="w-32 h-20" viewBox="0 0 120 70" fill="none">
+                                    <circle cx="20" cy="30" r="7" fill="#06b6d4"/>
+                                    <path d="M25 35 L80 35 M80 35 L100 55" stroke="#06b6d4" stroke-width="4" stroke-linecap="round"/>
+                                    <path d="M35 35 L35 55 M40 35 L40 55" stroke="#22c55e" stroke-width="3"/>
+                                    <path d="M25 32 C 40 20, 60 20, 75 32" stroke="#f59e0b" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Mięsień piersiowy większy, triceps, przód barku.</p>
+                            <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Pauza 1 sekunda na dole. Klatka wypchnięta, łopatki ściągnięte w dół.</p>
+                        </div>
+
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-cyan-400 text-base">2. Ściąganie Gumy Neutralnie</h4>
+                                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">4 x 10-12</span>
+                            </div>
+                            <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                <svg class="w-32 h-28" viewBox="0 0 120 100" fill="none">
+                                    <circle cx="60" cy="20" r="8" fill="#06b6d4"/>
+                                    <path d="M60 28 L60 65 M60 65 L45 90 M60 65 L75 90" stroke="#06b6d4" stroke-width="4"/>
+                                    <path d="M60 38 L30 15 M60 38 L90 15" stroke="#22c55e" stroke-width="3"/>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Mięsień najszerszy grzbietu, obły większy.</p>
+                            <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Chwyt neutralny (młotkowy) chroni Twój bark. Ruch zaczynają łopatki.</p>
+                        </div>
+
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-cyan-400 text-base">3. Facepulls z Gumą</h4>
+                                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">4 x 20</span>
+                            </div>
+                            <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                <svg class="w-32 h-28" viewBox="0 0 120 100" fill="none">
+                                    <line x1="10" y1="35" x2="10" y2="35" stroke="#f59e0b" stroke-width="6"/>
+                                    <circle cx="70" cy="30" r="8" fill="#06b6d4"/>
+                                    <path d="M70 38 L70 75 M70 75 L55 95 M70 75 L85 95" stroke="#06b6d4" stroke-width="4"/>
+                                    <path d="M70 45 L30 35" stroke="#f59e0b" stroke-width="2.5"/>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Tył aktonu barku, stożek rotatorów, czworoboczny.</p>
+                            <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Kciuki skierowane do tyłu za uszy. Klucz do pełnej rehabilitacji kłucia w barku!</p>
+                        </div>
+
+                        <!-- Core Block -->
+                        <div class="bg-slate-950 border border-cyan-500/40 rounded-xl p-4 md:col-span-2 lg:col-span-3">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i data-lucide="target" class="w-4 h-4 text-cyan-400"></i>
+                                <h4 class="font-bold text-white text-sm uppercase tracking-wider">BLOK BRZUCHA „NA POCIĘCIE” (Dzień 2)</h4>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                    <strong class="text-cyan-400 text-sm">Woodchopper (Drwal z Gumą):</strong> 3 serie x 15 na stronę.
+                                    <p class="text-slate-400 mt-1">Guma zamocowana wyżej. Rotacja tułowia z silnym spięciem mięśni skośnych brzucha.</p>
+                                </div>
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                    <strong class="text-cyan-400 text-sm">Plank (Deska) ze Spięciem:</strong> 3 serie x 30–45 sekund.
+                                    <p class="text-slate-400 mt-1">Podwiń miednicę pod siebie, napnij pośladki i brzuch na 100% możliwości w izometrii.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 3: DÓŁ B -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 mb-6 gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">CZWARTEK</span>
+                            <h3 class="text-xl font-bold text-white mt-1">DZIEŃ 3: DÓŁ B – Dwugłowe, Pośladki + Core Głęboki</h3>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Czas: 45 min + 8 min Brzuch | Przerwy: 120 sek</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-amber-400 text-base">1. Rumuński Martwy Ciąg (RDL)</h4>
+                                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">4 x 12-15</span>
+                            </div>
+                            <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                <svg class="w-32 h-28" viewBox="0 0 120 100" fill="none">
+                                    <circle cx="40" cy="30" r="8" fill="#f59e0b"/>
+                                    <path d="M40 38 L65 50 M65 50 L55 85 M65 50 L70 85" stroke="#f59e0b" stroke-width="4"/>
+                                    <path d="M40 42 L35 70" stroke="#22c55e" stroke-width="3"/>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Mięśnie dwugłowe ud, pośladki, prostowniki lędźwi.</p>
+                            <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Stajesz na grubej gumie, naciągasz na biodra. Pchaj biodra mocno w tył!</p>
+                        </div>
+
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-amber-400 text-base">2. Uginanie Nóg Leżąc z Gumą</h4>
+                                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">4 x 15</span>
+                            </div>
+                            <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                <svg class="w-32 h-20" viewBox="0 0 120 70" fill="none">
+                                    <circle cx="20" cy="30" r="7" fill="#f59e0b"/>
+                                    <path d="M27 30 L80 30 M80 30 L100 15" stroke="#f59e0b" stroke-width="4"/>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Mięsień dwugłowy uda, półbłoniasty.</p>
+                            <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Guma zaczepiona za pięty. Powolne prostowanie nóg (faza ekscentryczna 3-4 sekundy).</p>
+                        </div>
+
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-amber-400 text-base">3. Odwodzenie Nogi z Gumą</h4>
+                                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">3 x 15 / noga</span>
+                            </div>
+                            <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                <svg class="w-32 h-28" viewBox="0 0 120 100" fill="none">
+                                    <circle cx="50" cy="20" r="8" fill="#f59e0b"/>
+                                    <path d="M50 28 L50 65 M50 65 L40 95 M50 65 L80 80" stroke="#f59e0b" stroke-width="4"/>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Mięsień pośladkowy średni i mały.</p>
+                            <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Kluczowa stabilizacja miednicy. Całkowicie usuwa ryzyko powrotu problemów z biodrem.</p>
+                        </div>
+
+                        <!-- Core Block -->
+                        <div class="bg-slate-950 border border-amber-500/40 rounded-xl p-4 md:col-span-2 lg:col-span-3">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i data-lucide="target" class="w-4 h-4 text-amber-400"></i>
+                                <h4 class="font-bold text-white text-sm uppercase tracking-wider">BLOK BRZUCHA „NA POCIĘCIE” (Dzień 3)</h4>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                    <strong class="text-amber-400 text-sm">Hollow Body / Unoszenie Nóg w Leżeniu:</strong> 3 serie x 12-15 powtórzeń.
+                                    <p class="text-slate-400 mt-1">Unoś nogi tylko do momentu, w którym dół pleców mocno przylega do ziemi.</p>
+                                </div>
+                                <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                    <strong class="text-amber-400 text-sm">Vacuum (Próżnia Brzuszna):</strong> 3 serie x 4 powtórzenia (15 sek hold).
+                                    <p class="text-slate-400 mt-1">Wypuść całe powietrze z płuc i wciągnij brzuch głęboko pod żebra. Zwieńczenie wąskiej talii!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DAY 4: GÓRA B -->
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-slate-800 pb-4 mb-6 gap-2">
+                        <div>
+                            <span class="text-xs font-bold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">PIĄTEK</span>
+                            <h3 class="text-xl font-bold text-white mt-1">DZIEŃ 4: GÓRA B – Plecy, Klatka, Barki (Pull Fokus)</h3>
+                        </div>
+                        <span class="text-xs text-slate-400 font-mono">Czas: 45 min | Przerwy: 90 sek</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-purple-400 text-base">1. Wiosłowanie Gumą w Opadzie</h4>
+                                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">4 x 10-12</span>
+                            </div>
+                            <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                <svg class="w-32 h-28" viewBox="0 0 120 100" fill="none">
+                                    <circle cx="35" cy="30" r="8" fill="#a855f7"/>
+                                    <path d="M35 38 L60 50 M65 50 L55 85 M65 50 L75 85" stroke="#a855f7" stroke-width="4"/>
+                                    <path d="M40 42 L25 60" stroke="#06b6d4" stroke-width="3"/>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Mięsień najszerszy, czworoboczny, równoległoboczny.</p>
+                            <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Stajesz na gumie. Przyciągaj dłonie w stronę bioder, nie do klatki.</p>
+                        </div>
+
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-purple-400 text-base">2. Pompki Szerokie na Podwyższeniu</h4>
+                                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">4 x 12-15</span>
+                            </div>
+                            <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                <svg class="w-32 h-20" viewBox="0 0 120 70" fill="none">
+                                    <circle cx="20" cy="25" r="7" fill="#a855f7"/>
+                                    <path d="M25 30 L85 45 M85 45 L105 55" stroke="#a855f7" stroke-width="4"/>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Zewnętrzne włókna klatki piersiowej, zębaty przedni.</p>
+                            <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Dłonie oparte szerzej na krzesłach/łóżku dla głębszego rozciągnięcia klatki.</p>
+                        </div>
+
+                        <!-- Exercise Card -->
+                        <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <h4 class="font-bold text-purple-400 text-base">3. Wznosy Arm w Bok z Gumą</h4>
+                                <span class="text-xs font-mono bg-slate-800 text-slate-300 px-2 py-1 rounded">3 x 15</span>
+                            </div>
+                            <div class="bg-slate-900 rounded-lg p-3 my-3 flex justify-center">
+                                <svg class="w-32 h-28" viewBox="0 0 120 100" fill="none">
+                                    <circle cx="60" cy="20" r="8" fill="#a855f7"/>
+                                    <path d="M60 28 L60 70 M60 70 L45 95 M60 70 L75 95" stroke="#a855f7" stroke-width="4"/>
+                                    <path d="M60 38 L20 38 M60 38 L100 38" stroke="#22c55e" stroke-width="3"/>
+                                </svg>
+                            </div>
+                            <p class="text-xs text-slate-300 mb-2"><strong>Anatomia:</strong> Boczny (środkowy) akton mięśnia naramiennego.</p>
+                            <p class="text-xs text-slate-400"><strong>Wskazówka:</strong> Ruch inicjują łokcie, nie dłonie. Buduje szerokość barków w kształcie V.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SECTION 2: SUPPLEMENTS TAB -->
+        <div id="tab-supplements" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                    <div>
+                        <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                            <i data-lucide="pill" class="w-6 h-6 text-emerald-400"></i>
+                            Spersonalizowany Protokół Suplementacyjny
+                        </h2>
+                        <p class="text-xs text-slate-400">Ułożony aptekarsko pod Twoje aktualne zapasy (uwzględnia brak cynku i cytruliny).</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Morning -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                        <h3 class="text-sm font-bold text-amber-400 flex items-center gap-2 mb-3">
+                            <i data-lucide="sun" class="w-4 h-4"></i> RANO (Na czczo & Po oddechach Wima Hofa)
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                <strong class="text-slate-200">Kreatyna z Glicyną (3g) + Monohydrat (2g):</strong> Łącznie 5g.
+                                <p class="text-slate-400 mt-0.5">Służy nawodnieniu komórek mięśniowych i zasileniu ATP pamięci roboczej.</p>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                <strong class="text-slate-200">Żeń-Szeń (Koreański + Syberyjski):</strong> 1 tabletka/kapsułka.
+                                <p class="text-slate-400 mt-0.5">Podnosi poziom noradrenaliny i dopaminy – czysta, powolna energia bez nerwowości.</p>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                <strong class="text-slate-200">Ginkgo Biloba (2 Ekstrakty):</strong> 1 tabletka.
+                                <p class="text-slate-400 mt-0.5">Zwiększa przepływ krwi w mózgu, wyciszając gwałtowną chęć skakania po zadaniach.</p>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                <strong class="text-slate-200">Algi Kelp (500mg - Jod 300mcg):</strong> 1 tabletka.
+                                <p class="text-slate-400 mt-0.5">Paliwo dla tarczycy, utrzymuje wysokie tempo przemiany materii.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pre-workout -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                        <h3 class="text-sm font-bold text-emerald-400 flex items-center gap-2 mb-3">
+                            <i data-lucide="zap" class="w-4 h-4"></i> PRZEDTRENINGÓWKA (30 min przed ćwiczeniami)
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                <strong class="text-slate-200">Beta-Alanina:</strong> 3–4 g popite wodą.
+                                <p class="text-slate-400 mt-0.5">Buforuje kwas mlekowy w mięśniach i daje charakterystyczny sygnał do działania.</p>
+                            </div>
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                <strong class="text-slate-200">Kompleks Witamin B / B12:</strong> 1 porcja.
+                                <p class="text-slate-400 mt-0.5">Niezbędny koenzym do metabolizowania węglowodanów w ATP podczas treningu.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lunch / Food -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                        <h3 class="text-sm font-bold text-cyan-400 flex items-center gap-2 mb-3">
+                            <i data-lucide="utensils" class="w-4 h-4"></i> DO OBIADU (Posiłek Tłuszczowy)
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                            <div class="bg-slate-950/50 p-3 rounded-lg border border-slate-800">
+                                <strong class="text-slate-200">Omega-3 Kompleks:</strong> 1000 mg (1-2 kapsułki).
+                                <p class="text-slate-400 mt-0.5">Hamuje mikro-stany zapalne w stawach i wspiera błony komórkowe mózgu.</p>
+                            </div>
+                            <div class="bg-slate-950/50 p-3 rounded-lg border border-slate-800">
+                                <strong class="text-slate-200">Witamina D3 + K2 (12 000 IU / 250 mcg K2):</strong> 1 tabletka co 2–3 dni.
+                                <p class="text-slate-400 mt-0.5">Bardzo wysoka dawką – wymaga tłuszczu z posiłku do 100% wchłonięcia.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Night -->
+                    <div class="bg-slate-950 border border-slate-800 rounded-xl p-4">
+                        <h3 class="text-sm font-bold text-purple-400 flex items-center gap-2 mb-3">
+                            <i data-lucide="moon" class="w-4 h-4"></i> WIECZÓR (Przed Snem)
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+                            <div class="bg-slate-900 p-3 rounded-lg border border-slate-800">
+                                <strong class="text-slate-200">Magnez z Witaminą B6:</strong> 2 tabletki.
+                                <p class="text-slate-400 mt-0.5">Rozluźnia spięte mięśnie (lędźwia, bark) i przygotowuje układ nerwowy na sen głęboki.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 3: DIET TAB -->
+        <div id="tab-diet" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                <div class="border-b border-slate-800 pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i data-lucide="utensils" class="w-6 h-6 text-amber-400"></i>
+                        Jadłospis & Zasady Dietetyczne
+                    </h2>
+                    <p class="text-xs text-slate-400">Ochrona naczyń krwionośnych, redukcja miażdżycy oraz Intermittent Fasting (10:00–18:00).</p>
+                </div>
+
+                <!-- KEY DIET RULES -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs font-bold text-amber-400 uppercase">Mięso: Max 15–20%</span>
+                        <p class="text-xs text-slate-300 mt-1">Ograniczenie białka odzwierzęcego zapobiega powstawaniu nadmiaru TMAO i zmianom naczyniowym, chroniąc mózg przed procesami neurodegeneracyjnymi.</p>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs font-bold text-emerald-400 uppercase">Eliminacja Pieczywa</span>
+                        <p class="text-xs text-slate-300 mt-1">Brak tradycyjnego chleba. W zamian: pieczywo WASA, chrupkie ryżowe oraz wafle kukurydziane (brak podrażnień jelit).</p>
+                    </div>
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800">
+                        <span class="text-xs font-bold text-cyan-400 uppercase">Superfoods & Błonnik</span>
+                        <p class="text-xs text-slate-300 mt-1">Shake z ostropestem plamistym (regeneracja wątroby), nasionami chia oraz babką płesznik (perystaltyka jelit).</p>
+                    </div>
+                </div>
+
+                <!-- MEAL SCHEDULE -->
+                <div class="space-y-4">
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">10:00 | OTWARCIE OKNA</span>
+                            <h4 class="font-bold text-white text-base mt-1">Kawa Kuloodporna + Śniadanie Białkowo-Tłuszczowe</h4>
+                            <p class="text-xs text-slate-400 mt-1"><strong>Kawa Bulletproof:</strong> Kawa + olej kokosowy + 1/2 łyżeczki miodu + cynamon + kardamon + imbir + maca.<br>
+                            <strong>Śniadanie:</strong> Jajka na miękko lub omlet z 3 jajek z miksem sałat, oliwą i rzodkiewką. Pieczywo WASA.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded">14:00 | OBIAD (Główny Posiłek)</span>
+                            <h4 class="font-bold text-white text-base mt-1">Schab / Wołowina z Airfryera + Kasza lub Ryż</h4>
+                            <p class="text-xs text-slate-400 mt-1">1 porcja chudego mięsa (wołowina/schab - ok. 150g) zamarynowana w czosnku i oliwie, upieczona w Airfryerze. Do tego 1 woreczek kaszy gryczanej/bulgur i kiszona kapusta.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-mono text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded">16:30 | SHAKE REGENERACYJNY</span>
+                            <h4 class="font-bold text-white text-base mt-1">Shake Protein Shake + Mass Up + Zioła</h4>
+                            <p class="text-xs text-slate-400 mt-1">Mieszanka: Mass Up (100g węglowodanów) + Protein Shake (70% białka) + ostropest plamisty + nasiona chia + babka płesznik. Idealny ładunek glikogenu po treningu.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div>
+                            <span class="text-xs font-mono text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">18:00 | ZAMKNIĘCIE OKNA</span>
+                            <h4 class="font-bold text-white text-base mt-1">Kolacja Nabiałowa / Lekka</h4>
+                            <p class="text-xs text-slate-400 mt-1">Ser twarogowy półtłusty (250g) lub Skyr z dodatkiem owocu (np. banan/grejpfrut), pestek dyni i migdałów. Wafle kukurydziane / chrupkie ryżowe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 4: ROUTINE TAB -->
+        <div id="tab-routine" class="tab-content hidden space-y-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+                <div class="border-b border-slate-800 pb-4 mb-6">
+                    <h2 class="text-xl font-bold text-white flex items-center gap-2">
+                        <i data-lucide="zap" class="w-6 h-6 text-cyan-400"></i>
+                        Poranny Protokół Biohacking (ADHD Reset)
+                    </h2>
+                    <p class="text-xs text-slate-400">Wykonuj co rano, by wyrównać poziom dopaminy i noradrenaliny bez sztucznych stymulantów.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="p-3 bg-blue-500/10 text-blue-400 rounded-lg w-fit mb-3">
+                                <i data-lucide="wind" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-white">1. Oddechy Wima Hofa</h3>
+                            <p class="text-xs text-slate-400 mt-2">3 serie po 30 głębokich oddechów falowych z zatrzymaniem powietrza (retencją). Wywołuje naturalny wyrzut noradrenaliny, kasując poranną mgłę mózgową.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="p-3 bg-cyan-500/10 text-cyan-400 rounded-lg w-fit mb-3">
+                                <i data-lucide="droplets" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-white">2. Zimny Prysznic</h3>
+                            <p class="text-xs text-slate-400 mt-2">2 minuty zimnej wody pod koniec prysznica. Podnosi poziom bazowej dopaminy o **250%**, utrzymując skupienie przez kolejne 4–5 godzin.</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-950 p-5 rounded-xl border border-slate-800 flex flex-col justify-between">
+                        <div>
+                            <div class="p-3 bg-emerald-500/10 text-emerald-400 rounded-lg w-fit mb-3">
+                                <i data-lucide="glass-water" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-base font-bold text-white">3. Nawodnienie & Kreatyna</h3>
+                            <p class="text-xs text-slate-400 mt-2">Szklanka ciepłej wody z szczyptą soli kłodawskiej (elektrolity) + 5g Kreatyny z glicyną. Natychmiastowe dotlenienie i nawodnienie komórek.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Tab switching logic
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('tab-active'));
+
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+            document.getElementById('btn-' + tabName).classList.add('tab-active');
+        }
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

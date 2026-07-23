@@ -1768,5 +1768,17 @@
         "raw_text": "No i widzę, że na komputerze stacjonarnym nie poukładała się struktura folderów w projekcie LiveWave i tam dużo się na laptopa pobrało takich multimediów, więc to podejrzewam, że się nie synchronizuje i nie pobiera do GIT-a.",
         "corrected_text": "No i widzę, że na komputerze stacjonarnym nie poukładała się struktura folderów w projekcie LiveWave i tam dużo się na laptopa pobrało takich multimediów, więc to podejrzewam, że się nie synchronizuje i nie pobiera do GIT-a.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 17:49:02",
+        "raw_text": "Tu wygenerowałem jeszcze, słuchaj...  Czy agent Gemini Pro, taki protokół biohacking, training, chciałbym mieć to podgląd u siebie w, nie wiem, po slashu gdzieś na os.jason.pl albo w dashboardzie, ale trzeba tutaj Remotion właśnie, czy jakiś do wygenerowania lepszych grafik, takich tam bardziej przeanalizuj, dopasuj do też marki Jason, tak, kolorów, logo i tak dalej.  Tak, żebym sobie mógł mieć na to podgląd, tak? Mieć fajne tam w tych protokołach zdjęcia, tak? Zwłaszcza do treningu i...",
+        "corrected_text": "Tu wygenerowałem jeszcze, słuchaj...  Czy agent Gemini Pro, taki protokół biohacking, training, chciałbym mieć to podgląd u siebie w, nie wiem, po slashu gdzieś na os.jason.pl albo w dashboardzie, ale trzeba tutaj Remotion właśnie, czy jakiś do wygenerowania lepszych grafik, takich tam bardziej przeanalizuj, dopasuj do też marki Jason, tak, kolorów, logo i tak dalej.  Tak, żebym sobie mógł mieć na to podgląd, tak? Mieć fajne tam w tych protokołach zdjęcia, tak? Zwłaszcza do treningu i...",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-23 17:50:02",
+        "raw_text": "A tu poniżej coś, żeby mnie po prostu znał mój agent Hermes, czyli jaisonos, który będzie moim doradcą, klinował moich protokołów i robił powtarzalnych cron jobs. To przy okazji właśnie tego MLM, agenta i klinowanie protokołów i moich... Ale to właśnie robię na laptopie chyba.  Tam pracuję nad tym LiveWave projektem i tym agentem MLM. No chciałem taką pokazówkę właśnie zrobić, jak to wygląda. Jak agent pilnuje protokołów, swoich nawyków, pracę egzekwuje, tak układać i im pomaga.",
+        "corrected_text": "A tu poniżej coś, żeby mnie po prostu znał mój agent Hermes, czyli jaisonos, który będzie moim doradcą, klinował moich protokołów i robił powtarzalnych cron jobs. To przy okazji właśnie tego MLM, agenta i klinowanie protokołów i moich... Ale to właśnie robię na laptopie chyba.  Tam pracuję nad tym LiveWave projektem i tym agentem MLM. No chciałem taką pokazówkę właśnie zrobić, jak to wygląda. Jak agent pilnuje protokołów, swoich nawyków, pracę egzekwuje, tak układać i im pomaga.",
+        "status": "raw_fallback"
     }
 ]

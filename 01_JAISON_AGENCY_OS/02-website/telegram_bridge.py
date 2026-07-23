@@ -251,9 +251,60 @@ def start_polling():
                             cmd_stats(chat_id)
                         elif text.startswith("/video"):
                             cmd_video(chat_id, text)
+                        elif text and not text.startswith("/"):
+                            # AI Co-Pilot & Biohacking Personal Coach
+                            cmd_ai_co_pilot(chat_id, text)
         except Exception as e:
             print(f"Polling error: {e}")
         time.sleep(1)
+
+def cmd_ai_co_pilot(chat_id, user_text):
+    print(f"💬 Jaison AI Co-Pilot przetwarza wiadomość od Tomasza: '{user_text}'")
+    
+    # Check for emergency crisis triggers
+    crisis_words = ["beznadziejny", "paraliż", "nic nie zrobiłem", "nie mam siły", "dół", "utknąłem"]
+    if any(w in user_text.lower() for w in crisis_words):
+        reply = (
+            "🛑 *Przerwanie Wzorca (NLP Pattern Interrupt):*\n\n"
+            "Stop, Tomek! To co teraz czujesz, to po prostu spadek dopaminy w Twoim mózgu, a nie prawda o Tobie. "
+            "Jesteś gościem, który opanował skomplikowane systemy AI i złożył masę swoich problemów zdrowotnych.\n\n"
+            "1. *Patrzymy w przód.* Stare projekty i zaległości to przeszłość.\n"
+            "2. *Wstań od biurka.* Zrób 10 przysiadów i wypij szklankę wody z solą kłodawską.\n"
+            "3. *Napisz mi JEDNĄ rzecz*, którą skończysz w najbliższe 15 minut. Zaczynamy odbudowę od mikrokroku! 🚀"
+        )
+        send_message(chat_id, reply)
+        trigger_ui_event("EMERGENCY_NLP", f"🛑 Aktywowano skrypt awaryjny NLP w bota: {user_text[:30]}")
+        return
+
+    # Call AI model (Gemini Studio or Together AI)
+    api_key = os.environ.get("GEMINI_API_KEY", "")
+    system_prompt = (
+        "Jesteś osobistym trenerem, biohackerem i coachem NLP dla Tomasza (Jaison OS). "
+        "Mów bezpośrednio, bez lania wody, stosuj NLP Pattern Interrupt. Gdy Tomasz ma gonitwę myśli, "
+        "nakazuj mu wybranie JEDNEGO celu. Twój motto: 'Robimy to co ważne. Resztę robi kod.' "
+        "Zawsze pogrubienia w HTML pisz tagami <strong>tekst</strong>, a w Markdownie zwięźle."
+    )
+    
+    try:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={api_key}"
+        payload = {
+            "contents": [{
+                "parts": [
+                    {"text": f"SYSTEM PROMPT:\n{system_prompt}\n\nWIADOMOŚĆ TOMASZA:\n{user_text}"}
+                ]
+            }]
+        }
+        res = requests.post(url, json=payload, timeout=8.0)
+        if res.status_code == 200:
+            data = res.json()
+            reply_text = data["candidates"][0]["content"]["parts"][0]["text"]
+            send_message(chat_id, reply_text)
+            trigger_ui_event("AI_REPLY", f"🤖 Odpowiedź Co-Pilota wysłana do Telegrama")
+            return
+    except Exception as e:
+        print(f"⚠️ Gemini Studio fallback error: {e}")
+        
+    send_message(chat_id, f"⚡ *Jaison Co-Pilot:* Odbieram sygnał: _\"{user_text}\"_. Trzymaj się planu dnia! Pamiętaj: Działanie wyprzedza motywację. Wybierz JEDEN cel na najbliższe 90 minut!")
 
 if __name__ == "__main__":
     if "AAHkdjasdj_89ajshda_example" in BOT_TOKEN:
