@@ -5770,7 +5770,90 @@ Połącz Systeme.io z n8n. Cały ruch organiczny zamienia się w leady i subskry
             st.subheader("🎬 Content Studio (Nate Herk & Adrian Killar Mode)")
             st.markdown("Projektowanie wirusowych wideo, scenariuszy zasilanych o_mnie.md oraz generowanie audio lektora.")
             
-            tab_viral, tab_repurpose, tab_voiceover = st.tabs(["💡 Generator Wirusowych Wideo", "🔄 YouTube Repurposer", "🎙️ Audio Lektora (TTS)"])
+            tab_remotion, tab_viral, tab_repurpose, tab_voiceover = st.tabs(["🎬 Remotion Studio (React MP4)", "💡 Generator Wirusowych Wideo", "🔄 YouTube Repurposer", "🎙️ Audio Lektora (TTS)"])
+            
+            with tab_remotion:
+                st.subheader("🎬 Remotion.dev — React Video Engine (Reels 9:16)")
+                st.markdown("Generuj profesjonalne rolki, shorts i filmy faceless w technologii React + CSS z dynamicznymi kolorami Twojej marki!")
+                
+                col_rem1, col_rem2 = st.columns([1, 1])
+                with col_rem1:
+                    st.write("##### 🎨 Konfiguracja Marki & Treści Wideo")
+                    rem_title = st.text_input("Główny Nagłówek (Title):", value="Zewnętrzny Mózg z AI", key="rem_title_input")
+                    rem_subtitle = st.text_area("Podtytuł / Promietka (Subtitle):", value="Jak okiełznałem paraliż decyzyjny i ADHD za pomocą suwerennego bota", key="rem_sub_input")
+                    rem_hook = st.text_input("Haczyk (Hook Badge):", value="Przestań budować na ślepo! 🚀", key="rem_hook_input")
+                    
+                    col_col1, col_col2 = st.columns(2)
+                    with col_col1:
+                        rem_primary = st.color_picker("Główny Akcent (Primary):", value="#10B981", key="rem_col1_picker")
+                    with col_col2:
+                        rem_secondary = st.color_picker("Wtórny Akcent (Secondary):", value="#3B82F6", key="rem_col2_picker")
+                        
+                    rem_author = st.text_input("Autor:", value="Tomasz Duda", key="rem_author_input")
+                    rem_handle = st.text_input("Handle Social:", value="@jaison.aidhd", key="rem_handle_input")
+                    rem_motto = st.text_input("Motto Marki:", value="Robimy to co ważne. Resztę robi kod.", key="rem_motto_input")
+                    
+                    if st.button("⚡ Wygeneruj Wideo Remotion (MP4)", type="primary", use_container_width=True, key="rem_render_btn"):
+                        with st.spinner("🎬 Remotion renderuje klatki wideo (React -> MP4)... Proszę czekać..."):
+                            try:
+                                import subprocess
+                                import json
+                                
+                                engine_dir = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\03-social\remotion-engine"
+                                props_data = {
+                                    "title": rem_title,
+                                    "subtitle": rem_subtitle,
+                                    "hookText": rem_hook,
+                                    "authorName": rem_author,
+                                    "authorHandle": rem_handle,
+                                    "primaryColor": rem_primary,
+                                    "secondaryColor": rem_secondary,
+                                    "motto": rem_motto,
+                                    "captions": [
+                                        {"word": "Zbuduj", "startFrame": 60, "endFrame": 90},
+                                        {"word": "Suwerenny", "startFrame": 91, "endFrame": 120},
+                                        {"word": "Mózg", "startFrame": 121, "endFrame": 150},
+                                        {"word": "z", "startFrame": 151, "endFrame": 170},
+                                        {"word": "Jaison", "startFrame": 171, "endFrame": 200},
+                                        {"word": "OS!", "startFrame": 201, "endFrame": 240}
+                                    ]
+                                }
+                                
+                                tmp_props_path = os.path.join(engine_dir, "temp_props.json")
+                                with open(tmp_props_path, "w", encoding="utf-8") as f:
+                                    json.dump(props_data, f, ensure_ascii=False, indent=2)
+                                    
+                                out_mp4_path = os.path.join(engine_dir, "out", "custom_jaison_reel.mp4")
+                                os.makedirs(os.path.dirname(out_mp4_path), exist_ok=True)
+                                
+                                cmd = f'node render_cli.js "{tmp_props_path}" "{out_mp4_path}"'
+                                res = subprocess.run(cmd, cwd=engine_dir, shell=True, capture_output=True, text=True)
+                                
+                                if res.returncode == 0 and os.path.exists(out_mp4_path):
+                                    st.session_state.rendered_remotion_mp4 = out_mp4_path
+                                    st.success("✅ Wygenerowano wideo Remotion MP4 z sukcesem!")
+                                else:
+                                    st.error(f"⚠️ Błąd renderowania Remotion: {res.stderr or res.stdout}")
+                            except Exception as e:
+                                st.error(f"⚠️ Błąd wywołania silnika Remotion: {e}")
+                                
+                with col_rem2:
+                    st.write("##### 📺 Odtwarzacz & Podgląd Wideo MP4")
+                    rendered_path = st.session_state.get("rendered_remotion_mp4", r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\03-social\remotion-engine\out\jaison_reel.mp4")
+                    
+                    if os.path.exists(rendered_path):
+                        st.video(rendered_path)
+                        with open(rendered_path, "rb") as vf:
+                            video_bytes = vf.read()
+                        st.download_button(
+                            label="📥 Pobierz Wideo (1080x1920 MP4)",
+                            data=video_bytes,
+                            file_name="jaison_os_reel_9x16.mp4",
+                            mime="video/mp4",
+                            use_container_width=True
+                        )
+                    else:
+                        st.info("💡 Kliknij przycisk 'Wygeneruj Wideo Remotion (MP4)', aby utworzyć wideo.")
             
             with tab_viral:
                 col_c1, col_c2 = st.columns([1, 1])
