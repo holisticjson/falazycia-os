@@ -6178,7 +6178,105 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
             st.subheader("✍️ Brand Strategy & Profile BIO's")
             st.markdown("Uzupełnij poniższy kwestionariusz, aby wygenerować kompletną tożsamość marki, opisy BIO dla 6 platform oraz premium awatary i bannery bezpieczne dla smartfonów.")
             
-            tab_strategy, tab_bios, tab_visuals = st.tabs(["📋 Wywiad i Strategia", "✍️ Opisy i BIO (6 Platform)", "🎨 Wizualia (Awatary i Bannery)"])
+            tab_auto_profiler, tab_strategy, tab_bios, tab_visuals = st.tabs(["✨ Automatyczny Profiler Ghost v2 (Skaner URL)", "📋 Wywiad i Strategia", "✍️ Opisy i BIO (6 Platform)", "🎨 Wizualia (Awatary i Bannery)"])
+            
+            with tab_auto_profiler:
+                st.subheader("✨ Automatyczny Profiler Ghost v2 & Skaner Marki (Intake B2B)")
+                st.markdown("Wklej adres strony klienta, linki do jego profili społecznościowych (IG, FB, LinkedIn) lub surowy zrzut tekstowy jego postów/e-maili. AI automatycznie przeanalizuje jego stylystykę, wyciągnie barwy marki, zbuduje profil **Ghost v2** oraz stworzy 3 Buyer Persony!")
+                
+                col_p1, col_p2 = st.columns([1, 1])
+                with col_p1:
+                    prof_client_id = st.text_input("Identyfikator Klienta (folder ID):", value="swiatynia_harmonii", key="suite_prof_client_id")
+                    prof_client_name = st.text_input("Nazwa Klienta / Firmy:", value="Świątynia Harmonii", key="suite_prof_client_name")
+                    prof_client_url = st.text_input("Adres Strony Klienta (URL):", value="https://swiatyniaharmonii.pl", key="suite_prof_client_url")
+                    prof_social_links = st.text_input("Linki do Social Media (IG, FB, TikTok):", value="https://instagram.com/swiatynia.harmonii", key="suite_prof_social_links")
+                    prof_hosting_info = st.text_input("Dane Domeny & Hostingu (np. Kylos, Nazwa.pl):", value="Kylos.pl — Domena zarejestrowana", key="suite_prof_hosting_info")
+                with col_p2:
+                    prof_text_dump = st.text_area("Zrzut Tekstów Klienta (Posty, E-maile, O nas):", value="W Świątyni Harmonii dbamy o naturalny relaks i regenerację. Oferujemy masaż Kobido oraz innowacyjną fototerapię komórkową LifeWave. Poczuj jak napięcie znika z Twojej twarzy...", height=180, key="suite_prof_text_dump")
+                
+                if st.button("🚀 Skanuj i Wygeneruj Komplety Profil Ghost v2", type="primary", use_container_width=True, key="btn_run_auto_profiler"):
+                    with st.spinner("Dyrektor ds. Produktu (CPO AI) oraz Gemini 2.5 Pro profilują markę klienta..."):
+                        try:
+                            prompt_profiler = f"""
+Jesteś Starszym Architektem Systemów AI i Dyrektorem ds. Produktu (CPO AI) w agencji Jaison (jaison.pl).
+Przeprowadź pełny skan i sprofilowanie marki klienta na podstawie podanych danych:
+
+Nazwa Firmy/Klienta: {prof_client_name}
+Adres Strony: {prof_client_url}
+Social Media: {prof_social_links}
+Hosting/Domena: {prof_hosting_info}
+Zrzut Tekstowy / Próbka Stylu:
+{prof_text_dump}
+
+Twoim zadaniem jest wygenerowanie DWÓCH ustrukturyzowanych dokumentów w standardzie Ghost v2:
+
+1. DOKUMENT GHOST PROFILE (ghost_profile.md):
+   - Ustal unikalne Motto/USP marki.
+   - Określ Ton Wypowiedzi i Głos Marki (NLP VAK: wzrok, słuch, czucie).
+   - Wyeliminuj zabronione zwroty (np. 'warto pamiętać', 'kluczowy aspekt', 'w dzisiejszym świecie').
+   - Zastosuj ZASADĘ WYRÓŻNIEŃ (Rule 13): W HTML pod pogrubienia stosować WYŁĄCZNIE tagi <strong>tekst</strong> (zero gwiazdek ** w HTML).
+   - Zdefiniuj 3 Buyer Persony (Problem, Pragnienie, Hak Konwersyjny).
+
+2. PLIK KONFIGURACYJNY JSON (context_config.json):
+   - Główny kolor marki (HEX)
+   - Drugorzędny kolor marki (HEX)
+   - Motto
+   - Domena i webhook intake n8n
+
+Zwróć odpowiedź w czystym formacie JSON bez znaczników markdown poza json, o strukturze:
+{{
+  "motto": "...",
+  "primary_color": "#HEX",
+  "secondary_color": "#HEX",
+  "domain": "{prof_client_url}",
+  "ghost_profile_markdown": "pełna treść pliku ghost_profile.md w markdownie z nagłówkami",
+  "buyer_personas": [
+     {{"persona": "Persona 1", "problem": "...", "solution": "..."}},
+     {{"persona": "Persona 2", "problem": "...", "solution": "..."}},
+     {{"persona": "Persona 3", "problem": "...", "solution": "..."}}
+  ]
+}}
+"""
+                            response_raw = call_gemini_pro_api([{"role": "user", "content": prompt_profiler}], "Jesteś precyzyjnym analitykiem brandingu Ghost v2.")
+                            
+                            # Clean JSON response
+                            clean_json_str = response_raw.replace("```json", "").replace("```", "").strip()
+                            prof_data = json.loads(clean_json_str)
+                            
+                            # Zapis do katalogu klienta
+                            target_client_dir = os.path.join(r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS", prof_client_id, "01-brand")
+                            os.makedirs(target_client_dir, exist_ok=True)
+                            
+                            # Save ghost_profile.md
+                            with open(os.path.join(target_client_dir, "ghost_profile.md"), "w", encoding="utf-8") as f_gp:
+                                f_gp.write(prof_data.get("ghost_profile_markdown", ""))
+                                
+                            # Save context_config.json
+                            ctx_conf = {
+                                "client_id": prof_client_id,
+                                "client_name": prof_client_name,
+                                "motto": prof_data.get("motto", ""),
+                                "primary_color": prof_data.get("primary_color", "#3B82F6"),
+                                "secondary_color": prof_data.get("secondary_color", "#10B981"),
+                                "domain": prof_client_url,
+                                "n8n_webhook_url": f"https://n8n.jaison.pl/webhook/{prof_client_id}-lead"
+                            }
+                            with open(os.path.join(target_client_dir, "context_config.json"), "w", encoding="utf-8") as f_cc:
+                                json.dump(ctx_conf, f_cc, indent=4, ensure_ascii=False)
+                                
+                            st.session_state.auto_profiler_result = prof_data
+                            st.success(f"🎉 Sukces! Wygenerowano i zapisano profil Ghost v2 oraz plik konfiguracyjny w: 02_CLIENTS_AND_PROJECTS/{prof_client_id}/01-brand/")
+                            st.rerun()
+                        except Exception as ex:
+                            st.error(f"❌ Błąd generowania profilu: {str(ex)}")
+
+                if "auto_profiler_result" in st.session_state and st.session_state.auto_profiler_result:
+                    p_res = st.session_state.auto_profiler_result
+                    st.markdown("### 📄 Wygenerowany Profil Ghost v2 & Buyer Persony:")
+                    st.json(p_res)
+                    if st.button("Wyczyść wyniki", key="btn_clear_profiler_res"):
+                        st.session_state.auto_profiler_result = None
+                        st.rerun()
             
             with tab_strategy:
                 st.subheader("📋 Kwestionariusz Twojej Marki / Biznesu")
