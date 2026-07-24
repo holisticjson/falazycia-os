@@ -1,3 +1,5 @@
+import sys
+import io
 import os
 import sqlite3
 import json
@@ -5,6 +7,18 @@ import datetime
 import urllib.request
 import urllib.error
 import streamlit as st
+
+# Bezpieczna rekonfiguracja kodowania UTF-8 na systemach Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+if hasattr(sys.stderr, 'reconfigure'):
+    try:
+        sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
 
 DB_PATH = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\02-website\local_crm.db"
 

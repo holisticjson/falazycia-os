@@ -1,3 +1,5 @@
+import sys
+import io
 import os
 import sqlite3
 import datetime
@@ -7,6 +9,30 @@ from bs4 import BeautifulSoup
 import re
 import json
 import requests
+
+# Bezpieczna rekonfiguracja kodowania UTF-8 na systemach Windows
+if hasattr(sys.stdout, 'reconfigure'):
+    try:
+        sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+if hasattr(sys.stderr, 'reconfigure'):
+    try:
+        sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+    except Exception:
+        pass
+
+def safe_print(*args, **kwargs):
+    """Bezpieczne drukowanie ignorujące błędy kodowania konsoli Windows."""
+    try:
+        print(*args, **kwargs)
+    except Exception:
+        try:
+            msg = " ".join(str(a) for a in args)
+            clean_msg = msg.encode('ascii', errors='ignore').decode('ascii')
+            print(clean_msg, **kwargs)
+        except Exception:
+            pass
 
 # Ścieżka do bazy danych SQLite
 DB_PATH = r"C:\Aplikacje MVP\01_JAISON_AGENCY_OS\02-website\local_crm.db"
@@ -334,11 +360,11 @@ def run_lead_radar_sync(keyword="strona internetowa"):
     Rozszerza słowa kluczowe, pobiera oferty ze źródeł, filtruje przez DeepSeek i zapisuje do SQLite.
     """
     init_db_v2()
-    print(f"📡 Start synchronizacji Radaru Zleceń dla słowa kluczowego: '{keyword}'...")
+    safe_print(f"Start synchronizacji Radaru Zleceń dla słowa kluczowego: '{keyword}'...")
     
     # Rozszerzanie zapytań (AI Query Expansion)
     expanded_keywords = expand_queries_with_ai(keyword)
-    print(f"🔑 Rozszerzone frazy kluczowe: {expanded_keywords}")
+    safe_print(f"Rozszerzone frazy kluczowe: {expanded_keywords}")
     
     all_raw_jobs = []
     
@@ -354,7 +380,7 @@ def run_lead_radar_sync(keyword="strona internetowa"):
     for job in all_raw_jobs:
         unique_jobs[job["url"]] = job
         
-    print(f"📥 Znaleziono {len(unique_jobs)} unikalnych ogłoszeń. Rozpoczynam pobieranie szczegółów i analizę AI...")
+    safe_print(f"Znaleziono {len(unique_jobs)} unikalnych ogłoszeń. Rozpoczynam pobieranie szczegółów i analizę AI...")
     
     conn = sqlite3.connect(DB_PATH, check_same_thread=False)
     cursor = conn.cursor()
@@ -379,7 +405,7 @@ def run_lead_radar_sync(keyword="strona internetowa"):
         ai_res = analyze_and_score_lead_with_deepseek(title, description, source)
         
         if ai_res.get("is_spam", False):
-            print(f"🗑️ Odrzucono SPAM: '{title}' ({ai_res.get('spam_reason', 'Brak powodu')})")
+            safe_print(f"Odrzucono SPAM: '{title}' ({ai_res.get('spam_reason', 'Brak powodu')})")
             spam_count += 1
             continue
             
@@ -411,10 +437,10 @@ def run_lead_radar_sync(keyword="strona internetowa"):
         ))
         conn.commit()
         saved_count += 1
-        print(f"⭐ Zapisano okazję B2B: '{title}' [Priorytet: {ai_res.get('priority_score', 50)}/100]")
+        safe_print(f"Zapisano okazję B2B: '{title}' [Priorytet: {ai_res.get('priority_score', 50)}/100]")
         
     conn.close()
-    print(f"📊 Podsumowanie: Zapisano {saved_count} nowych okazji, odrzucono {spam_count} spamu.")
+    safe_print(f"Podsumowanie: Zapisano {saved_count} nowych okazji, odrzucono {spam_count} spamu.")
     return saved_count
 
 if __name__ == "__main__":
