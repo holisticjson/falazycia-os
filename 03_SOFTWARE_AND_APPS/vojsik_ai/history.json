@@ -2194,5 +2194,23 @@
         "raw_text": "Więc zrób aktualizację w pliku task. A ja już przechodzę do tego TikToka nieszczęsnego. Tylko musisz mi jeszcze raz podać. No upname to mam, tak? JSON Publisher. Kategoria edukacja. Description.  W tym odcinku opowiem wam o tym, co robi wasza aplikacja mobilna lub website i jak to działa. To będzie pokazane dla osób tiktokowych.  I teraz jeszcze muszę podać I drugi link Muszę wybrać Platforms  \"App Review\"-\"Required information for app submission\"\"Please review the app review guidelines for more details\"\"Explain how each product and scope works within your app or website\"\"If submitting a revision, include the changes in this version\"  to muszę za-uploadować jakieś video upload at least one demo video that shows the complete end-to-end flow of the integration with TikTok maksymalnie 5 plików do 50 MB każdy format mp4 lub mov no i tu jakieś add products  A te scopes...",
         "corrected_text": "Więc zrób aktualizację w pliku task. A ja już przechodzę do tego TikToka nieszczęsnego. Tylko musisz mi jeszcze raz podać. No upname to mam, tak? JSON Publisher. Kategoria edukacja. Description.  W tym odcinku opowiem wam o tym, co robi wasza aplikacja mobilna lub website i jak to działa. To będzie pokazane dla osób tiktokowych.  I teraz jeszcze muszę podać I drugi link Muszę wybrać Platforms  \"App Review\"-\"Required information for app submission\"\"Please review the app review guidelines for more details\"\"Explain how each product and scope works within your app or website\"\"If submitting a revision, include the changes in this version\"  to muszę za-uploadować jakieś video upload at least one demo video that shows the complete end-to-end flow of the integration with TikTok maksymalnie 5 plików do 50 MB każdy format mp4 lub mov no i tu jakieś add products  A te scopes...",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 16:31:47",
+        "raw_text": "Dobra, zmieniłem, dodałem rekord txt z TikToka na Cloudflare dla domeny jaison.pl.",
+        "corrected_text": "Dobra, zmieniłem, dodałem rekord txt z TikToka na Cloudflare dla domeny jaison.pl.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 16:34:30",
+        "raw_text": "Dobra powiedz mi jeszcze co tutaj mogę wybrać tak? Bo jeśli dobrze rozumiem to mógłbym tą aplikację bezpośrednio podpiąć pod Streamlit Dashboard pomijając Composio  Tak, i są tu jeszcze jakieś inne możliwości, ale zostajemy przy komposjo, tak?",
+        "corrected_text": "Dobra powiedz mi jeszcze co tutaj mogę wybrać tak? Bo jeśli dobrze rozumiem to mógłbym tą aplikację bezpośrednio podpiąć pod Streamlit Dashboard pomijając Composio  Tak, i są tu jeszcze jakieś inne możliwości, ale zostajemy przy komposjo, tak?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 16:38:18",
+        "raw_text": "Dobra, pojawiły się opcje tu Products, Login Kit, mam podać jakiś Redirect URI. Do 10 Redirect URIs user will be redirected to this patch after they have authorized your app with TikTok. Później mamy Content Posting API i kwestia czy włączyć Direct Post.  Domains, scopes już jest, tak?",
+        "corrected_text": "Dobra, pojawiły się opcje tu Products, Login Kit, mam podać jakiś Redirect URI. Do 10 Redirect URIs user will be redirected to this patch after they have authorized your app with TikTok. Później mamy Content Posting API i kwestia czy włączyć Direct Post.  Domains, scopes już jest, tak?",
+        "status": "raw_fallback"
     }
 ]
