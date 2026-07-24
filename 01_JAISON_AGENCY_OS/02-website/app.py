@@ -6270,12 +6270,93 @@ Zwróć odpowiedź w czystym formacie JSON bez znaczników markdown poza json, o
                         except Exception as ex:
                             st.error(f"❌ Błąd generowania profilu: {str(ex)}")
 
+                st.markdown("<hr style='margin: 20px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
+                st.markdown("##### 🔗 Generator Interaktywnej Oferty HTML w Linku (Dla Klienta)")
+                st.caption("Wygeneruj luksusową, interaktywną ofertę internetową z dopasowanym brandingiem klienta, analizą konkurencji, propozycja sekcji strony i bezpośrednim przyciskiem WhatsApp.")
+                
+                if st.button("🔗 Wygeneruj Interaktywną Ofertę HTML & Zapisz w CRM", type="primary", use_container_width=True, key="btn_gen_interactive_proposal"):
+                    with st.spinner("Sztab Dyrektorów AI (CMO, CPO, Media Buyer) generuje dedykowaną ofertę HTML dla klienta..."):
+                        try:
+                            prompt_prop = f"""
+Jesteś Sztabem Dyrektorów AI (CMO, CPO, Media Buyer) w agencji Jaison (jaison.pl).
+Stwórz wyrafinowaną, interaktywną, jednostronicową ofertę internetową (zgodną z Tailwind CSS) dla klienta: {prof_client_name} ({prof_client_url}).
+
+Wymagania dla kodu HTML:
+1. Kolorystyka dopasowana do marki (pastelowy róż #EC4899, złoto #F59E0B, dark bg #0F172A).
+2. Nagłówek HERO z potężną obietnicą wartości i mottem.
+3. Sekcja: Głęboki Audyt Konkurencji & Facebook Ads Spy (3 kluczowe luki u konkurencji).
+4. Sekcja: 3 Precyzyjne Buyer Persony & Ich Bóle.
+5. Sekcja: Rekomendowana Struktura Landing Page (Hero, Problem, Architektura Zaufania, Oferta, Sekcja FAQ, CTA).
+6. Sekcja: Propozycja Strategii Contentowej i Kampanii Meta/Google Ads.
+7. Sekcja Kontaktu: Bezpośredni przycisk do rozmowy na WhatsApp (+48 791 636 644) oraz rezerwacji konsultacji.
+8. RYGOR STYLISTYCZNY (RULE 13): Wszystkie pogrubienia w kodzie HTML pisać WYŁĄCZNIE tagami <strong>tekst</strong>. BEZWZGLĘDNY ZAKAZ UŻYWANIA podwójnych gwiazdek ** w HTML!
+
+Zwróć WYŁĄCZNIE kompletny, działający kod HTML zaczynający się od <!DOCTYPE html> i kończący na </html>.
+"""
+                            raw_prop_html = call_gemini_pro_api([{"role": "user", "content": prompt_prop}], "Jesteś mistrzem copywritingu perswazyjnego NLP i architektury ofert HTML.")
+                            
+                            # Clean HTML response
+                            clean_prop_html = raw_prop_html.replace("```html", "").replace("```", "").strip()
+                            
+                            # Save proposal to client's 08-reports folder
+                            rep_dir = os.path.join(r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS", prof_client_id, "08-reports")
+                            os.makedirs(rep_dir, exist_ok=True)
+                            prop_file_path = os.path.join(rep_dir, "oferta_interaktywna.html")
+                            
+                            with open(prop_file_path, "w", encoding="utf-8") as f_prop:
+                                f_prop.write(clean_prop_html)
+                                
+                            # Update crm.json
+                            crm_file = os.path.join(BASE_DIR, "dashboard", "crm.json")
+                            crm_d = load_json(crm_file, {"leads": []})
+                            crm_d["leads"].append({
+                                "id": f"lead_{prof_client_id}_{int(time.time())}",
+                                "name": prof_client_name,
+                                "stage": "architecture",
+                                "notes": f"Interaktywna oferta HTML wygenerowana. Plik: {prop_file_path}",
+                                "last_contact": time.strftime('%Y-%m-%d'),
+                                "next_action": "Wyślij interaktywny link oferty klientowi na WhatsApp / e-mail",
+                                "draft_reply": f"Cześć {prof_client_name}, przygotowaliśmy dla Ciebie dedykowaną, interaktywną analizę i propozycję serwisu..."
+                            })
+                            save_json(crm_file, crm_d)
+                            
+                            # Update kanban.json
+                            kanban_f = r"C:\Users\tomas_yq1b9su\Agentic_OS\dashboard\kanban.json"
+                            kanban_d = load_json(kanban_f, {"todo": [], "in_progress": [], "done": []})
+                            kanban_d.get("todo", []).append({
+                                "id": f"task_prop_{int(time.time())}",
+                                "title": f"Wyślij interaktywną ofertę HTML do {prof_client_name}",
+                                "client": prof_client_name,
+                                "tag": "OFERTA",
+                                "link": prop_file_path
+                            })
+                            save_json(kanban_f, kanban_d)
+                            
+                            st.session_state.latest_prop_html = clean_prop_html
+                            st.session_state.latest_prop_path = prop_file_path
+                            st.success(f"🎉 Interaktywna oferta HTML wygenerowana i zapisana w: {prop_file_path}! Lead dodany do CRM i ADHD Kanban.")
+                            st.rerun()
+                        except Exception as ex:
+                            st.error(f"❌ Błąd generowania oferty: {str(ex)}")
+
+                if "latest_prop_html" in st.session_state and st.session_state.latest_prop_html:
+                    st.markdown("### 🖥️ Podgląd Wygenerowanej Oferty HTML dla Klienta:")
+                    st.components.v1.html(st.session_state.latest_prop_html, height=750, scrolling=True)
+                    st.download_button(
+                        label="📥 Pobierz Plik HTML Oferty (Do Podglądu / Wysyłki)",
+                        data=st.session_state.latest_prop_html,
+                        file_name=f"oferta_{prof_client_id}.html",
+                        mime="text/html",
+                        use_container_width=True
+                    )
+
                 if "auto_profiler_result" in st.session_state and st.session_state.auto_profiler_result:
                     p_res = st.session_state.auto_profiler_result
                     st.markdown("### 📄 Wygenerowany Profil Ghost v2 & Buyer Persony:")
                     st.json(p_res)
                     if st.button("Wyczyść wyniki", key="btn_clear_profiler_res"):
                         st.session_state.auto_profiler_result = None
+                        st.session_state.latest_prop_html = None
                         st.rerun()
             
             with tab_strategy:
