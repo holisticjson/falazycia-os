@@ -2056,5 +2056,17 @@
         "raw_text": "Teraz w tym skanerze pokazuje się w formie kodu źródła tych zleceń.",
         "corrected_text": "Teraz w tym skanerze pokazuje się w formie kodu źródła tych zleceń.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 13:57:19",
+        "raw_text": "Podpiąłem już te dwa profile Facebooka osobne. Pytanie czy ja muszę zmienić to\"entity\". Tam mam facebook-t.mercator i facebook-t.antonio. Czy ja muszę to coś zmienić, tą nazwę\"entity_id\", tak jak to nazwałeś?",
+        "corrected_text": "Podpiąłem już te dwa profile Facebooka osobne. Pytanie, czy ja muszę zmienić to „entity”? Tam mam facebook-t.mercator i facebook-t.antonio. Czy ja muszę to coś zmienić, tę nazwę „entity_id”, tak jak to nazwałeś?",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 13:57:38",
+        "raw_text": "i gdzie znajdę te dane na TikToku na koncie, które muszę wprowadzić tu w Composio",
+        "corrected_text": "i gdzie znajdę te dane na TikToku na koncie, które muszę wprowadzić tu w Composio",
+        "status": "raw_fallback"
     }
 ]
