@@ -6281,17 +6281,23 @@ Zwróć odpowiedź w czystym formacie JSON bez znaczników markdown poza json, o
 Jesteś Sztabem Dyrektorów AI (CMO, CPO, Media Buyer) w agencji Jaison (jaison.pl).
 Stwórz wyrafinowaną, interaktywną, jednostronicową ofertę internetową (zgodną z Tailwind CSS) dla klienta: {prof_client_name} ({prof_client_url}).
 
-Wymagania dla kodu HTML:
+Zamiast zwykłej statycznej oferty, zbuduj INTERAKTYWNĄ APLIKACJĘ OFERTOWĄ, w której klient sam konfiguruje swój zakup!
+
+Wymagania dla kodu HTML i JavaScript:
 1. Kolorystyka dopasowana do marki (pastelowy róż #EC4899, złoto #F59E0B, dark bg #0F172A).
 2. Nagłówek HERO z potężną obietnicą wartości i mottem.
 3. Sekcja: Głęboki Audyt Konkurencji & Facebook Ads Spy (3 kluczowe luki u konkurencji).
 4. Sekcja: 3 Precyzyjne Buyer Persony & Ich Bóle.
-5. Sekcja: Rekomendowana Struktura Landing Page (Hero, Problem, Architektura Zaufania, Oferta, Sekcja FAQ, CTA).
-6. Sekcja: Propozycja Strategii Contentowej i Kampanii Meta/Google Ads.
-7. Sekcja Kontaktu: Bezpośredni przycisk do rozmowy na WhatsApp (+48 791 636 644) oraz rezerwacji konsultacji.
+5. INTERAKTYWNY KONFIGURATOR OFERTY (JavaScript App):
+   - Suwak wyboru celu (np. suwak 10 -> 30 -> 50 leadów/rezerwacji miesięcznie).
+   - Dynamiczny kalkulator oszczędności czasu i estymacji ROI.
+   - Przełącznik wariantów (Wariant Basic: Sam Landing Page | Wariant Pro: Landing + Chatbot AI | Wariant VIP: Pełny Auto-Pilot z Remotion & Composio).
+6. LIVE COLOR SWITCHER (Przełącznik Motywów w JavaScript):
+   - Przyciski pozwalające klientowi przetestować różne warianty kolorystyczne swojej przyszłej strony na żywo (np. Szmaragdowy Neon, Pastelowy Róż, Złota Elegancja).
+7. Sekcja Kontaktu: Bezpośredni przycisk do rozmowy na WhatsApp (+48 791 636 644) oraz rezerwacji konsultacji z automatycznym podpięciem danych z konfiguratora.
 8. RYGOR STYLISTYCZNY (RULE 13): Wszystkie pogrubienia w kodzie HTML pisać WYŁĄCZNIE tagami <strong>tekst</strong>. BEZWZGLĘDNY ZAKAZ UŻYWANIA podwójnych gwiazdek ** w HTML!
 
-Zwróć WYŁĄCZNIE kompletny, działający kod HTML zaczynający się od <!DOCTYPE html> i kończący na </html>.
+Zwróć WYŁĄCZNIE kompletny, działający kod HTML ze skryptem JS wewnątrz, zaczynający się od <!DOCTYPE html> i kończący na </html>.
 """
                             raw_prop_html = call_gemini_pro_api([{"role": "user", "content": prompt_prop}], "Jesteś mistrzem copywritingu perswazyjnego NLP i architektury ofert HTML.")
                             
