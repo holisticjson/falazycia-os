@@ -2146,5 +2146,23 @@
         "raw_text": "Czyli co, generalnie możemy zrobić takie lustrzane odbicie tego co mamy tu lokalnie na komputerze, takiej struktury.  w koszykach GCS czy jakby no zapisywać je zarówno lokalnie i automatycznie właśnie tak jak tutaj powiedziałeś przez protokół MCP oraz GCP Storage Client Library  To raz, a dwa... No ten TikTok, konto deweloperskie cały czas nie chce się zweryfikować. Ta nasza strona po umieszczeniu w kodzie.  tego pliku. Nie wiem, czy dobrze myślę, żeby stworzyć taką, no,  bliźniaczą strukturę koszyków.  Dziękuję.",
         "corrected_text": "Czyli co, generalnie możemy zrobić takie lustrzane odbicie tego co mamy tu lokalnie na komputerze, takiej struktury.  w koszykach GCS czy jakby no zapisywać je zarówno lokalnie i automatycznie właśnie tak jak tutaj powiedziałeś przez protokół MCP oraz GCP Storage Client Library  To raz, a dwa... No ten TikTok, konto deweloperskie cały czas nie chce się zweryfikować. Ta nasza strona po umieszczeniu w kodzie.  tego pliku. Nie wiem, czy dobrze myślę, żeby stworzyć taką, no,  bliźniaczą strukturę koszyków.  Dziękuję.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 15:34:24",
+        "raw_text": "No myślę, że tych obiekcji będzie więcej jeśli chodzi o klienta. Więc trzeba byłoby przygotować więcej tego.",
+        "corrected_text": "No myślę, że tych obiekcji będzie więcej jeśli chodzi o klienta. Więc trzeba byłoby przygotować więcej tego.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 15:37:18",
+        "raw_text": "Wiesz co, wszystko co teraz robimy, tak? Moje pomysły, nasze oryginalne podejście technologiczne do właśnie metodologią low cost, high secure, low friction. Trzeba gdzieś spisywać w jakimś dokumencie. To wcześniej robiliśmy też analizę, nie wiem, czy tutaj z Tobą w czacie, czy w czacie obok, w tym projekcie. Analiz  a raport i czym my możemy się wyróżnić no bo z tego później mogę stworzyć content tak na social media taką metodą Robin Hooda ale też tak delikatnie w sensie nie tak mocno krytykować tylko zadając po prostu pytania tak takim odbiorcom grupy docelowej że mogą mieć za darmo bezpieczność  mają alternatywę jeśli chodzi o narzędzia. Jest dobrze by było to wszystko spisać i ewentualnie zarówno content jak i pomysły na lead magnet, na ebooki, takie infoprodukty.",
+        "corrected_text": "Wiesz co, wszystko co teraz robimy, tak? Moje pomysły, nasze oryginalne podejście technologiczne do właśnie metodologią low cost, high secure, low friction. Trzeba gdzieś spisywać w jakimś dokumencie. To wcześniej robiliśmy też analizę, nie wiem, czy tutaj z Tobą w czacie, czy w czacie obok, w tym projekcie. Analiz  a raport i czym my możemy się wyróżnić no bo z tego później mogę stworzyć content tak na social media taką metodą Robin Hooda ale też tak delikatnie w sensie nie tak mocno krytykować tylko zadając po prostu pytania tak takim odbiorcom grupy docelowej że mogą mieć za darmo bezpieczność  mają alternatywę jeśli chodzi o narzędzia. Jest dobrze by było to wszystko spisać i ewentualnie zarówno content jak i pomysły na lead magnet, na ebooki, takie infoprodukty.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 15:38:31",
+        "raw_text": "No i jeszcze takie pytanie, póki pamiętam, odnośnie tych agentów, którzy będą tu w dashboardzie zastępowali Perplexity czy Gemini Pro. Czy one mają już taką sztywną ścieżkę, nie wiem, rozumowania, tak jak tutaj tworzymy ten Intake Form Knowledge Base? Taki krok po kroku jemu trzeba dać? Czy on jest elastyczny, czyli na przykład tak jak myśli  Pro, tak? Czy Notebook LM, że ma do dyspozycji jakąś tam wiedzę z Web Store, tak? Z konkretnych źródeł internetowych plus typu Cloud Storage, Data Storage, czyli te pliki, które mu wgramy, tak?  Dziękuję.",
+        "corrected_text": "No i jeszcze takie pytanie, póki pamiętam, odnośnie tych agentów, którzy będą tu w dashboardzie zastępowali Perplexity czy Gemini Pro. Czy one mają już taką sztywną ścieżkę, nie wiem, rozumowania, tak jak tutaj tworzymy ten Intake Form Knowledge Base? Taki krok po kroku jemu trzeba dać? Czy on jest elastyczny, czyli na przykład tak jak myśli  Pro, tak? Czy Notebook LM, że ma do dyspozycji jakąś tam wiedzę z Web Store, tak? Z konkretnych źródeł internetowych plus typu Cloud Storage, Data Storage, czyli te pliki, które mu wgramy, tak?  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
