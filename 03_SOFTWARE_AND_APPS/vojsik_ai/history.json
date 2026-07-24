@@ -2320,5 +2320,29 @@
         "raw_text": "No dobra, czy nie muszę wykonać jakiegoś skryptu albo MCP, jakiegoś podłączenia, bo też coś wspominałeś na laptopie? Jak on ma odebrać i odczytywać ten... Dlaczego tak jakoś wybiórczo mi tutaj przedstawiłeś? No i jak to się będzie synchronizowało?  Pobrałem bardzo dużo materiałów dzisiaj ze strony BackOffice z LiveWave. Na laptopa są posegregowane tam pliki. Materiały polskie.  Dziękuję.  Dziękuję.  Dziękuję.  Dziękuję.",
         "corrected_text": "No dobra, czy nie muszę wykonać jakiegoś skryptu albo MCP, jakiegoś podłączenia, bo też coś wspominałeś na laptopie? Jak on ma odebrać i odczytywać ten... Dlaczego tak jakoś wybiórczo mi tutaj przedstawiłeś? No i jak to się będzie synchronizowało?  Pobrałem bardzo dużo materiałów dzisiaj ze strony BackOffice z LiveWave. Na laptopa są posegregowane tam pliki. Materiały polskie.  Dziękuję.  Dziękuję.  Dziękuję.  Dziękuję.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 22:23:53",
+        "raw_text": "Mam gdzieś tam grać do bazy datastore tego, tego, tego, ja insan auditor.",
+        "corrected_text": "Mam gdzieś tam grać do bazy datastore tego, ja insan auditor.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 22:24:14",
+        "raw_text": "Cześć.",
+        "corrected_text": "Cześć.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 22:24:27",
+        "raw_text": "Czy po prostu trzeba ten plik cały wgrać w odpowiednie miejsce do którego on będzie miał dostęp.",
+        "corrected_text": "Czy po prostu trzeba ten plik cały wgrać w odpowiednie miejsce do którego on będzie miał dostęp.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 22:25:17",
+        "raw_text": "Podsumuj mi też na koniec dnia wszystkie pomysły, które ja dzisiaj miałem odnośnie dashboardu, odnośnie Discorda, odnośnie wszystko co dzisiaj podsyłałem, repozytoria z Github, inspiracje, co zostało wdrożone, co jeszcze zostało do pięcia w dashboardzie z tym modem.  z modułami własnym czopotem Gemini i Perplexity. No i tu jeszcze nowy taki pomysł i zapytanie.",
+        "corrected_text": "Podsumuj mi też na koniec dnia wszystkie pomysły, które ja dzisiaj miałem odnośnie dashboardu, odnośnie Discorda, odnośnie wszystko co dzisiaj podsyłałem, repozytoria z Github, inspiracje, co zostało wdrożone, co jeszcze zostało do pięcia w dashboardzie z tym modem.  z modułami własnym czopotem Gemini i Perplexity. No i tu jeszcze nowy taki pomysł i zapytanie.",
+        "status": "raw_fallback"
     }
 ]
