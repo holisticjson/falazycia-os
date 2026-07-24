@@ -14,9 +14,10 @@ graph TD
         A3["💬 Komunikator Klienta: WhatsApp / Telegram / Email"]
     end
 
-    subgraph 🌿 FALA ŻYCIA (Biohacking & MLM X39/Celergize)
-        B1["🌐 Dedykowana Subdomena: fala.jaison.pl (lub fala-zycia.pl)"]
-        B2["📲 Główny Kanał Społeczności: WhatsApp VIP Group"]
+    subgraph 🌿 FALA ŻYCIA & MLM (x2o.jaison.pl / mlm.jaison.pl)
+        B1["🌐 Portal Społeczności & Baza Produktowa: x2o.jaison.pl"]
+        B2["🚀 Product Launch Agenta MLM: mlm.jaison.pl"]
+        B3["📲 Główny Kanał Społeczności: WhatsApp VIP Group"]
     end
 
     subgraph 🎮 SERWER PRIV: Discord (J(ai)Son OS Mission Control)

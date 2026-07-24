@@ -18,7 +18,9 @@ graph TD
 1. **Przełamanie Oporu MLM:** Polacy unikają typowych nagabywań sieciowych. **Fala Życia** pozycjonuje się jako *Nowatorski Ruch Zdrowotny i Społeczność Biohackingowa*, a nie sklep z suplementami.
 2. **Kotwica NLP VAK (Visual/Auditory/Kinesthetic):** Nazwa *Fala Życia* wywołuje natychmiastowe skojarzenia z witalnością, przepływem krwi, odnową komórkową i lekkością.
 3. **Synergia Produktowa:** Idealnie łączy technologię fototerapii komórkowej (X39) z nowo wprowadzonym w lipcu w Europie duetem **`Celergize Morning`** (poranna energia komórkowa) oraz **`Celergize Evening`** (wieczorna regeneracja i wyciszenie).
-4. **Ochrona Domienowa i Social Media:** Nazwa *Fala Życia* pozwala zająć polskojęzyczny rynek (YouTube, TikTok, Instagram, WhatsApp) bez ryzyka blokad korporacyjnych.
+4. **Dedykowane Portale i Landingi Produkcyjne:**
+   - **`https://x2o.jaison.pl`** ➔ Portal dla społeczności Fala Życia, baza wiedzy o produktach LifeWave (X39, Celergize) oraz Asystent AI dla Brand Partnerów.
+   - **`https://mlm.jaison.pl`** ➔ Landing Page Product Launch Agenta MLM (rekrutacja partnerów, automatyzacja wdrożeniowa sieci).
 
 ---
 
