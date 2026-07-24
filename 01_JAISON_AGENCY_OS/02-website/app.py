@@ -6191,20 +6191,22 @@ Napisz całość w czystym markdownie, używając wyrazistych sekcji.
                     prof_client_url = st.text_input("Adres Strony Klienta (URL):", value="https://swiatyniaharmonii.pl", key="suite_prof_client_url")
                     prof_social_links = st.text_input("Linki do Social Media (IG, FB, TikTok):", value="https://instagram.com/swiatynia.harmonii", key="suite_prof_social_links")
                     prof_hosting_info = st.text_input("Dane Domeny & Hostingu (np. Kylos, Nazwa.pl):", value="Kylos.pl — Domena zarejestrowana", key="suite_prof_hosting_info")
+                    prof_toolstack = st.text_input("Ulubiony Stack Narzędzi (CRM, Kalendarz, Poczta, WhatsApp):", value="Google Calendar, WhatsApp, Systeme.io, MailerLite, Cal.com", key="suite_prof_toolstack")
                 with col_p2:
                     prof_text_dump = st.text_area("Zrzut Tekstów Klienta (Posty, E-maile, O nas):", value="W Świątyni Harmonii dbamy o naturalny relaks i regenerację. Oferujemy masaż Kobido oraz innowacyjną fototerapię komórkową LifeWave. Poczuj jak napięcie znika z Twojej twarzy...", height=180, key="suite_prof_text_dump")
                 
                 if st.button("🚀 Skanuj i Wygeneruj Komplety Profil Ghost v2", type="primary", use_container_width=True, key="btn_run_auto_profiler"):
-                    with st.spinner("Dyrektor ds. Produktu (CPO AI) oraz Gemini 2.5 Pro profilują markę klienta..."):
+                    with st.spinner("Sztab Dyrektorów AI (CPO, CTO, CMO) profilują markę i stack technologiczny klienta..."):
                         try:
                             prompt_profiler = f"""
-Jesteś Starszym Architektem Systemów AI i Dyrektorem ds. Produktu (CPO AI) w agencji Jaison (jaison.pl).
-Przeprowadź pełny skan i sprofilowanie marki klienta na podstawie podanych danych:
+Jesteś Sztabem Dyrektorów AI (CPO, CTO, CMO, COO) w agencji Jaison (jaison.pl).
+Przeprowadź pełny skan i sprofilowanie marki klienta oraz jego stacku technologicznego na podstawie podanych danych:
 
 Nazwa Firmy/Klienta: {prof_client_name}
 Adres Strony: {prof_client_url}
 Social Media: {prof_social_links}
 Hosting/Domena: {prof_hosting_info}
+Ulubione Narzędzia Klienta (Stack): {prof_toolstack}
 Zrzut Tekstowy / Próbka Stylu:
 {prof_text_dump}
 
@@ -6216,12 +6218,14 @@ Twoim zadaniem jest wygenerowanie DWÓCH ustrukturyzowanych dokumentów w standa
    - Wyeliminuj zabronione zwroty (np. 'warto pamiętać', 'kluczowy aspekt', 'w dzisiejszym świecie').
    - Zastosuj ZASADĘ WYRÓŻNIEŃ (Rule 13): W HTML pod pogrubienia stosować WYŁĄCZNIE tagi <strong>tekst</strong> (zero gwiazdek ** w HTML).
    - Zdefiniuj 3 Buyer Persony (Problem, Pragnienie, Hak Konwersyjny).
+   - Zdefiniuj Plan Automatyzacji i Integracji z Ulubionym Stackiem Klienta ({prof_toolstack}) za pomocą n8n i Composio.dev.
 
 2. PLIK KONFIGURACYJNY JSON (context_config.json):
    - Główny kolor marki (HEX)
    - Drugorzędny kolor marki (HEX)
    - Motto
    - Domena i webhook intake n8n
+   - Ulubiony stack narzędzi klienta
 
 Zwróć odpowiedź w czystym formacie JSON bez znaczników markdown poza json, o strukturze:
 {{

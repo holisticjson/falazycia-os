@@ -1876,5 +1876,11 @@
         "raw_text": "Nie wkleiłem Ci tego posta odnośnie tych ofertowania w formie plików HTML. Może coś jeszcze wyciągnę z tego.",
         "corrected_text": "Nie wkleiłem Ci tego posta odnośnie tych ofertowania w formie plików HTML. Może coś jeszcze wyciągnę z tego.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 10:42:43",
+        "raw_text": "Aha, na potrzeby automatyzacji, no to tutaj, znaczy w tym chatbocie wspierającym na formularzu musiałby być podpięty chyba cały sztab dyrektorów i skille, ma to sens? I na przykład klient w formularzu też podaje listę swoich ulubionych narzędzi, tak, czy to nie wiem, od kalendarza, z jakich kor  tak aby dostosować mu automatyzację i wykorzystanie, tak? Automatyzacji w ramach jego tak zwanego stacku technologicznego, jeśli chodzi o narzędzia ulubione, CRM-y, poczta, nie wiem, komunikator i tak dalej. Myśmy tego nie pominęli.",
+        "corrected_text": "Aha, na potrzeby automatyzacji, no to tutaj, znaczy w tym chatbocie wspierającym na formularzu musiałby być podpięty chyba cały sztab dyrektorów i skille, ma to sens? I na przykład klient w formularzu też podaje listę swoich ulubionych narzędzi, tak, czy to nie wiem, od kalendarza, z jakich kor  tak aby dostosować mu automatyzację i wykorzystanie, tak? Automatyzacji w ramach jego tak zwanego stacku technologicznego, jeśli chodzi o narzędzia ulubione, CRM-y, poczta, nie wiem, komunikator i tak dalej. Myśmy tego nie pominęli.",
+        "status": "raw_fallback"
     }
 ]
