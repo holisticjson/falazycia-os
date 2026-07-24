@@ -2086,5 +2086,29 @@
         "raw_text": "Widzę, że zgadujesz cały czas, nie zagłębiasz się w dokumentację, specyfikację danego narzędzia, aplikacji, tylko zgadujesz.",
         "corrected_text": "Widzę, że zgadujesz cały czas, nie zagłębiasz się w dokumentację, specyfikację danego narzędzia, aplikacji, tylko zgadujesz.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:11:42",
+        "raw_text": "Dziękuję.  Dziękuję.  Nie wiem jak ja mam teraz połączyć to konto dewelopmentowe z tym, co mam na ekranie.  Nie wiem jakie parametry mam tu wybrać.  podać łącza do blogów jakieś linki do profesjonalnego serwisu podaj łącza do wiarygodnych źródeł zewnętrznych aby potwierdzić swoją rozpoznawalność i ułatwić proces weryfikacji nie wiem co to jest czy normalnie jako  jako weryfikacja firmy, czy jako twórca kategorii treść edukacja i szkolenia, czy założyć mam dwa w ogóle konta osobne dla ja i są agency osobne dla MLM. Dużo tego.",
+        "corrected_text": "Dziękuję.  Dziękuję.  Nie wiem jak ja mam teraz połączyć to konto dewelopmentowe z tym, co mam na ekranie.  Nie wiem jakie parametry mam tu wybrać.  podać łącza do blogów jakieś linki do profesjonalnego serwisu podaj łącza do wiarygodnych źródeł zewnętrznych aby potwierdzić swoją rozpoznawalność i ułatwić proces weryfikacji nie wiem co to jest czy normalnie jako  jako weryfikacja firmy, czy jako twórca kategorii treść edukacja i szkolenia, czy założyć mam dwa w ogóle konta osobne dla ja i są agency osobne dla MLM. Dużo tego.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:17:46",
+        "raw_text": "Dobra, tylko mi chodzi o to, bo jakby jedno to jest aplikacja deweloperska, a drugie to jest kwestia na samej aplikacji TikTok, tak? Na przykład na telefonie. Czy mam po prostu dwie tożsamości tworzyć, dwa konta dla ja i son?  dla Json Agency oraz dla Json MLM, tak? Live with.",
+        "corrected_text": "Dobra, tylko mi chodzi o to, bo jakby jedno to jest aplikacja deweloperska, a drugie to jest kwestia na samej aplikacji TikTok, tak? Na przykład na telefonie. Czy mam po prostu dwie tożsamości tworzyć, dwa konta dla ja i son?  dla Json Agency oraz dla Json MLM, tak? Live with.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:19:49",
+        "raw_text": "Co mam tu krok po kroku? Czy ja te konta na aplikacji podpinam później do tego konta deweloperskiego?  z rzutu ekranu, co ja tam mam podpisywać.",
+        "corrected_text": "Co mam tu krok po kroku? Czy ja te konta na aplikacji podpinam później do tego konta deweloperskiego?  z rzutu ekranu, co ja tam mam podpisywać.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:26:29",
+        "raw_text": "Tu chodzi o inny jakiś konflikt, inny jakiś problem.",
+        "corrected_text": "Tu chodzi o inny jakiś konflikt, inny jakiś problem.",
+        "status": "raw_fallback"
     }
 ]
