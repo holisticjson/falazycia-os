@@ -2068,5 +2068,23 @@
         "raw_text": "i gdzie znajdę te dane na TikToku na koncie, które muszę wprowadzić tu w Composio",
         "corrected_text": "i gdzie znajdę te dane na TikToku na koncie, które muszę wprowadzić tu w Composio",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:00:18",
+        "raw_text": "Ale to widzę muszę nowe konto dewelopera na TikToku założyć, tak? Czy to mam się zalogować swoim kontem Tik Tok? Ale to tam... Ty mi podałeś link do strony deweloperskiej.  wszystkie to swoje konto: twórcy.prywat.net i Tokarz Jak.",
+        "corrected_text": "Ale to widzę muszę nowe konto dewelopera na TikToku założyć, tak? Czy to mam się zalogować swoim kontem Tik Tok? Ale to tam... Ty mi podałeś link do strony deweloperskiej.  wszystkie to swoje konto: twórcy.prywat.net i Tokarz Jak.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:01:41",
+        "raw_text": "Gdzie ty to widzisz? W prawym górnym rogu login, login with TikTok. Nie ma takiej kurwa tutaj możliwości.",
+        "corrected_text": "Gdzie ty to widzisz? W prawym górnym rogu: login, login with TikTok. Nie ma takiej kurwa tutaj możliwości.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 14:07:37",
+        "raw_text": "Widzę, że zgadujesz cały czas, nie zagłębiasz się w dokumentację, specyfikację danego narzędzia, aplikacji, tylko zgadujesz.",
+        "corrected_text": "Widzę, że zgadujesz cały czas, nie zagłębiasz się w dokumentację, specyfikację danego narzędzia, aplikacji, tylko zgadujesz.",
+        "status": "raw_fallback"
     }
 ]
