@@ -2110,5 +2110,23 @@
         "raw_text": "Tu chodzi o inny jakiś konflikt, inny jakiś problem.",
         "corrected_text": "Tu chodzi o inny jakiś konflikt, inny jakiś problem.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:46:06",
+        "raw_text": "Nic kur... chyba nie działa z tym TikTokem, nie wiem o co chodzi. Nie mogę tego zapisać.",
+        "corrected_text": "Nic kur... chyba nie działa z tym TikTokem, nie wiem o co chodzi. Nie mogę tego zapisać.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:47:19",
+        "raw_text": "Które wybrać?",
+        "corrected_text": "Które wybrać?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:48:17",
+        "raw_text": "Co tu wpisać dokładnie? Adres strony głównej jaison.pl czy tej z polityką prywatności?",
+        "corrected_text": "Co tu wpisać dokładnie? Adres strony głównej jaison.pl czy tej z polityką prywatności?",
+        "status": "raw_fallback"
     }
 ]
