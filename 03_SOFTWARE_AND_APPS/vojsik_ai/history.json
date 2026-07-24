@@ -2002,5 +2002,23 @@
         "raw_text": "Ale to mam stworzyć dwie kategorie i dwa kanały? Równolegle? Czy kanał pod kategorią, czy kategorie pod kanałem? No wyjaśnij mi to jakoś logicznie.",
         "corrected_text": "Ale to mam stworzyć dwie kategorie i dwa kanały? Równolegle? Czy kanał pod kategorią, czy kategorie pod kanałem? No wyjaśnij mi to jakoś logicznie.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 12:02:34",
+        "raw_text": "Słuchaj, poniżej jest fragment konwersacji teraz. Ja mam wrażenie, że on jest jakoś ograniczony strasznie, ten agent, lub nie posiada w ogóle, nie wiem, wiedzy. On jest jakoś nastawiony, ustawiony na konkretny scenariusz tej rozmowy. Nie wiem, czy on ma też dostęp do ogólnej wiedzy, jest jakiś elastyczny, czy taki usz  Jakieś wiedzy, datastore dodatkowe, nie wiem, jakieś ustawienie w tym playbooku. Bo na razie to kompletna amatorka.",
+        "corrected_text": "Słuchaj, poniżej jest fragment konwersacji teraz. Ja mam wrażenie, że on jest jakoś ograniczony strasznie, ten agent, lub nie posiada w ogóle, nie wiem, wiedzy. On jest jakoś nastawiony, ustawiony na konkretny scenariusz tej rozmowy. Nie wiem, czy on ma też dostęp do ogólnej wiedzy, jest jakiś elastyczny, czy taki usz  Jakieś wiedzy, datastore dodatkowe, nie wiem, jakieś ustawienie w tym playbooku. Bo na razie to kompletna amatorka.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 12:04:31",
+        "raw_text": "Rozumiem, że ustawienie jako kanału tekstowego to nie ma nic wspólnego ze sposobem komunikacji przez ten Discord z Hermes i w poszczególnych kanałach. Będą jakby kanały dwa i kategorie stworzą się same automatycznie. Dobra, te dwa kanały, ale w tych kanałach każdych będzie jakby  Nie wiem, pod kategorie, pod kanały, tak? W zależności od tego, czym tam się będzie zajmował. Rozumiem, że będą odczytywane, analizowane i komunikacja poprzez głosówki jak najbardziej będzie możliwa.  Dziękuję.",
+        "corrected_text": "Rozumiem, że ustawienie jako kanału tekstowego to nie ma nic wspólnego ze sposobem komunikacji przez ten Discord z Hermes i w poszczególnych kanałach. Będą jakby kanały dwa i kategorie stworzą się same automatycznie. Dobra, te dwa kanały, ale w tych kanałach każdych będzie jakby  Nie wiem, pod kategorie, pod kanały, tak? W zależności od tego, czym tam się będzie zajmował. Rozumiem, że będą odczytywane, analizowane i komunikacja poprzez głosówki jak najbardziej będzie możliwa.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 12:08:26",
+        "raw_text": "Tu mam, czyli mogę równolegle połączyć dwa różne konta, na przykład Facebook, Instagram również dla Jason Jaison Agency.  Lepiej mieć np. pod jednym kontem Facebook profil MLM i stworzyć pod nim fanpage\"jaisonagency\".  przez komposję API, ki i tak dalej.",
+        "corrected_text": "Tu mam, czyli mogę równolegle połączyć dwa różne konta, na przykład Facebook, Instagram również dla Jason Jaison Agency.  Lepiej mieć np. pod jednym kontem Facebook profil MLM i stworzyć pod nim fanpage\"jaisonagency\".  przez komposję API, ki i tak dalej.",
+        "status": "raw_fallback"
     }
 ]
