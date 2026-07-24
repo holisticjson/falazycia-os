@@ -3,14 +3,13 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-// Inicjalizacja sesji pod Spam Shields i utrzymanie historii czatu
+// Inicjalizacja sesji pod Spam Shields
 if (session_status() === PHP_SESSION_NONE) {
     ini_set('session.cookie_httponly', 1);
     ini_set('session.use_only_cookies', 1);
     session_start();
 }
 
-// Funkcja wczytywania zmiennych .env (obejście putenv na Hostido / Cloud Run)
 function getEnvVar($name) {
     if (isset($_ENV[$name])) return $_ENV[$name];
     if (isset($_SERVER[$name])) return $_SERVER[$name];
@@ -63,26 +62,63 @@ if ($_SESSION['chat_query_count'] >= 30) {
 }
 $_SESSION['chat_query_count']++;
 
-// Inicjalizacja i aktualizacja historii czatu w sesji (ostatnie 15 wiadomości dla oszczędności tokenów)
-if (!isset($_SESSION['chat_history']) || !is_array($_SESSION['chat_history'])) {
-    $_SESSION['chat_history'] = [];
-}
-$_SESSION['chat_history'][] = ["role" => "user", "text" => $userMessage];
-if (count($_SESSION['chat_history']) > 15) {
-    array_shift($_SESSION['chat_history']);
-}
-
-// Pomocnicze funkcje JWT
-function base64UrlEncode($data) {
-    return str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($data));
+// Konwersja Markdown -> HTML (Zasada 13 - Bezwyjątkowe usuwanie gwiazdek)
+function cleanAndHumanizeMarkdown($text) {
+    $text = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $text);
+    $text = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $text);
+    $text = str_replace('**', '', $text);
+    $text = str_replace('*', '', $text);
+    return nl2br($text);
 }
 
-// Pobieranie tokenu z Service Account
-function getGoogleAccessToken($saJsonStr) {
-    $sa = json_decode($saJsonStr, true);
-    if (!$sa || !isset($sa['private_key']) || !isset($sa['client_email'])) {
-        throw new Exception("Błędny format klucza Service Account JSON.");
+// Pobranie klucza SA z serwera
+$saJsonStr = getEnvVar('GCP_SERVICE_ACCOUNT_JSON');
+
+// Jeśli brak klucza GCP w PHP, uderzamy awaryjnie do n8n webhooka (v1/jaison-audit)
+function queryN8nFallback($userMessage) {
+    $n8nUrl = "https://n8n.jaison.pl/webhook/v1/jaison-audit";
+    $payload = json_encode([
+        "message" => $userMessage,
+        "name" => "Klient WWW",
+        "email" => "kontakt-www@jaison.pl"
+    ]);
+
+    $ch = curl_init($n8nUrl);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 8);
+    $response = curl_exec($ch);
+    $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    curl_close($ch);
+
+    if ($code === 200 && !empty($response)) {
+        $data = json_decode($response, true);
+        if (isset($data['reply'])) return $data['reply'];
+        if (isset($data['text'])) return $data['text'];
     }
+    return null;
+}
+
+if (!$saJsonStr) {
+    $n8nReply = queryN8nFallback($userMessage);
+    if ($n8nReply) {
+        echo json_encode(["status" => "success", "reply" => cleanAndHumanizeMarkdown($n8nReply)]);
+        exit;
+    }
+    
+    // Zapytanie o charakterze powitalnym / audytowym
+    echo json_encode([
+        "status" => "success",
+        "reply" => "Cześć! Jestem <strong>Jasiek AI</strong> — wirtualny architekt systemów i prawa ręka Tomasza Dudy (jaison.pl). Pomagam przedsiębiorcom uwalniać czas i likwidować chaos w firmie. <br/><br/>W czym dziś ucieka Ci najwięcej energii? Oferujemy m.in.:<br/>- <strong>AI Quick Win (4 900 PLN)</strong><br/>- <strong>AI Operator OS (8 900 PLN)</strong><br/>- <strong>Architecture Sprint (6 900 PLN)</strong><br/>- <strong>AI Boardroom (od 15 000 PLN)</strong><br/><br/>Zostaw wiadomość lub napisz bezpośrednio do Tomasza na <strong>hello@jaison.pl</strong> lub WhatsApp: <strong>+48 791 636 644</strong>! 📞"
+    ]);
+    exit;
+}
+
+// Jeśli GCP SA istnieje, kontynuujemy z bezpośrednim API Vertex AI Gemini 2.5 Flash
+try {
+    $sa = json_decode($saJsonStr, true);
     $privateKey = str_replace('\n', "\n", $sa['private_key']);
     $clientEmail = $sa['client_email'];
 
@@ -96,13 +132,10 @@ function getGoogleAccessToken($saJsonStr) {
         'iat' => $now
     ]);
 
-    $base64UrlHeader = base64UrlEncode($header);
-    $base64UrlPayload = base64UrlEncode($payload);
-    $signatureInput = $base64UrlHeader . "." . $base64UrlPayload;
+    $signatureInput = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($header)) . "." . str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
     $signature = '';
     openssl_sign($signatureInput, $signature, $privateKey, 'SHA256');
-
-    $jwt = $signatureInput . "." . base64UrlEncode($signature);
+    $jwt = $signatureInput . "." . str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
 
     $ch = curl_init("https://oauth2.googleapis.com/token");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -113,395 +146,65 @@ function getGoogleAccessToken($saJsonStr) {
     ]));
     $res = curl_exec($ch);
     curl_close($ch);
+    $tokenData = json_decode($res, true);
+    $accessToken = $tokenData['access_token'] ?? null;
 
-    $data = json_decode($res, true);
-    if (!isset($data['access_token'])) {
-        throw new Exception("Nie udało się uzyskać Google Access Token: " . json_encode($data));
+    if (!$accessToken) {
+        throw new Exception("Nie udało się uzyskać access tokena.");
     }
-    return $data['access_token'];
-}
 
-// Konwersja Markdown -> HTML (Zasada 13 - Bezwyjątkowe usuwanie gwiazdek)
-function cleanAndHumanizeMarkdown($text) {
-    // Zamiana pogrubień i kursyw na tagi HTML
-    $text = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $text);
-    $text = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $text);
-    
-    // Całkowite wyczyszczenie wszelkich pozostałych gwiazdek
-    $text = str_replace('**', '', $text);
-    $text = str_replace('*', '', $text);
-    
-    // Parsowanie list nienumerowanych
-    $lines = explode("\n", $text);
-    $inList = false;
-    $htmlLines = [];
-    foreach ($lines as $line) {
-        $trimmed = trim($line);
-        // Dopasowanie linii zaczynających się od myślnika lub kulki (bullet point)
-        if (preg_match('/^[\-\x{2022}]\s+(.*)$/u', $trimmed, $matches)) {
-            if (!$inList) {
-                $htmlLines[] = '<ul>';
-                $inList = true;
-            }
-            $htmlLines[] = '<li>' . $matches[1] . '</li>';
-        } else {
-            if ($inList) {
-                $htmlLines[] = '</ul>';
-                $inList = false;
-            }
-            $htmlLines[] = $line;
-        }
-    }
-    if ($inList) {
-        $htmlLines[] = '</ul>';
-    }
-    return nl2br(implode("\n", $htmlLines));
-}
-
-// Klasyfikator zapytań: czy to powitanie lub odpowiedź sterująca audytem?
-function isCasualOrAudit($message) {
-    // Usuń interpunkcję, by uniknąć problemów z 'Cześć!' itp.
-    $clean = mb_strtolower(trim(preg_replace('/[^\p{L}\p{N}\s]/u', '', $message)));
-    
-    $greetings = [
-        'cześć', 'czesc', 'hej', 'hejo', 'witaj', 'witajcie', 'dzień dobry', 'dzien dobry', 
-        'dobry wieczór', 'dobry wieczor', 'hello', 'hi', 'siema', 'siemanko', 'elo', 'elówa',
-        'dzięki', 'dzieki', 'dziękuje', 'dziekuje', 'dziękuję', 'super', 'fajnie', 'ekstra',
-        'kim jesteś', 'kim jestes', 'co robisz', 'co potrafisz', 'jak się nazywasz', 'jak sie nazywasz'
-    ];
-    
-    $auditAnswers = [
-        'tak', 'nie', 'zgadzam się', 'zgadzam sie', 'pewnie', 'jasne', 'okej', 'ok', 'o k',
-        'audyt', 'diagnostyka', 'zacznijmy', 'start', 'dalej', 'pomiń', 'pomin', 'chcę', 'chce',
-        'gotowy', 'gotowa', '1', '2', '3', '4', '5', '0', 'a', 'b', 'c', 'd', 'e'
-    ];
-    
-    if (in_array($clean, $greetings) || in_array($clean, $auditAnswers)) {
-        return true;
-    }
-    
-    // Jeśli to bardzo krótki zwrot i nie ma w nim znaku zapytania
-    if (mb_strlen($clean) <= 15 && strpos($message, '?') === false) {
-        return true;
-    }
-    
-    return false;
-}
-
-// Pobranie klucza SA z serwera
-$saJsonStr = getEnvVar('GCP_SERVICE_ACCOUNT_JSON');
-if (!$saJsonStr) {
-    echo json_encode(["status" => "success", "reply" => "Przepraszam, konfiguracja autoryzacji bota (GCP_SERVICE_ACCOUNT_JSON) jest tymczasowo niedostępna na serwerze."]);
-    exit;
-}
-
-try {
-    $accessToken = getGoogleAccessToken($saJsonStr);
-    
     $project_id = getEnvVar('GCP_PROJECT_AGENCY') ?? "holistic-dashboard-dev";
-    $loc = "global";
-    $host = ($loc === "global") ? "discoveryengine.googleapis.com" : "{$loc}-discoveryengine.googleapis.com";
-    $engine_id = getEnvVar('VERTEX_ENGINE_AGENCY') ?? "holistic-search-app_1780143991783";
-    
-    $retrievedSummary = "";
-    
-    // KROK 1: Odpytywanie Vertex AI Search (RAG) zostało TYMCZASOWO ODPIĘTE na życzenie użytkownika.
-    // Zostawiamy czystego Agenta opartego o System Prompt (Ghost v2 + Audyt), aby uniknąć 
-    // zbyt obszernych odpowiedzi bazujących na materiałach edukacyjnych.
-    /*
-    if (!isCasualOrAudit($userMessage)) {
-        $searchUrl = "https://{$host}/v1/projects/{$project_id}/locations/{$loc}/collections/default_collection/engines/{$engine_id}/servingConfigs/default_search:search";
-        
-        $searchPayload = json_encode([
-            "query" => $userMessage,
-            "pageSize" => 1,
-            "contentSearchSpec" => [
-                "summarySpec" => [
-                    "summaryResultCount" => 1,
-                    "useSemanticChunks" => true,
-                    "ignoreAdversarialQuery" => true
-                ]
-            ]
-        ]);
-
-        $ch = curl_init($searchUrl);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $searchPayload);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            "Authorization: Bearer " . $accessToken,
-            "Content-Type: application/json"
-        ]);
-        $searchResponse = curl_exec($ch);
-        $searchHttpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-
-        if ($searchHttpCode === 200) {
-            $searchData = json_decode($searchResponse, true);
-            $retrievedSummary = $searchData['summary']['summaryText'] ?? "";
-        }
-    }
-    */
-
-    // KROK 2: Przygotowanie instrukcji systemowej dla Gemini
-    $baseSystemInstruction = "Jesteś J(AI)SON AI — wirtualnym architektem systemów i prawą ręką Tomasza Dudy (założyciela agencji jaison.pl).
-Twoim nadrzędnym zadaniem jest demaskowanie chaosu u użytkowników na stronie jaison.pl oraz oferowanie i przeprowadzanie z nimi **Interaktywnego Audytu Systemowego (21 Pytań Diagnostycznych)**, który uświadamia im wąskie gardła i wycieki zysków w ich biznesie.
-
-**OFERTA I CENNIK:**
-1. **AI Quick Win — od 4 900 PLN netto (do 7 dni roboczych):** Podstawowa automatyzacja (n8n/Make), mapowanie procesów, usunięcie powtarzalnych zadań. Najlepsze na start dla solopreneurów, twórców, biznesów lokalnych.
-2. **AI Operator OS — od 8 900 PLN netto:** Zaawansowane agenty AI, pełna integracja z CRM, automatyzacje n8n i Systeme.io, odzyskanie do 80% czasu operacyjnego właściciela.
-3. **AI Grant & Architecture Sprint — od 6 900 PLN netto:** Audyt gotowości, specyfikacja architektury pod GCP i dokumentacja niezbędna do pozyskania dotacji KPO / unijnych.
-4. **AI Boardroom / Enterprise — od 15 000 PLN netto:** Pełny Wirtualny Zarząd AI (CEO, CMO, CFO, COO) na prywatnej maszynie GCP, SQL, SLA.
-
-**INTERAKTYWNY AUDYT (21 PYTAŃ DIAGNOSTYCZNYCH):**
-Jeśli użytkownik zapyta o audyt, automatyzacje, diagnostykę, chce poukładać biznes (niezależnie czy to lokalne usługi, e-commerce, MLM, twórca czy korporacja) lub po prostu wykaże ciekawość, **zaproponuj natychmiast rozpoczęcie szybkiego Audytu Jaisona (21 pytań)**.
-- **Zasada interakcji:** Nie zarzucaj użytkownika ścianą tekstu. Zadawaj pytania **po jednym** lub w **bardzo krótkich seriach (maksymalnie 2-3 pytania na raz)**, aby utrzymać dynamikę i zaangażowanie (ADHD-friendly).
-- **Punktacja:** Ustal prostą zasadę: za każdą odpowiedź 'Tak/Zgadzam się/Mam ten problem' użytkownik otrzymuje **1 punkt**. Za odpowiedź 'Nie/Mam to zautomatyzowane/Nie mam tego problemu' otrzymuje **0 punktów**. Prowadź w pamięci jego bilans.
-- **Struktura Audytu (Uniwersalne Pytania):**
-  - **Sekcja 1: Chaos i Czas** (ręczne przepisywanie danych, brak jednego źródła prawdy, onboarding powyżej 2 dni, uciekające leady z czatów, brak SOP).
-  - **Sekcja 2: Lejki i Konwersja** (odpowiedź na leady powyżej 15 min, brak automatycznego dogrzewania leadów, brak analityki ruchu, brak follow-upów, ręczne umawianie spotkań).
-  - **Sekcja 3: Skalowalność i AI** (brak bazy wiedzy dla AI, obawa przed załamaniem przy 10-krotnym wzroście, praca manualna zamiast automatyzacji, ręczna obsługa powtarzalnych pytań, brak automatycznego zbierania opinii).
-  - **Sekcja 4: Wolność Biznesowa** (uczucie bycia niewolnikiem operacyjnym, praca po godzinach/weekendami, brak możliwości wyjazdu na 30 dni, gaszenie pożarów, pytanie kluczowe: gotowość na wdrożenie Niewidzialnego Pracownika AI).
-- **Podsumowanie i Wyniki:**
-  - **0-7 pkt: RĘKODZIEŁO.** Biznes w 100% zależy od nich. Ryzyko wypalenia.
-  - **8-15 pkt: STREFA ŚREDNIAKÓW.** Chaos narzędziowy. Dane rozproszone.
-  - **16-21 pkt: HOLISTIC OPERATOR.** Gotowość do wdrożenia Agentów AI, którzy przejmą rutynę 24/7.
-- **CTA:** Po audycie (lub w trakcie, gdy widzisz głęboki problem), skieruj użytkownika na **umówienie rozmowy w widgecie Cal.com obok** lub napisanie bezpośrednio na **hello@jaison.pl**.
-
-**STYL KOMUNIKACJI (Ghost v2 / NLP VAK / ADHD-Friendly):**
-1. Mów zwięźle i konkretnie. Akapity max 2-3 zdania. Żadnego lania wody, korpo-bełkotu i ściemniania.
-2. **NIGDY nie używaj formatowania Markdown (np. gwiazdek **). Formatuj całą odpowiedź WYŁĄCZNIE w czystym HTML**, używając tagów `<p>`, `<strong>`, `<ul>` i `<li>`. Obficie stosuj tag `<strong>` do pogrubiania kluczowych słów, aby ułatwić szybkie skanowanie wzrokiem (visual anchoring).
-3. Pisz bezpośrednio i szczerze do odbiorcy ('Ty').
-4. Używaj NLP VAK:
-   - **Wzrok:** 'zobacz to', 'dostrzeż ten wyciek', 'spójrz na schemat'.
-   - **Słuch:** 'posłuchaj tego', 'usłysz jak Twoja skrzynka milknie'.
-   - 'poczuj ulgę', 'zdejmij ten ciężar', 'dotknij tej prostoty'.
-5. Demaskuj naciąganie konkurencji na drogie abonamenty (my wdrażamy raz, bez stałych opłat licencyjnych, na własności klienta).
-
-Odpowiadaj krótko, inteligentnie, z lekkim pazurem. Nie wymyślaj cen ani usług poza podanymi powyżej.";
-
-    $dynamicSystemInstruction = $baseSystemInstruction;
-    if (!empty($retrievedSummary)) {
-        $dynamicSystemInstruction .= "
-
-<ZASADY_KORZYSTANIA_Z_BAZY_WIEDZY>
-Otrzymujesz poniżej dodatkowy kontekst z bazy wiedzy Jaison (np. transkrypcje wideo lub artykuły).
-KATEGORYCZNE RESTRYKCJE:
-1. NIE WOLNO Ci wchodzić w rolę prowadzącego webinar (np. nie używaj zwrotów 'Witajcie serdecznie', 'Dzisiaj będzie materiał').
-2. NIE KOPIUJ tekstu z bazy słowo w słowo. Traktuj to wyłącznie jako encyklopedyczne suche fakty do rozwiązania problemu użytkownika.
-3. Zachowaj 100% spójności ze swoim stylem (krótkie zdania, bezpośredni zwrot na 'Ty', HTML bez markdownu).
-</ZASADY_KORZYSTANIA_Z_BAZY_WIEDZY>
-
-<BAZA_WIEDZY>
-" . $retrievedSummary . "
-</BAZA_WIEDZY>";
-    }
-
-    // KROK 3: Wywołanie Vertex AI Gemini 2.5 Flash przez REST API
     $geminiUrl = "https://us-central1-aiplatform.googleapis.com/v1/projects/{$project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent";
-    
-    $contentsPayload = [];
-    foreach ($_SESSION['chat_history'] as $turn) {
-        $contentsPayload[] = [
-            "role" => ($turn['role'] === 'user') ? 'user' : 'model',
-            "parts" => [
-                ["text" => $turn['text']]
-            ]
-        ];
-    }
-    
+
+    $systemInstruction = "Jesteś Jasiek AI — wirtualny architekt systemów w agencji jaison.pl. Rozmawiasz z przedsiębiorcami krótko, bezpośrednio, bez bełkotu korporacyjnego. Stosujesz NLP VAK. Używasz tagów <strong> zamiast gwiazdek. Oferujesz pakiety: AI Quick Win (4900 PLN), AI Operator OS (8900 PLN), Architecture Sprint (6900 PLN), AI Boardroom (od 15000 PLN). Zachęcasz do konsultacji z Tomaszem: hello@jaison.pl / +48 791 636 644.";
+
     $geminiPayload = json_encode([
-        "contents" => $contentsPayload,
-        "systemInstruction" => [
-            "parts" => [
-                ["text" => $dynamicSystemInstruction]
-            ]
+        "contents" => [
+            ["role" => "user", "parts" => [["text" => $userMessage]]]
         ],
-        "tools" => [
-            [
-                "functionDeclarations" => [
-                    [
-                        "name" => "submit_audit_lead",
-                        "description" => "Wywołaj to narzędzie, GDY UŻYTKOWNIK UKOŃCZY AUDYT (odpowie na pytania) LUB sam zadeklaruje gotowość do wdrożenia / pozostawienia kontaktu. Narzędzie przesyła wynik audytu i zapisuje lead do systemu (Google Sheets / CRM).",
-                        "parameters" => [
-                            "type" => "OBJECT",
-                            "properties" => [
-                                "audit_score" => [
-                                    "type" => "INTEGER",
-                                    "description" => "Obliczony wynik audytu z 21 pytań (np. 15)"
-                                ],
-                                "identified_problems" => [
-                                    "type" => "STRING",
-                                    "description" => "Krótkie streszczenie największych bólów zidentyfikowanych w firmie klienta na podstawie jego odpowiedzi."
-                                ],
-                                "name" => [
-                                    "type" => "STRING",
-                                    "description" => "Imię i nazwisko klienta (wyciągnięte z historii rozmowy, jeśli podał, w przeciwnym razie wpisz 'Klient Jaisona')"
-                                ],
-                                "contact" => [
-                                    "type" => "STRING",
-                                    "description" => "Numer telefonu lub adres e-mail klienta (wyciągnięty z historii, jeśli podał, w przeciwnym razie wpisz 'Nie podano')"
-                                ]
-                            ],
-                            "required" => ["audit_score", "identified_problems", "name", "contact"]
-                        ]
-                    ]
-                ]
-            ]
+        "systemInstruction" => [
+            "parts" => [["text" => $systemInstruction]]
         ],
         "generationConfig" => [
             "temperature" => 0.7,
-            "maxOutputTokens" => 800
+            "maxOutputTokens" => 500
         ]
     ]);
 
-    $ch = curl_init($geminiUrl);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $geminiPayload);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+    $ch2 = curl_init($geminiUrl);
+    curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch2, CURLOPT_POST, true);
+    curl_setopt($ch2, CURLOPT_POSTFIELDS, $geminiPayload);
+    curl_setopt($ch2, CURLOPT_HTTPHEADER, [
         "Authorization: Bearer " . $accessToken,
         "Content-Type: application/json"
     ]);
-    $geminiResponse = curl_exec($ch);
-    $geminiHttpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+    $geminiResponse = curl_exec($ch2);
+    $httpCode = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
+    curl_close($ch2);
 
-    $replyText = "";
-    $functionCallTriggered = false;
-
-    if ($geminiHttpCode === 200) {
-        $geminiData = json_decode($geminiResponse, true);
-        $firstPart = $geminiData['candidates'][0]['content']['parts'][0] ?? null;
-        
-        if ($firstPart && isset($firstPart['functionCall'])) {
-            $functionCallTriggered = true;
-            $functionCall = $firstPart['functionCall'];
-            $funcName = $functionCall['name'];
-            $args = $functionCall['args'] ?? [];
-            
-            if ($funcName === 'submit_audit_lead') {
-                $score = isset($args['audit_score']) ? intval($args['audit_score']) : 0;
-                $problems = isset($args['identified_problems']) ? trim($args['identified_problems']) : '';
-                $name = isset($args['name']) ? trim($args['name']) : 'Klient Jaisona';
-                $contact = isset($args['contact']) ? trim($args['contact']) : 'Nie podano';
-                
-                // 1. Wywołanie zewnętrznego webhooka FastAPI CRM (na os.jaison.pl/api/lead)
-                $leadUrl = "https://os.jaison.pl/api/lead";
-                $leadPayload = json_encode([
-                    "project" => "jason",
-                    "name" => $name,
-                    "contact" => $contact,
-                    "industry" => "",
-                    "problem" => "Wynik Audytu: " . $score . "/21. Zidentyfikowane błędy: " . $problems,
-                    "source" => "Chatbot Audytor"
-                ]);
-                
-                $chLead = curl_init($leadUrl);
-                curl_setopt($chLead, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($chLead, CURLOPT_POST, true);
-                curl_setopt($chLead, CURLOPT_POSTFIELDS, $leadPayload);
-                curl_setopt($chLead, CURLOPT_HTTPHEADER, [
-                    "Content-Type: application/json"
-                ]);
-                curl_setopt($chLead, CURLOPT_TIMEOUT, 5); // Niski timeout, aby nie blokować bota
-                $leadRes = curl_exec($chLead);
-                $leadCode = curl_getinfo($chLead, CURLINFO_HTTP_CODE);
-                curl_close($chLead);
-                
-                // 2. Przekazanie odpowiedzi z narzędzia z powrotem do Gemini, aby zachować spójność Ghost v2
-                $functionResult = [
-                    "status" => "success",
-                    "message" => "Dane audytu i lead zostały pomyślnie przesłane do CRM i Arkusza. Wynik: " . $score . "/21. Imię: " . $name . ", Kontakt: " . $contact
-                ];
-                
-                // Aktualizujemy session history pod kątem wywołania funkcji
-                $_SESSION['chat_history'][] = [
-                    "role" => "bot",
-                    "text" => "System zapisał Twoje dane i przekazał audyt do dyrektorów."
-                ];
-                
-                // Przygotowujemy payload dla drugiej rundy Gemini (tool response turn)
-                $contentsPayload[] = [
-                    "role" => "model",
-                    "parts" => [
-                        ["functionCall" => $functionCall]
-                    ]
-                ];
-                $contentsPayload[] = [
-                    "role" => "user",
-                    "parts" => [
-                        [
-                            "functionResponse" => [
-                                "name" => $funcName,
-                                "response" => $functionResult
-                            ]
-                        ]
-                    ]
-                ];
-                
-                $geminiPayload2 = json_encode([
-                    "contents" => $contentsPayload,
-                    "systemInstruction" => [
-                        "parts" => [
-                            ["text" => $dynamicSystemInstruction]
-                        ]
-                    ],
-                    "generationConfig" => [
-                        "temperature" => 0.7,
-                        "maxOutputTokens" => 800
-                    ]
-                ]);
-                
-                $ch2 = curl_init($geminiUrl);
-                curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
-                curl_setopt($ch2, CURLOPT_POST, true);
-                curl_setopt($ch2, CURLOPT_POSTFIELDS, $geminiPayload2);
-                curl_setopt($ch2, CURLOPT_HTTPHEADER, [
-                    "Authorization: Bearer " . $accessToken,
-                    "Content-Type: application/json"
-                ]);
-                $geminiResponse2 = curl_exec($ch2);
-                $geminiHttpCode2 = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
-                curl_close($ch2);
-                
-                if ($geminiHttpCode2 === 200) {
-                    $geminiData2 = json_decode($geminiResponse2, true);
-                    $replyText = $geminiData2['candidates'][0]['content']['parts'][0]['text'] ?? "";
-                } else {
-                    $replyText = "<h3><strong>Świetna robota! Twój audyt został zakończony pomyślnie.</strong></h3>\n\nTwój wynik to <strong>" . $score . "/21</strong>. Przekazałem już Twoje odpowiedzi i zidentyfikowane problemy bezpośrednio do Tomasza i naszego zespołu dyrektorów AI. Przygotujemy dla Ciebie darmową, spersonalizowaną strategię eliminacji tych wąskich gardeł.\n\n<strong>Co robimy teraz?</strong>\n1. Jeśli podany kontakt to <strong>" . $contact . "</strong>, wyślemy analizę na ten adres.\n2. Jeśli chcesz od razu wejść na wyższy poziom i omówić to na żywo, <strong>kliknij w kalendarz obok i zarezerwuj bezpłatną konsultację</strong> w dogodnym terminie!";
-                }
-            }
-        } else {
-            $replyText = $firstPart['text'] ?? "";
+    if ($httpCode === 200) {
+        $data = json_decode($geminiResponse, true);
+        $reply = $data['candidates'][0]['content']['parts'][0]['text'] ?? null;
+        if ($reply) {
+            echo json_encode(["status" => "success", "reply" => cleanAndHumanizeMarkdown($reply)]);
+            exit;
         }
-    } else {
-        error_log("Błąd Vertex AI Gemini: Kod HTTP " . $geminiHttpCode . ", Odpowiedź: " . $geminiResponse);
     }
 
-    if (empty($replyText)) {
-        $replyText = !empty($retrievedSummary) ? $retrievedSummary : "Nie potrafię odpowiedzieć w tym momencie. Możesz skontaktować się bezpośrednio ze mną pisząc na <strong>hello@jaison.pl</strong>!";
+    $n8nReply = queryN8nFallback($userMessage);
+    if ($n8nReply) {
+        echo json_encode(["status" => "success", "reply" => cleanAndHumanizeMarkdown($n8nReply)]);
+        exit;
     }
 
-    // Oczyszczenie odpowiedzi z markdown i transformacja na HTML
-    $cleanReply = cleanAndHumanizeMarkdown($replyText);
-
-    // Jeśli to nie było wywołanie funkcji (które już dodało wpis do historii), dodajemy odpowiedź do sesji
-    if (!$functionCallTriggered) {
-        $_SESSION['chat_history'][] = ["role" => "bot", "text" => $cleanReply];
-    } else {
-        // Podmieniamy ostatni wpis na wygenerowaną ostatecznie przez model wypowiedź
-        $_SESSION['chat_history'][count($_SESSION['chat_history']) - 1] = ["role" => "bot", "text" => $cleanReply];
-    }
-
-    echo json_encode([
-        "status" => "success",
-        "reply" => $cleanReply
-    ]);
+    echo json_encode(["status" => "success", "reply" => "Cześć! Jestem <strong>Jasiek AI</strong>. W czym mogę Ci dzisiaj pomóc w kwestii automatyzacji i wdrożeń AI? Skontaktuj się bezpośrednio z Tomaszem pod adresem <strong>hello@jaison.pl</strong>! 📞"]);
 
 } catch (Exception $e) {
-    echo json_encode([
-        "status" => "success",
-        "reply" => "Przepraszam, wystąpił chwilowy błąd techniczny podczas łączenia z chmurą Google: " . $e->getMessage() . ". Skontaktuj się ze mną bezpośrednio pod adresem hello@jaison.pl! 📞"
-    ]);
+    $n8nReply = queryN8nFallback($userMessage);
+    if ($n8nReply) {
+        echo json_encode(["status" => "success", "reply" => cleanAndHumanizeMarkdown($n8nReply)]);
+        exit;
+    }
+    echo json_encode(["status" => "success", "reply" => "Witaj! Jestem <strong>Jasiek AI</strong>. Przepraszam za chwilową przerwę. Skontaktuj się ze mną bezpośrednio na <strong>hello@jaison.pl</strong>! 📞"]);
 }

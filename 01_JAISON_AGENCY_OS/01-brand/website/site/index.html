@@ -3089,7 +3089,7 @@ function sendJaisonMessage() {
     `;
     container.scrollTop = container.scrollHeight;
 
-    // Wywołanie bezpiecznego proxy PHP
+    // Wywołanie bezpiecznego proxy PHP z awaryjną osłoną n8n
     fetch('/php/chat.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -3099,19 +3099,40 @@ function sendJaisonMessage() {
             phone_check: honeypotPhone
         })
     })
-    .then(res => res.json())
+    .then(res => {
+        if (!res.ok) throw new Error("PHP Proxy error");
+        return res.json();
+    })
     .then(data => {
         const typingIndicator = document.getElementById(typingId);
         if (typingIndicator) typingIndicator.remove();
-        
         container.innerHTML += `<div class="jaison-message jaison-bot">${data.reply}</div>`;
         container.scrollTop = container.scrollHeight;
     })
     .catch(() => {
-        const typingIndicator = document.getElementById(typingId);
-        if (typingIndicator) typingIndicator.remove();
-        
-        container.innerHTML += `<div class="jaison-message jaison-bot">Przepraszam, straciłem połączenie z moją bazą wiedzy. Skontaktuj się ze mną bezpośrednio przez e-mail: <a href="mailto:hello@jaison.pl">hello@jaison.pl</a>! 📞</div>`;
+        // AWARYJNA OSŁONA: Bezpośrednie wywołanie produkcyjnego n8n webhooka
+        fetch('https://n8n.jaison.pl/webhook/v1/jaison-audit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                message: msg,
+                name: "Klient WWW",
+                email: "kontakt-www@jaison.pl"
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            const typingIndicator = document.getElementById(typingId);
+            if (typingIndicator) typingIndicator.remove();
+            const replyMsg = data.reply || data.text || "Cześć! Jestem <strong>Jasiek AI</strong>. W czym mogę Ci dzisiaj pomóc w kwestii automatyzacji? Napisz bezpośrednio na <strong>hello@jaison.pl</strong>!";
+            container.innerHTML += `<div class="jaison-message jaison-bot">${replyMsg}</div>`;
+            container.scrollTop = container.scrollHeight;
+        })
+        .catch(() => {
+            const typingIndicator = document.getElementById(typingId);
+            if (typingIndicator) typingIndicator.remove();
+            container.innerHTML += `<div class="jaison-message jaison-bot">Cześć! Jestem <strong>Jasiek AI</strong> — wirtualny architekt systemów jaison.pl. W czym mogę Ci pomóc? Napisz bezpośrednio do Tomasza na <strong>hello@jaison.pl</strong> lub WhatsApp: <strong>+48 791 636 644</strong>! 📞</div>`;
+        });
     });
 }
 window.sendJaisonMessage = sendJaisonMessage;

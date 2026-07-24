@@ -1894,5 +1894,23 @@
         "raw_text": "No dobra, tutaj zero zgubionych zapytań od leadów, tak? W pakiecie drugim. No integracja z Twoim CRM oraz systemem, systemem I.O. To raczej bym dał systemem, nie wiem, email marketingowym czy, czy, czy jakimś  Dziękuję.  Dziękuję.  Dziękuję.  Dziękuję.  Dziękuję.  Dziękuję.  No i tyle, no i co, myślę, że jesteśmy gotowi, tak, dobra, to wszystko wdrożyć i później deploy zrobić dashboardu oraz wyruchomić ten na VM ten Hermes Adgentico S, skonfigurować Discorda, no musimy to dodać do pliku task, tak, wszystkie te rzeczy, które należą do mnie.  Nie wiem czy tutaj... To tu jeszcze ewentualnie... Z czym się firmy mierzą, czego szukają, jakich rozwiązań, problemów, żeby to znalazło odzwierciedlenie w tych pakietach, w tej ofercie.  Dziękuję.",
         "corrected_text": "No dobra, tutaj zero zgubionych zapytań od leadów, tak? W pakiecie drugim. No integracja z Twoim CRM oraz systemem I.O. To raczej bym dał systemem, nie wiem, email marketingowym czy jakimś. Dziękuję. No i tyle, no i co, myślę, że jesteśmy gotowi, tak, dobra, to wszystko wdrożyć i później deploy zrobić dashboardu oraz uruchomić ten na VM Hermes Adgentico S, skonfigurować Discorda, no musimy to dodać do pliku task, tak, wszystkie te rzeczy, które należą do mnie. Nie wiem czy tutaj... To tu jeszcze ewentualnie... Z czym się firmy mierzą, czego szukają, jakich rozwiązań, problemów, żeby to znalazło odzwierciedlenie w tych pakietach, w tej ofercie. Dziękuję.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 11:14:55",
+        "raw_text": "Dobra, wyjaśnij mi jeszcze jedną rzecz. No bo tam równolegle stworzyłem wcześniej tego Dialogflow CX, tego agenta konwersacyjnego typu Playbook. Czyli stworzyłem go  Dziękuję.  Zacznę wklejać i tutaj z konwersacji obok, równoległej. Co stworzyłem? No tam wymaga utworzenie takiego agenta.  Dziękuję.  wpisanie mu goal, celu, instructions, podpięciu datastore, ewentualnie jakieś open API, tak jak do tego Jasiek bot submit lead, tak? Podpiąłem mu JSON knowledge base, czyli dane ze strony internetowej agencji, no więc pytanie, jak tutaj byśmy skonfigurowali to? Muszę mieć szczegółowe naprawdę  profesjonalne instrukcje wytyczne.",
+        "corrected_text": "Dobra, wyjaśnij mi jeszcze jedną rzecz. No bo tam równolegle stworzyłem wcześniej tego Dialogflow CX, tego agenta konwersacyjnego typu Playbook. Czyli stworzyłem go  Dziękuję.  Zacznę wklejać i tutaj z konwersacji obok, równoległej. Co stworzyłem? No tam wymaga utworzenie takiego agenta.  Dziękuję.  wpisanie mu goal, celu, instructions, podpięciu datastore, ewentualnie jakieś open API, tak jak do tego Jasiek bot submit lead, tak? Podpiąłem mu JSON knowledge base, czyli dane ze strony internetowej agencji, no więc pytanie, jak tutaj byśmy skonfigurowali to? Muszę mieć szczegółowe naprawdę  profesjonalne instrukcje wytyczne.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 11:18:08",
+        "raw_text": "Chatbot nie działa na stronie. Ten Jasiek. Widać, że tam trzeba zakodować coś. Przepiąć z tego może starego. To jest raz, dwa, przejrzyj folder dist. Ponieważ tam jest aktualizacja sekcji na oferty, pakietów.  oferowanych.",
+        "corrected_text": "Chatbot nie działa na stronie. Ten Jasiek. Widać, że tam trzeba zakodować coś. Przepiąć z tego może starego. To jest raz, dwa, przejrzyj folder dist. Ponieważ tam jest aktualizacja sekcji na oferty, pakietów oferowanych.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 11:20:42",
+        "raw_text": "Dobra, czyli rozumiem, że ten bot Jasiek, który jest podpięty do chatbota na stronie głównej agencji, to tak zostaje, a my musimy stworzyć równoległego agenta, czyli tego chatbota Dialogflow, który będzie podpięty na stronach formularza, tak, który wypełnia klienta.  Dziękuję.",
+        "corrected_text": "Dobra, czyli rozumiem, że ten bot Jasiek, który jest podpięty do chatbota na stronie głównej agencji, to tak zostaje, a my musimy stworzyć równoległego agenta, czyli tego chatbota Dialogflow, który będzie podpięty na stronach formularza, tak, który wypełnia klienta. Dziękuję.",
+        "status": "success"
     }
 ]
