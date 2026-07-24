@@ -1810,5 +1810,17 @@
         "raw_text": "W N8n wszystko jest już to co powinno być. W ogóle jak będę miał workflow klientów, N8n jest na instancji VM na GCP, jak to będzie obciążało, kosztowało, takie workflows, już nie dalej w perspektywie.",
         "corrected_text": "W N8n wszystko jest już to co powinno być. W ogóle jak będę miał workflow klientów, N8n jest na instancji VM na GCP, jak to będzie obciążało, kosztowało, takie workflows, już nie dalej w perspektywie.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 08:26:50",
+        "raw_text": "Czy mogę na jednym komputerze Windows z Windowsem, albo na stacjonarnym czy na laptopie? Tu jest opcja pulpitów, tak? Czy mogę się przełączać między pulpitami na przykład? Ale jakby nie zależy na tym, żeby mieć dwie, znaczy logować się z dwóch tożsamości.  to znaczy mieć dwa równoległe systemy, czyli na przykład lokalnie anti-gravity system plików, folderów dla projektów, że się po prostu szybko przełączam między tymi tożsamościami. Przynajmniej tożsamości korzystam z anti-gravity podpięte pod jedno konto GCP, a na drugiej tożsamości,  na pulpicie loguje się na anti-gravity równoległe, które ma dostęp zupełnie do innego systemu plików. Mogę mu wgrać te same skille, ale jakby pracuje na zupełnie na nowym projekcie. Albo ma po prostu ten sam układ folderów plików, ten sam, tylko że pracuje na innym projekcie, w sensie zalogowuje się  nazwane antygravity na innym koncie Google bądź innym koncie GCP przez GCP Project.",
+        "corrected_text": "Czy mogę na jednym komputerze Windows z Windowsem, albo na stacjonarnym czy na laptopie? Tu jest opcja pulpitów, tak? Czy mogę się przełączać między pulpitami na przykład? Ale jakby nie zależy na tym, żeby mieć dwie, znaczy logować się z dwóch tożsamości.  to znaczy mieć dwa równoległe systemy, czyli na przykład lokalnie anti-gravity system plików, folderów dla projektów, że się po prostu szybko przełączam między tymi tożsamościami. Przynajmniej tożsamości korzystam z anti-gravity podpięte pod jedno konto GCP, a na drugiej tożsamości,  na pulpicie loguje się na anti-gravity równoległe, które ma dostęp zupełnie do innego systemu plików. Mogę mu wgrać te same skille, ale jakby pracuje na zupełnie na nowym projekcie. Albo ma po prostu ten sam układ folderów plików, ten sam, tylko że pracuje na innym projekcie, w sensie zalogowuje się  nazwane antygravity na innym koncie Google bądź innym koncie GCP przez GCP Project.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 08:27:16",
+        "raw_text": "I do tego jeszcze np. loguje się do internetu innym profilem, tak? Poprzez, nie wiem, VPN czy DNS, Cloudflare, ale przez inne IP. Czy jest to do zrobienia?",
+        "corrected_text": "I do tego jeszcze np. loguje się do internetu innym profilem, tak? Poprzez, nie wiem, VPN czy DNS, Cloudflare, ale przez inne IP. Czy jest to do zrobienia?",
+        "status": "raw_fallback"
     }
 ]
