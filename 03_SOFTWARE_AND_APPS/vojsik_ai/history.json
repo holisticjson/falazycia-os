@@ -2218,5 +2218,17 @@
         "raw_text": "Słuchaj, gdzieś tutaj na stronie zalogowanej w panelu LifeWave, brand partnera, w źródłach, resources, gdzieś powinny być pliki do aktualizacji, do zgrania na pendrive, plików aktualizacyjnych do maszyny X2O, do produkcji wody biofotonowej. LifeWave X2O.  Maszyna. Weź je odszukaj. Gdzie te pliki mogą być?",
         "corrected_text": "Słuchaj, gdzieś tutaj na stronie zalogowanej w panelu LifeWave, brand partnera, w źródłach, resources, gdzieś powinny być pliki do aktualizacji, do zgrania na pendrive, plików aktualizacyjnych do maszyny X2O, do produkcji wody biofotonowej. LifeWave X2O.  Maszyna. Weź je odszukaj. Gdzie te pliki mogą być?",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 17:21:18",
+        "raw_text": "odznaczyć ten checkbox desktop tutaj w sekcji platforms bo on jeszcze krzyczy tutaj o URI dla desktop",
+        "corrected_text": "odznaczyć ten checkbox desktop tutaj w sekcji platforms bo on jeszcze krzyczy tutaj o URI dla desktop",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 17:26:31",
+        "raw_text": "Nie wiem, ma jakiś błąd, chodzi mu o ten... Chodzi mu o ten client key, ale ja to wkleiłem, sprawdzałem jeszcze raz. Skopiowałem z tego konta Tiktor for Developers, ale tam jeszcze trzeba może submit for review zrobić.  tik tok for developers. W kleju m w kompozjo klient key i klient secret.  Dziękuję.",
+        "corrected_text": "Nie wiem, ma jakiś błąd, chodzi mu o ten... Chodzi mu o ten client key, ale ja to wkleiłem, sprawdzałem jeszcze raz. Skopiowałem z tego konta Tiktor for Developers, ale tam jeszcze trzeba może submit for review zrobić.  tik tok for developers. W kleju m w kompozjo klient key i klient secret.  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
