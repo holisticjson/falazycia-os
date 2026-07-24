@@ -1912,5 +1912,65 @@
         "raw_text": "Dobra, czyli rozumiem, że ten bot Jasiek, który jest podpięty do chatbota na stronie głównej agencji, to tak zostaje, a my musimy stworzyć równoległego agenta, czyli tego chatbota Dialogflow, który będzie podpięty na stronach formularza, tak, który wypełnia klienta.  Dziękuję.",
         "corrected_text": "Dobra, czyli rozumiem, że ten bot Jasiek, który jest podpięty do chatbota na stronie głównej agencji, to tak zostaje, a my musimy stworzyć równoległego agenta, czyli tego chatbota Dialogflow, który będzie podpięty na stronach formularza, tak, który wypełnia klienta. Dziękuję.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 11:27:30",
+        "raw_text": "No dobra powiedz mi czy ja z tego agenta z tego playbooka czyli z tej właśnie conversational agents z Google Cloud nie potrzebuję podać jakiegoś kodu żeby chatbot się połączył z tym playbookiem z tym agentem żebyś zmodyfikował ten plik ten skrypt bota  Dziękuję.",
+        "corrected_text": "No dobra, powiedz mi, czy ja z tego agenta, z tego playbooka, czyli z tej właśnie conversational agents z Google Cloud, nie potrzebuję podać jakiegoś kodu, żeby chatbot się połączył z tym playbookiem, z tym agentem, żebyś zmodyfikował ten plik, ten skrypt bota? Dziękuję.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 11:29:33",
+        "raw_text": "Nie no, oczywiście zawsze i wszędzie wariant pierwszy, autorski, luksusowy czat na stronie, nie no, żaden tam brzydki, inoficjalny widget Google.",
+        "corrected_text": "Nie no, oczywiście zawsze i wszędzie wariant pierwszy, autorski, luksusowy czat na stronie, nie no, żaden tam brzydki, nieoficjalny widget Google.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 11:30:49",
+        "raw_text": "Tu mam taką opcję, wybrałem stworzenie playbooka. Jeśli to jest technicznie lepsze rozwiązanie, a nie stworzenie osobnego agenta, no to wybieram opcję rekomendowaną, chyba że stwierdza, że lepiej wybrać osobnego agenta. Tylko co tutaj wybrać?",
+        "corrected_text": "Tu mam taką opcję, wybrałem stworzenie playbooka. Jeśli to jest technicznie lepsze rozwiązanie, a nie stworzenie osobnego agenta, no to wybieram opcję rekomendowaną, chyba że stwierdza, że lepiej wybrać osobnego agenta. Tylko co tutaj wybrać?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 11:32:12",
+        "raw_text": "Chciałbym przeprowadzić, znaczy poznać Waszą ofertę i tak naprawdę nie wiem, w czym mogłaby mi pomóc automatyzacja.",
+        "corrected_text": "Chciałbym przeprowadzić, znaczy poznać Waszą ofertę i tak naprawdę nie wiem, w czym mogłaby mi pomóc automatyzacja.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 11:32:59",
+        "raw_text": "Tu ewidentnie źle jest ustawiony ten agent i ten playbook, bo odpowiada tylko jednym zdaniem i prosi o kontakt na wskazany adres e-mail. Coś tam jest nie tak.",
+        "corrected_text": "Tu ewidentnie źle jest ustawiony ten agent i ten playbook, bo odpowiada tylko jednym zdaniem i prosi o kontakt na wskazany adres e-mail. Coś tam jest nie tak.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 11:33:31",
+        "raw_text": "gdzie jest ten workflow właśnie, no bo jego nie ma na N8n, musiałbym tam wybrać PIC JSON i zrobić tą automatyzację, skonfigurować tam te węzły i co miałbym robić, informować mnie na komunikator czy tam coś jeszcze było w tym workflow?",
+        "corrected_text": "gdzie jest ten workflow właśnie, no bo jego nie ma na N8n, musiałbym tam wybrać PIC JSON i zrobić tą automatyzację, skonfigurować tam te węzły i co miałbym robić, informować mnie na komunikator czy tam coś jeszcze było w tym workflow?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 11:35:24",
+        "raw_text": "Będziemy podpinać Hermes Argentic OS, tak? Oraz właśnie... Wszystkie te powiadomienia, komunikacja z chatbotami będzie na Discord, tak?",
+        "corrected_text": "Będziemy podpinać Hermes Argentic OS, tak? Oraz właśnie... Wszystkie te powiadomienia, komunikacja z chatbotami będzie na Discord, tak?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 11:35:57",
+        "raw_text": "że mam będę miał dwa profile ja ison od agencji oraz ja ison mlm live wave no to będę miał dwa kanały komunikacja tak będzie nnt",
+        "corrected_text": "że mam będę miał dwa profile ja ison od agencji oraz ja ison mlm live wave no to będę miał dwa kanały komunikacja tak będzie nnt",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 11:37:57",
+        "raw_text": "Ale jaki powód 404 w testowym zapytaniu Google AI Studio? Przecież ten bot ma być podpięty pod tego agenta konwersacyjnego, który korzysta tam z gaming 2.5 flash. No, także nie rozumiem. Ten Google AI Studio to jest jakiś fallback? Czy o co chodzi?",
+        "corrected_text": "Ale jaki powód 404 w testowym zapytaniu Google AI Studio? Przecież ten bot ma być podpięty pod tego agenta konwersacyjnego, który korzysta tam z gaming 2.5 flash. No, także nie rozumiem. Ten Google AI Studio to jest jakiś fallback? Czy o co chodzi?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 11:39:49",
+        "raw_text": "czyli już chatbot jest ustawiony można z niego go przetestować będzie działał tutaj z tym playbookiem w Google Cloud",
+        "corrected_text": "czyli już chatbot jest ustawiony można z niego go przetestować będzie działał tutaj z tym playbookiem w Google Cloud",
+        "status": "raw_fallback"
     }
 ]

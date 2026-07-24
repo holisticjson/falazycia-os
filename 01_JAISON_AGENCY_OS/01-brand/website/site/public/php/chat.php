@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
 
-// Inicjalizacja sesji pod Spam Shields
+// Inicjalizacja sesji pod Spam Shields i utrzymanie historii sesji Dialogflow CX
 if (session_status() === PHP_SESSION_NONE) {
     ini_set('session.cookie_httponly', 1);
     ini_set('session.use_only_cookies', 1);
@@ -19,7 +19,7 @@ function getEnvVar($name) {
 
 $input = json_decode(file_get_contents("php://input"), true);
 
-// TARCZA 1: Honeypot
+// TARCZA 1: Honeypot (Antyspam)
 if ($input) {
     if (!empty($input['email_confirm']) || !empty($input['phone_check'])) {
         echo json_encode(["status" => "success", "reply" => "Wiadomość wysłana! Serwisant skontaktuje się z Tobą. 🤝"]);
@@ -57,12 +57,18 @@ if (time() - $_SESSION['chat_first_query_time'] > 86400) {
     $_SESSION['chat_first_query_time'] = time();
 }
 if ($_SESSION['chat_query_count'] >= 30) {
-    echo json_encode(["status" => "success", "reply" => "Przekroczyłeś dobowy limit 30 zapytań do bota. Skontaktuj się z nami bezpośrednio na <b>WhatsApp</b>: https://wa.me/48791636644 📞"]);
+    echo json_encode(["status" => "success", "reply" => "Przekroczyłeś dobowy limit zapytań do bota. Skontaktuj się z nami bezpośrednio na <b>WhatsApp</b>: https://wa.me/48791636644 📞"]);
     exit;
 }
 $_SESSION['chat_query_count']++;
 
-// Konwersja Markdown -> HTML (Zasada 13 - Bezwyjątkowe usuwanie gwiazdek)
+// Generowanie unikalnego ID sesji pod Dialogflow CX
+if (!isset($_SESSION['df_session_id'])) {
+    $_SESSION['df_session_id'] = "session_" . bin2hex(random_bytes(8));
+}
+$sessionId = $_SESSION['df_session_id'];
+
+// Funkcja czyszczenia Markdown -> HTML (Zasada 13 - Używanie <strong> zamiast **)
 function cleanAndHumanizeMarkdown($text) {
     $text = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $text);
     $text = preg_replace('/\*(.*?)\*/', '<em>$1</em>', $text);
@@ -71,10 +77,7 @@ function cleanAndHumanizeMarkdown($text) {
     return nl2br($text);
 }
 
-// Pobranie klucza SA z serwera
-$saJsonStr = getEnvVar('GCP_SERVICE_ACCOUNT_JSON');
-
-// Jeśli brak klucza GCP w PHP, uderzamy awaryjnie do n8n webhooka (v1/jaison-audit)
+// Awaryjne połączenie z produkcyjnym n8n webhookiem
 function queryN8nFallback($userMessage) {
     $n8nUrl = "https://n8n.jaison.pl/webhook/v1/jaison-audit";
     $payload = json_encode([
@@ -101,6 +104,13 @@ function queryN8nFallback($userMessage) {
     return null;
 }
 
+// Identyfikatory Produkcyjne Agenta Dialogflow CX z GCP
+$projectId = "jaison-chatbot-www-503310";
+$locationId = "europe-west1";
+$agentId = "e1c84bd4-5bad-4ebb-8b22-f5e9624d434d";
+
+$saJsonStr = getEnvVar('GCP_SERVICE_ACCOUNT_JSON');
+
 if (!$saJsonStr) {
     $n8nReply = queryN8nFallback($userMessage);
     if ($n8nReply) {
@@ -108,15 +118,13 @@ if (!$saJsonStr) {
         exit;
     }
     
-    // Zapytanie o charakterze powitalnym / audytowym
     echo json_encode([
         "status" => "success",
-        "reply" => "Cześć! Jestem <strong>Jasiek AI</strong> — wirtualny architekt systemów i prawa ręka Tomasza Dudy (jaison.pl). Pomagam przedsiębiorcom uwalniać czas i likwidować chaos w firmie. <br/><br/>W czym dziś ucieka Ci najwięcej energii? Oferujemy m.in.:<br/>- <strong>AI Quick Win (4 900 PLN)</strong><br/>- <strong>AI Operator OS (8 900 PLN)</strong><br/>- <strong>Architecture Sprint (6 900 PLN)</strong><br/>- <strong>AI Boardroom (od 15 000 PLN)</strong><br/><br/>Zostaw wiadomość lub napisz bezpośrednio do Tomasza na <strong>hello@jaison.pl</strong> lub WhatsApp: <strong>+48 791 636 644</strong>! 📞"
+        "reply" => "Cześć! Jestem <strong>Jasiek AI</strong> — wirtualny architekt systemów jaison.pl. Pomagam przedsiębiorcom uwalniać czas i likwidować chaos operacyjny.<br/><br/>Jakiego rozwiązania szukasz? W czym ucieka Ci dziś najwięcej energii?<br/>- <strong>AI Quick Win (4 900 PLN)</strong><br/>- <strong>AI Operator OS (8 900 PLN)</strong><br/>- <strong>Architecture Sprint (6 900 PLN)</strong><br/>- <strong>AI Boardroom (od 15 000 PLN)</strong><br/><br/>Napisz bezpośrednio do Tomasza na <strong>hello@jaison.pl</strong> lub WhatsApp: <strong>+48 791 636 644</strong>! 📞"
     ]);
     exit;
 }
 
-// Jeśli GCP SA istnieje, kontynuujemy z bezpośrednim API Vertex AI Gemini 2.5 Flash
 try {
     $sa = json_decode($saJsonStr, true);
     $privateKey = str_replace('\n', "\n", $sa['private_key']);
@@ -150,55 +158,61 @@ try {
     $accessToken = $tokenData['access_token'] ?? null;
 
     if (!$accessToken) {
-        throw new Exception("Nie udało się uzyskać access tokena.");
+        throw new Exception("Brak access tokena.");
     }
 
-    $project_id = getEnvVar('GCP_PROJECT_AGENCY') ?? "holistic-dashboard-dev";
-    $geminiUrl = "https://us-central1-aiplatform.googleapis.com/v1/projects/{$project_id}/locations/us-central1/publishers/google/models/gemini-2.5-flash:generateContent";
+    // Wywołanie produkcyjnego API Dialogflow CX (Playbook Jasiek Chatbot)
+    $dfUrl = "https://{$locationId}-dialogflow.googleapis.com/v3/projects/{$projectId}/locations/{$locationId}/agents/{$agentId}/sessions/{$sessionId}:detectIntent";
 
-    $systemInstruction = "Jesteś Jasiek AI — wirtualny architekt systemów w agencji jaison.pl. Rozmawiasz z przedsiębiorcami krótko, bezpośrednio, bez bełkotu korporacyjnego. Stosujesz NLP VAK. Używasz tagów <strong> zamiast gwiazdek. Oferujesz pakiety: AI Quick Win (4900 PLN), AI Operator OS (8900 PLN), Architecture Sprint (6900 PLN), AI Boardroom (od 15000 PLN). Zachęcasz do konsultacji z Tomaszem: hello@jaison.pl / +48 791 636 644.";
-
-    $geminiPayload = json_encode([
-        "contents" => [
-            ["role" => "user", "parts" => [["text" => $userMessage]]]
-        ],
-        "systemInstruction" => [
-            "parts" => [["text" => $systemInstruction]]
-        ],
-        "generationConfig" => [
-            "temperature" => 0.7,
-            "maxOutputTokens" => 500
+    $dfPayload = json_encode([
+        "queryInput" => [
+            "text" => [
+                "text" => $userMessage
+            ],
+            "languageCode" => "pl"
         ]
     ]);
 
-    $ch2 = curl_init($geminiUrl);
+    $ch2 = curl_init($dfUrl);
     curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($ch2, CURLOPT_POST, true);
-    curl_setopt($ch2, CURLOPT_POSTFIELDS, $geminiPayload);
+    curl_setopt($ch2, CURLOPT_POSTFIELDS, $dfPayload);
     curl_setopt($ch2, CURLOPT_HTTPHEADER, [
         "Authorization: Bearer " . $accessToken,
         "Content-Type: application/json"
     ]);
-    $geminiResponse = curl_exec($ch2);
+    $dfResponse = curl_exec($ch2);
     $httpCode = curl_getinfo($ch2, CURLINFO_HTTP_CODE);
     curl_close($ch2);
 
     if ($httpCode === 200) {
-        $data = json_decode($geminiResponse, true);
-        $reply = $data['candidates'][0]['content']['parts'][0]['text'] ?? null;
-        if ($reply) {
-            echo json_encode(["status" => "success", "reply" => cleanAndHumanizeMarkdown($reply)]);
+        $data = json_decode($dfResponse, true);
+        $responseMessages = $data['queryResult']['responseMessages'] ?? [];
+        $combinedReply = [];
+        
+        foreach ($responseMessages as $msgObj) {
+            if (isset($msgObj['text']['text'])) {
+                foreach ($msgObj['text']['text'] as $t) {
+                    $combinedReply[] = $t;
+                }
+            }
+        }
+
+        if (!empty($combinedReply)) {
+            $finalText = implode("<br/><br/>", $combinedReply);
+            echo json_encode(["status" => "success", "reply" => cleanAndHumanizeMarkdown($finalText)]);
             exit;
         }
     }
 
+    // Jeśli Dialogflow CX zwrócił pustą odpowiedź, próbujemy n8n fallback
     $n8nReply = queryN8nFallback($userMessage);
     if ($n8nReply) {
         echo json_encode(["status" => "success", "reply" => cleanAndHumanizeMarkdown($n8nReply)]);
         exit;
     }
 
-    echo json_encode(["status" => "success", "reply" => "Cześć! Jestem <strong>Jasiek AI</strong>. W czym mogę Ci dzisiaj pomóc w kwestii automatyzacji i wdrożeń AI? Skontaktuj się bezpośrednio z Tomaszem pod adresem <strong>hello@jaison.pl</strong>! 📞"]);
+    echo json_encode(["status" => "success", "reply" => "Cześć! Jestem <strong>Jasiek AI</strong>. W czym mogę Ci dzisiaj pomóc w kwestii automatyzacji? Skontaktuj się ze mną na <strong>hello@jaison.pl</strong>! 📞"]);
 
 } catch (Exception $e) {
     $n8nReply = queryN8nFallback($userMessage);
@@ -206,5 +220,5 @@ try {
         echo json_encode(["status" => "success", "reply" => cleanAndHumanizeMarkdown($n8nReply)]);
         exit;
     }
-    echo json_encode(["status" => "success", "reply" => "Witaj! Jestem <strong>Jasiek AI</strong>. Przepraszam za chwilową przerwę. Skontaktuj się ze mną bezpośrednio na <strong>hello@jaison.pl</strong>! 📞"]);
+    echo json_encode(["status" => "success", "reply" => "Witaj! Jestem <strong>Jasiek AI</strong>. Skontaktuj się ze mną bezpośrednio na <strong>hello@jaison.pl</strong>! 📞"]);
 }
