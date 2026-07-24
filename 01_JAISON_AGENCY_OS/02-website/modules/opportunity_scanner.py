@@ -1143,8 +1143,10 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                     """
 
                 # Humanizowanie opisu i outreachu
-                clean_desc = opp['description']
+                clean_desc = opp['description'] or ""
                 if clean_desc:
+                    if "<div" in clean_desc or "<span" in clean_desc:
+                        clean_desc = re.sub(r'<[^>]+>', '', clean_desc)
                     clean_desc = clean_desc.replace("**", "<strong>").replace("**", "</strong>")
                     
                 clean_outreach = opp.get("suggested_outreach") or ""
@@ -1166,7 +1168,7 @@ def render_lead_radar_page(call_gemini_pro_api_func):
                 		<span style="padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; {badge_style}">{opp.get('label') or 'Zlecenie'} (Dopasowanie: {opp_score}%)</span>
                 	</div>
                 	<h4 style="margin: 0 0 10px 0; color: #F3F4F6; font-family: Outfit;">{opp['title']}</h4>
-                	<p style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">{clean_desc}</p>
+                	<div style="margin: 0 0 12px 0; color: #D1D5DB; font-size: 0.95rem; line-height: 1.6;">{clean_desc}</div>
                     {ds_metrics_html}
                 	<div style="display: flex; flex-wrap: wrap; gap: 15px; font-size: 0.85rem; color: #94A3B8; border-top: 1px solid #1E293B; padding-top: 10px; margin-bottom: 10px;">
                 		<span>💰 Budżet: <strong style="color: #10B981;">{opp['budget']}</strong></span>

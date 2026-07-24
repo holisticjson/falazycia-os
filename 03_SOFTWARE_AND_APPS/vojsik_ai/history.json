@@ -2050,5 +2050,11 @@
         "raw_text": "Jak możemy robić deploy tego dashboardu Streamlit na serwer jak tu ciągle coś nie działa no kurwa. Weź to kurwa przetestuj, masz te nowe skille, testowanie kurwa, grillowanie i te inne nowe pobrane od testowania kodu, rozwiązań, weź to sprawdź kurwa.",
         "corrected_text": "Jak możemy robić deploy tego dashboardu Streamlit na serwer jak tu ciągle coś nie działa no kurwa. Weź to kurwa przetestuj, masz te nowe skille, testowanie kurwa, grillowanie i te inne nowe pobrane od testowania kodu, rozwiązań, weź to sprawdź kurwa.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 12:48:20",
+        "raw_text": "Teraz w tym skanerze pokazuje się w formie kodu źródła tych zleceń.",
+        "corrected_text": "Teraz w tym skanerze pokazuje się w formie kodu źródła tych zleceń.",
+        "status": "raw_fallback"
     }
 ]
