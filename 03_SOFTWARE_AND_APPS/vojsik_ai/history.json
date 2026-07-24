@@ -1972,5 +1972,11 @@
         "raw_text": "czyli już chatbot jest ustawiony można z niego go przetestować będzie działał tutaj z tym playbookiem w Google Cloud",
         "corrected_text": "czyli już chatbot jest ustawiony można z niego go przetestować będzie działał tutaj z tym playbookiem w Google Cloud",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 11:42:51",
+        "raw_text": "Dobra, jaką on powinien wiedzę mieć? Data store, co powinien mieć podpięte? No to powinien mieć raczej chyba szerszy zakres wiedzy, tak? Na temat samego formularza, ewentualnie, no, żeby doradzać klientowi też. Nie wiem, jakie tam pytania są w tych pięciu krokach w tym formularzu przygotowane. Weź mnie wrzuć tutaj w  Dorzuć mi przygotowanie i skonfigurowanie w międzyczasie tego Discorda, czyli od serwera zaczynając, później poprzez te kanały itd. Wygenerowanie tego API czy tam tokena, czy co tam trzeba.",
+        "corrected_text": "Dobra, jaką on powinien wiedzę mieć? Data store, co powinien mieć podpięte? No to powinien mieć raczej chyba szerszy zakres wiedzy, tak? Na temat samego formularza, ewentualnie, no, żeby doradzać klientowi też. Nie wiem, jakie tam pytania są w tych pięciu krokach w tym formularzu przygotowane. Weź mnie wrzuć tutaj w  Dorzuć mi przygotowanie i skonfigurowanie w międzyczasie tego Discorda, czyli od serwera zaczynając, później poprzez te kanały itd. Wygenerowanie tego API czy tam tokena, czy co tam trzeba.",
+        "status": "raw_fallback"
     }
 ]
