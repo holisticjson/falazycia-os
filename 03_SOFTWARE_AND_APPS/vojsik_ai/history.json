@@ -2230,5 +2230,23 @@
         "raw_text": "Nie wiem, ma jakiś błąd, chodzi mu o ten... Chodzi mu o ten client key, ale ja to wkleiłem, sprawdzałem jeszcze raz. Skopiowałem z tego konta Tiktor for Developers, ale tam jeszcze trzeba może submit for review zrobić.  tik tok for developers. W kleju m w kompozjo klient key i klient secret.  Dziękuję.",
         "corrected_text": "Nie wiem, ma jakiś błąd, chodzi mu o ten... Chodzi mu o ten client key, ale ja to wkleiłem, sprawdzałem jeszcze raz. Skopiowałem z tego konta Tiktor for Developers, ale tam jeszcze trzeba może submit for review zrobić.  tik tok for developers. W kleju m w kompozjo klient key i klient secret.  Dziękuję.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 17:31:24",
+        "raw_text": "Czyli wszystko od nowa tak ustawiamy w sandboxie, bo Composio nadal krzyczy. Ale dziwne.",
+        "corrected_text": "Czyli wszystko od nowa tak ustawiamy w sandboxie, bo Composio nadal krzyczy. Ale dziwne.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 17:31:58",
+        "raw_text": "Zerknij na tym drugim zrzucie, bo tam mam wrażenie tak jakby połączyło jakieś Connected Account ID. Tak jakby dwa się połączyły, a nadal wyskakuje ten komunikat o Client Key. Nie wiem.",
+        "corrected_text": "Zerknij na tym drugim zrzucie, bo tam mam wrażenie tak jakby połączyło jakieś Connected Account ID. Tak jakby dwa się połączyły, a nadal wyskakuje ten komunikat o Client Key. Nie wiem.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 17:41:32",
+        "raw_text": "Dobra, czyli to możemy odhaczyć na liście task, ale powiedz mi, no bo to są, tam są, pokazały się dwa jakby konta. Connected account ID, a tak naprawdę to się połączyliśmy z jednym kontem TikToka. Pytanie, czy ja mogę, nie wiem, na swoim TikToku założyć,  drugie konto TikToka, takie równoległe dwa dla JSON Agency i dla projektu MLM LifeWave Builder.  Dziękuję.  Dzień dobry.  Dziękuję.",
+        "corrected_text": "Dobra, czyli to możemy odhaczyć na liście task, ale powiedz mi, no bo to są, tam są, pokazały się dwa jakby konta. Connected account ID, a tak naprawdę to się połączyliśmy z jednym kontem TikToka. Pytanie, czy ja mogę, nie wiem, na swoim TikToku założyć drugie konto TikToka, takie równoległe dwa dla JSON Agency i dla projektu MLM LifeWave Builder. Dziękuję. Dzień dobry. Dziękuję.",
+        "status": "success"
     }
 ]
