@@ -2128,5 +2128,11 @@
         "raw_text": "Co tu wpisać dokładnie? Adres strony głównej jaison.pl czy tej z polityką prywatności?",
         "corrected_text": "Co tu wpisać dokładnie? Adres strony głównej jaison.pl czy tej z polityką prywatności?",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-24 14:54:35",
+        "raw_text": "Piszą, że nie mogą zweryfikować. To raz. A dwa, gdzie jest katalog główny dokładnie z plikami strony na Cloud Run? Gdzie to się trzyma w kontenerze? Jaki jest w ogóle ścieżka dostępu? Gdzie na przykład mógłbym, jakbym chciał ręcznie wrzucać jakieś zasoby?  typu multimedia i tak dalej, żeby nie wiem... bot je wyświetla później tam czy jakoś tak przykładowo gdzie ja mogę zajrzeć do katalogu plików strony na serwerze",
+        "corrected_text": "Piszą, że nie mogą zweryfikować. To raz. A dwa, gdzie jest katalog główny dokładnie z plikami strony na Cloud Run? Gdzie to się trzyma w kontenerze? Jaki jest w ogóle ścieżka dostępu? Gdzie na przykład mógłbym, jakbym chciał ręcznie wrzucać jakieś zasoby?  typu multimedia i tak dalej, żeby nie wiem... bot je wyświetla później tam czy jakoś tak przykładowo gdzie ja mogę zajrzeć do katalogu plików strony na serwerze",
+        "status": "raw_fallback"
     }
 ]
