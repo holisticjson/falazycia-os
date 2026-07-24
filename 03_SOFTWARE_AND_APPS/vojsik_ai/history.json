@@ -1996,5 +1996,11 @@
         "raw_text": "Słuchaj, bo mam w swój dashboard Streamlit podpięty oraz w AntyGravity używam Remotion oraz tam mam podpięte modele fal.ai, czyli LoRa Studio, jakby wytrenowany swój model swojego awatara, ale Hicksfield ma dziś promocję, tak? Hicksfield AI, tam przy płatności miesięcznej  za 49$ 7 dni full unlimited, tak? Ale tam są notki takie drobnym druczkiem, że pewnie unlimited to jest tylko i wyłącznie nie przez API ani MCP, tylko u nich bezpośrednio na stronie. Jakie mam alternatywy biorąc pod uwagę moją politykę, czyli low cost, open source dla Hicksfielda w ramach jego możliwości  i modeli, na których on opiera swoją infrastrukturę.",
         "corrected_text": "Słuchaj, bo mam w swój dashboard Streamlit podpięty oraz w AntyGravity używam Remotion, oraz tam mam podpięte modele fal.ai, czyli LoRa Studio, jakby wytrenowany swój model swojego awatara. Ale Hicksfield ma dziś promocję, tak? Hicksfield AI, tam przy płatności miesięcznej za 49$ 7 dni full unlimited, tak? Ale tam są notki takie drobnym druczkiem, że pewnie unlimited to jest tylko i wyłącznie nie przez API ani MCP, tylko u nich bezpośrednio na stronie. Jakie mam alternatywy, biorąc pod uwagę moją politykę, czyli low cost, open source, dla Hicksfielda w ramach jego możliwości i modeli, na których on opiera swoją infrastrukturę?",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-24 11:57:19",
+        "raw_text": "Ale to mam stworzyć dwie kategorie i dwa kanały? Równolegle? Czy kanał pod kategorią, czy kategorie pod kanałem? No wyjaśnij mi to jakoś logicznie.",
+        "corrected_text": "Ale to mam stworzyć dwie kategorie i dwa kanały? Równolegle? Czy kanał pod kategorią, czy kategorie pod kanałem? No wyjaśnij mi to jakoś logicznie.",
+        "status": "raw_fallback"
     }
 ]
