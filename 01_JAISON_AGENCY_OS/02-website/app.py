@@ -2754,6 +2754,39 @@ Szczegółowa analiza biznesowa, persony klienta oraz oferty, przygotowana w ram
 
     st.markdown("<hr style='margin: 20px 0; border-color: #1F242E;'>", unsafe_allow_html=True)
     
+    # Wizualizator Architektury Agentowej & Pipeline AI
+    with st.expander("🗺️ Wizualizator Architektury Agentowej & Pipeline AI (Mindmap)", expanded=True):
+        st.markdown("##### 🚀 Kompletny Przepływ Systemu Jaison OS 2.0 & Modułów AI")
+        st.caption("Poniższy schemat przedstawia w 100% zintegrowaną siatkę agentów, zasilanie API (Free LLMs + GCP Vertex), generatory B-Rollu (Higgsfield AI), fotomontaże (fal.ai), montaż (Remotion) oraz automatyzację (n8n & Composio).")
+        
+        st.components.v1.html("""
+        <div style="background-color: #0b0f19; padding: 15px; border-radius: 12px; border: 1px solid #1E293B; font-family: monospace; color: #E2E8F0; font-size: 0.85rem; line-height: 1.5; overflow-x: auto;">
+        <pre style="color: #38BDF8; font-weight: bold;">
+📱 INTERFEJSY WEJŚCIOWE (Discord & Telegram 24/7)
+ ├── 🟢 Kanał #jaison-agency  ---> [Głos Ghost v2 • Oferty B2B • Remotion Reels]
+ └── 🔵 Kanał #lifewave-builder ---> [Zdrowie • Fototerapia • Kwalifikacja Partnerów]
+        │
+        ▼
+⚡ GCP VM / CLOUD RUN (os.jaison.pl — Stałe IP & SSL)
+ ├── 🧠 LLM Smart Router (Gemini 2.5 Flash / Pro + Free LLM APIs Tier)
+ ├── ⚡ jcode (Rust Subagent Harness — 14ms start, 117MB RAM)
+ └── 🔄 Dev-Compound (Microsoft SkillOpt Self-Improving Loop)
+        │
+        ├───► 🎨 WARSTWA MEDIÓW AI (Bez Dublowania)
+        │      ├── 📸 fal.ai (Flux LoRA) ------> [Statyczne Fotomontaże w HQ]
+        │      ├── 🎬 Higgsfield AI ----------> [Surowy B-Roll AI, Avatary & Kamera Kinowa]
+        │      └── 🎞️ Remotion.dev ------------> [Montaż MP4, Napisy Word-by-Word, Logo]
+        │
+        ├───► 🔑 COMPOSIO.DEV (MCP OAuth Multi-Entity)
+        │      ├── Entity A: Jaison Agency ----> [LinkedIn, IG @jaison.pl, X]
+        │      └── Entity B: LifeWave MLM -----> [TikTok, IG @mlm.jaison, FB Groups]
+        │
+        └───► 📥 n8n.jaison.pl & DIALOGFLOW CX
+               └── Webhook Lead Intake --------> [/webhook/lead-intake -> CRM + Telegram]
+        </pre>
+        </div>
+        """, height=340)
+
     # Szybki Capture
     st.subheader("⚡ Szybki Capture myśli (Brain Dump)")
     quick_thought = st.text_area("Masz nagły pomysł lub coś Cię rozprasza? Zrzuć to tutaj natychmiast, aby uwolnić pamięć roboczą mózgu:", height=100)

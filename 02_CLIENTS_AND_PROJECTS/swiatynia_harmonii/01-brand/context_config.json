@@ -1,0 +1,12 @@
+{
+  "client_id": "swiatynia_harmonii",
+  "client_name": "Świątynia Harmonii (Ania | Kobido & LifeWave)",
+  "motto": "Odkryj naturalne piękno, głęboki relaks i komórkową witalność.",
+  "primary_color": "#EC4899",
+  "secondary_color": "#F59E0B",
+  "author": "Ania | Świątynia Harmonii",
+  "handle": "@swiatynia.harmonii",
+  "domain": "swiatyniaharmonii.pl",
+  "systeme_subdomain": "harmonii.jaison.pl",
+  "n8n_webhook_url": "https://n8n.jaison.pl/webhook/swiatynia-harmonii-lead"
+}
