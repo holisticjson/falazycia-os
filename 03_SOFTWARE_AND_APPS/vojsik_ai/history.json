@@ -2410,5 +2410,17 @@
         "raw_text": "A czy to podajemy tutaj w polach formularza w ustawień aplikacji w Discord?",
         "corrected_text": "A czy to podajemy tutaj w polach formularza w ustawieniach aplikacji w Discord?",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-25 13:46:20",
+        "raw_text": "No i jeszcze tutaj z tego linku, kurwa ten OneDrive muszę wywalić. Możemy nakarmić też tą wiedzą, jeśli jest aktualna, tak? Generalnie to jest przed kilku lat, ale pewna wiedza pozostaje jakby, wiadomo, pozostaje ponadczasowa, tak? Więc dla odpowiednich dyrektorów, dyrekcji, zarządu i skilli,  subagentów możemy tę wiedzę przyswoić, wytrenować.",
+        "corrected_text": "No i jeszcze tutaj z tego linku, kurwa, ten OneDrive muszę wywalić. Możemy nakarmić też tą wiedzą, jeśli jest aktualna, tak? Generalnie to jest sprzed kilku lat, ale pewna wiedza pozostaje jakby, wiadomo, ponadczasowa, tak? Więc dla odpowiednich dyrektorów, dyrekcji, zarządu i skilli, subagentów możemy tę wiedzę przyswoić, wytrenować.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-25 13:46:54",
+        "raw_text": "Musimy też wypchnąć i przyspieszyć synchronizację laptopa względem tych nowych skilli, które tutaj wdrożymy, zasad itd. Widać tam agentom wytyczne według nowych skilli, aby postępowali również też.",
+        "corrected_text": "Musimy też wypchnąć i przyspieszyć synchronizację laptopa względem tych nowych skilli, które tutaj wdrożymy, zasad itd. Widać tam agentom wytyczne według nowych skilli, aby postępowali również też.",
+        "status": "success"
     }
 ]
