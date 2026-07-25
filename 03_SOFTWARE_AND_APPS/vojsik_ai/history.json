@@ -2560,5 +2560,11 @@
         "raw_text": "Czyli ten chatbot, ten JSON Auditor będzie miał dostęp do tych wszystkich plików? Wiedzy? Czy to nie za dużo? Nie wiem, no... Czy tam się nie wysypią, nie wyleją jakieś... jak będzie klient pytał jakieś rzeczy pozostałe, no nie wiem. Dobra, i co tu ustawić? Czy dać dual region, czy nie?",
         "corrected_text": "Czyli ten chatbot, ten JSON Auditor będzie miał dostęp do tych wszystkich plików? Wiedzy? Czy to nie za dużo? Nie wiem, no... Czy tam się nie wysypią, nie wyleją jakieś... jak będzie klient pytał jakieś rzeczy pozostałe, no nie wiem. Dobra, i co tu ustawić? Czy dać dual region, czy nie?",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 16:28:28",
+        "raw_text": "Ja się zastanawiam czy Ty nie możesz, nie masz dostępu do tego projektu na tym koncie, nie możesz stworzyć automatycznie takiego zasobnika? Z najlepszymi możliwymi zoptymalizowanymi ustawieniami?",
+        "corrected_text": "Ja się zastanawiam czy Ty nie możesz, nie masz dostępu do tego projektu na tym koncie, nie możesz stworzyć automatycznie takiego zasobnika? Z najlepszymi możliwymi zoptymalizowanymi ustawieniami?",
+        "status": "raw_fallback"
     }
 ]
