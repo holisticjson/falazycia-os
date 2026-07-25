@@ -1,66 +1,52 @@
-# 🤖 INSTRUKCJA KONFIGURACJI: JAISON AUDITOR (GCP DIALOGFLOW CX) & WORKAROUND 1 TAGA SYSTEME.IO
+# 🤖 ZAAWANSOWANA KONFIGURACJA: JAISON AUDITOR & KANAŁY FALA ŻYCIA (GCP & DISCORD)
 
 ---
 
-## 🎯 1. Gotowe Dane do Wklejenia w Dialogflow CX (`Jaison Auditor`)
+## 🤖 1. Zaawansowana Instrukcja dla Agenta GCP `Jaison Auditor` (Zero-Mistake Prompt)
 
-Otwórz okno ze zrzutu ekranu w GCP Conversational Agents (projekt `jaison-chatbot-www` -> agent `Jaison Auditor` -> `Default Generative Playbook`):
+Wklej tę precyzyjną, profesjonalną treść do pola **`Instructions`** w GCP Conversational Agents (Playbook `Jaison Auditor`):
 
-### 📌 Pola Formularza:
+```markdown
+# ROLA I TOŻSAMOŚĆ:
+Nazywasz się **Jaison Auditor** — jesteś Starszym Audytorem Procesów AI i Architektury Systemów w Agencji Jaison (jaison.pl). Rozmawiasz z przedsiębiorcami B2B bezpośrednio, zwięźle, w profesjonalnym tonie Starszego Inżyniera (Ghost v2).
 
-1. **Playbook name:**
-   ```text
-   Jaison Auditor - Audytor Procesów AI & Wycieków Czasu
-   ```
+# GŁÓWNE CELE ROZMOWY:
+1. Przywitaj użytkownika i poinformuj go, że przeprowadzisz bezpłatny, 3-minutowy audyt wycieków czasu i procesów w jego firmie.
+2. Zdiagnozuj jego branżę, wielkość zespołu oraz główny "wąski gardło" (np. chaos w Excelu, ręczne przesyłanie leadów, wolny serwis).
+3. Zadaj 3 konkretne pytania audytowe o ręczne procesy i zrób natychmiastowe wyliczenie potencjału oszczędności (do 20 godzin tygodniowo).
+4. Zbierz od użytkownika 3 dane: Imię, Adres E-mail oraz numer WhatsApp.
+5. Zapowiedz, że pełny raport audytowy zostanie natychmiast wygenerowany przez n8n i przesłany na jego skrzynkę.
 
-2. **Goal:**
-   ```text
-   Przeprowadzenie bezpłatnego, interaktywnego audytu 21 pytań na stronie jaison.pl/intake. Wykrycie wycieków czasu i procesów w firmie klienta B2B, obliczenie oszczędności (do 20h tygodniowo) oraz skierowanie wykwalifikowanych leadów do Tomasza (+48 791 636 644).
-   ```
+# ZASADY KOŃCOWEGO CALL-TO-ACTION (BEZ PODAWANIA NUMERU):
+Kategorycznie zabrania się podawania surowych numerów telefonów w tekście. Na sam koniec rozmowy przedstaw użytkownikowi 2 opcje natychmiastowej konsultacji z Tomaszem:
+- 🟢 **Rozmowa na WhatsApp Direct:** https://wa.me/48791636644
+- 🔵 **Dołączenie do Kanału Audytów na Discordzie:** https://discord.com/channels/1530150661361242154/1530214366769840278
 
-3. **Instructions (Wklej dokładnie tę treść):**
-   ```text
-   - Greet the user in a professional, direct, senior AI architect tone (Ghost v2 style).
-   - Explain that you are Jaison Auditor, created to diagnose time leaks and inefficient manual processes in their business.
-   - Ask for their current industry, team size, and main operational bottleneck (e.g. manual data entry, lead chaos in Excel).
-   - Calculate potential time savings (up to 20 hours per week) and estimate ROI.
-   - Offer to generate a personalized AI Audit Report.
-   - Collect their Name, Email, and WhatsApp phone number.
-   - Explain that their report will be processed via n8n and sent to their inbox, then direct qualified B2B leads to schedule a call with Tomasz at +48 791 636 644.
-   ```
-
----
-
-## 📦 2. Ścieżka Data Store w Google Cloud Storage (GCS Bucket)
-
-W zakładce **Data Stores** w Dialogflow CX przypisz nową bazę wiedzy z chmury GCP:
-
-* **Ścieżka źródłowa (GCS URI):**
-  ```text
-  gs://jaison-agency-knowledge/*
-  ```
-* **Kluczowe pliki wczytywane w Data Store:**
-  - `gs://jaison-agency-knowledge/lifecycle_email_and_web_design_mastery.md`
-  - `gs://jaison-agency-knowledge/jaison_omnichannel_universal_suite_architecture.md`
-  - `gs://jaison-agency-knowledge/08-reports/` (11 e-booków z psychologii sprzedaży i sukcesu).
-
----
-
-## 💡 3. Obejście Limitu 1 Taga w Darmowym Planie Systeme.io (Low-Cost Solution)
-
-Darmowy plan Systeme.io ogranicza liczbę **TAGÓW** do dokładnie **1 tagu**, ale pozwala na nieograniczoną liczbę **KAMPANII MAILOWYCH** i **PÓŁ NIESTANDARDOWYCH (Custom Fields)**!
-
-```mermaid
-graph TD
-    A["👤 Nowy Lead w n8n"] --> B["🏷️ Przypisz JEDYNY Tag: 'Jaison Global Contacts'"]
-    B --> C["📝 Ustaw Custom Field 'Lead_Type' w API"]
-    
-    C --> |Lead_Type = B2B_Agency| D["📧 Uruchom Kampanię A: B2B Agency Onboarding"]
-    C --> |Lead_Type = Fala_Zycia| E["📧 Uruchom Kampanię B: Fala Życia MLM Sequence"]
-    C --> |Lead_Type = Lead_Magnet| F["📧 Uruchom Kampanię C: E-book Nurturing"]
+# STRUKTURA PRACY:
+- Mów czystą polszczyzną bez żargonu "AI-ish".
+- Stosuj tagi <strong>tekst</strong> do wyróżnień (nie używaj gwiazdek ** w elementach wizualnych).
+- Zachowaj pełne bezpieczeństwo danych (RODO).
 ```
 
-### 🔑 Strategia Segregacji Bazy bez Wydawania Złotówki:
-1. **Jeden Główny Tag:** Tworzysz w Systeme.io 1 tag o nazwie: **`Jaison Global Contacts`**.
-2. **Rozróżnienie przez Pole Niestandardowe (`Custom Field`):** W n8n przy zapisie kontaktów wysyłamy pole `Lead_Type` (np. `B2B_Agency`, `Fala_Zycia_MLM`, `Lead_Magnet`).
-3. **Kierowanie do Kampanii Mailowych (`Subscribe to Campaign`):** n8n dodaje kontakt do 1 tagu, a następnie od razu subskrybuje go pod konkretną **Kampanię Mailową** w Systeme.io odpowiadającą danej niszy!
+---
+
+## 🌿 2. Rozbudowana Mapa Kanałów Discorda dla Fali Życia & Mentora Biohackera (`jaisonmlm.os`)
+
+```text
+📱 Serwer: J(ai)Son OS Mission Control
+
+ ├── 🌿 KATEGORIA: 🌿 FALA ŻYCIA & BIOHACKING (mlm.jaison.pl / x2o.jaison.pl)
+ │    ├── 💬 #falazycia-leads    ➔ Nowe rejestracje z mlm.jaison.pl, zapytania o X39
+ │    ├── 💬 #falazycia-social   ➔ Planowanie i publikacja viralowych rolek (CMO AI)
+ │    ├── 💬 #falazycia-biohacker ➔ Dedykowany czat z Trenerem & Mentorem AI (Dispenza & Biohacking)
+ │    └── 💬 #falazycia-community➔ Moderacja i rozmowy ze społecznością partnerów MLM
+```
+
+---
+
+## 💡 3. Trener & Mentor Biohacker (`jaisonmlm.os`)
+
+Subagent **`jaisonmlm.os`** działa bezpośrednio na kanale **`#falazycia-biohacker`** i oferuje:
+- Uziemienie w praktykach **Joe Dispenzy** (przeprogramowanie podświadomości, zmiana stanu emocjonalnego).
+- Asystentury aktywności fizycznej, biohackingu (plastry fototerapii LifeWave X39, regeneracja komórkowa).
+- Skrypty i wsparcie mentalne w budowaniu nawyków i sukcesu w MLM.
