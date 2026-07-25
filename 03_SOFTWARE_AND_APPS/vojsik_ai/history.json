@@ -2374,5 +2374,17 @@
         "raw_text": "Wiesz co, zerknąłem w terminal PowerShell na laptopie i tam jeszcze jakiś proces trwa.  writing objects na poziomie 60%, 400 parę plików na 677.",
         "corrected_text": "Wiesz co, zerknąłem w terminal PowerShell na laptopie i tam jeszcze jakiś proces trwa. writing objects na poziomie 60%, 400 parę plików na 677.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-25 09:57:16",
+        "raw_text": "Na laptopie się mieli. Kliknąłem ten pierwszy klik wyślij do GCP storage. Rozumiem, że mogę uruchomić dashboard w tym samym czasie.  Dziękuję.",
+        "corrected_text": "Na laptopie się mieli. Kliknąłem ten pierwszy klik wyślij do GCP storage. Rozumiem, że mogę uruchomić dashboard w tym samym czasie.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 10:09:48",
+        "raw_text": "Słuchaj, przy uruchomieniu tam na laptopie tego Streamlit'a tą komendą wyskoczyła komenda i w przeglądarce kliknąłem\"Zainstaluj umiejętności Skills\". Czy my takie umiejętności z Githuba Streamlit Skills mamy zainstalowane?",
+        "corrected_text": "Słuchaj, przy uruchomieniu tam na laptopie tego Streamlit'a tą komendą wyskoczyła komenda i w przeglądarce kliknąłem\"Zainstaluj umiejętności Skills\". Czy my takie umiejętności z Githuba Streamlit Skills mamy zainstalowane?",
+        "status": "raw_fallback"
     }
 ]
