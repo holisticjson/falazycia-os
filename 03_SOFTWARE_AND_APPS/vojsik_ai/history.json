@@ -2392,5 +2392,23 @@
         "raw_text": "Dobra, a czy my tutaj w środowisku, o, Anti Gravity, mamy zainstalowane te skille? No bo laptop swoją drogą, ale tutaj na stacjonarnym, gdzie z Tobą pracuję, pobrałeś te skille, masz je zainstalowane?",
         "corrected_text": "Dobra, a czy my tutaj w środowisku Anti Gravity mamy zainstalowane te skille? No bo laptop swoją drogą, ale tutaj na stacjonarnym, gdzie z Tobą pracuję, pobrałeś te skille; masz je zainstalowane?",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-25 13:33:32",
+        "raw_text": "Słuchaj, wrzuciłem dwa pliki PDF. Jeden odnosi się do firma GetResponse'u, dostępnia za darmo ebooka, tak jak tworzyć strategię e-mail marketingową, więc nakarmimy tymi danymi, nie wiem, skilla czy dyrektora marketingu, tak, stworzymy takiego skilla lub uzupełnimy, jeśli już taki jest, od  Nie wiem czy to się odnosi do strony www czy takiej zwykłej firmowej wizytówkowej czy landing page trzeba zdecydować bo Landing page no to od Jana Szopy wiem że były wytyczne jak tworzyć świetny taki naprawdę super sprzedażowy landing page no i tutaj pod tym linkiem podał jeden z twórców w komentarzach  gdzie jest no jakby przepływ tak jakby pattern skille jakieś tam komendy przy tworzeniu od podstaw stron internetowych tak żeby wykorzystać to też do naszej pętli uczenia się i tego tych skillis wczoraj odnośnie prawidłowego tak tworzenia  kodu tak review kodu tak testowania więc to bym chciał też mieć w dashboardzie wszystko to co tutaj mamy chciałbym mieć w dashboardzie i żeby był wyszklony agent Hermes tak i ja podpinam już podpinam już resztę tych  social mediów ustawiam synchronizacja i dashboard na laptopie jest z rana zrobiony więc to można odhaczyć",
+        "corrected_text": "Słuchaj, wrzuciłem dwa pliki PDF. Jeden odnosi się do firma GetResponse'u, dostępnia za darmo ebooka, tak jak tworzyć strategię e-mail marketingową, więc nakarmimy tymi danymi, nie wiem, skilla czy dyrektora marketingu, tak, stworzymy takiego skilla lub uzupełnimy, jeśli już taki jest, od  Nie wiem czy to się odnosi do strony www czy takiej zwykłej firmowej wizytówkowej czy landing page trzeba zdecydować bo Landing page no to od Jana Szopy wiem że były wytyczne jak tworzyć świetny taki naprawdę super sprzedażowy landing page no i tutaj pod tym linkiem podał jeden z twórców w komentarzach  gdzie jest no jakby przepływ tak jakby pattern skille jakieś tam komendy przy tworzeniu od podstaw stron internetowych tak żeby wykorzystać to też do naszej pętli uczenia się i tego tych skillis wczoraj odnośnie prawidłowego tak tworzenia  kodu tak review kodu tak testowania więc to bym chciał też mieć w dashboardzie wszystko to co tutaj mamy chciałbym mieć w dashboardzie i żeby był wyszklony agent Hermes tak i ja podpinam już podpinam już resztę tych  social mediów ustawiam synchronizacja i dashboard na laptopie jest z rana zrobiony więc to można odhaczyć",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 13:37:12",
+        "raw_text": "Aplikacja stworzona, poniżej wklejam dane aplikacji Discord.",
+        "corrected_text": "Aplikacja stworzona, poniżej wklejam dane aplikacji Discord.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-25 13:39:22",
+        "raw_text": "A czy to podajemy tutaj w polach formularza w ustawień aplikacji w Discord?",
+        "corrected_text": "A czy to podajemy tutaj w polach formularza w ustawieniach aplikacji w Discord?",
+        "status": "success"
     }
 ]
