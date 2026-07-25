@@ -2386,5 +2386,11 @@
         "raw_text": "Słuchaj, przy uruchomieniu tam na laptopie tego Streamlit'a tą komendą wyskoczyła komenda i w przeglądarce kliknąłem\"Zainstaluj umiejętności Skills\". Czy my takie umiejętności z Githuba Streamlit Skills mamy zainstalowane?",
         "corrected_text": "Słuchaj, przy uruchomieniu tam na laptopie tego Streamlit'a tą komendą wyskoczyła komenda i w przeglądarce kliknąłem\"Zainstaluj umiejętności Skills\". Czy my takie umiejętności z Githuba Streamlit Skills mamy zainstalowane?",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 10:41:02",
+        "raw_text": "Dobra, a czy my tutaj w środowisku, o, Anti Gravity, mamy zainstalowane te skille? No bo laptop swoją drogą, ale tutaj na stacjonarnym, gdzie z Tobą pracuję, pobrałeś te skille, masz je zainstalowane?",
+        "corrected_text": "Dobra, a czy my tutaj w środowisku Anti Gravity mamy zainstalowane te skille? No bo laptop swoją drogą, ale tutaj na stacjonarnym, gdzie z Tobą pracuję, pobrałeś te skille; masz je zainstalowane?",
+        "status": "success"
     }
 ]
