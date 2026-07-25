@@ -31,6 +31,9 @@ if (-not $ping) {
 # 2. Przejście do folderu projektu
 Set-Location -Path $RepoPath
 
+# Włączenie obsługi długich ścieżek plików w Windows Git
+git config core.longpaths true
+
 # 3. Sprawdzenie lokalnych zmian w kodzie
 $gitStatus = git status --porcelain
 if ($gitStatus) {
