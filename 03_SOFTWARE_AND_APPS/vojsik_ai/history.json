@@ -2452,5 +2452,11 @@
         "raw_text": "Wyjaśnij mi różnicę dodanie do moich aplikacji a dodanie do serwera.",
         "corrected_text": "Wyjaśnij mi różnicę dodanie do moich aplikacji a dodanie do serwera.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 14:53:51",
+        "raw_text": "Tak, przygotuj mi rozpisaną konkretną integrację.",
+        "corrected_text": "Tak, przygotuj mi rozpisaną konkretną integrację.",
+        "status": "raw_fallback"
     }
 ]
