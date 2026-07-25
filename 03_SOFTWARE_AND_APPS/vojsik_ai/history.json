@@ -2356,5 +2356,11 @@
         "raw_text": "Jeśli chodzi o punkt trzeci, plan działania, nie mogę znaleźć ani jednego, ani drugiego pliku na laptopie. Ten\"sync upload to cloud\" BAT oraz\"run dashboard\" BAT. Nie mogę tego znaleźć. Nie wiem, ta synchronizacja z gitem jakoś zawodzi często i na laptopa się nie pobierają pliki,  rzucone na github ze stacjonarnego i podejrzewam odwrotnie też jak czy na laptopie się robi prawidłowo git push i na stacjonarnym też nie pobiera więc ten chyba gcp z gcs google cloud storage ten mechanizm będzie najlepszy  Dziękuję.",
         "corrected_text": "Jeśli chodzi o punkt trzeci, plan działania, nie mogę znaleźć ani jednego, ani drugiego pliku na laptopie. Ten\"sync upload to cloud\" BAT oraz\"run dashboard\" BAT. Nie mogę tego znaleźć. Nie wiem, ta synchronizacja z gitem jakoś zawodzi często i na laptopa się nie pobierają pliki,  rzucone na github ze stacjonarnego i podejrzewam odwrotnie też jak czy na laptopie się robi prawidłowo git push i na stacjonarnym też nie pobiera więc ten chyba gcp z gcs google cloud storage ten mechanizm będzie najlepszy  Dziękuję.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 09:25:49",
+        "raw_text": "Na laptopie wyskoczył error po tej komendzie git pull. Error cannot pull with rebates. You have unstaged changes. Drugi error: Please commit or stash them.",
+        "corrected_text": "Na laptopie wyskoczył error po tej komendzie git pull. Error cannot pull with rebates. You have unstaged changes. Drugi error: Please commit or stash them.",
+        "status": "success"
     }
 ]
