@@ -2506,5 +2506,29 @@
         "raw_text": "Jak mam jeszcze tutaj pod tymi agencja i MLM LifeWave. Może tam zarządzanie, nie wiem. Społecznością, marką, fala życia. Nie wiem, jakiś kanał social.  media, tak żeby to logicznie dla bota Hermes tak było zarządzane jakieś nie wiem czy na kanały, czy ogólnie social media, czy na poszczególne kanały, czy na nie wiem dashboard, jakiś mailing, czy leady.  czy jakiś ten personalny agent wspierający ML-em od biohackingu, asystent aktywności fizycznej, tutaj wszystkie te praktyki od Joe Dispenza, taki mentor AI, mentor i trener, mentor fizyczny, psychiczny, czy biohacker może go nazwać, no nie wiem.  No to uzupełnij do wtasku.",
         "corrected_text": "Jak mam jeszcze tutaj pod tymi agencja i MLM LifeWave. Może tam zarządzanie, nie wiem. Społecznością, marką, fala życia. Nie wiem, jakiś kanał social.  media, tak żeby to logicznie dla bota Hermes tak było zarządzane jakieś nie wiem czy na kanały, czy ogólnie social media, czy na poszczególne kanały, czy na nie wiem dashboard, jakiś mailing, czy leady.  czy jakiś ten personalny agent wspierający ML-em od biohackingu, asystent aktywności fizycznej, tutaj wszystkie te praktyki od Joe Dispenza, taki mentor AI, mentor i trener, mentor fizyczny, psychiczny, czy biohacker może go nazwać, no nie wiem.  No to uzupełnij do wtasku.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 15:49:20",
+        "raw_text": "Dobra, ale nie zrobiłeś mu tutaj drzewka dla kategorii agencji jaison. Czy mogę jakoś, nie wiem, podłączyć to telefon pod ciebie do komputera, czy nie wiem, żeby ustawiał mi te, kurwa, kanały w aplikację, wszystko, kurwa, samo, żebyś zrobił, ja pierdolę. Przecież mi się już miesza w głowie.  przez API jakoś, jak MCP, poustawiał to wszystko, a ja lecę dalej z jakimiś tam rzeczami, no.",
+        "corrected_text": "Dobra, ale nie zrobiłeś mu tutaj drzewka dla kategorii agencji Jaison. Czy mogę jakoś, nie wiem, podłączyć to telefon pod ciebie do komputera, czy nie wiem, żeby ustawiał mi te, kurwa, kanały w aplikacji, wszystko, kurwa, samo, żebyś zrobił, ja pierdolę. Przecież mi się już miesza w głowie. Przez API jakoś, jak MCP, poustawiał to wszystko, a ja lecę dalej z jakimiś tam rzeczami, no.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-25 15:53:33",
+        "raw_text": "Dobra, co ja mam tutaj wpisać tworząc ten tool datastore? Dodaj do tasku, w pliku task. Kliknij na rolę bota jsonosbot.  Aha, dobra, to już to włączam. No i pytanie jeszcze było, jest tam zamiast Perplexity, no bo w Dashboardzie mieliśmy, też był zamysł, pomysł z wczoraj na stworzenie własnego takiego mentora AI, czyli coś a la Gemini Pro, tak? Google w ramach pakietu subskrypcji, który płacę Google AI Pro oraz Perplexity Pro, czyli mentor  Pamiętasz to tak rozumiem więc mi chodzi o co że Hermes przecież pobraliśmy wtyczkę Hermes browser extension więc pytanie jak logicznie tutaj zwołać zarząd wszystkie te skille tam potrzebne umiejętności jak to kurwa spiąć. No i teraz meny chat killer dałeś w kategorii czwartej Hermes engine i system locks no dobra a jak.  ten meny chat killer to ja tu będę otrzymywał komentarze w tym kanale ze wszystkich kanałów łącznie kuźwa z łącznie z tutaj z profilu jason fala życia tak dotyczący biohackingu mlm i łącznie z  Agencja ISON? Czy trzeba to jakoś rozdzielić? Nie wiem, może pod tamte kategorie? Przecież to się wszystko pomiesza. Poustawiać dla każdego kanału. A ja już włączam te uprawnienia administratora.",
+        "corrected_text": "Dobra, co ja mam tutaj wpisać tworząc ten tool datastore? Dodaj do tasku, w pliku task. Kliknij na rolę bota jsonosbot.  Aha, dobra, to już to włączam. No i pytanie jeszcze było, jest tam zamiast Perplexity, no bo w Dashboardzie mieliśmy, też był zamysł, pomysł z wczoraj na stworzenie własnego takiego mentora AI, czyli coś a la Gemini Pro, tak? Google w ramach pakietu subskrypcji, który płacę Google AI Pro oraz Perplexity Pro, czyli mentor  Pamiętasz to tak rozumiem więc mi chodzi o co że Hermes przecież pobraliśmy wtyczkę Hermes browser extension więc pytanie jak logicznie tutaj zwołać zarząd wszystkie te skille tam potrzebne umiejętności jak to kurwa spiąć. No i teraz meny chat killer dałeś w kategorii czwartej Hermes engine i system locks no dobra a jak.  ten meny chat killer to ja tu będę otrzymywał komentarze w tym kanale ze wszystkich kanałów łącznie kuźwa z łącznie z tutaj z profilu jason fala życia tak dotyczący biohackingu mlm i łącznie z  Agencja ISON? Czy trzeba to jakoś rozdzielić? Nie wiem, może pod tamte kategorie? Przecież to się wszystko pomiesza. Poustawiać dla każdego kanału. A ja już włączam te uprawnienia administratora.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 15:56:04",
+        "raw_text": "No i tutaj ja mam...",
+        "corrected_text": "No i tutaj ja mam...",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 15:56:21",
+        "raw_text": "Jako członka tego JSONBota. W ogóle nie, muszę najpierw dodać do tej... wywołać jakoś na tym serwerze, w tych kanałach, czy jak?",
+        "corrected_text": "Jako członka tego JSONBota. W ogóle nie, muszę najpierw dodać do tej... wywołać jakoś na tym serwerze, w tych kanałach, czy jak?",
+        "status": "raw_fallback"
     }
 ]
