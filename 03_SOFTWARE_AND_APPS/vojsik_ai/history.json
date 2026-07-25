@@ -2350,5 +2350,11 @@
         "raw_text": "Zrzucę ekranu ci wrzuciłem, widzę, że można tak ulepszyć tego agenta, że może to być agent głosowy. Da się to zrobić low cost? Za darmo raczej nie, przy jakichś minimalnych kosztach. Trzeba po prostu podpiąć odpowiednią aplikację.  Facebook Facebook Facebook Facebook Facebook  Dziękuję.",
         "corrected_text": "Zrzucę ekranu ci wrzuciłem, widzę, że można tak ulepszyć tego agenta, że może to być agent głosowy. Da się to zrobić low cost? Za darmo raczej nie, przy jakichś minimalnych kosztach. Trzeba po prostu podpiąć odpowiednią aplikację.  Facebook Facebook Facebook Facebook Facebook  Dziękuję.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 09:12:08",
+        "raw_text": "Jeśli chodzi o punkt trzeci, plan działania, nie mogę znaleźć ani jednego, ani drugiego pliku na laptopie. Ten\"sync upload to cloud\" BAT oraz\"run dashboard\" BAT. Nie mogę tego znaleźć. Nie wiem, ta synchronizacja z gitem jakoś zawodzi często i na laptopa się nie pobierają pliki,  rzucone na github ze stacjonarnego i podejrzewam odwrotnie też jak czy na laptopie się robi prawidłowo git push i na stacjonarnym też nie pobiera więc ten chyba gcp z gcs google cloud storage ten mechanizm będzie najlepszy  Dziękuję.",
+        "corrected_text": "Jeśli chodzi o punkt trzeci, plan działania, nie mogę znaleźć ani jednego, ani drugiego pliku na laptopie. Ten\"sync upload to cloud\" BAT oraz\"run dashboard\" BAT. Nie mogę tego znaleźć. Nie wiem, ta synchronizacja z gitem jakoś zawodzi często i na laptopa się nie pobierają pliki,  rzucone na github ze stacjonarnego i podejrzewam odwrotnie też jak czy na laptopie się robi prawidłowo git push i na stacjonarnym też nie pobiera więc ten chyba gcp z gcs google cloud storage ten mechanizm będzie najlepszy  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
