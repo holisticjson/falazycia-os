@@ -2548,5 +2548,17 @@
         "raw_text": "No nie widzę GCS Path, Bucketa, ponieważ tych agentów tworzę w innym projekcie, na tym samym koncie GCP. Bucket, one są tworzone w innym Holistic Dashboard Dev, a projekt, gdzie tworzę agentów nazywa się jaison-chatbot-www.  Dziękuję.",
         "corrected_text": "No nie widzę GCS Path, Bucketa, ponieważ tych agentów tworzę w innym projekcie, na tym samym koncie GCP. Bucket, one są tworzone w innym Holistic Dashboard Dev, a projekt, gdzie tworzę agentów nazywa się jaison-chatbot-www.  Dziękuję.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 16:12:12",
+        "raw_text": "To są dostępne na tym koncie GCP aktualne projekty. To nie jest tak, jak ja się przełączę na innym projektu, to mnie wyrzuci, nie będę miał podglądu na tych agentów tworzonych, conversational agents.  Dziękuję.",
+        "corrected_text": "To są dostępne na tym koncie GCP aktualne projekty. To nie jest tak, jak ja się przełączę na innym projektu, to mnie wyrzuci, nie będę miał podglądu na tych agentów tworzonych, conversational agents.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 16:26:13",
+        "raw_text": "Czyli ten chatbot, ten JSON Auditor będzie miał dostęp do tych wszystkich plików? Wiedzy? Czy to nie za dużo? Nie wiem, no... Czy tam się nie wysypią, nie wyleją jakieś... jak będzie klient pytał jakieś rzeczy pozostałe, no nie wiem. Dobra, i co tu ustawić? Czy dać dual region, czy nie?",
+        "corrected_text": "Czyli ten chatbot, ten JSON Auditor będzie miał dostęp do tych wszystkich plików? Wiedzy? Czy to nie za dużo? Nie wiem, no... Czy tam się nie wysypią, nie wyleją jakieś... jak będzie klient pytał jakieś rzeczy pozostałe, no nie wiem. Dobra, i co tu ustawić? Czy dać dual region, czy nie?",
+        "status": "raw_fallback"
     }
 ]
