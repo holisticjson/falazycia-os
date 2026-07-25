@@ -2458,5 +2458,11 @@
         "raw_text": "Tak, przygotuj mi rozpisaną konkretną integrację.",
         "corrected_text": "Tak, przygotuj mi rozpisaną konkretną integrację.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 15:01:11",
+        "raw_text": "Wklejam Ci poniżej prompt sugerowane działania od Perplexity, więc wzrostuj to oraz aktualny stan, politykę, infrastrukturę, podpięte narzędzia, integracje i ewentualnie dokonaj jakiejś rygorystycznej oceny i korekty tego, a jeśli nie wymaga to wdróż.  bo w następnej kolejce musimy podpiąć, nie wiem czy to się da, zarządzanie skrzynką e-mail firmową lub kilkoma skrzynkami z poziomu dashboardu, nie wiem czy przez interfejs Gmail czy Webmail, tak, w przypadku domen właśnie typu jaison.pl, czyli hellomałpajaison.pl,  oraz info@jaison.pl. Może robić to przez Gmail i Composio. Czy bezpośrednio jakoś podpiąć się pod webmail. Trzeba będzie skonfigurować stopkę maila profesjonalną z banerem motto, tak, usługami. Może być też przekierowanie na formularz audytowy.  Właśnie tam mamy jeszcze do spięcia workflow N8n.  Jaśka i tego chatbota jaisonauditora na formularzu audycji, czyli w stopce maila może być takie przekierowanie, że zrób darmowy audyt albo",
+        "corrected_text": "Wklejam Ci poniżej prompt sugerowane działania od Perplexity, więc wzrostuj to oraz aktualny stan, politykę, infrastrukturę, podpięte narzędzia, integracje i ewentualnie dokonaj jakiejś rygorystycznej oceny i korekty tego, a jeśli nie wymaga to wdróż.  bo w następnej kolejce musimy podpiąć, nie wiem czy to się da, zarządzanie skrzynką e-mail firmową lub kilkoma skrzynkami z poziomu dashboardu, nie wiem czy przez interfejs Gmail czy Webmail, tak, w przypadku domen właśnie typu jaison.pl, czyli hellomałpajaison.pl,  oraz info@jaison.pl. Może robić to przez Gmail i Composio. Czy bezpośrednio jakoś podpiąć się pod webmail. Trzeba będzie skonfigurować stopkę maila profesjonalną z banerem motto, tak, usługami. Może być też przekierowanie na formularz audytowy.  Właśnie tam mamy jeszcze do spięcia workflow N8n.  Jaśka i tego chatbota jaisonauditora na formularzu audycji, czyli w stopce maila może być takie przekierowanie, że zrób darmowy audyt albo",
+        "status": "raw_fallback"
     }
 ]
