@@ -2446,5 +2446,11 @@
         "raw_text": "Bo rozumiem to wcześniej, tak? Te cztery podpunkty. W sensie, a ten API Facebook Ad Spy, analiza reklam i Antropic to już jest wdrożone, gdzieś przeanalizowane, wygenerowane, no nie wiem, gdzie to wylądowało.",
         "corrected_text": "Bo rozumiem to wcześniej, tak? Te cztery podpunkty. W sensie, a ten API Facebook Ad Spy, analiza reklam i Antropic to już jest wdrożone, gdzieś przeanalizowane, wygenerowane, no nie wiem, gdzie to wylądowało.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-25 14:42:45",
+        "raw_text": "Wyjaśnij mi różnicę dodanie do moich aplikacji a dodanie do serwera.",
+        "corrected_text": "Wyjaśnij mi różnicę dodanie do moich aplikacji a dodanie do serwera.",
+        "status": "raw_fallback"
     }
 ]

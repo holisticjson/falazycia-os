@@ -331,6 +331,9 @@ def init_db():
         conn.commit()
     conn.close()
 
+import streamlit as st
+
+@st.cache_data(ttl=600)
 def get_opportunities():
     """Pobiera wszystkie okazje z bazy danych."""
     init_db()
