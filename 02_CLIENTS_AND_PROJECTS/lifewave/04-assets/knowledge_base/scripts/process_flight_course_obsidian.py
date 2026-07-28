@@ -127,14 +127,35 @@ def main():
 
             try:
                 active_page = context.pages[-1] if context.pages else page
-                response = active_page.goto(url, wait_until="domcontentloaded", timeout=12000)
+                
+                # Resilient navigation with retries
+                response = None
+                for nav_attempt in range(3):
+                    try:
+                        # Wait for any background transitions to settle
+                        time.sleep(1.5)
+                        if active_page.url == url:
+                            break
+                        response = active_page.goto(url, wait_until="domcontentloaded", timeout=15000)
+                        break
+                    except Exception as nav_e:
+                        if "interrupted" in str(nav_e).lower():
+                            print(f"  ⏳ Wyciszono kolizję nawigacji eLMS (próba {nav_attempt+1}/3)... Czekam 2s.")
+                            time.sleep(2)
+                            active_page = context.pages[-1] if context.pages else page
+                        else:
+                            time.sleep(2)
                 
                 # Check 404 or redirect
                 if response and response.status >= 400:
                     print(f"  ⏩ Pomijam (kod odpowiedzi HTTP {response.status})")
                     continue
 
-                active_page.wait_for_load_state("networkidle", timeout=5000)
+                try:
+                    active_page.wait_for_load_state("domcontentloaded", timeout=5000)
+                except Exception:
+                    pass
+
                 time.sleep(1)
 
                 # Extract Title
