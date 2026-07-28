@@ -24,6 +24,26 @@ st.markdown("""
     .stApp {
         background: radial-gradient(circle at 50% 0%, #0c1f36 0%, #03060a 100%);
     }
+    
+    /* Mobile Responsive Tweaks for Streamlit */
+    @media (max-width: 768px) {
+        .main .block-container {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            padding-top: 1.5rem !important;
+        }
+        .stTabs [data-baseweb="tab-list"] {
+            flex-wrap: wrap !important;
+            gap: 6px !important;
+        }
+        .stTabs [data-baseweb="tab"] {
+            font-size: 0.85rem !important;
+            padding: 8px 12px !important;
+        }
+        h1 {
+            font-size: 1.75rem !important;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 

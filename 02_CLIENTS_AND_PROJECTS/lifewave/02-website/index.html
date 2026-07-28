@@ -360,10 +360,50 @@
       border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
+    .mobile-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
     @media (max-width: 900px) {
-      .hero h1 { font-size: 2.4rem; }
-      .banner-mlm { grid-template-columns: 1fr; padding: 30px; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .top-bar { font-size: 0.8rem; padding: 8px 12px; }
+      .top-bar a { display: block; margin-top: 4px; }
+      .brand-logo { font-size: 1.15rem; gap: 8px; white-space: nowrap; }
+      .brand-logo img { height: 34px !important; }
+      .mobile-toggle { display: block; }
+      .nav-wrapper { flex-wrap: wrap; }
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        padding: 16px 0 10px;
+        border-top: 1px solid rgba(0, 210, 196, 0.2);
+        margin-top: 14px;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .nav-links a {
+        display: block;
+        padding: 8px 0;
+        font-size: 1.05rem;
+      }
+      .btn-app {
+        text-align: center;
+        display: block;
+        margin-top: 8px;
+      }
+      .hero h1 { font-size: 2.2rem; }
+      .banner-mlm { grid-template-columns: 1fr; padding: 24px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
     }
   </style>
 </head>
@@ -381,6 +421,9 @@
         <img src="images/logo.png" alt="Klub Fala Życia Logo" style="height: 42px; width: auto; object-fit: contain;">
         <span>Klub Fala Życia</span>
       </a>
+      <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+        <i class="fa-solid fa-bars"></i>
+      </button>
       <ul class="nav-links">
         <li><a href="index.html" class="active">Start</a></li>
         <li><a href="x2o.html">Stacje Wodne X2O™</a></li>
