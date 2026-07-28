@@ -72,7 +72,7 @@ def sanitize_filename(name):
     return clean[:80]
 
 def process_lesson_with_gemini(lesson_id, title, url, raw_text):
-    print(f"  🧠 Przetwarzanie lekcji w Gemini 2.5 Flash: {title}...")
+    print(f"  🧠 Przetwarzanie lekcji w Gemini API: {title}...")
     user_prompt = f"""Oto surowa treść i transkrypcja z lekcji #{lesson_id} kursu Piotra Lotniczego:
 
 TYTUŁ: {title}
@@ -83,19 +83,35 @@ SUROWA TREŚĆ I TRANSKRYPCJA:
 
 Przygotuj kompletną notatkę Obsidian Markdown zgodną ze wskazaniami w system prompt."""
 
-    try:
-        response = client.models.generate_content(
-            model=MODEL_NAME,
-            contents=user_prompt,
-            config=types.GenerateContentConfig(
-                system_instruction=SYSTEM_PROMPT,
-                temperature=0.2,
-            )
-        )
-        return response.text
-    except Exception as e:
-        print(f"  ⚠️ Błąd podczas wywoływania Gemini: {e}")
-        return None
+    candidate_models = ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-flash-latest"]
+
+    for model_name in candidate_models:
+        for attempt in range(4):
+            try:
+                response = client.models.generate_content(
+                    model=model_name,
+                    contents=user_prompt,
+                    config=types.GenerateContentConfig(
+                        system_instruction=SYSTEM_PROMPT,
+                        temperature=0.2,
+                    )
+                )
+                if response and response.text:
+                    time.sleep(12)  # Respect free tier rate limit (5 requests / min)
+                    return response.text
+            except Exception as e:
+                err_msg = str(e)
+                if "429" in err_msg or "RESOURCE_EXHAUSTED" in err_msg:
+                    print(f"  ⏳ Gemini Quota Limit (429). Czekam 15s (próba {attempt+1}/4)...")
+                    time.sleep(15)
+                elif "404" in err_msg or "NOT_FOUND" in err_msg:
+                    print(f"  ⏩ Model {model_name} niedostępny, próbuję kolejny model...")
+                    break
+                else:
+                    print(f"  ⚠️ Błąd Gemini ({model_name}): {e}. Ponawiam za 5s...")
+                    time.sleep(5)
+
+    return None
 
 def main():
     print("=" * 70)
