@@ -40,16 +40,24 @@ def extract_course():
         
         time.sleep(2)
 
-        # Robust link extraction with retry
+        # Robust link extraction with retry and page load wait
         links = []
-        for attempt in range(3):
+        for attempt in range(5):
             try:
-                page.wait_for_load_state("domcontentloaded", timeout=5000)
-                eval_links = page.eval_on_selector_all("a[href]", "elements => elements.map(e => ({href: e.href, text: e.innerText.trim()}))")
+                # Always grab the active top-level page
+                active_page = context.pages[-1] if context.pages else page
+                active_page.wait_for_load_state("networkidle", timeout=5000)
+                eval_links = active_page.evaluate("""() => {
+                    return Array.from(document.querySelectorAll('a[href]')).map(e => ({
+                        href: e.href,
+                        text: (e.innerText || e.textContent || '').trim()
+                    }));
+                }""")
                 links = eval_links
+                page = active_page
                 break
             except Exception as e:
-                print(f"Pobieranie linków (próba {attempt+1}/3)... krótka pauza.")
+                print(f"Oczekiwanie na ustabilizowanie się strony (próba {attempt+1}/5)...")
                 time.sleep(2)
 
         lesson_urls = []

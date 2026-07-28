@@ -6,9 +6,9 @@
 # ======================================================================
 
 $ErrorActionPreference = "Stop"
-$PROJECT = "holistic-dashboard-dev"
-$REGION = "europe-west1"  # Belgia — ujednolicony region dla wszystkich usług oraz Vertex AI Agent Builder
-$SERVICE = "jaison-x2o-portal"
+$PROJECT = "falazycia-os"
+$REGION = "europe-west1"
+$SERVICE = "fala-zycia-web"
 $IMAGE = "gcr.io/$PROJECT/$SERVICE"
 
 Write-Host "Jaison X2O Portal - Deploy na Cloud Run" -ForegroundColor Cyan
