@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akademia Wiedzy dla Partnerów | Klub Fala Życia</title>
+  <meta name="description" content="Oficjalna Akademia Wiedzy Społeczności Fala Życia. Podstawy LifeWave, Kurs AI & Jaison MLM OS, Przewodnik Duplikacji, Świadomość Prosperująca, Loty w Klasie Biznes za Punkty oraz Szkoła Oddechu Wima Hofa.">
+  <link rel="canonical" href="https://fala-zycia.pl/akademia.html">
+  <link rel="icon" type="image/png" href="images/brand_icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #03060A;
+      --bg-card: rgba(10, 25, 41, 0.7);
+      --bg-card-hover: rgba(15, 35, 55, 0.9);
+      --text-main: #F8FAFC;
+      --text-heading: #FFFFFF;
+      --text-muted: #94A3B8;
+      --neon-cyan: #00D2C4;
+      --neon-purple: #9B51E0;
+      --neon-blue: #38BDF8;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    [data-theme="light"] {
+      --bg-dark: #f1f5f9;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --bg-card-hover: rgba(255, 255, 255, 1);
+      --text-main: #0f172a;
+      --text-heading: #0f172a;
+      --text-muted: #334155;
+      --neon-cyan: #0284c7;
+      --neon-purple: #8b5cf6;
+      --neon-blue: #0284c7;
+    }
+
+    [data-theme="light"] body {
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+    }
+
+    [data-theme="light"] .academy-hero,
+    [data-theme="light"] .module-card,
+    [data-theme="light"] .pacer-wrapper {
+      background: rgba(255, 255, 255, 0.95) !important;
+      border-color: rgba(2, 132, 199, 0.25) !important;
+      box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08) !important;
+      color: #0f172a !important;
+    }
+
+    [data-theme="light"] .hero-title,
+    [data-theme="light"] .module-title,
+    [data-theme="light"] h1,
+    [data-theme="light"] h2,
+    [data-theme="light"] h3 {
+      color: #0f172a !important;
+    }
+
+    [data-theme="light"] .hero-desc,
+    [data-theme="light"] .module-desc,
+    [data-theme="light"] p,
+    [data-theme="light"] li {
+      color: #334155 !important;
+    }
+
+    [data-theme="light"] .nav-link {
+      color: #0f172a !important;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Sticky Navbar */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(3, 6, 10, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 210, 196, 0.2);
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    [data-theme="light"] .sticky-header {
+      background: rgba(248, 250, 252, 0.95);
+      border-bottom-color: rgba(14, 165, 233, 0.2);
+    }
+
+    .nav-left { display: flex; align-items: center; gap: 15px; }
+
+    .logo-img { height: 44px; width: auto; border-radius: 50%; filter: drop-shadow(0 0 8px rgba(0,210,196,0.4)); }
+
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+
+    .nav-link {
+      color: var(--text-main);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-link:hover { color: var(--neon-cyan); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px 80px 20px; }
+
+    /* Hero Banner */
+    .academy-hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: radial-gradient(circle at 50% 30%, rgba(0,210,196,0.15) 0%, rgba(155,81,224,0.05) 50%, transparent 80%);
+      border: 1px solid rgba(0,210,196,0.2);
+      border-radius: 28px;
+      margin-bottom: 50px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .badge-hero {
+      display: inline-block;
+      padding: 6px 18px;
+      background: rgba(0,210,196,0.1);
+      border: 1px solid rgba(0,210,196,0.3);
+      color: var(--neon-cyan);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto 30px auto;
+    }
+
+    /* Modules Grid */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .module-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(0,210,196,0.18);
+      border-radius: 24px;
+      padding: 32px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    }
+
+    .module-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 15px 40px rgba(0, 210, 196, 0.15);
+      background: var(--bg-card-hover);
+    }
+
+    .module-icon { font-size: 2.5rem; margin-bottom: 16px; }
+
+    .module-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      font-family: var(--font-heading);
+    }
+
+    .module-title {
+      font-family: var(--font-heading);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 12px;
+    }
+
+    .module-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00D2C4, #0077b6);
+      color: #03060a;
+      box-shadow: 0 0 15px rgba(0,210,196,0.2);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 25px rgba(0,210,196,0.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: var(--text-main);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0,210,196,0.12);
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+    }
+
+    /* Pacer Widget Style */
+    .pacer-container {
+      background: rgba(0, 210, 196, 0.04);
+      border: 1px solid rgba(0, 210, 196, 0.2);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .pacer-circle {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,210,196,0.4) 0%, rgba(0,210,196,0.05) 70%);
+      border: 3px solid var(--neon-cyan);
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--neon-cyan);
+      box-shadow: 0 0 30px rgba(0, 210, 196, 0.3);
+      transition: transform 4s ease-in-out;
+    }
+
+    .pacer-circle.inhale { transform: scale(1.4); background: radial-gradient(circle, rgba(0,210,196,0.7) 0%, rgba(0,210,196,0.2) 70%); }
+    .pacer-circle.hold { transform: scale(1.4); border-color: var(--neon-purple); color: var(--neon-purple); }
+    .pacer-circle.exhale { transform: scale(0.9); }
+
+    /* Theme Switcher Button */
+    .theme-btn {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .theme-btn:hover { background: rgba(0,210,196,0.2); border-color: var(--neon-cyan); }
+
+    /* Interactive Chatbot Modal for Flight Hacking & Academy */
+    .chat-modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .chat-modal-content {
+      background: #071220;
+      border: 1px solid rgba(0,210,196,0.3);
+      border-radius: 24px;
+      width: 100%;
+      max-width: 600px;
+      height: 550px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .chat-modal-content {
+      background: #ffffff;
+      border-color: rgba(14, 165, 233, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top App Banner -->
+  <div style="background: linear-gradient(90deg, #00D2C4 0%, #9B51E0 100%); color: #03060A; font-weight: 700; font-size: 0.92rem; text-align: center; padding: 8px 15px; font-family: 'Outfit', sans-serif;">
+    ✨ Dołącz do Klubu Fala Życia | 🔐 Dedykowana Aplikacja &amp; Dashboard AI: 
+    <a href="https://fala-zycia-dashboard-194182220831.europe-central2.run.app" target="_blank" style="color: #03060A; text-decoration: underline; margin-left: 8px; font-weight: 800;">
+      Otwórz Dashboard &amp; Zaloguj się →
+    </a>
+  </div>
+
+  <!-- Sticky Header Nav -->
+  <header class="sticky-header">
+    <div class="nav-left">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <img src="images/whatsapp_group.png" alt="Klub Fala Życia" class="logo-img" style="width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 0 12px rgba(0,210,196,0.6);">
+        <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; color: var(--text-main);">Klub Fala Życia</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Strona Główna</a>
+      <a href="akademia.html" class="nav-link active" style="color: var(--neon-cyan); font-weight: 700;">Akademia Wiedzy</a>
+      <a href="ebook-mlm-duplikacja.html" class="nav-link">Podręcznik MLM</a>
+      <a href="https://fala-zycia-dashboard-194182220831.europe-central2.run.app" target="_blank" class="nav-link" style="background: rgba(0,210,196,0.15); border: 1px solid var(--neon-cyan); border-radius: 12px; padding: 6px 16px; color: var(--neon-cyan); font-weight: 700;">
+        🔐 App Dashboard AI
+      </a>
+      <button class="theme-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Motyw">🌙</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- Hero Section -->
+    <section class="academy-hero">
+      <span class="badge-hero">🎓 Baza Wiedzy &amp; Rozwoju Partnerów</span>
+      <h1 class="hero-title">Akademia Wiedzy Fala Życia</h1>
+      <p class="hero-desc">
+        Scentralizowane centrum edukacji i wzrostu dla Partnerów i Członków Społeczności. Odkryj sekrety fototerapii, wykorzystania AI w biznesie, zdrowia komórkowego, świadomości prosperującej oraz luksusowych podróży.
+      </p>
+
+      <div style="margin-top: 25px;">
+        <a href="https://fala-zycia-dashboard-194182220831.europe-central2.run.app" target="_blank" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #00D2C4 0%, #9B51E0 100%); color: #03060A; font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 1.1rem; border-radius: 16px; text-decoration: none; box-shadow: 0 8px 25px rgba(0, 210, 196, 0.4); transition: transform 0.3s ease;">
+          🚀 Otwórz Luksusowy Dashboard Klubu Fala Życia (App) →
+        </a>
+      </div>
+    </section>
+
+    <!-- 6 Modules Grid -->
+    <section class="modules-grid">
+
+      <!-- Moduł 1 -->
+      <article class="module-card">
+        <div>
+          <div class="module-icon">🚀</div>
+          <div class="module-tag">Moduł 1 • Podstawy</div>
+          <h2 class="module-title">Podstawy LifeWave &amp; Rejestracja</h2>
+          <p class="module-desc">
+            Instrukcja krok-po-kroku: Jak zarejestrować nowego partnera w LifeWave, wybrać pakiet startowy (Gold/Diamond), aktywować konto oraz stosować plastry fototerapeutyczne X39/X49.
+          </p>
+        </div>
+        <div>
+          <a href="x2o-guide-pl.html" class="btn btn-primary" style="width: 100%;">Otwórz Instrukcję Startową →</a>
+        </div>
+      </article>
+
+      <!-- Moduł 2 -->
+      <article class="module-card">
+        <div>
+          <div class="module-icon">🤖</div>
+          <div class="module-tag">Moduł 2 • Technologia AI</div>
+          <h2 class="module-title">Sztuczna Inteligencja &amp; Jaison MLM OS</h2>
+          <p class="module-desc">
+            Opanuj obsługę swojego osobistego cyfrowego trenera w komunikatorze WhatsApp. Automatyczne mikronawyki dopaminowe, meldunek DMO i gotowe szablony NLP do rekrutacji.
+          </p>
+        </div>
+        <div>
+          <a href="https://mlm.jaison.pl" target="_blank" class="btn btn-primary" style="width: 100%;">Uruchom Jaison MLM OS →</a>
+        </div>
+      </article>
+
+      <!-- Moduł 3 -->
+      <article class="module-card">
+        <div>
+          <div class="module-icon">📈</div>
+          <div class="module-tag">Moduł 3 • Biznes &amp; Duplikacja</div>
+          <h2 class="module-title">Wielka Księga Duplikacji MLM</h2>
+          <p class="module-desc">
+            Synteza 18 polskich publikacji Liderów (Eric Worre, Obiekcje, Model 1357, Mindset Miliardera). Przewodnik budowania relacji z lekkością i bez wciskania.
+          </p>
+        </div>
+        <div>
+          <a href="ebook-mlm-duplikacja.html" class="btn btn-primary" style="width: 100%;">Czytaj Podręcznik Online →</a>
+        </div>
+      </article>
+
+      <!-- Moduł 4 -->
+      <article class="module-card">
+        <div>
+          <div class="module-icon">🧠</div>
+          <div class="module-tag">Moduł 4 • Świadomość Prosperująca</div>
+          <h2 class="module-title">Quantum Money &amp; Obfitość</h2>
+          <p class="module-desc">
+            Transformacja przekonań finansowych. Lekcje wideo w bezpiecznym streamingu + **pełne transkrypcje tekstowe VAK** i medytacje kwantowe usuwające blokady obfitości.
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openQuantumLessons()">Rozpocznij Lekcje Świadomości →</button>
+        </div>
+      </article>
+
+      <!-- Moduł 5 -->
+      <article class="module-card">
+        <div>
+          <div class="module-icon">✈️</div>
+          <div class="module-tag">Moduł 5 • Lifestylowy Hack</div>
+          <h2 class="module-title">Loty w Klasie Biznes za Punkty</h2>
+          <p class="module-desc">
+            Przewodnik po zbieraniu mil i punktów kart kredytowych (na podstawie kursu Moniki). Lataj po świecie w luksusowej biznes klasie za ułamek ceny!
+          </p>
+        </div>
+        <div>
+          <button class="btn btn-primary" style="width: 100%;" onclick="openFlightAgentModal()">Zapytaj Agenta "Biznes Klasa Advisor" ✈️</button>
+        </div>
+      </article>
+
+      <!-- Moduł 6 -->
+      <article class="module-card">
+        <div>
+          <div class="module-icon">🫁</div>
+          <div class="module-tag">Moduł 6 • Neuro-Fizjologia</div>
+          <h2 class="module-title">Szkoła Oddechu Wima Hofa</h2>
+          <p class="module-desc">
+            Zapanuj nad swoją psychiką, emocjami i fizjologią. Prowadzone sesje oddechu holotropowego i fali Wima Hofa z wbudowanym wirtualnym minutnikiem sesji oddechowej!
+          </p>
+        </div>
+        <div>
+          <a href="akademia-oddech.html" class="btn btn-primary" style="width: 100%;">Otwórz Szkołę Oddechu & Minutnik 🫁 →</a>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- Interactive Breathing Pacer Section -->
+    <section class="pacer-container" id="breathing-widget-section" style="display: none;">
+      <h2 style="font-family: var(--font-heading); color: var(--neon-cyan); margin-bottom: 10px;">🫁 Prowadzona Sesja Oddechowa Wima Hofa</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem;">
+        Podążaj za pulsowaniem koła. Wdech przez nos (energia do klatki), wstrzymanie (spokój), wydech (uwolnienie napięcia).
+      </p>
+      
+      <div class="pacer-circle" id="pacer-circle">Gotowy?</div>
+
+      <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px;">
+        <button class="btn btn-primary" onclick="togglePacerAnimation()">Start / Pauza</button>
+        <button class="btn btn-secondary" onclick="stopPacerAnimation()">Zakończ</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Flight Hacking AI Agent Modal -->
+  <div class="chat-modal-overlay" id="flight-modal">
+    <div class="chat-modal-content">
+      <div style="padding: 18px 24px; background: rgba(0,210,196,0.1); border-bottom: 1px solid rgba(0,210,196,0.2); display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.5rem;">✈️</span>
+          <div>
+            <h3 style="font-family: var(--font-heading); font-size: 1.05rem; color: var(--text-heading); margin: 0;">Biznes Klasa Advisor AI</h3>
+            <span style="font-size: 0.75rem; color: var(--neon-cyan);">Ekspert Lotów za Punkty &amp; Milki</span>
+          </div>
+        </div>
+        <button onclick="closeFlightModal()" style="background: none; border: none; color: var(--text-muted); font-size: 24px; cursor: pointer;">&times;</button>
+      </div>
+
+      <div style="flex-grow: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; font-size: 0.92rem;" id="flight-chat-body">
+        <div style="background: rgba(0,210,196,0.08); border: 1px solid rgba(0,210,196,0.2); padding: 14px; border-radius: 12px;">
+          <strong>Biznes Klasa Advisor:</strong> Witaj! Nazywam się Twój Asystent Taniego Lataniami w Klasie Biznes. Przeanalizowałem komplet wiedzy z przewodnika Moniki. Zapytaj mnie o przeliczniki mil, karty Amex/Miles&amp;More lub jak dolecieć do Azji/USA w Biznes Klasie! 🌍✈️
+        </div>
+      </div>
+
+      <div style="padding: 15px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; gap: 10px;">
+        <input type="text" id="flight-chat-input" placeholder="Zapytaj o trasy lub punkty..." style="flex-grow: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 10px 15px; color: var(--text-main); font-size: 0.9rem;" onkeypress="if(event.key==='Enter') sendFlightMessage()">
+        <button class="btn btn-primary" onclick="sendFlightMessage()">Wyślij</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Theme Switcher
+    function initTheme() {
+      const savedTheme = localStorage.getItem('fala_zycia_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.getElementById('theme-toggle').innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('fala_zycia_theme', next);
+      document.getElementById('theme-toggle').innerHTML = next === 'dark' ? '☀️' : '🌙';
+    }
+
+    // Breathing Pacer Logic
+    let pacerTimer = null;
+    let pacerState = 0; // 0: inhale, 1: hold, 2: exhale
+
+    function startBreathingSession() {
+      const widget = document.getElementById('breathing-widget-section');
+      widget.style.display = 'block';
+      widget.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function togglePacerAnimation() {
+      if (pacerTimer) {
+        clearInterval(pacerTimer);
+        pacerTimer = null;
+        document.getElementById('pacer-circle').innerHTML = 'Pauza';
+        document.getElementById('pacer-circle').className = 'pacer-circle';
+      } else {
+        runPacerStep();
+        pacerTimer = setInterval(runPacerStep, 4000);
+      }
+    }
+
+    function runPacerStep() {
+      const circle = document.getElementById('pacer-circle');
+      if (pacerState === 0) {
+        circle.innerHTML = 'WDECH (4s)';
+        circle.className = 'pacer-circle inhale';
+        pacerState = 1;
+      } else if (pacerState === 1) {
+        circle.innerHTML = 'WSTRZYMAJ (4s)';
+        circle.className = 'pacer-circle hold';
+        pacerState = 2;
+      } else {
+        circle.innerHTML = 'WYDECH (4s)';
+        circle.className = 'pacer-circle exhale';
+        pacerState = 0;
+      }
+    }
+
+    function stopPacerAnimation() {
+      if (pacerTimer) clearInterval(pacerTimer);
+      pacerTimer = null;
+      pacerState = 0;
+      document.getElementById('pacer-circle').innerHTML = 'Gotowy?';
+      document.getElementById('pacer-circle').className = 'pacer-circle';
+      document.getElementById('breathing-widget-section').style.display = 'none';
+    }
+
+    // Quantum Lessons Demo Alert
+    function openQuantumLessons() {
+      alert("Rozpoczynasz Moduł 4: Świadomość Prosperująca. Lekcje VAK i transkrypcje załadowane. Włącz słuchawki dla medytacji kwantowej!");
+    }
+
+    // Flight Agent Modal Logic
+    function openFlightAgentModal() {
+      document.getElementById('flight-modal').style.display = 'flex';
+    }
+
+    function closeFlightModal() {
+      document.getElementById('flight-modal').style.display = 'none';
+    }
+
+    function sendFlightMessage() {
+      const input = document.getElementById('flight-chat-input');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const body = document.getElementById('flight-chat-body');
+      
+      const userDiv = document.createElement('div');
+      userDiv.style.cssText = "background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); padding: 12px; border-radius: 12px; align-self: flex-end; max-width: 85%; margin-left: auto;";
+      userDiv.innerHTML = "<strong>Ty:</strong> " + text;
+      body.appendChild(userDiv);
+
+      input.value = '';
+
+      setTimeout(() => {
+        const aiDiv = document.createElement('div');
+        aiDiv.style.cssText = "background: rgba(0,210,196,0.08); border: 1px solid rgba(0,210,196,0.2); padding: 14px; border-radius: 12px; align-self: flex-start; max-width: 88%; line-height: 1.6;";
+        
+        let response = "";
+        const lower = text.toLowerCase();
+
+        if (lower.includes("wyszukiwark") || lower.includes("portal") || lower.includes("szukać") || lower.includes("agregator")) {
+          response = "<strong>Biznes Klasa Advisor AI:</strong><br>Oto 4 najważniejsze wyszukiwarki biletów za punkty z kursu Piotra Lotniczego i Moniki:<br>1. 🌐 <a href='https://seats.aero' target='_blank' style='color:#00D2C4;font-weight:bold;'>Seats.aero</a> – Błyskawiczny skaner dostępności klas Biznes w Star Alliance, Oneworld i SkyTeam.<br>2. ✈️ <a href='https://roame.travel' target='_blank' style='color:#00D2C4;font-weight:bold;'>Roame.travel</a> – Przeszukuje 12+ programów milowych jednocześnie z dokładną wyceną punktową.<br>3. 🎯 <a href='https://point.me' target='_blank' style='color:#00D2C4;font-weight:bold;'>Point.me</a> – Przewodnik pokazujący dokładnie, z której karty przelać punkty.<br>4. 📊 <a href='https://awardtool.com' target='_blank' style='color:#00D2C4;font-weight:bold;'>AwardTool.com</a> – Kalendarz wolnych miejsc na cały rok.";
+        } else if (lower.includes("usa") || lower.includes("ameryk") || lower.includes("nowy jork")) {
+          response = "<strong>Biznes Klasa Advisor AI:</strong><br>✈️ <strong>Najlepsze Trasy do USA w Klasie Biznes:</strong><br>• <strong>Miles & More (LOT / Lufthansa):</strong> Szukaj promocyjnych stawek 'Meilenschnäppchen' za <strong>55 000 mil</strong> w obie strony (zamiast 112 000)!<br>• <strong>Flying Blue (Air France/KLM):</strong> Szukaj stawek Promo Rewards od 37 500 mil w jedną stronę z zaledwie ~200 zł opłat podawczych!";
+        } else {
+          response = "<strong>Biznes Klasa Advisor AI:</strong><br>Zgodnie z kompendium wiedzy z kursu Piotra Lotniczego i Moniki:<br>• **Zasada 1:** Punkty zbieraj na codziennych płatnościach (Amex MR / Citi Handlowy Miles & More).<br>• **Zasada 2:** Korzystaj z agregatora <a href='https://seats.aero' target='_blank' style='color:#00D2C4;'>Seats.aero</a> do natychmiastowego wyłapywania miejsc w terytoriach I/O.<br>• **Zasada 3:** Rezerwuj loty 'Sweet Spots' (np. Okazje Milowe Miles & More za 55 000 mil). Zapytaj o konkretny kierunek (USA, Azja, Karaiby)!";
+        }
+
+        aiDiv.innerHTML = response;
+        body.appendChild(aiDiv);
+        body.scrollTop = body.scrollHeight;
+      }, 600);
+    }
+
+    document.addEventListener('DOMContentLoaded', initTheme);
+  </script>
+</body>
+</html>

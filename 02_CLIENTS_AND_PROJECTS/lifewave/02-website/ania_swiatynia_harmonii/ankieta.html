@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Świątynia Harmonii - Ankieta Projektowa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --magenta: #B32D52;
+            --gold: #D4AF37;
+            --sand: #F5EBE6;
+        }
+        body {
+            background-color: var(--sand);
+            background-image: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1), transparent 40%),
+                              radial-gradient(circle at bottom left, rgba(179, 45, 82, 0.1), transparent 40%);
+            font-family: 'Inter', sans-serif;
+            color: #333;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+        .input-field {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid #e2e8f0;
+            background: rgba(255, 255, 255, 0.9);
+            transition: all 0.3s ease;
+        }
+        .input-field:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--magenta), #982245);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(179, 45, 82, 0.3);
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="min-h-screen py-10 px-4 sm:px-6 lg:px-8">
+
+<div class="max-w-3xl mx-auto glass-panel rounded-2xl p-6 sm:p-10">
+    <div class="text-center mb-10">
+        <h1 class="text-3xl sm:text-4xl font-semibold mb-3" style="color: var(--magenta);">Świątynia Harmonii</h1>
+        <p class="text-gray-600 text-lg">Krótki wywiad projektowy dla Twojej nowej strony WWW 🌺</p>
+    </div>
+
+    <form id="projectSurvey" onsubmit="sendWhatsApp(event)" class="space-y-8">
+        
+        <!-- Sekcja 1: Estetyka -->
+        <div class="space-y-5">
+            <h2 class="text-2xl font-medium border-b pb-2" style="border-color: var(--gold);">🎨 Warstwa Wizualna i Estetyka</h2>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">1. Kolory</label>
+                <p class="text-xs text-gray-500 mb-2">Nasza propozycja (z ulotki) to głęboka magenta/purpura, przełamana perłowym złotem i bielą. Zgadzasz się, czy dodajemy coś jeszcze?</p>
+                <div class="mb-4 overflow-hidden rounded-xl border border-gold bg-white shadow-sm max-w-sm p-4 text-center">
+                    <p class="text-sm font-medium" style="color: var(--magenta)">Otwórz załączoną przez Tomasza na WhatsAppie ulotkę "Pij Światło. Żyj Lepiej." z Twoim zdjęciem jako referencję barw. 🌺</p>
+                </div>
+                <input type="text" name="kolory" class="input-field" placeholder="Twoja odpowiedź..." required>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">2. Czcionki (Typografia)</label>
+                <select name="czcionki" class="input-field" required>
+                    <option value="" disabled selected>Wybierz preferowany styl...</option>
+                    <option value="Nowoczesne i minimalistyczne (proste)">Nowoczesne i minimalistyczne (proste)</option>
+                    <option value="Klasyczne i eleganckie (z szeryfami)">Klasyczne i eleganckie (z szeryfami)</option>
+                    <option value="Z akcentami odręcznymi (artystyczne)">Z akcentami odręcznymi (artystyczne)</option>
+                    <option value="Zaufam Wam">Zaufam Wam</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">3. Klimat strony w 3 słowach</label>
+                <input type="text" name="klimat" class="input-field" placeholder="np. luksusowy, medyczny, ciepły..." required>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">4. Logo</label>
+                <select name="logo" class="input-field" required>
+                    <option value="" disabled selected>Co robimy z logotypem?...</option>
+                    <option value="Mam własne gotowe logo (doślę)">Mam własne gotowe logo (doślę)</option>
+                    <option value="Używamy złotego Lotosu z materiałów">Używamy złotego Lotosu z obecnych materiałów</option>
+                    <option value="Chcę stworzyć coś nowego">Chcę stworzyć coś nowego</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">5. Inspiracje (Opcjonalnie)</label>
+                <p class="text-xs text-gray-500 mb-2">Czy masz przykłady innych stron WWW, które Ci się podobają? Wklej linki lub opisz.</p>
+                <textarea name="inspiracje" rows="2" class="input-field" placeholder="Twoje inspiracje..."></textarea>
+            </div>
+        </div>
+
+        <!-- Sekcja 2: Przekaz -->
+        <div class="space-y-5 pt-4">
+            <h2 class="text-2xl font-medium border-b pb-2" style="border-color: var(--gold);">📝 Przekaz i Treść</h2>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">6. Kluczowy Przekaz</label>
+                <p class="text-xs text-gray-500 mb-2">Co klient ma poczuć/zrozumieć w pierwszej sekundzie na stronie?</p>
+                <textarea name="przekaz" rows="2" class="input-field" placeholder="Twoja odpowiedź..." required></textarea>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">7. Twoja Unikalność</label>
+                <p class="text-xs text-gray-500 mb-2">Co sprawia, że Twoje sesje są inne niż w standardowych gabinetach?</p>
+                <textarea name="unikalnosc" rows="2" class="input-field" placeholder="Twoja odpowiedź..." required></textarea>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">8. Ton Komunikacji</label>
+                <select name="ton" class="input-field" required>
+                    <option value="" disabled selected>Jak piszemy do klienta?...</option>
+                    <option value="Bezpośrednio i na 'Ty' (ciepło, opiekuńczo)">Bezpośrednio i na "Ty" (ciepło, opiekuńczo)</option>
+                    <option value="Bardziej oficjalnie (profesjonalnie)">Bardziej oficjalnie (profesjonalnie)</option>
+                    <option value="Mistycznie / Duchowo">Mistycznie / Duchowo</option>
+                </select>
+            </div>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">9. Zdjęcia i Materiały</label>
+                <select name="zdjecia" class="input-field" required>
+                    <option value="" disabled selected>Jakie zdjęcia wykorzystamy?...</option>
+                    <option value="Pracujemy na tym co jest (zdjęcia od LifeWave)">Pracujemy na tym co jest (zdjęcia od LifeWave)</option>
+                    <option value="Dostarczam własną, nową sesję z gabinetu">Dostarczam własną, nową sesję z gabinetu</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Sekcja 3: Funkcje -->
+        <div class="space-y-5 pt-4">
+            <h2 class="text-2xl font-medium border-b pb-2" style="border-color: var(--gold);">⚙️ Funkcje i Ścieżka Klienta</h2>
+            
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">10. Dodatkowy Cel Strony</label>
+                <p class="text-xs text-gray-500 mb-2">Oprócz rezerwacji wizyty, na czym Ci zależy? (np. edukacja o X2O, zapisy do zespołu)</p>
+                <input type="text" name="cel" class="input-field" placeholder="Twoja odpowiedź..." required>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">11. Ekspozycja LifeWave</label>
+                <select name="lifewave" class="input-field" required>
+                    <option value="" disabled selected>Gdzie promujemy produkty LifeWave?...</option>
+                    <option value="Osobna zakładka na stronie głównej (wydzielone)">Osobna zakładka na stronie głównej (wydzielone)</option>
+                    <option value="Mocno na stronie głównej obok zabiegów (zintegrowane)">Mocno na stronie głównej obok zabiegów (zintegrowane)</option>
+                    <option value="Całkowicie odseparowane na nowej stronie np. ania.fala-zycia.pl">Całkowicie odseparowane na nowym Landing Page'u (np. ania.fala-zycia.pl)</option>
+                </select>
+                <p class="text-xs text-gray-500 mt-2">💡 <b>Wskazówka od Tomasza:</b> Możemy całkowicie oddzielić gabinet (Masaże Kobido, Refleksologia) od Twojej działalności jako Brand Partner LifeWave. Mam gotowy system, by postawić Ci dedykowaną, oddzielną stronę klubową pod adresem <b>ania.fala-zycia.pl</b>, co ułatwi Ci polecanie plastrów i wody klientom biznesowym, nie mieszając tego z wizytówką samego gabinetu.</p>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">12. Cennik</label>
+                <select name="cennik" class="input-field" required>
+                    <option value="" disabled selected>Co robimy z cenami?...</option>
+                    <option value="Otwarty, widoczny bezpośrednio na stronie">Otwarty, widoczny bezpośrednio na stronie</option>
+                    <option value="Ukryty, widoczny dopiero w systemie rezerwacji">Ukryty, widoczny dopiero w systemie rezerwacji</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="pt-8 pb-4 text-center">
+            <p class="text-sm text-gray-500 mb-4">Po kliknięciu przycisku, otworzy się aplikacja WhatsApp. Skopiuj wygenerowany tekst i wyślij go do Tomasza.</p>
+            <button type="submit" class="btn-primary w-full sm:w-auto px-10 py-4 rounded-full font-semibold text-lg flex items-center justify-center mx-auto">
+                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                Wyślij odpowiedzi przez WhatsApp
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    function sendWhatsApp(e) {
+        e.preventDefault();
+        const form = e.target;
+        
+        let message = "🌺 *ANKIETA PROJEKTOWA: Świątynia Harmonii* 🌺\n\n";
+        message += "Cześć! Przesyłam moje odpowiedzi do strony:\n\n";
+        
+        message += "*🎨 WARSTWA WIZUALNA:*\n";
+        message += "1. Kolory: " + form.kolory.value + "\n";
+        message += "2. Czcionki: " + form.czcionki.value + "\n";
+        message += "3. Klimat (3 słowa): " + form.klimat.value + "\n";
+        message += "4. Logo: " + form.logo.value + "\n";
+        if(form.inspiracje.value) message += "5. Inspiracje: " + form.inspiracje.value + "\n";
+        else message += "5. Inspiracje: Brak\n";
+        
+        message += "\n*📝 PRZEKAZ I TREŚĆ:*\n";
+        message += "6. Kluczowy Przekaz: " + form.przekaz.value + "\n";
+        message += "7. Moja Unikalność: " + form.unikalnosc.value + "\n";
+        message += "8. Ton Komunikacji: " + form.ton.value + "\n";
+        message += "9. Zdjęcia: " + form.zdjecia.value + "\n";
+
+        message += "\n*⚙️ FUNKCJE:*\n";
+        message += "10. Cel Strony: " + form.cel.value + "\n";
+        message += "11. Ekspozycja LifeWave: " + form.lifewave.value + "\n";
+        message += "12. Cennik: " + form.cennik.value + "\n";
+
+        const encodedMessage = encodeURIComponent(message);
+        
+        // WhatsApp protocol link
+        window.open(`https://wa.me/?text=${encodedMessage}`, '_blank');
+    }
+</script>
+
+</body>
+</html>

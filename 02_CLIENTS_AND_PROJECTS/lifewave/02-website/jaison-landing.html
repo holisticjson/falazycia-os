@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tomasz (Jaison) | Architekt Systemów AI & Lider Społeczności Fala Życia</title>
+  <meta name="description" content="Odkryj nowoczesne budowanie zespołu w biznesie LifeWave. Cyfrowy system asystencki Jaison OS na WhatsAppie, automatyzacja i wsparcie mentorskie Tomasza.">
+  <link rel="canonical" href="https://jaison.fala-zycia.pl/">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== DESIGN TOKENS ===== */
+    :root {
+      --bg-dark: #020509;
+      --bg-card: rgba(8, 18, 32, 0.6);
+      --border-card: rgba(0, 210, 196, 0.2);
+      --border-card-hover: rgba(0, 210, 196, 0.5);
+      --text-main: #f0f6fc;
+      --text-muted: #8b9eb0;
+      --text-bright: #ffffff;
+      
+      --neon-cyan: #00d2c4;
+      --neon-cyan-glow: rgba(0, 210, 196, 0.4);
+      --electric-blue: #0077b6;
+      
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .glass-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 20px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s ease;
+    }
+
+    .glass-card:hover {
+      border-color: var(--border-card-hover);
+      box-shadow: 0 25px 60px rgba(0, 210, 196, 0.15);
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--electric-blue) 100%);
+      color: #020509;
+      padding: 16px 36px;
+      border-radius: 12px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 0 25px var(--neon-cyan-glow);
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 35px rgba(0, 210, 196, 0.6);
+      color: #020509;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-bright);
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(0, 210, 196, 0.12);
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+    }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(2, 5, 9, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 18px 0;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-brand {
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--text-bright);
+      text-decoration: none;
+    }
+
+    .logo-brand span { color: var(--neon-cyan); }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 100px 0 70px 0;
+      text-align: center;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 210, 196, 0.1);
+      border: 1px solid rgba(0, 210, 196, 0.3);
+      padding: 8px 20px;
+      border-radius: 50px;
+      color: var(--neon-cyan);
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5.2vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--text-bright);
+      max-width: 950px;
+      margin: 0 auto 24px auto;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #ffffff 30%, var(--neon-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 40px auto;
+      line-height: 1.7;
+    }
+
+    /* ===== INTERACTIVE WHATSAPP SIMULATOR ===== */
+    .simulator-section {
+      padding: 80px 0;
+    }
+
+    .sim-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .step-card {
+      padding: 24px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(8, 18, 32, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .step-card.active {
+      background: rgba(0, 210, 196, 0.08);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 10px 30px rgba(0, 210, 196, 0.15);
+    }
+
+    .step-time {
+      display: inline-block;
+      background: rgba(0, 210, 196, 0.15);
+      color: var(--neon-cyan);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      font-family: var(--font-heading);
+    }
+
+    /* Phone Mockup */
+    .phone-mockup {
+      background: #020509;
+      border: 10px solid #101c2c;
+      border-radius: 40px;
+      padding: 16px 12px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+      max-width: 360px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .phone-screen {
+      background: #060e1a;
+      border-radius: 28px;
+      height: 480px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: #0d1a29;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .chat-avatar {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--neon-cyan), var(--electric-blue));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #020509;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow-y: auto;
+      font-size: 0.82rem;
+    }
+
+    .msg-bot {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      border-radius: 4px 14px 14px 14px;
+      padding: 12px;
+      max-width: 88%;
+    }
+
+    .msg-user {
+      background: rgba(0, 210, 196, 0.15);
+      border: 1px solid rgba(0, 210, 196, 0.3);
+      color: #ffffff;
+      border-radius: 14px 14px 4px 14px;
+      padding: 12px;
+      align-self: flex-end;
+      max-width: 85%;
+    }
+
+    /* CAL.COM SECTION */
+    .cal-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cal-card {
+      padding: 40px 20px;
+      margin-top: 40px;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 50px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .sim-grid { grid-template-columns: 1fr; }
+      .hero { padding: 60px 0 40px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="bg-canvas"></canvas>
+
+  <nav class="navbar">
+    <div class="container nav-wrapper">
+      <a href="https://jaison.fala-zycia.pl/" class="logo-brand">Tomasz <span>| Jaison OS</span></a>
+      <a href="#kalendarz" class="btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">Umów Konsultację</a>
+    </div>
+  </nav>
+
+  <header class="hero container">
+    <div class="badge-pill">🤖 SYSTEM WDROŻENIOWY & AI AUTOMATION</div>
+    <h1 class="hero-title">
+      Buduj Zespół w Biznesie Nowej Ery <span>Bez Zimnych Telefonów</span>
+    </h1>
+    <p class="hero-subtitle">
+      Dołącz do mojego zespołu w społeczności Fala Życia. Zamiast chaosu i zgadywania otrzymujesz gotowy system asystencki <strong>Jaison OS na WhatsAppie</strong>, szablony NLP oraz dedykowany lej rekrutacyjny od pierwszego dnia.
+    </p>
+    <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <a href="#kalendarz" class="btn-primary">📅 Umów Bezpłatną Konsultację</a>
+      <a href="#symulator" class="btn-secondary">📲 Zobacz Jak Działa Jaison OS</a>
+    </div>
+  </header>
+
+  <!-- Interactive WhatsApp Simulator -->
+  <section id="symulator" class="simulator-section container">
+    <div style="text-align: center; margin-bottom: 50px;">
+      <span style="color: var(--neon-cyan); font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;">Twój Cyfrowy Trener</span>
+      <h2 style="font-family: var(--font-heading); font-size: 2.4rem; color: var(--text-bright); margin-top: 10px;">Jaison OS na WhatsAppie w Akcji</h2>
+    </div>
+
+    <div class="sim-grid">
+      <div>
+        <div class="step-card glass-card active" onclick="loadChat(1, this)">
+          <span class="step-time">08:00 AM — Poranny Audyt Energii</span>
+          <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-bright);">Zaczynasz Dzień od Krystalicznego Nawodnienia</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem;">Jaison przypomina o nawodnieniu X2O oraz aplikacji elektrody X39, sprawdzając Twój poziom skupienia.</p>
+        </div>
+
+        <div class="step-card glass-card" onclick="loadChat(2, this)">
+          <span class="step-time">12:30 PM — Asystent Komunikacji NLP</span>
+          <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-bright);">Gotowe Skrypty & Rozbijanie Obiekcji</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem;">Masz pytanie od klienta? Jaison generuje precyzyjną, profesjonalną odpowiedź w ułamku sekundy.</p>
+        </div>
+
+        <div class="step-card glass-card" onclick="loadChat(3, this)">
+          <span class="step-time">20:00 PM — Wieczorny Audyt Wyników</span>
+          <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-bright);">Analiza Postępów i Podsumowanie Dnia</h3>
+          <p style="color: var(--text-muted); font-size: 0.92rem;">System rejestruje wykonane rozmowy, mierzy Twoją dyscyplinę i buduje trwały nawyk sukcesu.</p>
+        </div>
+      </div>
+
+      <div class="phone-mockup">
+        <div class="phone-screen">
+          <div class="chat-header">
+            <div class="chat-avatar">J</div>
+            <div>
+              <strong style="color: #fff; font-size: 0.9rem; display: block;">Jaison OS | Partner Trener</strong>
+              <span style="color: var(--neon-cyan); font-size: 0.72rem;">● Aktywny na WhatsAppie</span>
+            </div>
+          </div>
+          <div class="chat-messages" id="chat-box">
+            <div class="msg-bot">
+              <strong style="color: var(--neon-cyan); display: block; font-size: 0.75rem; margin-bottom: 4px;">JAISON OS</strong>
+              Dzień dobry, Tomasz! 🌅 Czas na poranny rytuał: 500ml wody z saszettką X2O i aplikację elektrody X39 na karku. Gotowy na 100% energii?
+            </div>
+            <div class="msg-user">
+              Zrobione! Nawodnienie zaliczone, elektroda przyklejona. Lecimy z planem!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cal.com Embedded Booking Section -->
+  <section id="kalendarz" class="cal-section container">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <span style="color: var(--neon-cyan); font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;">1-on-1 Strategy Call</span>
+      <h2 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--text-bright); margin-top: 10px;">Zarezerwuj 15-Minutową Rozmowę ze Mną</h2>
+      <p style="color: var(--text-muted); font-size: 1.05rem; margin-top: 12px;">Porozmawiajmy o tym, jak wdrożyć system Jaison OS w Twojej karierze i zbudować suwerenny biznes w oparciu o zdrowie i technologię.</p>
+    </div>
+
+    <div class="cal-card glass-card">
+      <iframe src="https://cal.com/jaison/15min?embed=true" style="width: 100%; height: 620px; border: none; border-radius: 16px; background: rgba(2, 5, 9, 0.4);" title="Cal.com Booking"></iframe>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Tomasz (Jaison) & Klub Fala Życia. Wszelkie prawa zastrzeżone.</p>
+      <p style="margin-top: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.4);">Kontakt: hello@jaison.pl | Partner Społeczności LifeWave</p>
+    </div>
+  </footer>
+
+  <script>
+    // Canvas animation
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    const particles = [];
+    for (let i = 0; i < 60; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        radius: Math.random() * 2 + 1,
+        color: '#00d2c4',
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5
+      });
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      particles.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
+        if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = p.color;
+        ctx.fill();
+      });
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    // Chat Interactive Switcher
+    function loadChat(step, el) {
+      document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
+      el.classList.add('active');
+
+      const chatBox = document.getElementById('chat-box');
+      if (step === 1) {
+        chatBox.innerHTML = `
+          <div class="msg-bot">
+            <strong style="color: var(--neon-cyan); display: block; font-size: 0.75rem; margin-bottom: 4px;">JAISON OS</strong>
+            Dzień dobry, Tomasz! 🌅 Czas na poranny rytuał: 500ml wody z saszetką X2O i aplikację elektrody X39 na karku. Gotowy na 100% energii?
+          </div>
+          <div class="msg-user">
+            Zrobione! Nawodnienie zaliczone, elektroda przyklejona. Lecimy z planem!
+          </div>
+        `;
+      } else if (step === 2) {
+        chatBox.innerHTML = `
+          <div class="msg-user">
+            Jaison, klient pyta: "Czym fototerapia X39 różni się od zwykłych suplementów z apteki?"
+          </div>
+          <div class="msg-bot">
+            <strong style="color: var(--neon-cyan); display: block; font-size: 0.75rem; margin-bottom: 4px;">JAISON OS (NLP GENERATOR)</strong>
+            Oto precyzyjna odpowiedź: "X39 nie wprowadza chemii z zewnątrz. Wykorzystuje swiatło Twojego ciała do aktywacji peptydu GHK-Cu, który pobudza własne komórki macierzyste do regeneracji."
+          </div>
+        `;
+      } else if (step === 3) {
+        chatBox.innerHTML = `
+          <div class="msg-bot">
+            <strong style="color: var(--neon-cyan); display: block; font-size: 0.75rem; margin-bottom: 4px;">JAISON OS</strong>
+            Wieczorny podsumowujący audyt 🌙: Dzisiaj wykonałeś 3 rozmowy wdrożeniowe i udostępniłeś 1 przewodnik PDF. Twoja dyscyplina wynosi 100%!
+          </div>
+          <div class="msg-user">
+            Świetnie, dziękuję Jaison! Dobranoc.
+          </div>
+        `;
+      }
+    }
+  </script>
+</body>
+</html>

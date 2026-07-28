@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ania Pilawska | Świątynia Harmonii — Pij Światło. Żyj Lepiej. (X2O &amp; LifeWave X39)</title>
+  <meta name="description" content="Oficjalny portal klubowy Ani Pilawskiej. Odskocznia do prawdziwego dobrostanu: Technika Bowena, Masaż Kobido, Woda X2O oraz fototerapia biofotonowa LifeWave X39.">
+  <link rel="canonical" href="https://swiatynia.fala-zycia.pl/">
+  
+  <!-- Structured Data: JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://swiatynia.fala-zycia.pl/#person",
+        "name": "Ania Pilawska",
+        "jobTitle": "Holistyczna Terapeutyka Dobrostanu &amp; Twórczyni Świątyni Harmonii",
+        "url": "https://swiatynia.fala-zycia.pl/",
+        "sameAs": [
+          "https://www.facebook.com/swiatyniaharmonii/",
+          "https://www.instagram.com/swia_tynia_har_monii/",
+          "https://swiatyniaharmonii.pl",
+          "https://share.google/YULqSoOy7UEADHYSJ"
+        ]
+      },
+      {
+        "@type": "BeautySalon",
+        "@id": "https://swiatynia.fala-zycia.pl/#salon",
+        "name": "Świątynia Harmonii Ania Pilawska",
+        "url": "https://swiatynia.fala-zycia.pl/",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "128"
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ===== PALETA BARW ANIA PILAWSKA ŚWIĄTYNIA HARMONII ===== */
+    :root {
+      --bg-base: #FCF8F7;
+      --bg-surface: #FFFFFF;
+      --bg-pink-soft: #F9EFEF;
+      --bg-glass: rgba(255, 255, 255, 0.9);
+      
+      --border-glass: rgba(197, 160, 89, 0.35);
+      --border-rose: rgba(179, 45, 82, 0.25);
+      
+      --text-main: #2A2426;
+      --text-muted: #6E6265;
+      --text-heading: #1A1617;
+      
+      --accent-magenta: #B32D52;
+      --accent-magenta-dark: #982245;
+      --accent-rose-light: #E8C5C8;
+      --accent-gold: #D4AF37;
+      --accent-gold-dark: #C5A059;
+      --accent-sand: #F5EBE6;
+      
+      --shadow-sm: 0 4px 15px rgba(179, 45, 82, 0.05);
+      --shadow-md: 0 10px 30px rgba(179, 45, 82, 0.08), 0 4px 12px rgba(212, 175, 55, 0.1);
+      --shadow-lg: 0 20px 50px rgba(179, 45, 82, 0.12);
+      
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.75;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(232, 197, 200, 0.35) 0%, transparent 45%),
+        radial-gradient(circle at 90% 65%, rgba(212, 175, 55, 0.2) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, rgba(179, 45, 82, 0.1) 0%, transparent 50%);
+    }
+
+    a {
+      color: var(--accent-magenta);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent-gold-dark);
+    }
+
+    /* ===== NAVIGATION ===== */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 5%;
+      background: rgba(252, 248, 247, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-magenta), var(--accent-rose-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 20px;
+      box-shadow: 0 4px 15px rgba(179, 45, 82, 0.25);
+    }
+
+    .logo-text {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent-magenta);
+      letter-spacing: 1px;
+      line-height: 1.1;
+    }
+
+    .logo-text span {
+      color: var(--accent-gold-dark);
+      font-family: var(--font-body);
+      font-size: 11px;
+      display: block;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .btn-magenta {
+      background: linear-gradient(135deg, #B32D52 0%, #D4AF37 100%);
+      color: #FFFFFF !important;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-magenta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      filter: brightness(1.08);
+    }
+
+    .btn-gold-outline {
+      background: var(--bg-surface);
+      color: var(--accent-magenta) !important;
+      border: 1px solid var(--accent-gold);
+      padding: 11px 24px;
+      border-radius: 30px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-gold-outline:hover {
+      background: var(--bg-pink-soft);
+      border-color: var(--accent-magenta);
+      transform: translateY(-2px);
+    }
+
+    /* ===== HERO SECTION ===== */
+    .hero {
+      position: relative;
+      padding: 150px 5% 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .lotus-header-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-gold-dark);
+      font-family: var(--font-serif);
+      font-size: 18px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 58px;
+      line-height: 1.08;
+      color: var(--accent-magenta);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero-title span {
+      color: var(--text-heading);
+    }
+
+    .hero-subtag {
+      font-size: 19px;
+      color: var(--accent-magenta-dark);
+      font-weight: 600;
+      margin-bottom: 28px;
+      line-height: 1.45;
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    /* 3D PEARL SPHERES GRID FROM ANIA'S GRAPHIC */
+    .flyer-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .flyer-pillar-item {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .flyer-pillar-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-magenta);
+    }
+
+    .pearl-sphere-icon {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, #F3D8E0 60%, #E2B8C4 100%);
+      border: 1.5px solid var(--accent-gold);
+      box-shadow: inset -2px -2px 6px rgba(179, 45, 82, 0.2), 0 6px 15px rgba(212, 175, 55, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold-dark);
+      font-size: 22px;
+    }
+
+    .flyer-pillar-content h4 {
+      font-family: var(--font-heading);
+      font-size: 16px;
+      color: var(--accent-magenta);
+      margin-bottom: 4px;
+      font-weight: 700;
+    }
+
+    .flyer-pillar-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* HERO CARD - PHOTO OF ANIA & X39 PATCH HIGHLIGHT */
+    .hero-card-frame {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-glass);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+      text-align: center;
+    }
+
+    .hero-card-frame img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 20px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 20px;
+      object-fit: cover;
+    }
+
+    .x39-patch-callout {
+      background: linear-gradient(135deg, rgba(249, 239, 239, 0.9), rgba(255, 255, 255, 0.95));
+      border: 1px solid var(--accent-gold);
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .x39-badge-dot {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      border: 2px solid var(--accent-gold);
+      box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-magenta);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    /* ===== SEKCJA: DOBROSTAN Z ANIA ===== */
+    .section {
+      padding: 90px 5%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .dobrostan-box {
+      background: var(--bg-surface);
+      border: 2px solid var(--border-glass);
+      border-radius: 28px;
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 60px;
+    }
+
+    .dobrostan-quote {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--accent-magenta);
+      line-height: 1.35;
+      text-align: center;
+      margin-bottom: 28px;
+      font-style: italic;
+    }
+
+    .dobrostan-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .dobrostan-card {
+      background: var(--bg-pink-soft);
+      border-radius: 16px;
+      padding: 24px;
+      border: 1px solid rgba(197, 160, 89, 0.2);
+    }
+
+    .dobrostan-card h4 {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      color: var(--accent-magenta);
+      margin-bottom: 8px;
+    }
+
+    .dobrostan-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* SYNERGIA 4 FILAROW */
+    .synergy-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .synergy-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 30px 24px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .synergy-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-magenta);
+    }
+
+    .synergy-card h3 {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      color: var(--accent-magenta);
+      margin-bottom: 10px;
+    }
+
+    .synergy-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    /* VIDEO SECTION */
+    .video-section-wrapper {
+      background: var(--bg-pink-soft);
+      border-top: 1px solid var(--border-glass);
+      border-bottom: 1px solid var(--border-glass);
+      padding: 90px 5%;
+    }
+
+    .video-card-container {
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--bg-surface);
+      border: 2px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+
+    .video-box-169 {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+      margin-bottom: 28px;
+      border: 2px solid var(--accent-gold);
+    }
+
+    .video-box-169 iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .cal-box-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow-md);
+      min-height: 600px;
+    }
+
+    .x2o-footer-banner {
+      background: linear-gradient(135deg, #B32D52 0%, #831B39 100%);
+      color: #FFFFFF;
+      border-radius: 24px;
+      padding: 50px;
+      text-align: center;
+      margin-top: 60px;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .x2o-footer-banner h2 {
+      font-family: var(--font-serif);
+      font-size: 52px;
+      letter-spacing: 4px;
+      margin-bottom: 10px;
+      color: #FFF;
+    }
+
+    footer {
+      padding: 50px 5% 30px;
+      background: #1A1617;
+      color: #E2D9DB;
+      text-align: center;
+    }
+
+    @media (max-width: 992px) {
+      .hero, .synergy-grid, .flyer-pillars-grid, .dobrostan-list {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero-title {
+        font-size: 44px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="https://swiatynia.fala-zycia.pl/" class="logo-brand">
+        <div class="logo-badge">
+          <i class="fa-solid fa-spa"></i>
+        </div>
+        <div class="logo-text">
+          Świątynia Harmonii
+          <span>Ania Pilawska x X2O &amp; LifeWave</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#dobrostan">Czym jest Dobrostan</a></li>
+        <li><a href="#pij-swiatlo">Pij Światło X2O</a></li>
+        <li><a href="#synergia">4 Filary Odnowy</a></li>
+        <li><a href="#wideo-instrukcja">Jak Zamówić</a></li>
+        <li><a href="#rezerwacja">Rezerwacja Cal.com</a></li>
+        <li><a href="https://swiatyniaharmonii.pl" target="_blank">Gabinet</a></li>
+      </ul>
+
+      <a href="#wideo-instrukcja" class="btn-magenta">
+        <i class="fa-solid fa-sparkles"></i> Zamów X39 &amp; X2O
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section z Grafiką Ani -->
+  <section class="hero" id="pij-swiatlo">
+    <div>
+      <div class="lotus-header-badge">
+        <i class="fa-solid fa-spa"></i> ŚWIĄTYNIA HARMONII ANIA PILAWSKA
+      </div>
+
+      <h1 class="hero-title">
+        PIJ ŚWIATŁO.<br>
+        <span>ŻYJ LEPIEJ.</span>
+      </h1>
+
+      <p class="hero-subtag">
+        X2O – innowacyjna technologia światła w Twojej wodzie.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#wideo-instrukcja" class="btn-magenta">
+          <i class="fa-solid fa-play"></i> Wideo Rejestracji w LifeWave
+        </a>
+        <a href="https://wa.me/48500000000?text=Cze%C5%9B%C4%87%20Ania!%20Chc%C4%99%20dowiedzie%C4%87%20si%C4%99%20wi%C4%99cej%20o%20X2O%20i%20LifeWave%20X39" class="btn-gold-outline" target="_blank">
+          <i class="fa-brands fa-whatsapp"></i> Napisz do Ani na WhatsApp
+        </a>
+      </div>
+
+      <!-- 4 Filary z Perłowymi Sferami 3D -->
+      <div class="flyer-pillars-grid">
+        <div class="flyer-pillar-item">
+          <div class="pearl-sphere-icon">
+            <i class="fa-solid fa-sun"></i>
+          </div>
+          <div class="flyer-pillar-content">
+            <h4>PIJ ŚWIATŁO.</h4>
+            <p>Twoja woda zostaje wzbogacona fotonami światła, które wspierają naturalne procesy organizmu.</p>
+          </div>
+        </div>
+
+        <div class="flyer-pillar-item">
+          <div class="pearl-sphere-icon">
+            <i class="fa-solid fa-water"></i>
+          </div>
+          <div class="flyer-pillar-content">
+            <h4>ODCZUJ RÓŻNICĘ.</h4>
+            <p>Lepsze nawodnienie, więcej energii, szybsza regeneracja i codzienny komfort.</p>
+          </div>
+        </div>
+
+        <div class="flyer-pillar-item">
+          <div class="pearl-sphere-icon">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+          </div>
+          <div class="flyer-pillar-content">
+            <h4>BĄDŹ NA WYŻSZYM POZIOMIE.</h4>
+            <p>Wspieraj swoją koncentrację, odporność i dobre samopoczucie – każdego dnia.</p>
+          </div>
+        </div>
+
+        <div class="flyer-pillar-item">
+          <div class="pearl-sphere-icon">
+            <i class="fa-solid fa-droplet"></i>
+          </div>
+          <div class="flyer-pillar-content">
+            <h4>KOD NATURY.</h4>
+            <p>Technologia oparta na świetle i starożytnej mądrości. Prosto, naturalnie, skutecznie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Prawa strona: Karta ze zdjęciem Ani & Plastrem X39 -->
+    <div class="hero-card-frame">
+      <div style="margin-bottom: 16px;">
+        <span style="color: var(--accent-magenta); font-family: var(--font-serif); font-size: 26px; font-weight: 700;">
+          Ania Pilawska
+        </span>
+        <p style="font-size: 13px; color: var(--text-muted); font-weight: 600;">
+          Technika Bowena &bull; Refleksologia &bull; Masaż Kobido
+        </p>
+      </div>
+
+      <div style="position: relative; display: inline-block; width: 100%;">
+        <img src="https://swiatynia.fala-zycia.pl/images/ania_x2o_x39.jpg" alt="Ania Pilawska z wodą X2O oraz plastrem biofotonowym LifeWave X39" onerror="this.src='https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&auto=format&fit=crop&q=80';">
+      </div>
+
+      <div class="x39-patch-callout">
+        <div class="x39-badge-dot">X39</div>
+        <div>
+          <strong style="color: var(--accent-magenta); font-size: 14px; display: block;">Bioregeneracja Fotonowa LifeWave X39</strong>
+          <span style="font-size: 12px; color: var(--text-muted);">
+            Plaster aktywuje własny peptyd miedzi GHK-Cu, stymulując komórki macierzyste bez chemii.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sekcja: Filozofia Dobrostanu wedle Ani -->
+  <section class="section" id="dobrostan">
+    <div class="dobrostan-box">
+      <p class="dobrostan-quote">
+        "Jeśli czujesz, że Twoje ciało potrzebuje zatrzymania i wsparcia... jestem tutaj, by Ci w tym towarzyszyć." 🌸
+      </p>
+
+      <div style="text-align: center; max-width: 700px; margin: 0 auto 30px;">
+        <h3 style="font-family: var(--font-serif); font-size: 32px; color: var(--accent-magenta); margin-bottom: 12px;">
+          Czym właściwie jest dobrostan?
+        </h3>
+        <p style="font-size: 16px; color: var(--text-muted);">
+          To stan, w którym czujesz pełną równowagę — fizycznie, emocjonalnie i psychicznie. To moment, gdy ciało i głowa zaczynają ze sobą współpracować.
+        </p>
+      </div>
+
+      <div class="dobrostan-list">
+        <div class="dobrostan-card">
+          <h4>Fizyczna Równowaga</h4>
+          <p>
+            Odpoczynek, ruch, oddech, nawodnienie żywą wodą X2O i delikatna praca z ciałem.
+          </p>
+        </div>
+
+        <div class="dobrostan-card">
+          <h4>Wyciszenie Nerwów</h4>
+          <p>
+            Technika Bowena i refleksologia łagodnie wyciszają układ nerwowy i uwalniają głębokie napięcia.
+          </p>
+        </div>
+
+        <div class="dobrostan-card">
+          <h4>Małe Kroki... Dziś</h4>
+          <p>
+            Dobrostan nie zaczyna się „kiedyś”. Zaczyna się od zatrzymania i podjęcia decyzji tu i teraz.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sekcja: Synergia 4 Filarów -->
+  <section class="section" id="synergia">
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 50px;">
+      <span style="color: var(--accent-gold-dark); font-size: 13px; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 700; display: block; margin-bottom: 8px;">
+        Holistyczna Ścieżka Świątyni Harmonii
+      </span>
+      <h2 style="font-family: var(--font-serif); font-size: 46px; color: var(--accent-magenta);">Cztery Filary Odnowy Organizmu</h2>
+    </div>
+
+    <div class="synergy-grid">
+      <div class="synergy-card">
+        <div>
+          <div class="pearl-sphere-icon"><i class="fa-solid fa-hands-holding"></i></div>
+          <h3>Metody Manualne Ani</h3>
+          <p>
+            Technika Bowena, Refleksologia i Kobido. Uwalniają napięcia, wyciszają układ nerwowy i dają ciału przestrzeń do samoregeneracji.
+          </p>
+        </div>
+        <strong style="color: var(--accent-gold-dark); font-size: 13px;">Głęboka Praca z Ciałem</strong>
+      </div>
+
+      <div class="synergy-card">
+        <div>
+          <div class="pearl-sphere-icon"><i class="fa-solid fa-glass-water"></i></div>
+          <h3>Woda X2O</h3>
+          <p>
+            Pij Światło. Żyj Lepiej. Saszetki z koralowcem Sango dostarczają 74+ minerałów w formie jonowej, zapewniając głębokie nawodnienie.
+          </p>
+        </div>
+        <strong style="color: var(--accent-gold-dark); font-size: 13px;">Komórkowa Alkalizacja</strong>
+      </div>
+
+      <div class="synergy-card">
+        <div>
+          <div class="pearl-sphere-icon"><i class="fa-solid fa-sun"></i></div>
+          <h3>Plastry X39</h3>
+          <p>
+            Biofotony i opaski światła podnoszące poziom peptydu miedzi GHK-Cu. Stymulacja własnych komórek macierzystych bez chemii.
+          </p>
+        </div>
+        <strong style="color: var(--accent-gold-dark); font-size: 13px;">Fototerapia Biofotonowa</strong>
+      </div>
+
+      <div class="synergy-card">
+        <div>
+          <div class="pearl-sphere-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>Cellergize AM/PM</h3>
+          <p>
+            Mitochondrialne paliwo ATP. Dawkuj czystą energię komórkową na dzień oraz głęboki, regeneracyjny sen na noc.
+          </p>
+        </div>
+        <strong style="color: var(--accent-gold-dark); font-size: 13px;">Energia ATP &amp; Sen</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Wideo Section & Rejestracja Afiliacyjna -->
+  <section class="video-section-wrapper" id="wideo-instrukcja">
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 40px;">
+      <span style="color: var(--accent-gold-dark); font-size: 13px; text-transform: uppercase; letter-spacing: 2.5px; font-weight: 700; display: block; margin-bottom: 8px;">
+        Poradnik Krok po Kroku
+      </span>
+      <h2 style="font-family: var(--font-serif); font-size: 42px; color: var(--accent-magenta);">Jak Zarejestrować się w LifeWave</h2>
+    </div>
+
+    <div class="video-card-container">
+      <div class="video-box-169">
+        <iframe src="https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ?rel=0&amp;modestbranding=1" title="Instrukcja Rejestracji LifeWave X39 i X2O" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <div style="text-align: center; max-width: 650px; margin: 0 auto;">
+        <h3 style="font-family: var(--font-serif); font-size: 30px; color: var(--accent-magenta); margin-bottom: 12px;">
+          Dołącz do Klubu Fala Życia
+        </h3>
+        <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 24px;">
+          Kliknij poniżej, aby dokonać zakupu bezpośrednio w sklepie producenta pod opiekuńczymi skrzydłami Ani Pilawskiej.
+        </p>
+
+        <a href="https://lifewave.com/" class="btn-magenta" style="font-size: 18px; padding: 16px 36px;" target="_blank">
+          <i class="fa-solid fa-cart-shopping"></i> Przejdź do Rejestracji w Sklepie LifeWave
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rezerwacja Cal.com -->
+  <section class="section" id="rezerwacja">
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 40px;">
+      <h2 style="font-family: var(--font-serif); font-size: 42px; color: var(--accent-magenta);">Zarezerwuj Wizytę w Świątyni Harmonii</h2>
+    </div>
+
+    <div class="cal-box-container">
+      <iframe src="https://cal.com/embed" style="width: 100%; height: 580px; border: none; border-radius: 16px;" title="Rezerwacja Zabiegu Cal.com"></iframe>
+    </div>
+
+    <div class="x2o-footer-banner">
+      <h2>X2O</h2>
+      <p style="font-size: 20px; letter-spacing: 3px; color: var(--accent-rose-light); margin-bottom: 20px; font-weight: 600;">
+        ŚWIATŁO. WODA. ŻYCIE.
+      </p>
+      <p style="font-size: 16px; opacity: 0.9;">
+        Nowy rozdział w Świątyni Harmonii już wkrótce. &nbsp; <i class="fa-solid fa-heart" style="color: var(--accent-rose-light);"></i>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <div class="logo-brand">
+        <div class="logo-badge">
+          <i class="fa-solid fa-spa"></i>
+        </div>
+        <div class="logo-text" style="color: #FFF;">
+          Świątynia Harmonii
+          <span>Ania Pilawska</span>
+        </div>
+      </div>
+      <p style="font-size: 13px; color: #A3989B;">
+        &copy; 2026 Świątynia Harmonii Ania Pilawska | Strona Pokazowa: <a href="https://swiatynia.fala-zycia.pl" style="color: var(--accent-gold);">swiatynia.fala-zycia.pl</a>
+      </p>
+      <div style="display: flex; gap: 20px; font-size: 14px;">
+        <a href="https://www.facebook.com/swiatyniaharmonii/" target="_blank" style="color: var(--accent-gold);"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        <a href="https://www.instagram.com/swia_tynia_har_monii/" target="_blank" style="color: var(--accent-gold);"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a href="https://swiatyniaharmonii.pl" target="_blank" style="color: var(--accent-rose-light);"><i class="fa-solid fa-globe"></i> Strona Gabinetu</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

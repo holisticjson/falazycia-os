@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raport Prawno-Podatkowy & Struktura Holdingu | Dlatych: Ania & Monika</title>
+  <meta name="description" content="Kompleksowy przewodnik prawno-podatkowy: Holding Fundacja + Spółka z o.o. dla Świątyni Harmonii i Projektu Fala Życia. Optymalizacja CIT, PIT, ZUS i grantów.">
+  <link rel="icon" type="image/png" href="../02-website/images/brand_icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #03060A;
+      --bg-card: rgba(10, 25, 41, 0.85);
+      --text-main: #F8FAFC;
+      --text-heading: #38BDF8;
+      --neon-cyan: #00D2C4;
+      --neon-purple: #9B51E0;
+      --neon-gold: #F59E0B;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    [data-theme="light"] {
+      --bg-dark: #f8fafc;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --text-main: #0f172a;
+      --text-heading: #0284c7;
+      --neon-cyan: #0284c7;
+      --neon-purple: #8b5cf6;
+      --neon-gold: #d97706;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.75;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .header-box {
+      text-align: center;
+      padding: 40px;
+      background: radial-gradient(circle at 50% 30%, rgba(0,210,196,0.18) 0%, rgba(155,81,224,0.1) 60%, transparent 100%);
+      border: 1px solid rgba(0,210,196,0.3);
+      border-radius: 28px;
+      margin-bottom: 40px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 20px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      color: var(--neon-gold);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid rgba(0,210,196,0.2);
+      border-radius: 24px;
+      padding: 35px;
+      margin-bottom: 35px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-heading);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    p { margin-bottom: 16px; font-size: 1.05rem; }
+
+    ul { margin-left: 20px; margin-bottom: 20px; }
+    li { margin-bottom: 10px; }
+
+    .highlight-gold {
+      background: rgba(245, 158, 11, 0.08);
+      border-left: 4px solid var(--neon-gold);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .highlight-cyan {
+      background: rgba(0, 210, 196, 0.08);
+      border-left: 4px solid var(--neon-cyan);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+    }
+
+    .table-custom {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 0.95rem;
+    }
+
+    .table-custom th, .table-custom td {
+      padding: 12px 16px;
+      border: 1px solid rgba(255,255,255,0.1);
+      text-align: left;
+    }
+
+    .table-custom th {
+      background: rgba(0,210,196,0.15);
+      color: var(--neon-cyan);
+      font-family: var(--font-heading);
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--neon-cyan);
+      color: #03060a;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+
+    <div class="header-box">
+      <span class="badge">⚖️ RAPORT DLA MONIKI, ANI I MARCINA</span>
+      <h1>Holding Prawno-Podatkowy: Fundacja + Spółka z o.o. Świątynia Harmonii</h1>
+      <p style="color: #94A3B8; max-width: 750px; margin: 0 auto;">
+        Analiza prawno-finansowa krok po kroku: Jak w 100% legalnie obniżyć podatki CIT, PIT i ZUS, pozyskiwać granty unijne oraz wykorzystać $10 000 USD/mies. darmowej reklamy Google dla Fundacji i Gabinetu.
+      </p>
+    </div>
+
+    <!-- Sekcja 1: Podział Ról i Niezależność Marek -->
+    <article class="card">
+      <h2>🏛️ 1. Dystynkcja i Podział Ról: Świątynia Harmonii vs Fundacja</h2>
+      <p>
+        **Świątynia Harmonii** jest unikalną, autorską marką i podmiotem Ani Pilawskiej (gabinet stacjonarny w Łodzi, ul. Nawrot 104 – masaże Kobido, biohacking, regeneracja komórkowa).
+      </p>
+      <div class="highlight-gold">
+        <strong>💡 STRATEGICZNA REKOMENDACJA DLA ANI I MARCINA PILAWSKICH:</strong><br>
+        1. **Założenie Dedykowanej Spółki z o.o. "Świątynia Harmonii Sp. z o.o."**, w której **Prezesem Zarządu jest Ania Pilawska lub Marcin Pilawski** (100% kontroli operacyjnej nad gabinetem i marką).<br>
+        2. **Fundacja (np. Fundacja Fala Życia)** objęłaby pakiet udziałów w Spółce z o.o. Świątynia Harmonii w odpowiedniej proporcji (np. 20-50%).<br>
+        3. Dzięki temu gabinet Ani zyskuje dostęp do wszystkich zwolnień podatkowych Fundacji, nie tracąc ani promila niezależności decyzyjnej!
+      </div>
+    </article>
+
+    <!-- Sekcja 2: Alternatywa - Zakup Gotowej Fundacji -->
+    <article class="card">
+      <h2>⚡ 2. Szybki Start: Zakup / Przejęcie Gotowej Fundacji</h2>
+      <p>
+        Standardowa rejestracja nowej Fundacji w KRS trwa od 2 do 4 miesięcy. Alternatywną i bardzo popularną ścieżką jest **zakup lub przejęcie gotowej, czystej Fundacji (shelf foundation)** z historią i aktywnym KRS/NIP/REGON:
+      </p>
+      <ul>
+        <li><strong>Czas wdrożenia:</strong> 48-72 godziny (zmiana Zarządu i Statutu u notariusza).</li>
+        <li><strong>Brak historii kredytowej/długów:</strong> Gotowe fundacje sprzedawane są z gwarancją braku zobowiązań.</li>
+        <li><strong>Historia w KRS:</strong> Posiadanie fundacji zarejestrowanej np. 1-2 lata temu ułatwia natychmiastowe ubieganie się o granty unijne i certyfikaty dofinansowań!</li>
+      </ul>
+    </article>
+
+    <!-- Sekcja 3: Tabela Zwolnień Podatkowych -->
+    <article class="card">
+      <h2>💰 3. Korzyści Podatkowe i ZUS w Praktyce</h2>
+      <table class="table-custom">
+        <thead>
+          <tr>
+            <th>Obszar</th>
+            <th>Tradycyjna Działalność / Spółka</th>
+            <th>Holding: Fundacja + Spółka z o.o.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Podatek CIT (Od zysku)</strong></td>
+            <td>9% lub 19% podatek płacony co miesiąc.</td>
+            <td><strong>0% CIT (Zwolnienie przedmiotowe z art. 17 ust. 1 pkt 4)</strong> – dochody przeznaczone na cele statutowe (zdrowie, nauka, edukacja) są bezpodatkowe!</td>
+          </tr>
+          <tr>
+            <td><strong>Składki ZUS Zarządu</strong></td>
+            <td>Pełen ZUS pracowniczy / składka zdrowotna 9%.</td>
+            <td><strong>Brak składki społecznej ZUS</strong> przy wynagrodzeniu z tytułu powołania uchwałą Zarządu.</td>
+          </tr>
+          <tr>
+            <td><strong>Darowizny B2B od Klientów</strong></td>
+            <td>Klienci nie mogą odliczyć wpłat od swojego podatku.</td>
+            <td>Klienci B2B i Partnerzy odliczają darowizny od dochodu: <strong>do 6% (PIT) i do 10% (CIT)</strong>.</td>
+          </tr>
+          <tr>
+            <td><strong>Google Ads & Reklama</strong></td>
+            <td>Własny budżet komercyjny.</td>
+            <td><strong>$10 000 USD / miesiąc (~40 000 zł/mies.) darmowych reklam</strong> w programie Google Ad Grants for Nonprofits!</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <!-- Sekcja 4: Plan Akcji dla Dziewczyn -->
+    <article class="card">
+      <h2>🚀 4. Krok po Kroku: Plan Akcji dla Moniki, Ani i Marcina</h2>
+      <div style="margin-top: 20px;">
+        <p><span class="step-number">1</span> <strong>Spotkanie Zarządcze i Omówienie Raportu:</strong> Zapoznanie się z koncepcją Holdingu i wyznaczenie celów statutowych (ochrona zdrowia, profilaktyka komórkowa, hydratacja X2O).</p>
+        <p><span class="step-number">2</span> <strong>Wypróbowanie Ścieżki Zakupu Gotowej Fundacji:</strong> Przejrzenie ofert czystych fundacji w KRS lub rejestracja nowej z dedykowanym Statutem.</p>
+        <p><span class="step-number">3</span> <strong>Założenie Spółki z o.o. Świątynia Harmonii:</strong> Powołanie Ani lub Marcina na Prezesa Zarządu i wniesienie udziałów przez Fundację.</p>
+        <p><span class="step-number">4</span> <strong>Wniosek do Google for Nonprofits:</strong> Pozyskanie 40 000 zł/mies. darmowego budżetu reklamowego na promocję bezpłatnych szklanek wody X2O i zabiegów regeneracyjnych!</p>
+      </div>
+    </article>
+
+  </main>
+
+</body>
+</html>

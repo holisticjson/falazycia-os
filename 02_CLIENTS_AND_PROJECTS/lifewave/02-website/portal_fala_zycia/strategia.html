@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategia & Raport Prawny - Klub Fala Życia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --space-black: #0A0A0A;
+            --deep-navy: #05101A;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --card-border: rgba(0, 210, 196, 0.2);
+            --text-main: #E2E8F0;
+            --text-muted: #94A3B8;
+            --text-heading: #F8FAFC;
+            --quantum-cyan: #00D2C4;
+            --quantum-blue: #0077B6;
+            --alert-red: #EF4444;
+            --success-green: #10B981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--space-black) 0%, var(--deep-navy) 100%);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            /* display: none handled on #main-content */
+        }
+
+        h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; color: var(--text-heading); }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 210, 196, 0.5);
+        }
+
+        .mission-box {
+            background: linear-gradient(135deg, rgba(0,210,196,0.1) 0%, rgba(0,119,182,0.1) 100%);
+            border-left: 4px solid var(--quantum-cyan);
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        .alert-box {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--alert-red);
+            padding: 20px;
+            border-radius: 0 15px 15px 0;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        th {
+            background: rgba(0,0,0,0.3);
+            color: var(--quantum-cyan);
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li { margin-bottom: 10px; }
+
+        /* VAK Anchoring styles */
+        strong { color: #FFF; font-weight: 700; }
+        .highlight-cyan { color: var(--quantum-cyan); font-weight: 600; }
+
+        #password-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--space-black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            flex-direction: column;
+            color: white;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .password-box {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            text-align: center;
+            box-shadow: 0 0 50px rgba(0,210,196,0.1);
+        }
+
+        input[type="password"] {
+            padding: 15px 20px;
+            margin-top: 20px;
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            text-align: center;
+        }
+
+        input[type="password"]:focus {
+            border-color: var(--quantum-cyan);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-blue) 100%);
+            color: white;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.3s ease;
+        }
+
+        button:hover { opacity: 0.9; }
+
+    </style>
+</head>
+<body>
+
+    <!-- PASSWORD OVERLAY -->
+    <div id="password-overlay">
+        <div class="password-box">
+            <h2>🔒 Strefa Zabezpieczona</h2>
+            <p style="margin-top: 10px; color: var(--text-muted);">Raport Strategiczny i Architektura Jaison OS</p>
+            <input type="password" id="pass-input" placeholder="Wprowadź hasło dostępu..." />
+            <button onclick="checkPassword()">Odblokuj Raport</button>
+            <p id="error-msg" style="color: #EF4444; margin-top: 15px; display: none;">Nieprawidłowe hasło!</p>
+        </div>
+    </div>
+
+    <div class="container" id="main-content" style="display: none;">
+        
+        <header>
+            <img src="images/whatsapp_group.png" alt="Fala Życia" style="width: 80px; border-radius: 50%; box-shadow: 0 0 20px rgba(0,210,196,0.5); margin-bottom: 20px;">
+            <h1 style="font-size: 2.8rem; margin-bottom: 10px;">Raport Prawno-Finansowy & <span class="gradient-text">Ekosystem Technologiczny</span></h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted);">Executive Summary dla Zespołu Fala Życia | Fundacja, Granty GCP i System Agentowy</p>
+        </header>
+
+        <!-- MISJA I WIZJA -->
+        <div class="section-card">
+            <h2>🌍 1. Misja, Wizja i Rozszerzenie Grupy Docelowej</h2>
+            
+            <div class="mission-box">
+                <strong>Nasza Misja:</strong> "Dostarczenie obiektywnych, sprawdzonych technologicznie narzędzi wspierających fizjologię organizmu, odbudowę komórkową i homeostazę energetyczną, przy użyciu najnowszych osiągnięć nauki i naturalnych metod."
+            </div>
+
+            <p>Aby nasz projekt wzrastał merytorycznie i skutecznie pozyskiwał zewnętrzne fundusze, musimy <strong>wyjść poza standardową ofertę Wellness</strong> i dotrzeć do osób zmagających się z wyzwaniami przewlekłymi.</p>
+            
+            <h4 style="margin-top: 20px; color: var(--quantum-cyan);">🎯 Rozszerzona Grupa Docelowa (Autoimmunologia i Choroby Rzadkie)</h4>
+            <ul>
+                <li><strong>Oparcie na Dowodach:</strong> Nasze wsparcie dla osób cierpiących na małe, odległe lub autoimmunologiczne choroby opiera się na <strong>testach obiektywnych</strong>, analizach parametrów we krwi i potwierdzonych klinicznie rezultatach.</li>
+                <li><strong>Język RODO i GIS:</strong> Kategorycznie unikamy zwrotów "leczymy z raka" lub "cofamy choroby". Posługujemy się bezpieczną terminologią opartą na dowodach: <span class="highlight-cyan">"Wspieramy zarządzanie stanami zapalnymi"</span>, <span class="highlight-cyan">"Podnosimy komfort i regenerację dobową pacjenta"</span>, <span class="highlight-cyan">"Wspieramy układ odpornościowy w chorobach autoimmunologicznych"</span>.</li>
+                <li><strong>Wsparcie Praktyczne:</strong> Nie tylko sprzedajemy plastry. Dostarczamy wiedzę poprzez portal <strong>fala-zycia.pl</strong> i naszą Akademię, z asystą inteligentnych chatbotów wspierających podopiecznych na każdym kroku.</li>
+            </ul>
+        </div>
+
+        <!-- ANALIZA PRAWNA -->
+        <div class="section-card">
+            <h2>⚖️ 2. Analiza Prawno-Finansowa (Fundacja vs Działalność Komercyjna)</h2>
+            <p>Naszym celem jest legalne działanie, budowanie wizerunku eksperckiego oraz kwalifikacja po darmowe środki chmurowe <strong>(Grant Google Cloud for Startups $350k)</strong> na budowę infrastruktury sztucznej inteligencji.</p>
+
+            <table style="margin-top: 20px;">
+                <thead>
+                    <tr>
+                        <th>Kryterium</th>
+                        <th>Fundacja "Fala Życia"</th>
+                        <th>Działalność Moniki (Jaison)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cel</strong></td>
+                        <td>Misyjny, np. wsparcie opieki paliatywnej. Darowizny X39 dla hospicjów.</td>
+                        <td>Dystrybucja B2B/B2C, budowanie biznesu, zyski.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Granty GCP ($300k+)</strong></td>
+                        <td>Wysoka szansa, ale trudna weryfikacja.</td>
+                        <td><strong>Najwyższa.</strong> Startup Programme preferuje byty z NIP/KRS i produktami "live".</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Granty UE / FIO</strong></td>
+                        <td>Bardzo wysoka (Zdrowie, Edukacja, Seniorzy).</td>
+                        <td>Dostęp tylko na innowacje technologiczne (AI).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Stan na dziś</strong></td>
+                        <td>Wymaga założenia i aktu notarialnego (1-2 msce).</td>
+                        <td><strong>Gotowe od zaraz.</strong> Podpinamy pod istniejącą działalność.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert-box">
+                <strong>Złoty Kompromis (Dwuetapowy Plan):</strong><br><br>
+                1. <strong>Tu i teraz:</strong> Aplikujemy o pierwsze 300$ oraz 1000$ w Google Cloud korzystając z NIP-u i działalności Moniki (Jaison OS). To pozwala nam błyskawicznie uruchomić systemy.<br>
+                2. <strong>Równolegle:</strong> Przygotowujemy statut i zakładamy organizację (Fundację lub Stowarzyszenie "Klub Fala Życia"), która będzie absorbować 1% podatku, dotacje od firm i zająć się działalnością społeczną.
+            </div>
+        </div>
+
+        <!-- EKOSYSTEM Jaison OS -->
+        <div class="section-card">
+            <h2>🤖 3. Wsparcie Technologiczne dla Partnerów (Jaison MLM OS)</h2>
+            <p>Przyjmujemy zasadę, że sercem operacji jest portal <strong>fala-zycia.pl</strong> wraz z <strong>Akademią Wiedzy</strong> oraz ukrytą aplikacją **Dashboard Streamlit** (wspierającą partnerów i działaczy).</p>
+
+            <h4 style="margin-top: 20px; color: var(--quantum-cyan);">Infrastruktura Jaison OS dla Liderów:</h4>
+            <ul>
+                <li><strong>Aplikacja Agentowa MLM:</strong> Zamiast tradycyjnych "szkoleń", partnerzy zostaną wpięci w agentów (komunikatory / dashboard), którzy będą wspierać ich pracę na żywo.</li>
+                <li><strong>Implementacja Nowoczesnego Marketingu:</strong> Uczymy liderów używać lejków sprzedażowych, a system automatycznie generuje im zaproszenia z zaszytym identyfikatorem LifeWave (linki referencyjne trackujące leady).</li>
+                <li><strong>Budowa Nawyków:</strong> Agenci przypominają o regularności działań, wspierają zdrowe nawyki i asystują w budowie zdrowego biznesu MLM, zapobiegając wypaleniu.</li>
+                <li><strong>Agregator Lotów (Flight Hacking):</strong> Udostępniamy naszym partnerom wiedzę Piotra Lotniczego, podpiętą pod sztuczną inteligencję, ułatwiając im darmowe latanie Biznes Klasą za zdobyte punkty.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- LOGIC -->
+    <script>
+        function checkPassword() {
+            const pass = document.getElementById('pass-input').value.trim().toLowerCase();
+            const error = document.getElementById('error-msg');
+            
+            // Zabezpieczenie z tolerancją na znaki i wielkość liter
+            const validPasswords = [
+                "fala życia 2026", "fala zycia 2026", "fala2026", "fala 2026", "falazycia2026", "fala"
+            ];
+
+            if(validPasswords.includes(pass)) {
+                document.getElementById('password-overlay').style.display = 'none';
+                document.getElementById('main-content').style.display = 'block';
+            } else {
+                error.style.display = 'block';
+                document.getElementById('pass-input').value = "";
+            }
+        }
+
+        // Możliwość zatwierdzenia Enterem
+        document.getElementById("pass-input").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+# GCP Service Account Keys & Credentials
+*.json
+!package.json
+!composer.json
+!tsconfig.json
+!sitemap.json
+fala-zycia-agent-sa-key.json
+*-key.json
+*.pem
+*.p12
+
+# Environment Variables & Secrets
+.env
+.env.*
+*.secret
+
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+ENV/
+
+# OS / IDE / Temp files
+~$*
+*.tmp
+*.pptx
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+scratch/
+tmp/

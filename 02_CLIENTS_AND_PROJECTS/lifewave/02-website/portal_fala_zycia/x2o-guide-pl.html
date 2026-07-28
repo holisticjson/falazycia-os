@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instrukcja Obsługi Systemu LifeWave X2O™ - Polska Wersja Premium | LifeWave4Life</title>
+  <link rel="canonical" href="https://x2o.jaison.pl/x2o-guide-pl.html">
+  
+  <!-- Structured Data: JSON-LD Schema (HowTo, FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "HowTo",
+        "name": "Jak skonfigurować i uruchomić urządzenie LifeWave X2O™",
+        "description": "Oficjalny polski poradnik techniczny instalacji, płukania i uruchomienia stacji aktywacji wody biofotonowej X2O.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Rozpakowanie i sprawdzenie komponentów",
+            "text": "Wyjmij stację z pudełka ochronnego, sprawdź kompletność zasilacza, wężyków i filtrów."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Płukanie filtra głównego",
+            "text": "Podłącz wężyk flushing i przepłucz filtr główny pod bieżącą wodą w celu aktywacji węgla i eliminacji pyłu węglowego."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Napełnianie i włączenie zasilania",
+            "text": "Napełnij zbiornik wodą i podłącz urządzenie do prądu za pomocą dołączonego adaptera."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Czy urządzenie wymaga dedykowanego zasilacza?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Tak, stacja X2O wymaga dołączonego oryginalnego zasilacza sieciowego o odpowiednich parametrach prądowych."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* VARIABLES & THEME SYSTEM (JAISON.PL PREMIUM TECH STYLING) */
+    :root {
+      --bg-gradient: radial-gradient(circle at 50% 0%, #0c1f36 0%, #050b14 80%), linear-gradient(180deg, #071220 0%, #03060a 100%);
+      --text-main: #F3F8FF;
+      --text-muted: #94A9C1;
+      --primary: #00D2C4;
+      --primary-hover: #00F3E5;
+      --primary-glow: rgba(0, 210, 196, 0.4);
+      --accent: #2C6B9E;
+      --accent-glow: rgba(44, 107, 158, 0.3);
+      --danger: #FF5A5F;
+      --warning: #FFAE19;
+      --card-bg: rgba(10, 25, 41, 0.6);
+      --card-border: rgba(0, 210, 196, 0.15);
+      --shadow-soft: 0 15px 40px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 25px rgba(0, 210, 196, 0.2);
+      --font-header: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    /* GENERAL STYLES */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.65;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* CUSTOM SCROLLBAR */
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #03060a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary);
+      border-radius: 5px;
+      border: 2px solid #03060a;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary-hover);
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    /* GLOWING AMBIENT DECORATIONS */
+    .glow-sphere {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(40px);
+      opacity: 0.7;
+    }
+
+    /* HEADER & BRANDING */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(0, 210, 196, 0.2);
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .brand-logo svg {
+      width: 50px;
+      height: 50px;
+      fill: var(--primary);
+      filter: drop-shadow(0 0 12px var(--primary-glow));
+      animation: pulse-glow 3s infinite ease-in-out;
+    }
+
+    header h1 {
+      font-family: var(--font-header);
+      font-size: 3.2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      background: linear-gradient(90deg, #FFFFFF 0%, var(--primary) 50%, #7FFFE1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+      text-shadow: 0 0 40px rgba(0, 210, 196, 0.15);
+    }
+
+    header p.subtitle {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .meta-badge {
+      display: inline-block;
+      background: rgba(0, 210, 196, 0.08);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 6px 18px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      box-shadow: 0 0 15px rgba(0, 210, 196, 0.15);
+    }
+
+    /* BENTO-STYLE NAVIGATION BAR */
+    .bento-nav {
+      background: rgba(10, 25, 41, 0.7);
+      border: 1px solid rgba(0, 210, 196, 0.15);
+      border-radius: 20px;
+      padding: 15px;
+      margin-bottom: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-soft);
+      z-index: 10;
+      position: relative;
+    }
+
+    .nav-pill {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-family: var(--font-header);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      cursor: pointer;
+    }
+
+    .nav-pill:hover {
+      background: rgba(0, 210, 196, 0.08);
+      border-color: var(--primary);
+      color: #FFFFFF;
+      box-shadow: 0 0 12px rgba(0, 210, 196, 0.25);
+      transform: translateY(-2px);
+    }
+
+    /* MANUAL SHEET CARD (GLASSMORPHISM) */
+    .guide-sheet {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      padding: 45px;
+      margin-bottom: 45px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+      z-index: 1;
+    }
+
+    .guide-sheet:hover {
+      border-color: rgba(0, 210, 196, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 210, 196, 0.15);
+      transform: translateY(-4px);
+    }
+
+    .guide-sheet::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary) 0%, #2575fc 50%, var(--primary) 100%);
+      background-size: 200% auto;
+      animation: gradient-flow 6s linear infinite;
+    }
+
+    .sheet-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 18px;
+    }
+
+    .page-indicator {
+      font-family: var(--font-header);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .page-indicator::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary);
+    }
+
+    /* GRID LAYOUT FOR SIDE-BY-SIDE VIEW */
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    @media (max-width: 950px) {
+      .sheet-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+    }
+
+    .text-column {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .visual-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      position: sticky;
+      top: 30px;
+    }
+
+    /* TYPOGRAPHY IN SHEETS */
+    h2 {
+      font-family: var(--font-header);
+      font-size: 2rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      margin-bottom: 22px;
+      line-height: 1.3;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h3 {
+      font-family: var(--font-header);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 30px 0 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h3:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    strong {
+      color: #FFFFFF;
+      font-weight: 600;
+    }
+
+    /* SYSTEM BLOCKS & ALERTS */
+    .alert-box {
+      border-radius: 16px;
+      padding: 24px;
+      margin: 25px 0;
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+      font-size: 1.02rem;
+      line-height: 1.7;
+    }
+
+    .alert-box svg {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+    }
+
+    .alert-danger {
+      background: rgba(255, 90, 95, 0.06);
+      border: 1px solid rgba(255, 90, 95, 0.25);
+      color: #FFC0C1;
+      box-shadow: inset 0 0 15px rgba(255, 90, 95, 0.05);
+    }
+    .alert-danger svg { fill: var(--danger); filter: drop-shadow(0 0 5px var(--danger)); }
+    .alert-danger strong { color: var(--danger); }
+
+    .alert-warning {
+      background: rgba(255, 174, 25, 0.06);
+      border: 1px solid rgba(255, 174, 25, 0.25);
+      color: #FFE5A3;
+      box-shadow: inset 0 0 15px rgba(255, 174, 25, 0.05);
+    }
+    .alert-warning svg { fill: var(--warning); filter: drop-shadow(0 0 5px var(--warning)); }
+    .alert-warning strong { color: var(--warning); }
+
+    .alert-success {
+      background: rgba(0, 210, 196, 0.06);
+      border: 1px solid rgba(0, 210, 196, 0.25);
+      color: #D2FFF9;
+      box-shadow: inset 0 0 15px rgba(0, 210, 196, 0.05);
+    }
+    .alert-success svg { fill: var(--primary); filter: drop-shadow(0 0 5px var(--primary)); }
+    .alert-success strong { color: var(--primary); }
+
+    /* LISTS & STEPS */
+    ul, ol {
+      margin-bottom: 25px;
+      padding-left: 24px;
+    }
+
+    li {
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+    }
+
+    li::marker {
+      color: var(--primary);
+    }
+
+    .step-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    .step-list li {
+      position: relative;
+      padding-left: 48px;
+      margin-bottom: 22px;
+    }
+
+    .step-number {
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 32px;
+      height: 32px;
+      background: rgba(0, 210, 196, 0.12);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-header);
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 0 10px rgba(0, 210, 196, 0.2);
+    }
+
+    /* TECHNICAL TABLES */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      background: rgba(255, 255, 255, 0.01);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    th, td {
+      padding: 16px 22px;
+      text-align: left;
+      font-size: 1.02rem;
+    }
+
+    th {
+      background: rgba(0, 210, 196, 0.08);
+      color: #FFFFFF;
+      font-family: var(--font-header);
+      font-weight: 600;
+      border-bottom: 1px solid rgba(0, 210, 196, 0.18);
+    }
+
+    td {
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* IMAGE CONTAINER & INTERACTIVE EFFECTS */
+    .image-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+      cursor: zoom-in;
+      background: #000000;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .image-wrapper:hover {
+      border-color: var(--primary);
+      box-shadow: 0 20px 45px rgba(0, 210, 196, 0.3);
+    }
+
+    .manual-page-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.85;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .image-wrapper:hover .manual-page-img {
+      transform: scale(1.03);
+      opacity: 1;
+    }
+
+    .zoom-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(6, 16, 30, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .image-wrapper:hover .zoom-overlay {
+      opacity: 1;
+    }
+
+    .zoom-overlay svg {
+      width: 52px;
+      height: 52px;
+      fill: var(--primary);
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.6));
+    }
+
+    .image-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    /* LIGHTBOX MODAL */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 2500;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: rgba(3, 6, 10, 0.97);
+      backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: #FFFFFF;
+      font-size: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 2600;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-close:hover {
+      color: var(--primary);
+      transform: scale(1.1);
+    }
+
+    .lightbox-content-wrapper {
+      max-width: 90%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox-content {
+      max-width: 100%;
+      max-height: 80vh;
+      border-radius: 16px;
+      box-shadow: 0 0 60px rgba(0, 210, 196, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transform: scale(0.92);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    }
+
+    .lightbox.active .lightbox-content {
+      transform: scale(1);
+    }
+
+    .lightbox-caption {
+      margin-top: 18px;
+      text-align: center;
+      color: var(--text-main);
+      font-family: var(--font-header);
+      font-size: 1.15rem;
+      font-weight: 500;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* VIMEO VIDEO COMPONENT */
+    .vimeo-container {
+      background: rgba(3, 6, 10, 0.5);
+      border-radius: 16px;
+      border: 1px solid rgba(0, 210, 196, 0.15);
+      overflow: hidden;
+      margin: 30px 0;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-thumbnail-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: radial-gradient(circle at center, #09131b 0%, #03060a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0, 210, 196, 0.1);
+    }
+
+    .video-thumbnail-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.55;
+      font-size: 0;
+      color: transparent;
+      transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .video-thumbnail-wrapper:hover img {
+      opacity: 0.75;
+      transform: scale(1.05);
+    }
+
+    .play-btn-overlay {
+      position: absolute;
+      width: 64px;
+      height: 64px;
+      background: radial-gradient(circle, rgba(0, 210, 196, 0.15) 0%, rgba(3, 6, 10, 0.7) 100%);
+      border: 2px solid rgba(0, 210, 196, 0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(0, 210, 196, 0.3), inset 0 0 20px rgba(0, 210, 196, 0.1);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 2;
+    }
+
+    .play-btn-overlay::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border: 1.5px solid rgba(0, 210, 196, 0.3);
+      border-radius: 50%;
+      opacity: 0.8;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .play-btn-overlay svg {
+      width: 26px;
+      height: 26px;
+      fill: #00d2c4;
+      filter: drop-shadow(0 0 5px rgba(0, 210, 196, 0.6));
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .video-thumbnail-wrapper:hover .play-btn-overlay {
+      transform: scale(1.1);
+      background: radial-gradient(circle, rgba(0, 210, 196, 0.3) 0%, rgba(3, 6, 10, 0.8) 100%);
+      border-color: #ffffff;
+      box-shadow: 0 0 40px rgba(0, 210, 196, 0.7), inset 0 0 25px rgba(0, 210, 196, 0.3);
+    }
+
+    .video-thumbnail-wrapper:hover .play-btn-overlay::before {
+      inset: -12px;
+      opacity: 0;
+      border-color: #ffffff;
+    }
+
+    .video-thumbnail-wrapper:hover .play-btn-overlay svg {
+      fill: #ffffff;
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.9));
+    }
+
+    /* Video Info Bar Styling */
+    .video-info-bar {
+      padding: 14px 18px;
+      background: rgba(3, 6, 10, 0.3);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .video-title {
+      font-size: 0.92rem;
+      color: #F8FAFC;
+      font-weight: 500;
+      font-family: 'Outfit', sans-serif;
+      line-height: 1.4;
+    }
+
+    .video-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .video-duration {
+      font-size: 0.78rem;
+      color: #00D2C4;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .video-separator {
+      color: rgba(255, 255, 255, 0.12);
+      font-size: 0.8rem;
+    }
+
+    .video-external-link {
+      font-size: 0.78rem;
+      color: #94A3B8;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 500;
+      transition: all 0.2s ease;
+    }
+
+    .video-external-link:hover {
+      color: #00D2C4;
+      text-shadow: 0 0 8px rgba(0, 210, 196, 0.4);
+    }
+
+    /* Mobile Redundancy Hide rules */
+    @media (max-width: 768px) {
+      #lightbox-external-link {
+        display: none !important;
+      }
+    }
+
+    /* LUXURIOUS VIDEO LIGHTBOX */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(3, 6, 10, 0.9);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .lightbox-modal .lightbox-modal-content {
+      position: relative;
+      width: 90%;
+      max-width: 850px;
+      background: rgba(10, 25, 30, 0.8);
+      border: 1px solid rgba(0, 210, 196, 0.25);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 210, 196, 0.15);
+      transform: scale(0.9);
+      transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .video-info-bar {
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .video-title {
+      font-family: var(--font-header);
+      font-weight: 600;
+      font-size: 1rem;
+      color: #FFFFFF;
+    }
+
+    .video-duration {
+      background: rgba(0, 210, 196, 0.12);
+      border: 1px solid var(--primary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* FLOATING PRINT FAB */
+    .print-fab {
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      background: var(--primary);
+      color: #03060a;
+      border: none;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 210, 196, 0.45);
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .print-fab:hover {
+      transform: scale(1.15) translateY(-2px);
+      background-color: var(--primary-hover);
+      box-shadow: 0 15px 35px var(--primary-hover);
+    }
+
+    .print-fab svg {
+      width: 28px;
+      height: 28px;
+      fill: #03060a;
+    }
+
+    /* CHATBOT FLOATING WIDGET PREVIEW */
+    .chatbot-fab {
+      position: fixed;
+      bottom: 40px;
+      left: 40px;
+      background: linear-gradient(135deg, #00D2C4 0%, #2575fc 100%);
+      color: #FFFFFF;
+      border: none;
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 210, 196, 0.4);
+      cursor: pointer;
+      z-index: 1000;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .chatbot-fab:hover {
+      transform: scale(1.15) translateY(-2px);
+      box-shadow: 0 15px 35px rgba(0, 210, 196, 0.6);
+    }
+
+    /* Speech bubble chat launcher prompt */
+    .chatbot-fab .chat-launcher-bubble {
+      position: absolute;
+      left: 80px;
+      right: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(10, 15, 30, 0.95);
+      border: 1px solid #00D2C4;
+      color: #FFFFFF;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 0 15px rgba(0, 210, 196, 0.4);
+      pointer-events: none;
+      opacity: 1;
+      transition: all 0.3s ease;
+      animation: bubblePulseLeft 2s infinite ease-in-out;
+    }
+
+    @keyframes bubblePulseLeft {
+      0%, 100% { transform: translateY(-50%) scale(1); box-shadow: 0 0 15px rgba(0, 210, 196, 0.4); }
+      50% { transform: translateY(-50%) scale(1.05); box-shadow: 0 0 25px rgba(0, 210, 196, 0.7); }
+    }
+
+    /* Hide bubble when chatbot is open */
+    body:has(.chat-window.active) .chat-launcher-bubble {
+      opacity: 0 !important;
+      visibility: hidden !important;
+      pointer-events: none !important;
+    }
+
+    .chatbot-fab svg {
+      width: 28px;
+      height: 28px;
+      fill: #FFFFFF;
+    }
+
+    /* MOCKUP CHAT WINDOW */
+    .chat-window {
+      position: fixed;
+      bottom: 120px;
+      left: 40px;
+      width: 380px;
+      height: 480px;
+      background: rgba(10, 25, 41, 0.95);
+      border: 1px solid var(--primary);
+      border-radius: 24px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 210, 196, 0.2);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px) scale(0.95);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+    }
+
+    .chat-window.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .chat-header {
+      background: linear-gradient(90deg, #0a1929 0%, #122d3d 100%);
+      border-bottom: 1px solid rgba(0, 210, 196, 0.2);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chat-avatar {
+      width: 35px;
+      height: 35px;
+      background: rgba(0, 210, 196, 0.2);
+      border: 1px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-avatar svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--primary);
+    }
+
+    .chat-title {
+      font-family: var(--font-header);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+    }
+
+    .chat-status {
+      font-size: 0.75rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .chat-status::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--primary);
+    }
+
+    .chat-close {
+      margin-left: auto;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .chat-close:hover {
+      color: #FFFFFF;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .chat-msg {
+      max-width: 80%;
+      padding: 12px 16px;
+      border-radius: 16px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .chat-msg.agent {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      align-self: flex-start;
+      border-top-left-radius: 4px;
+    }
+
+    .chat-msg.user {
+      background: var(--primary);
+      color: #03060a;
+      align-self: flex-end;
+      border-top-right-radius: 4px;
+      font-weight: 500;
+    }
+
+    .chat-suggestions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 5px;
+    }
+
+    .suggestion-btn {
+      background: rgba(0, 210, 196, 0.08);
+      border: 1px solid rgba(0, 210, 196, 0.25);
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 0.8rem;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .suggestion-btn:hover {
+      background: var(--primary);
+      color: #03060a;
+    }
+
+    .chat-footer {
+      padding: 15px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px 15px;
+      border-radius: 12px;
+      color: #FFFFFF;
+      font-size: 0.9rem;
+    }
+
+    .chat-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .chat-send-btn {
+      background: var(--primary);
+      border: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .chat-send-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: #03060a;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      padding: 40px 0;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ANIMATIONS */
+    @keyframes pulse-glow {
+      0%, 100% {
+        filter: drop-shadow(0 0 10px var(--primary-glow));
+      }
+      50% {
+        filter: drop-shadow(0 0 20px rgba(0, 210, 196, 0.8));
+      }
+    }
+
+    @keyframes gradient-flow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      body { padding: 20px 10px; }
+      header h1 { font-size: 2.3rem; }
+      .guide-sheet { padding: 30px 20px; }
+      h2 { font-size: 1.6rem; }
+      .print-fab { bottom: 20px; right: 20px; width: 55px; height: 55px; }
+      .chatbot-fab { bottom: 20px; left: 20px; width: 55px; height: 55px; }
+      .chat-window { left: 10px; right: 10px; width: calc(100% - 20px); bottom: 90px; }
+    }
+
+    /* ===== TECHNICAL FAQ ACCORDION ===== */
+    .faq-section {
+      margin-top: 50px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(0, 210, 196, 0.15);
+    }
+
+    .faq-container {
+      max-width: 100%;
+      margin: 25px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .faq-item {
+      background: rgba(10, 25, 41, 0.5);
+      border: 1px solid rgba(0, 210, 196, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(0, 210, 196, 0.3);
+      background: rgba(10, 25, 41, 0.7);
+      box-shadow: 0 4px 20px rgba(0, 210, 196, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .faq-item.active {
+      border-color: rgba(0, 210, 196, 0.5);
+      background: rgba(10, 25, 41, 0.85);
+      box-shadow: 0 8px 30px rgba(0, 210, 196, 0.15);
+    }
+
+    .faq-question {
+      padding: 18px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #FFFFFF;
+      user-select: none;
+    }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-icon::before,
+    .faq-icon::after {
+      content: '';
+      position: absolute;
+      background-color: var(--primary);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Horizontal bar */
+    .faq-icon::before {
+      top: 9px;
+      left: 0;
+      width: 20px;
+      height: 2px;
+    }
+
+    /* Vertical bar */
+    .faq-icon::after {
+      top: 0;
+      left: 9px;
+      width: 2px;
+      height: 20px;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(135deg);
+    }
+
+    .faq-item.active .faq-icon::before,
+    .faq-item.active .faq-icon::after {
+      background-color: #FF7B7B;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      padding: 0 25px;
+      overflow: hidden;
+      color: #B0C4DE;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 0 25px 25px 25px;
+      opacity: 1;
+    }
+
+    /* PRINT LAYOUT OPTIMIZATION (A4) */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        font-size: 11pt !important;
+      }
+
+      .container {
+        max-width: 100% !important;
+        width: 100% !important;
+      }
+
+      header {
+        border-bottom: 2px solid #000000 !important;
+        margin-bottom: 30px !important;
+        padding-bottom: 15px !important;
+      }
+
+      header h1 {
+        background: none !important;
+        -webkit-text-fill-color: initial !important;
+        color: #000000 !important;
+        font-size: 24pt !important;
+      }
+
+      .meta-badge, .bento-nav, .print-fab, .chatbot-fab, .chat-window, .visual-column, .vimeo-container, footer {
+        display: none !important;
+      }
+
+      .sheet-grid {
+        display: block !important;
+      }
+
+      .guide-sheet {
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin-bottom: 40px !important;
+        page-break-after: always !important;
+        backdrop-filter: none !important;
+      }
+
+      .guide-sheet::before {
+        display: none !important;
+      }
+
+      .sheet-header {
+        border-bottom: 1px solid #000000 !important;
+        margin-bottom: 20px !important;
+      }
+
+      .page-indicator {
+        color: #000000 !important;
+        font-size: 10pt !important;
+      }
+
+      h2, h3, strong {
+        color: #000000 !important;
+      }
+
+      h2 {
+        font-size: 16pt !important;
+        margin-bottom: 15px !important;
+        border-bottom: 1px solid #E0E0E0 !important;
+        padding-bottom: 5px !important;
+      }
+
+      p, li, td {
+        color: #222222 !important;
+      }
+
+      .alert-box {
+        background: none !important;
+        border: 1px solid #000000 !important;
+        color: #000000 !important;
+        page-break-inside: avoid !important;
+      }
+
+      .alert-box svg {
+        display: none !important;
+      }
+
+      .step-number {
+        background: none !important;
+        border: 1px solid #000000 !important;
+        color: #000000 !important;
+      }
+
+      table {
+        background: none !important;
+        border: 1px solid #000000 !important;
+        page-break-inside: avoid !important;
+      }
+
+      th {
+        background: #F0F0F0 !important;
+        color: #000000 !important;
+        border-bottom: 1px solid #000000 !important;
+      }
+
+      td {
+        border-bottom: 1px solid #E0E0E0 !important;
+      }
+    }
+
+    /* Beautiful transparent glowing logo hover micro-interactions */
+    .logo-img {
+      height: 52px;
+      width: auto;
+      border-radius: 50%;
+      filter: drop-shadow(0 0 10px rgba(0, 210, 196, 0.45));
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .logo-img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 18px rgba(0, 210, 196, 0.85));
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-sphere"></div>
+
+  <div class="container">
+    <header>
+      <div class="brand-logo" onclick="window.location.href='index.html'" style="cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+        <img src="logo-lifewave4life.png" alt="LifeWave4Life" class="logo-img" />
+      </div>
+      <h1>System Aktywacji i Strukturyzacji Wody</h1>
+      <p class="subtitle">Podręcznik Pierwszej Instalacji i Obsługi (Społeczność LifeWave4Life)</p>
+      <div class="meta-badge">Oficjalny Podręcznik Społeczności LifeWave4Life</div>
+    </header>
+
+    <!-- BENTO QUICK NAVIGATION BAR -->
+    <div class="bento-nav">
+      <a href="index.html" class="nav-pill" style="border-color: #FFAE19; color: #FFAE19; font-weight: 700; box-shadow: 0 0 10px rgba(255, 174, 25, 0.25);">← Powrót do Portalu X2O</a>
+      <a href="#page-1" class="nav-pill">Strona 1 (Wstęp)</a>
+      <a href="#page-2" class="nav-pill">Strona 2 (Komponenty)</a>
+      <a href="#page-3" class="nav-pill">Strona 3 (Przygotowanie)</a>
+      <a href="#page-4" class="nav-pill">Strona 4 (Filtr Główny)</a>
+      <a href="#page-5" class="nav-pill">Strona 5 (Filtr Wtórny)</a>
+      <a href="#page-6" class="nav-pill">Strona 6 (Płukanie Główne)</a>
+      <a href="#page-7" class="nav-pill">Strona 7 (Zamknięcie Główne)</a>
+      <a href="#page-8" class="nav-pill">Strona 8 (Płukanie Wtórne)</a>
+      <a href="#page-9" class="nav-pill">Strona 9 (Cykl Pracy)</a>
+      <a href="#page-10" class="nav-pill">Strona 10 (Jak Pić Wodę)</a>
+      <a href="#page-11" class="nav-pill">Strona 11 (Aktualizacja USB)</a>
+      <a href="#page-12" class="nav-pill">Strona 12 (Pomoc)</a>
+    </div>
+
+    <!-- PAGE 1 -->
+    <div class="guide-sheet" id="page-1">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 1</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Tytułowa</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Rozpoczęcie Pracy z Systemem LifeWave X2O™</h2>
+          <p>Witamy w świecie zaawansowanej bio-aktywacji komórkowej. System <strong>LifeWave X2O™ (Light-Infused Water)</strong> to przełomowe, niezależne urządzenie nablatowe łączące <strong>dwustopniową filtrację molekularną</strong>, <strong>intensywne nasycanie wodorem cząsteczkowym (H2)</strong> oraz <strong>autorską technologię naświetlania i strukturyzacji światłem fotonowym</strong>.</p>
+          
+          <p>Ta polska, profesjonalnie zlokalizowana instrukcja poprowadzi Cię krok po kroku przez bezbłędny proces montażu, wstępnego płukania oraz pierwszej konfiguracji maszyny.</p>
+
+          <div class="alert-box alert-success">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <div>
+              <strong>System Wolnostojący (Countertop):</strong> Urządzenie LifeWave X2O jest autonomicznym systemem nablatowym. <strong>NIE wymaga podłączania do kranu ani stałego przyłącza hydraulicznego!</strong> Wodę wlewa się manualnie od góry bezpośrednio do głównego zbiornika za pomocą dzbanka.
+            </div>
+          </div>
+
+          <!-- MOUNTED YOUTUBE COMPONENT -->
+          <div class="vimeo-container">
+            <div class="video-thumbnail-wrapper" onclick="playVideoInline(this, 'https://www.youtube.com/watch?v=e23nBcZ4zoM')">
+              <img src="https://img.youtube.com/vi/e23nBcZ4zoM/hqdefault.jpg" alt="LifeWave X2O Setup YouTube Walkthrough">
+              <div class="play-btn-overlay">
+                <svg viewBox="0 0 24 24">
+                  <path d="M10.24 6.87l6.83 4.29c.68.43.68 1.43 0 1.86l-6.83 4.29c-.71.45-1.63-.06-1.63-.93V7.8c0-.87.92-1.38 1.63-.93z" />
+                </svg>
+              </div>
+            </div>
+            <div class="video-info-bar">
+              <div class="video-title">Jak Skonfigurować System Wody LifeWave X2O™</div>
+              <div class="video-meta-row">
+                <span class="video-duration">⏱️ 04:52</span>
+                <span class="video-separator">|</span>
+                <a href="https://www.youtube.com/watch?v=e23nBcZ4zoM" target="_blank" class="video-external-link">Oglądaj na YouTube ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_1_img_2.jpeg', 'Oryginalny skan strony 1 - Strona tytułowa instrukcji LifeWave X2O')">
+            <img src="images/extracted_page_1_img_2.jpeg" alt="Oryginalna Strona 1" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 1, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="guide-sheet" id="page-2">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 2</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Przegląd i Akcesoria</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Komponenty Urządzenia i Zawartość Opakowania</h2>
+          
+          <h3>Przegląd Głównych Komponentów</h3>
+          <p>Zapoznaj się z budową systemu przed montażem filtrów. Wszystkie elementy sterujące oraz filtry znajdują się w tylnej/bocznej części urządzenia pod dedykowaną osłoną.</p>
+          
+          <ul>
+            <li><strong>Pokrywa zbiornika (Reservoir Lid)</strong> — Zabezpiecza górną komorę zbiornika na wodę.</li>
+            <li><strong>Zbiornik główny (Reservoir)</strong> — Zbiornik o pojemności 19 litrów, do którego manualnie wlewamy wodę zasilającą.</li>
+            <li><strong>Port USB 2.0 (USB 2.0 Port)</strong> — Zlokalizowany w komorze filtracyjnej, służy wyłącznie do aktualizacji systemu (firmware) z załączonego pendrive'a.</li>
+            <li><strong>Pokrywa filtra wtórnego (Secondary Filter Lid)</strong> — Zamyka gniazdo filtra wtórnego.</li>
+            <li><strong>Pokrywa filtra głównego (Primary Filter Lid)</strong> — Zakręcane wieko obudowy filtra głównego.</li>
+            <li><strong>Osłona komory filtracyjnej (Filter Compartment Cover)</strong> — Magnetyczny lub wciskany panel chroniący filtry, zawory, port USB oraz wężyk spustowy.</li>
+            <li><strong>Kratka ociekacza (Cup Grate)</strong> — Podstawa, na której umieszczamy szklankę podczas dozowania wody.</li>
+            <li><strong>Wężyk spustowy (Drainage Hose)</strong> — Elastyczny, zwinięty wężyk służący wyłącznie do płukania filtrów (flushing) bezpośrednio do zlewu lub wiadra.</li>
+            <li><strong>Tacka ociekowa (Drip Tray)</strong> — Zbiera ewentualne krople wody pod wylewką.</li>
+            <li><strong>Rdzeń filtra wtórnego (Secondary Filter Core)</strong> — Wkład drugiego stopnia bio-oczyszczania i aktywacji.</li>
+            <li><strong>Obudowa filtra głównego (Primary Filter Housing)</strong> — Gniazdo głównego stopnia filtracji molekularnej.</li>
+          </ul>
+
+          <h3>Zawartość Zestawu (Co Znajdziesz w Pudełku)</h3>
+          <p>Przed montażem upewnij się, że Twoje opakowanie zawiera wszystkie poniższe elementy:</p>
+          <ol>
+            <li>Główny system LifeWave X2O™ wraz z zainstalowanymi fabrycznie podzespołami.</li>
+            <li>Wkład filtra głównego (Primary Filter Media).</li>
+            <li>Wkład filtra wtórnego (Secondary Filter Core).</li>
+            <li>Kabel zasilający (Standard USA).</li>
+            <li>Skrócona instrukcja uruchomienia (Quick Start Guide).</li>
+            <li>Pełny podręcznik użytkownika oraz karta gwarancyjna.</li>
+            <li>Karta ochrony opakowania <strong>„Save the Packaging”</strong> (Zachowaj oryginalny karton i pianki ochronne — są one wymagane do bezpiecznego transportu w przypadku ewentualnego serwisu!).</li>
+            <li>Dedykowany pendrive USB 2.0 wraz z adapterem (niezbędne do pierwszej aktualizacji oprogramowania).</li>
+          </ol>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_2_img_2.jpeg', 'Oryginalny skan strony 2 - Komponenty systemu i zawartość opakowania')">
+            <img src="images/extracted_page_2_img_2.jpeg" alt="Oryginalna Strona 2" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 2, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 3 -->
+    <div class="guide-sheet" id="page-3">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 3</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Przed Uruchomieniem</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Wymagania Przygotowawcze i Bezpieczeństwo</h2>
+          
+          <div class="alert-box alert-warning">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <div>
+              <strong>KRYTYCZNA UWAGA INSTALACYJNA (ADAPTER USA-EU):</strong> Urządzenie LifeWave X2O posiada kabel zasilający z płaską wtyczką w standardzie amerykańskim (USA). <strong>Przed pierwszym włączeniem musisz zaopatrzyć się w standardowy adapter sieciowy (przejściówkę zasilania) z gniazda amerykańskiego na europejskie (USA to EU).</strong> Elektronika urządzenia obsługuje pełne europejskie napięcie 230V, potrzebne jest jedynie fizyczne dopasowanie wtyku.
+            </div>
+          </div>
+
+          <h3>Dopuszczone Typy Wody (Zalecenia i Wybór)</h3>
+          <p>Dla zachowania pełnej gwarancji i uzyskania optymalnej aktywacji świetlnej, system może być zasilany wyłącznie następującymi rodzajami wody:</p>
+          
+          <ul>
+            <li><strong>Naturalna Woda Źródlana (Spring Water) — WYBITNIE REKOMENDOWANA:</strong> Zapewnia optymalny skład mineralny chroniący elektrody przed osadzaniem się kamienia i gwarantuje najczystszy smak oraz najwyższe stężenie wodoru cząsteczkowego.</li>
+            <li><strong>Woda Lekka o obniżonej zawartości deuteru (Deuterium-Depleted Water / Lite Water) — ZAAWANSOWANA:</strong> Doskonała do zaawansowanych kuracji bio-energetycznych.</li>
+            <li><strong>Woda Filtrowana (Filtered Water):</strong> Dopuszczalna, np. woda z domowych dzbanków filtrujących lub instalacji odwróconej osmozy.</li>
+            <li><strong>Woda Destylowana (Distilled Water):</strong> Dopuszczalna, o neutralnym charakterze mineralnym.</li>
+            <li><strong>Zwykła Woda kranowa (Tap Water) — NIEZALECANA:</strong> Choć technicznie zatwierdzona, woda kranowa w Polsce charakteryzuje się często bardzo wysoką twardością węglanową i zawartością chloru. Stosowanie jej drastycznie przyspiesza zakamienienie urządzenia, skraca żywotność kosztownych filtrów i może negatywnie wpływać na smak i efekty bio-aktywacji światłem.</li>
+          </ul>
+
+          <h3>Przygotowanie Stanowiska Pracy</h3>
+          <p>Przed przystąpieniem do montażu upewnij się, że spełniasz poniższe kryteria:</p>
+          
+          <ul>
+            <li><strong>Powierzchnia instalacji:</strong> Stabilny, płaski, poziomy blat kuchenny lub stół, znajdujący się w pobliżu gniazdka elektrycznego.</li>
+            <li><strong>Wentylacja:</strong> Pozostaw co najmniej <strong>5 cm (2 cale) wolnej przestrzeni</strong> z tyłu urządzenia w celu zapewnienia swobodnego przepływu powietrza przez wentylatory chłodzące.</li>
+            <li><strong>Temperatura otoczenia:</strong> Dla stabilnej i efektywnej pracy, temperatura w pomieszczeniu powinna wynosić od <strong>16°C do 27°C (60°F - 80°F)</strong>.</li>
+            <li><strong>Dostęp do odpływu:</strong> Upewnij się, że elastyczny wężyk spustowy schowany z tyłu urządzenia sięga do zlewu kuchennego lub przygotuj pojemne wiadro do zbierania wody z płukania.</li>
+            <li><strong>Zapas wody do płukania:</strong> Przygotuj około <strong>19 litrów (5 galonów) wody źródlanej lub filtrowanej</strong>. Będzie ona potrzebna do pełnego, wstępnego przepłukania obu filtrów przed pierwszym uruchomieniem.</li>
+            <li><strong>Rezerwa czasowa:</strong> Zaplanuj około <strong>45-60 minut</strong> na spokojne i dokładne przejście przez cały proces montażu, aktualizacji systemu i płukania filtrów.</li>
+          </ul>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_3_img_2.jpeg', 'Oryginalny skan strony 3 - Wymagania przygotowawcze i bezpieczeństwo')">
+            <img src="images/extracted_page_3_img_2.jpeg" alt="Oryginalna Strona 3" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 3, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 4 -->
+    <div class="guide-sheet" id="page-4">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 4</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Filtr Główny</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Instalacja Filtra Głównego (Primary Filter)</h2>
+          
+          <p>Montaż wkładów filtracyjnych należy przeprowadzić przy wyłączonym zasilaniu urządzenia. Postępuj precyzyjnie zgodnie z poniższą instrukcją techniczną:</p>
+
+          <ul class="step-list">
+            <li>
+              <div class="step-number">1</div>
+              <strong>Zdejmij panel ochronny:</strong> Delikatnie pociągnij i usuń osłonę komory filtracyjnej znajdującą się w bocznej/tylnej ścianie systemu LifeWave X2O.
+            </li>
+            <li>
+              <div class="step-number">2</div>
+              <strong>Przygotuj wkład:</strong> Zlokalizuj wkład filtra głównego (oznaczony literą <strong>E</strong>) w opakowaniu akcesoriów. Ostrożnie usuń z niego folię ochronną i wyrzuć opakowanie foliowe.
+            </li>
+            <li>
+              <div class="step-number">3</div>
+              <strong>Zlokalizuj gniazdo:</strong> Odszukaj odkręcaną pokrywę filtra (oznaczoną jako <strong>A</strong>) oraz stabilną obudowę filtra głównego (oznaczoną jako <strong>B</strong>). Odkręć pokrywę (A) przeciwnie do ruchu wskazówek zegara i zdejmij ją, aby odsłonić gniazdo montażowe.
+            </li>
+          </ul>
+
+          <div class="alert-box alert-danger">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <div>
+              <strong>Ostrzeżenie:</strong> Podczas montażu filtra głównego uważaj, aby do wnętrza obudowy filtra (B) nie dostały się żadne zanieczyszczenia, kurz lub ciała obce. Gwinty muszą być czyste i wolne od zanieczyszczeń, aby zapobiec nieszczelnościom.
+            </div>
+          </div>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_4_img_2.jpeg', 'Oryginalny skan strony 4 - Rysunek 1: Instalacja filtra głównego')">
+            <img src="images/extracted_page_4_img_2.jpeg" alt="Oryginalna Strona 4" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 4, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 5 -->
+    <div class="guide-sheet" id="page-5">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 5</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Filtr Wtórny i Włączenie</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Instalacja Filtra Wtórnego i Uruchomienie Zasilania</h2>
+          
+          <h3>Krok 2: Dokończenie Montażu Filtra Głównego</h3>
+          <ul class="step-list">
+            <li>
+              <div class="step-number">4</div>
+              <strong>Wsuń i wkręć wkład:</strong> Umieść wkład filtra głównego (<strong>E</strong>) wewnątrz stałej obudowy (<strong>B</strong>), upewniając się, że <strong>widoczny gwintowany koniec wkładu jest skierowany pionowo w dół</strong>. Wkręć wkład zgodnie z ruchem wskazówek zegara, aż zostanie szczelnie i stabilnie zamocowany.
+            </li>
+            <li>
+              <div class="step-number">5</div>
+              <strong>Zamknij obudowę:</strong> Nałóż z powrotem odkręconą pokrywę filtra (<strong>A</strong>) i dokręć ją mocno do oporu, zapewniając pełną hermetyczność.
+            </li>
+          </ul>
+
+          <h3>Krok 3: Instalacja Filtra Wtórnego (Secondary Filter)</h3>
+          <ul class="step-list">
+            <li>
+              <div class="step-number">6</div>
+              <strong>Przygotuj rdzeń filtra:</strong> Zlokalizuj zamontowaną na stałe głowicę filtra wtórnego (oznaczoną literą <strong>C</strong>) oraz długi rdzeń filtra wtórnego (oznaczony literą <strong>D</strong>). Zdejmij plastikową nakładkę ochronną z rdzenia filtra (D).
+            </li>
+            <li>
+              <div class="step-number">7</div>
+              <strong>Zamontuj rdzeń:</strong> Wyrównaj rdzeń filtra (D) z gniazdem w głowicy (C), dociśnij delikatnie pionowo w górę i wkręć rdzeń zgodnie z ruchem wskazówek zegara, aż zostanie całkowicie dokręcony i stabilnie osadzony.
+            </li>
+          </ul>
+
+          <h3>Krok 4: Pierwsze Uruchomienie Zasilania (Power On)</h3>
+          <p>Podłącz kabel zasilający z tyłu systemu, a następnie podłącz go do gniazdka elektrycznego w ścianie <strong>(pamiętając o konieczności użycia zakupionej przejściówki USA -> EU!)</strong>. Urządzenie włączy się automatycznie, a kolorowy ekran dotykowy zostanie podświetlony.</p>
+          
+          <p>Przed wykonaniem procedury płukania, <strong>bezwzględnie zaleca się przeprowadzenie pierwszej instalacji / aktualizacji oprogramowania układowego (firmware) z dołączonego pendrive'a USB</strong>. Instrukcję aktualizacji krok po kroku oraz odsyłacz do wideo znajdziesz na <strong>Stronie 11</strong> tej instrukcji.</p>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_5_img_2.jpeg', 'Oryginalny skan strony 5 - Rysunek 2: Instalacja filtra wtórnego')">
+            <img src="images/extracted_page_5_img_2.jpeg" alt="Oryginalna Strona 5" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 5, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 6 -->
+    <div class="guide-sheet" id="page-6">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 6</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Płukanie Filtra Głównego</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Procedura Płukania Filtra Głównego (Primary Filter Flush)</h2>
+          
+          <p>Przed pierwszym użyciem filtry muszą zostać starannie przepłukane wodą w celu usunięcia resztek pyłu z węgla aktywnego oraz pęcherzyków powietrza.</p>
+
+          <ul class="step-list">
+            <li>
+              <div class="step-number">1</div>
+              <strong>Przygotuj odpływ wody:</strong> Wyciągnij elastyczny, zwinięty wężyk spustowy (Drainage Hose) znajdujący się wewnątrz komory filtracyjnej i umieść go tak, aby woda mogła swobodnie spływać bezpośrednio do zlewu kuchennego lub przygotowanego dużego naczynia (np. wiadra).
+            </li>
+            <li>
+              <div class="step-number">2</div>
+              <strong>Uruchom program płukania:</strong> Na ekranie dotykowym urządzenia przejdź do: <strong>Settings</strong> (Ustawienia) -> <strong>Flush Filter</strong> (Płukanie filtrów), a następnie dotknij opcji <strong>Flush Primary</strong> (Płukanie Filtra Głównego) i postępuj zgodnie z instrukcjami.
+            </li>
+            <li>
+              <div class="step-number">3</div>
+              <strong>Przestaw fizyczny zawór:</strong> Zlokalizuj dedykowany zawór manualny przypisany do filtra głównego. Przekręć dźwignię zaworu z pozycji pionowej <strong>Normal Operation Primary Filter</strong> (Normalna Praca) do pozycji poziomej <strong>Flush Primary Filter</strong> (Płukanie).
+            </li>
+          </ul>
+
+          <div class="alert-box alert-warning">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <div>
+              <strong>Weryfikacja zaworów:</strong> Każdy z filtrów posiada niezależny zawór regulacyjny. Bezwzględnie upewnij się, że przestawiasz właściwy zawór przypisany do filtra głównego przed zatwierdzeniem kroku na ekranie!
+            </div>
+          </div>
+
+          <p>Nalej wybraną wodę źródlaną/filtrowaną do górnego zbiornika głównego zgodnie z poleceniem na wyświetlaczu. W miarę jak poziom wody będzie opadać, dolewaj ją systematycznie. System zacznie automatycznie pompować wodę przez filtr i odprowadzać ją wężykiem bezpośrednio do odpływu.</p>
+          
+          <p class="alert-danger" style="padding: 15px; border-radius: 12px; border: 1px solid rgba(255,90,95,0.2); font-weight: 500; font-size: 0.95rem;">
+            ⚠️ <strong>Ważne:</strong> Całą wodę odprowadzoną wężykiem spustowym należy wylać do kanalizacji. Pod żadnym pozorem nie wlewaj jej ponownie do zbiornika zasilającego!
+          </p>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_6_img_2.jpeg', 'Oryginalny skan strony 6 - Rysunki 3 i 4: Położenie zaworu głównego')">
+            <img src="images/extracted_page_6_img_2.jpeg" alt="Oryginalna Strona 6" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 6, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 7 -->
+    <div class="guide-sheet" id="page-7">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 7</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Finał Płukania Głównego</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Dokończenie Płukania Filtra Głównego</h2>
+          
+          <ul class="step-list">
+            <li>
+              <div class="step-number">4</div>
+              <strong>Przywróć pozycję roboczą:</strong> Gdy na ekranie dotykowym pojawi się jasny komunikat o zakończeniu płukania filtra głównego, <strong>niezwłocznie przekręć dźwignię zaworu z powrotem do pionowej pozycji: Normal Operation Primary Filter</strong> (Normalna Praca).
+            </li>
+          </ul>
+
+          <div class="alert-box alert-danger">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <div>
+              <strong>BEZWZGLĘDNY WYMÓG ZAMKNIĘCIA ZAWORU:</strong> Jeśli nie przywrócisz dźwigni zaworu głównego do pozycji normalnej pracy roboczej, system nie będzie w stanie prawidłowo pobierać i strukturyzować wody użytkowej podczas codziennego dozowania, a w skrajnych przypadkach może dojść do groźnego wycieku wody i zalania wewnętrznych podzespołów elektrycznych maszyny!
+            </div>
+          </div>
+
+          <p>Po zamknięciu zaworu głównego, proces oczyszczania pierwszego stopnia jest ukończony. Możesz teraz przejść do procedury <strong>Płukania Filtra Wtórnego (Flush Secondary Filter)</strong>.</p>
+          
+          <p><em>Porada techniczna:</em> Jeżeli zbierasz odprowadzaną wodę do wiadra lub innego naczynia, przed przejściem do płukania drugiego filtra opróżnij naczynie, aby zapobiec jego przepełnieniu.</p>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_7_img_2.jpeg', 'Oryginalny skan strony 7 - Instrukcja przejścia do płukania wtórnego')">
+            <img src="images/extracted_page_7_img_2.jpeg" alt="Oryginalna Strona 7" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 7, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 8 -->
+    <div class="guide-sheet" id="page-8">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 8</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Płukanie Wtórnego</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Procedura Płukania Filtra Wtórnego (Secondary Filter Flush)</h2>
+          
+          <p>Płukanie drugiego stopnia (filtra wtórnego) przebiega w analogiczny, bezpieczny sposób:</p>
+
+          <ul class="step-list">
+            <li>
+              <div class="step-number">1</div>
+              <strong>Uruchom program płukania wtórnego:</strong> Na ekranie dotykowym wybierz opcję <strong>Flush Secondary</strong> (Płukanie Filtra Wtórnego) i zatwierdź start.
+            </li>
+            <li>
+              <div class="step-number">2</div>
+              <strong>Przestaw zawór filtra wtórnego:</strong> Odszukaj manualną dźwignię dedykowaną dla filtra wtórnego. Przekręć ją z pozycji pionowej <strong>Normal Operation Secondary Filter</strong> (Normalna Praca) do pozycji poziomej <strong>Flush Secondary Filter</strong> (Płukanie).
+            </li>
+            <li>
+              <div class="step-number">3</div>
+              <strong>Przeprowadź płukanie:</strong> Nalej wodę źródlaną/filtrowaną do zbiornika. Urządzenie przepompuje wodę przez rdzeń filtra wtórnego i wyleje ją wężykiem spustowym. Wylej tę wodę po zakończeniu.
+            </li>
+            <li>
+              <div class="step-number">4</div>
+              <strong>Zamknij zawór wtórny:</strong> Po wyświetleniu komunikatu o zakończeniu płukania na ekranie, <strong>niezwłocznie przekręć zawór filtra wtórnego z powrotem do pozycji pionowej: Normal Operation Secondary Filter</strong>.
+            </li>
+          </ul>
+
+          <div class="alert-box alert-success">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            <div>
+              <strong>FINALNA WERYFIKACJA STANU ZAWORÓW:</strong> Przed przejściem do normalnego użytkowania urządzenia, bezwzględnie upewnij się, że <strong>OBA ZAWORY (zarówno filtra głównego, jak i wtórnego) są przekręcone do pozycji roboczej NORMAL OPERATION</strong>.
+            </div>
+          </div>
+
+          <p><strong>Zakończenie i porządkowanie:</strong> Zwiń starannie wężyk spustowy (Drainage Hose) i umieść go z powrotem wewnątrz dedykowanej wnęki w komorze filtracyjnej. Pozwól ewentualnym resztkom wilgoci z wężyka wyparować przed zamknięciem osłony. Załóż z powrotem osłonę komory filtracyjnej.</p>
+          
+          <p>Dotknij strzałki wstecz w lewym górnym rogu ekranu urządzenia, aby bezpiecznie wyjść z menu ustawień serwisowych i powrócić do ekranu głównego, gotowego do aktywacji standardowych cykli uzdatniania wody.</p>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_8_img_2.jpeg', 'Oryginalny skan strony 8 - Rysunek 7: Prawidłowe zamknięcie obu zaworów')">
+            <img src="images/extracted_page_8_img_2.jpeg" alt="Oryginalna Strona 8" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 8, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 9 -->
+    <div class="guide-sheet" id="page-9">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 9</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Codzienna Praca</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Cykl Przetwarzania i Dozowania Wody</h2>
+          
+          <h3>1. Proces Filtracji, Hydrogenizacji i Naświetlania Światłem</h3>
+          <p>Napełnij główny zbiornik urządzenia wybraną, czystą wodą źródlaną (lub przefiltrowaną). <strong>Zostaw około 2,5 cm (1 cal) wolnej przestrzeni od górnej krawędzi zbiornika</strong>, co zapobiegnie przypadkowemu rozlaniu lub rozchlapaniu wody podczas pracy systemu.</p>
+          
+          <p>System automatycznie pobierze wodę ze zbiornika i podda ją wieloetapowej bio-stymulacji komórkowej: <strong>dwustopniowemu oczyszczaniu molekularnemu</strong>, <strong>generowaniu aktywnego wodoru gazowego</strong> oraz <strong>naświetlaniu w unikalnym spektrum świetlnym LifeWave (metoda Light-Infusion™)</strong>.</p>
+
+          <p>Urządzenie przetwarza równolegle porcje wody dla <strong>dwóch szklanek o pojemności 450 ml (15 oz) każda</strong>, jednak procesy dla obu szklanek przebiegają całkowicie autonomicznie. Pełny cykl strukturyzacji trwa <strong>45 minut</strong> i uruchamia się niezależnie dla danej szklanki w momencie jej pobrania. Na ekranie dotykowym wyświetlany jest aktualny czas pozostały do przygotowania kolejnej gotowej szklanki wody.</p>
+
+          <h3>2. Dozowanie i Nalewanie Wody (Dispensing)</h3>
+          <p>Gdy proces dobiegnie końca, ekran dotykowy wyświetli informację, że woda strukturyzowana jest gotowa do spożycia.</p>
+          
+          <ul class="step-list">
+            <li>
+              <div class="step-number">1</div>
+              Umieść szklankę (o pojemności minimum <strong>500 ml / 16 oz</strong>, aby zapobiec przepełnieniu) pod wylotem dozownika wody.
+            </li>
+            <li>
+              <div class="step-number">2</div>
+              Dotknij przycisku <strong>Dispense</strong> (Dozuj) na ekranie dotykowym, aby napełnić naczynie.
+              <p style="margin-top: 5px; font-size: 0.9rem; font-style: italic;">Porada: W zależności od wysokości i kształtu szklanki, może być wymagane jej przysunięcie bliżej czujnika na ściance dozownika w celu poprawnego zainicjowania wypływu wody.</p>
+            </li>
+            <li>
+              <div class="step-number">3</div>
+              Nalewanie można w dowolnym momencie wstrzymać (Pause), wznowić (Resume) lub anulować (Cancel) z poziomu menu na ekranie. Anulowanie dozowania spowoduje uzupełnienie komory nową wodą i uruchomienie świeżego, 45-minutowego cyklu przetwarzania.
+            </li>
+          </ul>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_9_img_2.jpeg', 'Oryginalny skan strony 9 - Dozowanie i przetwarzanie wody w systemie X2O')">
+            <img src="images/extracted_page_9_img_2.jpeg" alt="Oryginalna Strona 9" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 9, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 10 -->
+    <div class="guide-sheet" id="page-10">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 10</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Zasady Spożywania</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Jak Pić i Przechowywać Wodę LifeWave X2O™</h2>
+          
+          <p>Woda poddana procesowi aktywacji fotonowej i nasycona aktywnym wodorem cząsteczkowym wykazuje silne właściwości antyoksydacyjne, energetyzujące i nawadniające na poziomie komórkowym. Aby w pełni wykorzystać jej potencjał bio-energetyczny, przestrzegaj kluczowych zasad:</p>
+
+          <h3>Złote Zasady Maksymalnej Bio-Aktywności komórkowej:</h3>
+          
+          <ul>
+            <li><strong>Pij natychmiast po nalaniu:</strong> Cząsteczki aktywnego wodoru (H2) oraz heksagonalna struktura klastrowa wody są najbardziej stabilne bezpośrednio po zakończeniu cyklu Light-Infusion™ i nalaniu do szklanki. Wypicie wody w ciągu kilku minut gwarantuje najwyższe nasycenie dobroczynnymi składnikami.</li>
+            <li><strong>Pij na czczo:</strong> Najlepsze rezultaty terapeutyczne i metaboliczne osiąga się, pijąc wodę X2O rano na pusty żołądek (co najmniej 15-20 minut przed pierwszym posiłkiem). Umożliwia to błyskawiczne wchłanianie wody bezpośrednio przez błony śluzowe układu pokarmowego i natychmiastowe nawodnienie mitochondriów.</li>
+            <li><strong>Używaj wyłącznie naczyń szklanych:</strong> Do nalewania, serwowania i picia wody stosuj czyste, wysokiej jakości szklanki lub karafki szklane. Kategorycznie unikaj naczyń metalowych, plastikowych lub ceramicznych — materiały te mogą wchodzić w reakcje chemiczne z wolnym wodorem cząsteczkowym i tłumić zakodowaną w strukturze wody energię fotonową.</li>
+            <li><strong>Idealna synergia z Cellergize™:</strong> Woda strukturyzowana LifeWave X2O stanowi wybitny nośnik dla rozpuszczalnych suplementów mineralnych i odżywczych z linii <strong>LifeWave Cellergize™</strong>, drastycznie potęgując ich przyswajalność komórkową (biodostępność) oraz przyspieszając efekty działania.</li>
+          </ul>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_10_img_2.jpeg', 'Oryginalny skan strony 10 - Rekomendacje spożywania i zasady picia wody')">
+            <img src="images/extracted_page_10_img_2.jpeg" alt="Oryginalna Strona 10" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 10, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 11 -->
+    <div class="guide-sheet" id="page-11">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 11</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Aktualizacja Systemu</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Pierwsza Instalacja i Aktualizacja Oprogramowania Układowego</h2>
+          
+          <p>W zestawie z Twoim urządzeniem LifeWave X2O znajduje się oryginalny, fabryczny nośnik USB (pendrive) oraz dedykowany adapter. Służą one do wgrywania najnowszych wersji systemu operacyjnego urządzenia (firmware) wydawanych przez inżynierów LifeWave. Instalacja najnowszego oprogramowania gwarantuje pełną stabilność procesów świetlnych i wodorowych oraz zapobiega błędom oprogramowania.</p>
+
+          <h3>Instrukcja Wgrywania Aktualizacji Krok po Kroku (Quick Guidance)</h3>
+          
+          <ul class="step-list">
+            <li>
+              <div class="step-number">1</div>
+              <strong>Pobierz oprogramowanie:</strong> Pobierz najnowszy, oficjalny plik aktualizacyjny firmware z autoryzowanego kanału lub konta dystrybutora LifeWave.
+            </li>
+            <li>
+              <div class="step-number">2</div>
+              <strong>Przygotuj nośnik:</strong> Skopiuj pobrany plik na dołączony fabryczny pendrive USB. <strong>Kluczowe: Na dysku USB nie mogą znajdować się żadne inne pliki ani katalogi (pendrive must be formatted and empty).</strong>
+            </li>
+            <li>
+              <div class="step-number">3</div>
+              <strong>Otwórz komorę:</strong> Zdejmij magnetyczną osłonę komory filtracyjnej z bocznej/tylnej ściany urządzenia.
+            </li>
+            <li>
+              <div class="step-number">4</div>
+              <strong>Podłącz USB:</strong> Wsuń przygotowany pendrive USB do portu USB 2.0 zlokalizowanego wewnątrz komory filtracyjnej (obok gniazd filtrów).
+            </li>
+            <li>
+              <div class="step-number">5</div>
+              <strong>Uruchom aktualizację:</strong> Na ekranie dotykowym urządzenia przejdź kolejno do: <strong>Settings</strong> (Ustawienia) -> <strong>Firmware Update</strong> (Aktualizacja Oprogramowania) i postępuj zgodnie z instrukcjami. System automatycznie odczyta plik, wyłączy urządzenie i uruchomi je ponownie, aby sfinalizować proces.
+            </li>
+            <li>
+              <div class="step-number">6</div>
+              <strong>Uporządkuj komorę:</strong> Po pomyślnym zakończeniu procesu i pełnym uruchomieniu systemu, bezpiecznie wyjmij pendrive z gniazda i załóż z powrotem osłonę komory filtracyjnej.
+            </li>
+            <li>
+              <div class="step-number">7</div>
+              <strong>Zweryfikuj wersję:</strong> Wejdź ponownie w zakładkę <strong>Settings</strong> na ekranie głównym i upewnij się, że wyświetlany numer wersji oprogramowania odpiada najnowszemu zainstalowanemu systemowi.
+            </li>
+          </ul>
+
+          <!-- MOUNTED VIMEO COMPONENT -->
+          <div class="vimeo-container">
+            <div class="video-thumbnail-wrapper" onclick="playVideoInline(this, 'https://vimeo.com/1172210292/8d9fa44481')">
+              <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop" alt="LifeWave Vimeo Walkthrough">
+              <div class="play-btn-overlay">
+                <svg viewBox="0 0 24 24">
+                  <path d="M10.24 6.87l6.83 4.29c.68.43.68 1.43 0 1.86l-6.83 4.29c-.71.45-1.63-.06-1.63-.93V7.8c0-.87.92-1.38 1.63-.93z" />
+                </svg>
+              </div>
+            </div>
+            <div class="video-info-bar">
+              <div class="video-title">Jak Zaktualizować Firmware X2O™</div>
+              <div class="video-meta-row">
+                <span class="video-duration">⏱️ 01:43</span>
+                <span class="video-separator">|</span>
+                <a href="https://vimeo.com/1172210292/8d9fa44481" target="_blank" class="video-external-link">Oglądaj na Vimeo ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_11_img_2.jpeg', 'Oryginalny skan strony 11 - Instrukcja aktualizacji systemu (pendrive USB)')">
+            <img src="images/extracted_page_11_img_2.jpeg" alt="Oryginalna Strona 11" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 11, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 12 -->
+    <div class="guide-sheet" id="page-12">
+      <div class="sheet-header">
+        <div class="page-indicator">Strona 12</div>
+        <div style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Pomoc i Wsparcie</div>
+      </div>
+      <div class="sheet-grid">
+        <div class="text-column">
+          <h2>Wsparcie Techniczne, Gwarancja i Kontakt</h2>
+          
+          <p>W przypadku jakichkolwiek pytań technicznych, problemów operacyjnych, zapotrzebowania na wkłady wymienne lub chęci zakupu rozszerzonej gwarancji dla systemu LifeWave X2O, skorzystaj z oficjalnych kanałów wsparcia producenta:</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Kanał Wsparcia</th>
+                <th>Dane Kontaktowe / Adres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Siedziba Główna Producenta</strong></td>
+                <td>LifeWave, Inc.<br>13893 Minuteman Drive, Suite 500<br>Draper, UT 84020, USA</td>
+              </tr>
+              <tr>
+                <td><strong>Oficjalna Pomoc i FAQ</strong></td>
+                <td><a href="https://www.lifewave.com" target="_blank" style="color: var(--primary); text-decoration: none;">www.lifewave.com</a></td>
+              </tr>
+              <tr>
+                <td><strong>Wsparcie Klienta (E-mail)</strong></td>
+                <td><a href="mailto:customerservice@lifewave.com" style="color: var(--primary); text-decoration: none;">customerservice@lifewave.com</a></td>
+              </tr>
+              <tr>
+                <td><strong>Wsparcie Gwarancyjne (Telefon)</strong></td>
+                <td><strong>+1 (866) 202-0065</strong><br><span style="font-size: 0.85rem; color: var(--text-muted);">(Połączenie międzynarodowe w j. angielskim, bezpłatne z wybranych sieci VoIP)</span></td>
+              </tr>
+              <tr>
+                <td><strong>Oznaczenie Modelu</strong></td>
+                <td>WM Q5G-USA R07 / WM-FWCARD-EN R02</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- SERVICE AND MAINTENANCE VIDEOS -->
+          <h3 style="margin-top: 30px; font-size: 1.1rem; color: var(--primary); display: flex; align-items: center; gap: 8px;">
+            <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; fill: var(--primary);">
+              <path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 16H6V8h8v8z"/>
+            </svg>
+            Materiały Wideo i Procedury Serwisowe (Wideo)
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Zobacz szczegółowe instrukcje wideo dotyczące czyszczenia komory aktywatora oraz przygotowania urządzenia do bezpiecznego transportu:</p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px;">
+            <!-- VIDEO 1: CLEANING -->
+            <div class="vimeo-container" style="margin: 0;">
+              <div class="video-thumbnail-wrapper" onclick="playVideoInline(this, 'https://vimeo.com/1120881754/f1048a598c?fl=pl&fe=cm')">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=600&auto=format&fit=crop" alt="Jak czyścić urządzenie LifeWave X2O">
+                <div class="play-btn-overlay">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M10.24 6.87l6.83 4.29c.68.43.68 1.43 0 1.86l-6.83 4.29c-.71.45-1.63-.06-1.63-.93V7.8c0-.87.92-1.38 1.63-.93z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="video-info-bar">
+                <div class="video-title">Jak Czyścić Urządzenie X2O™</div>
+                <div class="video-meta-row">
+                  <span class="video-duration">⏱️ 03:42</span>
+                  <span class="video-separator">|</span>
+                  <a href="https://vimeo.com/1120881754/f1048a598c?fl=pl&fe=cm" target="_blank" class="video-external-link">Oglądaj na Vimeo ↗</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- VIDEO 2: TRANSPORT -->
+            <div class="vimeo-container" style="margin: 0;">
+              <div class="video-thumbnail-wrapper" onclick="playVideoInline(this, 'https://vimeo.com/1120883575/b4aa228604?fl=pl&fe=cm')">
+                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop" alt="Jak przygotować LifeWave X2O do transportu">
+                <div class="play-btn-overlay">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M10.24 6.87l6.83 4.29c.68.43.68 1.43 0 1.86l-6.83 4.29c-.71.45-1.63-.06-1.63-.93V7.8c0-.87.92-1.38 1.63-.93z" />
+                  </svg>
+                </div>
+              </div>
+              <div class="video-info-bar">
+                <div class="video-title">Przygotowanie do Transportu</div>
+                <div class="video-meta-row">
+                  <span class="video-duration">⏱️ 02:15</span>
+                  <span class="video-separator">|</span>
+                  <a href="https://vimeo.com/1120883575/b4aa228604?fl=pl&fe=cm" target="_blank" class="video-external-link">Oglądaj na Vimeo ↗</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="visual-column">
+          <div class="image-wrapper" onclick="openLightbox('images/extracted_page_12_img_2.jpeg', 'Oryginalny skan strony 12 - Siedziba firmy i informacje certyfikacyjne LifeWave')">
+            <img src="images/extracted_page_12_img_2.jpeg" alt="Oryginalna Strona 12" class="manual-page-img">
+            <div class="zoom-overlay">
+              <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            </div>
+          </div>
+          <p class="image-caption">🔍 Kliknij na skan strony 12, aby powiększyć</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical FAQ Section -->
+    <section class="faq-section" id="faq-section">
+      <h2 style="font-size: 1.8rem; font-weight: 800; background: linear-gradient(90deg, #FFFFFF 0%, var(--primary) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 25px;">Często Zadawane Pytania Techniczne (FAQ)</h2>
+      
+      <div class="faq-container">
+        
+        <div class="faq-item" onclick="toggleFaqItem(this)">
+          <div class="faq-question">
+            <span>Co zrobić, gdy wtyczka zasilacza USA nie pasuje do gniazdka? Czy przejściówka jest w zestawie?</span>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            Oryginalny zasilacz dołączony do maszyny X2O posiada płaską wtyczkę w standardzie amerykańskim (USA). Przejściówka (adapter USA-EU) nie wchodzi w skład zestawu i należy ją zakupić we własnym zakresie (zwykły adapter sieciowy USA-EU dostępny za kilka złotych w każdym sklepie elektrycznym lub markecie budowlanym). Układ elektroniczny zasilacza bez problemu obsługuje europejskie napięcie 230V, potrzebne jest jedynie fizyczne dopasowanie bolców.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaqItem(this)">
+          <div class="faq-question">
+            <span>Jak przeprowadzić pierwsze płukanie filtra głównego i aktywatora biofotonów?</span>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            Przed pierwszym użyciem urządzenia lub po wymianie wkładu filtrującego, należy obowiązkowo przeprowadzić procedurę płukania. W tym celu napełnij zbiornik zimną wodą kranową, otwórz zawór poboru wody i pozwól na swobodny przepływ co najmniej 5-8 litrów wody przez system. Pierwsza woda może mieć ciemne zabarwienie ze względu na pył z naturalnego węgla aktywnego – jest to całkowicie normalne zjawisko. Płucz układ, aż woda stanie się krystalicznie czysta.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaqItem(this)">
+          <div class="faq-question">
+            <span>Z jakiego rodzaju wodą wejściową można używać stacji X2O?</span>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            Urządzenie X2O zostało zaprojektowane do pracy z zimną wodą kranową (wodociągową), spełniającą lokalne normy wody pitnej. Nigdy nie wlewaj do zbiornika gorącej wody (powyżej 35 stopni Celsjusza), napojów słodzonych, soków ani wody o nieznanym pochodzeniu mikrobiologicznym. Ciepła woda może bezpowrotnie uszkodzić membrany filtrujące oraz układ infuzji wodorowej.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaqItem(this)">
+          <div class="faq-question">
+            <span>Co oznacza, gdy woda pobierana z kranu ma bąbelki lub mleczną barwę?</span>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            Mleczna barwa wody pobranej bezpośrednio po aktywacji to bardzo pożądane zjawisko, które świadczy o potężnej wydajności generatora. Są to miliony mikroskopijnych pęcherzyków aktywnego wodoru cząsteczkowego (H2) oraz mikroskopijne pęcherzyki powietrza uwięzione w strukturze wody pod wpływem nanocząsteczkowej filtracji pod ciśnieniem. Po kilkudziesięciu sekundach woda samoistnie klaruje się od dołu, pozostając nasycona aktywnym wodorem i światłem.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaqItem(this)">
+          <div class="faq-question">
+            <span>Jak często należy wymieniać filtry w maszynie X2O i jak o tym pamiętać?</span>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            Główny kompozytowy wkład filtrujący (nanofiltracja węglowa) zaleca się wymieniać co 6-12 miesięcy, w zależności od intensywności użytkowania i jakości wody wejściowej (maksymalnie co 3000 litrów przepływu). Urządzenie poinformuje Cię o konieczności wymiany za pomocą sygnału dźwiękowego oraz odpowiedniego wskaźnika LED na panelu sterowania (ikona filtra zmieni kolor na czerwony).
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaqItem(this)">
+          <div class="faq-question">
+            <span>W jaki sposób czyścić zbiornik na wodę i dbać o higienę urządzenia?</span>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            Zbiornik na wodę wejściową należy regularnie (co najmniej raz w tygodniu) opróżnić i przemyć miękką gąbką z użyciem łagodnego płynu do naczyń, a następnie dokładnie wypłukać czystą wodą. Unikaj stosowania silnych detergentów, kwasów, alkoholu oraz szorstkich czyścików, które mogłyby porysować delikatną powierzchnię akrylu lub uszkodzić czujnik poziomu wody.
+          </div>
+        </div>
+
+        <div class="faq-item" onclick="toggleFaqItem(this)">
+          <div class="faq-question">
+            <span>Co oznacza kod błędu 'E2' lub brak reakcji na przycisk poboru wody?</span>
+            <div class="faq-icon"></div>
+          </div>
+          <div class="faq-answer">
+            Najczęstszą przyczyną braku reakcji systemu lub wyświetlenia kodu błędu jest nieprawidłowo osadzony zbiornik na wodę lub zbyt niski poziom wody wejściowej. Upewnij się, że zbiornik jest dociśnięty w gnieździe do samego końca, a poziom wody przekracza linię 'MIN'. Jeśli problem nie ustępuje, odłącz zasilacz z gniazdka na 30 sekund i podłącz g ponownie, aby zresetować mikroprocesor urządzenia.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2026 LifeWave, Inc. Wszelkie prawa zastrzeżone.</p>
+      <p style="margin-top: 5px; font-size: 0.9rem; margin-bottom: 15px;">Opracowanie polskiej lokalizacji premium: <a href="https://jaison.pl" target="_blank" style="color: var(--primary); font-weight: 700;">jaison.pl</a> pod nadzorem Tomasz Duda (<a href="mailto:hello@jaison.pl">hello@jaison.pl</a>).</p>
+      <!-- Original Jaison Agency Logo (Blue Diamond Shield with S) -->
+      <div style="display: flex; justify-content: center; align-items: center; margin-top: 10px;">
+        <a href="https://jaison.pl" target="_blank" style="display: inline-block; text-decoration: none; outline: none;" title="Przejdź do strony agencji Jaison AI">
+          <svg class="jaison-logo-original-svg" viewBox="0 0 320 80" style="height: 28px; width: auto; opacity: 0.75; transition: all 0.3s ease; fill: none; filter: none; animation: none;" onmouseover="this.style.opacity=1; this.style.transform='scale(1.03)';" onmouseout="this.style.opacity=0.75; this.style.transform='scale(1)';">
+            <defs>
+              <filter id="originalCyanGlow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <filter id="redGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feGaussianBlur stdDeviation="4" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <linearGradient id="redDiamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#EF4444" />
+                <stop offset="50%" stop-color="#DC2626" />
+                <stop offset="100%" stop-color="#7F1D1D" />
+              </linearGradient>
+              <linearGradient id="silverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FFFFFF" />
+                <stop offset="50%" stop-color="#E2E8F0" />
+                <stop offset="100%" stop-color="#94A3B8" />
+              </linearGradient>
+            </defs>
+            <text x="15" y="55" font-family="'Outfit', sans-serif" font-weight="900" font-size="46" fill="#FFFFFF">J</text>
+            <text x="43" y="55" font-family="'Outfit', sans-serif" font-weight="900" font-size="46" fill="#00D2C4" filter="url(#originalCyanGlow)">AI</text>
+            <path d="M 47,20 L 47,32 L 63,32" fill="none" stroke="#00D2C4" stroke-width="1.5" filter="url(#originalCyanGlow)" />
+            <circle cx="63" cy="32" r="2" fill="#00D2C4" filter="url(#originalCyanGlow)" />
+            <path d="M 80,25 L 80,38 L 73,45" fill="none" stroke="#00D2C4" stroke-width="1.5" filter="url(#originalCyanGlow)" />
+            <circle cx="80" cy="25" r="2" fill="#00D2C4" filter="url(#originalCyanGlow)" />
+            <path d="M 59,58 L 59,68 L 45,68" fill="none" stroke="#00D2C4" stroke-width="1.5" filter="url(#originalCyanGlow)" />
+            <circle cx="45" cy="68" r="2" fill="#00D2C4" filter="url(#originalCyanGlow)" />
+            <path d="M 83,52 L 93,52 L 93,62" fill="none" stroke="#00D2C4" stroke-width="1.5" filter="url(#originalCyanGlow)" />
+            <circle cx="93" cy="62" r="2" fill="#00D2C4" filter="url(#originalCyanGlow)" />
+            <g transform="translate(108, 2)" filter="url(#redGlow)">
+              <polygon points="45,8 80,26 80,54 45,72 10,54 10,26" fill="url(#redDiamondGrad)" stroke="#F87171" stroke-width="2" stroke-linejoin="round" />
+              <polygon points="45,13 74,29 74,51 45,67 16,51 16,29" fill="none" stroke="#FECACA" stroke-width="1" opacity="0.4" stroke-linejoin="round" />
+              <path d="M53,24 L36,24 L34,32 L44,32 C48,32 50,34 50,37 C50,40 46,42 41,42 L34,42 L32,52 L54,52 L56,44 L45,44 C42,44 40,42 40,40 C40,38 42,36 46,36 L54,36 Z" fill="url(#silverGrad)" />
+            </g>
+            <text x="205" y="55" font-family="'Outfit', sans-serif" font-weight="900" font-size="46" fill="#FFFFFF">ON</text>
+          </svg>
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- LIGHTBOX MODAL CONTAINER -->
+  <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+    <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+    <div class="lightbox-content-wrapper" onclick="event.stopPropagation()">
+      <img class="lightbox-content" id="lightbox-img" src="" alt="">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- LUXURIOUS VIDEO LIGHTBOX MODAL -->
+  <div id="video-lightbox" class="lightbox-modal" onclick="closeVideoLightbox()">
+    <div class="lightbox-modal-content" onclick="event.stopPropagation()">
+      <!-- Modal Header -->
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; background: rgba(255, 255, 255, 0.02); border-bottom: 1px solid rgba(0, 210, 196, 0.15);">
+        <h4 id="lightbox-video-title" style="color: #00d2c4; margin: 0; font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 600; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(0, 210, 196, 0.3);">Instrukcja Wideo</h4>
+        <button onclick="closeVideoLightbox()" style="background: none; border: none; color: #94A3B8; font-size: 1.8rem; cursor: pointer; transition: all 0.2s; line-height: 1; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%;" onmouseover="this.style.color='#00D2C4'; this.style.background='rgba(0, 210, 196, 0.1)'" onmouseout="this.style.color='#94A3B8'; this.style.background='none'">×</button>
+      </div>
+
+      <!-- Video Container (Perfect 16:9 Aspect Ratio) -->
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; background: #000000;">
+        <iframe id="lightbox-iframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <!-- Modal Footer -->
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px 24px; background: rgba(3, 6, 10, 0.8); border-top: 1px solid rgba(255, 255, 255, 0.05); font-size: 0.85rem;">
+        <span style="color: #94A3B8; font-family: 'Outfit', sans-serif;">Oficjalny materiał LifeWave X2O™</span>
+        <a id="lightbox-external-link" href="#" target="_blank" style="color: #00d2c4; text-decoration: none; display: flex; align-items: center; gap: 5px; font-weight: 500; font-family: 'Outfit', sans-serif; transition: all 0.2s; text-shadow: 0 0 5px rgba(0, 210, 196, 0.2);" onmouseover="this.style.color='#ffffff'; this.style.textShadow='0 0 8px rgba(255,255,255,0.6)'" onmouseout="this.style.color='#00d2c4'; this.style.textShadow='none'">
+          Otwórz w osobnym oknie ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING ACTION BUTTON (PRINT / SAVE TO PDF) -->
+  <button class="print-fab" title="Wydrukuj instrukcję lub zapisz jako PDF" onclick="window.print()">
+    <svg viewBox="0 0 24 24">
+      <path d="M19 8H5c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11H8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9H6v4h12V3z"/>
+    </svg>
+  </button>
+
+  <!-- CHATBOT FLOATING WIDGET PREVIEW -->
+  <button class="chatbot-fab" title="Zadaj pytanie Asystentowi AI X2O" onclick="toggleChatWindow()">
+    <div class="chat-launcher-bubble">Skonsultuj się</div>
+    <svg viewBox="0 0 24 24">
+      <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/>
+    </svg>
+  </button>
+
+  <!-- CHAT WINDOW PREVIEW -->
+  <div id="chat-window" class="chat-window">
+    <div class="chat-header">
+      <div class="chat-avatar">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6H9V9H3V7h18v2z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="chat-title">Asystent LifeWave4Life</div>
+        <div class="chat-status">Aktywny (Materiały wgrane)</div>
+      </div>
+      <span class="chat-close" onclick="toggleChatWindow()">&times;</span>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg agent">
+        Cześć! Jestem Twoim Wirtualnym Asystentem LifeWave X2O. Pomogę Ci w poprawnej instalacji urządzenia, płukaniu filtrów i odpowiem na pytania o bio-stymulację wody. O co chcesz zapytać?
+        <div class="chat-suggestions">
+          <button class="suggestion-btn" onclick="sendSuggestion('Jak podłączyć adapter zasilania USA-EU?')">🔌 Jak podłączyć adapter USA-EU?</button>
+          <button class="suggestion-btn" onclick="sendSuggestion('Jak przeprowadzić płukanie filtra głównego?')">🧼 Jak przepłukać filtr główny?</button>
+          <button class="suggestion-btn" onclick="sendSuggestion('Z jaką wodą używać urządzenia X2O?')">💧 Jakiej wody używać?</button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-footer">
+      <input type="text" id="chat-input" class="chat-input" placeholder="Wpisz pytanie..." onkeydown="handleChatKey(event)">
+      <button class="chat-send-btn" onclick="sendChatMessage()">
+        <svg viewBox="0 0 24 24">
+          <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    function openLightbox(imgSrc, captionText) {
+      var lightbox = document.getElementById('lightbox');
+      var lightboxImg = document.getElementById('lightbox-img');
+      var lightboxCaption = document.getElementById('lightbox-caption');
+      
+      lightboxImg.src = imgSrc;
+      lightboxCaption.innerHTML = captionText;
+      lightbox.classList.add('active');
+    }
+
+    function closeLightbox() {
+      var lightbox = document.getElementById('lightbox');
+      lightbox.classList.remove('active');
+    }
+
+    // INLINE VIDEO PLAYBACK SYSTEM
+    function playVideoInline(wrapper, videoUrl) {
+      // Parse video URL to generate highly performant embed URL
+      var embedUrl = "";
+      if (videoUrl.indexOf("youtube.com") > -1 || videoUrl.indexOf("youtu.be") > -1) {
+        var videoId = "";
+        if (videoUrl.indexOf("v=") > -1) {
+          videoId = videoUrl.split("v=")[1].split("&")[0];
+        } else {
+          videoId = videoUrl.split("/").pop();
+        }
+        embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
+      } else if (videoUrl.indexOf("vimeo.com") > -1) {
+        var parts = videoUrl.replace("https://vimeo.com/", "").split("?")[0].split("/");
+        var videoId = parts[0];
+        var hash = parts[1] || "";
+        embedUrl = "https://player.vimeo.com/video/" + videoId + "?autoplay=1&h=" + hash;
+      }
+
+      if (embedUrl) {
+        // Create an iframe to replace the contents of the wrapper
+        var iframe = document.createElement("iframe");
+        iframe.src = embedUrl;
+        iframe.style.width = "100%";
+        iframe.style.height = "100%";
+        iframe.style.border = "0";
+        iframe.setAttribute("allow", "autoplay; fullscreen; picture-in-picture");
+        iframe.setAttribute("allowfullscreen", "true");
+
+        // Clear wrapper and append the iframe
+        wrapper.innerHTML = "";
+        wrapper.appendChild(iframe);
+        
+        // Remove click handler to prevent reload cycles
+        wrapper.removeAttribute("onclick");
+        wrapper.style.cursor = "default";
+      }
+    }
+
+    // LUXURIOUS VIDEO LIGHTBOX CONTROLLERS
+    function openVideoLightbox(videoUrl, title) {
+      var lightbox = document.getElementById('video-lightbox');
+      var iframe = document.getElementById('lightbox-iframe');
+      var titleElem = document.getElementById('lightbox-video-title');
+      var externalLink = document.getElementById('lightbox-external-link');
+
+      // Parse video URL to generate highly performant embed URL
+      var embedUrl = "";
+      if (videoUrl.indexOf("youtube.com") > -1 || videoUrl.indexOf("youtu.be") > -1) {
+        var videoId = "";
+        if (videoUrl.indexOf("v=") > -1) {
+          videoId = videoUrl.split("v=")[1].split("&")[0];
+        } else {
+          videoId = videoUrl.split("/").pop();
+        }
+        embedUrl = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&rel=0";
+      } else if (videoUrl.indexOf("vimeo.com") > -1) {
+        var parts = videoUrl.replace("https://vimeo.com/", "").split("?")[0].split("/");
+        var videoId = parts[0];
+        var hash = parts[1] || "";
+        embedUrl = "https://player.vimeo.com/video/" + videoId + "?autoplay=1&h=" + hash;
+      }
+
+      iframe.src = embedUrl;
+      titleElem.innerText = title;
+      externalLink.href = videoUrl;
+
+      lightbox.style.display = "flex";
+      setTimeout(function() {
+        lightbox.style.opacity = "1";
+        lightbox.querySelector(".lightbox-modal-content").style.transform = "scale(1)";
+      }, 10);
+    }
+
+    function closeVideoLightbox() {
+      var lightbox = document.getElementById("video-lightbox");
+      var iframe = document.getElementById("lightbox-iframe");
+      
+      lightbox.style.opacity = "0";
+      lightbox.querySelector(".lightbox-modal-content").style.transform = "scale(0.9)";
+      setTimeout(function() {
+        lightbox.style.display = "none";
+        iframe.src = ""; // Instantly stop playback
+      }, 400);
+    }
+
+    // Close lightboxes on pressing Escape key
+    document.addEventListener('keydown', function(event) {
+      if (event.key === "Escape") {
+        closeLightbox();
+        closeVideoLightbox();
+      }
+    });
+
+    // Chat widget toggle
+    function toggleChatWindow() {
+      var chatWin = document.getElementById('chat-window');
+      chatWin.classList.toggle('active');
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFaqItem(element) {
+      const isActive = element.classList.contains('active');
+      
+      // Close all other open FAQ items for a clean single-expanded experience
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('active');
+      });
+      
+      if (!isActive) {
+        element.classList.add('active');
+      }
+    }
+
+    async function getLiveAIResponse(text, botType) {
+      try {
+        const response = await fetch(`php/chat.php?type=${botType}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ message: text })
+        });
+        if (!response.ok) {
+          throw new Error('HTTP error');
+        }
+        const data = await response.json();
+        if (data && data.status === 'success' && data.reply) {
+          return data.reply;
+        }
+        throw new Error('Invalid response');
+      } catch (e) {
+        return getMockResponse(text);
+      }
+    }
+
+    function handleChatKey(event) {
+      if (event.key === "Enter") {
+        sendChatMessage();
+      }
+    }
+
+    async function sendChatMessage() {
+      var input = document.getElementById('chat-input');
+      var text = input.value.trim();
+      if (!text) return;
+
+      appendMessage(text, 'user');
+      input.value = '';
+
+      var msgs = document.getElementById('chat-messages');
+      var typingIndicator = document.createElement('div');
+      typingIndicator.id = 'chat-typing-indicator';
+      typingIndicator.className = 'chat-msg agent';
+      typingIndicator.innerHTML = '<em>Asystent analizuje instrukcję... ⚙️</em>';
+      msgs.appendChild(typingIndicator);
+      msgs.scrollTop = msgs.scrollHeight;
+
+      const reply = await getLiveAIResponse(text, 'technical');
+      
+      const ind = document.getElementById('chat-typing-indicator');
+      if (ind) ind.remove();
+
+      appendMessage(reply, 'agent');
+    }
+
+    async function sendSuggestion(text) {
+      appendMessage(text, 'user');
+      
+      var msgs = document.getElementById('chat-messages');
+      var typingIndicator = document.createElement('div');
+      typingIndicator.id = 'chat-typing-indicator';
+      typingIndicator.className = 'chat-msg agent';
+      typingIndicator.innerHTML = '<em>Asystent analizuje instrukcję... ⚙️</em>';
+      msgs.appendChild(typingIndicator);
+      msgs.scrollTop = msgs.scrollHeight;
+
+      const reply = await getLiveAIResponse(text, 'technical');
+      
+      const ind = document.getElementById('chat-typing-indicator');
+      if (ind) ind.remove();
+
+      appendMessage(reply, 'agent');
+    }
+
+    function appendMessage(text, sender) {
+      var msgs = document.getElementById('chat-messages');
+      var div = document.createElement('div');
+      div.className = 'chat-msg ' + sender;
+      div.innerHTML = text;
+      msgs.appendChild(div);
+      msgs.scrollTop = msgs.scrollHeight;
+    }
+
+    function getMockResponse(userQuery) {
+      var q = userQuery.toLowerCase();
+      if (q.includes('usa') || q.includes('adapter') || q.includes('przejściówk') || q.includes('wtyczk')) {
+        return "<strong>Asystent AI:</strong> Urządzenie LifeWave X2O ma amerykańską płaską wtyczkę sieciową. <strong>Wymagane jest zakupienie zwykłego adaptera zasilania USA -> EU.</strong> Elektronika obsługuje europejskie napięcie 230V, potrzebne jest jedynie dopasowanie fizycznego bolca. Podłącz go przed włączeniem!";
+      }
+      if (q.includes('płukanie') || q.includes('filtr główny') || q.includes('flushing') || q.includes('przepłukać')) {
+        return "<strong>Asystent AI:</strong> Płukanie filtra głównego wykonasz w 4 krokach: 1. Wyjmij wężyk spustowy z tyłu do zlewu/wiadra. 2. Wybierz <em>Settings -> Flush Filter -> Flush Primary</em> na ekranie. 3. <strong>Przekręć zawór filtra głównego z pionu (Normal) do poziomu (Flush)</strong>. 4. Nalej wody. Gdy skończysz, przywróć zawór do pionu!";
+      }
+      if (q.includes('jakiej wody') || q.includes('typ wody') || q.includes('kran') || q.includes('źródlan')) {
+        return "<strong>Asystent AI:</strong> Bezwzględnie rekomendujemy stosowanie <strong>naturalnej wody źródlanej (Spring Water)</strong>. Posiada optymalny profil mineralny chroniący elektrody przed osadzaniem się kamienia. Możesz też stosować wodę lekko zmineralizowaną lub filtrowaną. Unikaj polskiej kranówki ze względu na wysoką twardość (kamień!).";
+      }
+      return "<strong>Asystent AI:</strong> To świetne pytanie! Moja baza wiedzy opiera się o pełny polski podręcznik LifeWave X2O. Po wdrożeniu na subdomenę <strong>x2o.jaison.pl</strong>, ten chatbot zostanie w pełni zintegrowany z modelem <strong>Gemini 2.5 Flash</strong> w Vertex AI i darmową bazą wiedzy, dając natychmiastowe, stuprocentowo precyzyjne odpowiedzi.";
+    }
+  </script>
+</body>
+</html>

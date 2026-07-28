@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fotobiomodulacja &amp; Plastry LifeWave | Klub Fala Życia</title>
+  <meta name="description" content="Odkryj zaawansowaną technologię fotobiomodulacji LifeWave X39, X49, IceWave, Celergize i protokoły regeneracji komórkowej bez chemii. Baza patentowa i filmy.">
+  <link rel="canonical" href="https://fala-zycia.pl/lifewave-fototerapia.html">
+  <link rel="icon" type="image/png" href="images/whatsapp_group.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --space-black: #050b14;
+      --deep-navy: #071220;
+      --card-bg: rgba(10, 25, 41, 0.7);
+      --card-border: rgba(0, 210, 196, 0.18);
+      --card-border-hover: rgba(0, 210, 196, 0.45);
+      --text-main: #F3F8FF;
+      --text-muted: #94A9C1;
+      --text-heading: #FFFFFF;
+      --neon-cyan: #00D2C4;
+      --neon-purple: #9B51E0;
+      --neon-gold: #FFB800;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    [data-theme="light"] {
+      --space-black: #f1f5f9;
+      --deep-navy: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --card-border: rgba(2, 132, 199, 0.25);
+      --card-border-hover: rgba(2, 132, 199, 0.5);
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --text-heading: #0f172a;
+      --neon-cyan: #0284c7;
+      --neon-purple: #8b5cf6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: radial-gradient(circle at 50% 0%, #0c1f36 0%, #050b14 80%), linear-gradient(180deg, #071220 0%, #03060a 100%);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    [data-theme="light"] body {
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+    }
+
+    /* Top App Banner */
+    .top-banner {
+      background: linear-gradient(90deg, #00D2C4 0%, #9B51E0 100%);
+      color: #03060A;
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-align: center;
+      padding: 8px 15px;
+      font-family: var(--font-heading);
+    }
+    .top-banner a {
+      color: #03060A;
+      text-decoration: underline;
+      margin-left: 8px;
+      font-weight: 800;
+    }
+
+    /* Sticky Header */
+    .sticky-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(10, 15, 30, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 210, 196, 0.2);
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    [data-theme="light"] .sticky-header {
+      background: rgba(255, 255, 255, 0.95) !important;
+      border-bottom-color: rgba(2, 132, 199, 0.2) !important;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .nav-links { display: flex; gap: 20px; align-items: center; }
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+    }
+    [data-theme="light"] .nav-link { color: #0f172a !important; }
+    .nav-link:hover { color: var(--neon-cyan); }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px 100px 24px; }
+
+    /* Hero Section */
+    .hero-box {
+      text-align: center;
+      padding: 60px 30px;
+      background: radial-gradient(circle at 50% 20%, rgba(155, 81, 224, 0.15) 0%, rgba(0, 210, 196, 0.08) 50%, transparent 80%);
+      border: 1px solid var(--card-border);
+      border-radius: 28px;
+      margin-bottom: 60px;
+      backdrop-filter: blur(10px);
+    }
+    .badge-hero {
+      display: inline-block;
+      padding: 6px 20px;
+      background: rgba(155, 81, 224, 0.15);
+      border: 1px solid rgba(155, 81, 224, 0.4);
+      color: var(--neon-purple);
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #00D2C4 50%, #9B51E0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 850px;
+      margin: 0 auto 35px auto;
+      font-weight: 400;
+    }
+
+    /* Video Hero Wrapper */
+    .video-hero-wrapper {
+      position: relative;
+      width: 100%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 30px rgba(0, 210, 196, 0.2);
+      border: 1px solid rgba(0, 210, 196, 0.3);
+      margin-top: 30px;
+    }
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Buttons */
+    .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00D2C4 0%, #9B51E0 100%);
+      color: #03060A;
+      box-shadow: 0 8px 30px rgba(0, 210, 196, 0.35);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 210, 196, 0.55);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+    }
+
+    /* Section Styling */
+    .section-block { margin-bottom: 80px; }
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 15px;
+      color: var(--text-heading);
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 750px;
+      margin: 0 auto 40px auto;
+      font-size: 1.05rem;
+    }
+
+    /* Objections Grid */
+    .objections-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 25px;
+    }
+    .card-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px;
+      transition: all 0.3s ease;
+    }
+    .card-box:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0, 210, 196, 0.15);
+    }
+    .card-icon {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+    .card-title {
+      font-family: var(--font-heading);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      margin-bottom: 12px;
+    }
+
+    /* Patches Catalog Grid */
+    .patches-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+    }
+    .patch-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .patch-tag {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 4px 12px;
+      background: rgba(0, 210, 196, 0.15);
+      border: 1px solid var(--neon-cyan);
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--neon-cyan);
+    }
+    .patch-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-heading);
+      margin-bottom: 10px;
+    }
+    .patch-support-list {
+      list-style: none;
+      margin: 15px 0 20px 0;
+    }
+    .patch-support-list li {
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .patch-support-list li::before {
+      content: "✨";
+      color: var(--neon-cyan);
+    }
+
+    /* Protocols Table */
+    .protocol-table-wrapper {
+      overflow-x: auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      min-width: 650px;
+    }
+    th, td {
+      padding: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    th {
+      font-family: var(--font-heading);
+      color: var(--neon-cyan);
+      font-weight: 700;
+    }
+
+    /* Celergize Special Banner */
+    .stalergize-box {
+      background: linear-gradient(135deg, rgba(155, 81, 224, 0.15) 0%, rgba(0, 210, 196, 0.1) 100%);
+      border: 2px solid var(--neon-purple);
+      border-radius: 28px;
+      padding: 40px;
+      margin-top: 60px;
+      position: relative;
+    }
+
+    /* Testimonials Grid */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .test-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .test-quote {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .test-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00D2C4 0%, #9B51E0 100%);
+      color: #03060A;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-heading);
+    }
+    .author-info h4 { margin: 0; font-size: 0.95rem; color: var(--text-heading); }
+    .author-info p { margin: 0; font-size: 0.8rem; color: var(--neon-cyan); }
+
+    /* Theme Toggle */
+    .theme-toggle-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top App Banner -->
+  <div class="top-banner">
+    ✨ Dołącz do Klubu Fala Życia | 🔐 Zaloguj się do Aplikacji &amp; Panelu Członkowskiego:
+    <a href="https://fala-zycia-dashboard-194182220831.europe-central2.run.app" target="_blank">Otwórz App Dashboard →</a>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="sticky-header">
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
+        <img src="images/whatsapp_group.png" alt="Klub Fala Życia" style="width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 0 12px rgba(0,210,196,0.6);">
+        <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; color: var(--text-main);">Klub Fala Życia</span>
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">Strona Główna</a>
+      <a href="x2o.html" class="nav-link">💧 Maszyna X2O™</a>
+      <a href="lifewave-fototerapia.html" class="nav-link active" style="color: var(--neon-cyan); font-weight: 700;">🔬 Fotobiomodulacja</a>
+      <a href="akademia.html" class="nav-link">🎓 Akademia</a>
+      <a href="strategia.html" class="nav-link">🔒 Strategia</a>
+      <a href="https://fala-zycia-dashboard-194182220831.europe-central2.run.app" target="_blank" class="nav-link" style="background: rgba(0,210,196,0.15); border: 1px solid var(--neon-cyan); border-radius: 12px; padding: 6px 16px; color: var(--neon-cyan); font-weight: 700;">
+        🔐 App Dashboard AI
+      </a>
+      <button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Motyw">🌙</button>
+    </nav>
+  </header>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero-box">
+      <span class="badge-hero">🔬 Fotobiomodulacja Komórkowa &amp; Biofotony</span>
+      <h1 class="hero-title">Światło, Które Aktywuje Twoje<br>Własne Komórki Macierzyste</h1>
+      <p class="hero-desc">
+        Odkryj zaawansowaną, opatentowaną technologię plastrów <strong>LifeWave™</strong>. Bez chemii, bez leków i bez wnikania transdermalnego. Zastosuj energię własnego ciepła podczerwonego do naturalnej stymulacji regeneracji organizmu.
+      </p>
+      <div class="btn-group">
+        <a href="https://chat.whatsapp.com/FPtH1JW21PD3KgwmeCgEcs" target="_blank" class="btn btn-primary">
+          💬 Dołącz do Grupy Fototerapia WhatsApp
+        </a>
+        <a href="https://wa.me/48791636644?text=Chce%20konsultacje%20w%20sprawie%20plastrów%20LifeWave" target="_blank" class="btn btn-secondary">
+          📲 Skonsultuj się z Ekspertem
+        </a>
+      </div>
+    </section>
+
+    <!-- ROZBICIE OBIEKCJI / JAK TO DZIAŁA -->
+    <section class="section-block">
+      <h2 class="section-title">Demaskujemy Obiekcje: Jak Naprawdę Działają Plastry?</h2>
+      <p class="section-subtitle">
+        Tradycyjna medycyna przyzwyczaiła nas do tabletek i maści transdermalnych. LifeWave to zupełnie inny paradygmat – czysta fizyka kwantowa i fotobiomodulacja.
+      </p>
+
+      <div class="objections-grid">
+        <div class="card-box">
+          <div class="card-icon">🧪</div>
+          <h3 class="card-title">Zero Chemii i Transdermalności</h3>
+          <p style="color: var(--text-muted);">
+            Plaster nie zawiera żadnych substancji chemicznych ani leków, które wnikałyby przez skórę do krwiobiegu. Wewnątrz plastra znajdują się wyłącznie nanostrukturalne organiczne kryształy aminokwasów i wody.
+          </p>
+        </div>
+
+        <div class="card-box">
+          <div class="card-icon">☀️</div>
+          <h3 class="card-title">Zasada Fotobiomodulacji</h3>
+          <p style="color: var(--text-muted);">
+            LUDZKIE CIAŁO emituje ciepło podczerwone. Plaster działa jak precyzyjne nano-zwierciadło: odbija to ciepło z powrotem w głąb skóry w postaci fal świetlnych o precyzyjnej długości, stymulując punkty akupunkturowe.
+          </p>
+        </div>
+
+        <div class="card-box">
+          <div class="card-icon">🧬</div>
+          <h3 class="card-title">Peptyd GHK-Cu &amp; Komórki Macierzyste</h3>
+          <p style="color: var(--text-muted);">
+            Światło odbite przez plaster X39 stymuluje komórki do syntezy peptydu miedzi <strong>GHK-Cu</strong>. Peptyd ten resetuje geny do młodzieńczego stanu i wspiera naturalne uruchamianie własnych komórek macierzystych!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOUNDER VISION & SCIENCE CREDIBILITY -->
+    <section class="section-block" id="founder-section">
+      <h2 class="section-title">Wizja Naukowa Davida Schmidta</h2>
+      <p class="section-subtitle">
+        Poznaj innowatora, naukowca i twórcę technologii fototerapeutycznych LifeWave, który całe swoje życie poświęcił komórkowej regeneracji człowieka.
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; align-items: center;">
+        <div class="card-box">
+          <span style="display: inline-block; padding: 4px 12px; background: rgba(0,210,196,0.15); border: 1px solid var(--neon-cyan); border-radius: 20px; font-size: 0.8rem; font-weight: 700; color: var(--neon-cyan); margin-bottom: 12px;">
+            Założyciel &amp; Wynalazca LifeWave
+          </span>
+          <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: #FFF; margin-bottom: 15px;">Nauka, Wiara i Pasja Służenia Ludziom</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px;">
+            David Schmidt dzieli się historią o tym, jak głęboka wiara, innowacyjny duch i powołanie do niesienia pomocy ukształtowały unikalne technologie LifeWave. Dysponując ponad <strong>200 patentami naukowymi</strong>, David nieustannie rozwija przełomowe rozwiązania mające na celu wydłużenie ludzkiego życia w doskonałym zdrowiu i energii komórkowej.
+          </p>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">
+            Technologie fotobiomodulacji wykorzystują unikalne kody matematyczne występujące w samej Naturze, by aktywować fizjologiczny potencjał czystym światłem komórkowym.
+          </p>
+        </div>
+        <div class="video-hero-wrapper" style="margin-top: 0;">
+          <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/1177092803?color=00d2c4&title=0&byline=0&portrait=0" allow="fullscreen" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCIENCE & PATENT CREDIBILITY GRID -->
+      <div style="margin-top: 40px; padding: 30px; background: rgba(10, 25, 30, 0.4); border: 1px solid rgba(0, 210, 196, 0.15); border-radius: 20px;">
+        <h4 style="color: #00D2C4; font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 8px; text-align: center;">📋 Oficjalna Baza Patentowa i Dowody Naukowe</h4>
+        <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; margin-bottom: 25px; max-width: 800px; margin-left: auto; margin-right: auto;">
+          Innowacja LifeWave poparta jest rzetelnymi badaniami naukowymi, patentami oraz publikacjami medycznymi.
+        </p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+          <div class="card-box" style="padding: 20px;">
+            <h5 style="color: #FFF; margin-bottom: 10px; font-family: var(--font-heading);">🌐 Oficjalne Portale</h5>
+            <ul style="list-style: none; padding: 0; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px;">
+              <li><a href="https://lifewave.com/" target="_blank" style="color: #38BDF8; text-decoration: none;">Strona główna LifeWave Inc. →</a></li>
+              <li><a href="https://lifewave.com/lifewaveinc/home/our-story" target="_blank" style="color: #38BDF8; text-decoration: none;">Historia Innowacji (Our Story) →</a></li>
+              <li><a href="https://lifewave.com/lifewaveinc/home/leadership/david_schmidt" target="_blank" style="color: #38BDF8; text-decoration: none;">David Schmidt – Profil Lidera →</a></li>
+            </ul>
+          </div>
+
+          <div class="card-box" style="padding: 20px;">
+            <h5 style="color: #FFF; margin-bottom: 10px; font-family: var(--font-heading);">📜 Patenty i IP</h5>
+            <ul style="list-style: none; padding: 0; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px;">
+              <li><a href="https://patents.google.com/patent/US10716953B1/en" target="_blank" style="color: #38BDF8; text-decoration: none;">Patent US10716953B1 (Google Patents) →</a></li>
+              <li><a href="https://patents.justia.com/assignee/lifewave-inc" target="_blank" style="color: #38BDF8; text-decoration: none;">Baza Patentów Justia →</a></li>
+              <li><span style="color: var(--text-muted);">Ponad 200 patentów na całym świecie.</span></li>
+            </ul>
+          </div>
+
+          <div class="card-box" style="padding: 20px;">
+            <h5 style="color: #FFF; margin-bottom: 10px; font-family: var(--font-heading);">🔬 Badania Kliniczne</h5>
+            <ul style="list-style: none; padding: 0; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px;">
+              <li><a href="https://www.lifewave.com/Content/images/home/science/pdf/SciencePaper001-LWThermalPatchesShortVersion.pdf" target="_blank" style="color: #38BDF8; text-decoration: none;">Fototerapia Thermal Paper (PDF) →</a></li>
+              <li><a href="https://www.lifewave.com/Content/images/home/science/pdf/Experimental-Study-of-Lifewave-X-39-patches-report-Final-draft-3.pdf" target="_blank" style="color: #38BDF8; text-decoration: none;">Badanie Kliniczne X39 (PDF) →</a></li>
+            </ul>
+          </div>
+
+          <div class="card-box" style="padding: 20px;">
+            <h5 style="color: #FFF; margin-bottom: 10px; font-family: var(--font-heading);">📈 Publikacje Niezależne</h5>
+            <ul style="list-style: none; padding: 0; font-size: 0.85rem; display: flex; flex-direction: column; gap: 8px;">
+              <li><a href="https://researchopenworld.com/double-blind-testing-of-the-lifewave-x39-patch-to-determine-ghk-cu-production-levels/" target="_blank" style="color: #38BDF8; text-decoration: none;">Podwójna Ślepa Próba GHK-Cu →</a></li>
+              <li><a href="https://clinmedjournals.org/articles/ijsem/international-journal-of-sports-and-exercise-medicine-ijsem-9-250.php?jid=ijsem" target="_blank" style="color: #38BDF8; text-decoration: none;">ClinMed Sports Medicine Journal →</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CODE OF CREATION FILM SECTION -->
+    <section class="section-block" style="padding: 40px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 24px;">
+      <h2 class="section-title">Światowa Premiera Filmu „Code of Creation”</h2>
+      <p class="section-subtitle">
+        Dokument naukowy z Beverly Hills Film Festival i zdobywca Silver Telly Awards o fototerapii i kodach samoregeneracji.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; align-items: center;">
+        <div class="video-hero-wrapper" style="margin-top: 0;">
+          <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/wEDq1wtZz1s?rel=0&color=white" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; gap: 15px; margin-bottom: 15px;">
+            <span style="font-size: 2rem;">🌿</span>
+            <span style="font-size: 2rem;">🥈</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); color: #FFF; font-size: 1.4rem; margin-bottom: 12px;">Odkryj tajemnicę u źródeł</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 20px;">
+            Film „Code of Creation” zadebiutował na prestiżowym festiwalu kina niezależnego <strong>The Beverly Hills Film Festival</strong>. Dokument przedstawia badania naukowe Davida Schmidta oraz udowadnia, w jaki sposób światło i struktura komórkowa współdziałają w naszym ciele.
+          </p>
+          <a href="https://codeofcreation.com/" target="_blank" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            Odwiedź CodeOfCreation.com &amp; Zarejestruj się
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- KATALOG PLASTRÓW & CO WSPIERAJĄ -->
+    <section class="section-block">
+      <h2 class="section-title">Katalog Plastrów LifeWave – Przemyślane Wsparcie Organizmu</h2>
+      <p class="section-subtitle">
+        Pamiętaj: plastry nie leczą chorób – one wspierają naturalne, wrodzone zdolności samoregeneracyjne i energetyczne Twojego ciała!
+      </p>
+
+      <div class="patches-grid">
+
+        <!-- X39 -->
+        <div class="patch-card">
+          <span class="patch-tag">FLAGOWY BAZOWY</span>
+          <h3 class="patch-title">LifeWave X39™</h3>
+          <p style="color: var(--neon-cyan); font-weight: 700; margin-bottom: 12px;">Aktywacja Peptydu GHK-Cu i Komórek Macierzystych</p>
+          <ul class="patch-support-list">
+            <li>Wspiera głęboką regenerację komórkową całego organizmu.</li>
+            <li>Wspomaga naturalny proces gojenia tkanek i elastyczność skóry.</li>
+            <li>Wspiera wyciszanie stanów zapalnych i wzmacnia witalność.</li>
+            <li>Podnosi poziom energii bez sztucznych stymulantów.</li>
+          </ul>
+        </div>
+
+        <!-- X49 -->
+        <div class="patch-card">
+          <span class="patch-tag">SYNERGIA Z X39</span>
+          <h3 class="patch-title">LifeWave X49™</h3>
+          <p style="color: var(--neon-cyan); font-weight: 700; margin-bottom: 12px;">Peptyd AHK-Cu &amp; Wydolność Fizyczna</p>
+          <ul class="patch-support-list">
+            <li>Wspiera budowę i regenerację tkanki mięśniowej oraz kości.</li>
+            <li>Wspomaga układ krążenia i wydolność sercowo-naczyniową.</li>
+            <li>Wspiera przywracanie siły, wytrzymałości i szybszej odnowy po treningu.</li>
+            <li>Chroni przed promieniowaniem elektromagnetycznym (EMF).</li>
+          </ul>
+        </div>
+
+        <!-- ICEWAVE -->
+        <div class="patch-card">
+          <span class="patch-tag">ULGA I DRENAŻ</span>
+          <h3 class="patch-title">LifeWave IceWave™</h3>
+          <p style="color: var(--neon-cyan); font-weight: 700; margin-bottom: 12px;">Niewelowanie Napięć &amp; Przepływ Bio-Energii</p>
+          <ul class="patch-support-list">
+            <li>Zestaw dwubiegunowy (Brązowy/Biały) do natychmiastowego zwalczania napięć.</li>
+            <li>Wspiera odblokowanie lokalnych zatorów energetycznych.</li>
+            <li>Prgenericulicę w miejscowych dolegliwościach bólowych i mięśniowych.</li>
+          </ul>
+        </div>
+
+        <!-- GLUTATHIONE -->
+        <div class="patch-card">
+          <span class="patch-tag">DETOKS I ODPORNOŚĆ</span>
+          <h3 class="patch-title">Y-Age Glutathione™</h3>
+          <p style="color: var(--neon-cyan); font-weight: 700; margin-bottom: 12px;">Mistrzowski Antyoksydant Organizmu</p>
+          <ul class="patch-support-list">
+            <li>Wspiera wzrost poziomu glutationu we krwi nawet o +300% w 24h.</li>
+            <li>Wspomaga detoksykację wątroby i usuwanie metali ciężkich.</li>
+            <li>Wzmacnia naturalny układ odpornościowy.</li>
+          </ul>
+        </div>
+
+        <!-- AEON -->
+        <div class="patch-card">
+          <span class="patch-tag">ANTI-STRESS</span>
+          <h3 class="patch-title">Y-Age Aeon™</h3>
+          <p style="color: var(--neon-cyan); font-weight: 700; margin-bottom: 12px;">Wyciszenie Układu Nerwowego &amp; Stres Oksydacyjny</p>
+          <ul class="patch-support-list">
+            <li>Wspiera równoważenie autonomicznego układu nerwowego (Parasympatyka).</li>
+            <li>Wspomaga obniżanie poziomu kortyzolu i białka C-reaktywnego (CRP).</li>
+            <li>Wspiera walkę ze starzeniem tkankowym wywołanym stresem.</li>
+          </ul>
+        </div>
+
+        <!-- SILENT NIGHTS -->
+        <div class="patch-card">
+          <span class="patch-tag">REGENERACJA NOCNA</span>
+          <h3 class="patch-title">Silent Nights™</h3>
+          <p style="color: var(--neon-cyan); font-weight: 700; margin-bottom: 12px;">Głęboki Sen &amp; Naturalna Melatonina</p>
+          <ul class="patch-support-list">
+            <li>Wspiera naturalną produkcję melatoniny bez suplementacji doustnej.</li>
+            <li>Wspomaga wydłużenie fazy głębokiego snu (REM i NREM).</li>
+            <li>Ułatwia szybkie zasypianie i poranne poczucie pełnego wypoczynku.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROTOKOŁY APPLICATION GUIDE -->
+    <section class="section-block">
+      <h2 class="section-title">Protokoły Stosowania Plastrów (Aplikacja Krok po Kroku)</h2>
+      <p class="section-subtitle">
+        Aplikacja plastra wymaga precyzyjnego umieszczenia na punktach akupunkturowych oraz <strong>obowiązkowego popijania wodą o strukturze X2O™</strong>!
+      </p>
+
+      <div class="protocol-table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Plaster</th>
+              <th>Rekomendowany Punkt Aplikacji</th>
+              <th>Czas Aplikacji</th>
+              <th>Zalecane Nawodnienie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>X39 / X49</strong></td>
+              <td>Kark (punkt C7) LUB 2 palce poniżej pępka (punkt CV6)</td>
+              <td>12 godzin noszenia / 12 godzin przerwy</td>
+              <td>Min. 2-3 szklanki wody X2O dziennie</td>
+            </tr>
+            <tr>
+              <td><strong>Glutathione</strong></td>
+              <td>Poniżej pępka (CV6) LUB prawy punkt podkolanowy / stopa (ST36)</td>
+              <td>12 godzin w ciągu dnia</td>
+              <td>Obowiązkowo szklanka woda X2O przed naklejeniem</td>
+            </tr>
+            <tr>
+              <td><strong>Aeon</strong></td>
+              <td>Kark (C7) LUB poniżej pępka (CV6)</td>
+              <td>12 godzin (dzień lub noc)</td>
+              <td>Woda z minerałami X2O</td>
+            </tr>
+            <tr>
+              <td><strong>Silent Nights</strong></td>
+              <td>Prawa skroń (TW23) LUB prawy punkt stopy (K1)</td>
+              <td>Przed snem (noszenie przez noc)</td>
+              <td>Szklanka ciepłej wody X2O przed pójściem spać</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS BIOHACKERS -->
+    <section class="section-block">
+      <h2 class="section-title">Historie i Świadectwa Biohackerów</h2>
+      <p class="section-subtitle">
+        Przeczytaj autentyczne relacje osób, które wprowadziły wodę fotonową X2O oraz plastry fototerapeutyczne do swojej codziennej rutyny.
+      </p>
+      
+      <div class="testimonials-grid">
+        <div class="test-card">
+          <p class="test-quote">
+            „Piję wodę z X2O od 3 tygodni. Zawsze rano na czczo. Jako osoba z ADHD miałem gigantyczny problem z wejściem na wysokie obroty intelektualne przed południem. Teraz czuję, jakby moje komórki dostawały czysty prąd. Nawodnienie jest tak głębokie, że całkowicie zniknęła poranna mgła mózgowa.”
+          </p>
+          <div class="test-author">
+            <div class="author-avatar">R</div>
+            <div class="author-info">
+              <h4>Robert, 38 lat</h4>
+              <p>Przedsiębiorca z ADHD, Biohacker</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <p class="test-quote">
+            „Połączyłem noszenie plastrów fototerapeutycznych X39 na karku z regularnym piciem wody wodorowej X2O. Regeneracja moich mięśni po morderczych treningach skróciła się o połowę. Zegarek sportowy Garmin pokazuje wzrost głębokiej fazy snu o średnio 40 minut każdej nocy!”
+          </p>
+          <div class="test-author">
+            <div class="author-avatar">M</div>
+            <div class="author-info">
+              <h4>Marek, 29 lat</h4>
+              <p>Trener Personalny, Sportowiec</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="test-card">
+          <p class="test-quote">
+            „Po latach walki z dokuczliwym, przewlekłym bólem kolana i ciągłym braniem leków przeciwzapalnych, byłam skrajnie zmęczona. Mąż namówił mnie na fototerapię plastrami X39. Po tygodniu regularnego noszenia ból po prostu uleciał!”
+          </p>
+          <div class="test-author">
+            <div class="author-avatar">M</div>
+            <div class="author-info">
+              <h4>Marlena, 51 lat</h4>
+              <p>Nauczycielka akademicka</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+        <div class="video-hero-wrapper" style="margin-top: 0;">
+          <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/1177522408?color=00d2c4&title=0&byline=0&portrait=0" allow="fullscreen" allowfullscreen></iframe>
+          </div>
+          <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 10px;">🎬 Wywiady z pacjentami i lekarzami na temat fototerapii komórkowej</p>
+        </div>
+
+        <div class="video-hero-wrapper" style="margin-top: 0;">
+          <div class="video-container">
+            <iframe src="https://player.vimeo.com/video/1176388920?color=00d2c4&title=0&byline=0&portrait=0" allow="fullscreen" allowfullscreen></iframe>
+          </div>
+          <p style="text-align: center; color: var(--text-muted); font-size: 0.85rem; padding: 10px;">🎬 Dowody kliniczne i prezentacje fizyki kwantowej Davida Schmidta</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOWOŚĆ EUROPA: CELERGIZE -->
+    <div class="stalergize-box">
+      <div style="display: inline-block; padding: 4px 14px; background: rgba(155, 81, 224, 0.3); border-radius: 20px; font-size: 0.8rem; font-weight: 800; color: #FFF; margin-bottom: 15px;">
+        🚀 PREMIERA W EUROPIE (OD 20 LIPCA 2026)
+      </div>
+      <h2 style="font-family: var(--font-heading); font-size: 2rem; font-weight: 800; color: #FFF; margin-bottom: 15px;">
+        Suplementacja Nowej Ery: Celergize™
+      </h2>
+      <p style="font-size: 1.1rem; color: #E2E8F0; max-width: 850px; margin-bottom: 25px;">
+        Od 20 lipca 2026 r. rynek europejski otrzymuje dostęp do najnowszej generacji formuł komórkowych Celergize™. Wspierają one natychmiastowe uszczelnianie błon komórkowych, optymalizację poziomu ATP oraz synergiczne wzmocnienie działania fototerapii X39 i X49!
+      </p>
+      <a href="https://wa.me/48791636644?text=Chce%20informacje%20o%20produkcie%20Celergize" target="_blank" class="btn btn-primary">
+        🎁 Zapytaj o Pakiet Startowy Celergize™ na WhatsApp →
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('fala_zycia_theme', newTheme);
+      updateThemeButtonIcon(newTheme);
+    }
+    function updateThemeButtonIcon(theme) {
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('fala_zycia_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateThemeButtonIcon(savedTheme);
+    });
+  </script>
+</body>
+</html>

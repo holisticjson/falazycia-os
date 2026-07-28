@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pl" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Świątynia Harmonii — Ania Pilawska | Technika Bowena, Refleksologia, Masaż Kobido</title>
+  <meta name="description" content="Gabinet Świątynia Harmonii Ani Pilawskiej. Technika Bowena, refleksologia i autorski masaż Kobido w atmosferze spokoju, głębokiego wyciszenia i regeneracji.">
+  <link rel="canonical" href="https://swiatyniaharmonii.pl/">
+  
+  <!-- Structured Data: JSON-LD Schema (Google Knowledge Graph & Local Business) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BeautySalon",
+        "@id": "https://swiatyniaharmonii.pl/#salon",
+        "name": "Świątynia Harmonii Ania Pilawska",
+        "image": "https://swiatynia.fala-zycia.pl/images/logo.png",
+        "url": "https://swiatyniaharmonii.pl/",
+        "telephone": "+48 500 000 000",
+        "priceRange": "$$$",
+        "hasMap": "https://share.google/YULqSoOy7UEADHYSJ",
+        "sameAs": [
+          "https://share.google/YULqSoOy7UEADHYSJ",
+          "https://www.facebook.com/swiatyniaharmonii/",
+          "https://www.instagram.com/swia_tynia_har_monii/",
+          "https://swiatynia.fala-zycia.pl"
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "128"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://swiatyniaharmonii.pl/#owner",
+        "name": "Ania Pilawska",
+        "jobTitle": "Terapeutyka Techniki Bowena, Refleksologii &amp; Masażu Kobido",
+        "worksFor": {
+          "@id": "https://swiatyniaharmonii.pl/#salon"
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ===== PALETA BARW ODBICIE KART DOBROSTANU ANI ===== */
+    :root {
+      --bg-base: #FCF8F7;
+      --bg-surface: #FFFFFF;
+      --bg-pink-soft: #F9EFEF;
+      --border-glass: rgba(197, 160, 89, 0.35);
+      
+      --text-main: #2A2426;
+      --text-muted: #6E6265;
+      --text-heading: #1A1617;
+      
+      --accent-magenta: #B32D52;
+      --accent-rose-light: #E8C5C8;
+      --accent-gold: #D4AF37;
+      --accent-gold-dark: #C5A059;
+      
+      --shadow-sm: 0 4px 15px rgba(179, 45, 82, 0.05);
+      --shadow-md: 0 10px 30px rgba(179, 45, 82, 0.08);
+      --shadow-lg: 0 20px 50px rgba(179, 45, 82, 0.12);
+      
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.75;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(232, 197, 200, 0.35) 0%, transparent 45%),
+        radial-gradient(circle at 90% 80%, rgba(212, 175, 55, 0.2) 0%, transparent 45%);
+    }
+
+    a {
+      color: var(--accent-magenta);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 5%;
+      background: rgba(252, 248, 247, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-magenta), var(--accent-rose-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 20px;
+      box-shadow: 0 4px 15px rgba(179, 45, 82, 0.25);
+    }
+
+    .logo-text {
+      font-family: var(--font-serif);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--accent-magenta);
+      line-height: 1.1;
+    }
+
+    .logo-text span {
+      color: var(--accent-gold-dark);
+      font-family: var(--font-body);
+      font-size: 11px;
+      display: block;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-main);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .btn-magenta {
+      background: linear-gradient(135deg, #B32D52 0%, #D4AF37 100%);
+      color: #FFFFFF !important;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 150px 5% 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 56px;
+      line-height: 1.12;
+      color: var(--accent-magenta);
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    .hero-title span {
+      color: var(--accent-gold-dark);
+      font-style: italic;
+    }
+
+    .section {
+      padding: 80px 5%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .services-grid, .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .service-card, .review-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-magenta);
+    }
+
+    .pearl-sphere-icon {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, #F3D8E0 60%, #E2B8C4 100%);
+      border: 1.5px solid var(--accent-gold);
+      box-shadow: inset -2px -2px 6px rgba(179, 45, 82, 0.2), 0 6px 15px rgba(212, 175, 55, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-gold-dark);
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .club-banner {
+      background: linear-gradient(135deg, #B32D52 0%, #831B39 100%);
+      color: #FFFFFF;
+      border-radius: 24px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+      margin: 60px 0;
+    }
+
+    footer {
+      padding: 50px 5% 30px;
+      background: #1A1617;
+      color: #E2D9DB;
+      text-align: center;
+    }
+
+    @media (max-width: 992px) {
+      .hero, .services-grid, .reviews-grid, .club-banner {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="https://swiatyniaharmonii.pl/" class="logo-brand">
+        <div class="logo-badge">
+          <i class="fa-solid fa-spa"></i>
+        </div>
+        <div class="logo-text">
+          Świątynia Harmonii
+          <span>Ania Pilawska</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#metody">Praca z Ciałem</a></li>
+        <li><a href="#dobrostan">Definicja Dobrostanu</a></li>
+        <li><a href="#fala-zycia">Klub Fala Życia X2O</a></li>
+        <li><a href="#opinie">Opinie Google (5.0★)</a></li>
+        <li><a href="#kontakt">Rezerwacja Cal.com</a></li>
+      </ul>
+
+      <a href="#kontakt" class="btn-magenta">
+        <i class="fa-solid fa-calendar-check"></i> Umów Wizytę
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div>
+      <div style="color: var(--accent-gold-dark); font-family: var(--font-serif); font-size: 16px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 12px;">
+        <i class="fa-solid fa-heart"></i> GABINET HOLISTYCZNEGO DOBROSTANU
+      </div>
+      <h1 class="hero-title">
+        Jeśli czujesz, że Twoje ciało potrzebuje zatrzymania...<br>
+        <span>Jestem tutaj, by Ci towarzyszyć. 🌸</span>
+      </h1>
+      <p style="font-size: 18px; color: var(--text-muted); margin-bottom: 30px;">
+        Pracuję <strong>Techniką Bowena</strong>, <strong>refleksologią</strong> oraz autorskim masażem <strong>Kobido</strong>, wspierając Twoje ciało w powrocie do naturalnej równowagi.
+      </p>
+
+      <div style="display: flex; gap: 16px;">
+        <a href="#kontakt" class="btn-magenta">
+          <i class="fa-solid fa-calendar-days"></i> Zarezerwuj Termin
+        </a>
+        <a href="https://swiatynia.fala-zycia.pl" class="btn-magenta" style="background: var(--bg-surface); color: var(--accent-magenta) !important; border: 1px solid var(--accent-gold);" target="_blank">
+          <i class="fa-solid fa-droplet"></i> Portal X2O &amp; LifeWave
+        </a>
+      </div>
+    </div>
+
+    <div style="background: var(--bg-surface); border-radius: 24px; padding: 36px; border: 2px solid var(--border-glass); box-shadow: var(--shadow-md);">
+      <h3 style="font-family: var(--font-serif); font-size: 30px; color: var(--accent-magenta); margin-bottom: 14px;">
+        Czym Jest Dobrostan?
+      </h3>
+      <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 20px;">
+        To stan, w którym czujesz pełną równowagę — fizycznie, emocjonalnie i psychicznie. To moment, gdy ciało i głowa zaczynają ze sobą współpracować.
+      </p>
+
+      <div style="background: var(--bg-pink-soft); border-radius: 16px; padding: 18px; border: 1px solid var(--border-glass);">
+        <strong style="color: var(--accent-magenta); font-size: 14px; display: block; margin-bottom: 6px;">
+          Dobrostan nie zaczyna się „kiedyś”.
+        </strong>
+        <p style="font-size: 13px; color: var(--text-muted);">
+          Zaczyna się od małych kroków... <strong>dziś</strong>. Napisz do mnie, jeśli chcesz naturalnie zadbać o swój dobrostan. ✨
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metody Prac z Ciałem Ani -->
+  <section class="section" id="metody">
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 50px;">
+      <h2 style="font-family: var(--font-serif); font-size: 42px; color: var(--accent-magenta);">Trzy Filary Pracy w Gabinecie</h2>
+    </div>
+
+    <div class="services-grid">
+      <!-- Technika Bowena -->
+      <div class="service-card">
+        <div class="pearl-sphere-icon"><i class="fa-solid fa-hands-holding"></i></div>
+        <h3 style="font-family: var(--font-serif); font-size: 26px; color: var(--accent-magenta); margin-bottom: 10px;">Technika Bowena</h3>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
+          Łagodna i delikatna metoda, która wycisza układ nerwowy, rozluźnia napięcia i daje przestrzeń ciału, by mogło uruchomić własne procesy samoregeneracji.
+        </p>
+        <ul style="list-style: none; font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+          <li>✨ Wyciszenie układu nerwowego</li>
+          <li>✨ Poczucie lekkości i spokoju</li>
+          <li>✨ Powrót ciała do równowagi</li>
+        </ul>
+      </div>
+
+      <!-- Refleksologia -->
+      <div class="service-card">
+        <div class="pearl-sphere-icon"><i class="fa-solid fa-shoe-prints"></i></div>
+        <h3 style="font-family: var(--font-serif); font-size: 26px; color: var(--accent-magenta); margin-bottom: 10px;">Refleksologia</h3>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
+          Stymulacja stref odruchowych stóp i dłoni. Wzmacnia przepływ energii życiowej, redukuje stres i poprawia jakość głębokiego snu.
+        </p>
+        <ul style="list-style: none; font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+          <li>✨ Redukcja stresu i napięć</li>
+          <li>✨ Lepszy sen i regeneracja</li>
+          <li>✨ Wsparcie organów wewnętrznych</li>
+        </ul>
+      </div>
+
+      <!-- Kobido -->
+      <div class="service-card">
+        <div class="pearl-sphere-icon"><i class="fa-solid fa-spa"></i></div>
+        <h3 style="font-family: var(--font-serif); font-size: 26px; color: var(--accent-magenta); margin-bottom: 10px;">Masaż Kobido</h3>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
+          Japoński nieinwazyjny lifting tkanek głębokich i powięzi twarzy. Poprawia owal, uwalnia napięcia mimiczne i przywraca naturalny blask.
+        </p>
+        <ul style="list-style: none; font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+          <li>✨ Naturalny lifting bez igieł</li>
+          <li>✨ Drenaż powięziowy i limfatyczny</li>
+          <li>✨ Stymulacja kolagenu i elastyny</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Baner Klubowy -->
+  <section class="section" id="fala-zycia">
+    <div class="club-banner">
+      <div>
+        <span style="color: var(--accent-rose-light); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 8px;">
+          Holistyczne Dopełnienie
+        </span>
+        <h3 style="font-family: var(--font-serif); font-size: 38px; color: #FFF; margin-bottom: 14px;">
+          PIJ ŚWIATŁO. ŻYJ LEPIEJ.
+        </h3>
+        <p style="font-size: 15px; color: #F6ECEC; margin-bottom: 24px;">
+          Odkryj innowacyjną technologię światła w Twojej wodzie X2O oraz opaski biofotonowe LifeWave X39 podnoszące poziom peptydu GHK-Cu.
+        </p>
+        <a href="https://swiatynia.fala-zycia.pl" class="btn-magenta" style="background: var(--bg-surface); color: var(--accent-magenta) !important;" target="_blank">
+          <i class="fa-solid fa-globe"></i> Odwiedź Portal swiatynia.fala-zycia.pl
+        </a>
+      </div>
+      <div style="text-align: center;">
+        <i class="fa-solid fa-droplet-degree" style="font-size: 100px; color: var(--accent-rose-light); opacity: 0.85;"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rezerwacja Cal.com & Mapa -->
+  <section class="section" id="kontakt">
+    <div style="text-align: center; max-width: 780px; margin: 0 auto 40px;">
+      <h2 style="font-family: var(--font-serif); font-size: 42px; color: var(--accent-magenta);">Zarezerwuj Chwilę dla Siebie</h2>
+    </div>
+
+    <div style="background: var(--bg-surface); border-radius: 24px; padding: 28px; border: 1px solid var(--border-glass); box-shadow: var(--shadow-md);">
+      <iframe src="https://cal.com/embed" style="width: 100%; height: 550px; border: none; border-radius: 16px;" title="Rezerwacja Cal.com"></iframe>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 14px;">
+      <p style="font-size: 13px;">&copy; 2026 Świątynia Harmonii Ania Pilawska. Wszelkie prawa zastrzeżone.</p>
+      <div style="display: flex; gap: 18px; font-size: 14px;">
+        <a href="https://www.facebook.com/swiatyniaharmonii/" target="_blank" style="color: var(--accent-gold);"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        <a href="https://www.instagram.com/swia_tynia_har_monii/" target="_blank" style="color: var(--accent-gold);"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a href="https://swiatynia.fala-zycia.pl" target="_blank" style="color: var(--accent-rose-light);"><i class="fa-solid fa-globe"></i> Portal Pokazowy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
