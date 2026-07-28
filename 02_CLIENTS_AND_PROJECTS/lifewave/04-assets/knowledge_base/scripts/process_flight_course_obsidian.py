@@ -17,13 +17,18 @@ MOC_FILE = os.path.join(BASE_DIR, "00_FLIGHT_HACKING_MOC_OBSIDIAN.md")
 
 os.makedirs(OBSIDIAN_DIR, exist_ok=True)
 
-# Initialize Gemini Client with Gemini 2.5 Flash
-api_key = os.getenv("GEMINI_API_KEY")
-if not api_key:
-    print("❌ BŁĄD: Brak GEMINI_API_KEY w środowisku / .env!")
-    sys.exit(1)
+# Initialize Vertex AI Client on GCP project falazycia-os
+sa_key_path = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS\lifewave\falazycia-sa-key.json"
+if os.path.exists(sa_key_path):
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_key_path
 
-client = genai.Client(api_key=api_key)
+print("⚡ Inicjalizacja Vertex AI na projekcie GCP: falazycia-os (gemini-2.5-flash)...")
+try:
+    client = genai.Client(vertexai=True, project="falazycia-os", location="us-central1")
+except Exception as e:
+    print(f"⚠️ Uwaga: Błąd inicjalizacji Vertex AI: {e}. Przełączam na domyślne API...")
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+
 MODEL_NAME = "gemini-2.5-flash"
 
 SYSTEM_PROMPT = """Jesteś Analitykiem Wiedzy i Architektem Bazy RAG dla Obsidian.
@@ -72,7 +77,7 @@ def sanitize_filename(name):
     return clean[:80]
 
 def process_lesson_with_gemini(lesson_id, title, url, raw_text):
-    print(f"  🧠 Przetwarzanie lekcji w Gemini API: {title}...")
+    print(f"  🧠 Przetwarzanie lekcji w Vertex AI (Gemini 2.5 Flash): {title}...")
     user_prompt = f"""Oto surowa treść i transkrypcja z lekcji #{lesson_id} kursu Piotra Lotniczego:
 
 TYTUŁ: {title}
@@ -83,33 +88,22 @@ SUROWA TREŚĆ I TRANSKRYPCJA:
 
 Przygotuj kompletną notatkę Obsidian Markdown zgodną ze wskazaniami w system prompt."""
 
-    candidate_models = ["gemini-2.0-flash", "gemini-1.5-flash", "gemini-flash-latest"]
-
-    for model_name in candidate_models:
-        for attempt in range(4):
-            try:
-                response = client.models.generate_content(
-                    model=model_name,
-                    contents=user_prompt,
-                    config=types.GenerateContentConfig(
-                        system_instruction=SYSTEM_PROMPT,
-                        temperature=0.2,
-                    )
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(
+                model=MODEL_NAME,
+                contents=user_prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=SYSTEM_PROMPT,
+                    temperature=0.2,
                 )
-                if response and response.text:
-                    time.sleep(12)  # Respect free tier rate limit (5 requests / min)
-                    return response.text
-            except Exception as e:
-                err_msg = str(e)
-                if "429" in err_msg or "RESOURCE_EXHAUSTED" in err_msg:
-                    print(f"  ⏳ Gemini Quota Limit (429). Czekam 15s (próba {attempt+1}/4)...")
-                    time.sleep(15)
-                elif "404" in err_msg or "NOT_FOUND" in err_msg:
-                    print(f"  ⏩ Model {model_name} niedostępny, próbuję kolejny model...")
-                    break
-                else:
-                    print(f"  ⚠️ Błąd Gemini ({model_name}): {e}. Ponawiam za 5s...")
-                    time.sleep(5)
+            )
+            if response and response.text:
+                time.sleep(1.5)  # Płynny odstęp dla Vertex AI
+                return response.text
+        except Exception as e:
+            print(f"  ⚠️ Uwaga Vertex AI (próba {attempt+1}/3): {e}. Odczekuję 5s...")
+            time.sleep(5)
 
     return None
 
