@@ -3,14 +3,31 @@ import os
 import re
 
 def load_knowledge_base():
-    kb_dir = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS\lifewave\04-assets\knowledge_base"
+    candidate_paths = [
+        r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS\lifewave\04-assets\knowledge_base",
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "04-assets", "knowledge_base")),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "04-assets", "knowledge_base")),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "04-assets", "knowledge_base")),
+        "/app/04-assets/knowledge_base"
+    ]
+    
     kb_data = ""
-    if os.path.exists(kb_dir):
-        for f in os.listdir(kb_dir):
-            if f.endswith(".md"):
-                path = os.path.join(kb_dir, f)
-                with open(path, "r", encoding="utf-8", errors="ignore") as file:
-                    kb_data += f"\n\n--- Z PLIKU {f} ---\n" + file.read()
+    target_dir = None
+    for path in candidate_paths:
+        if os.path.exists(path):
+            target_dir = path
+            break
+            
+    if target_dir:
+        for root, dirs, files in os.walk(target_dir):
+            for f in files:
+                if f.endswith(".md"):
+                    full_p = os.path.join(root, f)
+                    try:
+                        with open(full_p, "r", encoding="utf-8", errors="ignore") as file:
+                            kb_data += f"\n\n--- Z PLIKU {f} ---\n" + file.read()
+                    except Exception:
+                        pass
     return kb_data
 
 def fallback_advisor(query, kb_content):

@@ -52,21 +52,67 @@ auth.check_auth()
 if not st.session_state.authenticated:
     auth.render_login_screen()
 
-# ===== SIDEBAR BRANDING =====
+# ===== SIDEBAR BRANDING & NAVIGATION =====
 if os.path.exists("images/whatsapp_group.png"):
     st.sidebar.image("images/whatsapp_group.png", width=90)
-else:
+elif os.path.exists("images/brand_icon.png"):
     st.sidebar.image("images/brand_icon.png", width=90)
 st.sidebar.markdown("### 🌊 KLUB FALA ŻYCIA")
 st.sidebar.markdown("**Stan konta:** Członek Klubu VIP ✨")
+
+# Load Knowledge Base Files
+@st.cache_data(ttl=600)
+def load_kb():
+    kb = {}
+    kb_path = os.path.join(os.path.dirname(__file__), "..", "04-assets", "knowledge_base")
+    if os.path.exists(kb_path):
+        for f in os.listdir(kb_path):
+            if f.endswith(".md"):
+                p = os.path.join(kb_path, f)
+                try:
+                    with open(p, "r", encoding="utf-8") as file:
+                        kb[f] = file.read()
+                except Exception:
+                    pass
+    return kb
+
+kb_files = load_kb()
+
+st.sidebar.markdown("---")
+st.sidebar.markdown("### 📌 Nawigacja")
+menu_choice = st.sidebar.radio(
+    "Wybierz sekcję:",
+    [
+        "🏠 Strona Główna",
+        "🤖 Asystent AI Fala Życia",
+        "🎓 Akademia Wiedzy",
+        "✈️ Akademia Punktów & Loty",
+        "💊 Suplementacja Celergize",
+        "🫁 Pacer Oddechowy",
+        "💼 Strefa Partnera"
+    ]
+)
 
 st.sidebar.markdown("---")
 if st.sidebar.button("Wyloguj się 🔒"):
     st.session_state.authenticated = False
     st.rerun()
 
-st.title("Witaj w Panelu Głównym Klubu Fala Życia")
-st.markdown("""
-Wybierz jedną z sekcji w menu bocznym po lewej stronie, aby przejść do interesującego Cię modułu.
-System ten jest w 100% zintegrowany z agentami Vertex AI.
-""")
+# ===== ROUTING TO MODULES =====
+from modules import home, advisor, academy, flight_aggregator, celergize, pacer, partner_zone
+
+if menu_choice == "🏠 Strona Główna":
+    home.render()
+elif menu_choice == "🤖 Asystent AI Fala Życia":
+    advisor.render(kb_files)
+elif menu_choice == "🎓 Akademia Wiedzy":
+    academy.render(kb_files)
+elif menu_choice == "✈️ Akademia Punktów & Loty":
+    flight_aggregator.render()
+elif menu_choice == "💊 Suplementacja Celergize":
+    celergize.render()
+elif menu_choice == "🫁 Pacer Oddechowy":
+    pacer.render()
+elif menu_choice == "💼 Strefa Partnera":
+    partner_zone.render()
+
