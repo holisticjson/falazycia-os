@@ -1,14 +1,741 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" data-theme="light">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="refresh" content="0; url=ania-landing.html">
-  <title>Świątynia Harmonii Ania Pilawska | Przekierowanie</title>
-  <script>
-    window.location.href = "ania-landing.html";
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Świątynia Harmonii — Ania Pilawska | Technika Bowena, Refleksologia, Masaż Kobido Łódź</title>
+  <meta name="description" content="Ekskluzywny gabinet holistycznego dobrostanu Ani Pilawskiej. Autorski Masaż Kobido, Technika Bowena, Refleksologia oraz Degustacja Wody X2O. Umów wizytę online.">
+  <link rel="canonical" href="https://swiatynia-harmonii.pl/">
+  
+  <!-- Structured Data: JSON-LD Schema (Google Knowledge Graph & Local Business) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BeautySalon",
+        "@id": "https://swiatynia-harmonii.pl/#salon",
+        "name": "Świątynia Harmonii Ania Pilawska",
+        "image": "https://swiatynia-harmonii.pl/zdjęcie_ania_pilawska.jpg",
+        "url": "https://swiatynia-harmonii.pl/",
+        "telephone": "+48 500 000 000",
+        "priceRange": "$$$",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Łódź",
+          "addressCountry": "PL"
+        },
+        "sameAs": [
+          "https://www.facebook.com/swiatyniaharmonii/",
+          "https://www.instagram.com/swia_tynia_har_monii/",
+          "https://ania.fala-zycia.pl"
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": "128"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://swiatynia-harmonii.pl/#owner",
+        "name": "Ania Pilawska",
+        "jobTitle": "Holistyczna Terapeutyka Techniki Bowena, Refleksologii & Masażu Kobido",
+        "worksFor": {
+          "@id": "https://swiatynia-harmonii.pl/#salon"
+        }
+      }
+    ]
+  }
   </script>
+  
+  <!-- Google Fonts: Cormorant Garamond (Editorial Serif), Outfit (Modern Subheads), Plus Jakarta Sans (Clean Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ===== BRAND BOOK SYSTEM: ŚWIĄTYNIA HARMONII ===== */
+    :root {
+      --bg-base: #F5EBE6;
+      --bg-surface: #FFFFFF;
+      --bg-pink-soft: #F9EFEF;
+      --bg-glass: rgba(255, 255, 255, 0.88);
+      
+      --border-glass: rgba(212, 175, 55, 0.35);
+      --border-rose: rgba(232, 197, 200, 0.5);
+      
+      --text-main: #2A2426;
+      --text-muted: #5C5255;
+      --text-heading: #0D1B1E;
+      
+      --accent-magenta: #B32D52;
+      --accent-magenta-dark: #982245;
+      --accent-rose-light: #E8C5C8;
+      --accent-gold: #D4AF37;
+      --accent-gold-dark: #C5A059;
+      --accent-navy: #0D1B1E;
+      
+      --shadow-sm: 0 4px 15px rgba(179, 45, 82, 0.05);
+      --shadow-md: 0 10px 30px rgba(179, 45, 82, 0.08), 0 4px 12px rgba(212, 175, 55, 0.12);
+      --shadow-lg: 0 20px 50px rgba(179, 45, 82, 0.14);
+      
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.8;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(232, 197, 200, 0.4) 0%, transparent 45%),
+        radial-gradient(circle at 90% 65%, rgba(212, 175, 55, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 50% 95%, rgba(179, 45, 82, 0.08) 0%, transparent 50%);
+    }
+
+    a {
+      color: var(--accent-magenta);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--accent-gold-dark);
+    }
+
+    /* SYGNATUROWA ZŁOTA LINIA IMPULSU BOWENA */
+    .golden-impulse-line {
+      height: 1px;
+      width: 100%;
+      max-width: 120px;
+      background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+      margin: 18px auto;
+    }
+
+    .golden-impulse-line-left {
+      height: 1px;
+      width: 90px;
+      background: linear-gradient(90deg, var(--accent-gold), transparent);
+      margin: 14px 0;
+    }
+
+    /* NAWIGACJA GLASSMORPHISM */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 16px 5%;
+      background: rgba(245, 235, 230, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-badge {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-magenta), var(--accent-gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #FFFFFF;
+      font-size: 20px;
+      box-shadow: 0 4px 15px rgba(179, 45, 82, 0.25);
+    }
+
+    .logo-text {
+      font-family: var(--font-serif);
+      font-size: 25px;
+      font-weight: 700;
+      color: var(--accent-magenta);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span {
+      color: var(--accent-gold-dark);
+      font-family: var(--font-heading);
+      font-size: 10px;
+      display: block;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-heading);
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-magenta);
+    }
+
+    .btn-magenta {
+      background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--accent-gold) 100%);
+      color: #FFFFFF !important;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-magenta:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      background: linear-gradient(135deg, var(--accent-magenta-dark) 0%, var(--accent-gold-dark) 100%);
+    }
+
+    .btn-outline-gold {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--accent-magenta) !important;
+      font-family: var(--font-heading);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 26px;
+      border-radius: 30px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid var(--accent-gold);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-gold:hover {
+      background: var(--bg-surface);
+      transform: translateY(-2px);
+      border-color: var(--accent-magenta);
+    }
+
+    /* HERO SECTION */
+    .hero {
+      padding: 150px 5% 90px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .hero-badge-tag {
+      color: var(--accent-gold-dark);
+      font-family: var(--font-heading);
+      font-size: 13px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: 54px;
+      line-height: 1.12;
+      color: var(--accent-magenta);
+      margin-bottom: 22px;
+      font-weight: 700;
+    }
+
+    .hero-title span {
+      color: var(--accent-gold-dark);
+      font-style: italic;
+    }
+
+    .hero-lead {
+      font-size: 18px;
+      color: var(--text-muted);
+      margin-bottom: 34px;
+      font-weight: 400;
+    }
+
+    /* CARD EDITORIAL GLASSMORPHISM */
+    .glass-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 24px;
+      padding: 36px;
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    .glass-card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: var(--accent-magenta);
+    }
+
+    .portrait-frame {
+      position: relative;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 2px solid var(--accent-gold);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .portrait-frame img {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portrait-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background: linear-gradient(360deg, rgba(13, 27, 30, 0.85) 0%, transparent 100%);
+      color: #FFFFFF;
+    }
+
+    /* SEKCJE */
+    .section {
+      padding: 90px 5%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 42px;
+      color: var(--accent-magenta);
+      text-align: center;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 15px;
+      color: var(--accent-gold-dark);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+      font-weight: 600;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .service-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-glass);
+      border-radius: 24px;
+      padding: 36px 30px;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-magenta);
+    }
+
+    .pearl-sphere-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #FFFFFF 0%, #F9EFEF 60%, #E8C5C8 100%);
+      border: 1.5px solid var(--accent-gold);
+      box-shadow: inset -2px -2px 6px rgba(179, 45, 82, 0.15), 0 6px 15px rgba(212, 175, 55, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-magenta);
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .service-title {
+      font-family: var(--font-serif);
+      font-size: 28px;
+      color: var(--accent-magenta);
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    /* MODUŁ DEGUSTACJI WODY X2O */
+    .x2o-experience-box {
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(249,239,239,0.9) 100%);
+      border: 2px solid var(--accent-gold);
+      border-radius: 28px;
+      padding: 48px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    /* REZERWACJA CAL.COM */
+    .booking-wrapper {
+      background: var(--bg-surface);
+      border-radius: 28px;
+      padding: 32px;
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* BANER FALA ŻYCIA */
+    .club-banner {
+      background: linear-gradient(135deg, var(--accent-magenta) 0%, #831B39 100%);
+      color: #FFFFFF;
+      border-radius: 28px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+      box-shadow: var(--shadow-lg);
+      margin: 40px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .club-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(212, 175, 55, 0.25) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    footer {
+      padding: 60px 5% 40px;
+      background: var(--accent-navy);
+      color: #E2D9DB;
+      text-align: center;
+    }
+
+    @media (max-width: 992px) {
+      .hero, .services-grid, .x2o-experience-box, .club-banner {
+        grid-template-columns: 1fr;
+      }
+      .nav-links {
+        display: none;
+      }
+      .hero-title {
+        font-size: 38px;
+      }
+      .section-title {
+        font-size: 32px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p>Przekierowywanie do strony Świątynia Harmonii Ani Pilawskiej... <a href="ania-landing.html">Kliknij tutaj, jeśli przekierowanie nie nastąpi automatycznie.</a></p>
+
+  <!-- NAWIGACJA -->
+  <header>
+    <div class="nav-container">
+      <a href="https://swiatynia-harmonii.pl/" class="logo-brand">
+        <div class="logo-badge">
+          <i class="fa-solid fa-spa"></i>
+        </div>
+        <div class="logo-text">
+          Świątynia Harmonii
+          <span>Ania Pilawska</span>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#metody">Praca z Ciałem</a></li>
+        <li><a href="#degustacja-x2o">Degustacja X2O</a></li>
+        <li><a href="#dobrostan">Definicja Dobrostanu</a></li>
+        <li><a href="#fala-zycia">Klub Fala Życia</a></li>
+        <li><a href="#rezerwacja">Rezerwacja Online</a></li>
+      </ul>
+
+      <a href="#rezerwacja" class="btn-magenta">
+        <i class="fa-solid fa-calendar-check"></i> Umów Wizytę
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div>
+      <div class="hero-badge-tag">
+        <i class="fa-solid fa-gem"></i> GABINET HOLISTYCZNEGO DOBROSTANU
+      </div>
+      <h1 class="hero-title">
+        Jeśli czujesz, że Twoje ciało potrzebuje zatrzymania...<br>
+        <span>Jestem tutaj, by Ci towarzyszyć. 🌸</span>
+      </h1>
+      
+      <div class="golden-impulse-line-left"></div>
+
+      <p class="hero-lead">
+        Łączę precyzyjną pracę z powięzią <strong>Techniką Bowena</strong>, głęboki drenaż odruchowy <strong>refleksologii</strong> oraz autorski, liftingujący <strong>Masaż Kobido</strong> z komórkowym nawodnieniem żywą <strong>Wodą X2O</strong>.
+      </p>
+
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <a href="#rezerwacja" class="btn-magenta">
+          <i class="fa-solid fa-calendar-days"></i> Zarezerwuj Termin
+        </a>
+        <a href="#degustacja-x2o" class="btn-outline-gold">
+          <i class="fa-solid fa-glass-water"></i> Degustacja Wody X2O
+        </a>
+      </div>
+    </div>
+
+    <!-- PORTRET ANI I DEFINICJA -->
+    <div class="glass-card">
+      <div class="portrait-frame mb-4">
+        <img src="zdjęcie_ania_pilawska.jpg" alt="Ania Pilawska — Świątynia Harmonii Łódź">
+        <div class="portrait-overlay">
+          <strong style="font-family: var(--font-serif); font-size: 22px; display: block;">Ania Pilawska</strong>
+          <span style="font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-rose-light);">Terapeutyka Ciała & Nawodnienia Komórkowego</span>
+        </div>
+      </div>
+
+      <h3 style="font-family: var(--font-serif); font-size: 26px; color: var(--accent-magenta); margin-bottom: 10px;">
+        Czym Jest Prawdziwy Dobrostan?
+      </h3>
+      <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 16px;">
+        To głęboki stan, w którym czujesz pełną równowagę — fizycznie, emocjonalnie i komórkowo. To moment, gdy spięta powięź odpuszcza, a ciało i umysł odzyskują lekkość.
+      </p>
+
+      <div style="background: var(--bg-pink-soft); border-radius: 16px; padding: 16px; border: 1px solid var(--border-rose);">
+        <strong style="color: var(--accent-magenta); font-size: 13px; display: block; margin-bottom: 4px;">
+          Dobrostan zaczyna się od pierwszego oddechu.
+        </strong>
+        <p style="font-size: 12px; color: var(--text-muted);">
+          Zadbaj o siebie w bezpiecznej, przytulnej atmosferze gabinetu w Łodzi. ✨
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEKCJA METOD PRACY W GABINECIE -->
+  <section class="section" id="metody">
+    <h2 class="section-title">Trzy Filary Pracy w Gabinecie</h2>
+    <p class="section-subtitle">Holistyczna Regeneracja Ciała i Powięzi</p>
+    <div class="golden-impulse-line"></div>
+
+    <div class="services-grid" style="margin-top: 40px;">
+      <!-- Technika Bowena -->
+      <div class="service-card">
+        <div class="pearl-sphere-icon"><i class="fa-solid fa-feather-pointed"></i></div>
+        <h3 class="service-title">Technika Bowena</h3>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 18px;">
+          Subtelna, niezmiernie delikatna praca na powięzi i układzie nerwowym. Poprzez delikatny "impuls" na tkance miękkiej ciało dostaje sygnał do natychmiastowej samoregeneracji.
+        </p>
+        <ul style="list-style: none; font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
+          <li>✨ Głębokie wyciszenie układu nerwowego</li>
+          <li>✨ Ulga w chronicznych napięciach pleców</li>
+          <li>✨ Przywrócenie naturalnego przepływu energii</li>
+        </ul>
+      </div>
+
+      <!-- Refleksologia -->
+      <div class="service-card">
+        <div class="pearl-sphere-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+        <h3 class="service-title">Refleksologia</h3>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 18px;">
+          Precyzyjna stymulacja stref odruchowych stóp i dłoni. Odpowiada za bezpośredni drenaż narządów wewnętrznych, poprawia mikrokrążenie oraz wspiera głęboki, mocny sen.
+        </p>
+        <ul style="list-style: none; font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
+          <li>✨ Redukcja przebodźcowania i stresu</li>
+          <li>✨ Lepsza jakość snu i poziom witalności</li>
+          <li>✨ Aktywacja naturalnego drenażu toksyn</li>
+        </ul>
+      </div>
+
+      <!-- Masaż Kobido -->
+      <div class="service-card">
+        <div class="pearl-sphere-icon"><i class="fa-solid fa-butterfly"></i></div>
+        <h3 class="service-title">Masaż Kobido</h3>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 18px;">
+          Autorski, nieinwazyjny zabieg liftingujący mięśnie głębokie twarzy i szyi. Modeluje owal, wygładza zmarszczki mimiczne i przywraca skórze promienny, świeży blask.
+        </p>
+        <ul style="list-style: none; font-size: 13px; color: var(--text-muted); display: flex; flex-direction: column; gap: 8px;">
+          <li>✨ Naturalny efekt odmłodzenia bez igieł</li>
+          <li>✨ Drenaż limfatyczny i ujędrnienie</li>
+          <li>✨ Uwolnienie napięć w obrębie żuchwy</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEGUSTACJA WODY X2O W GABINECIE -->
+  <section class="section" id="degustacja-x2o">
+    <div class="x2o-experience-box">
+      <div>
+        <span style="color: var(--accent-magenta); font-family: var(--font-heading); font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 8px;">
+          <i class="fa-solid fa-droplet"></i> DOŚWIADCZENIE GABINETOWE
+        </span>
+        <h3 style="font-family: var(--font-serif); font-size: 38px; color: var(--accent-magenta); margin-bottom: 14px; line-height: 1.2;">
+          Degustacja Żywej Wody X2O & Nawodnienie Komórkowe
+        </h3>
+        <p style="font-size: 15px; color: var(--text-muted); margin-bottom: 20px;">
+          Sama stymulacja zewnętrzna to połowa sukcesu. Podczas każdej wizyty w Świątyni Harmonii zdegustujesz wyjątkową, strukturyzowaną <strong>Wodę X2O</strong> wzbogaconą naturalnymi minerałami fotonowymi.
+        </p>
+        <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 24px;">
+          Nawodniona komórka szybciej przewodniczy bodźce powięziowe Techniki Bowena i zachowuje elastyczność włókien kolagenowych po masażu Kobido.
+        </p>
+        <a href="#rezerwacja" class="btn-magenta">
+          <i class="fa-solid fa-mug-hot"></i> Umów Wizytę z Degustacją
+        </a>
+      </div>
+
+      <div style="text-align: center; background: var(--bg-surface); padding: 30px; border-radius: 20px; border: 1px solid var(--border-glass);">
+        <i class="fa-solid fa-faucet-drip" style="font-size: 70px; color: var(--accent-gold); margin-bottom: 16px;"></i>
+        <strong style="display: block; font-family: var(--font-serif); font-size: 22px; color: var(--accent-magenta); margin-bottom: 6px;">
+          Pij Światło. Żyj Lepiej.
+        </strong>
+        <p style="font-size: 13px; color: var(--text-muted);">
+          Poznaj bio-energetyczne nawodnienie, które daje natychmiastowe uczucie lekkości w głowie i ciele.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANER MOSTEK DO KLUBU FALA ŻYCIA -->
+  <section class="section" id="fala-zycia">
+    <div class="club-banner">
+      <div style="position: relative; z-index: 2;">
+        <span style="color: var(--accent-rose-light); font-family: var(--font-heading); font-size: 12px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; display: block; margin-bottom: 10px;">
+          SPOŁECZNOŚĆ FALA ŻYCIA
+        </span>
+        <h3 style="font-family: var(--font-serif); font-size: 36px; color: #FFFFFF; margin-bottom: 16px;">
+          Chcesz kontynuować odnowę komórkową w domu?
+        </h3>
+        <p style="font-size: 15px; color: #F6ECEC; margin-bottom: 26px;">
+          Dołącz do naszego autorskiego Klubu Fala Życia. Dowiedz się, jak opaski fototerapii biofotonowej <strong>LifeWave X39</strong> aktywują własny peptyd GHK-Cu i regenerują organizm każdego dnia.
+        </p>
+        <a href="https://ania.fala-zycia.pl" class="btn-outline-gold" style="background: #FFFFFF; color: var(--accent-magenta) !important;" target="_blank">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Odwiedź Portal Klubowy ania.fala-zycia.pl
+        </a>
+      </div>
+
+      <div style="text-align: center; position: relative; z-index: 2;">
+        <i class="fa-solid fa-sun-plant-wilt" style="font-size: 90px; color: var(--accent-rose-light); opacity: 0.9;"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- REZERWACJA ONLINE CAL.COM & KONTAKT -->
+  <section class="section" id="rezerwacja">
+    <h2 class="section-title">Zarezerwuj Chwilę Dla Siebie</h2>
+    <p class="section-subtitle">Wybierz Dogodny Termin w Kalendarzu Gabinetu</p>
+    <div class="golden-impulse-line"></div>
+
+    <div class="booking-wrapper" style="margin-top: 30px;">
+      <iframe src="https://cal.com/embed" style="width: 100%; height: 580px; border: none; border-radius: 16px;" title="Kalendarz Rezerwacji Świątynia Harmonii"></iframe>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 30px; text-align: center;">
+      <div style="background: var(--bg-surface); padding: 20px; border-radius: 16px; border: 1px solid var(--border-glass);">
+        <i class="fa-solid fa-location-dot" style="color: var(--accent-magenta); font-size: 20px; margin-bottom: 8px;"></i>
+        <strong style="display: block; font-size: 14px; color: var(--accent-navy);">Lokalizacja Gabinetu</strong>
+        <span style="font-size: 13px; color: var(--text-muted);">Łódź (szczegóły w e-mailu po rezerwacji)</span>
+      </div>
+
+      <div style="background: var(--bg-surface); padding: 20px; border-radius: 16px; border: 1px solid var(--border-glass);">
+        <i class="fa-solid fa-clock" style="color: var(--accent-magenta); font-size: 20px; margin-bottom: 8px;"></i>
+        <strong style="display: block; font-size: 14px; color: var(--accent-navy);">Godziny Przyjęć</strong>
+        <span style="font-size: 13px; color: var(--text-muted);">Według wolnych okienek w Cal.com</span>
+      </div>
+
+      <div style="background: var(--bg-surface); padding: 20px; border-radius: 16px; border: 1px solid var(--border-glass);">
+        <i class="fa-solid fa-phone" style="color: var(--accent-magenta); font-size: 20px; margin-bottom: 8px;"></i>
+        <strong style="display: block; font-size: 14px; color: var(--accent-navy);">Kontakt Bezpośredni</strong>
+        <span style="font-size: 13px; color: var(--text-muted);">Formularz lub rezerwacja online</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STOPKA -->
+  <footer>
+    <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px;">
+      <div class="logo-brand">
+        <div class="logo-badge" style="width: 36px; height: 36px; font-size: 16px;">
+          <i class="fa-solid fa-spa"></i>
+        </div>
+        <div class="logo-text" style="color: #FFFFFF; font-size: 20px;">
+          Świątynia Harmonii
+        </div>
+      </div>
+
+      <p style="font-size: 13px; color: var(--accent-rose-light);">&copy; 2026 Świątynia Harmonii Ania Pilawska. Wszelkie prawa zastrzeżone.</p>
+
+      <div style="display: flex; gap: 20px; font-size: 14px;">
+        <a href="https://www.facebook.com/swiatyniaharmonii/" target="_blank" style="color: var(--accent-gold);"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        <a href="https://www.instagram.com/swia_tynia_har_monii/" target="_blank" style="color: var(--accent-gold);"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a href="https://ania.fala-zycia.pl" target="_blank" style="color: #FFFFFF;"><i class="fa-solid fa-globe"></i> Portal Klubowy ania.fala-zycia.pl</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
