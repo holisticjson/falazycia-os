@@ -59,12 +59,27 @@ def fallback_advisor(query, kb_content):
 def get_agent_response(query, chat_history):
     kb_content = load_knowledge_base()
     
+    # Auto-detect Service Account key for Vertex AI
+    sa_key_candidates = [
+        r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS\lifewave\falazycia-os-sa-key.json",
+        r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS\lifewave\fala-zycia-agents-sa-key.json",
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "falazycia-os-sa-key.json")),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "falazycia-os-sa-key.json")),
+        os.path.abspath(os.path.join(os.path.dirname(__file__), "falazycia-os-sa-key.json")),
+        "/app/falazycia-os-sa-key.json",
+        "/app/02-website/falazycia-os-sa-key.json"
+    ]
+    for key_p in sa_key_candidates:
+        if os.path.exists(key_p):
+            os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = key_p
+            break
+
     try:
         from google import genai
         from google.genai import types
         
         # Vertex AI setup with GenAI SDK
-        client = genai.Client(vertexai=True, project='falazycia-os', location='europe-central2')
+        client = genai.Client(vertexai=True, project='falazycia-os', location='us-central1')
         
         system_instruction = f"""
         Jesteś głównym Doradcą AI (Ghost v2) dla Klubu Fala Życia, powołanym przez Tomasza.
@@ -73,7 +88,7 @@ def get_agent_response(query, chat_history):
         1. Fotobiomodulacji i plastrów LifeWave (X39, X49 itp).
         2. Maszyny wodorowej X2O (Biofotonowa Aktywacja Wody).
         3. Marketingu Sieciowego (MLM) i duplikacji.
-        4. Agregatorów lotów (Biznes Klasa za mile).
+        4. Agregatorów lotów (Biznes Klasa za mile - Kurs Piotra Lotniczego Flight Hacking).
         5. Szkoły Oddechu i medytacji.
         
         Baza Wiedzy:
@@ -102,7 +117,7 @@ def get_agent_response(query, chat_history):
         return response.text
         
     except Exception as e:
-        # Fallback to smart heuristic if GCP IAM is not configured
+        # Fallback to smart heuristic if GCP API throws error
         return fallback_advisor(query, kb_content)
 
 def render():
