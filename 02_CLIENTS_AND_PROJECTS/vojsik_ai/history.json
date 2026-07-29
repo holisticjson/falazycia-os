@@ -790,5 +790,23 @@
         "raw_text": "Nie zainstalował, nie wiem, nie pobrała się ta paczka czy coś.",
         "corrected_text": "Nie zainstalował, nie wiem, nie pobrała się ta paczka czy coś.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 16:04:22",
+        "raw_text": "Naszą tutaj klub Fala Życia, administracja klubu Fala Życia. A tak, on na pewno pisał, no bo ja tutaj cały czas grzebię, to znaczy pracuje mój skrypt w tle i już chyba od kilku godzin i pobiera jego transkrypcję z tych kursów, tak żebym wyszkolił, nakarmił agenta AI na podstaw  do całej wiedzy dostęp i znał wszystkie tipy i triki i w sekundzie mogę przekazać w czacie informacje co, gdzie i jak",
+        "corrected_text": "Naszą tutaj klub Fala Życia, administracja klubu Fala Życia. A tak, on na pewno pisał, no bo ja tutaj cały czas grzebię, to znaczy pracuje mój skrypt w tle i już chyba od kilku godzin i pobiera jego transkrypcję z tych kursów, tak żebym wyszkolił, nakarmił agenta AI na podstaw  do całej wiedzy dostęp i znał wszystkie tipy i triki i w sekundzie mogę przekazać w czacie informacje co, gdzie i jak",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 18:00:34",
+        "raw_text": "ale mogę wybrać to strumieniowanie, czyli to chodzi o nagrywanie na żywo i połączenie się z platformami, social media na przykład, czy jakieś tam, nie wiem, znaczy o co tutaj chodzi, że tylko lokalnie.  Dziękuję.",
+        "corrected_text": "ale mogę wybrać to strumieniowanie, czyli to chodzi o nagrywanie na żywo i połączenie się z platformami, social media na przykład, czy jakieś tam, nie wiem, znaczy o co tutaj chodzi, że tylko lokalnie.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 18:59:11",
+        "raw_text": "Całej infrastruktury domeny głównej, poddomen, dashboardu czy to wszystko wyświetla się mobile friendly, dobrze jest zostylowane, zakodowane, bo na pewno źle się wyświetla. Jest rozjechane na prawą stronę. Ta strona główna portalu, podstronę, wszystko ma być po prostu cykać idealnie na mobile.",
+        "corrected_text": "Całej infrastruktury domeny głównej, poddomen, dashboardu czy to wszystko wyświetla się mobile friendly, dobrze jest zostylowane, zakodowane, bo na pewno źle się wyświetla. Jest rozjechane na prawą stronę. Ta strona główna portalu, podstronę, wszystko ma być po prostu cykać idealnie na mobile.",
+        "status": "raw_fallback"
     }
 ]

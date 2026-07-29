@@ -92,7 +92,34 @@
         strong { color: #FFF; font-weight: 700; }
 
         .skill-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 25px;
+        }
+
+        /* ===== MOBILE-FRIENDLY & ZERO-OVERFLOW PROTECTION ===== */
+        html, body {
+            max-width: 100vw !important;
+            overflow-x: hidden !important;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box !important;
+        }
+        img, video, iframe, canvas, svg {
+            max-width: 100% !important;
+            height: auto;
+        }
+        .table-responsive {
+            width: 100% !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .container { padding-left: 16px !important; padding-right: 16px !important; width: 100% !important; max-width: 100% !important; }
+            .section-card { padding: 24px 16px !important; }
+            .skill-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+            .btn-action { width: 100% !important; text-align: center !important; justify-content: center !important; }
+            h1 { font-size: clamp(1.8rem, 6.5vw, 2.5rem) !important; word-break: break-word !important; }
+            h2 { font-size: clamp(1.4rem, 5vw, 2rem) !important; word-break: break-word !important; }
         }
 
         .skill-card {
@@ -204,6 +231,7 @@
                 Rozważamy powołanie spójnego holdingu połączonych podmiotów. Umożliwia to 100% kontroli operacyjnej nad działalnością gospodarczą przy jednoczesnym korzystaniu ze zwolnień statutowych.
             </p>
 
+            <div class="table-responsive">
             <table class="holding-table">
                 <thead>
                     <tr>
@@ -235,6 +263,7 @@
                     </tr>
                 </tbody>
             </table>
+            </div>
 
             <p style="font-size: 1rem; color: var(--gold-accent); margin-top: 15px;">
                 <strong>Wniosek Analizy:</strong> Mimo wyższych kosztów obsługi pełnej księgowości, korzyści w postaci zerowego CIT, ochrony majątku oraz dostępów do darmowych budżetów reklamowych i grantów z nawiązką równoważą koszty formalne.
