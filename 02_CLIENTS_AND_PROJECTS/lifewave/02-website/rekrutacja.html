@@ -10,7 +10,7 @@
         :root {
             --space-black: #0A0A0A;
             --deep-navy: #05101A;
-            --card-bg: rgba(15, 23, 42, 0.75);
+            --card-bg: rgba(15, 23, 42, 0.85);
             --card-border: rgba(0, 210, 196, 0.25);
             --text-main: #E2E8F0;
             --text-muted: #94A3B8;
@@ -25,7 +25,7 @@
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--space-black) 0%, var(--deep-navy) 100%);
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.75;
             min-height: 100vh;
         }
 
@@ -35,7 +35,6 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 60px 20px;
-            text-align: center;
         }
 
         .gradient-text {
@@ -49,11 +48,10 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 24px;
-            padding: 40px;
-            margin-top: 30px;
-            backdrop-filter: blur(12px);
+            padding: 35px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(16px);
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            text-align: left;
         }
 
         .badge-pill {
@@ -96,7 +94,7 @@
             box-shadow: 0 0 35px rgba(0, 210, 196, 0.6);
         }
 
-        input, select {
+        input, select, textarea {
             width: 100%;
             padding: 16px 20px;
             margin-top: 10px;
@@ -109,12 +107,38 @@
             outline: none;
         }
 
-        input:focus, select:focus {
-            border-color: var(--quantum-cyan);
+        input:focus, select:focus, textarea:focus { border-color: var(--quantum-cyan); }
+
+        .faq-item {
+            background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
         }
 
-        ul { margin-left: 20px; margin-top: 10px; }
-        li { margin-bottom: 10px; }
+        .faq-item:hover { border-color: var(--quantum-cyan); }
+
+        .faq-question {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            color: var(--quantum-cyan);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            display: none;
+            margin-top: 15px;
+            color: var(--text-main);
+            font-size: 0.98rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 15px;
+        }
+
         strong { color: #FFF; font-weight: 700; }
     </style>
 </head>
@@ -122,31 +146,78 @@
 
     <div class="container">
         
-        <img src="brand_icon.png" alt="Klub Fala Życia Logo" style="width: 100px; height: 100px; border-radius: 50%; box-shadow: 0 0 30px rgba(0,210,196,0.6); margin-bottom: 20px; object-fit: cover;">
-        
-        <div class="badge-pill">⚙️ LEJEK KWALIFIKACJI PARTNERSKIEJ (W BUDOWIE)</div>
-        
-        <h1 style="font-size: 3rem; margin-bottom: 15px;">
-            Dołącz do Ekipy <span class="gradient-text">Klubu Fala Życia</span>
-        </h1>
-        
-        <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 800px; margin: 0 auto 30px auto;">
-            Buduj suwerenny biznes w oparciu o przełomową technologię ustrukturyzowanej wody X2O™, fotobiomodulację X39 oraz wsparcie asynchronizowanego Agenta AI.
-        </p>
+        <div style="text-align: center; margin-bottom: 40px;">
+            <img src="brand_icon.png" alt="Klub Fala Życia Logo" style="width: 100px; height: 100px; border-radius: 50%; box-shadow: 0 0 30px rgba(0,210,196,0.6); margin-bottom: 20px; object-fit: cover;">
+            <br>
+            <div class="badge-pill">⚙️ SYSTEM REKRUTACYJNY & KWALIFIKACJA PARTNERA</div>
+            <h1 style="font-size: 3rem; margin-bottom: 15px;">
+                Dołącz do Zespołu <span class="gradient-text">Klubu Fala Życia</span>
+            </h1>
+            <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 800px; margin: 0 auto;">
+                Buduj oparty na wartościach biznes w modelu <strong>Zaproś ➔ Pokaż ➔ Skonsultuj</strong>. Otrzymujesz asystę cyfrowego trenera na WhatsAppie, dostęp do Aplikacji Akademii oraz gotowych narzędzi rekrutacyjnych.
+            </p>
+        </div>
 
+        <!-- Co otrzymujesz -->
         <div class="section-card">
             <h2 style="font-size: 1.8rem; margin-bottom: 20px; color: var(--quantum-cyan);">
                 🎯 Co Otrzymujesz po Kwalifikacji do Zespołu?
             </h2>
 
-            <ul>
-                <li><strong>Dostęp do Aplikacji Akademii Klubu:</strong> Interaktywny Dashboard na Cloud Run z wbudowanym Doradcą AI (Gemini 2.5 Flash).</li>
-                <li><strong>System Duplikacji & Skrypty NLP:</strong> Gotowe narzędzia, szablony i lejki referencyjne od pierwszego dnia.</li>
-                <li><strong>Wsparcie Społeczności & Degustacje:</strong> Dostęp do stacjonarnych przyczółków (m.in. Świątynia Harmonii w Łodzi).</li>
-                <li><strong>Edukacja Flight Hacking:</strong> Wiedza z kursu Piotra Lotniczego o lataniu Biznes Klasą za zdobyte punkty milowe.</li>
+            <ul style="margin-left: 20px;">
+                <li style="margin-bottom: 12px;"><strong>Aplikacja Dashboard Akademii:</strong> Dostęp na żywo do <a href="https://fala-zycia-dashboard-zhct4l5nxa-lm.a.run.app" style="color: var(--quantum-cyan);">app.fala-zycia.pl</a> z wbudowanym Doradcą AI (Gemini 2.5 Flash na Vertex AI).</li>
+                <li style="margin-bottom: 12px;"><strong>System Agentowy Jaison MLM OS:</strong> Osobisty asystent na WhatsAppie, który budzi Cię rano, dba o biologię (woda X2O, sól kłodawska, zimny prysznic), serwuje skrypty NLP i odpowiada na trudne pytania klientów 24/7.</li>
+                <li style="margin-bottom: 12px;"><strong>Świątynia Harmonii & Stacje Stacjonarne:</strong> Dostęp do bezpłatnych degustacji ustrukturyzowanej wody X2O™, masaży Kobido i sesji biohackingowych.</li>
+                <li style="margin-bottom: 12px;"><strong>Szkolenie Flight Hacking:</strong> Zbiór instrukcji zbierania punktów milowych i latania Biznes Klasą za zdobyte mile.</li>
             </ul>
+        </div>
 
-            <h3 style="margin-top: 30px; margin-bottom: 15px; font-size: 1.4rem;">Wypełnij Krótki Formularz Kwalifikacyjny:</h3>
+        <!-- Rozwiewanie 20 Obiekcji / FAQ -->
+        <div class="section-card">
+            <h2 style="font-size: 1.8rem; margin-bottom: 10px; color: var(--gold-accent);">
+                ❓ Pytania i Odpowiedzi na Wszystkie Obiekcje (FAQ)
+            </h2>
+            <p style="color: var(--text-muted); margin-bottom: 25px;">Kliknij pytania poniżej, aby poznać twarde fakty i naukowe dowody:</p>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><span>1. Czy to jest piramida finansowa?</span> <span>+</span></div>
+                <div class="faq-answer">
+                    Nie. Piramida nie posiada realnego produktu i żyje wyłącznie z wpisowego. W legalnym marketingu sieciowym obrót generowany jest z fizycznych, opatentowanych produktów (X39, X2O), od których odprowadzane są podatki (ponad 1 miliard USD rocznego obrotu w Polsce).
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><span>2. Czy muszę mieć czas i być wybitnym sprzedawcą?</span> <span>+</span></div>
+                <div class="faq-answer">
+                    Nie. Nie musisz wciskać ani samodzielnie prezentować produktów. Działasz w modelu <strong>Zasady Posłańca</strong>: podajesz krótkie nagranie wideo lub zapraszasz na webinar, a nasz system agentowy prowadzi resztę pracy operacyjnej.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><span>3. Czy plastry X39 to efekt placebo i brak chemii?</span> <span>+</span></div>
+                <div class="faq-answer">
+                    To czysta fizyka i fotobiomodulacja. Organiczne nanokryształy odbijają podczerwień ciała, stymulując produkcję peptydu <strong>GHK-Cu</strong> i własne komórki macierzyste. Posiadamy ponad 100 patentów medycznych oraz niezależne badania na PubMed.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><span>4. Dlaczego woda X2O™ i fototerapia nie są dostępne w aptekach?</span> <span>+</span></div>
+                <div class="faq-answer">
+                    Apteki narzucają marże sięgające kilkuset procent. Model sprzedaży bezpośredniej pozwala pominąć pośredników i przeznaczyć budżet na bezpośrednią edukację klientów i wsparcie partnerów.
+                </div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question"><span>5. Jak system dba o moje nawyki i biologię?</span> <span>+</span></div>
+                <div class="faq-answer">
+                    Agent Jaison MLM OS o 06:30 na WhatsAppie przesyła zapłon biologiczny: wymaga szklanki wody X2O z solą kłodawską, oddechów Wima Hofa i zimnego prysznica (+250% dopaminy), wyciągając Cię z prokrastynacji.
+                </div>
+            </div>
+        </div>
+
+        <!-- Formularz Kwalifikacyjny -->
+        <div class="section-card">
+            <h3 style="margin-bottom: 15px; font-size: 1.5rem; color: #FFF;">Wypełnij Krótki Formularz Kwalifikacyjny:</h3>
 
             <form onsubmit="event.preventDefault(); alert('Dziękujemy! Twój formularz został wysłany. Skontaktujemy się z Tobą w ciągu 24h.');">
                 <label><strong>Imię i Nazwisko:</strong></label>
@@ -160,20 +231,35 @@
 
                 <label><strong>Jakie masz doświadczenie w biznesie / zdrowiu?</strong></label>
                 <select>
-                    <option>Początkujący (Szukam sprawdzonego systemu)</option>
-                    <option>Przedsiębiorca / Biohaker</option>
+                    <option>Początkujący (Szukam sprawdzonego systemu i nauki)</option>
+                    <option>Przedsiębiorca / Biohaker / Fizjoterapeuta</option>
                     <option>Lider MLM / Sprzedaż B2B</option>
+                    <option>Wolontariusz / Organizator Społeczny</option>
                 </select>
 
                 <button type="submit" class="btn-primary">🚀 Wyślij Zgłoszenie Kwalifikacyjne</button>
             </form>
         </div>
 
-        <p style="margin-top: 40px; color: var(--text-muted); font-size: 0.9rem;">
-            © 2026 Klub Fala Życia | Strona w trakcie końcowego wdrożenia produkcyjnego.
+        <p style="text-align: center; margin-top: 30px; color: var(--text-muted); font-size: 0.9rem;">
+            © 2026 Klub Fala Życia | Dedykowany Lejek Rekrutacji i Kwalifikacji Partnerów.
         </p>
 
     </div>
+
+    <script>
+        function toggleFaq(el) {
+            const ans = el.querySelector('.faq-answer');
+            const icon = el.querySelector('.faq-question span:last-child');
+            if (ans.style.display === 'block') {
+                ans.style.display = 'none';
+                icon.textContent = '+';
+            } else {
+                ans.style.display = 'block';
+                icon.textContent = '−';
+            }
+        }
+    </script>
 
 </body>
 </html>

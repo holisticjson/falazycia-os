@@ -24,8 +24,10 @@
 - [x] **Neutralne Ujęcie Holdingu & Ról:** Usunięcie z góry przypisanych nazwisk i imion jako prezesów/osób odpowiedzialnych. Przejście na uniwersalne założenia holdingu (Fundacja + Spółka).
 - [x] **Rzetelny Bilans Plusów i Minusów:** Przedstawienie wyższych kosztów księgowych JDG vs Holding obok gigantycznych korzyści (0% CIT z art. 17 ust. 1 pkt 4, ochrona majątku osobistego, $10 000/mc Google Ad Grants).
 - [x] **Synergia Kompetencji Zespołu:** Wyeksponowanie ekspertyzy targowo-eventowej (Monika), holistycznej praktyki stacjonarnej Kobido/biohackingu (Ania) oraz zaplecza AI, Google Umiejętności Jutra i dyplomu SGH (Tomasz).
+- [x] **Misja Społeczna w Placówkach Publicznych:** Włączenie celów działania Fundacji w DPS-ach, Domach Dziecka, Szpitalach i Hospicjach.
+- [x] **Interaktywna Mapa Myśli 3D & Bento Grid (`MINDMAP_FALA_ZYCIA_3D.html`):** Rozbudowana wersja mobile-friendly z notatnikiem ADHD i przyciskami przełączania widoku.
+- [x] **Przełamujące FAQ w Rekrutacji (`fala-zycia.pl/rekrutacja`):** Wdrożenie dialogu rozwiewającego 20 obiekcji rynkowych MLM/LifeWave.
 - [x] **Compliance GIS / Lex Charlatan:** Zasada promowania bezpłatnych szklanek ustrukturyzowanej wody X2O™ oraz bezaptekowej profilaktyki dobowej bez oświadczeń medycznych.
-- [x] **Interaktywna Mapa Myśli 3D (`MINDMAP_FALA_ZYCIA_3D.html`):** Wizualne, zwijane drzewo wiedzy ADHD-friendly z D3.js.
 - [x] **Spis Treści WIKI (`LIFEWAVE_KNOWLEDGE_TREE_WIKI.md`):** Zbudowanie centralnego indeksu wiedzy z podziałem na 5 Filarów.
 - [x] **Aplikacja Dashboard na Cloud Run (`app.fala-zycia.pl`):** Działająca usługa z wbudowanym Doradcą AI Gemini 2.5 Flash na Vertex AI.
 - [x] **Master PRD 2026:** Utworzenie pliku `00-admin/FALA_ZYCIA_MASTER_PRD_2026.md` z rozliczeniem grantów chmurowych ($1000 GenAI + $600 Dialogflow CX).
@@ -44,7 +46,7 @@
 - [ ] **Wykonaj Git Push w Terminalu (1 Sekunda):**
   Wklej w konsoli PowerShell w folderze `C:\Aplikacje MVP`:
   ```powershell
-  cd "C:\Aplikacje MVP" ; git add . ; git commit -m "feat: deploy updated strategia z bilansem holdingu i synergią zespołową" ; git push origin main
+  cd "C:\Aplikacje MVP" ; git add . ; git commit -m "feat: deploy updated strategia, mindmap 3D & rekrutacja z FAQ" ; git push origin main
   ```
 - [ ] **Usunięcie Zduplikowanej Usługi w `holistic-dashboard-dev` (Opcjonalnie):**
   W konsoli GCP usuń nieaktywną usługę `swiatynia-harmonii` z konta `holisticjson@gmail.com`.
