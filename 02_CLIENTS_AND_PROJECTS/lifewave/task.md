@@ -15,6 +15,7 @@
 - [x] **Drzewo Wiedzy WIKI:** Stworzenie pliku `04-assets/LIFEWAVE_KNOWLEDGE_TREE_WIKI.md`.
 - [x] **Skaner Zasobów Multimedialnych:** Napisanie skryptu Python `scratch/scan_media_assets.py`.
 - [x] **Master PRD 2026:** Utworzenie pliku `00-admin/FALA_ZYCIA_MASTER_PRD_2026.md` z rozliczeniem grantów chmurowych ($1000 GenAI + $600 Dialogflow CX).
+- [x] **Podłączenie CI/CD dla `fala-zycia-web`:** Udane podpięcie repozytorium GitHub `holisticjson/falazycia-os` w usłudze Cloud Run.
 
 ### **⏳ W TRAKCIE / NASTĘPNE KROKI (IN PROGRESS):**
 - [/] **Skanowanie Multimediów:** Wykonanie pełnego skanowania folderu `04-assets/` i wygenerowanie `MEDIA_AND_RESEARCH_ASSET_INVENTORY.md`.
@@ -27,12 +28,11 @@
 ## 👤 2. ZADANIA DLA TOMASZA (USER TO-DO LIST)
 
 ### **👉 DO WYKONANIA TERAZ (PRIORYTET):**
+- [x] **Podłączono Repozytorium dla `fala-zycia-web` na Cloud Run:** Zrealizowane! Usługa ma typ `Repository`.
 - [ ] **Wykonaj Git Push w Terminalu (1 Sekunda):**
   Wklej poniższe polecenie w konsoli PowerShell w folderze `C:\Aplikacje MVP`:
   ```powershell
-  git add . ; git commit -m "feat: deploy strategia.html & master wiki"; git push origin main
+  cd "C:\Aplikacje MVP" ; git add . ; git commit -m "feat: deploy strategia.html & master wiki" ; git push origin main
   ```
-- [ ] **Podłącz Repozytorium dla `fala-zycia-web` na Cloud Run (1-Klik):**
-  W konsoli Google Cloud (projekt `falazycia-os`) przejdź do **Cloud Run ➔ fala-zycia-web**, kliknij **"Podłącz repozytorium"** (czerwone kółeczko z Twojego zrzutu) i wybierz repozytorium `holisticjson/falazycia-os`.
 - [ ] **Usunięcie Zduplikowanej Usługi w `holistic-dashboard-dev` (Opcjonalnie):**
-  W konsoli GCP na koncie `holisticjson@gmail.com` usuń wiszącą uslugę `swiatynia-harmonii` z błędem kompilacji.
+  W konsoli GCP na koncie `holisticjson@gmail.com` usuń wiszącą usługę `swiatynia-harmonii` z błędem kompilacji.

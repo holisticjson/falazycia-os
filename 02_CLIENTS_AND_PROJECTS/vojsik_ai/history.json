@@ -706,5 +706,11 @@
         "raw_text": "odpowiednie drzewa są porobione w git i tutaj lokalnie chociaż uważaj bo tam jest skrypt uruchomiony i zapisuje notatki do folderu 04-asset-knowledge-base-piotr-lotniczy no próbowałem zrobić tam push ale wyskoczyła jakaś  Może najpierw muszę podłączyć repozytorium, tak? Nie wiem, czy to musisz poukładać jakoś kurwa. I tutaj lokalnie i na repozytorium git. Dopiero wtedy podłączam to repozytorium do Cloud Run.",
         "corrected_text": "odpowiednie drzewa są porobione w git i tutaj lokalnie chociaż uważaj bo tam jest skrypt uruchomiony i zapisuje notatki do folderu 04-asset-knowledge-base-piotr-lotniczy no próbowałem zrobić tam push ale wyskoczyła jakaś  Może najpierw muszę podłączyć repozytorium, tak? Nie wiem, czy to musisz poukładać jakoś kurwa. I tutaj lokalnie i na repozytorium git. Dopiero wtedy podłączam to repozytorium do Cloud Run.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 14:15:43",
+        "raw_text": "W takim razie jeszcze zostało mi albo tutaj z Twoją pomocą, albo dać w ogóle informacje, zaktualizować dla Świątyni Harmonii, tak? No bo jakby subdomenę dla partnerów pod domeną falamyślnikzycia.pl już będą podłączone automatycznie, tak? W usłudze falamyślnikzycia.web.  otworzyć każdorazowo osobnej usługi. No i teraz pytanie to mapowanie domen tutaj się na Cloud Run w tym fala zycia myślnik OS w tym projekcie się świecą na czerwono. Rozumiem, że to nie ma znaczenia, tak? Jeśli są dobrze skonfigurowane na Cloud Run.  Dziękuję.",
+        "corrected_text": "W takim razie jeszcze zostało mi albo tutaj z Twoją pomocą, albo dać w ogóle informacje, zaktualizować dla Świątyni Harmonii, tak? No bo jakby subdomenę dla partnerów pod domeną falamyślnikzycia.pl już będą podłączone automatycznie, tak? W usłudze falamyślnikzycia.web.  otworzyć każdorazowo osobnej usługi. No i teraz pytanie to mapowanie domen tutaj się na Cloud Run w tym fala zycia myślnik OS w tym projekcie się świecą na czerwono. Rozumiem, że to nie ma znaczenia, tak? Jeśli są dobrze skonfigurowane na Cloud Run.  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]
