@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktywna Mapa Myśli | Ekosystem Klub Fala Życia & Jaison OS</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #030712;
+            --card-bg: rgba(15, 23, 42, 0.85);
+            --cyan: #00D2C4;
+            --gold: #FFD700;
+            --purple: #8A2BE2;
+            --text-light: #F8FAFC;
+            --text-muted: #94A3B8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-light);
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        #header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            background: var(--card-bg);
+            padding: 16px 24px;
+            border-radius: 16px;
+            border: 1px solid rgba(0, 210, 196, 0.3);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+        }
+
+        h1 { font-family: 'Outfit', sans-serif; font-size: 1.4rem; color: var(--cyan); margin-bottom: 4px; }
+        p { font-size: 0.85rem; color: var(--text-muted); }
+
+        #controls {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            z-index: 10;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            background: rgba(0, 210, 196, 0.15);
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            padding: 10px 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .btn:hover { background: var(--cyan); color: #000; }
+
+        svg { width: 100vw; height: 100vh; }
+
+        .node circle {
+            fill: #0F172A;
+            stroke-width: 3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .node text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            fill: #F8FAFC;
+            pointer-events: none;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+        }
+
+        .link {
+            fill: none;
+            stroke: rgba(0, 210, 196, 0.25);
+            stroke-width: 2px;
+        }
+
+        /* Tooltip */
+        #tooltip {
+            position: absolute;
+            display: none;
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid var(--cyan);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: white;
+            font-size: 0.85rem;
+            max-width: 320px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            pointer-events: none;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header">
+        <h1>🧠 Interaktywna Mapa Myśli | Klub Fala Życia</h1>
+        <p>ADHD-Friendly Visual Tree. Klikaj węzły, aby rozwijać i badać powiązania.</p>
+    </div>
+
+    <div id="controls">
+        <button class="btn" onclick="expandAll()">Rozwiń Wszystko</button>
+        <button class="btn" onclick="collapseAll()">Zwiń Wszystko</button>
+        <button class="btn" onclick="resetZoom()">Reset Widoku</button>
+    </div>
+
+    <div id="tooltip"></div>
+    <svg id="mindmap"></svg>
+
+    <script>
+        const treeData = {
+            name: "EKOSYSTEM FALA ŻYCIA",
+            type: "root",
+            desc: "Centralne jądro projektu Klub Fala Życia i Jaison OS",
+            children: [
+                {
+                    name: "🏛️ Holding & Model Prawny",
+                    desc: "Fundacja (Ochrona, Edukacja, Non-profit) + Spółka z o.o. (Komercja)",
+                    children: [
+                        { name: "Fundacja Klub Fala Życia", desc: "Schronienie majątkowe, RODO/GIS, Edukacja, Zwolnienia CIT/PIT art. 17 ust. 1" },
+                        { name: "Spółka z o.o. Operacyjna", desc: "Systemy technologiczne, rozliczenia komercyjne, granty GCP $350k+" },
+                        { name: "Compliance Przewlekły", desc: "Opisy regeneracji komórkowej bez oświadczeń medycznych" }
+                    ]
+                },
+                {
+                    name: "🌐 Ekosystem Portali WWW",
+                    desc: "Portale, Aplikacje Dashboard, Świątynia i Subdomeny Partnerów",
+                    children: [
+                        { name: "fala-zycia.pl", desc: "Portal Główny & Strategia (Hasło: falazycia2026)" },
+                        { name: "app.fala-zycia.pl", desc: "Aplikacja Dashboard na Cloud Run z Doradcą AI Gemini 2.5 Flash" },
+                        { name: "fala-zycia.pl/rekrutacja", desc: "Lejek Rekrutacyjny Partnera z sekcją FAQ i dialogiem z obiekcjami" },
+                        { name: "swiatynia-harmonii.pl", desc: "Stacja Stacjonarna w Łodzi (zabiegi, degustacje X2O)" },
+                        { name: "mlm.jaison.pl", desc: "System Agentowy B2B Jaison MLM OS w komunikatorze WhatsApp" }
+                    ]
+                },
+                {
+                    name: "🔬 Produkty & Biohacking",
+                    desc: "Opatentowane technologie komórkowe i protokoły nawykowe",
+                    children: [
+                        { name: "Fotobiomodulacja X39/X49", desc: "Peptyd GHK-Cu, komórki macierzyste, naklejanie na meridiany C7/CV6" },
+                        { name: "Stacja Hydratacji X2O™", desc: "Woda heksagonalna, wodór H2, ORP -400mV, minerały Okinawy" },
+                        { name: "Poranny Protokół V2", desc: "Zrzut myśli, woda z solą, oddechy Wima Hofa, zimny prysznic (+250% dopaminy)" }
+                    ]
+                },
+                {
+                    name: "🔥 Obiekcje & Słownik NLP",
+                    desc: "Rozbijanie obaw partnerów i pacjentów na wejściu",
+                    children: [
+                        { name: "Obiekcje MLM (Finanse)", desc: "Kawalerka za 450k PLN vs system 2000 PLN, pasywny dochód, brak wciskania kitów" },
+                        { name: "Obiekcje Medyczne (Bezpieczeństwo)", desc: "Ponad 100 patentów medycznych LifeWave, badania dr Younta, brak chemii z zewnątrz" },
+                        { name: "Zasada Posłańca", desc: "Partner nie prezentuje sam – podaje gotowy film i kieruje na webinar" }
+                    ]
+                },
+                {
+                    name: "🤖 System Agentowy & AI ($1600 USD)",
+                    desc: "Synergia GenAI App Builder ($1000) i Dialogflow CX ($600)",
+                    children: [
+                        { name: "GenAI App Builder (RAG)", desc: "Data Store na gs://fala-zycia-kb-bucket (Baza Wiedzy)" },
+                        { name: "Dialogflow CX & Playbooks", desc: "Cyfrowy Trener na WhatsAppie, Messengerze i w Świątyni Harmonii" },
+                        { name: "Hermes Agentic OS", desc: "Scentralizowane jądro sterowania asynchronicznego" }
+                    ]
+                },
+                {
+                    name: "🎬 Multimedia & Flight Hacking",
+                    desc: "Assety wideo, packshoty, konferencje i kursy",
+                    children: [
+                        { name: "Wyjazdy Anaheim Kalifornia", desc: "Materiały promocyjne i prezentacje PPTX z konferencji międzynarodowych" },
+                        { name: "Flight Hacking (Piotr Lotniczy)", desc: "Kurs 64 lekcji latania Biznes Klasą za punkty milowe" },
+                        { name: "YouTube & Testymoniale", desc: "Kafelki wideo z autentycznymi metamorfozami podopiecznych" }
+                    ]
+                }
+            ]
+        };
+
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+
+        const svg = d3.select("#mindmap")
+            .call(d3.zoom().on("zoom", (event) => g.attr("transform", event.transform)))
+            .append("g");
+
+        const g = svg.append("g").attr("transform", `translate(${width / 4}, ${height / 2})`);
+
+        const tree = d3.tree().nodeSize([45, 220]);
+        let root = d3.hierarchy(treeData, d => d.children);
+
+        root.x0 = height / 2;
+        root.y0 = 0;
+
+        function collapse(d) {
+            if (d.children) {
+                d._children = d.children;
+                d._children.forEach(collapse);
+                d.children = null;
+            }
+        }
+
+        // Initially collapse deep nodes
+        root.children.forEach(d => { if (d.children) d.children.forEach(collapse); });
+
+        update(root);
+
+        function update(source) {
+            const treeData = tree(root);
+            const nodes = treeData.descendants();
+            const links = treeData.links();
+
+            nodes.forEach(d => d.y = d.depth * 240);
+
+            const node = g.selectAll('g.node')
+                .data(nodes, d => d.id || (d.id = Math.random()));
+
+            const nodeEnter = node.enter().append('g')
+                .attr('class', 'node')
+                .attr("transform", d => `translate(${source.y0},${source.x0})`)
+                .on('click', click)
+                .on('mouseover', showTooltip)
+                .on('mouseout', hideTooltip);
+
+            nodeEnter.append('circle')
+                .attr('r', 1e-6)
+                .style("stroke", d => d.depth === 0 ? "#FFD700" : (d.depth === 1 ? "#00D2C4" : "#8A2BE2"));
+
+            nodeEnter.append('text')
+                .attr("dy", ".35em")
+                .attr("x", d => d.children || d._children ? -16 : 16)
+                .attr("text-anchor", d => d.children || d._children ? "end" : "start")
+                .text(d => d.data.name);
+
+            const nodeUpdate = nodeEnter.merge(node);
+
+            nodeUpdate.transition().duration(400)
+                .attr("transform", d => `translate(${d.y},${d.x})`);
+
+            nodeUpdate.select('circle')
+                .attr('r', d => d.depth === 0 ? 12 : (d.depth === 1 ? 9 : 6))
+                .style("fill", d => d._children ? "#00D2C4" : "#0F172A");
+
+            const nodeExit = node.exit().transition().duration(400)
+                .attr("transform", d => `translate(${source.y},${source.x})`)
+                .remove();
+
+            nodeExit.select('circle').attr('r', 1e-6);
+
+            const link = g.selectAll('path.link')
+                .data(links, d => d.target.id);
+
+            const linkEnter = link.enter().insert('path', "g")
+                .attr("class", "link")
+                .attr('d', d => {
+                    const o = { x: source.x0, y: source.y0 };
+                    return diagonal(o, o);
+                });
+
+            const linkUpdate = linkEnter.merge(link);
+
+            linkUpdate.transition().duration(400)
+                .attr('d', d => diagonal(d.source, d.target));
+
+            link.exit().transition().duration(400)
+                .attr('d', d => {
+                    const o = { x: source.x, y: source.y };
+                    return diagonal(o, o);
+                })
+                .remove();
+
+            nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+        }
+
+        function diagonal(s, d) {
+            return `M ${s.y} ${s.x}
+                    C ${(s.y + d.y) / 2} ${s.x},
+                      ${(s.y + d.y) / 2} ${d.x},
+                      ${d.y} ${d.x}`;
+        }
+
+        function click(event, d) {
+            if (d.children) {
+                d._children = d.children;
+                d.children = null;
+            } else {
+                d.children = d._children;
+                d._children = null;
+            }
+            update(d);
+        }
+
+        const tooltip = d3.select("#tooltip");
+        function showTooltip(event, d) {
+            tooltip.style("display", "block")
+                .html(`<strong>${d.data.name}</strong><br/>${d.data.desc || 'Brak opisu'}`)
+                .style("left", (event.pageX + 15) + "px")
+                .style("top", (event.pageY - 15) + "px");
+        }
+
+        function hideTooltip() { tooltip.style("display", "none"); }
+
+        function expandAll() {
+            function expand(d) {
+                if (d._children) {
+                    d.children = d._children;
+                    d._children = null;
+                }
+                if (d.children) d.children.forEach(expand);
+            }
+            expand(root);
+            update(root);
+        }
+
+        function collapseAll() {
+            root.children.forEach(collapse);
+            update(root);
+        }
+
+        function resetZoom() {
+            svg.transition().duration(750).call(
+                d3.zoom().transform,
+                d3.zoomIdentity.translate(width / 4, height / 2).scale(1)
+            );
+        }
+    </script>
+</body>
+</html>

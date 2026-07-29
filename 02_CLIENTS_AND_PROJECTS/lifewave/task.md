@@ -2,37 +2,51 @@
 
 ---
 
+## 🔬 DEEP RESEARCH PROMPT DLA PERPLEXITY / DEEP SEARCH (OBIEKCJE & PAINPOINTS)
+
+> **Skopiuj poniższy prompt do Perplexity / DeepResearch:**
+> 
+> ```text
+> Przeprowadź głęboki, rynkowy research (Deep Research) dotyczący rynku Network Marketingu (MLM) oraz technologii fotobiomodulacji (LifeWave X39/X49) i ustrukturyzowanej wody w Polsce i Europie na lata 2024-2026.
+> 
+> Przeanalizuj i wypisz:
+> 1. TOP 10 największych obaw i obiekcji finansowo-biznesowych potencjalnych partnerów MLM (np. brak czasu, lęk przed odmową, skojarzenia z piramidami, brak umiejętnosci sprzedażowych, porażki w przeszłości).
+> 2. TOP 10 obaw i wątpliwości pacjentów z chorobami przewlekłymi i autoimmunologicznymi dotyczących plastrów fototerapii X39/X49 oraz wody X2O (np. czy to działa, czy to efekt placebo, bezpieczeństwo, brak substancji chemicznych w plastrach, cena vs efekty, badania medyczne).
+> 3. Gotowe propozycje skryptów i scenariuszy wideo (Shorts / Reels / YouTube) odpowiadające na każdą z tych 20 obiekcji w formule Pattern Interrupt + Haki NLP + Twarde Dowody (Zasada Posłańca).
+> ```
+
+---
+
 ## 🤖 1. ZADANIA AGENTA AI (STATUS DEWELOPERSKI)
 
 ### **✅ ZREALIZOWANE (COMPLETED):**
+- [x] **Uproszczenie `strategia.html` dla Zarządu:** Usunięcie żargonu GCP, czysta i czytelna wersja dla laików z zabezpieczeniem `falazycia2026`.
+- [x] **Interaktywna Mapa Myśli 3D (`MINDMAP_FALA_ZYCIA_3D.html`):** Wizualne, zwijane drzewo wiedzy ADHD-friendly z D3.js.
+- [x] **Spis Treści WIKI (`LIFEWAVE_KNOWLEDGE_TREE_WIKI.md`):** Zbudowanie centralnego indeksu wiedzy z podziałem na 5 Filarów.
 - [x] **Redesign & Rebranding:** Przekształcenie portalu `fala-zycia.pl` i odseparowanie go od marki `jaison.pl`.
-- [x] **Master Strategia & Raport Prawno-Finansowy (`strategia.html`):** Stworzenie raportu holdingowego z zabezpieczeniem hasłem `falazycia2026`.
 - [x] **Aplikacja Dashboard na Cloud Run (`app.fala-zycia.pl`):** Działająca usługa z wbudowanym Doradcą AI Gemini 2.5 Flash na Vertex AI.
 - [x] **Gwarancja HTML Standard:** Czyszczenie gwiazdek `**`, wdrożenie czystych tagów `<strong>`.
 - [x] **Izolacja Środowiska `.env`:** Utworzenie dedykowanego pliku `02_CLIENTS_AND_PROJECTS/lifewave/.env`.
 - [x] **Landing B2B `mlm.jaison.pl`:** Przebudowa w formacie Ghost v2 z perswazyjnym kontrastem i symulatorem WhatsApp.
-- [x] **Szablon Rekrutacyjny (`fala-zycia.pl/rekrutacja`):** Przygotowanie strony kwalifikacyjnej partnerów.
-- [x] **Drzewo Wiedzy WIKI:** Stworzenie pliku `04-assets/LIFEWAVE_KNOWLEDGE_TREE_WIKI.md`.
+- [x] **Szablon Rekrutacyjny (`fala-zycia.pl/rekrutacja`):** Przygotowanie strony kwalifikacyjnej partnerów z FAQ.
 - [x] **Skaner Zasobów Multimedialnych:** Napisanie skryptu Python `scratch/scan_media_assets.py`.
 - [x] **Master PRD 2026:** Utworzenie pliku `00-admin/FALA_ZYCIA_MASTER_PRD_2026.md` z rozliczeniem grantów chmurowych ($1000 GenAI + $600 Dialogflow CX).
 - [x] **Podłączenie CI/CD dla `fala-zycia-web`:** Udane podpięcie repozytorium GitHub `holisticjson/falazycia-os` w usłudze Cloud Run.
 
 ### **⏳ W TRAKCIE / NASTĘPNE KROKI (IN PROGRESS):**
-- [/] **Skanowanie Multimediów:** Wykonanie pełnego skanowania folderu `04-assets/` i wygenerowanie `MEDIA_AND_RESEARCH_ASSET_INVENTORY.md`.
+- [/] **Skanowanie Multimediów:** Skanowanie folderu `04-assets/` i generowanie `MEDIA_AND_RESEARCH_ASSET_INVENTORY.md`.
 - [ ] **Magazyn Danych GenAI App Builder ($1000 credit):** Utworzenie zasobnika `gs://fala-zycia-kb-bucket` w projekcie `fala-zycia-agents` i podpięcie Data Store.
 - [ ] **Dialogflow CX Playbooks ($600 credit):** Konfiguracja stanowych agentów konwersacyjnych dla WhatsAppa i Świątyni Harmonii.
-- [ ] **Wideo-Moduły & Testymoniale w Dashboardzie:** Wdrożenie sekcji z wideo-instrukcjami biohackingowymi i kafelkami metamorfoz.
 
 ---
 
 ## 👤 2. ZADANIA DLA TOMASZA (USER TO-DO LIST)
 
 ### **👉 DO WYKONANIA TERAZ (PRIORYTET):**
-- [x] **Podłączono Repozytorium dla `fala-zycia-web` na Cloud Run:** Zrealizowane! Usługa ma typ `Repository`.
 - [ ] **Wykonaj Git Push w Terminalu (1 Sekunda):**
-  Wklej poniższe polecenie w konsoli PowerShell w folderze `C:\Aplikacje MVP`:
+  Wklej w konsoli PowerShell w folderze `C:\Aplikacje MVP`:
   ```powershell
-  cd "C:\Aplikacje MVP" ; git add . ; git commit -m "feat: deploy strategia.html & master wiki" ; git push origin main
+  cd "C:\Aplikacje MVP" ; git add . ; git commit -m "feat: deploy simplified strategia, mindmap & wiki" ; git push origin main
   ```
 - [ ] **Usunięcie Zduplikowanej Usługi w `holistic-dashboard-dev` (Opcjonalnie):**
-  W konsoli GCP na koncie `holisticjson@gmail.com` usuń wiszącą usługę `swiatynia-harmonii` z błędem kompilacji.
+  W konsoli GCP usuń nieaktywną usługę `swiatynia-harmonii` z konta `holisticjson@gmail.com`.
