@@ -1,0 +1,258 @@
+=== LESSON URL: https://piotrlotniczy.elms.pl/next/public/lesson/4 ===
+=== FRAMES DETECTED: [
+  {
+    "frame_index": 0,
+    "name": "",
+    "url": "https://piotrlotniczy.elms.pl/next/public/lesson/4"
+  },
+  {
+    "frame_index": 1,
+    "name": "",
+    "url": "https://iframe.mediadelivery.net/embed/34281/accf11ba-2b07-4deb-8ca7-baca68183664?token=50e68a7e4b1960d5144fd4d814e987ca5e68af67a7c6ab3d2308579e5469904f&expires=1785318553&autoplay=false"
+  }
+] ===
+
+=== NETWORK LOGS ===
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/lesson/4", "resource_type": "document"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=HkP_E9RHWvkVXmHO7IsZWIGOKOqFtHS2VplRq6MG_Cg&expires=1785354476&token_path=%2Ffe392a1d-5e88-49ea-b2a0-c5f7f7be72b8%2F/fe392a1d-5e88-49ea-b2a0-c5f7f7be72b8/1080p/video14.ts", "resource_type": "xhr"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/lesson/4", "status": 200, "content_type": "text/html; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "POST", "url": "https://piotrlotniczy.elms.pl/cdn-cgi/rum?", "resource_type": "ping"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/5507.85c62dc4.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/5507.85c62dc4.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/swiper_bundle_css.93310735.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/swiper_bundle_css.93310735.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_normalize.69e7cdbb.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_normalize.69e7cdbb.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_base.977669db.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_base.977669db.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_colors.1e799c6f.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_colors.1e799c6f.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_color_theme.c647b115.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_color_theme.c647b115.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_panel-webtolearn-pl.20e01a42.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_panel-webtolearn-pl.20e01a42.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_partial_header.70b9a529.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/new_partial_header.70b9a529.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/partial_cookies.42e8f578.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/partial_cookies.42e8f578.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/select2.0101188a.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/select2.0101188a.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/1378.ee219c1e.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/1378.ee219c1e.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/lesson-description-css.f596a090.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/lesson-description-css.f596a090.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/error_pages_css.ce6f36f5.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/error_pages_css.ce6f36f5.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://code.jquery.com/jquery-3.6.4.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://code.jquery.com/jquery-3.6.4.min.js", "status": 200, "content_type": "application/javascript; charset=utf-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/runtime.3a4689a5.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/runtime.3a4689a5.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/vendor-corejs.fc021103.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/vendor-corejs.fc021103.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/searchBar-js.2ad19a94.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/searchBar-js.2ad19a94.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/navbar-data-js.a43485a4.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/navbar-data-js.a43485a4.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/lesson-comments.8d63f624.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/lesson-comments.8d63f624.css", "status": 200, "content_type": "text/css; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/vendor-react.3e0101eb.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/vendor-react.3e0101eb.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/7613.a26c5721.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/7613.a26c5721.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/8568.322e0198.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/8568.322e0198.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/6140.1a5d2cb6.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/6140.1a5d2cb6.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/8612.5fae95bf.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/8612.5fae95bf.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/9985.933a1063.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/9985.933a1063.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/5746.9d7fa7eb.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/5746.9d7fa7eb.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/6735.5f828d3f.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/6735.5f828d3f.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/3343.1748df40.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/3343.1748df40.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/lesson-comments.7a5284b0.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/lesson-comments.7a5284b0.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/js/jquery-3.6.2.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/js/jquery-3.6.2.min.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/js/custom-additional-v2.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/js/custom-additional-v2.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js", "status": 200, "content_type": "application/javascript; charset=utf-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/js/select2@4.1.0-rc.0.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/js/select2@4.1.0-rc.0.min.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/1576.c5ad06d6.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/1576.c5ad06d6.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/5507.e165842d.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/5507.e165842d.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/bootstrap.d437ca0a.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/bootstrap.d437ca0a.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/lessonDone.f3ad4e24.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/lessonDone.f3ad4e24.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/opinionLikeAjax-js.f459a1f9.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/opinionLikeAjax-js.f459a1f9.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/opinionPopupAjax.1eaa6308.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/opinionPopupAjax.1eaa6308.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/downloadNote.d438c96f.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/downloadNote.d438c96f.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/lessonRating.d56904af.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/lessonRating.d56904af.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/playerjs/player-0.1.0.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/playerjs/player-0.1.0.min.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/bunnyControl.da9830f7.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/bunnyControl.da9830f7.js", "status": 200, "content_type": "application/javascript; charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496", "status": 200, "content_type": "text/javascript;charset=UTF-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap", "status": 200, "content_type": "text/css; charset=utf-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/uploads/site/10666/8b5659fca262757f61e0c145d09c850c.png", "resource_type": "image"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/uploads/site/10666/8b5659fca262757f61e0c145d09c850c.png", "status": 200, "content_type": "image/png"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/images/avatar-male.jpg", "resource_type": "image"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/images/avatar-male.jpg", "status": 200, "content_type": "image/jpeg"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://fonts.gstatic.com/s/inter/v20/UcCm3FwrK3iLTcvnUwQT9g.woff2", "resource_type": "font"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://fonts.gstatic.com/s/inter/v20/UcCm3FwrK3iLTcvnUwQT9g.woff2", "status": 200, "content_type": "font/woff2"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://fonts.gstatic.com/s/inter/v20/UcCo3FwrK3iLTcvsYwYL8g.woff2", "resource_type": "font"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://fonts.gstatic.com/s/inter/v20/UcCo3FwrK3iLTcvsYwYL8g.woff2", "status": 200, "content_type": "font/woff2"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://fonts.gstatic.com/s/inter/v20/UcCo3FwrK3iLTcviYwY.woff2", "resource_type": "font"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://fonts.gstatic.com/s/inter/v20/UcCo3FwrK3iLTcviYwY.woff2", "status": 200, "content_type": "font/woff2"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/fonts/fa-light-300.fb32df79.woff2", "resource_type": "font"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/fonts/fa-light-300.fb32df79.woff2", "status": 200, "content_type": "font/woff2"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/fonts/fa-regular-400.89de83a5.woff2", "resource_type": "font"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/fonts/fa-regular-400.89de83a5.woff2", "status": 200, "content_type": "font/woff2"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/build/fonts/fa-solid-900.9503bd41.woff2", "resource_type": "font"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/build/fonts/fa-solid-900.9503bd41.woff2", "status": 200, "content_type": "font/woff2"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://iframe.mediadelivery.net/embed/34281/accf11ba-2b07-4deb-8ca7-baca68183664?token=50e68a7e4b1960d5144fd4d814e987ca5e68af67a7c6ab3d2308579e5469904f&expires=1785318553&autoplay=false", "resource_type": "document"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://iframe.mediadelivery.net/embed/34281/accf11ba-2b07-4deb-8ca7-baca68183664?token=50e68a7e4b1960d5144fd4d814e987ca5e68af67a7c6ab3d2308579e5469904f&expires=1785318553&autoplay=false", "status": 200, "content_type": "text/html; charset=utf-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/language", "resource_type": "fetch"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/lesson/all/4?page=1&limit=10", "resource_type": "fetch"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/castjs/5.3.0/cast.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/castjs/5.3.0/cast.min.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/bunny-cast/1.0.10/bunny-cast.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/bunny-cast/1.0.10/bunny-cast.min.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/rubik.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/rubik.css", "status": 200, "content_type": "text/css"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/hls/1.6.6/hls.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/hls/1.6.6/hls.min.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/rum.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/rum.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.polyfilled.min.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/plyr-plugin-thumbnail.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/plyr-plugin-thumbnail.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/session-tracker/1.1.2/session-tracker.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/session-tracker/1.1.2/session-tracker.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/jquery/jquery-3.7.1.min.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/chartist.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/chartist.min.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/plyr-vr.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/plyr-vr.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/plyr/3.7.8.4-bn/plyr.css", "status": 200, "content_type": "text/css"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/plyr-vr.css", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/plyr-vr.css", "status": 200, "content_type": "text/css"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/pb.js?v=1", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/pb.js?v=1", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/pb.css?v=1", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/pb.css?v=1", "status": 200, "content_type": "text/css"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/playerjs/0.1.1/player-0.1.1.min.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/playerjs/0.1.1/player-0.1.1.min.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/playerjs/pjs-implementation.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/playerjs/pjs-implementation.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://iframe.mediadelivery.net/stream-bundle.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://iframe.mediadelivery.net/stream-bundle.js", "status": 200, "content_type": "text/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/plyr-position.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/plyr-position.js", "status": 200, "content_type": "application/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://fonts.bunny.net/css?family=rubik", "resource_type": "stylesheet"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://fonts.bunny.net/css?family=rubik", "status": 200, "content_type": "text/css; charset=utf-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1", "status": 200, "content_type": "text/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://edgezone-pr.bunnyinfra.net/500b.jpg?s=1785318480820", "resource_type": "fetch"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://metrics-bunny.net/test/register", "resource_type": "fetch"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://bunnycdn-video-assets.b-cdn.net/fonts/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-2Y-FWUU1Z4Y.woff2", "resource_type": "font"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://bunnycdn-video-assets.b-cdn.net/fonts/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-2Y-FWUU1Z4Y.woff2", "status": 200, "content_type": "font/woff2"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://bunnycdn-video-assets.b-cdn.net/fonts/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-2Y-FV0U1.woff2", "resource_type": "font"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://bunnycdn-video-assets.b-cdn.net/fonts/iJWZBXyIfDnIV5PNhY1KTN7Z-Yh-2Y-FV0U1.woff2", "status": 200, "content_type": "font/woff2"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://fonts.bunny.net/rubik/files/rubik-latin-400-normal.woff2", "resource_type": "font"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://fonts.bunny.net/rubik/files/rubik-latin-400-normal.woff2", "status": 200, "content_type": "font/woff2"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://www.gstatic.com/cast/sdk/libs/sender/1.0/cast_framework.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://www.gstatic.com/eureka/clank/149/cast_sender.js", "resource_type": "script"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://www.gstatic.com/eureka/clank/149/cast_sender.js", "status": 200, "content_type": "text/javascript"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/playlist.m3u8", "resource_type": "xhr"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://metrics-bunny.net/test/register", "status": 200, "content_type": "application/json; charset=utf-8"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://3b43e8b4.metrics-bunny.net/test/hello", "resource_type": "fetch"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://www.gstatic.com/cast/sdk/libs/sender/1.0/cast_framework.js", "status": 304, "content_type": ""}
+{"time": "11:48:00", "type": "REQUEST", "method": "POST", "url": "https://piotrlotniczy.elms.pl/cdn-cgi/rum?", "resource_type": "xhr"}
+{"time": "11:48:00", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/uploads/site/10666/favicon-16x16.png?1785318493", "resource_type": "other"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/cdn-cgi/rum?", "status": 204, "content_type": "text/plain"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/uploads/site/10666/favicon-16x16.png?1785318493", "status": 200, "content_type": "image/png"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://3b43e8b4.metrics-bunny.net/test/hello", "status": 200, "content_type": "text/plain; charset=utf-8"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/playlist.m3u8", "status": 200, "content_type": "application/vnd.apple.mpegurl"}
+{"time": "11:48:00", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/lesson/all/4?page=1&limit=10", "status": 200, "content_type": "application/json; charset=UTF-8"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/language", "status": 200, "content_type": "application/json; charset=UTF-8"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://assets.mediadelivery.net/plyr/3.7.3.2/plyr.svg", "resource_type": "xhr"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://piotrlotniczy.elms.pl/next/public/community/post/users/all", "resource_type": "fetch"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/480p/video.m3u8", "resource_type": "xhr"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/thumbnail.jpg", "resource_type": "image"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://assets.mediadelivery.net/plyr/3.7.3.2/plyr.svg", "status": 200, "content_type": "image/svg+xml"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/480p/video.m3u8", "status": 200, "content_type": "application/vnd.apple.mpegurl"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/thumbnail.jpg", "status": 200, "content_type": "image/jpeg"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/480p/video0.ts", "resource_type": "xhr"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://piotrlotniczy.elms.pl/next/public/community/post/users/all", "status": 404, "content_type": "application/json; charset=UTF-8"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/480p/video0.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video.m3u8", "resource_type": "xhr"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video.m3u8", "status": 200, "content_type": "application/vnd.apple.mpegurl"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video0.ts", "resource_type": "xhr"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video0.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://edgezone-pr.bunnyinfra.net/500b.jpg?s=1785318480820", "status": 200, "content_type": "image/jpeg"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://edgezone-pr.bunnyinfra.net/500b.jpg?s=1785318480820", "resource_type": "fetch"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "blob:https://iframe.mediadelivery.net/34ed6840-c0da-44de-a4ab-280a3d8ff6ed", "resource_type": "script"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "blob:https://iframe.mediadelivery.net/34ed6840-c0da-44de-a4ab-280a3d8ff6ed", "status": 200, "content_type": "text/javascript"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video1.ts", "resource_type": "xhr"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video1.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video2.ts", "resource_type": "xhr"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video2.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://edgezone-pr.bunnyinfra.net/500b.jpg?s=1785318480820", "status": 200, "content_type": "image/jpeg"}
+{"time": "11:48:01", "type": "REQUEST", "method": "GET", "url": "https://rum-metrics.bunny.net/trackperformance?zone=pr&latency=352", "resource_type": "fetch"}
+{"time": "11:48:01", "type": "RESPONSE", "url": "https://rum-metrics.bunny.net/trackperformance?zone=pr&latency=352", "status": 200, "content_type": ""}
+{"time": "11:48:02", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video3.ts", "resource_type": "xhr"}
+{"time": "11:48:02", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video3.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:02", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video4.ts", "resource_type": "xhr"}
+{"time": "11:48:02", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video4.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:02", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video5.ts", "resource_type": "xhr"}
+{"time": "11:48:02", "type": "REQUEST", "method": "GET", "url": "https://edgezone-kz.bunnyinfra.net/500b.jpg?s=1785318482392", "resource_type": "fetch"}
+{"time": "11:48:02", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video5.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:02", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video6.ts", "resource_type": "xhr"}
+{"time": "11:48:02", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video6.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:02", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video7.ts", "resource_type": "xhr"}
+{"time": "11:48:02", "type": "REQUEST", "method": "GET", "url": "https://edgezone-es.bunnyinfra.net/500b.jpg?s=1785318482919", "resource_type": "fetch"}
+{"time": "11:48:02", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video7.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:03", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video8.ts", "resource_type": "xhr"}
+{"time": "11:48:03", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video8.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:03", "type": "RESPONSE", "url": "https://edgezone-es.bunnyinfra.net/500b.jpg?s=1785318482919", "status": 200, "content_type": "image/jpeg"}
+{"time": "11:48:03", "type": "REQUEST", "method": "GET", "url": "https://edgezone-es.bunnyinfra.net/500b.jpg?s=1785318482919", "resource_type": "fetch"}
+{"time": "11:48:03", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video9.ts", "resource_type": "xhr"}
+{"time": "11:48:03", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video9.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:03", "type": "RESPONSE", "url": "https://edgezone-es.bunnyinfra.net/500b.jpg?s=1785318482919", "status": 200, "content_type": "image/jpeg"}
+{"time": "11:48:03", "type": "REQUEST", "method": "GET", "url": "https://rum-metrics.bunny.net/trackperformance?zone=es&latency=145", "resource_type": "fetch"}
+{"time": "11:48:03", "type": "RESPONSE", "url": "https://rum-metrics.bunny.net/trackperformance?zone=es&latency=145", "status": 200, "content_type": ""}
+{"time": "11:48:03", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video10.ts", "resource_type": "xhr"}
+{"time": "11:48:03", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video10.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:03", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video11.ts", "resource_type": "xhr"}
+{"time": "11:48:03", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video11.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:03", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video12.ts", "resource_type": "xhr"}
+{"time": "11:48:03", "type": "REQUEST", "method": "GET", "url": "https://edgezone-mi2.bunnyinfra.net/500b.jpg?s=1785318483831", "resource_type": "fetch"}
+{"time": "11:48:03", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video12.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:04", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video13.ts", "resource_type": "xhr"}
+{"time": "11:48:04", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video13.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:04", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video14.ts", "resource_type": "xhr"}
+{"time": "11:48:04", "type": "REQUEST", "method": "GET", "url": "https://edgezone-se.bunnyinfra.net/500b.jpg?s=1785318484361", "resource_type": "fetch"}
+{"time": "11:48:04", "type": "RESPONSE", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video14.ts", "status": 200, "content_type": "video/mp2t"}
+{"time": "11:48:04", "type": "RESPONSE", "url": "https://edgezone-se.bunnyinfra.net/500b.jpg?s=1785318484361", "status": 200, "content_type": "image/jpeg"}
+{"time": "11:48:04", "type": "REQUEST", "method": "GET", "url": "https://edgezone-se.bunnyinfra.net/500b.jpg?s=1785318484361", "resource_type": "fetch"}
+{"time": "11:48:04", "type": "RESPONSE", "url": "https://edgezone-se.bunnyinfra.net/500b.jpg?s=1785318484361", "status": 200, "content_type": "image/jpeg"}
+{"time": "11:48:04", "type": "REQUEST", "method": "GET", "url": "https://rum-metrics.bunny.net/trackperformance?zone=se&latency=100", "resource_type": "fetch"}
+{"time": "11:48:04", "type": "REQUEST", "method": "GET", "url": "https://video.webtolearn.pl/bcdn_token=yVs9D_bGFpZOlqy71rTn6oxFR_p1YZAWpjyZ35Yg2bI&expires=1785354480&token_path=%2Faccf11ba-2b07-4deb-8ca7-baca68183664%2F/accf11ba-2b07-4deb-8ca7-baca68183664/1080p/video15.ts", "resource_type": "xhr"}
+{"time": "11:48:04", "type": "RESPONSE", "url": "https://rum-metrics.bunny.net/trackperformance?zone=se&latency=100", "status": 200, "content_type": ""}

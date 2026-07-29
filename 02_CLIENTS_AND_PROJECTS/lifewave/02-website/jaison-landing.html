@@ -3,22 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tomasz (Jaison) | Architekt Systemów AI & Lider Społeczności Fala Życia</title>
-  <meta name="description" content="Odkryj nowoczesne budowanie zespołu w biznesie LifeWave. Cyfrowy system asystencki Jaison OS na WhatsAppie, automatyzacja i wsparcie mentorskie Tomasza.">
-  <link rel="canonical" href="https://jaison.fala-zycia.pl/">
-
+  <title>Jaison MLM OS | System Agentowy i Cyfrowy Trener Partnera Biznesowego</title>
+  <meta name="description" content="Odkryj autorski system wsparcia partnerów Jaison MLM OS na WhatsAppie. Zautomatyzowana rekrutacja, szablony NLP, poranny rozruch biologiczny i czysta duplikacja.">
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== DESIGN TOKENS ===== */
     :root {
       --bg-dark: #020509;
-      --bg-card: rgba(8, 18, 32, 0.6);
-      --border-card: rgba(0, 210, 196, 0.2);
-      --border-card-hover: rgba(0, 210, 196, 0.5);
+      --bg-card: rgba(8, 18, 32, 0.7);
+      --border-card: rgba(0, 210, 196, 0.25);
+      --border-card-hover: rgba(0, 210, 196, 0.6);
       --text-main: #f0f6fc;
       --text-muted: #8b9eb0;
       --text-bright: #ffffff;
@@ -26,42 +24,31 @@
       --neon-cyan: #00d2c4;
       --neon-cyan-glow: rgba(0, 210, 196, 0.4);
       --electric-blue: #0077b6;
+      --gold-accent: #ffd700;
       
       --font-heading: 'Outfit', sans-serif;
       --font-body: 'Inter', sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--bg-dark);
       color: var(--text-main);
       font-family: var(--font-body);
-      line-height: 1.65;
+      line-height: 1.7;
       overflow-x: hidden;
-      position: relative;
     }
 
     #bg-canvas {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: 0;
-      pointer-events: none;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0; pointer-events: none;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1150px;
       margin: 0 auto;
       padding: 0 24px;
       position: relative;
@@ -73,9 +60,10 @@
       border: 1px solid var(--border-card);
       border-radius: 20px;
       backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
       box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
       transition: all 0.4s ease;
+      padding: 35px;
+      margin-bottom: 30px;
     }
 
     .glass-card:hover {
@@ -90,11 +78,11 @@
       gap: 10px;
       background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--electric-blue) 100%);
       color: #020509;
-      padding: 16px 36px;
+      padding: 18px 38px;
       border-radius: 12px;
       font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 1.05rem;
+      font-weight: 800;
+      font-size: 1.1rem;
       border: none;
       cursor: pointer;
       text-decoration: none;
@@ -115,31 +103,30 @@
       gap: 10px;
       background: rgba(255, 255, 255, 0.05);
       color: var(--text-bright);
-      padding: 16px 32px;
+      padding: 18px 34px;
       border-radius: 12px;
       font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 1rem;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-weight: 700;
+      font-size: 1.05rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       cursor: pointer;
       text-decoration: none;
       transition: all 0.3s ease;
     }
 
     .btn-secondary:hover {
-      background: rgba(0, 210, 196, 0.12);
+      background: rgba(0, 210, 196, 0.15);
       border-color: var(--neon-cyan);
       color: var(--neon-cyan);
     }
 
-    /* ===== NAVBAR ===== */
     .navbar {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(2, 5, 9, 0.85);
+      background: rgba(2, 5, 9, 0.9);
       backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding: 18px 0;
     }
 
@@ -159,9 +146,8 @@
 
     .logo-brand span { color: var(--neon-cyan); }
 
-    /* ===== HERO ===== */
     .hero {
-      padding: 100px 0 70px 0;
+      padding: 90px 0 60px 0;
       text-align: center;
     }
 
@@ -169,14 +155,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(0, 210, 196, 0.1);
-      border: 1px solid rgba(0, 210, 196, 0.3);
-      padding: 8px 20px;
+      background: rgba(0, 210, 196, 0.12);
+      border: 1px solid rgba(0, 210, 196, 0.4);
+      padding: 8px 22px;
       border-radius: 50px;
       color: var(--neon-cyan);
       font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: 0.85rem;
+      font-weight: 800;
+      font-size: 0.88rem;
       letter-spacing: 1px;
       text-transform: uppercase;
       margin-bottom: 24px;
@@ -184,75 +170,81 @@
 
     .hero-title {
       font-family: var(--font-heading);
-      font-size: clamp(2.4rem, 5.2vw, 4rem);
+      font-size: clamp(2.5rem, 5.5vw, 4.2rem);
       font-weight: 800;
       line-height: 1.15;
       color: var(--text-bright);
-      max-width: 950px;
+      max-width: 980px;
       margin: 0 auto 24px auto;
     }
 
     .hero-title span {
-      background: linear-gradient(135deg, #ffffff 30%, var(--neon-cyan) 100%);
+      background: linear-gradient(135deg, #ffffff 20%, var(--neon-cyan) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-subtitle {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 800px;
+      max-width: 820px;
       margin: 0 auto 40px auto;
-      line-height: 1.7;
     }
 
-    /* ===== INTERACTIVE WHATSAPP SIMULATOR ===== */
-    .simulator-section {
-      padding: 80px 0;
+    /* Comparison Table */
+    table.compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      border-radius: 12px;
+      overflow: hidden;
     }
 
+    table.compare-table th, table.compare-table td {
+      padding: 16px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    table.compare-table th {
+      background: rgba(0,0,0,0.5);
+      color: var(--neon-cyan);
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+    }
+
+    /* Phone Mockup */
     .sim-grid {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 50px;
       align-items: center;
+      margin-top: 30px;
     }
 
     .step-card {
-      padding: 24px;
-      margin-bottom: 20px;
+      padding: 22px;
+      margin-bottom: 18px;
       cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      background: rgba(8, 18, 32, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(8, 18, 32, 0.4);
+      border-radius: 14px;
       transition: all 0.3s ease;
     }
 
     .step-card.active {
-      background: rgba(0, 210, 196, 0.08);
+      background: rgba(0, 210, 196, 0.1);
       border-color: var(--neon-cyan);
-      box-shadow: 0 10px 30px rgba(0, 210, 196, 0.15);
+      box-shadow: 0 10px 30px rgba(0, 210, 196, 0.2);
     }
 
-    .step-time {
-      display: inline-block;
-      background: rgba(0, 210, 196, 0.15);
-      color: var(--neon-cyan);
-      font-weight: 700;
-      font-size: 0.8rem;
-      padding: 4px 12px;
-      border-radius: 6px;
-      margin-bottom: 10px;
-      font-family: var(--font-heading);
-    }
-
-    /* Phone Mockup */
     .phone-mockup {
       background: #020509;
       border: 10px solid #101c2c;
       border-radius: 40px;
       padding: 16px 12px;
       box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
-      max-width: 360px;
+      max-width: 380px;
       width: 100%;
       margin: 0 auto;
     }
@@ -260,7 +252,7 @@
     .phone-screen {
       background: #060e1a;
       border-radius: 28px;
-      height: 480px;
+      height: 500px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -272,65 +264,40 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .chat-avatar {
-      width: 38px;
-      height: 38px;
+      width: 40px; height: 38px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--neon-cyan), var(--electric-blue));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: #020509;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; color: #020509;
     }
 
     .chat-messages {
-      flex: 1;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      overflow-y: auto;
-      font-size: 0.82rem;
+      flex: 1; padding: 16px;
+      display: flex; flex-direction: column;
+      gap: 14px; overflow-y: auto; font-size: 0.85rem;
     }
 
     .msg-bot {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #e2e8f0;
-      border-radius: 4px 14px 14px 14px;
-      padding: 12px;
-      max-width: 88%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #e2e8f0; border-radius: 4px 14px 14px 14px;
+      padding: 14px; max-width: 90%;
     }
 
     .msg-user {
-      background: rgba(0, 210, 196, 0.15);
-      border: 1px solid rgba(0, 210, 196, 0.3);
-      color: #ffffff;
-      border-radius: 14px 14px 4px 14px;
-      padding: 12px;
-      align-self: flex-end;
-      max-width: 85%;
+      background: rgba(0, 210, 196, 0.18);
+      border: 1px solid rgba(0, 210, 196, 0.35);
+      color: #ffffff; border-radius: 14px 14px 4px 14px;
+      padding: 14px; align-self: flex-end; max-width: 88%;
     }
 
-    /* CAL.COM SECTION */
-    .cal-section {
-      padding: 80px 0;
-      text-align: center;
-    }
-
-    .cal-card {
-      padding: 40px 20px;
-      margin-top: 40px;
-    }
-
-    /* FOOTER */
     .footer {
       padding: 50px 0;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       text-align: center;
       color: var(--text-muted);
       font-size: 0.9rem;
@@ -348,50 +315,89 @@
 
   <nav class="navbar">
     <div class="container nav-wrapper">
-      <a href="https://jaison.fala-zycia.pl/" class="logo-brand">Tomasz <span>| Jaison OS</span></a>
-      <a href="#kalendarz" class="btn-primary" style="padding: 10px 22px; font-size: 0.9rem;">Umów Konsultację</a>
+      <a href="#" class="logo-brand">Jaison <span>MLM OS</span></a>
+      <a href="#konsultacja" class="btn-primary" style="padding: 12px 24px; font-size: 0.95rem;">Umów Konsultację B2B</a>
     </div>
   </nav>
 
   <header class="hero container">
-    <div class="badge-pill">🤖 SYSTEM WDROŻENIOWY & AI AUTOMATION</div>
+    <div class="badge-pill">🤖 SYSTEM AGENTOWY DLA LIDERÓW & PARTNERÓW BIZNESOWYCH</div>
     <h1 class="hero-title">
-      Buduj Zespół w Biznesie Nowej Ery <span>Bez Zimnych Telefonów</span>
+      Zróbmy z Tym Porządek. <span>Przestań Być Jednoosobową Armią.</span>
     </h1>
     <p class="hero-subtitle">
-      Dołącz do mojego zespołu w społeczności Fala Życia. Zamiast chaosu i zgadywania otrzymujesz gotowy system asystencki <strong>Jaison OS na WhatsAppie</strong>, szablony NLP oraz dedykowany lej rekrutacyjny od pierwszego dnia.
+      Tradycyjny biznes sieciowy cierpi na chaos, brak powtarzalności i wyręczanie zespołu. Podepnij swoją strukturę pod <strong>Jaison MLM OS</strong> – asynchronicznego agenta AI na WhatsAppie, który pilnuje biologii partnerów od świtu, serwuje gotowe szablony NLP i zapewnia 100% duplikację.
     </p>
     <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
-      <a href="#kalendarz" class="btn-primary">📅 Umów Bezpłatną Konsultację</a>
-      <a href="#symulator" class="btn-secondary">📲 Zobacz Jak Działa Jaison OS</a>
+      <a href="#konsultacja" class="btn-primary">📅 Zarezerwuj Konsultację Wdrożeniową</a>
+      <a href="#symulator" class="btn-secondary">📲 Zobacz Agenta na WhatsAppie</a>
     </div>
   </header>
 
-  <!-- Interactive WhatsApp Simulator -->
-  <section id="symulator" class="simulator-section container">
-    <div style="text-align: center; margin-bottom: 50px;">
-      <span style="color: var(--neon-cyan); font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;">Twój Cyfrowy Trener</span>
-      <h2 style="font-family: var(--font-heading); font-size: 2.4rem; color: var(--text-bright); margin-top: 10px;">Jaison OS na WhatsAppie w Akcji</h2>
+  <!-- ROAST & KONTRAST -->
+  <section class="container">
+    <div class="glass-card">
+      <h2 style="font-family: var(--font-heading); font-size: 2.2rem; margin-bottom: 20px;">
+        🔥 Dlaczego 90% Liderów Ponosi Porażkę w Duplikacji?
+      </h2>
+      <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 25px;">
+        Prawda jest brutalna. Jeśli prowadzisz wszystkie spotkania za swoich partnerów, odpowiadasz po 50 razy na te same pytania produktowe i robisz za ich nianię – nie budujesz dochodu pasywnego. Budujesz etat bez szefa, z którego nigdy nie wyjdziesz.
+      </p>
+
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Model Tradycyjny (Chaos)</th>
+            <th>System Jaison MLM OS (Duplikacja AI)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Chaos poranny:</strong> Partner wstaje, scrolluje social media, wpada w prokrastynację i lęk przed odmową.</td>
+            <td><strong>CRON 06:30 (Biologiczny Zapłon):</strong> Agent wymusza zrzut myśli, nawodnienie wodą X2O i zimny prysznic. Dopamina rośnie o +250%.</td>
+          </tr>
+          <tr>
+            <td><strong>Pozorowanie pracy:</strong> Partner myśli "co dzisiaj napisać", robi amatorskie grafiki i marnuje 4 godziny.</td>
+            <td><strong>CRON 08:00 (Gotowe NLP):** Agent serwuje 3 precyzyjne szablony wiadomości B2B/Social Media. Kopiuj, wklej, gotowe w 15 minut.</td>
+          </tr>
+          <tr>
+            <td><strong>Uzależnienie od sponsora:</strong> Każde trudne pytanie klienta paraliżuje partnera, który dzwoni do upline'a.</td>
+            <td><strong>Sponsor AI 24/7:</strong> Partner przesyła pytanie klienta na WhatsAppie, a Jaison generuje naukową, bezpieczną odpowiedź NLP.</td>
+          </tr>
+          <tr>
+            <td><strong>Wypalenie i rezygnacje:</strong> Brak wyników w pierwszych 30 dniach zabija motywację partnera.</td>
+            <td><strong>Stała Retencja:</strong> Agent nagradza konsekwencję, pilnuje kalendarza i prowadzi krok po kroku.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Symulator WhatsApp -->
+  <section id="symulator" class="container" style="padding: 50px 0;">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <span style="color: var(--neon-cyan); font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;">Przetestuj Logikę Agenta</span>
+      <h2 style="font-family: var(--font-heading); font-size: 2.4rem; color: var(--text-bright); margin-top: 10px;">Jaison MLM OS w Twoim Telefonie</h2>
     </div>
 
     <div class="sim-grid">
       <div>
-        <div class="step-card glass-card active" onclick="loadChat(1, this)">
-          <span class="step-time">08:00 AM — Poranny Audyt Energii</span>
-          <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-bright);">Zaczynasz Dzień od Krystalicznego Nawodnienia</h3>
-          <p style="color: var(--text-muted); font-size: 0.92rem;">Jaison przypomina o nawodnieniu X2O oraz aplikacji elektrody X39, sprawdzając Twój poziom skupienia.</p>
+        <div class="step-card active" onclick="loadChat(1, this)">
+          <span style="color: var(--neon-cyan); font-weight: 700; font-size: 0.82rem;">CRON 06:30 — Biologiczny Zapłon</span>
+          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-bright); margin-top: 6px;">Reset Układu Nerwowego & Dopamina</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Zrzut myśli, szklanka wody X2O z solą kłodawską i lodowaty prysznic. Czysta jasność umysłu przed pracą.</p>
         </div>
 
-        <div class="step-card glass-card" onclick="loadChat(2, this)">
-          <span class="step-time">12:30 PM — Asystent Komunikacji NLP</span>
-          <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-bright);">Gotowe Skrypty & Rozbijanie Obiekcji</h3>
-          <p style="color: var(--text-muted); font-size: 0.92rem;">Masz pytanie od klienta? Jaison generuje precyzyjną, profesjonalną odpowiedź w ułamku sekundy.</p>
+        <div class="step-card" onclick="loadChat(2, this)">
+          <span style="color: var(--neon-cyan); font-weight: 700; font-size: 0.82rem;">CRON 08:00 — Szablony Rekrutacyjne NLP</span>
+          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-bright); margin-top: 6px;">Zasada Posłańca (Stop Scrolling)</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Gotowe skrypty nastawione na matematykę nieruchomości vs MLM. Zero wciskania kitów, czysty biznes.</p>
         </div>
 
-        <div class="step-card glass-card" onclick="loadChat(3, this)">
-          <span class="step-time">20:00 PM — Wieczorny Audyt Wyników</span>
-          <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--text-bright);">Analiza Postępów i Podsumowanie Dnia</h3>
-          <p style="color: var(--text-muted); font-size: 0.92rem;">System rejestruje wykonane rozmowy, mierzy Twoją dyscyplinę i buduje trwały nawyk sukcesu.</p>
+        <div class="step-card" onclick="loadChat(3, this)">
+          <span style="color: var(--neon-cyan); font-weight: 700; font-size: 0.82rem;">ASYSTA 24/7 — Odpowiedzi na Obiekcje</span>
+          <h3 style="font-family: var(--font-heading); font-size: 1.25rem; color: var(--text-bright); margin-top: 6px;">Naukowa Baza Wiedzy w Czasie Rzeczywistym</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">Zapytanie od trudnego klienta? Jaison generuje bezpieczną, poprawną merytorycznie odpowiedź w sekundy.</p>
         </div>
       </div>
 
@@ -400,17 +406,17 @@
           <div class="chat-header">
             <div class="chat-avatar">J</div>
             <div>
-              <strong style="color: #fff; font-size: 0.9rem; display: block;">Jaison OS | Partner Trener</strong>
+              <strong style="color: #fff; font-size: 0.9rem; display: block;">Jaison MLM OS</strong>
               <span style="color: var(--neon-cyan); font-size: 0.72rem;">● Aktywny na WhatsAppie</span>
             </div>
           </div>
           <div class="chat-messages" id="chat-box">
             <div class="msg-bot">
-              <strong style="color: var(--neon-cyan); display: block; font-size: 0.75rem; margin-bottom: 4px;">JAISON OS</strong>
-              Dzień dobry, Tomasz! 🌅 Czas na poranny rytuał: 500ml wody z saszettką X2O i aplikację elektrody X39 na karku. Gotowy na 100% energii?
+              <strong style="color: var(--neon-cyan); display: block; font-size: 0.78rem; margin-bottom: 4px;">JAISON MLM OS</strong>
+              Cześć! Tryb goal. Zeszyt w dłoń, robisz zrzut myśli (wyczyść bufor pamięci). Wypij wodę z solą kłodawską, wyjdź na słońce i odpal oddechy. Potem ładuj się pod lodowaty prysznic po dopaminę (+250%). Kliknij ZROBIONE, gdy wyjdziesz z łazienki.
             </div>
             <div class="msg-user">
-              Zrobione! Nawodnienie zaliczone, elektroda przyklejona. Lecimy z planem!
+              ZROBIONE! Umysł kryształ, dopamina na szczycie. Daj skrypty na dziś!
             </div>
           </div>
         </div>
@@ -418,23 +424,23 @@
     </div>
   </section>
 
-  <!-- Cal.com Embedded Booking Section -->
-  <section id="kalendarz" class="cal-section container">
-    <div style="max-width: 800px; margin: 0 auto;">
-      <span style="color: var(--neon-cyan); font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;">1-on-1 Strategy Call</span>
-      <h2 style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--text-bright); margin-top: 10px;">Zarezerwuj 15-Minutową Rozmowę ze Mną</h2>
-      <p style="color: var(--text-muted); font-size: 1.05rem; margin-top: 12px;">Porozmawiajmy o tym, jak wdrożyć system Jaison OS w Twojej karierze i zbudować suwerenny biznes w oparciu o zdrowie i technologię.</p>
+  <!-- Cal.com Booking -->
+  <section id="konsultacja" class="container" style="padding: 60px 0;">
+    <div style="text-align: center; max-width: 850px; margin: 0 auto 30px auto;">
+      <span style="color: var(--neon-cyan); font-family: var(--font-heading); font-weight: 700; text-transform: uppercase;">Konsultacja Wdrożeniowa B2B</span>
+      <h2 style="font-family: var(--font-heading); font-size: 2.6rem; color: var(--text-bright); margin-top: 10px;">Omów Wdrożenie Jaison MLM OS w Twoim Zespole</h2>
+      <p style="color: var(--text-muted); font-size: 1.1rem;">Porozmawiajmy o podpięciu Twojej struktury pod system agentowy i automatyzacji procesu onboardingowego.</p>
     </div>
 
-    <div class="cal-card glass-card">
-      <iframe src="https://cal.com/jaison/15min?embed=true" style="width: 100%; height: 620px; border: none; border-radius: 16px; background: rgba(2, 5, 9, 0.4);" title="Cal.com Booking"></iframe>
+    <div class="glass-card" style="padding: 30px;">
+      <iframe src="https://cal.com/jaison/15min?embed=true" style="width: 100%; height: 620px; border: none; border-radius: 16px; background: rgba(2, 5, 9, 0.5);" title="Cal.com Booking"></iframe>
     </div>
   </section>
 
   <footer class="footer">
     <div class="container">
-      <p>© 2026 Tomasz (Jaison) & Klub Fala Życia. Wszelkie prawa zastrzeżone.</p>
-      <p style="margin-top: 8px; font-size: 0.8rem; color: rgba(255,255,255,0.4);">Kontakt: hello@jaison.pl | Partner Społeczności LifeWave</p>
+      <p>© 2026 Jaison AI OS. Wszelkie prawa zastrzeżone.</p>
+      <p style="margin-top: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.4);">Dedykowana platforma systemowa B2B dla Liderów i Organizacji Network Marketingu.</p>
     </div>
   </footer>
 
@@ -451,14 +457,14 @@
     });
 
     const particles = [];
-    for (let i = 0; i < 60; i++) {
+    for (let i = 0; i < 55; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
         radius: Math.random() * 2 + 1,
         color: '#00d2c4',
-        vx: (Math.random() - 0.5) * 0.5,
-        vy: (Math.random() - 0.5) * 0.5
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4
       });
     }
 
@@ -472,7 +478,7 @@
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fillStyle = p.color;
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 8;
         ctx.shadowColor = p.color;
         ctx.fill();
       });
@@ -480,7 +486,7 @@
     }
     animate();
 
-    // Chat Interactive Switcher
+    // Chat Switcher
     function loadChat(step, el) {
       document.querySelectorAll('.step-card').forEach(card => card.classList.remove('active'));
       el.classList.add('active');
@@ -489,31 +495,31 @@
       if (step === 1) {
         chatBox.innerHTML = `
           <div class="msg-bot">
-            <strong style="color: var(--neon-cyan); display: block; font-size: 0.75rem; margin-bottom: 4px;">JAISON OS</strong>
-            Dzień dobry, Tomasz! 🌅 Czas na poranny rytuał: 500ml wody z saszetką X2O i aplikację elektrody X39 na karku. Gotowy na 100% energii?
+            <strong style="color: var(--neon-cyan); display: block; font-size: 0.78rem; margin-bottom: 4px;">JAISON MLM OS</strong>
+            Cześć! Tryb goal. Zeszyt w dłoń, robisz zrzut myśli (wyczyść bufor pamięci). Wypij wodę z solą kłodawską, wyjdź na słońce i odpal oddechy. Potem ładuj się pod lodowaty prysznic po dopaminę (+250%). Kliknij ZROBIONE, gdy wyjdziesz z łazienki.
           </div>
           <div class="msg-user">
-            Zrobione! Nawodnienie zaliczone, elektroda przyklejona. Lecimy z planem!
+            ZROBIONE! Umysł kryształ, dopamina na szczycie. Daj skrypty na dziś!
           </div>
         `;
       } else if (step === 2) {
         chatBox.innerHTML = `
-          <div class="msg-user">
-            Jaison, klient pyta: "Czym fototerapia X39 różni się od zwykłych suplementów z apteki?"
-          </div>
           <div class="msg-bot">
-            <strong style="color: var(--neon-cyan); display: block; font-size: 0.75rem; margin-bottom: 4px;">JAISON OS (NLP GENERATOR)</strong>
-            Oto precyzyjna odpowiedź: "X39 nie wprowadza chemii z zewnątrz. Wykorzystuje swiatło Twojego ciała do aktywacji peptydu GHK-Cu, który pobudza własne komórki macierzyste do regeneracji."
+            <strong style="color: var(--neon-cyan); display: block; font-size: 0.78rem; margin-bottom: 4px;">JAISON MLM OS (NLP SKRYPT)</strong>
+            Oto Twój post na dziś (Pattern Interrupt): "Jak się okazuje, większość ludzi woli harować 38 lat, niż poświęcić 12 miesięcy na zautomatyzowany system. Chcesz 2000 zł/mc z kawalerki? Kup mieszkanie za 450k zł... Tymczasem w naszym systemie budujesz rurociąg finansowy bez kredytów."
+          </div>
+          <div class="msg-user">
+            Genialne! Skopiowane i wysłane do moich prospektów B2B.
           </div>
         `;
       } else if (step === 3) {
         chatBox.innerHTML = `
-          <div class="msg-bot">
-            <strong style="color: var(--neon-cyan); display: block; font-size: 0.75rem; margin-bottom: 4px;">JAISON OS</strong>
-            Wieczorny podsumowujący audyt 🌙: Dzisiaj wykonałeś 3 rozmowy wdrożeniowe i udostępniłeś 1 przewodnik PDF. Twoja dyscyplina wynosi 100%!
-          </div>
           <div class="msg-user">
-            Świetnie, dziękuję Jaison! Dobranoc.
+            Jaison, klient pyta: "Czy to jest piramida finansowa i czym różni się od zwykłego sklepu?"
+          </div>
+          <div class="msg-bot">
+            <strong style="color: var(--neon-cyan); display: block; font-size: 0.78rem; margin-bottom: 4px;">JAISON MLM OS (NLP ASYSTA)</strong>
+            Oto gotowiec: "Nie. W piramidzie nie ma realnego produktu, płaci się za wpisowe. U nas płacisz wyłącznie za opatentowaną technologię ustrukturyzowanej wody i fotobiomodulacji, a model franczyzowy pozwala na budowę zautomatyzowanego biznesu."
           </div>
         `;
       }

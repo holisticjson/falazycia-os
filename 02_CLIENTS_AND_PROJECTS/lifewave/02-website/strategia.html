@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategia & Raport Prawny - Klub Fala Życia</title>
+    <title>Master Strategia 2026 & Raport Prawno-Finansowy - Klub Fala Życia</title>
+    <meta name="description" content="Oficjalna Master Strategia, Architektura Holdingu, Analiza Prawno-Finansowa oraz Program Grantowy dla Ekosystemu Klub Fala Życia.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --space-black: #0A0A0A;
             --deep-navy: #05101A;
-            --card-bg: rgba(15, 23, 42, 0.6);
-            --card-border: rgba(0, 210, 196, 0.2);
+            --card-bg: rgba(15, 23, 42, 0.75);
+            --card-border: rgba(0, 210, 196, 0.25);
             --text-main: #E2E8F0;
             --text-muted: #94A3B8;
             --text-heading: #F8FAFC;
             --quantum-cyan: #00D2C4;
             --quantum-blue: #0077B6;
+            --gold-accent: #FFD700;
             --alert-red: #EF4444;
             --success-green: #10B981;
         }
@@ -26,17 +28,16 @@
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, var(--space-black) 0%, var(--deep-navy) 100%);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
             min-height: 100vh;
-            /* display: none handled on #main-content */
         }
 
         h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; color: var(--text-heading); }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 50px 20px;
         }
 
         header {
@@ -45,7 +46,7 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-blue) 100%);
+            background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--gold-accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
@@ -55,32 +56,39 @@
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            padding: 35px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
 
         .section-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 210, 196, 0.5);
+            transform: translateY(-4px);
+            border-color: rgba(0, 210, 196, 0.6);
         }
 
         .mission-box {
-            background: linear-gradient(135deg, rgba(0,210,196,0.1) 0%, rgba(0,119,182,0.1) 100%);
+            background: linear-gradient(135deg, rgba(0,210,196,0.12) 0%, rgba(255,215,0,0.08) 100%);
             border-left: 4px solid var(--quantum-cyan);
-            padding: 20px;
+            padding: 22px;
             border-radius: 0 15px 15px 0;
             margin: 20px 0;
             font-size: 1.1rem;
-            font-style: italic;
         }
 
         .alert-box {
             background: rgba(239, 68, 68, 0.1);
             border-left: 4px solid var(--alert-red);
-            padding: 20px;
+            padding: 22px;
+            border-radius: 0 15px 15px 0;
+            margin: 20px 0;
+        }
+
+        .success-box {
+            background: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--success-green);
+            padding: 22px;
             border-radius: 0 15px 15px 0;
             margin: 20px 0;
         }
@@ -88,30 +96,51 @@
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 25px 0;
+            border-radius: 12px;
+            overflow: hidden;
         }
 
         th, td {
-            padding: 15px;
+            padding: 16px;
             text-align: left;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         th {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
             color: var(--quantum-cyan);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        ul {
-            margin-left: 20px;
-            margin-top: 10px;
+        td {
+            background: rgba(15, 23, 42, 0.4);
         }
 
-        li { margin-bottom: 10px; }
+        ul, ol {
+            margin-left: 25px;
+            margin-top: 12px;
+        }
 
-        /* VAK Anchoring styles */
-        strong { color: #FFF; font-weight: 700; }
+        li { margin-bottom: 12px; }
+
+        strong { color: #FFFFFF; font-weight: 700; }
         .highlight-cyan { color: var(--quantum-cyan); font-weight: 600; }
+        .highlight-gold { color: var(--gold-accent); font-weight: 600; }
+
+        a.nav-link {
+            color: var(--quantum-cyan);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--quantum-cyan);
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        a.nav-link:hover {
+            color: var(--gold-accent);
+            border-color: var(--gold-accent);
+        }
 
         #password-overlay {
             position: fixed;
@@ -128,20 +157,22 @@
 
         .password-box {
             background: var(--card-bg);
-            padding: 40px;
+            padding: 45px;
             border-radius: 20px;
             border: 1px solid var(--card-border);
             text-align: center;
-            box-shadow: 0 0 50px rgba(0,210,196,0.1);
+            box-shadow: 0 0 50px rgba(0,210,196,0.15);
+            max-width: 480px;
+            width: 90%;
         }
 
         input[type="password"] {
-            padding: 15px 20px;
+            padding: 16px 20px;
             margin-top: 20px;
             width: 100%;
-            border-radius: 10px;
+            border-radius: 12px;
             border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.6);
             color: white;
             font-size: 1.1rem;
             outline: none;
@@ -152,10 +183,10 @@
             border-color: var(--quantum-cyan);
         }
 
-        button {
-            margin-top: 20px;
-            padding: 15px 30px;
-            border-radius: 10px;
+        button.btn-unlock {
+            margin-top: 22px;
+            padding: 16px 30px;
+            border-radius: 12px;
             border: none;
             background: linear-gradient(135deg, var(--quantum-cyan) 0%, var(--quantum-blue) 100%);
             color: white;
@@ -163,10 +194,26 @@
             font-size: 1.1rem;
             cursor: pointer;
             width: 100%;
-            transition: opacity 0.3s ease;
+            transition: transform 0.2s ease, opacity 0.2s ease;
         }
 
-        button:hover { opacity: 0.9; }
+        button.btn-unlock:hover {
+            transform: scale(1.02);
+            opacity: 0.95;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active { background: rgba(16, 185, 129, 0.2); color: #34D399; border: 1px solid #10B981; }
+        .status-planned { background: rgba(0, 210, 196, 0.2); color: #38BDF8; border: 1px solid #0284C7; }
 
     </style>
 </head>
@@ -175,10 +222,10 @@
     <!-- PASSWORD OVERLAY -->
     <div id="password-overlay">
         <div class="password-box">
-            <h2>🔒 Strefa Zabezpieczona</h2>
-            <p style="margin-top: 10px; color: var(--text-muted);">Raport Strategiczny i Architektura Jaison OS</p>
+            <h2 style="font-size: 2rem;">🔒 Strefa Zabezpieczona</h2>
+            <p style="margin-top: 12px; color: var(--text-muted);">Master Strategia 2026, Architektura Holdingu & Ekosystem Klubu Fala Życia</p>
             <input type="password" id="pass-input" placeholder="Wprowadź hasło dostępu..." />
-            <button onclick="checkPassword()">Odblokuj Raport</button>
+            <button class="btn-unlock" onclick="checkPassword()">Odblokuj Raport</button>
             <p id="error-msg" style="color: #EF4444; margin-top: 15px; display: none;">Nieprawidłowe hasło!</p>
         </div>
     </div>
@@ -186,86 +233,161 @@
     <div class="container" id="main-content" style="display: none;">
         
         <header>
-            <img src="images/whatsapp_group.png" alt="Fala Życia" style="width: 80px; border-radius: 50%; box-shadow: 0 0 20px rgba(0,210,196,0.5); margin-bottom: 20px;">
-            <h1 style="font-size: 2.8rem; margin-bottom: 10px;">Raport Prawno-Finansowy & <span class="gradient-text">Ekosystem Technologiczny</span></h1>
-            <p style="font-size: 1.2rem; color: var(--text-muted);">Executive Summary dla Zespołu Fala Życia | Fundacja, Granty GCP i System Agentowy</p>
+            <img src="brand_icon.png" alt="Klub Fala Życia Logo" style="width: 90px; height: 90px; border-radius: 50%; box-shadow: 0 0 25px rgba(0,210,196,0.6); margin-bottom: 20px; object-fit: cover;">
+            <h1 style="font-size: 3rem; margin-bottom: 12px;">Master Strategia 2026 & <span class="gradient-text">Ekosystem Fala Życia</span></h1>
+            <p style="font-size: 1.25rem; color: var(--text-muted);">Inwentaryzacja Wdrożeń, Architektura Holdingu (Fundacja + Spółka z o.o.), Granty GCP/EU oraz System Agentowy Fala Życia OS</p>
         </header>
 
-        <!-- MISJA I WIZJA -->
+        <!-- SEKCJA 1: STAN AKTUALNYCH PRAC I WDROŻEŃ -->
         <div class="section-card">
-            <h2>🌍 1. Misja, Wizja i Rozszerzenie Grupy Docelowej</h2>
+            <h2>🚀 1. Stan Aktualnych Prac, Wdrożeń i Ekosystemu Aplikacyjnego</h2>
             
-            <div class="mission-box">
-                <strong>Nasza Misja:</strong> "Dostarczenie obiektywnych, sprawdzonych technologicznie narzędzi wspierających fizjologię organizmu, odbudowę komórkową i homeostazę energetyczną, przy użyciu najnowszych osiągnięć nauki i naturalnych metod."
+            <p>Projekt <strong>Klub Fala Życia</strong> przeszedł pełną transformację technologiczną. Odsuwamy na bok powolne i skomplikowane systemy, stawiając na suwerenną, ultraszybką infrastrukturę chmurową oraz asynchronicznych agentów sztucznej inteligencji.</p>
+
+            <div class="success-box">
+                <strong style="font-size: 1.1rem; color: #34D399;">✅ Aktywne Wdrożenia Produkcyjne w Portalu fala-zycia.pl:</strong><br><br>
+                <ul>
+                    <li><strong>Dashboard Akademii Klubu Fala Życia (Google Cloud Run):</strong> Działająca na żywo aplikacja pod adresem <a href="https://fala-zycia-dashboard-zhct4l5nxa-lm.a.run.app" target="_blank" class="nav-link">Aplikacja Dashboard Fala Życia na Cloud Run</a> w projekcie <code>falazycia-os</code> (region <code>europe-central2</code>).</li>
+                    <li><strong>Agent Doradca AI (Gemini 2.5 Flash na Vertex AI):</strong> Moduł konwersacyjny osadzony bezpośrednio w aplikacji, korzystający z modelu <strong>Gemini 2.5 Flash</strong> w regionie <code>us-central1</code> na infrastrukturze Vertex AI. Agent odpowiada w czasie rzeczywistym na pytania podopiecznych i partnerów.</li>
+                    <li><strong>Scentralizowana Baza Wiedzy (Master Knowledge Base):</strong> Wdrożony i zintegrowany kanoniczny dokument Bazy Wiedzy Klubu Fala Życia, łączący wiedzę z 20 podręczników duplikacji (<code>MLM_DUPLICATION_MASTER.md</code>), kursu Piotra Lotniczego (Flight Hacking), nauk dr Joe Dispenzy, Erica Worre, Tomasza Damiana oraz naukowe dane o Stacji X2O™ i plastrach X39.</li>
+                    <li><strong>Luksusowy Branding 3D & Brand Vision Book:</strong> Stworzono oficjalny dokument <code>BRAND_VISION_BOOK_FALA_ZYCIA.md</code> z nową ikoną marki w stylu 3D glassmorphism oraz paletą barw opartą na błękicie kwantowym (<code>#00D2C4</code>) i płynnym złocie (<code>#FFD700</code>).</li>
+                </ul>
             </div>
 
-            <p>Aby nasz projekt wzrastał merytorycznie i skutecznie pozyskiwał zewnętrzne fundusze, musimy <strong>wyjść poza standardową ofertę Wellness</strong> i dotrzeć do osób zmagających się z wyzwaniami przewlekłymi.</p>
-            
-            <h4 style="margin-top: 20px; color: var(--quantum-cyan);">🎯 Rozszerzona Grupa Docelowa (Autoimmunologia i Choroby Rzadkie)</h4>
+            <h4 style="margin-top: 25px; color: var(--quantum-cyan);">🗺️ Dalsza Roadmapa i Plany Wdrożeniowe:</h4>
             <ul>
-                <li><strong>Oparcie na Dowodach:</strong> Nasze wsparcie dla osób cierpiących na małe, odległe lub autoimmunologiczne choroby opiera się na <strong>testach obiektywnych</strong>, analizach parametrów we krwi i potwierdzonych klinicznie rezultatach.</li>
-                <li><strong>Język RODO i GIS:</strong> Kategorycznie unikamy zwrotów "leczymy z raka" lub "cofamy choroby". Posługujemy się bezpieczną terminologią opartą na dowodach: <span class="highlight-cyan">"Wspieramy zarządzanie stanami zapalnymi"</span>, <span class="highlight-cyan">"Podnosimy komfort i regenerację dobową pacjenta"</span>, <span class="highlight-cyan">"Wspieramy układ odpornościowy w chorobach autoimmunologicznych"</span>.</li>
-                <li><strong>Wsparcie Praktyczne:</strong> Nie tylko sprzedajemy plastry. Dostarczamy wiedzę poprzez portal <strong>fala-zycia.pl</strong> i naszą Akademię, z asystą inteligentnych chatbotów wspierających podopiecznych na każdym kroku.</li>
+                <li><span class="status-badge status-planned">W trakcie</span> <strong>Aktywacja Subdomeny <code>app.fala-zycia.pl</code>:</strong> Mapowanie rekordu CNAME bezpośrednio pod domenę główną <a href="https://fala-zycia.pl" target="_blank" class="nav-link">fala-zycia.pl</a>, zapewniające spójny dostęp do Dashboardu pod adresem <code>app.fala-zycia.pl</code>.</li>
+                <li><span class="status-badge status-planned">W trakcie</span> <strong>Automatyzacja WhatsApp & Telegram dla Klubu:</strong> Spięcie asynchronicznych przepływów danych za pośrednictwem n8n i dedykowanych webhooków komunikacyjnych.</li>
+                <li><span class="status-badge status-planned">Zaplanowane</span> <strong>Instancje Agentów dla Liderów Klubu:</strong> Indywidualne wersje agenta dla partnerów kluczowych z zachowaniem ich osobistego tonu marki i dedykowanych linków referencyjnych.</li>
             </ul>
         </div>
 
-        <!-- ANALIZA PRAWNA -->
+        <!-- SEKCJA 2: ANALIZA PRAWNO-FINANSOWA (HOLDING: FUNDACJA + SPÓŁKI Z O.O.) -->
         <div class="section-card">
-            <h2>⚖️ 2. Analiza Prawno-Finansowa (Fundacja vs Działalność Komercyjna)</h2>
-            <p>Naszym celem jest legalne działanie, budowanie wizerunku eksperckiego oraz kwalifikacja po darmowe środki chmurowe <strong>(Grant Google Cloud for Startups $350k)</strong> na budowę infrastruktury sztucznej inteligencji.</p>
+            <h2>⚖️ 2. Głęboka Analiza Prawno-Finansowa (Struktura Holdingu: Fundacja + Spółka z o.o.)</h2>
+            
+            <p>Aby zapewnić pełne bezpieczeństwo majątkowe założycieli, optymalizację podatkową oraz wysokie zaufanie społeczne, rekomendujemy wdrożenie dwupoziomowej struktury prawnej typu <strong>Holding Parasolowy (Fundacja + Spółka z o.o.)</strong>.</p>
 
-            <table style="margin-top: 20px;">
+            <div class="mission-box">
+                <strong>Główna Koncepcja Architektury Prawnej dla Klubu Fala Życia:</strong><br>
+                Fundacja (podmiot misyjny, edukacyjny i chroniący aktywa) tworzy lub obejmuje 100% udziałów w komercyjnej Spółce z o.o. (podmiot technologiczno-operacyjny). Taka struktura rozdziela ryzyko biznesowe od celów społecznych i majątku trwałego.
+            </div>
+
+            <h3 style="margin-top: 25px; color: var(--quantum-cyan);">Podział Ról w Holdingu Fala Życia:</h3>
+
+            <table>
                 <thead>
                     <tr>
-                        <th>Kryterium</th>
-                        <th>Fundacja "Fala Życia"</th>
-                        <th>Działalność Moniki (Jaison)</th>
+                        <th>Obszar / Podmiot</th>
+                        <th>Fundacja "Klub Fala Życia" (Non-Profit / Bezpieczeństwo)</th>
+                        <th>Spółka z o.o. (Operacyjna / Technologiczna)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Cel</strong></td>
-                        <td>Misyjny, np. wsparcie opieki paliatywnej. Darowizny X39 dla hospicjów.</td>
-                        <td>Dystrybucja B2B/B2C, budowanie biznesu, zyski.</td>
+                        <td><strong>Główny Cel</strong></td>
+                        <td>Edukacja zdrowotna, badania naukowe nad wodą ustrukturyzowaną, darowizny X39/X2O dla potrzebujących, ochrona własności intelektualnej i marki Fala Życia.</td>
+                        <td>Sprzedaż komercyjna, dostarczanie oprogramowania Fala Życia OS, komercyjne umowy biznesowe, rozliczenia z rynkiem.</td>
                     </tr>
                     <tr>
-                        <td><strong>Granty GCP ($300k+)</strong></td>
-                        <td>Wysoka szansa, ale trudna weryfikacja.</td>
-                        <td><strong>Najwyższa.</strong> Startup Programme preferuje byty z NIP/KRS i produktami "live".</td>
+                        <td><strong>Ochrona Majątku (Asset Protection)</strong></td>
+                        <td><strong>Maksymalna.</strong> Majątek zgromadzony w Fundacji jest odseparowany od osobistych długów i ewentualnych roszczeń wobec spółki operacyjnej.</td>
+                        <td>Ryzyko biznesowe ograniczone wyłącznie do wysokości kapitału zakładowego i majątku własnego spółki z o.o.</td>
                     </tr>
                     <tr>
-                        <td><strong>Granty UE / FIO</strong></td>
-                        <td>Bardzo wysoka (Zdrowie, Edukacja, Seniorzy).</td>
-                        <td>Dostęp tylko na innowacje technologiczne (AI).</td>
+                        <td><strong>Optymalizacja CIT</strong></td>
+                        <td>Zwolnienie z CIT dla dochodów przeznaczonych na cele statutowe (art. 17 ust. 1 pkt 4 ustawy o CIT), np. na badania i cyfryzację.</td>
+                        <td>Możliwość wypłaty dywidendy do Fundacji (zaliczenie w koszty statutowe) lub skorzystanie z CIT Estońskiego.</td>
                     </tr>
                     <tr>
-                        <td><strong>Stan na dziś</strong></td>
-                        <td>Wymaga założenia i aktu notarialnego (1-2 msce).</td>
-                        <td><strong>Gotowe od zaraz.</strong> Podpinamy pod istniejącą działalność.</td>
+                        <td><strong>Kwalifikacja pod Granty GCP ($350k+)</strong></td>
+                        <td>Dostęp do grantów społecznych, naukowych oraz FIO/NCBR.</td>
+                        <td><strong>Kluczowa dla Google Cloud for Startups.</strong> Program wspiera podmioty nastawione na komercyjne skalowanie SaaS/AI z podpiętą kartą billingową.</td>
                     </tr>
                 </tbody>
             </table>
 
+            <h4 style="margin-top: 20px; color: var(--gold-accent);">🛡️ Marka LifeWaveTag & Dystrybucja Partnerów Biznesowych:</h4>
+            <p>Wprowadzenie dedykowanych identyfikatorów <strong>LifeWaveTag</strong> pozwala na całkowite odseparowanie działalności edukacyjnej od dystrybucyjnej. Partnerzy Klubu Fala Życia promują swoje działania za pomocą spersonalizowanych narzędzi technologicznych na portalu <a href="https://fala-zycia.pl" target="_blank" class="nav-link">fala-zycia.pl</a>, nie narażając się na naruszenia przepisów o oświadczeniach medycznych.</p>
+
             <div class="alert-box">
-                <strong>Złoty Kompromis (Dwuetapowy Plan):</strong><br><br>
-                1. <strong>Tu i teraz:</strong> Aplikujemy o pierwsze 300$ oraz 1000$ w Google Cloud korzystając z NIP-u i działalności Moniki (Jaison OS). To pozwala nam błyskawicznie uruchomić systemy.<br>
-                2. <strong>Równolegle:</strong> Przygotowujemy statut i zakładamy organizację (Fundację lub Stowarzyszenie "Klub Fala Życia"), która będzie absorbować 1% podatku, dotacje od firm i zająć się działalnością społeczną.
+                <strong>Zgodność z Przepisami (Compliance RODO, GIS i UOKiK):</strong><br><br>
+                Kategorycznie zabrania się stosowania niezgodnych z prawem obietnic medycznych (np. "leczenie chorób"). Stosujemy wyłącznie naukowo zweryfikowane, bezpieczne sformułowania:<br>
+                <ul>
+                    <li><span class="highlight-cyan">"Wspieranie naturalnej homeostazy i energetyki komórkowej"</span></li>
+                    <li><span class="highlight-cyan">"Optymalizacja nawodnienia na poziomie mikroklastrów heksagonalnych"</span></li>
+                    <li><span class="highlight-cyan">"Stymulacja ekspresji peptydów miedzi GHK-Cu za pomocą fotobiomodulacji"</span></li>
+                </ul>
             </div>
         </div>
 
-        <!-- EKOSYSTEM Jaison OS -->
+        <!-- SEKCJA 3: GRANTY, DOTACJE I POZYSKIWANIE ŚRODKÓW CHMUROWYCH -->
         <div class="section-card">
-            <h2>🤖 3. Wsparcie Technologiczne dla Partnerów (Jaison MLM OS)</h2>
-            <p>Przyjmujemy zasadę, że sercem operacji jest portal <strong>fala-zycia.pl</strong> wraz z <strong>Akademią Wiedzy</strong> oraz ukrytą aplikacją **Dashboard Streamlit** (wspierającą partnerów i działaczy).</p>
+            <h2>💰 3. Strategia Grantowa, Dofinansowania i Środki Chmurowe GCP</h2>
 
-            <h4 style="margin-top: 20px; color: var(--quantum-cyan);">Infrastruktura Jaison OS dla Liderów:</h4>
+            <p>Wykorzystujemy pełny potencjał darmowych programów wsparcia chmurowego, aby minimalizować stałe koszty operacyjne do absolutnego zera.</p>
+
+            <h4 style="margin-top: 20px; color: var(--quantum-cyan);">Bieżący i Docelowy Koszyk Środków Chmurowych:</h4>
             <ul>
-                <li><strong>Aplikacja Agentowa MLM:</strong> Zamiast tradycyjnych "szkoleń", partnerzy zostaną wpięci w agentów (komunikatory / dashboard), którzy będą wspierać ich pracę na żywo.</li>
-                <li><strong>Implementacja Nowoczesnego Marketingu:</strong> Uczymy liderów używać lejków sprzedażowych, a system automatycznie generuje im zaproszenia z zaszytym identyfikatorem LifeWave (linki referencyjne trackujące leady).</li>
-                <li><strong>Budowa Nawyków:</strong> Agenci przypominają o regularności działań, wspierają zdrowe nawyki i asystują w budowie zdrowego biznesu MLM, zapobiegając wypaleniu.</li>
-                <li><strong>Agregator Lotów (Flight Hacking):</strong> Udostępniamy naszym partnerom wiedzę Piotra Lotniczego, podpiętą pod sztuczną inteligencję, ułatwiając im darmowe latanie Biznes Klasą za zdobyte punkty.</li>
+                <li><strong>$300 GCP Free Trial (Projekt <code>falazycia-os</code>):</strong> Finansowanie podstawowej infrastruktury serwerowej Cloud Run, przechowywania danych w Google Cloud Storage oraz budowania obrazów w Cloud Build.</li>
+                <li><strong>$1000 GenAI App Builder Credit (Projekt <code>fala-zycia-agents</code>):</strong> Rezerwacja na zaawansowane wyszukiwarki RAG oraz silniki wyszukiwania korporacyjnego (Enterprise Search).</li>
+                <li><strong>Program Google Cloud for Startups (Możliwość do $350k+):</strong> Kwalifikacja spółki operacyjnej po udowodnieniu działającego produktu na żywo (Live Launched Product Showcase). Posiadanie produkcyjnego Dashboardu na Cloud Run stanowi nasz kluczowy atut weryfikacyjny.</li>
+                <li><strong>Granty Krajowe i Unijne (KPO / FENG / NCBR / Bony na Innowacje):</strong> Pozyskiwanie środków na badania nad ustrukturyzowaną wodą, zastosowaniem sztucznej inteligencji w profilaktyce zdrowotnej oraz narzędziach wspierających osoby z wyzwaniami autoimmunologicznymi.</li>
             </ul>
         </div>
+
+        <!-- SEKCJA 4: LEJKI REKRUTACYJNE DLA PARTNERÓW KLUBU FALA ŻYCIA -->
+        <div class="section-card">
+            <h2>🔗 4. Narzędzia Rekrutacyjne i System Agentowy Fala Życia OS</h2>
+
+            <p>Sercem skalowalności Klubu Fala Życia jest zautomatyzowany system rekrutacyjny. Nasi partnerzy nie muszą być ekspertami IT ani spędzać godzin na tworzeniu własnych materiałów – otrzymują gotową, sprawdzoną infrastrukturę w domenie <a href="https://fala-zycia.pl" target="_blank" class="nav-link">fala-zycia.pl</a>.</p>
+
+            <h4 style="margin-top: 20px; color: var(--quantum-cyan);">Dedykowane Linki i Ekosystem Lejków:</h4>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Narzędzie / Link</th>
+                        <th>Przeznaczenie i Funkcja w Ekosystemie</th>
+                        <th>Docelowy Odbiorca</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong><a href="https://fala-zycia.pl/rekrutacja" target="_blank" class="nav-link">fala-zycia.pl/rekrutacja</a></strong></td>
+                        <td>Główny lejek rekrutacyjny dla Partnerów Biznesowych z wbudowanym asystentem AI i kwalifikacją do zespołu.</td>
+                        <td>Przedsiębiorcy, Liderzy, Osoby szukające wolności finansowej.</td>
+                    </tr>
+                    <tr>
+                        <td><strong><a href="https://fala-zycia.pl/x2o" target="_blank" class="nav-link">fala-zycia.pl/x2o</a></strong></td>
+                        <td>Dedykowana strona kwalifikacyjna Stacji Hydratacji Wody X2O™ oraz zaproszeń na degustacje w Świątyni Harmonii w Łodzi.</td>
+                        <td>Osoby dbające o zdrowie, biohakerzy, klienci produktowi.</td>
+                    </tr>
+                    <tr>
+                        <td><strong><a href="https://fala-zycia.pl/akademia.html" target="_blank" class="nav-link">fala-zycia.pl/akademia.html</a></strong></td>
+                        <td>Dostęp do akademii wiedzy, materiałów szkoleniowych, nagrań i narzędzi duplikacji.</td>
+                        <td>Subskrybenci newslettera, odbiorcy materiałów edukacyjnych.</td>
+                    </tr>
+                    <tr>
+                        <td><strong><a href="https://fala-zycia-dashboard-zhct4l5nxa-lm.a.run.app" target="_blank" class="nav-link">fala-zycia-dashboard (app.fala-zycia.pl)</a></strong></td>
+                        <td>Interaktywna aplikacja Akademii Klubu Fala Życia z Agentem AI (Gemini 2.5 Flash), lekcjami wideo i przelicznikiem punktów.</td>
+                        <td>Aktywni Członkowie Klubu i Brand Partnerzy.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4 style="margin-top: 20px; color: var(--gold-accent);">Jak Partnerzy Korzystają z Systemu:</h4>
+            <ol>
+                <li><strong>Tracking Referencyjny (LifeWaveTag):</strong> Partner wysyła swój spersonalizowany link (np. z zaszytym identyfikatorem ID). System rozpoznaje opiekuna i przypisuje leada w bazie.</li>
+                <li><strong>Asysta Agenta AI w WhatsAppie:</strong> Agent prowadzi nowego partnera od pierwszego dnia – wymusza poranny rozruch biologiczny (oddechy, woda X2O, zimny prysznic), a następnie podaje gotowe szablony wiadomości NLP do wklejenia.</li>
+                <li><strong>Eliminacja Błędu Akwizytora:</strong> Partner nie prezentuje sam technologii. Działa jako lekarz stawiający diagnozę i podający właściwe wideo lub zaproszenie do systemu na portalu <a href="https://fala-zycia.pl" target="_blank" class="nav-link">fala-zycia.pl</a>.</li>
+            </ol>
+        </div>
+
+        <footer style="text-align: center; margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-muted);">
+            <p>© 2026 Klub Fala Życia. Wszelkie prawa zastrzeżone.</p>
+            <p style="margin-top: 8px; font-size: 0.9rem;">Dokument objęty klauzulą poufności ekosystemu Fala Życia.</p>
+        </footer>
 
     </div>
 

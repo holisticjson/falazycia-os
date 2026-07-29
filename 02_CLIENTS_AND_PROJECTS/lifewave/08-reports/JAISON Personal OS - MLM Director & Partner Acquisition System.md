@@ -17,13 +17,16 @@ No więc, jak ktoś Ci mówi, że "biznes się nie opłaca", to odpalasz ten arg
 | Model Zysku | Inwestycja Początkowa | Czas do osiągnięcia celu (2000 zł/mc pasywnie) | Ryzyko i Zaangażowanie   |
 | :---- | :---- | :---- | :---- |
 | Wynajem Kawalerki | Średnio 450 000 zł | Prawie 38 lat (zakładając odkładanie 1000 zł z pensji) | Wysokie ryzyko (kredyty, remonty, pustostany) |
-| System MLM (np. LifeWave) | Bardzo niski próg wejścia (tylko koszt pakietu) | Wystarczy rok pracy ok. 1h dziennie z inteligentnym systemem | Praktycznie zerowe ryzyko, praca w pełni skalowalna |
+| Model Zysku | Inwestycja Początkowa | Czas do osiągnięcia celu (2000 zł/mc pasywnie) | Ryzyko i Zaangażowanie   |
+| :---- | :---- | :---- | :---- |
+| Wynajem Kawalerki | Średnio 450 000 zł | Prawie 38 lat (zakładając odkładanie 1000 zł z pensji) | Wysokie ryzyko (kredyty, remonty, pustostany) |
+| System MLM (Klub Fala Życia) | Bardzo niski próg wejścia (tylko koszt pakietu) | Wystarczy rok pracy ok. 1h dziennie z inteligentnym systemem | Praktycznie zerowe ryzyko, praca w pełni skalowalna |
 
 ## **3\. Szablony Wiadomości Biznesowych (Format Ghost v2)**
 
 Poniżej gotowe formaty zaproszeń. Krótkie, bez korpomowy, bez nachalnego nagabywania. Czysty tryb goal.
 
-### **3.1. Zaproszenie do grupy WhatsApp (LifeWave / For Life)**
+### **3.1. Zaproszenie do grupy WhatsApp (Klub Fala Życia)**
 
 Świetne do ciepłych kontaktów. Wyciąga naturalne relacje z odbiorcą i brzmi po ludzku.
 
@@ -31,7 +34,7 @@ Cześć \[Imię\],
 
 Generalnie sprawa wygląda tak. Widzę, że jesteś osobą, która woli konkretne działanie od obiecanek i narzekania.
 
-Zrobiliśmy z tym porządek i odpaliliśmy zamkniętą grupę na WhatsApp dla naszej ekipy z LifeWave. Zero spamu, zero nachalnego wciskania kitów. Sama esencja – pokazujemy od kuchni, jak zautomatyzować pozyskiwanie ludzi i wykręcać fajny wynik. 
+Zrobiliśmy z tym porządek i odpaliliśmy zamkniętą grupę na WhatsApp dla naszej ekipy z Klubu Fala Życia. Zero spamu, zero nachalnego wciskania kitów. Sama esencja – pokazujemy od kuchni, jak zautomatyzować pozyskiwanie ludzi i wykręcać fajny wynik. 
 
 W mojej ocenie to absolutna petarda dla osób bystrych biznesowo. Jeśli chcesz wejść w tryb goal bez sztucznej presji i zobaczyć to na własne oczy, daj znać. Podeślę Ci link.
 
@@ -45,7 +48,7 @@ Jak się okazuje, większość ludzi woli harować 38 lat, niż poświęcić 12 
 
 No więc policzmy to brutalnie. Chcesz mieć dodatkowe 2000 zł co miesiąc z wynajmu malutkiej kawalerki? Kozak. Tylko najpierw musisz kupić mieszkanie za jakieś 450 000 zł. Odkładając tysiaka z wypłaty co miesiąc, zbierzesz na to... za niecałe 40 lat.
 
-Tymczasem w modelu online, który teraz rozwijam, budujesz "rurociąg finansowy" przy znikomym progu wejścia. Bez kredytów, bez ryzyka. Po prostu podpinasz się pod sprawdzony system, używasz metody L.O.R.D. i działasz mądrze.
+Tymczasem w modelu online, który teraz rozwijam w Klubie Fala Życia, budujesz "rurociąg finansowy" przy znikomym progu wejścia. Bez kredytów, bez ryzyka. Po prostu podpinasz się pod sprawdzony system, używasz metody L.O.R.D. i działasz mądrze.
 
 Zrobiliśmy z tym porządek. Jeśli chcesz zobaczyć 15-minutowe nagranie o tym, jak ten system generuje powtarzalny dochód bez wciskania produktów znajomym po kawiarniach – zostaw kropkę w komentarzu.
 
@@ -57,7 +60,7 @@ Cześć \[Imię\],
 
 Słuchaj, od razu do rzeczy. Przewinąłem Twój profil i widzę konkretnego człowieka, który nie boi się nowych wyzwań.
 
-Wiele osób dzisiaj szuka sensownej dywersyfikacji zarobków, ale wchodzą w chaos. My zaczynamy od uporządkowania procesu. Wgryzłem się głęboko w projekt branży med-tech i wellness (LifeWave) i spiąłem go z automatycznymi lejkami, które same filtrują partnerów. 
+Wiele osób dzisiaj szuka sensownej dywersyfikacji zarobków, ale wchodzą w chaos. My zaczynamy od uporządkowania procesu. Wgryzłem się głęboko w projekt branży med-tech i biohackingu (Klub Fala Życia - Stacje X2O & Fototerapia) i spiąłem go z automatycznymi lejkami, które same filtrują partnerów. 
 
 Szukam do mojej nowej grupy kogoś, kto potrafi działać, doceni ułożoną infrastrukturę i brak sufitu finansowego. Zero desperacji, po prostu wspólny cel.
 

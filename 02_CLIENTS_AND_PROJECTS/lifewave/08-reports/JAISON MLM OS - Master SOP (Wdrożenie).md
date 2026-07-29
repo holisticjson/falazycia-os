@@ -44,17 +44,17 @@ Bot ma wbudowane gotowce, które codziennie rotuje i serwuje partnerom. Skupiamy
 
 `Jak się okazuje, większość ludzi woli harować 38 lat, niż poświęcić 12 miesięcy na mądry system online.`   
 `Policzmy to brutalnie: żeby mieć dodatkowe 2000 zł/mc na czysto z wynajmu, musisz kupić kawalerkę za 450 000 zł. Odkładając tysiaka z pensji, zbierzesz na nią za niecałe 40 lat.`  
-`Tymczasem w naszym modelu (LifeWave), budujesz zautomatyzowany rurociąg finansowy przy znikomym progu wejścia. Zero kredytów. Jeśli chcesz zobaczyć 15-minutowe nagranie, jak ten system generuje powtarzalny dochód bez wciskania znajomym produktów – zostaw kropkę, podeślę link.`
+`Tymczasem w naszym modelu (Klub Fala Życia), budujesz zautomatyzowany rurociąg finansowy przy znikomym progu wejścia. Zero kredytów. Jeśli chcesz zobaczyć 15-minutowe nagranie, jak ten system generuje powtarzalny dochód bez wciskania znajomym produktów – zostaw kropkę, podeślę link.`
 
-### **B. Szablon na WhatsApp (Ciepłe kontakty / Grupa LifeWave)**
+### **B. Szablon na WhatsApp (Ciepłe kontakty / Klub Fala Życia)**
 
 `Cześć [Imię], generalnie sprawa wygląda tak. Widzę, że wolisz konkret od narzekania.`   
-`Zrobiliśmy z tym porządek i odpaliliśmy zamkniętą grupę na WhatsApp dla naszej ekipy (LifeWave). Zero spamu. Sama esencja – pokazujemy od kuchni, jak zautomatyzować pozyskiwanie ludzi i wykręcać wynik bez namawiania znajomych. W mojej ocenie to absolutna petarda. Jeśli chcesz wejść w tryb goal, daj znać, podeślę Ci link.`
+`Zrobiliśmy z tym porządek i odpaliliśmy zamkniętą grupę na WhatsApp dla naszej ekipy (Klub Fala Życia). Zero spamu. Sama esencja – pokazujemy od kuchni, jak zautomatyzować pozyskiwanie ludzi i wykręcać wynik bez namawiania znajomych. W mojej ocenie to absolutna petarda. Jeśli chcesz wejść w tryb goal, daj znać, podeślę Ci link.`
 
 ### **C. Cold Mailing (B2B / Przedsiębiorcy)**
 
 `Cześć [Imię], od razu do rzeczy. Widzę u Ciebie konkretnego człowieka.`  
-`Wielu przedsiębiorców szuka dziś dywersyfikacji, ale gubią się w chaosie. My zaczynamy od porządku. Wgryzłem się w projekt med-tech (LifeWave) i spiąłem go z automatycznymi lejkami. Szukam do grupy ludzi, którzy potrafią działać i docenią zautomatyzowaną infrastrukturę. Zero desperacji, czysty biznes. Masz jutro 10 minut na niezobowiązujący telefon?`
+`Wielu przedsiębiorców szuka dziś dywersyfikacji, ale gubią się w chaosie. My zaczynamy od porządku. Wgryzłem się w projekt biohackingu i med-tech (Klub Fala Życia - Stacje X2O & X39) i spiąłem go z automatycznymi lejkami. Szukam do grupy ludzi, którzy potrafi działać i docenią zautomatyzowaną infrastrukturę. Zero desperacji, czysty biznes. Masz jutro 10 minut na niezobowiązujący telefon?`
 
 ## **4\. Instrukcja Systemowa LLM (System Prompt Jaisona)**
 

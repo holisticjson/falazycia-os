@@ -1,0 +1,18 @@
+---
+title: "Lekcja 3. Sojusze i programy lojalnościowe – jak to działa i dlaczego to ważne"
+source: "Piotr Łotowski - Akademia Punktów"
+platform: "elms.pl"
+url: "https://piotrlotniczy.elms.pl/next/public/lesson/4"
+date: "2026-07-29"
+tags:
+  - piotr-lotniczy
+  - akademia-punktow
+  - flight-hacking
+  - faster-whisper
+---
+
+# ✈️ Lekcja 3. Sojusze i programy lojalnościowe – jak to działa i dlaczego to ważne
+
+## 🎙️ Prawdziwa Transkrypcja Mowy (faster-whisper medium - Piotr Łotowski)
+
+Zanim zaczniemy zbierać punkty i szukać za nie biletów, musicie zrozumieć strukturę, w jaka działa cały świat linii lotniczych, bo to, że zbierasz punkty w jednym programie, nie znaczy, że będziesz musiał je wykorzystać właśnie tam.  Także linie lotnicze łączą się w grupy, coś rodzają drużyn albo sieci, współpracują, współdzielą kody lotów i pozwalają Ci zbierać i wydawać punkty między sobą.  Są trzy główne sojusze. Star Alliance, czyli największy na świecie. I tutaj masz np. LOT, Lufthansa, Swiss, Singapore Airlines, Turkish Airlines, Thai i wiele innych.  One World, tu jest British Airways, Qatar Airways, Finnair, Iberia, American Airlines, Qatar Pacific, no i jeszcze raz masa innych linii lotniczych.  Sky Team. W tym sojuszu mamy Air France, KLM, Delta, Korean Air, SAS. Każda linia ma swój własny program lojalnościowy.  Ale i tu jest klucz. Możesz użyć punktów z jednego programu, żeby kupić bilet u innego członka tego samego sojuszu. Nie możesz tych punktów przenieść z jednego programu do innego programu, nawet w tym samym sojuszu.  Ale możesz za takie punkty kupić bilet lotniczy na linię lotniczą, która należy do sojuszu, w którym masz dany program lojalnościowy.  Czyli nic nie przelewasz, wydajesz punkty tam, gdzie je zbierasz. Wyjątkiem jest Avios, ale o tym trochę później.  Na przykład zbierasz punkty w Aeroplan. Możesz je wydać na loty LOTem, Lufthansa albo Singapore Airlines, bo wszystkie te linie są w Star Alliance.  Tak samo załóżmy, że zbierasz punkty w Miles and More. Możesz je wydać w tym programie na wszystkie linie w Star Alliance.  Dlaczego to jest takie ważne? Bo te programy nie są równe. Niektóre mają niższe ceny w punktach, niektóre mają niższe dopłaty paliwowe czy podatki, niektóre mają więcej dostępnych miejsc w biznesklasie.  Jak zobaczycie później, program Aeroplan ma więcej dostępnych biletów nagrodowych na Singapore Airlines niż na przykład Miles and More.  I teraz uwaga, zdarza się, że ta sama trasa, tym samym samolotem, ta sama linia lotnicza może kosztować 60 tysięcy punktów w jednym programie albo 80 tysięcy punktów w innym programie.  Ten sam lot, ale płacisz mniej, jeśli wybierzesz odpowiedni program i to się nazywa arbitraż.  Czyli korzystasz z tego, że linie nawzajem się rozliczają po swoich wewnętrznych stawkach i dzięki temu możesz kupić tanio punkty w jednym miejscu i wydać je mądrze w innym.  Dużo tutaj gestykuluje, sorry, ale to jest sedno całej zabawy w punkty, ale nie wszystkie linie są w sojuszach.  Są linie, które działają samodzielnie, jak na przykład Emirates czy Etihad, one też mają swoje programy lojonnościowe, ale nie mają partnerów tak o z automatu.  Czasem jednak mają umowy z wybranymi programami, na przykład możesz zbierać punkty we Flying Blue na loty liniami Etihad.  I o tym też opowiem Ci później, bo da się z tego wycisnąć ciekawe okazje.  Co musisz zapamiętać z tej lekcji?  Po pierwsze, sojusze to klucz do korzystania z punktów mądrze.  Nie musisz latać tylko jedną linią, możesz używać partnerów.  Każdy program to inna waluta i inne ceny, dlatego zaraz pokażę Ci, które warto znać.  No i w kolejnej lekcji opowiem Ci, czym tak naprawdę są punkty, jakie linie tworzą, czemu to dla nich jest opłacalne i jak Ty możesz z tego korzystać.

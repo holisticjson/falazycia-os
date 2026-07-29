@@ -1,29 +1,34 @@
-﻿# MEMORY - lifewave
+# MEMORY - lifewave (Fala Życia OS)
 
 ---
 
 ## STATUS PROJEKTU
-- **Status:** Planowanie (Inicjalizacja petli)
-- **Ostatnia aktualizacja:** 2026-07-21 10:10:29 przez Jaison Agent OS
-- **Biezacy cel glowny:** Zdefiniuj glowny cel biznesowy dla projektu lifewave.
+- **Status:** Wdrożone na Cloud Run (Produkcja)
+- **Ostatnia aktualizacja:** 2026-07-28 przez Antigravity AI
+- **Bieżący cel główny:** Interaktywny Dashboard Akademii Klubu Fala Życia z Agentem Doradcą AI (Gemini 2.5 Flash na Vertex AI).
 
 ---
 
 ## ARCHITEKTURA I STACK TECHNICZNY
-- **Frontend:** HTML/CSS/JS (Low-Friction) lub Streamlit
-- **Automatyzacja:** n8n Webhooks and Systeme.io (Marketing)
-- **Sztuczna Inteligencja (AI):** Gemini 2.5 Flash / Vertex AI Agent Builder
-- **Baza Danych and Storage:** Google Cloud Storage / SQLite / Local files
+- **Dashboard:** Python / Streamlit (`02-website/app.py` & `modules/advisor.py`)
+- **Serwer Chmurowy:** GCP Cloud Run (`fala-zycia-dashboard` w projekcie `falazycia-os`)
+- **Procesor AI:** Vertex AI (`gemini-2.5-flash`, region `us-central1`)
+- **Konta GCP:**
+  - `falazycia-os` (GCP Trial, Cloud Run, Cloud Build, Vertex AI)
+  - `fala-zycia-agents` (Konto `holisticjson@gmail.com`, GenAI App Builder $1000 Credit)
+- **Baza Wiedzy:** Obsidian `.md` w `04-assets/knowledge_base/` (w tym transkrypcja Kursu Piotra Lotniczego, X2O, X39).
 
 ---
 
-## NAJBLIZSZE KAMIE MILE I STATUS TODO
-- [ ] **Kamien Milowy 1:** Inicjalizacja bazy wiedzy (.md) i audyt struktury folderow.
-- [ ] **Kamien Milowy 2:** Podpiecie lejkow w Systeme.io i integracja webhookow n8n.
-- [ ] **Kamien Milowy 3:** Testy e2e suwerennego agenta i przekazanie dostepu.
+## NAJBLIŻSZE KAMIENIE MILOWE I STATUS TODO
+- [x] **Kamień Milowy 1:** Pobranie i ustrukturyzowanie pełnej Bazy Wiedzy Kursu Piotra Lotniczego (`FLIGHT_HACKING_MASTER.md`).
+- [x] **Kamień Milowy 2:** Podpięcie klucza Service Account i uprawnień `roles/aiplatform.user` na Vertex AI.
+- [x] **Kamień Milowy 3:** Integracja modułu Doradcy AI (`advisor.py`) z Gemini 2.5 Flash.
+- [x] **Kamień Milowy 4:** Automatyczny Build & Deploy na Cloud Run via Cloud Build Trigger.
+- [ ] **Kamień Milowy 5:** Mapowanie subdomeny `app.fala-zycia.pl` w panelu GCP / DNS.
 
 ---
 
-## LOG AKTYWNOSCI
-- **2026-07-20 21:56:38**: Automatyczna inicjalizacja pliku pamieci WORKSPACE_MEMORY.md przez systemowa petle inzynierii petli.
-
+## AKTYWNE URL-E I NAMIARY
+- **Dashboard Akademii (Cloud Run):** https://fala-zycia-dashboard-zhct4l5nxa-lm.a.run.app
+- **Repozytorium GitHub:** https://github.com/holisticjson/falazycia-os
