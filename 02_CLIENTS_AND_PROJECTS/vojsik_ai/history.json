@@ -808,5 +808,47 @@
         "raw_text": "Całej infrastruktury domeny głównej, poddomen, dashboardu czy to wszystko wyświetla się mobile friendly, dobrze jest zostylowane, zakodowane, bo na pewno źle się wyświetla. Jest rozjechane na prawą stronę. Ta strona główna portalu, podstronę, wszystko ma być po prostu cykać idealnie na mobile.",
         "corrected_text": "Całej infrastruktury domeny głównej, poddomen, dashboardu czy to wszystko wyświetla się mobile friendly, dobrze jest zostylowane, zakodowane, bo na pewno źle się wyświetla. Jest rozjechane na prawą stronę. Ta strona główna portalu, podstronę, wszystko ma być po prostu cykać idealnie na mobile.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 19:39:26",
+        "raw_text": "Nie da się zrobić jakiegoś skryptu bulk audio downloader. To kurwa cały dzień trwa ten kurwa to przetwarzanie. On jest na 53 lekcji 61. Te, które się już zapisały, się zrobiły, to niech zostaną. A najwyżej jeszcze raz od 53 lekcji do 61 pobrać po prostu te kurwa...  W formie MP3 kurwa te transkrypcje kurwa i tyle. Przecież to jest porażka jakaś kurwa, żeby cały dzień to trwało.",
+        "corrected_text": "Nie da się zrobić jakiegoś skryptu bulk audio downloader. To kurwa cały dzień trwa ten kurwa to przetwarzanie. On jest na 53 lekcji 61. Te, które się już zapisały, się zrobiły, to niech zostaną. A najwyżej jeszcze raz od 53 lekcji do 61 pobrać po prostu te kurwa...  W formie MP3 kurwa te transkrypcje kurwa i tyle. Przecież to jest porażka jakaś kurwa, żeby cały dzień to trwało.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 20:35:08",
+        "raw_text": "ten sklep który mi dałeś bo nie pobrał tych pozostałych audio chyba raczej, nie wiem, zresztą to sprawdź coś tam coś tam pobierał, coś tam transkrybował, ale błąd tego gemini",
+        "corrected_text": "ten sklep który mi dałeś bo nie pobrał tych pozostałych audio chyba raczej, nie wiem, zresztą to sprawdź coś tam coś tam pobierał, coś tam transkrybował, ale błąd tego gemini",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 20:38:22",
+        "raw_text": "Czyli zrobiłeś głęboki taki research scan tych lekcji, które wczoraj się pobrały. Ich zawartość nie są to halucynacje lub tworzone transkrypcje, notatki na podstawie tytułów czy jakichś domysłów, modelów.",
+        "corrected_text": "Czyli zrobiłeś głęboki taki research scan tych lekcji, które wczoraj się pobrały. Ich zawartość nie są to halucynacje lub tworzone transkrypcje, notatki na podstawie tytułów czy jakichś domysłów, modelów.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 20:49:00",
+        "raw_text": "Dobra, gdzie wylądowały te wszystkie notatki, jak teraz to... Nie wiem, czy zrobić w wiki taki indeks dla agenta, czy jak go teraz wyszkolić, ten, który będzie podpięty właśnie w dashboardzie klubu Fala Życia w aplikacji. Będzie to agent konwersacyjny, Vertex AI Search. Typ konwersacyjny, nie typu...  typu wyszukiwarka.",
+        "corrected_text": "Dobra, gdzie wylądowały te wszystkie notatki, jak teraz to... Nie wiem, czy zrobić w wiki taki indeks dla agenta, czy jak go teraz wyszkolić, ten, który będzie podpięty właśnie w dashboardzie klubu Fala Życia w aplikacji. Będzie to agent konwersacyjny, Vertex AI Search. Typ konwersacyjny, nie typu...  typu wyszukiwarka.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 20:57:35",
+        "raw_text": "No dobra, czy można ustawić takiego agenta, stworzyć go, tylko że ten prompt jest bardzo płytki i ograniczony. Sprawdź, czy w notatkach są podawane konkretne linki. Ja bym chciał zrobić z tego agenta, oprócz takiego agenta, to taki skaner, żeby w czasie rzeczywistym skanował aktualne dostępności  na rezerwacje lotów w klasie biznes podając na przykład destynacje, skąd dokąd chce lecieć i ten właśnie agent, nie wiem czy dodatkowo jakiś scrapper, który te źródła skanuje i daje instrukcję krok po kroku, co, gdzie, jak, za ile i tak dalej. Żeby po prostu  i wypluwał użytkownikowi gotowe linki, wskazywał kiedy są loty, za ile punktów je trzeba dopłacić, co trzeba zrobić.",
+        "corrected_text": "No dobra, czy można ustawić takiego agenta, stworzyć go, tylko że ten prompt jest bardzo płytki i ograniczony. Sprawdź, czy w notatkach są podawane konkretne linki. Ja bym chciał zrobić z tego agenta, oprócz takiego agenta, to taki skaner, żeby w czasie rzeczywistym skanował aktualne dostępności  na rezerwacje lotów w klasie biznes podając na przykład destynacje, skąd dokąd chce lecieć i ten właśnie agent, nie wiem czy dodatkowo jakiś scrapper, który te źródła skanuje i daje instrukcję krok po kroku, co, gdzie, jak, za ile i tak dalej. Żeby po prostu  i wypluwał użytkownikowi gotowe linki, wskazywał kiedy są loty, za ile punktów je trzeba dopłacić, co trzeba zrobić.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 22:01:20",
+        "raw_text": "Podstrona Akademii wygląda fatalnie na telefonie i w ogóle jest niedostosowana do mobile.  Dziękuję.",
+        "corrected_text": "Podstrona Akademii wygląda fatalnie na telefonie i w ogóle jest niedostosowana do mobile.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-29 22:10:27",
+        "raw_text": "wywal wszędzie na jakiejkolwiek stronie, podstronie kurwa jakieś wzmianki o koralowcu 70 minerałach to w ogóle nie ma nic wspólnego z tą technologią maszyny, urządzenia X2O to jest raz, a dwa a dwa  Te wszystkie ikonki takie gdzieś tam w sekcjach jakbyś znalazł dużo naszych zasobów podłączeń, nie wiem, Remotion, jakiś świetny zziudał open source do takich luksusowych ikon, które pasują do  do identyfikacji. Wszędzie tam, gdzie pojawia się obok logo w headerze, pojawia się w header klub Fala Życia też usunął, tak? Między innymi na podstronie właśnie X2O. Obok tego logo jest niepotrzebny jeszcze napis klub Fala Życia w header.  Staraj się ujednolicić czcionki wszędzie i style w nagłówku, w header, w menu. Powiększyć to logo w nagłówku, header, czyli menu na każdej podstronie. Tak, żeby ono było jakieś takie bardziej widoczne.  Podstrona fototerapia również się rozjeżdża na prawą stronę, jest dostosowana do mobile.  Dziękuję.  Tutaj na dole tej podstrony fototerapia jest katalog plastrów i te sekcje takie  Nie wiem jak to się nazywa. No ale gdzieś tam nachodzi na siebie. Na flagowy, bazowy, Synergia z X-39 to tak jak nachodzą na te napisy, na tytuł, czyli na nazwę plastru. I źle to jest sformatowane.  Dziękuję.  Dziękuję.",
+        "corrected_text": "wywal wszędzie na jakiejkolwiek stronie, podstronie kurwa jakieś wzmianki o koralowcu 70 minerałach to w ogóle nie ma nic wspólnego z tą technologią maszyny, urządzenia X2O to jest raz, a dwa a dwa  Te wszystkie ikonki takie gdzieś tam w sekcjach jakbyś znalazł dużo naszych zasobów podłączeń, nie wiem, Remotion, jakiś świetny zziudał open source do takich luksusowych ikon, które pasują do  do identyfikacji. Wszędzie tam, gdzie pojawia się obok logo w headerze, pojawia się w header klub Fala Życia też usunął, tak? Między innymi na podstronie właśnie X2O. Obok tego logo jest niepotrzebny jeszcze napis klub Fala Życia w header.  Staraj się ujednolicić czcionki wszędzie i style w nagłówku, w header, w menu. Powiększyć to logo w nagłówku, header, czyli menu na każdej podstronie. Tak, żeby ono było jakieś takie bardziej widoczne.  Podstrona fototerapia również się rozjeżdża na prawą stronę, jest dostosowana do mobile.  Dziękuję.  Tutaj na dole tej podstrony fototerapia jest katalog plastrów i te sekcje takie  Nie wiem jak to się nazywa. No ale gdzieś tam nachodzi na siebie. Na flagowy, bazowy, Synergia z X-39 to tak jak nachodzą na te napisy, na tytuł, czyli na nazwę plastru. I źle to jest sformatowane.  Dziękuję.  Dziękuję.",
+        "status": "raw_fallback"
     }
 ]

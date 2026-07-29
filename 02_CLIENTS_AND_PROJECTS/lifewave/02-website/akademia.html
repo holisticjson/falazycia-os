@@ -100,11 +100,65 @@
       border-bottom-color: rgba(14, 165, 233, 0.2);
     }
 
-    .nav-left { display: flex; align-items: center; gap: 15px; }
+    .nav-left { display: flex; align-items: center; gap: 12px; white-space: nowrap; }
 
-    .logo-img { height: 44px; width: auto; border-radius: 50%; filter: drop-shadow(0 0 8px rgba(0,210,196,0.4)); }
+    .logo-img { height: 44px; width: 44px; border-radius: 50%; filter: drop-shadow(0 0 8px rgba(0,210,196,0.4)); flex-shrink: 0; }
 
     .nav-links { display: flex; gap: 20px; align-items: center; }
+
+    .mobile-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .sticky-header {
+        padding: 12px 16px !important;
+        flex-wrap: wrap !important;
+      }
+      .mobile-toggle {
+        display: block !important;
+      }
+      .nav-left span {
+        white-space: nowrap !important;
+        font-size: 1.05rem !important;
+      }
+      .nav-links {
+        display: none !important;
+        width: 100% !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        padding: 15px 0 10px !important;
+        border-top: 1px solid rgba(0, 210, 196, 0.2) !important;
+        margin-top: 10px !important;
+      }
+      .nav-links.active {
+        display: flex !important;
+      }
+      .nav-link {
+        padding: 8px 0 !important;
+        font-size: 1rem !important;
+        display: block !important;
+        width: 100% !important;
+      }
+      .container {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+      .sim-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+    }
 
     .nav-link {
       color: var(--text-main);
@@ -349,11 +403,14 @@
   <!-- Sticky Header Nav -->
   <header class="sticky-header">
     <div class="nav-left">
-      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-        <img src="images/whatsapp_group.png" alt="Klub Fala Życia" class="logo-img" style="width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 0 12px rgba(0,210,196,0.6);">
-        <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; color: var(--text-main);">Klub Fala Życia</span>
+      <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap;">
+        <img src="images/brand_icon.png" alt="Klub Fala Życia" class="logo-img" style="width: 40px; height: 40px; border-radius: 50%; box-shadow: 0 0 12px rgba(0,210,196,0.6); flex-shrink: 0; object-fit: cover;">
+        <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.15rem; color: var(--text-main); white-space: nowrap;">Klub Fala Życia</span>
       </a>
     </div>
+    <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('active')">
+      ☰
+    </button>
     <nav class="nav-links">
       <a href="index.html" class="nav-link">Strona Główna</a>
       <a href="akademia.html" class="nav-link active" style="color: var(--neon-cyan); font-weight: 700;">Akademia Wiedzy</a>
