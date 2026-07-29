@@ -1,47 +1,27 @@
 # ======================================================================
-# Deploy Jaison X2O Portal na Google Cloud Run (PowerShell)
-# ======================================================================
-# Wymagania: 
-#   1. Zainstalowany gcloud CLI (https://cloud.google.com/sdk/docs/install)
+# Deploy Klubu Fala Życia na Google Cloud Run (Dashboard & Web Portal)
 # ======================================================================
 
 $ErrorActionPreference = "Stop"
 $PROJECT = "falazycia-os"
-$REGION = "europe-west1"
-$SERVICE = "fala-zycia-web"
-$IMAGE = "gcr.io/$PROJECT/$SERVICE"
+$REGION = "europe-central2"
 
-Write-Host "Jaison X2O Portal - Deploy na Cloud Run" -ForegroundColor Cyan
-Write-Host "========================================" -ForegroundColor Cyan
+Write-Host "🌊 Klubu Fala Życia - Continuous Deployment na Cloud Run" -ForegroundColor Cyan
+Write-Host "========================================================" -ForegroundColor Cyan
 
-# Krok 0: Autoryzacja - Korzystamy z domyslnej sesji uzytkownika, poniewaz projekt docelowy
-# to 'holistic-dashboard-dev' na koncie GCP uzytkownika, a nie stare konto serwisowe.
-Write-Host "Krok 0: Autoryzacja - Uzywam aktywnej sesji gcloud dewelopera..." -ForegroundColor Yellow
-
-# Krok 1: Ustaw projekt
-Write-Host "Krok 1: Ustawiam projekt GCP na $PROJECT..." -ForegroundColor Yellow
+# Krok 1: Ustaw projekt GCP
 gcloud config set project $PROJECT
 
-# Krok 2: Wlacz wymagane API (pomijamy, poniewaz sa juz aktywne w projekcie holistic-dashboard-dev,
-# co zapobiega bledom uprawnien Service Usage).
-Write-Host "Krok 2: Pomijam reczne wlaczanie API (sa juz aktywne w projekcie docelowym)..." -ForegroundColor Yellow
+# Krok 2: Deploy Aplikacji Dashboardu (Streamlit Python App)
+Write-Host "🚀 Buduję i wdrażam usługet fala-zycia-dashboard (Streamlit App)..." -ForegroundColor Yellow
+gcloud builds submit --tag "gcr.io/$PROJECT/fala-zycia-dashboard" -f Dockerfile .
+gcloud run deploy fala-zycia-dashboard --image "gcr.io/$PROJECT/fala-zycia-dashboard" --platform managed --region $REGION --allow-unauthenticated --memory 1Gi --cpu 1 --min-instances 0 --max-instances 3
 
-# Krok 3: Zbuduj i wypchnij obraz Docker w chmurze
-Write-Host "Krok 3: Buduje kontener w Google Cloud Build..." -ForegroundColor Yellow
-Write-Host "Trwa kompilacja i pakowanie w chmurze (pomijajac pliki z .dockerignore)..." -ForegroundColor DarkGray
-gcloud builds submit --tag $IMAGE .
+# Krok 3: Deploy Portalu Statycznego (Nginx Web Portal)
+Write-Host "🌐 Buduję i wdrażam usługę fala-zycia-web (Nginx Web Portal)..." -ForegroundColor Yellow
+gcloud builds submit --tag "gcr.io/$PROJECT/fala-zycia-web" -f Dockerfile.web .
+gcloud run deploy fala-zycia-web --image "gcr.io/$PROJECT/fala-zycia-web" --platform managed --region $REGION --allow-unauthenticated --memory 512Mi --cpu 1 --min-instances 0 --max-instances 3
 
-# Krok 4: Deploy na Cloud Run
-Write-Host "Krok 4: Deploying uslugi na Cloud Run..." -ForegroundColor Yellow
-gcloud run deploy $SERVICE --image $IMAGE --platform managed --region $REGION --allow-unauthenticated --memory 512Mi --cpu 1 --min-instances 0 --max-instances 2 --timeout 300
-
-# Nadanie uprawnien publicznych (gwarancja braku restrykcji IAM)
-Write-Host "Krok 4b: Zapewniam uprawnienia publicznego dostepu (allUsers)..." -ForegroundColor Yellow
-gcloud run services add-iam-policy-binding $SERVICE --region $REGION --member="allUsers" --role="roles/run.invoker" --quiet
-
-# Krok 5: Pobierz URL i podsumuj
-Write-Host "Deploy zakonczony sukcesem!" -ForegroundColor Green
-$URL = gcloud run services describe $SERVICE --region $REGION --format "value(status.url)"
-Write-Host "Portal Jaison X2O dostepny pod adresem Cloud Run:" -ForegroundColor Cyan
-Write-Host "URL: $URL" -ForegroundColor Green
-Write-Host "Aby podpiac domene x2o.jaison.pl, uzyj gotowego szablonu Nginx (nginx_x2o_jaison.conf)" -ForegroundColor DarkGray
+Write-Host "✅ DEPLOY ZAKOŃCZONY SUKCESEM!" -ForegroundColor Green
+Write-Host "Dashboard: https://fala-zycia-dashboard-194182220831.europe-central2.run.app" -ForegroundColor Cyan
+Write-Host "Portal Web: https://fala-zycia.pl" -ForegroundColor Cyan
