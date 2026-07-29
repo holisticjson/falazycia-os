@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Strategia 2026 & Wizja Ekosystemu | Klub Fala Życia</title>
-    <meta name="description" content="Oficjalny dokument strategiczny Klubu Fala Życia. Architektura holdingu (Fundacja + Spółka z o.o.), bezpieczeństwo prawne pacjentów i systemy wsparcia partnerów.">
+    <meta name="description" content="Oficjalna strategia i raport prawno-finansowy Klubu Fala Życia. Holding Fundacja + Spółka z o.o., ochrona majątku, synergie kompetencyjne i bezpieczna opieka nad podopiecznymi.">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -90,6 +90,17 @@
         table.holding-table th { background: rgba(0,0,0,0.6); color: var(--quantum-cyan); font-family: 'Outfit', sans-serif; }
 
         strong { color: #FFF; font-weight: 700; }
+
+        .skill-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 25px;
+        }
+
+        .skill-card {
+            background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; padding: 25px; transition: all 0.3s;
+        }
+
+        .skill-card:hover { border-color: var(--quantum-cyan); transform: translateY(-3px); }
     </style>
 </head>
 <body>
@@ -97,7 +108,7 @@
     <!-- Zabezpieczenie Hasłem -->
     <div id="authOverlay" class="auth-overlay">
         <div class="auth-card">
-            <img src="brand_icon.png" alt="Klub Fala Życia Logo" style="width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 0 25px rgba(0,210,196,0.5); margin-bottom: 15px;">
+            <img src="brand_icon.png" alt="Klub Fala Życia Logo" style="width: 85px; height: 80px; border-radius: 50%; box-shadow: 0 0 25px rgba(0,210,196,0.5); margin-bottom: 15px; object-fit: cover;">
             <h2 style="font-size: 1.8rem; margin-bottom: 10px;">Strefa Strategiczna Zarządu</h2>
             <p style="color: var(--text-muted); font-size: 0.95rem;">Podaj hasło dostępowe Klubu Fala Życia, aby odblokować prezentację strategii.</p>
             <form onsubmit="checkAuth(event)">
@@ -112,100 +123,119 @@
     <div id="mainContent" class="container" style="display: none;">
         
         <header style="text-align: center; margin-bottom: 50px;">
-            <div class="badge-pill">🏛️ OFICJALNY DOKUMENT DLA ZARZĄDU, ADMINISTRACJI I PARTNERÓW</div>
+            <div class="badge-pill">🏛️ OFICJALNY DOKUMENT STRATEGICZNY DLA CZŁONKÓW I PARTNERÓW</div>
             <h1 style="font-size: 3.2rem; line-height: 1.2; margin-bottom: 20px;">
                 Master Strategia 2026 & <span class="gradient-text">Ekosystem Klub Fala Życia</span>
             </h1>
-            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 850px; margin: 0 auto;">
-                Kompletny przewodnik po naszej misji, strukturze prawnej holdingu, bezpiecznej opiece nad pacjentami w chorobach przewlekłych oraz bezkosztowej technologii wsparcia partnerów.
+            <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 850px; margin: 0 auto;">
+                Analiza krok po kroku: Jak połączyć synergię unikalnych kompetencji zespołu z suwerenną architekturą prawno-podatkową oraz zautomatyzowanymi narzędziami asystenckimi.
             </p>
         </header>
 
-        <!-- Sekcja 1: Stan Prac i Misja -->
+        <!-- Sekcja 1: Misja i Bezpieczna Edukacja -->
         <div class="section-card">
             <h2 style="font-size: 2rem; color: var(--quantum-cyan); margin-bottom: 20px;">
-                🚀 1. Nasza Misja i Stan Cyfrowej Budowy
+                🚀 1. Misja, Wizja i Bezpieczna Edukacja Społeczna
             </h2>
             <p style="font-size: 1.1rem; margin-bottom: 20px;">
-                Projekt <strong>Klub Fala Życia</strong> powstał z potrzeby stworzenia bezpiecznej, suwerennej przystani zdrowotnej i biznesowej. Łączymy przełomowe technologie medycyny komórkowej (ustrukturyzowana woda X2O™ oraz fotobiomodulacja X39) z automatycznym wsparciem asystenckim.
+                Głównym filarem działania <strong>Klubu Fala Życia</strong> jest promowanie zdrowia komórkowego, profilaktyki dobowej i optymalnego nawodnienia poprzez serwowanie <strong>bezpłatnych szklanek ustrukturyzowanej wody X2O™</strong> oraz prezentowanie zasad biologicznego rozruchu organizmu.
             </p>
 
-            <div style="background: rgba(0,0,0,0.4); padding: 25px; border-radius: 16px; border-left: 4px solid var(--quantum-cyan); margin-bottom: 20px;">
-                <h3 style="font-size: 1.25rem; margin-bottom: 12px; color: #FFF;">Co Działa na Żywo w Ekosystemie:</h3>
-                <ul style="margin-left: 20px;">
-                    <li style="margin-bottom: 10px;"><strong>Aplikacja Dashboard Akademii:</strong> Dostępna pod adresem <a href="https://fala-zycia-dashboard-zhct4l5nxa-lm.a.run.app" target="_blank" style="color: var(--quantum-cyan); font-weight: 700;">app.fala-zycia.pl</a>. Znajduje się tam całodobowy Doradca AI odpytywany w oparciu o pełną Bazę Wiedzy Klubu.</li>
-                    <li style="margin-bottom: 10px;"><strong>Portal Główny Klubu:</strong> Oficjalna strona <a href="https://fala-zycia.pl" target="_blank" style="color: var(--quantum-cyan); font-weight: 700;">fala-zycia.pl</a> z przewodnikami po stacji X2O™ i fototerapii X39.</li>
-                    <li style="margin-bottom: 10px;"><strong>System Agentowy B2B:</strong> Dedykowany serwis <a href="https://mlm.jaison.pl" target="_blank" style="color: var(--quantum-cyan); font-weight: 700;">mlm.jaison.pl</a> pokazujący jak cyfrowy trener na WhatsAppie prowadzi partnerów od świtu.</li>
-                </ul>
+            <div style="background: rgba(0,210,196,0.08); padding: 25px; border-radius: 16px; border-left: 4px solid var(--quantum-cyan); margin-bottom: 20px;">
+                <h3 style="font-size: 1.25rem; margin-bottom: 12px; color: #FFF;">🛡️ Rygor Prawny & Zgodność z Przepisami (Compliance GIS, RODO, Lex Charlatan)</h3>
+                <p style="font-size: 1rem; color: var(--text-main);">
+                    Działamy w oparciu o najwyższe standardy etyczne i prawne. Prowadzimy wyłącznie działalność edukacyjną, informacyjną i integracyjną. Nie stawiamy diagnoz medycznych i nie sugerujemy zastępowania leczenia konwencjonalnego – skupiamy się na wspieraniu naturalnej homeostazy biologicznej i regeneracji komórkowej.
+                </p>
             </div>
         </div>
 
-        <!-- Sekcja 2: Model Prawno-Finansowy Holding -->
+        <!-- Sekcja 2: Synergia Kompetencji Zespołu -->
         <div class="section-card">
             <h2 style="font-size: 2rem; color: var(--gold-accent); margin-bottom: 20px;">
-                ⚖️ 2. Głęboka Analiza Prawno-Finansowa (Holding: Fundacja + Spółka z o.o.)
+                ⚡ 2. Synergia Unikalnych Kompetencji Zespołu
+            </h2>
+            <p style="font-size: 1.1rem; margin-bottom: 15px;">
+                Siła naszego ekosystemu opiera się na połączeniu unikalnych, komplementarnych talentów. Jednocześnie <strong>każdy z partnerów zachowuje pełną swobodę i niezależność</strong> – może równolegle rozwijać własny biznes, gabinet lub markę osobistą:
+            </p>
+
+            <div class="skill-grid">
+                <div class="skill-card">
+                    <h3 style="color: var(--quantum-cyan); font-size: 1.25rem; margin-bottom: 10px;">Ekspertyza Wydarzeń & Targów (Monika)</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted);">
+                        Wielolnia praktyka w organizacji dużych targów, wystaw branżowych i wydarzeń networkingowych. Szeroka sieć relacji biznesowych i umiejętność budowania społeczności wokół misji zdrowia.
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="color: var(--gold-accent); font-size: 1.25rem; margin-bottom: 10px;">Praktyka Stacjonarna & Biohacking (Ania)</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted);">
+                        Prowadzenie autorskiego gabinetu Świątynia Harmonii w Łodzi. Mistrzowskie opanowanie holistycznych metod regeneracji, masaży Kobido, odnowy biologicznej oraz bezpośredniej pracy z podopiecznymi.
+                    </p>
+                </div>
+
+                <div class="skill-card">
+                    <h3 style="color: var(--quantum-cyan); font-size: 1.25rem; margin-bottom: 10px;">Architektura AI & Certyfikat Google (Tomasz)</h3>
+                    <p style="font-size: 0.95rem; color: var(--text-muted);">
+                        Zaplecze technologiczne, budowa cyfrowych lejków, automatyzacja n8n oraz wdrażanie agentów AI na Cloud Run. Certyfikacja <strong>Google Umiejętności Jutra</strong> oraz wykształcenie <strong>Szkoły Główniej Handlowej w Warszawie (SGH)</strong>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sekcja 3: Model Holdingowy - Bilans Zalet i Minusów -->
+        <div class="section-card">
+            <h2 style="font-size: 2rem; color: #FFF; margin-bottom: 20px;">
+                🏛️ 3. Koncepcja Holdingowa (Fundacja + Spółka z o.o.) – Bilans Korzyści
             </h2>
             <p style="font-size: 1.1rem; margin-bottom: 20px;">
-                Aby zagwarantować pełne bezpieczeństwo majątkowe i prawne, połączyliśmy dwa komplementarne podmioty w jeden synergiczny holding:
+                Rozważamy powołanie spójnego holdingu połączonych podmiotów. Umożliwia to 100% kontroli operacyjnej nad działalnością gospodarczą przy jednoczesnym korzystaniu ze zwolnień statutowych.
             </p>
 
             <table class="holding-table">
                 <thead>
                     <tr>
-                        <th>OBSZAR / PODMIOT</th>
-                        <th>FUNDACJA KLUB FALA ŻYCIA (RAMIĘ NON-PROFIT / PROTEKCYJNE)</th>
-                        <th>SPÓŁKA Z O.O. (IN FRASTRUKTURA TECHNOLOGICZNA)</th>
+                        <th>OBSZAR EVALUACJI</th>
+                        <th>JEDNOOSOBOWA DZIAŁALNOŚĆ (JDG)</th>
+                        <th>HOLDING: FUNDACJA + SPÓŁKA Z O.O.</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Główny Cel</strong></td>
-                        <td>Edukacja, badania, integracja społeczna, opieka nad podopiecznymi z wyzwaniami zdrowotnymi.</td>
-                        <td>Dostarczanie komercyjnych aplikacji, oprogramowania i automatyzacji B2B.</td>
+                        <td><strong>Podatek CIT / Zwolnienia</strong></td>
+                        <td>Pełne opodatkowanie PIT/CIT i składki od zysku.</td>
+                        <td><strong>0% CIT (Zwolnienie przedmiotowe z art. 17 ust. 1 pkt 4)</strong> na dochody przeznaczone na cele statutowe (zdrowie, nauka, edukacja).</td>
                     </tr>
                     <tr>
-                        <td><strong>Ochrona Majątku</strong></td>
-                        <td><strong>Majątek w Fundacji jest chroniony prawem</strong> – nie podlega egzekucjom za ewentualne zobowiązania komercyjne.</td>
-                        <td>Przyjmuje ryzyko biznesowe i służy do wdrażania innowacji oraz zakupów infrastruktury.</td>
+                        <td><strong>Ochrona Majątku Osobistego</strong></td>
+                        <td>Brak ochrony – pełna odpowiedzialność całym majątkiem prywatnym.</td>
+                        <td><strong>100% Ochrona Majątku</strong> – wyłączenie odpowiedzialności majątkowej za ryzyka handlowe.</td>
                     </tr>
                     <tr>
-                        <td><strong>Zwolnienia CIT</strong></td>
-                        <td>Przychody przeznaczone na cele statutowe są <strong>w 100% zwolnione z podatku CIT</strong>.</td>
-                        <td>Możliwość pełnego odliczania wydatków na rozwój technologii.</td>
+                        <td><strong>Możliwości Grantowe & Reklama</strong></td>
+                        <td>Brak dostępu do programów darmowych reklam dla non-profit.</td>
+                        <td>Dostęp do grantów unijnych (NCBR/PARP) oraz programu <strong>Google for Nonprofits ($10,000 USD/miesiąc darmowych reklam Google Ads)</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Minusy / Wymagania (Obiektywny Bilans)</strong></td>
+                        <td>Prosta księgowość, niskie koszty obsługi biura rachunkowego.</td>
+                        <td><strong>Większe wymogi formalne:</strong> konieczność prowadzenia pełnej księgowości, wyższe koszty obsługi księgowej i sporządzania corocznych sprawozdań finansowych.</td>
                     </tr>
                 </tbody>
             </table>
 
-            <div style="background: rgba(255, 215, 0, 0.08); padding: 25px; border-radius: 16px; border: 1px solid rgba(255, 215, 0, 0.3); margin-top: 25px;">
-                <h3 style="font-size: 1.2rem; color: var(--gold-accent); margin-bottom: 10px;">🛡️ Bezpieczeństwo Prawne (Compliance GIS, RODO, UE)</h3>
-                <p style="font-size: 1rem;">
-                    Używamy bezpiecznego, naukowego języka wspierania naturalnej homeostazy i biologicznej samoregeneracji komórkowej. Kategorycznie unikamy zwrotów typu "leczenie chorób", co chroni Klub i partnerów przed wyzwaniami prawnymi.
-                </p>
-            </div>
+            <p style="font-size: 1rem; color: var(--gold-accent); margin-top: 15px;">
+                <strong>Wniosek Analizy:</strong> Mimo wyższych kosztów obsługi pełnej księgowości, gigantyczne korzyści w postaci zerowego CIT, ochrony majątku oraz dostępów do darmowych budżetów reklamowych i grantów z nawiązką równoważą koszty formalne.
+            </p>
         </div>
 
-        <!-- Sekcja 3: Budżet i Finansowanie GCP -->
+        <!-- Sekcja 4: Nawigacja i Narzędzia -->
         <div class="section-card">
             <h2 style="font-size: 2rem; color: var(--quantum-cyan); margin-bottom: 20px;">
-                💰 3. Bezkosztowa Architektura Chmury (Środki GCP $1600 USD / ~5800 PLN)
-            </h2>
-            <p style="font-size: 1.1rem; margin-bottom: 20px;">
-                Dzięki przyznanym grantom technologicznym Google Cloud dla Startapów, nasza infrastruktura sztucznej inteligencji działa **bez opłat stałych**:
-            </p>
-            <ul>
-                <li style="margin-bottom: 12px;"><strong>GenAI App Builder ($1000 USD / ~3630 PLN):</strong> Zasilenie centralnej Bazy Wiedzy (RAG Engine) w Google Cloud Storage wszystkimi badaniami naukowymi, patentami i procedurami.</li>
-                <li style="margin-bottom: 12px;"><strong>Dialogflow CX Trial ($600 USD / ~2250 PLN):** Uruchomienie stanowych agentów konwersacyjnych (Playbooks) prowadzących rozmowy z pacjentami i partnerami na WhatsAppie i Telegramie.</li>
-            </ul>
-        </div>
-
-        <!-- Sekcja 4: Linki i Narzędzia -->
-        <div class="section-card">
-            <h2 style="font-size: 2rem; color: #FFF; margin-bottom: 20px;">
-                🔗 4. Podsumowanie Linków i Dedykowanych Narzędzi
+                🔗 4. Szybkie Odnośniki do Ekosystemu
             </h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
                 <div style="background: rgba(0,0,0,0.5); padding: 20px; border-radius: 16px; border: 1px solid var(--card-border);">
-                    <h3 style="color: var(--quantum-cyan); font-size: 1.2rem; margin-bottom: 8px;">Portal Główny</h3>
+                    <h3 style="color: var(--quantum-cyan); font-size: 1.2rem; margin-bottom: 8px;">Portal Główny Klubu</h3>
                     <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;">Prezentacja ekosystemu, misji i stacji hydratacji X2O™.</p>
                     <a href="https://fala-zycia.pl" target="_blank" class="btn-action" style="padding: 10px 20px; font-size: 0.9rem;">Przejdź do Portalu</a>
                 </div>
@@ -225,7 +255,7 @@
         </div>
 
         <footer style="text-align: center; margin-top: 50px; color: var(--text-muted); font-size: 0.9rem;">
-            © 2026 Klub Fala Życia | Dokument Dedykowany dla Zarządu i Administracji
+            © 2026 Klub Fala Życia | Dokument Dedykowany dla Członków i Partnerów
         </footer>
 
     </div>
