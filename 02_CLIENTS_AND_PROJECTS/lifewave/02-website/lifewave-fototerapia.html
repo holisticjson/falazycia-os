@@ -228,8 +228,8 @@
     /* Objections Grid */
     .objections-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
     .card-box {
       background: var(--card-bg);
@@ -258,35 +258,40 @@
     /* Patches Catalog Grid */
     .patches-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
     }
     .patch-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 24px;
-      padding: 32px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       position: relative;
-      overflow: hidden;
     }
     .patch-tag {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 4px 12px;
+      display: inline-block;
+      position: static;
+      padding: 6px 14px;
       background: rgba(0, 210, 196, 0.15);
       border: 1px solid var(--neon-cyan);
       border-radius: 20px;
       font-size: 0.75rem;
       font-weight: 700;
       color: var(--neon-cyan);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
     .patch-title {
       font-family: var(--font-heading);
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 800;
       color: var(--text-heading);
       margin-bottom: 10px;
+      word-break: break-word;
     }
     .patch-support-list {
       list-style: none;
@@ -408,12 +413,14 @@
 
   <!-- Sticky Header -->
   <header class="sticky-header">
-    <div style="display: flex; align-items: center; gap: 12px;">
-      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none;">
-        <img src="images/whatsapp_group.png" alt="Klub Fala Życia" style="width: 44px; height: 44px; border-radius: 50%; box-shadow: 0 0 12px rgba(0,210,196,0.6);">
-        <span style="font-family: var(--font-heading); font-weight: 800; font-size: 1.25rem; color: var(--text-main);">Klub Fala Życia</span>
+    <div style="display: flex; align-items: center;">
+      <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="images/brand_icon.png" alt="Klub Fala Życia Logo" style="width: 52px; height: 52px; border-radius: 50%; box-shadow: 0 0 16px rgba(0,210,196,0.8); object-fit: cover;">
       </a>
     </div>
+    <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('active')" style="background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 6px 12px; border-radius: 8px; font-size: 1.3rem; cursor: pointer;">
+      ☰
+    </button>
     <nav class="nav-links">
       <a href="index.html" class="nav-link">Strona Główna</a>
       <a href="x2o.html" class="nav-link">💧 Maszyna X2O™</a>
