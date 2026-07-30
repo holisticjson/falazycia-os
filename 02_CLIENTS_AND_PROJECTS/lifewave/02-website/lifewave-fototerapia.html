@@ -387,19 +387,19 @@
     .author-info h4 { margin: 0; font-size: 0.95rem; color: var(--text-heading); }
     .author-info p { margin: 0; font-size: 0.8rem; color: var(--neon-cyan); }
 
-    /* Theme Toggle */
-    .theme-toggle-btn {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: var(--text-main);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+    /* Mobile Toggle */
+    .mobile-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 1.3rem;
       cursor: pointer;
-      font-size: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    }
+    @media (max-width: 768px) {
+      .mobile-toggle { display: block; }
     }
   </style>
 </head>
@@ -418,7 +418,7 @@
         <img src="images/brand_icon.png" alt="Klub Fala Życia Logo" style="width: 52px; height: 52px; border-radius: 50%; box-shadow: 0 0 16px rgba(0,210,196,0.8); object-fit: cover;">
       </a>
     </div>
-    <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('active')" style="background: transparent; border: 1px solid var(--neon-cyan); color: var(--neon-cyan); padding: 6px 12px; border-radius: 8px; font-size: 1.3rem; cursor: pointer;">
+    <button class="mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('active')">
       ☰
     </button>
     <nav class="nav-links">

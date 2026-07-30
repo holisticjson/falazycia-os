@@ -422,6 +422,42 @@
       .banner-mlm { grid-template-columns: 1fr; padding: 24px; }
       .footer-grid { grid-template-columns: 1fr; gap: 30px; text-align: center; }
     }
+
+    /* THEME SYSTEM STYLES */
+    .theme-toggle-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+    .theme-toggle-btn:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(0, 210, 196, 0.4);
+    }
+
+    [data-theme="light"] {
+      --bg-dark: #f8fafc;
+      --bg-card: rgba(255, 255, 255, 0.95);
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-heading: #0284c7;
+      --border-card: rgba(14, 165, 233, 0.25);
+    }
+    [data-theme="light"] body { background: #f1f5f9 !important; color: #0f172a !important; }
+    [data-theme="light"] header { background: rgba(255, 255, 255, 0.95) !important; border-bottom: 1px solid rgba(2, 132, 199, 0.2) !important; }
+    [data-theme="light"] .nav-links a { color: #0f172a !important; font-weight: 600 !important; }
+    [data-theme="light"] .glass-card, [data-theme="light"] .banner-mlm { background: #ffffff !important; border-color: rgba(2, 132, 199, 0.2) !important; box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08) !important; }
+    [data-theme="light"] h1, [data-theme="light"] h2, [data-theme="light"] h3, [data-theme="light"] h4 { color: #0284c7 !important; }
+    [data-theme="light"] p { color: #334155 !important; }
+    [data-theme="light"] footer { background: #e2e8f0 !important; border-top: 1px solid rgba(2, 132, 199, 0.2) !important; }
   </style>
 </head>
 <body>
@@ -446,7 +482,8 @@
         <li><a href="lifewave-fototerapia.html">Fototerapia LifeWave™</a></li>
         <li><a href="akademia.html">Akademia Wiedzy</a></li>
         <li><a href="ebook-mlm-duplikacja.html">Podręcznik MLM.OS</a></li>
-        <li><a href="https://fala-zycia-dashboard-194182220831.europe-central2.run.app" class="btn-app" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; padding: 10px 20px; background: linear-gradient(135deg, #00d2c4 0%, #0088ff 100%); color: #03060a; font-weight: 700; border-radius: 30px; box-shadow: 0 0 16px rgba(0, 210, 196, 0.4); text-decoration: none;"><i class="fa-solid fa-rocket"></i> App Dashboard</a></li>
+        <li><a href="https://app.fala-zycia.pl" class="btn-app" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; padding: 10px 20px; background: linear-gradient(135deg, #00d2c4 0%, #0088ff 100%); color: #03060a; font-weight: 700; border-radius: 30px; box-shadow: 0 0 16px rgba(0, 210, 196, 0.4); text-decoration: none;"><i class="fa-solid fa-rocket"></i> App Dashboard</a></li>
+        <li><button class="theme-toggle-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Zmień motyw">🌙</button></li>
       </ul>
     </div>
   </header>
@@ -628,5 +665,23 @@
     </div>
   </footer>
 
+  <script>
+    function toggleTheme() {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      const btn = document.getElementById('theme-toggle');
+      if (btn) btn.textContent = newTheme === 'light' ? '☀️' : '🌙';
+    }
+    (function() {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      window.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('theme-toggle');
+        if (btn) btn.textContent = savedTheme === 'light' ? '☀️' : '🌙';
+      });
+    })();
+  </script>
 </body>
 </html>
