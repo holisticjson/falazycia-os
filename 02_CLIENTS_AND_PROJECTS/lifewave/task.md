@@ -5,34 +5,27 @@
 ## 🤖 1. ZADANIA AGENTA AI (STATUS DEWELOPERSKI)
 
 ### **✅ ZREALIZOWANE (COMPLETED):**
-- [x] **Bezwzględne Usunięcie Żargonu AI i Kosztów:** Zastąpienie zwrotów "Gemini 2.5 Flash na Vertex AI" prostym opisem osobistego mentora cyfrowego na WhatsAppie. Usunięcie straszenia drogimi maszynami do wody.
-- [x] **Dopracowanie Lejka Rekrutacji (`fala-zycia.pl/rekrutacja`):** Wyjaśnienie zbierania punktów milowych i latania Biznes Klasą za ułamek ceny, optymalne nawodnienie, ćwiczenia oddechowe i automatyzacja relacji B2B.
-- [x] **Bezwzględne Usunięcie Gwiazdek (`**`) w HTML:** Zamiana wszystkich `**tekst**` na znacznik `<strong>tekst</strong>` w `strategia.html`.
-- [x] **Neutralne Ujęcie Holdingu & Ról:** Usunięcie z góry przypisanych nazwisk i imion jako prezesów/osób odpowiedzialnych. Przejście na uniwersalne założenia holdingu (Fundacja + Spółka).
-- [x] **Rzetelny Bilans Plusów i Minusów:** Przedstawienie wyższych kosztów księgowych JDG vs Holding obok korzyści (0% CIT z art. 17 ust. 1 pkt 4, ochrona majątku osobistego, $10 000/mc Google Ad Grants).
-- [x] **Synergia Kompetencji Zespołu:** Wyeksponowanie ekspertyzy targowo-eventowej (Monika), holistycznej praktyki stacjonarnej Kobido/biohackingu (Ania) oraz zaplecza AI, Google Umiejętności Jutra i dyplomu SGH (Tomasz).
-- [x] **Misja Społeczna w Placówkach Publicznych:** Włączenie celów działania Fundacji w DPS-ach, Domach Dziecka, Szpitalach i Hospicjach.
-- [x] **Interaktywna Mapa Myśli 3D & Bento Grid (`MINDMAP_FALA_ZYCIA_3D.html`):** Rozbudowana wersja mobile-friendly z notatnikiem ADHD i przyciskami przełączania widoku.
-- [x] **Compliance GIS / Lex Charlatan:** Zasada promowania bezpłatnych szklanek ustrukturyzowanej wody X2O™ oraz bezaptekowej profilaktyki dobowej bez oświadczeń medycznych.
-- [x] **Spis Treści WIKI (`LIFEWAVE_KNOWLEDGE_TREE_WIKI.md`):** Zbudowanie centralnego indeksu wiedzy z podziałem na 5 Filarów.
-- [x] **Aplikacja Dashboard na Cloud Run (`app.fala-zycia.pl`):** Działająca usługa z wbudowanym Doradcą AI.
-- [x] **Master PRD 2026:** Utworzenie pliku `00-admin/FALA_ZYCIA_MASTER_PRD_2026.md` z rozliczeniem grantów chmurowych ($1000 GenAI + $600 Dialogflow CX).
-- [x] **Podłączenie CI/CD dla `fala-zycia-web`:** Udane podpięcie repozytorium GitHub `holisticjson/falazycia-os` w usłudze Cloud Run.
+- [x] **Bezwzględne Usunięcie Wzmianek o Koralowcu / 70 Minerałach z Okinawy:** Usunięto 100% sprzecznych wpisów na wszystkich podstronach portalowych (`index.html`, `x2o.html`, `lifewave-fototerapia.html`).
+- [x] **Czysty Header z Powiększonym Logo (52-54px):** Usunięto zbędne napisy "Klub Fala Życia" obok ikony w headerze, powiększono logo z neonowym blaskiem i ujednolicono mobilne menu rozwijane na smartfonach.
+- [x] **Naprawa Nakładania Etykiet w Katalogu Plastrów (`lifewave-fototerapia.html`):** Etykiety "FLAGOWY", "BAZOWY", "SYNERGIA Z X-39" przeniesiono ponad tytuły produktów, wyeliminowano kolizje tekstowe oraz poziome przewijanie na telefonie.
+- [x] **Przezroczyste Proxy Nginx dla `app.fala-zycia.pl`:** Zoptymalizowano `02-website/nginx.conf` o transparentny `proxy_pass` z obsługą WebSocketów Streamliita, dzięki czemu pasek adresu na stałe zachowuje czystą domenę `app.fala-zycia.pl`.
+- [x] **Dedykowane Pliki Dockerfile i Cloud Build Manifesty:** Stworzono `Dockerfile.web`, `cloudbuild_web.yaml` oraz `cloudbuild_dashboard.yaml`, eliminując nakładanie się kontenerów przy automatycznym budowaniu.
+- [x] **Usuwanie Żargonu AI i Kosztów z Rekrutacji:** Zastąpienie zwrotów "Gemini 2.5 Flash na Vertex AI" prostym opisem mentora cyfrowego na WhatsAppie, dodanie Flight Hacking i 20 obiekcji.
+- [x] **Neutralne Ujęcie Holdingu & Ról:** Przejście na obiektywną strukturę (Fundacja + Spółka z o.o.) bez przypisywania narzuconych imiennie funkcji.
+- [x] **Rzetelny Bilans Holdingu:** Koszty księgowe obok korzyści (0% CIT z art. 17 ust. 1 pkt 4, ochrona majątku, $10 000/mc Google Ad Grants).
+- [x] **Misja Społeczna w Placówkach Publicznych:** Cele Fundacji w DPS-ach, Domach Dziecka, Szpitalach i Hospicjach.
+- [x] **Interaktywna Mapa Myśli 3D & Bento Grid (`MINDMAP_FALA_ZYCIA_3D.html`):** Wersja mobile-friendly z notatnikiem ADHD i auto-zapisaem.
+- [x] **Aplikacja Dashboard na Cloud Run (`app.fala-zycia.pl`):** Żywa, w pełni działająca aplikacja z logowaniem, Akademią Wiedzy i Doradcą AI.
+- [x] **Podłączenie CI/CD z GitHub Repository w GCP:** Skonfigurowane wyzwalanie automatycznych buildów z `/02-website/Dockerfile.web`.
 
-### **⏳ W TRAKCIE / NASTĘPNE KROKI (IN PROGRESS):**
-- [/] **Skanowanie Multimediów:** Skanowanie folderu `04-assets/` i generowanie `MEDIA_AND_RESEARCH_ASSET_INVENTORY.md`.
-- [ ] **Magazyn Danych GenAI App Builder ($1000 credit):** Utworzenie zasobnika `gs://fala-zycia-kb-bucket` w projekcie `fala-zycia-agents` i podpięcie Data Store.
-- [ ] **Dialogflow CX Playbooks ($600 credit):** Konfiguracja stanowych agentów konwersacyjnych dla WhatsAppa i Świątyni Harmonii.
+### **⏳ NASTĘPNE KROKI I ROZWÓJ (FUTURE ENHANCEMENTS):**
+- [ ] **Magazyn Danych GenAI App Builder ($1000 credit):** Podpięcie zasobnika `gs://fala-zycia-kb-bucket` w projekcie `fala-zycia-agents`.
+- [ ] **Dialogflow CX Playbooks ($600 credit):** Stanowe boty konwersacyjne dla WhatsAppa i Świątyni Harmonii.
 
 ---
 
-## 👤 2. ZADANIA DLA TOMASZA (USER TO-DO LIST)
+## 👤 2. OSTATNIA KOMENDA SYNCUJĄCA DLA TOMASZA (GIT PUSH)
 
-### **👉 DO WYKONANIA TERAZ (PRIORYTET):**
-- [ ] **Wykonaj Git Push w Terminalu (1 Sekunda):**
-  Wklej w konsoli PowerShell w folderze `C:\Aplikacje MVP`:
-  ```powershell
-  cd "C:\Aplikacje MVP" ; git add . ; git commit -m "feat: deploy rekrutacja bez zargonu AI & z Flight Hacking" ; git push origin main
-  ```
-- [ ] **Usunięcie Zduplikowanej Usługi w `holistic-dashboard-dev` (Opcjonalnie):**
-  W konsoli GCP usuń nieaktywną usługę `swiatynia-harmonii` z konta `holisticjson@gmail.com`.
+```powershell
+cd "C:\Aplikacje MVP" ; git add . ; git commit -m "feat: complete website cleanup, transparent proxy for app.fala-zycia.pl & CI/CD cloudbuild setup" ; git push origin main
+```

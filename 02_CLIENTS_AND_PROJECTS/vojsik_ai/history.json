@@ -868,5 +868,47 @@
         "raw_text": "I przy okazji znowu zjebałeś kurwa z adresem dashboardu. Znowu się wyświetla strona portalu pod adresem dashboardu. Nie wiem jakie na stałe instrukcje wam dać, żeby wyświetlali ubem i nie popełniali ciągle błędów i nie pierdolili sprawy.",
         "corrected_text": "I przy okazji znowu zjebałeś kurwa z adresem dashboardu. Znowu się wyświetla strona portalu pod adresem dashboardu. Nie wiem jakie na stałe instrukcje wam dać, żeby wyświetlali ubem i nie popełniali ciągle błędów i nie pierdolili sprawy.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 08:18:30",
+        "raw_text": "To wam działaj.",
+        "corrected_text": "To wam działaj.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 08:18:42",
+        "raw_text": "Dziękuję.",
+        "corrected_text": "Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 08:21:22",
+        "raw_text": "systemowe naprawić. Montowania sandboxa. Czego to jest wina?",
+        "corrected_text": "systemowe naprawić. Montowania sandboxa. Czego to jest wina?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 09:38:01",
+        "raw_text": "Hej, spoko, nie ma problemu. To o której mam być? Dokładnie u Ciebie pod blokiem.",
+        "corrected_text": "Hej, spoko, nie ma problemu. To o której mam być? Dokładnie u Ciebie pod blokiem.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-30 10:08:53",
+        "raw_text": "No dobra, ale czy usługa Fala Zycia Web w regionie Europe Central 2 nie powinna mieć typu wdrożenia repozytorii?",
+        "corrected_text": "No dobra, ale czy usługa Fala Zycia Web w regionie Europe Central 2 nie powinna mieć typu wdrożenia repozytorii?",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-30 10:11:33",
+        "raw_text": "Dlaczego usługa dla portalu falamyślnikzycia.pl jest w regionie Europe Central 2? Nie, dobrze.",
+        "corrected_text": "Dlaczego usługa dla portalu falamyślnikzycia.pl jest w regionie Europe Central 2? Nie, dobrze.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-30 10:16:21",
+        "raw_text": "Dobra, to upewnimy się, że wszystkie te systemowe dziennik zadań z tatu do, wszystko to ostatnie, co było po prostu wdrożone, że zostało wypchnięte przez git, tak, przez repozytorium.",
+        "corrected_text": "Dobra, to upewnimy się, że wszystkie te systemowe dziennik zadań z tatu do, wszystko to ostatnie, co było po prostu wdrożone, że zostało wypchnięte przez git, tak, przez repozytorium.",
+        "status": "raw_fallback"
     }
 ]

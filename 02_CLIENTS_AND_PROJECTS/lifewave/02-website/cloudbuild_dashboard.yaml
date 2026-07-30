@@ -1,5 +1,5 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/falazycia-os/fala-zycia-dashboard:latest', '-f', 'Dockerfile.dashboard', '.']
+  args: ['build', '-t', 'gcr.io/falazycia-os/fala-zycia-dashboard', '-f', 'Dockerfile', '.']
 images:
-- 'gcr.io/falazycia-os/fala-zycia-dashboard:latest'
+- 'gcr.io/falazycia-os/fala-zycia-dashboard'
