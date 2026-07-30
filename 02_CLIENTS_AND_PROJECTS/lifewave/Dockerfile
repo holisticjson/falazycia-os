@@ -2,9 +2,9 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# Copy requirements from 02-website
+# Copy requirements and upgrade pip
 COPY 02-website/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
 # Copy knowledge base and website files
 COPY 04-assets /app/04-assets

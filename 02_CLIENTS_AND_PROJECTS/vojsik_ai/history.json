@@ -946,5 +946,59 @@
         "raw_text": "Tak, jeśli to dobrze rozumiem. Jest cały czas błąd chyba kompilacji. A jednocześnie na...  Znaczy to mam wyjaśnienie od innego agenta, bo tworzy się to, ta usługa i aktywuje ten,  ten aktywator i repozytorium na drugim koncie gcp/holistic/json/małpa-gmail.com Więc nie wiem czy tam coś trzeba w repozytorium zmienić, żeby to zostawało na koncie live/livewave/małpa-gmail.com/gcp w projekcie falazycia-s",
         "corrected_text": "Tak, jeśli to dobrze rozumiem. Jest cały czas błąd chyba kompilacji. A jednocześnie na...  Znaczy to mam wyjaśnienie od innego agenta, bo tworzy się to, ta usługa i aktywuje ten,  ten aktywator i repozytorium na drugim koncie gcp/holistic/json/małpa-gmail.com Więc nie wiem czy tam coś trzeba w repozytorium zmienić, żeby to zostawało na koncie live/livewave/małpa-gmail.com/gcp w projekcie falazycia-s",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 11:54:57",
+        "raw_text": "Możesz wykonać krok po kroku, utworzyć bazę wiedzy. Piotra Latniczego wyszkolimy tego agenta zgodnie z architekturą i podłączymy API, jest to ad.aero.  Dziękuję.",
+        "corrected_text": "Możesz wykonać krok po kroku, utworzyć bazę wiedzy. Piotra Latniczego wyszkolimy tego agenta zgodnie z architekturą i podłączymy API, jest to ad.aero.  Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 12:11:22",
+        "raw_text": "znowu stworzyłeś, kurwa, drugą, kurwa, repozytorii i wdrożenie usługę Fala Zycia Web w regionie Europe West 1. Nie rozumiem tego, kurwa. I tam zamiast do Europe Central 2, Fala Zycia Web, gdzie jest publiczny public access, to, kurwa, ty na nowo pierdolisz i, kurwa, żeś pop  a jak nie wiesz, to się dołóż, zasięgnij jakieś informacje gdzieś.",
+        "corrected_text": "znowu stworzyłeś, kurwa, drugą, kurwa, repozytorii i wdrożenie usługę Fala Zycia Web w regionie Europe West 1. Nie rozumiem tego, kurwa. I tam zamiast do Europe Central 2, Fala Zycia Web, gdzie jest publiczny public access, to, kurwa, ty na nowo pierdolisz i, kurwa, żeś pop  a jak nie wiesz, to się dołóż, zasięgnij jakieś informacje gdzieś.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 12:13:41",
+        "raw_text": "Jakiego aktywatora w ogóle?",
+        "corrected_text": "Jakiego aktywatora w ogóle?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 13:23:11",
+        "raw_text": "Wrzucam Ci zrzut ekranu, słuchaj, bo coś się wykrzaczyło i ani domena swiatyniacharmonii.pl ani domena portalu klubu Fala Życia nie odpowiadają. Jest błąd 403 na Fali Życia i Swiatynia Harmonii jest podobnie. Sprawdź. Wgryź się w temat, zrób roast i zd  Dziękuję.",
+        "corrected_text": "Wrzucam Ci zrzut ekranu, słuchaj, bo coś się wykrzaczyło i ani domena swiatyniacharmonii.pl, ani domena portalu klubu Fala Życia nie odpowiadają. Jest błąd 403 na Fali Życia i Świątynia Harmonii jest podobnie. Sprawdź. Wgryź się w temat, zrób roast i zd. Dziękuję.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-30 13:31:01",
+        "raw_text": "Czasem zrobiłam wczoraj też ten film.  to go tą propozycję numer dwa, wyciął tło, zostawił sam ten element, tą ikonę kropli z nazwą gabinetu, czyli świątynia harmonii, a ostatni napis po prostu usunął.",
+        "corrected_text": "Czasem zrobiłam wczoraj też ten film.  to go tą propozycję numer dwa, wyciął tło, zostawił sam ten element, tą ikonę kropli z nazwą gabinetu, czyli świątynia harmonii, a ostatni napis po prostu usunął.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 13:52:46",
+        "raw_text": "i bez tych odblasków odchodzących od kropli, od sygnetu.",
+        "corrected_text": "i bez tych odblasków odchodzących od kropli, od sygnetu.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 13:59:13",
+        "raw_text": "W jakiej lokalizacji jest ten wyizolowany zasób graficzny w postaci logo z wyciętym tłem i tymi elementami, o których Ci wspominałem.",
+        "corrected_text": "W jakiej lokalizacji jest ten wyizolowany zasób graficzny w postaci logo z wyciętym tłem i tymi elementami, o których Ci wspominałem?",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-30 14:00:15",
+        "raw_text": "...być rozjaśnięty. Te przyciski\"call to action\" mają być z takim efektem gradientu, taki glasomorfizm, wpadający w taki kolor tła troszeczkę. A to raz, a dwa, tutaj na Mianie Świętego w Mory, website.",
+        "corrected_text": "...być rozjaśnięty. Te przyciski\"call to action\" mają być z takim efektem gradientu, taki glasomorfizm, wpadający w taki kolor tła troszeczkę. A to raz, a dwa, tutaj na Mianie Świętego w Mory, website.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 16:18:59",
+        "raw_text": "Skrypt się wykonuje, buduje te nowe usługi w regionie Europe West 1. Natomiast przy automatycznym Gitsync wyskoczy mi komunikat, że wypadałoby zaktualizować PIP. Podaj mi komentarz do aktualizacji PIP.",
+        "corrected_text": "Skrypt się wykonuje, buduje te nowe usługi w regionie Europe West 1. Natomiast przy automatycznym GitSync wyskoczy mi komunikat, że wypadałoby zaktualizować PIP. Podaj mi komentarz do aktualizacji PIP.",
+        "status": "success"
     }
 ]

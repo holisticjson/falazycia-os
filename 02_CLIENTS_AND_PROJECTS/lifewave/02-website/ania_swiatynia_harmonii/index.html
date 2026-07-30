@@ -60,28 +60,30 @@
   <style>
     /* ===== BRAND BOOK SYSTEM: ŚWIĄTYNIA HARMONII ===== */
     :root {
-      --bg-base: #F5EBE6;
+      /* PALETA ZCZYTANA Z BRAND BOOKA: PASTELOWY LILA RÓŻ & AKCENTY BOGATEGO RÓŻU */
+      --bg-base: #FAF0F2;
       --bg-surface: #FFFFFF;
-      --bg-pink-soft: #F9EFEF;
-      --bg-glass: rgba(255, 255, 255, 0.88);
+      --bg-pink-pastel: #F6E1E5;
+      --bg-pink-soft: #FBF2F4;
+      --bg-glass: rgba(255, 248, 249, 0.88);
       
       --border-glass: rgba(212, 175, 55, 0.35);
-      --border-rose: rgba(232, 197, 200, 0.5);
+      --border-rose: rgba(226, 173, 185, 0.55);
       
-      --text-main: #2A2426;
-      --text-muted: #5C5255;
-      --text-heading: #0D1B1E;
+      --text-main: #3D2228;
+      --text-muted: #6B4850;
+      --text-heading: #2E0E15;
       
-      --accent-magenta: #B32D52;
-      --accent-magenta-dark: #982245;
-      --accent-rose-light: #E8C5C8;
-      --accent-gold: #D4AF37;
-      --accent-gold-dark: #C5A059;
-      --accent-navy: #0D1B1E;
+      --accent-magenta: #B34E6B;          /* Ciemniejszy róż na wyróżniki i ikony */
+      --accent-magenta-dark: #8E3550;     /* Głęboki róż dla wysokiego kontrastu */
+      --accent-rose-light: #EFCED3;     /* Jasny pastelowy róż */
+      --accent-gold: #D4AF37;           /* Szlachetne złoto 3D */
+      --accent-gold-dark: #B89334;      /* Ciemne złoto */
+      --accent-navy: #2E0E15;           /* Magazynowa typografia w głębokiej mahoniowej barwie */
       
-      --shadow-sm: 0 4px 15px rgba(179, 45, 82, 0.05);
-      --shadow-md: 0 10px 30px rgba(179, 45, 82, 0.08), 0 4px 12px rgba(212, 175, 55, 0.12);
-      --shadow-lg: 0 20px 50px rgba(179, 45, 82, 0.14);
+      --shadow-sm: 0 4px 15px rgba(179, 78, 107, 0.08);
+      --shadow-md: 0 10px 30px rgba(179, 78, 107, 0.12), 0 4px 15px rgba(212, 175, 55, 0.15);
+      --shadow-lg: 0 20px 50px rgba(179, 78, 107, 0.18);
       
       --font-serif: 'Cormorant Garamond', serif;
       --font-heading: 'Outfit', sans-serif;
@@ -102,9 +104,9 @@
       line-height: 1.8;
       overflow-x: hidden;
       background-image: 
-        radial-gradient(circle at 10% 10%, rgba(232, 197, 200, 0.4) 0%, transparent 45%),
-        radial-gradient(circle at 90% 65%, rgba(212, 175, 55, 0.22) 0%, transparent 45%),
-        radial-gradient(circle at 50% 95%, rgba(179, 45, 82, 0.08) 0%, transparent 50%);
+        radial-gradient(circle at 10% 10%, rgba(246, 225, 229, 0.7) 0%, transparent 45%),
+        radial-gradient(circle at 90% 65%, rgba(212, 175, 55, 0.18) 0%, transparent 45%),
+        radial-gradient(circle at 50% 95%, rgba(179, 78, 107, 0.1) 0%, transparent 50%);
     }
 
     a {
@@ -162,22 +164,19 @@
       gap: 14px;
     }
 
-    .logo-badge {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-magenta), var(--accent-gold));
+    .logo-badge-transparent {
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #FFFFFF;
-      font-size: 20px;
-      box-shadow: 0 4px 15px rgba(179, 45, 82, 0.25);
+      background: transparent;
+      box-shadow: none;
     }
 
     .logo-text {
       font-family: var(--font-serif);
-      font-size: 25px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--accent-magenta);
       line-height: 1.1;
@@ -215,48 +214,50 @@
     }
 
     .btn-magenta {
-      background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--accent-gold) 100%);
+      background: linear-gradient(135deg, var(--accent-magenta) 0%, var(--accent-magenta-dark) 100%);
       color: #FFFFFF !important;
       font-family: var(--font-heading);
       font-size: 14px;
       font-weight: 700;
-      padding: 12px 28px;
+      padding: 13px 30px;
       border-radius: 30px;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 6px 20px rgba(179, 78, 107, 0.28);
       transition: all 0.3s ease;
-      border: none;
+      border: 1px solid var(--accent-gold);
       cursor: pointer;
     }
 
     .btn-magenta:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow-lg);
-      background: linear-gradient(135deg, var(--accent-magenta-dark) 0%, var(--accent-gold-dark) 100%);
+      box-shadow: 0 10px 28px rgba(179, 78, 107, 0.42);
+      background: linear-gradient(135deg, var(--accent-magenta-dark) 0%, #70263E 100%);
+      border-color: #FFFFFF;
     }
 
     .btn-outline-gold {
-      background: rgba(255, 255, 255, 0.9);
-      color: var(--accent-magenta) !important;
+      background: var(--bg-pink-pastel);
+      color: var(--accent-magenta-dark) !important;
       font-family: var(--font-heading);
       font-size: 14px;
       font-weight: 700;
-      padding: 12px 26px;
+      padding: 13px 28px;
       border-radius: 30px;
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      border: 1.5px solid var(--accent-gold);
+      border: 1.5px solid var(--accent-magenta);
       box-shadow: var(--shadow-sm);
       transition: all 0.3s ease;
     }
 
     .btn-outline-gold:hover {
-      background: var(--bg-surface);
+      background: var(--accent-magenta);
+      color: #FFFFFF !important;
       transform: translateY(-2px);
-      border-color: var(--accent-magenta);
+      border-color: var(--accent-gold);
     }
 
     /* HERO SECTION */
@@ -498,12 +499,45 @@
   <header>
     <div class="nav-container">
       <a href="https://swiatynia-harmonii.pl/" class="logo-brand">
-        <div class="logo-badge">
-          <i class="fa-solid fa-spa"></i>
+        <div class="logo-badge-transparent">
+          <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 52px; height: 52px; filter: drop-shadow(0 4px 10px rgba(179, 78, 107, 0.22));">
+            <!-- Outer Photon Sparkle Orbit -->
+            <circle cx="60" cy="68" r="42" stroke="url(#goldGrad3D)" stroke-width="1.2" stroke-dasharray="2 6" opacity="0.6">
+              <animateTransform attributeName="transform" type="rotate" from="0 60 68" to="360 60 68" dur="20s" repeatCount="indefinite" />
+            </circle>
+
+            <!-- Concentric Resonance Ripples -->
+            <circle cx="60" cy="68" r="32" stroke="url(#goldGrad3D)" stroke-width="2" opacity="0.65">
+              <animate attributeName="r" values="28;35;28" dur="4s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="60" cy="68" r="20" stroke="url(#roseGold3D)" stroke-width="2.2" opacity="0.8" />
+
+            <!-- 3D Metallic Gold Droplet (Option 2 Ref) -->
+            <path d="M 60 16 C 60 18 42 42 42 56 C 42 66 50 74 60 74 C 70 74 78 66 78 56 C 78 42 60 18 60 16 Z" fill="url(#gold3DDrop)" />
+            <!-- Droplet Highlight Curved Flare -->
+            <path d="M 54 28 C 50 38 48 50 52 58" stroke="#FFF" stroke-width="2.5" stroke-linecap="round" opacity="0.65" />
+
+            <defs>
+              <linearGradient id="gold3DDrop" x1="20%" y1="0%" x2="80%" y2="100%">
+                <stop offset="0%" stop-color="#FFF3C4" />
+                <stop offset="30%" stop-color="#E5C268" />
+                <stop offset="70%" stop-color="#D4AF37" />
+                <stop offset="100%" stop-color="#A28014" />
+              </linearGradient>
+              <linearGradient id="goldGrad3D" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#FCE8AD" />
+                <stop offset="100%" stop-color="#B89334" />
+              </linearGradient>
+              <linearGradient id="roseGold3D" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#B34E6B" />
+                <stop offset="100%" stop-color="#D4AF37" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
         <div class="logo-text">
           Świątynia Harmonii
-          <span>Ania Pilawska</span>
+          <span style="color: var(--accent-gold-dark); font-family: var(--font-heading); font-size: 9px; display: block; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin-top: 2px;">Luxury SPA & Wellness</span>
         </div>
       </a>
 
@@ -719,10 +753,22 @@
   <footer>
     <div style="max-width: 1280px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px;">
       <div class="logo-brand">
-        <div class="logo-badge" style="width: 36px; height: 36px; font-size: 16px;">
-          <i class="fa-solid fa-spa"></i>
+        <div class="logo-badge-transparent">
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 40px; height: 40px;">
+            <circle cx="50" cy="58" r="32" stroke="url(#goldGradFoot)" stroke-width="1.8" opacity="0.5">
+              <animate attributeName="r" values="28;36;28" dur="4s" repeatCount="indefinite" />
+            </circle>
+            <circle cx="50" cy="58" r="22" stroke="url(#goldGradFoot)" stroke-width="2" opacity="0.7" />
+            <path d="M 50 18 C 50 18 36 38 36 48 C 36 55.7 42.3 62 50 62 C 57.7 62 64 55.7 64 48 C 64 38 50 18 50 18 Z" fill="url(#goldGradFoot)" />
+            <defs>
+              <linearGradient id="goldGradFoot" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#D4AF37" />
+                <stop offset="100%" stop-color="#E8C5C8" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
-        <div class="logo-text" style="color: #FFFFFF; font-size: 20px;">
+        <div class="logo-text" style="color: #FFFFFF; font-size: 22px;">
           Świątynia Harmonii
         </div>
       </div>
