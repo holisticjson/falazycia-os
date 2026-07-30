@@ -910,5 +910,35 @@
         "raw_text": "Dobra, to upewnimy się, że wszystkie te systemowe dziennik zadań z tatu do, wszystko to ostatnie, co było po prostu wdrożone, że zostało wypchnięte przez git, tak, przez repozytorium.",
         "corrected_text": "Dobra, to upewnimy się, że wszystkie te systemowe dziennik zadań z tatu do, wszystko to ostatnie, co było po prostu wdrożone, że zostało wypchnięte przez git, tak, przez repozytorium.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 10:21:50",
+        "raw_text": "...otworzyć repozytorium tak oddzielnie dla gałęzi i kontenera z Fiatynia Harmonii w regionie Europe West 1. Pytanie czy zmieniać ten region, czy w ogóle wdrożyć nową usługę w regionie Europe Central 2.",
+        "corrected_text": "Otworzyć repozytorium tak oddzielnie dla gałęzi i kontenera z Fiatynia Harmonii w regionie Europe West 1. Pytanie, czy zmieniać ten region, czy w ogóle wdrożyć nową usługę w regionie Europe Central 2?",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-30 10:33:25",
+        "raw_text": "Porządki zrobione, usunięte te zbędne usługi w regionie Europe West. Powiedz mi teraz, muszę podłączyć repozytorium dla usługi Światynia Harmonii.",
+        "corrected_text": "Porządki zrobione, usunięte te zbędne usługi w regionie Europe West. Powiedz mi teraz, muszę podłączyć repozytorium dla usługi Światynia Harmonii.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 11:01:36",
+        "raw_text": "Dziękuję.",
+        "corrected_text": "Dziękuję.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 11:09:57",
+        "raw_text": "Ta kompilacja się mi udała. Zrób roast tego. Nie wiem jak trzeba to jakieś kurwa, musimy nowe skille pobrać z sieci. Najlepsze takie, najbardziej wartościowe, bo widzę, że się tutaj agenci AntiGravity często mylą z tą kompilacją, podłączaniem repozytorium, githuba itd. Nie wiem o co chodzi.",
+        "corrected_text": "Ta kompilacja się mi udała. Zrób roast tego. Nie wiem, jak trzeba to jakieś kurwa, musimy nowe skille pobrać z sieci. Najlepsze takie, najbardziej wartościowe, bo widzę, że się tutaj agenci AntiGravity często mylą z tą kompilacją, podłączaniem repozytorium, GitHuba itd. Nie wiem, o co chodzi.",
+        "status": "success"
+    },
+    {
+        "timestamp": "2026-07-30 11:11:45",
+        "raw_text": "i widzę, że Ty przypadkowo popełniasz cały czas ten sam błąd, czyli to repozytorium i usługę tworzysz na koncie gcpholistic.json.gmail.com ponieważ tam widzę teraz w konsoli gcp, że tam ja usuwam tą usługę z Fiatynia Myślnik Harmonii w regionie Europe West 1  a Ty ją na nowo tworzysz, zamiast robić to na koncie gcp.livewave@gmail.com w projekcie Fala Zycia Myślnik OS.",
+        "corrected_text": "i widzę, że Ty przypadkowo popełniasz cały czas ten sam błąd, czyli to repozytorium i usługę tworzysz na koncie gcpholistic.json.gmail.com ponieważ tam widzę teraz w konsoli gcp, że tam ja usuwam tą usługę z Fiatynia Myślnik Harmonii w regionie Europe West 1  a Ty ją na nowo tworzysz, zamiast robić to na koncie gcp.livewave@gmail.com w projekcie Fala Zycia Myślnik OS.",
+        "status": "raw_fallback"
     }
 ]

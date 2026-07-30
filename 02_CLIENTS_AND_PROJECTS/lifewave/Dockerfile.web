@@ -1,0 +1,9 @@
+FROM nginx:alpine
+
+ENV NGINX_ENVSUBST_FILTER="PORT"
+
+COPY 02-website/nginx.conf /etc/nginx/templates/default.conf.template
+
+COPY 02-website /usr/share/nginx/html/
+
+EXPOSE 8080
