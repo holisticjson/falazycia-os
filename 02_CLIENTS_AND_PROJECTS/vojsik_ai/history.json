@@ -940,5 +940,11 @@
         "raw_text": "i widzę, że Ty przypadkowo popełniasz cały czas ten sam błąd, czyli to repozytorium i usługę tworzysz na koncie gcpholistic.json.gmail.com ponieważ tam widzę teraz w konsoli gcp, że tam ja usuwam tą usługę z Fiatynia Myślnik Harmonii w regionie Europe West 1  a Ty ją na nowo tworzysz, zamiast robić to na koncie gcp.livewave@gmail.com w projekcie Fala Zycia Myślnik OS.",
         "corrected_text": "i widzę, że Ty przypadkowo popełniasz cały czas ten sam błąd, czyli to repozytorium i usługę tworzysz na koncie gcpholistic.json.gmail.com ponieważ tam widzę teraz w konsoli gcp, że tam ja usuwam tą usługę z Fiatynia Myślnik Harmonii w regionie Europe West 1  a Ty ją na nowo tworzysz, zamiast robić to na koncie gcp.livewave@gmail.com w projekcie Fala Zycia Myślnik OS.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 11:37:51",
+        "raw_text": "Tak, jeśli to dobrze rozumiem. Jest cały czas błąd chyba kompilacji. A jednocześnie na...  Znaczy to mam wyjaśnienie od innego agenta, bo tworzy się to, ta usługa i aktywuje ten,  ten aktywator i repozytorium na drugim koncie gcp/holistic/json/małpa-gmail.com Więc nie wiem czy tam coś trzeba w repozytorium zmienić, żeby to zostawało na koncie live/livewave/małpa-gmail.com/gcp w projekcie falazycia-s",
+        "corrected_text": "Tak, jeśli to dobrze rozumiem. Jest cały czas błąd chyba kompilacji. A jednocześnie na...  Znaczy to mam wyjaśnienie od innego agenta, bo tworzy się to, ta usługa i aktywuje ten,  ten aktywator i repozytorium na drugim koncie gcp/holistic/json/małpa-gmail.com Więc nie wiem czy tam coś trzeba w repozytorium zmienić, żeby to zostawało na koncie live/livewave/małpa-gmail.com/gcp w projekcie falazycia-s",
+        "status": "raw_fallback"
     }
 ]
