@@ -31,7 +31,7 @@ Wklej poniższy fragment w kodzie HTML dashboardu klubowego (przed zamykającym 
 Jeśli chcesz, aby dashboard sam wysyłał zapytania i stylizował odpowiedź we własnym interfejsie:
 
 ```http
-POST https://discoveryengine.googleapis.com/v1/projects/falazycia-os/locations/global/collections/default_collection/engines/TWOJE_APP_ID/sessions/-:converse
+POST https://europe-west1-discoveryengine.googleapis.com/v1/projects/falazycia-os/locations/europe-west1/collections/default_collection/engines/TWOJE_APP_ID/sessions/-:converse
 Authorization: Bearer YOUR_GCP_ACCESS_TOKEN
 Content-Type: application/json
 

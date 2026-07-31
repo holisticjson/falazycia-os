@@ -17,7 +17,7 @@ import subprocess
 PROJECT_ID  = "falazycia-os"
 BUCKET_NAME = "falazycia-os-piotrlotniczy-knowledge"
 BUCKET_URI  = f"gs://{BUCKET_NAME}"
-REGION      = "europe-central2"
+REGION      = "europe-west1"
 
 NOTES_DIR   = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS\lifewave\04-assets\knowledge_base\piotrlotniczy\obsidian_notes"
 MOC_FILE    = r"C:\Aplikacje MVP\02_CLIENTS_AND_PROJECTS\lifewave\04-assets\knowledge_base\piotrlotniczy\00_FLIGHT_HACKING_MOC_OBSIDIAN.md"

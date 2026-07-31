@@ -1000,5 +1000,53 @@
         "raw_text": "Skrypt się wykonuje, buduje te nowe usługi w regionie Europe West 1. Natomiast przy automatycznym Gitsync wyskoczy mi komunikat, że wypadałoby zaktualizować PIP. Podaj mi komentarz do aktualizacji PIP.",
         "corrected_text": "Skrypt się wykonuje, buduje te nowe usługi w regionie Europe West 1. Natomiast przy automatycznym GitSync wyskoczy mi komunikat, że wypadałoby zaktualizować PIP. Podaj mi komentarz do aktualizacji PIP.",
         "status": "success"
+    },
+    {
+        "timestamp": "2026-07-30 16:30:40",
+        "raw_text": "Zweryfikować Google Search Console. Czyli to dodać klik TX2, ale chyba już to robiłem, nie pamiętam.",
+        "corrected_text": "Zweryfikować Google Search Console. Czyli to dodać klik TX2, ale chyba już to robiłem, nie pamiętam.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 17:26:25",
+        "raw_text": "żebyś to, bo masz połączenie z Cloudflare, jak i Google Cloud Run, żebyś to poustawiał, te kłódeczki, to wszystko, bo coś mi nie wychodzi w sensie zmapowania na Cloud Run. Zobacz, bo masz połączenie API tam.",
+        "corrected_text": "żebyś to, bo masz połączenie z Cloudflare, jak i Google Cloud Run, żebyś to poustawiał, te kłódeczki, to wszystko, bo coś mi nie wychodzi w sensie zmapowania na Cloud Run. Zobacz, bo masz połączenie API tam.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 17:49:56",
+        "raw_text": "Bo co tam robił CoolFone.pl, CoolChagujasia.pl? O co kurwa chodzi? Dlaczego wyszedłeś poza kurwa ramy tego projektu\"Pala z życia\" i\"Kątynia harmonii\"?",
+        "corrected_text": "Bo co tam robił CoolFone.pl, CoolChagujasia.pl? O co kurwa chodzi? Dlaczego wyszedłeś poza kurwa ramy tego projektu\"Pala z życia\" i\"Kątynia harmonii\"?",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 18:07:55",
+        "raw_text": "Dobra, linki działają wszystko ok, tylko wiesz co brak jest spójności jeśli chodzi o stronę główną względem pozostałych podstron. Strona główna musi być dostosowana do pozostałych podstron. Musi mieć też tam przełącznik tego light mode i dark mode, który jest na pozostałych podstronach, a tutaj nie ma.  Na niektórych podstawach jakiś hamburger menu niepotrzebnie. Na stronie instrukcji X2O jest też jakieś pozostałe z starego logo. Live, wait for live. Zrób roast, przeleć jeszcze po tych wszystkich, po całej strukturze tych podstroni, tam gdzie jest coś do poprawki i można to ulepszyć, sekcje bardziej.",
+        "corrected_text": "Dobra, linki działają wszystko ok, tylko wiesz co brak jest spójności jeśli chodzi o stronę główną względem pozostałych podstron. Strona główna musi być dostosowana do pozostałych podstron. Musi mieć też tam przełącznik tego light mode i dark mode, który jest na pozostałych podstronach, a tutaj nie ma.  Na niektórych podstawach jakiś hamburger menu niepotrzebnie. Na stronie instrukcji X2O jest też jakieś pozostałe z starego logo. Live, wait for live. Zrób roast, przeleć jeszcze po tych wszystkich, po całej strukturze tych podstroni, tam gdzie jest coś do poprawki i można to ulepszyć, sekcje bardziej.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 18:31:48",
+        "raw_text": "Zauważyłem tutaj, przeglądam implantation plan i wskazałeś region Europe Central 2. Kiedy zmieniliśmy teraz tutaj, stworzyliśmy nowe usługi pod zarówno portal strona falamyślnikzycia.pl oraz dla dashboardu app.falamyślnikzycia.pl  w którym ten agent będzie też m.in. żył zmieniliśmy na Europe West 1 więc należałoby się zastanowić czy nie lepiej... znaczy nie lepiej, no projekt jak najbardziej, ale muszę chyba zmienić region bo to na pewno będzie lepiej współgrało, tak? i to jest baza wiedzy kursu Piotra Lotniczego  ale też trzeba tego agenta tak uczulić i ustawić, aby on nie cytował, kogo to jest wiedza, tylko po prostu tylko po prostu serwował wiedzę, tak, wskazówki takie, tak jak żeśmy ustalali wcześniej. Ma być wnikliwy, jeśli chodzi o szukanie źródeł tych lotów i tak  Bardzo dokładny, miły, uprzejmy i taki motywujący.  Pytanie czy nie zmienić modelu na Gemini 3.6 Flash. Trzeba by wejść w dokumentację w RTX AI Builder.  agent conversation conversational agent",
+        "corrected_text": "Zauważyłem tutaj, przeglądam implantation plan i wskazałeś region Europe Central 2. Kiedy zmieniliśmy teraz tutaj, stworzyliśmy nowe usługi pod zarówno portal strona falamyślnikzycia.pl oraz dla dashboardu app.falamyślnikzycia.pl  w którym ten agent będzie też m.in. żył zmieniliśmy na Europe West 1 więc należałoby się zastanowić czy nie lepiej... znaczy nie lepiej, no projekt jak najbardziej, ale muszę chyba zmienić region bo to na pewno będzie lepiej współgrało, tak? i to jest baza wiedzy kursu Piotra Lotniczego  ale też trzeba tego agenta tak uczulić i ustawić, aby on nie cytował, kogo to jest wiedza, tylko po prostu tylko po prostu serwował wiedzę, tak, wskazówki takie, tak jak żeśmy ustalali wcześniej. Ma być wnikliwy, jeśli chodzi o szukanie źródeł tych lotów i tak  Bardzo dokładny, miły, uprzejmy i taki motywujący.  Pytanie czy nie zmienić modelu na Gemini 3.6 Flash. Trzeba by wejść w dokumentację w RTX AI Builder.  agent conversation conversational agent",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 19:01:03",
+        "raw_text": "Możesz uruchomić tego skryptu i przejść do konsoli Agent Builder. Conversational Agent i stworzyć typu agenta konwersacyjnego. Nadać mu instrukcję, stworzyć cały playbook. Zajrzyj sobie przez kontekst 7 MCP do aktualnej dokumentacji jak to się robi. Znajdź tutaj z talonnością i dokładnością według najlepszych prakty  Przetestuj, czy agent działa i należy go osadzić na dashboardzie, zrobić deploy. C i C D wszystko jest odpalone, uruchomione, podpięte w repozytorie. Dashboard na Cloud Run. Możesz działać w trybie Go.",
+        "corrected_text": "Możesz uruchomić tego skryptu i przejść do konsoli Agent Builder. Conversational Agent i stworzyć typu agenta konwersacyjnego. Nadać mu instrukcję, stworzyć cały playbook. Zajrzyj sobie przez kontekst 7 MCP do aktualnej dokumentacji jak to się robi. Znajdź tutaj z talonnością i dokładnością według najlepszych prakty  Przetestuj, czy agent działa i należy go osadzić na dashboardzie, zrobić deploy. C i C D wszystko jest odpalone, uruchomione, podpięte w repozytorie. Dashboard na Cloud Run. Możesz działać w trybie Go.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 20:00:00",
+        "raw_text": "Jak na Windowsie najszybciej lub czy mogę OBS-em w ogóle nagrać ekran, później przetranskrybować z niego z audio i jak nagrać ekran w Windowsie na laptopie swobodnie.",
+        "corrected_text": "Jak na Windowsie najszybciej lub czy mogę OBS-em w ogóle nagrać ekran, później przetranskrybować z niego z audio i jak nagrać ekran w Windowsie na laptopie swobodnie.",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-30 20:00:14",
+        "raw_text": "Tak, żeby mógł na przykład korzystać w międzyczasie z innych aplikacji na ekranie itd.",
+        "corrected_text": "Tak, żeby mógł na przykład korzystać w międzyczasie z innych aplikacji na ekranie itd.",
+        "status": "raw_fallback"
     }
 ]
