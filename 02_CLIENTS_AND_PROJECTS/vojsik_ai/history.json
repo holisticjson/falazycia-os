@@ -1048,5 +1048,17 @@
         "raw_text": "Tak, żeby mógł na przykład korzystać w międzyczasie z innych aplikacji na ekranie itd.",
         "corrected_text": "Tak, żeby mógł na przykład korzystać w międzyczasie z innych aplikacji na ekranie itd.",
         "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-31 11:03:25",
+        "raw_text": "No słuchaj, nie wiem, ale po prostu no znowu się stworzyło jakieś kurwa dodatkowe repozytorii kurwa w Europe Central 2. Nie wiem, dlaczego to się tak powiela. Czemu? I te pozostałe trzeba też typy wdrożenia, tak? Podłączyć repozytoria, czyli w regionie Europe West 1 dla fala życia dashboard, fala życia web i światy  harmonii. No i się oczywiście nie wyświetla dashboard pod ani subdomeną, ani tym roboczym plikiem. Aha, tam jest Europe Central 2. Znowu się gdzieś kurwa podmieniło. Jak to kurwa tego pierdolonego powielania tych kurwa usług i tworzenia i kurwa klonowania w innych regionach. Jak tego kurwa uniknąć? No nie wiem. Wbij  na stałe żebyś kurwa tego nie wiem czy te źle komendy są do gita układane czy to gcloud kurwa że po prostu się tworzą jakieś kurwa klony duble kurwa w innych regionach później się to wszystko chaos robi kurwa tworzą się jakieś",
+        "corrected_text": "No słuchaj, nie wiem, ale po prostu no znowu się stworzyło jakieś kurwa dodatkowe repozytorii kurwa w Europe Central 2. Nie wiem, dlaczego to się tak powiela. Czemu? I te pozostałe trzeba też typy wdrożenia, tak? Podłączyć repozytoria, czyli w regionie Europe West 1 dla fala życia dashboard, fala życia web i światy  harmonii. No i się oczywiście nie wyświetla dashboard pod ani subdomeną, ani tym roboczym plikiem. Aha, tam jest Europe Central 2. Znowu się gdzieś kurwa podmieniło. Jak to kurwa tego pierdolonego powielania tych kurwa usług i tworzenia i kurwa klonowania w innych regionach. Jak tego kurwa uniknąć? No nie wiem. Wbij  na stałe żebyś kurwa tego nie wiem czy te źle komendy są do gita układane czy to gcloud kurwa że po prostu się tworzą jakieś kurwa klony duble kurwa w innych regionach później się to wszystko chaos robi kurwa tworzą się jakieś",
+        "status": "raw_fallback"
+    },
+    {
+        "timestamp": "2026-07-31 11:08:24",
+        "raw_text": "Dobra, bo widzę, że tam aktywator jeden usunąłem, ale są jeszcze dwa. Świątyni Harmonii i Fala Życia Web. Muszę je usunąć i w to miejsce trzeba od nowa stworzyć nowe aktywatory, spiąć to z repozytorium GitHub w tych nowych usługach w regionie Europe West 1, żeby to wszystko hulało, działało.",
+        "corrected_text": "Dobra, bo widzę, że tam aktywator jeden usunąłem, ale są jeszcze dwa: Świątyni Harmonii i Fala Życia Web. Muszę je usunąć i w to miejsce trzeba od nowa stworzyć nowe aktywatory, spiąć to z repozytorium GitHub w tych nowych usługach w regionie Europe West 1, żeby to wszystko hulało, działało.",
+        "status": "success"
     }
 ]
